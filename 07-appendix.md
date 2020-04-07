@@ -2,50 +2,50 @@
 
 ## Dynamic Data Masking (DDM) – Azure Synapse Differentiator Snackable Pocket Demo
 
-1. **Click** on the Develop tab
-2. **Click** the SQL script “7 Dynamic Data Masking”
+1. **Select** the Develop tab
+2. **Select** the SQL script “7 Dynamic Data Masking”
 3. **Select** “AzureSynapseDW” to connect to the “AzureSynapseDW” SQL Pool
 4. In the SQL script, **select** the query below “Step:1” (see image at right)
-5. **Click** on Run
+5. **Select** "Run"
 6. **Show** the result of query
 
 ![](./media/07-01.png)
 
 7. In the SQL script, **select** the query below “Step:2” (see image at right)
-8. **Click** ‘Run’
+8. **Select** "Run"
 
 ![](./media/07-02.png)
 
 9. In the SQL script, **select** the query below “Step:3” (see image at right)
-10. **Click** ‘Run’
+10. **Select** "Run"
 
 ![](./media/07-03.png)
 
 11. In the SQL script, **select** the query below “Step:4” (see image at right)
-12. **Click** on Run
+12. **Select** on "Run"
 13. **Show** the result of the query and **point out** that the email and credit card are masked.
 
 ![](./media/07-04.png)
 
 14. In the SQL script, **select** the query below “Step:5” (see image at right)
-15. **Click** ‘Run’
+15. **Select** "Run"
 
 ![](./media/07-05.png)
 
 16. In the SQL script, **select** the query below “Step:6” (see image at right)
-17. **Click** ‘Run’
+17. **Select** "Run"
 18. **Show** the result of the query
 
 ![](./media/07-06.png)
 
 19. In the SQL script, **select** the query below “Step:7” (see image at right)
-20. **Click** on Run
+20. **Select** on "Run"
 21. **Show** the result of the query.
 
 ![](./media/07-07.png)
 
 22. In the SQL script, **select** the query below “Step:8” (see image at right)
-23. **Click** on Run.
+23. **Select** on "Run".
 
 **Important Note** to Presenter:
 You __must__ run this final step of the demo or the demo will not function for the next user.
@@ -58,19 +58,19 @@ You __must__ run this final step of the demo or the demo will not function for t
 
 Note: The steps in this row are included in case the DDM view does not open.
 Follow these instructions to open the DDM view.
-1. **Click on** Workspace
+1. **Select** Workspace
 2. **Select** “Data & AI Demo” from available workspace
-3. **Click on** Reports 
+3. **Select** Reports 
 4. **Search** for “4. Dynamic Data Masking” 
-5. **Click** “4. Dynamic Data Masking” 
+5. **Select** “4. Dynamic Data Masking” 
 
 ![](./media/07-10.png)
 
-6. **Click** on button "Click here to mask data" to implement dynamic data masking
+6. **Select** the button "Click here to mask data" to implement dynamic data masking
 
 ![](./media/07-11.png)
 
-7. **Click** on button "Click here to unmask data".
+7. **Select** the button "Click here to unmask data".
 
 **Important Note** to Presenter:
 You __must__ run this final step of the demo or the demo will not function for the next user.
@@ -79,40 +79,40 @@ You __must__ run this final step of the demo or the demo will not function for t
 
 ## Row-Level Security (RLS) Demo  
 
-1. **Click** on the Develop hub
+1. **Select** the Develop hub
 2. **Select** “6 Row Level Security” from the list of SQL scripts
 3. **Select** “AzureSynapseDW” to connect to the “AzureSynapseDW” SQL Pool
 4. In the SQL script, **select the query** below “Step:1” (see image at right)
-5. **Click** on Run
+5. **Select** "Run"
 6. **Show** the result of the query
 
 ![](./media/07-13.png)
 
 7. In the SQL script, **select the query** below “Step:2” (see image at right) 
-8. **Click** on Run
+8. **Select** "Run"
 
 ![](./media/07-14.png)
 
 9. In the SQL sript, **select the query** below "Step:3" from the script (see image at right)
-10. **Click** on Run
+10. **Select** "Run"
 11. **Show** the result of the query
 
 ![](./media/07-15.png)
 
 12.	In the SQL script, **select the query** below "Step:4" (see image at right)
-13.	**Click** on Run
+13.	**Select** "Run"
 14.	**Show** the result of the query
 
 ![](./media/07-16.png)
 
 15.	In the SQL script, **select** the query below "Step:5" 
-16.	**Click** on Run
+16.	**Select** "Run"
 17.	**Show** the result of the query
 
 ![](./media/07-17.png)
 
 18.	In the SQL script, **select the query** below "Step:6" (see image at right).
-19.	**Click** on Run
+19.	**Select** "Run"
 
 ## Important Note to Presenter:
 You __must__ run this final query of the demo or the demo will not function for the next user.
@@ -123,7 +123,7 @@ You __must__ run this final query of the demo or the demo will not function for 
 
 ![](./media/07-19.png)
 
-21.	**Now Click on** “Click here as Data Analyst-Miami”.
+21.	**Now select** "Click here as Data Analyst-Miami".
 
 ![](./media/07-20.png)
 

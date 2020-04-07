@@ -8,16 +8,16 @@
 
 ### Data Ingestion
 
-1. On the Synapse Overview page **Click** Ingest
+1. On the Synapse Overview page **Select** Ingest
 2. **Show/highlight** already created linked services.
 
 ![Dream Demo Synapse](media/05-02.png)
 
-3. In the Copy data dialog **Click** next.
+3. In the Copy data dialog **Select** next.
 
 ![Properties](media/05-03.png)
 
-4. **Click** ‘Create new connection’
+4. **Select** ‘Create new connection’
 
 ![Create new connection](media/05-04.png)
 
@@ -27,32 +27,32 @@
 
 ### Orchestrate Hub and Data Pipelines
 
-1. **Click** on “Orchestrate”
+1. **Select** “Orchestrate”
 
 ![SAP HANA To ADLS Pipeline](media/05-06.png)
 
-2. **Click/Expand** “Pipelines”
-3. **Click** on “SAP HANA TO ADLS” pipeline.
+2. **Select/Expand** “Pipelines”
+3. **Select** “SAP HANA TO ADLS” pipeline.
 
 #### Migrate SAP Hana to Azure Synapse Analytics
 
 ![Ingesting finance data from SAP Hana](media/05-07.png)
 
 4. From the editor window **Select** copy data activity.
-5. **Click** ‘Source’ property of the copy data activity.
+5. **Select** ‘Source’ property of the copy data activity.
 6. **Point** to the Source Dataset 
 7. **Show** that our query is pulling from SAP Hana
 
 ![Ingesting finance data from SAP Hana](media/05-08.png)
 
-8. With copy data selected, **click** the ‘Sink’ property of the copy data activity.
+8. With copy data selected, **Select** the ‘Sink’ property of the copy data activity.
 9. **Point** to the Sink dataset, in this case we are saving to ADLS Gen2 storage container
 
 ![Data moves to Azure Data Lake Gen2](media/05-09.png)
 
 10. **Select** Mapping Data Flow activity.
-11.	**Click** Settings
-12.	**Click** Open, this will take you to Data Flow editor.
+11.	**Select** Settings
+12.	**Select** Open, this will take you to Data Flow editor.
 
 ![Mapping Data Flow](media/05-10.png)
 
@@ -79,7 +79,7 @@
 
 ![Writing the full table to Azure Synapse](media/05-15.png)
 
-21. To view all the available transformations in the data flow editor, **click** on the + (add action) which is to the right of the first activity.
+21. To view all the available transformations in the data flow editor, **select** the + (add action) which is to the right of the first activity.
 
 ![view all the available transformations](media/05-16.png)
 
@@ -95,8 +95,8 @@
 
 **Note:** This pipeline is for demonstration purposes only. __Do NOT execute__ the pipeline.
 
-2.	**Click** lookup activity.
-3.	**Click** Settings
+2.	**Select** lookup activity.
+3.	**Select** Settings
 4.	**Point** to the Source dataset property (Teradata).
 
 ![](media/05-19.png)
@@ -106,9 +106,9 @@
 
 ![](media/05-20.png)
 
-7.	**Click** on “Prep data in Azure Synapse” Notebook.
-8.	**Click** Settings
-9.	From the settings tab, **Click** on “Open” to open the notebook
+7.	**Select** “Prep data in Azure Synapse” Notebook.
+8.	**Select** Settings
+9.	From the settings tab, **Select** “Open” to open the notebook
 
 ![](media/05-21.png)
 
@@ -150,19 +150,19 @@
 
 ![](media/05-28.png)
 
-2. From the Data blade, under Storage accounts, **click/expand** ‘dreamdemostorageforgen2’ 
-3. **Point out** the various data sources (including CI) that are now in ADL Gen2 and then **Click** ‘twitterdata’ storage container.
+2. From the Data blade, under Storage accounts, **Select/expand** ‘dreamdemostorageforgen2’ 
+3. **Point out** the various data sources (including CI) that are now in ADL Gen2 and then **Select** ‘twitterdata’ storage container.
 4. **Point out** all the parquet files and other folders in the twitterdata container.
 5. **Select** the first two parquet files
 6. **Right Click**, from the context menu Select ‘New SQL Script’
 
 ![](media/05-29.png)
 
-7. **Click** run.
+7. **Select** run.
 
 ![](media/05-30.png)
 
-8. **Click** Chart
+8. **Select** Chart
 
 ![](media/05-31.png)
 
@@ -175,21 +175,21 @@
 
 #### COPY INTO Command
 
-1. **Click** on Develop
+1. **Select** Develop
 
 ![](media/05-33.png)
 
-2. **Click** on SQL Scripts
-3. **Click** on “8 External Data to Synapse Via Copy Into”
+2. **Select** SQL Scripts
+3. **Select** “8 External Data to Synapse Via Copy Into”
 4. **Select** the query below “Step:1” as shown
-5. **Click** Run
+5. **Select** Run
 
 ![](media/05-34.png)
 
 6.	**Show** “No results found”
 7.	**Scroll** to the bottom 
 8.	**Select** “COPY INTO” query below “Step:2” as shown
-9.	**Click** ‘Run’
+9.	**Select** ‘Run’
 
 ![](media/05-35.png)
 
@@ -199,8 +199,8 @@
 
 ![](media/05-36.png)
 
-1. **Click** on “Develop”
-2. **Click** on “1 SQL Query with Synapse”
+1. **Select** “Develop”
+2. **Select** “1 SQL Query with Synapse”
 
 ![](media/05-37.png)
 
@@ -213,11 +213,11 @@
 
 `SELECT COUNT_BIG(1) as TotalCount  FROM wwi.Sales(nolock)`
 
-4.	**Click** on “Run”
+4.	**Select** “Run”
 5.	**Show** results (30 Billion)
 6.	**Scroll down** a few lines to the second query
 7.	**Select** the query as shown on right
-8.	**Click** on Run
+8.	**Select** "Run"
 9.	**Highlight** time the query takes – query time is listed at bottom of screenshot.
 
 ![](media/05-39.png)
@@ -230,14 +230,14 @@
 
 ### JSON Extractor Differentiator and other optional differentiator “snackable” pocket demos
 
-1. **Click** on “Develop”
+1. **Select** “Develop”
 
 ![](media/05-41.png)
 
-2. **Click** on “2 JSON Extractor”
+2. **Select** “2 JSON Extractor”
 3. **Connect** To ‘AzureSynapseDW’ SQL Pool
 4. **Select** the Query we need to run.
-5. **Click** on “Run”
+5. **Select** “Run”
 6. **Show** Results of query 
 
 ### Using Notebooks to Run Machine Learning Experiments
@@ -246,7 +246,7 @@
 
 ![](media/05-42.png)
 
-2. **Click** to expand the “Notebooks” option 
+2. **Select** and expand the “Notebooks” option 
 3. **Select** the “1. Product Recommendations” notebook, which will open the notebook.
 
 ![](media/05-43.png)
@@ -311,7 +311,7 @@ Scroll down to show cell 42.
 5. **Select** ‘1. CDP Vision Demo’ Power BI report. This will open the decomposition tree.
 6. Once the report is open, in the ‘Decomposition Tree Analysis’ tab 
 7. **Show** Store Visits by Campaign then by Region.
-8. **Click** on “+” next to North & Central America 
+8. **Select** “+” next to North & Central America 
 
 ![](media/05-56.png)
 
@@ -329,7 +329,7 @@ Scroll down to show cell 42.
 
 ![](media/05-59.png)
 
-2. **Click** on the empty area in the report canvas.
+2. **Select** the empty area in the report canvas.
 3. From the Fields list **Select** or **Drag and Drop** CustomerId from ‘wwi AllSales’ table to the report canvas.
 
 ![](media/05-60.png)
@@ -339,19 +339,19 @@ Scroll down to show cell 42.
 
 ![](media/05-61.png)
 
-6. **Click** on the empty area in the report canvas.
+6. **Select** the empty area in the report canvas.
 
 ![](media/05-62.png)
 
 7. From the Fields list **Select** or **‘Drag and Drop’** CustomerId from ‘wwi AllSales’ table to the report canvas. [Pointer 1 from the screenshot]
 8. Then **Select** ‘Name’ field from the Products table [Pointer 2 from the screenshot].
 9. Then **Select** ‘Campaign’ field from the ProdChamp table [Pointer 3 from the screenshot].
-10. From the Visualizations pane click on the Treemap icon [Pointer 4 from the screenshot].
+10. From the Visualizations pane select the Treemap icon [Pointer 4 from the screenshot].
 11.	**Resize and move** the card visual as shown in screenshot.
 
 ![](media/05-63.png)
 
-12.	**Click** on an empty area in the report canvas.
+12.	**Select** an empty area in the report canvas.
 
 ![](media/05-64.png)
 

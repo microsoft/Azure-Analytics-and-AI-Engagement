@@ -1,29 +1,29 @@
 # CDP Vision Demo using Azure Synapse Analytics (Preview) Setup Instructions
 
-1. **Click** on the link below to get to the login page: [http://bit.ly/2uB8p64](http://bit.ly/2uB8p64)
+1. **Select** the link below to get to the login page: [http://bit.ly/2uB8p64](http://bit.ly/2uB8p64)
 
 ![Login page](./media/00-01.png "Login page")
 
-2. **Enter** the requested details and **click** Submit.
-3. On the labs page, **click** on the Launch Lab button. Wait while your environment is being prepared. It might take 5 minutes to 15 minutes to provision environment.
+2. **Enter** the requested details and **select** Submit.
+3. On the labs page, **select** on the Launch Lab button. Wait while your environment is being prepared. It might take 5 minutes to 15 minutes to provision environment.
 
 ![Lab Launch](./media/00-02.png "Lab Launch")
 
 4. You will receive an email within 15 minutes which will contain the credentials and another link to access the demo. If you don’t receive the email, please __look in your junk folder__.
 
-5. **Click** Launch Lab
+5. **Select** Launch Lab
 
 ![Lab Launch](./media/00-03.png "Lab Launch")
 
-6. Upon clicking the Launch Lab button, you will be redirected to a browser page with the lab details.
+6. Upon selecting the Launch Lab button, you will be redirected to a browser page with the lab details.
 
 ![Lab Details](./media/00-04.png "Lab Details")
 
-7. On the lab details page, **scroll down** to the bottom and **click** on the ‘GO TO DEMO-VM’ button. This will open the Demo VM.
+7. On the lab details page, **scroll down** to the bottom and **select** on the ‘GO TO DEMO-VM’ button. This will open the Demo VM.
 
 ![Demo VM Access](./media/00-05.png "Demo VM Access")
 
-**Important Note:** Alternatively, you can use the Remote Desktop tool to connect to the demo VM. **The viewing experience for Power BI dashboards will be improved if the demo is accessed via the Remote Desktop tool instead of the browser experience that is initiated when you click on the ‘GO TO DEMO-VM’ button.**  
+**Important Note:** Alternatively, you can use the Remote Desktop tool to connect to the demo VM. **The viewing experience for Power BI dashboards will be improved if the demo is accessed via the Remote Desktop tool instead of the browser experience that is initiated when you select on the ‘GO TO DEMO-VM’ button.**  
   
 **If you would like to open the VM in Remote Desktop for improved resolution, follow these steps:**
 
@@ -70,7 +70,7 @@ This will open many tabs. Each tab represents a different step in the demo.
 
 ![Refresh Synapse Environment](./media/00-14.png "Refresh Synapse Environment")
 
-18.	To access the Store Simulator video, click on the file on the bottom left corner of the screen.
+18.	To access the Store Simulator video, select the file on the bottom left corner of the screen.
 
 ![Store Simulator Video](./media/00-15.png "Store Simulator video")
 
@@ -83,7 +83,7 @@ This will open many tabs. Each tab represents a different step in the demo.
 ### Either
 
 1. Open the “ReadMe.html” file on the VM desktop. 
-2. Click and open each link provided in the file. 
+2. Select and open each link provided in the file. 
 3. For the Power BI and Azure Synapse tabs use Azure credentials (in Step 6 above).
 4. For the Customer Insights tab use the Customer Insights credentials (in Step 6 above).
 
@@ -104,7 +104,7 @@ This will open many tabs. Each tab represents a different step in the demo.
     L. [https://app.powerbi.com/groups/02bf00b3-995e-4dc6-98e0-51af802252f2/reports/7231d0d3-725c-4510-b963-7a4b8307b730/ReportSection8662d8f05204ad0a906d?bookmarkGuid=Bookmark19c2452641c19098cd22](https://app.powerbi.com/groups/02bf00b3-995e-4dc6-98e0-51af802252f2/reports/7231d0d3-725c-4510-b963-7a4b8307b730/ReportSection8662d8f05204ad0a906d?bookmarkGuid=Bookmark19c2452641c19098cd22)
     M. [https://app.powerbi.com/groups/02bf00b3-995e-4dc6-98e0-51af802252f2/reports/b4a7b3f5-6705-4582-97ef-b63e5bc314d0/ReportSectionb5c31ba8cb51c62a7156?bookmarkGuid=Bookmark0d6e60e0874d462062bc](https://app.powerbi.com/groups/02bf00b3-995e-4dc6-98e0-51af802252f2/reports/b4a7b3f5-6705-4582-97ef-b63e5bc314d0/ReportSectionb5c31ba8cb51c62a7156?bookmarkGuid=Bookmark0d6e60e0874d462062bc)
     
-19.	Once the browser tabs have all opened, **select** the “…” in the top right corner of the screen, and **click** on “Settings”.
+19.	Once the browser tabs have all opened, **select** the “…” in the top right corner of the screen, and **select** on “Settings”.
 
 ![Settings Access](./media/00-17.png "Settings Access")
 
@@ -113,6 +113,6 @@ This will open many tabs. Each tab represents a different step in the demo.
 
 ![Settings Change](./media/00-18.png "Settings Change")
 
-22.	**Scroll** all the way down to the end of the page and **click** on “Use all open tabs”
+22.	**Scroll** all the way down to the end of the page and **select** “Use all open tabs”
 
 ![Use all open tabs](./media/00-19.png "[Use all open tabs")
