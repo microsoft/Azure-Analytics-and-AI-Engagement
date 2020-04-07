@@ -1,8 +1,6 @@
 # Demo vision and customer pain point
 
-Go to the VM. 
-
-See set up document and be sure to log in at least 30 minutes before your demo
+Go to the VM, then see the setup document and be sure to log in at least 30 minutes before your demo.
 
 **Point out**
 

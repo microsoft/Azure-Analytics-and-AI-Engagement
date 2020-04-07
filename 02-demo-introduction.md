@@ -10,7 +10,7 @@ Use slide deck included in the demo asset folder.
 
 ![](./media/02-04.png)
 
-Refer to demo architecture slide.
+Refer to the demo architecture slide.
 
 ![](./media/02-05.png)
 
