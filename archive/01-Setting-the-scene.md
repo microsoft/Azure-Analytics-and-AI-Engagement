@@ -69,9 +69,9 @@ High-level steps showcased in the demo to modernize the data estate:
 
 ## Demo Architecture
 
-![Know Your Customers](media/01-01.png)
+![Know Your Customers](../media/01-01.png)
 
-![Azure Synapse Analytics](media/01-02.png)
+![Azure Synapse Analytics](../media/01-02.png)
 
 ## Products and Technology Showcased
 

@@ -2,26 +2,26 @@
 
 1. **Select** the link below to get to the login page: [http://bit.ly/2uB8p64](http://bit.ly/2uB8p64)
 
-![Login page](./media/00-01.png "Login page")
+![Login page](../media/00-01.png "Login page")
 
 2. **Enter** the requested details and **select** Submit.
 3. On the labs' page, **select** on the Launch Lab button. Wait while your environment is being prepared. It might take 5 minutes to 15 minutes to provision the environment.
 
-![Lab Launch](./media/00-02.png "Lab Launch")
+![Lab Launch](../media/00-02.png "Lab Launch")
 
 4. You will receive an email within 15 minutes, which will contain the credentials and another link to access the demo. If you don’t receive the email, please __look in your junk folder__.
 
 5. **Select** Launch Lab
 
-![Lab Launch](./media/00-03.png "Lab Launch")
+![Lab Launch](../media/00-03.png "Lab Launch")
 
 6. Upon selecting the Launch Lab button, you will be redirected to a browser page with the lab details.
 
-![Lab Details](./media/00-04.png "Lab Details")
+![Lab Details](../media/00-04.png "Lab Details")
 
 7. On the lab details page, **scroll down** to the bottom and **select** on the ‘GO TO DEMO-VM’ button. This will open the Demo VM.
 
-![Demo VM Access](./media/00-05.png "Demo VM Access")
+![Demo VM Access](../media/00-05.png "Demo VM Access")
 
 **Important Note:** Alternatively, you can use the Remote Desktop tool to connect to the demo VM. **The viewing experience for Power BI dashboards will be improved if the demo is accessed via the Remote Desktop tool instead of the browser experience that is initiated when you select on the ‘GO TO DEMO-VM’ button.**  
   
@@ -29,49 +29,49 @@
 
 8. **In the Windows search field, type "Remote Desktop". Alternatively, type Windows + R then type mstsc + enter** 
 
-![Remote Desktop Access](./media/00-06.png "Remote Desktop Access")
+![Remote Desktop Access](../media/00-06.png "Remote Desktop Access")
 
 9. Use the VM DNS and VM credentials from the labs' page to connect to the VM. On the Demo VM desktop **double click** on the Microsoft Edge Beta icon. This will open many tabs. Each tab represents a different step in the demo. 
 
-![Edge Browser Shortcut](./media/00-07.png "Edge Browser Shortcut")
+![Edge Browser Shortcut](../media/00-07.png "Edge Browser Shortcut")
 
 11. **Sign in** with the **Azure Credentials** from the lab details page that is now open back in your own browser - see screenshot on the right. Cut and paste these credentials into the Demo VM.  
 
-![Azure Credentials](./media/00-08.png "Azure Credentials")
+![Azure Credentials](../media/00-08.png "Azure Credentials")
 
 12. **Choose YES** when prompted to "Stay Signed In".
 
-![Sign-In Screen](./media/00-09.png "Sign-In Screen")
+![Sign-In Screen](../media/00-09.png "Sign-In Screen")
 
 13.	**Open** the second tab in the browser of the VM and **choose** “Use another account”
 
-![Account Selection Screen](./media/00-10.png "Account Selection Screen")
+![Account Selection Screen](../media/00-10.png "Account Selection Screen")
 
 15.	Sign in by cutting and pasting the **Customer Insights Credentials** from **Resource URLs & Credentials** section. Refer back to your own browser to cut and paste these credentials into the Demo VM.
 
-![Credentials Screen](./media/00-10.png "Credentials Screen")
+![Credentials Screen](../media/00-10.png "Credentials Screen")
 
 16.	**Close the browser on the VM.**
 
-![Browser Window](./media/00-12.png "Browser Window")
+![Browser Window](../media/00-12.png "Browser Window")
 
 17.	**Double click** on the Microsoft Edge Beta icon.  Several tabs will automatically open and be available for you to proceed through over the course of the demo.
 
-![Edge Browser Shortcut](./media/00-07.png "Edge Browser Shortcut")
+![Edge Browser Shortcut](../media/00-07.png "Edge Browser Shortcut")
 
-![Browser Window](./media/00-13.png "Browser Window")
+![Browser Window](../media/00-13.png "Browser Window")
 
 **Note:** When you go to the Synapse environment, the Power BI tab may not appear. If this happens, refresh the Synapse environment.
 
-![Refresh Synapse Environment](./media/00-14.png "Refresh Synapse Environment")
+![Refresh Synapse Environment](../media/00-14.png "Refresh Synapse Environment")
 
 18.	To access the Store Simulator video, select the file on the bottom left corner of the screen.
 
-![Store Simulator Video](./media/00-15.png "Store Simulator video")
+![Store Simulator Video](../media/00-15.png "Store Simulator video")
 
 **Note:** If video is not available, do (CTRL + J) and open "New Store Simulation.avi".
 
-![Store Simulator Video](./media/00-16.png "Store Simulator video")
+![Store Simulator Video](../media/00-16.png "Store Simulator video")
 
 **Note:**  Browser tabs will automatically load for you, including Power BI. If they do not load for you, please do the following:
 
@@ -101,12 +101,12 @@
     
 19.	Once the browser tabs have all opened, **select** the "…" in the top right corner of the screen, and **select** on "Settings".
 
-![Settings Access](./media/00-17.png "Settings Access")
+![Settings Access](../media/00-17.png "Settings Access")
 
 20.	**Select** “On Startup” and then **select** the option "open a specific page or pages"
 
-![Settings Change](./media/00-18.png "Settings Change")
+![Settings Change](../media/00-18.png "Settings Change")
 
 22.	**Scroll** all the way down to the end of the page and **select** "Use all open tabs"
 
-![Use all open tabs](./media/00-19.png "Use all open tabs")
+![Use all open tabs](../media/00-19.png "Use all open tabs")
