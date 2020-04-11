@@ -53,8 +53,6 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ![Create new connection](media/05-05.png)
 
-**TODO** What is the purpose of seeing these options? Maybe we can include a demo to show how it is done?
-
 ### Task 2: Migrate SAP Hana to Azure Synapse Analytics
 
 1. Select **Orchestrate**
@@ -174,7 +172,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 3. Select **Run**.
 
-**TODO** Currently not working.
+**TODO 2** Currently not working.
 
 ![](media/2020-04-11_11-26-50.png)
 
@@ -185,8 +183,6 @@ Once you access your workspace select the arrow on the top of the left menu to o
 5. Minimize the **storage accounts** on the left side, then expand the **Databases** tree, expand **AzureSynapseDW (SQL pool)**, and finally expand **Tables** folder.
 
 ![](media/2020-04-11_11-29-17.png)
-
-**TODO** Why did we do this?
 
 ### Task 7: COPY INTO Command
 
@@ -265,7 +261,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 5. Observe the import statements in the Notebook 
 
-**TODO** Not available in the environment
+**TODO 4** Not available in the environment
 
 ![](media/05-46.png)
 
@@ -287,27 +283,21 @@ See code in **cell 26**, but **DO NOT** execute any code.
 
 ![](media/2020-04-10_17-23-41.png)
 
-3. Scroll down to see the content in the screenshot.
+3. Scroll down to see the content in the screenshot in Cell 22.
 
 ![](media/05-51.png)
 
-4. Scroll down to observe the content in the screenshot.
+4. Scroll down to observe the content in the screenshot in Cell 26.
 
 ![](media/05-52.png)
 
-**TODO** This content isn't really scrollable. 
-
-5. Scroll down to see the code in **cell 35**.
+5. Scroll down to see the code in **cell 38**.
 
 ![](media/05-53.png)
 
-**TODO** This is not how **Cell 35** looks like
-
-6. Scroll down to see **cell 42**.
+6. Scroll down to see **cell 41**.
 
 ![](media/05-54.png)
-
-**TODO** This is not how **Cell 42** looks like
 
 ## Exercise 3: Power BI reporting within the Synapse Analytics workspace 
 
@@ -360,5 +350,3 @@ See code in **cell 26**, but **DO NOT** execute any code.
 ![](media/05-65.png)
 
 8. Hover over **Save** button, but **do NOT** save.
-
-**TODO** Report was already prepared when launched for the first time.
