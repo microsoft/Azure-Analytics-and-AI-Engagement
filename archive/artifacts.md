@@ -38,3 +38,39 @@
 **Power BI**
 - 1.CDP Vision Demo
 - 2.Billion Rows Demo
+
+We do not have access to the PBIX files yet. Below are assumptions based on database schema comparison with the database **AzureSynapseDW**.
+
+| Database Table Name    | Power BI Collection Name |
+|------------------------|--------------------------|
+| BookConsumption        | =                        |
+| BookList               | =                        |
+| Books                  | =                        |
+| BrandAwareness         | =                        |
+| Campaign_Analytics     | =                        |
+| CampaignNew4           | =                        |
+| Campaigns              | =                        |
+| Category               | =                        |
+| ConflictofInterest     | =                        |
+| Country                | =                        |
+| CustomerVisitF         | =                        |
+| DimDate                | =                        |
+| EmailAnalytics         | =                        |
+| FinalRevenue           | =                        |
+| FinanceSales           | =                        |
+| FPA                    | =                        |
+| LocationAnalytics      | =                        |
+| OperatingExpenses      | =                        |
+| Popularity             | =                        |
+| ProdChamp              | =                        |
+| ProductLink            | ProductLinks             |
+| ProductLink2           | ProductLink22            |
+| ProductRecommendations | =                        |
+| Products               | =                        |
+| Sales                  | =                        |
+| SalesMaster            | =                        |
+| SalesVsExpense         | =                        |
+| SalesTransactions      | wwi Sales                |
+| SiteSecurity           | =                        |
+| WebsiteSocialAnalytics | =                        |
+
