@@ -52,5 +52,5 @@ TwitterDataMigration Pipeline,AzureSynapseAnalyticsTable1,cdpvisionworkspace.sql
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,SalesMaster,=
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,SalesVsExpense,=
 2.Billion Rows Demo Power BI,,,AzureSynapseDW,SaleTransactions,wwi Sales
-,,,AzureSynapseDW,SiteSecurity,=
-,,,AzureSynapseDW,WebsiteSocialAnalytics,=
+1.CDP Vision Demo Power BI,,,AzureSynapseDW,SiteSecurity,=
+1.CDP Vision Demo Power BI,,,AzureSynapseDW,WebsiteSocialAnalytics,=
