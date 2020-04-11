@@ -43,11 +43,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 2. In the Copy data dialog select **Next**.
 
-![Properties](media/05-03.png)
+![Properties](media/2020-04-11_11-09-46.png)
 
 3. Select **Create new connection**
 
-![Create new connection](media/05-04.png)
+![Create new connection](media/2020-04-11_11-11-00.png)
 
 4. See all available data providers.
 
@@ -59,7 +59,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 1. Select **Orchestrate**
 
-![SAP HANA To ADLS Pipeline](media/05-06.png)
+![SAP HANA To ADLS Pipeline](media/2020-04-11_11-12-13.png)
 
 2. Select/Expand **Pipelines** and then select **SAP HANA TO ADLS** pipeline.
 
@@ -124,11 +124,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 2. Select **Lookup** activity, then select **Settings** to observe the **Source dataset** property (Teradata).
 
-![](media/05-19.png)
+![](media/2020-04-11_11-21-42.png)
 
 3. Select **Copy data** activity and observe **Source** and **Sink** properties.
 
-![](media/05-20.png)
+![](media/2020-04-11_11-24-23.png)
 
 4. Select **Prep data in Azure Synapse** Notebook, then select **Settings**. Once you are in the settings tab, select **Open** to open the notebook
 
@@ -176,7 +176,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 **TODO** Currently not working.
 
-![](media/05-30.png)
+![](media/2020-04-11_11-26-50.png)
 
 4. Select **Chart**
 
@@ -184,7 +184,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 5. Minimize the **storage accounts** on the left side, then expand the **Databases** tree, expand **AzureSynapseDW (SQL pool)**, and finally expand **Tables** folder.
 
-![](media/05-32.png)
+![](media/2020-04-11_11-29-17.png)
 
 **TODO** Why did we do this?
 
@@ -196,11 +196,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 2. Select **Run** and observe the **No results found** message.
 
-![](media/05-34.png)
+![](media/2020-04-11_11-31-19.png)
 
 3.	Scroll to the bottom and select **COPY INTO** query below **Step:2** as shown in the screenshot. Finally, select **Run**
 
-![](media/05-35.png)
+![](media/2020-04-11_11-32-39.png)
 
 ## Exercise 2: Develop Hub
 
@@ -212,11 +212,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 2. Select **SQL Scripts** and then select **1 SQL Query with Synapse**
 
-![](media/05-37.png)
+![](media/2020-04-11_11-33-42.png)
 
 3. Select **AzureSynapseDW** SQL Pool from the **Connect to** drop down menu. Once the **Use database** drop dows is populated select **AzureSynapseDW** database from the **Use Database** drop down. Finally, select the below query (#3 in the screenshot)
 
-![](media/05-38.png)
+![](media/2020-04-11_11-35-09.png)
 
 `SELECT COUNT_BIG(1) as TotalCount  FROM wwi.Sales(nolock)`
 
@@ -226,11 +226,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 5. Scroll down a few lines to the second query, select the query as shown in the screenshot, and then select **Run**. Observe time the query takes – query time is listed at the bottom of the screenshot.
 
-![](media/05-39.png)
+![](media/2020-04-11_11-39-28.png)
 
 5. Select the **chart** button, and then select **chart type** dropdown to see various chart types 
 
-![](media/05-40.png)
+![](media/2020-04-11_11-40-23.png)
 
 ### Task 2: JSON Extractor Differentiator and other optional differentiator
 
@@ -319,15 +319,15 @@ See code in **cell 26**, but **DO NOT** execute any code.
 
 2. Once the report is open, in the **Decomposition Tree Analysis** tab see **Store Visits by Campaign** then by **Region**. Select **+** next to **North & Central America** 
 
-![](media/05-56.png)
+![](media/2020-04-11_11-42-23.png)
 
 3. Select **QnA** tab 
 
-![](media/05-57.png)
+![](media/2020-04-11_11-43-15.png)
 
 4. In the **Q&A** box, type **profit by country by product category as treemap**
 
-![](media/05-58.png)
+![](media/2020-04-11_11-44-04.png)
 
 ### Task 2: Ad Hoc Reporting in Azure Synapse Analytics
 
@@ -337,15 +337,15 @@ See code in **cell 26**, but **DO NOT** execute any code.
 
 2. Select the empty area in the report canvas. Next, from the **Fields** list select or drag and drop **CustomerId** from **wwi AllSales** table to the report canvas.
 
-![](media/05-60.png)
+![](media/2020-04-11_11-45-25.png)
 
 3. From the Visualizations pane select the **card visual**. Resize and move the **card visual** to see what is shown in screenshot.
 
-![](media/05-61.png)
+![](media/2020-04-11_11-46-44.png)
 
 4. Select the empty area in the report canvas. From the **Fields** list select or drag and Drop **CustomerId** from **wwi AllSales** table to the report canvas. [Pointer 1 from the screenshot]. Then select **Name** field from the **Products** table [Pointer 2 from the screenshot]. Then select **Campaign** field from the **ProdChamp** table [Pointer 3 from the screenshot]. From the **Visualizations** pane select the **Treemap** icon [Pointer 4 from the screenshot].
 
-![](media/05-62.png)
+![](media/2020-04-11_11-48-18.png)
 
 5.	Resize and move the **card visual** as shown in the screenshot.
 
@@ -353,7 +353,7 @@ See code in **cell 26**, but **DO NOT** execute any code.
 
 6. Select an empty area in the report canvas.Then select the **Campaign** field from the **ProdChamp** table [Pointer 1 from the screenshot]. Then select **Profit** field from the **wwi AllSales** table [Pointer 2 from the screenshot]. Finally, from the **Visualizations** pane select the **Bar Chart** icon [Pointer 3 from the screenshot].
 
-![](media/05-64.png)
+![](media/2020-04-11_11-50-10.png)
 
 7. Resize and move the **card visual** as shown in the screenshot. 
 
