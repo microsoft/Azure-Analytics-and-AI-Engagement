@@ -45,7 +45,7 @@ TwitterDataMigration Pipeline,AzureSynapseAnalyticsTable1,cdpvisionworkspace.sql
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,Popularity,=
 2.Billion Rows Demo Power BI,,,AzureSynapseDW,ProdChamp,=
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,ProductLink,ProductLinks
-1.CDP Vision Demo Power BI,,,AzureSynapseDW,ProductLink2,ProductLink22
+1.CDP Vision Demo Power BI,,,AzureSynapseDW,ProductLink2,ProductLinks2
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,ProductRecommendations,=
 2.Billion Rows Demo Power BI,,,AzureSynapseDW,Products,=
 1.CDP Vision Demo Power BI,,,AzureSynapseDW,Sales,=
