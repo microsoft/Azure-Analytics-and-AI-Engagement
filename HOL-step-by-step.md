@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [Azure Synapse hands-on lab step-by-step](#)
+  - [Overview](#Overview)
+  - [Requirements](#Requirements)
   - [Environment Setup](#Environment-Setup)
   - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)
   - [Exercise 1: Data Orchestration and Ingestion](#Exercise-1-Data-Orchestration-and-Ingestion)
@@ -11,11 +13,11 @@
     - [Task 3: Code First Experience: Migrate Teradata to Azure Synapse Analytics](#Task-3-Code-First-Experience-Migrate-Teradata-to-Azure-Synapse-Analytics)
     - [Task 4: Migrate last five years of sales transactional data from Oracle to Azure Synapse Analytics](#Task-4-Migrate-last-five-years-of-sales-transactional-data-from-Oracle-to-Azure-Synapse-Analytics)
     - [Task 5: Moving semi-structured data to Azure Synapse Analytics](#Task-5-Moving-semi-structured-data-to-Azure-Synapse-Analytics)
-    - [Task 6: On Demand Query: Azure Data Lake Gen2](#Task-6-On-Demand-Query-Azure-Data-Lake-Gen2)
+    - [Task 6: On-Demand Query: Azure Data Lake Gen2](#Task-6-On-Demand-Query-Azure-Data-Lake-Gen2)
     - [Task 7: COPY INTO Command](#Task-7-COPY-INTO-Command)
   - [Exercise 2: Develop Hub](#Exercise-2-Develop-Hub)
     - [Task 1: Running Queries against 30 Billion records](#Task-1-Running-Queries-against-30-Billion-records)
-    - [Task 2: JSON Extractor Differentiator and other optional differentiator](#Task-2-JSON-Extractor-Differentiator-and-other-optional-differentiator)
+    - [Task 2: JSON Extractor Differentiator and other optional differentiators](#Task-2-JSON-Extractor-Differentiator-and-other-optional-differentiators)
     - [Task 3: Using Notebooks to Run Machine Learning Experiments](#Task-3-Using-Notebooks-to-Run-Machine-Learning-Experiments)
     - [Task 4: AutoML in Azure Synapse Analytics](#Task-4-AutoML-in-Azure-Synapse-Analytics)
   - [Exercise 3: Power BI reporting within the Synapse Analytics workspace](#Exercise-3-Power-BI-reporting-within-the-Synapse-Analytics-workspace)
@@ -24,15 +26,22 @@
 
 <!-- /TOC -->
 
+## Overview
+
 Azure Synapse is a limitless analytics service that brings together enterprise data warehousing and Big Data analytics. It gives you the freedom to query data on your terms, using either serverless on-demand or provisioned resources—at scale. Azure Synapse brings these two worlds together with a unified experience to ingest, prepare, manage, and serve data for immediate BI and machine learning needs.
 
-During the next exercises you will discover end-to-end analytics solutions with a unified experience within Azure Synapse Studio. You will have the chance to take a peek at data ingestion from SAP HANA, Oracle, Teradata and Twitter, running queries against 30 Billion records, use notebooks to run machine learning experiments, try AutoML, and finally use PowerBI within Azure Synapse to built reports.
+During the next exercises, you will discover end-to-end analytics solutions with a unified experience within Azure Synapse Studio. You will have the chance to take a peek at data ingestion from SAP HANA, Oracle, Teradata, and Twitter, running queries against 30 Billion records, use notebooks to run machine learning experiments, try AutoML, and finally use PowerBI within Azure Synapse to built reports.
+
+## Requirements
+
+1. Microsoft Azure subscription
+2. Azure Synapse Workspace / Studio
 
 ## Environment Setup
 
-# Accessing Synapse Workspace
 Refer to the Environment Setup guide before continuing to the lab exercises.
 
+## Accessing Synapse Workspace
 
 First of all, let's see how you can access your Azure Synapse Workspace.
 
@@ -46,17 +55,17 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ## Exercise 1: Data Orchestration and Ingestion
 
-With Azure Synapse's code-free data orchestration environment you can build ETL/ELT processes in a code-free visual environment to easily ingest data from more than 85 native connectors. Moreover, you can perform real-time analytics on streaming data directly in your data warehouse.
+With Azure Synapse's code-free data orchestration environment, you can build ETL/ELT processes in a code-free visual environment to quickly ingest data from more than 85 native connectors. Moreover, you can perform real-time analytics on streaming data directly in your data warehouse.
 
 ### Task 1: Data Ingestion
 
-Let's take a look at how we can connect to external data sources in Azure Synapse and discover the rich list of connector available for use.
+Let's take a look at how we can connect to external data sources in Azure Synapse and discover the rich list of connectors available for use.
 
-1. On the Synapse Home page select **Ingest**.
+1. On the Synapse Home page, select **Ingest**.
 
 ![Dream Demo Synapse](media/2020-04-10_15-53-52.png)
 
-2. In the Copy data dialog select **Next**.
+2. In the Copy data dialog, select **Next**.
 
 ![Properties](media/2020-04-11_11-09-46.png)
 
@@ -70,7 +79,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 ### Task 2: Migrate SAP Hana to Azure Synapse Analytics
 
-SAP is one of the most widely-used enterprise software in the world. Azure Synapse empowers customers to integrate their existing SAP system with Azure to unblock business insights. In this exercise we will observe an Azure Synapse Pipeline that moves data from SAP Hana to an ADLS Gen2 storage, followed by a Data Flow that transform the data during the pipeline execution. 
+SAP is one of the most widely-used enterprise software in the world. Azure Synapse empowers customers to integrate their existing SAP system with Azure to unblock business insights. In this exercise, we will observe an Azure Synapse Pipeline that moves data from SAP Hana to an ADLS Gen2 storage, followed by a Data Flow that transforms the data during the pipeline execution. 
 
 1. Select **Orchestrate**
 
@@ -80,7 +89,7 @@ SAP is one of the most widely-used enterprise software in the world. Azure Synap
 
 ![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-02.png)
 
-3. From the editor window select **Copy data** activity. Then select **Source** property of the **Copy data** activity to see the **Source Dataset** and observe that the query is pulling data from SAP Hana
+3. From the editor window, select **Copy data** activity. Then select **Source** property of the **Copy data** activity to see the **Source Dataset** and observe that the query is pulling data from SAP Hana
 
 ![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-54.png)
 
@@ -92,7 +101,7 @@ SAP is one of the most widely-used enterprise software in the world. Azure Synap
 
 ![Mapping Data Flow](media/2020-04-10_16-06-30.png)
 
-6. In Data Flow editor observe the flow. Look in detail into each activity using the following steps.
+6. In Data Flow editor, observe the flow. Look in detail into each activity using the following steps.
 
 ![Moving data from SAP to the Data Lake](media/2020-04-10_16-07-29.png)
 
@@ -131,7 +140,7 @@ SAP is one of the most widely-used enterprise software in the world. Azure Synap
 
 ### Task 3: Code First Experience: Migrate Teradata to Azure Synapse Analytics
 
-Azure Synapse not only has the code-free path, but can give you the ability to prepare data in an Azure Synapse Notebook. In this task we will use Python and observe the code first experience in Azure Synapse Analytics. We will move data from Teradata from to ADLS Gen 2 and preparing it with Python.
+Azure Synapse not only has the code-free path but can give you the ability to prepare data in an Azure Synapse Notebook. In this task, we will use Python and observe the code first experience in Azure Synapse Analytics. We will move data from Teradata from to ADLS Gen 2 and preparing it with Python.
 
 1. In the Orchestrate hub, select **MarketingDBMigration** from the list of pipelines.
 
@@ -157,7 +166,7 @@ Azure Synapse not only has the code-free path, but can give you the ability to p
 
 ### Task 4: Migrate last five years of sales transactional data from Oracle to Azure Synapse Analytics
 
-Azure Synapse helps us copy data from an Oracle database to any supported sink data store. In this task we will check for the existance of the Oracle database and load data from Oracle into Azure Synapse with the Copy Data activity.
+Azure Synapse helps us copy data from an Oracle database to any supported sink data store. In this task, we will check for the existence of the Oracle database and load data from Oracle into Azure Synapse with the Copy Data activity.
 
 1. Select **SalesDBMigration** from the **Orchestrate** hub.
 
@@ -173,7 +182,7 @@ Azure Synapse helps us copy data from an Oracle database to any supported sink d
 
 ### Task 5: Moving semi-structured data to Azure Synapse Analytics
 
-Azure Synapse Analytics enables direct streaming ingestion support and ability to execute analytical queries over streaming data. Capabilities such as: joins across multiple streaming inputs, aggregations within one or more streaming inputs, transform semi-structured data and multiple temporal windows are all supported. For streaming ingestion, you can integrate with Event Hubs (including Event Hubs for Kafka) and IoT Hubs.
+Azure Synapse Analytics enables direct streaming ingestion support and the ability to execute analytical queries over streaming data. Capabilities such as: joins across multiple streaming inputs, aggregations within one or more streaming inputs, transform semi-structured data, and multiple temporal windows are all supported. For streaming ingestion, you can integrate with Event Hubs (including Event Hubs for Kafka) and IoT Hubs.
 
 In this task, we will load tweets from an ADSL Gen2 and clean up the dataset.
 
@@ -185,11 +194,11 @@ In this task, we will load tweets from an ADSL Gen2 and clean up the dataset.
 
 ![](media/2020-04-10_16-57-19.png)
 
-### Task 6: On Demand Query: Azure Data Lake Gen2
+### Task 6: On-Demand Query: Azure Data Lake Gen2
 
 Every Azure Synapse Analytics workspace comes with SQL on-demand endpoints that you can use to query data in the lake. SQL on-demand is a query service over the data in your data lake. It is a distributed data processing system, built for large scale of data and compute. SQL on-demand enables you to analyze your Big Data in seconds to minutes, depending on the workload. Thanks to built-in query execution fault-tolerance, the system provides high reliability and success rates even for long-running queries involving large data sets.
 
-SQL on-demand is serverless, hence there is no infrastructure to setup or clusters to maintain. A default endpoint for this service is provided within every Azure Synapse workspace, so you can start querying data as soon as the workspace is created. There is no charge for resources reserved, you are only being charged for the data scanned by queries you run, hence this model is a true pay-per-use model.
+SQL on-demand is serverless; hence there is no infrastructure to setup or clusters to maintain. A default endpoint for this service is provided within every Azure Synapse workspace, so you can start querying data as soon as the workspace is created. There is no charge for resources reserved. You are only being charged for the data scanned by queries you run; hence this model is a true pay-per-use model.
 
 In this task, we will query twitter data stored as Parquet files in Azure Data Lake Gen 2 using SQL On-Demand, and visualize the result.
 
@@ -197,7 +206,7 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 ![](media/2020-04-10_17-00-38.png)
 
-2. See all the parquet files and other folders in the **twitterdata** container. Select the first two parquet files and right click, from the context menu, Select **New SQL Script**
+2. See all the parquet files and other folders in the **twitterdata** container. Select the first two parquet files and right-click, from the context menu, Select **New SQL Script**
 
 ![](media/2020-04-10_17-01-49.png)
 
@@ -217,7 +226,7 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 ### Task 7: COPY INTO Command
 
-One of the option to load data into Azure Synapse to be used in SQL queries is the COPY statement that helps loading data from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into Azure Synapse. In this task, we will load twitter data storage in Azure Storage and run a query against it with the COPY INTO command.
+One of the options to load data into Azure Synapse to be used in SQL queries is the COPY statement that helps to load data from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into Azure Synapse. In this task, we will load twitter data storage in Azure Storage and run a query against it with the COPY INTO command.
 
 1. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **8 External Data to Synapse Via Copy Into** and highlight the query presented below titled **Step:1**.
 
@@ -233,13 +242,15 @@ One of the option to load data into Azure Synapse to be used in SQL queries is t
 
 ## Exercise 2: Develop Hub
 
-The Develop Hub in Azure Synapse helps you work on SQL scripts, notebooks, data flows and PowerBI reports. It is part of Azure Synapse's unified experience for developing end-to-end analytics solutions. It significantly reduces project development time for BI and machine learning projects with a limitless analytics service that enables you to seamlessly apply intelligence over all your most important data and easily share data with just a few clicks.
+Duration: 45 minutes.
 
-During the next couple of tasks you will have a chance to look at how to develop queries in Azure Synapse, using notebooks to run machine learning experiments and an AutoMl customer forecasting scenario.
+The Develop Hub in Azure Synapse helps you work on SQL scripts, notebooks, data flows, and PowerBI reports. It is part of Azure Synapse's unified experience for developing end-to-end analytics solutions. It significantly reduces project development time for BI and machine learning projects with a limitless analytics service that enables you to seamlessly apply intelligence over all your most important data and easily share data with just a few clicks.
+
+During the next couple of tasks, you will have a chance to look at how to develop queries in Azure Synapse, using notebooks to run machine learning experiments and an AutoMl customer forecasting scenario.
 
 ### Task 1: Running Queries against 30 Billion records
 
-In this task we will run queries against 30 Billion records and create some early charts to get a feeling of how the data looks.
+In this task, we will run queries against 30 Billion records and create some early charts to get a feeling of how the data looks.
 
 1. Select **Develop** in the various tabs available in the **Develop** hub workspace and discover the environment. 
 
@@ -249,7 +260,7 @@ In this task we will run queries against 30 Billion records and create some earl
 
 ![](media/2020-04-11_11-33-42.png)
 
-3. Select **AzureSynapseDW** SQL Pool from the **Connect to** drop down menu. Once the **Use database** drop dows is populated select **AzureSynapseDW** database from the **Use Database** drop down. Finally, select the below query (#3 in the screenshot)
+3. Select **AzureSynapseDW** SQL Pool from the **Connect to** drop-down menu. Once the **Use database** drop-down is populated select **AzureSynapseDW** database from the **Use Database** drop-down. Finally, select the below query (#3 in the screenshot)
 
 ![](media/2020-04-11_11-35-09.png)
 
@@ -267,7 +278,7 @@ In this task we will run queries against 30 Billion records and create some earl
 
 ![](media/2020-04-11_11-40-23.png)
 
-### Task 2: JSON Extractor Differentiator and other optional differentiator
+### Task 2: JSON Extractor Differentiator and other optional differentiators
 
 To speed up time to insight and minimize unnecessary data transformation processes, Azure Synapse enables support for querying JSON data. Business analysts can now use the familiar T-SQL language to query and manipulate documents that are formatted as JSON data. JSON functions, such as `JSON_VALUE, JSON_QUERY`, `JSON_MODIFY`, and `OPENJSON` are available in Azure Synapse. In this task, we will take JSON data and extract specific structured columns using T-SQL.
 
@@ -284,7 +295,7 @@ To speed up time to insight and minimize unnecessary data transformation process
 
 ### Task 3: Using Notebooks to Run Machine Learning Experiments
 
-An Azure Synapse Studio notebook is a web interface for you to create files that contain live code, visualizations, and narrative text. Notebooks are a good place to validate ideas and use quick experiments to get insights from your data. Notebooks are also widely used in data preparation, data visualization, machine learning, and other Big Data scenarios.
+An Azure Synapse Studio notebook is a web interface for you to create files that contain live code, visualizations, and narrative text. Notebooks are an excellent place to validate ideas and use quick experiments to get insights from your data. Notebooks are also widely used in data preparation, data visualization, machine learning, and other Big Data scenarios.
 
 In this task, we will use PySpark to run a notebook on a Spark Pool.
 
@@ -320,7 +331,7 @@ See code in **cell 26**, but **DO NOT** execute any code.
 
 ### Task 4: AutoML in Azure Synapse Analytics 
 
-Automated machine learning, also referred to as automated ML or AutoML, is the process of automating the time consuming, iterative tasks of machine learning model development. It allows data scientists, analysts, and developers to build ML models with high scale, efficiency, and productivity all while sustaining model quality. In this task we will look at a notebook to learn how AutoML in Azure Synapse Analytics works.
+Automated machine learning, also referred to as automated ML or AutoML, is the process of automating the time consuming, iterative tasks of machine learning model development. It allows data scientists, analysts, and developers to build ML models with high scale, efficiency, and productivity, all while sustaining model quality. In this task, we will look at a notebook to learn how AutoML in Azure Synapse Analytics works.
 
 1. Select **Develop** from the Synapse workspace
 
@@ -350,7 +361,7 @@ Automated machine learning, also referred to as automated ML or AutoML, is the p
 
 In Azure Synapse, business analysts can securely access datasets and use Power BI to build dashboards in minutes, all while using the same analytics service. DirectQuery allows you to create dynamic reports based on data and metrics you already have in Azure Synapse.
 
-In this exercise we will see how PowerBI integrates into Azure Synapse Analytics workspace and run ad-hoc reports against our data set.
+In this exercise, we will see how PowerBI integrates into Azure Synapse Analytics workspace and run ad-hoc reports against our data set.
 
 ### Task 1: Accessing PowerBI reports in Synapse Analytics workspace
 
@@ -376,7 +387,7 @@ Let's explore how we can access PowerBI reports in the Synapse Analytics workspa
 
 With Azure Synapse, data professionals can query both relational and non-relational data using the familiar SQL language. This can be done using either serverless on-demand queries for data exploration and ad hoc analysis or provisioned resources for your most demanding data warehousing needs.
 
-In this task we will modify a report using Ad-Hoc queries as its underlying data access choice.
+In this task, we will modify a report using Ad-Hoc queries as its underlying data access choice.
 
 1. From the **Develop** hub, **Power BI** section select **2. Billion Rows Demo** Power BI report.
 
@@ -386,7 +397,7 @@ In this task we will modify a report using Ad-Hoc queries as its underlying data
 
 ![](media/2020-04-11_11-45-25.png)
 
-3. From the Visualizations pane select the **card visual**. Resize and move the **card visual** to see what is shown in screenshot.
+3. From the Visualizations pane, select the **card visual**. Resize and move the **card visual** to see what is shown in the screenshot.
 
 ![](media/2020-04-11_11-46-44.png)
 
@@ -394,15 +405,15 @@ In this task we will modify a report using Ad-Hoc queries as its underlying data
 
 ![](media/2020-04-11_11-48-18.png)
 
-5.	Resize and move the **card visual** as shown in the screenshot.
+5.	Resize and move the **card visual**, as shown in the screenshot.
 
 ![](media/05-63.png)
 
-6. Select an empty area in the report canvas.Then select the **Campaign** field from the **ProdChamp** table [Pointer 1 from the screenshot]. Then select **Profit** field from the **wwi AllSales** table [Pointer 2 from the screenshot]. Finally, from the **Visualizations** pane select the **Bar Chart** icon [Pointer 3 from the screenshot].
+6. Select an empty area in the report canvas. Then select the **Campaign** field from the **ProdChamp** table [Pointer 1 from the screenshot]. Then select **Profit** field from the **wwi AllSales** table [Pointer 2 from the screenshot]. Finally, from the **Visualizations** pane, select the **Bar Chart** icon [Pointer 3 from the screenshot].
 
 ![](media/2020-04-11_11-50-10.png)
 
-7. Resize and move the **card visual** as shown in the screenshot. 
+7. Resize and move the **card visual**, as shown in the screenshot. 
 
 ![](media/05-65.png)
 
