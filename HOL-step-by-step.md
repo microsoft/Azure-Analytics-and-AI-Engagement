@@ -55,6 +55,8 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ## Exercise 1: Data Orchestration and Ingestion
 
+Duration: 60 minutes.
+
 With Azure Synapse's code-free data orchestration environment, you can build ETL/ELT processes in a code-free visual environment to quickly ingest data from more than 85 native connectors. Moreover, you can perform real-time analytics on streaming data directly in your data warehouse.
 
 ### Task 1: Data Ingestion
@@ -358,6 +360,8 @@ Automated machine learning, also referred to as automated ML or AutoML, is the p
 ![](media/05-54.png)
 
 ## Exercise 3: Power BI reporting within the Synapse Analytics workspace 
+
+Duration: 20 minutes.
 
 In Azure Synapse, business analysts can securely access datasets and use Power BI to build dashboards in minutes, all while using the same analytics service. DirectQuery allows you to create dynamic reports based on data and metrics you already have in Azure Synapse.
 
