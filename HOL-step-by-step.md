@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Azure Synapse hands-on lab step-by-step](#)
+  - [Environment Setup](#Environment-Setup)
   - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)
   - [Exercise 1: Data Orchestration and Ingestion](#Exercise-1-Data-Orchestration-and-Ingestion)
     - [Task 1: Data Ingestion](#Task-1-Data-Ingestion)
@@ -27,7 +28,11 @@ Azure Synapse is a limitless analytics service that brings together enterprise d
 
 During the next exercises you will discover end-to-end analytics solutions with a unified experience within Azure Synapse Studio. You will have the chance to take a peek at data ingestion from SAP HANA, Oracle, Teradata and Twitter, running queries against 30 Billion records, use notebooks to run machine learning experiments, try AutoML, and finally use PowerBI within Azure Synapse to built reports.
 
+## Environment Setup
+
 # Accessing Synapse Workspace
+Refer to the Environment Setup guide before continuing to the lab exercises.
+
 
 First of all, let's see how you can access your Azure Synapse Workspace.
 
