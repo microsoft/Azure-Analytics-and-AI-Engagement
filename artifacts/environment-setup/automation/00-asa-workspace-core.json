@@ -41,8 +41,7 @@
     "keyVaultName": "[concat('asakeyvault', parameters('uniqueSuffix'))]",
     "blobStorageAccountName": "[concat('asastore', parameters('uniqueSuffix'))]",
     "applicationInsightsName": "[concat('asaappinsights', parameters('uniqueSuffix'))]",
-    "amlWorkspaceName": "[concat('amlworkspace', parameters('uniqueSuffix'))]",
-    "cosmosDbAccountName": "[concat('asacosmosdb', parameters('uniqueSuffix'))]"
+    "amlWorkspaceName": "[concat('amlworkspace', parameters('uniqueSuffix'))]"
   },
   "resources": [
     {
@@ -82,7 +81,8 @@
       },
       "properties": {
         "cors": {
-          "corsRules": []
+          "corsRules": [
+          ]
         },
         "deleteRetentionPolicy": {
           "enabled": false
@@ -100,7 +100,8 @@
           "name": "standard",
           "family": "A"
         },
-        "accessPolicies": []
+        "accessPolicies": [
+        ]
       }
     },
     {
@@ -108,8 +109,10 @@
       "apiVersion": "2019-06-01",
       "name": "[variables('adlsStorageAccountName')]",
       "location": "[variables('location')]",
-      "dependsOn": [],
-      "tags": {},
+      "dependsOn": [
+      ],
+      "tags": {
+      },
       "sku": {
         "name": "Standard_LRS"
       },
@@ -144,7 +147,8 @@
       },
       "properties": {
         "cors": {
-          "corsRules": []
+          "corsRules": [
+          ]
         },
         "deleteRetentionPolicy": {
           "enabled": false
@@ -164,7 +168,8 @@
       },
       "properties": {
         "cors": {
-          "corsRules": []
+          "corsRules": [
+          ]
         }
       }
     },
@@ -240,8 +245,7 @@
       "name": "[concat(variables('workspaceName'), '/', variables('sparkComputeName'))]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', variables('workspaceName'))]",
-        "[concat('Microsoft.DocumentDB/databaseAccounts/', variables('cosmosDbAccountName'))]"
+        "[concat('Microsoft.Synapse/workspaces/', variables('workspaceName'))]"
       ],
       "properties": {
         "nodeCount": "[variables('sparkNodeCount')]",
@@ -349,174 +353,8 @@
       "properties": {
         "publicAccess": "None"
       }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "apiVersion": "2020-03-01",
-      "name": "[variables('cosmosDbAccountName')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', variables('workspaceName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('adlsStorageAccountName'), '/blobServices/default/containers/', variables('defaultDataLakeStorageFilesystemName'))]"
-      ],
-      "tags": {
-        "defaultExperience": "Core (SQL)",
-        "hidden-cosmos-mmspecial": "",
-        "CosmosAccountType": "Non-Production"
-      },
-      "kind": "GlobalDocumentDB",
-      "properties": {
-        "publicNetworkAccess": "Enabled",
-        "enableAutomaticFailover": false,
-        "enableMultipleWriteLocations": false,
-        "isVirtualNetworkFilterEnabled": false,
-        "virtualNetworkRules": [],
-        "disableKeyBasedMetadataWriteAccess": false,
-        "databaseAccountOfferType": "Standard",
-        "consistencyPolicy": {
-          "defaultConsistencyLevel": "Session",
-          "maxIntervalInSeconds": 5,
-          "maxStalenessPrefix": 100
-        },
-        "locations": [
-          {
-            "locationName": "[variables('location')]",
-            "provisioningState": "Succeeded",
-            "failoverPriority": 0,
-            "isZoneRedundant": false
-          }
-        ],
-        "capabilities": []
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-      "apiVersion": "2020-03-01",
-      "name": "[concat(variables('cosmosDbAccountName'), '/CustomerProfile')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosDbAccountName'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "CustomerProfile"
-        },
-        "options": {}
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2020-03-01",
-      "name": "[concat(variables('cosmosDbAccountName'), '/CustomerProfile/OnlineUserProfile01')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosDbAccountName'), 'CustomerProfile')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosDbAccountName'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "OnlineUserProfile01",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": [
-              "/userId"
-            ],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        },
-        "options": {}
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2020-03-01",
-      "name": "[concat(variables('cosmosDbAccountName'), '/CustomerProfile/Pipeline')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosDbAccountName'), 'CustomerProfile')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosDbAccountName'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "Pipeline",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": [
-              "/id"
-            ],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        },
-        "options": {}
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings",
-      "apiVersion": "2020-03-01",
-      "name": "[concat(variables('cosmosDbAccountName'), '/CustomerProfile/OnlineUserProfile01/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', variables('cosmosDbAccountName'), 'CustomerProfile', 'OnlineUserProfile01')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosDbAccountName'), 'CustomerProfile')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosDbAccountName'))]"
-      ],
-      "properties": {
-        "resource": {
-          "throughput": 400
-        }
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings",
-      "apiVersion": "2020-03-01",
-      "name": "[concat(variables('cosmosDbAccountName'), '/CustomerProfile/Pipeline/default')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', variables('cosmosDbAccountName'), 'CustomerProfile', 'Pipeline')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosDbAccountName'), 'CustomerProfile')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosDbAccountName'))]"
-      ],
-      "properties": {
-        "resource": {
-          "throughput": 400
-        }
-      }
     }
   ],
-  "outputs": {}
+  "outputs": {
+  }
 }
