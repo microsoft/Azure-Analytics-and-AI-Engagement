@@ -26,34 +26,6 @@ function List-StorageAccountKeys {
     return $result.key1
 }
 
-function List-CosmosDBKeys {
-
-    param(
-    [parameter(Mandatory=$true)]
-    [String]
-    $SubscriptionId,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $ResourceGroupName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $Name
-    )
-
-    $uri = "https://management.azure.com/subscriptions/$($SubscriptionId)/resourcegroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($Name)/listKeys?api-version=2016-03-31"
-
-    Write-Debug "Calling endpoint $uri"
-
-    Ensure-ValidTokens
-    $result = Invoke-RestMethod  -Uri $uri -Method POST -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
- 
-    Write-Debug $result
-
-    return $result.primaryMasterKey
-}
-
 function Create-KeyVaultLinkedService {
     
     param(
@@ -140,45 +112,6 @@ function Create-DataLakeLinkedService {
     
     return $result
 }
-
-function Create-CosmosDBLinkedService {
-    
-    param(
-    [parameter(Mandatory=$true)]
-    [String]
-    $TemplatesPath,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $WorkspaceName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $Name,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $Database,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $Key
-    )
-
-    $cosmosDbTemplate = Get-Content -Path "$($TemplatesPath)/cosmos_db_linked_service.json"
-    $cosmosDb = $cosmosDbTemplate.Replace("#LINKED_SERVICE_NAME#", $Name).Replace("#COSMOSDB_ACCOUNT_NAME#", $Name).Replace("#COSMOSDB_DATABASE_NAME#", $Database).Replace("#COSMOSDB_ACCOUNT_KEY#", $Key)
-    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/linkedServices/$($Name)?api-version=2019-06-01-preview"
-
-    Write-Information "Calling endpoint $uri"
-
-    Ensure-ValidTokens
-    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $cosmosDb -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
- 
-    Write-Information $result
-
-    return $result
-}
-
 function Create-SQLPoolKeyVaultLinkedService {
     
     param(
@@ -1191,107 +1124,6 @@ function Wait-ForSparkNotebookSessionStatement {
     return $result
 }
 
-function Count-CosmosDbDocuments {
-
-    param(
-    [parameter(Mandatory=$true)]
-    [String]
-    $SubscriptionId,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $ResourceGroupName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $CosmosDbAccountName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $CosmosDbDatabase,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $CosmosDbContainer
-    )
-        
-    $cosmosDbAccountKey = List-CosmosDBKeys -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -Name $CosmosDbAccountName
-    Write-Information "Successfully retrieved Cosmos DB master key"
-
-    $resourceLink = "dbs/$($CosmosDbDatabase)/colls/$($CosmosDbContainer)"
-    $uri = "https://$($CosmosDbAccountName).documents.azure.com/$($resourceLink)/docs"
-    $refTime = [DateTime]::UtcNow.ToString("r")
-    $authHeader = Generate-CosmosDbMasterKeyAuthorizationSignature -verb POST -resourceLink $resourceLink -resourceType "docs" -key $cosmosDbAccountKey -keyType "master" -tokenVersion "1.0" -dateTime $refTime
-    $headers = @{ 
-            Authorization=$authHeader
-            "Content-Type"="application/query+json"
-            "x-ms-cosmos-allow-tentative-writes"="True"
-            "x-ms-cosmos-is-query-plan-request"="True"
-            "x-ms-cosmos-query-version"="1.4"
-            "x-ms-cosmos-supported-query-features"="NonValueAggregate, Aggregate, Distinct, MultipleOrderBy, OffsetAndLimit, OrderBy, Top, CompositeAggregate, GroupBy, MultipleAggregates"
-            "x-ms-date"=$refTime
-            "x-ms-documentdb-populatequerymetrics"="True"
-            "x-ms-documentdb-query-enable-scan"="True"
-            "x-ms-documentdb-query-enablecrosspartition"="True"
-            "x-ms-documentdb-query-parallelizecrosspartitionquery"="True"
-            "x-ms-documentdb-responsecontinuationtokenlimitinkb"=1
-            "x-ms-max-item-count"=100
-            "x-ms-version"="2018-12-31"
-    }
-    $query = "{'query':'SELECT VALUE COUNT(1) FROM c'}"
-
-    Write-Information "Requesting query plan from $($uri)"
-    $result = Invoke-RestMethod -Uri $uri -Method POST -Body $query -Headers $headers
-
-    Write-Information "Successfully retrieved query plan"
-
-    $pkUri = "https://$($CosmosDbAccountName).documents.azure.com/$($resourceLink)/pkranges"
-    $pkAuthHeader = Generate-CosmosDbMasterKeyAuthorizationSignature -verb GET -resourceLink $resourceLink -resourceType "pkranges" -key $cosmosDbAccountKey -keyType "master" -tokenVersion "1.0" -dateTime $refTime
-    $pkHeaders = @{ 
-            Authorization=$pkAuthHeader
-            "x-ms-cosmos-allow-tentative-writes"="True"
-            "x-ms-date"=$refTime
-            "x-ms-documentdb-query-enablecrosspartition"="True"
-            "x-ms-documentdb-responsecontinuationtokenlimitinkb"=1
-            "x-ms-version"="2018-12-31"
-    }
-
-    Write-Information "Requesting PK ranges $($pkUri)"
-    $pkResult = Invoke-RestMethod -Uri $pkUri -Method GET -Headers $pkHeaders
-
-    Write-Information "Successfully retrieved PK ranges"
-
-    $totalCount = 0
-
-    foreach ($partitionKeyRange in $pkResult.PartitionKeyRanges) {
-
-        $headers = @{ 
-                Authorization=$authHeader
-                "Content-Type"="application/query+json"
-                "x-ms-cosmos-allow-tentative-writes"="True"
-                "x-ms-cosmos-is-query"="True"
-                "x-ms-date"=$refTime
-                "x-ms-documentdb-populatequerymetrics"="True"
-                "x-ms-documentdb-partitionkeyrangeid"=$partitionKeyRange.id
-                "x-ms-documentdb-query-enable-scan"="True"
-                "x-ms-documentdb-query-enablecrosspartition"="True"
-                "x-ms-documentdb-query-parallelizecrosspartitionquery"="True"
-                "x-ms-documentdb-responsecontinuationtokenlimitinkb"=1
-                "x-ms-max-item-count"=100
-                "x-ms-version"="2018-12-31"
-        }
-        $query = "{""query"":$(ConvertTo-Json $result.queryInfo.rewrittenQuery)}"
-
-        Write-Information "Executing query for partition key range $($partitionKeyRange.id)..."
-        $queryResult = Invoke-RestMethod -Uri $uri -Method POST -Body $query -Headers $headers
-
-        $totalCount += $queryResult.Documents[0][0].item
-    }
-
-    Write-Information "The collection contains $($totalCount) documents."
-    return $totalCount
-}
-
 function Assign-SynapseRole {
 
     param(    
@@ -1366,37 +1198,10 @@ function Ensure-ValidToken {
     }
 }
 
-Function Generate-CosmosDbMasterKeyAuthorizationSignature {
-    [CmdletBinding()]
-    Param(
-        [Parameter(Mandatory=$true)][String]$verb,
-        [Parameter(Mandatory=$true)][String]$resourceLink,
-        [Parameter(Mandatory=$true)][String]$resourceType,
-        [Parameter(Mandatory=$true)][String]$dateTime,
-        [Parameter(Mandatory=$true)][String]$key,
-        [Parameter(Mandatory=$true)][String]$keyType,
-        [Parameter(Mandatory=$true)][String]$tokenVersion
-    )
-    $hmacSha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacSha256.Key = [System.Convert]::FromBase64String($key)
- 
-    If ($resourceLink -eq $resourceType) {
-        $resourceLink = ""
-    }
- 
-    $payLoad = "$($verb.ToLowerInvariant())`n$($resourceType.ToLowerInvariant())`n$resourceLink`n$($dateTime.ToLowerInvariant())`n`n"
-    $hashPayLoad = $hmacSha256.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($payLoad))
-    $signature = [System.Convert]::ToBase64String($hashPayLoad)
- 
-    [System.Web.HttpUtility]::UrlEncode("type=$keyType&ver=$tokenVersion&sig=$signature")
-}
-
 Export-ModuleMember -Function List-StorageAccountKeys
-Export-ModuleMember -Function List-CosmosDBKeys
 Export-ModuleMember -Function Create-KeyVaultLinkedService
 Export-ModuleMember -Function Create-BlobStorageLinkedService
 Export-ModuleMember -Function Create-DataLakeLinkedService
-Export-ModuleMember -Function Create-CosmosDBLinkedService
 Export-ModuleMember -Function Create-SQLPoolKeyVaultLinkedService
 Export-ModuleMember -Function Create-IntegrationRuntime
 Export-ModuleMember -Function Get-IntegrationRuntime
@@ -1428,5 +1233,3 @@ Export-ModuleMember -Function Get-SparkNotebookSessionStatement
 Export-ModuleMember -Function Wait-ForSparkNotebookSessionStatement
 Export-ModuleMember -Function Assign-SynapseRole
 Export-ModuleMember -Function Refresh-Token
-Export-ModuleMember -Function Generate-CosmosDbMasterKeyAuthorizationSignature
-Export-ModuleMember -Function Count-CosmosDbDocuments

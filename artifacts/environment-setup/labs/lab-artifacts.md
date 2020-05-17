@@ -6,9 +6,6 @@ Lab 01 depends on the following artifacts that must exist in the environment:
 
 Artifact Name | Artifact Type | Notes
 --- | --- | ---
-`asacosmosdbNNNNNN` | Cosmos DB account |
-`CustomerProfile` | Cosmos DB database |
-`OnlineUserProfile01` | Cosmos DB database collection | Contains 100000 documents.
 `asadatalakeNNNNNN` | Linked service (ADLS Gen2) |
 `asadatalakeNNNNNN` | ADLS Gen2 storage account |
 `wwi-02` | ADLS Gen2 file system in `asadatalakeNNNNNN` |
@@ -26,8 +23,6 @@ Lab 01 creates the following artifacts that must be deleted when cleaning up the
 
 Artifact Name | Artifact Type | Notes
 --- | --- | ----
-`asacosmosdb01` | Cosmos DB Linked service |
-`asal400_customerprofile_cosmosdb` | Dataset (Cosmos DB) |
 `asal400_sales_adlsgen2` | Dataset (ADLS Gen2, Parquet) |
 `asal400_ecommerce_userprofiles_source` | Dataset (ADSL Gen2, JSON) |
 `asal400_december_sales` | Dataset (ADLS Gen2, Parquet) |
@@ -67,7 +62,6 @@ Lab 02 depends on the following artifacts created by previous labs:
 Artifact Name | Artifact Type | Created by | Notes
 --- | --- | --- | ---
 `asal400_ecommerce_userprofiles_source` | Dataset (ADLS Gen2, JSON) | Lab 01 |
-`asal400_customerprofile_cosmosdb` | Dataset (Cosmos DB) | Lab 01 |
 
 > UPDATE: There is now an optional step in Lab 02 that walks users through creating these two datasets if they were unable to complete Exercise 1 in Lab 01.
 

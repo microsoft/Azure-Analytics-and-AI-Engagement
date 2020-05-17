@@ -7,8 +7,6 @@ $InformationPreference = "Continue"
 
 # These need to be run only if the Az modules are not yet installed
 # Install-Module -Name Az -AllowClobber -Scope CurrentUser
-# Install-Module -Name Az.CosmosDB -AllowClobber -Scope CurrentUser
-# Import-Module Az.CosmosDB
 
 #Connect-AzAccount            # YOU SHOULD LOGIN with INSTRUCTOR LOGIN
 $userName="your_instructor_email"
@@ -36,9 +34,6 @@ foreach($sub in $subs)
         $pipelinesPath = ".\artifacts\environment-setup\pipelines"
         $sqlScriptsPath = ".\artifacts\environment-setup\sql"
         $workspaceName = "asaworkspace$($uniqueId)"
-        $cosmosDbAccountName = "asacosmosdb$($uniqueId)"
-        $cosmosDbDatabase = "CustomerProfile"
-        $cosmosDbContainer = "OnlineUserProfile01"
         $dataLakeAccountName = "asadatalake$($uniqueId)"
         $blobStorageAccountName = "asastore$($uniqueId)"
         $keyVaultName = "asakeyvault$($uniqueId)"
