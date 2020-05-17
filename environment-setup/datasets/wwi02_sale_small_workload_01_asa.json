@@ -1,0 +1,75 @@
+{
+    "name": "wwi02_sale_small_workload_01_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "TransactionId",
+                "type": "uniqueidentifier"
+            },
+            {
+                "name": "CustomerId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ProductId",
+                "type": "smallint",
+                "precision": 5
+            },
+            {
+                "name": "Quantity",
+                "type": "smallint",
+                "precision": 5
+            },
+            {
+                "name": "Price",
+                "type": "decimal",
+                "precision": 9,
+                "scale": 2
+            },
+            {
+                "name": "TotalAmount",
+                "type": "decimal",
+                "precision": 9,
+                "scale": 2
+            },
+            {
+                "name": "TransactionDateId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ProfitAmount",
+                "type": "decimal",
+                "precision": 9,
+                "scale": 2
+            },
+            {
+                "name": "Hour",
+                "type": "tinyint",
+                "precision": 3
+            },
+            {
+                "name": "Minute",
+                "type": "tinyint",
+                "precision": 3
+            },
+            {
+                "name": "StoreId",
+                "type": "smallint",
+                "precision": 5
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "SaleSmall"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

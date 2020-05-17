@@ -1,0 +1,14 @@
+{
+    "name":"#LINKED_SERVICE_NAME#",
+    "properties": {
+        "annotations": [],
+        "type":"AzureBlobFS",
+        "typeProperties": {
+            "url":"https://#STORAGE_ACCOUNT_NAME#.dfs.core.windows.net",
+            "accountKey": {
+                "type": "SecureString",
+                "value":"#STORAGE_ACCOUNT_KEY#"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "name": "wwi02_product_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "ProductId",
+                "type": "smallint",
+                "precision": 5
+            },
+            {
+                "name": "Seasonality",
+                "type": "tinyint",
+                "precision": 3
+            },
+            {
+                "name": "Price",
+                "type": "decimal",
+                "precision": 6,
+                "scale": 2
+            },
+            {
+                "name": "Profit",
+                "type": "decimal",
+                "precision": 6,
+                "scale": 2
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "Product"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

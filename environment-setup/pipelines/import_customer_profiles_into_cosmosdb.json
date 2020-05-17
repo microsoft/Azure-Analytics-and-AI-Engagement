@@ -1,0 +1,55 @@
+{
+    "name": "Setup - Import User Profile Data into Cosmos DB",
+    "properties": {
+        "description": "Copy user profile data from Azure Storage to Azure Cosmos DB.",
+        "activities": [
+            {
+                "name": "Copy Customer Profile Data to Cosmos DB",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true,
+                            "wildcardFolderPath": "online-user-profiles-01",
+                            "wildcardFileName": "*.json",
+                            "enablePartitionDiscovery": false
+                        }
+                    },
+                    "sink": {
+                        "type": "CosmosDbSqlApiSink",
+                        "writeBehavior": "insert"
+                    },
+                    "enableStaging": false,
+                    "parallelCopies": 100,
+                    "enableSkipIncompatibleRow": true,
+                    "dataIntegrationUnits": 16
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi02_online_user_profiles_01_adal",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "customer_profile_cosmosdb",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

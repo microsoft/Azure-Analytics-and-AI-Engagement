@@ -1,0 +1,75 @@
+{
+    "name": "wwi02_poc_customer_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "CustomerId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "FirstName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "MiddleInitial",
+                "type": "nvarchar"
+            },
+            {
+                "name": "LastName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "FullName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Gender",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Age",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "BirthDate",
+                "type": "date"
+            },
+            {
+                "name": "Address_PostalCode",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Address_Street",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Address_City",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Address_Country",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Mobile",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Email",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi_poc",
+            "table": "Customer"
+        }
+    }
+}

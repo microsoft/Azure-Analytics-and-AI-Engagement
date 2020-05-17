@@ -1,0 +1,88 @@
+{
+    "name": "wwi02_sale_small_adls",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "sale-small",
+                "fileSystem": "wwi-02"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": [
+            {
+                "name": "TransactionId",
+                "type": "UTF8"
+            },
+            {
+                "name": "CustomerId",
+                "type": "INT32"
+            },
+            {
+                "name": "ProductId",
+                "type": "INT_16"
+            },
+            {
+                "name": "Quantity",
+                "type": "INT_8"
+            },
+            {
+                "name": "Price",
+                "type": "DECIMAL",
+                "precision": 38,
+                "scale": 18
+            },
+            {
+                "name": "TotalAmount",
+                "type": "DECIMAL",
+                "precision": 38,
+                "scale": 18
+            },
+            {
+                "name": "TransactionDate",
+                "type": "INT32"
+            },
+            {
+                "name": "ProfitAmount",
+                "type": "DECIMAL",
+                "precision": 38,
+                "scale": 18
+            },
+            {
+                "name": "Hour",
+                "type": "INT_8"
+            },
+            {
+                "name": "Minute",
+                "type": "INT_8"
+            },
+            {
+                "name": "StoreId",
+                "type": "INT_16"
+            },
+            {
+                "name": "Year",
+                "type": "UTF8"
+            },
+            {
+                "name": "Quarter",
+                "type": "UTF8"
+            },
+            {
+                "name": "Month",
+                "type": "UTF8"
+            },
+            {
+                "name": "Day",
+                "type": "UTF8"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

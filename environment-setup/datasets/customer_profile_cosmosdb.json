@@ -1,0 +1,46 @@
+{
+    "name": "customer_profile_cosmosdb",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "integer"
+                },
+                "cartId": {
+                    "type": "string"
+                },
+                "preferredProducts": {
+                    "type": "array"
+                },
+                "productReviews": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "productId": {
+                                "type": "integer"
+                            },
+                            "reviewText": {
+                                "type": "string"
+                            },
+                            "reviewDate": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "typeProperties": {
+            "collectionName": "OnlineUserProfile01"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

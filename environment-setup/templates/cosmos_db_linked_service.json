@@ -1,0 +1,10 @@
+{
+    "name": "#LINKED_SERVICE_NAME#",
+    "properties": {
+        "annotations": [],
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": "AccountEndpoint=https://#COSMOSDB_ACCOUNT_NAME#.documents.azure.com:443/;Database=#COSMOSDB_DATABASE_NAME#;AccountKey=\"#COSMOSDB_ACCOUNT_KEY#\""
+        }
+    }
+}

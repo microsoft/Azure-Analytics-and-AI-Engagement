@@ -1,0 +1,18 @@
+{
+    "name": "#LINKED_SERVICE_NAME#",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDW",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=#WORKSPACE_NAME#.sql.azuresynapse.net;Initial Catalog=#DATABASE_NAME#;User ID=#USER_NAME#",
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "store": { 
+                    "referenceName": "#KEY_VAULT_LINKED_SERVICE_NAME#",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "#SECRET_NAME#"
+            }
+        }
+    }
+}

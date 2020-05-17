@@ -1,0 +1,117 @@
+{
+    "name": "Setup - Copy  PoC Customer Data",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy Customer",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "allowPolyBase": true,
+                        "polyBaseSettings": {
+                            "rejectValue": 0,
+                            "rejectType": "value",
+                            "useTypeDefault": true
+                        }
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "#BLOB_STORAGE_LINKED_SERVICE_NAME#",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "staging"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "CustomerId",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CustomerId",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "FirstName",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "FirstName",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "MiddleInitial",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "MiddleInitial",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "LastName",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "LastName",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "FullName",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "FullName",
+                                    "type": "String"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi02_poc_customer_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi02_poc_customer_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    }
+}

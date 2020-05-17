@@ -1,0 +1,422 @@
+{
+    "name": "Setup - Load SQL Pool",
+    "properties": {
+        "activities": [
+            {
+                "name": "Process years",
+                "type": "ForEach",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@pipeline().parameters.Years",
+                        "type": "Expression"
+                    },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "Copy Sale Small Year",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "7.00:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "ParquetSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSReadSettings",
+                                        "recursive": true,
+                                        "wildcardFolderPath": {
+                                            "value": "@concat('sale-small/Year=',item(), '/*')",
+                                            "type": "Expression"
+                                        },
+                                        "wildcardFileName": "*.parquet",
+                                        "enablePartitionDiscovery": false
+                                    }
+                                },
+                                "sink": {
+                                    "type": "SqlDWSink",
+                                    "allowPolyBase": true,
+                                    "polyBaseSettings": {
+                                        "rejectValue": 0,
+                                        "rejectType": "value",
+                                        "useTypeDefault": true
+                                    },
+                                    "disableMetricsCollection": false
+                                },
+                                "enableStaging": true,
+                                "stagingSettings": {
+                                    "linkedServiceName": {
+                                        "referenceName": "#BLOB_STORAGE_LINKED_SERVICE_NAME#",
+                                        "type": "LinkedServiceReference"
+                                    },
+                                    "path": "staging"
+                                },
+                                "translator": {
+                                    "type": "TabularTranslator",
+                                    "mappings": [
+                                        {
+                                            "source": {
+                                                "name": "TransactionId",
+                                                "type": "String"
+                                            },
+                                            "sink": {
+                                                "name": "TransactionId",
+                                                "type": "Guid"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "CustomerId",
+                                                "type": "Int32"
+                                            },
+                                            "sink": {
+                                                "name": "CustomerId",
+                                                "type": "Int32"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "ProductId",
+                                                "type": "Int16"
+                                            },
+                                            "sink": {
+                                                "name": "ProductId",
+                                                "type": "Int16"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "Quantity",
+                                                "type": "SByte"
+                                            },
+                                            "sink": {
+                                                "name": "Quantity",
+                                                "type": "Byte"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "Price",
+                                                "type": "Decimal"
+                                            },
+                                            "sink": {
+                                                "name": "Price",
+                                                "type": "Decimal"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "TotalAmount",
+                                                "type": "Decimal"
+                                            },
+                                            "sink": {
+                                                "name": "TotalAmount",
+                                                "type": "Decimal"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "TransactionDate",
+                                                "type": "Int32"
+                                            },
+                                            "sink": {
+                                                "name": "TransactionDateId",
+                                                "type": "Int32"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "ProfitAmount",
+                                                "type": "Decimal"
+                                            },
+                                            "sink": {
+                                                "name": "ProfitAmount",
+                                                "type": "Decimal"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "Hour",
+                                                "type": "SByte"
+                                            },
+                                            "sink": {
+                                                "name": "Hour",
+                                                "type": "Byte"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "Minute",
+                                                "type": "SByte"
+                                            },
+                                            "sink": {
+                                                "name": "Minute",
+                                                "type": "Byte"
+                                            }
+                                        },
+                                        {
+                                            "source": {
+                                                "name": "StoreId",
+                                                "type": "Int16"
+                                            },
+                                            "sink": {
+                                                "name": "StoreId",
+                                                "type": "Int16"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "wwi02_sale_small_adls",
+                                    "type": "DatasetReference"
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "wwi02_sale_small_asa",
+                                    "type": "DatasetReference"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Copy Product",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.Product",
+                        "allowPolyBase": true,
+                        "polyBaseSettings": {
+                            "rejectValue": 0,
+                            "rejectType": "value",
+                            "useTypeDefault": true
+                        },
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "#BLOB_STORAGE_LINKED_SERVICE_NAME#",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "staging"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 1
+                                },
+                                "sink": {
+                                    "name": "ProductId",
+                                    "type": "Int16"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 2
+                                },
+                                "sink": {
+                                    "name": "Seasonality",
+                                    "type": "Byte"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 3
+                                },
+                                "sink": {
+                                    "name": "Price",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 4
+                                },
+                                "sink": {
+                                    "name": "Profit",
+                                    "type": "Decimal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi02_product_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi02_product_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Copy Date",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.Date",
+                        "allowPolyBase": true,
+                        "polyBaseSettings": {
+                            "rejectValue": 0,
+                            "rejectType": "value",
+                            "useTypeDefault": true
+                        },
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "#BLOB_STORAGE_LINKED_SERVICE_NAME#",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "staging"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 1
+                                },
+                                "sink": {
+                                    "name": "DateId",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 2
+                                },
+                                "sink": {
+                                    "name": "Day",
+                                    "type": "Byte"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 3
+                                },
+                                "sink": {
+                                    "name": "Month",
+                                    "type": "Byte"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 4
+                                },
+                                "sink": {
+                                    "name": "Quarter",
+                                    "type": "Byte"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "type": "String",
+                                    "ordinal": 5
+                                },
+                                "sink": {
+                                    "name": "Year",
+                                    "type": "Int16"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi02_date_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi02_date_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "parameters": {
+            "Years": {
+                "type": "array",
+                "defaultValue": [
+                    2014,
+                    2015,
+                    2016,
+                    2017,
+                    2018,
+                    2019
+                ]
+            }
+        },
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}
