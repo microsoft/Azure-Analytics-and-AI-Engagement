@@ -13,10 +13,26 @@
       "metadata": {
         "description": "Password for SQL Admin"
       }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+       "allowedValues": [
+        "westus2",
+        "eastus",
+        "northeurope",
+        "westeurope",
+        "southeastasia",
+        "australiaeast",
+        "westcentralus"
+      ],
+      "metadata": {
+        "description": "Location for all resources."
+      }
     }
   },
   "variables": {
-    "location": "[resourceGroup().location]",
+    "location": "[parameters('location')]",
     "sqlAdministratorLogin": "asa.sql.admin",
     "workspaceName": "[concat('asaworkspace', parameters('uniqueSuffix'))]",
     "adlsStorageAccountName": "[concat('asadatalake', parameters('uniqueSuffix'))]",
@@ -317,7 +333,7 @@
         "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
         "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('blobStorageAccountName'))]"
       }
-    }
+    },
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2019-06-01",
