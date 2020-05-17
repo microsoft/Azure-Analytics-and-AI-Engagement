@@ -321,7 +321,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2019-06-01",
-      "name": "[concat(variables('blobStorageAccountName'), '/default/staging')]",
+      "name": "[concat(variables('blobStorageAccountName'), '/default/twitterdata')]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('blobStorageAccountName'), 'default')]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('blobStorageAccountName'))]"
