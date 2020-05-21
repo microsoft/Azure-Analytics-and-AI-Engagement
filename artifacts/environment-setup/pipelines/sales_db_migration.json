@@ -1,0 +1,78 @@
+{
+    "name": "SalesDBMigration",
+    "properties": {
+        "activities": [
+            {
+                "name": "Check if Oracle SalesDB exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "OracleSalesDB",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Load data to Azure Synapse",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Oracle SalesDB exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "tableOption": "autoCreate"
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "OracleSalesDB",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "Synapse",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

@@ -260,14 +260,15 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
-        DestinationDataset_d89 = $dataLakeAccountName
+        <#DestinationDataset_d89 = $dataLakeAccountName
         SourceDataset_d89 = $dataLakeAccountName
         AzureSynapseAnalyticsTable8 = $workspaceName + "-WorkspaceDefaultSqlServer"
         AzureSynapseAnalyticsTable9 = $workspaceName + "-WorkspaceDefaultSqlServer"
         DelimitedText1 = $dataLakeAccountName 
         TeradataMarketingDB = $dataLakeAccountName 
         MarketingDB_Stage = $dataLakeAccountName 
-        Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"
+        Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"#>
+        OracleSalesDB = $workspaceName + "-WorkspaceDefaultSqlServer"
 }
 
 foreach ($dataset in $datasets.Keys) {
@@ -301,7 +302,8 @@ $params = @{
 }
 $workloadPipelines = [ordered]@{
         #sap_hana_to_adls = "SAP HANA TO ADLS"
-        marketing_db_migration = "MarketingDBMigration"
+        #marketing_db_migration = "MarketingDBMigration"
+        sales_db_migration = "SalesDBMigration"
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {
