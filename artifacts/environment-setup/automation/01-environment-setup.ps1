@@ -347,10 +347,9 @@ foreach ($notebookName in $notebooks.Keys) {
 Write-Information "Create SQL scripts for Lab 05"
 
 $sqlScripts = [ordered]@{
-        "Lab 05 - Exercise 3 - Column Level Security" = ".\artifacts\day-02\lab-05-security"
-        "Lab 05 - Exercise 3 - Dynamic Data Masking"  = ".\artifacts\day-02\lab-05-security"
-        "Lab 05 - Exercise 3 - Row Level Security"    = ".\artifacts\day-02\lab-05-security"
-        "Activity 03 - Data Warehouse Optimization"   = ".\artifacts\day-02"
+        "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
+        "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
+        "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
 }
 
 foreach ($sqlScriptName in $sqlScripts.Keys) {
