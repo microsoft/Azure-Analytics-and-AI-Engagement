@@ -310,13 +310,11 @@ foreach ($pipeline in $workloadPipelines.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
-<# 
+<
 Write-Information "Creating Spark notebooks..."
 
 $notebooks = [ordered]@{
-        "Activity 05 - Model Training" = ".\artifacts\day-03"
-        "Lab 06 - Machine Learning"    = ".\artifacts\day-03\lab-06-machine-learning"
-        "Lab 07 - Spark ML"            = ".\artifacts\day-03\lab-07-spark-ml"
+        "3 Campaign Analytics Data Prep"    = ".\artifacts\environment-setup\notebooks"
 }
 
 $cellParams = [ordered]@{
