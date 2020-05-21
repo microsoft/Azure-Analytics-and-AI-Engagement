@@ -260,13 +260,14 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
-        # wwi02_sale_small_workload_01_asa = "$($sqlPoolName.ToLower())_workload01"
-        # wwi02_sale_small_workload_02_asa = "$($sqlPoolName.ToLower())_workload02"
         DestinationDataset_d89 = $dataLakeAccountName
         SourceDataset_d89 = $dataLakeAccountName
         AzureSynapseAnalyticsTable8 = $workspaceName + "-WorkspaceDefaultSqlServer"
         AzureSynapseAnalyticsTable9 = $workspaceName + "-WorkspaceDefaultSqlServer"
-        DelimitedText1 = $dataLakeAccountName
+        DelimitedText1 = $dataLakeAccountName 
+        TeradataMarketingDB = $dataLakeAccountName 
+        MarketingDB_Stage = $dataLakeAccountName 
+        Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"
 }
 
 foreach ($dataset in $datasets.Keys) {
@@ -299,9 +300,8 @@ $params = @{
         DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
 }
 $workloadPipelines = [ordered]@{
-        sap_hana_to_adls = "SAP HANA TO ADLS"
-        # execute_business_analyst_queries     = "Lab 08 - Execute Business Analyst Queries"
-        # execute_data_analyst_and_ceo_queries = "Lab 08 - Execute Data Analyst and CEO Queries"
+        #sap_hana_to_adls = "SAP HANA TO ADLS"
+        marketing_db_migration = "MarketingDBMigration"
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {
