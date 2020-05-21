@@ -1159,15 +1159,15 @@ function Refresh-Token {
     )
 
     if ($TokenType -eq "Synapse") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/msazurelabs.onmicrosoft.com/oauth2/v2.0/token" `
+        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
             -Method POST -Body $global:ropcBodySynapse -ContentType "application/x-www-form-urlencoded"
         $global:synapseToken = $result.access_token
     } elseif ($TokenType -eq "SynapseSQL") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/msazurelabs.onmicrosoft.com/oauth2/v2.0/token" `
+        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
             -Method POST -Body $global:ropcBodySynapseSQL -ContentType "application/x-www-form-urlencoded"
         $global:synapseSQLToken = $result.access_token
     } elseif ($TokenType -eq "Management") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/msazurelabs.onmicrosoft.com/oauth2/v2.0/token" `
+        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
             -Method POST -Body $global:ropcBodyManagement -ContentType "application/x-www-form-urlencoded"
         $global:managementToken = $result.access_token
     } else {

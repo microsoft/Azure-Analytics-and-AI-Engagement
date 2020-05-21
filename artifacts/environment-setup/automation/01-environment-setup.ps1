@@ -24,6 +24,7 @@ $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName 
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
+$global:logindomain = (Get-AzContext).Tenant.Id
 
 $templatesPath = ".\artifacts\environment-setup\templates"
 $datasetsPath = ".\artifacts\environment-setup\datasets"
