@@ -80,11 +80,13 @@ $dataLakeAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -R
 $result = Create-DataLakeLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $dataLakeAccountName  -Key $dataLakeAccountKey
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
+<#
 Write-Information "Create Blob Storage linked service $($blobStorageAccountName)"
 
 $blobStorageAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Name $blobStorageAccountName
 $result = Create-BlobStorageLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $blobStorageAccountName  -Key $blobStorageAccountKey
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+#>
 
 Write-Information "Start the $($sqlPoolName) SQL pool if needed."
 
@@ -258,8 +260,13 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
-        wwi02_sale_small_workload_01_asa = "$($sqlPoolName.ToLower())_workload01"
-        wwi02_sale_small_workload_02_asa = "$($sqlPoolName.ToLower())_workload02"
+        # wwi02_sale_small_workload_01_asa = "$($sqlPoolName.ToLower())_workload01"
+        # wwi02_sale_small_workload_02_asa = "$($sqlPoolName.ToLower())_workload02"
+        DestinationDataset_d89 = $dataLakeAccountName
+        SourceDataset_d89 = $dataLakeAccountName
+        AzureSynapseAnalyticsTable8 = $workspaceName + "-WorkspaceDefaultSqlServer"
+        AzureSynapseAnalyticsTable9 = $workspaceName + "-WorkspaceDefaultSqlServer"
+        DelimitedText1 = $dataLakeAccountName
 }
 
 foreach ($dataset in $datasets.Keys) {

@@ -1,0 +1,17 @@
+{
+    "name": "AzureSynapseAnalyticsTable9",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "AggregatedSales_SAPHANANew"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,51 @@
+{
+    "name": "1 Ingest data from SAP HANA to Azure Synapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "#DATA_FROM_SAP_HANA#",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DatafromSAPHANA"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "#LOAD_TO_SYNAPSE#",
+                        "type": "DatasetReference"
+                    },
+                    "name": "LoadtoSynapse"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "#LOAD_TO_AZURE_SYNAPSE#",
+                        "type": "DatasetReference"
+                    },
+                    "name": "LoadtoAzureSynapse"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "Last5YearsData"
+                },
+                {
+                    "name": "DerivedColumn"
+                },
+                {
+                    "name": "TotalSalesByYearMonthDay"
+                },
+                {
+                    "name": "SelectRequiredColumns"
+                },
+                {
+                    "name": "Selectallcolumns"
+                }
+            ],
+            "script": "source(output(\n\t\tProductKey as string,\n\t\tOrderDateKey as string,\n\t\tDueDateKey as string,\n\t\tShipDateKey as string,\n\t\tCustomerKey as string,\n\t\tPromotionKey as string,\n\t\tCurrencyKey as string,\n\t\tSalesTerritoryKey as string,\n\t\tSalesOrderNumber as string,\n\t\tSalesOrderLineNumber as string,\n\t\tRevisionNumber as string,\n\t\tOrderQuantity as integer,\n\t\tUnitPrice as integer,\n\t\tExtendedAmount as integer,\n\t\tUnitPriceDiscountPct as string,\n\t\tDiscountAmount as string,\n\t\tProductStandardCost as integer,\n\t\tTotalProductCost as string,\n\t\tSalesAmount as integer,\n\t\tTaxAmt as string,\n\t\tFreight as string,\n\t\tCarrierTrackingNumber as string,\n\t\tCustomerPONumber as string,\n\t\tOrderDate as date,\n\t\tDueDate as string,\n\t\tShipDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> DatafromSAPHANA\nDatafromSAPHANA alterRow(upsertIf(ShipDate>toDate('2014-01-01'))) ~> Last5YearsData\nLast5YearsData derive(OrderYear = year(OrderDate),\n\t\t{ OrderMonth} = month(OrderDate),\n\t\tOrderDay = dayOfYear(OrderDate),\n\t\tProductStandardCost = round(ProductStandardCost,2),\n\t\tUnitPrice = round(UnitPrice,4),\n\t\tExtendedAmount = round(ExtendedAmount,2)) ~> DerivedColumn\nSelectRequiredColumns aggregate(groupBy(ProductKey = ProductKey,\n\t\tOrderYear = OrderYear,\n\t\t{ OrderMonth} = { OrderMonth},\n\t\tOrderDay = OrderDay),\n\tTotalSales = round(sum(SalesAmount),2),\n\t\tAvgSaleAmount = round(avg(SalesAmount),2)) ~> TotalSalesByYearMonthDay\nDerivedColumn select(mapColumn(\n\t\tProductKey,\n\t\tSalesAmount,\n\t\tOrderYear,\n\t\t{ OrderMonth},\n\t\tOrderDay\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequiredColumns\nDerivedColumn select(mapColumn(\n\t\tProductKey,\n\t\tOrderDateKey,\n\t\tDueDateKey,\n\t\tShipDateKey,\n\t\tCustomerKey,\n\t\tPromotionKey,\n\t\tCurrencyKey,\n\t\tSalesTerritoryKey,\n\t\tSalesOrderNumber,\n\t\tSalesOrderLineNumber,\n\t\tRevisionNumber,\n\t\tOrderQuantity,\n\t\tExtendedAmount,\n\t\tUnitPriceDiscountPct,\n\t\tDiscountAmount,\n\t\tProductStandardCost,\n\t\tTotalProductCost,\n\t\tSalesAmount,\n\t\tTaxAmt,\n\t\tFreight,\n\t\tShipDate,\n\t\tOrderYear\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Selectallcolumns\nTotalSalesByYearMonthDay sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tmapColumn(\n\t\tProductKey,\n\t\tOrderYear,\n\t\tOrderMonth = { OrderMonth},\n\t\tOrderDay,\n\t\tTotalSales,\n\t\tAvgSaleAmount\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LoadtoSynapse\nSelectallcolumns sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LoadtoAzureSynapse"
+        }
+    }
+}
