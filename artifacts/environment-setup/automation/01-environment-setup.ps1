@@ -267,8 +267,12 @@ $datasets = @{
         DelimitedText1 = $dataLakeAccountName 
         TeradataMarketingDB = $dataLakeAccountName 
         MarketingDB_Stage = $dataLakeAccountName 
-        Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"#>
-        OracleSalesDB = $workspaceName + "-WorkspaceDefaultSqlServer"
+        Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"
+        OracleSalesDB = $workspaceName + "-WorkspaceDefaultSqlServer" #>
+        AzureSynapseAnalyticsTable1 = $workspaceName + "-WorkspaceDefaultSqlServer"
+        Parquet1 = $dataLakeAccountName
+        Parquet2 = $dataLakeAccountName
+        Parquet3 = $dataLakeAccountName
 }
 
 foreach ($dataset in $datasets.Keys) {
@@ -299,11 +303,13 @@ Write-Information "Create pipelines for Lab 08"
 
 $params = @{
         DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
+        DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
 }
 $workloadPipelines = [ordered]@{
         #sap_hana_to_adls = "SAP HANA TO ADLS"
         #marketing_db_migration = "MarketingDBMigration"
-        sales_db_migration = "SalesDBMigration"
+        #sales_db_migration = "SalesDBMigration"
+        twitter_data_migration = "TwitterDataMigration"
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {

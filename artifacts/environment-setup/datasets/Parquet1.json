@@ -1,0 +1,70 @@
+{
+    "name": "Parquet1",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_0412f2f2150f4bceb010b3439ca4f1ab_1.parquet",
+                "fileSystem": "mfgtweets"
+            },
+            "compressionCodec": "none"
+        },
+        "schema": [
+            {
+                "name": "CreatedAt",
+                "type": "UTF8"
+            },
+            {
+                "name": "Hashtag",
+                "type": "UTF8"
+            },
+            {
+                "name": "Tweet",
+                "type": "UTF8"
+            },
+            {
+                "name": "City",
+                "type": "UTF8"
+            },
+            {
+                "name": "UserName",
+                "type": "UTF8"
+            },
+            {
+                "name": "RetweetCount",
+                "type": "INT64"
+            },
+            {
+                "name": "FavouriteCount",
+                "type": "INT64"
+            },
+            {
+                "name": "Sentiment",
+                "type": "UTF8"
+            },
+            {
+                "name": "SentimentScore",
+                "type": "INT64"
+            },
+            {
+                "name": "IsRetweet",
+                "type": "INT64"
+            },
+            {
+                "name": "HourOfDay",
+                "type": "UTF8"
+            },
+            {
+                "name": "Language",
+                "type": "UTF8"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
