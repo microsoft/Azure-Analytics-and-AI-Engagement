@@ -287,6 +287,42 @@ function Create-Dataset {
     return $result
 }
 
+function Create-Dataflow {
+    
+    param(
+    [parameter(Mandatory=$true)]
+    [String]
+    $DataflowPath,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $Name,
+
+    [parameter(Mandatory=$false)]
+    [Hashtable]
+    $Parameters = $null
+    )
+
+    $item = Get-Content -Path "$($DataflowPath)/$($Name).json"
+    
+    if ($Parameters -ne $null) {
+        foreach ($key in $Parameters.Keys) {
+            $item = $item.Replace("#$($key)#", $Parameters[$key])
+        }
+    }
+
+    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/dataflows/$($Name)?api-version=2019-06-01-preview"
+
+    Ensure-ValidTokens
+    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+    
+    return $result
+}
+
 function Create-Pipeline {
     
     param(
@@ -1206,6 +1242,7 @@ Export-ModuleMember -Function Create-SQLPoolKeyVaultLinkedService
 Export-ModuleMember -Function Create-IntegrationRuntime
 Export-ModuleMember -Function Get-IntegrationRuntime
 Export-ModuleMember -Function Delete-IntegrationRuntime
+Export-ModuleMember -Function Create-Dataflow
 Export-ModuleMember -Function Create-Dataset
 Export-ModuleMember -Function Create-Pipeline
 Export-ModuleMember -Function Run-Pipeline

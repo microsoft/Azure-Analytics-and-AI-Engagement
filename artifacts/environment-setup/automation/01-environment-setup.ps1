@@ -28,6 +28,7 @@ $global:logindomain = (Get-AzContext).Tenant.Id
 
 $templatesPath = ".\artifacts\environment-setup\templates"
 $datasetsPath = ".\artifacts\environment-setup\datasets"
+$dataflowsPath = ".\artifacts\environment-setup\dataflows"
 $pipelinesPath = ".\artifacts\environment-setup\pipelines"
 $sqlScriptsPath = ".\artifacts\environment-setup\sql"
 $workspaceName = "asaexpworkspace$($uniqueId)"
@@ -267,12 +268,33 @@ foreach ($dataset in $datasets.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
+Write-Information "Create DataFlow for SAP to HANA Pipeline"
+$params = @{
+        LOAD_TO_SYNAPSE = "AzureSynapseAnalyticsTable8"
+        LOAD_TO_AZURE_SYNAPSE = "AzureSynapseAnalyticsTable9"
+        DATA_FROM_SAP_HANA = "DelimitedText1"
+}
+$workloadDataflows = [ordered]@{
+        ingest_data_from_sap_hana_to_azure_synapse = "ingest_data_from_sap_hana_to_azure_synapse"
+        # execute_business_analyst_queries     = "Lab 08 - Execute Business Analyst Queries"
+        # execute_data_analyst_and_ceo_queries = "Lab 08 - Execute Data Analyst and CEO Queries"
+}
+
+foreach ($dataflow in $workloadDataflows.Keys) {
+        Write-Information "Creating dataflow $($workloadDataflows[$dataflow])"
+        $result = Create-Dataflow -DataflowPath $dataflowsPath -WorkspaceName $workspaceName -Name $workloadDataflows[$dataflow] -Parameters $params
+        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+}
+
 Write-Information "Create pipelines for Lab 08"
 
-$params = @{ }
+$params = @{
+        DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
+}
 $workloadPipelines = [ordered]@{
-        execute_business_analyst_queries     = "Lab 08 - Execute Business Analyst Queries"
-        execute_data_analyst_and_ceo_queries = "Lab 08 - Execute Data Analyst and CEO Queries"
+        sap_hana_to_adls = "SAP HANA TO ADLS"
+        # execute_business_analyst_queries     = "Lab 08 - Execute Business Analyst Queries"
+        # execute_data_analyst_and_ceo_queries = "Lab 08 - Execute Data Analyst and CEO Queries"
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {
@@ -281,7 +303,7 @@ foreach ($pipeline in $workloadPipelines.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
-
+<# 
 Write-Information "Creating Spark notebooks..."
 
 $notebooks = [ordered]@{
@@ -327,3 +349,4 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
+#>
