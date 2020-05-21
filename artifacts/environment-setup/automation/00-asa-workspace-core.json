@@ -33,9 +33,9 @@
   },
   "variables": {
     "location": "[parameters('location')]",
-    "sqlAdministratorLogin": "asa.sql.admin",
-    "workspaceName": "[concat('asaworkspace', parameters('uniqueSuffix'))]",
-    "adlsStorageAccountName": "[concat('asadatalake', parameters('uniqueSuffix'))]",
+    "sqlAdministratorLogin": "asaexp.sql.admin",
+    "workspaceName": "[concat('asaexpworkspace', parameters('uniqueSuffix'))]",
+    "adlsStorageAccountName": "[concat('asaexpdatalake', parameters('uniqueSuffix'))]",
     "defaultDataLakeStorageFilesystemName": "tempdata",
     "sqlComputeName": "SQLPool01",
     "sparkComputeName": "SparkPool01",
@@ -54,9 +54,9 @@
     "sparkVersion": "2.4",
     "packagesRequirementsFileName": "requirements.txt",
     "packagesRequirementsContent": "xgboost==1.0.2",
-    "keyVaultName": "[concat('asakeyvault', parameters('uniqueSuffix'))]",
-    "blobStorageAccountName": "[concat('asastore', parameters('uniqueSuffix'))]",
-    "applicationInsightsName": "[concat('asaappinsights', parameters('uniqueSuffix'))]",
+    "keyVaultName": "[concat('asaexpkeyvault', parameters('uniqueSuffix'))]",
+    "blobStorageAccountName": "[concat('asaexpstore', parameters('uniqueSuffix'))]",
+    "applicationInsightsName": "[concat('asaexpappinsights', parameters('uniqueSuffix'))]",
     "amlWorkspaceName": "[concat('amlworkspace', parameters('uniqueSuffix'))]"
   },
   "resources": [
