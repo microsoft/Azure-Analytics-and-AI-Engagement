@@ -30,17 +30,17 @@ $templatesPath = ".\artifacts\environment-setup\templates"
 $datasetsPath = ".\artifacts\environment-setup\datasets"
 $pipelinesPath = ".\artifacts\environment-setup\pipelines"
 $sqlScriptsPath = ".\artifacts\environment-setup\sql"
-$workspaceName = "asaworkspace$($uniqueId)"
-$dataLakeAccountName = "asadatalake$($uniqueId)"
-$blobStorageAccountName = "asastore$($uniqueId)"
-$keyVaultName = "asakeyvault$($uniqueId)"
-$keyVaultSQLUserSecretName = "SQL-USER-ASA"
+$workspaceName = "asaexpworkspace$($uniqueId)"
+$dataLakeAccountName = "asaexpdatalake$($uniqueId)"
+$blobStorageAccountName = "asaexpstore$($uniqueId)"
+$keyVaultName = "asaexpkeyvault$($uniqueId)"
+$keyVaultSQLUserSecretName = "SQL-USER-ASAEXP"
 $sqlPoolName = "SQLPool01"
 $integrationRuntimeName = "AzureIntegrationRuntime01"
 $sparkPoolName = "SparkPool01"
 $amlWorkspaceName = "amlworkspace$($uniqueId)"
 $global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
-$global:sqlUser = "asa.sql.admin"
+$global:sqlUser = "asaexp.sql.admin"
 
 
 $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
@@ -58,7 +58,7 @@ $global:tokenTimes = [ordered]@{
         Management = (Get-Date -Year 1)
 }
 
-Write-Information "Assign Ownership to L400 Proctors on Synapse Workspace"
+Write-Information "Assign Ownership to Proctors on Synapse Workspace"
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Workspace Admin
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # SQL Admin
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Apache Spark Admin
@@ -143,18 +143,18 @@ $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $
 $result
 
 
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asa.sql.admin"
+Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.admin"
 
 $linkedServiceName = $sqlPoolName.ToLower()
 $result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asa.sql.admin" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
+        -UserName "asaexp.sql.admin" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asa.sql.highperf"
+Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.highperf"
 
 $linkedServiceName = "$($sqlPoolName.ToLower())_highperf"
 $result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asa.sql.highperf" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
+        -UserName "asaexp.sql.highperf" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Write-Information "Create data sets for data load in SQL pool $($sqlPoolName)"
@@ -232,25 +232,25 @@ foreach ($script in $scripts.Keys) {
 #Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 
 
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asa.sql.import01"
+Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.import01"
 
 $linkedServiceName = "$($sqlPoolName.ToLower())_import01"
 $result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asa.sql.import01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
+        -UserName "asaexp.sql.import01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asa.sql.workload01"
+Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.workload01"
 
 $linkedServiceName = "$($sqlPoolName.ToLower())_workload01"
 $result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asa.sql.workload01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
+        -UserName "asaexp.sql.workload01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asa.sql.workload02"
+Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.workload02"
 
 $linkedServiceName = "$($sqlPoolName.ToLower())_workload02"
 $result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asa.sql.workload02" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
+        -UserName "asaexp.sql.workload02" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 
