@@ -156,6 +156,45 @@ foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
 
+Write-Information "Loading 30 Billion Records"
+
+Write-Information "Scale up the $($sqlPoolName) SQL pool to DW3000c to prepare for 30 Billion Rows."
+
+Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW3000c
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
+
+$start = Get-Date
+[nullable[double]]$secondsRemaining = $null
+$maxIterationCount = 9
+
+For ($count=0; $count -le $maxIterationCount; $count++) {
+
+        $percentComplete = ($count / $maxIterationCount) * 100
+        $progressParameters = @{
+                Activity = "Loading data [$($count)/$($maxIterationCount)] $($secondsElapsed.ToString('hh\:mm\:ss'))"
+                Status = 'Processing'
+                PercentComplete = $percentComplete
+            }
+
+        if ($secondsRemaining) {
+                $progressParameters.SecondsRemaining = $secondsRemaining
+            }
+
+        Write-Progress @progressParameters
+
+        $params = @{ }
+        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
+        $result
+
+        $secondsElapsed = (Get-Date) - $start
+        $secondsRemaining = ($secondsElapsed.TotalSeconds / ($count +1)) * ($maxIterationCount - $count)
+}
+
+Write-Information "Scale down the $($sqlPoolName) SQL pool to DW500c after 30 Billion Rows."
+
+Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW500c
+Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
+
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
