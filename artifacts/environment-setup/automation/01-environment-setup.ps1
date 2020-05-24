@@ -145,6 +145,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"product"}} ,
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitteranalytics"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterAnalytics"}}
 $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"10millionrows"}} , @{Name = "TABLE_NAME"; Expression = {"IDS"}}
+$dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
@@ -165,7 +167,7 @@ Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGrou
 
 $start = Get-Date
 [nullable[double]]$secondsRemaining = $null
-$maxIterationCount = 9
+$maxIterationCount = 3000
 
 For ($count=0; $count -le $maxIterationCount; $count++) {
 

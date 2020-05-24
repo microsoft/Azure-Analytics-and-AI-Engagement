@@ -3,21 +3,35 @@ DROP TABLE [dbo].[Sales]
 
 CREATE TABLE [dbo].[Sales]
 ( 
-	[TransactionId] [nvarchar](100)  NOT NULL,
-	[CustomerId] [int]  NOT NULL,
-	[ProductId] [bigint]  NOT NULL,
-	[Quantity] [int]  NOT NULL,
-	[Price] [int]  NOT NULL,
-	[TotalAmount] [bigint]  NOT NULL,
-	[TransactionDate] [datetime]  NOT NULL,
-	[ProfitAmount] [int]  NOT NULL,
-	[Hour] [int]  NOT NULL,
-	[Minute] [int]  NOT NULL,
-	[StoreId] [bigint]  NOT NULL
+	[TransactionId] [nvarchar](100)  NULL,
+	[CustomerId] [int]   NULL,
+	[ProductId] [bigint]   NULL,
+	[Quantity] [int]   NULL,
+	[Price] [int]   NULL,
+	[TotalAmount] [bigint]   NULL,
+	[TransactionDate] [datetime]   NULL,
+	[ProfitAmount] [int]   NULL,
+	[Hour] [int]   NULL,
+	[Minute] [int]   NULL,
+	[StoreId] [bigint]   NULL
 )
 WITH
 (
 	DISTRIBUTION = HASH ( [CustomerId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[IDS]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[IDS]
+
+CREATE TABLE [dbo].[IDS]
+( 
+	[CustomerId] [int]   NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO

@@ -1,21 +1,2 @@
-INSERT INTO [dbo].[Sales] ([TransactionId]
-,[CustomerId]
-,[ProductId]
-,[Quantity]
-,[Price]
-,[TotalAmount]
-,[TransactionDate]
-,[ProfitAmount]
-,[Hour]
-,[Minute]
-,[StoreId]) ( Select [TransactionId]
-,[CustomerId]
-,[ProductId]
-,[Quantity]
-,[Price]
-,[TotalAmount]
-,[TransactionDate]
-,[ProfitAmount]
-,[Hour]
-,[Minute]
-,[StoreId] FROM Sales)
+
+INSERT INTO [dbo].[Sales] ([CustomerId])( Select [CustomerId] FROM IDs)
