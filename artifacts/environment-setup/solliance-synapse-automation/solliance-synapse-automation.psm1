@@ -832,19 +832,30 @@ function Create-SQLScript {
 
     [parameter(Mandatory=$true)]
     [String]
-    $ScriptFileName
+    $ScriptFileName,
+
+    [parameter(Mandatory=$false)]
+    [Hashtable]
+    $Parameters = $null
     )
 
+    
     $item = Get-Content -Raw -Path "$($TemplatesPath)/sql_script.json"
     $item = $item.Replace("#SQL_SCRIPT_NAME#", $Name)
     $jsonItem = ConvertFrom-Json $item
 
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
+    if ($Parameters -ne $null) {
+        foreach ($key in $Parameters.Keys) {
+            $query = $query.Replace("#$($key)#", $Parameters[$key])
+        }
+    }
+    
     $query = ConvertFrom-Json (ConvertTo-Json $query)
-
-    $jsonItem.properties.content.query = $query.value
+    
+    $jsonItem.properties.content.query = $query
     $item = ConvertTo-Json $jsonItem -Depth 100
-
+    
     $uri = "https://$($WorkspaceName).dev.azuresynapse.net/sqlscripts/$($Name)?api-version=2019-06-01-preview"
 
     Ensure-ValidTokens

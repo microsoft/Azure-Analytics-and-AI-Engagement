@@ -32,10 +32,10 @@ GO
 
 -- Step 2 Copy data from all PARQUET files in to the table
 COPY INTO [dbo].[Twitter]
-FROM 'https://labworkspace123654.blob.core.windows.net/twitterdata/'
+FROM 'https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/twitterdata/'
 WITH (
     FILE_TYPE = 'PARQUET',
-    CREDENTIAL=(IDENTITY= 'Shared Access Signature', SECRET='?sv=2019-02-02&ss=bfqt&srt=sco&sp=rwdlacup&se=2022-12-31T11:37:12Z&st=2020-03-31T03:37:12Z&spr=https&sig=zNz%2ByGpLlY7PSTSA4OfRT5AtnswbtU3BVk89GHH7dgg%3D')
+    CREDENTIAL=(IDENTITY= 'Shared Access Signature', SECRET='#SAS_KEY#')
 );
 GO
 

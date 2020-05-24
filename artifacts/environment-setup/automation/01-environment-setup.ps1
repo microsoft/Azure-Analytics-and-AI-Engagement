@@ -356,7 +356,7 @@ foreach ($pipeline in $workloadPipelines.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
-<
+
 Write-Information "Creating Spark notebooks..."
 
 $notebooks = [ordered]@{
@@ -390,14 +390,22 @@ $sqlScripts = [ordered]@{
         "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
 }
 
+$params = @{
+        STORAGE_ACCOUNT_NAME = $dataLakeAccountName
+        SAS_KEY = $destinationSasKey
+}
+
 foreach ($sqlScriptName in $sqlScripts.Keys) {
         
         $sqlScriptFileName = "$($sqlScripts[$sqlScriptName])\$($sqlScriptName).sql"
         Write-Information "Creating SQL script $($sqlScriptName) from $($sqlScriptFileName)"
         
-        $result = Create-SQLScript -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $sqlScriptName -ScriptFileName $sqlScriptFileName
+        $result = Create-SQLScript -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $sqlScriptName -ScriptFileName $sqlScriptFileName -Parameters $params
         $result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
         $result
 }
+
+Remove-Module solliance-synapse-automation
+Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
 
 #>
