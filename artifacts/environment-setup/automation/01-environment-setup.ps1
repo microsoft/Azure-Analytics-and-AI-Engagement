@@ -132,6 +132,30 @@ $params = @{ }
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
+Write-Information "Loading data"
+
+$dataTableList = New-Object System.Collections.ArrayList
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dimcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"Dim_Customer"}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"millennialcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"MillennialCustomers"}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"sale"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"product"}} , @{Name = "TABLE_NAME"; Expression = {"Products"}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitteranalytics"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterAnalytics"}}
+$dataTableList.Add($temp)
+
+foreach ($dataTableLoad in $dataTableList) {
+        Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
+        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-load-csv" -Parameters @{
+                CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
+                TABLE_NAME = $dataTableLoad.TABLE_NAME
+         }
+        $result
+        Write-Information "Data for $($dataTableLoad.TABLE_NAME) loaded."
+}
+
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
