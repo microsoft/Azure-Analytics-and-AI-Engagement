@@ -239,7 +239,4 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
-Remove-Module solliance-synapse-automation
-Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
-
 #>
