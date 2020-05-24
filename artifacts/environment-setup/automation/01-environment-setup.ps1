@@ -118,14 +118,6 @@ foreach ($singleFile in $singleFiles) {
         azcopy copy $source $destination 
 }
 
-<#
-Write-Information "Create Blob Storage linked service $($blobStorageAccountName)"
-
-$blobStorageAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Name $blobStorageAccountName
-$result = Create-BlobStorageLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $blobStorageAccountName  -Key $blobStorageAccountKey
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-#>
-
 Write-Information "Start the $($sqlPoolName) SQL pool if needed."
 
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
@@ -134,171 +126,16 @@ if ($result.properties.status -ne "Online") {
         Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 }
 
-#Write-Information "Scale up the $($sqlPoolName) SQL pool to DW3000c to prepare for baby MOADs import."
-
-#Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW3000c
-#Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
-
-Write-Information "Create SQL logins in master SQL pool"
-
-$params = @{ PASSWORD = $sqlPassword }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName "master" -FileName "01-create-logins" -Parameters $params
-$result
-
-Write-Information "Create SQL users and role assignments in $($sqlPoolName)"
-
-$params = @{ USER_NAME = $userName }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-create-users" -Parameters $params
-$result
-
-Write-Information "Create schemas in $($sqlPoolName)"
-
-$params = @{ }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-create-schemas" -Parameters $params
-$result
-
 Write-Information "Create tables in the [wwi] schema in $($sqlPoolName)"
 
 $params = @{ }
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-tables-in-wwi-schema" -Parameters $params
 $result
 
-
-Write-Information "Create tables in the [wwi_ml] schema in $($sqlPoolName)"
-
-$dataLakeAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName
-$params = @{ 
-        DATA_LAKE_ACCOUNT_NAME = $dataLakeAccountName  
-        DATA_LAKE_ACCOUNT_KEY  = $dataLakeAccountKey 
-}
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "05-create-tables-in-wwi-ml-schema" -Parameters $params
-$result
-
-
-Write-Information "Create tables in the [wwi_security] schema in $($sqlPoolName)"
-
-$params = @{ 
-        DATA_LAKE_ACCOUNT_NAME = $dataLakeAccountName  
-}
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "06-create-tables-in-wwi-security-schema" -Parameters $params
-$result
-
-
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.admin"
-
-$linkedServiceName = $sqlPoolName.ToLower()
-$result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asaexp.sql.admin" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.highperf"
-
-$linkedServiceName = "$($sqlPoolName.ToLower())_highperf"
-$result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asaexp.sql.highperf" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-Write-Information "Create data sets for data load in SQL pool $($sqlPoolName)"
-
-$loadingDatasets = @{
-        wwi02_date_adls       = $dataLakeAccountName
-        wwi02_product_adls    = $dataLakeAccountName
-        wwi02_sale_small_adls = $dataLakeAccountName
-        wwi02_date_asa        = $sqlPoolName.ToLower()
-        wwi02_product_asa     = $sqlPoolName.ToLower()
-        wwi02_sale_small_asa  = "$($sqlPoolName.ToLower())_highperf"
-}
-
-foreach ($dataset in $loadingDatasets.Keys) {
-        Write-Information "Creating dataset $($dataset)"
-        $result = Create-Dataset -DatasetsPath $datasetsPath -WorkspaceName $workspaceName -Name $dataset -LinkedServiceName $loadingDatasets[$dataset]
-        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-}
-
-Write-Information "Create pipeline to load the SQL pool"
-
-$params = @{
-        BLOB_STORAGE_LINKED_SERVICE_NAME = $blobStorageAccountName
-}
-$loadingPipelineName = "Setup - Load SQL Pool"
-$fileName = "load_sql_pool_from_data_lake"
-
-Write-Information "Creating pipeline $($loadingPipelineName)"
-
-$result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $loadingPipelineName -FileName $fileName -Parameters $params
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-Write-Information "Running pipeline $($loadingPipelineName)"
-
-$result = Run-Pipeline -WorkspaceName $workspaceName -Name $loadingPipelineName
-$result = Wait-ForPipelineRun -WorkspaceName $workspaceName -RunId $result.runId
-$result
-
-Write-Information "Deleting pipeline $($loadingPipelineName)"
-
-$result = Delete-ASAObject -WorkspaceName $workspaceName -Category "pipelines" -Name $loadingPipelineName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-foreach ($dataset in $loadingDatasets.Keys) {
-        Write-Information "Deleting dataset $($dataset)"
-        $result = Delete-ASAObject -WorkspaceName $workspaceName -Category "datasets" -Name $dataset
-        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-}
-
-
-Write-Information "Create tables in wwi_perf schema in SQL pool $($sqlPoolName)"
-
-$params = @{ }
-$scripts = [ordered]@{
-        "07-create-wwi-perf-sale-heap"         = "CTAS : Sale_Heap"
-        "08-create-wwi-perf-sale-partition01"  = "CTAS : Sale_Partition01"
-        "09-create-wwi-perf-sale-partition02"  = "CTAS : Sale_Partition02"
-        "10-create-wwi-perf-sale-index"        = "CTAS : Sale_Index"
-        "11-create-wwi-perf-sale-hash-ordered" = "CTAS : Sale_Hash_Ordered"
-}
-
-foreach ($script in $scripts.Keys) {
-
-        $refTime = (Get-Date).ToUniversalTime()
-        Write-Information "Starting $($script) with label $($scripts[$script])"
-        
-        # initiate the script and wait until it finishes
-        Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName $script -ForceReturn $true
-        Wait-ForSQLQuery -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Label $scripts[$script] -ReferenceTime $refTime
-}
-
-#Write-Information "Scale down the $($sqlPoolName) SQL pool to DW500c after baby MOADs import."
-
-#Control-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -Action scale -SKU DW500c
-#Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
-
-
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.import01"
-
-$linkedServiceName = "$($sqlPoolName.ToLower())_import01"
-$result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asaexp.sql.import01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.workload01"
-
-$linkedServiceName = "$($sqlPoolName.ToLower())_workload01"
-$result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asaexp.sql.workload01" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-Write-Information "Create linked service for SQL pool $($sqlPoolName) with user asaexp.sql.workload02"
-
-$linkedServiceName = "$($sqlPoolName.ToLower())_workload02"
-$result = Create-SQLPoolKeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $linkedServiceName -DatabaseName $sqlPoolName `
-        -UserName "asaexp.sql.workload02" -KeyVaultLinkedServiceName $keyVaultName -SecretName $keyVaultSQLUserSecretName
-Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-
-
 Write-Information "Create data sets for Lab 08"
 
 $datasets = @{
-        <#DestinationDataset_d89 = $dataLakeAccountName
+        DestinationDataset_d89 = $dataLakeAccountName
         SourceDataset_d89 = $dataLakeAccountName
         AzureSynapseAnalyticsTable8 = $workspaceName + "-WorkspaceDefaultSqlServer"
         AzureSynapseAnalyticsTable9 = $workspaceName + "-WorkspaceDefaultSqlServer"
@@ -306,7 +143,7 @@ $datasets = @{
         TeradataMarketingDB = $dataLakeAccountName 
         MarketingDB_Stage = $dataLakeAccountName 
         Synapse = $workspaceName + "-WorkspaceDefaultSqlServer"
-        OracleSalesDB = $workspaceName + "-WorkspaceDefaultSqlServer" #>
+        OracleSalesDB = $workspaceName + "-WorkspaceDefaultSqlServer" 
         AzureSynapseAnalyticsTable1 = $workspaceName + "-WorkspaceDefaultSqlServer"
         Parquet1 = $dataLakeAccountName
         Parquet2 = $dataLakeAccountName
@@ -327,8 +164,6 @@ $params = @{
 }
 $workloadDataflows = [ordered]@{
         ingest_data_from_sap_hana_to_azure_synapse = "ingest_data_from_sap_hana_to_azure_synapse"
-        # execute_business_analyst_queries     = "Lab 08 - Execute Business Analyst Queries"
-        # execute_data_analyst_and_ceo_queries = "Lab 08 - Execute Data Analyst and CEO Queries"
 }
 
 foreach ($dataflow in $workloadDataflows.Keys) {
@@ -344,9 +179,9 @@ $params = @{
         DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
 }
 $workloadPipelines = [ordered]@{
-        #sap_hana_to_adls = "SAP HANA TO ADLS"
-        #marketing_db_migration = "MarketingDBMigration"
-        #sales_db_migration = "SalesDBMigration"
+        sap_hana_to_adls = "SAP HANA TO ADLS"
+        marketing_db_migration = "MarketingDBMigration"
+        sales_db_migration = "SalesDBMigration"
         twitter_data_migration = "TwitterDataMigration"
 }
 
@@ -355,7 +190,6 @@ foreach ($pipeline in $workloadPipelines.Keys) {
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $workloadPipelines[$pipeline] -FileName $pipeline -Parameters $params
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
-
 
 Write-Information "Creating Spark notebooks..."
 
