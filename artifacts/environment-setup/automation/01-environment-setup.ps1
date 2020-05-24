@@ -96,7 +96,7 @@ if(Get-AzStorageContainer -Name "twitterdata" -Context $dataLakeContext -ErrorAc
     else  
     {  
        Write-Host -ForegroundColor Magenta "twitterdata container does not exist."   
-       $dataLakeContainer = New-AzStorageContainer -Name "twitterdata" -Permission Off -Context $dataLakeContext
+       $dataLakeContainer = New-AzStorageContainer -Name "twitterdata" -Permission Container -Context $dataLakeContext  
     }       
 $destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl
 
