@@ -80,6 +80,44 @@ $dataLakeAccountKey = List-StorageAccountKeys -SubscriptionId $subscriptionId -R
 $result = Create-DataLakeLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $dataLakeAccountName  -Key $dataLakeAccountKey
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
+Write-Information "Copy TwitterData to Data Lake"
+
+$publicDataUrl = "https://solliancepublicdata.blob.core.windows.net/"
+$dataLakeStorageUrl = "https://"+ $dataLakeAccountName + ".dfs.core.windows.net/"
+$dataLakeStorageBlobUrl = "https://"+ $dataLakeAccountName + ".blob.core.windows.net/"
+
+$dataLakeStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $dataLakeStorageAccountKey
+
+if(Get-AzStorageContainer -Name "twitterdata" -Context $dataLakeContext -ErrorAction SilentlyContinue)  
+    {  
+        Write-Host -ForegroundColor Magenta "twitterdata container already exists."  
+    }  
+    else  
+    {  
+       Write-Host -ForegroundColor Magenta "twitterdata container does not exist."   
+       $dataLakeContainer = New-AzStorageContainer -Name "twitterdata" -Permission Off -Context $dataLakeContext
+    }       
+$destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl
+
+$azCopyLink = (curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location
+Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
+Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
+
+$azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
+$Env:Path += ";"+ $azCopyCommand
+
+$AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
+$singleFiles = Get-AzStorageBlob -Container "cdp" -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
+
+foreach ($singleFile in $singleFiles) {
+        Write-Information $singleFile
+        $source = $publicDataUrl + $singleFile.SourcePath
+        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
+        Write-Information "Copying file $($source) to $($destination)"
+        azcopy copy $source $destination 
+}
+
 <#
 Write-Information "Create Blob Storage linked service $($blobStorageAccountName)"
 
