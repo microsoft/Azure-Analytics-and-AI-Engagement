@@ -126,10 +126,10 @@ if ($result.properties.status -ne "Online") {
         Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 }
 
-Write-Information "Create tables in the [wwi] schema in $($sqlPoolName)"
+Write-Information "Create tables in $($sqlPoolName)"
 
 $params = @{ }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-tables-in-wwi-schema" -Parameters $params
+$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
 Write-Information "Create data sets for Lab 08"
