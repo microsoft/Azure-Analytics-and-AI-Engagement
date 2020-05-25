@@ -17,5 +17,3 @@ from (SELECT P.Department, TA.Sentiment AS [Twitter Sentiment],
     group by DC.[FullName],P.Department,TA.Sentiment,M.UserName,M.CustKey,M.Emailstatus)
   as result
 
--- petsa
-SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Customer_SalesLatest(nolock)
