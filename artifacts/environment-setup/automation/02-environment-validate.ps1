@@ -184,74 +184,50 @@ if ($sqlPool -eq $null) {
         Write-Information "OK"
 
         $tables = [ordered]@{
-                "wwi.Date" = @{
-                        Count = 3652
+                "dbo.department_visit_customer" = @{
+                        Count = 123
                         StrictCount = $true
                         Valid = $false
                         ValidCount = $false
                 }
-                "wwi.Product" = @{
-                        Count = 5000
+                "dbo.Dim_Customer" = @{
+                        Count = 95926
                         StrictCount = $true
                         Valid = $false
                         ValidCount = $false
                 }
-                "wwi.SaleSmall" = @{
-                        Count = 1863080489
+                "dbo.IDS" = @{
+                        Count = 10000000
                         StrictCount = $true
                         Valid = $false
                         ValidCount = $false
                 }
-                "wwi_perf.Sale_Hash_Ordered" = @{
+                "dbo.MillennialCustomers" = @{
+                        Count = 157840
+                        StrictCount = $true
+                        Valid = $false
+                        ValidCount = $false
+                }
+                "dbo.Products" = @{
+                        Count = 78
+                        StrictCount = $true
+                        Valid = $false
+                        ValidCount = $false
+                }
+                "dbo.Sales" = @{
                         Count = 339507246
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_perf.Sale_Heap" = @{
-                        Count = 339507246
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_perf.Sale_Index" = @{
-                        Count = 339507246
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_perf.Sale_Partition01" = @{
-                        Count = 339507246
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_perf.Sale_Partition02" = @{
-                        Count = 339507246
-                        StrictCount = $true
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_security.CustomerInfo" = @{
-                        Count = 110
                         StrictCount = $false
                         Valid = $false
                         ValidCount = $false
                 }
-                "wwi_security.Sale" = @{
-                        Count = 52
-                        StrictCount = $false
-                        Valid = $false
-                        ValidCount = $false
-                }
-                "wwi_ml.MLModelExt" = @{
-                        Count = 1
+                "dbo.TwitterAnalytics" = @{
+                        Count = 20
                         StrictCount = $true
                         Valid = $false
                         ValidCount = $false
                 }
-                "wwi_ml.MLModel" = @{
-                        Count = 0
+                "dbo.TwitterRawData" = @{
+                        Count = 33
                         StrictCount = $true
                         Valid = $false
                         ValidCount = $false
@@ -324,14 +300,6 @@ FROM
         }
 
         $users = [ordered]@{
-                "CEO" = @{ Valid = $false }
-                "DataAnalystMiami" = @{ Valid = $false }
-                "DataAnalystSanDiego" = @{ Valid = $false }
-                "asa.sql.workload01" = @{ Valid = $false }
-                "asa.sql.workload02" = @{ Valid = $false }
-                "asa.sql.import01" = @{ Valid = $false }
-                "asa.sql.import02" = @{ Valid = $false }
-                "asa.sql.highperf" = @{ Valid = $false }
                 "$($userName)" = @{ Valid = $false }
         }
 
@@ -376,8 +344,8 @@ if ($dataLakeAccount -eq $null) {
 } else {
         Write-Information "OK"
 
-        Write-Information "Checking data lake file system wwi-02"
-        $dataLakeFileSystem = Get-AzDataLakeGen2Item -Context $dataLakeAccount.Context -FileSystem "wwi-02"
+        Write-Information "Checking data lake file system"
+        $dataLakeFileSystem = Get-AzDataLakeGen2Item -Context $dataLakeAccount.Context -FileSystem "twitterdata"
         if ($dataLakeFileSystem -eq $null) {
                 Write-Warning "    The data lake file system wwi-02 was not found"
                 $overallStateIsValid = $false
@@ -385,24 +353,17 @@ if ($dataLakeAccount -eq $null) {
                 Write-Information "OK"
 
                 $dataLakeItems = [ordered]@{
-                        "sale-small" = "folder path"
-                        "online-user-profiles-02" = "folder path"
-                        "sale-small\Year=2014" = "folder path"
-                        "sale-small\Year=2015" = "folder path"
-                        "sale-small\Year=2016" = "folder path"
-                        "sale-small\Year=2017" = "folder path"
-                        "sale-small\Year=2018" = "folder path"
-                        "sale-small\Year=2019" = "folder path"
-                        "sale-small\Year=2016\Quarter=Q4\Month=12\Day=20161231\sale-small-20161231-snappy.parquet" = "file path"
-                        "campaign-analytics\dailycounts.txt" = "file path"
-                        "campaign-analytics\sale-20161230-snappy.parquet" = "file path"
-                        "campaign-analytics\campaignanalytics.csv" = "file path"
+                        "71A159B1-7DAE-4B6F-B206-17715D37A46B_2090_0-1.parquet" = "file path"
+                        "71A159B1-7DAE-4B6F-B206-17715D37A46B_2090_1-1.parquet" = "file path"
+                        "71A159B1-7DAE-4B6F-B206-17715D37A46B_2090_2-1.parquet" = "file path"
+                        "71A159B1-7DAE-4B6F-B206-17715D37A46B_2090_3-1.parquet" = "file path"
+                        "71A159B1-7DAE-4B6F-B206-17715D37A46B_2090_4-1.parquet" = "file path"
                 }
         
                 foreach ($dataLakeItemName in $dataLakeItems.Keys) {
         
                         Write-Information "Checking data lake $($dataLakeItems[$dataLakeItemName]) $($dataLakeItemName)..."
-                        $dataLakeItem = Get-AzDataLakeGen2Item -Context $dataLakeAccount.Context -FileSystem "wwi-02" -Path $dataLakeItemName
+                        $dataLakeItem = Get-AzDataLakeGen2Item -Context $dataLakeAccount.Context -FileSystem "twitterdata" -Path $dataLakeItemName
                         if ($dataLakeItem -eq $null) {
                                 Write-Warning "    The data lake $($dataLakeItems[$dataLakeItemName]) $($dataLakeItemName) was not found"
                                 $overallStateIsValid = $false
@@ -417,8 +378,7 @@ if ($dataLakeAccount -eq $null) {
 
 if ($overallStateIsValid -eq $true) {
     Write-Information "Validation Passed"
-}
-else {
+} else {
     Write-Warning "Validation Failed - see log output"
 }
 
