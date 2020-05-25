@@ -147,6 +147,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitteranaly
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"10millionrows"}} , @{Name = "TABLE_NAME"; Expression = {"IDS"}}
 $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitterrawdata"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterRawData"}}
+$dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"

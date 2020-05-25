@@ -176,3 +176,18 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[TwitterRawData]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[TwitterRawData]
+
+CREATE TABLE [dbo].[TwitterRawData]
+( 
+	[ID] [int]  NOT NULL,
+	[TwitterData] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
