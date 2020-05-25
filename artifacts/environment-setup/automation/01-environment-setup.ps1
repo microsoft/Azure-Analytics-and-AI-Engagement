@@ -149,6 +149,10 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"10millionrow
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitterrawdata"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterRawData"}}
 $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"departmentvisitcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}
+$dataTableList.Add($temp)
+
+
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
