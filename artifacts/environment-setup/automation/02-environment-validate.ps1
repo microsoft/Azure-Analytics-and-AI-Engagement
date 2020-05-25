@@ -20,26 +20,28 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 Connect-AzAccount -Credential $cred | Out-Null
 
-$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*L400*" }).ResourceGroupName
-$uniqueId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*CDP-Demo*" }).ResourceGroupName
+$uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
+$global:logindomain = (Get-AzContext).Tenant.Id
 
 $templatesPath = ".\artifacts\environment-setup\templates"
 $datasetsPath = ".\artifacts\environment-setup\datasets"
+$dataflowsPath = ".\artifacts\environment-setup\dataflows"
 $pipelinesPath = ".\artifacts\environment-setup\pipelines"
 $sqlScriptsPath = ".\artifacts\environment-setup\sql"
-$workspaceName = "asaworkspace$($uniqueId)"
-$dataLakeAccountName = "asadatalake$($uniqueId)"
-$blobStorageAccountName = "asastore$($uniqueId)"
-$keyVaultName = "asakeyvault$($uniqueId)"
-$keyVaultSQLUserSecretName = "SQL-USER-ASA"
+$workspaceName = "asaexpworkspace$($uniqueId)"
+$dataLakeAccountName = "asaexpdatalake$($uniqueId)"
+$blobStorageAccountName = "asaexpstore$($uniqueId)"
+$keyVaultName = "asaexpkeyvault$($uniqueId)"
+$keyVaultSQLUserSecretName = "SQL-USER-ASAEXP"
 $sqlPoolName = "SQLPool01"
 $integrationRuntimeName = "AzureIntegrationRuntime01"
 $sparkPoolName = "SparkPool01"
 $amlWorkspaceName = "amlworkspace$($uniqueId)"
 $global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
-$global:sqlUser = "asa.sql.admin"
+$global:sqlUser = "asaexp.sql.admin"
 
 $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
 $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
@@ -60,72 +62,92 @@ $overallStateIsValid = $true
 
 $asaArtifacts = [ordered]@{
 
-        "wwi02_sale_small_workload_01_asa" = @{ 
+        "DestinationDataset_d89" = @{ 
                 Category = "datasets"
                 Valid = $false
         }
-        "wwi02_sale_small_workload_02_asa" = @{ 
+        "SourceDataset_d89" = @{ 
                 Category = "datasets"
                 Valid = $false
         }
-        "Lab 08 - Execute Business Analyst Queries" = @{
+        "AzureSynapseAnalyticsTable8" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "AzureSynapseAnalyticsTable9" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "DelimitedText1" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "TeradataMarketingDB" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "MarketingDB_Stage" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "Synapse" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "OracleSalesDB" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "AzureSynapseAnalyticsTable1" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "Parquet1" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "Parquet2" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "Parquet3" = @{ 
+                Category = "datasets"
+                Valid = $false
+        }
+        "SAP HANA TO ADLS" = @{
                 Category = "pipelines"
                 Valid = $false
         }
-        "Lab 08 - Execute Data Analyst and CEO Queries" = @{
+        "MarketingDBMigration" = @{
                 Category = "pipelines"
                 Valid = $false
         }
-        "Lab 06 - Machine Learning" = @{
+        "SalesDBMigration" = @{
+                Category = "pipelines"
+                Valid = $false
+        }
+        "TwitterDataMigration" = @{
+                Category = "pipelines"
+                Valid = $false
+        }
+        "3 Campaign Analytics Data Prep" = @{
                 Category = "notebooks"
                 Valid = $false
         }
-        "Lab 07 - Spark ML" = @{
+        "2 AutoML Number of Customer Visit to Department" = @{
                 Category = "notebooks"
                 Valid = $false
         }
-        "Activity 05 - Model Training" = @{
-                Category = "notebooks"
-                Valid = $false
-        }
-        "Lab 05 - Exercise 3 - Column Level Security" = @{
+        "8 External Data To Synapse Via Copy Into" = @{
                 Category = "sqlscripts"
                 Valid = $false
         }
-        "Lab 05 - Exercise 3 - Dynamic Data Masking" = @{
+        "1 SQL Query With Synapse" = @{
                 Category = "sqlscripts"
                 Valid = $false
         }
-        "Lab 05 - Exercise 3 - Row Level Security" = @{
+        "2 JSON Extractor" = @{
                 Category = "sqlscripts"
-                Valid = $false
-        }
-        "Activity 03 - Data Warehouse Optimization" = @{
-                Category = "sqlscripts"
-                Valid = $false
-        }
-        "sqlpool01_import01" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "sqlpool01" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "sqlpool01_highperf" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "sqlpool01_workload01" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "sqlpool01_workload02" = @{
-                Category = "linkedServices"
-                Valid = $false
-        }
-        "$($blobStorageAccountName)" = @{
-                Category = "linkedServices"
                 Valid = $false
         }
         "$($dataLakeAccountName)" = @{
