@@ -319,8 +319,6 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 5. Observe the import statements in the Notebook 
 
-**TODO 4** Not available in the environment
-
 ![](media/05-46.png)
 
 6. Observe the results in the notebook under **Map Products**.
