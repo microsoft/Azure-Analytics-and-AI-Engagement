@@ -267,6 +267,7 @@ Write-Information "Creating Spark notebooks..."
 $notebooks = [ordered]@{
         "3 Campaign Analytics Data Prep"    = ".\artifacts\environment-setup\notebooks"
         "1 Products Recommendation"   = ".\artifacts\environment-setup\notebooks"
+        "2 AutoML Number of Customer Visit to Department" = ".\artifacts\environment-setup\notebooks"
 }
 
 $cellParams = [ordered]@{
