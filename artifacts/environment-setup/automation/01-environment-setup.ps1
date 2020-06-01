@@ -245,25 +245,6 @@ foreach ($dataflow in $workloadDataflows.Keys) {
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
-Write-Information "Create pipelines for Lab 08"
-
-$params = @{
-        DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
-        DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-}
-$workloadPipelines = [ordered]@{
-        sap_hana_to_adls = "SAP HANA TO ADLS"
-        marketing_db_migration = "MarketingDBMigration"
-        sales_db_migration = "SalesDBMigration"
-        twitter_data_migration = "TwitterDataMigration"
-}
-
-foreach ($pipeline in $workloadPipelines.Keys) {
-        Write-Information "Creating workload pipeline $($workloadPipelines[$pipeline])"
-        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $workloadPipelines[$pipeline] -FileName $pipeline -Parameters $params
-        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-}
-
 Write-Information "Creating Spark notebooks..."
 
 $notebooks = [ordered]@{
@@ -288,6 +269,25 @@ foreach ($notebookName in $notebooks.Keys) {
                 -WorkspaceName $workspaceName -SparkPoolName $sparkPoolName -Name $notebookName -NotebookFileName $notebookFileName -CellParams $cellParams
         $result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
         $result
+}
+
+Write-Information "Create pipelines"
+
+$params = @{
+        DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
+        DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
+}
+$workloadPipelines = [ordered]@{
+        sap_hana_to_adls = "SAP HANA TO ADLS"
+        marketing_db_migration = "MarketingDBMigration"
+        sales_db_migration = "SalesDBMigration"
+        twitter_data_migration = "TwitterDataMigration"
+}
+
+foreach ($pipeline in $workloadPipelines.Keys) {
+        Write-Information "Creating workload pipeline $($workloadPipelines[$pipeline])"
+        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $workloadPipelines[$pipeline] -FileName $pipeline -Parameters $params
+        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
 Write-Information "Create SQL scripts for Lab 05"
