@@ -81,7 +81,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ### Task 3: Download lab artifacts
 
-1. In a web browser, navigate to the [MCW Azure Synapse Analytics end-to-end solution repository](https://github.com/microsoft/MCW-Azure-Synapse-Analytics-end-to-end-solution).
+1. In a web browser, navigate to the [MCW Azure Synapse Analytics WWI Lab repository](https://github.com/microsoft/azure-synapse-wwi-lab).
 
 2. Expand the **Clone or download** button, and select **Download Zip**.
 
@@ -98,8 +98,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     $AzurePassword = "<enter your azure password>"
     $TokenGeneratorClientId = "1950a258-227b-4e31-a9cf-717495945fc2"
     $AzureSQLPassword = "<enter the same password you chose when deploying the workspace>"
-    $AzureResourceGroupName = "Synapse-MCW"
-    $UniqueSuffix = "<enter the same suffix you chose when deploying the workspace>"
     ```
 
 ### Task 5: Run environment setup PowerShell scripts
