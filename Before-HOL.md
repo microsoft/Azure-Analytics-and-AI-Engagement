@@ -98,13 +98,16 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     $AzurePassword = "<enter your azure password>"
     $TokenGeneratorClientId = "1950a258-227b-4e31-a9cf-717495945fc2"
     $AzureSQLPassword = "<enter the same password you chose when deploying the workspace>"
+    $Load30Billion = 0
     ```
+
+When the `$Load30Billion` variable is set to `1` the script will scale your SQLPool to `DW3000c` and populate the database with 30 billion records that will be used as part of exercise during the lab. The approx load time for the data set is 4 hours. When the variable is left at 0 the total data size will be 3 million records.
 
 ### Task 5: Run environment setup PowerShell scripts
 
 1. Open **Visual Studio Code** and open the folder to where you extracted the lab files (extracted in Task 3). **Be sure to run this application as Administrator**.
 
-2. Open **Hands-on Lab/environment-setup/automation/01-environment-setup.ps1**.
+2. Open **artifacts/environment-setup/automation/01-environment-setup.ps1**.
 
 3. Open a Terminal Window (ctrl + shift + `). Ensure **PowerShell** or **PowerShell Integrated Console** is selected on the Terminal pane toolbar.
 
@@ -113,7 +116,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 4. Change the directory to the **automation** folder.
 
     ```PowerShell
-    cd '.\Hands-on lab\environment-setup\automation'
+    cd '.\artifacts\environment-setup\automation'
     ```
 
 5. In the editor window, select the entire script (ctrl + a), then right-click and select **Run selection** _OR_ you may press **F8** to run the selection.
@@ -123,9 +126,5 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     > **Note**: if you see an error regarding `No modules were removed` or `Uninstall-AzureRm`, it is safe to ignore. If the script pauses for prompts, enter the `A` (Yes to All) option.
 
     > **Note**: if you experience script failures, it may be beneficial to highlight only the lines preceding the `$InformationPreference = "Continue"` line and run them separately from the rest of the script. Some people have experienced the console not stopping for user input when importing from the PowerShell Gallery.
-
-6. Repeat step 5 with **Hands-on Lab/environment-setup/automation/02-copy-lake-data.ps1**.
-
-7. Repeat step 5 with **Hands-on Lab/environment-setup/automation/03-finalize-deployment.ps1**
 
 You should follow all steps provided *before* performing the Hands-on lab.
