@@ -300,7 +300,7 @@ FROM
         }
 
         $users = [ordered]@{
-                "$($userName)" = @{ Valid = $false }
+                
         }
 
 $query = @"
