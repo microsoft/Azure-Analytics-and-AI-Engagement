@@ -125,12 +125,6 @@ if ($result.properties.status -ne "Online") {
         Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 }
 
-Write-Information "Create SQL users and role assignments in $($sqlPoolName)"
-
-$params = @{ USER_NAME = $userName }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-users" -Parameters $params
-$result
-
 Write-Information "Create tables in $($sqlPoolName)"
 
 $params = @{ }
