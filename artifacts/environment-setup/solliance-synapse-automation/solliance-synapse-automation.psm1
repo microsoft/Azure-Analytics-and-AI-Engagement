@@ -53,6 +53,36 @@ function Create-KeyVaultLinkedService {
     return $result
 }
 
+function Create-PowerBILinkedService {
+    
+    param(
+    [parameter(Mandatory=$true)]
+    [String]
+    $TemplatesPath,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $Name,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceId
+    )
+
+    $powerBITemplate = Get-Content -Path "$($TemplatesPath)/powerbi_linked_service.json"
+    $powerBI = $powerBITemplate.Replace("#LINKED_SERVICE_NAME#", $Name).Replace("#POWERBI_WORKSPACE_ID#", $WorkspaceId)
+    $uri = "https://$($WorkspaceName).dev.azuresynapse.net/linkedservices/$($Name)?api-version=2019-06-01-preview"
+
+    Ensure-ValidTokens
+    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $powerBI -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
+    return $result
+}
+
 function Create-BlobStorageLinkedService {
     
     param(
@@ -1247,6 +1277,7 @@ function Ensure-ValidToken {
 
 Export-ModuleMember -Function List-StorageAccountKeys
 Export-ModuleMember -Function Create-KeyVaultLinkedService
+Export-ModuleMember -Function Create-PowerBILinkedService
 Export-ModuleMember -Function Create-BlobStorageLinkedService
 Export-ModuleMember -Function Create-DataLakeLinkedService
 Export-ModuleMember -Function Create-SQLPoolKeyVaultLinkedService
