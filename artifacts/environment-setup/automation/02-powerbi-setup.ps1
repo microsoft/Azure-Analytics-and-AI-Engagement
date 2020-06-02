@@ -37,3 +37,38 @@ New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" 
 
 Disconnect-PowerBIServiceAccount
 
+# Synapse Linked Service for PowerBI
+$clientId = $TokenGeneratorClientId       # READ FROM FILE
+
+$ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
+$global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
+$global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
+$global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+
+$global:synapseToken = ""
+$global:synapseSQLToken = ""
+$global:managementToken = ""
+
+$global:tokenTimes = [ordered]@{
+    Synapse    = (Get-Date -Year 1)
+    SynapseSQL = (Get-Date -Year 1)
+    Management = (Get-Date -Year 1)
+}
+
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
+$uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
+$global:logindomain = (Get-AzContext).Tenant.Id
+
+$templatesPath = ".\artifacts\environment-setup\templates"
+$powerBIName = "asaexppowerbi$($uniqueId)"
+$workspaceName = "asaexpworkspace$($uniqueId)"
+
+Write-Information "Create PowerBI linked service $($keyVaultName)"
+
+$result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $newPowerBIWorkSpace.id
+Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
