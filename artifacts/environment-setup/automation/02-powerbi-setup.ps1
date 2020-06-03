@@ -3,6 +3,8 @@ Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
 
 $InformationPreference = "Continue"
 
+$templatesPath = ".\artifacts\environment-setup\templates"
+
 # TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
 . C:\LabFiles\AzureCreds.ps1
 
@@ -31,7 +33,7 @@ if($existingPowerBIWorkSpace -eq $null){
 
 Write-Information "Uploading PowerBI Reports"
 New-PowerBIReport -Path ".\artifacts\exports\powerbi\1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
-New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+$newReport = New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
 
 # Invoke-PowerBIRestMethod -Url 'groups/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/datasets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/tables/xxxxxx/rows' -Method Delete
 
@@ -64,7 +66,6 @@ $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName 
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $global:logindomain = (Get-AzContext).Tenant.Id
 
-$templatesPath = ".\artifacts\environment-setup\templates"
 $powerBIName = "asaexppowerbi$($uniqueId)"
 $workspaceName = "asaexpworkspace$($uniqueId)"
 
@@ -72,3 +73,13 @@ Write-Information "Create PowerBI linked service $($keyVaultName)"
 
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $newPowerBIWorkSpace.id
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+
+Write-Information "Setting PowerBI Database Connection"
+
+$foundId = (Get-PowerBIDataset -WorkspaceId $newPowerBIWorkSpace.id).where{( $_.Name -like '2-Billion Rows Demo' )}.id
+
+$powerBIDataSetConnectionTemplate = Get-Content -Path "$($templatesPath)/powerbi_dataset_connection.json"
+$powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+
+#https://docs.microsoft.com/en-us/rest/api/power-bi/datasets/updatedatasources
+Invoke-PowerBIRestMethod -Url "groups/$($newPowerBIWorkSpace.id)/datasets/$($foundId)/Default.UpdateDatasources" -Method Post -Body $powerNIDataSetConnectionUpdateRequest

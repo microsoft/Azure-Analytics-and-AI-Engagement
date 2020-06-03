@@ -1,0 +1,17 @@
+{
+    "updateDetails": [
+      {
+        "datasourceSelector": {
+          "datasourceType": "Sql",
+          "connectionDetails": {
+            "server": "cdpvisionworkspace.sql.azuresynapse.net",
+            "database": "AzureSynapseDW"
+          }
+        },
+        "connectionDetails": {
+          "server": "#SERVER#",
+          "database": "#DATABASE#"
+        }
+      }
+    ]
+  }
