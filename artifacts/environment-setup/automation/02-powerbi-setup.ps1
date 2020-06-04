@@ -35,10 +35,6 @@ Write-Information "Uploading PowerBI Reports"
 New-PowerBIReport -Path ".\artifacts\exports\powerbi\1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
 $newReport = New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
 
-# Invoke-PowerBIRestMethod -Url 'groups/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/datasets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/tables/xxxxxx/rows' -Method Delete
-
-Disconnect-PowerBIServiceAccount
-
 # Synapse Linked Service for PowerBI
 $clientId = $TokenGeneratorClientId       # READ FROM FILE
 
@@ -62,7 +58,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 Connect-AzAccount -Credential $cred | Out-Null
 
-$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" -or $_.ResourceGroupName -like "*CDP-Demo*"}).ResourceGroupName
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $global:logindomain = (Get-AzContext).Tenant.Id
 
@@ -83,3 +79,5 @@ $powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Repla
 
 #https://docs.microsoft.com/en-us/rest/api/power-bi/datasets/updatedatasources
 Invoke-PowerBIRestMethod -Url "groups/$($newPowerBIWorkSpace.id)/datasets/$($foundId)/Default.UpdateDatasources" -Method Post -Body $powerNIDataSetConnectionUpdateRequest
+
+Disconnect-PowerBIServiceAccount
