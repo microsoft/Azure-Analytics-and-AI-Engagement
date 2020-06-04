@@ -42,6 +42,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 ## Requirements
 
 1. An Azure Account with the ability to create an Azure Synapse Workspace
+2. A PowerBI Pro or Premium account to host Power BI reports.
 
 ## Before the hands-on lab
 
@@ -126,5 +127,25 @@ When the `$Load30Billion` variable is set to `1` the script will scale your SQLP
     > **Note**: if you see an error regarding `No modules were removed` or `Uninstall-AzureRm`, it is safe to ignore. If the script pauses for prompts, enter the `A` (Yes to All) option.
 
     > **Note**: if you experience script failures, it may be beneficial to highlight only the lines preceding the `$InformationPreference = "Continue"` line and run them separately from the rest of the script. Some people have experienced the console not stopping for user input when importing from the PowerShell Gallery.
+
+6. Open **artifacts/environment-setup/automation/02-powerbi-setup.ps1**. Repeat steps from 3 to 5 to run the script file.
+
+7. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials. 
+
+8. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `ASA-EXP`.
+
+![The workspaces button from the hamburger menu is selected to list workspaces available. The ASA-EXP workspace is selected.](media/powerbi_workspace_selection.png)
+
+8. Select the **Settings** icon from the top right bar, and select **Settings** again to navigate to the settings page. 
+
+![The settings button on the Power BI portal clicked and the Settings selection on the context menu selected.](media/powerbi_settings_menu.png)
+
+9. Select **datasets* tab to access the list of datasets available. Then select `2-Billion Rows Demo` dataset to access its settings. From the settings page open **Data source credentials** and select **Edit credentials**.
+
+![The datasets tab is selected. From the list of datasets 2-Billion Rows Demo is selected. Edit credentials will be selected next. ](media/powerbi_datasource_credentials.png)
+
+9. Select **OAuth2** for the **Authentication method** and select **Sign In** to complete the process.
+
+![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
 You should follow all steps provided *before* performing the Hands-on lab.
