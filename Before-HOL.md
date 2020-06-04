@@ -60,7 +60,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 4. Select the **Create** button on the **Resource group** overview page.
 
-5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **Synapse-MCW**, then select the **Review + Create** button.
+5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **Synapse-WWI-Lab**, then select the **Review + Create** button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/bhol_resourcegroupform.png)
 
@@ -76,6 +76,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
     ![The Custom deployment form is displayed with example data populated.](media/bhol_customdeploymentform.png)
   
+    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of June 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
+
 3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button.
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
