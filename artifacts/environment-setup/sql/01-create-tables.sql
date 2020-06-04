@@ -212,3 +212,36 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[Category]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[Category]
+
+CREATE TABLE [dbo].[Category]
+( 
+	[ID] [float]  NOT NULL,
+	[Category] [varchar](255)  NULL,
+	[SubCategory] [varchar](255)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[ProdChamp]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ProdChamp]
+
+CREATE TABLE [dbo].[ProdChamp]
+( 
+	[Camp] [nvarchar](4000)  NULL,
+	[Campaign] [nvarchar](4000)  NULL,
+	[Final Camp] [nvarchar](4000)  NULL,
+	[ProductID] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO

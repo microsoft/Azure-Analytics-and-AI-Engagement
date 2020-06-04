@@ -150,7 +150,10 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitterrawda
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"departmentvisitcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}
 $dataTableList.Add($temp)
-
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"category"}} , @{Name = "TABLE_NAME"; Expression = {"Category"}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productcampaign"}} , @{Name = "TABLE_NAME"; Expression = {"ProdChamp"}}
+$dataTableList.Add($temp)
 
 
 foreach ($dataTableLoad in $dataTableList) {
