@@ -107,7 +107,7 @@ $azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory
 $Env:Path += ";"+ $azCopyCommand
 
 $AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
-$singleFiles = Get-AzStorageBlob -Container "cdp" -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
+$singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
 foreach ($singleFile in $singleFiles) {
         Write-Information $singleFile
