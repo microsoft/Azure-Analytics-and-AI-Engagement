@@ -47,7 +47,7 @@ First of all, let's see how you can access your Azure Synapse Workspace.
 
 Select the Synapse Workspace web URL to access your Synapse Workspace.
 
-![Synapse Workspace](media/synapse-workspace-access.jpg) 
+![Synapse Workspace](media/synapse-workspace-access.png) 
 
 Once you access your workspace select the arrow on the top of the left menu to open the slider and access various sections of the workspace.
 
@@ -204,11 +204,11 @@ SQL on-demand is serverless; hence there is no infrastructure to setup or cluste
 
 In this task, we will query twitter data stored as Parquet files in Azure Data Lake Gen 2 using SQL On-Demand, and visualize the result.
 
-1. Select **Data** Hub from the left navigation in the Synapse Analytics workspace. From the **Data** blade, under **Storage accounts**, Select/expand **daidemosynapsestorageforgen2**. Observe various data sources (including CI) that are now in ADL Gen2 and then select **twitterdata** storage container.
+1. Select **Data** Hub from the left navigation in the Synapse Analytics workspace. From the **Data** blade, select **Linked** tab and under **Storage accounts**, Select/expand the storage account starting with **asaexpworkspace**. Observe data sources that are now in ADL Gen2 and then select **twitterdata** storage container.
 
 ![](media/2020-04-10_17-00-38.png)
 
-2. See all the parquet files and other folders in the **twitterdata** container. Select the first two parquet files and right-click, from the context menu, Select **New SQL Script**
+2. See all the parquet files and other folders in the **twitterdata** container. Select the first two parquet files and right-click, from the context menu, Select **New SQL Script** and then select **Select TOP 100 rows**.
 
 ![](media/2020-04-10_17-01-49.png)
 
@@ -222,7 +222,7 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 ![](media/05-31.png)
 
-5. Minimize the **storage accounts** on the left side, then expand the **Databases** tree, expand **AzureSynapseDW (SQL pool)**, and finally expand **Tables** folder.
+5. Minimize the **storage accounts** on the left side, then switch to **Workspace** tab. Cxpand the **Databases** tree, expand **SQLPool01 (SQL pool)**, and finally expand **Tables** folder.
 
 ![](media/2020-04-11_11-29-17.png)
 
@@ -234,7 +234,7 @@ One of the options to load data into Azure Synapse to be used in SQL queries is 
 
 ![](media/2020-04-10_17-06-50.png)
 
-2. Select **Run** and observe the **No results found** message.
+2. Select **Run** and observe the **No results found** message in the **Messages** tab.
 
 ![](media/2020-04-11_11-31-19.png)
 
@@ -254,6 +254,8 @@ During the next couple of tasks, you will have a chance to look at how to develo
 
 In this task, we will run queries against 30 Billion records and create some early charts to get a feeling of how the data looks.
 
+> **Note:** If you did not opt-in to load 30 billion records into the database during environment preparation steps described in the hands-on lab preparation guide your queries will result in 3.4 million records.
+
 1. Select **Develop** in the various tabs available in the **Develop** hub workspace and discover the environment. 
 
 ![](media/2020-04-10_17-09-25.png)
@@ -266,7 +268,7 @@ In this task, we will run queries against 30 Billion records and create some ear
 
 ![](media/2020-04-11_11-35-09.png)
 
-`SELECT COUNT_BIG(1) as TotalCount  FROM wwi.Sales(nolock)`
+`SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Sales(nolock)`
 
 4. Select **Run** and observe the results (30 Billion).
 
@@ -303,8 +305,6 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 1. Select the **Develop** hub from the Synapse workspace. Next, select and expand the **Notebooks** option.
 
-![](media/2020-04-10_17-17-52.png)
-
 2. Select the **1. Product Recommendations** notebook, which will open the notebook.
 
 ![](media/2020-04-10_17-18-41.png)
@@ -325,17 +325,11 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 ![](media/05-47.png)
 
-See code in **cell 26**, but **DO NOT** execute any code.
-
-![](media/05-48.png)
-
 ### Task 4: AutoML in Azure Synapse Analytics 
 
 Automated machine learning, also referred to as automated ML or AutoML, is the process of automating the time consuming, iterative tasks of machine learning model development. It allows data scientists, analysts, and developers to build ML models with high scale, efficiency, and productivity, all while sustaining model quality. In this task, we will look at a notebook to learn how AutoML in Azure Synapse Analytics works.
 
 1. Select **Develop** from the Synapse workspace
-
-![](media/2020-04-10_17-17-52.png)
 
 2. Expand **Notebooks** section and select **2 AutoML Customer Forecasting** Notebook.
 
@@ -349,11 +343,11 @@ Automated machine learning, also referred to as automated ML or AutoML, is the p
 
 ![](media/05-52.png)
 
-5. Scroll down to see the code in **cell 38**.
+5. Scroll down to see the code in **cell 39**.
 
 ![](media/05-53.png)
 
-6. Scroll down to see **cell 41**.
+6. Scroll down to see **cell 42**.
 
 ![](media/05-54.png)
 
@@ -379,8 +373,6 @@ Let's explore how we can access PowerBI reports in the Synapse Analytics workspa
 
 3. Select **QnA** tab 
 
-![](media/2020-04-11_11-43-15.png)
-
 4. In the **Q&A** box, type **profit by country by product category as treemap**
 
 ![](media/2020-04-11_11-44-04.png)
@@ -395,7 +387,7 @@ In this task, we will modify a report using Ad-Hoc queries as its underlying dat
 
 ![](media/2020-04-10_17-29-53.png)
 
-2. Select the empty area in the report canvas. Next, from the **Fields** list select or drag and drop **CustomerId** from **wwi AllSales** table to the report canvas.
+2. Select **Page 1** from the bottom tabs, then select the empty area in the report canvas. Next, from the **Fields** list select or drag and drop **CustomerId** from **wwi Sales** table to the report canvas.
 
 ![](media/2020-04-11_11-45-25.png)
 
