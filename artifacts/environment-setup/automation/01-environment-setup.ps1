@@ -96,8 +96,11 @@ if(Get-AzStorageContainer -Name "twitterdata" -Context $dataLakeContext -ErrorAc
     {  
         Write-Information "twitterdata container does not exist."   
        $dataLakeContainer = New-AzStorageContainer -Name "twitterdata" -Permission Container -Context $dataLakeContext  
-    }       
-$destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl
+    }     
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(365)  
+$destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 
 $azCopyLink = (curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location
 Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
