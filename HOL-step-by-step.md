@@ -214,8 +214,6 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 3. Select **Run**.
 
-**TODO 2** Currently not working.
-
 ![](media/2020-04-11_11-26-50.png)
 
 4. Select **Chart**
