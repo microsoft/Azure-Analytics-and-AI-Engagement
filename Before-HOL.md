@@ -130,7 +130,13 @@ When the `$Load30Billion` variable is set to `1` the script will scale your SQLP
 
     > **Note**: if you experience script failures, it may be beneficial to highlight only the lines preceding the `$InformationPreference = "Continue"` line and run them separately from the rest of the script. Some people have experienced the console not stopping for user input when importing from the PowerShell Gallery.
 
-6. Open **artifacts/environment-setup/automation/02-powerbi-setup.ps1**. Repeat steps from 3 to 5 to run the script file.
+6. Open **artifacts/environment-setup/automation/02-powerbi-setup.ps1**. 
+
+7. Get a new Powershell terminal by selecting the **+** button in Visual Studio's Terminal window.
+
+![The new terminal button is selected in Visual Studio Code Terminal window.](media/getting-new-powershell-terminal.png)
+
+8. Repeat step 5 for the current **02-powerbi-setup.ps1** file and execute it.
 
 7. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials. 
 
@@ -142,7 +148,7 @@ When the `$Load30Billion` variable is set to `1` the script will scale your SQLP
 
 ![The settings button on the Power BI portal clicked and the Settings selection on the context menu selected.](media/powerbi_settings_menu.png)
 
-9. Select **datasets* tab to access the list of datasets available. Then select `2-Billion Rows Demo` dataset to access its settings. From the settings page open **Data source credentials** and select **Edit credentials**.
+9. Select **datasets** tab to access the list of datasets available. Then select `2-Billion Rows Demo` dataset to access its settings. From the settings page open **Data source credentials** and select **Edit credentials**.
 
 ![The datasets tab is selected. From the list of datasets 2-Billion Rows Demo is selected. Edit credentials will be selected next. ](media/powerbi_datasource_credentials.png)
 
