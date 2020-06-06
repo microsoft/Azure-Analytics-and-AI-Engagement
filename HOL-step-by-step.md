@@ -509,6 +509,6 @@ During the next couple of tasks we will look at various reports that are linked 
 
 ![Product recommendations report is shown. Cocktail Glassess is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-cocktail.png)
 
-2. Select **Running Shoes** in **Product Category** filter.
+3. Select **Running Shoes** in **Product Category** filter.
 
 ![Product recommendations report is shown. Running Shoes is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-shoes.png)
