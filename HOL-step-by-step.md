@@ -23,7 +23,7 @@
   - [Exercise 3: Power BI reporting within the Synapse Analytics workspace](#Exercise-3-Power-BI-reporting-within-the-Synapse-Analytics-workspace)
     - [Task 1: Accessing PowerBI reports in Synapse Analytics workspace](#Task-1-Accessing-PowerBI-reports-in-Synapse-Analytics-workspace)
     - [Task 2: Ad Hoc Reporting in Azure Synapse Analytics](#Task-2-Ad-Hoc-Reporting-in-Azure-Synapse-Analytics)
-  - [Exercise 4: Visualizing the data using the Power BI dashboard](#Visualizing-the-data-using-the-Power-BI-dashboard)
+  - [Exercise 4: Visualizing the data using the Power BI dashboard](#exercise-4-visualizing-the-data-using-the-power-bi-dashboard)
     - [Task 1: Access Data and AI Demo Dashboard](#Task-1-Access-Data-and-AI-Demo-Dashboard)
     - [Task 2: Campaign Analytics Report](#Task-2-Campaign-Analytics-Report)
     - [Task 3: Realtime Twitter Analytics](#Task-3-Realtime-Twitter-Analytics)
