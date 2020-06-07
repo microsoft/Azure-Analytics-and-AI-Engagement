@@ -33,7 +33,8 @@ if($existingPowerBIWorkSpace -eq $null){
 
 Write-Information "Uploading PowerBI Reports"
 New-PowerBIReport -Path ".\artifacts\exports\powerbi\1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
-$newReport = New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+New-PowerBIReport -Path ".\artifacts\exports\powerbi\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+New-PowerBIReport -Path ".\artifacts\exports\powerbi\(Phase 2) CDP Vision Demo v1.pbix" -Name "Phase 2 CDP Vision Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
 
 # Synapse Linked Service for PowerBI
 $clientId = $TokenGeneratorClientId       # READ FROM FILE
