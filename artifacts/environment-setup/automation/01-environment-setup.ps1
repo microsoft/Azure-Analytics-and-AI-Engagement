@@ -160,7 +160,7 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"category"}} 
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productcampaign"}} , @{Name = "TABLE_NAME"; Expression = {"ProdChamp"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"websitesocialanalytics"}} , @{Name = "TABLE_NAME"; Expression = {"WebsiteSocialAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dbo.WebsiteSocialAnalytics"}} , @{Name = "TABLE_NAME"; Expression = {"WebsiteSocialAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"campaign"}} , @{Name = "TABLE_NAME"; Expression = {"Campaigns"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
@@ -172,13 +172,13 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"customervisi
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"financesale"}} , @{Name = "TABLE_NAME"; Expression = {"FinanceSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"locationanalytics"}} , @{Name = "TABLE_NAME"; Expression = {"LocationAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dbo.LocationAnalytics"}} , @{Name = "TABLE_NAME"; Expression = {"LocationAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productlink2"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink2"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productrecommendation"}} , @{Name = "TABLE_NAME"; Expression = {"ProductRecommendations"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"brandawareness"}} , @{Name = "TABLE_NAME"; Expression = {"BrandAwareness"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dbo.BrandAwareness"}} , @{Name = "TABLE_NAME"; Expression = {"BrandAwareness"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productlink"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
@@ -196,7 +196,7 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"bookconsumpt
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"emailanalytics"}} , @{Name = "TABLE_NAME"; Expression = {"EmailAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dimdate"}} , @{Name = "TABLE_NAME"; Expression = {"DimDate"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dbo.DimDate"}} , @{Name = "TABLE_NAME"; Expression = {"DimDate"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"popularity"}} , @{Name = "TABLE_NAME"; Expression = {"Popularity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
