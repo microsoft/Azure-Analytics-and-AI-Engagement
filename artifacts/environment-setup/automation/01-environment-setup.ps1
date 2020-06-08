@@ -176,7 +176,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"locationanal
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productlink2"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink2"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productrecommendation"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink2"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"

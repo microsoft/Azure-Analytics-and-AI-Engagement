@@ -463,3 +463,18 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[ProductRecommendations]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ProductRecommendations]
+
+CREATE TABLE [dbo].[ProductRecommendations]
+( 
+	[Product] [nvarchar](4000)  NULL,
+	[Recommeded Product] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
