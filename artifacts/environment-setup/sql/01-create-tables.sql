@@ -592,3 +592,23 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[FPA]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[FPA]
+
+CREATE TABLE [dbo].[FPA]
+( 
+	[Fiscal Year] [varchar](5000)  NULL,
+	[Fiscal Quarter] [varchar](5000)  NULL,
+	[Fiscal Month] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Forecast] [varchar](5000)  NULL,
+	[Budget] [varchar](5000)  NULL,
+	[Actual] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
