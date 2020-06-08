@@ -353,3 +353,24 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[CustomerVisitF]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[CustomerVisitF]
+
+CREATE TABLE [dbo].[CustomerVisitF]
+( 
+	[Date] [nvarchar](4000)  NULL,
+	[Gaming] [nvarchar](4000)  NULL,
+	[Kids] [nvarchar](4000)  NULL,
+	[Mens] [nvarchar](4000)  NULL,
+	[Phone_and_GPS] [nvarchar](4000)  NULL,
+	[Womens] [nvarchar](4000)  NULL,
+	[Accessories] [nvarchar](4000)  NULL,
+	[Entertainment] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
