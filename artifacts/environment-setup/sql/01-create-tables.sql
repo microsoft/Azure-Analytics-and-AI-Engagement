@@ -245,3 +245,40 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[WebsiteSocialAnalytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[WebsiteSocialAnalytics]
+
+CREATE TABLE [dbo].[WebsiteSocialAnalytics]
+( 
+	[Country] [varchar](50)  NULL,
+	[Product_Category] [varchar](50)  NULL,
+	[Product] [varchar](50)  NULL,
+	[Channel] [varchar](50)  NULL,
+	[Gender] [varchar](50)  NULL,
+	[Sessions] [int]  NULL,
+	[Device_Category] [varchar](50)  NULL,
+	[Sources] [varchar](50)  NULL,
+	[Conversations] [varchar](50)  NULL,
+	[Page] [varchar](50)  NULL,
+	[Visits] [int]  NULL,
+	[Unique_Visitors] [int]  NULL,
+	[Browser] [varchar](50)  NULL,
+	[Sentiment] [varchar](50)  NULL,
+	[Duration_min] [varchar](50)  NULL,
+	[Region] [varchar](50)  NULL,
+	[Customer_Segment] [varchar](50)  NULL,
+	[Daily_Users] [int]  NULL,
+	[Conversion_Rate] [int]  NULL,
+	[Return_Visitors] [int]  NULL,
+	[Tweets] [int]  NULL,
+	[Retweets] [int]  NULL,
+	[Hashtags] [varchar](50)  NULL,
+	[Campaign_Name] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO

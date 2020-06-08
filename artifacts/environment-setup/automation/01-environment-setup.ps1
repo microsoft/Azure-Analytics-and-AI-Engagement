@@ -160,8 +160,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"category"}} 
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productcampaign"}} , @{Name = "TABLE_NAME"; Expression = {"ProdChamp"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"websitesocialanalytics"}} , @{Name = "TABLE_NAME"; Expression = {"WebsiteSocialAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
