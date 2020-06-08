@@ -478,3 +478,29 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[BrandAwareness]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[BrandAwareness]
+
+CREATE TABLE [dbo].[BrandAwareness]
+( 
+	[Region] [varchar](50)  NOT NULL,
+	[Country] [varchar](50)  NOT NULL,
+	[Product_Category] [varchar](50)  NOT NULL,
+	[Department] [varchar](50)  NOT NULL,
+	[Gender] [varchar](50)  NOT NULL,
+	[Customer_Segment] [varchar](50)  NOT NULL,
+	[Date] [datetime2](7)  NOT NULL,
+	[Popularity] [float]  NOT NULL,
+	[Engagement] [float]  NOT NULL,
+	[Acquisition] [float]  NOT NULL,
+	[Loyalty] [float]  NOT NULL,
+	[Conversion] [float]  NOT NULL,
+	[Revenue] [int]  NOT NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
