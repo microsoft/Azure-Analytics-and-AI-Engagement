@@ -758,3 +758,36 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[Popularity]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[Popularity]
+
+CREATE TABLE [dbo].[Popularity]
+( 
+	[BookID] [float]  NULL,
+	[Rank] [float]  NULL,
+	[Country] [nvarchar](255)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[FinalRevenue]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[FinalRevenue]
+
+CREATE TABLE [dbo].[FinalRevenue]
+( 
+	[Month] [nvarchar](4000)  NULL,
+	[Order] [nvarchar](4000)  NULL,
+	[Revenue] [nvarchar](4000)  NULL,
+	[Quarter] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
