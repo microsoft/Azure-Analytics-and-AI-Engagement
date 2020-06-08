@@ -731,4 +731,30 @@ WITH
 	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
 )
+
+IF OBJECT_ID(N'[dbo].[DimDate]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[DimDate]
+
+CREATE TABLE [dbo].[DimDate]
+( 
+	[Date] [datetime]  NOT NULL,
+	[Day Number] [int]  NOT NULL,
+	[Day] [nvarchar](10)  NOT NULL,
+	[Month] [nvarchar](10)  NOT NULL,
+	[Short Month] [nvarchar](3)  NOT NULL,
+	[Calendar Month Number] [int]  NOT NULL,
+	[Calendar Month Label] [nvarchar](20)  NOT NULL,
+	[Calendar Year] [int]  NOT NULL,
+	[Calendar Year Label] [nvarchar](10)  NOT NULL,
+	[Fiscal Month Number] [int]  NOT NULL,
+	[Fiscal Month Label] [nvarchar](20)  NOT NULL,
+	[Fiscal Year] [int]  NOT NULL,
+	[Fiscal Year Label] [nvarchar](10)  NOT NULL,
+	[ISO Week Number] [int]  NOT NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 GO
