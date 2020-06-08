@@ -404,3 +404,47 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[LocationAnalytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[LocationAnalytics]
+
+
+CREATE TABLE [dbo].[LocationAnalytics]
+( 
+	[Day] [datetime2](7)  NOT NULL,
+	[Region] [varchar](50)  NOT NULL,
+	[Product_Category] [varchar](50)  NOT NULL,
+	[Visit_Start] [float]  NOT NULL,
+	[Visit_End] [float]  NOT NULL,
+	[Hour] [int]  NOT NULL,
+	[Visitor_ID] [varchar](50)  NULL,
+	[First_Visit] [bit]  NOT NULL,
+	[Duration] [int]  NOT NULL,
+	[Minutes] [varchar](50)  NOT NULL,
+	[Visit_Type] [varchar](50)  NOT NULL,
+	[Country] [varchar](50)  NOT NULL,
+	[Department] [varchar](50)  NOT NULL,
+	[Gender] [varchar](50)  NOT NULL,
+	[Customer_Segment] [varchar](50)  NOT NULL,
+	[Date] [varchar](50)  NOT NULL,
+	[Stores] [int]  NOT NULL,
+	[Engagement] [varchar](50)  NOT NULL,
+	[Acquisition] [varchar](50)  NOT NULL,
+	[Impressions] [varchar](50)  NOT NULL,
+	[Conversion] [varchar](50)  NOT NULL,
+	[Revenue] [varchar](50)  NULL,
+	[WeekDay] [varchar](50)  NOT NULL,
+	[SortByVisitType] [varchar](50)  NOT NULL,
+	[Engaged_Visitors] [varchar](50)  NOT NULL,
+	[Week_Number] [varchar](50)  NOT NULL,
+	[Target_Visitors] [varchar](50)  NOT NULL,
+	[Variance] [varchar](50)  NOT NULL,
+	[Column28] [varchar](1)  NULL,
+	[Column29] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
