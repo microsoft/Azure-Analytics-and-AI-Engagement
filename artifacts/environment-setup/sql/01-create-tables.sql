@@ -577,3 +577,18 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[SalesVsExpense]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[SalesVsExpense]
+
+CREATE TABLE [dbo].[SalesVsExpense]
+( 
+	[Accounting Head] [varchar](5000)  NULL,
+	[Amount] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
