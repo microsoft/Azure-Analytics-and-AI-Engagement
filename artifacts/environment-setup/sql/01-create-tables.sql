@@ -791,3 +791,27 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[ConflictofInterest]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ConflictofInterest]
+
+CREATE TABLE [dbo].[ConflictofInterest]
+( 
+	[FiscalYear-Quarter] [varchar](5000)  NULL,
+	[Fiscal Year] [varchar](5000)  NULL,
+	[Fiscal Quarter] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL,
+	[Required] [varchar](5000)  NULL,
+	[Complete] [varchar](5000)  NULL,
+	[Survey NC] [varchar](5000)  NULL,
+	[Incomplete] [varchar](5000)  NULL,
+	[Function Summary] [varchar](5000)  NULL,
+	[Complete %] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
