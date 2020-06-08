@@ -374,3 +374,33 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[FinanceSales]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[FinanceSales]
+
+CREATE TABLE [dbo].[FinanceSales]
+( 
+	[Fiscal Year] [nvarchar](4000)  NULL,
+	[Fiscal Quarter] [nvarchar](4000)  NULL,
+	[Fiscal Month] [nvarchar](4000)  NULL,
+	[Country] [nvarchar](4000)  NULL,
+	[Region] [nvarchar](4000)  NULL,
+	[Customer Segment] [nvarchar](4000)  NULL,
+	[Channel] [nvarchar](4000)  NULL,
+	[Product] [nvarchar](4000)  NULL,
+	[ProductCategory] [nvarchar](4000)  NULL,
+	[Gross Sales] [nvarchar](4000)  NULL,
+	[Budget] [nvarchar](4000)  NULL,
+	[Forecast] [nvarchar](4000)  NULL,
+	[Half Yearly] [nvarchar](4000)  NULL,
+	[VTB ($)] [nvarchar](4000)  NULL,
+	[VTB (%)] [nvarchar](4000)  NULL,
+	[link] [nvarchar](4000)  NULL,
+	[description] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
