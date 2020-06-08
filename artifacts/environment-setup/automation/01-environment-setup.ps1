@@ -140,25 +140,26 @@ $result
 Write-Information "Loading data"
 
 $dataTableList = New-Object System.Collections.ArrayList
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dimcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"Dim_Customer"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"dimcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"Dim_Customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"millennialcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"MillennialCustomers"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"millennialcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"MillennialCustomers"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"sale"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"sale"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"product"}} , @{Name = "TABLE_NAME"; Expression = {"Products"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"product"}} , @{Name = "TABLE_NAME"; Expression = {"Products"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitteranalytics"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterAnalytics"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitteranalytics"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterAnalytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"10millionrows"}} , @{Name = "TABLE_NAME"; Expression = {"IDS"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"10millionrows"}} , @{Name = "TABLE_NAME"; Expression = {"IDS"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitterrawdata"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterRawData"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"twitterrawdata"}} , @{Name = "TABLE_NAME"; Expression = {"TwitterRawData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"departmentvisitcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"departmentvisitcustomer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"category"}} , @{Name = "TABLE_NAME"; Expression = {"Category"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"category"}} , @{Name = "TABLE_NAME"; Expression = {"Category"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productcampaign"}} , @{Name = "TABLE_NAME"; Expression = {"ProdChamp"}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"productcampaign"}} , @{Name = "TABLE_NAME"; Expression = {"ProdChamp"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {1}}
+$dataTableList.Add($temp)
 $dataTableList.Add($temp)
 
 
@@ -167,6 +168,7 @@ foreach ($dataTableLoad in $dataTableList) {
         $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-load-csv" -Parameters @{
                 CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
                 TABLE_NAME = $dataTableLoad.TABLE_NAME
+                DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
          }
         $result
         Write-Information "Data for $($dataTableLoad.TABLE_NAME) loaded."
