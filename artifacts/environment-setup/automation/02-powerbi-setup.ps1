@@ -73,12 +73,26 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Write-Information "Setting PowerBI Database Connection"
 
-$foundId = (Get-PowerBIDataset -WorkspaceId $newPowerBIWorkSpace.id).where{( $_.Name -like '2-Billion Rows Demo' )}.id
+$powerBIReports = [ordered]@{
+    "2-Billion Rows Demo" = @{ 
+            Category = "reports"
+            Valid = $false
+    }
+    "Phase 2 CDP Vision Demo" = @{ 
+            Category = "reports"
+            Valid = $false
+    }
+}
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$($templatesPath)/powerbi_dataset_connection.json"
-$powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
 
-#https://docs.microsoft.com/en-us/rest/api/power-bi/datasets/updatedatasources
-Invoke-PowerBIRestMethod -Url "groups/$($newPowerBIWorkSpace.id)/datasets/$($foundId)/Default.UpdateDatasources" -Method Post -Body $powerNIDataSetConnectionUpdateRequest
+foreach ($powerBIReportName in $powerBIReports.Keys) {
+    Write-Information "Setting database connection for $($powerBIReportName)"
+    $foundId = (Get-PowerBIDataset -WorkspaceId $newPowerBIWorkSpace.id).where{( $_.Name -like $powerBIReportName )}.id
+    $powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+    
+    #https://docs.microsoft.com/en-us/rest/api/power-bi/datasets/updatedatasources
+    Invoke-PowerBIRestMethod -Url "groups/$($newPowerBIWorkSpace.id)/datasets/$($foundId)/Default.UpdateDatasources" -Method Post -Body $powerNIDataSetConnectionUpdateRequest
+}
 
 Disconnect-PowerBIServiceAccount
