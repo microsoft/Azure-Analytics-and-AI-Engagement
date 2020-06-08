@@ -504,3 +504,43 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[OperatingExpenses]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[OperatingExpenses]
+
+CREATE TABLE [dbo].[OperatingExpenses]
+( 
+	[Class] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Function Summary] [varchar](5000)  NULL,
+	[Line Item] [varchar](5000)  NULL,
+	[P&L Classification] [varchar](5000)  NULL,
+	[VTB (%)] [varchar](5000)  NULL,
+	[Actual ($)] [varchar](5000)  NULL,
+	[Budget ($)] [varchar](5000)  NULL,
+	[VTB ($)] [varchar](5000)  NULL,
+	[YoY ($)] [varchar](5000)  NULL,
+	[Channel] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[ProductLink]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ProductLink]
+
+CREATE TABLE [dbo].[ProductLink]
+( 
+	[Product] [nvarchar](4000)  NULL,
+	[Link] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
