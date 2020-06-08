@@ -698,3 +698,37 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[EmailAnalytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[EmailAnalytics]
+
+CREATE TABLE [dbo].[EmailAnalytics]
+( 
+	[Recency] [varchar](50)  NOT NULL,
+	[History_Segment_ID] [varchar](50)  NOT NULL,
+	[History_Segment] [varchar](50)  NOT NULL,
+	[History] [varchar](50)  NOT NULL,
+	[Men] [varchar](50)  NOT NULL,
+	[Women] [varchar](50)  NOT NULL,
+	[Zip_Code] [varchar](50)  NOT NULL,
+	[Newbie] [varchar](50)  NOT NULL,
+	[Channel] [varchar](50)  NOT NULL,
+	[Segment] [varchar](50)  NOT NULL,
+	[Opens] [varchar](50)  NOT NULL,
+	[Clicks] [varchar](50)  NOT NULL,
+	[Revenue] [varchar](50)  NOT NULL,
+	[Category_ID] [varchar](50)  NOT NULL,
+	[Product_Category] [varchar](50)  NOT NULL,
+	[Date] [datetime2](7)  NOT NULL,
+	[Campaign] [varchar](50)  NOT NULL,
+	[Region] [varchar](50)  NOT NULL,
+	[Customer_Segment] [varchar](50)  NOT NULL,
+	[Gender] [varchar](50)  NOT NULL,
+	[Email_Status] [varchar](50)  NOT NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
