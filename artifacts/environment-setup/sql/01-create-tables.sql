@@ -849,4 +849,34 @@ WITH
 )
 GO
 
+IF OBJECT_ID(N'[dbo].[SiteSecurity]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[SiteSecurity]
+
+CREATE TABLE [dbo].[SiteSecurity]
+( 
+	[FiscalQuarter] [varchar](5000)  NULL,
+	[FiscalYear] [varchar](5000)  NULL,
+	[FiscalMonth] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL,
+	[Phase] [varchar](5000)  NULL,
+	[Total Vulnerabilities] [varchar](5000)  NULL,
+	[Total Open Vulnerabilities] [varchar](5000)  NULL,
+	[Status] [varchar](5000)  NULL,
+	[Data Classification] [varchar](5000)  NULL,
+	[App Scan High Risk] [varchar](5000)  NULL,
+	[App Scan Low Risk] [varchar](5000)  NULL,
+	[Host Scan high Risk] [varchar](5000)  NULL,
+	[Host Scan Low Risk] [varchar](5000)  NULL,
+	[Active Sites Not Scanned] [varchar](5000)  NULL,
+	[Site Status] [varchar](5000)  NULL,
+	[Total Vuln] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
 GO
