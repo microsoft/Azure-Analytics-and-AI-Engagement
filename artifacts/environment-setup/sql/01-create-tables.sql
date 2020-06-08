@@ -612,3 +612,19 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[Country]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[Country]
+
+CREATE TABLE [dbo].[Country]
+( 
+	[ID] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
