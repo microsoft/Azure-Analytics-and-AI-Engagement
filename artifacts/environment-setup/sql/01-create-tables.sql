@@ -544,3 +544,36 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[SalesMaster]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[SalesMaster]
+
+CREATE TABLE [dbo].[SalesMaster]
+( 
+	[Fiscal Year] [varchar](5000)  NULL,
+	[Fiscal Quarter] [varchar](5000)  NULL,
+	[Fiscal Month] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL,
+	[Customer Segment] [varchar](5000)  NULL,
+	[Channel] [varchar](5000)  NULL,
+	[Product] [varchar](5000)  NULL,
+	[Product Category] [varchar](5000)  NULL,
+	[Gross Sales] [varchar](5000)  NULL,
+	[Budget] [varchar](5000)  NULL,
+	[Forecast] [varchar](5000)  NULL,
+	[Discount] [varchar](5000)  NULL,
+	[Net Sales] [varchar](5000)  NULL,
+	[COGS] [varchar](5000)  NULL,
+	[Gross Profit] [varchar](5000)  NULL,
+	[Half Yearly] [varchar](5000)  NULL,
+	[VTB ($)] [varchar](5000)  NULL,
+	[VTB (%)] [varchar](5000)  NULL,
+	[agegroup] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
