@@ -680,3 +680,21 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[BookConsumption]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[BookConsumption]
+
+CREATE TABLE [dbo].[BookConsumption]
+( 
+	[BookID] [float]  NULL,
+	[Clicks] [float]  NULL,
+	[Downloads] [float]  NULL,
+	[Time Spent] [float]  NULL,
+	[Country] [varchar](255)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
