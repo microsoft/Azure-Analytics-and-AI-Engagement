@@ -879,4 +879,18 @@ WITH
 )
 GO
 
+IF OBJECT_ID(N'[dbo].[BookList]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[BookList]
+
+CREATE TABLE [dbo].[BookList]
+( 
+	[ID] [float]  NOT NULL,
+	[CategoryID] [float]  NULL,
+	[BookList] [varchar](255)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 GO
