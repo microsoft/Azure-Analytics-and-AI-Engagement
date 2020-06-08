@@ -408,7 +408,6 @@ GO
 IF OBJECT_ID(N'[dbo].[LocationAnalytics]', N'U') IS NOT NULL   
 DROP TABLE [dbo].[LocationAnalytics]
 
-
 CREATE TABLE [dbo].[LocationAnalytics]
 ( 
 	[Day] [datetime2](7)  NOT NULL,
@@ -441,6 +440,22 @@ CREATE TABLE [dbo].[LocationAnalytics]
 	[Variance] [varchar](50)  NOT NULL,
 	[Column28] [varchar](1)  NULL,
 	[Column29] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[ProductLink2]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ProductLink2]
+
+CREATE TABLE [dbo].[ProductLink2]
+( 
+	[Product] [nvarchar](4000)  NULL,
+	[Link] [nvarchar](4000)  NULL,
+	[ReadOnlyLink] [nvarchar](4000)  NULL
 )
 WITH
 (
