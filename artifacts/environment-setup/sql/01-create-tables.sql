@@ -282,3 +282,28 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[Campaigns]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[Campaigns]
+
+CREATE TABLE [dbo].[Campaigns]
+( 
+	[Campaigns_ID] [int]  NOT NULL,
+	[CampaignID] [varchar](100)  NULL,
+	[CampaignName] [varchar](100)  NULL,
+	[SubCampaignID] [varchar](100)  NULL,
+	[FullAd_FileName] [varchar](250)  NULL,
+	[HalfAd_FileName] [varchar](250)  NULL,
+	[Logo_FileName] [varchar](250)  NULL,
+	[SoundFile_FileName] [varchar](250)  NULL,
+	[FullAd] [varbinary](500)  NULL,
+	[HalfAd] [varbinary](500)  NULL,
+	[Logo] [varbinary](500)  NULL,
+	[SoundFile] [varbinary](500)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
