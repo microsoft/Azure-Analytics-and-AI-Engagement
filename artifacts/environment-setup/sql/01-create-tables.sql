@@ -628,3 +628,36 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[CampaignAnalytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[CampaignAnalytics]
+
+CREATE TABLE [dbo].[CampaignAnalytics]
+( 
+	[Region] [varchar](50)  NOT NULL,
+	[Country] [varchar](50)  NOT NULL,
+	[Product_Category] [varchar](50)  NOT NULL,
+	[Campaign_ID] [varchar](50)  NOT NULL,
+	[Campaign_Name] [varchar](50)  NOT NULL,
+	[Qualification] [varchar](50)  NOT NULL,
+	[Qualification_Number] [varchar](50)  NOT NULL,
+	[Response_Status] [varchar](50)  NOT NULL,
+	[Responses] [int]  NOT NULL,
+	[Cost] [int]  NOT NULL,
+	[Revenue] [varchar](50)  NOT NULL,
+	[ROI] [varchar](50)  NOT NULL,
+	[Lead_Generation] [int]  NOT NULL,
+	[Revenue_Target] [varchar](50)  NOT NULL,
+	[Campaign_Tactic] [varchar](50)  NOT NULL,
+	[Customer_Segment] [varchar](50)  NOT NULL,
+	[Status] [varchar](50)  NOT NULL,
+	[Profit] [varchar](50)  NOT NULL,
+	[Marketing_Cost] [varchar](50)  NOT NULL,
+	[Revenue_Varriance] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
