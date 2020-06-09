@@ -6,7 +6,9 @@ $InformationPreference = "Continue"
 #
 # TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
 # This is for Spektra Environment.
-if(Test-Path C:\LabFiles\AzureCreds.ps1){
+$IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
+
+if($IsCloudLabs){
         Remove-Module solliance-synapse-automation
         Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
 
@@ -134,12 +136,13 @@ $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 
-$azCopyLink = (curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location
-Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
-Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
-
-$azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
-$Env:Path += ";"+ $azCopyCommand
+if($IsCloudLabs) {
+        $azCopyLink = (curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location
+        Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
+        Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
+        $azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
+        $Env:Path += ";"+ $azCopyCommand
+}
 
 $AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
