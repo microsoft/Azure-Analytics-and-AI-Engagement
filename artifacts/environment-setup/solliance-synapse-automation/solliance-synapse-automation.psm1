@@ -805,6 +805,45 @@ function GetCSRF($token, $azurehost, $msTime)
     return $sig;
 }
 
+function CallJavascript($message, $secret)
+{
+    $url = "https://ciprian-hash.azurewebsites.net/hash.html"
+ 
+    $ie = New-Object -comobject InternetExplorer.Application
+    $ie.visible = $true;
+
+    $ie.Navigate($url)
+    $ie.visible = $false;
+ 
+    while($ie.Busy) 
+    {
+        start-sleep -m 100
+    } 
+
+    $inputs = $ie.Document.body.getElementsByTagName("input");
+
+    $msgInput = $inputs | where {$_.name -eq "msg"}
+    $secretInput = $inputs | where {$_.name -eq "secret"}
+    $outputInput = $inputs | where {$_.name -eq "output"}
+
+    $buttons = $ie.Document.body.getElementsByTagName("button");
+    $btnGo = $buttons | where {$_.name -eq "btnGo"}
+ 
+    $msgInput.value = $message.replace("`r","\r").replace("`n","\n");
+    $secretInput.value = $secret;
+    $btnGo.click();
+    
+    $ret = $outputInput.value;
+    $ie.quit();
+
+    if (!$ret)
+    {
+        write-host "Error getting CSRF" -ForegroundColor red;
+    }
+ 
+    return $ret;
+}
+
 function Execute-SQLScriptFile {
 
     param(
