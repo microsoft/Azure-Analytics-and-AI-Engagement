@@ -791,6 +791,20 @@ function Execute-SQLQuery {
     return $result
 }
 
+function GetCSRF($token, $azurehost, $msTime)
+{
+    $start = [Datetime]::UtcNow.tostring("yyyy-MM-ddTHH:mm:ssZ");
+    $end = [Datetime]::UtcNow.AddMilliseconds($msTime).tostring("yyyy-MM-ddTHH:mm:ssZ");
+
+    $rawsig = "not-before=$($start)`r`nnot-after=$($end)`r`nauthorization: $($token)`r`nhost: $($azurehost)`r`n";
+
+    $signed = CallJavascript $rawsig $token;
+
+    $sig = "$($signed); not-before=$($start); not-after=$($end); signed-headers=authorization,host"
+
+    return $sig;
+}
+
 function Execute-SQLScriptFile {
 
     param(
