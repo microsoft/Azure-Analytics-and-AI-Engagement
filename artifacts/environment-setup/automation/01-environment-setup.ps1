@@ -1,6 +1,3 @@
-Remove-Module solliance-synapse-automation
-Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
-
 $InformationPreference = "Continue"
 
 # These need to be run only if the Az modules are not yet installed
@@ -10,6 +7,9 @@ $InformationPreference = "Continue"
 # TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
 # This is for Spektra Environment.
 if(Test-Path C:\LabFiles\AzureCreds.ps1){
+        Remove-Module solliance-synapse-automation
+        Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
+
         . C:\LabFiles\AzureCreds.ps1
 
         $userName = $AzureUserName                # READ FROM FILE
@@ -28,6 +28,8 @@ if(Test-Path C:\LabFiles\AzureCreds.ps1){
         $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
 
 } else {
+        Import-Module ".\solliance-synapse-automation"
+
         #Different approach to run automation in Cloud Shell
         $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
         if($subs.GetType().IsArray -and $subs.length -gt 1){
