@@ -27,6 +27,11 @@ if(Test-Path C:\LabFiles\AzureCreds.ps1){
         $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
         $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
 
+        $templatesPath = ".\artifacts\environment-setup\templates"
+        $datasetsPath = ".\artifacts\environment-setup\datasets"
+        $dataflowsPath = ".\artifacts\environment-setup\dataflows"
+        $pipelinesPath = ".\artifacts\environment-setup\pipelines"
+        $sqlScriptsPath = ".\artifacts\environment-setup\sql"
 } else {
         Import-Module "..\solliance-synapse-automation"
 
@@ -47,6 +52,12 @@ if(Test-Path C:\LabFiles\AzureCreds.ps1){
         $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
         $sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
         $sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
+
+        $templatesPath = "..\templates"
+        $datasetsPath = "..\datasets"
+        $dataflowsPath = "..\dataflows"
+        $pipelinesPath = "..\pipelines"
+        $sqlScriptsPath = "..\sql"
 }
 
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
@@ -55,11 +66,6 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $global:logindomain = (Get-AzContext).Tenant.Id
 
-$templatesPath = ".\artifacts\environment-setup\templates"
-$datasetsPath = ".\artifacts\environment-setup\datasets"
-$dataflowsPath = ".\artifacts\environment-setup\dataflows"
-$pipelinesPath = ".\artifacts\environment-setup\pipelines"
-$sqlScriptsPath = ".\artifacts\environment-setup\sql"
 $workspaceName = "asaexpworkspace$($uniqueId)"
 $dataLakeAccountName = "asaexpdatalake$($uniqueId)"
 $keyVaultName = "asaexpkeyvault$($uniqueId)"
