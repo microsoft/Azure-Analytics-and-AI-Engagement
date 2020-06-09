@@ -47,7 +47,7 @@ During the next exercises, you will discover end-to-end analytics solutions with
 
 ## Environment Setup
 
-Refer to the Environment Setup guide before continuing to the lab exercises.
+Refer to the [Before Starting](https://github.com/solliancenet/azure-synapse-wwi-lab/blob/master/Before-Starting.md) guide before continuing to the lab exercises.
 
 ## Accessing Synapse Workspace
 
