@@ -169,7 +169,7 @@ if ($result.properties.status -ne "Online") {
 Write-Information "Create tables in $($sqlPoolName)"
 
 $params = @{ }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params -UseAPI !$IsCloudLabs
+$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params -UseAPI (!$IsCloudLabs)
 $result
 
 Write-Information "Loading data"
@@ -248,7 +248,7 @@ $dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
-        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -UseAPI !$IsCloudLabs -FileName "02-load-csv" -Parameters @{
+        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -UseAPI (!$IsCloudLabs) -FileName "02-load-csv" -Parameters @{
                 CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
                 TABLE_NAME = $dataTableLoad.TABLE_NAME
                 DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
@@ -286,7 +286,7 @@ if($Load30Billion -eq 1)
                 Write-Progress @progressParameters
         
                 $params = @{ }
-                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -UseAPI !$IsCloudLabs -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
+                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -UseAPI (!$IsCloudLabs) -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
                 $result
         
                 $secondsElapsed = (Get-Date) - $start
