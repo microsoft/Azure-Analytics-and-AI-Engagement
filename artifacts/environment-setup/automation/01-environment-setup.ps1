@@ -28,7 +28,7 @@ if(Test-Path C:\LabFiles\AzureCreds.ps1){
         $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
 
 } else {
-        Import-Module ".\solliance-synapse-automation"
+        Import-Module "..\solliance-synapse-automation"
 
         #Different approach to run automation in Cloud Shell
         $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
