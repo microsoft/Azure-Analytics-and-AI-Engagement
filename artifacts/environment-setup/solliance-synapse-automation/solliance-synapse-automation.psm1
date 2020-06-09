@@ -1235,20 +1235,41 @@ function Refresh-Token {
     $TokenType
     )
 
-    if ($TokenType -eq "Synapse") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
-            -Method POST -Body $global:ropcBodySynapse -ContentType "application/x-www-form-urlencoded"
-        $global:synapseToken = $result.access_token
-    } elseif ($TokenType -eq "SynapseSQL") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
-            -Method POST -Body $global:ropcBodySynapseSQL -ContentType "application/x-www-form-urlencoded"
-        $global:synapseSQLToken = $result.access_token
-    } elseif ($TokenType -eq "Management") {
-        $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
-            -Method POST -Body $global:ropcBodyManagement -ContentType "application/x-www-form-urlencoded"
-        $global:managementToken = $result.access_token
+    if(Test-Path C:\LabFiles\AzureCreds.ps1){
+        if ($TokenType -eq "Synapse") {
+            $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
+                -Method POST -Body $global:ropcBodySynapse -ContentType "application/x-www-form-urlencoded"
+            $global:synapseToken = $result.access_token
+        } elseif ($TokenType -eq "SynapseSQL") {
+            $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
+                -Method POST -Body $global:ropcBodySynapseSQL -ContentType "application/x-www-form-urlencoded"
+            $global:synapseSQLToken = $result.access_token
+        } elseif ($TokenType -eq "Management") {
+            $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
+                -Method POST -Body $global:ropcBodyManagement -ContentType "application/x-www-form-urlencoded"
+            $global:managementToken = $result.access_token
+        } else {
+            throw "The token type $($TokenType) is not supported."
+        }
     } else {
-        throw "The token type $($TokenType) is not supported."
+        switch($TokenType) {
+            "Synapse" {
+                $tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+                $global:synapseToken = $tokenValue; 
+                break;
+            }
+            "SynapseSQL" {
+                $tokenValue = ((az account get-access-token --resource https://sql.azuresynapse.net) | ConvertFrom-Json).accessToken
+                $global:synapseSQLToken = $tokenValue; 
+                break;
+            }
+            "Management" {
+                $tokenValue = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
+                $global:managementToken = $tokenValue; 
+                break;
+            }
+            default {throw "The token type $($TokenType) is not supported.";}
+        }
     }
 }
 
