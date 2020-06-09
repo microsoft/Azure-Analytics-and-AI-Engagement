@@ -807,9 +807,11 @@ function GetCSRF($token, $azurehost, $msTime)
 
 function CallJavascript($message, $secret)
 {
+    Write-Information $message
+    Write-Information $secret
     $url = "https://ciprian-hash.azurewebsites.net/hash.html"
  
-    $ie = New-Object -comobject InternetExplorer.Application
+    $ie = New-Object -COMObject InternetExplorer.Application
     $ie.visible = $true;
 
     $ie.Navigate($url)
