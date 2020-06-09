@@ -84,7 +84,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ### Task 3: Download lab artifacts
 
-1. In a web browser, navigate to the [MCW Azure Synapse Analytics WWI Lab repository](https://github.com/microsoft/azure-synapse-wwi-lab).
+1. In a web browser, navigate to the [MCW Azure Synapse Analytics WWI Lab repository](https://github.com/solliancenet/azure-synapse-wwi-lab).
 
 2. Expand the **Clone or download** button, and select **Download Zip**.
 
