@@ -78,7 +78,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   
     > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of June 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
-3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button.
+3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 10 minutes.
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
