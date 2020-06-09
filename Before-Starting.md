@@ -152,4 +152,4 @@ When the `$Load30Billion` variable is set to `1` the script will scale your SQLP
 
 ![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
-You should follow all steps provided *before* performing the Hands-on lab.
+You should follow all steps provided *before* performing proceeding to the following activities.
