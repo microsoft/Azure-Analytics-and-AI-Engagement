@@ -116,11 +116,7 @@ When the `$Load30Billion` variable is set to `1` the script will scale your SQLP
 
     ![The Visual Studio Code terminal toolbar is displayed with the PowerShell Integrated Console item selected.](media/bhol_powershellintegratedselection.png)
 
-4. Change the directory to the **automation** folder.
-
-    ```PowerShell
-    cd '.\artifacts\environment-setup\automation'
-    ```
+4. Navigate to the root folder of your download location.
 
 5. In the editor window, select the entire script (ctrl + a), then right-click and select **Run selection** _OR_ you may press **F8** to run the selection.
 
