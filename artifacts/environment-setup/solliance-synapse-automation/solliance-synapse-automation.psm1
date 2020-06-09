@@ -757,7 +757,6 @@ function Execute-SQLQuery {
 
     $headers = @{ 
         Authorization="Bearer $($synapseSQLToken)"
-        "x-csrf-signature"="..."
     }
 
     if ($ForceReturn) {
@@ -769,6 +768,10 @@ function Execute-SQLQuery {
     }
 
     Ensure-ValidTokens
+
+    $csrf = GetCSRF "Bearer $synapseSQLToken" "$($WorkspaceName).sql.azuresynapse.net:1443" 300000;
+    $headers.add("X-CSRF-Signature", $csrf);
+
     $rawResult = Invoke-WebRequest -Uri $uri -Method POST -Body $SQLQuery -Headers $headers `
         -ContentType "application/x-www-form-urlencoded; charset=UTF-8" -UseBasicParsing
 
