@@ -1,3 +1,11 @@
+function New-PowerBIWorkspace($name)
+{
+    $body = "{`"name`": `"$name`"}";
+    $url = "https://api.powerbi.com/v1.0/myorg/groups";
+    $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerNIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    return $result.id
+}
+
 function Update-PowerBIDataset($wsid, $powerBIReportName, $powerNIDataSetConnectionUpdateRequest)
 {
     Write-Information "Setting database connection for $($powerBIReportName)"

@@ -152,9 +152,9 @@ if (!$azCopyLink)
     $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
 }
 
-Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
-Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
-$azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
+Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
+Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
+$azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
 $Env:Path += ";"+ $azCopyCommand
 
 $AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
@@ -438,6 +438,11 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
 }
 
 $wsid = Get-PowerBIWorkspaceId "asa-exp";
+
+if (!$wsid)
+{
+    $wsid = New-PowerBIWorkspace $name;
+}
 
 Write-Information "Uploading PowerBI Reports"
 
