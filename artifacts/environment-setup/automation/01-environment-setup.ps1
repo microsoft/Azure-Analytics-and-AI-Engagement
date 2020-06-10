@@ -436,11 +436,13 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
-$wsid = Get-PowerBIWorkspaceId "asa-exp";
+$wsname = "asa-exp";
+
+$wsid = Get-PowerBIWorkspaceId $wsname;
 
 if (!$wsid)
 {
-    $wsid = New-PowerBIWorkspace $name;
+    $wsid = New-PowerBIWorkspace $wsname;
 }
 
 Write-Information "Uploading PowerBI Reports"
