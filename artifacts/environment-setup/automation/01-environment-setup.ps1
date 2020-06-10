@@ -247,7 +247,7 @@ $dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
-        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -UseAPI (!$IsCloudLabs) -FileName "02-load-csv" -Parameters @{
+        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-load-csv" -Parameters @{
                 CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
                 TABLE_NAME = $dataTableLoad.TABLE_NAME
                 DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
