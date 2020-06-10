@@ -168,12 +168,7 @@ if ($result.properties.status -ne "Online") {
 
 Write-Information "Create tables in $($sqlPoolName)"
 
-$params = @{ }
-if(!$IsCloudLabs){
-        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
-} else {
-        $result = Execute-SQLScriptFile-SqlCmd -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -SQLUserName $sqlUserName -SQLPassword $sqlPassword -FileName "01-create-tables" -Parameters $params
-}
+$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
 Write-Information "Loading data"
