@@ -168,8 +168,7 @@ if ($result.properties.status -ne "Online") {
 
 Write-Information "Create tables in $($sqlPoolName)"
 
-$params = @{ }
-$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params -UseAPI (!$IsCloudLabs)
+$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
 Write-Information "Loading data"
@@ -248,7 +247,7 @@ $dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
-        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -UseAPI (!$IsCloudLabs) -FileName "02-load-csv" -Parameters @{
+        $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-load-csv" -Parameters @{
                 CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
                 TABLE_NAME = $dataTableLoad.TABLE_NAME
                 DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
@@ -341,10 +340,18 @@ foreach ($dataflow in $workloadDataflows.Keys) {
 
 Write-Information "Creating Spark notebooks..."
 
-$notebooks = [ordered]@{
-        "3 Campaign Analytics Data Prep"    = ".\artifacts\environment-setup\notebooks"
-        "1 Products Recommendation"   = ".\artifacts\environment-setup\notebooks"
-        "2 AutoML Number of Customer Visit to Department" = ".\artifacts\environment-setup\notebooks"
+if($IsCloudLabs){
+        $notebooks = [ordered]@{
+                "3 Campaign Analytics Data Prep"    = ".\artifacts\environment-setup\notebooks"
+                "1 Products Recommendation"   = ".\artifacts\environment-setup\notebooks"
+                "2 AutoML Number of Customer Visit to Department" = ".\artifacts\environment-setup\notebooks"
+        }
+} else {
+        $notebooks = [ordered]@{
+                "3 Campaign Analytics Data Prep"    = "..\notebooks"
+                "1 Products Recommendation"   = "..\notebooks"
+                "2 AutoML Number of Customer Visit to Department" = "..\notebooks"
+        }
 }
 
 $cellParams = [ordered]@{
@@ -386,10 +393,18 @@ foreach ($pipeline in $workloadPipelines.Keys) {
 
 Write-Information "Create SQL scripts for Lab 05"
 
-$sqlScripts = [ordered]@{
-        "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
-        "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
-        "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+if($IsCloudLabs){
+        $sqlScripts = [ordered]@{
+                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
+                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
+                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+        }
+} else {
+        $sqlScripts = [ordered]@{
+                "8 External Data To Synapse Via Copy Into" = "..\sql"
+                "1 SQL Query With Synapse"  = "..\sql"
+                "2 JSON Extractor"    = "..\sql"
+        }
 }
 
 $params = @{

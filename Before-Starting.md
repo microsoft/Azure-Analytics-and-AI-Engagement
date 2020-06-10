@@ -84,14 +84,65 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ### Task 3: Download lab artifacts
 
-1. In a web browser, navigate to the [MCW Azure Synapse Analytics WWI Lab repository](https://github.com/solliancenet/azure-synapse-wwi-lab).
+1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
-2. Expand the **Clone or download** button, and select **Download Zip**.
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
 
-    ![On the repository screen, the Clone or download button is expanded and the Download Zip button is highlighted.](media/bhol_downloadzip.png)
+    > **Note**: If you are prompted to create a storage account for the Cloud Shell, agree to have it created.
 
-3. Extract the downloaded zip file to the location of your choice.
+2. In the Cloud Shell window, enter the following command to clone the repository files.
 
+    ```PowerShell
+    git clone https://github.com/solliancenet/azure-synapse-wwi-lab.git Synapse-WWI
+    ```
+    
+    ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](media/cloud-shell-git-clone.png)
+
+3. Keep the Cloud Shell open.
+
+### Task 4: Establish a user context
+
+1. In the Cloud Shell, execute the following command:
+
+    ```cli
+    az login
+    ```
+
+2. A message will be displayed asking you to open a new tab in your web browser, navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and enter the code you have been given for authentication.
+
+   ![A message is displayed indicating to enter an authentication code on the device login page.](media/bhol_devicelogin.png)
+
+   ![A dialog is shown requesting the entry of a code.](media/bhol_clicodescreen.png)
+
+3. Once complete, you may close the tab from the previous step and return to the Cloud Shell.
+
+   ![The JSON result showing the subscription details.](media/shell-login-result.png)
+
+### Task 5: Run environment setup PowerShell script
+
+When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt.
+
+1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
+
+    ```PowerShell
+    cd './Synapse-WWI/artifacts/environment-setup/automation'
+    ```
+
+2. Execute the **01-environment-setup.ps1** script by executing the following command:
+
+    ```PowerShell
+    ./01-environment-setup.ps1
+    ```
+
+    You will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. You will also be prompted for the following information for this script:
+
+    | Prompt |
+    |--------|
+    | Enter the SQL Administrator password you used in the deployment |
+    | Enter the unique suffix you used in the deployment |
+
+    ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
+    
 ### Task 4: Create a local settings file
 
 1. On your local machine, create a folder **C:\LabFiles**. Inside this folder, create a new file named **AzureCreds.ps1**. In this file, you will set parameters necessary to complete the workspace setup.
