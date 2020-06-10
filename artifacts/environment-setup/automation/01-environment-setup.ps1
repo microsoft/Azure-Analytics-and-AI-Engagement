@@ -144,8 +144,7 @@ $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 
-$res = Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -Method GET -MaximumRedirection 0 -ea silentlycontinue;
-$azCopyLink = $res.headers.location
+$azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
 if (!$azCopyLink)
 {

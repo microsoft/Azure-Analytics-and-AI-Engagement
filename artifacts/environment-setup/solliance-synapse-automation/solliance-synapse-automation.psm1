@@ -1,3 +1,59 @@
+function Check-HttpRedirect($uri)
+{
+    $httpReq = [system.net.HttpWebRequest]::Create($uri)
+    $httpReq.Accept = "text/html, application/xhtml+xml, */*"
+    $httpReq.method = "GET"   
+    $httpReq.AllowAutoRedirect = $false;
+    
+    #use them all...
+    #[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls11 -bor [System.Net.SecurityProtocolType]::Tls12 -bor [System.Net.SecurityProtocolType]::Ssl3 -bor [System.Net.SecurityProtocolType]::Tls;
+
+    $global:httpCode = -1;
+    
+    $response = "";            
+
+    try
+    {
+        $res = $httpReq.GetResponse();
+
+        $statusCode = $res.StatusCode.ToString();
+        $global:httpCode = [int]$res.StatusCode;
+        $cookieC = $res.Cookies;
+        $resHeaders = $res.Headers;  
+        $global:rescontentLength = $res.ContentLength;
+        $global:location = $null;
+                                
+        try
+        {
+            $global:location = $res.Headers["Location"].ToString();
+            return $global:location;
+        }
+        catch
+        {
+        }
+
+        return $null;
+
+    }
+    catch
+    {
+        $res2 = $_.Exception.InnerException.Response;
+        $global:httpCode = $_.Exception.InnerException.HResult;
+        $global:httperror = $_.exception.message;
+
+        try
+        {
+            $global:location = $res2.Headers["Location"].ToString();
+            return $global:location;
+        }
+        catch
+        {
+        }
+    } 
+
+    return $null;
+}
+
 function New-PowerBIWorkspace($name)
 {
     $body = "{`"name`": `"$name`"}";
@@ -1478,3 +1534,4 @@ Export-ModuleMember -Function Update-PowerBIDataset
 Export-ModuleMember -Function Get-PowerBIDatasetId
 Export-ModuleMember -Function Get-PowerBIWorkspaceId
 Export-ModuleMember -Function Upload-PowerBIReport
+Export-ModuleMember -Function Check-HttpRedirect
