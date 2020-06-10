@@ -393,10 +393,18 @@ foreach ($pipeline in $workloadPipelines.Keys) {
 
 Write-Information "Create SQL scripts for Lab 05"
 
-$sqlScripts = [ordered]@{
-        "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
-        "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
-        "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+if($IsCloudLabs){
+        $sqlScripts = [ordered]@{
+                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
+                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
+                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+        }
+} else {
+        $sqlScripts = [ordered]@{
+                "8 External Data To Synapse Via Copy Into" = "..\sql"
+                "1 SQL Query With Synapse"  = "..\sql"
+                "2 JSON Extractor"    = "..\sql"
+        }
 }
 
 $params = @{
