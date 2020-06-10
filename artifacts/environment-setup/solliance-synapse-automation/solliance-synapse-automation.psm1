@@ -1,3 +1,67 @@
+function Update-PowerBIDataset($wsid, $powerBIReportName, $powerNIDataSetConnectionUpdateRequest)
+{
+    Write-Information "Setting database connection for $($powerBIReportName)"
+
+    $reportId = Get-PowerBIDatasetId $wsid $powerBIReportName;
+
+    if ($reportId)
+    {
+        $powerNIDataSetConnectionUpdateRequest = $powerNIDataSetConnectionUpdateRequest.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+    
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$reportId/Default.UpdateDatasources";
+        $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerNIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    }
+    else
+    {
+        write-host "No report found called $powerBIReportName";
+    }
+}
+
+function Get-PowerBIDatasetId($wsid, $name)
+{
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
+    $result = Invoke-RestMethod  -Uri $url -Method GET -Headers @{ Authorization="Bearer $global:powerbitoken" };
+
+    foreach($res in $result.value)
+    {
+        if($res.name -eq $name)
+        {
+            return $res.id;
+        }
+    }
+}
+
+function Get-PowerBIWorkspaceId($name)
+{
+    $url = "https://api.powerbi.com/v1.0/myorg/groups?`$filter=tolower%28name%29%20eq%20%27$name%27&$top=100";
+    $result = Invoke-RestMethod  -Uri $url -Method GET -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    return $result.value[0].id;
+}
+
+function Upload-PowerBIReport($wsId, $name, $filePath)
+{
+    write-host "Uploading PowerBI Report $name";
+
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$name&nameConflict=CreateOrOverwrite";
+
+    $fileBytes = [System.IO.File]::ReadAllBytes($FilePath);
+    $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
+    $boundary = [System.Guid]::NewGuid().ToString(); 
+    $LF = "`r`n";
+
+    $bodyLines = ( 
+        "--$boundary",
+        "Content-Disposition: form-data",
+        "",
+        $fileEnc,
+        "--$boundary--$LF" 
+    ) -join $LF
+
+    $result = Invoke-RestMethod  -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"$boundary`"" -Headers @{ Authorization="Bearer $global:powerbitoken" }
+    $reportId = $result.id;
+    return $reportId;
+}
+
 function List-StorageAccountKeys {
 
     param(
@@ -894,65 +958,13 @@ function Execute-SQLScriptFile {
         Execute-SQLQuery -WorkspaceName $WorkspaceName -SQLPoolName $SQLPoolName -SQLQuery $sqlQuery -ForceReturn $ForceReturn
     } else {
         if ($ForceReturn) {
-            Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+            Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $global:sqlPassword
             #& sqlcmd -S $sqlEndpoint -d $sqlPoolName -U $userName -P $password -G -I -Q $sqlQuery
         } else {
-            Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+            Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $global:sqlPassword
             #& sqlcmd -S $sqlEndpoint -d $sqlPoolName -U $userName -P $password -G -I -Q $sqlQuery
         }
     }
-}
-
-function Execute-SQLScriptFile-SqlCmd {
-
-    param(
-    [parameter(Mandatory=$true)]
-    [String]
-    $SQLScriptsPath,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $WorkspaceName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $SQLPoolName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $SQLUserName,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $SQLPassword,
-
-    [parameter(Mandatory=$true)]
-    [String]
-    $FileName,
-
-    [parameter(Mandatory=$false)]
-    [Hashtable]
-    $Parameters
-    )
-
-    $vals = $filename.split("_");
-    $sqlpoolname = $vals[1];
-
-    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/$($FileName).sql"
-
-    if ($Parameters) {
-        foreach ($key in $Parameters.Keys) {
-            $sqlQuery = $sqlQuery.Replace("#$($key)#", $Parameters[$key])
-        }
-    }
-
-    $result = 0
-    $sqlConnectionString = "Server=tcp:$($WorkspaceName).sql.azuresynapse.net,1433;Initial Catalog=$($SQLPoolName);Persist Security Info=False;User ID=$($SQLUserName);Password=$($SQLPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    ForEach ($line in $($sqlQuery -split "`r`n"))  
-    {        
-        $result = Invoke-SqlCmd -Query $SQLQuery -ConnectionString $sqlConnectionString
-    }
-    return $result
 }
 
 function Create-SQLScript {
@@ -1358,7 +1370,12 @@ function Refresh-Token {
             $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
                 -Method POST -Body $global:ropcBodyManagement -ContentType "application/x-www-form-urlencoded"
             $global:managementToken = $result.access_token
-        } else {
+        } elseif ($TokenType -eq "PowerBI") {
+            $result = Invoke-RestMethod  -Uri "https://login.microsoftonline.com/$($global:logindomain)/oauth2/v2.0/token" `
+                -Method POST -Body $global:ropcBodyPowerBI -ContentType "application/x-www-form-urlencoded"
+            $global:powerbitoken = $result.access_token
+        }
+        else {
             throw "The token type $($TokenType) is not supported."
         }
     } else {
@@ -1376,6 +1393,11 @@ function Refresh-Token {
             "Management" {
                 $tokenValue = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
                 $global:managementToken = $tokenValue; 
+                break;
+            }
+            "PowerBI" {
+                $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+                $global:powerbitoken = $tokenValue; 
                 break;
             }
             default {throw "The token type $($TokenType) is not supported.";}
@@ -1444,3 +1466,7 @@ Export-ModuleMember -Function Wait-ForSparkNotebookSessionStatement
 Export-ModuleMember -Function Assign-SynapseRole
 Export-ModuleMember -Function Refresh-Token
 Export-ModuleMember -Function Ensure-ValidTokens
+Export-ModuleMember -Function Update-PowerBIDataset
+Export-ModuleMember -Function Get-PowerBIDatasetId
+Export-ModuleMember -Function Get-PowerBIWorkspaceId
+Export-ModuleMember -Function Upload-PowerBIReport

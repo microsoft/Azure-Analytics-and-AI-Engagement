@@ -7,6 +7,7 @@ $InformationPreference = "Continue"
 # TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
 # This is for Spektra Environment.
 $IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
+$iscloudlabs = $false;
 
 if($IsCloudLabs){
         Remove-Module solliance-synapse-automation
@@ -28,6 +29,7 @@ if($IsCloudLabs){
         $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
         $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
         $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+        $global:ropcBodyPowerBI = "$($ropcBodyCore)&scope=https://analysis.windows.net/powerbi/api/.default"
 
         $templatesPath = ".\artifacts\environment-setup\templates"
         $datasetsPath = ".\artifacts\environment-setup\datasets"
@@ -53,9 +55,10 @@ if($IsCloudLabs){
         }
         
         $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
-        $sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
-        $sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
+        $global:sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
+        $global:sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
 
+        $reportsPath = "..\reports"
         $templatesPath = "..\templates"
         $datasetsPath = "..\datasets"
         $dataflowsPath = "..\dataflows"
@@ -83,11 +86,13 @@ $global:sqlUser = "asaexp.sql.admin"
 $global:synapseToken = ""
 $global:synapseSQLToken = ""
 $global:managementToken = ""
+$global:powerbiToken = $tokenValue;
 
 $global:tokenTimes = [ordered]@{
         Synapse    = (Get-Date -Year 1)
         SynapseSQL = (Get-Date -Year 1)
         Management = (Get-Date -Year 1)
+        PowerBI = (Get-Date -Year 1)
 }
 
 Write-Information "Assign Ownership to Proctors on Synapse Workspace"
@@ -139,13 +144,18 @@ $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 
-if($IsCloudLabs) {
-        $azCopyLink = (curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location
-        Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
-        Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
-        $azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
-        $Env:Path += ";"+ $azCopyCommand
+$res = Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -Method GET -MaximumRedirection 0 -ea silentlycontinue;
+$azCopyLink = $res.headers.location
+
+if (!$azCopyLink)
+{
+    $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
 }
+
+Invoke-WebRequest $azCopyLink -OutFile "C:\LabFiles\azCopy.zip"
+Expand-Archive "C:\LabFiles\azCopy.zip" -DestinationPath "C:\LabFiles" -Force
+$azCopyCommand = (Get-ChildItem -Path C:\LabFiles -Recurse azcopy.exe).Directory.FullName
+$Env:Path += ";"+ $azCopyCommand
 
 $AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
@@ -156,6 +166,11 @@ foreach ($singleFile in $singleFiles) {
         $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
         azcopy copy $source $destination 
+}
+
+if(!$IsCloudLabs)
+{
+    Install-Module -Name SqlServer
 }
 
 Write-Information "Start the $($sqlPoolName) SQL pool if needed."
@@ -422,4 +437,47 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
-#>
+$wsid = Get-PowerBIWorkspaceId "asa-exp";
+
+Write-Information "Uploading PowerBI Reports"
+
+$i = Get-Item -Path "$reportsPath/1. CDP Vision Demo.pbix"
+$reportId = Upload-PowerBIReport $wsId "1-CDP Vision Demo" $i.fullname
+
+$i = Get-Item -Path "$reportsPath/2. Billion Rows Demo.pbix"
+$reportId = Upload-PowerBIReport $wsId "2-Billion Rows Demo.pbix" $i.fullname
+
+$i = Get-Item -Path "$reportsPath/(Phase 2) CDP Vision Demo v1.pbix"
+$reportId = Upload-PowerBIReport $wsId "Phase 2 CDP Vision Demo.pbix" $i.fullname
+
+$powerBIName = "asaexppowerbi$($uniqueId)"
+$workspaceName = "asaexpworkspace$($uniqueId)"
+
+Write-Information "Create PowerBI linked service $($keyVaultName)"
+
+$result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
+Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+
+Write-Information "Setting PowerBI Database Connection"
+
+$powerBIReports = [ordered]@{
+    "2-Billion Rows Demo" = @{ 
+            Category = "reports"
+            Valid = $false
+    }
+    "Phase 2 CDP Vision Demo" = @{ 
+            Category = "reports"
+            Valid = $false
+    }
+}
+
+$powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
+
+foreach ($powerBIReportName in $powerBIReports.Keys) {
+
+    Write-Information "Setting database connection for $($powerBIReportName)"
+
+    $powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+
+    Update-PowerBIDataset $wsId $powerBIReportName $powerNIDataSetConnectionUpdateRequest;
+}
