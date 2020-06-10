@@ -93,7 +93,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://github.com/solliancenet/azure-synapse-wwi-lab.git Synapse-WWI
+    git clone https://github.com/solliancenet/azure-synapse-wwi-lab.git synapse-wwi
     ```
     
     ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](media/cloud-shell-git-clone.png)
@@ -125,7 +125,7 @@ When executing the script below, it is important to let the scripts run to compl
 1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
 
     ```PowerShell
-    cd './azure-synapse-wwi-lab/artifacts/environment-setup/automation'
+    cd './synapse-wwi/artifacts/environment-setup/automation'
     ```
 
 2. Execute the **01-environment-setup.ps1** script by executing the following command:
