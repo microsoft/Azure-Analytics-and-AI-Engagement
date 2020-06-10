@@ -1,27 +1,65 @@
-Remove-Module solliance-synapse-automation
-Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
-
+$IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
 $InformationPreference = "Continue"
 
-$templatesPath = ".\artifacts\environment-setup\templates"
+if($IsCloudLabs){
+    Remove-Module solliance-synapse-automation
+    Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
+    $templatesPath = ".\artifacts\environment-setup\templates"
 
-# TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
-. C:\LabFiles\AzureCreds.ps1
+    . C:\LabFiles\AzureCreds.ps1
 
-$userName = $AzureUserName                                              # READ FROM FILE
-$password = $AzurePassword                                              # READ FROM FILE
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+    $userName = $AzureUserName                                              # READ FROM FILE
+    $password = $AzurePassword                                              # READ FROM FILE
+    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+    $clientId = $TokenGeneratorClientId       # READ FROM FILE
+} else {
+    az login
 
-#Install-Module -Name MicrosoftPowerBIMgmt
-#Install-Module -Name MicrosoftPowerBIMgmt.Profile
+    Remove-Module solliance-synapse-automation
+    Import-Module "..\solliance-synapse-automation"
+    $templatesPath = "..\templates"
+
+    #Different approach to run automation in Cloud Shell
+    $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
+    if($subs.GetType().IsArray -and $subs.length -gt 1){
+            $subOptions = [System.Collections.ArrayList]::new()
+            for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
+                    $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
+                    $subOptions.Add($opt)
+            }
+            $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
+            $selectedSubName = $subs[$selectedSubIdx]
+            Write-Information "Selecting the $selectedSubName subscription"
+            Select-AzSubscription -SubscriptionName $selectedSubName
+    }
+    
+    $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+    $sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
+    $sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
+}
+
+if (Get-Module -ListAvailable -Name MicrosoftPowerBIMgmt) {
+    Write-Host "MicrosoftPowerBIMgmt Module exists"
+} else {
+    Install-Module -Name MicrosoftPowerBIMgmt
+}
+if (Get-Module -ListAvailable -Name MicrosoftPowerBIMgmt.Profile) {
+    Write-Host "MicrosoftPowerBIMgmt.Profile Module exists"
+} else {
+    Install-Module -Name 
+}
 
 Import-Module MicrosoftPowerBIMgmt
 Import-Module MicrosoftPowerBIMgmt.Profile
 
 # PowerBI Connection
 Write-Information "Connecting to PowerBI Service"
-$credentialForPowerBI = New-Object System.Management.Automation.PSCredential($userName, $securePassword)
-Connect-PowerBIServiceAccount -Credential $credentialForPowerBI
+if($IsCloudLabs){
+    $credentialForPowerBI = New-Object System.Management.Automation.PSCredential($userName, $securePassword)
+    Connect-PowerBIServiceAccount -Credential $credentialForPowerBI
+} else {
+    Connect-PowerBIServiceAccount
+}
 
 Write-Information "Creating PowerBI Workspace"
 $existingPowerBIWorkSpace = Get-PowerBIWorkspace -Filter "tolower(name) eq 'asa-exp'" 
@@ -32,17 +70,30 @@ if($existingPowerBIWorkSpace -eq $null){
 }
 
 Write-Information "Uploading PowerBI Reports"
-New-PowerBIReport -Path ".\artifacts\environment-setup\reports\1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
-New-PowerBIReport -Path ".\artifacts\environment-setup\reports\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
-New-PowerBIReport -Path ".\artifacts\environment-setup\reports\(Phase 2) CDP Vision Demo v1.pbix" -Name "Phase 2 CDP Vision Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+if($IsCloudLabs){
+    New-PowerBIReport -Path ".\artifacts\environment-setup\reports\1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+    New-PowerBIReport -Path ".\artifacts\environment-setup\reports\2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+    New-PowerBIReport -Path ".\artifacts\environment-setup\reports\(Phase 2) CDP Vision Demo v1.pbix" -Name "Phase 2 CDP Vision Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+} else {
+    New-PowerBIReport -Path "Synapse-WWI/artifacts/environment-setup/reports/1. CDP Vision Demo.pbix" -Name "1-CDP Vision Demo" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+    New-PowerBIReport -Path "Synapse-WWI/artifacts/environment-setup/reports/2. Billion Rows Demo.pbix" -Name "2-Billion Rows Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id
+    New-PowerBIReport -Path "Synapse-WWI/artifacts/environment-setup/reports/(Phase 2) CDP Vision Demo v1.pbix" -Name "Phase 2 CDP Vision Demo.pbix" -ConflictAction CreateOrOverwrite -WorkspaceId $newPowerBIWorkSpace.id 
+}
 
 # Synapse Linked Service for PowerBI
-$clientId = $TokenGeneratorClientId       # READ FROM FILE
 
-$ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
-$global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
-$global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
-$global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+if($IsCloudLabs){
+    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+    $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+    Connect-AzAccount -Credential $cred | Out-Null
+
+    $ropcBodyCore = "client_id=$($clientId)&username=$($userName)&password=$($password)&grant_type=password"
+    $global:ropcBodySynapse = "$($ropcBodyCore)&scope=https://dev.azuresynapse.net/.default"
+    $global:ropcBodyManagement = "$($ropcBodyCore)&scope=https://management.azure.com/.default"
+    $global:ropcBodySynapseSQL = "$($ropcBodyCore)&scope=https://sql.azuresynapse.net/.default"
+} else {
+
+}
 
 $global:synapseToken = ""
 $global:synapseSQLToken = ""
@@ -53,11 +104,6 @@ $global:tokenTimes = [ordered]@{
     SynapseSQL = (Get-Date -Year 1)
     Management = (Get-Date -Year 1)
 }
-
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
-
-Connect-AzAccount -Credential $cred | Out-Null
 
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" -or $_.ResourceGroupName -like "*CDP-Demo*"}).ResourceGroupName
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
