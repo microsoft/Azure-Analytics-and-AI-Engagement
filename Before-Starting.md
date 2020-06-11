@@ -134,7 +134,9 @@ When executing the script below, it is important to let the scripts run to compl
     ./01-environment-setup.ps1
     ```
 
-    You will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. You will also be prompted for the following information for this script:
+    You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one.   
+
+    You will also be prompted for the following information for this script:
 
     | Prompt |
     |--------|
