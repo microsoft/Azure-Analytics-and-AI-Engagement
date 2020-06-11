@@ -37,7 +37,9 @@ if($IsCloudLabs){
         $pipelinesPath = ".\artifacts\environment-setup\pipelines"
         $sqlScriptsPath = ".\artifacts\environment-setup\sql"
 } else {
-        Remove-Module solliance-synapse-automation
+        if(Get-Module -Name solliance-synapse-automation){
+                Remove-Module solliance-synapse-automation
+        }
         Import-Module "..\solliance-synapse-automation"
 
         #Different approach to run automation in Cloud Shell
