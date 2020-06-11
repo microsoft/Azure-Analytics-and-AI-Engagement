@@ -120,7 +120,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ### Task 5: Run environment setup PowerShell script
 
-When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt.
+When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 10 minutes.
 
 1. In the Cloud Shell, change the current directory to the **automation** folder of the cloned repository by executing the following:
 
