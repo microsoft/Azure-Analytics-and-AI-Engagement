@@ -20,7 +20,14 @@
   - [Exercise 3: Power BI reporting within the Synapse Analytics workspace](#Exercise-3-Power-BI-reporting-within-the-Synapse-Analytics-workspace)
     - [Task 1: Accessing PowerBI reports in Synapse Analytics workspace](#Task-1-Accessing-PowerBI-reports-in-Synapse-Analytics-workspace)
     - [Task 2: Ad Hoc Reporting in Azure Synapse Analytics](#Task-2-Ad-Hoc-Reporting-in-Azure-Synapse-Analytics)
-
+  - [Exercise 4: Visualizing the data using the Power BI dashboard](#exercise-4-visualizing-the-data-using-the-power-bi-dashboard)
+    - [Task 1: Access Data and AI Demo Dashboard](#Task-1-Access-Data-and-AI-Demo-Dashboard)
+    - [Task 2: Campaign Analytics Report](#Task-2-Campaign-Analytics-Report)
+    - [Task 3: Realtime Twitter Analytics](#Task-3-Realtime-Twitter-Analytics)
+    - [Task 4: Retail Heat Map](#Task-4-Retail-Heat-Map)
+    - [Task 5: Location Analytics ](#Task-5-Location-Analytics )
+    - [Task 6: Product Recommendation](#Task-6-Product-Recommendation)
+    
 <!-- /TOC -->
 
 # Accessing Synapse Workspace
@@ -350,3 +357,97 @@ See code in **cell 26**, but **DO NOT** execute any code.
 ![](media/05-65.png)
 
 8. Hover over **Save** button, but **do NOT** save.
+
+## Exercise 4: Visualizing the data using the Power BI dashboard
+
+As you evaluate tools to find the right amount of power, flexibility, this exercise will introduce you to a PowerBI Dashboard that brings data sources from various reports. You will have the chance to look into every report one by one directly in Power BI.
+
+Duration: 20 minutes.
+
+### Task 1: Access Data and AI Demo Dashboard
+
+A Power BI dashboard is a single page, often called a canvas, that uses visualizations to tell a story. Because it is limited to one page, a well-designed dashboard contains only the most-important elements of that story. 
+
+The visualizations you will see on the dashboard are called tiles and are pinned to the dashboard by report designers. In most cases, selecting a tile takes you to the report page where the visualization was created. During the next tasks we will look at various reports that are linked to our dashboard called `Data and AI Demo Dashboard`.
+
+1. Sign in to the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
+
+2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `ASA-EXP`.
+
+![The workspaces button from the hamburger menu is selected to list workspaces available. The ASA-EXP workspace is selected.](media/powerbi_workspace_selection.png)
+
+3. Select `Data & AI Demo Dashboard` to launch the dashboard.
+
+![The list of dashboard are on screen. Data and AI Dashboard is selected.](media/powerbi_data_ai_dashboard.png)
+
+### Task 2: Campaign Analytics Report
+
+A Power BI report is a multi-perspective view into a dataset, with visuals that represent different findings and insights from that dataset. The visuals aren't static. They update as the underlying data changes. You can interact with the visuals and filters as you dig into the data to discover insights and look for answers. Like a dashboard, a report is highly interactive and highly customizable.
+
+During the next couple of tasks we will look at various reports that are linked to our original dashboard called `Data and AI Demo Dashboard`.
+
+1. Select **Campaign revenue vs target** to access `The Campaign Analytics` report.
+
+![Data and AI Dashboard is shown. Campaign revenue vs target section is selected.](media/data-ai-dashboard-campaign-analytics.png)
+
+2. Select **Enjoy the Moment** campaign from the top filter.
+
+![Campaign Analytics report is shown. Enjoy the moment is selected](media/campaign-analytics-enjoy-the-moment.png)
+
+3. In the `Sentiment by product category`, Select Positive sentiment for the **Cocktail Glasses** product category.
+
+![Sentiment by product category section is shown. Positive bar for cocktail glasses is selected.](media/campaign-analytics-sentiment-by-product.png)
+
+4. Then Select Negative sentiment for the **Exercise** product category.
+
+![Sentiment by product category section is shown. Negative bar for Exercise product category is selected.](media/campaign-analytics-sentiment-by-product-exercise.png)
+
+### Task 3: Realtime Twitter Analytics
+
+1. Select **No. of tweets** from **Realtime Twitter analytics** pillar to access `Realtime Twitter ayanlysis` report.
+
+![Data and AI Dashboard is shown. No. of tweets from Realtime Twitter analytics pillar is selected.](media/data-ai-dashboard-realtime-twitter-analytics.png)
+
+2. Select **Shopping** from **Tweets by Sentiment Category** and observe the changes on the map visual. 
+
+![Real time Twitter analysis report is shown. Shopping is selected from the list of tweets by sentiment category.](media/data-ai-dashboard-realtime-twitter-analytics-shopping.png)
+
+### Task 4: Retail Heat Map
+
+1. [Click here to watch](media/New-Store-Simulation.avi) the heat map video. 
+
+### Task 5: Location Analytics 
+
+1. Select **Total visitors** from **Realtime location analytics** pillar to access `Location Analytics` report.
+
+![Data and AI Dashboard is shown. Total visitors from Realtime location analytics pillar is selected.](media/data-ai-dashboard-realtime-location-analytics.png)
+
+2. See **Visit to by store department**, then select long `visit_type` in the Entertainment department.
+
+![Location analytics report is shown. Long visit type for Entertainment is selected](media/data-ai-dashboard-realtime-location-analytics-entertainment.png)
+
+3. Select short `visit_type` in the Mens department.
+
+![Location analytics report is shown. Short visit type for Mens is selected](media/data-ai-dashboard-realtime-location-analytics-mens.png)
+
+4. Select **Gen Y** in `Revenue by customer segment over department visual` and Hover over **Visitors by the hour of day** visual. 
+
+![Location analytics report is shown. Gen Y is selected in Revenue by customer segment over department visual.](media/data-ai-dashboard-realtime-location-analytics-geny.png)
+
+5. Select **play** on a Scatter plot to see what devices are used by visitors.
+
+![Location analytics report is shown. Play is selected for scatter plot.](media/data-ai-dashboard-realtime-location-analytics-play.gif)
+
+### Task 6: Product Recommendation
+
+1. Select **Recommended Products** from **Product recommendation analytics** pillar to access `Product Recommendations` report.
+
+![Data and AI Dashboard is shown. Recommended Products from Product recommendation analytics pillar is selected.](media/data-ai-dashboard-product-recommendation-analytics.png)
+
+2. Select **Cocktail Glasses** in **Product Category** filter.
+
+![Product recommendations report is shown. Cocktail Glassess is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-cocktail.png)
+
+3. Select **Running Shoes** in **Product Category** filter.
+
+![Product recommendations report is shown. Running Shoes is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-shoes.png)
