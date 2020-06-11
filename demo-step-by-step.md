@@ -34,7 +34,7 @@
 
 Select the Synapse Workspace web URL to access your Synapse Workspace.
 
-![Synapse Workspace](media/synapse-workspace-access.jpg) 
+![Synapse Workspace](media/synapse-workspace-access.png) 
 
 Once you access your workspace select the arrow on the top of the left menu to open the slider and access various sections of the workspace.
 
