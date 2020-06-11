@@ -54,7 +54,7 @@ function Check-HttpRedirect($uri)
     return $null;
 }
 
-function New-PowerBIWorkspace($name)
+function New-PowerBIWS($name)
 {
     $body = "{`"name`": `"$name`"}";
     $url = "https://api.powerbi.com/v1.0/myorg/groups";
@@ -1532,6 +1532,7 @@ Export-ModuleMember -Function Refresh-Token
 Export-ModuleMember -Function Ensure-ValidTokens
 Export-ModuleMember -Function Update-PowerBIDataset
 Export-ModuleMember -Function Get-PowerBIDatasetId
+Export-ModuleMember -Function New-PowerBIWS
 Export-ModuleMember -Function Get-PowerBIWorkspaceId
 Export-ModuleMember -Function Upload-PowerBIReport
 Export-ModuleMember -Function Check-HttpRedirect

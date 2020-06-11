@@ -442,7 +442,7 @@ $wsid = Get-PowerBIWorkspaceId $wsname;
 
 if (!$wsid)
 {
-    $wsid = New-PowerBIWorkspace $wsname;
+    $wsid = New-PowerBIWS $wsname;
 }
 
 Write-Information "Uploading PowerBI Reports"
