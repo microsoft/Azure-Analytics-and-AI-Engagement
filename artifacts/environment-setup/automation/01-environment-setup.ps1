@@ -436,7 +436,7 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
-$wsname = "asa-exp";
+$wsname = "asa-exp-$uniqueId";
 
 $wsid = Get-PowerBIWorkspaceId $wsname;
 
