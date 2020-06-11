@@ -451,10 +451,10 @@ $i = Get-Item -Path "$reportsPath/1. CDP Vision Demo.pbix"
 $reportId = Upload-PowerBIReport $wsId "1-CDP Vision Demo" $i.fullname
 
 $i = Get-Item -Path "$reportsPath/2. Billion Rows Demo.pbix"
-$reportId = Upload-PowerBIReport $wsId "2-Billion Rows Demo.pbix" $i.fullname
+$reportId = Upload-PowerBIReport $wsId "2-Billion Rows Demo" $i.fullname
 
 $i = Get-Item -Path "$reportsPath/(Phase 2) CDP Vision Demo v1.pbix"
-$reportId = Upload-PowerBIReport $wsId "Phase 2 CDP Vision Demo.pbix" $i.fullname
+$reportId = Upload-PowerBIReport $wsId "Phase 2 CDP Vision Demo" $i.fullname
 
 $powerBIName = "asaexppowerbi$($uniqueId)"
 $workspaceName = "asaexpworkspace$($uniqueId)"
@@ -467,6 +467,10 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 Write-Information "Setting PowerBI Database Connection"
 
 $powerBIReports = [ordered]@{
+    "1-CDP Vision Demo" = @{ 
+            Category = "reports"
+            Valid = $false
+    }
     "2-Billion Rows Demo" = @{ 
             Category = "reports"
             Valid = $false
