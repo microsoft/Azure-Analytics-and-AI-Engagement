@@ -894,3 +894,173 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[WebsiteSocialAnalyticsPBIData]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[WebsiteSocialAnalyticsPBIData]
+
+CREATE TABLE [dbo].[WebsiteSocialAnalyticsPBIData]
+( 
+	[Country] [varchar](50)  NULL,
+	[Product_Category] [varchar](50)  NULL,
+	[Product] [varchar](50)  NULL,
+	[Channel] [varchar](50)  NULL,
+	[Gender] [varchar](50)  NULL,
+	[Sessions] [int]  NULL,
+	[Device_Category] [varchar](50)  NULL,
+	[Sources] [varchar](50)  NULL,
+	[Conversations] [varchar](50)  NULL,
+	[Page] [varchar](50)  NULL,
+	[Visits] [int]  NULL,
+	[Unique_Visitors] [int]  NULL,
+	[Browser] [varchar](50)  NULL,
+	[Sentiment] [varchar](50)  NULL,
+	[Duration_min] [varchar](50)  NULL,
+	[Region] [varchar](50)  NULL,
+	[Customer_Segment] [varchar](50)  NULL,
+	[Daily_Users] [int]  NULL,
+	[Conversion_Rate] [int]  NULL,
+	[Return_Visitors] [int]  NULL,
+	[Tweets] [int]  NULL,
+	[Retweets] [int]  NULL,
+	[Hashtags] [varchar](50)  NULL,
+	[Campaign_Name] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[CampaignAnalyticLatest]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[CampaignAnalyticLatest]
+
+CREATE TABLE [dbo].[CampaignAnalyticLatest]
+( 
+	[Region] [nvarchar](4000)  NULL,
+	[Country] [nvarchar](4000)  NULL,
+	[ProductCategory] [nvarchar](4000)  NULL,
+	[Campaign_ID] [nvarchar](4000)  NULL,
+	[Campaign_Name] [nvarchar](4000)  NULL,
+	[Qualification] [nvarchar](4000)  NULL,
+	[Qualification_Number] [nvarchar](4000)  NULL,
+	[Response_Status] [nvarchar](4000)  NULL,
+	[Responses] [nvarchar](4000)  NULL,
+	[Cost] [nvarchar](4000)  NULL,
+	[Revenue] [nvarchar](4000)  NULL,
+	[ROI] [nvarchar](4000)  NULL,
+	[Lead_Generation] [nvarchar](4000)  NULL,
+	[Revenue_Target] [nvarchar](4000)  NULL,
+	[Campaign_Tactic] [nvarchar](4000)  NULL,
+	[Customer_Segment] [nvarchar](4000)  NULL,
+	[Status] [nvarchar](4000)  NULL,
+	[Profit] [nvarchar](4000)  NULL,
+	[Marketing_Cost] [nvarchar](4000)  NULL,
+	[CampaignID] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[location_Analytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[location_Analytics]
+
+CREATE TABLE [dbo].[location_Analytics]
+( 
+	[Day] [datetime2](7)  NOT NULL,
+	[Region] [varchar](50)  NOT NULL,
+	[Product_Category] [varchar](50)  NOT NULL,
+	[Visit_Start] [float]  NOT NULL,
+	[Visit_End] [float]  NOT NULL,
+	[Hour] [int]  NOT NULL,
+	[Visitor_ID] [varchar](50)  NULL,
+	[First_Visit] [bit]  NOT NULL,
+	[Duration] [int]  NOT NULL,
+	[Minutes] [varchar](50)  NOT NULL,
+	[Visit_Type] [varchar](50)  NOT NULL,
+	[Country] [varchar](50)  NOT NULL,
+	[Department] [varchar](50)  NOT NULL,
+	[Gender] [varchar](50)  NOT NULL,
+	[Customer_Segment] [varchar](50)  NOT NULL,
+	[Date] [varchar](50)  NOT NULL,
+	[Stores] [int]  NOT NULL,
+	[Engagement] [varchar](50)  NOT NULL,
+	[Acquisition] [varchar](50)  NOT NULL,
+	[Impressions] [varchar](50)  NOT NULL,
+	[Conversion] [varchar](50)  NOT NULL,
+	[Revenue] [varchar](50)  NULL,
+	[WeekDay] [varchar](50)  NOT NULL,
+	[SortByVisitType] [varchar](50)  NOT NULL,
+	[Engaged_Visitors] [varchar](50)  NOT NULL,
+	[Week_Number] [varchar](50)  NOT NULL,
+	[Target_Visitors] [varchar](50)  NOT NULL,
+	[Variance] [varchar](50)  NOT NULL,
+	[Column28] [varchar](1)  NULL,
+	[Column29] [varchar](50)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[DimData]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[DimData]
+
+CREATE TABLE [dbo].[DimData]
+( 
+	[DateKey] [int]  NOT NULL,
+	[DateValue] [datetime2](7)  NOT NULL,
+	[DayOfMonth] [varchar](50)  NOT NULL,
+	[DayOfYear] [varchar](50)  NOT NULL,
+	[Year] [int]  NOT NULL,
+	[MonthOfYear] [varchar](50)  NOT NULL,
+	[MonthName] [varchar](50)  NOT NULL,
+	[QuarterOfYear] [varchar](50)  NOT NULL,
+	[QuarterName] [varchar](50)  NOT NULL,
+	[WeekEnding] [datetime2](7)  NOT NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[salesPBIData]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[salesPBIData]
+
+CREATE TABLE [dbo].[salesPBIData]
+( 
+	[Fiscal Year] [nvarchar](4000)  NULL,
+	[Fiscal Quarter] [nvarchar](4000)  NULL,
+	[Fiscal Month] [nvarchar](4000)  NULL,
+	[Country] [nvarchar](4000)  NULL,
+	[Region] [nvarchar](4000)  NULL,
+	[Customer Segment] [nvarchar](4000)  NULL,
+	[Channel] [nvarchar](4000)  NULL,
+	[Product] [nvarchar](4000)  NULL,
+	[Product Category] [nvarchar](4000)  NULL,
+	[Gross Sales] [nvarchar](4000)  NULL,
+	[Budget] [nvarchar](4000)  NULL,
+	[Forecast] [nvarchar](4000)  NULL,
+	[Discount] [nvarchar](4000)  NULL,
+	[Net Sales] [nvarchar](4000)  NULL,
+	[COGS] [nvarchar](4000)  NULL,
+	[Gross Profit] [nvarchar](4000)  NULL,
+	[Half Yearly] [nvarchar](4000)  NULL,
+	[VTB ($)] [nvarchar](4000)  NULL,
+	[VTB (%)] [nvarchar](4000)  NULL,
+	[link] [nvarchar](4000)  NULL,
+	[description] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
