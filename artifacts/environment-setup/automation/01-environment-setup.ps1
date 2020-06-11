@@ -86,7 +86,7 @@ $global:sqlUser = "asaexp.sql.admin"
 $global:synapseToken = ""
 $global:synapseSQLToken = ""
 $global:managementToken = ""
-$global:powerbiToken = $tokenValue;
+$global:powerbiToken = "";
 
 $global:tokenTimes = [ordered]@{
         Synapse    = (Get-Date -Year 1)

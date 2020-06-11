@@ -58,7 +58,7 @@ function New-PowerBIWS($name)
 {
     $body = "{`"name`": `"$name`"}";
     $url = "https://api.powerbi.com/v1.0/myorg/groups";
-    $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerNIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+    $result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
     return $result.id
 }
 
