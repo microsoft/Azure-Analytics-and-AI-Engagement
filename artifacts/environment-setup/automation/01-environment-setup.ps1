@@ -423,9 +423,15 @@ if($IsCloudLabs){
         }
 }
 
+if($Load30Billion -eq 1) {
+        $salesRowNumberCount = "30,023,443,487"
+} else {
+        $salesRowNumberCount = "3,443,487"
+}
 $params = @{
         STORAGE_ACCOUNT_NAME = $dataLakeAccountName
         SAS_KEY = $destinationSasKey
+        ROW_NUMBER_COUNT = $salesRowNumberCount
 }
 
 foreach ($sqlScriptName in $sqlScripts.Keys) {

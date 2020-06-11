@@ -1,7 +1,7 @@
 SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Sales(nolock)
 
 
--- 30,023,443,487
+-- #ROW_NUMBER_COUNT# 
 --let's execute the below query 
 -- We have Data from SALES,Products,MillennialCustomers and Twitter.
 
