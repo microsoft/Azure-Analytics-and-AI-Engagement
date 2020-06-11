@@ -221,9 +221,9 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 `SELECT COUNT_BIG(1) as TotalCount  FROM wwi.Sales(nolock)`
 
-4. Select **Run** and observe the results (30 Billion).
+4. Select **Run** and observe the results (3443487).
 
-![](media/2020-04-10_17-11-19.png)
+![](media/3443487-result.png)
 
 5. Scroll down a few lines to the second query, select the query as shown in the screenshot, and then select **Run**. Observe time the query takes – query time is listed at the bottom of the screenshot.
 
