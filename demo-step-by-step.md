@@ -179,8 +179,6 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 3. Select **Run**.
 
-**TODO 2** Currently not working.
-
 ![](media/2020-04-11_11-26-50.png)
 
 4. Select **Chart**
