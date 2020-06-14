@@ -440,7 +440,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ![](media/05-47.png)
 
-See code in **cell 26**, but **DO NOT** execute any code.
+See code in **cell 27**, but **DO NOT** execute any code.
 
 > We then store the results back to the database table, for further consumption by other applications and users.
 
