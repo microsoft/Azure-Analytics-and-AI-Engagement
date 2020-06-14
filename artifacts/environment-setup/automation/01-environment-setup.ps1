@@ -145,13 +145,13 @@ $storageContainers = @{
         recommendations = "recommendations"
 }
 
-foreach ($storageContainer in $storageContainers.Keys) {
-        Write-Information "Creating container: $($storageContainer)"
-        if(Get-AzStorageContainer -Name $storageContainer -Context $dataLakeContext -ErrorAction SilentlyContinue)  {  
-                Write-Information "$($storageContainer) container already exists."  
+foreach ($storageContainer in $storageContainers.Keys) {        
+        Write-Information "Creating container: $($storageContainers[$storageContainer])"
+        if(Get-AzStorageContainer -Name $storageContainers[$storageContainer] -Context $dataLakeContext -ErrorAction SilentlyContinue)  {  
+                Write-Information "$($storageContainers[$storageContainer]) container already exists."  
         }else{  
-                Write-Information "$($storageContainer) container created."   
-                New-AzStorageContainer -Name $storageContainer -Permission Container -Context $dataLakeContext  
+                Write-Information "$($storageContainers[$storageContainer]) container created."   
+                New-AzStorageContainer -Name $storageContainers[$storageContainer] -Permission Container -Context $dataLakeContext  
         }
 }        
 
