@@ -514,8 +514,6 @@ See code in **cell 27**, but **DO NOT** execute any code.
 
 > Now let’s switch to the QnA tab.
 
-![](media/2020-04-11_11-43-15.png)
-
 4. In the **Q&A** box, type **profit by country by product category as treemap**
 
 > This is a great feature where we can enter English language questions to create visualizations.  Let’s look at the profit by country, shown as a tree map.  
