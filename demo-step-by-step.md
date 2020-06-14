@@ -454,8 +454,6 @@ See code in **cell 27**, but **DO NOT** execute any code.
 >
 > ***Supplementary Info:** With Automated Machine Learning we can automate time-intensive tasks. AutoML learns rapidly by iterating over many combinations of algorithms and hyperparameters to help you find the best model based on a success metric of your choosing.*
 
-![](media/2020-04-10_17-17-52.png)
-
 2. Expand **Notebooks** section and select **2 AutoML Customer Forecasting** Notebook.
 
 > Let’s select the AutoML Customer Forecasting notebook which was previously created.
