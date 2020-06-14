@@ -134,13 +134,26 @@ Ensure-ValidTokens
 $dataLakeStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $dataLakeStorageAccountKey
 
-if(Get-AzStorageContainer -Name "twitterdata" -Context $dataLakeContext -ErrorAction SilentlyContinue)  
-    {  
-        Write-Information "twitterdata container already exists."  
-    }else{  
-        Write-Information "twitterdata container does not exist."   
-       $dataLakeContainer = New-AzStorageContainer -Name "twitterdata" -Permission Container -Context $dataLakeContext  
-    }     
+$storageContainers = @{
+        twitterdata = "twitterdata"
+        financedb = "financedb"
+        salesdata = "salesdata"
+        customerInsights = "customer-insights"
+        saphana = "saphana"
+        campaigndata = "campaigndata"
+        iotcontainer = "iotcontainer"
+        recommendations = "recommendations"
+}
+
+foreach ($storageContainer in $storageContainers.Keys) {
+        Write-Information "Creating container: $($storageContainer)"
+        if(Get-AzStorageContainer -Name $storageContainer -Context $dataLakeContext -ErrorAction SilentlyContinue)  {  
+                Write-Information "$($storageContainer) container already exists."  
+        }else{  
+                Write-Information "$($storageContainer) container created."   
+                New-AzStorageContainer -Name $storageContainer -Permission Container -Context $dataLakeContext  
+        }
+}        
 
 $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
