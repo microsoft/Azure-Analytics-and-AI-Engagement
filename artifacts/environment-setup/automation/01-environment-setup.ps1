@@ -85,6 +85,8 @@ $amlWorkspaceName = "amlworkspace$($uniqueId)"
 $global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
 $global:sqlUser = "asaexp.sql.admin"
 
+#$valid = Test-SQLConnection -InstanceName $global:sqlEndpoint
+
 $global:synapseToken = ""
 $global:synapseSQLToken = ""
 $global:managementToken = ""

@@ -1031,6 +1031,30 @@ function Execute-SQLScriptFile {
     }
 }
 
+function Test-SQLConnection{
+    param(
+    [parameter(Mandatory=$true)]
+    [String]
+    $InstanceName)
+    
+    $row = New-Object –TypeName PSObject –Prop @{'InstanceName'=$InstanceName;'StartupTime'=$null}
+    try{
+        $check=Invoke-Sqlcmd -ServerInstance $InstanceName -Database TempDB -Query "SELECT @@SERVERNAME as Name,Create_Date FROM sys.databases WHERE name = 'TempDB'" -ErrorAction Stop -ConnectionTimeout 3 -Username $sqlUser -Password $global:sqlPassword
+        $row.InstanceName = $check.Name
+        $row.StartupTime = $check.Create_Date
+    }
+    catch{
+        #do nothing on the catch
+        write-host $_.exception.message;
+        return $false;
+    }
+    finally{
+        $return += $row
+    }
+
+    return $true;
+}
+
 function Create-SQLScript {
     
     param(
@@ -1536,3 +1560,4 @@ Export-ModuleMember -Function New-PowerBIWS
 Export-ModuleMember -Function Get-PowerBIWorkspaceId
 Export-ModuleMember -Function Upload-PowerBIReport
 Export-ModuleMember -Function Check-HttpRedirect
+Export-ModuleMember -Function Test-SQLConnection
