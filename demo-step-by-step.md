@@ -395,27 +395,23 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 > In the Develop Hub, data scientists can create their machine learning experiments using Python or Scala notebooks.
 
-1. Select the **Develop** hub from the Synapse workspace. Next, select and expand the **Notebooks** option.
+1. Select the **Develop** hub from the Synapse workspace. Next, select and expand the **Notebooks** option. Select the **1. Product Recommendations** notebook, which will open the notebook.
 
 > Let’s look at how Synapse, using the Apache Spark framework, brings together big data and machine learning.  
 >
 > ***Supplementary Info:** During this demo we will mainly use PySpark. PySpark is a programming language used in the Spark framework that is mainly used for processing structured and semi-structured datasets. It provides an optimized API that can read data from disparate data sources, at scale.* 
-
-![](media/2020-04-10_17-17-52.png)
-
-2. Select the **1. Product Recommendations** notebook, which will open the notebook.
-
+>
 > Let’s look at a notebook where we use machine learning to create product recommendations.
 
 ![](media/2020-04-10_17-18-41.png)
 
-3. Once the notebook is open, select **CDP DreamPool** from the **Attach to** dropdown. CDP DreamPool is a Spark Pool. Select **PySpark** from the **Language** dropdown list.
+2. Once the notebook is open, select **CDP DreamPool** from the **Attach to** dropdown. CDP DreamPool is a Spark Pool. Select **PySpark** from the **Language** dropdown list.
 
 > You can see that we are attached to a Spark pool, and we are using the PySpark language.
 
 ![](media/2020-04-10_17-19-32.png)
 
-4. Expand **Language** and see supported languages.
+3. Expand **Language** and see supported languages.
 
 > Notebooks in Synapse support several languages including:
 > 
@@ -426,9 +422,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ![](media/05-45.png)
 
-5. Observe the import statements in the Notebook 
-
-**TODO 4** Not available in the environment
+4. Observe the import statements in the Notebook 
 
 > Most Python packages come pre-installed in Synapse. Libraries can also be imported, and custom packages can also be installed.
 > 
@@ -438,7 +432,7 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 ![](media/05-46.png)
 
-6. Observe the results in the notebook under **Map Products**.
+5. Observe the results in the notebook under **Map Products**.
 
 > Once the trained model is loaded, we use it to recommend 5 products for every customer and use this to recommend other products as well.
 
