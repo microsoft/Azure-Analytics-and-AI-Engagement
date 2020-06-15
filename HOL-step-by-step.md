@@ -37,7 +37,7 @@
 
 Azure Synapse is a limitless analytics service that brings together enterprise data warehousing and Big Data analytics. It gives you the freedom to query data on your terms, using either serverless on-demand or provisioned resources—at scale. Azure Synapse brings these two worlds together with a unified experience to ingest, prepare, manage, and serve data for immediate BI and machine learning needs.
 
-During the next exercises, you will discover end-to-end analytics solutions with a unified experience within Azure Synapse Studio. You will have the chance to take a peek at data ingestion from SAP HANA, Oracle, Teradata, and Twitter, running queries against 30 Billion records, use notebooks to run machine learning experiments, try AutoML, and finally use PowerBI within Azure Synapse to built reports.
+During the next exercises, you will discover end-to-end analytics solutions with a unified experience within Azure Synapse Studio. You will have the chance to take a peek at data ingestion from SAP HANA, Oracle, Teradata, and Twitter running queries against 30 Billion records, use notebooks to run machine learning experiments, try AutoML, and finally use PowerBI within Azure Synapse to built reports.
 
 ## Requirements
 
@@ -89,7 +89,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 5. Switch to **File** tab and select **HTTP** as the source of the ingestion. 
 
-![In the new linked service window, http from file tab is selected and the continue button is highligted.](media/lab-exercise-1-task-1-step-5.png)
+![In the new linked service window, http from file tab is selected, and the continue button is highlighted.](media/lab-exercise-1-task-1-step-5.png)
 
 6. Type in `https://solliancepublicdata.blob.core.windows.net/cdp/lab-artifacts/CampaignAnalytics.csv` for the **Base URL**. Then select **Anonymous** from the **Authentication Type** list. Finally, select **Apply** to create your first linked service in Azure Synapse.   
 
@@ -103,17 +103,17 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 ![HTTP Dataset properties screen is shown. The Next button is selected with no changes on this window.](media/lab-exercise-1-task-1-step-8.png)
 
-9. Observer the schema for the CSV file discovered by Azure Synapse. Select **Next** and continue.
+9. Observe the schema for the CSV file discovered by Azure Synapse. Select **Next** and continue.
 
 ![File format settings screen shows the discovered schema of the CSV file. The Next button is selected.](media/lab-exercise-1-task-1-step-9.png)
 
 10. Select `sqlpool01` as the destination store for your pipeline. Select **Next** and continue. 
 
-![sqlpool01 is selected as the destination data store and the next button is highlighted.](media/lab-exercise-1-task-1-step-10.png)
+![sqlpool01 is selected as the destination datastore, and the next button is highlighted.](media/lab-exercise-1-task-1-step-10.png)
 
 11. Select `dbo.CampaignAnalytics` as the destination for table mapping. This will make sure our CSV file is transferred into the `CampaignAnalytics` table. Select **Next** and continue. 
 
-![CampaignAnalytics table is highlighted for destination table. The button Next is selected.](media/lab-exercise-1-task-1-step-11.png)
+![CampaignAnalytics table is highlighted for the destination table. The button Next is selected.](media/lab-exercise-1-task-1-step-11.png)
 
 12. Look at **Column Mappings** and observe that every field in the CSV file maps to a cell in our table. Select **Next** and continue. 
 
@@ -121,15 +121,15 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 13. Uncheck **Enable Staging** to ingest data directly to the destination. Select **Bulk insert** as the copy method. Select **Next** and continue. 
 
-![Settings window is shown. Enable staging is unchecked and Bulk Insert is selected. The next button is highlighted.](media/lab-exercise-1-task-1-step-13.png)
+![Settings window is shown. Enable staging is unchecked, and Bulk Insert is selected. The next button is highlighted.](media/lab-exercise-1-task-1-step-13.png)
 
-> ***Supplementary Info:** In Azure Synpase you can load data by using PolyBase, COPY statement (preview) or bulk insert. We recommend PolyBase or COPY statement (preview) for better copy performance. See [official documentation here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse) for more information.* 
+> ***Supplementary Info:** In Azure Synpase, you can load data using PolyBase, COPY statement (preview), or bulk insert. We recommend PolyBase or COPY statement (preview) for better copy performance. See [official documentation here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse) for more information.* 
 
 14. Observe the summary of your pipeline and select **Next** to execute it.
 
 ![Summary page of ingestion wizard is shown. Next button is highlighted.](media/lab-exercise-1-task-1-step-14.png)
 
-15. When deployment of your newly created pipeline is completed, select **Monitor** to switch to the monitoring tab of Synapse. 
+15. When the deployment of your newly created pipeline is completed, select **Monitor** to switch to the monitoring tab of Synapse. 
 
 ![Deployment complete screen is shown. Monitor button is highlighted.](media/lab-exercise-1-task-1-step-15.png)
 
@@ -139,7 +139,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 17. Once the execution of the pipeline is complete, go to the **Data** hub. Navigate to **Workspace > Databases > SqlPool01 > Tables** as seen in the screenshot below. Right select **CampaignAnaltics > New SQL Script > Select Top 100 rows** to query the table.
 
-![Data hub is selected. SQPool01 table collection is showed. Right clicked to CampaignAnalytics table and New SQL Script / Select top 100 rows command is selected.](media/lab-exercise-1-task-1-step-17.png)
+![Data hub is selected. SQPool01 table collection is shown. Right click to CampaignAnalytics table and New SQL Script / Select top 100 rows command is selected.](media/lab-exercise-1-task-1-step-17.png)
 
 18. Observe the output of your select statement that shows the data Azure Synapse Pipeline ingested from the CSV file.
 
@@ -165,11 +165,11 @@ SAP is one of the most widely-used enterprise software in the world. Azure Synap
 
 ![Data moves to Azure Data Lake Gen2](media/2020-04-10_16-05-13.png)
 
-5. Select **Mapping Data Flow** activity and then select **Settings**. Next select **Open** to go to **Data Flow** editor.
+5. Select **Mapping Data Flow** activity and then select **Settings**. Next, select **Open** to go to **Data Flow** editor.
 
 ![Mapping Data Flow](media/2020-04-10_16-06-30.png)
 
-6. In Data Flow editor, observe the flow. Look in detail into each activity using the following steps.
+6. In the Data Flow editor, observe the flow. Look in detail into each activity using the following steps.
 
 ![Moving data from SAP to the Data Lake](media/2020-04-10_16-07-29.png)
 
@@ -198,7 +198,7 @@ SAP is one of the most widely-used enterprise software in the world. Azure Synap
 
 ![Writing the full table to Azure Synapse](media/2020-04-10_16-18-47.png)
 
-21. To view all the available transformations in the data flow editor, select the **+ (add action)**, which is to the right of the first activity.
+21. To view all the available transformations in the data flow editor, select the **+ (add action)**, to the right of the first activity.
 
 ![view all the available transformations](media/2020-04-10_16-19-47.png)
 
@@ -216,7 +216,7 @@ Azure Synapse not only has the code-free path but can give you the ability to pr
 
 > **Note:** This pipeline is for demonstration purposes only. __Do NOT execute__ the pipeline.
 
-2. Select **Lookup** activity, then select **Settings** to observe the **Source dataset** property (Teradata).
+2. Select **Lookup** activity, and select **Settings** to observe the **Source dataset** property (Teradata).
 
 ![](media/2020-04-11_11-21-42.png)
 
@@ -252,27 +252,27 @@ Azure Synapse helps us copy data from an Oracle database to any supported sink d
 
 Azure Synapse Analytics enables direct streaming ingestion support and the ability to execute analytical queries over streaming data. Capabilities such as: joins across multiple streaming inputs, aggregations within one or more streaming inputs, transform semi-structured data, and multiple temporal windows are all supported. For streaming ingestion, you can integrate with Event Hubs (including Event Hubs for Kafka) and IoT Hubs.
 
-In this task, we will load tweets from an ADSL Gen2, archive the original files and clean up the source dataset.
+In this task, we will load tweets from an ADSL Gen2, archive the original files, and clean up the source dataset.
 
 1. Go to the **Orchestrate Hub** and select the plus button, then select **Pipeline** to create a new pipeline.
 
 ![Orchestrate Hub is selected. The plus button is selected to open a context menu. In the context menu Pipeline selection is highlighted.](media/new-pipeline.png)
 
-2. On the **Properties** panel name your pipeline `TwitterDataPipeline`.
+2. On the **Properties** panel, name your pipeline `TwitterDataPipeline`.
 
 ![Properties panel of the pipeline is shown. Pipeline name is given as TwitterDataPipeline.](media/naming-pipeline-twitterdatapipeline.png)
 
-3. From the **Activities** list search for `copy`. Move the **Copy data** activity to the design area as shown in the following screenshot.
+3. From the **Activities** list search for `copy`. Move the **Copy data** activity to the design area, as shown in the following screenshot.
 
 ![Activities list is searched for the word copy. Copy data activity is selected and moved into the design surface.](media/move-copy-data-activity.png)
 
 4. Select the **copy data** activity. Switch to the **Source** tab and click **+New** to create a new **Source dataset**.
 
-![Current copy data activity is selected and its source tab is open. Plus New button is highlighted.](media/copy-activity-source.png)
+![Current copy data activity is selected, and its source tab is open. Plus New button is highlighted.](media/copy-activity-source.png)
 
 5. Switch to the **Azure** tab and select **Azure Data Lake Storage Gen2** as the source. Select **Continue** to proceed.
 
-![Azure tab is opened and Azure Data Lake Storage Gen2 is selected. Continue button is highlighted.](media/dataset-azure-datalake-gen2.png)
+![Azure tab is opened, and Azure Data Lake Storage Gen2 is selected. Continue button is highlighted.](media/dataset-azure-datalake-gen2.png)
 
 6. Select **Parquet** as the source. Select **Continue** to proceed.
 
@@ -282,29 +282,29 @@ In this task, we will load tweets from an ADSL Gen2, archive the original files 
 
 ![Parquet is selected as the data source format. Continue button is highlighted.](media/datalake-linked-service-selection.png)
 
-8. Select the folder as shown in the following screenshot to open the list of file systems.
+8. Select the folder, as shown in the following screenshot, to open the list of file systems.
 
-![Parquet file path configuration screen is open. Folder icon is highlighted.](media/datalake-folder-selection.png)
+![Parquet file path configuration screen is open. The folder icon is highlighted.](media/datalake-folder-selection.png)
 
 9. Select `twitterdata` as the source file system. Then select **ok** to proceed.
 
 ![Twitterdata file system is selected. Ok button is highlighted.](media/datalake-select-twitterdata.png)
 
-10. **File path** will shown the file system `twitterdata` as you selected. For **File Name** type in `dbo.TwitterAnalytics.parquet`. This file is already placed in your data lake as part of the lab setup. Select **ok** to move to the next step.
+10. **File path** will show the `twitterdata` file system that you selected. For **File Name** type in `dbo.TwitterAnalytics.parquet`. This file is already placed in your data lake as part of the lab setup. Select **ok** to move to the next step.
 
 ![File path shows twitterdata, and file name shows dbo.TwitterAnalytics.parquet. OK button is highlighted.](media/datalake-twitteranalytics-parquet-selected.png)
 
 11. Switch to the **Sink** tab and click **+New** to create a new **Sink dataset**.
 
-![Current copy data activity is selected and its sink tab is open. Plus New button is highlighted.](media/twittermigration-new-sink-datasource.png)
+![Current copy data activity is selected, and its sink tab is open. Plus New button is highlighted.](media/twittermigration-new-sink-datasource.png)
 
 12. Switch to the **Azure** tab and select **Azure Synapse Analytics** as the source. Select **Continue** to proceed.
 
-![Azure tab is opened and Azure Synapse Analytics is selected. Continue button is highlighted.](media/SQLDW-newdataset-sink.png)
+![Azure tab is opened, and Azure Synapse Analytics is selected. Continue button is highlighted.](media/SQLDW-newdataset-sink.png)
 
-13. Select **sqlpool01** as the linked service to be used to access your Azure Synapse Analytics SQL Pool. 
+13. Select **sqlpool01** as the linked service to access your Azure Synapse Analytics SQL Pool. 
 
-![Linked service selection is opened and sqlpool01 is selected](media/linked-service-select-sqlpool.png)
+![Linked service selection is opened, and sqlpool01 is selected](media/linked-service-select-sqlpool.png)
 
 14. Select **dbo.TwitterAnalytics** as the table name to be used to ingest data into. Select **ok** to move to the next step.
 
@@ -312,7 +312,7 @@ In this task, we will load tweets from an ADSL Gen2, archive the original files 
 
 15. Switch to the **General** tab and name your **copy data** activity to `Load tweets from ADLS Gen 2`.
 
-![Copy data activity is selected. General tab is opened. Name field is populated with the text Load tweets from ADLS Gen 2.](media/copy-data-naming.png)
+![Copy data activity is selected. The general tab is opened. Name field is populated with the text Load tweets from ADLS Gen 2.](media/copy-data-naming.png)
 
 16. Select **Publish all** to publish your work to the workplace. This will save all the changes and the work you did so far.
 
@@ -322,13 +322,13 @@ In this task, we will load tweets from an ADSL Gen2, archive the original files 
 
 ![Add trigger is selected to open a menu. Trigger now selection is highlighted.](media/twitter-pipeline-trigger-now.png)
 
-18. Go to **Monitor Hub** and select **Pipeline runs** as shown in the following screenshot.
+18. Go to **Monitor Hub** and select **Pipeline runs**, as shown in the following screenshot.
 
 ![Pipeline runs list from Monitor Hub is shown. TwitterDataPipeline in progress status is highlighted.](media/pipeline-run-monitor-twitter-pipeline.png)
 
 19. Once your pipeline run is completed, go to **Data hub**, switch to **Workspace**, open **Databases > SQL Pool01** and select **...** to open the menu. From the menu select **New SQL Script > Empty Script**. 
 
-![In the data hub SQLPool01 is selected. A menu is opened through three dots and New SQL Script command is selected.](media/new-tsql.png)
+![In the data hub SQLPool01 is selected. A menu is opened through three dots, and New SQL Script command is selected.](media/new-tsql.png)
 
 20. Write down the query below and run it to observe the count of rows in the table. 
 
@@ -336,7 +336,7 @@ In this task, we will load tweets from an ADSL Gen2, archive the original files 
 select count(*) from TwitterAnalytics
 ```
 
-![A query to count the rows in the TwitterAnalytics table is writtent and ran. The result shows 60.](media/row-count-twitter-analytics.png)
+![A query to count the rows in the TwitterAnalytics table is written and ran. The result shows 60.](media/row-count-twitter-analytics.png)
 
 You can run the pipeline multiple times and observe the number of rows in the table increase by every round of data ingestion.
 
