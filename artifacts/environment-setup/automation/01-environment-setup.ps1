@@ -115,6 +115,11 @@ Set-AzKeyVaultAccessPolicy -ResourceGroupName $resourceGroupName -VaultName $key
 $ws = Get-Workspace $SubscriptionId $ResourceGroupName $WorkspaceName;
 $upid = $ws.identity.principalid
 Set-AzKeyVaultAccessPolicy -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -ObjectId $upid -PermissionsToSecrets set,delete,get,list
+
+Write-Information "Create SQL-USER-ASA Key Vault Secret"
+$secretValue = ConvertTo-SecureString $sqlPassword -AsPlainText -Force
+Set-AzKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSQLUserSecretName -SecretValue $secretValue
+
 Write-Information "Create KeyVault linked service $($keyVaultName)"
 
 $result = Create-KeyVaultLinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $keyVaultName
