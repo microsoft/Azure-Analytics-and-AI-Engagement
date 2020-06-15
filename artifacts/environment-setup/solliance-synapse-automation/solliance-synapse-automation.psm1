@@ -354,6 +354,35 @@ function Create-IntegrationRuntime {
     return $result
 }
 
+function Get-Workspace {
+    
+    param(
+    [parameter(Mandatory=$true)]
+    [String]
+    $SubscriptionId,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $ResourceGroupName,
+
+    [parameter(Mandatory=$true)]
+    [String]
+    $WorkspaceName
+    )
+
+    $uri = "https://management.azure.com/subscriptions/$($SubscriptionId)/resourcegroups/$($ResourceGroupName)/providers/Microsoft.Synapse/workspaces/$($WorkspaceName)?api-version=2019-06-01-preview"
+
+    Ensure-ValidTokens
+
+    try {
+        $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $managementToken" }  
+        return $result  
+    }
+    catch {
+        return $null
+    }
+}
+
 function Get-IntegrationRuntime {
     
     param(
@@ -1523,6 +1552,7 @@ Export-ModuleMember -Function Create-BlobStorageLinkedService
 Export-ModuleMember -Function Create-DataLakeLinkedService
 Export-ModuleMember -Function Create-SQLPoolKeyVaultLinkedService
 Export-ModuleMember -Function Create-IntegrationRuntime
+Export-ModuleMember -Function Get-Workspace
 Export-ModuleMember -Function Get-IntegrationRuntime
 Export-ModuleMember -Function Delete-IntegrationRuntime
 Export-ModuleMember -Function Create-Dataflow
