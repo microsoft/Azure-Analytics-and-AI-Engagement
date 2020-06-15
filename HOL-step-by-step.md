@@ -252,15 +252,93 @@ Azure Synapse helps us copy data from an Oracle database to any supported sink d
 
 Azure Synapse Analytics enables direct streaming ingestion support and the ability to execute analytical queries over streaming data. Capabilities such as: joins across multiple streaming inputs, aggregations within one or more streaming inputs, transform semi-structured data, and multiple temporal windows are all supported. For streaming ingestion, you can integrate with Event Hubs (including Event Hubs for Kafka) and IoT Hubs.
 
-In this task, we will load tweets from an ADSL Gen2 and clean up the dataset.
+In this task, we will load tweets from an ADSL Gen2, archive the original files and clean up the source dataset.
 
-1. Select **TwitterDataMigration** from the list of pipelines.
+1. Go to the **Orchestrate Hub** and select the plus button, then select **Pipeline** to create a new pipeline.
 
-![](media/2020-04-10_16-56-21.png)
+![Orchestrate Hub is selected. The plus button is selected to open a context menu. In the context menu Pipeline selection is highlighted.](media/new-pipeline.png)
 
-2. Look at the **Copy data**, **Archive Tweets data in ADLS Gen2** and **Clean up the archived Twitter Data** activities. 
+2. On the **Properties** panel name your pipeline `TwitterDataPipeline`.
 
-![](media/2020-04-10_16-57-19.png)
+![Properties panel of the pipeline is shown. Pipeline name is given as TwitterDataPipeline.](media/naming-pipeline-twitterdatapipeline.png)
+
+3. From the **Activities** list search for `copy`. Move the **Copy data** activity to the design area as shown in the following screenshot.
+
+![Activities list is searched for the word copy. Copy data activity is selected and moved into the design surface.](media/move-copy-data-activity.png)
+
+4. Select the **copy data** activity. Switch to the **Source** tab and click **+New** to create a new **Source dataset**.
+
+![Current copy data activity is selected and its source tab is open. Plus New button is highlighted.](media/copy-activity-source.png)
+
+5. Switch to the **Azure** tab and select **Azure Data Lake Storage Gen2** as the source. Select **Continue** to proceed.
+
+![Azure tab is opened and Azure Data Lake Storage Gen2 is selected. Continue button is highlighted.](media/dataset-azure-datalake-gen2.png)
+
+6. Select **Parquet** as the source. Select **Continue** to proceed.
+
+![Parquet is selected as the data source format. Continue button is highlighted.](media/data-copy-parquet-source.png)
+
+7. Select **asaexpdatalake{suffix}** as the linked service to be used to access the data lake. Select **Continue** to proceed.
+
+![Parquet is selected as the data source format. Continue button is highlighted.](media/datalake-linked-service-selection.png)
+
+8. Select the folder as shown in the following screenshot to open the list of file systems.
+
+![Parquet file path configuration screen is open. Folder icon is highlighted.](media/datalake-folder-selection.png)
+
+9. Select `twitterdata` as the source file system. Then select **ok** to proceed.
+
+![Twitterdata file system is selected. Ok button is highlighted.](media/datalake-select-twitterdata.png)
+
+10. **File path** will shown the file system `twitterdata` as you selected. For **File Name** type in `dbo.TwitterAnalytics.parquet`. This file is already placed in your data lake as part of the lab setup. Select **ok** to move to the next step.
+
+![File path shows twitterdata, and file name shows dbo.TwitterAnalytics.parquet. OK button is highlighted.](media/datalake-twitteranalytics-parquet-selected.png)
+
+11. Switch to the **Sink** tab and click **+New** to create a new **Sink dataset**.
+
+![Current copy data activity is selected and its sink tab is open. Plus New button is highlighted.](media/twittermigration-new-sink-datasource.png)
+
+12. Switch to the **Azure** tab and select **Azure Synapse Analytics** as the source. Select **Continue** to proceed.
+
+![Azure tab is opened and Azure Synapse Analytics is selected. Continue button is highlighted.](media/SQLDW-newdataset-sink.png)
+
+13. Select **sqlpool01** as the linked service to be used to access your Azure Synapse Analytics SQL Pool. 
+
+![Linked service selection is opened and sqlpool01 is selected](media/linked-service-select-sqlpool.png)
+
+14. Select **dbo.TwitterAnalytics** as the table name to be used to ingest data into. Select **ok** to move to the next step.
+
+![Table name list is shown and dbo.TwitterAnalytics is shown. Ok button is highlighted.](media/twitteranalytics-sink.png)
+
+15. Switch to the **General** tab and name your **copy data** activity to `Load tweets from ADLS Gen 2`.
+
+![Copy data activity is selected. General tab is opened. Name field is populated with the text Load tweets from ADLS Gen 2.](media/copy-data-naming.png)
+
+16. Select **Publish all** to publish your work to the workplace. This will save all the changes and the work you did so far.
+
+![Pipeline design screen is shown. Publish All is selected.](media/twitter-pipeline-publish-all.png)
+
+17. Select **Add trigger**, then select **Trigger now** to run your pipeline.
+
+![Add trigger is selected to open a menu. Trigger now selection is highlighted.](media/twitter-pipeline-trigger-now.png)
+
+18. Go to **Monitor Hub** and select **Pipeline runs** as shown in the following screenshot.
+
+![Pipeline runs list from Monitor Hub is shown. TwitterDataPipeline in progress status is highlighted.](media/pipeline-run-monitor-twitter-pipeline.png)
+
+19. Once your pipeline run is completed, go to **Data hub**, switch to **Workspace**, open **Databases > SQL Pool01** and select **...** to open the menu. From the menu select **New SQL Script > Empty Script**. 
+
+![In the data hub SQLPool01 is selected. A menu is opened through three dots and New SQL Script command is selected.](media/new-tsql.png)
+
+20. Write down the query below and run it to observe the count of rows in the table. 
+
+```sql
+select count(*) from TwitterAnalytics
+```
+
+![A query to count the rows in the TwitterAnalytics table is writtent and ran. The result shows 60.](media/row-count-twitter-analytics.png)
+
+You can run the pipeline multiple times and observe the number of rows in the table increase by every round of data ingestion.
 
 ### Task 6: On-Demand Query: Azure Data Lake Gen2
 
