@@ -87,6 +87,64 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 ![Create new connection](media/05-05.png)
 
+5. Switch to **File** tab and select **HTTP** as the source of the ingestion. 
+
+![In the new linked service window, http from file tab is selected and the continue button is highligted.](media/lab-exercise-1-task-1-step-5.png)
+
+6. Type in `https://solliancepublicdata.blob.core.windows.net/cdp/lab-artifacts/CampaignAnalytics.csv` for the **Base URL**. Then select **Anonymous** from the **Authentication Type** list. Finally, select **Apply** to create your first linked service in Azure Synapse.   
+
+![Base URL is edited to include https://solliancepublicdata.blob.core.windows.net/cdp/lab-artifacts/CampaignAnalytics.csv. Anonymouse from the authentication list dropdown is selected. The Apply button is highlighted.](media/lab-exercise-1-task-1-step-6.png)
+
+7. Select your newly created linked service named `HttpServer1` as the source for your first data ingestion pipeline in Azure Synapse. Select **Next** to continue.
+
+![HttpServer1 is selected in the source data store windows. Next button is highlighted.](media/lab-exercise-1-task-1-step-7.png)
+
+8. Select **Next** and continue.
+
+![HTTP Dataset properties screen is shown. The Next button is selected with no changes on this window.](media/lab-exercise-1-task-1-step-8.png)
+
+9. Observer the schema for the CSV file discovered by Azure Synapse. Select **Next** and continue.
+
+![File format settings screen shows the discovered schema of the CSV file. The Next button is selected.](media/lab-exercise-1-task-1-step-9.png)
+
+10. Select `sqlpool01` as the destination store for your pipeline. Select **Next** and continue. 
+
+![sqlpool01 is selected as the destination data store and the next button is highlighted.](media/lab-exercise-1-task-1-step-10.png)
+
+11. Select `dbo.CampaignAnalytics` as the destination for table mapping. This will make sure our CSV file is transferred into the `CampaignAnalytics` table. Select **Next** and continue. 
+
+![CampaignAnalytics table is highlighted for destination table. The button Next is selected.](media/lab-exercise-1-task-1-step-11.png)
+
+12. Look at **Column Mappings** and observe that every field in the CSV file maps to a cell in our table. Select **Next** and continue. 
+
+![Column Mappings are shown. The next button is selected.](media/lab-exercise-1-task-1-step-12.png)
+
+13. Uncheck **Enable Staging** to ingest data directly to the destination. Select **Bulk insert** as the copy method. Select **Next** and continue. 
+
+![Settings window is shown. Enable staging is unchecked and Bulk Insert is selected. The next button is highlighted.](media/lab-exercise-1-task-1-step-13.png)
+
+> ***Supplementary Info:** In Azure Synpase you can load data by using PolyBase, COPY statement (preview) or bulk insert. We recommend PolyBase or COPY statement (preview) for better copy performance. See [official documentation here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse) for more information.* 
+
+14. Observe the summary of your pipeline and select **Next** to execute it.
+
+![Summary page of ingestion wizard is shown. Next button is highlighted.](media/lab-exercise-1-task-1-step-14.png)
+
+15. When deployment of your newly created pipeline is completed, select **Monitor** to switch to the monitoring tab of Synapse. 
+
+![Deployment complete screen is shown. Monitor button is highlighted.](media/lab-exercise-1-task-1-step-15.png)
+
+16. Your ingesting pipeline is deployed and is currently running.
+
+![Pipeline status as In Progress is shown on the monitor page.](media/lab-exercise-1-task-1-step-16.png)
+
+17. Once the execution of the pipeline is complete, go to the **Data** hub. Navigate to **Workspace > Databases > SqlPool01 > Tables** as seen in the screenshot below. Right select **CampaignAnaltics > New SQL Script > Select Top 100 rows** to query the table.
+
+![Data hub is selected. SQPool01 table collection is showed. Right clicked to CampaignAnalytics table and New SQL Script / Select top 100 rows command is selected.](media/lab-exercise-1-task-1-step-17.png)
+
+18. Observe the output of your select statement that shows the data Azure Synapse Pipeline ingested from the CSV file.
+
+![The result of the select statement is presented.](media/lab-exercise-1-task-1-step-18.png)
+
 ### Task 2: Migrate SAP Hana to Azure Synapse Analytics
 
 SAP is one of the most widely-used enterprise software in the world. Azure Synapse empowers customers to integrate their existing SAP system with Azure to unblock business insights. In this exercise, we will observe an Azure Synapse Pipeline that moves data from SAP Hana to an ADLS Gen2 storage, followed by a Data Flow that transforms the data during the pipeline execution. 
