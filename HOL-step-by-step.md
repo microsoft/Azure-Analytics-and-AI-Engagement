@@ -570,21 +570,25 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 2. Select the **1. Product Recommendations** notebook, which will open the notebook.
 
-![](media/2020-04-10_17-18-41.png)
+![Develop Hub is selected. Notebooks collection is opened. The notebook named "1. Product Recommendations" is highlighted.](media/2020-04-10_17-18-41.png)
 
-3. Once the notebook is open, select **CDP DreamPool** from the **Attach to** dropdown. CDP DreamPool is a Spark Pool. Select **PySpark** from the **Language** dropdown list.
+3. Once the notebook is open, select **SparkPool01** from the **Attach to** dropdown. Select **PySpark** from the **Language** dropdown list.
 
-![](media/2020-04-10_17-19-32.png)
+![SparkPool01 is selected under the "Attach to" list, and PySpark is selected for Language.](media/2020-04-10_17-19-32.png)
 
 4. Expand **Language** and see supported languages.
 
-![](media/05-45.png)
+![Language options are shown.](media/05-45.png)
 
 5. Observe the import statements in the Notebook 
 
-![](media/05-46.png)
+![Import statements in the notebook are presented.](media/05-46.png)
 
-6. Observe the results in the notebook under **Map Products**.
+6. Select **Run all** to run all the steps in the notebook. When the execution starts feel free to scroll down and follow the execution step by step.
+
+!["1. Product Recommendations" notebook is open. Run all is selected.](media/product-recommendations-run-all.png)
+
+6. Observe the results in the notebook in Cell 25.
 
 ![](media/05-47.png)
 
