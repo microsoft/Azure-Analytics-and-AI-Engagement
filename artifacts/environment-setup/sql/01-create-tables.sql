@@ -1082,3 +1082,24 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[department_visit_customer]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[department_visit_customer]
+
+CREATE TABLE [dbo].[department_visit_customer]
+( 
+	[Date] [nvarchar](4000)  NULL,
+	[Accessories_count] [nvarchar](4000)  NULL,
+	[Entertainment_count] [nvarchar](4000)  NULL,
+	[Gaming] [nvarchar](4000)  NULL,
+	[Kids] [nvarchar](4000)  NULL,
+	[Mens] [nvarchar](4000)  NULL,
+	[Phone_and_GPS] [nvarchar](4000)  NULL,
+	[Womens] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO

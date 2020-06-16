@@ -303,7 +303,9 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"DimData"}} ,
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"salesPBIData"}} , @{Name = "TABLE_NAME"; Expression = {"salesPBIData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Customer_SalesLatest.csv"}} , @{Name = "TABLE_NAME"; Expression = {"Customer_SalesLatest"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Customer_SalesLatest"}} , @{Name = "TABLE_NAME"; Expression = {"Customer_SalesLatest"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"department_visit_customer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
