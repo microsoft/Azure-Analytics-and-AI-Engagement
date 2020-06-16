@@ -340,6 +340,40 @@ select count(*) from TwitterAnalytics
 
 You can run the pipeline multiple times and observe the number of rows in the table increase by every round of data ingestion.
 
+21. Now, we will go back to the list of pipeline in our workspace. In the **Orchestrate Hub** select **TwitterDataMigration** pipeline to see a fully implemented version of the twitter data pipeline.
+
+![A query to count the rows in the TwitterAnalytics table is written and ran. The result shows 60.](media/twitterdatamigration-pipeline-full.png)
+
+22. Select the second **Copy data** activity and switch to the **Source** tab to investigate its **source dataset**. Select **open** to open the details screen for the dataset.
+
+![TwitterDataMigration pipeline is open. Second copy data activity is selected. The source tab is opened, and the Open button is highlighted.](media/twitterdatamigration-pipeline-second-activity.png)
+
+23. Once you are in the dataset, take a look at the **Linked Service** and the **File path**. The **linked service** is an Azure Data Lake ADLS Gen 2, and the **File path** is pointing out a particular file to be copied. So far, the implementation of the second **copy data** activity is the same as the first one we have completed.
+
+![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-datalake-parquet-file.png)
+
+24. Close the window, and go back to the pipeline page. Make sure the second **copy data** activity is selected. Now, switch to the **Sink** tab and select **Open** to see the details of the **sink dataset** for this activity.
+
+![TwitterDataMigration pipeline is open. Second copy data activity is selected. The sink tab is opened, and the Open button is highlighted.](media/twitterdatamigration-copydata-sink.png)
+
+25. Once you are in the dataset, take a look at the **Linked Service** and the **File path**. The **linked service** is our Azure Data Lake ADLS Gen 2, and the **File path** is pointing out a different file system and folder where archived parquet files will be saved. 
+
+![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-copydata-sink-details.png)
+
+Close the window, and go back to the pipeline page.
+
+26. Select the third activity in the pipeline. The third activity is a **Delete** activity. Now, switch to the **Source** tab and select **Open** to see the details of the **dataset** that will be used to delete parquet files.
+
+![TwitterDataMigration pipeline is open. Third activity is selected. The source tab is opened, and the Open button is highlighted.](media/twitterdatamigration-delete-dataset.png)
+
+27. Once you are in the dataset, take a look at the **Linked Service** and the **File path**. The **linked service** is our Azure Data Lake ADLS Gen 2, and the **File path** is pointing out the files that we imported into our database, archived in a different location, and now are good to be deleted. 
+
+![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-delete-dataset-detail.png)
+
+Close the window, and go back to the pipeline page.
+
+> ***Warning:** Do not run this pipeline, otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the additional activity steps based on your observations from the **TwitterDataMigration** pipeline* 
+
 ### Task 6: On-Demand Query: Azure Data Lake Gen2
 
 Every Azure Synapse Analytics workspace comes with SQL on-demand endpoints that you can use to query data in the lake. SQL on-demand is a query service over the data in your data lake. It is a distributed data processing system, built for large scale of data and compute. SQL on-demand enables you to analyze your Big Data in seconds to minutes, depending on the workload. Thanks to built-in query execution fault-tolerance, the system provides high reliability and success rates even for long-running queries involving large data sets.
