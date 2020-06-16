@@ -15,11 +15,11 @@ CREATE TABLE [dbo].[Twitter]
 	[Tweet] [nvarchar](4000)  NULL,
 	[City] [nvarchar](4000)  NULL,
 	[UserName] [nvarchar](4000)  NULL,
-	[RetweetCount] [bigint]  NULL,
-	[FavouriteCount] [bigint]  NULL,
+	[RetweetCount] [int]  NULL,
+	[FavouriteCount] [int]  NULL,
 	[Sentiment] [nvarchar](4000)  NULL,
-	[SentimentScore] [bigint]  NULL,
-	[IsRetweet] [bigint]  NULL,
+	[SentimentScore] [int]  NULL,
+	[IsRetweet] [int]  NULL,
 	[HourOfDay] [nvarchar](4000)  NULL,
 	[Language] [nvarchar](4000)  NULL
 )
@@ -32,7 +32,7 @@ GO
 
 -- Step 2 Copy data from all PARQUET files in to the table
 COPY INTO [dbo].[Twitter]
-FROM 'https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/twitterdata/'
+FROM 'https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/twitterdata/dbo.TwitterAnalytics.parquet'
 WITH (
     FILE_TYPE = 'PARQUET',
     CREDENTIAL=(IDENTITY= 'Shared Access Signature', SECRET='#SAS_KEY#')
