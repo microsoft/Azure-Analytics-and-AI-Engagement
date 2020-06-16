@@ -529,16 +529,36 @@ from (SELECT P.Department, TA.Sentiment AS [Twitter Sentiment],
 
 To speed up time to insight and minimize unnecessary data transformation processes, Azure Synapse enables support for querying JSON data. Business analysts can now use the familiar T-SQL language to query and manipulate documents that are formatted as JSON data. JSON functions, such as `JSON_VALUE, JSON_QUERY`, `JSON_MODIFY`, and `OPENJSON` are available in Azure Synapse. In this task, we will take JSON data and extract specific structured columns using T-SQL.
 
-1. Select **Develop**, and then select **2 JSON Extractor**. 
-![](media/2020-04-10_17-13-47.png)
+1. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select the **...** button, then select **New SQL Script** to create a new sql script file. 
 
-2. From the **Connect to** dropdown connect to **AzureSynapseDW** SQL Pool. Select the query as shown in the screenshot and select **Run**.
+![Develop Hub is open. User clicks the ... button and selects New SQL Script command.](media/copy-into-new-script.gif)
 
-![](media/2020-04-10_17-14-55.png)
+2. Select `SQLPool01` in the **Connect to** list, and `SQLPool01` in the **Use database** list. Type in the SQL Command below into the newly created script, and run the script by selecting the **Run** button. The query will get us the first 100 records in the `TwitterRawData` table. The result set will show JSON Payloads stored in a single field in the table called `TwitterData`.
 
-3. Observe the results of query 
+```sql
+SELECT top (100) * from  dbo.[TwitterRawData] 
+```
 
-![](media/2020-04-10_17-16-30.png)
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the first 100 rows in the TwitterRawData table is typed in, and the Run button is highligted.](media/json-extractor-select-top-100.png)
+
+3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and see the result set where every JSON Value stored in the JSON Payload field `TwitterData` in the `TwitterRawData` table is now extracted into separate columns. 
+
+```sql
+SELECT   
+       JSON_VALUE( TwitterData,'$.Time') AS Time, 
+       JSON_VALUE( TwitterData,'$.Hashtag') AS Hashtag, 
+       JSON_VALUE( TwitterData,'$.Tweet') AS Tweet, 
+       JSON_VALUE( TwitterData,'$.City') AS City , 
+       JSON_VALUE( TwitterData,'$.Sentiment') AS Sentiment , 
+       JSON_VALUE( TwitterData,'$.Language') AS Language  
+FROM dbo.[TwitterRawData] WHERE    ISJSON(TwitterData) > 0
+```
+
+![SQL Script in the file is replaced with a script that queries the TwitterRawData, and extracts JSON values from the TwitterData field into separate columns. The Run button is selected, and the result of the query is highligted.](media/json-extractor-json-value-extractor.png)
+
+4. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **2 JSON Extractor**. Look into the code to learn about different uses of the [JSON Functions](https://docs.microsoft.com/en-us/sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest) in Azure Synapse Analytics. 
+
+![Develop Hub is selected. SQL Scripts collection is open. The "2 JSON Extractor" file is selected. Code pieces showcasing different uses of JSON Functions in Azure Synapse are highlighted.](media/json-extractor-json-functions.png)
 
 ### Task 3: Using Notebooks to Run Machine Learning Experiments
 
