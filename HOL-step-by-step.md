@@ -382,7 +382,7 @@ SQL on-demand is serverless; hence there is no infrastructure to setup or cluste
 
 In this task, we will query twitter data stored as Parquet files in Azure Data Lake Gen 2 using SQL On-Demand, and visualize the result.
 
-1. Select **Data** Hub from the left navigation in the Synapse Analytics workspace. From the **Data** blade, select **Linked** tab and under **Storage accounts**, Select/expand the storage account starting with **asaexpworkspace**. Observe data sources that are now in ADL Gen2 and then select **twitterdata** storage container.
+1. Select **Data** Hub from the left navigation in the Synapse Analytics workspace. From the **Data** blade, select **Linked** tab and under **Storage accounts**, Select/expand the storage account named **asaexpworkspace{suffix}**. Observe data sources that are now in ADL Gen2 and then select **twitterdata** storage container.
 
 ![](media/2020-04-10_17-00-38.png)
 
@@ -390,17 +390,17 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 ![](media/2020-04-10_17-01-49.png)
 
-3. Select **Run**.
+3. Select **Run**. Right now, you are using a Serverless approach to query parquet files with the SQL On-Demand query service.
 
 ![](media/2020-04-11_11-26-50.png)
 
-4. Select **Chart**
+4. Select **Chart**. Modify **Legend (Series) columns**, and pick `SentimentScore` and `IsRetweet`.
 
-![](media/05-31.png)
+![](media/sql-on-demand-chart.png)
 
-5. Minimize the **storage accounts** on the left side, then switch to **Workspace** tab. Cxpand the **Databases** tree, expand **SQLPool01 (SQL pool)**, and finally expand **Tables** folder.
+5. Once you are done crafting your chart, select **Save as image** and export an image of your chart that you can share.
 
-![](media/2020-04-11_11-29-17.png)
+![](media/chart-save-as-image.png)
 
 ### Task 7: COPY INTO Command
 
