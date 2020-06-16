@@ -489,33 +489,41 @@ During the next couple of tasks, you will have a chance to look at how to develo
 
 In this task, we will run queries against 30 Billion records and create some early charts to get a feeling of how the data looks.
 
-> **Note:** If you did not opt-in to load 30 billion records into the database during environment preparation steps described in the hands-on lab preparation guide your queries will result in 3.4 million records.
+> ***Note:** If you did not opt-in to load 30 billion records into the database during environment preparation steps described in the hands-on lab preparation guide your queries will result in 3.4 million records.*
 
-1. Select **Develop** in the various tabs available in the **Develop** hub workspace and discover the environment. 
+1. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select the **...** button, then select **New SQL Script** to create a new sql script file. 
 
-![](media/2020-04-10_17-09-25.png)
+![Develop Hub is open. User clicks the ... button and selects New SQL Script command.](media/copy-into-new-script.gif)
 
-2. Select **SQL Scripts** and then select **1 SQL Query with Synapse**
+2. Select `SQLPool01` in the **Connect to** list, and `SQLPool01` in the **Use database** list. Type in the SQL Command below into the newly created script, and run the script by selecting the **Run** button. The query will get us the total number of rows in the `Sales` table.
 
-![](media/2020-04-11_11-33-42.png)
+```sql
+SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Sales(nolock)
+```
 
-3. Select **AzureSynapseDW** SQL Pool from the **Connect to** drop-down menu. Once the **Use database** drop-down is populated select **AzureSynapseDW** database from the **Use Database** drop-down. Finally, select the below query (#3 in the screenshot)
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the number of rows in the sales table is typed in, and the Run button is highligted.](media/2020-04-11_11-35-09.png)
 
-![](media/2020-04-11_11-35-09.png)
+3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and see the resulting data set out of the 30 billion records. Observe the time the query takes – query time is listed at the bottom of the screen.
 
-`SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Sales(nolock)`
+```sql
+select CustKey, UserName, Emailstatus, Department, [Twitter Sentiment], cast(round(TotalSale/10000,0) as int) as Revenue
+from (SELECT P.Department, TA.Sentiment AS [Twitter Sentiment],
+        sum(S.TotalAmount) as TotalSale,
+        M.UserName, M.Emailstatus, M.CustKey
+    FROM dbo.Sales as S
+        inner join dbo.Products as P on P.Products_ID= S.ProductId inner join [dbo].[Dim_Customer] DC
+        left outer join dbo.[TwitterAnalytics] TA on TA.[username]=DC.[userName] on DC.[id]=S.[Customerid]
+        inner join dbo.[MillennialCustomers] as M on M.CustKey = S.Customerid
+    where DC.[FullName]!='N/A'
+    group by DC.[FullName],P.Department,TA.Sentiment,M.UserName,M.CustKey,M.Emailstatus)
+  as result
+```
 
-4. Select **Run** and observe the results (30 Billion).
+![SQL Script in the file is replaced with a script that queries multiple tables including the sales table. The Run button is highlighted.](media/30billion-rows-query.png)
 
-![](media/2020-04-10_17-11-19.png)
+4. Select the **Chart** button, and then select **Chart Type** dropdown to see various chart types you can use to visualize your data.
 
-5. Scroll down a few lines to the second query, select the query as shown in the screenshot, and then select **Run**. Observe time the query takes – query time is listed at the bottom of the screenshot.
-
-![](media/2020-04-11_11-39-28.png)
-
-5. Select the **chart** button, and then select **chart type** dropdown to see various chart types 
-
-![](media/2020-04-11_11-40-23.png)
+![](media/30billion-chart.png)
 
 ### Task 2: JSON Extractor Differentiator and other optional differentiators
 
