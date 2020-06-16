@@ -406,17 +406,76 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 One of the options to load data into Azure Synapse to be used in SQL queries is the COPY statement that helps to load data from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into Azure Synapse. In this task, we will load twitter data storage in Azure Storage and run a query against it with the COPY INTO command.
 
-1. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **8 External Data to Synapse Via Copy Into** and highlight the query presented below titled **Step:1**.
+1. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select the **...** button, then select **New SQL Script** to create a new sql script file. 
 
-![](media/2020-04-10_17-06-50.png)
+![Develop Hub is open. User clicks the ... button and selects New SQL Script command.](media/copy-into-new-script.gif)
 
-2. Select **Run** and observe the **No results found** message in the **Messages** tab.
+2. Select `SQLPool01` in the **Connect to** list, and `SQLPool01` in the **Use database** list. Type in the SQL Command below into the newly created script, and run the script by selecting the **Run** button to delete the **Twitter** table if it exists. This will help us to be sure the data we will import during the next steps was not available in the environment before we imported it.
 
-![](media/2020-04-11_11-31-19.png)
+```sql
+IF OBJECT_ID(N'dbo.Twitter', N'U') IS NOT NULL
+BEGIN
+	DROP TABLE [dbo].[Twitter]
+END
+GO
+```
 
-3.	Scroll to the bottom and select **COPY INTO** query below **Step:2** as shown in the screenshot. Finally, select **Run**
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to drop the twitter table is typed in, and the Run button is highligted.](media/copy-into-delete-twitter-table.png)
 
-![](media/2020-04-11_11-32-39.png)
+3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and create a fresh, empty `Twitter` table.
+
+```sql
+CREATE TABLE [dbo].[Twitter]
+( 
+	[Time] [nvarchar](4000)  NULL,
+	[Hashtag] [nvarchar](4000)  NULL,
+	[Tweet] [nvarchar](4000)  NULL,
+	[City] [nvarchar](4000)  NULL,
+	[UserName] [nvarchar](4000)  NULL,
+	[RetweetCount] [int]  NULL,
+	[FavouriteCount] [int]  NULL,
+	[Sentiment] [nvarchar](4000)  NULL,
+	[SentimentScore] [int]  NULL,
+	[IsRetweet] [int]  NULL,
+	[HourOfDay] [nvarchar](4000)  NULL,
+	[Language] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+);
+GO
+```
+
+![SQL Script in the file is replaced with a script that creates a new Twitter table. The Run button is highlighted.](media/copy-data-create-twitter-table.png)
+
+4. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and import our data from the parquet file into the table.
+
+```sql
+COPY INTO [dbo].[Twitter]
+FROM 'https://asaexpdatalake{suffix}.blob.core.windows.net/twitterdata/dbo.TwitterAnalytics.parquet'
+WITH (
+    FILE_TYPE = 'PARQUET'
+        );
+GO
+```
+
+![SQL Script in the file is replaced with a script that imports a parquet file into the Twitter table. The Run button is highlighted.](media/copy-into-script.png)
+
+5. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and see the data we have just imported.
+
+```sql
+SELECT TOP 10 * 
+FROM  [dbo].[Twitter];
+GO
+```
+
+![SQL Script in the file is replaced with a script that selects the top ten records from the Twitter table. The Run button is highlighted.](media/copy-into-select-top-10.png)
+
+6. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **8 External Data to Synapse Via Copy Into**. Look into the code with the section commented as **Step 2**. In this case, the script is using a [Shared Access Signature](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) to access to the parquet file in storage.
+
+![](media/copy-into-with-sas.png)
 
 ## Exercise 2: Develop Hub
 
