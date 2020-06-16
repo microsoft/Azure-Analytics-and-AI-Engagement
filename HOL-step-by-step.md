@@ -475,7 +475,7 @@ GO
 
 6. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **8 External Data to Synapse Via Copy Into**. Look into the code with the section commented as **Step 2**. In this case, the script is using a [Shared Access Signature](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) to access to the parquet file in storage.
 
-![](media/copy-into-with-sas.png)
+![Develop Hub is selected. SQL Scripts collection is open. THe "8 External Data to Synapse Via Copy Into" file is selected. The code that relates to the use of SAS keys in the COPY INTO command is highlighted.](media/copy-into-with-sas.png)
 
 ## Exercise 2: Develop Hub
 
