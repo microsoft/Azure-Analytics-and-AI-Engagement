@@ -372,7 +372,7 @@ Close the window, and go back to the pipeline page.
 
 Close the window, and go back to the pipeline page.
 
-> ***Warning:** Do not run this pipeline, otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the additional activity steps based on your observations from the **TwitterDataMigration** pipeline* 
+> ***Warning:** Do not run this pipeline, otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the additional activity steps based on your observations from the **TwitterDataMigration** pipeline.* 
 
 ### Task 6: On-Demand Query: Azure Data Lake Gen2
 
