@@ -1064,3 +1064,21 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[Customer_SalesLatest]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[Customer_SalesLatest]
+
+CREATE TABLE [dbo].[Customer_SalesLatest]
+( 
+	[customer_id] [int]  NULL,
+	[product_id] [int]  NULL,
+	[product_name] [varchar](8000)  NULL,
+	[total_quantity] [int]  NULL,
+	[rating] [int]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
