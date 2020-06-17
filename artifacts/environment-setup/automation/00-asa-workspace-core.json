@@ -53,7 +53,7 @@
     "sparkAutoPauseDelayInMinutes": "15",
     "sparkVersion": "2.4",
     "packagesRequirementsFileName": "requirements.txt",
-    "packagesRequirementsContent": "xgboost==1.0.2",
+    "packagesRequirementsContent": "seaborn==0.10.1\nxgboost==1.0.2\nonnxruntime==1.0.0\nwerkzeug==0.16.1\nnimbusml==1.7.1\nruamel.yaml==0.16.9\nazureml-train-automl-runtime==1.6.0\nscikit-learn==0.20.3\nnumpy==1.16.2\npandas==0.23.4",
     "keyVaultName": "[concat('asaexpkeyvault', parameters('uniqueSuffix'))]",
     "blobStorageAccountName": "[concat('asaexpstore', parameters('uniqueSuffix'))]",
     "applicationInsightsName": "[concat('asaexpappinsights', parameters('uniqueSuffix'))]",
