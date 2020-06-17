@@ -89,7 +89,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 5. Switch to **File** tab and select **HTTP** as the source of the ingestion. 
 
-![In the new linked service window, http from file tab is selected, and the continue button is highlighted.](media/lab-exercise-1-task-1-step-5.png)
+![In the newly linked service window, HTTP from the file tab is selected, and the continue button is highlighted.](media/lab-exercise-1-task-1-step-5.png)
 
 6. Type in `https://solliancepublicdata.blob.core.windows.net/cdp/lab-artifacts/CampaignAnalytics.csv` for the **Base URL**. Then select **Anonymous** from the **Authentication Type** list. Finally, select **Apply** to create your first linked service in Azure Synapse.   
 
@@ -123,7 +123,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 ![Settings window is shown. Enable staging is unchecked, and Bulk Insert is selected. The next button is highlighted.](media/lab-exercise-1-task-1-step-13.png)
 
-> ***Supplementary Info:** In Azure Synpase, you can load data using PolyBase, COPY statement (preview), or bulk insert. We recommend PolyBase or COPY statement (preview) for better copy performance. See [official documentation here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse) for more information.* 
+> ***Supplementary Info:** In Azure Synapse, you can load data using PolyBase, COPY statement (preview), or bulk insert. We recommend PolyBase or COPY statement (preview) for better copy performance. See [official documentation here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse) for more information.* 
 
 14. Observe the summary of your pipeline and select **Next** to execute it.
 
@@ -139,7 +139,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 17. Once the execution of the pipeline is complete, go to the **Data** hub. Navigate to **Workspace > Databases > SqlPool01 > Tables** as seen in the screenshot below. Right select **CampaignAnaltics > New SQL Script > Select Top 100 rows** to query the table.
 
-![Data hub is selected. SQPool01 table collection is shown. Right click to CampaignAnalytics table and New SQL Script / Select top 100 rows command is selected.](media/lab-exercise-1-task-1-step-17.png)
+![Data hub is selected. SQPool01 table collection is shown. Right-click to CampaignAnalytics table and New SQL Script / Select top 100 rows command is selected.](media/lab-exercise-1-task-1-step-17.png)
 
 18. Observe the output of your select statement that shows the data Azure Synapse Pipeline ingested from the CSV file.
 
@@ -352,7 +352,7 @@ You can run the pipeline multiple times and observe the number of rows in the ta
 
 ![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-datalake-parquet-file.png)
 
-24. Close the window, and go back to the pipeline page. Make sure the second **copy data** activity is selected. Now, switch to the **Sink** tab and select **Open** to see the details of the **sink dataset** for this activity.
+24. Close the window and go back to the pipeline page. Make sure the second **copy data** activity is selected. Now, switch to the **Sink** tab and select **Open** to see the details of the **sink dataset** for this activity.
 
 ![TwitterDataMigration pipeline is open. Second copy data activity is selected. The sink tab is opened, and the Open button is highlighted.](media/twitterdatamigration-copydata-sink.png)
 
@@ -360,19 +360,19 @@ You can run the pipeline multiple times and observe the number of rows in the ta
 
 ![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-copydata-sink-details.png)
 
-Close the window, and go back to the pipeline page.
+Close the window and go back to the pipeline page.
 
 26. Select the third activity in the pipeline. The third activity is a **Delete** activity. Now, switch to the **Source** tab and select **Open** to see the details of the **dataset** that will be used to delete parquet files.
 
-![TwitterDataMigration pipeline is open. Third activity is selected. The source tab is opened, and the Open button is highlighted.](media/twitterdatamigration-delete-dataset.png)
+![TwitterDataMigration pipeline is open. The third activity is selected. The source tab is opened, and the Open button is highlighted.](media/twitterdatamigration-delete-dataset.png)
 
 27. Once you are in the dataset, take a look at the **Linked Service** and the **File path**. The **linked service** is our Azure Data Lake ADLS Gen 2, and the **File path** is pointing out the files that we imported into our database, archived in a different location, and now are good to be deleted. 
 
 ![Dataset details are presented. The connected linked service is shown as an Azure Data Lake ADLS Gen 2 location, and the file path is shown to target a single parquet file. ](media/twitterdatamigration-delete-dataset-detail.png)
 
-Close the window, and go back to the pipeline page.
+Close the window and go back to the pipeline page.
 
-> ***Warning:** Do not run this pipeline, otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the additional activity steps based on your observations from the **TwitterDataMigration** pipeline.* 
+> ***Warning:** Do not run this pipeline; otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the other activity steps based on your observations from the **TwitterDataMigration** pipeline.* 
 
 ### Task 6: On-Demand Query: Azure Data Lake Gen2
 
@@ -420,7 +420,7 @@ END
 GO
 ```
 
-![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to drop the twitter table is typed in, and the Run button is highligted.](media/copy-into-delete-twitter-table.png)
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to drop the twitter table is typed in, and the Run button is highlighted.](media/copy-into-delete-twitter-table.png)
 
 3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and create a fresh, empty `Twitter` table.
 
@@ -475,13 +475,13 @@ GO
 
 6. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **8 External Data to Synapse Via Copy Into**. Look into the code with the section commented as **Step 2**. In this case, the script is using a [Shared Access Signature](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) to access to the parquet file in storage.
 
-![Develop Hub is selected. SQL Scripts collection is open. THe "8 External Data to Synapse Via Copy Into" file is selected. The code that relates to the use of SAS keys in the COPY INTO command is highlighted.](media/copy-into-with-sas.png)
+![Develop Hub is selected. SQL Scripts collection is open. The "8 External Data to Synapse Via Copy Into" file is selected. The code that relates to the use of SAS keys in the COPY INTO command is highlighted.](media/copy-into-with-sas.png)
 
 ## Exercise 2: Develop Hub
 
 Duration: 45 minutes.
 
-The Develop Hub in Azure Synapse helps you work on SQL scripts, notebooks, data flows, and PowerBI reports. It is part of Azure Synapse's unified experience for developing end-to-end analytics solutions. It significantly reduces project development time for BI and machine learning projects with a limitless analytics service that enables you to seamlessly apply intelligence over all your most important data and easily share data with just a few clicks.
+The Develop Hub in Azure Synapse helps you work on SQL scripts, notebooks, data flows, and PowerBI reports. It is part of Azure Synapse's unified experience for developing end-to-end analytics solutions. It significantly reduces project development time for BI and machine learning projects with a limitless analytics service that enables you to apply intelligence over all your most important data seamlessly and easily share data with just a few clicks.
 
 During the next couple of tasks, you will have a chance to look at how to develop queries in Azure Synapse, using notebooks to run machine learning experiments and an AutoMl customer forecasting scenario.
 
@@ -501,7 +501,7 @@ In this task, we will run queries against 30 Billion records and create some ear
 SELECT COUNT_BIG(1) as TotalCount  FROM dbo.Sales(nolock)
 ```
 
-![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the number of rows in the sales table is typed in, and the Run button is highligted.](media/2020-04-11_11-35-09.png)
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the number of rows in the sales table is typed in, and the Run button is highlighted.](media/2020-04-11_11-35-09.png)
 
 3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and see the resulting data set out of the 30 billion records. Observe the time the query takes – query time is listed at the bottom of the screen.
 
@@ -519,7 +519,7 @@ from (SELECT P.Department, TA.Sentiment AS [Twitter Sentiment],
   as result
 ```
 
-![SQL Script in the file is replaced with a script that queries multiple tables including the sales table. The Run button is highlighted.](media/30billion-rows-query.png)
+![SQL Script in the file is replaced with a script that queries multiple tables, including the sales table. The Run button is highlighted.](media/30billion-rows-query.png)
 
 4. Select the **Chart** button, and then select **Chart Type** dropdown to see various chart types you can use to visualize your data.
 
@@ -539,7 +539,7 @@ To speed up time to insight and minimize unnecessary data transformation process
 SELECT top (100) * from  dbo.[TwitterRawData] 
 ```
 
-![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the first 100 rows in the TwitterRawData table is typed in, and the Run button is highligted.](media/json-extractor-select-top-100.png)
+![SQLPool01 is selected from both the "connect to" and "use database" list. A t-sql script to display the first 100 rows in the TwitterRawData table is typed in, and the Run button is highlighted.](media/json-extractor-select-top-100.png)
 
 3. Replace all the code in the file with the SQL Command below. Select **Run** to execute the script and see the result set where every JSON Value stored in the JSON Payload field `TwitterData` in the `TwitterRawData` table is now extracted into separate columns. 
 
@@ -554,7 +554,7 @@ SELECT
 FROM dbo.[TwitterRawData] WHERE    ISJSON(TwitterData) > 0
 ```
 
-![SQL Script in the file is replaced with a script that queries the TwitterRawData, and extracts JSON values from the TwitterData field into separate columns. The Run button is selected, and the result of the query is highligted.](media/json-extractor-json-value-extractor.png)
+![SQL Script in the file is replaced with a script that queries the TwitterRawData, and extracts JSON values from the TwitterData field into separate columns. The Run button is selected, and the result of the query is highlighted.](media/json-extractor-json-value-extractor.png)
 
 4. Select **Develop**, then expand **SQL Scripts** to list all available scripts. Select **2 JSON Extractor**. Look into the code to learn about different uses of the [JSON Functions](https://docs.microsoft.com/en-us/sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest) in Azure Synapse Analytics. 
 
@@ -584,11 +584,11 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 ![Import statements in the notebook are presented.](media/05-46.png)
 
-6. Select **Run all** to run all the steps in the notebook. When the execution starts feel free to scroll down and follow the execution step by step.
+6. Select **Run all** to run all the steps in the notebook. When the execution starts, feel free to scroll down and follow the execution step by step.
 
 !["1. Product Recommendations" notebook is open. Run all is selected.](media/product-recommendations-run-all.png)
 
-6. Observe the results in the notebook in Cell 25.
+7. Observe the results in the notebook in Cell 25.
 
 ![](media/05-47.png)
 
@@ -648,13 +648,13 @@ Let's explore how we can access PowerBI reports in the Synapse Analytics workspa
 
 With Azure Synapse, data professionals can query both relational and non-relational data using the familiar SQL language. This can be done using either serverless on-demand queries for data exploration and ad hoc analysis or provisioned resources for your most demanding data warehousing needs.
 
-In this task, we will modify a report using Ad-Hoc queries as its underlying data access choice.
+In this task, we will modify a report using Ad-Hoc queries as to its underlying data access choice.
 
 1. From the **Develop** hub, **Power BI** section select **2. Billion Rows Demo** Power BI report.
 
 ![](media/2020-04-10_17-29-53.png)
 
-2. Select **Page 1** from the bottom tabs, then select the empty area in the report canvas. Next, from the **Fields** list select or drag and drop **CustomerId** from **wwi Sales** table to the report canvas.
+2. Select **Page 1** from the bottom tabs, then select the empty area in the report canvas. Next, from the **Fields** list, select or drag and drop **CustomerId** from **wwi Sales** table to the report canvas.
 
 ![](media/2020-04-11_11-45-25.png)
 
@@ -688,25 +688,25 @@ Duration: 20 minutes.
 
 ### Task 1: Access Data and AI Demo Dashboard
 
-A Power BI dashboard is a single page, often called a canvas, that uses visualizations to tell a story. Because it is limited to one page, a well-designed dashboard contains only the most-important elements of that story. 
+A Power BI dashboard is a single page, often called a canvas, that uses visualizations to tell a story. Because it is limited to one page, a well-designed dashboard contains only the most important elements of that story. 
 
-The visualizations you will see on the dashboard are called tiles and are pinned to the dashboard by report designers. In most cases, selecting a tile takes you to the report page where the visualization was created. During the next tasks we will look at various reports that are linked to our dashboard called `Data and AI Demo Dashboard`.
+The visualizations you will see on the dashboard are called tiles and are pinned to the dashboard by report designers. In most cases, selecting a tile takes you to the report page where the visualization was created. During the next tasks, we will look at various reports that are linked to our dashboard called `Data and AI Demo Dashboard`.
 
 1. Sign in to the [Power BI Portal](https://powerbi.microsoft.com/) using your Azure credentials.
 
-2. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `ASA-EXP`.
+2. From the hamburger menu, select **Workspaces** to access the list of workspaces available to you. Select the workspace named `ASA-EXP`.
 
 ![The workspaces button from the hamburger menu is selected to list workspaces available. The ASA-EXP workspace is selected.](media/powerbi_workspace_selection.png)
 
 3. Select `Data & AI Demo Dashboard` to launch the dashboard.
 
-![The list of dashboard are on screen. Data and AI Dashboard is selected.](media/powerbi_data_ai_dashboard.png)
+![The list of dashboards are on screen. Data and AI Dashboard is selected.](media/powerbi_data_ai_dashboard.png)
 
 ### Task 2: Campaign Analytics Report
 
 A Power BI report is a multi-perspective view into a dataset, with visuals that represent different findings and insights from that dataset. The visuals aren't static. They update as the underlying data changes. You can interact with the visuals and filters as you dig into the data to discover insights and look for answers. Like a dashboard, a report is highly interactive and highly customizable.
 
-During the next couple of tasks we will look at various reports that are linked to our original dashboard called `Data and AI Demo Dashboard`.
+During the next couple of tasks, we will look at various reports that are linked to our original dashboard called `Data and AI Demo Dashboard`.
 
 1. Select **Campaign revenue vs target** to access `The Campaign Analytics` report.
 
@@ -718,15 +718,15 @@ During the next couple of tasks we will look at various reports that are linked 
 
 3. In the `Sentiment by product category`, Select Positive sentiment for the **Cocktail Glasses** product category.
 
-![Sentiment by product category section is shown. Positive bar for cocktail glasses is selected.](media/campaign-analytics-sentiment-by-product.png)
+![Sentiment by product category section is shown. The positive bar for cocktail glasses is selected.](media/campaign-analytics-sentiment-by-product.png)
 
 4. Then Select Negative sentiment for the **Exercise** product category.
 
-![Sentiment by product category section is shown. Negative bar for Exercise product category is selected.](media/campaign-analytics-sentiment-by-product-exercise.png)
+![Sentiment by product category section is shown. The negative bar for the Exercise product category is selected.](media/campaign-analytics-sentiment-by-product-exercise.png)
 
 ### Task 3: Realtime Twitter Analytics
 
-1. Select **No. of tweets** from **Realtime Twitter analytics** pillar to access `Realtime Twitter ayanlysis` report.
+1. Select **No. of tweets** from **Realtime Twitter analytics** pillar to access `Realtime Twitter analysis` report.
 
 ![Data and AI Dashboard is shown. No. of tweets from Realtime Twitter analytics pillar is selected.](media/data-ai-dashboard-realtime-twitter-analytics.png)
 
@@ -748,7 +748,7 @@ During the next couple of tasks we will look at various reports that are linked 
 
 ![Location analytics report is shown. Long visit type for Entertainment is selected](media/data-ai-dashboard-realtime-location-analytics-entertainment.png)
 
-3. Select short `visit_type` in the Mens department.
+3. Select short `visit_type` in the Men's department.
 
 ![Location analytics report is shown. Short visit type for Mens is selected](media/data-ai-dashboard-realtime-location-analytics-mens.png)
 
@@ -768,8 +768,8 @@ During the next couple of tasks we will look at various reports that are linked 
 
 2. Select **Cocktail Glasses** in **Product Category** filter.
 
-![Product recommendations report is shown. Cocktail Glassess is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-cocktail.png)
+![Product recommendations report is shown. Cocktail Glasses is selected from the product category list.](media/data-ai-dashboard-product-recommendation-analytics-cocktail.png)
 
 3. Select **Running Shoes** in **Product Category** filter.
 
-![Product recommendations report is shown. Running Shoes is selected from product category list.](media/data-ai-dashboard-product-recommendation-analytics-shoes.png)
+![Product recommendations report is shown. Running Shoes is selected from the product category list.](media/data-ai-dashboard-product-recommendation-analytics-shoes.png)
