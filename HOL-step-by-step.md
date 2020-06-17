@@ -7,20 +7,22 @@
   - [Requirements](#Requirements)
   - [Environment Setup](#Environment-Setup)
   - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)
+  
   - [Exercise 1: Data Orchestration and Ingestion](#Exercise-1-Data-Orchestration-and-Ingestion)
-    - [Task 1: Data Ingestion](#Task-1-Data-Ingestion)
+    - [Task 1: Your First Pipeline](#Task-1-Your-First-Pipeline)
+    - [Task 2: Moving semi-structured data to Azure Synapse Analytics](#Task-2-Moving-semi-structured-data-to-Azure-Synapse-Analytics)
+    - [Task 3: On-Demand Query: Azure Data Lake Gen2](#Task-3-On-Demand-Query-Azure-Data-Lake-Gen2)
+    - [Task 4: COPY INTO Command](#Task-4-COPY-INTO-Command)
+  - [Exercise 2: Using Native Connectors](#Exercise-2-Using-Native-Connectors)
     - [Task 2: Migrate SAP Hana to Azure Synapse Analytics](#Task-2-Migrate-SAP-Hana-to-Azure-Synapse-Analytics)
     - [Task 3: Code First Experience: Migrate Teradata to Azure Synapse Analytics](#Task-3-Code-First-Experience-Migrate-Teradata-to-Azure-Synapse-Analytics)
     - [Task 4: Migrate last five years of sales transactional data from Oracle to Azure Synapse Analytics](#Task-4-Migrate-last-five-years-of-sales-transactional-data-from-Oracle-to-Azure-Synapse-Analytics)
-    - [Task 5: Moving semi-structured data to Azure Synapse Analytics](#Task-5-Moving-semi-structured-data-to-Azure-Synapse-Analytics)
-    - [Task 6: On-Demand Query: Azure Data Lake Gen2](#Task-6-On-Demand-Query-Azure-Data-Lake-Gen2)
-    - [Task 7: COPY INTO Command](#Task-7-COPY-INTO-Command)
-  - [Exercise 2: Develop Hub](#Exercise-2-Develop-Hub)
+  - [Exercise 3: Develop Hub](#Exercise-3-Develop-Hub)
     - [Task 1: Running Queries against 30 Billion records](#Task-1-Running-Queries-against-30-Billion-records)
     - [Task 2: JSON Extractor Differentiator and other optional differentiators](#Task-2-JSON-Extractor-Differentiator-and-other-optional-differentiators)
     - [Task 3: Using Notebooks to Run Machine Learning Experiments](#Task-3-Using-Notebooks-to-Run-Machine-Learning-Experiments)
     - [Task 4: AutoML in Azure Synapse Analytics](#Task-4-AutoML-in-Azure-Synapse-Analytics)
-  - [Exercise 3: Power BI reporting within the Synapse Analytics workspace](#Exercise-3-Power-BI-reporting-within-the-Synapse-Analytics-workspace)
+  - [Exercise 4: Power BI reporting within the Synapse Analytics workspace](#Exercise-4-Power-BI-reporting-within-the-Synapse-Analytics-workspace)
     - [Task 1: Accessing PowerBI reports in Synapse Analytics workspace](#Task-1-Accessing-PowerBI-reports-in-Synapse-Analytics-workspace)
     - [Task 2: Ad Hoc Reporting in Azure Synapse Analytics](#Task-2-Ad-Hoc-Reporting-in-Azure-Synapse-Analytics)
 
@@ -58,11 +60,11 @@ Once you access your workspace select the arrow on the top of the left menu to o
 
 Duration: 60 minutes.
 
-With Azure Synapse's code-free data orchestration environment, you can build ETL/ELT processes in a code-free visual environment to quickly ingest data from more than 85 native connectors. Moreover, you can perform real-time analytics on streaming data directly in your data warehouse.
+With Azure Synapse's code-free data orchestration environment, you can build ETL/ELT processes in a code-free visual environment to easily connect to data sources and ingest, transform, and place data in the data lake. In this exercise, you will create your first pipeline ingesting data into Azure Synapse, move semi-structured data from various sources, bring together relational and non-relational data in a serverless environment, and ingest data directly with SQL commands.
 
-### Task 1: Data Ingestion
+### Task 1: Your First Pipeline
 
-Let's take a look at how we can connect to external data sources in Azure Synapse and discover the rich list of connectors available for use.
+Let's create our first pipeline to ingest data from external data sources in Azure Synapse.
 
 1. On the Synapse Home page, select **Ingest**.
 
@@ -138,110 +140,7 @@ Let's take a look at how we can connect to external data sources in Azure Synaps
 
 ![The result of the select statement is presented.](media/lab-exercise-1-task-1-step-18.png)
 
-### Task 2: Migrate SAP Hana to Azure Synapse Analytics
-
-SAP is one of the most widely-used enterprise software in the world. Azure Synapse empowers customers to integrate their existing SAP system with Azure to unblock business insights. In this exercise, we will observe an Azure Synapse Pipeline that moves data from SAP Hana to an ADLS Gen2 storage, followed by a Data Flow that transforms the data during the pipeline execution. 
-
-1. Select **Orchestrate**
-
-![SAP HANA To ADLS Pipeline](media/2020-04-11_11-12-13.png)
-
-2. Select/Expand **Pipelines** and then select **SAP HANA TO ADLS** pipeline.
-
-![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-02.png)
-
-3. From the editor window, select **Copy data** activity. Then select **Source** property of the **Copy data** activity to see the **Source Dataset** and observe that the query is pulling data from SAP Hana
-
-![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-54.png)
-
-4. With copy data selected, select the **Sink** property of the **Copy data** activity. Look at the **Sink** dataset, in this case; you are saving to ADLS Gen2 storage container.
-
-![Data moves to Azure Data Lake Gen2](media/2020-04-10_16-05-13.png)
-
-5. Select **Mapping Data Flow** activity and then select **Settings**. Next, select **Open** to go to **Data Flow** editor.
-
-![Mapping Data Flow](media/2020-04-10_16-06-30.png)
-
-6. In the Data Flow editor, observe the flow. Look in detail into each activity using the following steps.
-
-![Moving data from SAP to the Data Lake](media/2020-04-10_16-07-29.png)
-
-7.	In the **first activity**, we are selecting data from the Data Lake staging area.
-8.	In the **second activity**, we are filtering data for the last 5 years.
-
-![filtering data for the last 5 years](media/2020-04-10_16-15-39.png)
-
-9.	In the **third activity**, we are deriving columns from a **Column Order Date**.
-
-![deriving columns from a Column Order Date](media/2020-04-10_16-16-23.png)
-
-10.	In the **fourth activity**, we are only selecting the required columns from the table.
-
-![](media/2020-04-10_16-16-52.png)
-
-11. In the **fifth activity**, we are creating an aggregated **Total Sales** grouped by **Year** and **Month**.
-
-![](media/2020-04-10_16-17-46.png)
-
-12. In the **sixth activity**, we load the aggregated table to Azure Synapse.
-
-![Load the aggregated table to Azure Synapse](media/2020-04-10_16-18-21.png)
-
-20. In the **seventh activity**, we are taking a parallel route by selecting all the remaining rows and writing the full table to Azure Synapse.
-
-![Writing the full table to Azure Synapse](media/2020-04-10_16-18-47.png)
-
-21. To view all the available transformations in the data flow editor, select the **+ (add action)**, to the right of the first activity.
-
-![view all the available transformations](media/2020-04-10_16-19-47.png)
-
-22.	Scroll down to see the full list of transformations at different levels.
-
-![Full list of transformations at different levels](media/2020-04-10_16-20-21.png)
-
-### Task 3: Code First Experience: Migrate Teradata to Azure Synapse Analytics
-
-Azure Synapse not only has the code-free path but can give you the ability to prepare data in an Azure Synapse Notebook. In this task, we will use Python and observe the code first experience in Azure Synapse Analytics. We will move data from Teradata from to ADLS Gen 2 and preparing it with Python.
-
-1. In the Orchestrate hub, select **MarketingDBMigration** from the list of pipelines.
-
-![Full list of transformations at different levels](media/2020-04-10_16-24-54.png)
-
-> **Note:** This pipeline is for demonstration purposes only. __Do NOT execute__ the pipeline.
-
-2. Select **Lookup** activity, and select **Settings** to observe the **Source dataset** property (Teradata).
-
-![](media/2020-04-11_11-21-42.png)
-
-3. Select **Copy data** activity and observe **Source** and **Sink** properties.
-
-![](media/2020-04-11_11-24-23.png)
-
-4. Select **Prep data in Azure Synapse** Notebook, then select **Settings**. Once you are in the settings tab, select **Open** to open the notebook
-
-![](media/2020-04-10_16-27-51.png)
-
-5.	Show the Python code. This is the code first experience in Synapse analytics.
-
-![](media/2020-04-10_16-29-16.png)
-
-### Task 4: Migrate last five years of sales transactional data from Oracle to Azure Synapse Analytics
-
-Azure Synapse helps us copy data from an Oracle database to any supported sink data store. In this task, we will check for the existence of the Oracle database and load data from Oracle into Azure Synapse with the Copy Data activity.
-
-1. Select **SalesDBMigration** from the **Orchestrate** hub.
-
-![](media/2020-04-10_16-42-55.png)
-
-2. Select **Lookup** activity and then **Settings** to see **OracleSalesDB** field in **Source Dataset** field
-
-![](media/2020-04-10_16-50-57.png)
-
-3. Select **Copy data** and see Synapse as the **sink**.
-
-![](media/2020-04-10_16-54-39.png)
-
-### Task 5: Moving semi-structured data to Azure Synapse Analytics
+### Task 2: Moving semi-structured data to Azure Synapse Analytics
 
 Azure Synapse Analytics enables direct streaming ingestion support and the ability to execute analytical queries over streaming data. Capabilities such as: joins across multiple streaming inputs, aggregations within one or more streaming inputs, transform semi-structured data, and multiple temporal windows are all supported. For streaming ingestion, you can integrate with Event Hubs (including Event Hubs for Kafka) and IoT Hubs.
 
@@ -367,7 +266,7 @@ Close the window and go back to the pipeline page.
 
 > ***Warning:** Do not run this pipeline; otherwise you will lose parquet files that you will use during the next exercises. As an additional challenge feel free to go back to your **TwitterDataPipeline** and complete the other activity steps based on your observations from the **TwitterDataMigration** pipeline.* 
 
-### Task 6: On-Demand Query: Azure Data Lake Gen2
+### Task 3: On-Demand Query: Azure Data Lake Gen2
 
 Every Azure Synapse Analytics workspace comes with SQL on-demand endpoints that you can use to query data in the lake. SQL on-demand is a query service over the data in your data lake. It is a distributed data processing system, built for large scale of data and compute. SQL on-demand enables you to analyze your Big Data in seconds to minutes, depending on the workload. Thanks to built-in query execution fault-tolerance, the system provides high reliability and success rates even for long-running queries involving large data sets.
 
@@ -395,7 +294,7 @@ In this task, we will query twitter data stored as Parquet files in Azure Data L
 
 ![](media/chart-save-as-image.png)
 
-### Task 7: COPY INTO Command
+### Task 4: COPY INTO Command
 
 One of the options to load data into Azure Synapse to be used in SQL queries is the COPY statement that helps to load data from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into Azure Synapse. In this task, we will load twitter data storage in Azure Storage and run a query against it with the COPY INTO command.
 
@@ -470,7 +369,116 @@ GO
 
 ![Develop Hub is selected. SQL Scripts collection is open. The "8 External Data to Synapse Via Copy Into" file is selected. The code that relates to the use of SAS keys in the COPY INTO command is highlighted.](media/copy-into-with-sas.png)
 
-## Exercise 2: Develop Hub
+## Exercise 2: Using Native Connectors
+
+Duration: 45 minutes.
+
+With Azure Synapse's code-free data orchestration environment, you can build ETL/ELT processes in a code-free visual environment to quickly ingest data from more than 85 native connectors. In this exercise, we will look at how to use various connectors available in Azure Synapse to ingest data into the data warehouse.
+
+### Task 1: Migrate SAP Hana to Azure Synapse Analytics
+
+SAP is one of the most widely-used enterprise software in the world. Azure Synapse empowers customers to integrate their existing SAP system with Azure to unblock business insights. In this exercise, we will observe an Azure Synapse Pipeline that moves data from SAP Hana to an ADLS Gen2 storage, followed by a Data Flow that transforms the data during the pipeline execution. 
+
+1. Select **Orchestrate**
+
+![SAP HANA To ADLS Pipeline](media/2020-04-11_11-12-13.png)
+
+2. Select/Expand **Pipelines** and then select **SAP HANA TO ADLS** pipeline.
+
+![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-02.png)
+
+3. From the editor window, select **Copy data** activity. Then select **Source** property of the **Copy data** activity to see the **Source Dataset** and observe that the query is pulling data from SAP Hana
+
+![Ingesting finance data from SAP Hana](media/2020-04-10_16-03-54.png)
+
+4. With copy data selected, select the **Sink** property of the **Copy data** activity. Look at the **Sink** dataset, in this case; you are saving to ADLS Gen2 storage container.
+
+![Data moves to Azure Data Lake Gen2](media/2020-04-10_16-05-13.png)
+
+5. Select **Mapping Data Flow** activity and then select **Settings**. Next, select **Open** to go to **Data Flow** editor.
+
+![Mapping Data Flow](media/2020-04-10_16-06-30.png)
+
+6. In the Data Flow editor, observe the flow. Look in detail into each activity using the following steps.
+
+![Moving data from SAP to the Data Lake](media/2020-04-10_16-07-29.png)
+
+7.	In the **first activity**, we are selecting data from the Data Lake staging area.
+8.	In the **second activity**, we are filtering data for the last 5 years.
+
+![filtering data for the last 5 years](media/2020-04-10_16-15-39.png)
+
+9.	In the **third activity**, we are deriving columns from a **Column Order Date**.
+
+![deriving columns from a Column Order Date](media/2020-04-10_16-16-23.png)
+
+10.	In the **fourth activity**, we are only selecting the required columns from the table.
+
+![](media/2020-04-10_16-16-52.png)
+
+11. In the **fifth activity**, we are creating an aggregated **Total Sales** grouped by **Year** and **Month**.
+
+![](media/2020-04-10_16-17-46.png)
+
+12. In the **sixth activity**, we load the aggregated table to Azure Synapse.
+
+![Load the aggregated table to Azure Synapse](media/2020-04-10_16-18-21.png)
+
+20. In the **seventh activity**, we are taking a parallel route by selecting all the remaining rows and writing the full table to Azure Synapse.
+
+![Writing the full table to Azure Synapse](media/2020-04-10_16-18-47.png)
+
+21. To view all the available transformations in the data flow editor, select the **+ (add action)**, to the right of the first activity.
+
+![view all the available transformations](media/2020-04-10_16-19-47.png)
+
+22.	Scroll down to see the full list of transformations at different levels.
+
+![Full list of transformations at different levels](media/2020-04-10_16-20-21.png)
+
+### Task 2: Code First Experience: Migrate Teradata to Azure Synapse Analytics
+
+Azure Synapse not only has the code-free path but can give you the ability to prepare data in an Azure Synapse Notebook. In this task, we will use Python and observe the code first experience in Azure Synapse Analytics. We will move data from Teradata from to ADLS Gen 2 and preparing it with Python.
+
+1. In the Orchestrate hub, select **MarketingDBMigration** from the list of pipelines.
+
+![Full list of transformations at different levels](media/2020-04-10_16-24-54.png)
+
+> **Note:** This pipeline is for demonstration purposes only. __Do NOT execute__ the pipeline.
+
+2. Select **Lookup** activity, and select **Settings** to observe the **Source dataset** property (Teradata).
+
+![](media/2020-04-11_11-21-42.png)
+
+3. Select **Copy data** activity and observe **Source** and **Sink** properties.
+
+![](media/2020-04-11_11-24-23.png)
+
+4. Select **Prep data in Azure Synapse** Notebook, then select **Settings**. Once you are in the settings tab, select **Open** to open the notebook
+
+![](media/2020-04-10_16-27-51.png)
+
+5.	Show the Python code. This is the code first experience in Synapse analytics.
+
+![](media/2020-04-10_16-29-16.png)
+
+### Task 3: Migrate last five years of sales transactional data from Oracle to Azure Synapse Analytics
+
+Azure Synapse helps us copy data from an Oracle database to any supported sink data store. In this task, we will check for the existence of the Oracle database and load data from Oracle into Azure Synapse with the Copy Data activity.
+
+1. Select **SalesDBMigration** from the **Orchestrate** hub.
+
+![](media/2020-04-10_16-42-55.png)
+
+2. Select **Lookup** activity and then **Settings** to see **OracleSalesDB** field in **Source Dataset** field
+
+![](media/2020-04-10_16-50-57.png)
+
+3. Select **Copy data** and see Synapse as the **sink**.
+
+![](media/2020-04-10_16-54-39.png)
+
+## Exercise 3: Develop Hub
 
 Duration: 45 minutes.
 
@@ -611,7 +619,7 @@ Automated machine learning, also referred to as automated ML or AutoML, is the p
 
 ![](media/05-54.png)
 
-## Exercise 3: Power BI reporting within the Synapse Analytics workspace 
+## Exercise 4: Power BI reporting within the Synapse Analytics workspace 
 
 Duration: 20 minutes.
 
