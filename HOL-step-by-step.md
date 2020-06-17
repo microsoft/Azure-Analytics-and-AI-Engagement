@@ -584,13 +584,27 @@ In this task, we will use PySpark to run a notebook on a Spark Pool.
 
 ![Import statements in the notebook are presented.](media/05-46.png)
 
-6. Select **Run all** to run all the steps in the notebook. When the execution starts, feel free to scroll down and follow the execution step by step.
+6. Select **Run all** to run all the steps in the notebook. When the execution starts, scroll down step by step and follow the execution of every cell.
 
 !["1. Product Recommendations" notebook is open. Run all is selected.](media/product-recommendations-run-all.png)
 
 7. Observe the results in the notebook in Cell 25.
 
-![](media/05-47.png)
+![The resulting recommendation data is shown.](media/05-47.png)
+
+8. Scroll to the bottom of the notebook and hover over the edge of the notebook to have the **Add code** button appear. Select the **Add code** button to add a new cell into the notebook.
+
+![At the bottom of the notebook the add code button is highlighted.](media/notebooks-product-recommendation-add-code.png)
+
+9. Finally, copy the code below into the cell, and select **Run**. This will call the main function and pass the two parameters `user_id` and `product_id` to generate product recommendations. Observe the resulting recommendations once the execution is complete.
+
+```python
+%%pyspark
+output = recommend_products(user_id=1533, num=7)
+output
+```
+
+![At the bottom of the notebook the add code button is highlighted.](media/notebooks-product-recommendation.png)
 
 ### Task 4: AutoML in Azure Synapse Analytics 
 
