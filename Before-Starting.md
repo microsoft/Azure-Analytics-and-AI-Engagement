@@ -146,7 +146,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 3. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
 
-4. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `asa-exp{your-unique-id}`.
+4. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `asa-exp{suffix}`.
 
 ![The workspaces button from the hamburger menu is selected to list workspaces available. The workspace named asa-exp followed by your unique suffix is selected.](media/powerbi_workspace_selection.png)
 
