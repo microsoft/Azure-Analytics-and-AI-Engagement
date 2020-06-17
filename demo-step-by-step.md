@@ -458,7 +458,7 @@ See code in **cell 27**, but **DO NOT** execute any code.
 
 ![](media/2020-04-10_17-23-41.png)
 
-3. Scroll down to see the content in the screenshot in Cell 22.
+3. Scroll down to see the content in the screenshot in **Cell 23**.
 
 > Let’s scroll through this notebook and see the AutoML configuration and the experiment’s output.
 > 
@@ -466,7 +466,7 @@ See code in **cell 27**, but **DO NOT** execute any code.
 
 ![](media/05-51.png)
 
-4. Scroll down to observe the content in the screenshot in Cell 26.
+4. Scroll down to observe the content in the screenshot in **Cell 26**.
 
 > Here, we are looking at the output of the experiment. 
 > 
@@ -474,13 +474,13 @@ See code in **cell 27**, but **DO NOT** execute any code.
 
 ![](media/05-52.png)
 
-5. Scroll down to see the code in **cell 38**.
+5. Scroll down to see the code in **Cell 39**.
 
 > The model with the best performance is then used for predicting the number of customers. We can also use this model to recommend the number of customers per department.
 
 ![](media/05-53.png)
 
-6. Scroll down to see **cell 41**.
+6. Scroll down to see **cell 42**.
 
 > The model can then be registered for deployment as REST Endpoint by specifying the description and assigning tags.
 
