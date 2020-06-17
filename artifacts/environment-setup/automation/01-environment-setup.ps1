@@ -546,3 +546,5 @@ foreach ($powerBIReportName in $powerBIReports.Keys) {
 
     Update-PowerBIDataset $wsId $powerBIReportName $powerNIDataSetConnectionUpdateRequest;
 }
+
+Write-Information "Environment setup complete."
