@@ -88,7 +88,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
     ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
 
-    > **Note**: If you are prompted to create a storage account for the Cloud Shell, agree to have it created.
+    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
 
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
