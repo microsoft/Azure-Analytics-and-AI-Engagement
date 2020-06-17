@@ -457,7 +457,7 @@ Azure Synapse not only has the code-free path but can give you the ability to pr
 
 ![](media/2020-04-10_16-27-51.png)
 
-5.	Show the Python code. This is the code first experience in Synapse analytics.
+5.	Observe the Python code. This is the code first experience in Synapse analytics.
 
 ![](media/2020-04-10_16-29-16.png)
 
