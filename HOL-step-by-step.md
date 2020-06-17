@@ -6,8 +6,7 @@
   - [Overview](#Overview)
   - [Requirements](#Requirements)
   - [Environment Setup](#Environment-Setup)
-  - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)
-  
+  - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)6
   - [Exercise 1: Data Orchestration and Ingestion](#Exercise-1-Data-Orchestration-and-Ingestion)
     - [Task 1: Your First Pipeline](#Task-1-Your-First-Pipeline)
     - [Task 2: Moving semi-structured data to Azure Synapse Analytics](#Task-2-Moving-semi-structured-data-to-Azure-Synapse-Analytics)
