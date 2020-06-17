@@ -444,8 +444,6 @@ See code in **cell 27**, but **DO NOT** execute any code.
 
 > We then store the results back to the database table, for further consumption by other applications and users.
 
-![](media/05-48.png)
-
 ### Task 4: AutoML in Azure Synapse Analytics 
 
 1. Select **Develop** from the Synapse workspace
