@@ -1,11 +1,10 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Azure Synapse Analytics Wide World Importers (WWI) Demo, Lab and POC
 </div>
 
 <div class="MCWHeader2">
-Before the hands-on lab setup guide
+Setup guide
 </div>
 
 <div class="MCWHeader3">
