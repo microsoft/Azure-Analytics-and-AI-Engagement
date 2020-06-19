@@ -111,6 +111,10 @@ When executing the script below, it is important to let the scripts run to compl
     ./01-environment-setup.ps1
     ```
 
+    You will be prompted to specify the size of the data you want to populate into the Sales table. You can either chose the small data size with 3 million records, or the large data size with 30 billion records. Choosing 30 billion records will have the script scale your SQL Pool to DW3000c during data transfer, which might take up to 4 hours. 
+    
+    ![The Azure Cloud Shell window is displayed with the choices of different data sizes that can be loaded into the environment by the script.](media/setup-guide-data-size.png)
+    
     You may be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one.   
 
     You will also be prompted for the following information for this script:
