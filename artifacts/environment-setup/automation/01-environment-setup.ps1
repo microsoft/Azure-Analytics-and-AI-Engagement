@@ -214,6 +214,7 @@ foreach ($singleFile in $singleFiles) {
         azcopy copy $source $destination 
 }
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "customsources" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob customcsv* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
 foreach ($singleFile in $singleFiles) {
