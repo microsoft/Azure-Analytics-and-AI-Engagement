@@ -7,7 +7,6 @@ $InformationPreference = "Continue"
 # TODO: Keep all required configuration in C:\LabFiles\AzureCreds.ps1 file
 # This is for Spektra Environment.
 $IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
-$iscloudlabs = $false;
 
 if($IsCloudLabs){
         Remove-Module solliance-synapse-automation
