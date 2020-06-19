@@ -389,7 +389,14 @@ $datasets = @{
         Parquet1 = $dataLakeAccountName
         Parquet2 = $dataLakeAccountName
         Parquet3 = $dataLakeAccountName
+        CampaignAnalyticLatest = ""
+        CampaignNew4 = ""
+        Campaigns = ""
+        CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
+        CustomCampaignCollection = $dataLakeAccountName 
+        CustomCampaignSchedules = $dataLakeAccountName 
 }
+$dataLakeAccountName 
 
 foreach ($dataset in $datasets.Keys) {
         Write-Information "Creating dataset $($dataset)"
@@ -458,6 +465,7 @@ $workloadPipelines = [ordered]@{
         marketing_db_migration = "MarketingDBMigration"
         sales_db_migration = "SalesDBMigration"
         twitter_data_migration = "TwitterDataMigration"
+        customize_campaign_analytics = ""
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {

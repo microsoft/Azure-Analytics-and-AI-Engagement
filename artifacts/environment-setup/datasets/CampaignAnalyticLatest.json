@@ -1,0 +1,98 @@
+{
+    "name": "CampaignAnalyticLatest",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Region",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Country",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ProductCategory",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Campaign_ID",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Qualification",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Qualification_Number",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Response_Status",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Responses",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Cost",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ROI",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Lead_Generation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Campaign_Tactic",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Status",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Profit",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Marketing_Cost",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignID",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CampaignAnalyticLatest"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

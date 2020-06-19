@@ -1,0 +1,67 @@
+{
+    "name": "Campaigns",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Campaigns_ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CampaignID",
+                "type": "varchar"
+            },
+            {
+                "name": "CampaignName",
+                "type": "varchar"
+            },
+            {
+                "name": "SubCampaignID",
+                "type": "varchar"
+            },
+            {
+                "name": "FullAd_FileName",
+                "type": "varchar"
+            },
+            {
+                "name": "HalfAd_FileName",
+                "type": "varchar"
+            },
+            {
+                "name": "Logo_FileName",
+                "type": "varchar"
+            },
+            {
+                "name": "SoundFile_FileName",
+                "type": "varchar"
+            },
+            {
+                "name": "FullAd",
+                "type": "varbinary"
+            },
+            {
+                "name": "HalfAd",
+                "type": "varbinary"
+            },
+            {
+                "name": "Logo",
+                "type": "varbinary"
+            },
+            {
+                "name": "SoundFile",
+                "type": "varbinary"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Campaigns"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
