@@ -185,7 +185,7 @@ foreach ($storageContainer in $storageContainers.Keys) {
                 Write-Information "$($storageContainers[$storageContainer]) container created."   
                 New-AzStorageContainer -Name $storageContainers[$storageContainer] -Permission Container -Context $dataLakeContext  
         }
-}        
+}          
 
 $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
@@ -205,6 +205,16 @@ $Env:Path += ";"+ $azCopyCommand
 
 $AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
+
+foreach ($singleFile in $singleFiles) {
+        Write-Information $singleFile
+        $source = $publicDataUrl + $singleFile.SourcePath
+        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
+        Write-Information "Copying file $($source) to $($destination)"
+        azcopy copy $source $destination 
+}
+
+$singleFiles = Get-AzStorageBlob -Container "cdp" -Blob customcsv* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
 foreach ($singleFile in $singleFiles) {
         Write-Information $singleFile
