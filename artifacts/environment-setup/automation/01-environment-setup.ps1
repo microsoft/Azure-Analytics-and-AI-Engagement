@@ -174,7 +174,7 @@ $storageContainers = @{
         campaigndata = "campaigndata"
         iotcontainer = "iotcontainer"
         recommendations = "recommendations"
-        customsources = "customsources"
+        customsources = "customcsv"
 }
 
 foreach ($storageContainer in $storageContainers.Keys) {        
