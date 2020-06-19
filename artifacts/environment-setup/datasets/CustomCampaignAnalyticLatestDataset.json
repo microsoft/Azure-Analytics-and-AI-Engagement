@@ -11,7 +11,7 @@
             "location": {
                 "type": "AzureBlobFSLocation",
                 "fileName": "CampaignAnalyticLatest.csv",
-                "fileSystem": "customsources"
+                "fileSystem": "customcsv"
             },
             "columnDelimiter": ",",
             "escapeChar": "\\",
