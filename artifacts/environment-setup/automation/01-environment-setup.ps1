@@ -476,7 +476,7 @@ $workloadPipelines = [ordered]@{
         marketing_db_migration = "MarketingDBMigration"
         sales_db_migration = "SalesDBMigration"
         twitter_data_migration = "TwitterDataMigration"
-        customize_campaign_analytics = "NA"
+        customize_campaign_analytics = "Customize Campaign Analytics"
 }
 
 foreach ($pipeline in $workloadPipelines.Keys) {
