@@ -582,7 +582,7 @@ foreach ($pipeline in $pipelineList) {
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-                POWERBI_TOKEN = @powerbiToken
+                POWERBI_TOKEN = $powerbiToken
                 POWERBI_DATASET_ID = $pipeline.PowerBIDataSetId
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
