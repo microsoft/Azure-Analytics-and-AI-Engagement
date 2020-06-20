@@ -524,6 +524,8 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         $result
 }
 
+Write-Information "Starting PowerBI Artifact Provisioning"
+
 $wsname = "asa-exp-$uniqueId";
 
 $wsid = Get-PowerBIWorkspaceId $wsname;
