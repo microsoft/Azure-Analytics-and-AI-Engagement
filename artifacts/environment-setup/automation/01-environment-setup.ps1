@@ -403,9 +403,11 @@ $datasets = @{
         CampaignAnalyticLatest = "NA"
         CampaignNew4 = "NA"
         Campaigns = "NA"
+        WebsiteSocialAnalytics = "NA"
         CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
         CustomCampaignCollection = $dataLakeAccountName 
         CustomCampaignSchedules = $dataLakeAccountName 
+        CustomWebsiteSocialAnalytics = $dataLakeAccountName 
 }
 $dataLakeAccountName 
 

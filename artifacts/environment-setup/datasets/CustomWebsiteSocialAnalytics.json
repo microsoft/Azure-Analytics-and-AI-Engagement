@@ -1,0 +1,96 @@
+{
+    "name": "CustomWebsiteSocialAnalytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asaexpdatalakedaron14",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "WebsiteSocialAnalytics.csv",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            }
+        ]
+    }
+}

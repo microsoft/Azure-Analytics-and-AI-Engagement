@@ -220,6 +220,81 @@
                     },
                     "firstRowOnly": false
                 }
+            },
+            {
+                "name": "Ingest Social Analytics",
+                "description": "WebsiteSocialAnalytics",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Clean Social Analytics",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink"
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "CustomWebsiteSocialAnalytics",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "WebsiteSocialAnalytics",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Clean Social Analytics",
+                "description": "WebsiteSocialAnalytics",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "delete from WebsiteSocialAnalytics;\nselect top 1 * from WebsiteSocialAnalytics;",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "WebsiteSocialAnalytics",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": false
+                }
             }
         ],
         "annotations": []
