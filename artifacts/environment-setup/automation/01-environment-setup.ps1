@@ -467,26 +467,6 @@ foreach ($notebookName in $notebooks.Keys) {
         $result
 }
 
-Write-Information "Create pipelines"
-
-$params = @{
-        DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
-        DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-}
-$workloadPipelines = [ordered]@{
-        sap_hana_to_adls = "SAP HANA TO ADLS"
-        marketing_db_migration = "MarketingDBMigration"
-        sales_db_migration = "SalesDBMigration"
-        twitter_data_migration = "TwitterDataMigration"
-        customize_campaign_analytics = "Customize Campaign Analytics"
-}
-
-foreach ($pipeline in $workloadPipelines.Keys) {
-        Write-Information "Creating workload pipeline $($workloadPipelines[$pipeline])"
-        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $workloadPipelines[$pipeline] -FileName $pipeline -Parameters $params
-        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-}
-
 Write-Information "Create SQL scripts for Lab 05"
 
 if($IsCloudLabs){
@@ -582,4 +562,30 @@ foreach ($powerBIReportName in $powerBIReports.Keys) {
     Update-PowerBIDataset $wsId $powerBIReportName $powerNIDataSetConnectionUpdateRequest;
 }
 
-Write-Information "Environment setup complete."
+
+Write-Information "Create pipelines"
+
+$pipelineList = New-Object System.Collections.ArrayList
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "PipelineName"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "PipelineName"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "PipelineName"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "PipelineName"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "PipelineName"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$pipelineList.Add($temp)
+
+foreach ($pipeline in $pipelineList) {
+        Write-Information "Creating workload pipeline $($pipeline.PipelineName)"
+        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
+                DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
+                DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
+                POWERBI_TOKEN = @$global:powerbiToken
+                POWERBI_DATASET_ID = $pipeline.PowerBIDataSetId
+         }
+        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+}
+
+Write-Information "Environment setup complete." 

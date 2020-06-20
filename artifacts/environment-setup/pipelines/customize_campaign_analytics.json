@@ -295,6 +295,59 @@
                     },
                     "firstRowOnly": false
                 }
+            },
+            {
+                "name": "PowerBI Dataset Refresh Request",
+                "type": "WebActivity",
+                "dependsOn": [
+                    {
+                        "activity": "Ingest CampaignAnalyticLatest",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "Ingest Campaign Collection",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "Ingest Campaign Schedules",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "Ingest Social Analytics",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "url": "https://api.powerbi.com/v1.0/myorg/datasets/#POWERBI_DATASET_ID#/refreshes",
+                    "connectVia": {
+                        "referenceName": "AutoResolveIntegrationRuntime",
+                        "type": "IntegrationRuntimeReference"
+                    },
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "Bearer #POWERBI_TOKEN#",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "notifyOption": "MailOnCompletion"
+                    }
+                }
             }
         ],
         "annotations": []
