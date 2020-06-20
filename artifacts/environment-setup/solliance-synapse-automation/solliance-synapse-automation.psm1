@@ -62,7 +62,7 @@ function New-PowerBIWS($name)
     return $result.id
 }
 
-function Update-PowerBIDataset($wsid, $powerBIReportName, $powerNIDataSetConnectionUpdateRequest)
+function Update-PowerBIDataset($wsid, $powerBIReportName, $powerBIDataSetConnectionUpdateRequest)
 {
     Write-Information "Setting database connection for $($powerBIReportName)"
 
@@ -70,10 +70,10 @@ function Update-PowerBIDataset($wsid, $powerBIReportName, $powerNIDataSetConnect
 
     if ($reportId)
     {
-        $powerNIDataSetConnectionUpdateRequest = $powerNIDataSetConnectionUpdateRequest.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+        $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
     
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$reportId/Default.UpdateDatasources";
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerNIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+        $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
     }
     else
     {

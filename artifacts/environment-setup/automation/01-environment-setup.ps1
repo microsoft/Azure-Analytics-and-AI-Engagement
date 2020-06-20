@@ -517,64 +517,52 @@ if (!$wsid)
 
 Write-Information "Uploading PowerBI Reports"
 
-$i = Get-Item -Path "$reportsPath/1. CDP Vision Demo.pbix"
-$reportId = Upload-PowerBIReport $wsId "1-CDP Vision Demo" $i.fullname
+$reportList = New-Object System.Collections.ArrayList
+$temp = "" | select-object @{Name = "FileName"; Expression = {"1. CDP Vision Demo"}} , @{Name = "Name"; Expression = {"1-CDP Vision Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows Demo"}} , @{Name = "Name"; Expression = {"2-Billion Rows Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
 
-$i = Get-Item -Path "$reportsPath/2. Billion Rows Demo.pbix"
-$reportId = Upload-PowerBIReport $wsId "2-Billion Rows Demo" $i.fullname
-
-$i = Get-Item -Path "$reportsPath/(Phase 2) CDP Vision Demo v1.pbix"
-$reportId = Upload-PowerBIReport $wsId "Phase 2 CDP Vision Demo" $i.fullname
-
+$powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
 $powerBIName = "asaexppowerbi$($uniqueId)"
 $workspaceName = "asaexpworkspace$($uniqueId)"
+
+$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+
+foreach ($powerBIReport in $reportList) {
+
+    Write-Information "Uploading $($powerBIReport.Name) Report"
+
+    $i = Get-Item -Path "$reportsPath/$($powerBIReport.FileName).pbix"
+    $reportId = Upload-PowerBIReport $wsId $powerBIReport.Name $i.fullname
+    #Giving some time to the PowerBI Servic to process the upload.
+    Start-Sleep -s 5
+    $powerBIReport.PowerBIDataSetId = Get-PowerBIDatasetId $wsid $powerBIReport.Name
+
+    Write-Information "Setting database connection for $($powerBIReport.Name)"
+    
+    Update-PowerBIDataset $wsId $powerBIReport.Name $powerBIDataSetConnectionUpdateRequest;
+}
 
 Write-Information "Create PowerBI linked service $($keyVaultName)"
 
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Setting PowerBI Database Connection"
-
-$powerBIReports = [ordered]@{
-    "1-CDP Vision Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
-    "2-Billion Rows Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
-    "Phase 2 CDP Vision Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
-}
-
-$powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
-
-foreach ($powerBIReportName in $powerBIReports.Keys) {
-
-    Write-Information "Setting database connection for $($powerBIReportName)"
-
-    $powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
-
-    Update-PowerBIDataset $wsId $powerBIReportName $powerNIDataSetConnectionUpdateRequest;
-}
-
-
 Write-Information "Create pipelines"
 
 $pipelineList = New-Object System.Collections.ArrayList
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "PipelineName"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "PipelineName"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "PipelineName"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "PipelineName"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "PipelineName"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
@@ -583,7 +571,7 @@ foreach ($pipeline in $pipelineList) {
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
                 POWERBI_TOKEN = $powerbiToken
-                POWERBI_DATASET_ID = $pipeline.PowerBIDataSetId
+                POWERBI_DATASET_ID = $reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
