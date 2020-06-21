@@ -64,16 +64,16 @@ function New-PowerBIWS($name)
 
 function Update-PowerBIDatasetConnection($wsid, $dataSetId, $powerBIDataSetConnectionUpdateRequest)
 {
-    Write-Information "Setting database connection for $($powerBIReportName)"
+    Write-Information "Setting database connection for $($dataSetId)"
 
-    if ($reportId)
+    if ($dataSetId)
     {
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$dataSetId/Default.UpdateDatasources";
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
     }
     else
     {
-        write-host "No report found called $powerBIReportName";
+        write-host "No report found called $dataSetId";
     }
 }
 
