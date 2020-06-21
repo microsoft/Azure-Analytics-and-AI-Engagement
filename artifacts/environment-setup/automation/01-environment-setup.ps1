@@ -77,6 +77,7 @@ if($IsCloudLabs){
         $dataflowsPath = "..\dataflows"
         $pipelinesPath = "..\pipelines"
         $sqlScriptsPath = "..\sql"
+        $functionsSourcePath = "..\functions"
 }
 
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
@@ -563,7 +564,7 @@ $principalId = az functionapp identity show -n "psfunctions$($uniqueId)" -g $res
 az keyvault set-policy -n $keyVaultName -g $resourceGroupName --object-id $principalId --secret-permissions get
 az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "powerBIRefreshToken=@Microsoft.KeyVault(SecretUri=$secretId)"
 az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "tenantId=$($tenantId)"
-az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "..\functions\powershell-functions\powershell-functions.zip"
+az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "../functions/powershell-functions/powershell-functions.zip"
 
 $powerBIDatasetRefreshFunctionKey = ((az rest --method post `
                      --uri "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Web/sites/psfunctions$($uniqueId)/functions/PowerBIDataSetRefresh/listKeys?api-version=2018-11-01") | ConvertFrom-Json).default
