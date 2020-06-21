@@ -334,18 +334,14 @@
                 },
                 "userProperties": [],
                 "typeProperties": {
-                    "url": "https://api.powerbi.com/v1.0/myorg/datasets/#POWERBI_DATASET_ID#/refreshes",
+                    "url": "#PSFUNCTION_ENDPOINT#",
                     "connectVia": {
                         "referenceName": "AutoResolveIntegrationRuntime",
                         "type": "IntegrationRuntimeReference"
                     },
-                    "method": "POST",
+                    "method": "GET",
                     "headers": {
-                        "Authorization": "Bearer #POWERBI_TOKEN#",
                         "Content-Type": "application/json"
-                    },
-                    "body": {
-                        "notifyOption": "MailOnCompletion"
                     }
                 }
             }

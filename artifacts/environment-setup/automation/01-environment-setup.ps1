@@ -551,6 +551,24 @@ Write-Information "Create PowerBI linked service $($keyVaultName)"
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
+Write-Information "Setting Powershell Azure Functions for PowerBI Data Refresh" 
+
+Refresh-Token -TokenType PowerBI
+$azureCLITokens = Get-Content -Path \tmp\accessTokens.json | ConvertFrom-Json
+$powerBIRefreshToken = $azureCLITokens | where { $_.resource -eq "https://analysis.windows.net/powerbi/api" } | select -ExpandProperty refreshToken
+az keyvault secret set -n "PowerBIRefreshToken" --vault-name $keyVaultName --value $powerBIRefreshToken
+$secretId = az keyvault secret show -n "PowerBIRefreshToken" --vault-name $keyVaultName --query "id" -o tsv
+az functionapp identity assign -n "psfunctions$($uniqueId)" -g $resourceGroupName
+$principalId = az functionapp identity show -n "psfunctions$($uniqueId)" -g $resourceGroupName --query principalId -o tsv
+az keyvault set-policy -n $keyVaultName -g $resourceGroupName --object-id $principalId --secret-permissions get
+az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "powerBIRefreshToken=@Microsoft.KeyVault(SecretUri=$secretId)"
+az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "tenantId=$($tenantId)"
+az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "..\functions\powershell-functions\powershell-functions.zip"
+
+$powerBIDatasetRefreshFunctionKey = ((az rest --method post `
+                     --uri "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Web/sites/psfunctions$($uniqueId)/functions/PowerBIDataSetRefresh/listKeys?api-version=2018-11-01") | ConvertFrom-Json).default
+$powerBIDatasetRefreshFunctionUri = "https://psfunctions$($uniqueId).azurewebsites.net/api/PowerBIDataSetRefresh?code=$($powerBIDatasetRefreshFunctionKey)"
+
 Write-Information "Create pipelines"
 
 $pipelineList = New-Object System.Collections.ArrayList
@@ -570,10 +588,10 @@ foreach ($pipeline in $pipelineList) {
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-                POWERBI_TOKEN = $powerbiToken
-                POWERBI_DATASET_ID = $reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId
+                PSFUNCTION_ENDPOINT = "$($powerBIDatasetRefreshFunctionUri)&DataSetId=$($reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId)"
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
 Write-Information "Environment setup complete." 
+
