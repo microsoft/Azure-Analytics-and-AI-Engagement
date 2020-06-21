@@ -544,7 +544,7 @@ foreach ($powerBIReport in $reportList) {
 
     Write-Information "Setting database connection for $($powerBIReport.Name)"
     
-    Update-PowerBIDataset $wsId $powerBIReport.Name $powerBIDataSetConnectionUpdateRequest;
+    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIDataSetConnectionUpdateRequest;
 }
 
 Write-Information "Create PowerBI linked service $($keyVaultName)"
