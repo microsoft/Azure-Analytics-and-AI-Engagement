@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [Azure Synapse hands-on lab step-by-step](#)
+- [Azure Synapse Demo Step-by-Step](#)
   - [Accessing Synapse Workspace](#Accessing-Synapse-Workspace)
   - [Exercise 1: Data Orchestration and Ingestion](#Exercise-1-Data-Orchestration-and-Ingestion)
     - [Task 1: Data Ingestion](#Task-1-Data-Ingestion)
