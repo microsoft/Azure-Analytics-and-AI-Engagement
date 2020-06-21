@@ -579,7 +579,7 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaig
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
-        Write-Information "Creating workload pipeline $($pipeline.PipelineName)"
+        Write-Information "Creating workload pipeline $($pipeline.Name)"
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
