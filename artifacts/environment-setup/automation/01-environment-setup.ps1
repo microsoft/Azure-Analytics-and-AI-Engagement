@@ -590,6 +590,12 @@ foreach ($pipeline in $pipelineList) {
 
 Write-Information "Setting PowerBI Report Data Connections" 
 
+<# WARNING : Make sure Connection Changes are executed after report uploads are completed. 
+             Based on testing so far, findings indicate that there has to be an unknown amount 
+             of time between the two operations. Having those operations sequentially run in a 
+             single loop resulted in inconsistent results. Pushing the two activities far away 
+             from each other in separate loops helped. #>
+
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
 
 foreach ($powerBIReport in $reportList) {
