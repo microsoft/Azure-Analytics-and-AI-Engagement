@@ -62,22 +62,18 @@ function New-PowerBIWS($name)
     return $result.id
 }
 
-function Update-PowerBIDataset($wsid, $powerBIReportName, $powerNIDataSetConnectionUpdateRequest)
+function Update-PowerBIDatasetConnection($wsid, $dataSetId, $powerBIDataSetConnectionUpdateRequest)
 {
-    Write-Information "Setting database connection for $($powerBIReportName)"
+    Write-Information "Setting database connection for $($dataSetId)"
 
-    $reportId = Get-PowerBIDatasetId $wsid $powerBIReportName;
-
-    if ($reportId)
+    if ($dataSetId)
     {
-        $powerNIDataSetConnectionUpdateRequest = $powerNIDataSetConnectionUpdateRequest.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
-    
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$reportId/Default.UpdateDatasources";
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerNIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$dataSetId/Default.UpdateDatasources";
+        $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $global:powerbitoken" };
     }
     else
     {
-        write-host "No report found called $powerBIReportName";
+        write-host "No report found called $dataSetId";
     }
 }
 
@@ -1584,7 +1580,7 @@ Export-ModuleMember -Function Wait-ForSparkNotebookSessionStatement
 Export-ModuleMember -Function Assign-SynapseRole
 Export-ModuleMember -Function Refresh-Token
 Export-ModuleMember -Function Ensure-ValidTokens
-Export-ModuleMember -Function Update-PowerBIDataset
+Export-ModuleMember -Function Update-PowerBIDatasetConnection
 Export-ModuleMember -Function Get-PowerBIDatasetId
 Export-ModuleMember -Function New-PowerBIWS
 Export-ModuleMember -Function Get-PowerBIWorkspaceId

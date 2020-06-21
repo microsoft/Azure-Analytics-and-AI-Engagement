@@ -2,7 +2,7 @@
     "name": "CustomWebsiteSocialAnalytics",
     "properties": {
         "linkedServiceName": {
-            "referenceName": "asaexpdatalakedaron14",
+            "referenceName": "#LINKED_SERVICE_NAME#",
             "type": "LinkedServiceReference"
         },
         "annotations": [],

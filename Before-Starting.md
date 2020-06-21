@@ -5,12 +5,12 @@
 
 <!-- TOC -->
 
-- [Azure Synapse Analytics WWI lab setup guide](#azure-synapse-analytics-wwi-lab-setup-guide)
+- [Azure Synapse Analytics WWI setup guide](#azure-synapse-analytics-wwi-setup-guide)
   - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
+  - [Before Starting](#before-starting)
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Create Azure Synapse Analytics workspace](#task-2-create-azure-synapse-analytics-workspace)
-    - [Task 3: Download lab artifacts](#task-3-download-lab-artifacts)
+    - [Task 3: Download artifacts](#task-3-download-artifacts)
     - [Task 4: Establish a user context](#task-4-establish-a-user-context)
     - [Task 5: Run environment setup PowerShell script](#task-5-run-environment-setup-powershell-script)
 
@@ -21,7 +21,7 @@
 1. An Azure Account with the ability to create an Azure Synapse Workspace
 2. A PowerBI Pro or Premium account to host Power BI reports.
 
-## Before the hands-on lab
+## Before starting
 
 ### Task 1: Create a resource group in Azure
 
@@ -59,7 +59,7 @@
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
-### Task 3: Download lab artifacts
+### Task 3: Download artifacts
 
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 

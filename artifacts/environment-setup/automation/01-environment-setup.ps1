@@ -77,6 +77,7 @@ if($IsCloudLabs){
         $dataflowsPath = "..\dataflows"
         $pipelinesPath = "..\pipelines"
         $sqlScriptsPath = "..\sql"
+        $functionsSourcePath = "..\functions"
 }
 
 $resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
@@ -467,26 +468,6 @@ foreach ($notebookName in $notebooks.Keys) {
         $result
 }
 
-Write-Information "Create pipelines"
-
-$params = @{
-        DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
-        DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-}
-$workloadPipelines = [ordered]@{
-        sap_hana_to_adls = "SAP HANA TO ADLS"
-        marketing_db_migration = "MarketingDBMigration"
-        sales_db_migration = "SalesDBMigration"
-        twitter_data_migration = "TwitterDataMigration"
-        customize_campaign_analytics = "Customize Campaign Analytics"
-}
-
-foreach ($pipeline in $workloadPipelines.Keys) {
-        Write-Information "Creating workload pipeline $($workloadPipelines[$pipeline])"
-        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $workloadPipelines[$pipeline] -FileName $pipeline -Parameters $params
-        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-}
-
 Write-Information "Create SQL scripts for Lab 05"
 
 if($IsCloudLabs){
@@ -537,49 +518,91 @@ if (!$wsid)
 
 Write-Information "Uploading PowerBI Reports"
 
-$i = Get-Item -Path "$reportsPath/1. CDP Vision Demo.pbix"
-$reportId = Upload-PowerBIReport $wsId "1-CDP Vision Demo" $i.fullname
+$reportList = New-Object System.Collections.ArrayList
+$temp = "" | select-object @{Name = "FileName"; Expression = {"1. CDP Vision Demo"}} , @{Name = "Name"; Expression = {"1-CDP Vision Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows Demo"}} , @{Name = "Name"; Expression = {"2-Billion Rows Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
 
-$i = Get-Item -Path "$reportsPath/2. Billion Rows Demo.pbix"
-$reportId = Upload-PowerBIReport $wsId "2-Billion Rows Demo" $i.fullname
-
-$i = Get-Item -Path "$reportsPath/(Phase 2) CDP Vision Demo v1.pbix"
-$reportId = Upload-PowerBIReport $wsId "Phase 2 CDP Vision Demo" $i.fullname
-
+$powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
 $powerBIName = "asaexppowerbi$($uniqueId)"
 $workspaceName = "asaexpworkspace$($uniqueId)"
+
+foreach ($powerBIReport in $reportList) {
+
+    Write-Information "Uploading $($powerBIReport.Name) Report"
+
+    $i = Get-Item -Path "$reportsPath/$($powerBIReport.FileName).pbix"
+    $reportId = Upload-PowerBIReport $wsId $powerBIReport.Name $i.fullname
+    #Giving some time to the PowerBI Servic to process the upload.
+    Start-Sleep -s 5
+    $powerBIReport.PowerBIDataSetId = Get-PowerBIDatasetId $wsid $powerBIReport.Name
+}
 
 Write-Information "Create PowerBI linked service $($keyVaultName)"
 
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Setting PowerBI Database Connection"
+Write-Information "Setting Powershell Azure Functions for PowerBI Data Refresh" 
 
-$powerBIReports = [ordered]@{
-    "1-CDP Vision Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
-    "2-Billion Rows Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
-    "Phase 2 CDP Vision Demo" = @{ 
-            Category = "reports"
-            Valid = $false
-    }
+Refresh-Token -TokenType PowerBI
+$azureCLITokens = Get-Content -Path \tmp\accessTokens.json | ConvertFrom-Json
+$powerBIRefreshToken = $azureCLITokens | where { $_.resource -eq "https://analysis.windows.net/powerbi/api" } | select -ExpandProperty refreshToken
+az keyvault secret set -n "PowerBIRefreshToken" --vault-name $keyVaultName --value $powerBIRefreshToken
+$secretId = az keyvault secret show -n "PowerBIRefreshToken" --vault-name $keyVaultName --query "id" -o tsv
+az functionapp identity assign -n "psfunctions$($uniqueId)" -g $resourceGroupName
+$principalId = az functionapp identity show -n "psfunctions$($uniqueId)" -g $resourceGroupName --query principalId -o tsv
+az keyvault set-policy -n $keyVaultName -g $resourceGroupName --object-id $principalId --secret-permissions get
+az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "powerBIRefreshToken=@Microsoft.KeyVault(SecretUri=$secretId)"
+az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "tenantId=$($tenantId)"
+az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "../functions/powershell-functions/powershell-functions.zip"
+
+$powerBIDatasetRefreshFunctionKey = ((az rest --method post `
+                     --uri "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Web/sites/psfunctions$($uniqueId)/functions/PowerBIDataSetRefresh/listKeys?api-version=2018-11-01") | ConvertFrom-Json).default
+$powerBIDatasetRefreshFunctionUri = "https://psfunctions$($uniqueId).azurewebsites.net/api/PowerBIDataSetRefresh?code=$($powerBIDatasetRefreshFunctionKey)"
+
+Write-Information "Create pipelines"
+
+$pipelineList = New-Object System.Collections.ArrayList
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$pipelineList.Add($temp)
+
+foreach ($pipeline in $pipelineList) {
+        Write-Information "Creating workload pipeline $($pipeline.Name)"
+        $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
+                DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
+                DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
+                PSFUNCTION_ENDPOINT = "$($powerBIDatasetRefreshFunctionUri)&DataSetId=$($reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId)"
+         }
+        Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
 
-$powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
+Write-Information "Setting PowerBI Report Data Connections" 
 
-foreach ($powerBIReportName in $powerBIReports.Keys) {
+<# WARNING : Make sure Connection Changes are executed after report uploads are completed. 
+             Based on testing so far, findings indicate that there has to be an unknown amount 
+             of time between the two operations. Having those operations sequentially run in a 
+             single loop resulted in inconsistent results. Pushing the two activities far away 
+             from each other in separate loops helped. #>
 
-    Write-Information "Setting database connection for $($powerBIReportName)"
+$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
 
-    $powerNIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
-
-    Update-PowerBIDataset $wsId $powerBIReportName $powerNIDataSetConnectionUpdateRequest;
+foreach ($powerBIReport in $reportList) {
+    Write-Information "Setting database connection for $($powerBIReport.Name)"
+    
+    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIDataSetConnectionUpdateRequest;
 }
 
-Write-Information "Environment setup complete."
+Write-Information "Environment setup complete." 
+
