@@ -530,8 +530,6 @@ $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_da
 $powerBIName = "asaexppowerbi$($uniqueId)"
 $workspaceName = "asaexpworkspace$($uniqueId)"
 
-$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
-
 foreach ($powerBIReport in $reportList) {
 
     Write-Information "Uploading $($powerBIReport.Name) Report"
@@ -541,10 +539,6 @@ foreach ($powerBIReport in $reportList) {
     #Giving some time to the PowerBI Servic to process the upload.
     Start-Sleep -s 5
     $powerBIReport.PowerBIDataSetId = Get-PowerBIDatasetId $wsid $powerBIReport.Name
-
-    Write-Information "Setting database connection for $($powerBIReport.Name)"
-    
-    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIDataSetConnectionUpdateRequest;
 }
 
 Write-Information "Create PowerBI linked service $($keyVaultName)"
@@ -585,13 +579,23 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaig
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
-        Write-Information "Creating workload pipeline $($pipeline.Name)"
+        Write-Information "Creating workload pipeline $($pipeline.PipelineName)"
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
                 PSFUNCTION_ENDPOINT = "$($powerBIDatasetRefreshFunctionUri)&DataSetId=$($reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId)"
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+}
+
+Write-Information "Setting PowerBI Report Data Connections" 
+
+$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+
+foreach ($powerBIReport in $reportList) {
+    Write-Information "Setting database connection for $($powerBIReport.Name)"
+    
+    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIDataSetConnectionUpdateRequest;
 }
 
 Write-Information "Environment setup complete." 
