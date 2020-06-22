@@ -115,7 +115,7 @@
                 },
                 "inputs": [
                     {
-                        "referenceName": "CustomWebsiteSocialAnalytics",
+                        "referenceName": "CustomWebsiteSocialAnalyticsPBIData",
                         "type": "DatasetReference"
                     }
                 ],
