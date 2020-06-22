@@ -79,7 +79,7 @@
             },
             {
                 "name": "Ingest Social Analytics",
-                "description": "WebsiteSocialAnalytics",
+                "description": "WebsiteSocialAnalyticsPBIData",
                 "type": "Copy",
                 "dependsOn": [
                     {
@@ -121,14 +121,14 @@
                 ],
                 "outputs": [
                     {
-                        "referenceName": "WebsiteSocialAnalytics",
+                        "referenceName": "WebsiteSocialAnalyticsPBIData",
                         "type": "DatasetReference"
                     }
                 ]
             },
             {
                 "name": "Clean Social Analytics",
-                "description": "WebsiteSocialAnalytics",
+                "description": "WebsiteSocialAnalyticsPBIData",
                 "type": "Lookup",
                 "dependsOn": [],
                 "policy": {
@@ -146,7 +146,7 @@
                         "queryTimeout": "02:00:00"
                     },
                     "dataset": {
-                        "referenceName": "WebsiteSocialAnalytics",
+                        "referenceName": "WebsiteSocialAnalyticsPBIData",
                         "type": "DatasetReference"
                     },
                     "firstRowOnly": false
