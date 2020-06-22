@@ -1,5 +1,5 @@
 {
-    "name": "CustomWebsiteSocialAnalytics",
+    "name": "CustomWebsiteSocialAnalyticsPBIData",
     "properties": {
         "linkedServiceName": {
             "referenceName": "#LINKED_SERVICE_NAME#",
@@ -10,7 +10,7 @@
         "typeProperties": {
             "location": {
                 "type": "AzureBlobFSLocation",
-                "fileName": "WebsiteSocialAnalytics.csv",
+                "fileName": "WebsiteSocialAnalyticsPBIData.csv",
                 "fileSystem": "customcsv"
             },
             "columnDelimiter": ",",
@@ -92,5 +92,6 @@
                 "type": "String"
             }
         ]
-    }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
 }

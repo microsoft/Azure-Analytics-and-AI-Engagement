@@ -1,5 +1,5 @@
 {
-    "name": "WebsiteSocialAnalytics",
+    "name": "WebsiteSocialAnalyticsPBIData",
     "properties": {
         "linkedServiceName": {
             "referenceName": "sqlpool01",
@@ -115,7 +115,8 @@
         ],
         "typeProperties": {
             "schema": "dbo",
-            "table": "WebsiteSocialAnalytics"
+            "table": "WebsiteSocialAnalyticsPBIData"
         }
-    }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
 }
