@@ -410,6 +410,7 @@ $datasets = @{
         FinanceSales = "NA"
         ProductLink2 = "NA"
         ProductRecommendations = "NA"
+        SalesMaster = "NA"
         CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
         CustomCampaignCollection = $dataLakeAccountName 
         CustomCampaignSchedules = $dataLakeAccountName 
@@ -419,6 +420,7 @@ $datasets = @{
         CustomFinanceSales = $dataLakeAccountName 
         CustomProductLink2 = $dataLakeAccountName 
         CustomProductRecommendations = $dataLakeAccountName 
+        CustomSalesMaster = $dataLakeAccountName 
 }
 $dataLakeAccountName 
 
@@ -592,6 +594,8 @@ $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {

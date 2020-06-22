@@ -1,0 +1,97 @@
+{
+    "name": "SalesMaster",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Fiscal Year",
+                "type": "varchar"
+            },
+            {
+                "name": "Fiscal Quarter",
+                "type": "varchar"
+            },
+            {
+                "name": "Fiscal Month",
+                "type": "varchar"
+            },
+            {
+                "name": "Country",
+                "type": "varchar"
+            },
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Customer Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "Channel",
+                "type": "varchar"
+            },
+            {
+                "name": "Product",
+                "type": "varchar"
+            },
+            {
+                "name": "Product Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Gross Sales",
+                "type": "varchar"
+            },
+            {
+                "name": "Budget",
+                "type": "varchar"
+            },
+            {
+                "name": "Forecast",
+                "type": "varchar"
+            },
+            {
+                "name": "Discount",
+                "type": "varchar"
+            },
+            {
+                "name": "Net Sales",
+                "type": "varchar"
+            },
+            {
+                "name": "COGS",
+                "type": "varchar"
+            },
+            {
+                "name": "Gross Profit",
+                "type": "varchar"
+            },
+            {
+                "name": "Half Yearly",
+                "type": "varchar"
+            },
+            {
+                "name": "VTB ($)",
+                "type": "varchar"
+            },
+            {
+                "name": "VTB (%)",
+                "type": "varchar"
+            },
+            {
+                "name": "agegroup",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesMaster"
+        }
+    }
+}
