@@ -1,0 +1,26 @@
+{
+    "name": "ProductRecommendations",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Product",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Recommeded Product",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "ProductRecommendations"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

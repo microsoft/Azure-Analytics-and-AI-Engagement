@@ -406,11 +406,19 @@ $datasets = @{
         Campaigns = "NA"
         location_Analytics = "NA"
         WebsiteSocialAnalyticsPBIData = "NA"
+        CustomerVisitF = "NA"
+        FinanceSales = "NA"
+        ProductLink2 = "NA"
+        ProductRecommendations = "NA"
         CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
         CustomCampaignCollection = $dataLakeAccountName 
         CustomCampaignSchedules = $dataLakeAccountName 
         CustomWebsiteSocialAnalyticsPBIData = $dataLakeAccountName 
         CustomLocationAnalytics = $dataLakeAccountName 
+        CustomCustomerVisitF = $dataLakeAccountName 
+        CustomFinanceSales = $dataLakeAccountName 
+        CustomProductLink2 = $dataLakeAccountName 
+        CustomProductRecommendations = $dataLakeAccountName 
 }
 $dataLakeAccountName 
 
@@ -582,6 +590,8 @@ $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decomposition_tree"}} , @{Name = "Name"; Expression = {"Customize Decomposition Tree"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
