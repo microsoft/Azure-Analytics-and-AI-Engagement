@@ -1,0 +1,45 @@
+{
+    "name": "Product_Recommendations_ML",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "product-recommendations.csv",
+                "fileSystem": "machine-learning"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "ProductId",
+                "type": "String"
+            },
+            {
+                "name": "ProductName",
+                "type": "String"
+            },
+            {
+                "name": "RecommendedProductId",
+                "type": "String"
+            },
+            {
+                "name": "RecommendedProductName",
+                "type": "String"
+            },
+            {
+                "name": "Similarity",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

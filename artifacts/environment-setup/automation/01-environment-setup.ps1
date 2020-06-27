@@ -413,6 +413,8 @@ $datasets = @{
         ProductRecommendations = "NA"
         SalesMaster = "NA"
         CustomerVisitF_Spark = "NA"
+        Customer_SalesLatest = "NA"
+        Product_Recommendations_Spark_v2 = "NA"
         CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
         CustomCampaignCollection = $dataLakeAccountName 
         CustomCampaignSchedules = $dataLakeAccountName 
@@ -424,7 +426,9 @@ $datasets = @{
         CustomProductRecommendations = $dataLakeAccountName 
         CustomSalesMaster = $dataLakeAccountName 
         Department_Visits_DL = $dataLakeAccountName 
-        Department_Visits_Predictions_DL =  = $dataLakeAccountName         
+        Department_Visits_Predictions_DL = $dataLakeAccountName  
+        Product_Recommendations_ML = $dataLakeAccountName  
+        Customer_Sales_Latest_ML = $dataLakeAccountName  
 }
 $dataLakeAccountName 
 
@@ -603,6 +607,8 @@ $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {

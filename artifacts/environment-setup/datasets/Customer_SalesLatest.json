@@ -1,0 +1,42 @@
+{
+    "name": "Customer_SalesLatest",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "customer_id",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "product_id",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "product_name",
+                "type": "varchar"
+            },
+            {
+                "name": "total_quantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "rating",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Customer_SalesLatest"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
