@@ -1,0 +1,33 @@
+{
+    "name": "ProductRecommendations_Spark",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Product1",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "Product2",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "Similarity",
+                "type": "float",
+                "precision": 15
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "ProductRecommendations_Spark"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,50 @@
+{
+    "name": "department_visit_customer",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Date",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Accessories_count",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Entertainment_count",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Gaming",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Kids",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Mens",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Phone_and_GPS",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Womens",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "department_visit_customer"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
