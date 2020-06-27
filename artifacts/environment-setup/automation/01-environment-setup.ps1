@@ -468,6 +468,7 @@ $cellParams = [ordered]@{
         "#SUBSCRIPTION_ID#"     = $subscriptionId
         "#RESOURCE_GROUP_NAME#" = $resourceGroupName
         "#AML_WORKSPACE_NAME#"  = $amlWorkspaceName
+        "#DATA_LAKE_NAME#" = $dataLakeAccountName
 }
 
 foreach ($notebookName in $notebooks.Keys) {
