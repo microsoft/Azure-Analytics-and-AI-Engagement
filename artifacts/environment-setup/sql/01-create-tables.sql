@@ -1103,3 +1103,42 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
+
+IF OBJECT_ID(N'[dbo].[CustomerVisitF_Spark]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[CustomerVisitF_Spark]
+
+CREATE TABLE [dbo].[CustomerVisitF_Spark]
+(
+    [Date] date,
+    Accessories int,
+    Entertainment int,
+    Gaming int,
+    Kids int,
+    Mens int,
+    Phone_and_GPS int,
+    Womens int
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+IF OBJECT_ID(N'[dbo].[ProductRecommendations_Sparkv2]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[ProductRecommendations_Sparkv2]
+
+CREATE TABLE [dbo].[ProductRecommendations_Sparkv2]
+( 
+	[ProductId] [int]  NOT NULL,
+	[ProductName] [nvarchar](100)  NOT NULL,
+	[RecommendedProductId] [int]  NOT NULL,
+	[RecommendedProductName] [nvarchar](100)  NOT NULL,
+	[Similarity] [float]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
