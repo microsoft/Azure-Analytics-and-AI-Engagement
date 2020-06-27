@@ -1,0 +1,57 @@
+{
+    "name": "CustomerVisitF_Spark",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Date",
+                "type": "date"
+            },
+            {
+                "name": "Accessories",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Entertainment",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Gaming",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Kids",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Mens",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Phone_and_GPS",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Womens",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CustomerVisitF_Spark"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
