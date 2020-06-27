@@ -176,54 +176,6 @@
                 ]
             },
             {
-                "name": "Clean Old Recommendations",
-                "type": "Lookup",
-                "dependsOn": [],
-                "policy": {
-                    "timeout": "7.00:00:00",
-                    "retry": 0,
-                    "retryIntervalInSeconds": 30,
-                    "secureOutput": false,
-                    "secureInput": false
-                },
-                "userProperties": [],
-                "typeProperties": {
-                    "source": {
-                        "type": "SqlDWSource",
-                        "sqlReaderQuery": "IF OBJECT_ID(N'[dbo].[ProductRecommendations_Spark]', N'U') IS NOT NULL  \nDROP TABLE [dbo].[ProductRecommendations_Spark];\nSelect 1;",
-                        "queryTimeout": "02:00:00"
-                    },
-                    "dataset": {
-                        "referenceName": "ProductRecommendations_Spark",
-                        "type": "DatasetReference"
-                    }
-                }
-            },
-            {
-                "name": "Clean Old Customer Visits",
-                "type": "Lookup",
-                "dependsOn": [],
-                "policy": {
-                    "timeout": "7.00:00:00",
-                    "retry": 0,
-                    "retryIntervalInSeconds": 30,
-                    "secureOutput": false,
-                    "secureInput": false
-                },
-                "userProperties": [],
-                "typeProperties": {
-                    "source": {
-                        "type": "SqlDWSource",
-                        "sqlReaderQuery": "IF OBJECT_ID(N'[dbo].[CustomerVisitF_Spark]', N'U') IS NOT NULL  \nDROP TABLE [dbo].[CustomerVisitF_Spark];\nSelect 1;",
-                        "queryTimeout": "02:00:00"
-                    },
-                    "dataset": {
-                        "referenceName": "CustomerVisitF",
-                        "type": "DatasetReference"
-                    }
-                }
-            },
-            {
                 "name": "Ingest Department Customer Visits",
                 "type": "Copy",
                 "dependsOn": [],
@@ -278,18 +230,6 @@
                 "name": "Build Product Recommendations",
                 "type": "ExecutePipeline",
                 "dependsOn": [
-                    {
-                        "activity": "Clean Old Customer Visits",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    },
-                    {
-                        "activity": "Clean Old Recommendations",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    },
                     {
                         "activity": "Ingest Department Customer Visits",
                         "dependencyConditions": [
