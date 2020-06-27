@@ -416,7 +416,6 @@ $datasets = @{
         Customer_SalesLatest = "NA"
         Product_Recommendations_Spark_v2 = "NA"
         department_visit_customer = "NA"
-        ProductRecommendations_Spark = "NA"
         CustomCampaignAnalyticLatestDataset = $dataLakeAccountName 
         CustomCampaignCollection = $dataLakeAccountName 
         CustomCampaignSchedules = $dataLakeAccountName 
