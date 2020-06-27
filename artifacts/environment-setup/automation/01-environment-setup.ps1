@@ -167,15 +167,16 @@ $dataLakeStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resour
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $dataLakeStorageAccountKey
 
 $storageContainers = @{
-        twitterdata = "twitterdata"
-        financedb = "financedb"
-        salesdata = "salesdata"
+        twitterData = "twitterdata"
+        financeDb = "financedb"
+        salesData = "salesdata"
         customerInsights = "customer-insights"
-        saphana = "saphana"
-        campaigndata = "campaigndata"
-        iotcontainer = "iotcontainer"
+        sapHana = "saphana"
+        campaignData = "campaigndata"
+        iotContainer = "iotcontainer"
         recommendations = "recommendations"
-        customcsv = "customcsv"
+        customCsv = "customcsv"
+        machineLearning = "machine-learning"
 }
 
 foreach ($storageContainer in $storageContainers.Keys) {        
