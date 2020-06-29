@@ -4,13 +4,13 @@
         "datasourceSelector": {
           "datasourceType": "Sql",
           "connectionDetails": {
-            "server": "cdpvisionworkspace.sql.azuresynapse.net",
-            "database": "AzureSynapseDW"
+            "server": "#SOURCE_SERVER#",
+            "database": "#SOURCE_DATABASE#"
           }
         },
         "connectionDetails": {
-          "server": "#SERVER#",
-          "database": "#DATABASE#"
+          "server": "#TARGET_SERVER#",
+          "database": "#TARGET_DATABASE#"
         }
       }
     ]

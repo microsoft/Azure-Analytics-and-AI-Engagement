@@ -545,15 +545,35 @@ if (!$wsid)
 Write-Information "Uploading PowerBI Reports"
 
 $reportList = New-Object System.Collections.ArrayList
-$temp = "" | select-object @{Name = "FileName"; Expression = {"1. CDP Vision Demo"}} , @{Name = "Name"; Expression = {"1-CDP Vision Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"1. CDP Vision Demo"}}, 
+                                @{Name = "Name"; Expression = {"1-CDP Vision Demo"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}}, 
+                                @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows Demo"}} , @{Name = "Name"; Expression = {"2-Billion Rows Demo"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows Demo"}}, 
+                                @{Name = "Name"; Expression = {"2-Billion Rows Demo"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}}, 
+                                @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, 
+                                @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}}, 
+                                @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"Number of Customers Forecast by Department_New"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1 - D"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Number of Customers Forecast by Department_New"}}, 
+                                @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1 - D"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}},
+                                @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"Product-Recommendation"}} , @{Name = "Name"; Expression = {"Product Recommendation - D"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Product-Recommendation"}}, 
+                                @{Name = "Name"; Expression = {"Product Recommendation - D"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}},
+                                @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
@@ -640,12 +660,12 @@ Write-Information "Setting PowerBI Report Data Connections"
              single loop resulted in inconsistent results. Pushing the two activities far away 
              from each other in separate loops helped. #>
 
-$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#DATABASE#", "SQLPool01") |Out-String
+$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", "SQLPool01") |Out-String
 
 foreach ($powerBIReport in $reportList) {
     Write-Information "Setting database connection for $($powerBIReport.Name)"
-    
-    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIDataSetConnectionUpdateRequest;
+    $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
+    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIReportDataSetConnectionUpdateRequest;
 }
 
 Write-Information "Environment setup complete." 
