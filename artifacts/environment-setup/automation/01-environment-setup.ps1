@@ -551,6 +551,10 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows D
 $reportList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
 $reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Number of Customers Forecast by Department_New"}} , @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1 - D"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Product-Recommendation"}} , @{Name = "Name"; Expression = {"Product Recommendation - D"}}, @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
 $powerBIName = "asaexppowerbi$($uniqueId)"
