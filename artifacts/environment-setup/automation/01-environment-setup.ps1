@@ -229,6 +229,18 @@ foreach ($singleFile in $singleFiles) {
         azcopy copy $source $destination 
 }
 
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "machine-learning" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
+$singleFiles = Get-AzStorageBlob -Container "cdp" -Blob machine* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
+
+foreach ($singleFile in $singleFiles) {
+        Write-Information $singleFile
+        $source = $publicDataUrl + $singleFile.SourcePath
+        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
+        Write-Information "Copying file $($source) to $($destination)"
+        azcopy copy $source $destination 
+}
+
 if(!$IsCloudLabs)
 {
     Install-Module -Name SqlServer
