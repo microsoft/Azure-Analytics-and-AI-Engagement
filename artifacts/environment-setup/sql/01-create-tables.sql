@@ -380,23 +380,27 @@ DROP TABLE [dbo].[FinanceSales]
 
 CREATE TABLE [dbo].[FinanceSales]
 ( 
-	[Fiscal Year] [nvarchar](4000)  NULL,
-	[Fiscal Quarter] [nvarchar](4000)  NULL,
-	[Fiscal Month] [nvarchar](4000)  NULL,
-	[Country] [nvarchar](4000)  NULL,
-	[Region] [nvarchar](4000)  NULL,
-	[Customer Segment] [nvarchar](4000)  NULL,
-	[Channel] [nvarchar](4000)  NULL,
-	[Product] [nvarchar](4000)  NULL,
-	[ProductCategory] [nvarchar](4000)  NULL,
-	[Gross Sales] [nvarchar](4000)  NULL,
-	[Budget] [nvarchar](4000)  NULL,
-	[Forecast] [nvarchar](4000)  NULL,
-	[Half Yearly] [nvarchar](4000)  NULL,
-	[VTB ($)] [nvarchar](4000)  NULL,
-	[VTB (%)] [nvarchar](4000)  NULL,
-	[link] [nvarchar](4000)  NULL,
-	[description] [nvarchar](4000)  NULL
+	[Fiscal Year] [varchar](20)  NULL,
+	[Fiscal Quarter] [varchar](5000)  NULL,
+	[Fiscal Month] [int]  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL,
+	[Customer Segment] [varchar](5000)  NULL,
+	[Channel] [varchar](5000)  NULL,
+	[Product] [varchar](5000)  NULL,
+	[ProductCategory] [varchar](5000)  NULL,
+	[Gross Sales] [decimal](18,0)  NULL,
+	[Budget] [decimal](18,0)  NULL,
+	[Forecast] [decimal](18,0)  NULL,
+	[Discount] [decimal](18,0)  NULL,
+	[Net Sales] [decimal](18,0)  NULL,
+	[COGS] [decimal](18,0)  NULL,
+	[Gross Profit] [decimal](18,0)  NULL,
+	[Half Yearly] [varchar](50)  NULL,
+	[VTB ($)] [decimal](18,0)  NULL,
+	[VTB (%)] [decimal](18,0)  NULL,
+	[link] [varchar](500)  NULL,
+	[description] [varchar](500)  NULL
 )
 WITH
 (
