@@ -569,20 +569,8 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows D
                                 @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, 
-                                @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1"}}, 
-                                @{Name = "PowerBIDataSetId"; Expression = {""}}, 
-                                @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
-                                @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
-$reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"Number of Customers Forecast by Department_New"}}, 
-                                @{Name = "Name"; Expression = {"(Phase 2) CDP Vision Demo v1 - D"}}, 
-                                @{Name = "PowerBIDataSetId"; Expression = {""}},
-                                @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
-                                @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
-$reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"Product-Recommendation"}}, 
-                                @{Name = "Name"; Expression = {"Product Recommendation - D"}}, 
+$temp = "" | select-object @{Name = "FileName"; Expression = {"29_June_Number-Customers-Forecast.pbix"}}, 
+                                @{Name = "Name"; Expression = {"Engagement Accelerator Demo Reports"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
                                 @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
