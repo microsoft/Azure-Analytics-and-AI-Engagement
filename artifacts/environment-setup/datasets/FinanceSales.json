@@ -1,0 +1,86 @@
+{
+    "name": "FinanceSales",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Fiscal Year",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Fiscal Quarter",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Fiscal Month",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Country",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Region",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Customer Segment",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Channel",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Product",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ProductCategory",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Gross Sales",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Budget",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Forecast",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Half Yearly",
+                "type": "nvarchar"
+            },
+            {
+                "name": "VTB ($)",
+                "type": "nvarchar"
+            },
+            {
+                "name": "VTB (%)",
+                "type": "nvarchar"
+            },
+            {
+                "name": "link",
+                "type": "nvarchar"
+            },
+            {
+                "name": "description",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "FinanceSales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

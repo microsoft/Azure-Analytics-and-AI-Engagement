@@ -1,0 +1,30 @@
+{
+    "name": "ProductLink2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Product",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Link",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ReadOnlyLink",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "ProductLink2"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

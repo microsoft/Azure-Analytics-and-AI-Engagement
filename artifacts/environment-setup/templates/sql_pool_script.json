@@ -1,0 +1,16 @@
+{
+    "name": "#SQL_SCRIPT_NAME#",
+    "properties": {
+        "content": {
+            "query": "#SQL_SCRIPT#",
+            "metadata": {
+                "language": "sql"
+            },
+            "currentConnection": {
+                "name": "#SQL_POOL_NAME#",
+                "type": "SqlPool"
+            }
+        },
+        "type": "SqlQuery"
+    }
+}

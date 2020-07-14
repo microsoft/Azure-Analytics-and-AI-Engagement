@@ -1,0 +1,122 @@
+{
+    "name": "WebsiteSocialAnalyticsPBIData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Country",
+                "type": "varchar"
+            },
+            {
+                "name": "Product_Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Product",
+                "type": "varchar"
+            },
+            {
+                "name": "Channel",
+                "type": "varchar"
+            },
+            {
+                "name": "Gender",
+                "type": "varchar"
+            },
+            {
+                "name": "Sessions",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Device_Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Sources",
+                "type": "varchar"
+            },
+            {
+                "name": "Conversations",
+                "type": "varchar"
+            },
+            {
+                "name": "Page",
+                "type": "varchar"
+            },
+            {
+                "name": "Visits",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Unique_Visitors",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Browser",
+                "type": "varchar"
+            },
+            {
+                "name": "Sentiment",
+                "type": "varchar"
+            },
+            {
+                "name": "Duration_min",
+                "type": "varchar"
+            },
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "Daily_Users",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Conversion_Rate",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Return_Visitors",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Tweets",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Retweets",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Hashtags",
+                "type": "varchar"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "WebsiteSocialAnalyticsPBIData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

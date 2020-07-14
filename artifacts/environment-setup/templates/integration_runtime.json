@@ -1,0 +1,16 @@
+{
+    "name": "#INTEGRATION_RUNTIME_NAME#",
+    "properties": {
+        "type": "Managed",
+        "typeProperties": {
+            "computeProperties": {
+                "location": "AutoResolve",
+                "dataFlowProperties": {
+                    "computeType": "MemoryOptimized",
+                    "coreCount": #CORE_COUNT#,
+                    "timeToLive": #TIME_TO_LIVE#
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+{
+    "name": "CustomSalesMaster",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "SalesMaster.csv",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Fiscal Year",
+                "type": "String"
+            },
+            {
+                "name": "Fiscal Quarter",
+                "type": "String"
+            },
+            {
+                "name": "Fiscal Month",
+                "type": "String"
+            },
+            {
+                "name": "Country",
+                "type": "String"
+            },
+            {
+                "name": "Region",
+                "type": "String"
+            },
+            {
+                "name": "Customer Segment",
+                "type": "String"
+            },
+            {
+                "name": "Channel",
+                "type": "String"
+            },
+            {
+                "name": "Product",
+                "type": "String"
+            },
+            {
+                "name": "Product Category",
+                "type": "String"
+            },
+            {
+                "name": "Gross Sales",
+                "type": "String"
+            },
+            {
+                "name": "Budget",
+                "type": "String"
+            },
+            {
+                "name": "Forecast",
+                "type": "String"
+            },
+            {
+                "name": "Discount",
+                "type": "String"
+            },
+            {
+                "name": "Net Sales",
+                "type": "String"
+            },
+            {
+                "name": "COGS",
+                "type": "String"
+            },
+            {
+                "name": "Gross Profit",
+                "type": "String"
+            },
+            {
+                "name": "Half Yearly",
+                "type": "String"
+            },
+            {
+                "name": "VTB ($)",
+                "type": "String"
+            },
+            {
+                "name": "VTB (%)",
+                "type": "String"
+            },
+            {
+                "name": "agegroup",
+                "type": "String"
+            }
+        ]
+    }
+}

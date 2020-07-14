@@ -1,0 +1,41 @@
+{
+    "name": "Product_Recommendations_Spark_v2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "ProductId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ProductName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RecommendedProductId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "RecommendedProductName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Similarity",
+                "type": "float",
+                "precision": 15
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "ProductRecommendations_Sparkv2"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

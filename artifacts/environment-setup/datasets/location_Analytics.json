@@ -1,0 +1,143 @@
+{
+    "name": "location_Analytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Day",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Product_Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Visit_Start",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "Visit_End",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "Hour",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Visitor_ID",
+                "type": "varchar"
+            },
+            {
+                "name": "First_Visit",
+                "type": "bit"
+            },
+            {
+                "name": "Duration",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Minutes",
+                "type": "varchar"
+            },
+            {
+                "name": "Visit_Type",
+                "type": "varchar"
+            },
+            {
+                "name": "Country",
+                "type": "varchar"
+            },
+            {
+                "name": "Department",
+                "type": "varchar"
+            },
+            {
+                "name": "Gender",
+                "type": "varchar"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "Date",
+                "type": "varchar"
+            },
+            {
+                "name": "Stores",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Engagement",
+                "type": "varchar"
+            },
+            {
+                "name": "Acquisition",
+                "type": "varchar"
+            },
+            {
+                "name": "Impressions",
+                "type": "varchar"
+            },
+            {
+                "name": "Conversion",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "varchar"
+            },
+            {
+                "name": "WeekDay",
+                "type": "varchar"
+            },
+            {
+                "name": "SortByVisitType",
+                "type": "varchar"
+            },
+            {
+                "name": "Engaged_Visitors",
+                "type": "varchar"
+            },
+            {
+                "name": "Week_Number",
+                "type": "varchar"
+            },
+            {
+                "name": "Target_Visitors",
+                "type": "varchar"
+            },
+            {
+                "name": "Variance",
+                "type": "varchar"
+            },
+            {
+                "name": "Column28",
+                "type": "varchar"
+            },
+            {
+                "name": "Column29",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "location_Analytics"
+        }
+    }
+}

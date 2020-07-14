@@ -1,0 +1,9 @@
+{
+    "kind":"pyspark",
+    "name":"#SPARK_SESSION_NAME#",
+    "driverMemory":"56g",
+    "driverCores":8,
+    "executorMemory":"56g",
+    "executorCores":8,
+    "numExecutors":4
+ }

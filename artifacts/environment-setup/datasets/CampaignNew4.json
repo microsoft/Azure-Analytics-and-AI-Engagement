@@ -1,0 +1,66 @@
+{
+    "name": "CampaignNew4",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Id",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignId",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignStartDate",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignEndDate",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Cost",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ROI",
+                "type": "nvarchar"
+            },
+            {
+                "name": "LeadGeneration",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RevenueTarget",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignTactic",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Profit",
+                "type": "nvarchar"
+            },
+            {
+                "name": "MarketingCost",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CampaignNew4"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

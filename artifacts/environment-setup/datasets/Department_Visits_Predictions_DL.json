@@ -1,0 +1,57 @@
+{
+    "name": "Department_Visits_Predictions_DL",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "department-visit-predictions.csv",
+                "fileSystem": "machine-learning"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Date",
+                "type": "String"
+            },
+            {
+                "name": "Accessories",
+                "type": "String"
+            },
+            {
+                "name": "Entertainment",
+                "type": "String"
+            },
+            {
+                "name": "Gaming",
+                "type": "String"
+            },
+            {
+                "name": "Kids",
+                "type": "String"
+            },
+            {
+                "name": "Mens",
+                "type": "String"
+            },
+            {
+                "name": "Phone_and_GPS",
+                "type": "String"
+            },
+            {
+                "name": "Womens",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

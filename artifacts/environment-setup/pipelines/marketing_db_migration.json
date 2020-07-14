@@ -1,0 +1,161 @@
+{
+    "name": "MarketingDBMigration",
+    "properties": {
+        "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+        "activities": [
+            {
+                "name": "Check if Marketing DB Teradata exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "TeradataSource",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "TeradataMarketingDB",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Move data to ADLS Gen2 Stage",
+                "description": "Load Data to Data Lake Gen 2 Stage",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Marketing DB Teradata exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "TeradataSource",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TeradataMarketingDB",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "MarketingDB_Stage",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Prep data In Azure Synapse",
+                "description": "Pull the data from SQL Source to the staging area in ADLS Gen 2, then prep data using Databricks. Then load data to Azure Synapse.  ",
+                "type": "SynapseNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Move data to ADLS Gen2 Stage",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebook": {
+                        "referenceName": "3 Campaign Analytics Data Prep",
+                        "type": "NotebookReference"
+                    }
+                }
+            },
+            {
+                "name": "Load Data to Azure Synapse",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Prep data In Azure Synapse",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "tableOption": "autoCreate"
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "MarketingDB_Stage",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "Synapse",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

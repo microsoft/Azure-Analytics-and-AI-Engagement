@@ -1,0 +1,70 @@
+{
+    "name": "AzureSynapseAnalyticsTable1",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "CreatedAt",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Hashtag",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Tweet",
+                "type": "nvarchar"
+            },
+            {
+                "name": "City",
+                "type": "nvarchar"
+            },
+            {
+                "name": "UserName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RetweetCount",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "FavouriteCount",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "Sentiment",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SentimentScore",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "IsRetweet",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "HourOfDay",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Language",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "TwitterAnalytics"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
