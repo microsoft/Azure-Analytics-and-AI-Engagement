@@ -1,0 +1,109 @@
+{
+    "name": "CustomEmailAnalytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "EmailAnalytics.csv",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Recency",
+                "type": "String"
+            },
+            {
+                "name": "History_Segment_ID",
+                "type": "String"
+            },
+            {
+                "name": "History_Segment",
+                "type": "String"
+            },
+            {
+                "name": "History",
+                "type": "String"
+            },
+            {
+                "name": "Men",
+                "type": "String"
+            },
+            {
+                "name": "Women",
+                "type": "String"
+            },
+            {
+                "name": "Zip_Code",
+                "type": "String"
+            },
+            {
+                "name": "Newbie",
+                "type": "String"
+            },
+            {
+                "name": "Channel",
+                "type": "String"
+            },
+            {
+                "name": "Segment",
+                "type": "String"
+            },
+            {
+                "name": "Opens",
+                "type": "String"
+            },
+            {
+                "name": "Clicks",
+                "type": "String"
+            },
+            {
+                "name": "Revenue",
+                "type": "String"
+            },
+            {
+                "name": "Category_ID",
+                "type": "String"
+            },
+            {
+                "name": "Product_Category",
+                "type": "String"
+            },
+            {
+                "name": "date",
+                "type": "String"
+            },
+            {
+                "name": "Campaign",
+                "type": "String"
+            },
+            {
+                "name": "Region",
+                "type": "String"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "String"
+            },
+            {
+                "name": "Gender",
+                "type": "String"
+            },
+            {
+                "name": "Email_Status",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -423,6 +423,7 @@ $datasets = @{
         WebsiteSocialAnalyticsPBIData = "NA"
         CustomerVisitF = "NA"
         FinanceSales = "NA"
+        EmailAnalytics = "NA"
         ProductLink2 = "NA"
         ProductRecommendations = "NA"
         SalesMaster = "NA"
@@ -437,6 +438,7 @@ $datasets = @{
         CustomLocationAnalytics = $dataLakeAccountName 
         CustomCustomerVisitF = $dataLakeAccountName 
         CustomFinanceSales = $dataLakeAccountName 
+        CustomEmailAnalytics = $dataLakeAccountName 
         CustomProductLink2 = $dataLakeAccountName 
         CustomProductRecommendations = $dataLakeAccountName 
         CustomSalesMaster = $dataLakeAccountName 
@@ -640,6 +642,8 @@ $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights_ml"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights ML"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}, @{Name = "PowerBIReportName"; Expression = {""}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {

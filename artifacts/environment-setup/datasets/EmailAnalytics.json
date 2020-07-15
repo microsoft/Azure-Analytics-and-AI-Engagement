@@ -1,0 +1,102 @@
+{
+    "name": "EmailAnalytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Recency",
+                "type": "varchar"
+            },
+            {
+                "name": "History_Segment_ID",
+                "type": "varchar"
+            },
+            {
+                "name": "History_Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "History",
+                "type": "varchar"
+            },
+            {
+                "name": "Men",
+                "type": "varchar"
+            },
+            {
+                "name": "Women",
+                "type": "varchar"
+            },
+            {
+                "name": "Zip_Code",
+                "type": "varchar"
+            },
+            {
+                "name": "Newbie",
+                "type": "varchar"
+            },
+            {
+                "name": "Channel",
+                "type": "varchar"
+            },
+            {
+                "name": "Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "Opens",
+                "type": "varchar"
+            },
+            {
+                "name": "Clicks",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "varchar"
+            },
+            {
+                "name": "Category_ID",
+                "type": "varchar"
+            },
+            {
+                "name": "Product_Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Date",
+                "type": "date"
+            },
+            {
+                "name": "Campaign",
+                "type": "varchar"
+            },
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "varchar"
+            },
+            {
+                "name": "Gender",
+                "type": "varchar"
+            },
+            {
+                "name": "Email_Status",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "EmailAnalytics"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
