@@ -633,8 +633,6 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decompo
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
-$pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}, @{Name = "PowerBIReportName"; Expression = {""}}
