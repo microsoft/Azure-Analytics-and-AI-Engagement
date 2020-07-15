@@ -1,4 +1,8 @@
 
+# Getting Started
+
+- To setup your environment navigate to the [before starting document](docs/Before-Starting.md).
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
