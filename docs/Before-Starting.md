@@ -125,6 +125,10 @@ When executing the script below, it is important to let the scripts run to compl
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
 
+    You may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.   
+
+    ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/untrusted-repo.png)
+    
 3. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
 
 4. From the hamburger menu select **Workspaces** to access the list of workspaces available to you. Select the workspace named `asa-exp{suffix}`.
