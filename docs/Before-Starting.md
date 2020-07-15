@@ -70,7 +70,7 @@
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://github.com/solliancenet/azure-synapse-wwi-lab.git synapse-wwi
+    git clone https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git synapse-wwi
     ```
     
     ![The Azure Portal with Cloud shell opened. Git clone command is typed into the cloud shell terminal ready for execution.](media/cloud-shell-git-clone.png)
