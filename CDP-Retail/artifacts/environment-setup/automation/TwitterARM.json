@@ -1,0 +1,613 @@
+{
+   "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "location":{
+         "type":"string",
+         "defaultValue":"centralus"
+      },
+      "resource_group_name":{
+         "type":"string",
+         "defaultValue":"#resourceGroup#"
+      },
+      "location_azure_function_ase_name":{
+         "type":"string",
+         "defaultValue":"locationFunctionAse"
+      },
+      "location_azure_function_storage_name":{
+         "type":"string",
+         "defaultValue":"locationstore"
+      },
+      "location_azure_function_ai_name":{
+         "type":"string",
+         "defaultValue":"locationFunctionAi"
+      },
+      "location_azure_function_functions_app_name":{
+         "type":"string",
+         "defaultValue":"locationFunctionApp"
+      },
+      "location_azure_function_functions_zip_url":{
+         "type":"string",
+         "defaultValue":""
+      },
+      "twitter_azure_function_ase_name":{
+         "type":"string",
+         "defaultValue":"twitterFunctionAse"
+      },
+      "twitter_azure_function_storage_name":{
+         "type":"string",
+         "defaultValue":"twiterstore"
+      },
+      "twitter_azure_function_ai_name":{
+         "type":"string",
+         "defaultValue":"twitterFunctionAi"
+      },
+      "twitter_azure_function_functions_app_name":{
+         "type":"string",
+         "defaultValue":"twitterFunctionApp"
+      },
+      "TwitterAccessToken":{
+         "type":"string",
+         "defaultValue":"#TwitterAccessToken#"
+      },
+      "TwitterAccessTokenSecret":{
+         "type":"string",
+         "defaultValue":"#TwitterAccessTokenSecret#"
+      },
+      "TwitterConsumerKey":{
+         "type":"string",
+         "defaultValue":"#TwitterConsumerKey#"
+      },
+      "TwitterConsumerKeySecret":{
+         "type":"string",
+         "defaultValue":"#TwitterConsumerKeySecret#"
+      },
+      "TwitterKeywords":{
+         "type":"string",
+         "defaultValue":"#TwitterKeywords#"
+      },
+      "twitter_azure_function_functions_zip_url":{
+         "type":"string",
+         "defaultValue":""
+      },
+      "unique_code":{
+         "type":"string",
+         "defaultValue":"#uniqueCode#"
+      },
+      "eventHubNameSpace":{
+         "type":"string",
+         "metadata":{
+            "description":"Specifies a project name that is used to generate the Event Hub name and the Namespace name."
+         },
+         "defaultValue":"tweetsinbound"
+      },
+      "eventHubName":{
+         "type":"string",
+         "metadata":{
+            "description":"Specifies a project name that is used to generate the Event Hub name and the Namespace name."
+         },
+         "defaultValue":"tweetsin"
+      },
+      "asaName":{
+         "defaultValue":"TweetsASA",
+         "type":"String"
+      },
+      "streamingDataset":{
+         "defaultValue":"Tweetsout",
+         "type":"String"
+      },
+      "pbiWorkspaceId":{
+         "defaultValue":"#wsId#",
+         "type":"String"
+      }
+   },
+   "variables":{
+   
+      "eventHubNameSpace":"[concat(parameters('eventHubNameSpace'),parameters('unique_code'))]",
+	  "managedAccessPolicyName":"ManageAccessPolicy",
+      "authRuleResourceId":"[resourceId('Microsoft.EventHub/namespaces/authorizationRules', variables('eventHubNameSpace'), variables('managedAccessPolicyName'))]",
+      "location_azure_function_ase_name":"[concat(parameters('location_azure_function_ase_name'),parameters('unique_code'))]",
+      "location_azure_function_storage_name":"[concat(parameters('location_azure_function_storage_name'),parameters('unique_code'))]",
+      "location_azure_function_ai_name":"[concat(parameters('location_azure_function_ai_name'),parameters('unique_code'))]",
+      "location_azure_function_functions_app_name":"[concat(parameters('location_azure_function_functions_app_name'),parameters('unique_code'))]",
+      "twitter_azure_function_ase_name":"[concat(parameters('twitter_azure_function_ase_name'),parameters('unique_code'))]",
+      "twitter_azure_function_storage_name":"[concat(parameters('twitter_azure_function_storage_name'),parameters('unique_code'))]",
+      "twitter_azure_function_ai_name":"[concat(parameters('twitter_azure_function_ai_name'),parameters('unique_code'))]",
+      "twitter_azure_function_functions_app_name":"[concat(parameters('twitter_azure_function_functions_app_name'),parameters('unique_code'))]",
+	  "asaQuery":"SELECT System.Timestamp as Time,topic as Hashtag,Text as Tweet,City,UserName,RetweetCount,FavouriteCount,Sentiment,SentimentScore,IsRetweet,HourOfDay,Language INTO [tweetsout] FROM [tweetsin]"
+   },
+   "resources":[
+      {
+         "type":"Microsoft.EventHub/namespaces",
+         "apiVersion":"2018-01-01-preview",
+         "name":"[variables('eventHubNameSpace')]",
+         "location":"Central US",
+         "sku":{
+            "name":"Standard",
+            "tier":"Standard",
+            "capacity":1
+         },
+         "properties":{
+            "zoneRedundant":false,
+            "isAutoInflateEnabled":false,
+            "maximumThroughputUnits":0,
+            "kafkaEnabled":true
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs",
+         "apiVersion":"2019-06-01",
+         "name":"[parameters('asaName')]",
+         "location":"Central US",
+		 "identity": {
+				"type": "SystemAssigned"
+			},
+         "properties":{
+            "sku":{
+               "name":"Standard"
+            },	
+            "eventsOutOfOrderPolicy":"Adjust",
+            "outputErrorPolicy":"Stop",
+            "eventsOutOfOrderMaxDelayInSeconds":0,
+            "eventsLateArrivalMaxDelayInSeconds":5,
+            "dataLocale":"en-US"
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/AuthorizationRules",
+         "apiVersion":"2017-04-01",
+         "name":"[concat(variables('eventHubNameSpace'), '/',variables('managedAccessPolicyName'))]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNameSpace'))]"
+         ],
+         "properties":{
+            "rights":[
+               "Manage",
+               "Listen",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/AuthorizationRules",
+         "apiVersion":"2017-04-01",
+         "name":"[concat(variables('eventHubNameSpace'), '/RootManageSharedAccessKey')]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNameSpace'))]"
+         ],
+         "properties":{
+            "rights":[
+               "Listen",
+               "Manage",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs",
+         "apiVersion":"2017-04-01",
+         "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'))]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
+         ],
+         "properties":{
+            "messageRetentionInDays":1,
+            "partitionCount":8,
+            "status":"Active"
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/networkRuleSets",
+         "apiVersion":"2018-01-01-preview",
+         "name":"[concat(variables('eventHubNamespace'), '/default')]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
+         ],
+         "properties":{
+            "defaultAction":"Deny",
+            "virtualNetworkRules":[
+
+            ],
+            "ipRules":[
+
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/inputs",
+         "apiVersion":"2016-03-01",
+         "name":"[concat(parameters('asaName'), '/',parameters('eventHubName'))]",
+         "dependsOn":[
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('asaName'))]",
+			"[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', variables('eventHubNameSpace'),variables('managedAccessPolicyName'))]"
+			
+         ],
+         "properties":{
+            "type":"Stream",
+            "datasource":{
+               "type":"Microsoft.ServiceBus/EventHub",
+               "properties":{
+                  "consumerGroupName":"TweetsASA_tweetsin_consumer_group",
+                  "eventHubName":"[parameters('eventHubName')]",
+                  "serviceBusNamespace":"[variables('eventHubNameSpace')]",
+                  "sharedAccessPolicyName":"[variables('managedAccessPolicyName')]",
+                  "sharedAccessPolicyKey":"[listkeys(variables('authRuleResourceId'), '2017-04-01').primaryKey]"
+               }
+            },
+            "serialization":{
+               "type":"Json",
+               "properties":{
+                  "encoding":"UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(parameters('asaName'), '/tweetsout')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('asaName'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"PowerBI",
+               "properties":{
+                  "dataset":"[parameters('streamingDataset')]",
+                  "table":"Tweets",
+                  "groupId":"[parameters('pbiWorkspaceId')]",
+                  "authenticationMode":"Msi"
+               }
+            }
+         }
+      },
+	  {
+      "type": "Microsoft.StreamAnalytics/streamingjobs/transformations",
+      "apiVersion": "2016-03-01",
+      "name": "[concat(parameters('asaName'), '/query')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.StreamAnalytics/streamingjobs', parameters('asaName'))]"
+      ],
+      "properties": {
+        "streamingUnits": 6,
+        "query": "[variables('asaQuery')]"
+      }
+    },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion":"2017-04-01",
+         "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'),'/$Default')]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventHubNamespace'), parameters('eventHubName'))]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
+         ],
+         "properties":{
+
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion":"2017-04-01",
+         "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'),'/tweetsasa_tweetsin_consumer_group')]",
+         "location":"Central US",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventHubNamespace'), parameters('eventHubName'))]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
+         ],
+         "properties":{
+
+         }
+      },
+      {
+         "name":"[variables('location_azure_function_storage_name')]",
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "location":"[parameters('location')]",
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "kind":"Storage",
+         "properties":{
+
+         }
+      },
+      {
+         "name":"[variables('location_azure_function_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[parameters('location')]",
+         "properties":{
+            "name":"[variables('location_azure_function_ase_name')]",
+            "computeMode":"Dynamic"
+         },
+         "sku":{
+            "name":"Y1",
+            "tier":"Dynamic"
+         }
+      },
+      {
+         "name":"[variables('location_azure_function_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[parameters('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('location_azure_function_functions_app_name')]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"functionapp",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Insights/components', toLower(variables('location_azure_function_ai_name')))]",
+            "[resourceId('Microsoft.Web/serverfarms', toLower(variables('location_azure_function_ase_name')))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', toLower(variables('location_azure_function_storage_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('location_azure_function_functions_app_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('location_azure_function_functions_app_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(parameters('resource_group_name'), 'Microsoft.Web/serverfarms', variables('location_azure_function_ase_name'))]",
+            "reserved":false,
+            "siteConfig":{
+               "netFrameworkVersion":"v4.0",
+               "appSettings":[
+                  {
+                     "name":"AzureWebJobsDashboard",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('location_azure_function_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('location_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"AzureWebJobsStorage",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('location_azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('location_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('location_azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('location_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"APPINSIGHTS_INSTRUMENTATIONKEY",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('location_azure_function_ai_name'))).InstrumentationKey]"
+                  },
+                  {
+                     "name":"APPLICATIONINSIGHTS_CONNECTION_STRING",
+                     "value":"[concat('InstrumentationKey=',reference(resourceId('Microsoft.Insights/components', variables('location_azure_function_ai_name'))).InstrumentationKey)]"
+                  },
+                  {
+                     "name":"ENABLE_ORYX_BUILD",
+                     "value":"false"
+                  },
+                  {
+                     "name":"FUNCTIONS_WORKER_RUNTIME",
+                     "value":"dotnet"
+                  },
+                  {
+                     "name":"FUNCTIONS_EXTENSION_VERSION",
+                     "value":"~2"
+                  },
+                  {
+                     "name":"PowerBIStreamingDatasetURI",
+                     "value":"#streamingDatasetUrl#"
+                  },
+                  {
+                     "name":"WEBSITE_RUN_FROM_PACKAGE",
+                     "value":"[parameters('location_azure_function_functions_zip_url')]"
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "managedPipelineMode":"Integrated",
+               "cors":{
+                  "allowedOrigins":[
+                     "https://functions.azure.com",
+                     "https://functions-staging.azure.com",
+                     "https://functions-next.azure.com"
+                  ],
+                  "supportCredentials":false
+               }
+            },
+            "containerSize":1536,
+            "httpsOnly":false
+         }
+      },
+      {
+         "name":"[variables('twitter_azure_function_storage_name')]",
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "location":"[parameters('location')]",
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "kind":"Storage",
+         "properties":{
+
+         }
+      },
+      {
+         "name":"[variables('twitter_azure_function_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[parameters('location')]",
+         "properties":{
+            "name":"[variables('twitter_azure_function_ase_name')]",
+            "computeMode":"Dynamic"
+         },
+         "sku":{
+            "name":"Y1",
+            "tier":"Dynamic"
+         }
+      },
+      {
+         "name":"[variables('twitter_azure_function_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[parameters('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('twitter_azure_function_functions_app_name')]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"functionapp",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Insights/components', toLower(variables('twitter_azure_function_ai_name')))]",
+            "[resourceId('Microsoft.Web/serverfarms', toLower(variables('twitter_azure_function_ase_name')))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', toLower(variables('twitter_azure_function_storage_name')))]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNameSpace'))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('twitter_azure_function_functions_app_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('twitter_azure_function_functions_app_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(parameters('resource_group_name'), 'Microsoft.Web/serverfarms', variables('twitter_azure_function_ase_name'))]",
+            "reserved":false,
+            "siteConfig":{
+               "netFrameworkVersion":"v4.0",
+               "appSettings":[
+                  {
+                     "name":"AzureWebJobsDashboard",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('twitter_azure_function_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('twitter_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"AzureWebJobsStorage",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('twitter_azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('twitter_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('twitter_azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('twitter_azure_function_storage_name')),'2019-04-01').keys[0].value)]"
+                  },
+                  {
+                     "name":"APPINSIGHTS_INSTRUMENTATIONKEY",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('twitter_azure_function_ai_name'))).InstrumentationKey]"
+                  },
+                  {
+                     "name":"APPLICATIONINSIGHTS_CONNECTION_STRING",
+                     "value":"[concat('InstrumentationKey=',reference(resourceId('Microsoft.Insights/components', variables('twitter_azure_function_ai_name'))).InstrumentationKey)]"
+                  },
+                  {
+                     "name":"ENABLE_ORYX_BUILD",
+                     "value":"false"
+                  },
+                  {
+                     "name":"FUNCTIONS_WORKER_RUNTIME",
+                     "value":"dotnet"
+                  },
+                  {
+                     "name":"FUNCTIONS_EXTENSION_VERSION",
+                     "value":"~2"
+                  },
+                  {
+                     "name":"TwitterAccessToken",
+                     "value":"[parameters('twitterAccessToken')]"
+                  },
+                  {
+                     "name":"TwitterAccessTokenSecret",
+                     "value":"[parameters('twitterAccessTokenSecret')]"
+                  },
+                  {
+                     "name":"TwitterConsumerKey",
+                     "value":"[parameters('twitterConsumerKey')]"
+                  },
+                  {
+                     "name":"TwitterConsumerKeySecret",
+                     "value":"[parameters('twitterConsumerKeySecret')]"
+                  },
+                  {
+                     "name":"TwitterKeywords",
+                     "value":"[parameters('twitterKeywords')]"
+                  },
+                  {
+                     "name":"Sentiment140AppID",
+                     "value":""
+                  },
+                  {
+                     "name":"SentimentAnalysisApiKey",
+                     "value":"fy6xSoKfX9ELRq8q6/PUL0KZWHmR6sJf0MaExsbW8U1Syw40oEIYEfNtBB9cuz4oe/EYnWXbX1MxTX5kaUwpLQ=="
+                  },
+                  {
+                     "name":"SentimentAnalysisUri",
+                     "value":"https://ussouthcentral.services.azureml.net/workspaces/af0154570b4d403ba1928177fe024c39/services/760226ddefd046cebd21c06d4babd5d5/execute?api-version=2.0"
+                  },
+                  {
+                     "name":"ServiceBusConnectionString",
+                     "value":"[listkeys(variables('authRuleResourceId'), '2017-04-01').primaryConnectionString]"
+                  },
+                  {
+                     "name":"EventHubName",
+                     "value":"[parameters('EventHubName')]"
+                  },
+                  {
+                     "name":"FoulWords",
+                     "value":"fuck,wtf,suck,jerk,unknown"
+                  },
+                  {
+                     "name":"WEBSITE_RUN_FROM_PACKAGE",
+                     "value":"[parameters('twitter_azure_function_functions_zip_url')]"
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "managedPipelineMode":"Integrated",
+               "cors":{
+                  "allowedOrigins":[
+                     "https://functions.azure.com",
+                     "https://functions-staging.azure.com",
+                     "https://functions-next.azure.com"
+                  ],
+                  "supportCredentials":false
+               }
+            },
+            "containerSize":1536,
+            "httpsOnly":false
+         }
+      }
+   ],
+   "outputs": {
+    "twitter_azure_function_functions_app_name": {
+      "value": "[variables('twitter_azure_function_functions_app_name')]",
+      "type": "string"
+    },
+	"location_azure_function_functions_app_name": {
+      "value": "[variables('location_azure_function_functions_app_name')]",
+      "type": "string"
+    },
+	
+	"asaName": {
+      "value": "[parameters('asaName')]",
+      "type": "string"
+    }
+	}
+}
