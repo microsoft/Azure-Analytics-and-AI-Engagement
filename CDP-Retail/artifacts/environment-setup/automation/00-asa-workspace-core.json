@@ -114,7 +114,7 @@
       "location_azure_function_ase_name":"[concat('locfunction',parameters('uniqueSuffix'))]",
       "location_azure_function_storage_name":"[concat('locfunction',parameters('uniqueSuffix'))]",
       "location_azure_function_ai_name":"[concat('locfunction',parameters('uniqueSuffix'))]",
-      "location_azure_function_functions_app_name":"['locfunction',parameters('uniqueSuffix'))]",
+      "location_azure_function_functions_app_name":"[concat('locfunction',parameters('uniqueSuffix'))]",
       "twitter_azure_function_ase_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
       "twitter_azure_function_storage_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
       "twitter_azure_function_ai_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
