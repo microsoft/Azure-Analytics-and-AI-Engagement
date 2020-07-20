@@ -70,6 +70,13 @@
         "description": "Power BI streaming Url for location analytics"
       }
     },
+"eventHubName":{
+         "type":"string",
+         "metadata":{
+            "description":"Specifies a project name that is used to generate the Event Hub name and the Namespace name."
+         },
+         "defaultValue":"tweetsin"
+      },
     "asaName":{
          "defaultValue":"TweetsASA",
          "type":"String",
@@ -118,7 +125,7 @@
       "twitter_azure_function_ase_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
       "twitter_azure_function_storage_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
       "twitter_azure_function_ai_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
-      "twitter_azure_function_functions_app_name":"['twifunction',parameters('uniqueSuffix'))]",
+      "twitter_azure_function_functions_app_name":"[concat('twifunction',parameters('uniqueSuffix'))]",
 	  "asaQuery":"SELECT System.Timestamp as Time,topic as Hashtag,Text as Tweet,City,UserName,RetweetCount,FavouriteCount,Sentiment,SentimentScore,IsRetweet,HourOfDay,Language INTO [tweetsout] FROM [tweetsin]"
   },
   "resources": [
