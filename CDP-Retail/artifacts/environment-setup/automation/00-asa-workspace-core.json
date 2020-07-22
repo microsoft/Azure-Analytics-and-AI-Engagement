@@ -8,9 +8,6 @@
         "description": "Suffix added to all resource name to make them unique."
       }
     },
-    "resource_group_name":{
-         "type":"string"
-      },
     "sqlAdministratorLoginPassword": {
       "type": "String",
       "metadata": {
@@ -736,7 +733,7 @@
                   "hostType":"Repository"
                }
             ],
-            "serverFarmId":"[resourceId(parameters('resource_group_name'), 'Microsoft.Web/serverfarms', variables('location_azure_function_ase_name'))]",
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('location_azure_function_ase_name'))]",
             "reserved":false,
             "siteConfig":{
                "netFrameworkVersion":"v4.0",
@@ -862,7 +859,7 @@
                   "hostType":"Repository"
                }
             ],
-            "serverFarmId":"[resourceId(parameters('resource_group_name'), 'Microsoft.Web/serverfarms', variables('twitter_azure_function_ase_name'))]",
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('twitter_azure_function_ase_name'))]",
             "reserved":false,
             "siteConfig":{
                "netFrameworkVersion":"v4.0",
