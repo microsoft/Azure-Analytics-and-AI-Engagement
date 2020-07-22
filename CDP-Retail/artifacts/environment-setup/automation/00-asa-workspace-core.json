@@ -70,7 +70,7 @@
 "eventHubName":{
          "type":"string",
          "metadata":{
-            "description":"Specifies a project name that is used to generate the Event Hub name and the Namespace name."
+            "description":"Specifies a project name that is used to generate the Event Hub name."
          },
          "defaultValue":"tweetsin"
       },
@@ -78,7 +78,7 @@
          "defaultValue":"TweetsASA",
          "type":"String",
       "metadata": {
-        "description": "Stream analytics job name"
+        "description": "Stream analytics job name."
       }
       }
   },
