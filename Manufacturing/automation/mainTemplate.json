@@ -85,7 +85,7 @@
       "virtual_machine_public_ip_name":"data-generator-ip",
       "virtual_machine_vnet_name":"data-generator-vnet",
       "virtual_machine_vnet_address_prefix":"10.0.0.0/16",
-      "powershell_custom_script_path":"https://xoriotdeploymentassets.blob.core.windows.net/xor-templates-container/Deepika/custom.ps1",
+      "powershell_custom_script_path":"https://aadlsstrgnpnq4eqzbflgite.blob.core.windows.net/publicassets/custom.ps1",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
       "script_args":"[concat(' -sku2_iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -sku2_iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -sku2_iot_hub ', variables('iot_hub_name_mfgiothub'),' -sku2_iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'))]",
       "storage_account_name_storageforgen2":"[if(greater(length(concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code')) )]",
