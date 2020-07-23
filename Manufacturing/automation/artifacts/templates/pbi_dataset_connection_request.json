@@ -1,0 +1,17 @@
+{
+    "updateDetails": [
+      {
+        "datasourceSelector": {
+          "datasourceType": "Sql",
+          "connectionDetails": {
+            "server": "#SOURCE_SERVER#",
+            "database": "#SOURCE_DATABASE#"
+          }
+        },
+        "connectionDetails": {
+          "server": "#TARGET_SERVER#",
+          "database": "#TARGET_DATABASE#"
+        }
+      }
+    ]
+  }
