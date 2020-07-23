@@ -590,8 +590,8 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows D
                                 @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"29_June_Number-Customers-Forecast"}}, 
-                                @{Name = "Name"; Expression = {"Engagement Accelerator Demo Reports"}}, 
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision_Demo"}}, 
+                                @{Name = "Name"; Expression = {"1-Phase2 CDP Vision Demo"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
                                 @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
