@@ -96,7 +96,26 @@ $sparkPoolName = "SparkPool01"
 $amlWorkspaceName = "amlworkspace$($uniqueId)"
 $global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
 $global:sqlUser = "asaexp.sql.admin"
+$twitterFunction="twifunction$($uniqueId)"
+$locationFunction="locfunction$($uniqueId)"
+$asaName="TweetsASA"
+Install-Module -Name MicrosoftPowerBIMgmt
+Login-PowerBI
 
+Write-Information "Deploying Azure functions"
+az functionapp deployment source config-zip `
+        --resource-group $resourceGroupName `
+        --name $twitterFunction `
+        --src "../functions/powershell-functions/Twitter_Function_Publish_Package.zip"
+		
+az functionapp deployment source config-zip `
+        --resource-group $resourceGroupName `
+        --name $locationFunction `
+        --src "../functions/powershell-functions/LocationAnalytics_Publish_Package.zip"
+$principal=az resource show -g $resourceGroupName -n $asaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principalId=$principal.identity.principalId
+$wsId=Read-Host "Enter your powerBi workspace Id entered during template deployment"
+Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
 #$valid = Test-SQLConnection -InstanceName $global:sqlEndpoint
 
 $global:synapseToken = ""
@@ -571,8 +590,8 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"2. Billion Rows D
                                 @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
 $reportList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"29_June_Number-Customers-Forecast.pbix"}}, 
-                                @{Name = "Name"; Expression = {"Engagement Accelerator Demo Reports"}}, 
+$temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision_Demo"}}, 
+                                @{Name = "Name"; Expression = {"1-Phase2 CDP Vision Demo"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
                                 @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
