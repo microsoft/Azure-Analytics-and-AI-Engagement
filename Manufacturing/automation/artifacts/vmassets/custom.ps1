@@ -6,13 +6,13 @@ param (
 	)
 	
 # Install Az cli
-#Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
 
 # login using identity
 az login --identity
 
 #install iot hub extension
-#az extension add --name azure-cli-iot-ext
+az extension add --name azure-cli-iot-ext
 
 #Create iot hub devices
 az iot hub device-identity create -n $sku2_iot_hub_car -d race-car
