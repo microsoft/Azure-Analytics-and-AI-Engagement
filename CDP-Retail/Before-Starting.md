@@ -8,22 +8,71 @@
 - [Azure Synapse Analytics WWI setup guide](#azure-synapse-analytics-wwi-setup-guide)
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
-    - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-    - [Task 2: Create Azure Synapse Analytics workspace](#task-2-create-azure-synapse-analytics-workspace)
-    - [Task 3: Download artifacts](#task-3-download-artifacts)
-    - [Task 4: Establish a user context](#task-4-establish-a-user-context)
-    - [Task 5: Run environment setup PowerShell script](#task-5-run-environment-setup-powershell-script)
+    - [Task 1: Create a Power BI Streaming Dataset](#task-1-create-a-power-bi-streaming-dataset)
+    - [Task 2: Create a resource group in Azure](#task-2-create-a-resource-group-in-azure)
+    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
+    - [Task 4: Download artifacts](#task-4-download-artifacts)
+    - [Task 5: Establish a user context](#task-5-establish-a-user-context)
+    - [Task 6: Run environment setup PowerShell script](#task-6-run-environment-setup-powershell-script)
 
 <!-- /TOC -->
 
 ## Requirements
 
 1. An Azure Account with the ability to create an Azure Synapse Workspace
-2. A PowerBI Pro or Premium account to host Power BI reports.
+2. Make sure the following resource providers are registered for your Azure Subscription.  
+* Microsoft.Sql
+* Microsoft.Synapse
+* Microsoft.StreamAnalytics
+* Microsoft.EventHub  
+3. A Power BI Pro or Premium account to host Power BI reports, dashboards, and configuration of streaming datasets.
+4. A Twitter developer account (Optional for Twitter Real-Time Power BI Report)
 
 ## Before starting
 
-### Task 1: Create a resource group in Azure
+### Task 1: Create a Power BI Streaming Dataset
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+
+2. Go to your workspace and select **Create** 
+
+ ![Create menu is open and the streaming dataset option is highlighted.](media/powerbi-create-streaming-dataset.png)
+
+3. Select **API** and select **Next** to continue. 
+
+ ![New streaming dataset options are listed. API option is selected and the Next button is highligted.](media/powerbi-streamingdataset-api.png)
+ 
+4. Enter a **dataset name** for your dataset and enter the field names and types listed below:
+
+| Field Name       | Type     |
+|------------------|----------|
+| Category         | Text     |
+| CustomerSegment  | Text     |
+| DeptID           | Number   |
+| DeptName         | Text     |
+| EntryTime        | DateTime |
+| ItemName         | Text     |
+| Price            | Number   |
+| Qty              | Number   |
+| Sentiment        | Text     |
+| StoreID          | Number   |
+| StoreName        | Text     |
+| TransactionID    | Number   |
+| VisitorId        | Number   |
+| VisitTime        | Number   |
+| VisitType        | Text     |
+
+ ![Streaming dataset schema configuration window is shown. Dataset name and sample configuration is highlighted.](media/powerbi-streamingdataset-schema.png)
+ 
+5. Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
+
+ ![Dataset schema is shown. Historic data analysis option is enabled. The Create button is highlighted.](media/powerbi-streamingdataset-historic.png)
+ 
+6. Take note of the given **Push URL** to be used during the following setup tasks. Select **Done** to close the window.
+
+ ![Dataset creation message is shown. The Push URL is highligted.](media/powerbi-streamingdataset-endpoint.png)
+
+### Task 2: Create a resource group in Azure
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
@@ -43,23 +92,39 @@
 
 6. Select the **Create** button once validation has passed.
 
-### Task 2: Create Azure Synapse Analytics workspace
+### Task 3: Create Azure Synapse Analytics workspace
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fretail%2FCDP-Retail%2Fartifacts%2Fenvironment-setup%2Fautomation%2F00-asa-workspace-core.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
-2. On the **Custom deployment** form, select your desired subscription and select **Synapse-WWI-Lab** for the **Resource group**. Also provide a **Unique Suffix**. Finally, provide a strong **SQL Administrator Login Password**. Remember this password value, you'll be needing it!
+2. On the **Custom deployment** form fill in the fields described below.
 
-    ![The Custom deployment form is displayed with example data populated.](media/bhol_customdeploymentform.png)
+* **Subscription**: Select your desired subscription for the deployment.
+* **Resouce group**: Select the **Synapse-WWI-Lab** resource group you previously created.
+* **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment.
+* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will created as part of your deployment.
+* **Location**: The datacenter where your Azure Synapse environment will be created.
+* **Twitter Access Token**: The access token from Twitter.
+* **Twitter Access Token Secret**: The access token secret from Twitter.
+* **Twitter Consumer Key**: The consumer key from Twitter.
+* **Twitter Consumer Key Secret**: The consumer key secret from Twitter.
+* **Twitter Keywords**: Twitter keywords that will be used to fetch twitter real-time data as part of the Power BI Real-Time Report for Twitter.
+* **Streaming Dataset**: The name of your Twitter PowerBI Dataset that will be automatically created by Azure Stream Analytics. Feel free to leave the default value.
+* **Pbi Worksapce Id**: The Power BI workspace ID for your default workspace on the Power BI Portal. 
+* **Streaming Url**: The **Push Url** you received at the end of Task 1 in the Setup Guide.
+* **Event Hub Name**: The name of the event hub that will be used to dump tweets recevied from Twitter through an Azure Function. Feel free to leave the default value.
+* **Asa name**: The name of the Azure Stream Analytics Job that will be created to read data from Event Hubs and send to a Power BI streaming dataset.
+
+    ![The Custom deployment form is displayed with sample values filled in.](media/bhol_customdeploymentform.png)
   
     > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of June 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
-3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 10 minutes.
+3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes.
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
-### Task 3: Download artifacts
+### Task 4: Download artifacts
 
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
@@ -77,7 +142,7 @@
 
 3. Keep the Cloud Shell open.
 
-### Task 4: Establish a user context
+### Task 5: Establish a user context
 
 1. In the Cloud Shell, execute the following command:
 
@@ -95,7 +160,7 @@
 
    ![The JSON result showing the subscription details.](media/shell-login-result.png)
 
-### Task 5: Run environment setup PowerShell script
+### Task 6: Run environment setup PowerShell script
 
 When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
@@ -125,7 +190,12 @@ When executing the script below, it is important to let the scripts run to compl
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
 
-    You may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.   
+    You will be asked to go through another round of device login for the Power BI workspace access. Repeat the steps in Task 4.2 and 4.3 to complete the process.
+    
+    Finally, you will be prompted for the default Power BI workspace Id for your account.
+    ![The default Power BI Workspace ID is requested on the console.](media/setup-powerbi-workspace-id.png)
+
+    During the execution of the automation script you may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.   
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/untrusted-repo.png)
     
