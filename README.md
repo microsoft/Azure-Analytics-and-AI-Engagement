@@ -1,3 +1,11 @@
+# Setting the scene
+
+The intent of Data and AI Engagement Accelerators for PoC is to provide a conceptual starting point for our sellers, using our industry scenario differentiator demos, to gain customer confidence in the feasibility of a Microsoft solution. 
+
+The Data and AI Engagement Accelerators for PoC will leverage our new and existing industry scenario demos to create packaged content (including Azure resource management templates, code, sample data etc.) that sellers can easily deploy and quickly configure on the customer’s Azure subscription and then modify using the customer’s sample data from which the customer can begin to build their own solution.
+
+Industries these days have multiple business, they have multiple factories and multiple subsidiaries, it is important to keep a track of what is happening in each subsidiary through Power BI Analytics. The use of analytics has the potential to unlock how industries understand the story of their factories, ***the people, the machines, and the financials in the past, present and future***. An insight into the above can give us a sneak peek to two different scenarios at the same time.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
