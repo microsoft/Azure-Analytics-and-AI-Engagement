@@ -238,7 +238,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![A new browser tab is navigated to the location function endpoint and the page shows a message stating the location analytics is started](media/setup-location-analytics-start.png)
 
-6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job.
+6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset. The name of the dataset is the value you provided during Task 1.4 of this setup guide.
 
 ![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
 
