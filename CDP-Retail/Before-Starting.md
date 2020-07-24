@@ -218,8 +218,6 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
-You should follow all steps provided *before* performing proceeding to the following activities.
-
 ### Task 7: Location Analytics Streaming Dataset Setup
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
@@ -243,6 +241,25 @@ You should follow all steps provided *before* performing proceeding to the follo
 6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job.
 
 ![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
+
+### Task 8: twitter Analytics Streaming Dataset Setup
+
+1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
+
+2. On the Azure Portal home screen, go to **Search** and search for **tweets**. If you provided a different name for you Azure Stream Analytics Job use the same name for your search term.
+
+![Azure Portal is open. Search box is used to search for tweets. Result shows an Azure Stream Analytics Job with a name that starts with tweets. ](media/setup-asa-start.png)
+
+3. Select **Start** to start the Azure Stream Analytics Job.
+
+![The stream analytics job is open and the start button is highlighted. ](media/setup-asa-start-selected.png)
+
+4. Once the job starts gathering data you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment.
+
+You should follow all steps provided *before* proceeding to other activities in the environment.
+
+
+
 
 
 
