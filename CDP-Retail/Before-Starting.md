@@ -14,6 +14,7 @@
     - [Task 4: Download artifacts](#task-4-download-artifacts)
     - [Task 5: Establish a user context](#task-5-establish-a-user-context)
     - [Task 6: Run environment setup PowerShell script](#task-6-run-environment-setup-powershell-script)
+    - [Task 7: Location Analytics Streaming Dataset Setup](#task-7-location-analytics-streaming-dataset-setup)
 
 <!-- /TOC -->
 
@@ -218,3 +219,35 @@ When executing the script below, it is important to let the scripts run to compl
 ![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
 You should follow all steps provided *before* performing proceeding to the following activities.
+
+### Task 7: Location Analytics Streaming Dataset Setup
+
+1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
+
+2. On the Azure Portal home screen, go to **Search** and search for **locfunction**. Once the azure function is found select it to proceed.
+
+![Azure Portal is open. Search box is used to search for loc. Result shows a function app with a name that starts with locfunction. ](media/setup-location-function.png)
+
+3. Select **Functions** from the left menu to list the functions available in the function app. Next, select the function named **Start**.
+
+![Functions tab is selected in the function app and a function named start is highligted.](media/setup-location-function-start.png)
+
+4. In the **Overview** tab select **Get Function Url** and select **Copy to clipboard** to copy the Url for the function into your clipboard.
+
+![Get function url option is selected and copy to clipboard button is highlighted.](media/setup-location-function-uri.png)
+
+5. Open a new browser tab, past the url and navigate to function endpoint to start location analytics data generator.
+
+![A new browser tab is navigated to the location function endpoint and the page shows a message stating the location analytics is started](media/setup-location-analytics-start.png)
+
+6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job.
+
+![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
+
+
+
+
+
+
+
+
