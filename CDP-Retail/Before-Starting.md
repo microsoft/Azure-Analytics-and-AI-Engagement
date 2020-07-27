@@ -17,6 +17,7 @@
     - [Task 7: Location Analytics Streaming Dataset Setup](#task-7-location-analytics-streaming-dataset-setup)
     - [Task 8: Twitter Analytics Streaming Dataset Setup](#task-8-twitter-analytics-streaming-dataset-setup)
     - [Task 9: Twitter Analytics Report](#task-9-twitter-analytics-report)
+    - [Task 10: Location Analytics Real-Time Report](#task-10-location-analytics-real-time-report)
 
 <!-- /TOC -->
 
@@ -283,13 +284,39 @@ When executing the script below, it is important to let the scripts run to compl
 
 6. Select **city**, **sentiment** and **tweet** fields to be included into the report. Move the **Tweet** field into the **Size** section.
 
-![The map visualization is selected.](media/powerbi-desktop-twitter-report.png)
+![City, Sentiment and Tweet fields are selected. Location, legend and Size settings are set.](media/powerbi-desktop-twitter-report.png)
 
 7. Publish your report to your workplace to be used during your demo.
 
+### Task 10: Location Analytics Real-Time Report
 
+1. Launch [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) on your machine.
 
+2. **Sign in** using your Power BI account credentials.
 
+![Power BI Desktop is open. Account sign-in menu is on screen. Sign-in with a different account is highlighted.](media/powerbi-desktop-signin.png)
+
+3. Select **Get Data** from the **Home** toolbar. Select **Power BI datasets** to proceed.
+
+![Get Data menu is opened. Power BI datasets option is highligted](media/powerbi-desktop-dataset-import.png)
+
+4. Select **locationstream** from the list of datasets. The name of the dataset is the value you provided during Task 1.4 of this setup guide. It might be different in your case if you picked a different name.
+
+![Dataset selection screen is open. locationstream dataset is selected. Create button is highlighted.](media/powerbi-desktop-location-dataset.png)
+
+5. To create a **Lined and stacked column Chart** for Avg Visit Time and Visitors by customer segment and department with the help of Real time data, select the map icon from the Visualization tray.
+
+![The Lined and stacked column Chart visualization is selected.](media/powerbi-desktop-location-chart.png)
+
+6. Select **CustomerSegment**, **DeptName**, **VisitorId** and **VisitTime** fields to be included into the report. 
+
+![CustomerSegment, DeptName, VisitorId and VisitTime fields are selected.](media/powerbi-desktop-location-fields.png)
+
+7. Move **VisitTime** to Column Values and select to use its **average** value. Move **VisitorId** to Line values and select its **count** value to be used in the report.
+
+![Column values are set to the average of visittime. Line values are set to the count of VisitorIds.](media/powerbi-desktop-location-field-setting.png)
+
+8. Publish your report to your workplace to be used during your demo.
 
 
 
