@@ -245,7 +245,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
 
-### Task 8: twitter Analytics Streaming Dataset Setup
+### Task 8: Twitter Analytics Streaming Dataset Setup
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
