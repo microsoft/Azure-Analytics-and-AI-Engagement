@@ -26,6 +26,9 @@
 * Microsoft.Synapse
 * Microsoft.StreamAnalytics
 * Microsoft.EventHub  
+
+See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) for more information on registerting resource providers on the Azure Portal.
+
 3. A Power BI Pro or Premium account to host Power BI reports, dashboards, and configuration of streaming datasets.
 4. A Twitter developer account (Optional for Twitter Real-Time Power BI Report)
 
