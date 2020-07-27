@@ -15,6 +15,8 @@
     - [Task 5: Establish a user context](#task-5-establish-a-user-context)
     - [Task 6: Run environment setup PowerShell script](#task-6-run-environment-setup-powershell-script)
     - [Task 7: Location Analytics Streaming Dataset Setup](#task-7-location-analytics-streaming-dataset-setup)
+    - [Task 8: Twitter Analytics Streaming Dataset Setup](#task-8-twitter-analytics-streaming-dataset-setup)
+    - [Task 9: Twitter Analytics Report](#task-9-twitter-analytics-report)
 
 <!-- /TOC -->
 
@@ -259,7 +261,33 @@ When executing the script below, it is important to let the scripts run to compl
 
 4. Once the job starts gathering data you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment.
 
-You should follow all steps provided *before* proceeding to other activities in the environment.
+### Task 9: Twitter Analytics Report
+
+1. Launch [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) on your machine.
+
+2. **Sign in** using your Power BI account credentials.
+
+![Power BI Desktop is open. Account sign-in menu is on screen. Sign-in with a different account is highlighted.](media/powerbi-desktop-signin.png)
+
+3. Select **Get Data** from the **Home** toolbar. Select **Power BI datasets** to proceed.
+
+![Get Data menu is opened. Power BI datasets option is highligted](media/powerbi-desktop-dataset-import.png)
+
+4. Select **Tweetsout** from the list of datasets. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment. It might be different in your case if you have change the default value during deployment.
+
+![Dataset selection screen is open. Tweetsout dataset is selected. Create button is highlighted.](media/powerbi-desktop-tweetsout.png)
+
+5. To create **Tweets by City Visualization**, which is the count of neutral sentiment tweets over a geographical region, select the map icon from the Visualization tray.
+
+![The map visualization is selected.](media/powerbi-desktop-twitter.png)
+
+6. Select **city**, **sentiment** and **tweet** fields to be included into the report. Move the **Tweet** field into the **Size** section.
+
+![The map visualization is selected.](media/powerbi-desktop-twitter-report.png)
+
+7. Publish your report to your workplace to be used during your demo.
+
+
 
 
 
