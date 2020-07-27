@@ -5,13 +5,19 @@
       "environment_code":{
          "type":"String",
          "metadata":{
-            "description":"Suffix added to all resource name to make them unique."
+            "description":"Suffix added to all resource name to make them unique. Should be less than 6 charactors"
          }
       },
       "sql_administrator_login_password":{
          "type":"String",
          "metadata":{
             "description":"Password for SQL Admin"
+         }
+      },
+      "pbi_workspace_id":{
+         "type":"String",
+         "metadata":{
+            "description":"PowerBi workspace Id"
          }
       },
       "location":{
@@ -32,13 +38,10 @@
       }
    },
    "variables":{
+      "resource_group_name":"[resourceGroup().name]",
       "unique_suffix":"[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
       "location":"[parameters('location')]",
-      "streaming_data_set_race_car_asa":"testdatasetracecar",
-      "pbi_workspace_id_race_car_asa":"4595f736-1427-4ee6-8a04-24dc7ef27103",
-      "streaming_data_set_mfgasa":"testdatadetmfgasa",
-      "pbi_workspace_id_mfgasa":"4595f736-1427-4ee6-8a04-24dc7ef27103",
-      "cosmos_account_name_manufacturingdemo":"[if(greater(length(concat('cosmosdb-manufacturingdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-manufacturingdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-manufacturingdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "cosmos_account_name_manufacturingdemo":"[if(greater(length(concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name_manufacturingdemo_industrial":"industrial",
       "cosmos_database_container_name_historical_data":"historical-data",
       "cosmos_database_container_name_historical_data_adf":"historical-data-adf",
@@ -64,7 +67,7 @@
       "iot_hub_consumer_group_mfgiothubCosmosDB":"cg-mfgiothubCosmosDB",
       "iot_hub_consumer_group_mfgIotHubTelemetry":"cg-mfgIotHubTelemetry",
       "iot_hub_consumer_group_raceCarIotHub":"cg-raceCarIotHub",
-      "storage_account_name_dreamdemostorageforgen2":"[if(greater(length(concat('dreamdemostorageforgen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('dreamdemostorageforgen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('dreamdemostorageforgen2', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "storage_account_name_dreamdemostorageforgen2":"[if(greater(length(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')) )]",
       "asa_name_mfgasa":"[concat('mfgasa-',variables('unique_suffix'))]",
       "asa_query_mfgasa":"WITH CleanedRecord AS ( SELECT udf.removeIoTHubField([mfg-iothub-in]) AS CleanedField FROM [mfg-iothub-in] )  \n SELECT CleanedField.* INTO [synapse-mfgiotmillingcanning] FROM CleanedRecord WHERE CleanedField.OperationId = 103 \n SELECT * INTO [powerbi-milling-canning] FROM [mfgiothub] \n SELECT mfgiothub.* INTO [storage-lathe-thread-cut] FROM  [mfgiothub] WHERE mfgiothub.OperationId = 101 \n SELECT  mfgiothub.* INTO  [storage-lathe-peck-drill] FROM mfgiothub WHERE mfgiothub.OperationId = 102 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [storage-milling-canning] FROM mfgiothub WHERE mfgiothub.OperationId = 10 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [function-synapse-d365] FROM  mfgiothub WHERE mfgiothub.AnomalyTemperature = 1",
       "asa_name_mfgasaCosmosDB":"[concat('mfgasaCosmosDB-',variables('unique_suffix'))]",
@@ -74,32 +77,28 @@
       "asa_name_race_car_asa":"[concat('race-car-asa-',variables('unique_suffix'))]",
       "asa_query_race_car_asa":"SELECT * INTO [power-bi] FROM [race-car]",
       "virtual_machine_nic_name":"data-generator-nic",
-      "virtual_machine_name":"[if(greater(length(concat('datavm-', uniqueString(deployment().name),parameters('environment_code'))), 14), substring(concat('data-gen-', uniqueString(deployment().name),parameters('environment_code')),0,14) , concat('data-gen-', uniqueString(deployment().name),parameters('environment_code')) )]",
-      "virtual_machine_os_disk_name":"[concat('data-generator-osdisk-',variables('unique_suffix'))]",
-      "virtual_machine_data_disk_name":"[concat('data-generator-datadisk-',variables('unique_suffix'))]",
+      "virtual_machine_name":"[if(greater(length(concat('datavm-',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('data-gen-', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('data-gen-',parameters('environment_code'), uniqueString(deployment().name)) )]",
       "virtual_machine_username":"data-generator",
       "virtual_machine_password":"Smoothie@2020",
-      "virtual_machine_size":"Standard_B1s",
-      "virtual_machine_vnet_subnet_name":"data-generator-subnet",
-      "virtual_machine_nsg_name":"data-generator-nsg",
-      "virtual_machine_public_ip_name":"data-generator-ip",
-      "virtual_machine_vnet_name":"data-generator-vnet",
+      "virtual_machine_size":"Standard_B4ms",
+      "virtual_machine_vnet_subnet_name":"datavmsubnet",
+      "virtual_machine_nsg_name":"[if(greater(length(concat('datavmnsg',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('datavmnsg', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('datavmnsg',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "virtual_machine_public_ip_name":"[if(greater(length(concat('datavmip',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('datavmip', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('datavmip',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "virtual_machine_vnet_name":"[if(greater(length(concat('datavmvnet',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('datavmvnet', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('datavmvnet',parameters('environment_code'), uniqueString(deployment().name)) )]",
       "virtual_machine_vnet_address_prefix":"10.0.0.0/16",
-      "powershell_custom_script_path":"https://aadlsstrgnpnq4eqzbflgite.blob.core.windows.net/publicassets/custom.ps1",
+      "powershell_custom_script_path":"https://publicassetstoragexor.blob.core.windows.net/assets/manufacturingSetup.ps1",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-      "script_args":"[concat(' -sku2_iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -sku2_iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -sku2_iot_hub ', variables('iot_hub_name_mfgiothub'),' -sku2_iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'))]",
-      "storage_account_name_storageforgen2":"[if(greater(length(concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('storageforgen2', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'))]",
       "azure_function_ase_name":"[concat('function-asp-',variables('unique_suffix'))]",
       "azure_function_storage_name":"[if(greater(length(concat('fwa', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('fwa', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('fwa', uniqueString(deployment().name),parameters('environment_code')) )]",
       "azure_function_ai_name":"[concat('functions-ai-',variables('unique_suffix'))]",
       "azure_function_functions_app_name":"[concat('functions-web-app-',variables('unique_suffix'))]",
       "azure_function_functions_zip_url":"functions-web-app.zip",
-      "workspace_name_dreamdemosynapse":"[concat('dreamdemosynapse',uniqueString(deployment().name))]",
-      "adls_storage_account_name":"[if(greater(length(concat('adlsstrg', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('adlsstrg', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('adlsstrg', uniqueString(deployment().name),parameters('environment_code')) )]",
-      "default_data_lake_storage_file_system_name":"mfgtelemetry",
-      "default_data_lake_storage_account_url":"[concat('https://', variables('adls_storage_account_name'), '.dfs.core.windows.net')]",
+      "workspace_name_dreamdemosynapse":"[concat('synapse',parameters('environment_code'),uniqueString(deployment().name))]",
+      "default_data_lake_storage_file_system_name":"tempdata",
+      "default_data_lake_storage_account_url":"[concat('https://', variables('storage_account_name_dreamdemostorageforgen2'), '.dfs.core.windows.net')]",
       "sql_compute_name":"SQLPool01",
-      "sql_administrator_login_id":"sanket",
+      "sql_administrator_login_id":"ManufacturingUser",
       "spark_compute_name":"SparkPool01",
       "compute_subnet_id":"",
       "sql_server_sku":"DW500c",
@@ -114,10 +113,10 @@
       "spark_version":"2.4",
       "packages_requirements_file_name":"requirements.txt",
       "packages_requirements_content":"seaborn==0.10.1\nxgboost==1.0.2\nonnxruntime==1.0.0\nwerkzeug==0.16.1\nnimbusml==1.7.1\nruamel.yaml==0.16.9\nazureml-train-automl-runtime==1.6.0\nscikit-learn==0.20.3\nnumpy==1.16.2\npandas==0.23.4\nscipy==1.4.1",
-      "container_registry_name":"[concat('acr-',variables('unique_suffix'))]",
+      "container_registry_name":"[concat('acr',parameters('environment_code'),uniqueString(deployment().name))]",
       "cluster_name":"[concat('aks-',variables('unique_suffix'))]",
       "aks_dns_prefix":"",
-      "aks_os_disk_size_gb":"30",
+      "aks_os_disk_size_gb":30,
       "aks_agent_count":"",
       "aks_agent_vm_size":"",
       "aks_os_type":"",
@@ -893,24 +892,25 @@
          "name":"[variables('storage_account_name_dreamdemostorageforgen2')]",
          "location":"[variables('location')]",
          "sku":{
-            "name":"Standard_RAGRS",
-            "tier":"Standard"
+            "name":"Standard_LRS"
          },
          "kind":"StorageV2",
          "properties":{
-            "encryption":{
-               "services":{
-                  "blob":{
-                     "enabled":true
-                  },
-                  "file":{
-                     "enabled":true
-                  }
-               },
-               "keySource":"Microsoft.Storage"
-            },
-            "supportsHttpsTrafficOnly":true
-         }
+            "accessTier":"Hot",
+            "supportsHttpsTrafficOnly":"true",
+            "isHnsEnabled":"true",
+            "largeFileSharesState":"Disabled"
+         },
+         "resources":[
+            {
+               "type":"blobServices/containers",
+               "apiVersion":"2018-07-01",
+               "name":"[concat('default/', variables('default_data_lake_storage_file_system_name'))]",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_dreamdemostorageforgen2'))]"
+               ]
+            }
+         ]
       },
       {
          "type":"Microsoft.Storage/storageAccounts/blobServices",
@@ -947,9 +947,44 @@
          }
       },
       {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfgoutputs')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/fileServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            }
+         }
+      },
+      {
          "type":"Microsoft.StreamAnalytics/streamingjobs",
          "apiVersion":"2019-06-01",
          "name":"[variables('asa_name_mfgasa')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]",
+            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]"
+         ],
          "location":"Central US",
          "identity":{
             "type":"SystemAssigned"
@@ -980,7 +1015,7 @@
                "properties":{
                   "iotHubNamespace":"[variables('iot_hub_name_mfgiothub')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothub')), providers('Microsoft.Devices', 'IoTHubs').apiVersions[0]).value[0].primaryKey",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothub')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"[variables('iot_hub_consumer_group_mfgiothub')]",
                   "endpoint":"messages/events"
                }
@@ -1008,7 +1043,7 @@
                "properties":{
                   "iotHubNamespace":"[variables('iot_hub_name_mfgiothub')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothub')), providers('Microsoft.Devices', 'IoTHubs').apiVersions[0]).value[0].primaryKey",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothub')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"$Default",
                   "endpoint":"messages/events"
                }
@@ -1024,7 +1059,7 @@
       {
          "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
          "apiVersion":"2017-04-01-preview",
-         "name":"[concat(variables('asa_name_mfgasa'), '/powerbi-lathe-peck-dril')]",
+         "name":"[concat(variables('asa_name_mfgasa'), '/powerbi-lathe-peck-drill')]",
          "dependsOn":[
             "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
          ],
@@ -1032,10 +1067,215 @@
             "datasource":{
                "type":"PowerBI",
                "properties":{
-                  "dataset":"[variables('streaming_data_set_mfgasa')]",
+                  "dataset":"lathe-peck-drill-dataset",
                   "table":"machine-streaming-table",
-                  "groupId":"[variables('pbi_workspace_id_mfgasa')]",
+                  "groupId":"[parameters('pbi_workspace_id')]",
                   "authenticationMode":"Msi"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/powerbi-lathe-thread-out')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"PowerBI",
+               "properties":{
+                  "dataset":"lathe-thread-out-dataset",
+                  "table":"machine-data",
+                  "groupId":"[parameters('pbi_workspace_id')]",
+                  "authenticationMode":"Msi"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/powerbi-milling-canning')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"PowerBI",
+               "properties":{
+                  "dataset":"milling-canning",
+                  "table":"machine-data",
+                  "groupId":"[parameters('pbi_workspace_id')]",
+                  "authenticationMode":"Msi"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/synapse-lathe-peck-drill')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Sql/Server/Database",
+               "properties":{
+                  "server":"dreamdemosynapse.database.windows.net",
+                  "database":"ManufacturingDW",
+                  "user":"[variables('sql_administrator_login_id')]",
+                  "password":"[parameters('sql_administrator_login_password')]",
+                  "table":"mfg-iot-lathe-peck-drill"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/synapse-lathe-thread-cut')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Sql/Server/Database",
+               "properties":{
+                  "server":"dreamdemosynapse.database.windows.net",
+                  "database":"ManufacturingDW",
+                  "user":"[variables('sql_administrator_login_id')]",
+                  "password":"[parameters('sql_administrator_login_password')]",
+                  "table":"mfg-iot-lathe-thread-cut"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/synapse-mfgiotmillingcanning')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Sql/Server/Database",
+               "properties":{
+                  "server":"dreamdemosynapse.database.windows.net",
+                  "database":"ManufacturingDW",
+                  "user":"[variables('sql_administrator_login_id')]",
+                  "password":"[parameters('sql_administrator_login_password')]",
+                  "table":"mfgiotmillingcanning"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/synapse-milling-canning')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Sql/Server/Database",
+               "properties":{
+                  "server":"dreamdemosynapse.database.windows.net",
+                  "database":"ManufacturingDW",
+                  "user":"[variables('sql_administrator_login_id')]",
+                  "password":"[parameters('sql_administrator_login_password')]",
+                  "table":"mfg-iot-milling-canning"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/storage-lathe-peck-drill')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Storage/Blob",
+               "properties":{
+                  "storageAccounts":[
+                     {
+                        "accountName":"[variables('storage_account_name_dreamdemostorageforgen2')]",
+                        "accountKey":"[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name_dreamdemostorageforgen2')),'2019-04-01').keys[0].value]"
+                     }
+                  ],
+                  "container":"mfgoutputs",
+                  "pathPattern":"iot-lathe-peck-drill/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/"
+               }
+            },
+            "serialization":{
+               "type":"Json",
+               "properties":{
+                  "encoding":"UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/storage-lathe-thread-cut')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Storage/Blob",
+               "properties":{
+                  "storageAccounts":[
+                     {
+                        "accountName":"[variables('storage_account_name_dreamdemostorageforgen2')]",
+                        "accountKey":"[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name_dreamdemostorageforgen2')),'2019-04-01').keys[0].value]"
+                     }
+                  ],
+                  "container":"mfgoutputs",
+                  "pathPattern":"iot-lathe-thread-cut/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/"
+               }
+            },
+            "serialization":{
+               "type":"Json",
+               "properties":{
+                  "encoding":"UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_mfgasa'), '/storage-milling-canning')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Storage/Blob",
+               "properties":{
+                  "storageAccounts":[
+                     {
+                        "accountName":"[variables('storage_account_name_dreamdemostorageforgen2')]",
+                        "accountKey":"[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name_dreamdemostorageforgen2')),'2019-04-01').keys[0].value]"
+                     }
+                  ],
+                  "container":"mfgoutputs",
+                  "pathPattern":"iot-milling-canning/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/"
+               }
+            },
+            "serialization":{
+               "type":"Json",
+               "properties":{
+                  "encoding":"UTF8"
                }
             }
          }
@@ -1074,6 +1314,11 @@
          "type":"Microsoft.StreamAnalytics/streamingjobs",
          "apiVersion":"2019-06-01",
          "name":"[variables('asa_name_mfgasaCosmosDB')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_manufacturingdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_manufacturing'))]"
+         ],
          "location":"Central US",
          "identity":{
             "type":"SystemAssigned"
@@ -1104,7 +1349,7 @@
                "properties":{
                   "iotHubNamespace":"[variables('iot_hub_name_mfgiothubCosmosDB')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothubCosmosDB')), providers('Microsoft.Devices', 'IoTHubs').apiVersions[0]).value[0].primaryKey",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgiothubCosmosDB')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"$Default",
                   "endpoint":"messages/events"
                }
@@ -1175,6 +1420,9 @@
          "type":"Microsoft.StreamAnalytics/streamingjobs",
          "apiVersion":"2019-06-01",
          "name":"[variables('asa_name_mfgASATelemetry')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
          "location":"Central US",
          "identity":{
             "type":"SystemAssigned"
@@ -1205,7 +1453,7 @@
                "properties":{
                   "iotHubNamespace":"[variables('iot_hub_name_mfgIotHubTelemetry')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgIotHubTelemetry')), providers('Microsoft.Devices', 'IoTHubs').apiVersions[0]).value[0].primaryKey",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_mfgIotHubTelemetry')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"[variables('iot_hub_consumer_group_mfgIotHubTelemetry')]",
                   "endpoint":"messages/events"
                }
@@ -1293,7 +1541,7 @@
                "properties":{
                   "iotHubNamespace":"[variables('iot_hub_name_raceCarIotHub')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_raceCarIotHub')), providers('Microsoft.Devices', 'IoTHubs').apiVersions[0]).value[0].primaryKey",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name_raceCarIotHub')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"$Default",
                   "endpoint":"messages/events"
                }
@@ -1317,9 +1565,9 @@
             "datasource":{
                "type":"PowerBI",
                "properties":{
-                  "dataset":"[variables('streaming_data_set_race_car_asa')]",
+                  "dataset":"Racing Cars",
                   "table":"race-cars",
-                  "groupId":"[variables('pbi_workspace_id_race_car_asa')]",
+                  "groupId":"[parameters('pbi_workspace_id')]",
                   "authenticationMode":"Msi"
                }
             }
@@ -1349,6 +1597,286 @@
          "kind":"Storage",
          "properties":{
 
+         }
+      },
+      {
+         "name":"[variables('virtual_machine_vnet_name')]",
+         "type":"Microsoft.Network/virtualNetworks",
+         "apiVersion":"2019-11-01",
+         "location":"[variables('location')]",
+         "properties":{
+            "addressSpace":{
+               "addressPrefixes":[
+                  "[variables('virtual_machine_vnet_address_prefix')]"
+               ]
+            },
+            "subnets":[
+               {
+                  "name":"[variables('virtual_machine_vnet_subnet_name')]",
+                  "properties":{
+                     "addressPrefix":"[variables('virtual_machine_vnet_address_prefix')]"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"[variables('virtual_machine_public_ip_name')]",
+         "type":"Microsoft.Network/publicIPAddresses",
+         "apiVersion":"2019-04-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Basic"
+         },
+         "properties":{
+            "publicIPAllocationMethod":"Static",
+            "publicIPAddressVersion":"IPv4",
+            "dnsSettings":{
+               "domainNameLabel":"[variables('virtual_machine_name')]"
+            }
+         }
+      },
+      {
+         "name":"[variables('virtual_machine_nsg_name')]",
+         "type":"Microsoft.Network/networkSecurityGroups",
+         "apiVersion":"2019-11-01",
+         "location":"[variables('location')]",
+         "properties":{
+            "securityRules":[
+               {
+                  "name":"default-allow-3389",
+                  "properties":{
+                     "priority":1000,
+                     "access":"Allow",
+                     "direction":"Inbound",
+                     "destinationPortRange":"3389",
+                     "protocol":"Tcp",
+                     "sourcePortRange":"*",
+                     "sourceAddressPrefix":"*",
+                     "destinationAddressPrefix":"*"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"[variables('virtual_machine_nic_name')]",
+         "type":"Microsoft.Network/networkInterfaces",
+         "apiVersion":"2019-11-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Network/virtualNetworks/', variables('virtual_machine_vnet_name'))]",
+            "[concat('Microsoft.Network/publicIPAddresses/', variables('virtual_machine_public_ip_name'))]",
+            "[concat('Microsoft.Network/networkSecurityGroups/', variables('virtual_machine_nsg_name'))]"
+         ],
+         "properties":{
+            "ipConfigurations":[
+               {
+                  "name":"ipconfig1",
+                  "properties":{
+                     "privateIPAllocationMethod":"Dynamic",
+                     "publicIPAddress":{
+                        "id":"[resourceId('Microsoft.Network/publicIPAddresses', variables('virtual_machine_public_ip_name'))]"
+                     },
+                     "subnet":{
+                        "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtual_machine_vnet_name'), variables('virtual_machine_vnet_subnet_name'))]"
+                     },
+                     "primary":true,
+                     "privateIPAddressVersion":"IPv4"
+                  }
+               }
+            ],
+            "networkSecurityGroup":{
+               "id":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('virtual_machine_nsg_name'))]"
+            }
+         }
+      },
+      {
+         "name":"[variables('virtual_machine_name')]",
+         "type":"Microsoft.Compute/virtualMachines",
+         "apiVersion":"2019-07-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Network/networkInterfaces/', variables('virtual_machine_nic_name'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_raceCarIotHub'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgIotHubTelemetry'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgiothub'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgiothubCosmosDB'))]",
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]",
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgASATelemetry'))]",
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasaCosmosDB'))]",
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_race_car_asa'))]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "hardwareProfile":{
+               "vmSize":"[variables('virtual_machine_size')]"
+            },
+            "osProfile":{
+               "computerName":"[variables('virtual_machine_name')]",
+               "adminUsername":"[variables('virtual_machine_username')]",
+               "adminPassword":"[variables('virtual_machine_password')]"
+            },
+            "storageProfile":{
+               "imageReference":{
+                  "publisher":"MicrosoftWindowsServer",
+                  "offer":"WindowsServer",
+                  "sku":"2016-Datacenter",
+                  "version":"latest"
+               },
+               "osDisk":{
+                  "createOption":"FromImage"
+               }
+            },
+            "networkProfile":{
+               "networkInterfaces":[
+                  {
+                     "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('virtual_machine_nic_name'))]"
+                  }
+               ]
+            },
+            "diagnosticsProfile":{
+               "bootDiagnostics":{
+                  "enabled":false
+               }
+            }
+         },
+         "identity":{
+            "type":"SystemAssigned"
+         }
+      },
+      {
+         "name":"[concat(variables('virtual_machine_name'),'/ManagedIdentityExtensionForWindows')]",
+         "type":"Microsoft.Compute/virtualMachines/extensions",
+         "apiVersion":"2018-06-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
+         ],
+         "properties":{
+            "publisher":"Microsoft.ManagedIdentity",
+            "type":"ManagedIdentityExtensionForWindows",
+            "typeHandlerVersion":"1.0",
+            "autoUpgradeMinorVersion":true,
+            "settings":{
+               "port":50342
+            }
+         }
+      },
+      {
+         "name":"[guid(variables('virtual_machine_name'))]",
+         "type":"Microsoft.Authorization/roleAssignments",
+         "apiVersion":"2020-03-01-preview",
+         "dependsOn":[
+            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
+         ],
+         "properties":{
+            "roleDefinitionId":"[variables('rbac_guid_owner')]",
+            "principalId":"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('virtual_machine_name')), '2019-07-01', 'Full').identity.principalId]",
+            "scope":"[resourceGroup().id]"
+         }
+      },
+      {
+         "name":"[concat(variables('virtual_machine_name'),'/installcustomscript')]",
+         "type":"Microsoft.Compute/virtualMachines/extensions",
+         "apiVersion":"2019-07-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
+         ],
+         "properties":{
+            "publisher":"Microsoft.Compute",
+            "type":"CustomScriptExtension",
+            "typeHandlerVersion":"1.8",
+            "autoUpgradeMinorVersion":true,
+            "settings":{
+               "fileUris":[
+                  "[variables('powershell_custom_script_path')]"
+               ]
+            },
+            "protectedSettings":{
+               "commandToExecute":"[concat('powershell -ExecutionPolicy Unrestricted -File manufacturingSetup.ps1 ', variables('script_args'))]"
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Synapse/workspaces",
+         "apiVersion":"2019-06-01-preview",
+         "name":"[variables('workspace_name_dreamdemosynapse')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
+         ],
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "defaultDataLakeStorage":{
+               "accountUrl":"[variables('default_data_lake_storage_account_url')]",
+               "filesystem":"[variables('default_data_lake_storage_file_system_name')]"
+            },
+            "sqlAdministratorLogin":"[variables('sql_administrator_login_id')]",
+            "sqlAdministratorLoginPassword":"[parameters('sql_administrator_login_password')]"
+         },
+         "resources":[
+            {
+               "type":"firewallrules",
+               "apiVersion":"2019-06-01-preview",
+               "name":"allowAll",
+               "location":"[variables('location')]",
+               "dependsOn":[
+                  "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]"
+               ],
+               "properties":{
+                  "startIpAddress":"0.0.0.0",
+                  "endIpAddress":"255.255.255.255"
+               }
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Synapse/workspaces/bigDataPools",
+         "apiVersion":"2019-06-01-preview",
+         "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/', variables('spark_compute_name'))]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_dreamdemosynapse'))]"
+         ],
+         "properties":{
+            "nodeCount":"[variables('spark_node_count')]",
+            "nodeSizeFamily":"[variables('spark_node_size_family')]",
+            "nodeSize":"[variables('spark_node_size')]",
+            "autoScale":{
+               "enabled":"[variables('spark_auto_scale_enabled')]",
+               "minNodeCount":"[variables('spark_min_node_count')]",
+               "maxNodeCount":"[variables('spark_max_node_count')]"
+            },
+            "autoPause":{
+               "enabled":"[variables('spark_auto_pause_enabled')]",
+               "delayInMinutes":"[variables('spark_auto_pause_delay_in_minutes')]"
+            },
+            "sparkVersion":"[variables('spark_version')]",
+            "libraryRequirements":{
+               "filename":"[variables('packages_requirements_file_name')]",
+               "content":"[variables('packages_requirements_content')]"
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Synapse/workspaces/sqlPools",
+         "apiVersion":"2019-06-01-preview",
+         "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/', variables('sql_compute_name'))]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]",
+            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'), '/bigDataPools/', variables('spark_compute_name'))]"
+         ],
+         "sku":{
+            "name":"[variables('sql_server_sku')]"
+         },
+         "properties":{
+            "createMode":"Default",
+            "collation":"SQL_Latin1_General_CP1_CI_AS"
          }
       },
       {
@@ -1459,358 +1987,6 @@
          }
       },
       {
-         "type":"Microsoft.Storage/storageAccounts",
-         "apiVersion":"2019-06-01",
-         "name":"[variables('adls_storage_account_name')]",
-         "location":"[variables('location')]",
-         "dependsOn":[
-
-         ],
-         "tags":{
-
-         },
-         "sku":{
-            "name":"Standard_LRS"
-         },
-         "kind":"StorageV2",
-         "properties":{
-            "accessTier":"Hot",
-            "supportsHttpsTrafficOnly":"true",
-            "isHnsEnabled":"true",
-            "largeFileSharesState":"Disabled"
-         },
-         "resources":[
-            {
-               "type":"blobServices/containers",
-               "apiVersion":"2018-07-01",
-               "name":"[concat('default/', variables('default_data_lake_storage_file_system_name'))]",
-               "dependsOn":[
-                  "[resourceId('Microsoft.Storage/storageAccounts', variables('adls_storage_account_name'))]"
-               ]
-            }
-         ]
-      },
-      {
-         "type":"Microsoft.Storage/storageAccounts/blobServices",
-         "apiVersion":"2019-06-01",
-         "name":"[concat(variables('adls_storage_account_name'), '/default')]",
-         "dependsOn":[
-            "[concat('Microsoft.Storage/storageAccounts/', variables('adls_storage_account_name'))]"
-         ],
-         "sku":{
-            "name":"Standard_LRS",
-            "tier":"Standard"
-         },
-         "properties":{
-            "cors":{
-               "corsRules":[
-
-               ]
-            },
-            "deleteRetentionPolicy":{
-               "enabled":false
-            }
-         }
-      },
-      {
-         "type":"Microsoft.Storage/storageAccounts/fileServices",
-         "apiVersion":"2019-06-01",
-         "name":"[concat(variables('adls_storage_account_name'), '/default')]",
-         "dependsOn":[
-            "[concat('Microsoft.Storage/storageAccounts/', variables('adls_storage_account_name'))]"
-         ],
-         "sku":{
-            "name":"Standard_LRS",
-            "tier":"Standard"
-         },
-         "properties":{
-            "cors":{
-               "corsRules":[
-
-               ]
-            }
-         }
-      },
-      {
-         "name":"[variables('virtual_machine_vnet_name')]",
-         "type":"Microsoft.Network/virtualNetworks",
-         "apiVersion":"2019-11-01",
-         "location":"[variables('location')]",
-         "properties":{
-            "addressSpace":{
-               "addressPrefixes":[
-                  "[variables('virtual_machine_vnet_address_prefix')]"
-               ]
-            },
-            "subnets":[
-               {
-                  "name":"[variables('virtual_machine_vnet_subnet_name')]",
-                  "properties":{
-                     "addressPrefix":"[variables('virtual_machine_vnet_address_prefix')]"
-                  }
-               }
-            ]
-         }
-      },
-      {
-         "name":"[variables('virtual_machine_public_ip_name')]",
-         "type":"Microsoft.Network/publicIPAddresses",
-         "apiVersion":"2019-04-01",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"Basic"
-         },
-         "properties":{
-            "publicIPAllocationMethod":"Static",
-            "publicIPAddressVersion":"IPv4",
-            "dnsSettings":{
-               "domainNameLabel":"[variables('virtual_machine_name')]"
-            }
-         }
-      },
-      {
-         "name":"[variables('virtual_machine_nsg_name')]",
-         "type":"Microsoft.Network/networkSecurityGroups",
-         "apiVersion":"2019-11-01",
-         "location":"[variables('location')]",
-         "properties":{
-            "securityRules":[
-               {
-                  "name":"default-allow-3389",
-                  "properties":{
-                     "priority":1000,
-                     "access":"Allow",
-                     "direction":"Inbound",
-                     "destinationPortRange":"3389",
-                     "protocol":"Tcp",
-                     "sourcePortRange":"*",
-                     "sourceAddressPrefix":"*",
-                     "destinationAddressPrefix":"*"
-                  }
-               }
-            ]
-         }
-      },
-      {
-         "name":"[variables('virtual_machine_nic_name')]",
-         "type":"Microsoft.Network/networkInterfaces",
-         "apiVersion":"2019-11-01",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Network/virtualNetworks/', variables('virtual_machine_vnet_name'))]",
-            "[concat('Microsoft.Network/publicIPAddresses/', variables('virtual_machine_public_ip_name'))]",
-            "[concat('Microsoft.Network/networkSecurityGroups/', variables('virtual_machine_nsg_name'))]"
-         ],
-         "properties":{
-            "ipConfigurations":[
-               {
-                  "name":"ipconfig1",
-                  "properties":{
-                     "privateIPAllocationMethod":"Dynamic",
-                     "publicIPAddress":{
-                        "id":"[resourceId('Microsoft.Network/publicIPAddresses', variables('virtual_machine_public_ip_name'))]"
-                     },
-                     "subnet":{
-                        "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtual_machine_vnet_name'), variables('virtual_machine_vnet_subnet_name'))]"
-                     },
-                     "primary":true,
-                     "privateIPAddressVersion":"IPv4"
-                  }
-               }
-            ],
-            "networkSecurityGroup":{
-               "id":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('virtual_machine_nsg_name'))]"
-            }
-         }
-      },
-      {
-         "name":"[variables('virtual_machine_name')]",
-         "type":"Microsoft.Compute/virtualMachines",
-         "apiVersion":"2019-07-01",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Network/networkInterfaces/', variables('virtual_machine_nic_name'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_raceCarIotHub'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgIotHubTelemetry'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgiothub'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name_mfgiothubCosmosDB'))]"
-         ],
-         "properties":{
-            "hardwareProfile":{
-               "vmSize":"[variables('virtual_machine_size')]"
-            },
-            "osProfile":{
-               "computerName":"[variables('virtual_machine_name')]",
-               "adminUsername":"[variables('virtual_machine_username')]",
-               "adminPassword":"[variables('virtual_machine_password')]"
-            },
-            "storageProfile":{
-               "imageReference":{
-                  "publisher":"MicrosoftWindowsServer",
-                  "offer":"WindowsServer",
-                  "sku":"2016-Datacenter",
-                  "version":"latest"
-               },
-               "osDisk":{
-                  "createOption":"FromImage"
-               }
-            },
-            "networkProfile":{
-               "networkInterfaces":[
-                  {
-                     "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('virtual_machine_nic_name'))]"
-                  }
-               ]
-            },
-            "diagnosticsProfile":{
-               "bootDiagnostics":{
-                  "enabled":false
-               }
-            }
-         },
-         "identity":{
-            "type":"SystemAssigned"
-         }
-      },
-      {
-         "name":"[concat(variables('virtual_machine_name'),'/ManagedIdentityExtensionForWindows')]",
-         "type":"Microsoft.Compute/virtualMachines/extensions",
-         "apiVersion":"2018-06-01",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
-         ],
-         "properties":{
-            "publisher":"Microsoft.ManagedIdentity",
-            "type":"ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion":"1.0",
-            "autoUpgradeMinorVersion":true,
-            "settings":{
-               "port":50342
-            }
-         }
-      },
-      {
-         "name":"[guid(variables('virtual_machine_name'))]",
-         "type":"Microsoft.Authorization/roleAssignments",
-         "apiVersion":"2020-03-01-preview",
-         "dependsOn":[
-            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
-         ],
-         "properties":{
-            "roleDefinitionId":"[variables('rbac_guid_owner')]",
-            "principalId":"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('virtual_machine_name')), '2019-07-01', 'Full').identity.principalId]",
-            "scope":"[resourceGroup().id]"
-         }
-      },
-      {
-         "name":"[concat(variables('virtual_machine_name'),'/installcustomscript')]",
-         "type":"Microsoft.Compute/virtualMachines/extensions",
-         "apiVersion":"2019-07-01",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]",
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/',variables('asa_name_mfgASATelemetry'))]",
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/',variables('asa_name_mfgasa'))]",
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/',variables('asa_name_mfgasaCosmosDB'))]",
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/',variables('asa_name_race_car_asa'))]"
-         ],
-         "properties":{
-            "publisher":"Microsoft.Compute",
-            "type":"CustomScriptExtension",
-            "typeHandlerVersion":"1.8",
-            "autoUpgradeMinorVersion":true,
-            "settings":{
-               "fileUris":[
-                  "[variables('powershell_custom_script_path')]"
-               ]
-            },
-            "protectedSettings":{
-               "commandToExecute":"[concat('powershell -ExecutionPolicy Unrestricted -File custom.ps1 ', variables('script_args'))]"
-            }
-         }
-      },
-      {
-         "type":"Microsoft.Synapse/workspaces",
-         "apiVersion":"2019-06-01-preview",
-         "name":"[variables('workspace_name_dreamdemosynapse')]",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Storage/storageAccounts/', variables('adls_storage_account_name'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
-         ],
-         "identity":{
-            "type":"SystemAssigned"
-         },
-         "properties":{
-            "defaultDataLakeStorage":{
-               "accountUrl":"[variables('default_data_lake_storage_account_url')]",
-               "filesystem":"[variables('default_data_lake_storage_file_system_name')]"
-            },
-            "sqlAdministratorLogin":"[variables('sql_administrator_login_id')]",
-            "sqlAdministratorLoginPassword":"[parameters('sql_administrator_login_password')]"
-         },
-         "resources":[
-            {
-               "type":"firewallrules",
-               "apiVersion":"2019-06-01-preview",
-               "name":"allowAll",
-               "location":"[variables('location')]",
-               "dependsOn":[
-                  "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]"
-               ],
-               "properties":{
-                  "startIpAddress":"0.0.0.0",
-                  "endIpAddress":"255.255.255.255"
-               }
-            }
-         ]
-      },
-      {
-         "type":"Microsoft.Synapse/workspaces/bigDataPools",
-         "apiVersion":"2019-06-01-preview",
-         "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/', variables('spark_compute_name'))]",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_dreamdemosynapse'))]"
-         ],
-         "properties":{
-            "nodeCount":"[variables('spark_node_count')]",
-            "nodeSizeFamily":"[variables('spark_node_size_family')]",
-            "nodeSize":"[variables('spark_node_size')]",
-            "autoScale":{
-               "enabled":"[variables('spark_auto_scale_enabled')]",
-               "minNodeCount":"[variables('spark_min_node_count')]",
-               "maxNodeCount":"[variables('spark_max_node_count')]"
-            },
-            "autoPause":{
-               "enabled":"[variables('spark_auto_pause_enabled')]",
-               "delayInMinutes":"[variables('spark_auto_pause_delay_in_minutes')]"
-            },
-            "sparkVersion":"[variables('spark_version')]",
-            "libraryRequirements":{
-               "filename":"[variables('packages_requirements_file_name')]",
-               "content":"[variables('packages_requirements_content')]"
-            }
-         }
-      },
-      {
-         "type":"Microsoft.Synapse/workspaces/sqlPools",
-         "apiVersion":"2019-06-01-preview",
-         "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/', variables('sql_compute_name'))]",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]",
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'), '/bigDataPools/', variables('spark_compute_name'))]"
-         ],
-         "sku":{
-            "name":"[variables('sql_server_sku')]"
-         },
-         "properties":{
-            "createMode":"Default",
-            "collation":"SQL_Latin1_General_CP1_CI_AS"
-         }
-      },
-      {
          "name":"[variables('container_registry_name')]",
          "type":"Microsoft.ContainerRegistry/registries",
          "apiVersion":"2019-05-01",
@@ -1833,39 +2009,6 @@
                   "days":7,
                   "status":"disabled"
                }
-            }
-         }
-      },
-      {
-         "apiVersion":"2020-03-01",
-         "type":"Microsoft.ContainerService/managedClusters",
-         "location":"[variables('location')]",
-         "name":"[variables('cluster_name')]",
-         "properties":{
-            "dnsPrefix":"[variables('aks_dns_prefix')]",
-            "agentPoolProfiles":[
-               {
-                  "name":"agentpool",
-                  "osDiskSizeGB":"[variables('aks_os_disk_size_gb')]",
-                  "count":"[variables('aks_agent_count')]",
-                  "vmSize":"[variables('aks_agent_vm_size')]",
-                  "osType":"[variables('aks_os_type')]",
-                  "storageProfile":"ManagedDisks"
-               }
-            ],
-            "linuxProfile":{
-               "adminUsername":"[variables('linux_admin_username')]",
-               "ssh":{
-                  "publicKeys":[
-                     {
-                        "keyData":"[variables('ssh_rsa_public_key')]"
-                     }
-                  ]
-               }
-            },
-            "servicePrincipalProfile":{
-               "clientId":"[variables('service_principal_client_id')]",
-               "Secret":"[variables('service_principal_client_secret')]"
             }
          }
       }
