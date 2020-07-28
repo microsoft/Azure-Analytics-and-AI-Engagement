@@ -566,14 +566,14 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
 
 Write-Information "Starting PowerBI Artifact Provisioning"
 
-$wsname = "asa-exp-$uniqueId";
+#$wsname = "asa-exp-$uniqueId";
 
-$wsid = Get-PowerBIWorkspaceId $wsname;
+#$wsid = Get-PowerBIWorkspaceId $wsname;
 
-if (!$wsid)
-{
-    $wsid = New-PowerBIWS $wsname;
-}
+#if (!$wsid)
+#{
+ #   $wsid = New-PowerBIWS $wsname;
+#}
 
 Write-Information "Uploading PowerBI Reports"
 
