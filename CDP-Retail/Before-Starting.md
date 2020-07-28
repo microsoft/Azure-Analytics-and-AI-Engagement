@@ -25,6 +25,7 @@
 
 1. An Azure Account with the ability to create an Azure Synapse Workspace
 2. Make sure the following resource providers are registered for your Azure Subscription.  
+
 * Microsoft.Sql
 * Microsoft.Synapse
 * Microsoft.StreamAnalytics
@@ -110,7 +111,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 * **Subscription**: Select your desired subscription for the deployment.
 * **Resouce group**: Select the **Synapse-WWI-Lab** resource group you previously created.
 * **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment.
-* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will created as part of your deployment.
+* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. Your password will be needed during the next steps. Make sure you have your password noted and secured.
 * **Location**: The datacenter where your Azure Synapse environment will be created.
 * **Twitter Access Token**: The access token from Twitter.
 * **Twitter Access Token Secret**: The access token secret from Twitter.
@@ -196,8 +197,12 @@ When executing the script below, it is important to let the scripts run to compl
     | Enter the SQL Administrator password you used in the deployment |
 
     ![The Azure Cloud Shell window is displayed with a sample of the output from the preceding command.](media/bhol_sampleshelloutput.png)
+    
+    Select the resource group you selected during Task 3.2. This will make sure automation runs against the correct environment you provisioned in Azure.
+    
+    ![The Azure Cloud Shell window is displayed with a selection of resource groups the user owns.](media/setup-resource-group-selection.png)
 
-    You will be asked to go through another round of device login for the Power BI workspace access. Repeat the steps in Task 4.2 and 4.3 to complete the process.
+    You will be asked to go through another round of device login for the Power BI Gateway access. Repeat the steps in Task 4.2 and 4.3 to complete the process.
     
     Finally, you will be prompted for the default Power BI workspace Id for your account.
     ![The default Power BI Workspace ID is requested on the console.](media/setup-powerbi-workspace-id.png)
