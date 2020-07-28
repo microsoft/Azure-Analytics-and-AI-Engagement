@@ -596,6 +596,10 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision
                                 @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"images"}}, 
+                                @{Name = "Name"; Expression = {"Dashboard-Images"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
 $powerBIName = "asaexppowerbi$($uniqueId)"
@@ -684,9 +688,12 @@ Write-Information "Setting PowerBI Report Data Connections"
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", "SQLPool01") |Out-String
 
 foreach ($powerBIReport in $reportList) {
-    Write-Information "Setting database connection for $($powerBIReport.Name)"
-    $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
-    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIReportDataSetConnectionUpdateRequest;
+        if($powerBIReport.Name -ne "Dashboard-Images")
+        {
+                Write-Information "Setting database connection for $($powerBIReport.Name)"
+                $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
+                Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIReportDataSetConnectionUpdateRequest;
+        }
 }
 
 Write-Information "Environment setup complete." 
