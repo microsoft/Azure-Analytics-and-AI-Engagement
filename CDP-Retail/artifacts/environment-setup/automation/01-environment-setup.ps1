@@ -80,7 +80,19 @@ if($IsCloudLabs){
         $functionsSourcePath = "..\functions"
 }
 
-$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
+$resourceGroups = az group list --query '[].name' -o tsv 
+
+if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
+    $rgOptions = [System.Collections.ArrayList]::new()
+    for($rgIdx=0; $rgIdx -lt $resourceGroups.length; $rgIdx++){
+        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($resourceGroups[$rgIdx])", "Selects the $($resourceGroups[$rgIdx]) resource group."   
+        $rgOptions.Add($opt)
+    }
+    $selectedRgIdx = $host.ui.PromptForChoice('Enter the desired Resource Group for this lab','Copy and paste the name of the subscription to make your choice.', $rgOptions.ToArray(),0)
+    $resourceGroupName = $resourceGroups[$selectedRgIdx]
+    Write-Information "Selecting the $selectedRgName resource group"
+}
+
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
