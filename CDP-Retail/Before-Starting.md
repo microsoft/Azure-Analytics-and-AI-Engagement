@@ -8,16 +8,17 @@
 - [Azure Synapse Analytics WWI setup guide](#azure-synapse-analytics-wwi-setup-guide)
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
-    - [Task 1: Create a Power BI Streaming Dataset](#task-1-create-a-power-bi-streaming-dataset)
-    - [Task 2: Create a resource group in Azure](#task-2-create-a-resource-group-in-azure)
-    - [Task 3: Create Azure Synapse Analytics workspace](#task-3-create-azure-synapse-analytics-workspace)
-    - [Task 4: Download artifacts](#task-4-download-artifacts)
-    - [Task 5: Establish a user context](#task-5-establish-a-user-context)
-    - [Task 6: Run environment setup PowerShell script](#task-6-run-environment-setup-powershell-script)
-    - [Task 7: Location Analytics Streaming Dataset Setup](#task-7-location-analytics-streaming-dataset-setup)
-    - [Task 8: Twitter Analytics Streaming Dataset Setup](#task-8-twitter-analytics-streaming-dataset-setup)
-    - [Task 9: Twitter Analytics Report](#task-9-twitter-analytics-report)
-    - [Task 10: Location Analytics Real-Time Report](#task-10-location-analytics-real-time-report)
+    - [Task 1: Create a Power BI Workspace](#task-1-create-a-power-bi-workspace)
+    - [Task 2: Create a Power BI Streaming Dataset](#task-2-create-a-power-bi-streaming-dataset)
+    - [Task 3: Create a resource group in Azure](#task-3-create-a-resource-group-in-azure)
+    - [Task 4: Create Azure Synapse Analytics workspace](#task-4-create-azure-synapse-analytics-workspace)
+    - [Task 5: Download artifacts](#task-5-download-artifacts)
+    - [Task 6: Establish a user context](#task-6-establish-a-user-context)
+    - [Task 7: Run environment setup PowerShell script](#task-7-run-environment-setup-powershell-script)
+    - [Task 8: Location Analytics Streaming Dataset Setup](#task-8-location-analytics-streaming-dataset-setup)
+    - [Task 9: Twitter Analytics Streaming Dataset Setup](#task-9-twitter-analytics-streaming-dataset-setup)
+    - [Task 10: Twitter Analytics Report](#task-10-twitter-analytics-report)
+    - [Task 11: Location Analytics Real-Time Report](#task-11-location-analytics-real-time-report)
 
 <!-- /TOC -->
 
@@ -37,7 +38,23 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
 ## Before starting
 
-### Task 1: Create a Power BI Streaming Dataset
+### Task 1: Create a Power BI Workspace
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+
+2. Select **Workspaces** from the left menu and select **Create a workspace** to create a new Power BI Workspace for your new environment.
+
+![Left hamburger menu on Power BI Portal is shown. Workspaces collection is open. Create a workspace button is highligted.](media/powerbi-workspace-create.png)
+
+3. Name your workspace **CDP** and select **Save** to finish creating the workspace.
+
+![Workspace creation screen is open. The name for the workspace is filled as CDP. The Save button is highlighted.](media/powerbi-workspace-create-2.png)
+
+3. Once your workspace is created you will need to take note of the **workspace Id**. You can find the workspace Id for your workspace in the URL bar in your browser as shown in the screenshot below. Finally, select **skip** to close the Welcome wizard on the page.
+
+![The newly created workspace is open. The workspace id in the URL is highlighted. The skip button for the welcome wizard is selected.](media/powerbi-workspace-id.png)
+
+### Task 2: Create a Power BI Streaming Dataset
 
 1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
 
@@ -49,7 +66,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
  ![New streaming dataset options are listed. API option is selected and the Next button is highligted.](media/powerbi-streamingdataset-api.png)
  
-4. Enter a **dataset name** for your dataset and enter the field names and types listed below:
+4. Enter **locationstream** as your **dataset name** and enter the field names and types listed below:
 
 | Field Name       | Type     |
 |------------------|----------|
@@ -79,7 +96,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
  ![Dataset creation message is shown. The Push URL is highligted.](media/powerbi-streamingdataset-endpoint.png)
 
-### Task 2: Create a resource group in Azure
+### Task 3: Create a resource group in Azure
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
@@ -99,7 +116,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
 6. Select the **Create** button once validation has passed.
 
-### Task 3: Create Azure Synapse Analytics workspace
+### Task 4: Create Azure Synapse Analytics workspace
 
 1. Deploy the workspace through the following Azure ARM template (press the button below):
 
@@ -131,7 +148,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
     > **Note**: You may experience a deployment step failing in regards to Role Assignment. This error may safely be ignored.
 
-### Task 4: Download artifacts
+### Task 5: Download artifacts
 
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
@@ -149,7 +166,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
 3. Keep the Cloud Shell open.
 
-### Task 5: Establish a user context
+### Task 6: Establish a user context
 
 1. In the Cloud Shell, execute the following command:
 
@@ -167,7 +184,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
    ![The JSON result showing the subscription details.](media/shell-login-result.png)
 
-### Task 6: Run environment setup PowerShell script
+### Task 7: Run environment setup PowerShell script
 
 When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
@@ -224,7 +241,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
-### Task 7: Location Analytics Streaming Dataset Setup
+### Task 8: Location Analytics Streaming Dataset Setup
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
@@ -248,7 +265,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
 
-### Task 8: Twitter Analytics Streaming Dataset Setup
+### Task 9: Twitter Analytics Streaming Dataset Setup
 
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
@@ -262,7 +279,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 4. Once the job starts gathering data you can start building Power BI real-time reports for your new Power BI dataset that will be create by the Azure Stream Analytics job. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment.
 
-### Task 9: Twitter Analytics Report
+### Task 10: Twitter Analytics Report
 
 1. Launch [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) on your machine.
 
@@ -288,7 +305,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 7. Publish your report to your workplace to be used during your demo.
 
-### Task 10: Location Analytics Real-Time Report
+### Task 11: Location Analytics Real-Time Report
 
 1. Launch [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) on your machine.
 
