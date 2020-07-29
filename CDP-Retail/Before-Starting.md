@@ -129,11 +129,6 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 * **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment.
 * **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will created as part of your deployment.
 * **Location**: The datacenter where your Azure Synapse environment will be created.
-* **Twitter Access Token**: The access token from Twitter.
-* **Twitter Access Token Secret**: The access token secret from Twitter.
-* **Twitter Consumer Key**: The consumer key from Twitter.
-* **Twitter Consumer Key Secret**: The consumer key secret from Twitter.
-* **Twitter Keywords**: Twitter keywords that will be used to fetch twitter real-time data as part of the Power BI Real-Time Report for Twitter.
 * **Streaming Dataset**: The name of your Twitter PowerBI Dataset that will be automatically created by Azure Stream Analytics. Feel free to leave the default value.
 * **Pbi Worksapce Id**: The Power BI workspace ID for your default workspace on the Power BI Portal. 
 * **Streaming Url**: The **Push Url** you received at the end of Task 1 in the Setup Guide.
@@ -142,7 +137,7 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
     ![The Custom deployment form is displayed with sample values filled in.](media/bhol_customdeploymentform.png)
   
-    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of June 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
+    > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of July 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
 3. Check the **I agree to the terms and conditions stated above**, then select the **Purchase** button. The provisioning of your deployment resources will take approximately 13 minutes.
 
