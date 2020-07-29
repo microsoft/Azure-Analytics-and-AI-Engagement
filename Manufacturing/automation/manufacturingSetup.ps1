@@ -179,6 +179,9 @@ foreach($name in $notebooks)
 
 
 #creating sql schema
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+Install-Module -Force -Name SqlServer
 Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
@@ -300,10 +303,3 @@ foreach($report in $reportList)
     $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
    
 }
-
-
-
-
-
-
-
