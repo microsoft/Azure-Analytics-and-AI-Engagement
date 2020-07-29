@@ -118,12 +118,12 @@ Write-Information "Deploying Azure functions"
 az functionapp deployment source config-zip `
         --resource-group $resourceGroupName `
         --name $twitterFunction `
-        --src "../functions/powershell-functions/Twitter_Function_Publish_Package.zip"
+        --src "../functions/Twitter_Function_Publish_Package.zip"
 		
 az functionapp deployment source config-zip `
         --resource-group $resourceGroupName `
         --name $locationFunction `
-        --src "../functions/powershell-functions/LocationAnalytics_Publish_Package.zip"
+        --src "../functions/LocationAnalytics_Publish_Package.zip"
 $principal=az resource show -g $resourceGroupName -n $asaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
 $wsId=Read-Host "Enter your powerBi workspace Id entered during template deployment"
@@ -633,50 +633,37 @@ Write-Information "Create PowerBI linked service $($keyVaultName)"
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Setting Powershell Azure Functions for PowerBI Data Refresh" 
-
 Refresh-Token -TokenType PowerBI
 $azureCLITokens = Get-Content -Path \tmp\accessTokens.json | ConvertFrom-Json
 $powerBIRefreshToken = $azureCLITokens | where { $_.resource -eq "https://analysis.windows.net/powerbi/api" } | select -ExpandProperty refreshToken
 az keyvault secret set -n "PowerBIRefreshToken" --vault-name $keyVaultName --value $powerBIRefreshToken
-$secretId = az keyvault secret show -n "PowerBIRefreshToken" --vault-name $keyVaultName --query "id" -o tsv
-az functionapp identity assign -n "psfunctions$($uniqueId)" -g $resourceGroupName
-$principalId = az functionapp identity show -n "psfunctions$($uniqueId)" -g $resourceGroupName --query principalId -o tsv
-az keyvault set-policy -n $keyVaultName -g $resourceGroupName --object-id $principalId --secret-permissions get
-az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "powerBIRefreshToken=@Microsoft.KeyVault(SecretUri=$secretId)"
-az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "tenantId=$($tenantId)"
-az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "../functions/powershell-functions/powershell-functions.zip"
-
-$powerBIDatasetRefreshFunctionKey = ((az rest --method post `
-                     --uri "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Web/sites/psfunctions$($uniqueId)/functions/PowerBIDataSetRefresh/listKeys?api-version=2018-11-01") | ConvertFrom-Json).default
-$powerBIDatasetRefreshFunctionUri = "https://psfunctions$($uniqueId).azurewebsites.net/api/PowerBIDataSetRefresh?code=$($powerBIDatasetRefreshFunctionKey)"
 
 Write-Information "Create pipelines"
 
 $pipelineList = New-Object System.Collections.ArrayList
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decomposition_tree"}} , @{Name = "Name"; Expression = {"Customize Decomposition Tree"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decomposition_tree"}} , @{Name = "Name"; Expression = {"Customize Decomposition Tree"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights_ml"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights ML"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights_ml"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights ML"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
@@ -684,7 +671,6 @@ foreach ($pipeline in $pipelineList) {
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-                PSFUNCTION_ENDPOINT = "$($powerBIDatasetRefreshFunctionUri)&DataSetId=$($reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId)"
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
