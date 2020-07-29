@@ -30,26 +30,6 @@
         "description": "Location for all resources."
       }
     },
-    "TwitterAccessToken":{
-         "type":"string"
-         
-      },
-      "TwitterAccessTokenSecret":{
-         "type":"string"
-         
-      },
-      "TwitterConsumerKey":{
-         "type":"string"
-        
-      },
-      "TwitterConsumerKeySecret":{
-         "type":"string"
-         
-      },
-      "TwitterKeywords":{
-         "type":"string"
-         
-      },
     "streamingDataset":{
         "defaultValue":"Tweetsout",
          "type":"String"
@@ -898,23 +878,23 @@
                   },
                   {
                      "name":"TwitterAccessToken",
-                     "value":"[parameters('twitterAccessToken')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterAccessTokenSecret",
-                     "value":"[parameters('twitterAccessTokenSecret')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterConsumerKey",
-                     "value":"[parameters('twitterConsumerKey')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterConsumerKeySecret",
-                     "value":"[parameters('twitterConsumerKeySecret')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterKeywords",
-                     "value":"[parameters('twitterKeywords')]"
+                     "value":""
                   },
                   {
                      "name":"Sentiment140AppID",
