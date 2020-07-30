@@ -99,6 +99,8 @@ Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
 
 ### Task 3: Create a resource group in Azure
 
+> If you have a CloudLabs environment, please skip this step and use the resource group you are provided.
+
 1. Log into the [Azure Portal](https://portal.azure.com) using your Azure credentials.
 
 2. On the Azure Portal home screen, select the **+ Create a resource** tile.
