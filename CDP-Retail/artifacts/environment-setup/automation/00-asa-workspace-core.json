@@ -30,26 +30,6 @@
         "description": "Location for all resources."
       }
     },
-    "TwitterAccessToken":{
-         "type":"string"
-         
-      },
-      "TwitterAccessTokenSecret":{
-         "type":"string"
-         
-      },
-      "TwitterConsumerKey":{
-         "type":"string"
-        
-      },
-      "TwitterConsumerKeySecret":{
-         "type":"string"
-         
-      },
-      "TwitterKeywords":{
-         "type":"string"
-         
-      },
     "streamingDataset":{
         "defaultValue":"Tweetsout",
          "type":"String"
@@ -109,9 +89,6 @@
     "blobStorageAccountName": "[concat('asaexpstore', parameters('uniqueSuffix'))]",
     "applicationInsightsName": "[concat('asaexpappinsights', parameters('uniqueSuffix'))]",
     "amlWorkspaceName": "[concat('amlworkspace', parameters('uniqueSuffix'))]",
-    "powershellFunctionAppName": "[concat('psfunctions', parameters('uniqueSuffix'))]",
-    "powershellFunctionHostingPlanName": "[concat('psfunctions', parameters('uniqueSuffix'))]",
-    "powershellFunctionStorageAccountName": "[concat('psfunctions', parameters('uniqueSuffix'))]",
     "eventHubNameSpace":"[concat('eventhub',parameters('uniqueSuffix'))]",
 	  "managedAccessPolicyName":"ManageAccessPolicy",
       "authRuleResourceId":"[resourceId('Microsoft.EventHub/namespaces/authorizationRules', variables('eventHubNameSpace'), variables('managedAccessPolicyName'))]",
@@ -411,77 +388,6 @@
       "properties": {
         "publicAccess": "None"
       }
-    },
-    {
-      "apiVersion": "2018-11-01",
-      "name": "[variables('powershellFunctionAppName')]",
-      "type": "Microsoft.Web/sites",
-      "kind": "functionapp",
-      "location": "[variables('location')]",
-      "tags": {},
-      "dependsOn": [
-          "[concat('Microsoft.Web/serverfarms/', variables('powershellFunctionHostingPlanName'))]",
-          "[concat('Microsoft.Storage/storageAccounts/', variables('powershellFunctionStorageAccountName'))]"
-      ],
-      "properties": {
-          "name": "[variables('powershellFunctionAppName')]",
-          "siteConfig": {
-              "appSettings": [
-                  {
-                      "name": "FUNCTIONS_EXTENSION_VERSION",
-                      "value": "~3"
-                  },
-                  {
-                      "name": "FUNCTIONS_WORKER_RUNTIME",
-                      "value": "powershell"
-                  },
-                  {
-                      "name": "AzureWebJobsStorage",
-                      "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('powershellFunctionStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('powershellFunctionStorageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
-                  },
-                  {
-                      "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                      "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('powershellFunctionStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('powershellFunctionStorageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
-                  },
-                  {
-                      "name": "WEBSITE_CONTENTSHARE",
-                      "value": "[concat(toLower(variables('powershellFunctionAppName')), 'a6bf')]"
-                  }
-              ]
-          },
-          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('powershellFunctionHostingPlanName'))]",
-          "clientAffinityEnabled": true
-      }
-    },
-    {
-        "apiVersion": "2018-11-01",
-        "name": "[variables('powershellFunctionHostingPlanName')]",
-        "type": "Microsoft.Web/serverfarms",
-        "location": "[variables('location')]",
-        "tags": {},
-        "dependsOn": [],
-        "properties": {
-            "name": "[variables('powershellFunctionHostingPlanName')]",
-            "computeMode":"Dynamic"
-        },
-        "sku":{  
-          "name":"Y1",
-          "tier":"Dynamic"
-       }
-    },
-    {
-        "apiVersion": "2019-06-01",
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('powershellFunctionStorageAccountName')]",
-        "location": "[variables('location')]",
-        "kind": "StorageV2",
-        "tags": {},
-        "sku": {
-            "name": "Standard_LRS"
-        },
-        "properties": {
-            "supportsHttpsTrafficOnly": true
-        }
     },
     {
          "type":"Microsoft.EventHub/namespaces",
@@ -898,23 +804,23 @@
                   },
                   {
                      "name":"TwitterAccessToken",
-                     "value":"[parameters('twitterAccessToken')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterAccessTokenSecret",
-                     "value":"[parameters('twitterAccessTokenSecret')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterConsumerKey",
-                     "value":"[parameters('twitterConsumerKey')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterConsumerKeySecret",
-                     "value":"[parameters('twitterConsumerKeySecret')]"
+                     "value":""
                   },
                   {
                      "name":"TwitterKeywords",
-                     "value":"[parameters('twitterKeywords')]"
+                     "value":""
                   },
                   {
                      "name":"Sentiment140AppID",
