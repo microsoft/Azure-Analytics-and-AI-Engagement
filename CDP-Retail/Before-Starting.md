@@ -241,9 +241,9 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![The datasets tab is selected. From the list of datasets 2-Billion Rows Demo is selected. Edit credentials will be selected next. ](media/powerbi_datasource_credentials.png)
 
-7. Select **OAuth2** for the **Authentication method** and select **Sign In** to complete the process.
+7. Select **Microsoft Account** for the **Authentication method** and select **Sign In** to complete the process.
 
-![From the list of authentication methods OAuth2 is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
+![From the list of authentication methods Microsoft Account is picked. The sign in button is selected. ](media/powerbi_datasource_credentials-update.png)
 
 ### Task 8: Location Analytics Streaming Dataset Setup
 
