@@ -61,7 +61,7 @@
                 "userProperties": [],
                 "typeProperties": {
                     "pipeline": {
-                        "referenceName": "Customize Revenue and Profitability",
+                        "referenceName": "Customize Revenue Profitability",
                         "type": "PipelineReference"
                     },
                     "waitOnCompletion": true
