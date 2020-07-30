@@ -72,11 +72,11 @@ See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resourc
 
  ![Streaming dataset schema configuration window is shown. Dataset name and sample configuration is highlighted.](media/powerbi-streamingdataset-schema.png)
  
-5. Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
+Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
 
  ![Dataset schema is shown. Historic data analysis option is enabled. The Create button is highlighted.](media/powerbi-streamingdataset-historic.png)
  
-6. Take note of the given **Push URL** to be used during the following setup tasks. Select **Done** to close the window.
+5. Take note of the given **Push URL** to be used during the following setup tasks. Select **Done** to close the window.
 
  ![Dataset creation message is shown. The Push URL is highligted.](media/powerbi-streamingdataset-endpoint.png)
 
