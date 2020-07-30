@@ -153,6 +153,8 @@ Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
     ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
 
     > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
+    
+    ![Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
 2. In the Cloud Shell window, enter the following command to clone the repository files.
 
