@@ -65,6 +65,7 @@ if($IsCloudLabs){
                 $selectedSubName = $subs[$selectedSubIdx]
                 Write-Information "Selecting the $selectedSubName subscription"
                 Select-AzSubscription -SubscriptionName $selectedSubName
+                az account set -s $selectedSubName
         }
         
         $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
@@ -79,6 +80,7 @@ if($IsCloudLabs){
         $sqlScriptsPath = "..\sql"
         $functionsSourcePath = "..\functions"
 }
+
 
 $resourceGroups = az group list --query '[].name' -o tsv 
 
