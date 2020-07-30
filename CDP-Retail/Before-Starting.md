@@ -261,7 +261,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![Get function url option is selected and copy to clipboard button is highlighted.](media/setup-location-function-uri.png)
 
-5. Open a new browser tab, past the url and navigate to function endpoint to start location analytics data generator.
+5. Open a new browser tab, paste the url and navigate to function endpoint to start location analytics data generator.
 
 ![A new browser tab is navigated to the location function endpoint and the page shows a message stating the location analytics is started](media/setup-location-analytics-start.png)
 
