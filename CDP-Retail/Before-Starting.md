@@ -129,8 +129,8 @@ Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
 
 * **Subscription**: Select your desired subscription for the deployment.
 * **Resouce group**: Select the **Synapse-WWI-Lab** resource group you previously created.
-* **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment.
-* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. Your password will be needed during the next steps. Make sure you have your password noted and secured.
+* **Unique Suffix**: This unique suffix will be used naming resources that will created as part of your deployment. Make sure you follow correct Azure [Resource naming](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) conventions.
+* **SQL Administrator Login Password**: Provide a strong password for the SQLPool that will be created as part of your deployment. [Visit here](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15#password-complexity) to read about password rules in place. Your password will be needed during the next steps. Make sure you have your password noted and secured.
 * **Location**: The datacenter where your Azure Synapse environment will be created.
 * **Streaming Dataset**: The name of your Twitter PowerBI Dataset that will be automatically created by Azure Stream Analytics. Feel free to leave the default value.
 * **Pbi Worksapce Id**: The Power BI workspace ID for your default workspace on the Power BI Portal. 
