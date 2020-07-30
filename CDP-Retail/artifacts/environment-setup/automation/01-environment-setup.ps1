@@ -92,6 +92,10 @@ if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
     $resourceGroupName = $resourceGroups[$selectedRgIdx]
     Write-Information "Selecting the $selectedRgName resource group"
 }
+else{
+$resourceGroupName=$resourceGroups
+Write-Information "Selecting the $resourceGroupName resource group"
+}
 
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
