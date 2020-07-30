@@ -669,6 +669,8 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recomme
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}
 $pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_all"}} , @{Name = "Name"; Expression = {"Customize All"}}
+$pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
         Write-Information "Creating workload pipeline $($pipeline.Name)"
