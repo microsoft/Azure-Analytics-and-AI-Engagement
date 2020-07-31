@@ -549,15 +549,15 @@ Write-Information "Create SQL scripts for Lab 05"
 
 if($IsCloudLabs){
         $sqlScripts = [ordered]@{
-                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
-                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
-                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql\workspace-artifacts"
         }
 } else {
         $sqlScripts = [ordered]@{
-                "8 External Data To Synapse Via Copy Into" = "..\sql"
-                "1 SQL Query With Synapse"  = "..\sql"
-                "2 JSON Extractor"    = "..\sql"
+                "8 External Data To Synapse Via Copy Into" = "..\sql\workspace-artifacts"
+                "1 SQL Query With Synapse"  = "..\sql\workspace-artifacts"
+                "2 JSON Extractor"    = "..\sql\workspace-artifacts"
         }
 }
 
