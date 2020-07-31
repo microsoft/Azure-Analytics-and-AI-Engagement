@@ -249,6 +249,33 @@
                         "type": "DatasetReference"
                     }
                 ]
+            },
+            {
+                "name": "Remove Self References",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    {
+                        "activity": "Import product recommendations",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "storedProcedureName": "[dbo].[Delete_SelfReferencing_Product_Recommendations]"
+                },
+                "linkedServiceName": {
+                    "referenceName": "sqlpool01",
+                    "type": "LinkedServiceReference"
+                }
             }
         ],
         "annotations": []
