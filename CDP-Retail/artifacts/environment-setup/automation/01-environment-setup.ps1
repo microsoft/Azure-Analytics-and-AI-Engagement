@@ -564,7 +564,7 @@ if($IsCloudLabs){
                 "8 External Data To Synapse Via Copy Into" = "..\sql\workspace-artifacts"
                 "1 SQL Query With Synapse"  = "..\sql\workspace-artifacts"
                 "2 JSON Extractor"    = "..\sql\workspace-artifacts"
-                "Reset"    = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "Reset"    = ".\sql\workspace-artifacts"
         }
 }
 
