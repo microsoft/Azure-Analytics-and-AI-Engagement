@@ -1,3 +1,6 @@
+DROP PROCEDURE [dbo].[Reset_ML_Environment]
+GO
+
 CREATE PROC [dbo].[Reset_ML_Environment] AS
 BEGIN
 
@@ -19,6 +22,9 @@ WITH (
 )
 
 END
+GO
+
+DROP PROCEDURE [dbo].[Delete_SelfReferencing_Product_Recommendations]
 GO
 
 CREATE PROC [dbo].[Delete_SelfReferencing_Product_Recommendations] AS
