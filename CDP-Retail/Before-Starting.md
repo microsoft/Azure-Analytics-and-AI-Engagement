@@ -265,7 +265,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![A new browser tab is navigated to the location function endpoint and the page shows a message stating the location analytics is started](media/setup-location-analytics-start.png)
 
-6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset. The name of the dataset is the value you provided during Task 1.4 of this setup guide.
+6. Once the Azure Function starts you can start building Power BI real-time reports for your new Power BI dataset. The name of the dataset is the value you provided during Task 2.4 of this setup guide.
 
 ![A new locationstream dataset is highligted on the Power BI portal under the datasets collection listing page.](media/setup-powerbi-locationstream-dataset.png)
 
@@ -295,7 +295,9 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![Get Data menu is opened. Power BI datasets option is highligted](media/powerbi-desktop-dataset-import.png)
 
-4. Select **Tweetsout** from the list of datasets. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment. It might be different in your case if you have change the default value during deployment.
+4. Select **Tweetsout** from the list of datasets. The name of the dataset is based on the value you provided for the configuration parameter named **Streaming dataset** during template deployment. It might be different in your case if you have changed the default value during deployment.
+
+> Please note, it make take several minutes for this dataset to show up on the list. The Stream Analytics job you started in the previous task sends data to Power BI. There is an initial delay before the dataset initially appears after receiving the initial load of streaming data. If you do not see it listed, select Cancel to close this dialog, then re-open it.
 
 ![Dataset selection screen is open. Tweetsout dataset is selected. Create button is highlighted.](media/powerbi-desktop-tweetsout.png)
 
@@ -307,7 +309,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![City, Sentiment and Tweet fields are selected. Location, legend and Size settings are set.](media/powerbi-desktop-twitter-report.png)
 
-7. Publish your report to your workplace to be used during your demo.
+7. Save your report locally, and then publish it to your workspace to be used during your demo. _This is the workspace you created in Task 1_.
 
 ### Task 11: Location Analytics Real-Time Report
 
@@ -321,11 +323,11 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![Get Data menu is opened. Power BI datasets option is highligted](media/powerbi-desktop-dataset-import.png)
 
-4. Select **locationstream** from the list of datasets. The name of the dataset is the value you provided during Task 1.4 of this setup guide. It might be different in your case if you picked a different name.
+4. Select **locationstream** from the list of datasets. The name of the dataset is the value you provided during Task 2.4 of this setup guide. It might be different in your case if you picked a different name.
 
 ![Dataset selection screen is open. locationstream dataset is selected. Create button is highlighted.](media/powerbi-desktop-location-dataset.png)
 
-5. To create a **Lined and stacked column Chart** for Avg Visit Time and Visitors by customer segment and department with the help of Real time data, select the map icon from the Visualization tray.
+5. To create a **Lined and stacked column Chart** for Avg Visit Time and Visitors by customer segment and department with the help of real-time data, select the map icon from the Visualization tray.
 
 ![The Lined and stacked column Chart visualization is selected.](media/powerbi-desktop-location-chart.png)
 
@@ -337,7 +339,7 @@ When executing the script below, it is important to let the scripts run to compl
 
 ![Column values are set to the average of visittime. Line values are set to the count of VisitorIds.](media/powerbi-desktop-location-field-setting.png)
 
-8. Publish your report to your workplace to be used during your demo.
+8. Save and publish your report to your workspace to be used during your demo.
 
 
 
