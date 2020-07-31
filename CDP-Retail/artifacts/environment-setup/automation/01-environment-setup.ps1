@@ -682,6 +682,8 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"customize_product
 $pipelineList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"1_master_pipeline"}} , @{Name = "Name"; Expression = {"1 Master Pipeline"}}
 $pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"reset_ml_data"}} , @{Name = "Name"; Expression = {"Reset ML Data"}}
+$pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
         Write-Information "Creating workload pipeline $($pipeline.Name)"
