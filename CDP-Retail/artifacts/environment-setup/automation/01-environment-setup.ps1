@@ -429,7 +429,7 @@ if($Load30Billion -eq 1)
                 Write-Progress @progressParameters
         
                 $params = @{ }
-                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -UseAPI (!$IsCloudLabs) -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
+                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
                 $result
         
                 $secondsElapsed = (Get-Date) - $start
