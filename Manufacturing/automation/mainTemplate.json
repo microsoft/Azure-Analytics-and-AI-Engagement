@@ -143,7 +143,7 @@
             ],
             "databaseAccountOfferType":"Standard",
             "enableAnalyticalStorage":true,
-            "ipRangeFilter":"0.0.0.0"
+		    "publicNetworkAccess": "Enabled"
          }
       },
       {
@@ -176,14 +176,11 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
                      {
                         "path":"/\"_etag\"/?"
                      }
@@ -191,7 +188,7 @@
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -217,22 +214,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                   {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -261,7 +255,7 @@
             ],
             "databaseAccountOfferType":"Standard",
             "enableAnalyticalStorage":true,
-            "ipRangeFilter":"0.0.0.0"
+			"publicNetworkAccess": "Enabled"
          }
       },
       {
@@ -307,22 +301,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                    {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -348,22 +339,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                   {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                   {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -392,22 +380,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                   {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                   {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -436,22 +421,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                 {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                   {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -480,14 +462,11 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
                      {
                         "path":"/\"_etag\"/?"
                      }
@@ -495,7 +474,7 @@
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -524,22 +503,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                   {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                    {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -568,14 +544,11 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
                      {
                         "path":"/\"_etag\"/?"
                      }
@@ -583,7 +556,7 @@
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -612,22 +585,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                  {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                      {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -656,22 +626,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                   {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                   {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -700,22 +667,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                   {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                      {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -744,22 +708,19 @@
                   "indexingMode":"consistent",
                   "automatic":true,
                   "includedPaths":[
-                     {
-                        "path":"/PartitionKey/?"
+                    {
+                        "path":"/*"
                      }
                   ],
                   "excludedPaths":[
-                     {
-                        "path":"/*"
-                     },
-                     {
+                    {
                         "path":"/\"_etag\"/?"
                      }
                   ]
                },
                "partitionKey":{
                   "paths":[
-                     "/PartitionKey"
+                     "/SyntheticPartitionKey"
                   ],
                   "kind":"Hash"
                },
@@ -1124,8 +1085,8 @@
             "datasource":{
                "type":"Microsoft.Sql/Server/Database",
                "properties":{
-                  "server":"dreamdemosynapse.database.windows.net",
-                  "database":"ManufacturingDW",
+                  "server":"[concat(variables('workspace_name_dreamdemosynapse'),'.database.windows.net')]",
+                    "database":"[variables('sql_compute_name')]",
                   "user":"[variables('sql_administrator_login_id')]",
                   "password":"[parameters('sql_administrator_login_password')]",
                   "table":"mfg-iot-lathe-peck-drill"
@@ -1144,8 +1105,8 @@
             "datasource":{
                "type":"Microsoft.Sql/Server/Database",
                "properties":{
-                  "server":"dreamdemosynapse.database.windows.net",
-                  "database":"ManufacturingDW",
+                  "server":"[concat(variables('workspace_name_dreamdemosynapse'),'.database.windows.net')]",
+                   "database":"[variables('sql_compute_name')]",
                   "user":"[variables('sql_administrator_login_id')]",
                   "password":"[parameters('sql_administrator_login_password')]",
                   "table":"mfg-iot-lathe-thread-cut"
@@ -1164,8 +1125,8 @@
             "datasource":{
                "type":"Microsoft.Sql/Server/Database",
                "properties":{
-                  "server":"dreamdemosynapse.database.windows.net",
-                  "database":"ManufacturingDW",
+                  "server":"[concat(variables('workspace_name_dreamdemosynapse'),'.database.windows.net')]",
+                    "database":"[variables('sql_compute_name')]",
                   "user":"[variables('sql_administrator_login_id')]",
                   "password":"[parameters('sql_administrator_login_password')]",
                   "table":"mfgiotmillingcanning"
@@ -1184,8 +1145,8 @@
             "datasource":{
                "type":"Microsoft.Sql/Server/Database",
                "properties":{
-                  "server":"dreamdemosynapse.database.windows.net",
-                  "database":"ManufacturingDW",
+                 "server":"[concat(variables('workspace_name_dreamdemosynapse'),'.database.windows.net')]",
+                  "database":"[variables('sql_compute_name')]",
                   "user":"[variables('sql_administrator_login_id')]",
                   "password":"[parameters('sql_administrator_login_password')]",
                   "table":"mfg-iot-milling-canning"
@@ -1310,6 +1271,34 @@
             "query":"[variables('asa_query_mfgasa')]"
          }
       },
+	  {
+		  "name":"[concat(variables('asa_name_mfgasa'), '/removeIoTHubField')]",
+		  "type": "Microsoft.StreamAnalytics/streamingjobs/functions",
+		  "apiVersion": "2016-03-01",
+		    "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
+         ],
+		  "properties": {
+		  	"type": "Scalar",
+		  	"properties": {
+		  	"inputs": [
+		  		{
+		  		"dataType": "record"
+		  		}
+		  	],
+		  	"output": {
+		  		"dataType": "record"
+		  	},
+			"binding": {  
+				"type": "Microsoft.StreamAnalytics/JavascriptUdf",  
+				"properties": {  
+					"script": "function main(input) { delete input[\"IoTHub\"]; return input; }"
+					}  
+				} 
+		  	}
+		  }
+		},
+	
       {
          "type":"Microsoft.StreamAnalytics/streamingjobs",
          "apiVersion":"2019-06-01",
@@ -1375,10 +1364,9 @@
                "properties":{
                   "accountId":"[variables('cosmos_account_name_mfgdemo')]",
                   "accountKey":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_account_name_mfgdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
-                  "database":"[variables('cosmos_database_name_mfgdemo_industrial')]",
+                  "database":"[variables('cosmos_database_name_mfgdemo_manufacturing')]",
                   "collectionNamePattern":"[variables('cosmos_database_container_name_manufacturing_data')]",
-                  "partitionKey":"/SyntheticPartitionKey",
-                  "documentId":"string"
+                  "partitionKey":"/SyntheticPartitionKey"
                }
             }
          }
@@ -1398,8 +1386,7 @@
                   "accountKey":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_account_name_manufacturingdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
                   "database":"[variables('cosmos_database_name_manufacturingdemo_industrial')]",
                   "collectionNamePattern":"[variables('cosmos_database_container_name_historical_data_adf')]",
-                  "partitionKey":"/SyntheticPartitionKey",
-                  "documentId":"string"
+                  "partitionKey":"/SyntheticPartitionKey"
                }
             }
          }
