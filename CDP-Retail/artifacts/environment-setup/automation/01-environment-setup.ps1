@@ -647,9 +647,6 @@ $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceNa
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Refresh-Token -TokenType PowerBI
-$azureCLITokens = Get-Content -Path \tmp\accessTokens.json | ConvertFrom-Json
-$powerBIRefreshToken = $azureCLITokens | where { $_.resource -eq "https://analysis.windows.net/powerbi/api" } | select -ExpandProperty refreshToken
-az keyvault secret set -n "PowerBIRefreshToken" --vault-name $keyVaultName --value $powerBIRefreshToken
 
 Write-Information "Create pipelines"
 
