@@ -415,7 +415,7 @@ if($Load30Billion -eq 1)
         [nullable[double]]$secondsRemaining = $null
         $maxIterationCount = 3000
         
-        For ($count=0; $count -le $maxIterationCount; $count++) {
+        For ($count=1; $count -le $maxIterationCount; $count++) {
         
                 $percentComplete = ($count / $maxIterationCount) * 100
                 $progressParameters = @{
