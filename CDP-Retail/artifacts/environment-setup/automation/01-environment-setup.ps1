@@ -63,7 +63,7 @@ if($IsCloudLabs){
         if($subs.GetType().IsArray -and $subs.length -gt 1){
                 $subOptions = [System.Collections.ArrayList]::new()
                 for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
-                        $optionName = "&" + ($subIdx + 1) + " : " + $subs[$subIdx]
+                        $optionName = $subs[$subIdx]
                         $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($subs[$subIdx]) subscription."   
                         $subOptions.Add($opt)
                 }
