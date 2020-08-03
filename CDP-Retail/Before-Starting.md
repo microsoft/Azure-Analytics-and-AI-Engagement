@@ -19,7 +19,9 @@
     - [Task 9: Twitter Analytics Streaming Dataset Setup](#task-9-twitter-analytics-streaming-dataset-setup)
     - [Task 10: Twitter Analytics Report](#task-10-twitter-analytics-report)
     - [Task 11: Location Analytics Real-Time Report](#task-11-location-analytics-real-time-report)
-
+  - [Optional Features](#optional-features)
+    - Twitter Developer Account
+    - [30 Billion Rows Dataset](#30-billion-rows-dataset)
 <!-- /TOC -->
 
 ## Requirements
@@ -35,7 +37,6 @@
 See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) for more information on registerting resource providers on the Azure Portal.
 
 3. A Power BI Pro or Premium account to host Power BI reports, dashboards, and configuration of streaming datasets.
-4. A Twitter developer account (Optional for Twitter Real-Time Power BI Report)
 
 ## Before starting
 
@@ -148,6 +149,8 @@ Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
 
 ### Task 5: Download artifacts
 
+> The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
+
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
     ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
@@ -199,8 +202,8 @@ When executing the script below, it is important to let the scripts run to compl
     ```PowerShell
     ./01-environment-setup.ps1
     ```
-
-    You will be prompted to specify the size of the data you want to populate into the Sales table. You can either chose the small data size with 3 million records, or the large data size with 30 billion records. Choosing 30 billion records will have the script scale your SQL Pool to DW3000c during data transfer, which might take up to 4 hours. 
+    
+    If you are running your automation on a local environment to populate 30 billion rows data, you will be prompted to specify the size of the data you want to populate into the Sales table. You can either chose the small data size with 3 million records, or the large data size with 30 billion records. Choosing 30 billion records will have the script scale your SQL Pool to DW3000c during data transfer, which might take up to 4 hours.
     
     ![The Azure Cloud Shell window is displayed with the choices of different data sizes that can be loaded into the environment by the script.](media/setup-guide-data-size.png)
     
@@ -341,6 +344,34 @@ When executing the script below, it is important to let the scripts run to compl
 
 8. Save and publish your report to your workspace to be used during your demo.
 
+## Optional Features
+
+### 30 Billion Rows Dataset
+
+The WWI environment can be populated with 30 billion records to demonstrated large data scenarios. Due to the limits of Azure Cloud Shell's 20-minute runtime, the automation has to run on a stand-alone machine against your subscription to be able to go through the 4-5 hours long data loading process. If you decide to go with the 30 billion records option, use a local Powershell instance with admin privileges instead of Azure Cloud Shell.
+
+1. Navigate to a folder location you prefer on your computer and execute the command below to download automation scripts and artifacts.
+
+
+    ```PowerShell
+    git clone https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git synapse-wwi
+    ```
+    
+    ![The Azure Cloud Shell window is displayed with the choices of different data sizes that can be loaded into the environment by the script.](media/local-git-clone.png)
+
+2. Execute the following command to authenticate your powershell session with your Azure Subscription:
+
+    ```cli
+    az login
+    ```
+    
+3. Execute the following command to authenticate the script session with your Azure Subscription:
+
+    ```cli
+    Connect-AzAccount
+    ```
+    
+4. Continue your environment setup from [Task 7 in the Before Starting guide]((#task-7-run-environment-setup-powershell-script)).
 
 
 
