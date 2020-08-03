@@ -20,6 +20,19 @@ switch($result)
 1 { $Load30Billion = 0 }
 }
 
+if ($Load30Billion -eq 1)
+{
+        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -eq "CloudShell")
+        {
+                Write-Warning "Loading 30 Billion rows of data set takes four to five hours. 
+                Currently, you are running in Azure Cloud Shell that has a 20 minute timeout period. 
+                The script is falling back to 3 Million dataset. As an alternative, you can run the automation on your machine to load 4 billion rows into your environment." 
+                $Load30Billion = 0
+                Write-Host -NoNewLine 'Press any key to continue...';
+                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+        }
+}
+
 if($IsCloudLabs){
         Remove-Module solliance-synapse-automation
         Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
