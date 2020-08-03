@@ -8,28 +8,20 @@ $InformationPreference = "Continue"
 # This is for Spektra Environment.
 $IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
 
-$title = "Data Size"
-$yes = New-Object System.Management.Automation.Host.ChoiceDescription "30 &Billion", "Loads 30 billion records into the Sales table. Scales SQL Pool to DW3000c during data loading. Approxiamate loading time is 4 hours."
-$no = New-Object System.Management.Automation.Host.ChoiceDescription "3 &Million", "Loads 3 million records into the Sales table."
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$result = $host.ui.PromptForChoice($title, "Choose how much data you want to load.", $options, 1)
+$Load30Billion = 0
 
-switch($result)
+if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
 {
-0 { $Load30Billion = 1 }
-1 { $Load30Billion = 0 }
-}
-
-if ($Load30Billion -eq 1)
-{
-        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -eq "CloudShell")
+        $title = "Data Size"
+        $yes = New-Object System.Management.Automation.Host.ChoiceDescription "30 &Billion", "Loads 30 billion records into the Sales table. Scales SQL Pool to DW3000c during data loading. Approxiamate loading time is 4 hours."
+        $no = New-Object System.Management.Automation.Host.ChoiceDescription "3 &Million", "Loads 3 million records into the Sales table."
+        $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+        $result = $host.ui.PromptForChoice($title, "Choose how much data you want to load.", $options, 1)
+        
+        switch($result)
         {
-                Write-Warning "Loading 30 Billion rows of data set takes four to five hours. 
-                Currently, you are running in Azure Cloud Shell that has a 20 minute timeout period. 
-                The script is falling back to 3 Million dataset. As an alternative, you can run the automation on your machine to load 4 billion rows into your environment." 
-                $Load30Billion = 0
-                Write-Host -NoNewLine 'Press any key to continue...';
-                $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+        0 { $Load30Billion = 1 }
+        1 { $Load30Billion = 0 }
         }
 }
 
