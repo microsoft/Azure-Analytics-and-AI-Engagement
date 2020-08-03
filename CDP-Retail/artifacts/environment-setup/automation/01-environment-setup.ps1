@@ -63,7 +63,7 @@ if($IsCloudLabs){
         if($subs.GetType().IsArray -and $subs.length -gt 1){
                 $subOptions = [System.Collections.ArrayList]::new()
                 for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
-                        $optionName = $subs[$subIdx]
+                        $optionName = "&" + ($subIdx + 1) + " : " + $subs[$subIdx]
                         $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($subs[$subIdx]) subscription."   
                         $subOptions.Add($opt)
                 }
@@ -93,7 +93,7 @@ $resourceGroups = az group list --query '[].name' -o tsv
 if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
     $rgOptions = [System.Collections.ArrayList]::new()
     for($rgIdx=0; $rgIdx -lt $resourceGroups.length; $rgIdx++){
-        $optionName = "&" + ($rgIdx + 1) + " : " + $resourceGroups[$rgIdx]
+        $optionName = $resourceGroups[$rgIdx]
         $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($resourceGroups[$rgIdx]) resource group."   
         $rgOptions.Add($opt)
     }
