@@ -414,7 +414,8 @@ if($Load30Billion -eq 1)
         $start = Get-Date
         [nullable[double]]$secondsRemaining = $null
         $maxIterationCount = 3000
-        
+        $secondsElapsed = 0
+
         For ($count=1; $count -le $maxIterationCount; $count++) {
         
                 $percentComplete = ($count / $maxIterationCount) * 100
