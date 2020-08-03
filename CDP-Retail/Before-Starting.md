@@ -371,7 +371,7 @@ The WWI environment can be populated with 30 billion records to demonstrated lar
     Connect-AzAccount
     ```
     
-4. Continue your environment setup from [Task 7 in the Before Starting guide]((#task-7-run-environment-setup-powershell-script)).
+4. Continue your environment setup from [Task 7 in the Before Starting guide](#task-7-run-environment-setup-powershell-script)).
 
 
 
