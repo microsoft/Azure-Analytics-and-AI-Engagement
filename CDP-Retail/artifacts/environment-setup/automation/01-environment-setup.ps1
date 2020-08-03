@@ -94,7 +94,7 @@ if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
     }
     $selectedRgIdx = $host.ui.PromptForChoice('Enter the desired Resource Group for this lab','Copy and paste the name of the resource group to make your choice.', $rgOptions.ToArray(),0)
     $resourceGroupName = $resourceGroups[$selectedRgIdx]
-    Write-Information "Selecting the $selectedRgName resource group"
+    Write-Information "Selecting the $resourceGroupName resource group"
 }
 else{
 $resourceGroupName=$resourceGroups
