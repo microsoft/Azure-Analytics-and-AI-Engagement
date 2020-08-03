@@ -58,7 +58,8 @@ if($IsCloudLabs){
         if($subs.GetType().IsArray -and $subs.length -gt 1){
                 $subOptions = [System.Collections.ArrayList]::new()
                 for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
-                        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
+                        $optionName = "&" + ($subIdx + 1) + " : " + $subs[$subIdx]
+                        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($subs[$subIdx]) subscription."   
                         $subOptions.Add($opt)
                 }
                 $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
@@ -87,7 +88,8 @@ $resourceGroups = az group list --query '[].name' -o tsv
 if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
     $rgOptions = [System.Collections.ArrayList]::new()
     for($rgIdx=0; $rgIdx -lt $resourceGroups.length; $rgIdx++){
-        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($resourceGroups[$rgIdx])", "Selects the $($resourceGroups[$rgIdx]) resource group."   
+        $optionName = "&" + ($rgIdx + 1) + " : " + $resourceGroups[$rgIdx]
+        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($resourceGroups[$rgIdx]) resource group."   
         $rgOptions.Add($opt)
     }
     $selectedRgIdx = $host.ui.PromptForChoice('Enter the desired Resource Group for this lab','Copy and paste the name of the resource group to make your choice.', $rgOptions.ToArray(),0)
