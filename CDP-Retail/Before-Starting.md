@@ -350,7 +350,9 @@ When executing the script below, it is important to let the scripts run to compl
 
 The WWI environment can be populated with 30 billion records to demonstrated large data scenarios. Due to the limits of Azure Cloud Shell's 20-minute runtime, the automation has to run on a stand-alone machine against your subscription to be able to go through the 4-5 hours long data loading process. If you decide to go with the 30 billion records option, use a local Powershell instance with admin privileges instead of Azure Cloud Shell.
 
-1. Navigate to a folder location you prefer on your computer and execute the command below to download automation scripts and artifacts.
+1. [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and [Git](https://git-scm.com/downloads) to your computer.
+
+2. Navigate to a folder location you prefer on your computer and execute the command below to download automation scripts and artifacts.
 
 
     ```PowerShell
@@ -359,19 +361,19 @@ The WWI environment can be populated with 30 billion records to demonstrated lar
     
     ![The Azure Cloud Shell window is displayed with the choices of different data sizes that can be loaded into the environment by the script.](media/local-git-clone.png)
 
-2. Execute the following command to authenticate your powershell session with your Azure Subscription:
+3. Execute the following command to authenticate your powershell session with your Azure Subscription:
 
     ```cli
     az login
     ```
     
-3. Execute the following command to authenticate the script session with your Azure Subscription:
+4. Execute the following command to authenticate the script session with your Azure Subscription:
 
     ```cli
     Connect-AzAccount
     ```
     
-4. Continue your environment setup from [Task 7 in the Before Starting guide](#task-7-run-environment-setup-powershell-script)).
+5. Continue your environment setup from [Task 7 in the Before Starting guide](#task-7-run-environment-setup-powershell-script)).
 
 
 
