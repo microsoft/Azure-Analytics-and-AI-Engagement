@@ -13,7 +13,9 @@ param (
 	[Parameter(Mandatory = $false)][string]$mfgasaName,
 	[Parameter(Mandatory = $false)][string]$carasaName,
 	[Parameter(Mandatory = $false)][string]$cosmos_account_name_mfgdemo,
-	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing	
+	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing,
+	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName ,
+	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName
 	)
 
 # Install Az cli
@@ -80,9 +82,9 @@ Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/art
 expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
 
 #Replace connection string in config
-(Get-Content -path carTelemetry/App.config -Raw) | Foreach-Object { $_ `
+(Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_car.connectionString`	
-        } | Set-Content -Path carTelemetry/App.config
+        } | Set-Content -Path carTelemetry/appsettings.json
 		
 (Get-Content -path Telemetry/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_telemetry.connectionString`	
@@ -92,13 +94,13 @@ expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
                 -replace '#connection_string#', $iot_device_connection_sku2.connectionString`	
         } | Set-Content -Path sku2/appsettings.json
 		
-(Get-Content -path sendtohub/App.config -Raw) | Foreach-Object { $_ `
+(Get-Content -path sendtohub/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_sendtohub.connectionString`	
-        } | Set-Content -Path sendtohub/App.config
+        } | Set-Content -Path sendtohub/appsettings.json
 
 #run the 4 codes on the vm
 cd carTelemetry
-start-process SendMessageToIoTHub.exe
+start-process SendToHub.exe
 cd ..
 cd sendtohub
 start-process SendMessageToIoTHub.exe
@@ -126,7 +128,7 @@ $body=@"
   "groupUserAccessRight": "Admin"
 }
 "@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 
 $principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
@@ -138,15 +140,45 @@ $body=@"
   "groupUserAccessRight": "Admin"
 }
 "@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 
+
+#uploading Cosmos data
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+Install-PackageProvider -Name NuGet -Force
+Install-Module -Name PowerShellGet -Force
+Install-Module -Name CosmosDB -Force
+
+$cosmosDbAccountName = $cosmos_account_name_mfgdemo
+$databaseName = $cosmos_database_name_mfgdemo_manufacturing
+$cosmos=Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+foreach($name in $cosmos)
+	{
+$collection = $name.BaseName
+$cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $resourceGroup    
+#New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
+$path="./artifacts/cosmos"+$name.BaseName+".json"
+$document=Get-Content -Raw -Path $path
+$document=ConvertFrom-Json $document
+foreach($json in $document)
+{
+ $key=$json.SyntheticPartitionKey
+ $id = New-Guid
+ $json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id
+ $body=ConvertTo-Json $json
+ New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+ }
+ }
+ 
+ 
 #Creating spark notebooks
 Write-Information "Creating Spark notebooks..."
 $notebooks=Get-ChildItem "./artifacts/notebooks" | Select BaseName 
 $cellParams = [ordered]@{
         "#SQL_POOL_NAME#"       = $sqlPoolName
         "#SUBSCRIPTION_ID#"     = $subscriptionId
-        "#RESOURCE_GROUP_NAME#" = $resourceGroupName
+        "#RESOURCE_GROUP_NAME#" = $resourceGroup
         "#WORKSPACE_NAME#"  = $synapseWorkspaceName
         "#DATA_LAKE_NAME#" = $dataLakeAccountName
 }
@@ -157,7 +189,7 @@ foreach($name in $notebooks)
 			$template = $template.Replace($paramName, $cellParams[$paramName])
 		}
 		$jsonItem = ConvertFrom-Json $template
-	    $path="./artifacts/notebooks/"+$name+".ipynb"
+	    $path="./artifacts/notebooks/"+$name.BaseName+".ipynb"
 		$notebook=Get-Content -Raw -Path $path
 		$jsonNotebook = ConvertFrom-Json $notebook
 		$jsonItem.properties.cells = $jsonNotebook.cells
@@ -170,17 +202,19 @@ foreach($name in $notebooks)
             }
         }
     }
-	$item = ConvertTo-Json $jsonItem -Depth 100
-		$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name)?api-version=2019-06-01-preview"
-		$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-		#$result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+	     $item = ConvertTo-Json $jsonItem -Depth 100
+		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name.BaseName)?api-version=2019-06-01-preview"
+		 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+		 #waiting for operation completion
+		 Start-Sleep -Seconds 10
+		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
+		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+		 $result >> operationResult.txt
 	}	
 
 
 
 #creating sql schema
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
 Install-Module -Force -Name SqlServer
 Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
@@ -200,8 +234,9 @@ $workloadDataflows = [ordered]@{
         ingest_data_from_sap_hana_to_azure_synapse = "ingest_data_from_sap_hana_to_azure_synapse"
 }
 $DataflowPath="./artifacts/dataflows"
-foreach ($dataflow in $workloadDataflows.Keys) {
-$Name=$workloadDataflows[$dataflow]
+foreach ($dataflow in $workloadDataflows.Keys) 
+{
+		$Name=$workloadDataflows[$dataflow]
         Write-Information "Creating dataflow $($workloadDataflows[$dataflow])"
 		 $item = Get-Content -Path "$($DataflowPath)/$($Name).json"
     
@@ -212,12 +247,16 @@ $Name=$workloadDataflows[$dataflow]
     }
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/dataflows/$($Name)?api-version=2019-06-01-preview"
 		 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-        #Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+        #waiting for operation completion
+		 Start-Sleep -Seconds 10
+		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
+		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+		 $result >> operationResult.txt
 }
 
 #uploading powerbi reports
 Write-Information "Uploading power BI reports"
-Connect-PowerBIServiceAccount
+#Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
 
  
@@ -226,11 +265,11 @@ $reportList.Add($temp)
 $reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
 foreach($name in $reports)
 {
-        $FilePath="./artifacts/reports/"+$name+".pbix"
+        $FilePath="./artifacts/reports/"+$name.BaseName+".pbix"
         #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
         
         #write-host "Uploading PowerBI Report $name";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$name&nameConflict=CreateOrOverwrite";
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$name.BaseName&nameConflict=CreateOrOverwrite";
         $fileBytes = [System.IO.File]::ReadAllBytes($FilePath);
         $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
         $boundary = [System.Guid]::NewGuid().ToString();
@@ -245,7 +284,7 @@ foreach($name in $reports)
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
         #$reportId = $result.id;
         
-        $temp = "" | select-object @{Name = "Name"; Expression = {$name}}, 
+        $temp = "" | select-object @{Name = "Name"; Expression = {$name.BaseName}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
                                 @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
@@ -255,7 +294,7 @@ foreach($name in $reports)
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
         foreach($res in $dataSets.value)
         {
-        if($set.name -eq $name)
+        if($set.name -eq $name.BaseName)
         {
             $temp.PowerBIDataSetId= $set.id;
         }
@@ -276,16 +315,20 @@ $pipelineList = New-Object System.Collections.ArrayList
 $pipelineList.Add($temp)
 foreach($name in $pipelines)
 {
-	$FilePath="./artifacts/pipelines/"+$name+".json"
-	$temp = "" | select-object @{Name = "FileName"; Expression = {$name}} , @{Name = "Name"; Expression = {$name.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
+	$FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
+	$temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
 	$pipelineList.Add($temp)
 	 $item = Get-Content -Path $FilePath
 	 $item=$item.Replace("#DATA_LAKE_STORAGE_NAME #",$dataLakeAccountName)
 	 $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
 	 $item=$item.Replace("#DEFAULT_STORAGE  #",$defaultStorage)
-	 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name)?api-version=2019-06-01-preview"
+	 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
      $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-	 #Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+	 #waiting for operation completion
+		 Start-Sleep -Seconds 10
+		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
+		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+		 $result >> operationResult.txt
 	 
 }
 
@@ -303,3 +346,12 @@ foreach($report in $reportList)
     $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
    
 }
+
+
+#Install stream-analytics extension
+az extension add --name stream-analytics
+#start ASA
+az stream-analytics job start --resource-group $resourceGroup --name $mfgASATelemetryName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $mfgasaName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $carasaName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $mfgasaCosmosDBName --output-start-mode JobStartTime
