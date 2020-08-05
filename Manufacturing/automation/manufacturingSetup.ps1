@@ -118,9 +118,9 @@ cd ..
 
 
 #connecting asa and powerbi
-$principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 $principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/admin/groups/$wsId/users"
+$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
 $body=@"
 {
   "identifier": "$principalId",
@@ -130,9 +130,9 @@ $body=@"
 "@
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 
-$principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 $principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/admin/groups/$wsId/users"
+$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
 $body=@"
 {
   "identifier": "$principalId",
