@@ -33,7 +33,6 @@ az extension add --name azure-cli-iot-ext
 
 $subscriptionId=az account show|ConvertFrom-Json
 $subscriptionId=$subscriptionId.Id
-$global:logindomain = (Get-AzContext).Tenant.Id
 $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
 $powerbitoken = $tokenValue;
 $tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
@@ -149,6 +148,7 @@ Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
 Install-PackageProvider -Name NuGet -Force
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
+Connect-AzAccount -identity
 
 $cosmosDbAccountName = $cosmos_account_name_mfgdemo
 $databaseName = $cosmos_database_name_mfgdemo_manufacturing
