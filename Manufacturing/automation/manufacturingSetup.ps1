@@ -61,25 +61,25 @@ Write-Host $iot_device_connection_sendtohub.connectionString
 
 #download the binary zip folders
 
-Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/carTelemetry.zip -OutFile carTelemetry.zip
-#extract
-expand-archive -path "./carTelemetry.zip" -destinationpath "./carTelemetry"
-
-Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/Telemetry.zip -OutFile Telemetry.zip
-#extract
-expand-archive -path "./Telemetry.zip" -destinationpath "./Telemetry"
-
-Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sku2.zip -OutFile sku2.zip
-#extract
-expand-archive -path "./sku2.zip" -destinationpath "./sku2"
-
-Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sendtohub.zip -OutFile sendtohub.zip
-#extract
-expand-archive -path "./sendtohub.zip" -destinationpath "./sendtohub"
-
-Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/artifacts.zip -OutFile artifacts.zip
-#extract
-expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
+#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/carTelemetry.zip -OutFile carTelemetry.zip
+##extract
+expand-archive -path "./artifacts/datagenerator/carTelemetry.zip" -destinationpath "./carTelemetry"
+#
+#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/Telemetry.zip -OutFile Telemetry.zip
+##extract
+expand-archive -path "./artifacts/datagenerator/Telemetry.zip" -destinationpath "./Telemetry"
+#
+#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sku2.zip -OutFile sku2.zip
+##extract
+expand-archive -path "./artifacts/datagenerator/sku2.zip" -destinationpath "./sku2"
+#
+#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sendtohub.zip -OutFile sendtohub.zip
+##extract
+expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath "./sendtohub"
+#
+#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/artifacts.zip -OutFile artifacts.zip
+##extract
+#expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
 
 #Replace connection string in config
 (Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
