@@ -158,7 +158,7 @@ foreach($name in $cosmos)
 $collection = $name.BaseName
 $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $resourceGroup    
 #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
-$path="./artifacts/cosmos"+$name.BaseName+".json"
+$path="./artifacts/cosmos/"+$name.BaseName+".json"
 $document=Get-Content -Raw -Path $path
 $document=ConvertFrom-Json $document
 foreach($json in $document)
