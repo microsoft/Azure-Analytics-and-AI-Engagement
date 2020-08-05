@@ -1783,7 +1783,7 @@
             "settings":{
                "fileUris":[
                   "[variables('powershell_pre_script_setup_path')]",
-				   "[variables('powershell_pre_script_path')]",				  
+				   "[variables('powershell_pre_script_path')]"				  
                ]
             },
             "protectedSettings":{
