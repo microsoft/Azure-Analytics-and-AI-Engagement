@@ -16,7 +16,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing,
 	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName,
 	[Parameter(Mandatory = $false)][string]$cosmos_account_key,
-	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName
+	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName,
+	[Parameter(Mandatory = $false)][string]$storage_account_key
 	)
 
 # Install Az cli
@@ -174,7 +175,7 @@ foreach($json in $document)
 
  
  #Creating linked services
- ##cosmos
+ ##cosmos linked services
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"cosmos_linked_service.json"
  $itemTemplate = Get-Content $filepath
@@ -182,6 +183,13 @@ foreach($json in $document)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
+ ##Datalake linked services
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"data_lake_linked_service.json"
+ $itemTemplate = Get-Content $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
 #Creating spark notebooks
 Write-Information "Creating Spark notebooks..."
