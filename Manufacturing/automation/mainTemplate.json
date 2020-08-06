@@ -65,6 +65,7 @@
       "cosmos_database_container_name_spark_streaming":"spark-streaming",
       "cosmos_database_container_name_manufacturing_analytical_store":"manufacturing-analytical-store",
       "cosmos_database_container_name_mfg_mes_quality":"mfg-mes-quality",
+      "cosmos_account_key":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmos_account_name_mfgdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
       "iot_hub_name_mfgiothub":"[concat('mfgiothub-',variables('unique_suffix'))]",
       "iot_hub_name_mfgiothubCosmosDB":"[concat('mfgiothubCosmosDB-',variables('unique_suffix'))]",
       "iot_hub_name_mfgIotHubTelemetry":"[concat('mfgIotHubTelemetry-',variables('unique_suffix'))]",
@@ -74,6 +75,7 @@
       "iot_hub_consumer_group_mfgIotHubTelemetry":"cg-mfgIotHubTelemetry",
       "iot_hub_consumer_group_raceCarIotHub":"cg-raceCarIotHub",
       "storage_account_name_dreamdemostorageforgen2":"[if(greater(length(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "storage_account_key":"[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name_dreamdemostorageforgen2')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]",
       "asa_name_mfgasa":"[concat('mfgasa-',variables('unique_suffix'))]",
       "asa_query_mfgasa":"WITH CleanedRecord AS ( SELECT udf.removeIoTHubField([mfg-iothub-in]) AS CleanedField FROM [mfg-iothub-in] )  \n SELECT CleanedField.* INTO [synapse-mfgiotmillingcanning] FROM CleanedRecord WHERE CleanedField.OperationId = 103 \n SELECT * INTO [powerbi-milling-canning] FROM [mfgiothub] \n SELECT mfgiothub.* INTO [storage-lathe-thread-cut] FROM  [mfgiothub] WHERE mfgiothub.OperationId = 101 \n SELECT  mfgiothub.* INTO  [storage-lathe-peck-drill] FROM mfgiothub WHERE mfgiothub.OperationId = 102 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [storage-milling-canning] FROM mfgiothub WHERE mfgiothub.OperationId = 10 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [function-synapse-d365] FROM  mfgiothub WHERE mfgiothub.AnomalyTemperature = 1",
       "asa_name_mfgasaCosmosDB":"[concat('mfgasaCosmosDB-',variables('unique_suffix'))]",
@@ -93,20 +95,20 @@
       "virtual_machine_vnet_name":"[if(greater(length(concat('datavmvnet',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('datavmvnet', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('datavmvnet',parameters('environment_code'), uniqueString(deployment().name)) )]",
       "virtual_machine_vnet_address_prefix":"10.0.0.0/16",
       "powershell_pre_script_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitinstall.ps1",
-	  "powershell_pre_script_setup_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
+      "powershell_pre_script_setup_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'))]",
+      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'),' -cosmos_account_key ',variables('cosmos_account_key'),' -storage_account_key ',variables('storage_account_key'))]",
       "azure_function_ase_name":"[concat('function-asp-',variables('unique_suffix'))]",
       "azure_function_storage_name":"[if(greater(length(concat('fwa', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('fwa', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('fwa', uniqueString(deployment().name),parameters('environment_code')) )]",
       "azure_function_ai_name":"[concat('functions-ai-',variables('unique_suffix'))]",
       "azure_function_functions_app_name":"[concat('functions-web-app-',variables('unique_suffix'))]",
       "azure_function_functions_zip_url":"functions-web-app.zip",
-      "workspace_name_dreamdemosynapse":"[concat('synapse',parameters('environment_code'),uniqueString(deployment().name))]",
+      "workspace_name_dreamdemosynapse":"[concat('manufacturingdemo',parameters('environment_code'),uniqueString(deployment().name))]",
       "default_data_lake_storage_file_system_name":"tempdata",
       "default_data_lake_storage_account_url":"[concat('https://', variables('storage_account_name_dreamdemostorageforgen2'), '.dfs.core.windows.net')]",
-      "sql_compute_name":"SQLPool01",
+      "sql_compute_name":"ManufacturingDW",
       "sql_administrator_login_id":"ManufacturingUser",
-      "spark_compute_name":"SparkPool01",
+      "spark_compute_name":"MFGDreamPool",
       "compute_subnet_id":"",
       "sql_server_sku":"DW500c",
       "spark_auto_scale_enabled":"true",
@@ -120,7 +122,7 @@
       "spark_version":"2.4",
       "packages_requirements_file_name":"requirements.txt",
       "packages_requirements_content":"seaborn==0.10.1\nxgboost==1.0.2\nonnxruntime==1.0.0\nwerkzeug==0.16.1\nnimbusml==1.7.1\nruamel.yaml==0.16.9\nazureml-train-automl-runtime==1.6.0\nscikit-learn==0.20.3\nnumpy==1.16.2\npandas==0.23.4\nscipy==1.4.1",
-      "container_registry_name":"[concat('acr',parameters('environment_code'),uniqueString(deployment().name))]",
+      "container_registry_name":"[concat('mfgdemo',parameters('environment_code'),uniqueString(deployment().name))]",
       "cluster_name":"[concat('aks-',variables('unique_suffix'))]",
       "aks_dns_prefix":"",
       "aks_os_disk_size_gb":30,
@@ -130,7 +132,18 @@
       "linux_admin_username":"",
       "ssh_rsa_public_key":"",
       "service_principal_client_id":"",
-      "service_principal_client_secret":""
+      "service_principal_client_secret":"",
+      "storage_account_name_manufacturingdemo12":"[if(greater(length(concat('mfgdemo12', uniqueString(deployment().name),parameters('environment_code'))), 24),substring(concat('mfgdemo12', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('mfgdemo12', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "storage_account_name_manufacturingdemoassets":"[if(greater(length(concat('mfgdemoassets', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('mfgdemoassets', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('mfgdemoassets',uniqueString(deployment().name),parameters('environment_code')) )]",
+      "storage_account_name_manufacturingwebstaging":"[if(greater(length(concat('mfgwebstaging', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('mfgwebstaging', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('mfgwebstaging', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "cdp_vision_ase_name":"[concat('cdp-vision-',variables('unique_suffix'))]",
+      "cdp_vision_ai_name":"[concat('cdp-vision-',variables('unique_suffix'))]",
+      "cdp_vision_app_service_name":"[concat('cdp-vision-',variables('unique_suffix'))]",
+      "cdp_vision_zip_url":"https://publicassetstoragexor.blob.core.windows.net/assets/cdp-vision-webapp.zip",
+      "manufacturing_demo_ecommerce_ase_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
+      "manufacturing_demo_ecommerce_ai_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
+      "manufacturing_demo_ecommerce_app_service_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
+      "manufacturing_demo_ecommerce_zip_url":""
    },
    "resources":[
       {
@@ -1591,6 +1604,207 @@
          }
       },
       {
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "name":"[variables('storage_account_name_manufacturingdemo12')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS"
+         },
+         "kind":"StorageV2",
+         "properties":{
+            "accessTier":"Hot",
+            "supportsHttpsTrafficOnly":"true",
+            "isHnsEnabled":"true",
+            "largeFileSharesState":"Disabled"
+         },
+         "resources":[
+            {
+               "type":"blobServices/containers",
+               "apiVersion":"2018-07-01",
+               "name":"[concat('default/data'))]",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingdemo12'))]"
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingdemo12'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingdemo12'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            },
+            "deleteRetentionPolicy":{
+               "enabled":false
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/fileServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingdemo12'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingdemo12'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "name":"[variables('storage_account_name_manufacturingdemoassets')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS"
+         },
+         "kind":"StorageV2",
+         "properties":{
+            "accessTier":"Hot",
+            "supportsHttpsTrafficOnly":"true",
+            "isHnsEnabled":"true",
+            "largeFileSharesState":"Disabled"
+         },
+         "resources":[
+            {
+               "type":"blobServices/containers",
+               "apiVersion":"2018-07-01",
+               "name":"[concat('default/data'))]",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingdemoassets'))]"
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingdemoassets'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingdemoassets'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            },
+            "deleteRetentionPolicy":{
+               "enabled":false
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/fileServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingdemoassets'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingdemoassets'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "name":"[variables('storage_account_name_manufacturingwebstaging')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS"
+         },
+         "kind":"StorageV2",
+         "properties":{
+            "accessTier":"Hot",
+            "supportsHttpsTrafficOnly":"true",
+            "isHnsEnabled":"true",
+            "largeFileSharesState":"Disabled"
+         },
+         "resources":[
+            {
+               "type":"blobServices/containers",
+               "apiVersion":"2018-07-01",
+               "name":"[concat('default/data'))]",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingwebstaging'))]"
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingwebstaging'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingwebstaging'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            },
+            "deleteRetentionPolicy":{
+               "enabled":false
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/fileServices",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_manufacturingwebstaging'), '/default')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_manufacturingwebstaging'))]"
+         ],
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+
+               ]
+            }
+         }
+      },
+      {
          "name":"[variables('virtual_machine_vnet_name')]",
          "type":"Microsoft.Network/virtualNetworks",
          "apiVersion":"2019-11-01",
@@ -1783,7 +1997,7 @@
             "settings":{
                "fileUris":[
                   "[variables('powershell_pre_script_setup_path')]",
-				   "[variables('powershell_pre_script_path')]"				  
+                  "[variables('powershell_pre_script_path')]"
                ]
             },
             "protectedSettings":{
@@ -1869,6 +2083,222 @@
          "properties":{
             "createMode":"Default",
             "collation":"SQL_Latin1_General_CP1_CI_AS"
+         }
+      },
+      {
+         "name":"[variables('cdp_vision_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('cdp_vision_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('cdp_vision_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('cdp_vision_app_service_name')]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('cdp_vision_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('cdp_vision_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('cdp_vision_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('cdp_vision_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('cdp_vision_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"WEBSITE_RUN_FROM_PACKAGE",
+                     "value":"[variables('cdp_vision_zip_url')]",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('cdp_vision_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
+         }
+      },
+      {
+         "name":"[variables('manufacturing_demo_ecommerce_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('manufacturing_demo_ecommerce_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('manufacturing_demo_ecommerce_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('manufacturing_demo_ecommerce_app_service_name')]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('manufacturing_demo_ecommerce_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('manufacturing_demo_ecommerce_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('manufacturing_demo_ecommerce_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('manufacturing_demo_ecommerce_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('manufacturing_demo_ecommerce_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"WEBSITE_RUN_FROM_PACKAGE",
+                     "value":"[variables('manufacturing_demo_ecommerce_zip_url')]",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('manufacturing_demo_ecommerce_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
          }
       },
       {
