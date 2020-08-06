@@ -14,7 +14,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$carasaName,
 	[Parameter(Mandatory = $false)][string]$cosmos_account_name_mfgdemo,
 	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing,
-	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName ,
+	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName,
+	[Parameter(Mandatory = $false)][string]$cosmos_account_key,
 	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName
 	)
 
@@ -170,6 +171,16 @@ foreach($json in $document)
  New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
  }
  }
+
+ 
+ #Creating linked services
+ ##cosmos
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"cosmos_linked_service.json"
+ $itemTemplate = Get-Content $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT_KEY#", $cosmos_account_key).Replace("#COSMOS_DATABASE#", $cosmos_database_name_mfgdemo_manufacturing)
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
  
 #Creating spark notebooks
