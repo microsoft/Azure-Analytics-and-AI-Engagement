@@ -175,6 +175,8 @@ foreach($json in $document)
  
  #Creating linked services
  ##cosmos linked services
+ $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $resourceGroup |ConvertFrom-Json
+ $cosmos_account_key=$cosmos_account_key.primarymasterkey
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"cosmos_linked_service.json"
  $itemTemplate = Get-Content $filepath
@@ -183,6 +185,8 @@ foreach($json in $document)
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
  ##Datalake linked services
+ $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
+ $storage_account_key=$storage_account_key[0].value
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"data_lake_linked_service.json"
  $itemTemplate = Get-Content $filepath
