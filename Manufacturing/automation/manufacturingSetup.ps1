@@ -198,7 +198,7 @@ foreach($json in $document)
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"powerbi_linked_service.json"
  $itemTemplate = Get-Content $filepath
- $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $dataLakeAccountName).Replace("#WORKSPACE_ID#", $wsId)
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "ManufacturingDemo").Replace("#WORKSPACE_ID#", $wsId)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/ManufacturingDemo?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
