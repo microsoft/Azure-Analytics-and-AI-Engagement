@@ -179,7 +179,7 @@ foreach($json in $document)
  $cosmos_account_key=$cosmos_account_key.primarymasterkey
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"cosmos_linked_service.json"
- $itemTemplate = Get-Content $filepath
+ $itemTemplate = Get-Content -Path $filepath
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT_KEY#", $cosmos_account_key).Replace("#COSMOS_DATABASE#", $cosmos_database_name_mfgdemo_manufacturing)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
@@ -189,7 +189,7 @@ foreach($json in $document)
  $storage_account_key=$storage_account_key[0].value
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"data_lake_linked_service.json"
- $itemTemplate = Get-Content $filepath
+ $itemTemplate = Get-Content -Path $filepath
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($dataLakeAccountName)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
@@ -197,7 +197,7 @@ foreach($json in $document)
  ##powerbi linked services
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"powerbi_linked_service.json"
- $itemTemplate = Get-Content $filepath
+ $itemTemplate = Get-Content -Path $filepath
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "ManufacturingDemo").Replace("#WORKSPACE_ID#", $wsId)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/ManufacturingDemo?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
