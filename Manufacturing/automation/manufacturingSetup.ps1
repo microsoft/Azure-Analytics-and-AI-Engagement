@@ -191,6 +191,21 @@ foreach($json in $document)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
+ #Creating Datasets
+ Write-Information "Creating Datasets"
+ $datasets = @{
+        CosmosIoTToADLS = $dataLakeAccountName
+		}
+$DatasetsPath="./artifacts/datasets";	
+foreach ($dataset in $datasets.Keys) {
+        Write-Information "Creating dataset $($dataset)"
+		$LinkedServiceName=$datasets[$dataset]
+		$itemTemplate = Get-Content -Path "$($DatasetsPath)/$($dataset).json"
+		$item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
+		$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/datasets/$($dataset)?api-version=2019-06-01-preview"
+		$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+		}
+ 
 #Creating spark notebooks
 Write-Information "Creating Spark notebooks..."
 $notebooks=Get-ChildItem "./artifacts/notebooks" | Select BaseName 
