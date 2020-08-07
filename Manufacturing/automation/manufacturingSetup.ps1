@@ -15,9 +15,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$cosmos_account_name_mfgdemo,
 	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing,
 	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName,
-	[Parameter(Mandatory = $false)][string]$cosmos_account_key,
-	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName,
-	[Parameter(Mandatory = $false)][string]$storage_account_key
+	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName
+
 	)
 
 # Install Az cli
