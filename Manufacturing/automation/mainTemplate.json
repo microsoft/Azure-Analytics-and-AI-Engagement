@@ -26,6 +26,12 @@
             "description":"Password for VM(data generator) Admin user"
          }
       },
+	  "powerbi_embedded_admin_member_email":{
+	   "type":"String",
+         "metadata":{
+            "description":"Email Id for Powerbi dedicated Administrator"
+         }
+      },
       "location":{
          "type":"string",
          "defaultValue":"[resourceGroup().location]",
@@ -65,7 +71,6 @@
       "cosmos_database_container_name_spark_streaming":"spark-streaming",
       "cosmos_database_container_name_manufacturing_analytical_store":"manufacturing-analytical-store",
       "cosmos_database_container_name_mfg_mes_quality":"mfg-mes-quality",
-      "cosmos_account_key":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmos_account_name_mfgdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
       "iot_hub_name_mfgiothub":"[concat('mfgiothub-',variables('unique_suffix'))]",
       "iot_hub_name_mfgiothubCosmosDB":"[concat('mfgiothubCosmosDB-',variables('unique_suffix'))]",
       "iot_hub_name_mfgIotHubTelemetry":"[concat('mfgIotHubTelemetry-',variables('unique_suffix'))]",
@@ -75,7 +80,6 @@
       "iot_hub_consumer_group_mfgIotHubTelemetry":"cg-mfgIotHubTelemetry",
       "iot_hub_consumer_group_raceCarIotHub":"cg-raceCarIotHub",
       "storage_account_name_dreamdemostorageforgen2":"[if(greater(length(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('dreamdemostrggen2', uniqueString(deployment().name),parameters('environment_code')) )]",
-      "storage_account_key":"[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name_dreamdemostorageforgen2')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]",
       "asa_name_mfgasa":"[concat('mfgasa-',variables('unique_suffix'))]",
       "asa_query_mfgasa":"WITH CleanedRecord AS ( SELECT udf.removeIoTHubField([mfg-iothub-in]) AS CleanedField FROM [mfg-iothub-in] )  \n SELECT CleanedField.* INTO [synapse-mfgiotmillingcanning] FROM CleanedRecord WHERE CleanedField.OperationId = 103 \n SELECT * INTO [powerbi-milling-canning] FROM [mfgiothub] \n SELECT mfgiothub.* INTO [storage-lathe-thread-cut] FROM  [mfgiothub] WHERE mfgiothub.OperationId = 101 \n SELECT  mfgiothub.* INTO  [storage-lathe-peck-drill] FROM mfgiothub WHERE mfgiothub.OperationId = 102 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [storage-milling-canning] FROM mfgiothub WHERE mfgiothub.OperationId = 10 \n SELECT mfgiothub.EpochTime, mfgiothub.StringDateTime, mfgiothub.JobCode, mfgiothub.OperationId, mfgiothub.BatchCode, mfgiothub.MachineCode, mfgiothub.VibrationX, mfgiothub.VibrationY, mfgiothub.VibrationZ, mfgiothub.XAxis, mfgiothub.YAxis, mfgiothub.ZAxis, mfgiothub.SpindleSpeed, mfgiothub.AnomalyTemperature, mfgiothub.CoolantTemperature, mfgiothub.EventProcessedUtcTime, mfgiothub.PartitionId, mfgiothub.EventEnqueuedUtcTime INTO [function-synapse-d365] FROM  mfgiothub WHERE mfgiothub.AnomalyTemperature = 1",
       "asa_name_mfgasaCosmosDB":"[concat('mfgasaCosmosDB-',variables('unique_suffix'))]",
@@ -97,7 +101,7 @@
       "powershell_pre_script_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitinstall.ps1",
       "powershell_pre_script_setup_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'),' -cosmos_account_key ',variables('cosmos_account_key'),' -storage_account_key ',variables('storage_account_key'))]",
+      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'))]",
       "azure_function_ase_name":"[concat('function-asp-',variables('unique_suffix'))]",
       "azure_function_storage_name":"[if(greater(length(concat('fwa', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('fwa', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('fwa', uniqueString(deployment().name),parameters('environment_code')) )]",
       "azure_function_ai_name":"[concat('functions-ai-',variables('unique_suffix'))]",
@@ -143,7 +147,8 @@
       "manufacturing_demo_ecommerce_ase_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_ai_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_app_service_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
-      "manufacturing_demo_ecommerce_zip_url":""
+      "manufacturing_demo_ecommerce_zip_url":"",
+	  "powerbi_embeded_mfg_name":"[concat('powerbiembededmfg-',variables('unique_suffix'))]"
    },
    "resources":[
       {
@@ -1622,7 +1627,7 @@
             {
                "type":"blobServices/containers",
                "apiVersion":"2018-07-01",
-               "name":"[concat('default/data'))]",
+               "name":"[concat('default/data')]",
                "dependsOn":[
                   "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingdemo12'))]"
                ]
@@ -1689,7 +1694,7 @@
             {
                "type":"blobServices/containers",
                "apiVersion":"2018-07-01",
-               "name":"[concat('default/data'))]",
+               "name":"[concat('default/data')]",
                "dependsOn":[
                   "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingdemoassets'))]"
                ]
@@ -1756,7 +1761,7 @@
             {
                "type":"blobServices/containers",
                "apiVersion":"2018-07-01",
-               "name":"[concat('default/data'))]",
+               "name":"[concat('default/data')]",
                "dependsOn":[
                   "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name_manufacturingwebstaging'))]"
                ]
@@ -2433,7 +2438,25 @@
                }
             }
          }
-      }
+      },
+	          {
+            "type": "Microsoft.PowerBIDedicated/capacities",
+            "apiVersion": "2017-10-01",
+            "name": "[variables('powerbi_embeded_mfg_name')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "A1",
+                "tier": "PBIE_Azure",
+                "capacity": 1
+            },
+            "properties": {
+                "administration": {
+                    "members": [
+                      [parameters('powerbi_embedded_admin_member_email')]
+                    ]
+                }
+            }
+        }
    ],
    "outputs":{
 
