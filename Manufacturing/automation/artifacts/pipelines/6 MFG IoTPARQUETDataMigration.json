@@ -1,0 +1,239 @@
+{
+    "name": "6 MFG IoTPARQUETDataMigration",
+    "properties": {
+        "activities": [
+            {
+                "name": "6 MFG IoTPARQUETDataMigration",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "ParquetSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true,
+                            "modifiedDatetimeStart": {
+                                "value": "@getPastTime(1, 'minute')",
+                                "type": "Expression"
+                            },
+                            "wildcardFolderPath": "iot-milling-canning",
+                            "wildcardFileName": "*.parquet",
+                            "enablePartitionDiscovery": false
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink"
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "EpochTime",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "EpochTime",
+                                    "type": "Int64"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "StringDateTime",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "StringDateTime",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "JobCode",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "JobCode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "OperationId",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "OperationId",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "BatchCode",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "BatchCode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "MachineCode",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "MachineCode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "VibrationX",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "VibrationX",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "VibrationY",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "VibrationY",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "VibrationZ",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "VibrationZ",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "SpindleSpeed",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "SpindleSpeed",
+                                    "type": "Int64"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "CoolantTemperature",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "CoolantTemperature",
+                                    "type": "Int64"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "XAxis",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "xAxis",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "YAxis",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "yAxis",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "ZAxis",
+                                    "type": "Double"
+                                },
+                                "sink": {
+                                    "name": "zAxis",
+                                    "type": "Single"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "EventProcessedUtcTime",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "EventProcessedUtcTime",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "PartitionId",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "PartitionId",
+                                    "type": "Int64"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "EventEnqueuedUtcTime",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "EventEnqueuedUtcTime",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "AnomalyTemperature",
+                                    "type": "Int64"
+                                },
+                                "sink": {
+                                    "name": "AnomalyTemperature",
+                                    "type": "Int64"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "MFGParquettoSynapseSource",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "MFGazuresyanapseDW",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

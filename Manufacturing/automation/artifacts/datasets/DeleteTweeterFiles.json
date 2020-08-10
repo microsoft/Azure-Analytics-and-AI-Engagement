@@ -1,0 +1,19 @@
+{
+    "name": "DeleteTweeterFiles",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_0412f2f2150f4bceb010b3439ca4f1ab_1.parquet",
+                "fileSystem": "mfgtweets"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

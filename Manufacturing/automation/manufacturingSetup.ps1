@@ -204,6 +204,17 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($dataLakeAccountName)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
+ ##blob linked services
+ $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
+ $storage_account_key=$storage_account_key[0].value
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"blob_storage_linked_service.json"
+ $itemTemplate = Get-Content -Path $filepath
+ $name=$dataLakeAccountName+"blob"
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $name).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($name)?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
  ##powerbi linked services
  $templatepath="./artifacts/templates/"
  $filepath=$templatepath+"powerbi_linked_service.json"
@@ -236,6 +247,14 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/TeraData?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
+   ##oracle linked services
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"oracle_linked_service.json"
+ $itemTemplate = Get-Content -Path $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "oracle")
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/oracle?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
  
  #Creating Datasets
  Write-Information "Creating Datasets"
@@ -259,6 +278,18 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
 		MfgCampaignSynapseAnalyticsOutput=$sqlPoolName
 		Teradata_MarketingDB="TeraData"
 		TeradataMarketingDB="TeraData"
+		MfgSalesdatasetsink=$sqlPoolName
+		Oracle_SalesDB="oracle"
+		OracleSalesDB="oracle"
+		CosmosDbSqlApiCollection1=$cosmos_account_name_mfgdemo
+		DS_AzureSynapse_Telemetry=$sqlPoolName
+		IotData=$dataLakeAccountName
+		ArchiveTwitterParquet=$dataLakeAccountName
+		DeleteTweeterFiles=$dataLakeAccountName
+		DS_MFG_AzureSynapse_TwitterAnalytics=$sqlPoolName
+		TweetsParquet=$dataLakeAccountName
+		MFGazuresyanapseDW=$sqlPoolName
+		MFGParquettoSynapseSource=$dataLakeAccountName
 		
 		
 		}

@@ -1,0 +1,94 @@
+{
+    "name": "MFGParquettoSynapseSource",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "folderPath": "iot-milling-canning",
+                "container": "mfgoutputs"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": [
+            {
+                "name": "EpochTime",
+                "type": "INT64"
+            },
+            {
+                "name": "StringDateTime",
+                "type": "UTF8"
+            },
+            {
+                "name": "JobCode",
+                "type": "UTF8"
+            },
+            {
+                "name": "OperationId",
+                "type": "INT64"
+            },
+            {
+                "name": "BatchCode",
+                "type": "UTF8"
+            },
+            {
+                "name": "MachineCode",
+                "type": "UTF8"
+            },
+            {
+                "name": "VibrationX",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "VibrationY",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "VibrationZ",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "XAxis",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "YAxis",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "ZAxis",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "SpindleSpeed",
+                "type": "INT64"
+            },
+            {
+                "name": "AnomalyTemperature",
+                "type": "INT64"
+            },
+            {
+                "name": "CoolantTemperature",
+                "type": "INT64"
+            },
+            {
+                "name": "EventProcessedUtcTime",
+                "type": "INT96"
+            },
+            {
+                "name": "PartitionId",
+                "type": "INT64"
+            },
+            {
+                "name": "EventEnqueuedUtcTime",
+                "type": "INT96"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,21 @@
+{
+    "name": "ArchiveTwitterParquet",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "tweeterarchive",
+                "fileSystem": "mfgtweets"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
