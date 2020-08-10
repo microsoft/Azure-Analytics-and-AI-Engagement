@@ -20,7 +20,6 @@
     - [Task 10: Twitter Analytics Report](#task-10-twitter-analytics-report)
     - [Task 11: Location Analytics Real-Time Report](#task-11-location-analytics-real-time-report)
   - [Optional Features](#optional-features)
-    - Twitter Developer Account
     - [30 Billion Rows Dataset](#30-billion-rows-dataset)
 <!-- /TOC -->
 
@@ -405,6 +404,35 @@ The WWI environment can be populated with 30 billion records to demonstrated lar
     
 5. Continue your environment setup from [Task 7 in the Before Starting guide](#task-7-run-environment-setup-powershell-script)).
 
+### Twitter Developer Account Application
+
+The Twitter Real-Time Analytics report in you created during task 10 can be connected to the real world, and fetch real-time tweets from twitter instead of the simulator deployed as part of your environment. In order to connect your report to Twitter you will need a Twitter Developer Account. Below are the steps to apply for one.
+
+1. Visit [Twitter Developer Portal](https://developer.twitter.com/en/apply-for-access) to start your application for a Twitter Developer Account.
+
+2. Select **Apply for a developer account** to start your application.
+
+![Twitter developer portal is open. Apply for a developer account button is highlighted.](media/twitter-apply-for-access.png)
+
+3. Select **Building B2B products** for your reason to build your application.
+
+![Twitter developer application is in progress. Building B2B products option is selected as the reason for the application.](media/twitter-application-reason.png)
+
+4. Make sure all information is correct and **Team developer account** is selected for your application.
+
+![Twitter developer application options are presented. Team developer account option is selected.](media/twitter-team-application.png)
+
+5. In this step you will have to explain how you plan to use your developer account. Fill in your reasoning with your own words. Make sure you toggle the **Are you planning to analyze Twitter data** question **ON**.
+
+![Twitter developer application is in progress. Intend questions are asked. Sample answers are filled in.](media/twitter-application-inted.png)
+
+6. During the next step you will be asked to confirm your e-mail by clicking a link in an e-mail sent to your e-mail address attached to your Twitter account. Select the link in your e-mail and verify your e-mail address.
+
+![Twitter developer application e-mail confirmation e-mail is open. Confirm you email button is highlighted.](media/twitter-application-mail-confirm.png)
+
+7. Now your application is complete. It will be reviewed by Twitter, and you will receive a confirmation e-mail soon.
+
+![Twitter developer application is completed. Application Under Review page is shown.](media/twitter-application-review.png)
 
 
 
