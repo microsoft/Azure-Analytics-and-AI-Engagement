@@ -34,12 +34,7 @@ az login --identity
 #install iot hub extension
 az extension add --name azure-cli-iot-ext
 
-$subscriptionId=az account show|ConvertFrom-Json
-$subscriptionId=$subscriptionId.Id
-$tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
-$powerbitoken = $tokenValue;
-$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
-$synapseToken = $tokenValue;
+
 
 #Create iot hub devices
 az iot hub device-identity create -n $iot_hub_car -d race-car
@@ -114,37 +109,6 @@ cd Telemetry
 start-process DataGenerator.exe
 cd ..
 
- 
-
-
-
-
-#connecting asa and powerbi
-$principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-$principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-$body=@"
-{
-  "identifier": "$principalId",
-  "principalType": "App",
-  "groupUserAccessRight": "Admin"
-}
-"@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-
-$principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-$principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-$body=@"
-{
-  "identifier": "$principalId",
-  "principalType": "App",
-  "groupUserAccessRight": "Admin"
-}
-"@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-
-
 #uploading Cosmos data
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
@@ -172,7 +136,43 @@ foreach($json in $document)
  $body=ConvertTo-Json $json
  New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
  }
- }
+ } 
+
+az login -u $azure_login_id -p $azure_login_password
+$subscriptionId=az account show|ConvertFrom-Json
+$subscriptionId=$subscriptionId.Id
+$tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
+
+#connecting asa and powerbi
+$principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+$principalId=$principal.identity.principalId
+$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+$body=@"
+{
+  "identifier": "$principalId",
+  "principalType": "App",
+  "groupUserAccessRight": "Admin"
+}
+"@
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+
+$principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+$principalId=$principal.identity.principalId
+$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+$body=@"
+{
+  "identifier": "$principalId",
+  "principalType": "App",
+  "groupUserAccessRight": "Admin"
+}
+"@
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+
+
+
 
  #creating sql schema
 Install-Module -Force -Name SqlServer
