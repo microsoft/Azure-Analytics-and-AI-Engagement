@@ -2464,7 +2464,7 @@
             "properties": {
                 "administration": {
                     "members": [
-                      [parameters('powerbi_embedded_admin_member_email')]
+                      "[parameters('powerbi_embedded_admin_member_email')]"
                     ]
                 }
             }
