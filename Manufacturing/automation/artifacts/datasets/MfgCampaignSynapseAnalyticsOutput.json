@@ -1,0 +1,50 @@
+{
+    "name": "MfgCampaignSynapseAnalyticsOutput",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Country",
+                "type": "varchar"
+            },
+            {
+                "name": "Product_Category",
+                "type": "varchar"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "varchar"
+            },
+            {
+                "name": "City",
+                "type": "varchar"
+            },
+            {
+                "name": "State",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Campaign_Analytics"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

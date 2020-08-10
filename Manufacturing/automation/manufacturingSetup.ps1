@@ -174,6 +174,14 @@ foreach($json in $document)
  }
  }
 
+ #creating sql schema
+Install-Module -Force -Name SqlServer
+Write-Information "Create tables in $($sqlPoolName)"
+$SQLScriptsPath="./artifacts/sqlscripts"
+$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
  
  #Creating linked services
  ##cosmos linked services
@@ -204,11 +212,55 @@ foreach($json in $document)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/ManufacturingDemo?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
  
+ ##sql pool linked services
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"sql_pool_linked_service.json"
+ $itemTemplate = Get-Content -Path $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $sqlPoolName).Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($sqlPoolName)?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
+  ##sap hana linked services
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"sap_hana_linked_service.json"
+ $itemTemplate = Get-Content -Path $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "SapHana")
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/SapHana?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
+  ##teradata linked services
+ $templatepath="./artifacts/templates/"
+ $filepath=$templatepath+"teradata_linked_service.json"
+ $itemTemplate = Get-Content -Path $filepath
+ $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "TeraData")
+ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/TeraData?api-version=2019-06-01-preview"
+ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ 
  
  #Creating Datasets
  Write-Information "Creating Datasets"
  $datasets = @{
         CosmosIoTToADLS = $dataLakeAccountName
+		AzureSynapseAnalyticsTable1=$sqlPoolName
+		MfgSAPHanaDataset=$sqlPoolName
+		historical_drill=$dataLakeAccountName
+		MFGAzureSynapseDrill=$sqlPoolName
+		MachineInstanceSynapse=$sqlPoolName
+		MFGIoTHistoricalSynapse=$sqlPoolName
+		MfgIoTSynapseSink=$sqlPoolName
+		MfgLocationSynapse=$sqlPoolName
+		MfgOperationDataset=$sqlPoolName
+		mfgcosmosdbqualityds=$cosmos_account_name_mfgdemo
+		tblcosmosdbqualityds=$sqlPoolName
+		SapHanaSalesData="SapHana"
+		SAPSourceDataset="SapHana"
+		MarketingDB_Processed=$dataLakeAccountName
+		MarketingDB_Stage=$dataLakeAccountName
+		MfgCampaignSynapseAnalyticsOutput=$sqlPoolName
+		Teradata_MarketingDB="TeraData"
+		TeradataMarketingDB="TeraData"
+		
+		
 		}
 $DatasetsPath="./artifacts/datasets";	
 foreach ($dataset in $datasets.Keys) {
@@ -261,25 +313,18 @@ foreach($name in $notebooks)
 	}	
 
 
-
-#creating sql schema
-Install-Module -Force -Name SqlServer
-Write-Information "Create tables in $($sqlPoolName)"
-$SQLScriptsPath="./artifacts/sqlscripts"
-$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
-$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
-
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-
-
 #creating Dataflows
-$params = @{
-        LOAD_TO_SYNAPSE = "AzureSynapseAnalyticsTable8"
-        LOAD_TO_AZURE_SYNAPSE = "AzureSynapseAnalyticsTable9"
-        DATA_FROM_SAP_HANA = "DelimitedText1"
-}
+# $params = @{
+        # LOAD_TO_SYNAPSE = "AzureSynapseAnalyticsTable8"
+        # LOAD_TO_AZURE_SYNAPSE = "AzureSynapseAnalyticsTable9"
+        # DATA_FROM_SAP_HANA = "DelimitedText1"
+# }
 $workloadDataflows = [ordered]@{
-        ingest_data_from_sap_hana_to_azure_synapse = "ingest_data_from_sap_hana_to_azure_synapse"
+        MFG_Ingest_data_from_SAP_HANA_to_Azure_Synapse = "1 MFG Ingest data from SAP HANA to Azure Synapse"
+		Ingest_data_from_SAP_HANA_to_Common_Data_Service="2 Ingest data from SAP HANA to Common Data Service"
+		MFGDataFlowADLStoSynapse="2 MFGDataFlowADLStoSynapse"
+		MFG_IoT_dataflow="7 MFG IoT_dataflow"
+		MFGCosmosdbquality="MFGCosmosdbquality"
 }
 $DataflowPath="./artifacts/dataflows"
 foreach ($dataflow in $workloadDataflows.Keys) 
@@ -288,11 +333,11 @@ foreach ($dataflow in $workloadDataflows.Keys)
         Write-Information "Creating dataflow $($workloadDataflows[$dataflow])"
 		 $item = Get-Content -Path "$($DataflowPath)/$($Name).json"
     
-    if ($params -ne $null) {
-        foreach ($key in $params.Keys) {
-            $item = $item.Replace("#$($key)#", $params[$key])
-        }
-    }
+    # if ($params -ne $null) {
+        # foreach ($key in $params.Keys) {
+            # $item = $item.Replace("#$($key)#", $params[$key])
+        # }
+    # }
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/dataflows/$($Name)?api-version=2019-06-01-preview"
 		 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
         #waiting for operation completion

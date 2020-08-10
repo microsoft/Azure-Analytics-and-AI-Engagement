@@ -1,0 +1,50 @@
+{
+    "name": "mfgcosmosdbqualityds",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "Avg": {
+                    "type": "number"
+                },
+                "BatchId": {
+                    "type": "string"
+                },
+                "Good": {
+                    "type": "integer"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "MachineInstance": {
+                    "type": "string"
+                },
+                "MachineName": {
+                    "type": "string"
+                },
+                "ProductionDateTime": {
+                    "type": "string"
+                },
+                "Reject": {
+                    "type": "integer"
+                },
+                "Snag": {
+                    "type": "integer"
+                },
+                "SyntheticPartitionKey": {
+                    "type": "string"
+                }
+            }
+        },
+        "typeProperties": {
+            "collectionName": "manufacturing"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

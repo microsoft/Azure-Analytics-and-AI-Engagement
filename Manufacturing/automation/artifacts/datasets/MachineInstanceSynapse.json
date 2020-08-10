@@ -1,0 +1,50 @@
+{
+    "name": "MachineInstanceSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "MachineInstanceId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "MachineInstanceIndex",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "MachineMakeId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "LocationAreaId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "MachineCode",
+                "type": "varchar"
+            },
+            {
+                "name": "LocationMachineCode",
+                "type": "varchar"
+            },
+            {
+                "name": "MachineName",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "mfg-MachineInstance"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
