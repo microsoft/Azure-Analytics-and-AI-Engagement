@@ -344,6 +344,36 @@ When executing the script below, it is important to let the scripts run to compl
 
 8. Save and publish your report to your workspace to be used during your demo.
 
+### Task 12: Power BI Dashboard 
+
+1. Sign in into the [Power BI Portal](https://powerbi.microsoft.com/en-us/) using your Azure credentials.
+
+2. Select **Workspaces** from the left menu and select the **CDP** workspace you previously created.
+
+![PowerBI Portal is open. Create menu is selected. The Dashboard option is highligted](media/powerbi-dashboard-creation.png)
+
+3. Name your dashboard **CDP**.
+
+4. Select **Workspaces** from the left menu and select the **CDP** workspace you previously created.
+
+![CDP workspace is selected from the left menu. Reports tab selection is highlighted.](media/powerbi-dashboard-setup.png)
+
+5. Select **Phase2 CDP Vision Demo** report.
+
+6. Select **Pin Visual** from any of the tiles available in the report to pin it into your dashboard.
+
+![Phase 2 CDP Vision Demo report is open. Campaign Revenue tile is shown. Pin Visual button on the tile is highlighted.](media/powerbi-dashboard-pin.png)
+
+7. Select the **CDP** dashboard and select **Pin**.
+
+![Tile pinning window is open. CDP Dashboard is selected as the target. Pin button is highlighted.](media/powerbi-dashboard-pinit.png)
+
+So far, you have pinned one tile from a single report to your dashboard. Feel free to navigate to different reports and pin the tiles you find appropriate to create your dashboard to achieve the look presented below.
+
+![Final design of the Power BI Dashboard.](media/powerbi-dashboard-final.png)
+
+The dashboard shown above has images used on the top row and the first column to the left. These images are available in a report called **Dashboard-images**. You can access all images from **Dashboard-images** to pin it into your design.
+
 ## Optional Features
 
 ### 30 Billion Rows Dataset
