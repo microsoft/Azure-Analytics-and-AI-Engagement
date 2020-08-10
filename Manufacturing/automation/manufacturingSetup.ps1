@@ -1,4 +1,6 @@
 param (
+	[Parameter(Mandatory = $false)][string]$azure_login_id,
+    [Parameter(Mandatory = $false)][string]$azure_login_password,
     [Parameter(Mandatory = $false)][string]$iot_hub_car,
     [Parameter(Mandatory = $false)][string]$iot_hub_telemetry,
     [Parameter(Mandatory = $false)][string]$iot_hub,
