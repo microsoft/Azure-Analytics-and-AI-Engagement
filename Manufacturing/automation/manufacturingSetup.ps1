@@ -146,6 +146,8 @@ $powerbitoken = $tokenValue;
 $tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
 $synapseToken = $tokenValue;
 
+New-Item log.txt
+Add-Content log.txt "------asa powerbi connvection-----"
 #connecting asa and powerbi
 $principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 $principalId=$principal.identity.principalId
@@ -158,7 +160,7 @@ $body=@"
 }
 "@
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-
+Add-Content log.txt $result
 $principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 $principalId=$principal.identity.principalId
 $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
@@ -170,10 +172,10 @@ $body=@"
 }
 "@
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 
-
-
+Add-Content log.txt "------sql schema-----"
  #creating sql schema
 Install-Module -Force -Name SqlServer
 Write-Information "Create tables in $($sqlPoolName)"
@@ -181,8 +183,10 @@ $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+ Add-Content log.txt $result
  
+ Add-Content log.txt "------linked Services------"
  #Creating linked services
  ##cosmos linked services
  $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $resourceGroup |ConvertFrom-Json
@@ -193,6 +197,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo).Replace("#COSMOS_ACCOUNT_KEY#", $cosmos_account_key).Replace("#COSMOS_DATABASE#", $cosmos_database_name_mfgdemo_manufacturing)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($cosmos_account_name_mfgdemo)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
  ##Datalake linked services
  $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
@@ -203,6 +208,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($dataLakeAccountName)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
  ##blob linked services
  $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
@@ -214,6 +220,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $name).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($name)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
  ##powerbi linked services
  $templatepath="./artifacts/templates/"
@@ -222,6 +229,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "ManufacturingDemo").Replace("#WORKSPACE_ID#", $wsId)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/ManufacturingDemo?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
  ##sql pool linked services
  $templatepath="./artifacts/templates/"
@@ -230,6 +238,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $sqlPoolName).Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($sqlPoolName)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
   ##sap hana linked services
  $templatepath="./artifacts/templates/"
@@ -238,6 +247,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "SapHana")
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/SapHana?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
   ##teradata linked services
  $templatepath="./artifacts/templates/"
@@ -246,6 +256,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "TeraData")
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/TeraData?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+ Add-Content log.txt $result
  
    ##oracle linked services
  $templatepath="./artifacts/templates/"
@@ -254,9 +265,10 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $s
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "oracle")
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/oracle?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
- 
+ Add-Content log.txt $result
  
  #Creating Datasets
+ Add-Content log.txt "------datasets------"
  Write-Information "Creating Datasets"
  $datasets = @{
         CosmosIoTToADLS = $dataLakeAccountName
@@ -301,9 +313,11 @@ foreach ($dataset in $datasets.Keys) {
 		$item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
 		$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/datasets/$($dataset)?api-version=2019-06-01-preview"
 		$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+		Add-Content log.txt $result
 		}
  
 #Creating spark notebooks
+Add-Content log.txt "------Notebooks------"
 Write-Information "Creating Spark notebooks..."
 $notebooks=Get-ChildItem "./artifacts/notebooks" | Select BaseName 
 $cellParams = [ordered]@{
@@ -340,11 +354,12 @@ foreach($name in $notebooks)
 		 Start-Sleep -Seconds 10
 		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
 		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-		 $result >> operationResult.txt
+		 Add-Content log.txt $result
 	}	
 
 
 #creating Dataflows
+Add-Content log.txt "------dataflows-----"
 # $params = @{
         # LOAD_TO_SYNAPSE = "AzureSynapseAnalyticsTable8"
         # LOAD_TO_AZURE_SYNAPSE = "AzureSynapseAnalyticsTable9"
@@ -375,10 +390,11 @@ foreach ($dataflow in $workloadDataflows.Keys)
 		 Start-Sleep -Seconds 10
 		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
 		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-		 $result >> operationResult.txt
+		 Add-Content log.txt $result
 }
 
 #uploading powerbi reports
+Add-Content log.txt "------powerbi reports------"
 Write-Information "Uploading power BI reports"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
@@ -394,7 +410,8 @@ foreach($name in $reports)
         
         #write-host "Uploading PowerBI Report $name";
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$name.BaseName&nameConflict=CreateOrOverwrite";
-        $fileBytes = [System.IO.File]::ReadAllBytes($FilePath);
+		$fullyQualifiedPath==Resolve-Path -path $FilePath
+        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
         $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
         $boundary = [System.Guid]::NewGuid().ToString();
         $LF = "`r`n";
@@ -406,6 +423,7 @@ foreach($name in $reports)
         "--$boundary--$LF"
         ) -join $LF
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
+		Add-Content log.txt $result
         #$reportId = $result.id;
         
         $temp = "" | select-object @{Name = "Name"; Expression = {$name.BaseName}}, 
@@ -432,6 +450,7 @@ foreach($name in $reports)
 
 
 #creating Pipelines
+Add-Content log.txt "------pipelines------"
 Write-Information "Creating pipelines"
 $pipelines=Get-ChildItem "./artifacts/reports" | Select BaseName
 $pipelineList = New-Object System.Collections.ArrayList
@@ -452,13 +471,14 @@ foreach($name in $pipelines)
 		 Start-Sleep -Seconds 10
 		 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
 		 $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-		 $result >> operationResult.txt
+		 Add-Content log.txt $result
 	 
 }
 
 
 
 #Establish powerbi reports dataset connections
+Add-Content log.txt "------pbi connections------"
 Write-Information "Uploading power BI reports"	
 $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/powerbi_dataset_connection.json"
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "$($synapseWorkspaceName).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
@@ -468,6 +488,7 @@ foreach($report in $reportList)
    $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$report.PowerBIDataSetId/Default.UpdateDatasources";
     $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
+	Add-Content log.txt $result
    
 }
 
