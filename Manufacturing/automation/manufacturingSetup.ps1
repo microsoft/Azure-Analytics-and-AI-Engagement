@@ -450,10 +450,8 @@ foreach($name in $reports)
 #creating Pipelines
 Add-Content log.txt "------pipelines------"
 Write-Information "Creating pipelines"
-$pipelines=Get-ChildItem "./artifacts/reports" | Select BaseName
+$pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
 $pipelineList = New-Object System.Collections.ArrayList
-
-$pipelineList.Add($temp)
 foreach($name in $pipelines)
 {
 	$FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
@@ -462,7 +460,7 @@ foreach($name in $pipelines)
 	 $item = Get-Content -Path $FilePath
 	 $item=$item.Replace("#DATA_LAKE_STORAGE_NAME #",$dataLakeAccountName)
 	 $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
-	 $item=$item.Replace("#DEFAULT_STORAGE  #",$defaultStorage)
+	 $item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
 	 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
      $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	 #waiting for operation completion
