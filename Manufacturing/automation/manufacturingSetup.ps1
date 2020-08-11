@@ -398,10 +398,6 @@ Add-Content log.txt "------powerbi reports------"
 Write-Information "Uploading power BI reports"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
-
- 
-
-$reportList.Add($temp)
 $reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
 foreach($name in $reports)
 {
@@ -409,8 +405,8 @@ foreach($name in $reports)
         #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
         
         #write-host "Uploading PowerBI Report $name";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$name.BaseName&nameConflict=CreateOrOverwrite";
-		$fullyQualifiedPath==Resolve-Path -path $FilePath
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName$($name.BaseName)&nameConflict=CreateOrOverwrite";
+		$fullyQualifiedPaths=Resolve-Path -path $FilePath
         $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
         $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
         $boundary = [System.Guid]::NewGuid().ToString();
@@ -423,6 +419,7 @@ foreach($name in $reports)
         "--$boundary--$LF"
         ) -join $LF
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
+		Start-Sleep -s 5 
 		Add-Content log.txt $result
         #$reportId = $result.id;
         
@@ -434,6 +431,7 @@ foreach($name in $reports)
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+		Add-Content log.txt $dataSets
         foreach($res in $dataSets.value)
         {
         if($set.name -eq $name.BaseName)
