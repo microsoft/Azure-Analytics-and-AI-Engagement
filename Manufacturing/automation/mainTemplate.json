@@ -168,7 +168,7 @@
       "sku2_telemetry_ai_name":"[concat('sku2-telemetry-ai-',variables('unique_suffix'))]",
       "sku2_telemetry_app_service_name":"[concat('sku2-telemetry-app-',variables('unique_suffix'))]",
       "sendtohub_telemetry_ase_name":"[concat('sendtohub-telemrtry-ase-',variables('unique_suffix'))]",
-      "sendtohub_telemetry_ai_name":"[concatsendtohub-telemrtry-ai-',variables('unique_suffix'))]",
+      "sendtohub_telemetry_ai_name":"[concat('sendtohub-telemrtry-ai-',variables('unique_suffix'))]",
       "sendtohub_telemetry_app_service_name":"[concat('sendtohub-telemrtry-app-',variables('unique_suffix'))]",
       "data_gen_telemetry_ase_name":"[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
       "data_gen_telemetry_ai_name":"[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
@@ -2341,7 +2341,7 @@
          }
       },
       {
-         "name":"[variables('car_telemetry_app_service_name]",
+         "name":"[variables('car_telemetry_app_service_name')]",
          "type":"Microsoft.Web/sites",
          "apiVersion":"2018-11-01",
          "kind":"app",
@@ -2444,7 +2444,7 @@
          }
       },
       {
-         "name":"[variables('sendtohub_telemetry_app_service_name]",
+         "name":"[variables('sendtohub_telemetry_app_service_name')]",
          "type":"Microsoft.Web/sites",
          "apiVersion":"2018-11-01",
          "kind":"app",
@@ -2547,7 +2547,7 @@
          }
       },
       {
-         "name":"[variables('sku2_telemetry_app_service_name]",
+         "name":"[variables('sku2_telemetry_app_service_name')]",
          "type":"Microsoft.Web/sites",
          "apiVersion":"2018-11-01",
          "kind":"app",
@@ -2650,7 +2650,7 @@
          }
       },
       {
-         "name":"[variables('data_gen_telemetry_app_service_name]",
+         "name":"[variables('data_gen_telemetry_app_service_name')]",
          "type":"Microsoft.Web/sites",
          "apiVersion":"2018-11-01",
          "kind":"app",
