@@ -17,7 +17,15 @@ param (
 	[Parameter(Mandatory = $false)][string]$cosmos_account_name_mfgdemo,
 	[Parameter(Mandatory = $false)][string]$cosmos_database_name_mfgdemo_manufacturing,
 	[Parameter(Mandatory = $false)][string]$mfgasaCosmosDBName,
-	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName
+	[Parameter(Mandatory = $false)][string]$mfgASATelemetryName,
+	[Parameter(Mandatory = $false)][string]$app_name_telemetry_car,
+	[Parameter(Mandatory = $false)][string]$app_name_telemetry,
+	[Parameter(Mandatory = $false)][string]$app_name_hub,
+	[Parameter(Mandatory = $false)][string]$app_name_sendtohub,
+	[Parameter(Mandatory = $false)][string]$ai_name_telemetry_car,
+	[Parameter(Mandatory = $false)][string]$ai_name_telemetry,
+	[Parameter(Mandatory = $false)][string]$ai_name_hub,
+	[Parameter(Mandatory = $false)][string]$ai_name_sendtohub
 
 	)
 
@@ -56,6 +64,21 @@ Write-Host $iot_device_connection_sku2.connectionString
 $iot_device_connection_sendtohub = az iot hub device-identity show-connection-string --hub-name $iot_hub_sendtohub --device-id send-to-hub | Out-String | ConvertFrom-Json
 Write-Host $iot_device_connection_sendtohub.connectionString
 
+#get App insights instrumentation keys
+
+$app_insights_instrumentation_key_car = az resource show -g $resourceGroup -n $ai_name_telemetry_car --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+Write-Host $app_insights_instrumentation_key_car
+
+$app_insights_instrumentation_key_telemetry = az resource show -g $resourceGroup -n $ai_name_telemetry --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+Write-Host $app_insights_instrumentation_key_telemetry
+
+$app_insights_instrumentation_key_sku2 = az resource show -g $resourceGroup -n $ai_name_hub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+Write-Host $app_insights_instrumentation_key_sku2
+
+$app_insights_instrumentation_key_sendtohub = az resource show -g $resourceGroup -n $ai_name_sendtohub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+Write-Host $app_insights_instrumentation_key_sendtohub
+
+
 #download the binary zip folders
 
 #Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/carTelemetry.zip -OutFile carTelemetry.zip
@@ -79,35 +102,65 @@ expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath 
 #expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
 
 #Replace connection string in config
+
 (Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_car.connectionString`	
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_car`
         } | Set-Content -Path carTelemetry/appsettings.json
 		
 (Get-Content -path Telemetry/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_telemetry.connectionString`	
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_telemetry`
         } | Set-Content -Path Telemetry/appsettings.json
 		
 (Get-Content -path sku2/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#connection_string#', $iot_device_connection_sku2.connectionString`	
+					-replace '#app_insights_key#', $app_insights_instrumentation_key_sku2`
         } | Set-Content -Path sku2/appsettings.json
 		
 (Get-Content -path sendtohub/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_sendtohub.connectionString`	
+                -replace '#connection_string#', $iot_device_connection_sendtohub.connectionString`
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_sendtohub`				
         } | Set-Content -Path sendtohub/appsettings.json
+		
+#make zip for app service deployment
+
+Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
+Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
+Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
+Compress-Archive -Path "./Telemetry/*" -DestinationPath "./Telemetry.zip"
+
+# deploy the codes on app services
+
+az webapp stop --name $app_name_telemetry_car --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_telemetry_car --src "./carTelemetry.zip"
+az webapp start --name $app_name_telemetry_car --resource-group $resourceGroup
+
+az webapp stop --name $app_name_telemetry --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_telemetry --src "./Telemetry.zip"
+az webapp start --name $app_name_telemetry --resource-group $resourceGroup
+
+az webapp stop --name $app_name_hub --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_hub --src "./sku2.zip"
+az webapp start --name $app_name_hub --resource-group $resourceGroup
+
+az webapp stop --name $app_name_sendtohub --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_sendtohub --src "./sendtohub.zip"
+az webapp start --name $app_name_sendtohub --resource-group $resourceGroup
 
 #run the 4 codes on the vm
-cd carTelemetry
-start-process SendToHub.exe
-cd ..
-cd sendtohub
-start-process SendMessageToIoTHub.exe
-cd ..
-cd sku2
-start-process DataGenerator.exe
-cd ..
-cd Telemetry
-start-process DataGenerator.exe
-cd ..
+#cd carTelemetry
+#start-process SendToHub.exe
+#cd ..
+#cd sendtohub
+#start-process SendMessageToIoTHub.exe
+#cd ..
+#cd sku2
+#start-process DataGenerator.exe
+#cd ..
+#cd Telemetry
+#start-process DataGenerator.exe
+#cd ..
 
 #uploading Cosmos data
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

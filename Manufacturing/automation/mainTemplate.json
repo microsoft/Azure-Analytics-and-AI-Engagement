@@ -8,13 +8,13 @@
             "description":"Suffix added to all resource name to make them unique. Should be less than 6 characters"
          }
       },
-	   "azure_login_id":{
-         "type":"SecureString",
+      "azure_login_id":{
+         "type":"String",
          "metadata":{
             "description":"Azure Portal User"
          }
       },
-	   "azure_login_password":{
+      "azure_login_password":{
          "type":"SecureString",
          "metadata":{
             "description":"Password for Azure Portal User"
@@ -38,8 +38,8 @@
             "description":"Password for VM(data generator) Admin user"
          }
       },
-	  "powerbi_embedded_admin_member_email":{
-	   "type":"String",
+      "powerbi_embedded_admin_member_email":{
+         "type":"String",
          "metadata":{
             "description":"Email Id for Powerbi dedicated Administrator"
          }
@@ -113,7 +113,7 @@
       "powershell_pre_script_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitinstall.ps1",
       "powershell_pre_script_setup_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'),' -azure_login_id ',parameters('azure_login_id'),' -azure_login_password ',parameters('azure_login_password'))]",
+      "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'),' -azure_login_id ',parameters('azure_login_id'),' -azure_login_password ',parameters('azure_login_password'),' -app_name_telemetry_car ',variables('car_telemetry_app_service_name'),' -app_name_telemetry ',variables('data_gen_telemetry_app_service_name'),' -app_name_hub ',variables('sku2_telemetry_app_service_name'),' -app_name_sendtohub ',variables('sendtohub_telemetry_app_service_name'),' -ai_name_telemetry_car ',variables('car_telemetry_ai_name'),' -ai_name_telemetry ',variables('data_gen_telemetry_ai_name'),' -ai_name_hub ',variables('sku2_telemetry_ai_name'),' - ai_name_sendtohub ',variables('sendtohub_telemetry_ai_name'))]",
       "azure_function_ase_name":"[concat('function-asp-',variables('unique_suffix'))]",
       "azure_function_storage_name":"[if(greater(length(concat('fwa', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('fwa', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('fwa', uniqueString(deployment().name),parameters('environment_code')) )]",
       "azure_function_ai_name":"[concat('functions-ai-',variables('unique_suffix'))]",
@@ -160,7 +160,19 @@
       "manufacturing_demo_ecommerce_ai_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_app_service_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_zip_url":"",
-	  "powerbi_embeded_mfg_name":"[concat('powerbiembededmfg-',variables('unique_suffix'))]"
+      "powerbi_embeded_mfg_name":"[concat('powerbiembededmfg-',variables('unique_suffix'))]",
+      "car_telemetry_ase_name":"[concat('car-telemetry-ase',variables('unique_suffix'))]",
+      "car_telemetry_ai_name":"[concat('car-telemetry-ai-',variables('unique_suffix'))]",
+      "car_telemetry_app_service_name":"[concat('car-telemetry-app-',variables('unique_suffix'))]",
+      "sku2_telemetry_ase_name":"[concat('sku2-telemetry-ase-',variables('unique_suffix'))]",
+      "sku2_telemetry_ai_name":"[concat('sku2-telemetry-ai-',variables('unique_suffix'))]",
+      "sku2_telemetry_app_service_name":"[concat('sku2-telemetry-app-',variables('unique_suffix'))]",
+      "sendtohub_telemetry_ase_name":"[concat('sendtohub-telemrtry-ase-',variables('unique_suffix'))]",
+      "sendtohub_telemetry_ai_name":"[concatsendtohub-telemrtry-ai-',variables('unique_suffix'))]",
+      "sendtohub_telemetry_app_service_name":"[concat('sendtohub-telemrtry-app-',variables('unique_suffix'))]",
+      "data_gen_telemetry_ase_name":"[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
+      "data_gen_telemetry_ai_name":"[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
+      "data_gen_telemetry_app_service_name":"[concat('datagen-telemetry-app-',variables('unique_suffix'))]"
    },
    "resources":[
       {
@@ -1607,20 +1619,6 @@
          }
       },
       {
-         "name":"[variables('azure_function_storage_name')]",
-         "type":"Microsoft.Storage/storageAccounts",
-         "apiVersion":"2019-04-01",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"Standard_LRS",
-            "tier":"Standard"
-         },
-         "kind":"Storage",
-         "properties":{
-
-         }
-      },
-      {
          "type":"Microsoft.Storage/storageAccounts",
          "apiVersion":"2019-04-01",
          "name":"[variables('storage_account_name_manufacturingdemo12')]",
@@ -2319,6 +2317,432 @@
          }
       },
       {
+         "name":"[variables('car_telemetry_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('car_telemetry_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('car_telemetry_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('car_telemetry_app_service_name]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('car_telemetry_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('car_telemetry_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('car_telemetry_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('car_telemetry_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('car_telemetry_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('car_telemetry_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
+         }
+      },
+      {
+         "name":"[variables('sendtohub_telemetry_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('sendtohub_telemetry_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('sendtohub_telemetry_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('sendtohub_telemetry_app_service_name]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('sendtohub_telemetry_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('sendtohub_telemetry_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('sendtohub_telemetry_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('sendtohub_telemetry_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('sendtohub_telemetry_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('sendtohub_telemetry_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
+         }
+      },
+      {
+         "name":"[variables('sku2_telemetry_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('sku2_telemetry_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('sku2_telemetry_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('sku2_telemetry_app_service_name]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('sku2_telemetry_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('sku2_telemetry_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('sku2_telemetry_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('sku2_telemetry_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('sku2_telemetry_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('sku2_telemetry_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
+         }
+      },
+      {
+         "name":"[variables('data_gen_telemetry_ase_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "properties":{
+            "name":"[variables('data_gen_telemetry_ase_name')]"
+         },
+         "sku":{
+            "name":"S1"
+         }
+      },
+      {
+         "name":"[variables('data_gen_telemetry_ai_name')]",
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "location":"[variables('location')]",
+         "properties":{
+            "Application_Type":"web",
+            "Flow_Type":"Bluefield",
+            "Request_Source":"rest"
+         }
+      },
+      {
+         "name":"[variables('data_gen_telemetry_app_service_name]",
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "kind":"app",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Insights/components/', toLower(variables('data_gen_telemetry_ai_name')))]",
+            "[concat('Microsoft.Web/serverfarms/', toLower(variables('data_gen_telemetry_ase_name')))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('data_gen_telemetry_app_service_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('data_gen_telemetry_app_service_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('data_gen_telemetry_ase_name'))]",
+            "siteConfig":{
+               "appSettings":[
+                  {
+                     "name":"APPINSIGHTS_PROFILERFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"ApplicationInsightsAgent_EXTENSION_VERSION",
+                     "value":"~2",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"DiagnosticServices_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"InstrumentationEngine_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"SnapshotDebugger_EXTENSION_VERSION",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_BaseExtensions",
+                     "value":"disabled",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"XDT_MicrosoftApplicationInsights_Mode",
+                     "value":"recommended",
+                     "slotSetting":false
+                  },
+                  {
+                     "name":"AppInsights_Instrumentation_Key",
+                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('data_gen_telemetry_ai_name'))).InstrumentationKey]",
+                     "slotSetting":false
+                  }
+               ],
+               "use32BitWorkerProcess":true,
+               "alwaysOn":true,
+               "managedPipelineMode":"Integrated"
+            }
+         }
+      },
+      {
+         "name":"[variables('azure_function_storage_name')]",
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "kind":"Storage",
+         "properties":{
+
+         }
+      },
+      {
          "name":"[variables('azure_function_ase_name')]",
          "type":"Microsoft.Web/serverfarms",
          "apiVersion":"2019-08-01",
@@ -2451,24 +2875,24 @@
             }
          }
       },
-	          {
-            "type": "Microsoft.PowerBIDedicated/capacities",
-            "apiVersion": "2017-10-01",
-            "name": "[variables('powerbi_embeded_mfg_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "A1",
-                "tier": "PBIE_Azure",
-                "capacity": 1
-            },
-            "properties": {
-                "administration": {
-                    "members": [
-                      "[parameters('powerbi_embedded_admin_member_email')]"
-                    ]
-                }
+      {
+         "type":"Microsoft.PowerBIDedicated/capacities",
+         "apiVersion":"2017-10-01",
+         "name":"[variables('powerbi_embeded_mfg_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"A1",
+            "tier":"PBIE_Azure",
+            "capacity":1
+         },
+         "properties":{
+            "administration":{
+               "members":[
+                  "[parameters('powerbi_embedded_admin_member_email')]"
+               ]
             }
-        }
+         }
+      }
    ],
    "outputs":{
 
