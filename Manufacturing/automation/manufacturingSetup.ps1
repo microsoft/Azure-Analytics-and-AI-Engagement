@@ -459,7 +459,7 @@ foreach($name in $reports)
         
         #write-host "Uploading PowerBI Report $name";
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName$($name.BaseName)&nameConflict=CreateOrOverwrite";
-		$fullyQualifiedPaths=Resolve-Path -path $FilePath
+		$fullyQualifiedPath=Resolve-Path -path $FilePath
         $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
         $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
         $boundary = [System.Guid]::NewGuid().ToString();
