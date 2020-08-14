@@ -66,16 +66,16 @@ Write-Host $iot_device_connection_sendtohub.connectionString
 
 #get App insights instrumentation keys
 
-$app_insights_instrumentation_key_car = az resource show -g $resourceGroup -n $ai_name_telemetry_car --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
-Write-Host $app_insights_instrumentation_key_car
+$app_insights_instrumentation_key_car = az resource show -g $resourceGroup -n $ai_name_telemetry_car --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey | Out-String | ConvertFrom-Json
+Write-Host $app_insights_instrumentation_key_car 
 
-$app_insights_instrumentation_key_telemetry = az resource show -g $resourceGroup -n $ai_name_telemetry --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+$app_insights_instrumentation_key_telemetry = az resource show -g $resourceGroup -n $ai_name_telemetry --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey | Out-String | ConvertFrom-Json
 Write-Host $app_insights_instrumentation_key_telemetry
 
-$app_insights_instrumentation_key_sku2 = az resource show -g $resourceGroup -n $ai_name_hub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+$app_insights_instrumentation_key_sku2 = az resource show -g $resourceGroup -n $ai_name_hub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey | Out-String | ConvertFrom-Json
 Write-Host $app_insights_instrumentation_key_sku2
 
-$app_insights_instrumentation_key_sendtohub = az resource show -g $resourceGroup -n $ai_name_sendtohub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey
+$app_insights_instrumentation_key_sendtohub = az resource show -g $resourceGroup -n $ai_name_sendtohub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey | Out-String | ConvertFrom-Json
 Write-Host $app_insights_instrumentation_key_sendtohub
 
 
@@ -85,9 +85,9 @@ Write-Host $app_insights_instrumentation_key_sendtohub
 ##extract
 expand-archive -path "./artifacts/datagenerator/carTelemetry.zip" -destinationpath "./carTelemetry"
 #
-#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/Telemetry.zip -OutFile Telemetry.zip
+#Invoke-WebRequesthttps://publicassetstoragexor.blob.core.windows.net/assets/datagenTelemetry.zip -OutFile datagenTelemetry.zip
 ##extract
-expand-archive -path "./artifacts/datagenerator/Telemetry.zip" -destinationpath "./Telemetry"
+expand-archive -path "./artifacts/datagenerator/datagenTelemetry.zip" -destinationpath "./datagenTelemetry"
 #
 #Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sku2.zip -OutFile sku2.zip
 ##extract
@@ -104,18 +104,18 @@ expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath 
 #Replace connection string in config
 
 (Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_car.connectionString`	
-				-replace '#app_insights_key#', $app_insights_instrumentation_key_car`
+                -replace '#connection_string#', $iot_device_connection_car.connectionString`
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_car`				
         } | Set-Content -Path carTelemetry/appsettings.json
 		
-(Get-Content -path Telemetry/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_telemetry.connectionString`	
-				-replace '#app_insights_key#', $app_insights_instrumentation_key_telemetry`
-        } | Set-Content -Path Telemetry/appsettings.json
+(Get-Content -path datagenTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
+                -replace '#connection_string#', $iot_device_connection_telemetry.connectionString`
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_telemetry`				
+        } | Set-Content -Path datagenTelemetry/appsettings.json
 		
 (Get-Content -path sku2/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_sku2.connectionString`	
-					-replace '#app_insights_key#', $app_insights_instrumentation_key_sku2`
+                -replace '#connection_string#', $iot_device_connection_sku2.connectionString`
+				-replace '#app_insights_key#', $app_insights_instrumentation_key_sku2`				
         } | Set-Content -Path sku2/appsettings.json
 		
 (Get-Content -path sendtohub/appsettings.json -Raw) | Foreach-Object { $_ `
@@ -128,7 +128,7 @@ expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath 
 Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
-Compress-Archive -Path "./Telemetry/*" -DestinationPath "./Telemetry.zip"
+Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
 
 # deploy the codes on app services
 
@@ -137,7 +137,7 @@ az webapp deployment source config-zip --resource-group $resourceGroup --name $a
 az webapp start --name $app_name_telemetry_car --resource-group $resourceGroup
 
 az webapp stop --name $app_name_telemetry --resource-group $resourceGroup
-az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_telemetry --src "./Telemetry.zip"
+az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_telemetry --src "./datagenTelemetry.zip"
 az webapp start --name $app_name_telemetry --resource-group $resourceGroup
 
 az webapp stop --name $app_name_hub --resource-group $resourceGroup
