@@ -115,7 +115,7 @@
                     },
                     "logStorageSettings": {
                         "linkedServiceName": {
-                            "referenceName": "tweetstoblob",
+                            "referenceName": "#BLOB_LINKED_SERVICE#",
                             "type": "LinkedServiceReference"
                         },
                         "path": "mfgtweets/tweetstoblob"

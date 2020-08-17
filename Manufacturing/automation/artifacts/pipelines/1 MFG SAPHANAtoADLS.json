@@ -73,7 +73,7 @@
                     },
                     "staging": {
                         "linkedService": {
-                            "referenceName": "#LINKED_SERVICE_NAME#",
+                            "referenceName": "SapHana",
                             "type": "LinkedServiceReference"
                         },
                         "folderPath": "staging"

@@ -21,7 +21,7 @@
                     },
                     "staging": {
                         "linkedService": {
-                            "referenceName": "MFGADLSGen2",
+                            "referenceName": "#DATA_LAKE_STORAGE_NAME#",
                             "type": "LinkedServiceReference"
                         },
                         "folderPath": "cosmosdb-demo"

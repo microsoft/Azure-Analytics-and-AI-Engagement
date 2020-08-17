@@ -271,6 +271,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  $filepath=$templatepath+"blob_storage_linked_service.json"
  $itemTemplate = Get-Content -Path $filepath
  $name=$dataLakeAccountName+"blob"
+ $blobLinkedService=$name
  $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $name).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
  $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/$($name)?api-version=2019-06-01-preview"
  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
@@ -356,8 +357,6 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 		TweetsParquet=$dataLakeAccountName
 		MFGazuresyanapseDW=$sqlPoolName
 		MFGParquettoSynapseSource=$dataLakeAccountName
-		
-		
 		}
 $DatasetsPath="./artifacts/datasets";	
 foreach ($dataset in $datasets.Keys) {
@@ -515,7 +514,8 @@ foreach($name in $pipelines)
 	$temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
 	$pipelineList.Add($temp)
 	 $item = Get-Content -Path $FilePath
-	 $item=$item.Replace("#DATA_LAKE_STORAGE_NAME #",$dataLakeAccountName)
+	 $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
+	 $item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
 	 $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
 	 $item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
 	 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"

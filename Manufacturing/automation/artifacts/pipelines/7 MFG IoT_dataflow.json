@@ -21,7 +21,7 @@
                     },
                     "staging": {
                         "linkedService": {
-                            "referenceName": "AzureDataLakeStorage1",
+                            "referenceName": "#DATA_LAKE_STORAGE_NAME#",
                             "type": "LinkedServiceReference"
                         },
                         "folderPath": "mfg-historical-data"
