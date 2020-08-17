@@ -380,7 +380,9 @@ $cellParams = [ordered]@{
         "#RESOURCE_GROUP_NAME#" = $resourceGroup
         "#WORKSPACE_NAME#"  = $synapseWorkspaceName
         "#DATA_LAKE_NAME#" = $dataLakeAccountName
-		"#SPARK_POOL_NAME#"       = $sparkPoolName
+		"#SPARK_POOL_NAME#"= $sparkPoolName
+		"#STORAGE_ACCOUNT_KEY#"=$storage_account_key
+		"#COSMOS_LINKED_SERVICE#"=$cosmos_account_name_mfgdemo
 }
 foreach($name in $notebooks)
 	{
