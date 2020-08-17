@@ -25,7 +25,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$ai_name_telemetry_car,
 	[Parameter(Mandatory = $false)][string]$ai_name_telemetry,
 	[Parameter(Mandatory = $false)][string]$ai_name_hub,
-	[Parameter(Mandatory = $false)][string]$ai_name_sendtohub
+	[Parameter(Mandatory = $false)][string]$ai_name_sendtohub,
+	[Parameter(Mandatory = $false)][string]$sparkPoolName
 
 	)
 
@@ -379,6 +380,7 @@ $cellParams = [ordered]@{
         "#RESOURCE_GROUP_NAME#" = $resourceGroup
         "#WORKSPACE_NAME#"  = $synapseWorkspaceName
         "#DATA_LAKE_NAME#" = $dataLakeAccountName
+		"#SPARK_POOL_NAME#"       = $sparkPoolName
 }
 foreach($name in $notebooks)
 	{
