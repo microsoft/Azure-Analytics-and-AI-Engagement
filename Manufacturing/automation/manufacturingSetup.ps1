@@ -237,6 +237,32 @@ $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 
+ #uploading Sql Scripts
+ $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
+ $TemplatesPath="./artifacts/templates";	
+ foreach ($name in $scripts) {
+     $item = Get-Content -Raw -Path "$($TemplatesPath)/sql_script.json"
+     $item = $item.Replace("#SQL_SCRIPT_NAME#", $name.BaseName)
+	 $item = $item.Replace("#SQL_POOL_NAME#", $sqlPoolName)
+	  $jsonItem = ConvertFrom-Json $item
+	  $ScriptFileName=$name.BaseName
+	  $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
+	  if ($Parameters -ne $null) {
+        foreach ($key in $Parameters.Keys) {
+            $query = $query.Replace("#$($key)#", $Parameters[$key])
+        }
+    }
+	$query = ConvertFrom-Json (ConvertTo-Json $query)
+	$jsonItem.properties.content.query = $query
+    $item = ConvertTo-Json $jsonItem -Depth 100
+    
+    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/sqlscripts/$($ScriptFileName)?api-version=2019-06-01-preview"
+
+   
+    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+	 }
+ 
+ 
  $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
  Add-Content log.txt $result
  
@@ -457,11 +483,11 @@ $reportList = New-Object System.Collections.ArrayList
 $reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
 foreach($name in $reports)
 {
-        $FilePath="./artifacts/reports/"+$name.BaseName+".pbix"
+        $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
         #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
         
         #write-host "Uploading PowerBI Report $name";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName$($name.BaseName)&nameConflict=CreateOrOverwrite";
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
 		$fullyQualifiedPath=Resolve-Path -path $FilePath
         $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
         $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
@@ -474,7 +500,7 @@ foreach($name in $reports)
         $fileEnc,
         "--$boundary--$LF"
         ) -join $LF
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
+        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
 		Start-Sleep -s 5 
 		Add-Content log.txt $result
         #$reportId = $result.id;
@@ -490,9 +516,9 @@ foreach($name in $reports)
 		Add-Content log.txt $dataSets
         foreach($res in $dataSets.value)
         {
-        if($set.name -eq $name.BaseName)
+        if($res.name -eq $name.BaseName)
         {
-            $temp.PowerBIDataSetId= $set.id;
+            $temp.PowerBIDataSetId= $res.id;
         }
        }
                 
