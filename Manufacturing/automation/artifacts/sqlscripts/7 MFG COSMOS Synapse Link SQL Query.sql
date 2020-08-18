@@ -9,8 +9,8 @@ SELECT
 
 FROM OPENROWSET
 	(
-	BULK N'endpoint=https://cosmosdb-mfgdemo.documents.azure.com:443/;account=cosmosdb-mfgdemo;database=manufacturing;collection=MfgMachineInstance;region=westus2',
-	SECRET = 'ituFGSRRpA9mKO8Kj3QHuDg3gsZasbyYQZ75v1t5EDyjub6X68cqUvW8h4bSvfjks6r5L7Ij2ZaZJGxFfSpV7A==',
+	BULK N'endpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;account=#COSMOS_ACCOUNT#;database=manufacturing;collection=MfgMachineInstance;region=westus2',
+	SECRET = '#COSMOS_KEY#',
 	FORMAT='CosmosDB'
 	)
 WITH (
@@ -41,8 +41,8 @@ SELECT
 
 FROM OPENROWSET
 	(
-	BULK N'endpoint=https://cosmosdb-mfgdemo.documents.azure.com:443/;account=cosmosdb-mfgdemo;database=manufacturing;collection=MfgMachineInstance;region=westus2',
-	SECRET = 'ituFGSRRpA9mKO8Kj3QHuDg3gsZasbyYQZ75v1t5EDyjub6X68cqUvW8h4bSvfjks6r5L7Ij2ZaZJGxFfSpV7A==',
+	BULK N'endpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;account=#COSMOS_ACCOUNT#;database=manufacturing;collection=MfgMachineInstance;region=westus2',
+	SECRET = '#COSMOS_KEY#',
 	FORMAT='CosmosDB'
 	)
 WITH (
@@ -66,8 +66,8 @@ SELECT
 	, [MachineMakeName] 
 FROM OPENROWSET
 	(
-	BULK N'endpoint=https://cosmosdb-mfgdemo.documents.azure.com:443/;account=cosmosdb-mfgdemo;database=manufacturing;collection=MfgMachineMake;region=westus2',
-	SECRET = 'ituFGSRRpA9mKO8Kj3QHuDg3gsZasbyYQZ75v1t5EDyjub6X68cqUvW8h4bSvfjks6r5L7Ij2ZaZJGxFfSpV7A==',
+	BULK N'endpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;account=#COSMOS_ACCOUNT#;database=manufacturing;collection=MfgMachineMake;region=westus2',
+	SECRET = '#COSMOS_KEY#',
 	FORMAT='CosmosDB'
 	)
 WITH (
@@ -90,8 +90,8 @@ SELECT
     , [ProductionMonth] 
 FROM OPENROWSET
 	(
-	BULK N'endpoint=https://cosmosdb-mfgdemo.documents.azure.com:443/;account=cosmosdb-mfgdemo;database=manufacturing;collection=MfgMesQuality;region=westus2',
-	SECRET = 'ituFGSRRpA9mKO8Kj3QHuDg3gsZasbyYQZ75v1t5EDyjub6X68cqUvW8h4bSvfjks6r5L7Ij2ZaZJGxFfSpV7A==',
+	BULK N'endpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;account=#COSMOS_ACCOUNT#;database=manufacturing;collection=MfgMesQuality;region=westus2',
+	SECRET = '#COSMOS_KEY#',
 	FORMAT='CosmosDB'
 	)
 WITH (

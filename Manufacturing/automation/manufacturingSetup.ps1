@@ -240,6 +240,8 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  #uploading Sql Scripts
  $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
  $TemplatesPath="./artifacts/templates";	
+  $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $resourceGroup |ConvertFrom-Json
+ $cosmos_account_key=$cosmos_account_key.primarymasterkey
  foreach ($name in $scripts) {
      $item = Get-Content -Raw -Path "$($TemplatesPath)/sql_script.json"
      $item = $item.Replace("#SQL_SCRIPT_NAME#", $name.BaseName)
@@ -247,6 +249,8 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 	  $jsonItem = ConvertFrom-Json $item
 	  $ScriptFileName=$name.BaseName
 	  $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
+	  $query = $query.Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo)
+	  $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
 	  if ($Parameters -ne $null) {
         foreach ($key in $Parameters.Keys) {
             $query = $query.Replace("#$($key)#", $Parameters[$key])
