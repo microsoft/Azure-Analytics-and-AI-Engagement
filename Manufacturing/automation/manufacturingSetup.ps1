@@ -247,7 +247,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
      $item = $item.Replace("#SQL_SCRIPT_NAME#", $name.BaseName)
 	 $item = $item.Replace("#SQL_POOL_NAME#", $sqlPoolName)
 	  $jsonItem = ConvertFrom-Json $item
-	  $ScriptFileName=$name.BaseName
+	  $ScriptFileName="./artifacts/sqlscripts/"+$name.BaseName+".sql"
 	  $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
 	  $query = $query.Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo)
 	  $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
@@ -260,7 +260,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 	$jsonItem.properties.content.query = $query
     $item = ConvertTo-Json $jsonItem -Depth 100
     
-    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/sqlscripts/$($ScriptFileName)?api-version=2019-06-01-preview"
+    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/sqlscripts/$($name.BaseName)?api-version=2019-06-01-preview"
 
    
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
