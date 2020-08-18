@@ -1,0 +1,101 @@
+FactoryName,FactoryLocation,AreaName,FloorName,Score,P_Incident,Risk Category,Location
+Factory 1,Kyoto,AREA_1_FLOOR_1,FLOOR_F_1_1,100,1,Low,Kyoto
+Factory 1,Kyoto,AREA_26_FLOOR_1,FLOOR_F_1_1,80,21,Medium,Kyoto
+Factory 1,Kyoto,AREA_51_FLOOR_1,FLOOR_F_1_1,90,11,Low,Kyoto
+Factory 1,Kyoto,AREA_76_FLOOR_1,FLOOR_F_1_1,80,21,Medium,Kyoto
+Factory 2,San Diego,AREA_2_FLOOR_2,FLOOR_F_2_2,80,21,Medium,San Diego
+Factory 2,San Diego,AREA_27_FLOOR_2,FLOOR_F_2_2,65,36,Medium,San Diego
+Factory 2,San Diego,AREA_52_FLOOR_2,FLOOR_F_2_2,75,26,Medium,San Diego
+Factory 2,San Diego,AREA_77_FLOOR_2,FLOOR_F_2_2,65,36,Medium,San Diego
+Factory 3,Sturrgart,AREA_3_FLOOR_3,FLOOR_F_3_3,80,21,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_28_FLOOR_3,FLOOR_F_3_3,60,41,High,Sturrgart
+Factory 3,Sturrgart,AREA_53_FLOOR_3,FLOOR_F_3_3,55,46,High,Sturrgart
+Factory 3,Sturrgart,AREA_78_FLOOR_3,FLOOR_F_3_3,50,51,High,Sturrgart
+Factory 4,Miami,AREA_4_FLOOR_4,FLOOR_F_4_4,60,41,High,Miami Beach
+Factory 4,Miami,AREA_29_FLOOR_4,FLOOR_F_4_4,65,36,Medium,Miami Beach
+Factory 4,Miami,AREA_54_FLOOR_4,FLOOR_F_4_4,55,46,High,Miami Beach
+Factory 4,Miami,AREA_79_FLOOR_4,FLOOR_F_4_4,55,46,High,Miami Beach
+Factory 5,Rio de Janeiro,AREA_5_FLOOR_5,FLOOR_F_5_5,60,41,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_30_FLOOR_5,FLOOR_F_5_5,55,46,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_55_FLOOR_5,FLOOR_F_5_5,50,51,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_80_FLOOR_5,FLOOR_F_5_5,40,61,High,CopaCabana
+Factory 1,Kyoto,AREA_6_FLOOR_6,FLOOR_F_1_6,100,1,Low,Kyoto
+Factory 1,Kyoto,AREA_31_FLOOR_6,FLOOR_F_1_6,80,21,Medium,Kyoto
+Factory 1,Kyoto,AREA_56_FLOOR_6,FLOOR_F_1_6,85,16,Low,Kyoto
+Factory 1,Kyoto,AREA_81_FLOOR_6,FLOOR_F_1_6,95,6,Low,Kyoto
+Factory 2,San Diego,AREA_7_FLOOR_7,FLOOR_F_2_7,80,21,Medium,San Diego
+Factory 2,San Diego,AREA_32_FLOOR_7,FLOOR_F_2_7,60,41,High,San Diego
+Factory 2,San Diego,AREA_57_FLOOR_7,FLOOR_F_2_7,55,46,High,San Diego
+Factory 2,San Diego,AREA_82_FLOOR_7,FLOOR_F_2_7,75,26,Medium,San Diego
+Factory 3,Sturrgart,AREA_8_FLOOR_8,FLOOR_F_3_8,80,21,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_33_FLOOR_8,FLOOR_F_3_8,55,46,High,Sturrgart
+Factory 3,Sturrgart,AREA_58_FLOOR_8,FLOOR_F_3_8,60,41,High,Sturrgart
+Factory 3,Sturrgart,AREA_83_FLOOR_8,FLOOR_F_3_8,55,46,High,Sturrgart
+Factory 4,Miami,AREA_9_FLOOR_9,FLOOR_F_4_9,60,41,High,Miami Beach
+Factory 4,Miami,AREA_34_FLOOR_9,FLOOR_F_4_9,40,61,High,Miami Beach
+Factory 4,Miami,AREA_59_FLOOR_9,FLOOR_F_4_9,50,51,High,Miami Beach
+Factory 4,Miami,AREA_84_FLOOR_9,FLOOR_F_4_9,35,66,High,Miami Beach
+Factory 5,Rio de Janeiro,AREA_10_FLOOR_10,FLOOR_F_5_10,60,41,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_35_FLOOR_10,FLOOR_F_5_10,50,51,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_60_FLOOR_10,FLOOR_F_5_10,35,66,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_85_FLOOR_10,FLOOR_F_5_10,45,56,High,CopaCabana
+Factory 1,Kyoto,AREA_11_FLOOR_11,FLOOR_F_1_11,95,6,Low,Kyoto
+Factory 1,Kyoto,AREA_36_FLOOR_11,FLOOR_F_1_11,80,21,Medium,Kyoto
+Factory 1,Kyoto,AREA_61_FLOOR_11,FLOOR_F_1_11,80,21,Medium,Kyoto
+Factory 1,Kyoto,AREA_86_FLOOR_11,FLOOR_F_1_11,95,6,Low,Kyoto
+Factory 2,San Diego,AREA_12_FLOOR_12,FLOOR_F_2_12,75,26,Medium,San Diego
+Factory 2,San Diego,AREA_37_FLOOR_12,FLOOR_F_2_12,75,26,Medium,San Diego
+Factory 2,San Diego,AREA_62_FLOOR_12,FLOOR_F_2_12,50,51,High,San Diego
+Factory 2,San Diego,AREA_87_FLOOR_12,FLOOR_F_2_12,55,46,High,San Diego
+Factory 3,Sturrgart,AREA_13_FLOOR_13,FLOOR_F_3_13,95,6,Low,Sturrgart
+Factory 3,Sturrgart,AREA_38_FLOOR_13,FLOOR_F_3_13,80,21,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_63_FLOOR_13,FLOOR_F_3_13,65,36,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_88_FLOOR_13,FLOOR_F_3_13,55,46,High,Sturrgart
+Factory 4,Miami,AREA_14_FLOOR_14,FLOOR_F_4_14,60,41,High,Miami Beach
+Factory 4,Miami,AREA_39_FLOOR_14,FLOOR_F_4_14,40,61,High,Miami Beach
+Factory 4,Miami,AREA_64_FLOOR_14,FLOOR_F_4_14,60,41,High,Miami Beach
+Factory 4,Miami,AREA_89_FLOOR_14,FLOOR_F_4_14,50,51,High,Miami Beach
+Factory 5,Rio de Janeiro,AREA_15_FLOOR_15,FLOOR_F_5_15,45,56,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_40_FLOOR_15,FLOOR_F_5_15,55,46,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_65_FLOOR_15,FLOOR_F_5_15,60,41,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_90_FLOOR_15,FLOOR_F_5_15,35,66,High,CopaCabana
+Factory 1,Kyoto,AREA_16_FLOOR_16,FLOOR_F_1_16,60,41,High,Kyoto
+Factory 1,Kyoto,AREA_41_FLOOR_16,FLOOR_F_1_16,80,21,Medium,Kyoto
+Factory 1,Kyoto,AREA_66_FLOOR_16,FLOOR_F_1_16,95,6,Low,Kyoto
+Factory 1,Kyoto,AREA_91_FLOOR_16,FLOOR_F_1_16,90,11,Low,Kyoto
+Factory 2,San Diego,AREA_17_FLOOR_17,FLOOR_F_2_17,80,21,Medium,San Diego
+Factory 2,San Diego,AREA_42_FLOOR_17,FLOOR_F_2_17,50,51,High,San Diego
+Factory 2,San Diego,AREA_67_FLOOR_17,FLOOR_F_2_17,65,36,Medium,San Diego
+Factory 2,San Diego,AREA_92_FLOOR_17,FLOOR_F_2_17,80,21,Medium,San Diego
+Factory 3,Sturrgart,AREA_18_FLOOR_18,FLOOR_F_3_18,80,21,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_43_FLOOR_18,FLOOR_F_3_18,60,41,High,Sturrgart
+Factory 3,Sturrgart,AREA_68_FLOOR_18,FLOOR_F_3_18,75,26,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_93_FLOOR_18,FLOOR_F_3_18,75,26,Medium,Sturrgart
+Factory 4,Miami,AREA_19_FLOOR_19,FLOOR_F_4_19,35,66,High,Miami Beach
+Factory 4,Miami,AREA_44_FLOOR_19,FLOOR_F_4_19,55,46,High,Miami Beach
+Factory 4,Miami,AREA_69_FLOOR_19,FLOOR_F_4_19,35,66,High,Miami Beach
+Factory 4,Miami,AREA_94_FLOOR_19,FLOOR_F_4_19,40,61,High,Miami Beach
+Factory 5,Rio de Janeiro,AREA_20_FLOOR_20,FLOOR_F_5_20,60,41,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_45_FLOOR_20,FLOOR_F_5_20,55,46,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_70_FLOOR_20,FLOOR_F_5_20,60,41,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_95_FLOOR_20,FLOOR_F_5_20,50,51,High,CopaCabana
+Factory 1,Kyoto,AREA_21_FLOOR_21,FLOOR_F_1_21,95,6,Low,Kyoto
+Factory 1,Kyoto,AREA_46_FLOOR_21,FLOOR_F_1_21,100,1,Low,Kyoto
+Factory 1,Kyoto,AREA_71_FLOOR_21,FLOOR_F_1_21,55,46,High,Kyoto
+Factory 1,Kyoto,AREA_96_FLOOR_21,FLOOR_F_1_21,85,16,Low,Kyoto
+Factory 2,San Diego,AREA_22_FLOOR_22,FLOOR_F_2_22,55,46,High,San Diego
+Factory 2,San Diego,AREA_47_FLOOR_22,FLOOR_F_2_22,50,51,High,San Diego
+Factory 2,San Diego,AREA_72_FLOOR_22,FLOOR_F_2_22,55,46,High,San Diego
+Factory 2,San Diego,AREA_97_FLOOR_22,FLOOR_F_2_22,60,41,High,San Diego
+Factory 3,Sturrgart,AREA_23_FLOOR_23,FLOOR_F_3_23,70,31,Medium,Sturrgart
+Factory 3,Sturrgart,AREA_48_FLOOR_23,FLOOR_F_3_23,55,46,High,Sturrgart
+Factory 3,Sturrgart,AREA_73_FLOOR_23,FLOOR_F_3_23,55,46,High,Sturrgart
+Factory 3,Sturrgart,AREA_98_FLOOR_23,FLOOR_F_3_23,60,41,High,Sturrgart
+Factory 4,Miami,AREA_24_FLOOR_24,FLOOR_F_4_24,55,46,High,Miami Beach
+Factory 4,Miami,AREA_49_FLOOR_24,FLOOR_F_4_24,50,51,High,Miami Beach
+Factory 4,Miami,AREA_74_FLOOR_24,FLOOR_F_4_24,60,41,High,Miami Beach
+Factory 4,Miami,AREA_99_FLOOR_24,FLOOR_F_4_24,60,41,High,Miami Beach
+Factory 5,Rio de Janeiro,AREA_25_FLOOR_25,FLOOR_F_5_25,55,46,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_50_FLOOR_25,FLOOR_F_5_25,45,56,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_75_FLOOR_25,FLOOR_F_5_25,40,61,High,CopaCabana
+Factory 5,Rio de Janeiro,AREA_100_FLOOR_25,FLOOR_F_5_25,40,61,High,CopaCabana

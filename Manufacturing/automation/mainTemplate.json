@@ -959,7 +959,163 @@
       {
          "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
          "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/campaigndata')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
          "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfgoutputs')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/cosmosdb-demo')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/egstage')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/marketingdb-staging')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfg-historical-data')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfg-iot-data')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfgcosmos')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfgdemodata')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/mfgtweets')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/nyctlc')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/saphana')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/staging')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/weather')]",
          "dependsOn":[
             "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
             "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
@@ -1927,12 +2083,12 @@
             "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasaCosmosDB'))]",
             "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_race_car_asa'))]",
             "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('cdp_vision_app_service_name')))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('manufacturing_demo_ecommerce_app_service_name')))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('car_telemetry_app_service_name')))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('data_gen_telemetry_app_service_name')))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('sendtohub_telemetry_app_service_name')))]",
-			"[concat('Microsoft.Web/sites/', toLower(variables('sku2_telemetry_app_service_name')))]"
+            "[concat('Microsoft.Web/sites/', toLower(variables('cdp_vision_app_service_name')))]",
+            "[concat('Microsoft.Web/sites/', toLower(variables('manufacturing_demo_ecommerce_app_service_name')))]",
+            "[concat('Microsoft.Web/sites/', toLower(variables('car_telemetry_app_service_name')))]",
+            "[concat('Microsoft.Web/sites/', toLower(variables('data_gen_telemetry_app_service_name')))]",
+            "[concat('Microsoft.Web/sites/', toLower(variables('sendtohub_telemetry_app_service_name')))]",
+            "[concat('Microsoft.Web/sites/', toLower(variables('sku2_telemetry_app_service_name')))]"
          ],
          "properties":{
             "hardwareProfile":{

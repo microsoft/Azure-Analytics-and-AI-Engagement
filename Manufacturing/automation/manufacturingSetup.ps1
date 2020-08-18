@@ -236,7 +236,8 @@ Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
-
+ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+ Add-Content log.txt $result
  #uploading Sql Scripts
  $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
  $TemplatesPath="./artifacts/templates";	
@@ -265,10 +266,21 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
    
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	 }
+
  
- 
- $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
- Add-Content log.txt $result
+ #Uploading to storage containers
+ $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
+ Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
+ Expand-Archive "azCopy.zip" -DestinationPath ".\azcopy" -Force
+ $azCopyCommand = (Get-ChildItem -Path ".\azcopy" -Recurse azcopy.exe).Directory.FullName
+ $Env:Path += ";"+ $azCopyCommand
+ Install-Module -Name Az.Storage -Force
+ $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
+ $storage_account_key=$storage_account_key[0].value
+ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+ $destinationSasKey = New-AzStorageContainerSASToken -Container "campaigndata" -Context $dataLakeContext -Permission rwdl
+ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/campaigndata/$($destinationSasKey)"
+ azcopy copy './artifacts/storageassets/campaigndata/*' $destinationUri --recursive
  
  Add-Content log.txt "------linked Services------"
  #Creating linked services
