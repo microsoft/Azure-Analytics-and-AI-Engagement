@@ -564,11 +564,11 @@ $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Repla
 foreach($report in $reportList)
 {
    Write-Information "Setting database connection for $($report.Name)"
-   $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
-   $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$report.PowerBIDataSetId/Default.UpdateDatasources";
+   $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $report.SourceServer).Replace("#SOURCE_DATABASE#", $report.SourceDatabase) |Out-String
+   $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
     $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
-	Add-Content log.txt $result
-   
+    Add-Content log.txt $result
+  
 }
 
 
