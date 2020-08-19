@@ -1,0 +1,1544 @@
+﻿1,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,25
+2,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+3,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+4,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+5,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+6,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+7,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,25
+8,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+9,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+10,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+11,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,25
+12,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+13,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+14,2015-11-25 14:05:57.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+15,2015-11-25 15:49:21.0000000,,,,,NULL,personal,,NULL,,
+16,2015-11-25 16:15:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+17,2015-11-25 16:24:41.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+18,2015-11-25 16:25:39.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+19,2015-11-25 19:19:27.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+20,2015-11-25 19:25:57.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+21,2015-11-25 19:30:25.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+22,2015-11-25 19:49:14.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+23,2015-11-25 19:56:39.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+24,2015-11-25 20:02:28.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+25,2015-11-25 20:13:12.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+26,2015-11-25 20:19:25.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+27,2015-11-25 20:23:06.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+28,2015-11-25 20:25:09.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+29,2015-11-25 20:29:04.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+30,2015-11-25 20:31:57.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+31,2015-11-25 20:33:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+32,2015-11-25 20:35:35.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+33,2015-11-25 20:39:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+34,2015-11-25 20:40:40.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+35,2015-11-25 20:42:37.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+36,2015-11-25 20:46:42.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+37,2015-11-25 20:52:45.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+38,2015-11-25 20:54:41.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+39,2015-11-25 21:01:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+40,2015-11-25 21:03:34.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+41,2015-11-25 21:24:31.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+42,1900-01-01 00:00:00.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+43,1900-01-01 00:00:00.0000000,male;,single,33;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+44,1900-01-01 00:00:00.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+45,2015-11-25 21:27:38.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,,,NULL,,
+46,1900-01-01 00:00:00.0000000,female;,single,19;,GenZ;Boomers;,NULL,outdoorentertainment,,NULL,,
+47,2015-11-25 21:29:37.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+48,2015-11-25 21:30:58.0000000,male;,single,46;,GenX;Boomers;,NULL,,,NULL,,
+49,2015-11-25 21:42:22.0000000,female;,single,44;,GenX;Boomers;,NULL,,,NULL,,
+50,2015-11-25 22:15:34.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,,,NULL,,
+51,2015-11-25 22:16:22.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+52,2015-11-25 22:20:34.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,,,NULL,,
+53,2015-11-25 22:23:16.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+54,2015-11-25 22:23:55.0000000,male;,single,46;,GenX;Boomers;,NULL,,,NULL,,
+55,2015-11-25 22:24:50.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,,,NULL,,
+56,2015-11-25 22:30:46.0000000,,,,,NULL,family,,NULL,,
+57,2015-11-25 23:39:02.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+58,2015-11-26 00:29:40.0000000,male;,single,46;,GenX;Boomers;,NULL,,,NULL,,
+59,2015-11-26 00:30:13.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+60,2015-11-26 00:30:29.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,,,NULL,,
+61,2015-11-26 13:03:08.0000000,female;,single,28;,GenY;Boomers;,NULL,,,NULL,,
+62,2015-11-27 10:08:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+63,2015-11-27 10:13:40.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+64,2015-11-27 10:59:25.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,,,NULL,,
+65,2015-11-27 11:07:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+66,2015-11-27 11:10:35.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+67,2015-11-27 11:11:49.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+68,2015-11-27 11:14:09.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+69,2015-11-27 11:15:10.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+70,2015-11-27 11:23:35.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,family,,NULL,,
+71,2015-11-27 11:26:55.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+72,2015-11-27 11:28:59.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,family,,NULL,,
+73,2015-11-27 11:29:25.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+74,2015-11-27 11:49:24.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,family,,NULL,,
+75,2015-11-27 11:51:07.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+76,2015-11-27 11:51:36.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+77,2015-11-27 11:55:36.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+78,2015-11-27 11:55:49.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+79,2015-11-27 15:28:18.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+80,2015-11-27 15:32:16.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+81,2015-11-27 15:34:16.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+82,2015-11-27 15:52:59.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+83,2015-11-27 15:56:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,personal,,NULL,,
+84,2015-11-27 15:59:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+85,2015-11-27 16:02:20.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,personal,,NULL,,
+86,2015-11-27 16:04:23.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+87,2015-11-27 16:15:50.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+88,2015-11-27 16:19:12.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+89,2015-11-27 16:20:15.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,personal,,NULL,,
+90,2015-11-27 16:24:49.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+91,2015-11-27 16:27:57.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+92,2015-11-27 16:28:33.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+93,2015-11-27 16:28:52.0000000,,,,,NULL,onvacation,,NULL,,
+94,2015-11-27 16:31:12.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+95,2015-11-27 16:31:24.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+96,2015-11-27 16:46:31.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+97,2015-11-27 16:46:49.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+98,2015-11-27 16:51:37.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,
+99,2015-11-27 17:10:23.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+100,2015-11-27 17:19:59.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+101,2015-11-27 17:20:14.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+102,2015-11-27 17:44:46.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+103,2015-11-27 19:00:19.0000000,female;male;,adults,40;56;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+104,2015-11-27 19:02:24.0000000,female;male;,adults,40;56;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+105,2015-11-27 19:03:05.0000000,female;male;,adults,40;56;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+106,2015-11-27 19:25:25.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+107,2015-11-27 19:27:21.0000000,female;male;,adults,40;56;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+108,2015-11-27 19:37:56.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,
+109,2015-11-27 23:07:56.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+110,2015-11-27 23:43:21.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+111,2015-11-27 23:43:55.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+112,2015-11-28 14:01:48.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+113,2015-11-28 14:02:09.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+114,2015-11-28 14:03:16.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+115,2015-11-28 14:03:43.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+116,2015-11-28 14:04:17.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,
+117,2015-11-28 14:04:35.0000000,female;,single,36;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+118,2015-11-28 14:04:50.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+119,2015-11-28 14:05:26.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+120,2015-11-28 14:06:11.0000000,female;,single,44;,GenX;Boomers;,NULL,onvacation,,NULL,,
+121,2015-11-28 14:06:40.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,
+122,2015-11-28 14:06:58.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,
+123,2015-11-28 14:07:22.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,
+124,2015-11-28 14:07:45.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,
+125,2015-11-28 14:08:29.0000000,,,,,NULL,family,,NULL,,
+126,2015-11-28 14:09:12.0000000,female;,single,28;,GenY;Boomers;,NULL,family,,NULL,,
+127,2015-11-28 14:09:26.0000000,male;,single,46;,GenX;Boomers;,NULL,family,,NULL,,
+128,2015-11-28 14:10:06.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,family,,NULL,,
+129,2015-11-28 14:11:00.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,family,,NULL,,
+130,2015-11-28 14:11:47.0000000,female;,single,44;,GenX;Boomers;,NULL,family,,NULL,,
+131,2015-11-28 14:12:30.0000000,female;,single,28;,GenY;Boomers;,NULL,family,,NULL,,
+132,2015-11-28 14:13:08.0000000,male;,single,46;,GenX;Boomers;,NULL,family,,NULL,,
+133,2015-11-28 14:13:52.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,family,,NULL,,
+134,2015-11-28 14:17:14.0000000,female;,single,44;,GenX;Boomers;,NULL,personal,,NULL,,
+135,2015-11-28 14:23:28.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,
+136,2015-11-28 14:23:52.0000000,male;,single,46;,GenX;Boomers;,NULL,personal,,NULL,,
+137,2015-11-28 14:24:27.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,personal,,NULL,,
+138,2015-11-28 14:25:02.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,personal,,NULL,,
+139,2015-11-29 09:23:23.0000000,,,,,NULL,family,,NULL,,
+140,2015-11-29 09:24:22.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+141,2015-11-29 09:24:47.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+142,2015-11-29 09:25:10.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+143,2015-11-29 09:27:28.0000000,,,,,NULL,onvacation,,NULL,,
+144,2015-11-29 14:39:22.0000000,,,,,NULL,onvacation,,NULL,,
+145,2015-11-29 16:02:03.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,
+146,2015-11-29 16:03:27.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+147,2015-11-29 16:07:16.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+148,2015-11-29 16:08:36.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+149,2015-11-29 16:11:57.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+150,2015-11-29 16:13:13.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+151,2015-11-29 16:17:43.0000000,male;female;,family,57;8;,Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,
+152,2015-11-29 16:19:40.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+153,2015-11-29 16:21:31.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+154,2015-11-29 17:03:48.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+155,2015-11-29 23:57:01.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+156,2015-11-30 00:00:42.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+157,2015-11-30 00:01:07.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+158,2015-11-30 00:10:23.0000000,female;,single,44;,GenX;Boomers;,NULL,onvacation,,NULL,,
+159,2015-11-30 00:27:38.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+160,2015-11-30 00:55:18.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+161,2015-11-30 03:21:28.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+162,2015-11-30 03:34:43.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+163,2015-11-30 03:35:38.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+164,2015-11-30 03:58:26.0000000,female;,single,44;,GenX;Boomers;,NULL,family,,NULL,,
+165,2015-11-30 04:00:18.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,family,,NULL,,
+166,2015-11-30 04:27:37.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+167,2015-11-30 04:54:18.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+168,2015-11-30 05:00:39.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+169,2015-11-30 05:18:38.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,
+170,2015-11-30 05:25:17.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,
+171,2015-11-30 05:26:01.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,
+172,2015-11-30 09:02:42.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+173,2015-11-30 09:08:29.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+174,2015-11-30 09:42:50.0000000,,,,,NULL,personal,,NULL,,
+175,2015-11-30 09:44:49.0000000,,,,,NULL,personal,,NULL,,
+176,2015-11-30 13:07:05.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+177,2015-11-30 13:07:32.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+178,2015-11-30 13:08:10.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+179,2015-11-30 13:09:03.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+180,2015-11-30 13:39:54.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+181,2015-11-30 13:41:46.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+182,2015-11-30 14:21:31.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+183,2015-11-30 14:21:45.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+184,2015-11-30 14:21:55.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,
+185,2015-11-30 14:22:06.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+186,2015-11-30 14:22:31.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,
+187,2015-11-30 14:22:46.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,
+188,2015-11-30 14:23:13.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,
+189,2015-11-30 14:35:46.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+190,2015-11-30 14:38:54.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+191,2015-11-30 14:39:34.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,personal,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+192,2015-11-30 14:58:20.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+193,2015-11-30 15:01:46.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+194,2015-11-30 15:02:58.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+195,2015-11-30 15:05:26.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+196,2015-11-30 15:07:14.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+197,2015-11-30 15:09:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+198,2015-11-30 15:30:35.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+199,2015-11-30 15:43:04.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+200,2015-11-30 15:49:53.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+201,2015-11-30 15:58:06.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+202,2015-11-30 16:03:22.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+203,2015-11-30 16:05:57.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+204,2015-11-30 16:12:13.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+205,2015-11-30 16:25:26.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+206,2015-11-30 16:29:22.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+207,2015-11-30 16:31:44.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+208,2015-11-30 16:34:53.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+209,2015-11-30 16:38:10.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+210,2015-11-30 16:38:29.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+211,2015-11-30 16:38:45.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+212,2015-11-30 16:50:52.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+213,2015-11-30 16:52:19.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+214,2015-11-30 16:55:39.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+215,2015-11-30 16:56:04.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,onvacation,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+216,2015-11-30 16:56:45.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+217,2015-11-30 16:57:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+218,2015-11-30 16:58:11.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+219,2015-11-30 17:01:03.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+220,2015-11-30 17:03:29.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+221,2015-11-30 17:04:55.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+222,2015-11-30 17:16:47.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+223,2015-11-30 17:19:47.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+224,2015-11-30 17:23:40.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+225,2015-11-30 17:24:35.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+226,2015-11-30 17:25:02.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+227,2015-11-30 17:29:11.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+228,2015-11-30 17:30:11.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+229,2015-11-30 17:31:27.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+230,2015-11-30 17:36:13.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+231,2015-11-30 17:36:37.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,personal,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+232,2015-11-30 17:51:48.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+233,2015-11-30 17:52:53.0000000,,,,,NULL,onvacation,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+234,2015-11-30 17:53:56.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+235,2015-11-30 18:22:55.0000000,,,,,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+236,2015-11-30 18:23:58.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+237,2015-11-30 18:24:53.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+238,2015-11-30 18:36:13.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,345fff3d-80e0-4035-881a-f528e29b8820
+239,2015-11-30 18:41:25.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+240,2015-11-30 18:46:49.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+241,2015-11-30 18:50:16.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+242,2015-11-30 18:50:40.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+243,2015-11-30 18:51:12.0000000,female;,single,44;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+244,2015-11-30 18:51:40.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+245,2015-11-30 18:51:44.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+246,2015-11-30 18:52:13.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+247,2015-11-30 18:52:20.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+248,2015-11-30 18:52:59.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+249,2015-11-30 18:53:28.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+250,2015-11-30 18:54:02.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+251,2015-11-30 18:54:23.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+252,2015-11-30 18:54:52.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+253,2015-11-30 18:55:37.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+254,2015-11-30 18:56:43.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+255,2015-11-30 18:57:23.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+256,2015-11-30 18:57:42.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+257,2015-11-30 18:57:54.0000000,,,,,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+258,2015-11-30 18:58:20.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+259,2015-11-30 18:59:01.0000000,female;,single,28;,GenY;Boomers;,NULL,family,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+260,2015-11-30 18:59:22.0000000,male;,single,46;,GenX;Boomers;,NULL,family,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+261,2015-11-30 19:00:23.0000000,male;male;,adults,40;44;,GenY;Boomers;GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+262,2015-11-30 19:32:54.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+263,2015-11-30 19:33:59.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+264,2015-11-30 19:43:02.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+265,2015-11-30 19:44:27.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+266,2015-11-30 19:46:48.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+267,2015-11-30 19:48:25.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+268,2015-11-30 19:50:13.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+269,2015-11-30 19:51:39.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+270,2015-11-30 19:53:20.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+271,2015-11-30 19:54:56.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+272,2015-11-30 19:56:10.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+273,2015-11-30 19:56:46.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+274,2015-11-30 19:57:24.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+275,2015-11-30 19:58:04.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+276,2015-11-30 20:04:55.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+277,2015-11-30 20:17:07.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+278,2015-11-30 20:26:23.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+279,2015-11-30 20:28:16.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+280,2015-11-30 20:28:34.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+281,2015-11-30 20:29:33.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+282,2015-11-30 20:31:21.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+283,2015-11-30 20:32:25.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+284,2015-11-30 20:34:00.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+285,2015-11-30 20:34:57.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+286,2015-11-30 20:36:06.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+287,2015-11-30 20:37:53.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+288,2015-11-30 20:39:28.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+289,2015-11-30 20:41:38.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+290,2015-11-30 20:43:23.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+291,2015-11-30 20:43:56.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+292,2015-11-30 20:44:35.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+293,2015-11-30 20:45:19.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+294,2015-11-30 20:49:44.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+295,2015-11-30 20:53:23.0000000,,,,,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+296,2015-11-30 20:53:50.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+297,2015-11-30 21:00:53.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+298,2015-11-30 21:02:16.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+299,2015-11-30 21:03:20.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+300,2015-11-30 21:04:35.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+301,2015-11-30 21:17:35.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+302,2015-11-30 21:21:40.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+303,2015-11-30 21:29:15.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,baa75dc5-52db-49b4-add5-f74eb3e58e06
+304,2015-11-30 21:47:00.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+305,2015-11-30 21:49:59.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+306,2015-11-30 21:50:49.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+307,2015-11-30 21:54:53.0000000,female;,single,28;,GenY;Boomers;,2015-11-30 21:55:59.0000000,outdoorentertainment,,NULL,,50
+308,2015-11-30 21:56:28.0000000,female;,single,44;,GenX;Boomers;,NULL,onvacation,,NULL,,50
+309,2015-11-30 21:59:39.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+310,2015-11-30 22:02:13.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+311,2015-11-30 22:08:17.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+312,2015-11-30 22:17:33.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+313,2015-11-30 22:19:37.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+314,2015-11-30 22:25:15.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+315,2015-11-30 22:29:41.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+316,2015-11-30 22:34:08.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+317,2015-11-30 22:34:29.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+318,2015-11-30 22:34:34.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+319,2015-11-30 22:35:18.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+320,2015-11-30 22:35:36.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+321,2015-11-30 22:37:11.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+322,2015-11-30 22:47:25.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+323,2015-11-30 22:48:35.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+324,2015-11-30 22:50:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+325,2015-11-30 22:50:28.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+326,2015-11-30 22:50:51.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+327,2015-11-30 22:51:15.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+328,2015-11-30 22:51:32.0000000,,,,,NULL,onvacation,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+329,2015-11-30 22:52:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+330,2015-11-30 22:53:10.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+331,2015-11-30 22:53:30.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+332,2015-11-30 22:54:22.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+333,2015-11-30 22:54:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+334,2015-11-30 22:55:39.0000000,,,,,NULL,onvacation,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+335,2015-11-30 22:56:05.0000000,,,,,NULL,onvacation,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+336,2015-11-30 22:56:55.0000000,,,,,NULL,onvacation,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+337,2015-11-30 23:14:16.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+338,2015-11-30 23:17:09.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,50
+339,2015-11-30 23:24:15.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+340,2015-11-30 23:29:34.0000000,,,,,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+341,2015-11-30 23:30:06.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+342,2015-11-30 23:30:11.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+343,2015-11-30 23:30:25.0000000,,,,,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+344,2015-11-30 23:30:56.0000000,,,,,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+345,2015-11-30 23:31:23.0000000,,,,,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+346,2015-11-30 23:31:39.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+347,2015-11-30 23:31:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+348,2015-11-30 23:35:27.0000000,female;,single,36;,GenY;Boomers;,NULL,family,,NULL,,16aa6bd0-473f-4b06-be9e-00a8978ce4e8
+349,2015-11-30 23:41:36.0000000,female;,single,28;,GenY;Boomers;,2015-11-30 23:41:48.0000000,outdoorentertainment,,NULL,,50
+350,2015-11-30 23:41:56.0000000,male;,single,46;,GenX;Boomers;,2015-11-30 23:44:50.0000000,outdoorentertainment,,NULL,,50
+351,2015-11-30 23:45:00.0000000,,,,,2015-11-30 23:45:23.0000000,onvacation,,NULL,,50
+352,2015-11-30 23:45:35.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+353,2015-11-30 23:47:18.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+354,2015-11-30 23:49:57.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+355,2015-11-30 23:56:01.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+356,2015-11-30 23:58:29.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+357,2015-12-01 00:06:13.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+358,2015-12-01 00:07:38.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+359,2015-12-01 00:08:09.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+360,2015-12-01 00:08:21.0000000,male;,single,27;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+361,2015-12-01 00:08:33.0000000,female;male;,adults,28;38;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+362,2015-12-01 00:09:22.0000000,female;male;female;,adults,28;38;44;,GenY;Boomers;GenY;Boomers;GenX;Boomers;,2015-12-01 00:20:23.0000000,outdoorentertainment,,NULL,,50
+363,2015-12-01 00:20:47.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 00:22:37.0000000,outdoorentertainment,,NULL,,50
+364,2015-12-01 00:22:51.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 00:22:55.0000000,outdoorentertainment,,NULL,,50
+365,2015-12-01 00:22:56.0000000,,,,,2015-12-01 00:24:15.0000000,outdoorentertainment,,NULL,,50
+366,2015-12-01 00:24:29.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 00:26:15.0000000,outdoorentertainment,,NULL,,50
+367,2015-12-01 00:26:17.0000000,,,,,2015-12-01 00:27:59.0000000,outdoorentertainment,,NULL,,50
+368,2015-12-01 00:28:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+369,2015-12-01 00:28:25.0000000,female;female;,family,20;36;,GenZ;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+370,2015-12-01 00:29:23.0000000,,,,,NULL,family,,NULL,,50
+371,2015-12-01 00:31:45.0000000,female;,single,15;,GenZ;Boomers;,NULL,family,,NULL,,50
+372,2015-12-01 00:32:17.0000000,female;female;,family,15;14;,GenZ;Boomers;GenZ;Boomers;,NULL,family,,NULL,,50
+373,2015-12-01 00:33:07.0000000,,,,,NULL,family,,NULL,,50
+374,2015-12-01 00:34:27.0000000,,,,,NULL,personal,,NULL,,50
+375,2015-12-01 00:35:02.0000000,,,,,NULL,family,,NULL,,50
+376,2015-12-01 01:03:42.0000000,male;,single,46;,GenX;Boomers;,2015-12-01 01:27:36.0000000,outdoorentertainment,,NULL,,50
+377,2015-12-01 01:17:10.0000000,,,,,2015-12-01 01:19:03.0000000,outdoorentertainment,,NULL,,50
+378,2015-12-01 01:19:13.0000000,,,,,NULL,onvacation,,NULL,,50
+379,2015-12-01 01:24:23.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+380,2015-12-01 01:27:45.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+381,2015-12-01 01:28:42.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+382,2015-12-01 01:38:10.0000000,,,,,NULL,family,,NULL,,50
+383,2015-12-01 01:38:30.0000000,female;,single,30;,GenY;Boomers;,NULL,family,,NULL,,50
+384,2015-12-01 01:40:56.0000000,female;female;male;,family,30;38;18;,GenY;Boomers;GenY;Boomers;GenZ;Boomers;,NULL,family,,NULL,,50
+385,2015-12-01 01:44:59.0000000,,,,,NULL,family,,NULL,,50
+386,2015-12-01 01:45:26.0000000,female;,single,12;,GenZ;Boomers;,NULL,family,,NULL,,50
+387,2015-12-01 01:45:47.0000000,female;female;,family,12;10;,GenZ;Boomers;Youth;Boomers;,NULL,family,,NULL,,50
+388,2015-12-01 01:46:17.0000000,female;female;female;,family,12;10;36;,GenZ;Boomers;Youth;Boomers;GenY;Boomers;,NULL,family,,NULL,,50
+389,2015-12-01 01:46:35.0000000,female;female;female;female;,family,12;10;36;76;,GenZ;Boomers;Youth;Boomers;GenY;Boomers;Boomers;,NULL,family,,NULL,,50
+390,2015-12-01 01:47:20.0000000,,,,,NULL,family,,NULL,,50
+391,2015-12-01 01:47:34.0000000,female;,single,32;,GenY;Boomers;,NULL,family,,NULL,,50
+392,2015-12-01 01:48:05.0000000,female;male;,adults,32;49;,GenY;Boomers;GenX;Boomers;,NULL,family,,NULL,,50
+393,2015-12-01 01:48:19.0000000,female;male;female;,family,32;49;13;,GenY;Boomers;GenX;Boomers;GenZ;Boomers;,NULL,family,,NULL,,50
+394,2015-12-01 01:48:28.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+395,2015-12-01 01:49:00.0000000,,,,,NULL,family,,NULL,,50
+396,2015-12-01 01:49:27.0000000,female;,single,36;,GenY;Boomers;,NULL,family,,NULL,,50
+397,2015-12-01 01:49:45.0000000,female;male;,adults,36;34;,GenY;Boomers;GenY;Boomers;,NULL,family,,NULL,,50
+398,2015-12-01 01:59:33.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+399,2015-12-01 02:07:39.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+400,2015-12-01 02:18:08.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 02:18:24.0000000,outdoorentertainment,,NULL,,50
+401,2015-12-01 02:18:32.0000000,,,,,2015-12-01 02:18:58.0000000,onvacation,,NULL,,50
+402,2015-12-01 02:19:00.0000000,,,,,2015-12-01 02:19:18.0000000,outdoorentertainment,,NULL,,50
+403,2015-12-01 02:19:19.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+404,2015-12-01 02:20:38.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+405,2015-12-01 02:21:22.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+406,2015-12-01 02:23:17.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+407,2015-12-01 02:33:07.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+408,2015-12-01 02:36:14.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+409,2015-12-01 02:37:23.0000000,,,,,NULL,onvacation,,NULL,,50
+410,2015-12-01 02:39:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+411,2015-12-01 02:44:06.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+412,2015-12-01 02:44:09.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+413,2015-12-01 03:03:27.0000000,male;,single,46;,GenX;Boomers;,2015-12-01 03:03:37.0000000,outdoorentertainment,,NULL,,50
+414,2015-12-01 03:03:54.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 03:04:56.0000000,onvacation,,NULL,,50
+415,2015-12-01 03:05:03.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+416,2015-12-01 03:07:48.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+417,2015-12-01 03:36:11.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+418,2015-12-01 03:38:34.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+419,2015-12-01 03:39:42.0000000,female;,single,44;,GenX;Boomers;,2015-12-01 03:40:03.0000000,onvacation,,NULL,,50
+420,2015-12-01 03:40:08.0000000,,,,,NULL,onvacation,,NULL,,50
+421,2015-12-01 03:48:22.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+422,2015-12-01 03:49:34.0000000,male;,single,46;,GenX;Boomers;,2015-12-01 03:57:37.0000000,outdoorentertainment,,NULL,,50
+423,2015-12-01 03:52:48.0000000,male;,single,46;,GenX;Boomers;,2015-12-01 03:53:37.0000000,outdoorentertainment,,NULL,,50
+424,2015-12-01 03:53:51.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+425,2015-12-01 03:57:55.0000000,female;,single,28;,GenY;Boomers;,2015-12-01 04:05:33.0000000,onvacation,,NULL,,50
+426,2015-12-01 04:05:39.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+427,2015-12-01 07:42:34.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+428,2015-12-01 07:43:16.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+429,2015-12-01 07:44:35.0000000,,,,,NULL,personal,,NULL,,50
+430,2015-12-01 07:45:03.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+431,2015-12-01 10:26:08.0000000,,,,,2015-12-01 10:27:21.0000000,outdoorentertainment,,NULL,,50
+432,2015-12-01 10:27:41.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-01 10:28:06.0000000,onvacation,,NULL,,50
+433,2015-12-01 12:24:20.0000000,,,,,2015-12-01 12:25:04.0000000,outdoorentertainment,,NULL,,50
+434,2015-12-01 12:25:17.0000000,,,,,NULL,personal,,NULL,,50
+435,2015-12-01 13:34:01.0000000,,,,,2015-12-01 13:36:21.0000000,outdoorentertainment,,NULL,,50
+436,2015-12-01 13:36:41.0000000,,,,,2015-12-01 13:37:06.0000000,family,,NULL,,50
+437,2015-12-01 13:37:12.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-01 13:37:23.0000000,outdoorentertainment,,NULL,,50
+438,2015-12-01 13:37:29.0000000,,,,,2015-12-01 15:03:48.0000000,outdoorentertainment,,NULL,,50
+439,2015-12-01 15:07:20.0000000,,,,,NULL,personal,,NULL,,50
+440,2015-12-01 15:16:23.0000000,,,,,2015-12-01 15:19:20.0000000,outdoorentertainment,,NULL,,50
+441,2015-12-01 15:19:32.0000000,,,,,2015-12-01 15:35:44.0000000,onvacation,,NULL,,50
+442,2015-12-01 15:38:12.0000000,,,,,2015-12-01 16:19:07.0000000,outdoorentertainment,,NULL,,50
+443,2015-12-01 16:19:35.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+444,2015-12-02 10:15:47.0000000,,,,,NULL,onvacation,,NULL,,50
+445,2015-12-02 10:17:44.0000000,,,,,2015-12-02 10:23:40.0000000,outdoorentertainment,,NULL,,50
+446,2015-12-02 10:23:43.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+447,2015-12-02 10:48:30.0000000,,,,,2015-12-02 10:50:22.0000000,personal,,NULL,,50
+448,2015-12-02 10:50:25.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+449,2015-12-02 10:50:55.0000000,,,,,2015-12-02 10:51:51.0000000,outdoorentertainment,,NULL,,50
+450,2015-12-02 10:52:02.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-02 10:52:33.0000000,outdoorentertainment,,NULL,,50
+451,2015-12-02 10:52:48.0000000,,,,,2015-12-02 11:20:25.0000000,outdoorentertainment,,NULL,,50
+452,2015-12-02 11:22:52.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+453,2015-12-03 16:32:46.0000000,,,,,2015-12-03 16:34:16.0000000,outdoorentertainment,,NULL,,50
+454,2015-12-03 16:34:26.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,50
+455,2015-12-03 20:03:25.0000000,,,,,2015-12-03 20:04:56.0000000,onvacation,,NULL,,50
+456,2015-12-03 20:05:03.0000000,,,,,NULL,onvacation,,NULL,,50
+457,2015-12-04 17:50:46.0000000,,,,,2015-12-04 18:05:29.0000000,outdoorentertainment,,NULL,,50
+458,2015-12-04 18:05:33.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+459,2015-12-07 06:40:42.0000000,,,,,NULL,family,,NULL,,50
+460,2015-07-12 13:40:38.0000000,,,,,NULL,outdoorentertainment,,NULL,,
+461,2015-12-07 18:01:16.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+462,2015-12-07 20:18:37.0000000,,,,,2015-12-07 20:20:33.0000000,outdoorentertainment,,NULL,,50
+463,2015-12-07 20:20:37.0000000,,,,,2015-12-07 20:21:15.0000000,outdoorentertainment,,NULL,,50
+464,2015-12-07 20:21:20.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-07 20:22:08.0000000,outdoorentertainment,,NULL,,50
+465,2015-12-07 20:22:16.0000000,,,,,NULL,onvacation,,NULL,,50
+466,2015-12-07 23:25:26.0000000,,,,,2015-12-07 23:26:56.0000000,outdoorentertainment,,NULL,,50
+467,2015-12-07 23:26:57.0000000,,,,,2015-12-07 23:27:58.0000000,outdoorentertainment,,NULL,,50
+468,2015-12-07 23:27:59.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+469,2015-12-07 23:41:34.0000000,,,,,2015-12-07 23:46:36.0000000,outdoorentertainment,,NULL,,50
+470,2015-12-07 23:46:39.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-07 23:49:42.0000000,outdoorentertainment,,NULL,,50
+471,2015-12-07 23:50:17.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+472,2015-12-07 23:50:18.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+473,2015-12-08 04:32:18.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+474,2015-12-08 05:26:29.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+475,2015-12-08 06:09:44.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,50
+476,2015-12-08 06:14:46.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,50
+477,2015-12-08 17:26:21.0000000,,,,,NULL,family,,NULL,,50
+478,2015-12-08 17:26:22.0000000,,,,,NULL,family,,NULL,,50
+479,2015-12-08 17:26:36.0000000,,,,,2015-12-08 17:27:43.0000000,outdoorentertainment,,NULL,,50
+480,2015-12-08 17:26:36.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+481,2015-12-08 18:07:54.0000000,,,,,NULL,personal,,NULL,,50
+482,2015-12-08 21:09:59.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-08 21:10:47.0000000,onvacation,,NULL,,50
+483,2015-12-08 21:10:52.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+484,2015-12-08 22:44:44.0000000,,,,,NULL,onvacation,,NULL,,50
+485,2015-12-08 23:10:20.0000000,,,,,NULL,personal,,NULL,,50
+486,2015-12-09 04:12:16.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-09 04:13:10.0000000,outdoorentertainment,,NULL,,50
+487,2015-12-09 04:13:15.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+488,2015-12-09 04:19:39.0000000,male;,single,46;,GenX;Boomers;,2015-12-09 04:20:28.0000000,onvacation,,NULL,,50
+489,2015-12-09 04:20:32.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+490,2015-12-09 04:21:27.0000000,male;,single,46;,GenX;Boomers;,2015-12-09 04:23:31.0000000,outdoorentertainment,,NULL,,50
+491,2015-12-09 22:47:37.0000000,,,,,NULL,family,,NULL,,50
+492,2015-12-10 05:42:13.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+493,2015-12-10 05:47:53.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+494,2015-12-10 06:21:53.0000000,,,,,NULL,personal,,NULL,,50
+495,2015-12-10 06:22:46.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+496,2015-12-10 06:23:58.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,50
+497,2015-12-10 06:25:42.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+498,2015-12-10 06:42:24.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+499,2015-12-10 06:42:59.0000000,,,,,2015-12-10 06:55:30.0000000,outdoorentertainment,,NULL,,50
+500,2015-12-10 06:54:37.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+501,2015-12-10 06:55:31.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+502,2015-12-10 06:59:04.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+503,2015-12-10 07:06:00.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+504,2015-12-10 07:09:28.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,50
+505,2015-12-10 07:16:01.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,50
+506,2015-12-10 07:21:56.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,50
+507,2015-12-10 07:22:45.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+508,2015-12-10 07:25:16.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,50
+509,2015-12-10 07:25:49.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+510,2015-12-10 07:28:34.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+511,2015-12-10 08:05:34.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+512,2015-12-10 08:06:46.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+513,2015-12-10 08:31:06.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,50
+514,2015-12-10 08:33:30.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+515,2015-12-10 08:43:01.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+516,2015-12-10 08:50:24.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,50
+517,2015-12-10 09:11:32.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,50
+518,2015-12-10 09:12:23.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,50
+519,2015-12-10 09:14:12.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,50
+520,2015-12-10 09:19:12.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,50
+521,2015-12-10 09:33:43.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,394655
+522,2015-12-10 09:34:38.0000000,male;,single,46;,GenX;Boomers;,NULL,onvacation,,NULL,,587766
+523,2015-12-10 09:36:30.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,610769
+524,2015-12-10 09:45:33.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,963222
+525,2015-12-10 09:47:10.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,246046
+526,2015-12-10 09:47:56.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,628464
+527,2015-12-10 09:49:09.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,590150
+528,2015-12-10 17:31:08.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,950930
+529,2015-12-10 17:34:55.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,843875
+530,2015-12-10 17:36:25.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,871553
+531,2015-12-10 17:39:51.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,443347
+532,2015-12-10 18:26:35.0000000,,,,,NULL,outdoorentertainment,,NULL,,735684
+533,2015-12-10 18:35:11.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+534,2015-12-10 18:36:09.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,904323
+535,2015-12-10 18:36:38.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+536,2015-12-10 18:53:03.0000000,,,,,2015-12-10 18:54:31.0000000,family,,NULL,,50
+537,2015-12-10 19:26:51.0000000,,,,,NULL,outdoorentertainment,,NULL,,231504
+538,2015-12-10 19:28:01.0000000,,,,,NULL,outdoorentertainment,,NULL,,231504
+539,2015-12-10 19:29:27.0000000,,,,,NULL,outdoorentertainment,,NULL,,231504
+540,2015-12-10 19:30:58.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,231504
+541,2015-12-10 19:31:44.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,231504
+542,2015-12-10 19:32:06.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,231504
+543,2015-12-10 19:33:05.0000000,female;,single,44;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,231504
+544,2015-12-10 20:16:13.0000000,,,,,2015-12-10 20:18:24.0000000,onvacation,,NULL,,50
+545,2015-12-10 20:18:30.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-10 23:11:53.0000000,outdoorentertainment,,NULL,,50
+546,2015-10-12 22:28:18.0000000,,,,,NULL,outdoorentertainment,,NULL,,742020
+547,2015-10-12 22:28:21.0000000,,,,,NULL,outdoorentertainment,,NULL,,742020
+548,2015-10-12 22:28:50.0000000,,,,,NULL,family,,NULL,,742020
+549,2015-10-12 22:28:51.0000000,,,,,NULL,family,,NULL,,742020
+550,2015-10-12 23:28:34.0000000,,,,,NULL,outdoorentertainment,,NULL,,973090
+551,2015-10-12 23:28:36.0000000,,,,,NULL,outdoorentertainment,,NULL,,973090
+552,2015-10-12 23:29:44.0000000,,,,,NULL,personal,,NULL,,973090
+553,2015-12-10 23:31:26.0000000,,,,,NULL,family,,NULL,,50
+554,2015-10-12 23:31:04.0000000,female;,single,39;,GenY;Boomers;,NULL,family,,NULL,,973090
+555,2015-12-10 23:32:10.0000000,,,,,NULL,personal,,NULL,,50
+556,2015-10-12 23:51:24.0000000,,,,,NULL,personal,,NULL,,973090
+557,2015-10-12 23:53:14.0000000,,,,,NULL,personal,,NULL,,973090
+558,2015-10-12 23:53:26.0000000,male;,single,50;,GenX;Boomers;,NULL,personal,,NULL,,973090
+559,2015-10-12 23:56:41.0000000,female;,single,2;,Youth;Boomers;,NULL,personal,,NULL,,973090
+560,2015-10-12 23:57:06.0000000,female;,single,39;,GenY;Boomers;,NULL,personal,,NULL,,973090
+561,2015-10-12 23:58:16.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,973090
+562,2015-12-12 02:22:19.0000000,,,,,NULL,onvacation,,NULL,,904323
+563,2015-12-12 02:27:02.0000000,,,,,NULL,onvacation,,NULL,,904323
+564,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+565,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+566,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+567,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+568,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+569,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+570,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+571,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+572,1900-01-01 00:00:00.0000000,,,,,NULL,,,NULL,,
+573,2015-12-12 05:27:48.0000000,,,,,NULL,onvacation,,NULL,,904323
+574,2015-12-12 05:45:09.0000000,,,,,2015-12-12 05:45:44.0000000,outdoorentertainment,,NULL,,904323
+575,2015-12-12 05:48:30.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+576,2015-12-12 06:12:48.0000000,,,,,NULL,onvacation,,NULL,,904323
+577,2015-12-12 06:13:17.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,904323
+578,2015-12-12 06:17:31.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,904323
+579,2015-12-12 06:20:08.0000000,,,,,NULL,onvacation,,NULL,,904323
+580,2015-12-12 06:21:33.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,904323
+581,2015-12-12 06:35:25.0000000,,,,,2015-12-12 06:36:14.0000000,outdoorentertainment,,NULL,,904323
+582,2015-12-12 06:36:21.0000000,male;,single,46;,GenX;Boomers;,2015-12-12 06:36:49.0000000,outdoorentertainment,,NULL,,904323
+583,2015-12-12 06:42:40.0000000,female;,single,39;,GenY;Boomers;,NULL,personal,,NULL,,973090
+584,2015-12-12 06:46:06.0000000,female;,single,39;,GenY;Boomers;,NULL,personal,,NULL,,973090
+585,2015-12-12 06:56:35.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,973090
+586,2015-12-12 07:36:36.0000000,female;,single,39;,GenY;Boomers;,NULL,family,,NULL,,973090
+587,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,973090
+588,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,973090
+589,2015-12-13 03:45:28.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+590,2015-12-13 03:46:16.0000000,,,,,NULL,onvacation,,NULL,,904323
+591,2015-12-13 03:46:42.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+592,2015-12-13 03:49:15.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+593,2015-12-13 03:51:21.0000000,,,,,2015-12-13 03:52:06.0000000,outdoorentertainment,,NULL,,904323
+594,2015-12-13 03:52:13.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,904323
+595,2015-12-13 20:49:34.0000000,female;,single,28;,GenY;Boomers;,2015-12-13 20:50:03.0000000,outdoorentertainment,,NULL,,904323
+596,2015-12-13 20:50:06.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+597,1900-01-01 00:00:00.0000000,male;male;male;male;,adults,36;42;63;40;,GenY;Boomers;GenX;Boomers;Boomers;GenY;Boomers;,NULL,personal,,NULL,,973090
+598,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,973090
+599,2015-12-13 23:40:02.0000000,,,,,2015-12-13 23:40:33.0000000,outdoorentertainment,,NULL,,904323
+600,2015-12-13 23:40:40.0000000,female;,single,28;,GenY;Boomers;,2015-12-13 23:41:08.0000000,outdoorentertainment,,NULL,,904323
+601,2015-12-13 23:41:09.0000000,,,,,NULL,outdoorentertainment,,NULL,,904323
+602,2015-12-13 23:44:52.0000000,,,,,NULL,onvacation,,NULL,,904323
+603,2015-12-13 23:46:30.0000000,,,,,NULL,onvacation,,NULL,,904323
+604,2015-12-13 23:49:36.0000000,female;,single,28;,GenY;Boomers;,2015-12-13 23:49:44.0000000,outdoorentertainment,,NULL,,904323
+605,2015-12-13 23:49:52.0000000,,,,,NULL,onvacation,,NULL,,904323
+606,2015-12-13 23:53:04.0000000,,,,,2015-12-13 23:53:32.0000000,outdoorentertainment,,NULL,,955857
+607,2015-12-14 00:31:40.0000000,,,,,NULL,outdoorentertainment,,NULL,,980752
+608,2015-12-14 00:34:49.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,980752
+609,2015-12-14 00:39:03.0000000,,,,,2015-12-14 00:39:33.0000000,outdoorentertainment,,NULL,,980752
+610,2015-12-14 00:39:38.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-14 00:39:52.0000000,outdoorentertainment,,NULL,,980752
+611,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,family,,NULL,,439037
+612,1900-01-01 00:00:00.0000000,male;male;male;male;,adults,36;42;63;40;,GenY;Boomers;GenX;Boomers;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,439037
+613,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,439037
+614,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,439037
+615,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,personal,,NULL,,633794
+616,1900-01-01 00:00:00.0000000,male;,single,61;,Boomers;,NULL,onvacation,,NULL,,633794
+617,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,633794
+618,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,633794
+619,2015-12-14 15:12:28.0000000,,,,,NULL,outdoorentertainment,,NULL,,404546
+620,2015-12-14 15:39:48.0000000,,,,,2015-12-14 15:40:24.0000000,outdoorentertainment,,NULL,,595441
+621,2015-12-14 15:40:31.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,595441
+622,2015-12-14 16:20:44.0000000,,,,,NULL,onvacation,,NULL,,976783
+623,2015-12-14 16:22:41.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+624,2015-12-14 16:28:12.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,595441
+625,2015-12-14 16:36:34.0000000,,,,,NULL,onvacation,,NULL,,461822
+626,2015-12-14 16:41:14.0000000,,,,,NULL,outdoorentertainment,,NULL,,461822
+627,2015-12-14 16:41:16.0000000,,,,,NULL,outdoorentertainment,,NULL,,461822
+628,2015-12-14 16:42:33.0000000,,,,,2015-12-14 16:43:16.0000000,outdoorentertainment,,NULL,,461822
+629,2015-12-14 16:43:19.0000000,,,,,2015-12-14 16:44:24.0000000,outdoorentertainment,,NULL,,461822
+630,2015-12-14 17:10:17.0000000,,,,,2015-12-14 17:11:31.0000000,personal,,NULL,,976783
+631,2015-12-14 17:12:04.0000000,,,,,2015-12-14 17:14:13.0000000,onvacation,,NULL,,976783
+632,2015-12-14 17:14:20.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-14 17:16:42.0000000,outdoorentertainment,,NULL,,976783
+633,2015-12-14 17:16:44.0000000,,,,,2015-12-14 17:17:24.0000000,outdoorentertainment,,NULL,,976783
+634,2015-12-14 17:17:37.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+635,2015-12-14 17:34:11.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+636,2015-12-14 17:37:29.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+637,2015-12-14 17:39:12.0000000,,,,,NULL,onvacation,,NULL,,652471
+638,2015-12-14 17:40:34.0000000,male;,single,40;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+639,2015-12-14 17:47:16.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+640,2015-12-14 17:48:37.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+641,2015-12-14 17:48:55.0000000,male;,single,30;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,595441
+642,2015-12-14 17:51:31.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-14 17:52:03.0000000,outdoorentertainment,,NULL,,595441
+643,2015-12-14 17:57:40.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+644,2015-12-14 17:58:24.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+645,2015-12-14 17:59:15.0000000,,,,,NULL,outdoorentertainment,,NULL,,595441
+646,2015-12-14 18:01:30.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-14 18:01:39.0000000,outdoorentertainment,,NULL,,595441
+647,2015-12-14 18:01:41.0000000,,,,,2015-12-14 18:02:07.0000000,outdoorentertainment,,NULL,,595441
+648,2015-12-14 19:19:33.0000000,,,,,NULL,outdoorentertainment,,NULL,,411844
+649,2015-12-14 19:33:19.0000000,,,,,NULL,outdoorentertainment,,NULL,,976783
+650,2015-12-14 20:48:05.0000000,,,,,NULL,outdoorentertainment,,NULL,,411844
+651,2015-12-14 20:50:59.0000000,,,,,NULL,onvacation,,NULL,,652471
+652,2015-12-14 20:51:00.0000000,,,,,NULL,onvacation,,NULL,,652471
+653,2015-12-14 20:51:05.0000000,,,,,NULL,onvacation,,NULL,,652471
+654,2015-12-14 20:51:06.0000000,,,,,NULL,onvacation,,NULL,,652471
+655,2015-12-14 20:59:31.0000000,male;,single,46;,GenX;Boomers;,2015-12-14 21:01:03.0000000,outdoorentertainment,,NULL,,976783
+656,2015-12-14 21:01:15.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+657,2015-12-14 21:26:12.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+658,2015-12-14 21:27:10.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-14 21:30:12.0000000,outdoorentertainment,,NULL,,976783
+659,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,onvacation,,NULL,,633794
+660,2015-12-14 21:31:04.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+661,2015-12-14 21:58:34.0000000,,,,,NULL,onvacation,,NULL,,411844
+662,2015-12-14 22:00:11.0000000,,,,,NULL,outdoorentertainment,,NULL,,411844
+663,2015-12-14 22:06:02.0000000,,,,,NULL,outdoorentertainment,,NULL,,411844
+664,2015-12-15 00:06:44.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+665,1900-01-01 00:00:00.0000000,male;,single,50;,GenX;Boomers;,NULL,personal,,NULL,,633794
+666,2015-12-15 15:08:52.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,onvacation,,NULL,,411844
+667,2015-12-15 15:37:59.0000000,,,,,NULL,personal,,NULL,,652471
+668,2015-12-15 17:48:50.0000000,,,,,2015-12-15 17:49:16.0000000,outdoorentertainment,,NULL,,556573
+669,2015-12-15 17:49:25.0000000,female;,single,28;,GenY;Boomers;,2015-12-15 17:49:50.0000000,outdoorentertainment,,NULL,,556573
+670,2015-12-15 18:03:55.0000000,,,,,NULL,onvacation,,NULL,,461822
+671,2015-12-15 18:04:50.0000000,,,,,NULL,personal,,NULL,,461822
+672,2015-12-15 18:32:34.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+673,2015-12-15 18:34:45.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+674,2015-12-15 18:35:43.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-15 18:37:22.0000000,outdoorentertainment,,NULL,,976783
+675,2015-12-15 18:43:26.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-15 18:43:43.0000000,outdoorentertainment,,NULL,,976783
+676,2015-12-15 18:44:44.0000000,,,,,NULL,outdoorentertainment,,NULL,,976783
+677,2015-12-15 18:45:27.0000000,,,,,NULL,onvacation,,NULL,,652471
+678,2015-12-15 18:45:32.0000000,,,,,NULL,onvacation,,NULL,,652471
+679,2015-12-15 18:46:21.0000000,,,,,NULL,outdoorentertainment,,NULL,,652471
+680,2015-12-15 18:48:36.0000000,,,,,NULL,outdoorentertainment,,NULL,,652471
+681,2015-12-15 19:00:46.0000000,,,,,NULL,outdoorentertainment,,NULL,,652471
+682,2015-12-15 19:01:54.0000000,,,,,NULL,onvacation,,NULL,,652471
+683,2015-12-15 19:04:41.0000000,,,,,NULL,onvacation,,NULL,,652471
+684,2015-12-15 19:08:19.0000000,,,,,NULL,personal,,NULL,,652471
+685,2015-12-15 19:11:16.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+686,2015-12-15 19:13:33.0000000,,,,,NULL,personal,,NULL,,636573
+687,2015-12-15 19:15:09.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+688,2015-12-15 19:16:15.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+689,2015-12-15 19:18:27.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+690,2015-12-15 19:18:53.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+691,2015-12-15 19:19:19.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+692,2015-12-15 19:21:30.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+693,2015-12-15 19:29:24.0000000,female;,single,28;,GenY;Boomers;,NULL,family,,NULL,,652471
+694,2015-12-15 19:31:57.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+695,2015-12-15 19:33:02.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+696,2015-12-15 19:54:17.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+697,2015-12-15 19:56:52.0000000,,,,,NULL,family,,NULL,,50
+698,2015-12-15 19:57:58.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+699,2015-12-15 20:00:13.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+700,2015-12-15 20:02:13.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+701,2015-12-15 20:07:44.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+702,2015-12-15 20:09:29.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+703,2015-12-15 20:11:47.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,636573
+704,2015-12-15 20:12:45.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+705,2015-12-15 20:13:59.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+706,2015-12-15 20:15:40.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+707,2015-12-15 20:16:32.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+708,2015-12-15 20:17:52.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+709,2015-12-15 20:19:21.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+710,2015-12-15 20:21:57.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+711,2015-12-15 20:23:10.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+712,2015-12-15 20:24:43.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+713,2015-12-15 20:25:42.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+714,2015-12-15 20:27:24.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+715,2015-12-15 20:31:18.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+716,2015-12-15 20:33:40.0000000,female;,single,28;,GenY;Boomers;,NULL,outdoorentertainment,,NULL,,652471
+717,2015-12-15 20:38:28.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+718,2015-12-15 20:44:32.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+719,2015-12-15 20:48:55.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,652471
+720,2015-12-15 20:49:26.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+721,2015-12-15 20:59:20.0000000,female;,single,28;,GenY;Boomers;,NULL,family,,NULL,,652471
+722,2015-12-15 21:10:28.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+723,2015-12-15 21:33:23.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,652471
+724,2015-12-15 21:44:47.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+725,2015-12-15 21:46:51.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+726,2015-12-15 21:48:21.0000000,female;,single,28;,GenY;Boomers;,NULL,onvacation,,NULL,,540454
+727,2015-12-15 21:55:17.0000000,female;,single,28;,GenY;Boomers;,NULL,personal,,NULL,,540454
+728,2015-12-15 22:28:21.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+729,2015-12-15 23:39:41.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+730,2015-12-15 23:42:27.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+731,2015-12-15 23:51:50.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+732,2015-12-15 23:55:46.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+733,2015-12-15 23:58:54.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+734,2015-12-16 00:00:29.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+735,2015-12-16 00:01:38.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+736,2015-12-16 00:03:08.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+737,2015-12-16 00:07:27.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+738,2015-12-16 00:10:20.0000000,,,,,NULL,outdoorentertainment,,NULL,,636573
+739,2015-12-16 00:13:24.0000000,,,,,2015-12-16 00:23:35.0000000,outdoorentertainment,,NULL,,50
+740,2015-12-16 00:23:37.0000000,,,,,NULL,outdoorentertainment,,NULL,,50
+741,1900-01-01 00:00:00.0000000,female;,single,39;,GenY;Boomers;,NULL,personal,,NULL,,633794
+742,2015-12-16 03:11:39.0000000,female;,single,28;,GenY;Boomers;,2015-12-16 03:12:23.0000000,outdoorentertainment,,NULL,,976783
+743,2015-12-16 03:12:31.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-16 03:13:17.0000000,outdoorentertainment,,NULL,,976783
+744,2015-12-16 03:13:25.0000000,,,,,2015-12-16 03:14:28.0000000,onvacation,,NULL,,976783
+745,2015-12-16 03:14:33.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+746,2015-12-16 03:16:57.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-16 03:17:52.0000000,family,,NULL,,976783
+747,2015-12-16 03:17:57.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2015-12-16 03:18:32.0000000,family,,NULL,,976783
+748,1900-01-01 00:00:00.0000000,male;male;male;male;,adults,36;42;63;40;,GenY;Boomers;GenX;Boomers;Boomers;GenY;Boomers;,NULL,onvacation,,NULL,,633794
+749,2015-12-16 07:25:15.0000000,,,,,NULL,personal,,NULL,,50
+750,2015-12-16 07:28:07.0000000,,,,,2015-12-16 07:40:21.0000000,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+751,2015-12-16 07:40:23.0000000,,,,,2015-12-16 08:09:22.0000000,outdoorentertainment,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+752,2015-12-16 08:10:04.0000000,,,,,NULL,personal,,NULL,,54331e9c-d2d1-4bab-af2b-d6735710fe6b
+753,2015-12-16 08:14:24.0000000,,,,,NULL,onvacation,,NULL,,412829
+754,2015-12-16 13:30:25.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-16 14:16:18.0000000,outdoorentertainment,,NULL,,976783
+755,2015-12-16 14:16:25.0000000,male;,single,46;,GenX;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+756,2015-12-16 14:17:26.0000000,male;,single,46;,GenX;Boomers;,2015-12-16 14:17:48.0000000,outdoorentertainment,,NULL,,976783
+757,2015-12-16 14:17:53.0000000,male;,single,46;,GenX;Boomers;,2015-12-16 15:17:44.0000000,outdoorentertainment,,NULL,,976783
+758,2015-12-16 15:18:10.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,976783
+759,2015-12-16 15:52:30.0000000,,,,,NULL,onvacation,,NULL,,918972
+760,2015-12-16 15:54:08.0000000,,,,,NULL,onvacation,,NULL,,918972
+761,2015-12-16 15:53:53.0000000,,,,,NULL,onvacation,,NULL,,918972
+762,2015-12-16 15:54:09.0000000,,,,,NULL,onvacation,,NULL,,918972
+763,2015-12-16 15:54:08.0000000,,,,,NULL,onvacation,,NULL,,918972
+764,2015-12-16 16:39:00.0000000,,,,,NULL,family,,NULL,,412829
+765,2015-12-16 20:18:13.0000000,,,,,2015-12-16 20:23:00.0000000,outdoorentertainment,,NULL,,412829
+766,2015-12-16 20:23:02.0000000,,,,,2015-12-16 20:24:48.0000000,outdoorentertainment,,NULL,,412829
+767,2015-12-16 20:24:50.0000000,,,,,NULL,outdoorentertainment,,NULL,,412829
+768,2015-12-16 20:24:51.0000000,,,,,NULL,outdoorentertainment,,NULL,,412829
+769,2015-12-16 21:32:16.0000000,female;,single,28;,GenY;Boomers;,2015-12-16 22:27:28.0000000,outdoorentertainment,,NULL,,412829
+770,2015-12-16 22:27:35.0000000,,,,,NULL,outdoorentertainment,,NULL,,412829
+771,2015-12-16 23:16:05.0000000,,,,,NULL,family,,NULL,,412829
+772,2015-12-17 00:24:21.0000000,,,,,NULL,outdoorentertainment,,NULL,,412829
+773,2015-12-17 00:49:47.0000000,,,,,NULL,outdoorentertainment,,NULL,,412829
+774,2015-12-17 04:44:42.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,outdoorentertainment,,NULL,,918972
+775,2015-12-17 04:49:09.0000000,,,,,NULL,onvacation,,NULL,,672655
+776,2015-12-17 04:50:39.0000000,,,,,NULL,outdoorentertainment,,NULL,,672655
+777,2015-12-17 04:52:15.0000000,,,,,NULL,outdoorentertainment,,NULL,,481678
+778,2015-12-17 05:00:12.0000000,,,,,2015-12-17 05:04:09.0000000,outdoorentertainment,,NULL,,116177
+779,2015-12-17 16:27:17.0000000,,,,,2015-12-17 16:29:25.0000000,onvacation,,NULL,,444947
+780,2015-12-17 16:32:51.0000000,,,,,2015-12-17 16:33:17.0000000,personal,,NULL,,444947
+781,2015-12-17 16:36:41.0000000,,,,,2015-12-17 16:36:59.0000000,onvacation,,NULL,,444947
+782,2015-12-17 16:37:01.0000000,,,,,2015-12-17 16:37:36.0000000,outdoorentertainment,,NULL,,444947
+783,2015-12-17 16:37:56.0000000,,,,,2015-12-17 16:38:16.0000000,family,,NULL,,444947
+784,2015-12-17 22:15:34.0000000,,,,,NULL,outdoorentertainment,,NULL,,541126
+785,2015-12-19 02:42:38.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2015-12-19 02:43:11.0000000,EnjoyTheMoment,,NULL,,976783
+786,2015-12-19 02:43:19.0000000,male;,single,46;,GenX;Boomers;,2015-12-19 02:43:44.0000000,EnjoyTheMoment,,NULL,,976783
+787,2015-12-19 02:43:55.0000000,female;,single,28;,GenY;Boomers;,2015-12-19 02:44:22.0000000,EnjoyTheMoment,,NULL,,976783
+788,2015-12-19 02:44:42.0000000,,,,,NULL,SpringIntoSummer,,NULL,,976783
+789,2015-12-19 06:42:49.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,116177
+790,2015-12-19 06:47:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,116177
+791,2015-12-19 06:50:42.0000000,,,,,2015-12-19 06:54:09.0000000,EnjoyTheMoment,,NULL,,116177
+792,2015-12-19 06:55:22.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,116177
+793,2015-12-19 06:56:20.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,116177
+794,2015-12-19 07:00:43.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,116177
+795,2015-12-19 07:06:10.0000000,,,,,2015-12-19 07:07:12.0000000,EnjoyTheMoment,,NULL,,116177
+796,2015-12-21 15:54:33.0000000,,,,,NULL,TailoredForYou,,NULL,,543234
+797,2015-12-21 16:25:41.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+798,2015-12-21 17:09:32.0000000,,,,,2015-12-21 17:11:07.0000000,EnjoyTheMoment,,NULL,,543234
+799,2015-12-21 17:11:18.0000000,female;,single,44;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+800,2015-12-21 17:30:26.0000000,female;,single,44;,GenX;Boomers;,NULL,SpringIntoSummer,,NULL,,543234
+801,2015-12-21 18:15:57.0000000,female;,single,28;,GenY;Boomers;,NULL,BeUnique,,NULL,,543234
+802,2015-12-21 18:23:06.0000000,,,,,2015-12-21 18:23:57.0000000,SpringIntoSummer,,NULL,,543234
+803,2015-12-21 18:24:09.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,SpringIntoSummer,,NULL,,543234
+804,2015-12-21 18:26:33.0000000,,,,,2015-12-21 18:27:12.0000000,EnjoyTheMoment,,NULL,,543234
+805,2015-12-21 18:36:50.0000000,,,,,NULL,BeUnique,,NULL,,543234
+806,2015-12-21 18:42:09.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+807,2015-12-21 18:47:31.0000000,,,,,2015-12-21 18:57:12.0000000,EnjoyTheMoment,,NULL,,543234
+808,2015-12-21 18:57:17.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+809,2015-12-21 19:01:01.0000000,,,,,NULL,SpringIntoSummer,,NULL,,543234
+810,2015-12-21 19:02:34.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+811,2015-12-21 21:57:09.0000000,,,,,NULL,BeUnique,,NULL,,976783
+812,2015-12-21 22:37:16.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,976783
+813,2016-01-04 16:23:09.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+814,2016-01-05 14:32:28.0000000,,,,,2016-01-05 14:33:04.0000000,EnjoyTheMoment,,NULL,,543234
+815,2016-01-05 20:52:43.0000000,,,,,NULL,SpringIntoSummer,,NULL,,412829
+816,2016-01-05 22:59:30.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+817,2016-01-05 23:00:14.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+818,2016-01-05 23:04:06.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+819,2016-01-05 23:06:04.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+820,2016-01-05 23:11:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+821,2016-01-05 23:11:39.0000000,,,,,NULL,BeUnique,,NULL,,543234
+822,2016-01-05 23:21:31.0000000,,,,,NULL,BeUnique,,NULL,,543234
+823,2016-01-05 23:31:22.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+824,2016-01-05 23:32:11.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+825,2016-01-05 23:37:16.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+826,2016-01-05 23:39:38.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+827,2016-01-05 23:41:07.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+828,2016-01-05 23:56:45.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+829,2016-01-06 00:40:56.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+830,2016-01-06 00:55:12.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+831,2016-01-06 00:59:24.0000000,female;,single,28;,GenY;Boomers;,NULL,BeUnique,,NULL,,543234
+832,2016-01-06 01:00:49.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+833,2016-01-06 01:03:45.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+834,2016-01-06 02:34:51.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+835,2016-01-06 02:43:15.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+836,2016-01-06 02:44:15.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+837,2016-01-06 02:54:44.0000000,,,,,2016-01-06 02:55:33.0000000,BeUnique,,NULL,,543234
+838,2016-01-06 02:55:35.0000000,,,,,NULL,BeUnique,,NULL,,543234
+839,2016-01-06 03:00:24.0000000,,,,,NULL,BeUnique,,NULL,,543234
+840,2016-01-06 03:03:32.0000000,,,,,NULL,BeUnique,,NULL,,543234
+841,2016-01-06 03:05:48.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+842,2016-01-06 03:08:20.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+843,2016-01-06 03:10:12.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+844,2016-01-06 03:22:08.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+845,2016-01-06 03:23:07.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+846,2016-01-06 03:30:11.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+847,2016-01-06 03:32:11.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+848,2016-01-06 03:34:16.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+849,2016-01-06 03:35:59.0000000,female;,single,28;,GenY;Boomers;,NULL,BeUnique,,NULL,,543234
+850,2016-01-06 03:37:42.0000000,male;,single,46;,GenX;Boomers;,NULL,SpringIntoSummer,,NULL,,543234
+851,2016-01-06 03:39:26.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+852,2016-01-06 03:41:24.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+853,2016-01-06 03:42:05.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+854,2016-01-06 03:43:01.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+855,2016-01-06 03:44:42.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+856,2016-01-06 03:46:33.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+857,2016-01-06 03:48:27.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,543234
+858,2016-01-06 04:09:04.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,543234
+859,2016-01-06 04:32:36.0000000,,,,,2016-01-06 04:34:30.0000000,BeUnique,,NULL,,689105
+860,2016-01-06 04:34:48.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,689105
+861,2016-01-06 05:06:05.0000000,female;,single,28;,GenY;Boomers;,2016-01-06 05:06:19.0000000,EnjoyTheMoment,,NULL,,257916
+862,2016-01-06 14:20:30.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-06 14:21:26.0000000,SpringIntoSummer,,NULL,,872915
+863,2016-01-06 14:21:35.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-06 14:21:52.0000000,EnjoyTheMoment,,NULL,,872915
+864,2016-01-06 14:21:54.0000000,,,,,2016-01-07 03:38:40.0000000,EnjoyTheMoment,,NULL,,872915
+865,2016-01-07 03:38:45.0000000,,,,,2016-01-07 03:39:38.0000000,EnjoyTheMoment,,NULL,,872915
+866,2016-01-07 03:42:24.0000000,female;,single,28;,GenY;Boomers;,2016-01-07 03:43:53.0000000,TailoredForYou,,NULL,,872915
+867,2016-01-07 03:44:01.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,872915
+868,2016-07-01 03:48:25.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,633794
+869,2016-01-07 17:39:17.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,531139
+870,2016-01-07 21:30:20.0000000,,,,,NULL,SpringIntoSummer,,NULL,,872915
+871,2016-01-07 21:42:22.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,531139
+872,2016-01-07 21:45:02.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+873,2016-01-07 21:45:04.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+874,2016-01-07 21:48:00.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+875,2016-01-07 22:10:16.0000000,,,,,NULL,BeUnique,,NULL,,444947
+876,2016-01-07 22:10:18.0000000,,,,,NULL,BeUnique,,NULL,,444947
+877,2016-01-07 22:12:05.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+878,2016-01-07 22:49:31.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2016-01-07 22:51:25.0000000,EnjoyTheMoment,,NULL,,798138
+879,2016-01-07 22:51:26.0000000,,,,,2016-01-07 22:53:43.0000000,EnjoyTheMoment,,NULL,,798138
+880,2016-01-07 23:11:21.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677694
+881,2016-01-07 23:14:18.0000000,male;,single,50;,GenX;Boomers;,NULL,BeUnique,,NULL,,677694
+882,2016-01-07 23:54:04.0000000,,,,,NULL,SpringIntoSummer,,NULL,,677694
+883,2016-01-08 00:00:20.0000000,,,,,NULL,SpringIntoSummer,,NULL,,677694
+884,2016-01-08 00:01:58.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677694
+885,2016-01-08 00:45:11.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677694
+886,2016-01-08 00:48:07.0000000,,,,,NULL,SpringIntoSummer,,NULL,,677694
+887,2016-01-08 00:51:33.0000000,,,,,NULL,BeUnique,,NULL,,677694
+888,2016-01-08 01:03:45.0000000,,,,,NULL,TailoredForYou,,NULL,,677694
+889,2016-01-08 01:05:01.0000000,,,,,NULL,TailoredForYou,,NULL,,677694
+890,2016-01-08 01:05:48.0000000,,,,,NULL,TailoredForYou,,NULL,,677694
+891,2016-01-08 01:06:24.0000000,,,,,NULL,TailoredForYou,,NULL,,677694
+892,2016-01-08 07:18:55.0000000,,,,,NULL,BeUnique,,NULL,,412829
+893,2016-01-08 07:19:54.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,412829
+894,2016-01-08 07:20:34.0000000,female;,single,28;,GenY;Boomers;,NULL,BeUnique,,NULL,,412829
+895,2016-01-08 23:48:59.0000000,,,,,2016-01-08 23:49:54.0000000,BeUnique,,NULL,,412829
+896,2016-01-08 23:49:58.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+897,2016-01-11 22:22:01.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+898,2016-01-11 22:22:04.0000000,,,,,NULL,BeUnique,,NULL,,412829
+899,2016-01-11 22:22:39.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,412829
+900,2016-01-11 22:25:06.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,218775
+901,2016-01-11 22:53:03.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,218775
+902,2016-01-11 22:55:56.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,218775
+903,2016-01-11 23:13:21.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-11 23:14:27.0000000,EnjoyTheMoment,,NULL,,872915
+904,2016-01-11 23:14:33.0000000,male;,single,46;,GenX;Boomers;,2016-01-11 23:15:19.0000000,EnjoyTheMoment,,NULL,,872915
+905,2016-01-11 23:15:32.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2016-01-11 23:17:50.0000000,EnjoyTheMoment,,NULL,,872915
+906,2016-01-11 23:17:13.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677694
+907,2016-01-11 23:19:20.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,872915
+908,2016-01-11 23:19:08.0000000,male;male;,adults,46;52;,GenX;Boomers;GenX;Boomers;,2016-01-11 23:21:45.0000000,BeUnique,,NULL,,677694
+909,2016-01-11 23:21:36.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-11 23:26:30.0000000,EnjoyTheMoment,,NULL,,872915
+910,2016-01-11 23:21:55.0000000,,,,,2016-01-11 23:26:54.0000000,BeUnique,,NULL,,677694
+911,2016-01-11 23:26:43.0000000,female;,single,28;,GenY;Boomers;,2016-01-11 23:27:06.0000000,EnjoyTheMoment,,NULL,,872915
+912,2016-01-11 23:30:01.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,872915
+913,2016-01-11 23:30:52.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677694
+914,2016-01-12 00:06:48.0000000,,,,,2016-01-12 00:07:25.0000000,EnjoyTheMoment,,NULL,,677694
+915,2016-01-12 00:07:34.0000000,female;,single,28;,GenY;Boomers;,2016-01-12 00:08:06.0000000,EnjoyTheMoment,,NULL,,677694
+916,2016-01-12 00:08:18.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 00:08:42.0000000,EnjoyTheMoment,,NULL,,677694
+917,2016-01-12 00:08:52.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 00:09:22.0000000,EnjoyTheMoment,,NULL,,677694
+918,2016-01-12 00:09:29.0000000,female;,single,28;,GenY;Boomers;,2016-01-12 00:09:49.0000000,EnjoyTheMoment,,NULL,,677694
+919,2016-01-12 00:10:09.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-12 00:11:20.0000000,TailoredForYou,,NULL,,677694
+920,2016-01-12 00:11:31.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,2016-01-12 00:12:31.0000000,EnjoyTheMoment,,NULL,,677694
+921,2016-01-12 00:28:37.0000000,,,,,NULL,BeUnique,,NULL,,218775
+922,2016-01-12 21:10:21.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 21:11:09.0000000,SpringIntoSummer,,NULL,,677694
+923,2016-01-12 21:11:22.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-12 21:12:02.0000000,SpringIntoSummer,,NULL,,677694
+924,2016-01-12 21:12:12.0000000,,,,,2016-01-12 21:15:48.0000000,SpringIntoSummer,,NULL,,677694
+925,2016-01-12 21:15:55.0000000,male;,single,50;,GenX;Boomers;,2016-01-12 21:16:05.0000000,SpringIntoSummer,,NULL,,677694
+926,2016-01-12 21:16:14.0000000,male;female;,family,44;4;,GenX;Boomers;Youth;Boomers;,2016-01-12 21:21:47.0000000,SpringIntoSummer,,NULL,,677694
+927,2016-01-12 21:22:02.0000000,male;,single,44;,GenX;Boomers;,2016-01-12 21:22:20.0000000,SpringIntoSummer,,NULL,,677694
+928,2016-01-12 21:26:33.0000000,male;female;,adults,44;36;,GenX;Boomers;GenY;Boomers;,2016-01-12 21:27:43.0000000,SpringIntoSummer,,NULL,,677694
+929,2016-01-12 21:27:52.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 21:28:14.0000000,SpringIntoSummer,,NULL,,677694
+930,2016-01-12 21:28:27.0000000,male;,single,44;,GenX;Boomers;,NULL,SpringIntoSummer,,NULL,,677694
+931,2016-01-12 21:28:28.0000000,male;,single,44;,GenX;Boomers;,2016-01-12 21:29:05.0000000,SpringIntoSummer,,NULL,,677694
+932,2016-01-12 21:29:14.0000000,male;,single,46;,GenX;Boomers;,NULL,SpringIntoSummer,,NULL,,677694
+933,2016-01-12 21:47:53.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,677694
+934,2016-01-12 21:54:52.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 21:55:38.0000000,TailoredForYou,,NULL,,677694
+935,2016-01-12 21:55:47.0000000,male;,single,46;,GenX;Boomers;,NULL,TailoredForYou,,NULL,,677694
+936,2016-01-12 22:01:27.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 22:03:14.0000000,BeUnique,,NULL,,677694
+937,2016-01-12 22:03:22.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 22:03:55.0000000,BeUnique,,NULL,,677694
+938,2016-01-12 22:04:00.0000000,,,,,NULL,BeUnique,,NULL,,677694
+939,2016-01-12 22:04:21.0000000,male;,single,46;,GenX;Boomers;,2016-01-12 22:45:06.0000000,TailoredForYou,,NULL,,677694
+940,2016-01-12 22:45:13.0000000,,,,,NULL,TailoredForYou,,NULL,,677694
+941,2016-01-14 00:25:43.0000000,,,,,2016-01-14 00:26:23.0000000,EnjoyTheMoment,,NULL,,435054
+942,2016-01-14 00:26:33.0000000,male;,single,46;,GenX;Boomers;,2016-01-14 03:10:03.0000000,EnjoyTheMoment,,NULL,,435054
+943,2016-01-14 02:58:23.0000000,,,,,2016-01-14 02:59:06.0000000,EnjoyTheMoment,,NULL,,440216
+944,2016-01-14 02:59:07.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,440216
+945,2016-01-14 03:10:19.0000000,male;,single,50;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,435054
+946,2016-01-14 03:11:39.0000000,,,,,2016-01-14 03:12:18.0000000,BeUnique,,NULL,,435054
+947,2016-01-14 03:12:23.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-14 03:13:29.0000000,EnjoyTheMoment,,NULL,,435054
+948,2016-01-14 03:13:57.0000000,female;,single,28;,GenY;Boomers;,NULL,TailoredForYou,,NULL,,435054
+949,2016-01-14 03:20:58.0000000,male;,single,50;,GenX;Boomers;,2016-01-14 03:23:55.0000000,EnjoyTheMoment,,NULL,,435054
+950,2016-01-14 03:24:05.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,435054
+951,2016-01-14 03:27:35.0000000,female;,single,28;,GenY;Boomers;,NULL,TailoredForYou,,NULL,,435054
+952,2016-01-14 03:57:32.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,440216
+953,2016-01-14 18:09:59.0000000,,,,,NULL,BeUnique,,NULL,,798138
+954,2016-01-14 18:13:52.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+955,2016-01-14 18:14:44.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+956,2016-01-14 18:17:12.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,440216
+957,2016-01-14 18:17:13.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,440216
+958,2016-01-14 18:18:48.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+959,2016-01-14 18:20:24.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+960,2016-01-14 18:21:09.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,440216
+961,2016-01-14 18:21:28.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+962,2016-01-14 18:26:32.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+963,2016-01-14 19:20:26.0000000,,,,,NULL,SpringIntoSummer,,NULL,,444947
+964,2016-01-14 19:30:33.0000000,female;,single,28;,GenY;Boomers;,2016-01-15 17:03:04.0000000,EnjoyTheMoment,,NULL,,872915
+965,2016-01-14 22:50:36.0000000,,,,,2016-01-14 22:52:36.0000000,EnjoyTheMoment,,NULL,,440216
+966,2016-01-14 22:52:40.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,440216
+967,2016-01-15 01:27:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+968,2016-01-15 03:37:56.0000000,,,,,NULL,BeUnique,,NULL,,841526
+969,2016-01-15 17:03:15.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,872915
+970,2016-01-15 19:15:34.0000000,male;female;female;,family,44;44;2;,GenX;Boomers;GenX;Boomers;Youth;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+971,2016-01-15 19:18:44.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,798138
+972,2016-01-15 19:39:05.0000000,female;,single,28;,GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,957960
+973,2016-01-15 19:48:39.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,444947
+974,2016-01-16 17:51:20.0000000,,,,,2016-01-16 17:51:56.0000000,TailoredForYou,,NULL,,841526
+975,2016-01-16 17:51:57.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+976,2016-01-16 18:25:12.0000000,male;male;male;,adults,26;27;26;,GenY;Boomers;GenY;Boomers;GenY;Boomers;,2016-01-16 18:39:03.0000000,EnjoyTheMoment,,NULL,,841526
+977,2016-01-16 18:39:05.0000000,,,,,2016-01-16 18:40:12.0000000,EnjoyTheMoment,,NULL,,841526
+978,2016-01-16 18:40:15.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+979,2016-01-16 18:40:38.0000000,,,,,NULL,TailoredForYou,,NULL,,841526
+980,2016-01-16 18:46:04.0000000,,,,,2016-01-16 18:53:30.0000000,TailoredForYou,,NULL,,841526
+981,2016-01-16 18:53:32.0000000,,,,,2016-01-16 18:55:50.0000000,EnjoyTheMoment,,NULL,,841526
+982,2016-01-16 18:55:53.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+983,2016-01-16 18:56:47.0000000,,,,,2016-01-16 18:57:15.0000000,EnjoyTheMoment,,NULL,,841526
+984,2016-01-16 18:57:20.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+985,2016-01-16 18:57:24.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+986,2016-01-16 18:57:25.0000000,,,,,NULL,BeUnique,,NULL,,841526
+987,2016-01-16 18:57:51.0000000,,,,,2016-01-16 19:00:11.0000000,BeUnique,,NULL,,841526
+988,2016-01-16 19:00:19.0000000,,,,,NULL,BeUnique,,NULL,,841526
+989,2016-01-16 19:02:57.0000000,,,,,2016-01-16 19:19:58.0000000,EnjoyTheMoment,,NULL,,841526
+990,2016-01-16 19:20:02.0000000,,,,,2016-01-16 19:32:01.0000000,EnjoyTheMoment,,NULL,,841526
+991,2016-01-16 19:32:06.0000000,,,,,2016-01-16 20:16:15.0000000,EnjoyTheMoment,,NULL,,841526
+992,2016-01-16 20:17:10.0000000,,,,,NULL,BeUnique,,NULL,,841526
+993,2016-01-16 20:17:57.0000000,,,,,2016-01-16 20:37:52.0000000,EnjoyTheMoment,,NULL,,841526
+994,2016-01-16 20:19:00.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,184170
+995,2016-01-16 20:37:54.0000000,,,,,2016-01-16 21:09:39.0000000,EnjoyTheMoment,,NULL,,841526
+996,2016-01-16 21:09:43.0000000,,,,,2016-01-16 21:10:03.0000000,EnjoyTheMoment,,NULL,,841526
+997,2016-01-16 21:16:16.0000000,,,,,2016-01-16 21:22:32.0000000,TailoredForYou,,NULL,,841526
+998,2016-01-16 21:37:07.0000000,,,,,2016-01-16 22:10:18.0000000,BeUnique,,NULL,,841526
+999,2016-01-16 22:10:37.0000000,,,,,2016-01-16 22:20:00.0000000,SpringIntoSummer,,NULL,,841526
+1000,2016-01-16 22:24:14.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1001,2016-01-16 22:24:18.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1002,2016-01-16 22:24:39.0000000,,,,,2016-01-16 22:31:37.0000000,EnjoyTheMoment,,NULL,,841526
+1003,2016-01-16 22:31:48.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1004,2016-01-16 23:04:30.0000000,,,,,2016-01-16 23:07:23.0000000,EnjoyTheMoment,,NULL,,459075
+1005,2016-01-16 23:07:26.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,459075
+1006,2016-01-16 23:08:32.0000000,,,,,NULL,BeUnique,,NULL,,459075
+1007,2016-01-16 23:14:16.0000000,,,,,NULL,BeUnique,,NULL,,459075
+1008,2016-01-16 23:16:03.0000000,,,,,NULL,BeUnique,,NULL,,459075
+1009,2016-01-16 23:19:15.0000000,,,,,NULL,BeUnique,,NULL,,459075
+1010,2016-01-16 23:33:01.0000000,,,,,NULL,BeUnique,,NULL,,677822
+1011,2016-01-17 04:15:24.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,184170
+1012,2016-01-17 14:09:18.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,184170
+1013,2016-01-17 14:52:26.0000000,,,,,2016-01-17 15:05:20.0000000,EnjoyTheMoment,,NULL,,677822
+1014,2016-01-17 14:53:26.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1015,2016-01-17 15:06:57.0000000,,,,,NULL,SpringIntoSummer,,NULL,,677822
+1016,2016-01-17 15:12:13.0000000,,,,,2016-01-17 15:17:45.0000000,EnjoyTheMoment,,NULL,,841526
+1017,2016-01-17 15:17:57.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1018,2016-01-17 15:18:02.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1019,2016-01-17 15:18:25.0000000,,,,,2016-01-17 15:23:11.0000000,BeUnique,,NULL,,841526
+1020,2016-01-17 15:23:21.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1021,2016-01-17 15:36:08.0000000,,,,,2016-01-17 15:40:48.0000000,TailoredForYou,,NULL,,184170
+1022,2016-01-17 15:43:29.0000000,,,,,NULL,TailoredForYou,,NULL,,184170
+1023,2016-01-17 15:46:11.0000000,,,,,2016-01-17 15:46:26.0000000,BeUnique,,NULL,,841526
+1024,2016-01-17 15:52:47.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1025,2016-01-17 15:57:42.0000000,,,,,2016-01-17 15:58:15.0000000,BeUnique,,NULL,,841526
+1026,2016-01-17 15:58:19.0000000,,,,,2016-01-17 16:01:31.0000000,EnjoyTheMoment,,NULL,,841526
+1027,2016-01-17 16:04:48.0000000,,,,,2016-01-17 16:16:07.0000000,EnjoyTheMoment,,NULL,,841526
+1028,2016-01-17 16:16:18.0000000,,,,,2016-01-17 16:17:30.0000000,BeUnique,,NULL,,841526
+1029,2016-01-17 16:17:31.0000000,,,,,2016-01-17 16:34:52.0000000,EnjoyTheMoment,,NULL,,841526
+1030,2016-01-17 16:34:53.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1031,2016-01-17 16:41:59.0000000,,,,,2016-01-17 16:58:22.0000000,BeUnique,,NULL,,841526
+1032,2016-01-17 16:59:02.0000000,,,,,2016-01-17 17:13:20.0000000,BeUnique,,NULL,,841526
+1033,2016-01-17 17:13:30.0000000,,,,,2016-01-17 17:24:37.0000000,BeUnique,,NULL,,841526
+1034,2016-01-17 17:16:22.0000000,female;,single,30;,GenY;Boomers;,NULL,SpringIntoSummer,,NULL,,677822
+1035,2016-01-17 17:20:27.0000000,,,,,2016-01-17 17:30:48.0000000,EnjoyTheMoment,,NULL,,677822
+1036,2016-01-17 17:26:51.0000000,,,,,2016-01-17 17:27:21.0000000,TailoredForYou,,NULL,,841526
+1037,2016-01-17 17:27:25.0000000,,,,,2016-01-17 17:27:41.0000000,EnjoyTheMoment,,NULL,,841526
+1038,2016-01-17 17:27:44.0000000,,,,,2016-01-17 17:31:32.0000000,EnjoyTheMoment,,NULL,,841526
+1039,2016-01-17 17:30:59.0000000,,,,,2016-01-17 17:40:22.0000000,TailoredForYou,,NULL,,677822
+1040,2016-01-17 17:40:26.0000000,,,,,2016-01-17 17:46:44.0000000,TailoredForYou,,NULL,,841526
+1041,2016-01-17 17:40:44.0000000,,,,,2016-01-17 17:51:32.0000000,EnjoyTheMoment,,NULL,,677822
+1042,2016-01-17 17:47:07.0000000,,,,,2016-01-17 17:58:04.0000000,TailoredForYou,,NULL,,841526
+1043,2016-01-17 17:51:41.0000000,,,,,NULL,TailoredForYou,,NULL,,677822
+1044,2016-01-17 17:57:56.0000000,,,,,2016-01-17 18:04:05.0000000,BeUnique,,NULL,,677822
+1045,2016-01-17 17:58:24.0000000,,,,,2016-01-17 18:09:59.0000000,TailoredForYou,,NULL,,841526
+1046,2016-01-17 18:04:06.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,677822
+1047,2016-01-17 18:10:14.0000000,,,,,2016-01-17 18:18:15.0000000,TailoredForYou,,NULL,,841526
+1048,2016-01-17 18:26:01.0000000,,,,,2016-01-17 18:41:51.0000000,TailoredForYou,,NULL,,841526
+1049,2016-01-17 18:43:43.0000000,,,,,2016-01-17 18:51:31.0000000,SpringIntoSummer,,NULL,,841526
+1050,2016-01-17 18:54:39.0000000,,,,,2016-01-17 19:00:36.0000000,SpringIntoSummer,,NULL,,841526
+1051,2016-01-17 19:00:45.0000000,,,,,2016-01-17 19:15:50.0000000,BeUnique,,NULL,,841526
+1052,2016-01-17 19:16:14.0000000,,,,,NULL,TailoredForYou,,NULL,,841526
+1053,2016-01-17 19:28:10.0000000,,,,,2016-01-17 19:42:47.0000000,TailoredForYou,,NULL,,841526
+1054,2016-01-17 19:42:56.0000000,,,,,2016-01-17 19:51:48.0000000,BeUnique,,NULL,,841526
+1055,2016-01-17 19:51:56.0000000,,,,,2016-01-17 19:59:09.0000000,BeUnique,,NULL,,841526
+1056,2016-01-17 19:59:12.0000000,,,,,2016-01-17 20:01:59.0000000,EnjoyTheMoment,,NULL,,841526
+1057,2016-01-17 20:06:40.0000000,,,,,NULL,TailoredForYou,,NULL,,841526
+1058,2016-01-17 20:06:45.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1059,2016-01-17 20:06:49.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1060,2016-01-17 20:06:49.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1061,2016-01-17 20:06:50.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1062,2016-01-17 20:06:50.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1063,2016-01-17 20:06:51.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1064,2016-01-17 20:07:04.0000000,,,,,2016-01-18 13:52:50.0000000,BeUnique,,NULL,,841526
+1065,2016-01-18 13:52:55.0000000,,,,,2016-01-18 13:57:27.0000000,BeUnique,,NULL,,841526
+1066,2016-01-18 13:57:46.0000000,,,,,2016-01-18 13:58:05.0000000,BeUnique,,NULL,,841526
+1067,2016-01-18 13:58:09.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1068,2016-01-18 14:14:39.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1069,2016-01-18 14:19:08.0000000,,,,,2016-01-18 14:19:57.0000000,EnjoyTheMoment,,NULL,,841526
+1070,2016-01-18 14:19:58.0000000,,,,,2016-01-18 14:38:05.0000000,EnjoyTheMoment,,NULL,,841526
+1071,2016-01-18 14:38:14.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1072,2016-01-18 14:51:02.0000000,,,,,2016-01-18 15:06:02.0000000,BeUnique,,NULL,,841526
+1073,2016-01-18 15:06:28.0000000,,,,,2016-01-18 15:20:47.0000000,EnjoyTheMoment,,NULL,,841526
+1074,2016-01-18 15:20:53.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1075,2016-01-18 15:34:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1076,2016-01-18 15:53:38.0000000,,,,,2016-01-18 16:01:28.0000000,EnjoyTheMoment,,NULL,,841526
+1077,2016-01-18 16:04:17.0000000,,,,,2016-01-18 16:04:35.0000000,BeUnique,,NULL,,841526
+1078,2016-01-18 16:04:38.0000000,,,,,2016-01-18 16:04:59.0000000,EnjoyTheMoment,,NULL,,841526
+1079,2016-01-18 16:09:45.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1080,2016-01-18 16:23:01.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1081,2016-01-18 16:28:22.0000000,,,,,2016-01-18 16:29:01.0000000,EnjoyTheMoment,,NULL,,184170
+1082,2016-01-18 16:29:02.0000000,,,,,2016-01-18 16:29:18.0000000,EnjoyTheMoment,,NULL,,184170
+1083,2016-01-18 16:36:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1084,2016-01-18 16:53:30.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1085,2016-01-18 17:08:14.0000000,,,,,2016-01-18 17:15:10.0000000,EnjoyTheMoment,,NULL,,841526
+1086,2016-01-18 17:15:11.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1087,2016-01-18 17:22:11.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1088,2016-01-18 17:23:00.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1089,2016-01-18 17:37:41.0000000,,,,,2016-01-18 17:56:53.0000000,EnjoyTheMoment,,NULL,,841526
+1090,2016-01-18 17:57:07.0000000,,,,,2016-01-18 18:09:17.0000000,EnjoyTheMoment,,NULL,,841526
+1091,2016-01-18 18:09:28.0000000,,,,,2016-01-18 18:16:50.0000000,BeUnique,,NULL,,841526
+1092,2016-01-18 18:17:05.0000000,,,,,2016-01-18 18:22:47.0000000,EnjoyTheMoment,,NULL,,841526
+1093,2016-01-18 18:28:15.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,184170
+1094,2016-01-18 18:30:21.0000000,,,,,2016-01-18 18:41:40.0000000,EnjoyTheMoment,,NULL,,184170
+1095,2016-01-18 18:37:19.0000000,,,,,2016-01-18 18:51:52.0000000,EnjoyTheMoment,,NULL,,841526
+1096,2016-01-18 18:56:49.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1097,2016-01-18 19:12:25.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1098,2016-01-18 19:23:30.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1099,2016-01-18 19:31:29.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1100,2016-01-18 19:58:34.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1101,2016-01-18 20:15:40.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1102,2016-01-18 20:28:37.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1103,2016-01-18 20:37:27.0000000,,,,,2016-01-18 20:38:07.0000000,EnjoyTheMoment,,NULL,,184170
+1104,2016-01-18 20:38:10.0000000,,,,,2016-01-18 20:51:33.0000000,EnjoyTheMoment,,NULL,,184170
+1105,2016-01-18 20:39:13.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1106,2016-01-18 20:55:37.0000000,,,,,2016-01-18 21:03:30.0000000,EnjoyTheMoment,,NULL,,841526
+1107,2016-01-18 21:08:13.0000000,,,,,2016-01-18 21:17:15.0000000,EnjoyTheMoment,,NULL,,841526
+1108,2016-01-18 21:17:29.0000000,,,,,2016-01-18 21:25:56.0000000,EnjoyTheMoment,,NULL,,841526
+1109,2016-01-18 21:26:02.0000000,,,,,2016-01-18 21:26:21.0000000,EnjoyTheMoment,,NULL,,841526
+1110,2016-01-18 21:26:22.0000000,,,,,2016-01-18 21:27:57.0000000,EnjoyTheMoment,,NULL,,841526
+1111,2016-01-18 21:38:17.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1112,2016-01-18 22:01:38.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1113,2016-01-19 13:35:35.0000000,,,,,2016-01-19 13:35:53.0000000,BeUnique,,NULL,,841526
+1114,2016-01-19 14:00:55.0000000,,,,,2016-01-19 14:01:28.0000000,SpringIntoSummer,,NULL,,841526
+1115,2016-01-19 14:24:09.0000000,,,,,2016-01-19 14:41:47.0000000,EnjoyTheMoment,,NULL,,841526
+1116,2016-01-19 14:41:56.0000000,,,,,2016-01-19 15:05:07.0000000,BeUnique,,NULL,,841526
+1117,2016-01-19 15:05:21.0000000,,,,,2016-01-19 15:13:24.0000000,EnjoyTheMoment,,NULL,,841526
+1118,2016-01-19 15:13:32.0000000,,,,,2016-01-19 15:27:59.0000000,BeUnique,,NULL,,841526
+1119,2016-01-19 15:28:05.0000000,,,,,2016-01-19 15:42:11.0000000,EnjoyTheMoment,,NULL,,841526
+1120,2016-01-19 15:42:16.0000000,,,,,2016-01-19 15:48:00.0000000,EnjoyTheMoment,,NULL,,841526
+1121,2016-01-19 15:49:53.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1122,2016-01-19 15:49:57.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1123,2016-01-19 15:50:02.0000000,,,,,NULL,BeUnique,,NULL,,873834
+1124,2016-01-19 15:50:03.0000000,,,,,NULL,BeUnique,,NULL,,873834
+1125,2016-01-19 15:50:06.0000000,,,,,NULL,BeUnique,,NULL,,873834
+1126,2016-01-19 15:50:06.0000000,,,,,NULL,BeUnique,,NULL,,873834
+1127,2016-01-19 15:50:08.0000000,,,,,NULL,TailoredForYou,,NULL,,873834
+1128,2016-01-19 15:50:09.0000000,,,,,NULL,TailoredForYou,,NULL,,873834
+1129,2016-01-19 15:50:10.0000000,,,,,NULL,TailoredForYou,,NULL,,873834
+1130,2016-01-19 15:50:11.0000000,,,,,NULL,TailoredForYou,,NULL,,873834
+1131,2016-01-19 15:50:13.0000000,,,,,NULL,SpringIntoSummer,,NULL,,873834
+1132,2016-01-19 15:50:15.0000000,,,,,NULL,SpringIntoSummer,,NULL,,873834
+1133,2016-01-19 15:50:16.0000000,,,,,NULL,SpringIntoSummer,,NULL,,873834
+1134,2016-01-19 15:50:18.0000000,,,,,NULL,SpringIntoSummer,,NULL,,873834
+1135,2016-01-19 15:50:20.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1136,2016-01-19 15:50:22.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1137,2016-01-19 15:50:24.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1138,2016-01-19 15:50:30.0000000,,,,,2016-01-19 16:04:28.0000000,EnjoyTheMoment,,NULL,,841526
+1139,2016-01-19 15:50:55.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,873834
+1140,2016-01-19 15:51:22.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,119221
+1141,2016-01-19 16:04:33.0000000,,,,,2016-01-19 16:05:24.0000000,EnjoyTheMoment,,NULL,,841526
+1142,2016-01-19 16:05:29.0000000,,,,,2016-01-19 16:12:32.0000000,EnjoyTheMoment,,NULL,,841526
+1143,2016-01-19 16:12:58.0000000,,,,,2016-01-19 16:13:44.0000000,BeUnique,,NULL,,841526
+1144,2016-01-19 16:14:47.0000000,,,,,2016-01-19 16:27:50.0000000,EnjoyTheMoment,,NULL,,873834
+1145,2016-01-19 16:19:39.0000000,,,,,2016-01-19 16:31:39.0000000,EnjoyTheMoment,,NULL,,841526
+1146,2016-01-19 16:27:57.0000000,,,,,NULL,BeUnique,,NULL,,873834
+1147,2016-01-19 16:31:47.0000000,,,,,2016-01-19 16:40:42.0000000,BeUnique,,NULL,,841526
+1148,2016-01-19 16:40:44.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1149,2016-01-19 16:49:55.0000000,,,,,2016-01-19 17:02:38.0000000,EnjoyTheMoment,,NULL,,841526
+1150,2016-01-19 17:03:16.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1151,2016-01-19 17:20:59.0000000,,,,,2016-01-19 17:46:37.0000000,EnjoyTheMoment,,NULL,,841526
+1152,2016-01-19 17:46:51.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1153,2016-01-19 17:48:44.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1154,2016-01-19 17:48:52.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1155,2016-01-19 17:48:53.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1156,2016-01-19 17:48:55.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1157,2016-01-19 17:48:55.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1158,2016-01-19 17:49:04.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1159,2016-01-19 17:49:05.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1160,2016-01-19 17:49:08.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1161,2016-01-19 17:49:09.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1162,2016-01-19 17:49:10.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1163,2016-01-19 17:49:10.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1164,2016-01-19 17:49:11.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1165,2016-01-19 17:49:11.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1166,2016-01-19 17:49:11.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1167,2016-01-19 17:49:11.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1168,2016-01-19 17:49:13.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1169,2016-01-19 17:49:24.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1170,2016-01-19 17:49:25.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1171,2016-01-19 17:49:26.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1172,2016-01-19 17:56:39.0000000,,,,,2016-01-19 18:00:08.0000000,BeUnique,,NULL,,841526
+1173,2016-01-19 18:06:18.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1174,2016-01-19 18:09:21.0000000,,,,,2016-01-19 18:35:44.0000000,EnjoyTheMoment,,NULL,,841526
+1175,2016-01-19 18:21:38.0000000,,,,,2016-01-19 18:25:35.0000000,BeUnique,,NULL,,160367
+1176,2016-01-19 18:25:38.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1177,2016-01-19 18:27:04.0000000,,,,,2016-01-19 18:27:37.0000000,EnjoyTheMoment,,NULL,,160367
+1178,2016-01-19 18:28:19.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1179,2016-01-19 18:28:22.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1180,2016-01-19 18:28:24.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1181,2016-01-19 18:28:25.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1182,2016-01-19 18:28:25.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1183,2016-01-19 18:28:28.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1184,2016-01-19 18:28:30.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1185,2016-01-19 18:28:31.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1186,2016-01-19 18:28:43.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1187,2016-01-19 18:28:44.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1188,2016-01-19 18:28:48.0000000,,,,,NULL,BeUnique,,NULL,,160367
+1189,2016-01-19 18:28:49.0000000,,,,,NULL,BeUnique,,NULL,,160367
+1190,2016-01-19 18:28:49.0000000,,,,,NULL,BeUnique,,NULL,,160367
+1191,2016-01-19 18:28:50.0000000,,,,,NULL,BeUnique,,NULL,,160367
+1192,2016-01-19 18:29:27.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1193,2016-01-19 18:30:32.0000000,,,,,2016-01-19 18:31:14.0000000,EnjoyTheMoment,,NULL,,160367
+1194,2016-01-19 18:31:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,160367
+1195,2016-01-19 18:31:34.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1196,2016-01-19 18:31:35.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1197,2016-01-19 18:31:38.0000000,,,,,NULL,SpringIntoSummer,,NULL,,160367
+1198,2016-01-19 18:31:41.0000000,,,,,2016-01-19 18:32:20.0000000,EnjoyTheMoment,,NULL,,160367
+1199,2016-01-19 18:35:49.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1200,2016-01-19 18:39:20.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1201,2016-01-19 18:39:20.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1202,2016-01-19 18:39:38.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1203,2016-01-19 18:39:58.0000000,,,,,NULL,BeUnique,,NULL,,841526
+1204,2016-01-19 18:42:58.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,841526
+1205,2016-01-19 18:43:56.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1206,2016-01-19 18:46:44.0000000,,,,,NULL,SpringIntoSummer,,NULL,,841526
+1207,2016-01-19 18:53:00.0000000,,,,,2016-01-19 18:54:01.0000000,EnjoyTheMoment,,NULL,,841526
+1208,2016-01-19 18:59:26.0000000,,,,,2016-01-19 19:22:48.0000000,BeUnique,,NULL,,841526
+1209,2016-01-19 19:22:57.0000000,,,,,2016-01-19 19:46:43.0000000,BeUnique,,NULL,,841526
+1210,2016-01-19 19:46:49.0000000,,,,,2016-01-19 20:05:04.0000000,EnjoyTheMoment,,NULL,,841526
+1211,2016-01-19 20:05:14.0000000,,,,,2016-01-19 20:21:49.0000000,BeUnique,,NULL,,841526
+1212,2016-01-19 20:21:59.0000000,,,,,2016-01-19 20:31:25.0000000,BeUnique,,NULL,,841526
+1213,2016-01-19 20:31:30.0000000,,,,,2016-01-19 20:42:40.0000000,EnjoyTheMoment,,NULL,,841526
+1214,2016-01-19 20:50:09.0000000,,,,,2016-01-19 21:00:47.0000000,EnjoyTheMoment,,NULL,,841526
+1215,2016-01-19 21:00:50.0000000,,,,,2016-01-19 21:09:16.0000000,EnjoyTheMoment,,NULL,,841526
+1216,2016-01-19 21:09:21.0000000,,,,,2016-01-19 21:15:04.0000000,EnjoyTheMoment,,NULL,,841526
+1217,2016-01-19 21:15:50.0000000,,,,,2016-01-19 21:17:14.0000000,BeUnique,,NULL,,841526
+1218,2016-01-19 21:17:18.0000000,,,,,2016-01-19 21:18:16.0000000,EnjoyTheMoment,,NULL,,841526
+1219,2016-01-19 21:18:27.0000000,,,,,2016-01-19 21:24:05.0000000,BeUnique,,NULL,,841526
+1220,2016-01-19 21:29:25.0000000,,,,,2016-01-19 21:37:12.0000000,EnjoyTheMoment,,NULL,,841526
+1221,2016-01-19 21:37:18.0000000,,,,,2016-01-19 21:44:21.0000000,EnjoyTheMoment,,NULL,,841526
+1222,2016-01-19 21:44:36.0000000,,,,,2016-01-19 21:46:15.0000000,EnjoyTheMoment,,NULL,,841526
+1223,2016-01-19 21:46:41.0000000,,,,,2016-01-19 21:59:51.0000000,BeUnique,,NULL,,841526
+1224,2016-01-19 21:59:53.0000000,,,,,2016-01-19 22:00:24.0000000,EnjoyTheMoment,,NULL,,841526
+1225,2016-01-19 22:00:39.0000000,,,,,2016-01-19 22:01:55.0000000,EnjoyTheMoment,,NULL,,841526
+1226,2016-01-19 22:39:56.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,435054
+1227,2016-01-19 22:40:06.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-19 22:40:51.0000000,BeUnique,,NULL,,435054
+1228,2016-01-19 22:40:56.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,2016-01-19 22:43:01.0000000,EnjoyTheMoment,,NULL,,435054
+1229,2016-01-19 22:43:02.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,435054
+1230,2016-01-20 17:31:23.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,435054
+1231,2016-01-20 19:14:31.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,957960
+1232,2016-01-20 19:15:46.0000000,,,,,NULL,BeUnique,,NULL,,957960
+1233,2016-01-20 19:16:01.0000000,male;,single,30;,GenY;Boomers;,NULL,BeUnique,,NULL,,957960
+1234,2016-01-22 01:48:16.0000000,,,,,2016-01-22 01:48:22.0000000,EnjoyTheMoment,,NULL,,997359
+1235,2016-01-22 01:48:36.0000000,,,,,2016-01-22 01:48:50.0000000,EnjoyTheMoment,,NULL,,997359
+1236,2016-01-22 01:53:29.0000000,,,,,NULL,EnjoyTheMoment,,NULL,,997359
+1237,2016-01-22 01:55:24.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,EnjoyTheMoment,,NULL,,997359
+1238,2016-01-22 01:57:43.0000000,male;,single,46;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,997359
+1239,2016-01-22 02:10:31.0000000,male;,single,50;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,997359
+1240,2016-01-22 02:11:20.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,BeUnique,,NULL,,997359
+1241,2016-01-22 02:11:41.0000000,,,,,NULL,TailoredForYou,,NULL,,997359
+1242,2016-01-22 02:12:18.0000000,male;female;,adults,36;31;,GenY;Boomers;GenY;Boomers;,NULL,TailoredForYou,,NULL,,997359
+1243,2016-01-22 02:24:44.0000000,male;,single,50;,GenX;Boomers;,NULL,EnjoyTheMoment,,NULL,,997359
+1244,2019-10-04 16:49:25.1700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1245,2019-10-04 16:49:25.1733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1246,2019-10-04 16:49:25.1800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1247,2019-10-04 16:49:25.1866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1248,2019-10-04 16:49:25.1900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1249,2019-10-04 16:49:25.1933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.1933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1250,2019-10-04 16:49:25.2000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1251,2019-10-04 16:49:25.2000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1252,2019-10-04 16:49:25.2033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1253,2019-10-04 16:49:25.2100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1254,2019-10-04 16:49:25.2133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1255,2019-10-04 16:49:25.2166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1256,2019-10-04 16:49:25.2200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1257,2019-10-04 16:49:25.2233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1258,2019-10-04 16:49:25.2266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1259,2019-10-04 16:49:25.2333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1260,2019-10-04 16:49:25.2366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1261,2019-10-04 16:49:25.2400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1262,2019-10-04 16:49:25.2466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1263,2019-10-04 16:49:25.2500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1264,2019-10-04 16:49:25.2533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1265,2019-10-04 16:49:25.2566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1266,2019-10-04 16:49:25.2600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1267,2019-10-04 16:49:25.2633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1268,2019-10-04 16:49:25.2700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1269,2019-10-04 16:49:25.2733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1270,2019-10-04 16:49:25.2766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1271,2019-10-04 16:49:25.2833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1272,2019-10-04 16:49:25.2866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1273,2019-10-04 16:49:25.2900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1274,2019-10-04 16:49:25.2966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.2966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1275,2019-10-04 16:49:25.3000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1276,2019-10-04 16:49:25.3066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1277,2019-10-04 16:49:25.3100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1278,2019-10-04 16:49:25.3100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1279,2019-10-04 16:49:25.3166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1280,2019-10-04 16:49:25.3200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1281,2019-10-04 16:49:25.3233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1282,2019-10-04 16:49:25.3300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1283,2019-10-04 16:49:25.3300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1284,2019-10-04 16:49:25.3333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1285,2019-10-04 16:49:25.3400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1286,2019-10-04 16:49:25.3433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1287,2019-10-04 16:49:25.3466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1288,2019-10-04 16:49:25.3533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1289,2019-10-04 16:49:25.3566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1290,2019-10-04 16:49:25.3600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1291,2019-10-04 16:49:25.3666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1292,2019-10-04 16:49:25.3700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1293,2019-10-04 16:49:25.3733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1294,2019-10-04 16:49:25.3766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1295,2019-10-04 16:49:25.3800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1296,2019-10-04 16:49:25.3833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1297,2019-10-04 16:49:25.3900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1298,2019-10-04 16:49:25.3933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1299,2019-10-04 16:49:25.3966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.3966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1300,2019-10-04 16:49:25.4000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1301,2019-10-04 16:49:25.4033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1302,2019-10-04 16:49:25.4066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1303,2019-10-04 16:49:25.4133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1304,2019-10-04 16:49:25.4166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1305,2019-10-04 16:49:25.4200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1306,2019-10-04 16:49:25.4233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1307,2019-10-04 16:49:25.4266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1308,2019-10-04 16:49:25.4333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1309,2019-10-04 16:49:25.4400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1310,2019-10-04 16:49:25.4433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1311,2019-10-04 16:49:25.4466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1312,2019-10-04 16:49:25.4500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1313,2019-10-04 16:49:25.4533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1314,2019-10-04 16:49:25.4566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1315,2019-10-04 16:49:25.4600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1316,2019-10-04 16:49:25.4633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1317,2019-10-04 16:49:25.4666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1318,2019-10-04 16:49:25.4700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1319,2019-10-04 16:49:25.4733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1320,2019-10-04 16:49:25.4800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1321,2019-10-04 16:49:25.4800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1322,2019-10-04 16:49:25.4833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1323,2019-10-04 16:49:25.4866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1324,2019-10-04 16:49:25.4900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1325,2019-10-04 16:49:25.4933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.4933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1326,2019-10-04 16:49:25.5000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1327,2019-10-04 16:49:25.5066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1328,2019-10-04 16:49:25.5100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1329,2019-10-04 16:49:25.5100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1330,2019-10-04 16:49:25.5166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1331,2019-10-04 16:49:25.5200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1332,2019-10-04 16:49:25.5233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1333,2019-10-04 16:49:25.5266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1334,2019-10-04 16:49:25.5300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1335,2019-10-04 16:49:25.5366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1336,2019-10-04 16:49:25.5400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1337,2019-10-04 16:49:25.5433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1338,2019-10-04 16:49:25.5466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1339,2019-10-04 16:49:25.5500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1340,2019-10-04 16:49:25.5533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1341,2019-10-04 16:49:25.5566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1342,2019-10-04 16:49:25.5633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1343,2019-10-04 16:49:25.5666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1344,2019-10-04 16:49:25.5700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1345,2019-10-04 16:49:25.5700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1346,2019-10-04 16:49:25.5733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1347,2019-10-04 16:49:25.5766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1348,2019-10-04 16:49:25.5800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1349,2019-10-04 16:49:25.5833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1350,2019-10-04 16:49:25.5866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1351,2019-10-04 16:49:25.5900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1352,2019-10-04 16:49:25.5933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1353,2019-10-04 16:49:25.5966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.5966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1354,2019-10-04 16:49:25.6000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1355,2019-10-04 16:49:25.6033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1356,2019-10-04 16:49:25.6066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1357,2019-10-04 16:49:25.6100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1358,2019-10-04 16:49:25.6166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1359,2019-10-04 16:49:25.6200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1360,2019-10-04 16:49:25.6200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1361,2019-10-04 16:49:25.6233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1362,2019-10-04 16:49:25.6266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1363,2019-10-04 16:49:25.6333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1364,2019-10-04 16:49:25.6366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1365,2019-10-04 16:49:25.6400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1366,2019-10-04 16:49:25.6466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1367,2019-10-04 16:49:25.6500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1368,2019-10-04 16:49:25.6566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1369,2019-10-04 16:49:25.6600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1370,2019-10-04 16:49:25.6633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1371,2019-10-04 16:49:25.6666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1372,2019-10-04 16:49:25.6700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1373,2019-10-04 16:49:25.6733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1374,2019-10-04 16:49:25.6766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1375,2019-10-04 16:49:25.6833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1376,2019-10-04 16:49:25.6866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1377,2019-10-04 16:49:25.6900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1378,2019-10-04 16:49:25.6966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.6966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1379,2019-10-04 16:49:25.7000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1380,2019-10-04 16:49:25.7033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1381,2019-10-04 16:49:25.7066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1382,2019-10-04 16:49:25.7100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1383,2019-10-04 16:49:25.7133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1384,2019-10-04 16:49:25.7166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1385,2019-10-04 16:49:25.7200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1386,2019-10-04 16:49:25.7233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1387,2019-10-04 16:49:25.7266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1388,2019-10-04 16:49:25.7300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1389,2019-10-04 16:49:25.7300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1390,2019-10-04 16:49:25.7366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1391,2019-10-04 16:49:25.7400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1392,2019-10-04 16:49:25.7433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1393,2019-10-04 16:49:25.7500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1394,2019-10-04 16:49:25.7500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1395,2019-10-04 16:49:25.7533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1396,2019-10-04 16:49:25.7600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1397,2019-10-04 16:49:25.7600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1398,2019-10-04 16:49:25.7633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1399,2019-10-04 16:49:25.7700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1400,2019-10-04 16:49:25.7733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1401,2019-10-04 16:49:25.7766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1402,2019-10-04 16:49:25.7800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1403,2019-10-04 16:49:25.7866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1404,2019-10-04 16:49:25.7900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1405,2019-10-04 16:49:25.7966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.7966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1406,2019-10-04 16:49:25.8000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1407,2019-10-04 16:49:25.8000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1408,2019-10-04 16:49:25.8033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1409,2019-10-04 16:49:25.8066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1410,2019-10-04 16:49:25.8100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1411,2019-10-04 16:49:25.8133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1412,2019-10-04 16:49:25.8166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1413,2019-10-04 16:49:25.8200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1414,2019-10-04 16:49:25.8233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1415,2019-10-04 16:49:25.8266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1416,2019-10-04 16:49:25.8300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1417,2019-10-04 16:49:25.8333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1418,2019-10-04 16:49:25.8366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1419,2019-10-04 16:49:25.8400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1420,2019-10-04 16:49:25.8466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1421,2019-10-04 16:49:25.8500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1422,2019-10-04 16:49:25.8500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1423,2019-10-04 16:49:25.8566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1424,2019-10-04 16:49:25.8600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1425,2019-10-04 16:49:25.8633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1426,2019-10-04 16:49:25.8666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1427,2019-10-04 16:49:25.8700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1428,2019-10-04 16:49:25.8733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1429,2019-10-04 16:49:25.8766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1430,2019-10-04 16:49:25.8800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1431,2019-10-04 16:49:25.8833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1432,2019-10-04 16:49:25.8900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1433,2019-10-04 16:49:25.8933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1434,2019-10-04 16:49:25.8966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.8966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1435,2019-10-04 16:49:25.9000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1436,2019-10-04 16:49:25.9033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1437,2019-10-04 16:49:25.9066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1438,2019-10-04 16:49:25.9100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1439,2019-10-04 16:49:25.9133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1440,2019-10-04 16:49:25.9166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1441,2019-10-04 16:49:25.9233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1442,2019-10-04 16:49:25.9266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1443,2019-10-04 16:49:25.9300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1444,2019-10-04 16:49:25.9366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1445,2019-10-04 16:49:25.9400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1446,2019-10-04 16:49:25.9400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1447,2019-10-04 16:49:25.9433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1448,2019-10-04 16:49:25.9466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1449,2019-10-04 16:49:25.9500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1450,2019-10-04 16:49:25.9533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1451,2019-10-04 16:49:25.9566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1452,2019-10-04 16:49:25.9600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1453,2019-10-04 16:49:25.9666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1454,2019-10-04 16:49:25.9700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1455,2019-10-04 16:49:25.9700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1456,2019-10-04 16:49:25.9766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1457,2019-10-04 16:49:25.9800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1458,2019-10-04 16:49:25.9833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1459,2019-10-04 16:49:25.9866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1460,2019-10-04 16:49:25.9900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1461,2019-10-04 16:49:25.9933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1462,2019-10-04 16:49:25.9966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:25.9966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1463,2019-10-04 16:49:26.0000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1464,2019-10-04 16:49:26.0033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1465,2019-10-04 16:49:26.0100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1466,2019-10-04 16:49:26.0100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1467,2019-10-04 16:49:26.0166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1468,2019-10-04 16:49:26.0200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1469,2019-10-04 16:49:26.0233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1470,2019-10-04 16:49:26.0266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1471,2019-10-04 16:49:26.0300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1472,2019-10-04 16:49:26.0333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1473,2019-10-04 16:49:26.0366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1474,2019-10-04 16:49:26.0400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1475,2019-10-04 16:49:26.0466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1476,2019-10-04 16:49:26.0500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1477,2019-10-04 16:49:26.0533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1478,2019-10-04 16:49:26.0566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1479,2019-10-04 16:49:26.0600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1480,2019-10-04 16:49:26.0633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1481,2019-10-04 16:49:26.0666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1482,2019-10-04 16:49:26.0700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1483,2019-10-04 16:49:26.0733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1484,2019-10-04 16:49:26.0800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1485,2019-10-04 16:49:26.0800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1486,2019-10-04 16:49:26.0833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1487,2019-10-04 16:49:26.0866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1488,2019-10-04 16:49:26.0900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1489,2019-10-04 16:49:26.0933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1490,2019-10-04 16:49:26.0966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.0966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1491,2019-10-04 16:49:26.1000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1492,2019-10-04 16:49:26.1033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1493,2019-10-04 16:49:26.1066667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1066667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1494,2019-10-04 16:49:26.1100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1495,2019-10-04 16:49:26.1133333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1133333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1496,2019-10-04 16:49:26.1166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1497,2019-10-04 16:49:26.1200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1498,2019-10-04 16:49:26.1233333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1233333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1499,2019-10-04 16:49:26.1266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1500,2019-10-04 16:49:26.1300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1501,2019-10-04 16:49:26.1366667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1366667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1502,2019-10-04 16:49:26.1400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1503,2019-10-04 16:49:26.1433333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1433333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1504,2019-10-04 16:49:26.1500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1505,2019-10-04 16:49:26.1500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1506,2019-10-04 16:49:26.1533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1507,2019-10-04 16:49:26.1600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1508,2019-10-04 16:49:26.1600000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1600000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1509,2019-10-04 16:49:26.1633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1510,2019-10-04 16:49:26.1700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1511,2019-10-04 16:49:26.1700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1512,2019-10-04 16:49:26.1733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1513,2019-10-04 16:49:26.1800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1514,2019-10-04 16:49:26.1800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1515,2019-10-04 16:49:26.1833333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1833333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1516,2019-10-04 16:49:26.1900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1517,2019-10-04 16:49:26.1933333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1933333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1518,2019-10-04 16:49:26.1966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.1966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1519,2019-10-04 16:49:26.2000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1520,2019-10-04 16:49:26.2033333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2033333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1521,2019-10-04 16:49:26.2100000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2100000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1522,2019-10-04 16:49:26.2166667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2166667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1523,2019-10-04 16:49:26.2200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1524,2019-10-04 16:49:26.2200000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2200000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1525,2019-10-04 16:49:26.2266667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2266667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1526,2019-10-04 16:49:26.2300000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2300000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1527,2019-10-04 16:49:26.2333333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2333333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1528,2019-10-04 16:49:26.2400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1529,2019-10-04 16:49:26.2400000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2400000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1530,2019-10-04 16:49:26.2466667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2466667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1531,2019-10-04 16:49:26.2500000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2500000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1532,2019-10-04 16:49:26.2533333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2533333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1533,2019-10-04 16:49:26.2566667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2566667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1534,2019-10-04 16:49:26.2633333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2633333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1535,2019-10-04 16:49:26.2666667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2666667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1536,2019-10-04 16:49:26.2700000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2700000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1537,2019-10-04 16:49:26.2733333,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2733333,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1538,2019-10-04 16:49:26.2766667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2766667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1539,2019-10-04 16:49:26.2800000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2800000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1540,2019-10-04 16:49:26.2866667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2866667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1541,2019-10-04 16:49:26.2900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1542,2019-10-04 16:49:26.2900000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2900000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1543,2019-10-04 16:49:26.2966667,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.2966667,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527
+1544,2019-10-04 16:49:26.3000000,Fem; Male,Adults; Family; Single,NULL,Boomer; GenX; GenY; GenZ,2019-10-04 16:49:26.3000000,EnjoyTheMoment; BeUnique; TailoredForYou,NULL,NULL,NULL,841527

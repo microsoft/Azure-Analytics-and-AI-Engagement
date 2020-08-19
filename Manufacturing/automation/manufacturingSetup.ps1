@@ -201,7 +201,7 @@ $tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.
 $synapseToken = $tokenValue;
 
 New-Item log.txt
-Add-Content log.txt "------asa powerbi connvection-----"
+Add-Content log.txt "------asa powerbi connection-----"
 #connecting asa and powerbi
 $principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 $principalId=$principal.identity.principalId
@@ -238,6 +238,7 @@ $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
  Add-Content log.txt $result
+ 
  #uploading Sql Scripts
  $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
  $TemplatesPath="./artifacts/templates";	
@@ -278,9 +279,13 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  $storage_account_key=az storage account keys list -g $resourceGroup -n $dataLakeAccountName |ConvertFrom-Json
  $storage_account_key=$storage_account_key[0].value
  $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
- $destinationSasKey = New-AzStorageContainerSASToken -Container "campaigndata" -Context $dataLakeContext -Permission rwdl
- $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/campaigndata/$($destinationSasKey)"
- azcopy copy './artifacts/storageassets/campaigndata/*' $destinationUri --recursive
+ $containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
+ foreach($container in $containers)
+ {
+ $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
+ azcopy copy './artifacts/storageassets/$($container.BaseName)/*' $destinationUri --recursive
+ }
  
  Add-Content log.txt "------linked Services------"
  #Creating linked services
