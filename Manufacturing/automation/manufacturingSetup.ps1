@@ -26,7 +26,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$ai_name_telemetry,
 	[Parameter(Mandatory = $false)][string]$ai_name_hub,
 	[Parameter(Mandatory = $false)][string]$ai_name_sendtohub,
-	[Parameter(Mandatory = $false)][string]$sparkPoolName
+	[Parameter(Mandatory = $false)][string]$sparkPoolName,
+	[Parameter(Mandatory = $false)][string]$cdp_vision_app_service_name
 
 	)
 
@@ -36,14 +37,11 @@ Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-
 # login using identity
 az login --identity
 
 #install iot hub extension
 az extension add --name azure-cli-iot-ext
-
-
 
 #Create iot hub devices
 az iot hub device-identity create -n $iot_hub_car -d race-car
@@ -79,28 +77,17 @@ Write-Host $app_insights_instrumentation_key_sku2
 $app_insights_instrumentation_key_sendtohub = az resource show -g $resourceGroup -n $ai_name_sendtohub --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey | Out-String | ConvertFrom-Json
 Write-Host $app_insights_instrumentation_key_sendtohub
 
-
 #download the binary zip folders
 
-#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/carTelemetry.zip -OutFile carTelemetry.zip
-##extract
 expand-archive -path "./artifacts/datagenerator/carTelemetry.zip" -destinationpath "./carTelemetry"
-#
-#Invoke-WebRequesthttps://publicassetstoragexor.blob.core.windows.net/assets/datagenTelemetry.zip -OutFile datagenTelemetry.zip
-##extract
+
 expand-archive -path "./artifacts/datagenerator/datagenTelemetry.zip" -destinationpath "./datagenTelemetry"
-#
-#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sku2.zip -OutFile sku2.zip
-##extract
+
 expand-archive -path "./artifacts/datagenerator/sku2.zip" -destinationpath "./sku2"
-#
-#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/sendtohub.zip -OutFile sendtohub.zip
-##extract
+
 expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath "./sendtohub"
-#
-#Invoke-WebRequest https://publicassetstoragexor.blob.core.windows.net/assets/artifacts.zip -OutFile artifacts.zip
-##extract
-#expand-archive -path "./artifacts.zip" -destinationpath "./artifacts"
+
+expand-archive -path "./artifacts/binaries/cdp-vision-webapp.zip" -destinationpath "./cdp-vision-webapp"
 
 #Replace connection string in config
 
@@ -130,6 +117,7 @@ Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
+Compress-Archive -Path "./cdp-vision-webapp/*" -DestinationPath "./cdp-vision-webapp.zip"
 
 # deploy the codes on app services
 
@@ -149,19 +137,9 @@ az webapp stop --name $app_name_sendtohub --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_sendtohub --src "./sendtohub.zip"
 az webapp start --name $app_name_sendtohub --resource-group $resourceGroup
 
-#run the 4 codes on the vm
-#cd carTelemetry
-#start-process SendToHub.exe
-#cd ..
-#cd sendtohub
-#start-process SendMessageToIoTHub.exe
-#cd ..
-#cd sku2
-#start-process DataGenerator.exe
-#cd ..
-#cd Telemetry
-#start-process DataGenerator.exe
-#cd ..
+az webapp stop --name $cdp_vision_app_service_name --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $cdp_vision_app_service_name --src "./cdp-vision-webapp.zip"
+az webapp start --name $cdp_vision_app_service_name --resource-group $resourceGroup
 
 #uploading Cosmos data
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
