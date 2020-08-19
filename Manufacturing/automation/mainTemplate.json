@@ -102,7 +102,7 @@
       "asa_query_race_car_asa":"SELECT * INTO [power-bi] FROM [race-car]",
       "virtual_machine_nic_name":"data-generator-nic",
       "virtual_machine_name":"[if(greater(length(concat('datavm-',parameters('environment_code'), uniqueString(deployment().name))), 14), substring(concat('data-gen-', parameters('environment_code'),uniqueString(deployment().name)),0,14) , concat('data-gen-',parameters('environment_code'), uniqueString(deployment().name)) )]",
-      "virtual_machine_username":"data-generator",
+      "virtual_machine_username":"data-gen-vm",
       "virtual_machine_password":"[parameters('virtual_machine_password')]",
       "virtual_machine_size":"Standard_B4ms",
       "virtual_machine_vnet_subnet_name":"datavmsubnet",
