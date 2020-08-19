@@ -526,10 +526,11 @@ foreach($name in $reports)
 		Add-Content log.txt $result
         #$reportId = $result.id;
         
-        $temp = "" | select-object @{Name = "Name"; Expression = {$name.BaseName}}, 
+        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
+								@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
-                                @{Name = "SourceServer"; Expression = {"cdpvisionworkspace.sql.azuresynapse.net"}}, 
-                                @{Name = "SourceDatabase"; Expression = {"AzureSynapseDW"}}
+                                @{Name = "SourceServer"; Expression = {""}}, 
+                                @{Name = "SourceDatabase"; Expression = {""}}
                                 
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
