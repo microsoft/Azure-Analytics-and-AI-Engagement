@@ -158,7 +158,6 @@
       "manufacturing_demo_ecommerce_ase_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_ai_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
       "manufacturing_demo_ecommerce_app_service_name":"[concat('manufacturing-demo-ecommerce-',variables('unique_suffix'))]",
-      "manufacturing_demo_ecommerce_zip_url":"",
       "powerbi_embeded_mfg_name":"[concat('powerbiembededmfg-',variables('unique_suffix'))]",
       "car_telemetry_ase_name":"[concat('car-telemetry-ase',variables('unique_suffix'))]",
       "car_telemetry_ai_name":"[concat('car-telemetry-ai-',variables('unique_suffix'))]",
@@ -2352,7 +2351,7 @@
                      "value":"recommended",
                      "slotSetting":false
                   },
-                  {                  {
+                  {
                      "name":"AppInsights_Instrumentation_Key",
                      "value":"[reference(resourceId('Microsoft.Insights/components', variables('cdp_vision_ai_name'))).InstrumentationKey]",
                      "slotSetting":false
@@ -2453,11 +2452,6 @@
                   {
                      "name":"XDT_MicrosoftApplicationInsights_Mode",
                      "value":"recommended",
-                     "slotSetting":false
-                  },
-                  {
-                     "name":"WEBSITE_RUN_FROM_PACKAGE",
-                     "value":"[variables('manufacturing_demo_ecommerce_zip_url')]",
                      "slotSetting":false
                   },
                   {
