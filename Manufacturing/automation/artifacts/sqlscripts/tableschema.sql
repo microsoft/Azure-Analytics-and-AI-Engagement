@@ -22,7 +22,81 @@ WITH
 )
 GO
 
+CREATE TABLE [dbo].[mfg-iot-lathe-peck-drill]
+( 
+	[EpochTime] [bigint]  NULL,
+	[StringDateTime] [varchar](50)  NULL,
+	[JobCode] [varchar](200)  NULL,
+	[OperationId] [int]  NULL,
+	[BatchCode] [varchar](2000)  NULL,
+	[MachineCode] [varchar](2000)  NULL,
+	[VibrationX] [float]  NULL,
+	[VibrationY] [float]  NULL,
+	[VibrationZ] [float]  NULL,
+	[SpindleSpeed] [bigint]  NULL,
+	[CoolantTemperature] [bigint]  NULL,
+	[zAxis] [float]  NULL,
+	[EventProcessedUtcTime] [datetime]  NULL,
+	[PartitionId] [bigint]  NULL,
+	[EventEnqueuedUtcTime] [datetime]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 
+CREATE TABLE [dbo].[mfg-iot-lathe-thread-cut]
+( 
+	[EpochTime] [bigint]  NULL,
+	[StringDateTime] [varchar](50)  NULL,
+	[JobCode] [varchar](200)  NULL,
+	[OperationId] [int]  NULL,
+	[BatchCode] [varchar](2000)  NULL,
+	[MachineCode] [varchar](2000)  NULL,
+	[VibrationX] [float]  NULL,
+	[VibrationY] [float]  NULL,
+	[VibrationZ] [float]  NULL,
+	[SpindleSpeed] [bigint]  NULL,
+	[CoolantTemperature] [bigint]  NULL,
+	[xAxis] [float]  NULL,
+	[zAxis] [float]  NULL,
+	[EventProcessedUtcTime] [datetime]  NULL,
+	[PartitionId] [bigint]  NULL,
+	[EventEnqueuedUtcTime] [datetime]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+
+CREATE TABLE [dbo].[mfg-iot-milling-canning]
+( 
+	[EpochTime] [bigint]  NULL,
+	[StringDateTime] [varchar](50)  NULL,
+	[JobCode] [varchar](200)  NULL,
+	[OperationId] [int]  NULL,
+	[BatchCode] [varchar](2000)  NULL,
+	[MachineCode] [varchar](2000)  NULL,
+	[VibrationX] [float]  NULL,
+	[VibrationY] [float]  NULL,
+	[VibrationZ] [float]  NULL,
+	[SpindleSpeed] [bigint]  NULL,
+	[CoolantTemperature] [bigint]  NULL,
+	[xAxis] [float]  NULL,
+	[yAxis] [float]  NULL,
+	[zAxis] [float]  NULL,
+	[EventProcessedUtcTime] [datetime]  NULL,
+	[PartitionId] [bigint]  NULL,
+	[EventEnqueuedUtcTime] [datetime]  NULL,
+	[AnomalyTemperature] [bigint]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 ------------------------------------------
 /****** Object:  Table [dbo].[mfg-MachineAlert]    Script Date: 7/24/2020 8:21:21 AM ******/
 SET ANSI_NULLS ON
