@@ -57,10 +57,10 @@ Write-Host $iot_device_connection_car.connectionString
 $iot_device_connection_telemetry = az iot hub device-identity show-connection-string --hub-name $iot_hub_telemetry --device-id telemetry-data | Out-String | ConvertFrom-Json
 Write-Host $iot_device_connection_telemetry.connectionString
 
-$iot_device_connection_sku2 = az iot hub device-identity show-connection-string --hub-name $iot_hub --device-id data-device | Out-String | ConvertFrom-Json
+$iot_device_connection_sku2 = az iot hub device-identity show-connection-string --hub-name $iot_hub_sendtohub --device-id send-to-hub | Out-String | ConvertFrom-Json
 Write-Host $iot_device_connection_sku2.connectionString
 
-$iot_device_connection_sendtohub = az iot hub device-identity show-connection-string --hub-name $iot_hub_sendtohub --device-id send-to-hub | Out-String | ConvertFrom-Json
+$iot_device_connection_sendtohub = az iot hub device-identity show-connection-string --hub-name $iot_hub --device-id data-device | Out-String | ConvertFrom-Json
 Write-Host $iot_device_connection_sendtohub.connectionString
 
 #get App insights instrumentation keys
