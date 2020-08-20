@@ -507,8 +507,8 @@ foreach($name in $reports)
         $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
 								@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
-                                @{Name = "SourceServer"; Expression = {""}}, 
-                                @{Name = "SourceDatabase"; Expression = {""}}
+                                @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
                                 
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
