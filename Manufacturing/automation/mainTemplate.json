@@ -73,6 +73,8 @@
       "cosmos_database_name_mfgdemo_industrial":"industrial",
       "cosmos_database_name_mfgdemo_manufacturing":"manufacturing",
       "cosmos_database_container_name_MfgMesQuality":"MfgMesQuality",
+	  "cosmos_database_container_name_MfgMachineInstance":"MfgMachineInstance",
+	  "cosmos_database_container_name_MfgMachineMake":"MfgMachineMake",
       "cosmos_database_container_name_historical":"historical",
       "cosmos_database_container_name_anomalies":"anomalies",
       "cosmos_database_container_name_AggMfgMesQuality":"AggMfgMesQuality",
@@ -423,6 +425,88 @@
          "properties":{
             "resource":{
                "id":"[variables('cosmos_database_container_name_MfgMesQuality')]",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/SyntheticPartitionKey"
+                  ],
+                  "kind":"Hash"
+               },
+               "analyticalStorageTtl":-1,
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               }
+            },
+            "options":{
+               "throughput":"400"
+            }
+         }
+      },
+	   {
+         "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_manufacturing'), '/', variables('cosmos_database_container_name_MfgMachineInstance'))]",
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2019-12-12",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_manufacturing'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_container_name_MfgMachineInstance')]",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/SyntheticPartitionKey"
+                  ],
+                  "kind":"Hash"
+               },
+               "analyticalStorageTtl":-1,
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               }
+            },
+            "options":{
+               "throughput":"400"
+            }
+         }
+      },
+	   {
+         "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_manufacturing'), '/', variables('cosmos_database_container_name_MfgMachineMake'))]",
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2019-12-12",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_manufacturing'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_container_name_MfgMachineMake')]",
                "indexingPolicy":{
                   "indexingMode":"consistent",
                   "automatic":true,
