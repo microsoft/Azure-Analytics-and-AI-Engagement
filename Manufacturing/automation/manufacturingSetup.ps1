@@ -262,7 +262,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  {
  $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
  $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
- azcopy copy './artifacts/storageassets/$($container.BaseName)/*' $destinationUri --recursive
+ azcopy copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
  }
  
  Add-Content log.txt "------linked Services------"
