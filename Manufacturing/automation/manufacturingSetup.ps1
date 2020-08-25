@@ -265,6 +265,18 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  azcopy copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
  }
  
+ #Copy external blob content
+  $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
+  $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
+  azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
+ $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
+ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets/$($destinationSasKey)"
+ azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Intro_product.mp4" $destinationUri --recursive
+ azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Machine%20Maintenance%20Demo.mp4" $destinationUri --recursive
+ azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/factory_safety_video.mp4" $destinationUri --recursive
+ azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Hololens_Stretch.mp4" $destinationUri --recursive
+ azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/RioDeJaneiro_video.mp4" $destinationUri --recursive
+ 
  Add-Content log.txt "------linked Services------"
  #Creating linked services
  ##cosmos linked services
