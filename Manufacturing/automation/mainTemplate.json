@@ -116,11 +116,6 @@
       "powershell_pre_script_setup_path":"https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
       "rbac_guid_owner":"[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
       "script_args":"[concat(' -iot_hub_car ', variables('iot_hub_name_raceCarIotHub'),' -iot_hub_telemetry ', variables('iot_hub_name_mfgIotHubTelemetry'),' -iot_hub ', variables('iot_hub_name_mfgiothub'),' -iot_hub_sendtohub ', variables('iot_hub_name_mfgiothubCosmosDB'),' -synapseWorkspaceName ', variables('workspace_name_dreamdemosynapse'),' -wsId ', parameters('pbi_workspace_id'),' -sqlPoolName ', variables('sql_compute_name'),' -dataLakeAccountName ', variables('storage_account_name_dreamdemostorageforgen2'), ' -sqlUser ', variables('sql_administrator_login_id'), ' -sqlPassword ', parameters('sql_administrator_login_password'),' -resourceGroup ', variables('resource_group_name'), ' -mfgasaName ', variables('asa_name_mfgasa'),' -carasaName ', variables('asa_name_race_car_asa'),' -cosmos_account_name_mfgdemo ', variables('cosmos_account_name_mfgdemo'),' -cosmos_database_name_mfgdemo_manufacturing ', variables('cosmos_database_name_mfgdemo_manufacturing'),' -mfgasaCosmosDBName ',variables('asa_name_mfgasaCosmosDB'),' -mfgASATelemetryName ',variables('asa_name_mfgASATelemetry'),' -azure_login_id ',parameters('azure_login_id'),' -azure_login_password ',parameters('azure_login_password'),' -app_name_telemetry_car ',variables('car_telemetry_app_service_name'),' -app_name_telemetry ',variables('data_gen_telemetry_app_service_name'),' -app_name_hub ',variables('sku2_telemetry_app_service_name'),' -app_name_sendtohub ',variables('sendtohub_telemetry_app_service_name'),' -ai_name_telemetry_car ',variables('car_telemetry_ai_name'),' -ai_name_telemetry ',variables('data_gen_telemetry_ai_name'),' -ai_name_hub ',variables('sku2_telemetry_ai_name'),' -ai_name_sendtohub ',variables('sendtohub_telemetry_ai_name'),' -sparkPoolName ',variables('spark_compute_name'),' -cdp_vision_app_service_name ',variables('cdp_vision_app_service_name'))]",
-      "azure_function_ase_name":"[concat('function-asp-',variables('unique_suffix'))]",
-      "azure_function_storage_name":"[if(greater(length(concat('fwa', uniqueString(deployment().name),parameters('environment_code'))), 24), substring(concat('fwa', uniqueString(deployment().name),parameters('environment_code')),0,24) , concat('fwa', uniqueString(deployment().name),parameters('environment_code')) )]",
-      "azure_function_ai_name":"[concat('functions-ai-',variables('unique_suffix'))]",
-      "azure_function_functions_app_name":"[concat('functions-web-app-',variables('unique_suffix'))]",
-      "azure_function_functions_zip_url":"functions-web-app.zip",
       "workspace_name_dreamdemosynapse":"[concat('manufacturingdemo',parameters('environment_code'),uniqueString(deployment().name))]",
       "default_data_lake_storage_file_system_name":"tempdata",
       "default_data_lake_storage_account_url":"[concat('https://', variables('storage_account_name_dreamdemostorageforgen2'), '.dfs.core.windows.net')]",
@@ -141,16 +136,6 @@
       "packages_requirements_file_name":"requirements.txt",
       "packages_requirements_content":"seaborn==0.10.1\nxgboost==1.0.2\nonnxruntime==1.0.0\nwerkzeug==0.16.1\nnimbusml==1.7.1\nruamel.yaml==0.16.9\nazureml-train-automl-runtime==1.6.0\nscikit-learn==0.20.3\nnumpy==1.16.2\npandas==0.23.4\nscipy==1.4.1",
       "container_registry_name":"[concat('mfgdemo',parameters('environment_code'),uniqueString(deployment().name))]",
-      "cluster_name":"[concat('aks-',variables('unique_suffix'))]",
-      "aks_dns_prefix":"",
-      "aks_os_disk_size_gb":30,
-      "aks_agent_count":"",
-      "aks_agent_vm_size":"",
-      "aks_os_type":"",
-      "linux_admin_username":"",
-      "ssh_rsa_public_key":"",
-      "service_principal_client_id":"",
-      "service_principal_client_secret":"",
       "storage_account_name_manufacturingdemo12":"[if(greater(length(concat('mfgdemo12',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('mfgdemo12', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('mfgdemo12',parameters('environment_code'), uniqueString(deployment().name)) )]",
       "storage_account_name_manufacturingdemoassets":"[if(greater(length(concat('mfgdemoassets',parameters('environment_code'), uniqueString(deployment().name))), 24), substring(concat('mfgdemoassets',parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('mfgdemoassets',parameters('environment_code'), uniqueString(deployment().name)) )]",
       "storage_account_name_manufacturingwebstaging":"[if(greater(length(concat('mfgwebstaging',parameters('environment_code'), uniqueString(deployment().name))), 24), substring(concat('mfgwebstaging',parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('mfgwebstaging',parameters('environment_code'), uniqueString(deployment().name)) )]",
@@ -172,7 +157,13 @@
       "sendtohub_telemetry_app_service_name":"[concat('sendtohub-telemrtry-app-',variables('unique_suffix'))]",
       "data_gen_telemetry_ase_name":"[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
       "data_gen_telemetry_ai_name":"[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
-      "data_gen_telemetry_app_service_name":"[concat('datagen-telemetry-app-',variables('unique_suffix'))]"
+      "data_gen_telemetry_app_service_name":"[concat('datagen-telemetry-app-',variables('unique_suffix'))]",
+	  "ml_workspace_name":"[if(greater(length(concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('Auto-ML-', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name)) )]",
+	  "key_vault_name":"[if(greater(length(concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('kvmfg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name)) )]",
+	  "ml_sku":"Enterprise",
+	  "ml_application_insights_name":"[concat('Auto-ML-ai',variables('unique_suffix'))]",
+	  "ml_storage_account_name":"[if(greater(length(concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('automlstrg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "tenant_Id": "[subscription().tenantId]"
    },
    "resources":[
       {
@@ -1083,7 +1074,19 @@
             "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
          ],
          "properties":{
-            "publicAccess":"None"
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/webappassets')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"Container"
          }
       },
       {
@@ -1524,24 +1527,6 @@
                "type":"Json",
                "properties":{
                   "encoding":"UTF8"
-               }
-            }
-         }
-      },
-      {
-         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
-         "apiVersion":"2017-04-01-preview",
-         "name":"[concat(variables('asa_name_mfgasa'), '/function-synapse-d365')]",
-         "dependsOn":[
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_mfgasa'))]"
-         ],
-         "properties":{
-            "datasource":{
-               "type":"Microsoft.AzureFunction",
-               "properties":{
-                  "functionAppName":"[variables('azure_function_functions_app_name')]",
-                  "functionName":"function-synapse-d365",
-                  "apiKey":"test"
                }
             }
          }
@@ -2170,7 +2155,9 @@
             "[concat('Microsoft.Web/sites/', toLower(variables('car_telemetry_app_service_name')))]",
             "[concat('Microsoft.Web/sites/', toLower(variables('data_gen_telemetry_app_service_name')))]",
             "[concat('Microsoft.Web/sites/', toLower(variables('sendtohub_telemetry_app_service_name')))]",
-            "[concat('Microsoft.Web/sites/', toLower(variables('sku2_telemetry_app_service_name')))]"
+            "[concat('Microsoft.Web/sites/', toLower(variables('sku2_telemetry_app_service_name')))]",
+			"[concat('Microsoft.MachineLearningServices/workspaces/',variables('ml_workspace_name'))]"
+			
          ],
          "properties":{
             "hardwareProfile":{
@@ -2962,127 +2949,78 @@
             }
          }
       },
-      {
-         "name":"[variables('azure_function_storage_name')]",
-         "type":"Microsoft.Storage/storageAccounts",
-         "apiVersion":"2019-04-01",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"Standard_LRS",
-            "tier":"Standard"
-         },
-         "kind":"Storage",
-         "properties":{
-
-         }
-      },
-      {
-         "name":"[variables('azure_function_ase_name')]",
-         "type":"Microsoft.Web/serverfarms",
-         "apiVersion":"2019-08-01",
-         "location":"[variables('location')]",
-         "properties":{
-            "name":"[variables('azure_function_ase_name')]",
-            "computeMode":"Dynamic"
-         },
-         "sku":{
-            "name":"Y1",
-            "tier":"Dynamic"
-         }
-      },
-      {
-         "name":"[variables('azure_function_ai_name')]",
-         "type":"Microsoft.Insights/components",
-         "apiVersion":"2018-05-01-preview",
-         "location":"[variables('location')]",
-         "properties":{
-            "Application_Type":"web",
-            "Flow_Type":"Bluefield",
-            "Request_Source":"rest"
-         }
-      },
-      {
-         "name":"[variables('azure_function_functions_app_name')]",
-         "type":"Microsoft.Web/sites",
-         "apiVersion":"2018-11-01",
-         "kind":"functionapp",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[concat('Microsoft.Insights/components/', toLower(variables('azure_function_ai_name')))]",
-            "[concat('Microsoft.Web/serverfarms/', toLower(variables('azure_function_ase_name')))]",
-            "[concat('Microsoft.Storage/storageAccounts/', toLower(variables('azure_function_storage_name')))]"
-         ],
-         "properties":{
-            "enabled":true,
-            "hostNameSslStates":[
-               {
-                  "name":"[concat(variables('azure_function_functions_app_name'), '.azurewebsites.net')]",
-                  "sslState":"Disabled",
-                  "hostType":"Standard"
-               },
-               {
-                  "name":"[concat(variables('azure_function_functions_app_name'), '.scm.azurewebsites.net')]",
-                  "sslState":"Disabled",
-                  "hostType":"Repository"
-               }
-            ],
-            "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', variables('azure_function_ase_name'))]",
-            "reserved":false,
-            "siteConfig":{
-               "netFrameworkVersion":"v4.0",
-               "appSettings":[
-                  {
-                     "name":"AzureWebJobsDashboard",
-                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('azure_function_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('azure_function_storage_name')),'2019-04-01').keys[0].value)]"
-                  },
-                  {
-                     "name":"AzureWebJobsStorage",
-                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('azure_function_storage_name')),'2019-04-01').keys[0].value)]"
-                  },
-                  {
-                     "name":"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-                     "value":"[concat('DefaultEndpointsProtocol=https;AccountName=', variables('azure_function_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('azure_function_storage_name')),'2019-04-01').keys[0].value)]"
-                  },
-                  {
-                     "name":"APPINSIGHTS_INSTRUMENTATIONKEY",
-                     "value":"[reference(resourceId('Microsoft.Insights/components', variables('azure_function_ai_name'))).InstrumentationKey]"
-                  },
-                  {
-                     "name":"APPLICATIONINSIGHTS_CONNECTION_STRING",
-                     "value":"[concat('InstrumentationKey=',reference(resourceId('Microsoft.Insights/components', variables('azure_function_ai_name'))).InstrumentationKey)]"
-                  },
-                  {
-                     "name":"ENABLE_ORYX_BUILD",
-                     "value":"false"
-                  },
-                  {
-                     "name":"FUNCTIONS_WORKER_RUNTIME",
-                     "value":"dotnet"
-                  },
-                  {
-                     "name":"FUNCTIONS_EXTENSION_VERSION",
-                     "value":"~2"
-                  },
-                  {
-                     "name":"WEBSITE_RUN_FROM_PACKAGE",
-                     "value":"[variables('azure_function_functions_zip_url')]"
-                  }
-               ],
-               "use32BitWorkerProcess":true,
-               "managedPipelineMode":"Integrated",
-               "cors":{
-                  "allowedOrigins":[
-                     "https://functions.azure.com",
-                     "https://functions-staging.azure.com",
-                     "https://functions-next.azure.com"
-                  ],
-                  "supportCredentials":false
-               }
+	   {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[variables('ml_storage_account_name')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard_LRS"
             },
-            "containerSize":1536,
-            "httpsOnly":false
-         }
-      },
+            "kind": "StorageV2",
+            "properties": {
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        },
+                        "file": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "supportsHttpsTrafficOnly": true
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2018-02-14",
+            "name": "[variables('key_vault_name')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "tenantId": "[variables('tenant_Id')]",
+                "sku": {
+                    "name": "standard",
+                    "family": "A"
+                },
+                "accessPolicies": []
+            }
+        },
+        {
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[variables('ml_application_insights_name')]",
+            "location": "[variables('location')]",
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web"
+            }
+        },
+        {
+            "type": "Microsoft.MachineLearningServices/workspaces",
+            "apiVersion": "2020-04-01",
+            "name": "[variables('ml_workspace_name')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+               "[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
+               "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+               "[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
+            ],
+            "identity": {
+                "type": "systemAssigned"
+            },
+            "sku": {
+                "tier": "[variables('ml_sku')]",
+                "name": "[variables('ml_sku')]"
+            },
+            "properties": {
+                "friendlyName": "[variables('ml_workspace_name')]",
+                "storageAccount":    "[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
+                "keyVault":   "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+                "applicationInsights":  "[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
+            }
+        },
       {
          "name":"[variables('container_registry_name')]",
          "type":"Microsoft.ContainerRegistry/registries",
