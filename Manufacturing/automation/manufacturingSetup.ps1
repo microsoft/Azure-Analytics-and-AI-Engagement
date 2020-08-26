@@ -27,7 +27,8 @@ param (
 	[Parameter(Mandatory = $false)][string]$ai_name_hub,
 	[Parameter(Mandatory = $false)][string]$ai_name_sendtohub,
 	[Parameter(Mandatory = $false)][string]$sparkPoolName,
-	[Parameter(Mandatory = $false)][string]$cdp_vision_app_service_name
+	[Parameter(Mandatory = $false)][string]$manufacturing_poc_app_service_name,
+	[Parameter(Mandatory = $false)][string]$wideworldimporters_app_service_name
 
 	)
 
@@ -89,6 +90,8 @@ expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath 
 
 expand-archive -path "./artifacts/binaries/mfg-webapp.zip" -destinationpath "./mfg-webapp"
 
+expand-archive -path "./artifacts/binaries/wideworldimporters.zip" -destinationpath "./wideworldimporters"
+
 #Replace connection string in config
 
 (Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
@@ -118,6 +121,7 @@ Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
 Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
+Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
 
@@ -137,9 +141,13 @@ az webapp stop --name $app_name_sendtohub --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_sendtohub --src "./sendtohub.zip"
 az webapp start --name $app_name_sendtohub --resource-group $resourceGroup
 
-az webapp stop --name $cdp_vision_app_service_name --resource-group $resourceGroup
-az webapp deployment source config-zip --resource-group $resourceGroup --name $cdp_vision_app_service_name --src "./mfg-webapp.zip"
-az webapp start --name $cdp_vision_app_service_name --resource-group $resourceGroup
+az webapp stop --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
+az webapp start --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
+
+az webapp stop --name $wideworldimporters_app_service_name --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
+az webapp start --name $wideworldimporters_app_service_name --resource-group $resourceGroup
 
 #uploading Cosmos data
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
