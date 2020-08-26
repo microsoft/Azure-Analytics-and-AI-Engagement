@@ -394,6 +394,20 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 		TweetsParquet=$dataLakeAccountName
 		MFGazuresyanapseDW=$sqlPoolName
 		MFGParquettoSynapseSource=$dataLakeAccountName
+		AzureSynapseAnalyticsTable6=$sparkPoolName
+		AzureSynapseAnalyticsTable7=$sparkPoolName
+		AzureSynapseAnalyticsTable8=$sqlPoolName
+		AzureSynapseAnalyticsTable9=$sqlPoolName
+		AzureSynapseAnalyticsTable10=$sqlPoolName
+		Custom_CampaignData=$sparkPoolName
+		Custom_CampaignData_bubble=$sqlPoolName
+		Custom_Campaignproducts=$sqlPoolName
+		Custom_Product=$sparkPoolName
+		CustomCampaignData=$dataLakeAccountName
+		CustomCampaignData_Bubble=$dataLakeAccountName
+		CustomProduct=$dataLakeAccountName
+		Sales=$dataLakeAccountName
+		SalesData=$sqlPoolName
 		}
 $DatasetsPath="./artifacts/datasets";	
 foreach ($dataset in $datasets.Keys) {

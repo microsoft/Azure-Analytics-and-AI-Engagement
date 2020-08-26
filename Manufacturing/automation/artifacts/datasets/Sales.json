@@ -1,0 +1,102 @@
+{
+    "name": "Sales",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "sales.csv",
+                "folderPath": "Manufacturing B2C Scenario Dataset ",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Date",
+                "type": "String"
+            },
+            {
+                "name": "CustomerId",
+                "type": "String"
+            },
+            {
+                "name": "DeliveryDate",
+                "type": "String"
+            },
+            {
+                "name": "ProductId",
+                "type": "String"
+            },
+            {
+                "name": "Quantity",
+                "type": "String"
+            },
+            {
+                "name": "UnitPrice",
+                "type": "String"
+            },
+            {
+                "name": "TaxAmount",
+                "type": "String"
+            },
+            {
+                "name": "TotalExcludingTax",
+                "type": "String"
+            },
+            {
+                "name": "TotalIncludingTax",
+                "type": "String"
+            },
+            {
+                "name": "GrossPrice",
+                "type": "String"
+            },
+            {
+                "name": "Discount",
+                "type": "String"
+            },
+            {
+                "name": "NetPrice",
+                "type": "String"
+            },
+            {
+                "name": "GrossRevenue",
+                "type": "String"
+            },
+            {
+                "name": "NetRevenue",
+                "type": "String"
+            },
+            {
+                "name": "COGS_PER",
+                "type": "String"
+            },
+            {
+                "name": "COGS",
+                "type": "String"
+            },
+            {
+                "name": "GrossProfit",
+                "type": "String"
+            },
+            {
+                "name": "OrderKey",
+                "type": "String"
+            },
+            {
+                "name": "SaleKey",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

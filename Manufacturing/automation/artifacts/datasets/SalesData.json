@@ -1,0 +1,126 @@
+{
+    "name": "SalesData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Date",
+                "type": "datetime",
+                "precision": 23,
+                "scale": 3
+            },
+            {
+                "name": "CustomerId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "DeliveryDate",
+                "type": "datetime",
+                "precision": 23,
+                "scale": 3
+            },
+            {
+                "name": "ProductId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "Quantity",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "UnitPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TaxAmount",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TotalExcludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TotalIncludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "GrossPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "Discount",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "NetPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "GrossRevenue",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "NetRevenue",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "COGS_PER",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "COGS",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "GrossProfit",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "OrderKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SaleKey",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Sales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

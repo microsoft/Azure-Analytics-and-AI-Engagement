@@ -1,0 +1,86 @@
+{
+    "name": "CustomCampaignData_Bubble",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "CampaignData_Bubble.csv",
+                "folderPath": "Manufacturing B2C Scenario Dataset ",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "ID",
+                "type": "String"
+            },
+            {
+                "name": "CampaignName",
+                "type": "String"
+            },
+            {
+                "name": "CampaignTactic",
+                "type": "String"
+            },
+            {
+                "name": "Expense",
+                "type": "String"
+            },
+            {
+                "name": "MarketingCost",
+                "type": "String"
+            },
+            {
+                "name": "Profit",
+                "type": "String"
+            },
+            {
+                "name": "LocationID",
+                "type": "String"
+            },
+            {
+                "name": "Revenue",
+                "type": "String"
+            },
+            {
+                "name": "RevenueTarget",
+                "type": "String"
+            },
+            {
+                "name": "ROI",
+                "type": "String"
+            },
+            {
+                "name": "Status",
+                "type": "String"
+            },
+            {
+                "name": "ProductID",
+                "type": "String"
+            },
+            {
+                "name": "Sentiment",
+                "type": "String"
+            },
+            {
+                "name": "Response",
+                "type": "String"
+            },
+            {
+                "name": "CampaignStartDate",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
