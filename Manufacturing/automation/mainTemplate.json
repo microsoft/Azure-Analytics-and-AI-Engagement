@@ -65,16 +65,14 @@
       "resource_group_name":"[resourceGroup().name]",
       "unique_suffix":"[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
       "location":"[parameters('location')]",
-      "cosmos_account_name_manufacturingdemo":"[if(greater(length(concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-manufacturdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
-      "cosmos_database_name_manufacturingdemo_industrial":"industrial",
       "cosmos_database_container_name_historical_data":"historical-data",
       "cosmos_database_container_name_historical_data_adf":"historical-data-adf",
       "cosmos_account_name_mfgdemo":"[if(greater(length(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name_mfgdemo_industrial":"industrial",
       "cosmos_database_name_mfgdemo_manufacturing":"manufacturing",
       "cosmos_database_container_name_MfgMesQuality":"MfgMesQuality",
-	  "cosmos_database_container_name_MfgMachineInstance":"MfgMachineInstance",
-	  "cosmos_database_container_name_MfgMachineMake":"MfgMachineMake",
+      "cosmos_database_container_name_MfgMachineInstance":"MfgMachineInstance",
+      "cosmos_database_container_name_MfgMachineMake":"MfgMachineMake",
       "cosmos_database_container_name_historical":"historical",
       "cosmos_database_container_name_anomalies":"anomalies",
       "cosmos_database_container_name_AggMfgMesQuality":"AggMfgMesQuality",
@@ -158,126 +156,14 @@
       "data_gen_telemetry_ase_name":"[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
       "data_gen_telemetry_ai_name":"[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
       "data_gen_telemetry_app_service_name":"[concat('datagen-telemetry-app-',variables('unique_suffix'))]",
-	  "ml_workspace_name":"[if(greater(length(concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('Auto-ML-', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name)) )]",
-	  "key_vault_name":"[if(greater(length(concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('kvmfg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name)) )]",
-	  "ml_sku":"Enterprise",
-	  "ml_application_insights_name":"[concat('Auto-ML-ai',variables('unique_suffix'))]",
-	  "ml_storage_account_name":"[if(greater(length(concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('automlstrg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name)) )]",
-      "tenant_Id": "[subscription().tenantId]"
+      "ml_workspace_name":"[if(greater(length(concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('Auto-ML-', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('Auto-ML-',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "key_vault_name":"[if(greater(length(concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('kvmfg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('kvmfg',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "ml_sku":"Enterprise",
+      "ml_application_insights_name":"[concat('Auto-ML-ai',variables('unique_suffix'))]",
+      "ml_storage_account_name":"[if(greater(length(concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name))), 24),substring(concat('automlstrg', parameters('environment_code'), uniqueString(deployment().name)),0,24) , concat('automlstrg',parameters('environment_code'), uniqueString(deployment().name)) )]",
+      "tenant_Id":"[subscription().tenantId]"
    },
    "resources":[
-      {
-         "name":"[toLower(variables('cosmos_account_name_manufacturingdemo'))]",
-         "type":"Microsoft.DocumentDB/databaseAccounts",
-         "apiVersion":"2019-12-12",
-         "location":"[variables('location')]",
-         "kind":"GlobalDocumentDB",
-         "properties":{
-            "consistencyPolicy":{
-               "defaultConsistencyLevel":"Eventual"
-            },
-            "locations":[
-               {
-                  "locationName":"[variables('location')]"
-               }
-            ],
-            "databaseAccountOfferType":"Standard",
-            "enableAnalyticalStorage":true,
-            "publicNetworkAccess":"Enabled"
-         }
-      },
-      {
-         "name":"[concat(variables('cosmos_account_name_manufacturingdemo'), '/', toLower(variables('cosmos_database_name_mfgdemo_industrial')))]",
-         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-         "apiVersion":"2019-12-12",
-         "dependsOn":[
-            "[concat('Microsoft.DocumentDB/databaseAccounts/', toLower(variables('cosmos_account_name_manufacturingdemo')))]"
-         ],
-         "properties":{
-            "resource":{
-               "id":"[variables('cosmos_database_name_mfgdemo_industrial')]"
-            },
-            "options":{
-               "throughput":"400"
-            }
-         }
-      },
-      {
-         "name":"[concat(variables('cosmos_account_name_manufacturingdemo'), '/', variables('cosmos_database_name_mfgdemo_industrial'), '/', variables('cosmos_database_container_name_historical_data'))]",
-         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-         "apiVersion":"2019-12-12",
-         "dependsOn":[
-            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_manufacturingdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]"
-         ],
-         "properties":{
-            "resource":{
-               "id":"[variables('cosmos_database_container_name_historical_data')]",
-               "indexingPolicy":{
-                  "indexingMode":"consistent",
-                  "automatic":true,
-                  "includedPaths":[
-                     {
-                        "path":"/*"
-                     }
-                  ],
-                  "excludedPaths":[
-                     {
-                        "path":"/\"_etag\"/?"
-                     }
-                  ]
-               },
-               "partitionKey":{
-                  "paths":[
-                     "/SyntheticPartitionKey"
-                  ],
-                  "kind":"Hash"
-               },
-               "analyticalStorageTtl":-1,
-               "conflictResolutionPolicy":{
-                  "mode":"LastWriterWins",
-                  "conflictResolutionPath":"/_ts"
-               }
-            }
-         }
-      },
-      {
-         "name":"[concat(variables('cosmos_account_name_manufacturingdemo'), '/', variables('cosmos_database_name_mfgdemo_industrial'), '/', variables('cosmos_database_container_name_historical_data_adf'))]",
-         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-         "apiVersion":"2019-12-12",
-         "dependsOn":[
-            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_manufacturingdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]"
-         ],
-         "properties":{
-            "resource":{
-               "id":"[variables('cosmos_database_container_name_historical_data_adf')]",
-               "indexingPolicy":{
-                  "indexingMode":"consistent",
-                  "automatic":true,
-                  "includedPaths":[
-                     {
-                        "path":"/*"
-                     }
-                  ],
-                  "excludedPaths":[
-                     {
-                        "path":"/\"_etag\"/?"
-                     }
-                  ]
-               },
-               "partitionKey":{
-                  "paths":[
-                     "/SyntheticPartitionKey"
-                  ],
-                  "kind":"Hash"
-               },
-               "analyticalStorageTtl":-1,
-               "conflictResolutionPolicy":{
-                  "mode":"LastWriterWins",
-                  "conflictResolutionPath":"/_ts"
-               }
-            }
-         }
-      },
       {
          "name":"[toLower(variables('cosmos_account_name_mfgdemo'))]",
          "type":"Microsoft.DocumentDB/databaseAccounts",
@@ -337,6 +223,82 @@
          "properties":{
             "resource":{
                "id":"[variables('cosmos_database_container_name_historical')]",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/SyntheticPartitionKey"
+                  ],
+                  "kind":"Hash"
+               },
+               "analyticalStorageTtl":-1,
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               }
+            }
+         }
+      },
+      {
+         "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_industrial'), '/', variables('cosmos_database_container_name_historical_data'))]",
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2019-12-12",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_container_name_historical_data')]",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/SyntheticPartitionKey"
+                  ],
+                  "kind":"Hash"
+               },
+               "analyticalStorageTtl":-1,
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               }
+            }
+         }
+      },
+      {
+         "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_industrial'), '/', variables('cosmos_database_container_name_historical_data_adf'))]",
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2019-12-12",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_container_name_historical_data_adf')]",
                "indexingPolicy":{
                   "indexingMode":"consistent",
                   "automatic":true,
@@ -447,7 +409,7 @@
             }
          }
       },
-	   {
+      {
          "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_manufacturing'), '/', variables('cosmos_database_container_name_MfgMachineInstance'))]",
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
          "apiVersion":"2019-12-12",
@@ -488,7 +450,7 @@
             }
          }
       },
-	   {
+      {
          "name":"[concat(variables('cosmos_account_name_mfgdemo'), '/', variables('cosmos_database_name_mfgdemo_manufacturing'), '/', variables('cosmos_database_container_name_MfgMachineMake'))]",
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
          "apiVersion":"2019-12-12",
@@ -1009,7 +971,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             },
             "deleteRetentionPolicy":{
@@ -1077,7 +1039,7 @@
             "publicAccess":"Container"
          }
       },
-	   {
+      {
          "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
          "apiVersion":"2019-06-01",
          "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/webappassets')]",
@@ -1223,7 +1185,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             }
          }
@@ -1575,7 +1537,6 @@
          "apiVersion":"2019-06-01",
          "name":"[variables('asa_name_mfgasaCosmosDB')]",
          "dependsOn":[
-            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_manufacturingdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]",
             "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_industrial'))]",
             "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmos_account_name_mfgdemo'), variables('cosmos_database_name_mfgdemo_manufacturing'))]"
          ],
@@ -1652,9 +1613,9 @@
             "datasource":{
                "type":"Microsoft.Storage/DocumentDB",
                "properties":{
-                  "accountId":"[variables('cosmos_account_name_manufacturingdemo')]",
-                  "accountKey":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_account_name_manufacturingdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
-                  "database":"[variables('cosmos_database_name_manufacturingdemo_industrial')]",
+                  "accountId":"[variables('cosmos_account_name_mfgdemo')]",
+                  "accountKey":"[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_account_name_mfgdemo')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]",
+                  "database":"[variables('cosmos_database_name_mfgdemo_industrial')]",
                   "collectionNamePattern":"[variables('cosmos_database_container_name_historical_data_adf')]"
                }
             }
@@ -1881,7 +1842,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             },
             "deleteRetentionPolicy":{
@@ -1903,7 +1864,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             }
          }
@@ -1948,7 +1909,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             },
             "deleteRetentionPolicy":{
@@ -1970,7 +1931,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             }
          }
@@ -2015,7 +1976,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             },
             "deleteRetentionPolicy":{
@@ -2037,7 +1998,7 @@
          "properties":{
             "cors":{
                "corsRules":[
-
+                  
                ]
             }
          }
@@ -2156,8 +2117,7 @@
             "[concat('Microsoft.Web/sites/', toLower(variables('data_gen_telemetry_app_service_name')))]",
             "[concat('Microsoft.Web/sites/', toLower(variables('sendtohub_telemetry_app_service_name')))]",
             "[concat('Microsoft.Web/sites/', toLower(variables('sku2_telemetry_app_service_name')))]",
-			"[concat('Microsoft.MachineLearningServices/workspaces/',variables('ml_workspace_name'))]"
-			
+            "[concat('Microsoft.MachineLearningServices/workspaces/',variables('ml_workspace_name'))]"
          ],
          "properties":{
             "hardwareProfile":{
@@ -2949,78 +2909,80 @@
             }
          }
       },
-	   {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
-            "name": "[variables('ml_storage_account_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Standard_LRS"
+      {
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-04-01",
+         "name":"[variables('ml_storage_account_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS"
+         },
+         "kind":"StorageV2",
+         "properties":{
+            "encryption":{
+               "services":{
+                  "blob":{
+                     "enabled":true
+                  },
+                  "file":{
+                     "enabled":true
+                  }
+               },
+               "keySource":"Microsoft.Storage"
             },
-            "kind": "StorageV2",
-            "properties": {
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                },
-                "supportsHttpsTrafficOnly": true
-            }
-        },
-        {
-            "type": "Microsoft.KeyVault/vaults",
-            "apiVersion": "2018-02-14",
-            "name": "[variables('key_vault_name')]",
-            "location": "[variables('location')]",
-            "properties": {
-                "tenantId": "[variables('tenant_Id')]",
-                "sku": {
-                    "name": "standard",
-                    "family": "A"
-                },
-                "accessPolicies": []
-            }
-        },
-        {
-            "type": "Microsoft.Insights/components",
-            "apiVersion": "2018-05-01-preview",
-            "name": "[variables('ml_application_insights_name')]",
-            "location": "[variables('location')]",
-            "kind": "web",
-            "properties": {
-                "Application_Type": "web"
-            }
-        },
-        {
-            "type": "Microsoft.MachineLearningServices/workspaces",
-            "apiVersion": "2020-04-01",
-            "name": "[variables('ml_workspace_name')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-               "[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
-               "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
-               "[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
-            ],
-            "identity": {
-                "type": "systemAssigned"
+            "supportsHttpsTrafficOnly":true
+         }
+      },
+      {
+         "type":"Microsoft.KeyVault/vaults",
+         "apiVersion":"2018-02-14",
+         "name":"[variables('key_vault_name')]",
+         "location":"[variables('location')]",
+         "properties":{
+            "tenantId":"[variables('tenant_Id')]",
+            "sku":{
+               "name":"standard",
+               "family":"A"
             },
-            "sku": {
-                "tier": "[variables('ml_sku')]",
-                "name": "[variables('ml_sku')]"
-            },
-            "properties": {
-                "friendlyName": "[variables('ml_workspace_name')]",
-                "storageAccount":    "[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
-                "keyVault":   "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
-                "applicationInsights":  "[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
-            }
-        },
+            "accessPolicies":[
+               
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.Insights/components",
+         "apiVersion":"2018-05-01-preview",
+         "name":"[variables('ml_application_insights_name')]",
+         "location":"[variables('location')]",
+         "kind":"web",
+         "properties":{
+            "Application_Type":"web"
+         }
+      },
+      {
+         "type":"Microsoft.MachineLearningServices/workspaces",
+         "apiVersion":"2020-04-01",
+         "name":"[variables('ml_workspace_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
+            "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+            "[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
+         ],
+         "identity":{
+            "type":"systemAssigned"
+         },
+         "sku":{
+            "tier":"[variables('ml_sku')]",
+            "name":"[variables('ml_sku')]"
+         },
+         "properties":{
+            "friendlyName":"[variables('ml_workspace_name')]",
+            "storageAccount":"[resourceId('Microsoft.Storage/storageAccounts', variables('ml_storage_account_name'))]",
+            "keyVault":"[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+            "applicationInsights":"[resourceId('Microsoft.Insights/components', variables('ml_application_insights_name'))]"
+         }
+      },
       {
          "name":"[variables('container_registry_name')]",
          "type":"Microsoft.ContainerRegistry/registries",
@@ -3067,6 +3029,6 @@
       }
    ],
    "outputs":{
-
+      
    }
 }
