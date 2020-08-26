@@ -87,7 +87,7 @@ expand-archive -path "./artifacts/datagenerator/sku2.zip" -destinationpath "./sk
 
 expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath "./sendtohub"
 
-expand-archive -path "./artifacts/binaries/cdp-vision-webapp.zip" -destinationpath "./cdp-vision-webapp"
+expand-archive -path "./artifacts/binaries/mfg-webapp.zip" -destinationpath "./mfg-webapp"
 
 #Replace connection string in config
 
@@ -117,7 +117,7 @@ Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
-Compress-Archive -Path "./cdp-vision-webapp/*" -DestinationPath "./cdp-vision-webapp.zip"
+Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 
 # deploy the codes on app services
 
@@ -138,7 +138,7 @@ az webapp deployment source config-zip --resource-group $resourceGroup --name $a
 az webapp start --name $app_name_sendtohub --resource-group $resourceGroup
 
 az webapp stop --name $cdp_vision_app_service_name --resource-group $resourceGroup
-az webapp deployment source config-zip --resource-group $resourceGroup --name $cdp_vision_app_service_name --src "./cdp-vision-webapp.zip"
+az webapp deployment source config-zip --resource-group $resourceGroup --name $cdp_vision_app_service_name --src "./mfg-webapp.zip"
 az webapp start --name $cdp_vision_app_service_name --resource-group $resourceGroup
 
 #uploading Cosmos data
