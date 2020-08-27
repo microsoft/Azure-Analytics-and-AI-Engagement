@@ -229,30 +229,6 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
  Add-Content log.txt $result
  
- #uploading sql data
-mkdir uploadscripts
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData_Bubble.sql -outFile ./uploadscripts/CampaignData_Bubble.sql
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData.sql        -outFile ./uploadscripts/CampaignData.sql       
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Campaignsales.sql       -outFile ./uploadscripts/Campaignsales.sql      
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/customer.sql            -outFile ./uploadscripts/customer.sql           
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Date.sql                -outFile ./uploadscripts/Date.sql               
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/historical-data-adf.sql -outFile ./uploadscripts/historical-data-adf.sql
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/location.sql            -outFile ./uploadscripts/location.sql           
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-AlertAlarm.sql      -outFile ./uploadscripts/mfg-AlertAlarm.sql     
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-MachineAlert.sql    -outFile ./uploadscripts/mfg-MachineAlert.sql   
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-OEE.sql             -outFile ./uploadscripts/mfg-OEE.sql            
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Product.sql             -outFile ./uploadscripts/Product.sql            
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/sales.sql               -outFile ./uploadscripts/sales.sql              
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCampaignSales.sql      -outFile ./uploadscripts/vCampaignSales.sql
- $scripts=Get-ChildItem "./uploadscripts" | Select BaseName    
- foreach ($name in $scripts) {
- $filename="./uploadscripts/$($name.BaseName)"+".sql"
- $sqlQuery = Get-Content -Raw -Path $filename
- $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
- $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
- Add-Content log.txt $result
- }
- 
  #uploading Sql Scripts
  $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
  $TemplatesPath="./artifacts/templates";	
@@ -717,6 +693,31 @@ Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 az webapp stop --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
 az webapp start --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
+
+#uploading sql data
+mkdir uploadscripts
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData_Bubble.sql -outFile ./uploadscripts/CampaignData_Bubble.sql
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData.sql        -outFile ./uploadscripts/CampaignData.sql       
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Campaignsales.sql       -outFile ./uploadscripts/Campaignsales.sql      
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/customer.sql            -outFile ./uploadscripts/customer.sql           
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Date.sql                -outFile ./uploadscripts/Date.sql               
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/historical-data-adf.sql -outFile ./uploadscripts/historical-data-adf.sql
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/location.sql            -outFile ./uploadscripts/location.sql           
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-AlertAlarm.sql      -outFile ./uploadscripts/mfg-AlertAlarm.sql     
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-MachineAlert.sql    -outFile ./uploadscripts/mfg-MachineAlert.sql   
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-OEE.sql             -outFile ./uploadscripts/mfg-OEE.sql            
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Product.sql             -outFile ./uploadscripts/Product.sql            
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/sales.sql               -outFile ./uploadscripts/sales.sql              
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCampaignSales.sql      -outFile ./uploadscripts/vCampaignSales.sql
+ $scripts=Get-ChildItem "./uploadscripts" | Select BaseName    
+ foreach ($name in $scripts) {
+ $filename="./uploadscripts/$($name.BaseName)"+".sql"
+ $sqlQuery = Get-Content -Raw -Path $filename
+ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+ Add-Content log.txt $result
+ }
+
 Add-Content log.txt "Execution Complete"		
 
 
