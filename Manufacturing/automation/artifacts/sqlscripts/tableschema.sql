@@ -253,7 +253,7 @@ CREATE TABLE [dbo].[CampaignData]
 	[ID] [bigint] NOT NULL,
 	[CampaignName] [varchar](18) NOT NULL,
 	[CampaignTactic] [varchar](16) NOT NULL,
-	[CampaignStartDate] [datetime] NULL,
+	[CampaignStartDate] [date] NULL,
 	[Expense] [decimal](10, 2) NULL,
 	[MarketingCost] [decimal](10, 2) NULL,
 	[Profit] [decimal](10, 2) NULL,
@@ -281,6 +281,117 @@ SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CampaignData_Bubble]
+( 
+	[ID] [int]  NOT NULL,
+	[CampaignName] [varchar](18)  NOT NULL,
+	[CampaignTactic] [varchar](16)  NOT NULL,
+	[Expense] [int]  NOT NULL,
+	[MarketingCost] [int]  NOT NULL,
+	[Profit] [int]  NOT NULL,
+	[LocationID] [int]  NOT NULL,
+	[Revenue] [numeric](9,1)  NOT NULL,
+	[RevenueTarget] [int]  NOT NULL,
+	[ROI] [numeric](11,5)  NOT NULL,
+	[Status] [varchar](13)  NOT NULL,
+	[ProductID] [int]  NOT NULL,
+	[Sentiment] [varchar](8)  NOT NULL,
+	[Response] [varchar](4)  NOT NULL,
+	[CampaignStartDate] [date]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+CREATE TABLE [dbo].[Campaignsales]
+( 
+	[Date] [date]  NOT NULL,
+	[CustomerId] [bigint]  NOT NULL,
+	[DeliveryDate] [date]  NULL,
+	[ProductId] [bigint]  NOT NULL,
+	[Quantity] [decimal](18,2)  NOT NULL,
+	[UnitPrice] [decimal](18,2)  NOT NULL,
+	[TaxAmount] [decimal](18,2)  NOT NULL,
+	[TotalExcludingTax] [decimal](18,2)  NOT NULL,
+	[TotalIncludingTax] [decimal](18,2)  NOT NULL,
+	[GrossPrice] [decimal](18,2)  NOT NULL,
+	[Discount] [decimal](18,2)  NOT NULL,
+	[NetPrice] [decimal](18,2)  NOT NULL,
+	[GrossRevenue] [decimal](18,2)  NOT NULL,
+	[NetRevenue] [decimal](18,2)  NOT NULL,
+	[COGS_PER] [decimal](18,2)  NOT NULL,
+	[COGS] [decimal](18,2)  NOT NULL,
+	[GrossProfit] [decimal](18,2)  NOT NULL,
+	[CampaignRowKey] [bigint]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [ProductId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+
+CREATE TABLE [dbo].[Customer]
+( 
+	[Id] [bigint]  NULL,
+	[Age] [smallint]  NULL,
+	[Gender] [nvarchar](4000)  NULL,
+	[Pincode] [nvarchar](4000)  NULL,
+	[FirstName] [nvarchar](4000)  NULL,
+	[LastName] [nvarchar](4000)  NULL,
+	[FullName] [nvarchar](4000)  NULL,
+	[DateOfBirth] [nvarchar](4000)  NULL,
+	[Address] [nvarchar](4000)  NULL,
+	[Email] [nvarchar](4000)  NULL,
+	[Mobile] [nvarchar](4000)  NULL,
+	[UserName] [nvarchar](4000)  NULL,
+	[Customer_type] [varchar](3)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+CREATE TABLE [dbo].[historical-data-adf]
+( 
+	[Timestamp] [datetime]  NULL,
+	[Power] [float]  NULL,
+	[Temperature] [float]  NULL,
+	[SuctionPressure] [float]  NULL,
+	[Vibration] [float]  NULL,
+	[DischargePressure] [float]  NULL,
+	[VibrationVelocity] [float]  NULL,
+	[VibrationAcceleration] [float]  NULL,
+	[AnomalyDischargeCavitation] [float]  NULL,
+	[AnomalySealFailure] [float]  NULL,
+	[AnomalyCouplingFailure] [float]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+CREATE TABLE [dbo].[vCampaignSales]
+( 
+	[Year] [int]  NULL,
+	[Month] [int]  NULL,
+	[MonthName] [nvarchar](30)  NULL,
+	[CampaignRowKey] [int]  NULL,
+	[Profit] [decimal](38,2)  NULL,
+	[Revenue] [decimal](38,2)  NULL,
+	[QuantitySold] [decimal](38,2)  NULL,
+	[cb] [bigint]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 GO
 
 CREATE TABLE [dbo].[CampaignData_exl]
