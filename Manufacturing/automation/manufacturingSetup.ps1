@@ -187,31 +187,37 @@ $synapseToken = $tokenValue;
 New-Item log.txt
 Add-Content log.txt "------asa powerbi connection-----"
 #connecting asa and powerbi
-$principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-$principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-$body=@"
-{
-  "identifier": "$principalId",
-  "principalType": "App",
-  "groupUserAccessRight": "Admin"
-}
-"@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-Add-Content log.txt $result
-$principal=az resource show -g $resourceGroup -n $raceasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-$principalId=$principal.identity.principalId
-$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-$body=@"
-{
-  "identifier": "$principalId",
-  "principalType": "App",
-  "groupUserAccessRight": "Admin"
-}
-"@
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-Add-Content log.txt $result
-
+# $principal=az resource show -g $resourceGroup -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+# $principalId=$principal.identity.principalId
+# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+# $body=@"
+# {
+  # "identifier": "$principalId",
+  # "principalType": "App",
+  # "groupUserAccessRight": "Admin"
+# }
+# "@
+# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+# Add-Content log.txt $result
+# $principal=az resource show -g $resourceGroup -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+# $principalId=$principal.identity.principalId
+# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+# $body=@"
+# {
+  # "identifier": "$principalId",
+  # "principalType": "App",
+  # "groupUserAccessRight": "Admin"
+# }
+# "@
+# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+# Add-Content log.txt $result
+#start ASA
+#Install stream-analytics extension
+az extension add --name stream-analytics
+az stream-analytics job start --resource-group $resourceGroup --name $mfgASATelemetryName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $mfgasaName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $carasaName --output-start-mode JobStartTime
+az stream-analytics job start --resource-group $resourceGroup --name $mfgasaCosmosDBName --output-start-mode JobStartTime
 
 Add-Content log.txt "------sql schema-----"
  #creating sql schema
@@ -689,7 +695,7 @@ foreach($report in $reportList)
  [pscredential]$credential = New-Object System.Management.Automation.PSCredential ($azure_login_id, $secStringPassword)
  Install-Module -Name AzureAD -Force
  Connect-AzureAD -Credential $Credential
- $app = New-AzureADApplication -DisplayName "testApp1" -Homepage "https://localhost:44322" -ReplyUrls "https://localhost:44322"
+ $app = New-AzureADApplication -DisplayName "mfgpoc" -Homepage "https://localhost:44322" -ReplyUrls "https://localhost:44322"
  $appId=$app.AppId
  $sp = New-AzureADServicePrincipal -AppId $app.AppId
  $appSecret = New-AzureADServicePrincipalPasswordCredential -ObjectId $sp.ObjectId
@@ -711,11 +717,6 @@ Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 az webapp stop --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
 az webapp start --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
-		
-#Install stream-analytics extension
-az extension add --name stream-analytics
-#start ASA
-az stream-analytics job start --resource-group $resourceGroup --name $mfgASATelemetryName --output-start-mode JobStartTime
-az stream-analytics job start --resource-group $resourceGroup --name $mfgasaName --output-start-mode JobStartTime
-az stream-analytics job start --resource-group $resourceGroup --name $carasaName --output-start-mode JobStartTime
-az stream-analytics job start --resource-group $resourceGroup --name $mfgasaCosmosDBName --output-start-mode JobStartTime
+Add-Content log.txt "Execution Complete"		
+
+
