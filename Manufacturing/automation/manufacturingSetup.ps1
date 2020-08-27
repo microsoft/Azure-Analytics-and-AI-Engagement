@@ -225,6 +225,30 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
  $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
  Add-Content log.txt $result
  
+ #uploading sql data
+mkdir uploadscripts
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData_Bubble.sql -outFile ./uploadscripts/CampaignData_Bubble.sql
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData.sql        -outFile ./uploadscripts/CampaignData.sql       
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Campaignsales.sql       -outFile ./uploadscripts/Campaignsales.sql      
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/customer.sql            -outFile ./uploadscripts/customer.sql           
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Date.sql                -outFile ./uploadscripts/Date.sql               
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/historical-data-adf.sql -outFile ./uploadscripts/historical-data-adf.sql
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/location.sql            -outFile ./uploadscripts/location.sql           
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-AlertAlarm.sql      -outFile ./uploadscripts/mfg-AlertAlarm.sql     
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-MachineAlert.sql    -outFile ./uploadscripts/mfg-MachineAlert.sql   
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-OEE.sql             -outFile ./uploadscripts/mfg-OEE.sql            
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Product.sql             -outFile ./uploadscripts/Product.sql            
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/sales.sql               -outFile ./uploadscripts/sales.sql              
+wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCampaignSales.sql      -outFile ./uploadscripts/vCampaignSales.sql
+ $scripts=Get-ChildItem "./uploadscripts" | Select BaseName    
+ foreach ($name in $scripts) {
+ $filename="./uploadscripts/$($name.BaseName)"+".sql"
+ $sqlQuery = Get-Content -Raw -Path $filename
+ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+ Add-Content log.txt $result
+ }
+ 
  #uploading Sql Scripts
  $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
  $TemplatesPath="./artifacts/templates";	
@@ -277,6 +301,24 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
   $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
   $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
   azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
+  $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+  $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /$($destinationSasKey)"
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaign.csv"  $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /CampaignData_Bubble.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /CampaignData.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaignproducts.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaignsales.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /customer.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Date.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /historical-data-adf.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /location.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-AlertAlarm.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-MachineAlert.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-OEE-Agg.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-OEE.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Product.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /sales.csv" $destinationUri --recursive
+  azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /vCampaignSales.csv" $destinationUri --recursive
  #$destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
  #$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets/$($destinationSasKey)"
  #azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Intro_product.mp4" $destinationUri --recursive
@@ -537,12 +579,21 @@ foreach($name in $reports)
 		Start-Sleep -s 5 
 		Add-Content log.txt $result
         #$reportId = $result.id;
-        
+        if($name.BaseName=="Campaign - Option C")
+		{
+			$temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
+								@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}},
+                                @{Name = "SourceServer"; Expression = {"manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
+		}
+		else{
         $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
 								@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
                                 @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
+								}
                                 
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
