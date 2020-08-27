@@ -113,14 +113,14 @@ expand-archive -path "./artifacts/binaries/wideworldimporters.zip" -destinationp
                 -replace '#connection_string#', $iot_device_connection_sendtohub.connectionString`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_sendtohub`				
         } | Set-Content -Path sendtohub/appsettings.json
-		
+
+	
 #make zip for app service deployment
 
 Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
-Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
@@ -140,10 +140,6 @@ az webapp start --name $app_name_hub --resource-group $resourceGroup
 az webapp stop --name $app_name_sendtohub --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $app_name_sendtohub --src "./sendtohub.zip"
 az webapp start --name $app_name_sendtohub --resource-group $resourceGroup
-
-az webapp stop --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
-az webapp deployment source config-zip --resource-group $resourceGroup --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
-az webapp start --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
 
 az webapp stop --name $wideworldimporters_app_service_name --resource-group $resourceGroup
 az webapp deployment source config-zip --resource-group $resourceGroup --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
@@ -180,7 +176,9 @@ foreach($json in $document)
 
 az login -u $azure_login_id -p $azure_login_password
 $subscriptionId=az account show|ConvertFrom-Json
+$tenantId=$subscriptionId.tenantId
 $subscriptionId=$subscriptionId.Id
+
 $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
 $powerbitoken = $tokenValue;
 $tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
@@ -280,6 +278,10 @@ wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCa
 
  
  #Uploading to storage containers
+ $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
  $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
  Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
  Expand-Archive "azCopy.zip" -DestinationPath ".\azcopy" -Force
@@ -298,6 +300,10 @@ wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCa
  }
  
  #Copy external blob content
+ $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
   $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
   $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
   azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
@@ -329,6 +335,10 @@ wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCa
  
  Add-Content log.txt "------linked Services------"
  #Creating linked services
+ $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
  ##cosmos linked services
  $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $resourceGroup |ConvertFrom-Json
  $cosmos_account_key=$cosmos_account_key.primarymasterkey
@@ -410,6 +420,10 @@ wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCa
  Add-Content log.txt $result
  
  #Creating Datasets
+ $tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
  Add-Content log.txt "------datasets------"
  Write-Information "Creating Datasets"
  $datasets = @{
@@ -551,6 +565,10 @@ foreach ($dataflow in $workloadDataflows.Keys)
 }
 
 #uploading powerbi reports
+$tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
 Add-Content log.txt "------powerbi reports------"
 Write-Information "Uploading power BI reports"
 #Connect-PowerBIServiceAccount
@@ -615,6 +633,10 @@ foreach($name in $reports)
 
 
 #creating Pipelines
+$tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
 Add-Content log.txt "------pipelines------"
 Write-Information "Creating pipelines"
 $pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
@@ -642,6 +664,10 @@ foreach($name in $pipelines)
 
 
 #Establish powerbi reports dataset connections
+$tokenValue = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
+$powerbitoken = $tokenValue;
+$tokenValue = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
+$synapseToken = $tokenValue;
 Add-Content log.txt "------pbi connections------"
 Write-Information "Uploading power BI reports"	
 $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/powerbi_dataset_connection.json"
@@ -657,6 +683,35 @@ foreach($report in $reportList)
 }
 
 
+#setting up main web app
+# Convert to SecureString
+ [securestring]$secStringPassword = ConvertTo-SecureString $azure_login_password -AsPlainText -Force
+ [pscredential]$credential = New-Object System.Management.Automation.PSCredential ($azure_login_id, $secStringPassword)
+ Install-Module -Name AzureAD -Force
+ Connect-AzureAD -Credential $Credential
+ $app = New-AzureADApplication -DisplayName "testApp1" -Homepage "https://localhost:44322" -ReplyUrls "https://localhost:44322"
+ $appId=$app.AppId
+ $sp = New-AzureADServicePrincipal -AppId $app.AppId
+ $appSecret = New-AzureADServicePrincipalPasswordCredential -ObjectId $sp.ObjectId
+(Get-Content -path mfg-webapp/appsettings.json -Raw) | Foreach-Object { $_ `
+                -replace '#WORKSPACE_ID#', $wsId`
+				-replace '#USERNAME#', $azure_login_id`
+				-replace '#PASSWORD#', $azure_login_password`	
+				-replace '#APP_ID#', $appId`	
+				-replace '#APP_SECRET#', $appSecret`
+				-replace '#TENANT_ID#', $tenantId`				
+        } | Set-Content -Path mfg-webapp/appsettings.json
+(Get-Content -path mfg-webapp/wwwroot/config.js -Raw) | Foreach-Object { $_ `
+                -replace '#STORAGE_ACCOUNT#', $dataLakeAccountName`
+				-replace '#SERVER_NAME#', $manufacturing_poc_app_service_name`
+				-replace '#WWI_SITE_NAME#', $wideworldimporters_app_service_name`				
+        } | Set-Content -Path mfg-webapp/wwwroot/config.js	
+
+Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
+az webapp stop --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
+az webapp deployment source config-zip --resource-group $resourceGroup --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
+az webapp start --name $manufacturing_poc_app_service_name --resource-group $resourceGroup
+		
 #Install stream-analytics extension
 az extension add --name stream-analytics
 #start ASA
