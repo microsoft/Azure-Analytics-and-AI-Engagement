@@ -2,7 +2,7 @@
     "name": "CustomCampaignproducts",
     "properties": {
         "linkedServiceName": {
-            "referenceName": "dreamdemostrggen2r16gxwb",
+            "referenceName": "#LINKED_SERVICE_NAME#",
             "type": "LinkedServiceReference"
         },
         "annotations": [],
