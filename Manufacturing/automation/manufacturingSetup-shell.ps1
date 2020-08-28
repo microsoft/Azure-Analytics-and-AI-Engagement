@@ -7,7 +7,14 @@ function RefreshTokens()
 
 function ReplaceTokensInFile($ht, $filePath)
 {
-    #TODO
+    $template = Get-Content -Raw -Path $filePath
+	
+    foreach ($paramName in $ht.Keys) 
+    {
+		$template = $template.Replace($paramName, $cellParams[$paramName])
+	}
+
+    return $template;
 }
 
 function GetAccessTokens($context)
