@@ -34,6 +34,9 @@ az login
 #for powershell...
 Connect-AzAccount
 
+#will be done as part of the cloud shell start - README
+cd
+remove-item MfgAI -recurse -force
 git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
 
 cd 'MfgAI/Manufacturing/automation'
@@ -56,15 +59,15 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 }
 
 #TODO pick the resource group...
-$rgName = read-host "Enter the resource Group Name";
-#$rgName = "mfg-testing";
+#$rgName = read-host "Enter the resource Group Name";
+$rgName = "cjg-sanjay-2";
 
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 
-$sqlPassword = Read-Host "Please enter the SQL Password";
+#$sqlPassword = Read-Host "Please enter the SQL Password";
 #$sqlPassword = "Smoothie@2020";
 
 $iot_hub_car = "raceCarIotHub-$suffix"
@@ -90,16 +93,31 @@ $mfgASATelemetryName = "mfgASATelemetry-$suffix"
 $app_name_telemetry_car = "car-telemetry-app-$suffix"
 $app_name_telemetry = "datagen-telemetry-app-$suffix"
 $app_name_hub = "sku2-telemetry-app-$suffix"
-$app_name_sendtohub = "sendtohub-telemrtry-app-$suffix"
+$app_name_sendtohub = "sendtohub-telemetry-app-$suffix"
 
 $ai_name_telemetry_car = "car-telemetry-ai-$suffix"
 $ai_name_telemetry = "datagen-telemetry-ai-$suffix"
 $ai_name_hub = "sku2-telemetry-ai-$suffix"
-$ai_name_sendtohub = "sendtohub-telemrtry-ai-$suffix"
+$ai_name_sendtohub = "sendtohub-telemetry-ai-$suffix"
 
 $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
+
+$keyVaultName = "kv-$suffix";
+$subscriptionId = (Get-AzContext).Subscription.Id
+$tenantId = (Get-AzContext).Tenant.Id
+$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+
+Write-Information "Setting Key Vault Access Policy"
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,delete,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,delete,get,list
+
+$sqlPassword = $(Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword").SecretValueText
 
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -182,19 +200,19 @@ az webapp deployment source config-zip --resource-group $rgName --name $wideworl
 az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
-#Publish-AzWebApp -WebApp $app -ArchivePath "./carTelemetry.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/carTelemetry.zip" -Force
 #
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
-#Publish-AzWebApp -WebApp $app -ArchivePath "./datagenTelemetry.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/datagenTelemetry.zip" -AsJob
 #
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_hub
-#Publish-AzWebApp -WebApp $app -ArchivePath "./sku2.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/sku2.zip" -AsJob
 #
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_sendtohub
-#Publish-AzWebApp -WebApp $app -ArchivePath "./sendtohub.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/sendtohub.zip" -AsJob
 #
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
-#Publish-AzWebApp -WebApp $app -ArchivePath "./wideworldimporters.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/wideworldimporters.zip" -AsJob
 
 
 #uploading Cosmos data
@@ -227,9 +245,6 @@ az webapp start --name $wideworldimporters_app_service_name --resource-group $rg
 #        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
 #    }
 #} 
-
-$subscriptionId = (Get-AzContext).Subscription.Id
-$tenantId = (Get-AzContext).Tenant.Id
 
 RefreshTokens
 
@@ -741,7 +756,7 @@ foreach($report in $reportList)
 Add-Content log.txt "------deploy web app------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
-$appSecret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
+$secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
 
 if (!$app)
 {
@@ -761,7 +776,7 @@ if (!$sp)
 (Get-Content -path mfg-webapp/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
 				-replace '#APP_ID#', $appId`
-				-replace '#APP_SECRET#', $appSecret`
+				-replace '#APP_SECRET#', $sqlPassword`
 				-replace '#TENANT_ID#', $tenantId`				
         } | Set-Content -Path mfg-webapp/appsettings.json
 (Get-Content -path mfg-webapp/wwwroot/config.js -Raw) | Foreach-Object { $_ `
@@ -783,9 +798,13 @@ foreach($zip in $zips)
 }
 
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $manufacturing_poc_app_service_name
-#Publish-AzWebApp -WebApp $app -ArchivePath "./mfg-webapp.zip" -AsJob
+#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/mfg-webapp.zip" -Force
 
 Add-Content log.txt "------uploading sql data------"
+
+#set the table for identity insert on...
+$sqlQuery = "SET IDENTITY_INSERT dbo.CampaignData ON"
+Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 
 #uploading sql data
 $dataTableList = New-Object System.Collections.ArrayList
@@ -822,6 +841,7 @@ $dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"vCampaignSales"}} , @{Name = "TABLE_NAME"; Expression = {"vCampaignSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
+
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
@@ -837,6 +857,9 @@ foreach ($dataTableLoad in $dataTableList) {
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
+
+$sqlQuery = "SET IDENTITY_INSERT dbo. OFF"
+Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 
 #<#P2 #>
 

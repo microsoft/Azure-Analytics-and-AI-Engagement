@@ -43,6 +43,7 @@
      "location": "[parameters('location')]",
      "search_name": "[concat('search-',variables('unique_suffix'))]",
      "cogs_forms_name": "[concat('forms-',variables('unique_suffix'))]",
+     "keyVaultName": "[concat('kv-',variables('unique_suffix'))]",
      "cosmos_database_container_name_historical_data": "historical-data",
      "cosmos_database_container_name_historical_data_adf": "historical-data-adf",
      "cosmos_account_name_mfgdemo": "[if(greater(length(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
@@ -114,9 +115,9 @@
      "sku2_telemetry_ase_name": "[concat('sku2-telemetry-ase-',variables('unique_suffix'))]",
      "sku2_telemetry_ai_name": "[concat('sku2-telemetry-ai-',variables('unique_suffix'))]",
      "sku2_telemetry_app_service_name": "[concat('sku2-telemetry-app-',variables('unique_suffix'))]",
-     "sendtohub_telemetry_ase_name": "[concat('sendtohub-telemrtry-ase-',variables('unique_suffix'))]",
-     "sendtohub_telemetry_ai_name": "[concat('sendtohub-telemrtry-ai-',variables('unique_suffix'))]",
-     "sendtohub_telemetry_app_service_name": "[concat('sendtohub-telemrtry-app-',variables('unique_suffix'))]",
+     "sendtohub_telemetry_ase_name": "[concat('sendtohub-telemetry-ase-',variables('unique_suffix'))]",
+     "sendtohub_telemetry_ai_name": "[concat('sendtohub-telemetry-ai-',variables('unique_suffix'))]",
+     "sendtohub_telemetry_app_service_name": "[concat('sendtohub-telemetry-app-',variables('unique_suffix'))]",
      "data_gen_telemetry_ase_name": "[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
      "data_gen_telemetry_ai_name": "[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
      "data_gen_telemetry_app_service_name": "[concat('datagen-telemetry-app-',variables('unique_suffix'))]"
@@ -2715,7 +2716,42 @@
          "privateEndpointConnections": [],
          "publicNetworkAccess": "Enabled"
        }
-     }
+     },
+     {
+      "type": "Microsoft.KeyVault/vaults",
+      "name": "[variables('keyVaultName')]",
+      "apiVersion": "2018-02-14",
+      "location": "[variables('location')]",
+      "properties": {
+        "enabledForDeployment": true,
+        "enabledForDiskEncryption": true,
+        "enabledForTemplateDeployment": true,
+        "tenantId": "[subscription().tenantId]",
+        "accessPolicies": [
+          
+        ],
+        "sku": {
+          "name": "Standard",
+          "family": "A"
+        },
+        "networkAcls": {
+            "defaultAction": "Allow",
+            "bypass": "AzureServices"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "name": "[concat(variables('keyVaultName'), '/SqlPassword')]",
+      "apiVersion": "2018-02-14",
+      "location": "[variables('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[parameters('sql_administrator_login_password')]"
+      }
+    }
    ]
  ,
     "outputs":{
