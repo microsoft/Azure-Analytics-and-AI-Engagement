@@ -49,6 +49,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 }
 
 #TODO pick the resource group...
+#$rgName = read-host "Enter the resource Group Name";
 $rgName = "sanjay-mfg";
 
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
@@ -772,6 +773,10 @@ foreach ($name in $scripts)
     $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Add-Content log.txt $result
 }
+
+<#P2 #>
+
+<#Ignore#>
 
 #get search resource
 install-module az.search -scope CurrentUser;
