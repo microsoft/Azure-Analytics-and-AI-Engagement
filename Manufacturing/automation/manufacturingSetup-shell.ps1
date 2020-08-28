@@ -254,44 +254,34 @@ az webapp start --name $wideworldimporters_app_service_name --resource-group $rg
 RefreshTokens
 
 New-Item log.txt
-Add-Content log.txt "------asa powerbi connection-----"
-
- #$principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
- #$principalId=$principal.identity.principalId
- #$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
- #$body='
- # {
- #  "identifier":"'+"$($principalId)"+'",
- #  "principalType": "App",
- #  "groupUserAccessRight": "Admin"
- # }'
- #
- #$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
- #Add-Content log.txt $result
- #$principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
- #$principalId=$principal.identity.principalId
- #$uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
- #$body='{
- #  "identifier":"'+"$($principalId)"+'",
- #  "principalType": "App",
- #  "groupUserAccessRight": "Admin"
- # }'
- #$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
- #Add-Content log.txt $result
- 
-Install-Module -Name MicrosoftPowerBIMgmt
-Login-PowerBI
+#Add-Content log.txt "------asa powerbi connection-----"
 #connecting asa and powerbi
-$principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
-$principalId=$principal.identity.principalId
-Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
-
-$principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
-$principalId=$principal.identity.principalId
-Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
- 
- Add-Content log.txt "------start ASA-----"
+# $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+# $principalId=$principal.identity.principalId
+# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+# $body=@"
+# {
+  # "identifier": "$principalId",
+  # "principalType": "App",
+  # "groupUserAccessRight": "Admin"
+# }
+# "@
+# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+# Add-Content log.txt $result
+# $principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
+# $principalId=$principal.identity.principalId
+# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
+# $body=@"
+# {
+  # "identifier": "$principalId",
+  # "principalType": "App",
+  # "groupUserAccessRight": "Admin"
+# }
+# "@
+# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+# Add-Content log.txt $result
 #start ASA
+
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgASATelemetryName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputStartMode 'JobStartTime'
@@ -900,10 +890,6 @@ foreach($zip in $zips)
 
 Add-Content log.txt "------uploading sql data------"
 
-#set the table for identity insert on...
-$sqlQuery = "SET IDENTITY_INSERT dbo.CampaignData ON"
-Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-
 #uploading sql data
 $dataTableList = New-Object System.Collections.ArrayList
 
@@ -956,9 +942,6 @@ foreach ($dataTableLoad in $dataTableList) {
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
-
-$sqlQuery = "SET IDENTITY_INSERT dbo. OFF"
-Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 
 #<#P2 #>
 
