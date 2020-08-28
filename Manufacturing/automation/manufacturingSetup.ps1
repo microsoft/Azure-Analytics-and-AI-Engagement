@@ -80,13 +80,13 @@ Write-Host $app_insights_instrumentation_key_sendtohub
 
 #download the binary zip folders
 
-expand-archive -path "./artifacts/datagenerator/carTelemetry.zip" -destinationpath "./carTelemetry"
+expand-archive -path "./artifacts/binaries/carTelemetry.zip" -destinationpath "./carTelemetry"
 
-expand-archive -path "./artifacts/datagenerator/datagenTelemetry.zip" -destinationpath "./datagenTelemetry"
+expand-archive -path "./artifacts/binaries/datagenTelemetry.zip" -destinationpath "./datagenTelemetry"
 
-expand-archive -path "./artifacts/datagenerator/sku2.zip" -destinationpath "./sku2"
+expand-archive -path "./artifacts/binaries/sku2.zip" -destinationpath "./sku2"
 
-expand-archive -path "./artifacts/datagenerator/sendtohub.zip" -destinationpath "./sendtohub"
+expand-archive -path "./artifacts/binaries/sendtohub.zip" -destinationpath "./sendtohub"
 
 expand-archive -path "./artifacts/binaries/mfg-webapp.zip" -destinationpath "./mfg-webapp"
 
