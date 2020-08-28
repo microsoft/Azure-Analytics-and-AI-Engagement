@@ -819,7 +819,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
     $sqlQuery = Get-Content -Raw -Path "./artifacts/templates/load_csv.sql"
-    Parameters @{
+    $Parameters =@{
             CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
             TABLE_NAME = $dataTableLoad.TABLE_NAME
             DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
