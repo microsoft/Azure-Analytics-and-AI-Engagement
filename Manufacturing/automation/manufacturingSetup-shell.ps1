@@ -1,3 +1,59 @@
+function Check-HttpRedirect($uri)
+{
+    $httpReq = [system.net.HttpWebRequest]::Create($uri)
+    $httpReq.Accept = "text/html, application/xhtml+xml, */*"
+    $httpReq.method = "GET"   
+    $httpReq.AllowAutoRedirect = $false;
+    
+    #use them all...
+    #[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls11 -bor [System.Net.SecurityProtocolType]::Tls12 -bor [System.Net.SecurityProtocolType]::Ssl3 -bor [System.Net.SecurityProtocolType]::Tls;
+
+    $global:httpCode = -1;
+    
+    $response = "";            
+
+    try
+    {
+        $res = $httpReq.GetResponse();
+
+        $statusCode = $res.StatusCode.ToString();
+        $global:httpCode = [int]$res.StatusCode;
+        $cookieC = $res.Cookies;
+        $resHeaders = $res.Headers;  
+        $global:rescontentLength = $res.ContentLength;
+        $global:location = $null;
+                                
+        try
+        {
+            $global:location = $res.Headers["Location"].ToString();
+            return $global:location;
+        }
+        catch
+        {
+        }
+
+        return $null;
+
+    }
+    catch
+    {
+        $res2 = $_.Exception.InnerException.Response;
+        $global:httpCode = $_.Exception.InnerException.HResult;
+        $global:httperror = $_.exception.message;
+
+        try
+        {
+            $global:location = $res2.Headers["Location"].ToString();
+            return $global:location;
+        }
+        catch
+        {
+        }
+    } 
+
+    return $null;
+}
+
 function RefreshTokens()
 {
     #Copy external blob content
@@ -344,6 +400,51 @@ foreach ($name in $scripts)
    
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 }
+
+#download azcopy command
+if ([System.Environment]::OSVersion.Platform -eq "Unix")
+{
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"
+
+        if (!$azCopyLink)
+        {
+                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200709/azcopy_linux_amd64_10.5.0.tar.gz"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.tar.gz"
+        tar -xf "azCopy.tar.gz"
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1)
+        {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        cd $azCopyCommand
+        chmod +x azcopy
+        cd ..
+        $azCopyCommand += "\azcopy"
+}
+else
+{
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
+
+        if (!$azCopyLink)
+        {
+                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
+        Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1)
+        {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        $azCopyCommand += "\azcopy"
+}
  
 #Uploading to storage containers
 RefreshTokens
@@ -356,21 +457,21 @@ foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
-    azcopy copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
+    & $azCopyCommand "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
 
 RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
-azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
+& $azCopyCommand copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
 $dataDirectories = @{
-   b2ccsv = "customcsv/,customcsv/Manufacturing B2C Scenario Dataset /"
-   b2bcsv = "customcsv/,customcsv/Manufacturing B2B Scenario Dataset/"
+   b2ccsv = "customcsv,customcsv/Manufacturing B2C Scenario Dataset/"
+   b2bcsv = "customcsv,customcsv/Manufacturing B2B Scenario Dataset/"
 }
 
 $publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/";
@@ -385,7 +486,31 @@ foreach ($dataDirectory in $dataDirectories.Keys) {
 
         $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
         Write-Information "Copying directory $($source) to $($destination)"
-        azcopy copy $source $destination --recursive=true
+        & $azCopyCommand copy $source $destination --recursive=true
+}
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "forms" -Context $dataLakeContext -Permission rwdl
+$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
+
+$dataDirectories = @{
+   data1 = "forms,forms/formupload/"
+   data2 = "forms,forms/formrecogoutput/"
+   data3 = "forms,forms/english-form-model/"
+}
+
+$publicDataUrl = "https://stcognitivesearch001.blob.core.windows.net/";
+
+foreach ($dataDirectory in $dataDirectories.Keys) {
+
+        $vals = $dataDirectories[$dataDirectory].tostring().split(",");
+
+        $source = $publicDataUrl + $vals[1];
+
+        $path = $vals[0];
+
+        $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
+        Write-Information "Copying directory $($source) to $($destination)"
+        & $azCopyCommand copy $source $destination --recursive=true
 }
 
 <#
