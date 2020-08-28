@@ -358,14 +358,14 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemoda
 azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
-$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net"
+$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
 $dataDirectories = @{
-   b2ccsv = "customcsv/Manufacturing B2C Scenario Dataset,customcsv/Manufacturing B2C Scenario Dataset/"
-   b2bcsv = "customcsv/Manufacturing B2B Scenario Dataset,customcsv/Manufacturing B2B Scenario Dataset/"
+   b2ccsv = "customcsv/,customcsv/Manufacturing B2C Scenario Dataset /"
+   b2bcsv = "customcsv/,customcsv/Manufacturing B2B Scenario Dataset/"
 }
 
-$publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net";
+$publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/";
 
 foreach ($dataDirectory in $dataDirectories.Keys) {
 
