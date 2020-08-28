@@ -734,7 +734,7 @@ foreach($report in $reportList)
 Add-Content log.txt "------deploy web app------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
-$secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
+$appSecret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
 
 if (!$app)
 {
