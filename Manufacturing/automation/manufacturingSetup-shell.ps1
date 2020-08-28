@@ -11,7 +11,7 @@ function ReplaceTokensInFile($ht, $filePath)
 	
     foreach ($paramName in $ht.Keys) 
     {
-		$template = $template.Replace($paramName, $cellParams[$paramName])
+		$template = $template.Replace($paramName, $ht[$paramName])
 	}
 
     return $template;
@@ -56,6 +56,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     $selectedSubName = $subs[$selectedSubIdx]
     Write-Information "Selecting the $selectedSubName subscription"
     Select-AzSubscription -SubscriptionName $selectedSubName
+    az account set --subscription $selectedSubName
 }
 
 #TODO pick the resource group...
@@ -104,6 +105,7 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
+$forms_cogs_name = "forms-$suffix";
 $keyVaultName = "kv-$suffix";
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
@@ -175,31 +177,34 @@ Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
-Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
 
+$webappTelemtryCar = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
 az webapp stop --name $app_name_telemetry_car --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_telemetry_car --src "./carTelemetry.zip"
 az webapp start --name $app_name_telemetry_car --resource-group $rgName
 
+$webappTelemtry = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
 az webapp stop --name $app_name_telemetry --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_telemetry --src "./datagenTelemetry.zip"
 az webapp start --name $app_name_telemetry --resource-group $rgName
 
+$webappHub = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_hub
 az webapp stop --name $app_name_hub --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_hub --src "./sku2.zip"
 az webapp start --name $app_name_hub --resource-group $rgName
 
+$webappSendToHub = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_sendtohub
 az webapp stop --name $app_name_sendtohub --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_sendtohub --src "./sendtohub.zip"
 az webapp start --name $app_name_sendtohub --resource-group $rgName
 
+$webappWWI = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
 az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
 az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
-#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
 #Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/carTelemetry.zip" -Force
 #
 #$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
@@ -289,6 +294,7 @@ Add-Content log.txt "------sql schema-----"
 Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
+$sqlquery = $sqlquery.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
@@ -316,6 +322,7 @@ foreach ($name in $scripts)
     $ScriptFileName="./artifacts/sqlscripts/"+$name.BaseName+".sql"
     
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
+    $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo)
     $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
 	
@@ -640,6 +647,34 @@ foreach ($dataflow in $workloadDataflows.Keys)
 	Add-Content log.txt $result
 }
 
+RefreshTokens
+
+#creating Pipelines
+Add-Content log.txt "------pipelines------"
+Write-Information "Creating pipelines"
+$pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
+$pipelineList = New-Object System.Collections.ArrayList
+foreach($name in $pipelines)
+{
+    $FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
+    
+    $temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
+    $pipelineList.Add($temp)
+    $item = Get-Content -Path $FilePath
+    $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
+    $item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
+    $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
+    $item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
+    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
+    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+    
+    #waiting for operation completion
+    Start-Sleep -Seconds 10
+    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
+    $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+    Add-Content log.txt $result 
+}
+
 #uploading powerbi reports
 RefreshTokens
 
@@ -673,30 +708,23 @@ foreach($name in $reports)
 		Start-Sleep -s 5 
 		
         Add-Content log.txt $result
-        #$reportId = $result.id;
-        if($name.BaseName -eq "Campaign - Option C")
-		{
-			$temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-			@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-            @{Name = "PowerBIDataSetId"; Expression = {""}},
-            @{Name = "SourceServer"; Expression = {"manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net"}}, 
-            @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
-		}
-		else
-        {
-            $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-			@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-            @{Name = "PowerBIDataSetId"; Expression = {""}},
-            @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
-            @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
-		}
-                                
+        $reportId = $result.id;
+
+        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
+		@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
+        @{Name = "PowerBIDataSetId"; Expression = {""}},
+        @{Name = "ReportId"; Expression = {""}},
+        @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
+        @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
+		                        
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 		
         Add-Content log.txt $dataSets
         
+        $temp.ReportId = $reportId;
+
         foreach($res in $dataSets.value)
         {
             if($res.name -eq $name.BaseName)
@@ -710,48 +738,83 @@ foreach($name in $reports)
 
 RefreshTokens
 
-#creating Pipelines
-Add-Content log.txt "------pipelines------"
-Write-Information "Creating pipelines"
-$pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
-$pipelineList = New-Object System.Collections.ArrayList
-foreach($name in $pipelines)
-{
-    $FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
-    
-    $temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
-    $pipelineList.Add($temp)
-    $item = Get-Content -Path $FilePath
-    $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
-    $item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
-    $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
-    $item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
-    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
-    $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-    
-    #waiting for operation completion
-    Start-Sleep -Seconds 10
-    $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
-    $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-    Add-Content log.txt $result 
-}
-
-RefreshTokens
-
 #Establish powerbi reports dataset connections
 Add-Content log.txt "------pbi connections------"
 Write-Information "Uploading power BI reports"	
 $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/powerbi_dataset_connection.json"
+
+#$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "HelloWorld.sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "$($synapseWorkspaceName).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
+
+$sourceServers = @("manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net", "manufacturingdemo.sql.azuresynapse.net", "dreamdemosynapse.sql.azuresynapse.net", "manufacturingdemocjgnpnq4eqzbflgi.sql.azuresynapse.net", "HelloWorld.sql.azuresynapse.net")
 
 foreach($report in $reportList)
 {
-    Write-Information "Setting database connection for $($report.Name)"
-    $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $report.SourceServer).Replace("#SOURCE_DATABASE#", $report.SourceDatabase) |Out-String
-    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
-    $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
+
+    #skip some...cosmos or nothing to update.
+    #campaign sales operations = COSMOS
+    #Azure Cognitive Search = AZURE TABLE
+    #anomaly detection with images = AZURE TABLE
+    if ($report.Name -eq "sample_test" -or $report.Name -eq "Azure Cognitive Search" -or $report.Name -eq "Campaign Sales Operations" -or $report.Name -eq "anomaly detection with images")
+    {
+        #continue;
+    }
+
+    foreach($source in $sourceServers)
+    {
+        Write-Information "Setting database connection for $($report.Name)"
+        #ManufacturingDW
+        $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $source).Replace("#SOURCE_DATABASE#", $report.SourceDatabase) |Out-String
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
+        try
+        {
+            $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+            Add-Content log.txt $pbiResult  
+        }
+        catch
+        {
+        }
+    }
+
+    <#
+    #cosmobased ones require different endpoint - TODO
+    $body = "{
+      `"updateDetails`": [
+        {
+          `"name`": `"DatabaseName`",
+          `"newValue`": `"NewDB`"
+        },
+        {
+          `"name`": `"MaxId`",
+          `"newValue`": `"5678`"
+        }
+      ]
+    }"
+
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
+    $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
     Add-Content log.txt $pbiResult  
+    #>
 }
+
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
+$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+Add-Content log.txt $pbiResult  
+
+foreach($r in $pbiResult.value)
+{
+    $report = $reportList | where {$_.Name -eq $r.name}
+    $report.REportId = $r.id;
+}
+
+#$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
+$webappWWW = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
+
+Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
+
+az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
+az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
 Add-Content log.txt "------deploy web app------"
 
@@ -784,6 +847,31 @@ if (!$sp)
 				-replace '#SERVER_NAME#', $manufacturing_poc_app_service_name`
 				-replace '#WWI_SITE_NAME#', $wideworldimporters_app_service_name`				
         } | Set-Content -Path mfg-webapp/wwwroot/config.js	
+
+        #update all th report ids in the poc web app...
+$ht = new-object system.collections.hashtable
+$ht.add("#REPORT_SQL_DASHBOARD_BEFORE_ID#", $($reportList | where {$_.Name -eq "1_Billion rows demo"}).ReportId)
+$ht.add("#REPORT_SQL_DASHBOARD_DURING_ID#", $($reportList | where {$_.Name -eq "3_MFG Dynamic Data Masking (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_SQL_DASHBOARD_AFTER_ID#", $($reportList | where {$_.Name -eq "4_MFG Column Level Security (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_DASHBOARD_AFTER_ID#", $($reportList | where {$_.Name -eq "5_MFG Row Level Security (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_ANOMALY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
+$ht.add("#REPORT_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign - Option C"}).ReportId)
+$ht.add("#REPORT_FACTORY_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_FINANCE_ID#", $($reportList | where {$_.Name -eq "1_Billion rows demo"}).ReportId)
+$ht.add("#REPORT_GLOBALBING_ID#", $($reportList | where {$_.Name -eq "VP-Global-Overview"}).ReportId)
+$ht.add("#REPORT_SAFETY_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_MACHINE_ANOMOLY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
+$ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.Name -eq "6_Production Quality- HTAP Synapse Link"}).ReportId)
+$ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign Sales Operations"}).ReportId)
+$ht.add("#WWI_SITE_NAME#", $webappWWW.HostNames[0])
+$ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
+$ht.add("#COGS_FORMS_NAME#", $forms_cogs_name)
+$ht.add("#SERVER_NAME#", "#SERVER_NAME#") #TODO?
+
+$filePath = "./mfg-webapp/wwwroot/config.js";
+Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
+
 
 Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 
@@ -846,6 +934,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
     $sqlQuery = Get-Content -Raw -Path "./artifacts/templates/load_csv.sql"
+    $sqlquery = $sqlquery.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $Parameters =@{
             CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
             TABLE_NAME = $dataTableLoad.TABLE_NAME

@@ -5,31 +5,31 @@ Delete from Campaignproducts;
 Delete from sales;
 
 COPY INTO [dbo].[CampaignData_Bubble]
-FROM 'https://dreamdemostrggen2r16gxwb.blob.core.windows.net/mfg-pocdata/Before/CampaignData_Bubble.csv'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-pocdata/Before/CampaignData_Bubble.csv'
 WITH (
     FILE_TYPE = 'CSV',
     FIRSTROW = 2
 )
 COPY INTO [dbo].[CampaignData]
-FROM 'https://dreamdemostrggen2r16gxwb.blob.core.windows.net/mfg-pocdata/Before/CampaignData.csv'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-pocdata/Before/CampaignData.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO [dbo].[Product]
-FROM 'https://dreamdemostrggen2r16gxwb.blob.core.windows.net/mfg-pocdata/Before/Product.csv'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-pocdata/Before/Product.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO [dbo].[Campaignproducts]
-FROM 'https://dreamdemostrggen2r16gxwb.blob.core.windows.net/mfg-pocdata/Before/Campaignproducts.csv'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-pocdata/Before/Campaignproducts.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO [dbo].[Sales]
-FROM 'https://dreamdemostrggen2r16gxwb.blob.core.windows.net/mfg-pocdata/Before/sales.csv'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-pocdata/Before/sales.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
