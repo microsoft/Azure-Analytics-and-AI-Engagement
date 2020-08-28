@@ -49,16 +49,16 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 }
 
 #TODO pick the resource group...
-#$rgName = read-host "Enter the resource Group Name";
-$rgName = "sanjay-mfg";
+$rgName = read-host "Enter the resource Group Name";
+#$rgName = "mfg-testing";
 
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 
-#$sqlPassword = Read-Host "Please enter the SQL Password";
-$sqlPassword = "Seattle123";
+$sqlPassword = Read-Host "Please enter the SQL Password";
+#$sqlPassword = "Smoothie@2020";
 
 $iot_hub_car = "raceCarIotHub-$suffix"
 $iot_hub_telemetry = "mfgiothubTelemetry-$suffix"
@@ -67,13 +67,14 @@ $iot_hub_sendtohub = "mfgiothubCosmosDB-$suffix"
 
 $synapseWorkspaceName = "manufacturingdemo$init$random"
 $sqlPoolName = "ManufacturingDW"
-$dataLakeAccountName = "dreamdemostrggen2cjg$($random.substring(0,4))"
+$concatString = "$init$random"
+$dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $sqlUser = "ManufacturingUser"
 
 $mfgasaName = "raceCarIotHub-$suffix"
 $carasaName = "raceCarIotHub-$suffix"
-
-$cosmos_account_name_mfgdemo = "cosmosdb-mfgdemo-$random$init"
+$concatString = "$random$init"
+$cosmos_account_name_mfgdemo = "cosmosdb-mfgdemo-$random$init" #+($concatString.substring(0,26))
 $cosmos_database_name_mfgdemo_manufacturing = "manufacturing"
 
 $mfgasaCosmosDBName = "mfgasaCosmosDB-$suffix"
@@ -93,8 +94,6 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
-cd "C:\github\microsoft\Azure-Analytics-and-AI-Engagement\Manufacturing\automation"
-
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
@@ -103,13 +102,13 @@ $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_car -D
 $iot_device_connection_car = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId race-car).ConnectionString
 
 $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_telemetry -DeviceId telemetry-data
-$iot_device_connection_telemetry = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId telemetry-data).ConnectionString
+$iot_device_connection_telemetry = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_telemetry -DeviceId telemetry-data).ConnectionString
 
 $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_sendtohub -DeviceId send-to-hub
-$iot_device_connection_sku2 = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId send-to-hub).ConnectionString
+$iot_device_connection_sku2 = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_sendtohub -DeviceId send-to-hub).ConnectionString
 
 $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub -DeviceId data-device
-$iot_device_connection_sku2 = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId data-device).ConnectionString
+$iot_device_connection_sendtohub = $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub -DeviceId data-device).ConnectionString
 
 #get App insights instrumentation keys
 $app_insights_instrumentation_key_car = $(Get-AzApplicationInsights -ResourceGroupName $rgName -Name $ai_name_telemetry_car).InstrumentationKey
@@ -121,27 +120,27 @@ $zips = @("carTelemetry", "datagenTelemetry", "sku2", "sendtohub", "mfg-webapp",
 
 foreach($zip in $zips)
 {
-    expand-archive -path "./artifacts/datagenerator/$zip.zip" -destinationpath "./$zip" -force
+    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
 
 #Replace connection string in config
 (Get-Content -path carTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_car.connectionString`
+                -replace '#connection_string#', $iot_device_connection_car`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_car`				
         } | Set-Content -Path carTelemetry/appsettings.json
 		
 (Get-Content -path datagenTelemetry/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_telemetry.connectionString`
+                -replace '#connection_string#', $iot_device_connection_telemetry`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_telemetry`				
         } | Set-Content -Path datagenTelemetry/appsettings.json
 		
 (Get-Content -path sku2/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_sku2.connectionString`
+                -replace '#connection_string#', $iot_device_connection_sku2`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_sku2`				
         } | Set-Content -Path sku2/appsettings.json
 		
 (Get-Content -path sendtohub/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#connection_string#', $iot_device_connection_sendtohub.connectionString`
+                -replace '#connection_string#', $iot_device_connection_sendtohub`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_sendtohub`				
         } | Set-Content -Path sendtohub/appsettings.json
 
@@ -154,54 +153,73 @@ Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemet
 Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
-Publish-AzWebApp -WebApp $app -ArchivePath "./carTelemetry.zip" -AsJob
 
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
-Publish-AzWebApp -WebApp $app -ArchivePath "./datagenTelemetry.zip" -AsJob
+az webapp stop --name $app_name_telemetry_car --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $app_name_telemetry_car --src "./carTelemetry.zip"
+az webapp start --name $app_name_telemetry_car --resource-group $rgName
 
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_hub
-Publish-AzWebApp -WebApp $app -ArchivePath "./sku2.zip" -AsJob
+az webapp stop --name $app_name_telemetry --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $app_name_telemetry --src "./datagenTelemetry.zip"
+az webapp start --name $app_name_telemetry --resource-group $rgName
 
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_sendtohub
-Publish-AzWebApp -WebApp $app -ArchivePath "./sendtohub.zip" -AsJob
+az webapp stop --name $app_name_hub --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $app_name_hub --src "./sku2.zip"
+az webapp start --name $app_name_hub --resource-group $rgName
 
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
-Publish-AzWebApp -WebApp $app -ArchivePath "./wideworldimporters.zip" -AsJob
+az webapp stop --name $app_name_sendtohub --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $app_name_sendtohub --src "./sendtohub.zip"
+az webapp start --name $app_name_sendtohub --resource-group $rgName
 
-foreach($zip in $zips)
-{
-    remove-item -path "./$zip" -recurse -force
-    remove-item -path "./$zip.zip" -recurse -force
-}
+az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
+az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
+
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
+#Publish-AzWebApp -WebApp $app -ArchivePath "./carTelemetry.zip" -AsJob
+#
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
+#Publish-AzWebApp -WebApp $app -ArchivePath "./datagenTelemetry.zip" -AsJob
+#
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_hub
+#Publish-AzWebApp -WebApp $app -ArchivePath "./sku2.zip" -AsJob
+#
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_sendtohub
+#Publish-AzWebApp -WebApp $app -ArchivePath "./sendtohub.zip" -AsJob
+#
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
+#Publish-AzWebApp -WebApp $app -ArchivePath "./wideworldimporters.zip" -AsJob
+
 
 #uploading Cosmos data
-$cosmosDbAccountName = $cosmos_account_name_mfgdemo
+#$cosmosDbAccountName = $cosmos_account_name_mfgdemo
 
-$databaseName = $cosmos_database_name_mfgdemo_manufacturing
+#$databaseName = $cosmos_database_name_mfgdemo_manufacturing
 
-$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+#$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
 
-foreach($name in $cosmos)
-{
-    $collection = $name.BaseName
-    $cosmosDb = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDbAccountName
-
-    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgNameName
-    #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
-    $path="./artifacts/cosmos/"+$name.BaseName+".json"
-    $document=Get-Content -Raw -Path $path
-    $document=ConvertFrom-Json $document
-
-    foreach($json in $document)
-    {
-        $key=$json.SyntheticPartitionKey
-        $id = New-Guid
-        $json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id
-        $body=ConvertTo-Json $json
-        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
-    }
-} 
+#foreach($name in $cosmos)
+#{
+#    $collection = $name.BaseName
+#    $cosmosDb = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDbAccountName
+#
+#    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgNameName
+#    #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
+#    $path="./artifacts/cosmos/"+$name.BaseName+".json"
+#    $document=Get-Content -Raw -Path $path
+#    $document=ConvertFrom-Json $document
+#
+#    foreach($json in $document)
+#    {
+#        $key=$json.SyntheticPartitionKey
+#        $id = New-Guid
+#       if(![bool]($json.PSobject.Properties.name -match "id"))
+ #       {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
+  #      if(![bool]($json.PSobject.Properties.name -match "SyntheticPartitionKey"))
+ #       {$json | Add-Member -MemberType NoteProperty -Name 'SyntheticPartitionKey' -Value $id}
+#        $body=ConvertTo-Json $json
+#        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+#    }
+#} 
 
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
@@ -209,7 +227,7 @@ $tenantId = (Get-AzContext).Tenant.Id
 RefreshTokens
 
 New-Item log.txt
-Add-Content log.txt "------asa powerbi connection-----"
+#Add-Content log.txt "------asa powerbi connection-----"
 #connecting asa and powerbi
 # $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
 # $principalId=$principal.identity.principalId
@@ -321,7 +339,8 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Cont
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net"
 
 $dataDirectories = @{
-    csv = "customcsv/Manufacturing B2C Scenario Dataset,customcsv/Manufacturing B2C Scenario Dataset /"
+   b2ccsv = "customcsv/Manufacturing B2C Scenario Dataset,customcsv/Manufacturing B2C Scenario Dataset/"
+   b2bcsv = "customcsv/Manufacturing B2B Scenario Dataset,customcsv/Manufacturing B2B Scenario Dataset/"
 }
 
 $publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net";
@@ -480,6 +499,7 @@ $datasets = @{
 	AzureSynapseAnalyticsTable8=$sqlPoolName
 	AzureSynapseAnalyticsTable9=$sqlPoolName
 	AzureSynapseAnalyticsTable10=$sqlPoolName
+	CustomCampaignproducts=$dataLakeAccountName
 	Custom_CampaignData=$sqlPoolName
 	Custom_CampaignData_bubble=$sqlPoolName
 	Custom_Campaignproducts=$sqlPoolName
@@ -642,7 +662,7 @@ foreach($name in $reports)
 		}
 		else
         {
-            $temp -eq "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
+            $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
 			@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
             @{Name = "PowerBIDataSetId"; Expression = {""}},
             @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
@@ -650,7 +670,7 @@ foreach($name in $reports)
 		}
                                 
         # get dataset                         
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets";
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 		
         Add-Content log.txt $dataSets
@@ -706,10 +726,12 @@ foreach($report in $reportList)
 {
     Write-Information "Setting database connection for $($report.Name)"
     $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $report.SourceServer).Replace("#SOURCE_DATABASE#", $report.SourceDatabase) |Out-String
-    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
-    $result = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
-    Add-Content log.txt $result  
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
+    $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $powerBIReportDataSetConnectionUpdateRequest -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" };
+    Add-Content log.txt $pbiResult  
 }
+
+Add-Content log.txt "------deploy web app------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
 $secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
@@ -743,69 +765,104 @@ if (!$sp)
 
 Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 
-$app = Get-AzWebApp -ResourceGroupName $rgName -Name $manufacturing_poc_app_service_name
-Publish-AzWebApp -WebApp $app -ArchivePath "./mfg-webapp.zip" -AsJob
+az webapp stop --name $manufacturing_poc_app_service_name --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
+az webapp start --name $manufacturing_poc_app_service_name --resource-group $rgName
 
-#uploading sql data
-mkdir uploadscripts
-
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData_Bubble.sql -outFile ./uploadscripts/CampaignData_Bubble.sql
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/CampaignData.sql        -outFile ./uploadscripts/CampaignData.sql       
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Campaignsales.sql       -outFile ./uploadscripts/Campaignsales.sql      
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/customer.sql            -outFile ./uploadscripts/customer.sql           
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Date.sql                -outFile ./uploadscripts/Date.sql               
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/historical-data-adf.sql -outFile ./uploadscripts/historical-data-adf.sql
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/location.sql            -outFile ./uploadscripts/location.sql           
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-AlertAlarm.sql      -outFile ./uploadscripts/mfg-AlertAlarm.sql     
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-MachineAlert.sql    -outFile ./uploadscripts/mfg-MachineAlert.sql   
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/mfg-OEE.sql             -outFile ./uploadscripts/mfg-OEE.sql            
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/Product.sql             -outFile ./uploadscripts/Product.sql            
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/sales.sql               -outFile ./uploadscripts/sales.sql              
-wget https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customsql/Before/vCampaignSales.sql      -outFile ./uploadscripts/vCampaignSales.sql
-
-$scripts=Get-ChildItem "./uploadscripts" | Select BaseName    
-
-foreach ($name in $scripts) 
+foreach($zip in $zips)
 {
-    $filename="./uploadscripts/$($name.BaseName)"+".sql"
-    $sqlQuery = Get-Content -Raw -Path $filename
-    $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
-    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-    Add-Content log.txt $result
+    remove-item -path "./$($zip)" -recurse -force
+    remove-item -path "./$($zip).zip" -recurse -force
 }
 
-<#P2 #>
+#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $manufacturing_poc_app_service_name
+#Publish-AzWebApp -WebApp $app -ArchivePath "./mfg-webapp.zip" -AsJob
 
-<#Ignore#>
+Add-Content log.txt "------uploading sql data------"
 
-#get search resource
-install-module az.search -scope CurrentUser;
+#uploading sql data
+$dataTableList = New-Object System.Collections.ArrayList
 
-$searchName = "mfg-search-$init-$random";
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-#$searchkey = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName; - because somone needs to be fired
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CampaignData_Bubble"}} , @{Name = "TABLE_NAME"; Expression = {"CampaignData_Bubble"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-#Search setup
-$indexName = "demoindex";
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CampaignData"}} , @{Name = "TABLE_NAME"; Expression = {"CampaignData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-$headers = @();
-$headers.Add("api-key",$searchKey);
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"customer"}} , @{Name = "TABLE_NAME"; Expression = {"customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-$body = Get-Content -path search/index_base.json -Raw
-#create index
-$uri = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"historical-data-adf"}} , @{Name = "TABLE_NAME"; Expression = {"historical-data-adf"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-#create indexer
-$body = Get-Content -path search/indexer_base.json -Raw
-$url = "https://$serviceName.search.windows.net/indexers/demoindexer?api-version=2019-05-06"
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"location"}} , @{Name = "TABLE_NAME"; Expression = {"location"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-$post = "";
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-AlertAlarm"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-AlertAlarm"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-#create pipeline
-$body = Get-Content -path search/indexer_base.json -Raw
-$url = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-MachineAlert"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-MachineAlert"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
-Add-Content log.txt "Execution Complete"
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-OEE"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-OEE"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Product"}} , @{Name = "TABLE_NAME"; Expression = {"Product"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"sales"}} , @{Name = "TABLE_NAME"; Expression = {"sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"vCampaignSales"}} , @{Name = "TABLE_NAME"; Expression = {"vCampaignSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+foreach ($dataTableLoad in $dataTableList) {
+    Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
+    $sqlQuery = Get-Content -Raw -Path "./artifacts/templates/load_csv.sql"
+    Parameters @{
+            CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
+            TABLE_NAME = $dataTableLoad.TABLE_NAME
+            DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
+     }
+    foreach ($key in $Parameters.Keys) {
+            $sqlQuery = $sqlQuery.Replace("#$($key)#", $Parameters[$key])
+        }
+    Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+    Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
+}
+
+#<#P2 #>
+
+#<#Ignore#>
+
+##get search resource
+#install-module az.search -scope CurrentUser;
+#
+#$searchName = "mfg-search-$init-$random";
+#$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+##$searchkey = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName; - because somone needs to be fired
+#
+##Search setup
+#$indexName = "demoindex";
+#
+#$headers = @();
+#$headers.Add("api-key",$searchKey);
+#
+#$body = Get-Content -path search/index_base.json -Raw
+##create index
+#$uri = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
+#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+#
+##create indexer
+#$body = Get-Content -path search/indexer_base.json -Raw
+#$url = "https://$serviceName.search.windows.net/indexers/demoindexer?api-version=2019-05-06"
+#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+#
+#$post = "";
+#
+##create pipeline
+#$body = Get-Content -path search/indexer_base.json -Raw
+#$url = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
+#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+
+Add-Content log.txt "-----------------Execution Complete---------------"
