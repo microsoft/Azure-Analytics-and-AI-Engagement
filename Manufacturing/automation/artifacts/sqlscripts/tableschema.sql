@@ -487,7 +487,7 @@ CREATE TABLE [dbo].[Product]
 	[Thumbnail_FileName] [nvarchar](500) NULL,
 	[AdImage_FileName] [nvarchar](500) NULL,
 	[SoundFile_FileName] [nvarchar](500) NULL,
-	[CreatedDate] [datetime2](0) NULL,
+	[CreatedDate] [nvarchar](40) NULL,
 	[Dimensions] [nvarchar](50) NULL,
 	[Colour] [nvarchar](50) NULL,
 	[Weight] [decimal](10, 2) NULL,

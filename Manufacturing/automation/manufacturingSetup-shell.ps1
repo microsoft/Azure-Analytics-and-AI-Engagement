@@ -1078,6 +1078,12 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-OEE"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-OEE"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaignproducts"}} , @{Name = "TABLE_NAME"; Expression = {"Campaignproducts"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CampaignData_exl"}} , @{Name = "TABLE_NAME"; Expression = {"CampaignData_exl"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Product"}} , @{Name = "TABLE_NAME"; Expression = {"Product"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
