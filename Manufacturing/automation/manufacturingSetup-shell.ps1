@@ -372,7 +372,7 @@ $TemplatesPath="./artifacts/templates";
 #$cosmosAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmos_account_name_mfgdemo;
 #$keys = Get-AzCosmosDBAccountKey -ResourceGroupName $rgName -Name $cosmos_account_name_mfgdemo;
 #$cosmos_account_key = $keys["PrimaryMasterKey"];
-$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $resourceGroup |ConvertFrom-Json
+$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $rgName |ConvertFrom-Json
 $cosmos_account_key=$cosmos_account_key.primarymasterkey
 
 foreach ($name in $scripts) 
