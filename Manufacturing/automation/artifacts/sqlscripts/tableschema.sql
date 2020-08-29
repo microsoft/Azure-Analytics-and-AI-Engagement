@@ -266,7 +266,7 @@ CREATE TABLE [dbo].[CampaignData]
 	[Sentiment] [nvarchar](20) NULL,
 	[Response] [bigint] NULL,
 	[CampaignID] [bigint] NULL,
-	[CampaignRowKey] [bigint] IDENTITY(1,1) NOT NULL
+	[CampaignRowKey] [bigint] NOT NULL
 )
 WITH
 (
