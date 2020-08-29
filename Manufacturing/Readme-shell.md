@@ -63,7 +63,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
-    .\Manufacturing-setup.ps1
+    ./manufacturingSetup-shell.ps1
     ```
 
 ### Task 4: Configuration
