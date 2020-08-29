@@ -479,7 +479,7 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Cont
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
 $dataDirectories = @{
-   b2ccsv = "customcsv,customcsv/Manufacturing B2C Scenario Dataset/"
+   b2ccsv = "customcsv,customcsv/Manufacturing B2C Scenario Dataset /" #space after container name is intentional since thats how the name is in public storage
    b2bcsv = "customcsv,customcsv/Manufacturing B2B Scenario Dataset/"
 }
 
