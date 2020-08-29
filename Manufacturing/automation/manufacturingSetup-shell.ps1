@@ -117,8 +117,8 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 }
 
 #TODO pick the resource group...
-#$rgName = read-host "Enter the resource Group Name";
-$rgName = "cjg-sanjay-2";
+$rgName = read-host "Enter the resource Group Name";
+#$rgName = "cjg-sanjay-2";
 
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -338,7 +338,15 @@ New-Item log.txt
 # $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 # Add-Content log.txt $result
 #start ASA
+Install-Module -Name MicrosoftPowerBIMgmt
+Login-PowerBI
+$principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principalId=$principal.identity.principalId
+Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
 
+$principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principalId=$principal.identity.principalId
+Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgASATelemetryName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputStartMode 'JobStartTime'
@@ -1025,7 +1033,7 @@ $ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campai
 $ht.add("#WWI_SITE_NAME#", $webappWWW.HostNames[0])
 $ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $ht.add("#COGS_FORMS_NAME#", $forms_cogs_name)
-$ht.add("#SERVER_NAME#", "#SERVER_NAME#") #TODO?
+$ht.add("#WORKSPACE_ID#", $wsId)
 
 $filePath = "./mfg-webapp/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
