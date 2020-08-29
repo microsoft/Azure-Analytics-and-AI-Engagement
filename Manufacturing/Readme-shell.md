@@ -32,7 +32,7 @@
 1. Deploy the Azure resources through the following Azure ARM template (press the button below):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2F
-Manufacturing%2Fautomation%2FmainTemplate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
+Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png" /></a>
 
 2. On the **Custom deployment** form, select your desired subscription.
 3. Enter a resource group name.
