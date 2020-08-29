@@ -348,6 +348,7 @@ Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -Principal
 $principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
 Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
+
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgASATelemetryName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputStartMode 'JobStartTime'
@@ -941,11 +942,10 @@ Add-Content log.txt $pbiResult
 foreach($r in $pbiResult.value)
 {
     $report = $reportList | where {$_.Name -eq $r.name}
-    $report.REportId = $r.id;
+    $report.ReportId = $r.id;
 }
 
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
-
 
 Add-Content log.txt "------deploy web app------"
 
@@ -967,7 +967,26 @@ if (!$sp)
     $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Contributor";
 }
 
-#https://dev.powerbi.com/Apps???
+#https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+#Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+
+#NOT SURE IF THIS WILL RUN FOR ALL TENANTS THAT ARE NOT IN WEST - ALSO NOT SURE HOW TO GET THE ACTUAL METADATA ENDPOINT FOR A TENANT
+$url = "https://wabi-west-us-redirect.analysis.windows.net/metadata/tenantsettings"
+$post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer $powerbiToken")
+$headers.Add("X-PowerBI-User-Admin", "true")
+$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+#add PowerBI App to workspace as an admin to group
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+$post = "{
+    `"identifier`":`"$($sp.Id)`",
+    `"groupUserAccessRight`":`"Admin`",
+    `"principalType`":`"App`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 
 #get the power bi app...
 $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
@@ -1027,10 +1046,14 @@ $ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.Name -eq "Factory-Overv
 $ht.add("#REPORT_MACHINE_ANOMOLY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
 $ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.Name -eq "6_Production Quality- HTAP Synapse Link"}).ReportId)
 $ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign Sales Operations"}).ReportId)
-$ht.add("#WWI_SITE_NAME#", $webappWWW.HostNames[0])
+$ht.add("#WWI_SITE_NAME#", $wideworldimporters_app_service_name)
 $ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $ht.add("#COGS_FORMS_NAME#", $forms_cogs_name)
 $ht.add("#WORKSPACE_ID#", $wsId)
+$ht.add("#APP_ID#", $appId)
+$ht.add("#APP_SECRET#", $sqlPassword)
+$ht.add("#TENANT_ID#", $tenantId)
+$ht.add("#SERVER_NAME#", $manufacturing_poc_app_service_name)
 
 $filePath = "./mfg-webapp/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
