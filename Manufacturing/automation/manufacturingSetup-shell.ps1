@@ -339,7 +339,7 @@ New-Item log.txt
 # $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 # Add-Content log.txt $result
 #start ASA
-Install-Module -Name MicrosoftPowerBIMgmt --Force
+Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
 $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
