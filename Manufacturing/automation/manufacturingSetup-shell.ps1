@@ -139,8 +139,8 @@ $concatString = "$init$random"
 $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $sqlUser = "ManufacturingUser"
 
-$mfgasaName = "raceCarIotHub-$suffix"
-$carasaName = "raceCarIotHub-$suffix"
+$mfgasaName = "mfgasa-$suffix"
+$carasaName = "race-car-asa-$suffix"
 $concatString = "$random$init"
 $cosmos_account_name_mfgdemo = "cosmosdb-mfgdemo-$random$init" #+($concatString.substring(0,26))
 $cosmos_database_name_mfgdemo_manufacturing = "manufacturing"
@@ -234,6 +234,7 @@ Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
 Compress-Archive -Path "./sku2/*" -DestinationPath "./sku2.zip"
 Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemetry.zip"
+Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
 
@@ -257,7 +258,7 @@ az webapp stop --name $app_name_sendtohub --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_sendtohub --src "./sendtohub.zip"
 az webapp start --name $app_name_sendtohub --resource-group $rgName
 
-$webappWWI = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
+$webappWWW = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
 az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
 az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
@@ -338,7 +339,7 @@ New-Item log.txt
 # $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
 # Add-Content log.txt $result
 #start ASA
-Install-Module -Name MicrosoftPowerBIMgmt
+Install-Module -Name MicrosoftPowerBIMgmt --Force
 Login-PowerBI
 $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
@@ -465,7 +466,7 @@ foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
-    & $azCopyCommand "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
+    & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
 
 RefreshTokens
@@ -942,13 +943,7 @@ foreach($r in $pbiResult.value)
 }
 
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
-$webappWWW = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
 
-Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
-
-az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
-az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
 Add-Content log.txt "------deploy web app------"
 
