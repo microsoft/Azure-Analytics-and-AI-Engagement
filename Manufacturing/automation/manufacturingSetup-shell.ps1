@@ -92,11 +92,11 @@ az login
 Connect-AzAccount
 
 #will be done as part of the cloud shell start - README
-cd
-remove-item MfgAI -recurse -force
-git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
 
-cd 'MfgAI/Manufacturing/automation'
+#remove-item MfgAI -recurse -force
+#git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
+
+#cd 'MfgAI/Manufacturing/automation'
 
 #if they have many subs...
 $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
