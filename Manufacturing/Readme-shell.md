@@ -56,12 +56,13 @@ Manufacturing%2Fautomation%2FmainTemplate.json" target="_blank"><img src="http:/
 3. From the shell, run the following command to pull the demo repository:
 
     ```PowerShell
-    git clone https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
+    git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
     ```
 
 4. Run the `Manufacturing-Setup.ps1` script
 
     ```PowerShell
+    cd 'MfgAI/Manufacturing/automation'
     .\Manufacturing-setup.ps1
     ```
 
