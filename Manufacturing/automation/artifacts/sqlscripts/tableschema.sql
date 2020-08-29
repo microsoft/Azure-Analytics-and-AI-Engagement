@@ -227,7 +227,7 @@ CREATE TABLE [dbo].[Campaignproducts]
 	[Hashtag] [varchar](250)  NULL,
 	[Counts] [varchar](250)  NULL,
 	[ProductID] [int]  NULL,
-	[CampaignRowKey] [int]  NULL,
+	[CampaignRowKey] [varchar](20)  NULL,
 	[SelectedFlag] [bit]  NULL,
 	[Sentiment] [varchar](20)  NULL
 )
