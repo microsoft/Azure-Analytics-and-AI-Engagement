@@ -1152,7 +1152,7 @@
          "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
        ],
        "properties": {
-         "publicAccess": "None"
+         "publicAccess": "Container"
        }
      },
      {
