@@ -55,7 +55,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 2. Open Cloud Shell by click the icon in the top navigation
 3. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
-    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/azurecloudshellmenu.png)
 
     > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
     
