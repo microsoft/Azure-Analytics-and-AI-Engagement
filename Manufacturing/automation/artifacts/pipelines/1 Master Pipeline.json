@@ -9,7 +9,7 @@
                 "userProperties": [],
                 "typeProperties": {
                     "pipeline": {
-                        "referenceName": "Customize Campaign Analytics",
+                        "referenceName": "0 Customize Campaign Analytics",
                         "type": "PipelineReference"
                     },
                     "waitOnCompletion": true
