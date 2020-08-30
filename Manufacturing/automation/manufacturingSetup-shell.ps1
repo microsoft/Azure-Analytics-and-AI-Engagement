@@ -124,6 +124,7 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
+$deploymentId = $init
 
 #$sqlPassword = Read-Host "Please enter the SQL Password";
 #$sqlPassword = "Smoothie@2020";
