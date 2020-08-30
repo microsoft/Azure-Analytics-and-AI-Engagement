@@ -53,13 +53,22 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 1. Open the Azure Portal
 2. Open Cloud Shell by click the icon in the top navigation
-3. From the shell, run the following command to pull the demo repository:
+3. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
+
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/bhol_azurecloudshellmenu.png)
+
+    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
+    
+    ![Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
+
+4. From the shell, run the following command to pull the demo repository:
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
     ```
+    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-4. Run the `manufacturingSetup-shell` script
+5. Run the `manufacturingSetup-shell` script
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
