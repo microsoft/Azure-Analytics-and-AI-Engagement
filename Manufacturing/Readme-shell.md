@@ -59,7 +59,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
     ```
 
-4. Run the `Manufacturing-Setup.ps1` script
+4. Run the `manufacturingSetup-shell` script
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
