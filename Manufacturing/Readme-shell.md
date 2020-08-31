@@ -165,24 +165,24 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 4. **Authenticate** the Power BI reports to access the datasources.
 5. **Click** to settings icon on top right-side corner.
-6. **Select** settings
+6. **Select** settings.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-7. **Go to** Datasets tab
+7. **Go to** Datasets tab.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
-8. **Select** Campaign – Option C Report
-9. **Expand** Data Source Credentials
-10. **Click** Edit Credentials
+8. **Select** Campaign – Option C Report.
+9. **Expand** Data Source Credentials.
+10. **Click** Edit Credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
-11. Configure Campaign - Option C dialogue box will pop up
-12. **Enter** Username as ‘ManufacturingUser’ 
-13. **Enter** the same Password which was used while azure deployment
-14. **Click** Sign in
+11. Configure Campaign - Option C dialogue box will pop up.
+12. **Enter** Username as ‘ManufacturingUser’.
+13. **Enter** the same Password which was used while azure deployment.
+14. **Click** Sign in.
 
 ![Configure Campaign.](media/Configure-Campaign.png)
 
