@@ -2,8 +2,8 @@
 
 ## Requirements
 
-1. An Azure Account with the ability to create an Azure Synapse Workspace.
-2. A Power BI Pro or Premium account to host Power BI reports.
+1. An Azure Account with the ability to create an Azure Synapse Workspace
+2. A PowerBI Pro or Premium account to host Power BI reports.
 
 ## Before starting
 
@@ -37,7 +37,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 2. On the **Custom deployment** form, select your desired subscription.
 3. Enter a resource group name.
 4. Provide a **Unique Suffix**.
-5. Enter the target Power BI Workspace.  You can get this by browsing to https://app.powerbi.com/, selecting a workspace and then copying the id in the address url.
+5. Enter the target PowerBI Workspace.  You can get this by browsing to https://app.powerbi.com/, selecting a workspace and then copying the id in the address url.
 
     ![A portion of the Power BI workspace to highlight the workspace ID.](media/PBI-Workspace-ID-Screen2.png)
 
@@ -52,22 +52,22 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 > **NOTE** The provisioning of your deployment resources will take approximately 20 minutes.
 
-9. Confirm that the deployment has succeeded before proceeding to the next step.
+9. Confirm that the deployment has succeeded before proceeding to the next step
     
     ![A portion of the Azure Portal to confirm that the deployment has succeeded.](media/Template-Deployment-Done-Screen6.png)
 
 ### Task 3: Run the script in Azure Cloud Shell 
 
-1. Open the Azure Portal.
+1. Open the Azure Portal
 2. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
-    ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+    ![A portion of the Azure Portal taskbar is displayed with the Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Azure Cloud Shell, agree to have it created.
+    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a storage account for the Cloud Shell, agree to have it created.
     
-    ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
+    ![Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
-3. In the Azure Cloud Shell window, enter the following command to clone the repository files.
+3. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -96,11 +96,11 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-7. You will now be prompted to enter the resource group name in the Azure Cloud Shell.
+7. You will now be prompted to enter the resource group name in the Cloud Shell 
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-8. Pass the final set of authentication codes provided on the Azure Cloud Shell. 
+8. Pass the final set of authentication codes provided on the Cloud Shell 
 
 ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
@@ -122,35 +122,35 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 > **Note:** A dashboard is a collection of tiles/visualisation which are pinned from different reports on a single page where key KPI of business are defined.
 
-![Screenshot to view the reports tab.](media/Reports-Tab.png)
+![Screenshot to view the reports tab.](media/PowerBI-Services-SignIn.png)
 
 4. Follow the below steps for dashboard creation:
       - Select workspace ‘Engagement Accelerators-Manufacturing’.
       
-        ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+      ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
       
       - **Click** on “+Create” button present on the top- right navigation bar.
       - **Select** “Dashboard” option from the drop-down menu.
       
-        ![Create Dashboard.](media/Create-Dashboard.png)
+      ![Create Dashboard.](media/Create-Dashboard.png)
       
       - **Name** dashboard as ‘Engagement Accelerators Dashboard’ and **click** “create”.
       - The created Dashboard will appear in the Dashboard section.
       
-        ![Create Dashboard further steps.](media/Create-Dashboard1.png)
+      ![Create Dashboard further steps.](media/Create-Dashboard1.png)
       
       - **Click** on “Reports” section/tab.
       
-        ![Check the reports tab.](media/Reports-Tab1.png)
+      ![Check the reports tab.](media/Reports-Tab1.png)
       
       - On the “Report” section, there will be a list of all the published reports. 
       - **Select/Click** on ‘Campaign- Option C’ Report.
 
-        ![Browse the reports created.](media/Browse-Reports.png)
+      ![Browse the reports created.](media/Browse-Reports.png)
       
       - On the individual report page, **select** ‘Revenue Vs Target’ visual and click the **pin** icon.
       
-        ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
+      ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
       
       - **Select** “Existing dashboard” radio button. 
       - **From** “select existing dashboard” dropdown, **select** ‘Engagement Accelerators Dashboard’.
@@ -158,37 +158,51 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
       - The visual will be pinned and visible on the dashboard. 
       - Similarly, different visuals from different reports can be pinned on the same Dashboard.
       
-        ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
+      ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
       
-      -	To pin any image on the dashboard, **select** the report “Dashboard Images” which has images on it from the reports section.
-        
-        ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
+      - To refer the Pinned Visuals, click on the “Dashboards” section. 
+      - Select ‘Engagement Accelerators Dashboard’ which has the pinned visuals. 
 
-      - On the individual report which has images incorporated in it, **select/click** any image, and click on the pin icon.
+      ![Refer the visuals on the dashboard.](media/Refer-Visuals.png)
         
-        ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
-      
-      - **Select** existing dashboard radio button and select the name of recently created dashboard.
-      - **Click** on Pin. 
-      - The image will be pinned and visible on the same dashboard. 
-      - Similarly, different images can be pinned on the Dashboard.
-      
-        ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
-       
-      - To refer the Pinned Visuals, **click** on the “Dashboards” section. 
-      - **Select** ‘Engagement Accelerators Dashboard’ which has the pinned visuals. 
-      
-        ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
-      
-      - **Refer** the screenshot of the dashboard and observe the pinned visuals.
-      
-        ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
-      
-      - Follow the same procedure to pin ‘Predictive maintenance and Safety Analytics’ pillar tiles to dashboard using ‘anomaly detection with images’ report.
-      
-        ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
-      
-      - We can achieve the given look and feel by pining the visuals and images from different reports on to the same dashboard (you can tweak with different elements such as           backgrounds and themes as well).
-      
-        ![Further steps to pin visualization on the dashboard.](media/Dashboard3.png)
-     
+        
+
+### Task 6:  Working with Power BI for Real Time Report
+
+‘Racing Cars’ and ‘milling canning’ Datasets will be automatically created when Azure Stream Analytics jobs will start sending data into Power BI services.
+ Once dataset has been created in Power BI workspace, please follow the next step to create ‘Racing Cars- A’ Power BI Report.
+
+1. **Click** on ‘+Create’ button present on the top navigation bar.
+2. **Select** ‘Report’ option from the drop-down menu.
+
+![‘Report’ option from the drop-down menu.](media/report_option.png)
+
+3. **Search** for ‘Racing’ dataset.
+4. **Select** ‘Racing Cars’ dataset in the workspace created.
+
+!['Racing Cars’ dataset in the workspace created.](media/racing_cars_dataset.png)
+
+5. To **create** ‘Active Sensors’ Visualization which is the Average of Active Sensors, **Select** the Card icon from Visualization tray.
+
+![Card icon from Visualization tray.](media/card_icon.png)
+
+6. **Select** ActiveSensors field from race-cars dataset. 
+7. **Select** drop- down next to ActiveSensors.
+8. **Select** Average from the drop- down to get average of ActiveSensors.
+
+![Avg of ActiveSensors.](media/avg_active_sensors.png) 
+
+9. With Card visual selected, **Go to** format tab.
+10. **Turn on** the title.
+11. **Write** Active Sensors as title for the card.
+
+![Card Visual selected.](media/active_sensors.png) 
+
+In the similar manner all other visuals of the report can be created. By following the same process for ‘milling canning’ dataset we can create following real-time reports
+    • Milling Canning report
+    • Maintenance and cost Analytics 
+    • Miami Racing cars
+    
+![Real-time Reports.](media/report_visuals.png)    
+
+Once these Realtime reports are ready we can pin it to dashboard (by following the procedure explained in Task 5) to finally achieve the following look and feel.
