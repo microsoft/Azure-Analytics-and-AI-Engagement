@@ -102,7 +102,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-    > **Note**: If you are prompted to choose a shell, select **Powershell**, and if asked to create a **storage account** for the Azure Cloud Shell, agree to have it created.
+    > **Note**: If you are prompted to choose a shell, select **PowerShell**, and if asked to create a **storage account** for the Azure Cloud Shell, agree to have it created.
     
     ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
