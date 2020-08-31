@@ -47,8 +47,8 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
   
     > **Important**: The `location` field under 'Settings' will list the Azure regions where Azure Synapse Analytics (Preview) is available as of June 2020. This will help you find a region where the service is available without being limited to where the resource group is defined.
 
-7. Check the **I agree to the terms and conditions stated above**
-8. Select the **Purchase** button.
+7. Click on the  **Review + Create** button. Azure will validate your template.
+8. After the validation has passed, click on the **Create** button and the template deployment will begin.
 
 > **NOTE** The provisioning of your deployment resources will take approximately 20 minutes.
 
@@ -67,7 +67,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     
     ![Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
-3. From the shell, run the following command to pull the demo repository:
+3. In the Cloud Shell window, enter the following command to clone the repository files.
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -77,30 +77,30 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     
     > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-4. Run the `manufacturingSetup-shell` script
+4. Execute the manufacturingSetup-shell.ps1 script by executing the following command:
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
     ./manufacturingSetup-shell.ps1
     ```
     
-5. Click on the link provided in the shell console. It will open a new browser window, provide the code to get authenticated to az login
+5. Click on the link provided in the shell console and copy the code. It will open a new browser window, provide the code to get authenticated.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-6. You will get another set of code to authenticate the device
+6. You will get another set of code to authenticate the device, copy the code.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-7. You will now be prompted to enter the resource group name in the cloud shell 
+7. You will now be prompted to enter the resource group name in the Cloud Shell 
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-8. Pass the final set of authentication codes provided on the cloud shell 
+8. Pass the final set of authentication codes provided on the Cloud Shell 
 
 ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
@@ -108,6 +108,65 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
  > **Note**: Make sure to provide the device code in time before it gets expired and let the script run till completion.
 
-### Task 4: Configuration
+### Task 4: Power BI reports and Dashboard creation 
 
-1. TODO
+1. **Open Power BI Services** In a new Tab using following link Power BI Link:  https://app.powerbi.com/
+
+2. **Sign in**, to Power BI account using Power BI Pro account.
+
+> **Note**: Please use the same credentials for Power BI which you have used for Azure ARM + PowerShell deployment.
+
+![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
+
+3. Once the above deployment is complete, we can see a set of reports in the reports tab, Realtime datasets in dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports. 
+
+> **Note:** A dashboard is a collection of tiles/visualisation which are pinned from different reports on a single page where key KPI of business are defined.
+
+![Screenshot to view the reports tab.](media/PowerBI-Services-SignIn.png)
+
+4. Follow the below steps for dashboard creation:
+      - Select workspace ‘Engagement Accelerators-Manufacturing’.
+      
+      ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+      
+      - **Click** on “+Create” button present on the top- right navigation bar.
+      - **Select** “Dashboard” option from the drop-down menu.
+      
+      ![Create Dashboard.](media/Create-Dashboard.png)
+      
+      - **Name** dashboard as ‘Engagement Accelerators Dashboard’ and **click** “create”.
+      - The created Dashboard will appear in the Dashboard section.
+      
+      ![Create Dashboard further steps.](media/Create-Dashboard1.png)
+      
+      - **Click** on “Reports” section/tab.
+      
+      ![Check the reports tab.](media/Reports-Tab1.png)
+      
+      - On the “Report” section, there will be a list of all the published reports. 
+      - **Select/Click** on ‘Campaign- Option C’ Report.
+
+      ![Browse the reports created.](media/Browse-Reports.png)
+      
+      - On the individual report page, **select** ‘Revenue Vs Target’ visual and click the **pin** icon.
+      
+      ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
+      
+      - **Select** “Existing dashboard” radio button. 
+      - **From** “select existing dashboard” dropdown, **select** ‘Engagement Accelerators Dashboard’.
+      -	**Click** “Pin”. 
+      - The visual will be pinned and visible on the dashboard. 
+      - Similarly, different visuals from different reports can be pinned on the same Dashboard.
+      
+      ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
+      
+      - To refer the Pinned Visuals, click on the “Dashboards” section. 
+      - Select ‘Engagement Accelerators Dashboard’ which has the pinned visuals. 
+
+      ![Refer the visuals on the dashboard.](media/Refer-Visuals.png)
+        
+        
+
+
+
+      
