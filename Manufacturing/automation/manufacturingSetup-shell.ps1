@@ -344,11 +344,11 @@ Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
 $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
-Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
+Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
 $principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
-Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Contributor
+Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgASATelemetryName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaName -OutputStartMode 'JobStartTime'
@@ -965,7 +965,7 @@ $sp = Get-AzADServicePrincipal -ApplicationId $appId;
 
 if (!$sp)
 {
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Contributor";
+    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
 }
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
