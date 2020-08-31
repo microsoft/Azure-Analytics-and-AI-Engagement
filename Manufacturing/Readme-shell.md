@@ -106,7 +106,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-    > **Note**: Make sure to provide the device code in time before it gets expired and let the script run till completion.
+ > **Note**: Make sure to provide the device code in time before it gets expired and let the script run till completion.
 
 ### Task 4: Configuration
 
