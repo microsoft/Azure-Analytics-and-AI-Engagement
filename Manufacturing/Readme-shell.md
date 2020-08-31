@@ -13,7 +13,7 @@
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
     - [Task 5: Power BI reports and Dashboard creation ](#task-5-power-bi-reports-and-dashboard-creation)
-    - [Task 6: Working with Power BI for Real Time Report](#task-6-Working-with-Power-BI-for-Real-Time-Report)
+    - [Task 6: Working with Power BI for Real Time Report](#task-6-working-with-power-bi-for-real-time-report)
     
 <!-- /TOC -->
 
@@ -256,7 +256,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 ![Further steps to pin visualization on the dashboard.](media/Dashboard3.png)
 
 
-### Task 6:  Working with Power BI for Real Time Report
+### Task 6: Working with Power BI for Real Time Report
 
 ‘Racing Cars’ and ‘milling canning’ Datasets will be automatically created when Azure Stream Analytics jobs will start sending data into Power BI services.
  Once dataset has been created in Power BI workspace, please follow the next step to create ‘Racing Cars- A’ Power BI Report.
