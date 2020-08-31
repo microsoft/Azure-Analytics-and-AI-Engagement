@@ -168,7 +168,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
 7. **Go to** Datasets tab
 
-![Go to Datasets.](media/Goto-Datasets.png)
+![Go to Datasets.](media/Goto-DataSets.png)
 
 8. **Select** Campaign – Option C Report
 9. **Expand** Data Source Credentials
