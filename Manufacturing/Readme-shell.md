@@ -166,14 +166,14 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
 
       - On the individual report which has images incorporated in it, **select/click** any image, and click on the pin icon.
         
-      ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
+        ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
       
       - **Select** existing dashboard radio button and select the name of recently created dashboard.
       - **Click** on Pin. 
       - The image will be pinned and visible on the same dashboard. 
       - Similarly, different images can be pinned on the Dashboard.
       
-       ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
+        ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
        
       - To refer the Pinned Visuals, **click** on the “Dashboards” section. 
       - **Select** ‘Engagement Accelerators Dashboard’ which has the pinned visuals. 
