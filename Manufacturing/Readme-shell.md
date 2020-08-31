@@ -23,7 +23,7 @@
 
 5. On the **Create a resource group** screen, select your desired Subscription and Region. For Resource group, enter **Synapse-WWI-Lab**, then select the **Review + Create** button.
 
-    ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](../CDP-Retail/media/bhol_resourcegroupform.png)
+    ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
 
 6. Select the **Create** button once validation has passed.
 
@@ -67,7 +67,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     
     ![Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
-4. From the shell, run the following command to pull the demo repository:
+3. From the shell, run the following command to pull the demo repository:
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -77,30 +77,30 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     
     > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-5. Run the `manufacturingSetup-shell` script
+4. Run the `manufacturingSetup-shell` script
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
     ./manufacturingSetup-shell.ps1
     ```
     
-6. Click on the link provided in the shell console. It will open a new browser window, provide the code to get authenticated
+5. Click on the link provided in the shell console. It will open a new browser window, provide the code to get authenticated to az login
 
 ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-7. You will get another set of code to authenticate the device
+6. You will get another set of code to authenticate the device
 
 ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-8. You will now be prompted to enter the resource group name in the cloud shell 
+7. You will now be prompted to enter the resource group name in the cloud shell 
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-9. Pass the final set of authentication codes provided on the cloud shell 
+8. Pass the final set of authentication codes provided on the cloud shell 
 
 ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
