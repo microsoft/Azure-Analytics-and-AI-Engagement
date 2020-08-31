@@ -295,9 +295,9 @@ Similarly, color of KPI value and Title value can be changed from Data label and
 ![Turn on background.](media/Background-Dark.png)
 
 In the similar manner all other visuals of the report can be created. By following the same process for ‘milling canning’ dataset we can create following real-time reports
-    • Milling Canning report
-    • Maintenance and cost Analytics 
-    • Miami Racing cars
+- Milling Canning report
+- Maintenance and cost Analytics 
+- Miami Racing cars
  
 Once these Realtime reports are ready we can pin it to dashboard (by following the procedure explained in Task 5) to finally achieve the following look and feel.
 
