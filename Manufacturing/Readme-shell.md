@@ -13,7 +13,7 @@
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
     - [Task 5: Power BI reports and Dashboard creation ](#task-5-power-bi-reports-and-dashboard-creation)
-    - [Task 6: Working with Power BI for Real Time Report](#task-6-working-with-power-bi-for-real-time-report)
+    - [Task 6: Working with Power BI for Real Time Report](#task-6-Working-with-Power-BI-for-Real-Time-Report)
     
 <!-- /TOC -->
 
