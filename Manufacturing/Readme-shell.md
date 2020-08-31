@@ -22,6 +22,8 @@
 1. An Azure Account with the ability to create an Azure Synapse Workspace.
 2. A Power BI Pro or Premium account to host Power BI reports.
 
+> **Note:** Please log in using same credentials for Azure account as well as Power BI account.
+
 ## Before starting
 
 ### Task 1: Create a resource group in Azure
