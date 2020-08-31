@@ -9,11 +9,11 @@
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
     - [Task 1: Create a resource group in Azure.](#task-1-create-a-resource-group-in-azure)
-    - [Task 2: Create a Power BI Workspace](#task-1-create-a-power-bi-workspace)
+    - [Task 2: Power BI workspace creation](#task-2-power-BI-workspace-creation)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
     - [Task 5: Power BI reports and Dashboard creation ](#task-5-power-bi-reports-and-dashboard-creation)
-    - [Task 6:  Working with Power BI for Real Time Report](#task-6-working-with-power-bi-for-real-time-report)
+    - [Task 6: Working with Power BI for Real Time Report](#task-6-working-with-power-bi-for-real-time-report)
 <!-- /TOC -->
 
 ## Requirements
@@ -92,7 +92,7 @@ Manufacturing%2Fautomation%2FmainTemplate-shell.json" target="_blank"><img src="
     
     ![A portion of the Azure Portal to confirm that the deployment has succeeded.](media/Template-Deployment-Done-Screen6.png)
 
-### Task 4: Run the script in Azure Cloud Shell 
+### Task 4: Run the Cloud Shell 
 
 1. **Open** the Azure Portal.
 2. In the Azure Portal, **open** the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
@@ -296,6 +296,6 @@ In the similar manner all other visuals of the report can be created. By followi
     • Maintenance and cost Analytics 
     • Miami Racing cars
  
-![Real-time Reports.](media/report_visuals.png)    
-
 Once these Realtime reports are ready we can pin it to dashboard (by following the procedure explained in Task 5) to finally achieve the following look and feel.
+
+![Real-time Reports.](media/report_visuals.png)    
