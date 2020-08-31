@@ -8,7 +8,7 @@
 - [Azure Synapse Analytics WWI setup guide](#azure-synapse-analytics-wwi-setup-guide)
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
-    - [Task 1: Create a resource group in Azure.](#task-1-create-a-resource-group-in-azure)
+    - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Power BI workspace creation](#task-2-power-BI-workspace-creation)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
