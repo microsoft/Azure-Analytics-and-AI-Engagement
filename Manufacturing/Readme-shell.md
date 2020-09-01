@@ -83,14 +83,12 @@
 3. **Type** the resource group name (**Synapse-WWI-Lab** Created in Task 1).
 4. **Provide** a region where you want to deploy.
 5. **Provide** Environment code.
-    ![A portion of the Power BI workspace to highlight the workspace ID.](media/PBI-Workspace-ID-Screen2.png)
-
 6. **Enter** a strong SQL Administrator Login Password.
 
     ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
 7. **Enter** the Power BI workspace ID created in Task 2
-8. **Select Location from the dropdown.
+8. **Select** Location from the dropdown.
 
 > **NOTE** The provisioning of your deployment resources will take approximately 20 minutes.
 
