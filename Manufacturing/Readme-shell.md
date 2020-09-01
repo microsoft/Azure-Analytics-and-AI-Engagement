@@ -45,7 +45,7 @@
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/create-resource-group.png)
 	
-5. On the **Create a resource group** screen, select your desired Subscription. For Resource group, **type** Synapse-WWI-Lab. **Select** your desired Region. **Select** the Review + Create button.
+5. On the **Create a resource group** screen, select your desired Subscription. For Resource group, **type** Synapse-WWI-Lab. **Select** your desired Region. **Select** the 'Review + Create' button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
 
@@ -63,7 +63,7 @@
 
 4. **Click** on Workspaces.
 
-5. Then click on the 'Create a workspace’ tab.
+5. Then **click** on the 'Create a workspace’ tab.
 
 > **Note:** Please create a workspace by the name “Engagement Accelerators – Manufacturing”.
 
