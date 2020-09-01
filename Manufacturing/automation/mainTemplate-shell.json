@@ -5,19 +5,19 @@
      "environment_code": {
        "type": "String",
        "metadata": {
-         "description": "Suffix added to all resource name to make them unique. Should be less than 6 characters"
+         "description": "Suffix added to all resource name to make them unique. Should be less than 6 characters without any hypens(-)."
        }
      },
      "sql_administrator_login_password": {
        "type": "SecureString",
        "metadata": {
-         "description": "Password for SQL Admin"
+         "description": "Password for SQL Admin. Should have atleast one capital, one small alphapbet with one digit and one specil character."
        }
      },
      "pbi_workspace_id": {
        "type": "String",
        "metadata": {
-         "description": "PowerBi workspace Id"
+         "description": "PowerBi workspace Id."
        }
      },
      "location": {
@@ -42,8 +42,8 @@
      "unique_suffix": "[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
      "location": "[parameters('location')]",
      "search_name": "[concat('search-',variables('unique_suffix'))]",
-     "cogs_forms_name": "[concat('forms-',variables('unique_suffix'))]",
-     "keyVaultName": "[concat('kv-',variables('unique_suffix'))]",
+	 "cogs_forms_name": "[concat('forms-',variables('unique_suffix'))]",
+     "key_vault_name": "[concat('kv-',variables('unique_suffix'))]",
      "cosmos_database_container_name_historical_data": "historical-data",
      "cosmos_database_container_name_historical_data_adf": "historical-data-adf",
      "cosmos_account_name_mfgdemo": "[if(greater(length(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-mfgdemo-', uniqueString(deployment().name),parameters('environment_code')) )]",
@@ -79,8 +79,6 @@
      "asa_query_mfgASATelemetry": "SELECT * INTO [mfgStorageTelemetry-out] FROM [mfgIoTHubTelemetry-in]",
      "asa_name_race_car_asa": "[concat('race-car-asa-',variables('unique_suffix'))]",
      "asa_query_race_car_asa": "SELECT * INTO [power-bi] FROM [race-car]",
-     "powershell_pre_script_path": "https://publicassetstoragexor.blob.core.windows.net/assets/gitinstall.ps1",
-     "powershell_pre_script_setup_path": "https://publicassetstoragexor.blob.core.windows.net/assets/gitsetup",
      "rbac_guid_owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
      "workspace_name_dreamdemosynapse": "[concat('manufacturingdemo',parameters('environment_code'),uniqueString(deployment().name))]",
      "default_data_lake_storage_file_system_name": "tempdata",
@@ -2703,7 +2701,7 @@
          }
        }
      },
-     {
+	 {
        "type": "Microsoft.CognitiveServices/accounts",
        "apiVersion": "2017-04-18",
        "name": "[variables('cogs_forms_name')]",
@@ -2719,7 +2717,7 @@
      },
      {
       "type": "Microsoft.KeyVault/vaults",
-      "name": "[variables('keyVaultName')]",
+      "name": "[variables('key_vault_name')]",
       "apiVersion": "2018-02-14",
       "location": "[variables('location')]",
       "properties": {
@@ -2742,11 +2740,11 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
-      "name": "[concat(variables('keyVaultName'), '/SqlPassword')]",
+      "name": "[concat(variables('key_vault_name'), '/SqlPassword')]",
       "apiVersion": "2018-02-14",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]"
       ],
       "properties": {
         "value": "[parameters('sql_administrator_login_password')]"
