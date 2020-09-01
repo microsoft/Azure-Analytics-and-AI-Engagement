@@ -187,19 +187,14 @@ To **authenticate** the Power BI reports to access the datasources.
 ![Go to Datasets.](media/Goto-DataSets.png)
 
 8. **Select** 'Campaign – Option C' Report.
-
 9. **Expand** Data source Credentials.
-
 10. **Click** Edit Credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
 11. The 'Configure Campaign - Option C' dialogue box will pop up.
-
 12. **Enter** Username as 'ManufacturingUser'.
-
 13. **Enter** the same password which was used for Azure deployment.
-
 14. **Click** Sign in.
 
 
