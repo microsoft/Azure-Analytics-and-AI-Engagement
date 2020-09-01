@@ -90,7 +90,7 @@
 7. **Enter** the Power BI workspace ID created in Task 2
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 
-> **NOTE** The provisioning of your deployment resources will take approximately 20 minutes.
+> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
@@ -165,7 +165,7 @@
 3. Please select Workspace with name 'Engagement Accelerators – Manufacturing'.
 
 4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
-The image on the right shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
+The image below shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A dashboard is a collection of tiles/visualisation which are pinned from different reports to a single page where key KPI of business are defined.
 
@@ -242,7 +242,7 @@ The image on the right shows the Reports tab in Power BI. We can then create a P
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-31. **Select** Existing dashboard radio button and select the Engagement Accelerators Dashboard.
+31. **Select** Existing dashboard radio button and select the 'Engagement Accelerators' dashboard. 
 32. **Click** on Pin.
 33. The image will be pinned and visible on the dashboard.
 34. Similarly, more images can be pinned to this dashboard by repeating this process.
