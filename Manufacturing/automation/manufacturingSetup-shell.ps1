@@ -503,29 +503,29 @@ foreach ($dataDirectory in $dataDirectories.Keys) {
         & $azCopyCommand copy $source $destination --recursive=true
 }
 
-$destinationSasKey = New-AzStorageContainerSASToken -Container "forms" -Context $dataLakeContext -Permission rwdl
-$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
+# $destinationSasKey = New-AzStorageContainerSASToken -Container "forms" -Context $dataLakeContext -Permission rwdl
+# $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
-$dataDirectories = @{
-   data1 = "forms,forms/formupload/"
-   data2 = "forms,forms/formrecogoutput/"
-   data3 = "forms,forms/english-form-model/"
-}
+# $dataDirectories = @{
+   # data1 = "forms,forms/formupload/"
+   # data2 = "forms,forms/formrecogoutput/"
+   # data3 = "forms,forms/english-form-model/"
+# }
 
-$publicDataUrl = "https://stcognitivesearch001.blob.core.windows.net/";
+# $publicDataUrl = "https://stcognitivesearch001.blob.core.windows.net/";
 
-foreach ($dataDirectory in $dataDirectories.Keys) {
+# foreach ($dataDirectory in $dataDirectories.Keys) {
 
-        $vals = $dataDirectories[$dataDirectory].tostring().split(",");
+        # $vals = $dataDirectories[$dataDirectory].tostring().split(",");
 
-        $source = $publicDataUrl + $vals[1];
+        # $source = $publicDataUrl + $vals[1];
 
-        $path = $vals[0];
+        # $path = $vals[0];
 
-        $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
-        Write-Information "Copying directory $($source) to $($destination)"
-        & $azCopyCommand copy $source $destination --recursive=true
-}
+        # $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
+        # Write-Information "Copying directory $($source) to $($destination)"
+        # & $azCopyCommand copy $source $destination --recursive=true
+# }
 
 <#
 azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaign.csv"  $destinationUri --recursive
