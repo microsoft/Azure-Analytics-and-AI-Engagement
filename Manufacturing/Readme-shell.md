@@ -173,7 +173,9 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
 To **authenticate** the Power BI reports to access the datasources.
+
 5. **Click** the 'Settings' icon on top right-side corner.
+
 6. **Select** 'Settings'.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
@@ -183,15 +185,21 @@ To **authenticate** the Power BI reports to access the datasources.
 ![Go to Datasets.](media/Goto-DataSets.png)
 
 8. **Select** 'Campaign – Option C' Report.
+
 9. **Expand** Data source Credentials.
+
 10. **Click** Edit Credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
 11. The 'Configure Campaign - Option C' dialogue box will pop up.
+
 12. **Enter** Username as 'ManufacturingUser'.
+
 13. **Enter** the same password which was used for Azure deployment.
+
 14. **Click** Sign in.
+
 
 ![Configure Campaign.](media/Configure-Campaign.png)
 
