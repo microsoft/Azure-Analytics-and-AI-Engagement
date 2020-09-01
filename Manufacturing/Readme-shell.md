@@ -105,7 +105,7 @@
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-    > **Note**: If you are prompted to choose a shell, select **PowerShell**, and if asked to create a **storage account** for the Azure Cloud Shell, agree to have it created.
+    > **Note**: If you are prompted to choose a shell, **select** PowerShell, and if asked to **create** a storage account for the Azure Cloud Shell, agree to have it created.
     
     ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
@@ -126,7 +126,7 @@
     ./manufacturingSetup-shell.ps1
     ```
   
-5. From the Azure Cloud Shell, **Copy** the authentication code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied earlier on the nrowser screen.
+5. From the Azure Cloud Shell, **Copy** the authentication code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied earlier on the browser screen and press 'Enter'.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
@@ -156,15 +156,15 @@
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
 
-2. **Sign in** to Power BI account using **Power BI Pro account**.
+2. **Sign in** to Power BI account using 'Power BI Pro account'.
 
-> **Note**: Please use the same credentials for Power BI that you used for Azure ARM + PowerShell deployment.
+> **Note**: Please use the same credentials for Power BI that you used for 'Azure ARM + PowerShell' deployment.
 
 ![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
 3. Please select Workspace with name 'Engagement Accelerators – Manufacturing'.
 
-4. Assuming Task 4 got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
+4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
 The image on the right shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A dashboard is a collection of tiles/visualisation which are pinned from different reports to a single page where key KPI of business are defined.
@@ -173,21 +173,21 @@ The image on the right shows the Reports tab in Power BI. We can then create a P
 
 4. To **authenticate** the Power BI reports to access the datasources.
 5. **Click** the settings icon on top right-side corner.
-6. **Select** Settings.
+6. **Select** 'Settings'.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-7. **Go to** Datasets tab.
+7. **Go to** 'Datasets' tab.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
-8. **Select** Campaign – Option C Report.
+8. **Select** 'Campaign – Option C' Report.
 9. **Expand** Data source credentials.
 10. **Click** Edit credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
-11. The Configure Campaign - Option C dialogue box will pop up.
+11. The 'Configure Campaign - Option C' dialogue box will pop up.
 12. **Enter** Username as ‘ManufacturingUser’.
 13. **Enter** the same password which was used for Azure deployment.
 14. **Click** Sign in.
@@ -195,73 +195,74 @@ The image on the right shows the Reports tab in Power BI. We can then create a P
 ![Configure Campaign.](media/Configure-Campaign.png)
 
 
-15. Follow these steps to create the Power BI dashboard:
-  1. **Select** the workspace ‘Engagement Accelerators-Manufacturing’.
+**Follow these steps to create the Power BI dashboard:**
 
-  ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+15. **Select** the workspace ‘Engagement Accelerators-Manufacturing’.
 
-  2. **Click** on “+Create” button on the top-left navigation bar.
-  3. **Select** the “Dashboard” option from the drop-down menu.
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-  ![Create Dashboard.](media/Create-Dashboard.png)
+16. **Click** on '+Create' button on the top-left navigation bar.
+17. **Select** the 'Dashboard' option from the drop-down menu.
 
-  4. **Name** the dashboard ‘Engagement Accelerators Dashboard’ and **click** “create”.
-  5. This new dashboard will appear in the Dashboard section (of the Power BI workspace).
+![Create Dashboard.](media/Create-Dashboard.png)
+
+18. **Name** the dashboard ‘Engagement Accelerators Dashboard’ and **click** “create”.
+19. This new dashboard will appear in the Dashboard section (of the Power BI workspace).
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
-16. Do the following to pin visuals to the dashboard you just created:
+**Do the following to pin visuals to the dashboard you just created:**
 
-  1. **Click** on the “Reports” section/tab.
+20. **Click** on the 'Reports' section/tab.
 
-  ![Check the reports tab.](media/Reports-Tab1.png)
+![Check the reports tab.](media/Reports-Tab1.png)
 
-  2. In the “Reports” section, there will be a list of all the published reports.
-  3. **Select/Click** on ‘Campaign- Option C’ report.
+21. In the 'Reports' section, there will be a list of all the published reports.
+22. **Select/Click** on ‘Campaign- Option C’ report.
 
-  ![Browse the reports created.](media/Campaign-Reports.png)
+![Browse the reports created.](media/Campaign-Reports.png)
 
-  4. On the 'Campaign – Option C' report page, **select** the ‘Revenue Vs Target’ visual and **click** the pin icon.
+23. On the 'Campaign – Option C' report page, **select** the ‘Revenue Vs Target’ visual and **click** the pin icon.
 
-  ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
+![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
-  5. **Select** “Existing dashboard” radio button.
-  6. **From** “select existing dashboard” dropdown, **select** ‘Engagement Accelerators Dashboard’.
-  7. **Click** “Pin”.
-  8. The visual will be pinned and visible on the dashboard.
-  9. Similarly, different visuals from different reports can be pinned to the same dashboard.
+24. **Select** 'Existing dashboard' radio button.
+25. **From** 'select existing dashboard' dropdown, **select** ‘Engagement Accelerators Dashboard’.
+26. **Click** 'Pin'.
+27. The visual will be pinned and visible on the dashboard.
+28. Similarly, different visuals from different reports can be pinned to the same dashboard.
 
-  ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
+![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-  10. To pin any image on the dashboard, **select** the report “Dashboard Images” which has images on it from the reports section.
+29. To pin any image on the dashboard, **select** the report “Dashboard Images” which has images on it from the reports section.
 
-  ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
+![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
 
-  11. In the Dashboard Images report, **select** any image and then **click** on the pin icon.
+30. In the Dashboard Images report, **select** any image and then **click** on the pin icon.
 
-  ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
+![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-  12. **Select** Existing dashboard radio button and select the Engagement Accelerators Dashboard.
-  13. **Click** on Pin.
-  14. The image will be pinned and visible on the dashboard.
-  15. Similarly, more images can be pinned to this dashboard by repeating this process.
+31. **Select** Existing dashboard radio button and select the Engagement Accelerators Dashboard.
+32. **Click** on Pin.
+33. The image will be pinned and visible on the dashboard.
+34. Similarly, more images can be pinned to this dashboard by repeating this process.
 
-  ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
+![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
-  16. To view to the pinned visuals, **click** on the “Dashboards” section.
-  17. **Select** ‘Engagement Accelerators Dashboard’. This will launch the dashboard, and you can view the pinned visuals on it.
+35. To view to the pinned visuals, **click** on the 'Dashboards' section.
+36. **Select** ‘Engagement Accelerators Dashboard’. This will launch the dashboard, and you can view the pinned visuals on it.
 
-  ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
+![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
 
-  18. **Refer** to  the screenshot of the sample dashboard and pin the visuals to replicate the following look and feel.
+37. **Refer** to  the screenshot of the sample dashboard and pin the visuals to replicate the following look and feel.
 
-  ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
+![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-  19. Follow the same procedure to pin the ‘Predictive maintenance and Safety Analytics’ pillar tiles to the dashboard using the ‘anomaly detection with images’ report. See steps #10 to #17 above.
+38. Follow the same procedure to pin the ‘Predictive maintenance and Safety Analytics’ pillar tiles to the dashboard using the ‘anomaly detection with images’ report. See steps #29 to #36 above.
 
-  ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
+![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-  20. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+39. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 > **Note:** Real-time reports will not be deployed as part of the ARM template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
@@ -271,7 +272,7 @@ The image on the right shows the Reports tab in Power BI. We can then create a P
 ### Task 6: Working with Power BI to create real-time reports
 
 ‘Racing Cars’ and ‘Milling canning’ datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
- Once the dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in Task 3 above) follow the next steps to create the Power BI report ‘Racing Cars- A’.
+ Once the dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report ‘Racing Cars- A’.
 
 1. **Click** on ‘+Create’ button present on the top navigation bar.
 2. **Select** ‘Report’ option from the drop-down menu.
@@ -287,9 +288,9 @@ The image on the right shows the Reports tab in Power BI. We can then create a P
 
 ![Card icon from Visualization tray.](media/card_icon.png)
 
-6. **Select** the ActiveSensors field from race-cars dataset.
-7. **Select** drop- down next to ActiveSensors.
-8. **Select** Average from the drop- down to get the average of ActiveSensors.
+6. **Select** the 'ActiveSensors' field from race-cars dataset.
+7. **Select** drop- down next to 'ActiveSensors'.
+8. **Select** 'Average' from the drop- down to get the average of 'ActiveSensors'.
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
 
@@ -309,6 +310,6 @@ All other visuals of the report can be created by following a similar process. B
 - Maintenance and Cost Analytics
 - Miami Racing Cars
  
-Once these real-time reports are ready we can pin them to thedashboard (by following the procedure explained in [Task 5](#task-5-power-bi-reports-and-dashboard-creation)) to finally achieve the following look and feel.
+Once these real-time reports are ready we can pin them to the dashboard (by following the procedure explained in [Task 5](#task-5-power-bi-reports-and-dashboard-creation)) to finally achieve the following look and feel.
 
 ![Real-time Reports.](media/report_visuals.png)  
