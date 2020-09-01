@@ -22,7 +22,7 @@
 1. An Azure Account with the ability to create an Azure Synapse Workspace.
 2. A Power BI Pro or Premium account to host Power BI reports.
 3. Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
-4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. Please refer to https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all for understanding target services availablity.
+4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. Please refer to <a href="https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all" target="_blank">Azure Services Global Availability</a> for understanding target services availablity.
 5. Please ensure that in environment code, you don't use any special characters. Use environment code as only lowercase alphabets, and unique in your environment.
 6. Please ensure that you select the right Resource Group Name. The name we have given here is a sample name and you may need to customize the same if any resource group with same name already exists in your Subscription.
 
