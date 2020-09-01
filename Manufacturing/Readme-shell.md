@@ -141,7 +141,7 @@
 
 7. While you are waiting for processes to get completed in Azure Cloud Shell, you'll be asked for entering code thrice (Please see Step #6 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
-8. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in Task 1 above (Synapse-WWI-Lab).
+8. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
