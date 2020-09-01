@@ -132,7 +132,7 @@
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-6. You will get another set of code to authenticate the device. **Copy** the code and **click** on the link provided in the shell. Again, a new browser window will launch. **Enter** the code the you copied from the shell.
+6. You will get another set of code to authenticate the device. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell press 'Enter'.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
