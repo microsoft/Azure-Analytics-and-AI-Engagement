@@ -42,7 +42,6 @@
      "unique_suffix": "[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
      "location": "[parameters('location')]",
      "search_name": "[concat('search-',variables('unique_suffix'))]",
-	 "cogs_forms_name": "[concat('forms-',variables('unique_suffix'))]",
      "key_vault_name": "[concat('kv-',variables('unique_suffix'))]",
      "cosmos_database_container_name_historical_data": "historical-data",
      "cosmos_database_container_name_historical_data_adf": "historical-data-adf",
@@ -2702,20 +2701,6 @@
        }
      },
 	 {
-       "type": "Microsoft.CognitiveServices/accounts",
-       "apiVersion": "2017-04-18",
-       "name": "[variables('cogs_forms_name')]",
-       "location": "[variables('location')]",
-       "sku": {
-         "name": "F0"
-       },
-       "kind": "FormRecognizer",
-       "properties": {
-         "privateEndpointConnections": [],
-         "publicNetworkAccess": "Enabled"
-       }
-     },
-     {
       "type": "Microsoft.KeyVault/vaults",
       "name": "[variables('key_vault_name')]",
       "apiVersion": "2018-02-14",
