@@ -301,6 +301,6 @@ All other visuals of the report can be created by following a similar process. B
 - Maintenance and Cost Analytics 
 - Miami Racing Cars
  
-Once these real-time reports are ready we can pin them to thedashboard (by following the procedure explained in Task 5) to finally achieve the following look and feel.
+Once these real-time reports are ready we can pin them to thedashboard (by following the procedure explained in [Task 5](#task-5-power-bi-reports-and-dashboard-creation)) to finally achieve the following look and feel.
 
 ![Real-time Reports.](media/report_visuals.png)    
