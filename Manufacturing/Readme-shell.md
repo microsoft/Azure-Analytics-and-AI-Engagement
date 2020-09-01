@@ -12,7 +12,7 @@
     - [Task 2: Power BI workspace creation](#task-2-power-bi-workspace-creation)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
-    - [Task 5: Power BI reports and Dashboard creation ](#task-5-power-bi-reports-and-dashboard-creation)
+    - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
     
 <!-- /TOC -->
@@ -24,6 +24,7 @@
 3. Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
 4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. Please refer to https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all for understanding target services availablity.
 5. Please ensure that in environment code, you don't use any special characters. Use environment code as only lowercase alphabets, and unique in your environment.
+6. Please ensure that you select the right Resource Group Name. The name we have given here is a sample name and you may need to customize the same if any resource group with same name already exists in your Subscription.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
@@ -37,23 +38,23 @@
 
     ![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/create-a-resource.png)
 
-3. In the **Search the Marketplace** text box, type 'Resource group' and **press** the **Enter** key.
+3. In the **Search the Marketplace** text box, type 'Resource Group' and **press** the Enter key.
 
     ![On the new resource screen Resource group is entered as a search term.](../CDP-Retail/media/bhol_searchmarketplaceresourcegroup.png)
 
-4. **Select** the **Create** button on the Resource group overview page.
+4. **Select** the create button on the 'Resource Group' overview page.
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/create-resource-group.png)
 	
-5. On the **Create a resource group** screen, select your desired Subscription. For Resource group, **type** Synapse-WWI-Lab. **Select** your desired Region. **Select** the 'Review + Create' button.
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'Synapse-WWI-Lab'. **Select** your desired Region. **Click** the 'Review + Create' button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
 
-6. Select the **Create** button once all entries have been validated.
+6. Click the **Create** button once all entries have been validated.
 
 ### Task 2: Power BI Workspace creation
 
-1. **Open** Power BI Services in a new Tab using the following link:  https://app.powerbi.com/
+1. **Open** Power BI Services in a new tab using the following link:  https://app.powerbi.com/
 
 3. **Sign in**, to your Power BI account using Power BI Pro account.
 
@@ -61,33 +62,33 @@
 
 ![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
 
-4. **Click** on Workspaces.
+4. **Click** on 'Workspaces'.
 
 5. Then **click** on the 'Create a workspace’ tab.
 
-> **Note:** Please create a workspace by the name 'Engagement Accelerators – Manufacturing'.
+> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-6. **Copy** the workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL.
+6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the Workspace named 'Engagement Accelerators - Manufacturing', and then copying the GUID from the address URL.
 
-> **Note:** This workspace ID will then be used in a field during ARM template deployment.
+> **Note:** This Workspace ID will then be used in a field during ARM Template Deployment in further Tasks.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
 
 ### Task 3: Deploy the ARM Template
 
-1. Select the ‘Deploy to Azure’ button to **deploy** the Azure resources (that you created in task1) with an Azure ARM template
-(**Press/Click** the button 'Deploy to Azure')
+1. Select the 'Deploy to Azure' button to **deploy** the Azure resources (that you created in [Task 1](#task-1-create-a-resource-group-in-azure)) with Azure ARM Template
+(**Press/Click** the button 'Deploy to Azure').
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
-2. On the Custom deployment form, **select** your desired subscription.
-3. **Type** the resource group name (**Synapse-WWI-Lab** Created in Task 1).
-4. **Provide** a region where you want to deploy.
+2. On the Custom deployment form, **select** your desired Subscription.
+3. **Type** the resource group name ('Synapse-WWI-Lab' Created in [Task 1](#task-1-create-a-resource-group-in-azure)).
+4. **Select** Region where you want to deploy.
 5. **Provide** Environment code.
 6. **Enter** a strong SQL Administrator Login Password.
-7. **Enter** the Power BI workspace ID created in Task 2
+7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation).
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 
 > **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
@@ -109,7 +110,7 @@
     
     ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
-3. In the Azure Cloud Shell window, **enter** the following command to clone the repository files 
+3. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -117,22 +118,22 @@
     
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
     
-    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to a command prompt. The total runtime of all steps in this task will take approximately 15 minutes.
+    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-4. Execute the manufacturingSetup-shell.ps1 script by executing the following commands:
+4. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
     ./manufacturingSetup-shell.ps1
     ```
   
-5. From the Azure Cloud Shell, **Copy** the authentication code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied earlier on the browser screen and press 'Enter'.
+5. From the Azure Cloud Shell, **Copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Enter** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-6. You will get another set of code to authenticate the device. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press 'Enter'.
+6. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
@@ -152,7 +153,7 @@
 
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
 
-### Task 5: Power BI reports and Dashboard creation
+### Task 5: Power BI Dashboard creation
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
 
@@ -164,15 +165,15 @@
 
 3. Please select Workspace with name 'Engagement Accelerators – Manufacturing'.
 
-4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
+4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in Dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
 The image below shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
-> **Note:** A dashboard is a collection of tiles/visualisation which are pinned from different reports to a single page where key KPI of business are defined.
+> **Note:** A Dashboard is a collection of tiles/visualisation which are pinned from different reports to a single page where key KPI of business are defined.
 
 ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
-4. To **authenticate** the Power BI reports to access the datasources.
-5. **Click** the settings icon on top right-side corner.
+To **authenticate** the Power BI reports to access the datasources.
+5. **Click** the 'Settings' icon on top right-side corner.
 6. **Select** 'Settings'.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
@@ -182,13 +183,13 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 ![Go to Datasets.](media/Goto-DataSets.png)
 
 8. **Select** 'Campaign – Option C' Report.
-9. **Expand** Data source credentials.
-10. **Click** Edit credentials.
+9. **Expand** Data source Credentials.
+10. **Click** Edit Credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
 11. The 'Configure Campaign - Option C' dialogue box will pop up.
-12. **Enter** Username as ‘ManufacturingUser’.
+12. **Enter** Username as 'ManufacturingUser'.
 13. **Enter** the same password which was used for Azure deployment.
 14. **Click** Sign in.
 
@@ -197,7 +198,7 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 
 **Follow these steps to create the Power BI dashboard:**
 
-15. **Select** the workspace ‘Engagement Accelerators-Manufacturing’.
+15. **Select** the workspace 'Engagement Accelerators-Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
@@ -206,8 +207,8 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
-18. **Name** the dashboard ‘Engagement Accelerators Dashboard’ and **click** “create”.
-19. This new dashboard will appear in the Dashboard section (of the Power BI workspace).
+18. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** “create”.
+19. This new Dashboard will appear in the Dashboard section (of the Power BI workspace).
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
@@ -218,23 +219,23 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 ![Check the reports tab.](media/Reports-Tab1.png)
 
 21. In the 'Reports' section, there will be a list of all the published reports.
-22. **Select/Click** on ‘Campaign- Option C’ report.
+22. **Select/Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-23. On the 'Campaign – Option C' report page, **select** the ‘Revenue Vs Target’ visual and **click** the pin icon.
+23. On the 'Campaign – Option C' report page, **select** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
 24. **Select** 'Existing dashboard' radio button.
-25. **From** 'select existing dashboard' dropdown, **select** ‘Engagement Accelerators Dashboard’.
+25. **From** 'select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 26. **Click** 'Pin'.
-27. The visual will be pinned and visible on the dashboard.
-28. Similarly, different visuals from different reports can be pinned to the same dashboard.
+27. The visual will be pinned and visible on the Dashboard.
+28. Similarly, different visuals from different reports can be pinned to the same Dashboard.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-29. To pin any image on the dashboard, **select** the report “Dashboard Images” which has images on it from the reports section.
+29. To pin any image on the Dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
 
@@ -242,60 +243,60 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-31. **Select** Existing dashboard radio button and select the 'Engagement Accelerators' dashboard. 
+31. **Select** Existing Dashboard radio button and select the 'Engagement Accelerators' dashboard. 
 32. **Click** on Pin.
-33. The image will be pinned and visible on the dashboard.
-34. Similarly, more images can be pinned to this dashboard by repeating this process.
+33. The image will be pinned and visible on the Dashboard.
+34. Similarly, more images can be pinned to this Dashboard by repeating this process.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
 35. To view to the pinned visuals, **click** on the 'Dashboards' section.
-36. **Select** ‘Engagement Accelerators Dashboard’. This will launch the dashboard, and you can view the pinned visuals on it.
+36. **Select** 'Engagement Accelerators Dashboard'. This will launch the Dashboard, and you can view the pinned visuals on it.
 
 ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
 
-37. **Refer** to  the screenshot of the sample dashboard and pin the visuals to replicate the following look and feel.
+37. **Refer** to the screenshot of the sample Dashboard and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-38. Follow the same procedure to pin the ‘Predictive maintenance and Safety Analytics’ pillar tiles to the dashboard using the ‘anomaly detection with images’ report. See steps #29 to #36 above.
+38. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the Dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-39. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+39. We can achieve the look of the Dashboard below by pining visuals and images from different reports to the same Dashboard (you can also tweak with different elements such as backgrounds and themes).
 
-> **Note:** Real-time reports will not be deployed as part of the ARM template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
+> **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard3.png)
 
 
 ### Task 6: Working with Power BI to create real-time reports
 
-‘Racing Cars’ and ‘Milling canning’ datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
- Once the dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report ‘Racing Cars- A’.
+'Racing Cars' and 'Milling canning' datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
+ Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report 'Racing Cars- A'.
 
-1. **Click** on ‘+Create’ button present on the top navigation bar.
-2. **Select** ‘Report’ option from the drop-down menu.
+1. **Click** on '+Create' button present on the top navigation bar.
+2. **Select** 'Report' option from the drop-down menu.
 
-![‘Report’ option from the drop-down menu.](media/report_option.png)
+!['Report' option from the drop-down menu.](media/report_option.png)
 
-3. **Enter** ‘Racing’ in the search bar.
-4. **Select** the ‘Racing Cars’ dataset.
+3. **Enter** 'Racing' in the search bar.
+4. **Select** the 'Racing Cars' dataset.
 
-!['Racing Cars’ dataset in the workspace created.](media/racing_cars_dataset.png)
+!['Racing Cars' dataset in the workspace created.](media/racing_cars_dataset.png)
 
-5. To **create** the ‘Active Sensors’ visualization which is the Average of Active Sensors, **Select** the Card icon from Visualization tray.
+5. To **create** the 'Active Sensors' visualization which is the 'Average' of 'Active Sensors', **select** the Card icon from Visualization tray.
 
 ![Card icon from Visualization tray.](media/card_icon.png)
 
-6. **Select** the 'ActiveSensors' field from race-cars dataset.
-7. **Select** drop- down next to 'ActiveSensors'.
-8. **Select** 'Average' from the drop- down to get the average of 'ActiveSensors'.
+6. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
+7. **Select** drop-down next to 'ActiveSensors'.
+8. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
 
 9. With Card visual selected, **select** the format tab.
-10. **Turn on** the title.
+10. **Turn on** the Title.
 11. **Enter** 'Active Sensors' as the title for the card.
 
 ![Card Visual selected.](media/active_sensors.png)
@@ -305,11 +306,11 @@ Similarly, the color of the KPI value and title value can be changed from the Da
 
 ![Turn on background.](media/Background-Dark.png)
 
-All other visuals of the report can be created by following a similar process. By following the same process for the ‘milling canning’ dataset we can create the following real-time reports
+All other visuals of the report can be created by following a similar process. By following the same process for the 'milling canning' Dataset we can create the following real-time reports
 - Milling Canning report
 - Maintenance and Cost Analytics
 - Miami Racing Cars
  
-Once these real-time reports are ready we can pin them to the dashboard (by following the procedure explained in [Task 5](#task-5-power-bi-reports-and-dashboard-creation)) to finally achieve the following look and feel.
+Once these real-time reports are ready we can pin them to the dashboard (by following the procedure explained in [Task 5](#task-5-power-bi-dashboard-creation)) to finally achieve the following look and feel.
 
 ![Real-time Reports.](media/report_visuals.png)  
