@@ -59,12 +59,15 @@
 ![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
 
 4. **Click** on Workspaces.
+
 5. Then click on the 'Create a workspace’ tab.
+
 > **Note:** Please create a workspace by the name “Engagement Accelerators – Manufacturing”.
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
 6. **Copy** the workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL.
+
 > **Note:** This workspace ID will then be used in a field during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
