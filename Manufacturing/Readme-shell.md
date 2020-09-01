@@ -65,7 +65,7 @@
 
 5. Then **click** on the 'Create a workspace’ tab.
 
-> **Note:** Please create a workspace by the name “Engagement Accelerators – Manufacturing”.
+> **Note:** Please create a workspace by the name 'Engagement Accelerators – Manufacturing'.
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
