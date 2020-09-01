@@ -163,7 +163,8 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
-$forms_cogs_name = "forms-$suffix";
+#$forms_cogs_name = "forms-$suffix";
+$forms_cogs_name = "stcognitivesearch001"
 $keyVaultName = "kv-$suffix";
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
