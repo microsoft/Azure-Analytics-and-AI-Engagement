@@ -32,7 +32,7 @@
 
 ### Task 1: Create a resource group in Azure
 
-1. **Log into** the ![Azure Portal](https://portal.azure.com) using your Azure credentials.
+1. **Log into** the (![Azure Portal](https://portal.azure.com)) using your Azure credentials.
 
 2. On the Azure Portal home screen, **select** the '+ Create a resource' tile.
 
