@@ -109,16 +109,15 @@
     
 ### Task 4: Run the Cloud Shell 
 
-1. **Open** the Azure Portal.
-2. In the Azure Portal, **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+1. In the 'Resource group' section, **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-    > **Note**: If you are prompted to choose a shell, **select** PowerShell, and if asked to **create** a storage account for the Azure Cloud Shell, agree to have it created.
+    > **Note**: If you are prompted to choose a shell, **select** PowerShell, and if asked to **create** a 'storage account' for the Azure Cloud Shell, agree to have it created.
     
     ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
 
-3. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
+2. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -128,37 +127,58 @@
     
     > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-4. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
+3. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
     ./manufacturingSetup-shell.ps1
     ```
   
-5. From the Azure Cloud Shell, **Copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Enter** the code the you copied earlier on the browser screen and **press** 'Enter'.
+  ![Commands to run the PowerShell script](media/executing-shell-script.png)
+  
+4. From the Azure Cloud Shell, **Copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-6. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
+5. **Select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+
+![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+
+6. **Close** the browser tab and navigate back to the 'Resource group' window.
+
+7. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-7. While you are waiting for processes to get completed in Azure Cloud Shell, you'll be asked for entering code thrice (Please see Step #6 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+8. Again **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+
+![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+
+9. **Close** the browser tab and navigate back to the 'Resource group' window.
+
+10. While you are waiting for processes to get completed in Azure Cloud Shell, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-8. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+11. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-9. You will be asked for Security code once again, as was in Step #6 above. Please follow the same procedure as done in Step #6.
+12. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
 
 ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
 ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+
+13. Once again, **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+
+![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+
+14. **Close** the browser tab and navigate back to the 'Resource group' window.
 
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
 
