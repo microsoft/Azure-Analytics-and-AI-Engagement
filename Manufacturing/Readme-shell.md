@@ -192,37 +192,35 @@
 
 ![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
-3. Please select Workspace with name 'Engagement Accelerators – Manufacturing'.
-
-4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in Dataset tab. We can create a Power BI Dashboard by pinning visuals from the reports.
+3. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
 The image below shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
-> **Note:** A Dashboard is a collection of tiles/visualisation which are pinned from different reports to a single page where key KPI of business are defined.
+> **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
 
 ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
-To **authenticate** the Power BI reports to access the datasources.
+To **authenticate** the Power BI reports to access the datasources:
 
-5. **Click** the 'Settings' icon on top right-side corner.
+4. **Click** the 'Settings' icon on top right-side corner.
 
-6. **Select** 'Settings'.
+5. **Select** 'Settings'.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-7. **Go to** 'Datasets' tab.
+6. **Go to** 'Datasets' tab.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
-8. **Select** 'Campaign – Option C' Report.
-9. **Expand** Data source Credentials.
-10. **Click** Edit Credentials.
+7. **Select** 'Campaign – Option C' Report.
+8. **Expand** Data source credentials.
+9. **Click** Edit credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
-11. The 'Configure Campaign - Option C' dialogue box will pop up.
-12. **Enter** Username as 'ManufacturingUser'.
-13. **Enter** the same password which was used for Azure deployment.
-14. **Click** Sign in.
+10. The 'Configure Campaign - Option C' dialogue box will pop up.
+11. **Enter** Username as 'ManufacturingUser'.
+12. **Enter** the same password which was used for Azure deployment.
+13. **Click** Sign in.
 
 
 ![Configure Campaign.](media/Configure-Campaign.png)
@@ -230,72 +228,72 @@ To **authenticate** the Power BI reports to access the datasources.
 
 **Follow these steps to create the Power BI dashboard:**
 
-15. **Select** the workspace 'Engagement Accelerators-Manufacturing'.
+14. **Select** the workspace 'Engagement Accelerators-Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-16. **Click** on '+Create' button on the top-left navigation bar.
-17. **Select** the 'Dashboard' option from the drop-down menu.
+15. **Click** on '+Create' button on the top-left navigation bar.
+16. **Select** the 'Dashboard' option from the drop-down menu.
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
-18. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** “create”.
-19. This new Dashboard will appear in the Dashboard section (of the Power BI workspace).
+17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** “create”.
+18. This new Dashboard will appear in the Dashboard section (of the Power BI workspace).
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-20. **Click** on the 'Reports' section/tab.
+19. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-21. In the 'Reports' section, there will be a list of all the published reports.
-22. **Select/Click** on 'Campaign - Option C' report.
+20. In the 'Reports' section, there will be a list of all the published reports.
+21. **Select/Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-23. On the 'Campaign – Option C' report page, **select** the 'Revenue Vs Target' visual and **click** the pin icon.
+22. On the 'Campaign – Option C' report page, **select** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
-24. **Select** 'Existing dashboard' radio button.
-25. **From** 'select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
-26. **Click** 'Pin'.
-27. The visual will be pinned and visible on the Dashboard.
-28. Similarly, different visuals from different reports can be pinned to the same Dashboard.
+23. **Select** 'Existing dashboard' radio button.
+24. **From** 'select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+25. **Click** 'Pin'.
+26. The visual will be pinned and visible on the dashboard.
+27. Similarly, different visuals from different reports can be pinned to the same dashboard.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-29. To pin any image on the Dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
+28. To pin any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
 
-30. In the Dashboard Images report, **select** any image and then **click** on the pin icon.
+29. In the Dashboard Images report, **select** any image and then **click** on the pin icon.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-31. **Select** Existing Dashboard radio button and select the 'Engagement Accelerators' dashboard. 
-32. **Click** on Pin.
-33. The image will be pinned and visible on the Dashboard.
-34. Similarly, more images can be pinned to this Dashboard by repeating this process.
+30. **Select** Existing Dashboard radio button and select the 'Engagement Accelerators' dashboard. 
+31. **Click** on Pin.
+32. The image will be pinned and visible on the Dashboard.
+33. Similarly, more images can be pinned to this Dashboard by repeating this process.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
-35. To view to the pinned visuals, **click** on the 'Dashboards' section.
-36. **Select** 'Engagement Accelerators Dashboard'. This will launch the Dashboard, and you can view the pinned visuals on it.
+34. To view to the pinned visuals, **click** on the 'Dashboards' section.
+35. **Select** 'Engagement Accelerators Dashboard'. This will launch the Dashboard, and you can view the pinned visuals on it.
 
 ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
 
-37. **Refer** to the screenshot of the sample Dashboard and pin the visuals to replicate the following look and feel.
+36. **Refer** the screenshot of the sample Dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-38. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the Dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
+37. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the Dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-39. We can achieve the look of the Dashboard below by pining visuals and images from different reports to the same Dashboard (you can also tweak with different elements such as backgrounds and themes).
+38. We can achieve the look of the Dashboard below by pining visuals and images from different reports to the same Dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
@@ -317,7 +315,7 @@ To **authenticate** the Power BI reports to access the datasources.
 
 !['Racing Cars' dataset in the workspace created.](media/racing_cars_dataset.png)
 
-5. To **create** the 'Active Sensors' visualization which is the 'Average' of 'Active Sensors', **select** the Card icon from Visualization tray.
+5. **Select** the Card icon from Visualization tray to **create** the 'Active Sensors' visualization which is the 'Average' of 'Active Sensors'.
 
 ![Card icon from Visualization tray.](media/card_icon.png)
 
