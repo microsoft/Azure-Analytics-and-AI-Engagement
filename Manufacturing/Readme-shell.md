@@ -72,16 +72,14 @@
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the Workspace named 'Engagement Accelerators - Manufacturing', and then copying the GUID from the address URL.
-
-> **Note:** This Workspace ID will then be used in a field during ARM Template Deployment in further Tasks.
+6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL.
+> **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
 
 ### Task 3: Deploy the ARM Template
 
-1. On the Readme file, **click** on 'Deploy to Azure' button below to **deploy** the Azure resources (that you created in [Task 1](#task-1-create-a-resource-group-in-azure)) with Azure ARM Template
-(**Press/Click** the button 'Deploy to Azure').
+1. On the Readme file, **click** on 'Deploy to Azure' button below to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
