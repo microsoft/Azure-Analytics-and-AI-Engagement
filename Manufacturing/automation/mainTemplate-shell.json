@@ -5,13 +5,13 @@
      "environment_code": {
        "type": "String",
        "metadata": {
-         "description": "Suffix added to all resource name to make them unique. Should be less than 6 characters without any hypens(-)."
+         "description": "Suffix added to all resource name to make them unique. Should consist of only lower case alphabet and numbers. Total length should be less than 6 characters."
        }
      },
      "sql_administrator_login_password": {
        "type": "SecureString",
        "metadata": {
-         "description": "Password for SQL Admin. Should have atleast one capital, one small alphapbet with one digit and one specil character."
+         "description": "Password for SQL Admin. Should have atleast one capital, one small alphapbet with one digit and one special character.Password should be at least 8 characters long."
        }
      },
      "pbi_workspace_id": {
