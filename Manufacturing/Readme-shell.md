@@ -88,22 +88,22 @@
 4. **Select** Region where you want to deploy.
 5. **Provide** Environment code.
 6. **Enter** a strong SQL Administrator Login Password and set this aside for later use.
-7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation).
+7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation) in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
 > **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
-10. Click the **Create** button once the template has been validated.
+10. **Click** the 'Create' button once the template has been validated.
 
    ![Creating the template after validation.](media/template-validated-create.png)
 
-11. Stay on the same page and wait for the deployment to complete.
+11. **Stay** on the same page and wait for the deployment to complete.
     
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/template-deployment-progress.png)
     
-12. Select Go to resource group button once your deployment is complete.
+12. **Select** 'Go to resource group' button once your deployment is complete.
 
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
     
