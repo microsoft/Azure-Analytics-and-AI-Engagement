@@ -79,15 +79,15 @@
 
 ### Task 3: Deploy the ARM Template
 
-1. On the Readme file, **click** on 'Deploy to Azure' button below to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
+1. On the Readme file, **right-click** on 'Deploy to Azure' button and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
-3. **Type** the resource group name ('Synapse-WWI-Lab' Created in [Task 1](#task-1-create-a-resource-group-in-azure)).
+3. **Type** the resource group name 'Synapse-WWI-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
 4. **Select** Region where you want to deploy.
 5. **Provide** Environment code.
-6. **Enter** a strong SQL Administrator Login Password.
+6. **Enter** a strong SQL Administrator Login Password and set this aside for later use.
 7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation).
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
@@ -99,9 +99,13 @@
 
    ![Creating the template after validation.](media/template-validated-create.png)
 
-11. Confirm that the deployment has succeeded before proceeding to the next task.
+11. Stay on the same page and wait for the deployment to complete.
     
-    ![A portion of the Azure Portal to confirm that the deployment has succeeded.](media/Template-Deployment-Done-Screen6.png)
+    ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/template-deployment-progress.png)
+    
+12. Select Go to resource group button once your deployment is complete.
+
+    ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
     
 ### Task 4: Run the Cloud Shell 
 
