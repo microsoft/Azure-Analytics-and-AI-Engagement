@@ -134,29 +134,29 @@
     ./manufacturingSetup-shell.ps1
     ```
   
-  ![Commands to run the PowerShell script](media/executing-shell-script.png)
+     ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
 4. From the Azure Cloud Shell, **Copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
-![Authentication link and device code](media/Device-Authentication-Screen7.png)
+     ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
-![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+     ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 5. **Select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+     ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
 6. **Close** the browser tab and navigate back to the 'Resource group' window.
 
 7. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
 
-![Authentication link and device code](media/Device-Authentication-Screen7a.png)
+     ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
-![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+     ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 8. Again **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+     ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
 9. **Close** the browser tab and navigate back to the 'Resource group' window.
 
@@ -166,17 +166,17 @@
 
 11. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
-![Enter the resource group name](media/RG-Name-Screen10.png)
+     ![Enter the resource group name](media/RG-Name-Screen10.png)
 
 12. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
 
-![Authentication link and device code](media/Device-Authentication-Screen7b.png)
+     ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
-![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+     ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 13. Once again, **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+     ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
 14. **Close** the browser tab and navigate back to the 'Resource group' window.
 
