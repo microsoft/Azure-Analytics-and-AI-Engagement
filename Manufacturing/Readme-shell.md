@@ -142,7 +142,7 @@
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-5. **Select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+5. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
@@ -154,7 +154,7 @@
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-8. Again **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+8. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
@@ -174,7 +174,7 @@
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-13. Once again, **select** the same user to authenticate which you used for signing in the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+13. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
