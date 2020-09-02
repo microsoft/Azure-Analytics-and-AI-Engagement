@@ -52,6 +52,8 @@
 
 6. Click the **Create** button once all entries have been validated.
 
+
+
 ### Task 2: Power BI Workspace creation
 
 1. **Open** Power BI Services in a new tab using the following link:  https://app.powerbi.com/
@@ -78,7 +80,7 @@
 
 ### Task 3: Deploy the ARM Template
 
-1. Select the 'Deploy to Azure' button to **deploy** the Azure resources (that you created in [Task 1](#task-1-create-a-resource-group-in-azure)) with Azure ARM Template
+1. On the Readme file, **click** on 'Deploy to Azure' button below to **deploy** the Azure resources (that you created in [Task 1](#task-1-create-a-resource-group-in-azure)) with Azure ARM Template
 (**Press/Click** the button 'Deploy to Azure').
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
@@ -96,6 +98,8 @@
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
 10. Click the **Create** button once the template has been validated.
+
+   ![Creating the template after validation.](media/template-validated-create.png)
 
 11. Confirm that the deployment has succeeded before proceeding to the next task.
     
