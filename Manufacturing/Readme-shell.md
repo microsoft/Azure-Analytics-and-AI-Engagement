@@ -362,7 +362,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 3.  **Select** the \'Data\' hub from the left navigation in the 'Synapse Analytics' workspace.            
 4.  **Select** 'Linked' tab.      
 5.  **Expand** 'Storage accounts'.
-6.  **Expand** 'manufacturingdemor16gxwbbra4mtbmu(Primary - dreamdemostrggen2r16gxwb)\'  
+6.  **Expand** 'manufacturingdemor16*****************'  
 7.  **Click** \'customcsv\' container.                  
 8.  **Click** 'Manufacturing B2C Scenario Dataset'.            
 
