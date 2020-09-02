@@ -50,7 +50,7 @@
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
 
-6. Click the **Create** button once all entries have been validated.
+6. **Click** the 'Create' button once all entries have been validated.
 
     ![Create Resource Group with the final validation passed.](media/create-rg-validated.png)
 
@@ -72,14 +72,14 @@
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL.
+6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
 
 ### Task 3: Deploy the ARM Template
 
-1. On the Readme file, **right-click** on 'Deploy to Azure' button and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
+1. **Right-click** on the 'Deploy to Azure' button given below and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
@@ -136,7 +136,7 @@
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
-4. From the Azure Cloud Shell, **Copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
@@ -146,8 +146,10 @@
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-6. **Close** the browser tab and navigate back to the 'Resource group' window.
+6. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
+     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+     
 7. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
@@ -158,13 +160,15 @@
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-9. **Close** the browser tab and navigate back to the 'Resource group' window.
+9. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
-10. While you are waiting for processes to get completed in Azure Cloud Shell, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+     
+10. While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-11. You will now be prompted to enter the resource group name in the Azure Cloud Shell. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+11. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
@@ -178,8 +182,10 @@
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-14. **Close** the browser tab and navigate back to the 'Resource group' window.
+14. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
+     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+    
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
 
 ### Task 5: Power BI Dashboard creation
@@ -199,7 +205,7 @@ The image below shows the Reports tab in Power BI. We can then create a Power BI
 
 ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
-To **authenticate** the Power BI reports to access the datasources:
+To **give permissions** for the Power BI reports to access the datasources:
 
 4. **Click** the 'Settings' icon on top right-side corner.
 
@@ -219,7 +225,7 @@ To **authenticate** the Power BI reports to access the datasources:
 
 10. The 'Configure Campaign - Option C' dialogue box will pop up.
 11. **Enter** Username as 'ManufacturingUser'.
-12. **Enter** the same password which was used for Azure deployment.
+12. **Enter** the same password which was used for Azure deployment in Step #6 [Task 3](#task-3-deploy-the-arm-template).
 13. **Click** Sign in.
 
 
@@ -232,13 +238,13 @@ To **authenticate** the Power BI reports to access the datasources:
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-15. **Click** on '+Create' button on the top-left navigation bar.
+15. **Click** on '+Create' button on the top navigation bar.
 16. **Select** the 'Dashboard' option from the drop-down menu.
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
 17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** “create”.
-18. This new Dashboard will appear in the Dashboard section (of the Power BI workspace).
+18. This new dashboard will appear in the 'Dashboard' section (of the Power BI workspace).
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
@@ -258,7 +264,7 @@ To **authenticate** the Power BI reports to access the datasources:
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
 23. **Select** 'Existing dashboard' radio button.
-24. **From** 'select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+24. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 25. **Click** 'Pin'.
 26. The visual will be pinned and visible on the dashboard.
 27. Similarly, different visuals from different reports can be pinned to the same dashboard.
@@ -269,31 +275,31 @@ To **authenticate** the Power BI reports to access the datasources:
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
 
-29. In the Dashboard Images report, **select** any image and then **click** on the pin icon.
+29. In the 'Dashboard Images' report, **select** any image and then **click** on the pin icon.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-30. **Select** Existing Dashboard radio button and select the 'Engagement Accelerators' dashboard. 
+30. **Select** 'Existing Dashboard' radio button and select the 'Engagement Accelerators' dashboard. 
 31. **Click** on Pin.
-32. The image will be pinned and visible on the Dashboard.
-33. Similarly, more images can be pinned to this Dashboard by repeating this process.
+32. The image will be pinned and visible on the dashboard.
+33. Similarly, more images can be pinned to this dashboard by repeating this process.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
-34. To view to the pinned visuals, **click** on the 'Dashboards' section.
-35. **Select** 'Engagement Accelerators Dashboard'. This will launch the Dashboard, and you can view the pinned visuals on it.
+34. To view the pinned visuals, **click** on the 'Dashboards' section.
+35. **Select** 'Engagement Accelerators Dashboard'. This will launch the dashboard, and you can view the pinned visuals on it.
 
 ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
 
-36. **Refer** the screenshot of the sample Dashboard below and pin the visuals to replicate the following look and feel.
+36. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-37. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the Dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
+37. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-38. We can achieve the look of the Dashboard below by pining visuals and images from different reports to the same Dashboard (you can also tweak with different elements such as backgrounds and themes).
+38. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
