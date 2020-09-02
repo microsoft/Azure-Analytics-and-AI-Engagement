@@ -52,7 +52,7 @@
 
 6. Click the **Create** button once all entries have been validated.
 
-
+    ![Create Resource Group with the final validation passed.](media/create-rg-validated.png)
 
 ### Task 2: Power BI Workspace creation
 
