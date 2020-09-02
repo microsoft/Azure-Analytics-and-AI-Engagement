@@ -58,21 +58,21 @@
 
 1. **Open** Power BI Services in a new tab using the following link:  https://app.powerbi.com/
 
-3. **Sign in**, to your Power BI account using Power BI Pro account.
+2. **Sign in**, to your Power BI account using Power BI Pro account.
 
 > **Note:** Please use the same credentials for Power BI which you will be using for Azure Account.
 
 ![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
 
-4. **Click** on 'Workspaces'.
+3. **Click** on 'Workspaces'.
 
-5. Then **click** on the 'Create a workspace’ tab.
+4. Then **click** on the 'Create a workspace’ tab.
 
 > **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
 
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
+5. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
