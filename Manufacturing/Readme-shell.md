@@ -382,7 +382,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-59. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
+59. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
