@@ -14,7 +14,7 @@
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
-    - [Task 7: Steps to append CSVs in order to change Campaign, Hashtags and Product category](#task-7-steps-to-append-csvs-in-order-to-change-campaign-hashtags-and-product-category)
+    - [Task 7: Steps to update CSVs in order to change Campaign, Product and Hashtags category](#task-7-steps-to-update-csvs-in-order-to-change-campaign-product-and-hashtags-category)
     
 <!-- /TOC -->
 
@@ -24,8 +24,8 @@
 2. A Power BI Pro or Premium account to host Power BI reports.
 3. Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
 4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
-5. Please ensure that in environment code, you don't use any special characters. Use environment code as only lowercase alphabets, and unique in your environment.
-6. Please ensure that you select the right Resource Group Name. The name we have given here is a sample name and you may need to customize the same if any resource group with same name already exists in your Subscription.
+5. Do not use any special characters or uppercase letters in the environment code.
+6. Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
@@ -43,7 +43,7 @@
 
     ![On the new resource screen Resource group is entered as a search term.](../CDP-Retail/media/bhol_searchmarketplaceresourcegroup.png)
 
-4. **Select** the create button on the 'Resource Group' overview page.
+4. **Select** the 'create' button on the 'Resource Group' overview page.
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/create-resource-group.png)
 	
@@ -67,7 +67,7 @@
 
 3. **Click** on 'Workspaces'.
 
-4. Then **click** on the 'Create a workspace’ tab.
+4. Then **click** on the 'Create a workspace' tab.
 
 > **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
 
@@ -80,15 +80,15 @@
 
 ### Task 3: Deploy the ARM Template
 
-1. **Right-click** on the 'Deploy to Azure' button given below and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template
+1. **Right-click** on the 'Deploy to Azure' button given below and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template.
 
     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Freal-time%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 3. **Type** the resource group name 'Synapse-WWI-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
 4. **Select** Region where you want to deploy.
-5. **Provide** Environment code.
-6. **Enter** a strong SQL Administrator Login Password and set this aside for later use.
+5. **Provide** environment code which is a unique suffix to your environment without any special characters. e.g. 'demo'.
+6. **Provide** a strong SQL Administrator Login Password and set this aside for later use.
 7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation) in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
@@ -104,13 +104,13 @@
     
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/template-deployment-progress.png)
     
-12. **Select** 'Go to resource group' button once your deployment is complete.
+12. **Click** 'Go to resource group' button once your deployment is complete.
 
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
     
 ### Task 4: Run the Cloud Shell 
 
-1. In the 'Resource group' section, **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+1. **Stay** in Azure Portal and **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
@@ -147,7 +147,7 @@
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-6. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+6. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
      
@@ -161,7 +161,7 @@
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-9. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+9. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
      
@@ -195,38 +195,43 @@
 
 2. **Sign in** to Power BI account using 'Power BI Pro account'.
 
-> **Note**: Please use the same credentials for Power BI that you used for 'Azure ARM + PowerShell' deployment.
+> **Note**: Please use the same credentials for Power BI that you used for '[Deploy the ARM Template](#task-3-deploy-the-arm-template)' deployment.
 
 ![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
-3. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
-The image below shows the Reports tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
+3. **Select** the Workspace 'Engagement Accelerators – Manufacturing'.
+
+4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
+The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
 
 ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
-To **give permissions** for the Power BI reports to access the datasources:
+**To give permissions for the Power BI reports to access the datasources:**
 
-4. **Click** the 'Settings' icon on top right-side corner.
+5. **Click** the 'Settings' icon on top right-side corner.
 
-5. **Select** 'Settings'.
+6. **Click** 'Settings'.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-6. **Go to** 'Datasets' tab.
+7. **Click** 'Datasets' tab.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
-7. **Select** 'Campaign – Option C' Report.
-8. **Expand** Data source credentials.
-9. **Click** Edit credentials.
+8. **Click** 'Campaign – Option C' Report.
+
+9. **Expand** Data source credentials.
+
+10. **Click** Edit credentials.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
-10. The 'Configure Campaign - Option C' dialogue box will pop up.
 11. **Enter** Username as 'ManufacturingUser'.
+
 12. **Enter** the same password which was used for Azure deployment in Step #6 [Task 3](#task-3-deploy-the-arm-template).
+
 13. **Click** Sign in.
 
 
@@ -235,77 +240,133 @@ To **give permissions** for the Power BI reports to access the datasources:
 
 **Follow these steps to create the Power BI dashboard:**
 
-14. **Select** the workspace 'Engagement Accelerators-Manufacturing'.
+14. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
 15. **Click** on '+Create' button on the top navigation bar.
-16. **Select** the 'Dashboard' option from the drop-down menu.
+
+16. **Click** the 'Dashboard' option from the drop-down menu.
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
-17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** “create”.
+17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
+
 18. This new dashboard will appear in the 'Dashboard' section (of the Power BI workspace).
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
+**Follow the below steps to change the dashboard theme:**
+19. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
+
+20. **Right click** anywhere in browser and **click** 'Save as...'.
+
+21. **Save** the file to your desired location on your computer with name unchanged.
+
+22. **Go back** to the Power BI Dashboard you just created.
+
+23. **Click** on ellipses at the top right-side corner.
+
+24. **Click** on Dashboard theme.
+
+25. **Click** Upload the JSON theme.
+
+26. **Navigate** to the location where you have saved the JSON theme in Step #21 above file and **Select** open.
+
+27. Click **Save**.
+
 **Do the following to pin visuals to the dashboard you just created:**
 
-19. **Click** on the 'Reports' section/tab.
+28. **Click** on the 'Reports' tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-20. In the 'Reports' section, there will be a list of all the published reports.
-21. **Select/Click** on 'Campaign - Option C' report.
+29. In the 'Reports' tab, there will be a list of all the published reports.
+
+30. **Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-22. On the 'Campaign – Option C' report page, **select** the 'Revenue Vs Target' visual and **click** the pin icon.
+31. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
-23. **Select** 'Existing dashboard' radio button.
-24. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
-25. **Click** 'Pin'.
-26. The visual will be pinned and visible on the dashboard.
-27. Similarly, different visuals from different reports can be pinned to the same dashboard.
+32. **Select** 'Existing dashboard' radio button.
+
+33. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+
+34. **Click** 'Pin'.
+
+35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-28. To pin any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
+**Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
+36. **Click** on Edit report.
+
+37. **Click** 'Sales and Campaign' report page.
+
+38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals.
+
+39. **Pin** 'Revenue by country' map visual.
+
+40. **Open** 'Dashboard Images' report.
+
+41. **Pin** all images from report to the 'Engagement Accelerators Dashboard'.
+
+42. **Go back** to the Dashboard.
+
+43. For all images tiles **click** on 'More Options'.
+
+44. **Click** 'Edit details'.
+
+45. **Disable** 'Display title and subtitle'.
+
+46. **Click** 'Apply'.
+
+47. **Repeat** for all images tiles.
+
+48. After disabling 'Display title and subtitle' for all images, resize and re-arrange top images tiles or chicklets as show in the screenshot.
+
+49. **Resize** and **rearrange** left images tiles or chicklets as show in the screenshot. **Resize** KPI Tile to 1x2 size. **Resize** Deep Dive tile to 1x4 size.
+
+50. To **pin** any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
 
-29. In the 'Dashboard Images' report, **select** any image and then **click** on the pin icon.
+51. In the 'Dashboard Images' report, **select** any image and then **click** on the pin icon.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
 
-30. **Select** 'Existing Dashboard' radio button and select the 'Engagement Accelerators' dashboard. 
-31. **Click** on Pin.
-32. The image will be pinned and visible on the dashboard.
-33. Similarly, more images can be pinned to this dashboard by repeating this process.
+52. **Select** 'Existing Dashboard' radio button and select the 'Engagement Accelerators' dashboard.
+
+53. **Click** on Pin.
+
+54. The image will be pinned and visible on the dashboard.
+
+55. Similarly, more images can be pinned to this dashboard by repeating this process.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
-34. To view the pinned visuals, **click** on the 'Dashboards' section.
-35. **Select** 'Engagement Accelerators Dashboard'. This will launch the dashboard, and you can view the pinned visuals on it.
+56. To view the pinned visuals, **click** on the 'Dashboards' section.
+
+57. **Select** 'Engagement Accelerators Dashboard'. This will launch the dashboard, and you can view the pinned visuals on it.
 
 ![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
 
-36. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+58. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-37. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
+59. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #36 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-38. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+60. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard3.png)
-
 
 ### Task 6: Working with Power BI to create real-time reports
 
@@ -313,11 +374,13 @@ To **give permissions** for the Power BI reports to access the datasources:
  Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report 'Racing Cars- A'.
 
 1. **Click** on '+Create' button present on the top navigation bar.
+
 2. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
 3. **Enter** 'Racing' in the search bar.
+
 4. **Select** the 'Racing Cars' dataset.
 
 !['Racing Cars' dataset in the workspace created.](media/racing_cars_dataset.png)
@@ -327,18 +390,23 @@ To **give permissions** for the Power BI reports to access the datasources:
 ![Card icon from Visualization tray.](media/card_icon.png)
 
 6. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
+
 7. **Select** drop-down next to 'ActiveSensors'.
+
 8. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
 
 9. With Card visual selected, **select** the format tab.
+
 10. **Turn on** the Title.
+
 11. **Enter** 'Active Sensors' as the title for the card.
 
 ![Card Visual selected.](media/active_sensors.png)
 
 12. **Turn on** Background and change the background color of the card.
+
 Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
 
 ![Turn on background.](media/Background-Dark.png)
@@ -352,7 +420,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 ![Real-time Reports.](media/report_visuals.png)  
 
-### Task 7: Steps to append CSVs in order to change Campaign, Hashtags and Product category
+### Task 7: Steps to update CSVs in order to change Campaign, Product and Hashtags category
 
 1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
 2. Log in with your Azure credentials.
@@ -385,7 +453,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
  	![Selecting workspace 4](media/select-workspace4.png)
 
-**Since CSV changes data type of columns to varchar, please be careful with format of any Date column. This may also depend on your Regional Settings Date and Time Format.**
+**As Excel changes data type of columns to string, please be careful with format of any Date column. This may also depend on your Regional Settings Date and Time Format.**
  
 17. **Select** 'CampaignStartDate' column.
 18. **Click** on 'format cells'.
@@ -409,7 +477,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 	![Selecting workspace 8](media/select-workspace8.png)
 
-**Now let's change the Product category in Product file.**
+**Now let's change the 'Category' in Product.csv file:**
 
 27. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
 28.  **Select** 'Product.csv'.
@@ -443,7 +511,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 	![Selecting workspace 14](media/select-workspace14.png)
 
-**Now, let's change Hashtags.**
+**Now, let's change 'Hashtags':**
 
 41. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
 42.  **Select** 'Campaignproducts.csv'.
@@ -463,7 +531,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
  	![Selecting workspace 17](media/select-workspace17.png)
 
-**In this file, data type of 'CampaignRowKey' will change to 'string' format which we need to change back to 'number' format.**
+**In this file, data type of 'CampaignRowKey' will change to 'string' format. Please change the data type of column 'CampiagnRowkey' from string to number format.**
  
 50. **Select** 'CampaignRowKey' column (Column F of Excel).
 51. **Click** 'More Number Formats' from the format dropdown.
@@ -488,7 +556,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
  	![Selecting workspace 21](media/select-workspace21.png)  
 
-**Steps to incorporate all these changes in dataset:**           
+**Now let's update the dataset with this new data:**
  
 61. **Navigate** to 'Orchestrate' hub from the left navigation.
 62. **Expand** 'Pipelines' node.
@@ -509,7 +577,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 **Note:** Now let's monitor the 'Master Pipeline' run and see what happens when the execution gets completed.
 
-**Steps to check the changes in dataset getting reflected in Power BI report**
+**Finally, let's see the changes propogated into dataset reflected in Power BI:**
  
 69. **Navigate** to 'Develop' hub from the left navigation.
 70. **Expand** 'Power BI'.
@@ -517,10 +585,10 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 72. **Expand** 'Power BI reports'.
 73. **Click** on 'Campaign - Option C' Power BI report.
 
-    ![Selecting workspace 25](media/select-workspace25.png)	
+ 	![Selecting workspace 25](media/select-workspace25.png)	
 
 74. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
-75.  'Product Category' should have one of the updated category as **'Gift Cards'**.
-76.  'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
+75. 'Product Category' should have one of the updated category as **'Gift Cards'**.
+76. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
 
  	![Selecting workspace 26](media/select-workspace26.png)
