@@ -906,13 +906,8 @@ WITH
        DISTRIBUTION = ROUND_ROBIN,
        CLUSTERED COLUMNSTORE INDEX
 )
-GO
 
 
-
-/****** Object:  User [SalesStaff]    Script Date: 9/2/2020 5:54:35 PM ******/
-CREATE USER [SalesStaff] WITH DEFAULT_SCHEMA=[dbo]
-GO
 
 
 
