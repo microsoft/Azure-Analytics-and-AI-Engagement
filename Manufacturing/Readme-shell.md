@@ -439,11 +439,11 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 9.  **Select** 'CampaignData.csv'.
 10.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
 
- 	![Selecting workspace 2](media/select-workspace2.png)
+ 	![Selecting workspace 2.](media/select-workspace2.png)
 
 11.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
 
- 	![Selecting workspace 3](media/select-workspace3.png)
+ 	![Selecting workspace 3.](media/select-workspace3.png)
 
 12. **Select** 'CampaignName' column (Column B of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
 13. **Replace** 'Spring into Summer' (old campaign name) with 'Summer Fashion' (new campaign name).
