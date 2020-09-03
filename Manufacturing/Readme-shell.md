@@ -289,6 +289,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 27. Click **Save**.
 
+![save JSON.](media/dashboard-theme-save.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
@@ -324,6 +325,8 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 37. **Click** 'Sales and Campaign' report page.
 
+![Edit the report.](media/hidden-report-page)
+
 38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals.
 
 39. **Pin** 'Revenue by country' map visual.
@@ -334,7 +337,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-41. **Pin** all images from report to the 'Engagement Accelerators Dashboard'.
+41. **Pin** all images from above report to the 'Engagement Accelerators Dashboard' in the same way you pinned the report visuals.
 
 42. **Go back** to the Dashboard.
 
@@ -451,7 +454,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 ![Real-time Reports.](media/report_visuals.png)  
 
-### Task 7: Steps to update CSVs in order to change Campaign, Product and Hashtags category
+### Task 7: Steps to update CSVs in order to change Campaign, Hashtags and Product category
 
 1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
 2. Log in with your Azure credentials.
@@ -578,7 +581,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 56. **Save** the file by pressing the highlighted button. **Close** the file.
 
- 	![Selecting workspace 12](media/select-workspace20.png)
+ 	![Selecting workspace 12](media/select-workspace12.png)
 
 57. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 58. **Select** 'Campaignproducts.csv' file that you updated above till Step 57.
