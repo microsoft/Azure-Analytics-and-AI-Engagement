@@ -352,178 +352,175 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 ![Real-time Reports.](media/report_visuals.png)  
 
-### Task 7: Steps to append CSVs in order to change Campaign, Hashtags and Product category 
-    
-1. In your browser session **add** new tab then go to <https://web.azuresynapse.net/>
-2. Log in with your Azure credentials.      
+### Task 7: Steps to append CSVs in order to change Campaign, Hashtags and Product category
 
-    ![Selecting workspace.](media/select-workspace.png)
+1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
+2. Log in with your Azure credentials.
 
-3.  **Select** the \'Data\' hub from the left navigation in the 'Synapse Analytics' workspace.            
-4.  **Select** 'Linked' tab.      
-5.  **Expand** 'Storage accounts'.
-6.  **Expand** 'manufacturingdemor16*****************'  
-7.  **Click** \'customcsv\' container.                  
-8.  **Click** 'Manufacturing B2C Scenario Dataset'.            
+ 	![Selecting workspace.](media/select-workspace.png)
 
-     ![Selecting workspace 1.](media/select-workspace1.png)
+3.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
+4.  **Click** 'Linked' tab.
+5.  **Expand** 'Azure Data Lake Storage Gen2'.
+6.  **Expand** the node that starts with 'manufacturingdemo'. Kindly see image below after Step 8.
+7.  **Click** 'customcsv' container.
+8.  **Double Click** 'Manufacturing B2C Scenario Dataset'.
 
-9.  **Select** 'CampaignData.csv'.  
-10.  **Click** 'Download'.         
- 
-File will get downloaded in your system locally.                 
+ 	![Selecting workspace 1.](media/select-workspace1.png)
 
-![Selecting workspace 2](media/select-workspace2.png)
+9.  **Select** 'CampaignData.csv'.
+10.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
 
-11.  **Open** the downloaded file.
- 
-        ![Selecting workspace 3](media/select-workspace3.png)
- 
-12. **Select** 'CampaignName' column and press CTRL+H to replace the campaign name with new campaign name.      
-13. **Replace** 'Spring into Summer' (old campaign name) with 'Summer Fashion' (new campaign name).              
-14. **Click** 'Replace All'.       
-15. **Pop up** will be displayed with all done replacement message.                   
+ 	![Selecting workspace 2](media/select-workspace2.png)
+
+11.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+
+ 	![Selecting workspace 3](media/select-workspace3.png)
+
+12. **Select** 'CampaignName' column (Column B of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+13. **Replace** 'Spring into Summer' (old campaign name) with 'Summer Fashion' (new campaign name).
+14. **Click** 'Replace All'.
+15. **Pop up** will be displayed with all done replacement message.
 16. **Click** OK.
 
-    ![Selecting workspace 4](media/select-workspace4.png)
+ 	![Selecting workspace 4](media/select-workspace4.png)
 
-**Since CSV changes data type of columns to varchar, we need to be careful with data format of any Date column**                 
+**Since CSV changes data type of columns to varchar, please be careful with format of any Date column. This may also depend on your Regional Settings Date and Time Format.**
  
-17. **Select** 'CampaignStartDate' column.                       
-18. **Click** on 'format cells'.   
-19. **Select** 'Category' as 'Date'.  
-20. **Select** the format "yyyy-mm-dd".                
-21. **Click** 'OK'.                
+17. **Select** 'CampaignStartDate' column.
+18. **Click** on 'format cells'.
+19. **Select** 'Category' as 'Date'.
+20. **Select** the format "yyyy-mm-dd".
+21. **Click** 'OK'.
 
-    ![Selecting workspace 5](media/select-workspace5.png)
+ 	![Selecting workspace 5](media/select-workspace5.png)
 
-22. **Save** the file in .csv format by pressing the highlighted button.  
+22. **Save** the file by pressing the highlighted button. **Close** the file.
 
-    ![Selecting workspace 6](media/select-workspace6.png)	
+ 	![Selecting workspace 6](media/select-workspace6.png)
 
-21. **Go back** to 'Azure Synapse customcsv' file and **Click** 'Upload' to upload the file from your local system.            
+23. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 
-    ![Selecting workspace 7](media/select-workspace7.png)
+ 	![Selecting workspace 7](media/select-workspace7.png)
 
-22. **Select** 'CampaignData.csv' file.                        
-23. **Check** the checkbox for overwriting existing files.  
-24. **Click** 'Upload'.            
+24. **Select** 'CampaignData.csv' file that you updated above till Step 22.
+25. **Click** the checkbox for overwriting existing files.
+26. **Click** 'Upload'.
 
-    ![Selecting workspace 8](media/select-workspace8.png)
+	![Selecting workspace 8](media/select-workspace8.png)
 
-**Now let's change the Product category in Product file.**       
+**Now let's change the Product category in Product file.**
+
+27. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
+28.  **Select** 'Product.csv'.
+29.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
+
+ 	![Selecting workspace 9](media/select-workspace9.png)
+
+30.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+
+ 	![Selecting workspace 10](media/select-workspace10.png)
+
+31. **Select** 'Category' column (Column G of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+32. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
+33. **Click** 'Replace All'.
+34. **Pop up** will be displayed with all done replacement message.
+35. **Click** OK.
+
+	![Selecting workspace 11](media/select-workspace11.png)
+
+36. **Save** the file by pressing the highlighted button. **Close** the file.
  
-1.  **Go** back to 'Azure Synapse' and **select** 'Product.csv' file. 
-2.  **Click** 'Download'. 
-
-    ![Selecting workspace 9](media/select-workspace9.png)
-
-3.  **Open** the downloaded file.
+	![Selecting workspace 12](media/select-workspace12.png)
  
-    ![Selecting workspace 10](media/select-workspace10.png)
+37. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 
-4.  **Select** 'productcategory' column.                       
-5.  **Press** 'CTRL+H'.            
-6.  **Change** 'Hats' to 'Gift Cards'.                      
-7.  **Click** 'Replace All'.  
+	![Selecting workspace 13](media/select-workspace13.png)	
 
-    ![Selecting workspace 11](media/select-workspace11.png)   
+38. **Select** 'Product.csv' file that you updated above till Step 37.
+39. **Click** the checkbox for overwriting existing files.
+40. **Click** 'Upload'.
 
-8.  **Save** the file.           
+	![Selecting workspace 14](media/select-workspace14.png)
+
+**Now, let's change Hashtags.**
+
+41. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
+42.  **Select** 'Campaignproducts.csv'.
+43.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
+
+        ![Selecting workspace 15](media/select-workspace15.png)
+
+44.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+
+ 	![Selecting workspace 16](media/select-workspace16.png)
  
-    ![Selecting workspace 12](media/select-workspace12.png)
+45. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+46. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
+47. **Click** 'Replace All'.
+48. **Pop up** will be displayed with all done replacement message.
+49. **Click** OK.
+
+ 	![Selecting workspace 17](media/select-workspace17.png)
+
+**In this file, data type of 'CampaignRowKey' will change to 'string' format which we need to change back to 'number' format.**
  
-9.  **Go back** to Azure Synapse 'Product.csv' file and **click** 'Upload'.   
+50. **Select** 'CampaignRowKey' column (Column F of Excel).
+51. **Click** 'More Number Formats' from the format dropdown.
 
-    ![Selecting workspace 13](media/select-workspace13.png)	
+ 	![Selecting workspace 18](media/select-workspace18.png)
 
-10. **Select** 'Product.csv' from your local system.                 
-11. **Check** the checkbox for overwriting existing files.  
-12. **Click** 'Upload'.   
+52. **Click** 'Number' format.
+53. **Select** '0' as 'Decimal places'.
+54. **Select** '1234' as 'Negative numbers' format.
+55. **Click** 'OK'.
 
-    ![Selecting workspace 14](media/select-workspace14.png)
+ 	![Selecting workspace 19](media/select-workspace19.png)
 
-**Now, let's change hashtags.**     
- 
-1.  **Go back** to 'Azure Synapse' and **select** 'Campaignproducts.csv'        
-2.  **Click** 'Download'. 
+56. **Save** the file by pressing the highlighted button. **Close** the file.
 
-    ![Selecting workspace 15](media/select-workspace15.png)    
+ 	![Selecting workspace 12](media/select-workspace20.png)
 
-3.  **Open** the downloaded file.
- 
-    ![Selecting workspace 16](media/select-workspace16.png)
- 
-4.  **Select** the column 'Hashtag'.                   
-5.  **Press** 'CTRL+H'.            
-6.  **Replace** '\#welcomespring' with '\#welcomesummer'.           
-7.  **Click** 'Replace All'.       
-8.  **Click** 'OK'.                
+57. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+58. **Select** 'Campaignproducts.csv' file that you updated above till Step 57.
+59. **Click** the checkbox for overwriting existing files.
+60. **Click** 'Upload'.
 
-    ![Selecting workspace 17](media/select-workspace17.png)
-
-**In this file, datatype of 'CampiagnRowkey' will change to 'string' format which we need to change back to 'number' format.**
- 
-9.  **Select** column 'CampaignRowKey'.              
-10. **Select** 'More Number Formats' from the format dropdown.                    
-
-    ![Selecting workspace 18](media/select-workspace18.png)
-
-11. **Select** 'Number' format.  
-12. **Select** '0' as 'Decimal places'.                      
-13. **Select** '1234' as 'Negative numbers' format.              
-14. **Click** 'OK'.      
-
-    ![Selecting workspace 19](media/select-workspace19.png)
-  
-
-15. **Save as** the file with the same name 'Campaignproducts'.          
-16. **Select** 'CSV' as format.    
-17. **Save** the file. 
-
-    ![Selecting workspace 20](media/select-workspace20.png)   
-
-18. **Go back** to 'Azure Synapse-Campaingproducts.csv' file and **upload** the file.     
-19. **Browse** the file from your local system.                 
-20. **Choose** 'Campaignproducts.csv'.        
-21. **Check** the checkbox of overwriting existing files.  
-22. **Click** 'Upload'.   
-
-    ![Selecting workspace 21](media/select-workspace21.png)  
+ 	![Selecting workspace 21](media/select-workspace21.png)  
 
 **Steps to incorporate all these changes in dataset:**           
  
-23. **Select** the \'Orchestrate\' hub from the left navigation in the 'Synapse Analytics' workspace.
-24. **Select** 'Pipelines' tab.   
-25. **Click** on '1 Master Pipeline'.                  
-26. **Click** 'Add trigger'.       
-27. **Click** 'Trigger now'.   
+61. **Navigate** to 'Orchestrate' hub from the left navigation.
+62. **Expand** 'Pipelines' node.
+63. **Click** on '1 Master Pipeline'.
+64. **Click** 'Add trigger'.
+65. **Click** 'Trigger now'.
 
-    ![Selecting workspace 22](media/select-workspace22.png)
-    
-28. **Select** 'Monitor hub' from the 'Synapse Analytics' workspace.       
-29. **Click** 'Pipeline runs'. 
+ 	![Selecting workspace 22](media/select-workspace22.png)
 
-    ![Selecting workspace 23](media/select-workspace23.png)    
+66. **Navigate** to 'Monitor' hub from the left navigation.
+67. **Click** 'Pipeline runs'.
 
-30. **Observe** '1 Master Pipeline'                    
+ 	![Selecting workspace 23](media/select-workspace23.png)
+
+68. **Observe** '1 Master Pipeline'.
+
+ 	![Selecting workspace 24](media/select-workspace24.png)
+
+**Note:** Now let's monitor the 'Master Pipeline' run and see what happens when the execution gets completed.
+
+**Steps to check the changes in dataset getting reflected in Power BI report**
  
-    ![Selecting workspace 24](media/select-workspace24.png)
- 
-> **Note:** Now let\'s monitor the Master Pipeline run and see what happens when the execution gets completed.                      
-
-**Steps to check the changes in dataset getting reflected in Power BI report**               
- 
-1.  **Select** 'Develop hub'.     
-2.  **Click** 'Power BI'.         
-3.  **Click** 'Engagement Accelerators....' Power BI workspace.                  
-4.  **Click** 'Power BI reports'. 
-5.  **Click** on 'Campaign-option C' Power BI report.           
+69. **Navigate** to 'Develop' hub from the left navigation.
+70. **Expand** 'Power BI'.
+71. **Expand** Power BI Workspace starting with name 'Engagement Accelerators'.
+72. **Expand** 'Power BI reports'.
+73. **Click** on 'Campaign - Option C' Power BI report.
 
     ![Selecting workspace 25](media/select-workspace25.png)	
 
-6.  **View** latest update 'Campaign Name' **'Summer Fashion'**                  
-7.  **View** latest update 'ProductCategory' **'Gift Cards'**                    
-8.  **View** latest update 'Hashtag' **'\#welcomesummer'** 
+74. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
+75.  'Product Category' should have one of the updated category as **'Gift Cards'**.
+76.  'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
 
-    ![Selecting workspace 26](media/select-workspace26.png)
+ 	![Selecting workspace 26](media/select-workspace26.png)
