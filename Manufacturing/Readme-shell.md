@@ -306,9 +306,9 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 34. **Click** 'Pin'.
 
-35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
-
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
+
+35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
 
 **Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
 
