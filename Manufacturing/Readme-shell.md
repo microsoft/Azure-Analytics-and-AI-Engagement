@@ -342,9 +342,9 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 46. **Click** 'Apply'.
 
-47. **Repeat** for all images tiles.
-
 ![Display title and subtitle.](media/display-title-subtitle.png)
+
+47. **Repeat** for all images tiles.
 
 48. After disabling 'Display title and subtitle' for all images, resize and re-arrange top images tiles or chicklets as show in the screenshot.
 
