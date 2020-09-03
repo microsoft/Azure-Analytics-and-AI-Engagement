@@ -289,7 +289,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 27. Click **Save**.
 
-![save JSON.](media/dashboard-theme-save.png)
+![save JSON.](media/dashboard-theme-save.PNG)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
@@ -325,7 +325,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 37. **Click** 'Sales and Campaign' report page.
 
-![Edit the report.](media/hidden-report-page)
+![Edit the report.](media/hidden-report-page.png)
 
 38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals.
 
