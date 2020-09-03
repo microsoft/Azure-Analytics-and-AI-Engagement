@@ -14,7 +14,7 @@
     - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
-    - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-Modify-the-CSV-to-change-campaign-names,-product-categories,-and-hashtags)
+    - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
     
 <!-- /TOC -->
 
