@@ -799,13 +799,39 @@ WITH
 )
 GO
 
-/****** Object:  View [dbo].[Vw_Mfg_batchSummary]    Script Date: 9/2/2020 5:47:07 PM ******/
+
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
+CREATE TABLE [dbo].[mfg-BatchSummary]
+( 
+	[BatchCode] [varchar](500)  NOT NULL,
+	[StartTime] [datetime]  NULL,
+	[EndTime] [datetime]  NULL,
+	[PreparationTime] [float]  NULL,
+	[TotalIdleTime] [float]  NULL,
+	[JobOutput] [float]  NULL,
+	[PoweringOffTime] [float]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [BatchCode] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+CREATE TABLE [dbo].[mfg-Product-BatchMapping]
+( 
+	[batchcode] [varchar](500)  NOT NULL,
+	[productid] [int]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
 CREATE VIEW [dbo].[Vw_Mfg_batchSummary]
 AS SELECT  SUM(jobOutput) AS ProducedQty,
                     BPM.ProductId
@@ -814,8 +840,6 @@ AS SELECT  SUM(jobOutput) AS ProducedQty,
                     [mfg-Product-BatchMapping] AS BPM ON BPM.BatchCode = BS.BatchCode
                     GROUP BY BPM.ProductId  HAVING ProductId IS NOT NULL;
 GO
-
-
 
 /****** Object:  Table [dbo].[mfg-iot-json]    Script Date: 9/2/2020 5:51:41 PM ******/
 SET ANSI_NULLS ON
