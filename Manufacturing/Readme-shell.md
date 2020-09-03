@@ -257,11 +257,16 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
 **Follow the below steps to change the dashboard theme:**
+
 19. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
 
 20. **Right click** anywhere in browser and **click** 'Save as...'.
 
+![Right Click JSON.](media/change-theme2.png)
+
 21. **Save** the file to your desired location on your computer with name unchanged.
+
+![Save JSON.](media/save-json.png)
 
 22. **Go back** to the Power BI Dashboard you just created.
 
@@ -269,11 +274,15 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 24. **Click** on Dashboard theme.
 
+![Click on dashboard theme.](media/change-theme-portal.png)
+
 25. **Click** Upload the JSON theme.
 
 26. **Navigate** to the location where you have saved the JSON theme in Step #21 above file and **Select** open.
 
 27. Click **Save**.
+
+![Upload JSON.](media/upload-json.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
@@ -302,7 +311,10 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
 **Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
+
 36. **Click** on Edit report.
+
+![Edit the report.](media/edit-report.png)
 
 37. **Click** 'Sales and Campaign' report page.
 
@@ -310,15 +322,21 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 39. **Pin** 'Revenue by country' map visual.
 
+![Sales and Campaign report.](media/sales-and-campaign.png)
+
 40. **Open** 'Dashboard Images' report.
 
 41. **Pin** all images from report to the 'Engagement Accelerators Dashboard'.
 
 42. **Go back** to the Dashboard.
 
+![Open dashboard images](media/dashboard-images1.png)
+
 43. For all images tiles **click** on 'More Options'.
 
 44. **Click** 'Edit details'.
+
+![Edit details.](media/edit-details.png)
 
 45. **Disable** 'Display title and subtitle'.
 
@@ -326,9 +344,15 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 47. **Repeat** for all images tiles.
 
+![Display title and subtitle.](media/display-title-subtitle.png)
+
 48. After disabling 'Display title and subtitle' for all images, resize and re-arrange top images tiles or chicklets as show in the screenshot.
 
 49. **Resize** and **rearrange** left images tiles or chicklets as show in the screenshot. **Resize** KPI Tile to 1x2 size. **Resize** Deep Dive tile to 1x4 size.
+
+![All images.](media/all-images.png)
+
+![Resize and rearrange.](media/resize-rearrange.png)
 
 50. To **pin** any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
 
