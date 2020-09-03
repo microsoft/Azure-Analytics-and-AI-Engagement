@@ -366,11 +366,11 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 53. **Click** on Pin.
 
+![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
+
 54. The image will be pinned and visible on the dashboard.
 
 55. Similarly, more images can be pinned to this dashboard by repeating this process.
-
-![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
 
 56. To view the pinned visuals, **click** on the 'Dashboards' section.
 
