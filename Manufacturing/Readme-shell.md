@@ -201,6 +201,8 @@
 
 3. **Select** the Workspace 'Engagement Accelerators – Manufacturing'.
 
+![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/select-workspace.png)
+
 4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
 The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
@@ -278,11 +280,15 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 25. **Click** Upload the JSON theme.
 
+![Upload JSON.](media/upload-json.png)
+
 26. **Navigate** to the location where you have saved the JSON theme in Step #21 above file and **Select** open.
+
+![Open JSON.](media/select-open.png)
+
 
 27. Click **Save**.
 
-![Upload JSON.](media/upload-json.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
@@ -326,11 +332,11 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 40. **Open** 'Dashboard Images' report.
 
+![Open dashboard images](media/dashboard-images1.png)	
+
 41. **Pin** all images from report to the 'Engagement Accelerators Dashboard'.
 
 42. **Go back** to the Dashboard.
-
-![Open dashboard images](media/dashboard-images1.png)
 
 43. For all images tiles **click** on 'More Options'.
 
@@ -387,6 +393,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
 60. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
 
