@@ -325,7 +325,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 37. **Click** 'Sales and Campaign' report page.
 
-![Edit the report.](media/hidden-report-page.png)
+![Edit the report.](media/hidden-report-page.PNG)
 
 38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals.
 
