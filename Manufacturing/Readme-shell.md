@@ -69,11 +69,15 @@
 
 4. Then **click** on the 'Create a workspace' tab.
 
-> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
-
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-5. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
+5. **Enter** the 'Workspace name' and 'Description' and **click** 'Save'.
+
+![Give the name and description for the new workspace.](media/name-the-workspace.png)
+
+> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
+
+6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
@@ -189,6 +193,10 @@
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
     
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
+ 
+ 14. **Wait** for the script execution to complete. You will see a similar screen as shown below:
+ 
+     ![Script execution finished.](media/script-completion.png)
 
 ### Task 5: Power BI Dashboard creation
 
