@@ -907,6 +907,131 @@ WITH
        CLUSTERED COLUMNSTORE INDEX
 )
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-EmergencyEvent]
+( 
+	[EmergencyEventId] [bigint]  NULL,
+	[LocationAreaId] [bigint]  NULL,
+	[OccurredOn] [date]  NULL,
+	[Type] [varchar](200)  NULL,
+	[Category] [varchar](200)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-EmergencyEventPerson]
+( 
+	[EmergencyEventPersonId] [bigint]  NULL,
+	[EmergencyEventId] [bigint]  NULL,
+	[PersonName] [nvarchar](2000)  NULL,
+	[AbsenceStartDate] [date]  NULL,
+	[AbsenceEndDate] [date]  NULL,
+	[LostManHours] [int]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[milling-canning]
+( 
+	[anomalytemperature] [nvarchar](4000)  NULL,
+	[batchcode] [nvarchar](4000)  NULL,
+	[coolanttemperature] [nvarchar](4000)  NULL,
+	[epochtime] [nvarchar](4000)  NULL,
+	[eventenqueuedutctime] [nvarchar](4000)  NULL,
+	[eventprocessedutctime] [nvarchar](4000)  NULL,
+	[jobcode] [nvarchar](4000)  NULL,
+	[machinecode] [nvarchar](4000)  NULL,
+	[operationid] [nvarchar](4000)  NULL,
+	[partitionid] [nvarchar](4000)  NULL,
+	[spindlespeed] [nvarchar](4000)  NULL,
+	[stringdatetime] [nvarchar](4000)  NULL,
+	[vibrationx] [nvarchar](4000)  NULL,
+	[vibrationy] [nvarchar](4000)  NULL,
+	[vibrationz] [nvarchar](4000)  NULL,
+	[xaxis] [nvarchar](4000)  NULL,
+	[yaxis] [nvarchar](4000)  NULL,
+	[zaxis] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[racingcars]
+( 
+	[ActiveSensors] [nvarchar](4000)  NULL,
+	[AlarmsIncidents] [nvarchar](4000)  NULL,
+	[AverageRPM] [nvarchar](4000)  NULL,
+	[AverageRPMEnd] [nvarchar](4000)  NULL,
+	[AverageRPMR1] [nvarchar](4000)  NULL,
+	[AverageRPMR2] [nvarchar](4000)  NULL,
+	[AverageRPMR3] [nvarchar](4000)  NULL,
+	[AverageRPMStart] [nvarchar](4000)  NULL,
+	[axCG] [nvarchar](4000)  NULL,
+	[ayCG] [nvarchar](4000)  NULL,
+	[azCG] [nvarchar](4000)  NULL,
+	[brake] [nvarchar](4000)  NULL,
+	[CallsCountAverageResponseTime] [nvarchar](4000)  NULL,
+	[chassisAccelFL] [nvarchar](4000)  NULL,
+	[chassisAccelFR] [nvarchar](4000)  NULL,
+	[chassisAccelRL] [nvarchar](4000)  NULL,
+	[chassisAccelRR] [nvarchar](4000)  NULL,
+	[clutch] [nvarchar](4000)  NULL,
+	[distance] [nvarchar](4000)  NULL,
+	[engineSpeed] [nvarchar](4000)  NULL,
+	[EpochTime] [nvarchar](4000)  NULL,
+	[EventEnqueuedUtcTime] [nvarchar](4000)  NULL,
+	[EventProcessedUtcTime] [nvarchar](4000)  NULL,
+	[horizontalSpeed] [nvarchar](4000)  NULL,
+	[IoTHub] [nvarchar](4000)  NULL,
+	[MachineStatus] [nvarchar](4000)  NULL,
+	[PartitionId] [nvarchar](4000)  NULL,
+	[StringDateTime] [nvarchar](4000)  NULL,
+	[throttle] [nvarchar](4000)  NULL,
+	[time] [nvarchar](4000)  NULL,
+	[vxCG] [nvarchar](4000)  NULL,
+	[vyCG] [nvarchar](4000)  NULL,
+	[vzCG] [nvarchar](4000)  NULL,
+	[wheelAccelFL] [nvarchar](4000)  NULL,
+	[wheelAccelFR] [nvarchar](4000)  NULL,
+	[wheelAccelRL] [nvarchar](4000)  NULL,
+	[wheelAccelRR] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+
+
 
 
 

@@ -367,6 +367,13 @@ $sqlquery = $sqlquery.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
+
+
+$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+	
  
 #uploading Sql Scripts
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
@@ -1137,6 +1144,19 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-iot-json
 $dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CustomerInformation"}} , @{Name = "TABLE_NAME"; Expression = {"CustomerInformation"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-EmergencyEvent"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-EmergencyEvent"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-emergencyeventperson"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-emergencyeventperson"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"racingcars"}} , @{Name = "TABLE_NAME"; Expression = {"racingcars"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"milling-canning"}} , @{Name = "TABLE_NAME"; Expression = {"milling-canning"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
