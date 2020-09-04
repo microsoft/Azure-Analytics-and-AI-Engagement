@@ -20,13 +20,12 @@
 
 ## Requirements
 
-1. An Azure Account with the ability to create an Azure Synapse Workspace.
-2. A Power BI Pro or Premium account to host Power BI reports.
-3. Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
-4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
-5. Do not use any special characters or uppercase letters in the environment code.
-6. Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
-7. The audience for this document is CSAs and GBBs.
+* An Azure Account with the ability to create an Azure Synapse Workspace.
+* A Power BI Pro or Premium account to host Power BI reports.
+* Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
+* Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
+* Do not use any special characters or uppercase letters in the environment code.
+* Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
@@ -70,11 +69,15 @@
 
 4. Then **click** on the 'Create a workspace' tab.
 
-> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
-
 ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-5. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
+5. **Enter** the 'Workspace name' and 'Description' and **click** 'Save'.
+
+![Give the name and description for the new workspace.](media/name-the-workspace.png)
+
+> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
+
+6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
@@ -190,6 +193,10 @@
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
     
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
+ 
+ 14. **Wait** for the script execution to complete. You will see a similar screen as shown below:
+ 
+     ![Script execution finished.](media/script-completion.png)
 
 ### Task 5: Power BI Dashboard creation
 
@@ -425,7 +432,17 @@ Similarly, the color of the KPI value and title value can be changed from the Da
 
 ![Turn on background.](media/Background-Dark.png)
 
-All other visuals of the report can be created by following a similar process. By following the same process for the 'milling canning' Dataset we can create the following real-time reports
+> Note: All other visuals of the report can be created by following a similar process.
+
+13. **Click** on the 'Save this report' icon.
+
+![Clicking on Save the report icon.](media/save-icon-click.png)
+
+14. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
+
+![Save the report.](media/save-report.png)
+
+ By following the same process for the 'milling canning' Dataset we can create the following real-time reports
 - Milling Canning report
 - Maintenance and Cost Analytics
 - Miami Racing Cars
@@ -440,6 +457,10 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 2. Log in with your Azure credentials.
 
  	![Selecting workspace.](media/select-workspace0.png)
+	
+3. **Close** the 'Getting started' screen to **access** the navigation pane on the left. 
+
+      ![Close the getting started screen.](media/close-welcome-screen.png)
 
 3.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
 4.  **Click** 'Linked' tab.
