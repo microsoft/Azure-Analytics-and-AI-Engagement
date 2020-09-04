@@ -1055,7 +1055,7 @@ $ht.add("#REPORT_FACTORY_ID#", $($reportList | where {$_.Name -eq "Factory-Overv
 $ht.add("#REPORT_FINANCE_ID#", $($reportList | where {$_.Name -eq "1_Billion rows demo"}).ReportId)
 $ht.add("#REPORT_GLOBALBING_ID#", $($reportList | where {$_.Name -eq "VP-Global-Overview"}).ReportId)
 $ht.add("#REPORT_SAFETY_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
-$ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.Name -eq "Equipment View Report"}).ReportId)
 $ht.add("#REPORT_MACHINE_ANOMOLY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
 $ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.Name -eq "6_Production Quality- HTAP Synapse Link"}).ReportId)
 $ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign Sales Operations"}).ReportId)
