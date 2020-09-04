@@ -888,7 +888,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MFGFactSales]
+CREATE TABLE [dbo].[MFG-FactSales]
 (
        [ProductID] [nvarchar](4000) NULL,
        [Analyst] [nvarchar](4000) NULL,
