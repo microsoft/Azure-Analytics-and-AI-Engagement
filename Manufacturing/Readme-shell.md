@@ -26,6 +26,7 @@
 4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
 5. Do not use any special characters or uppercase letters in the environment code.
 6. Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
+7. The audience for this document is CSAs and GBBs.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
@@ -92,13 +93,14 @@
 7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation) in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
-> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
 10. **Click** the 'Create' button once the template has been validated.
 
    ![Creating the template after validation.](media/template-validated-create.png)
+
+> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
 11. **Stay** on the same page and wait for the deployment to complete.
     
@@ -137,7 +139,7 @@
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
-4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in a new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
@@ -164,26 +166,26 @@
 9. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
-     
-10. While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+   
+> **Note:** While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-11. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+10. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-12. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
+11. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-13. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+12. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-14. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+13. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
     
@@ -363,39 +365,15 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-50. To **pin** any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
-
-![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
-
-51. In the 'Dashboard Images' report, **select** any image and then **click** on the pin icon.
-
-![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
-
-52. **Select** 'Existing Dashboard' radio button and select the 'Engagement Accelerators' dashboard.
-
-53. **Click** on Pin.
-
-![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
-
-54. The image will be pinned and visible on the dashboard.
-
-55. Similarly, more images can be pinned to this dashboard by repeating this process.
-
-56. To view the pinned visuals, **click** on the 'Dashboards' section.
-
-57. **Select** 'Engagement Accelerators Dashboard'. This will launch the dashboard, and you can view the pinned visuals on it.
-
-![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
-
-58. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+50. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-59. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
+51. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-60. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+52. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
