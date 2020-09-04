@@ -20,13 +20,12 @@
 
 ## Requirements
 
-1. An Azure Account with the ability to create an Azure Synapse Workspace.
-2. A Power BI Pro or Premium account to host Power BI reports.
-3. Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
-4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
-5. Do not use any special characters or uppercase letters in the environment code.
-6. Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
-7. The audience for this document is CSAs and GBBs.
+* An Azure Account with the ability to create an Azure Synapse Workspace.
+* A Power BI Pro or Premium account to host Power BI reports.
+* Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
+* Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
+* Do not use any special characters or uppercase letters in the environment code.
+* Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
