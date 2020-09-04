@@ -319,6 +319,8 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
 
+![Pin visuals to the dashboard.](media/pin-profit-card.png)
+
 **Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
 
 36. **Click** on Edit report.
