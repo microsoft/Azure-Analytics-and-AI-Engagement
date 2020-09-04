@@ -432,7 +432,17 @@ Similarly, the color of the KPI value and title value can be changed from the Da
 
 ![Turn on background.](media/Background-Dark.png)
 
-All other visuals of the report can be created by following a similar process. By following the same process for the 'milling canning' Dataset we can create the following real-time reports
+> Note: All other visuals of the report can be created by following a similar process.
+
+13. **Click** on the 'Save this report' icon.
+
+![Clicking on Save the report icon.](media/save-icon-click.png)
+
+14. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
+
+![Save the report.](media/save-report.png)
+
+ By following the same process for the 'milling canning' Dataset we can create the following real-time reports
 - Milling Canning report
 - Maintenance and Cost Analytics
 - Miami Racing Cars
@@ -447,6 +457,10 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 2. Log in with your Azure credentials.
 
  	![Selecting workspace.](media/select-workspace0.png)
+	
+3. **Close** the 'Getting started' screen to **access** the navigation pane on the left. 
+
+      ![Close the getting started screen.](media/close-welcome-screen.png)
 
 3.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
 4.  **Click** 'Linked' tab.
