@@ -800,3 +800,114 @@ WITH
 GO
 
 
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mfg-BatchSummary]
+( 
+	[BatchCode] [varchar](500)  NOT NULL,
+	[StartTime] [datetime]  NULL,
+	[EndTime] [datetime]  NULL,
+	[PreparationTime] [float]  NULL,
+	[TotalIdleTime] [float]  NULL,
+	[JobOutput] [float]  NULL,
+	[PoweringOffTime] [float]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [BatchCode] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+CREATE TABLE [dbo].[mfg-Product-BatchMapping]
+( 
+	[batchcode] [varchar](500)  NOT NULL,
+	[productid] [int]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+CREATE VIEW [dbo].[Vw_Mfg_batchSummary]
+AS SELECT  SUM(jobOutput) AS ProducedQty,
+                    BPM.ProductId
+                          FROM [mfg-BatchSummary] AS BS
+                    LEFT OUTER JOIN 
+                    [mfg-Product-BatchMapping] AS BPM ON BPM.BatchCode = BS.BatchCode
+                    GROUP BY BPM.ProductId  HAVING ProductId IS NOT NULL;
+GO
+
+/****** Object:  Table [dbo].[mfg-iot-json]    Script Date: 9/2/2020 5:51:41 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-iot-json]
+(
+       [IoTData] [nvarchar](4000) NULL
+)
+WITH
+(
+       DISTRIBUTION = ROUND_ROBIN,
+       CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+/****** Object:  Table [dbo].[CustomerInformation]    Script Date: 9/2/2020 5:53:31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CustomerInformation]
+(
+       [UserName] [nvarchar](4000) NULL,
+       [Gender] [nvarchar](4000) NULL,
+       [Phone] [nvarchar](4000) NULL,
+       [Email] [nvarchar](4000) NULL,
+       [CreditCard] [nvarchar](19) NULL
+)
+WITH
+(
+       DISTRIBUTION = ROUND_ROBIN,
+       CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+/****** Object:  Table [dbo].[MFG-FactSales]    Script Date: 9/2/2020 5:55:49 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MFGFactSales]
+(
+       [ProductID] [nvarchar](4000) NULL,
+       [Analyst] [nvarchar](4000) NULL,
+       [Product] [nvarchar](4000) NULL,
+       [CampaignName] [nvarchar](4000) NULL,
+       [Qty] [nvarchar](4000) NULL,
+       [Region] [nvarchar](4000) NULL,
+       [State] [nvarchar](4000) NULL,
+       [City] [nvarchar](4000) NULL,
+       [Revenue] [nvarchar](4000) NULL,
+       [RevenueTarget] [nvarchar](4000) NULL
+)
+WITH
+(
+       DISTRIBUTION = ROUND_ROBIN,
+       CLUSTERED COLUMNSTORE INDEX
+)
+
+
+
+
+
