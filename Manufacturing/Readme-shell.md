@@ -439,7 +439,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
 2. Log in with your Azure credentials.
 
- 	![Selecting workspace.](media/select-workspace.png)
+ 	![Selecting workspace.](media/select-workspace0.png)
 
 3.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
 4.  **Click** 'Linked' tab.
