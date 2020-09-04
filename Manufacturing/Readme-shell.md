@@ -26,6 +26,7 @@
 4. Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
 5. Do not use any special characters or uppercase letters in the environment code.
 6. Please ensure that you select the correct resource group name. We have given a sample name which  may need to be changed should any resource group with the same name already exist in your subscription.
+7. The audience for this document is CSAs and GBBs.
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
@@ -92,13 +93,14 @@
 7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation) in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
-> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
 10. **Click** the 'Create' button once the template has been validated.
 
    ![Creating the template after validation.](media/template-validated-create.png)
+
+> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
 11. **Stay** on the same page and wait for the deployment to complete.
     
@@ -137,7 +139,7 @@
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
-4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in a new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
@@ -164,26 +166,26 @@
 9. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
-     
-10. While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+   
+> **Note:** While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-11. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+10. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-12. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
+11. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-13. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+12. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-14. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+13. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
      ![Select the user account which you want to authenticate.](media/authentication-done.png)
     
@@ -317,6 +319,8 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
 
+![Pin visuals to the dashboard.](media/pin-profit-card.png)
+
 **Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
 
 36. **Click** on Edit report.
@@ -363,39 +367,15 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-50. To **pin** any image on the dashboard, **select** the report 'Dashboard Images' which has images on it from the reports section.
-
-![Further steps to pin visualization on the dashboard.](media/Dashboard-Images.png)
-
-51. In the 'Dashboard Images' report, **select** any image and then **click** on the pin icon.
-
-![Further steps to pin visualization on the dashboard.](media/Pin-Images.png)
-
-52. **Select** 'Existing Dashboard' radio button and select the 'Engagement Accelerators' dashboard.
-
-53. **Click** on Pin.
-
-![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard1.png)
-
-54. The image will be pinned and visible on the dashboard.
-
-55. Similarly, more images can be pinned to this dashboard by repeating this process.
-
-56. To view the pinned visuals, **click** on the 'Dashboards' section.
-
-57. **Select** 'Engagement Accelerators Dashboard'. This will launch the dashboard, and you can view the pinned visuals on it.
-
-![Further steps to pin visualization on the dashboard.](media/Refer-Visuals.png)
-
-58. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+50. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-59. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
+51. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
-60. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
+52. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
 
 
 > **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
@@ -459,7 +439,7 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
 2. Log in with your Azure credentials.
 
- 	![Selecting workspace.](media/select-workspace.png)
+ 	![Selecting workspace.](media/select-workspace0.png)
 
 3.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
 4.  **Click** 'Linked' tab.
@@ -487,125 +467,101 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
  	![Selecting workspace 4](media/select-workspace4.png)
 
-**As Excel changes data type of columns to string, please be careful with format of any Date column. This may also depend on your Regional Settings Date and Time Format.**
- 
-17. **Select** 'CampaignStartDate' column.
-18. **Click** on 'format cells'.
-19. **Select** 'Category' as 'Date'.
-20. **Select** the format "yyyy-mm-dd".
-21. **Click** 'OK'.
-
- 	![Selecting workspace 5](media/select-workspace5.png)
-
-22. **Save** the file by pressing the highlighted button. **Close** the file.
+17. **Save** the file by pressing the highlighted button. **Close** the file.
 
  	![Selecting workspace 6](media/select-workspace6.png)
 
-23. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+18. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 
  	![Selecting workspace 7](media/select-workspace7.png)
 
-24. **Select** 'CampaignData.csv' file that you updated above till Step 22.
-25. **Click** the checkbox for overwriting existing files.
-26. **Click** 'Upload'.
+19. **Select** 'CampaignData.csv' file that you updated above till Step 22.
+20. **Click** the checkbox for overwriting existing files.
+21. **Click** 'Upload'.
 
 	![Selecting workspace 8](media/select-workspace8.png)
 
 **Now let's change the 'Category' in Product.csv file:**
 
-27. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
-28.  **Select** 'Product.csv'.
-29.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
+22. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
+23.  **Select** 'Product.csv'.
+24.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
 
         ![Selecting workspace 9](media/select-workspace9.png)
 
-30.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+25.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
 
         ![Selecting workspace 10](media/select-workspace10.png)
 
-31. **Select** 'Category' column (Column G of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-32. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
-33. **Click** 'Replace All'.
-34. **Pop up** will be displayed with all done replacement message.
-35. **Click** OK.
+26. **Select** 'Category' column (Column G of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+27. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
+28. **Click** 'Replace All'.
+29. **Pop up** will be displayed with all done replacement message.
+30. **Click** OK.
 
 	![Selecting workspace 11](media/select-workspace11.png)
 
-36. **Save** the file by pressing the highlighted button. **Close** the file.
+31. **Save** the file by pressing the highlighted button. **Close** the file.
  
 	![Selecting workspace 12](media/select-workspace12.png)
  
-37. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+32. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 
 	![Selecting workspace 13](media/select-workspace7.png)	
 
-38. **Select** 'Product.csv' file that you updated above till Step 37.
-39. **Click** the checkbox for overwriting existing files.
-40. **Click** 'Upload'.
+33. **Select** 'Product.csv' file that you updated above till Step 37.
+34. **Click** the checkbox for overwriting existing files.
+35. **Click** 'Upload'.
 
 	![Selecting workspace 14](media/select-workspace14.png)
 
 **Now, let's change 'Hashtags':**
 
-41. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
-42.  **Select** 'Campaignproducts.csv'.
-43.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
+36. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
+37.  **Select** 'Campaignproducts.csv'.
+38.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
 
         ![Selecting workspace 15](media/select-workspace15.png)
 
-44.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+39.  **Open** the downloaded file. Assuming Microsoft Excel is installed, the file should get opened in the same. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
 
         ![Selecting workspace 16](media/select-workspace16.png)
  
-45. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-46. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
-47. **Click** 'Replace All'.
-48. **Pop up** will be displayed with all done replacement message.
-49. **Click** OK.
+40. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+41. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
+42. **Click** 'Replace All'.
+43. **Pop up** will be displayed with all done replacement message.
+44. **Click** OK.
 
  	![Selecting workspace 17](media/select-workspace17.png)
 
-**In this file, data type of 'CampaignRowKey' will change to 'string' format. Please change the data type of column 'CampiagnRowkey' from string to number format.**
- 
-50. **Select** 'CampaignRowKey' column (Column F of Excel).
-51. **Click** 'More Number Formats' from the format dropdown.
-
- 	![Selecting workspace 18](media/select-workspace18.png)
-
-52. **Click** 'Number' format.
-53. **Select** '0' as 'Decimal places'.
-54. **Select** '1234' as 'Negative numbers' format.
-55. **Click** 'OK'.
-
- 	![Selecting workspace 19](media/select-workspace19.png)
-
-56. **Save** the file by pressing the highlighted button. **Close** the file.
+45. **Save** the file by pressing the highlighted button. **Close** the file.
 
  	![Selecting workspace 12](media/select-workspace12.png)
 
-57. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
-58. **Select** 'Campaignproducts.csv' file that you updated above till Step 57.
-59. **Click** the checkbox for overwriting existing files.
-60. **Click** 'Upload'.
+46. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+47. **Select** 'Campaignproducts.csv' file that you updated above till Step 57.
+48. **Click** the checkbox for overwriting existing files.
+49. **Click** 'Upload'.
 
  	![Selecting workspace 21](media/select-workspace21.png)  
 
 **Now let's update the dataset with this new data:**
  
-61. **Navigate** to 'Orchestrate' hub from the left navigation.
-62. **Expand** 'Pipelines' node.
-63. **Click** on '1 Master Pipeline'.
-64. **Click** 'Add trigger'.
-65. **Click** 'Trigger now'.
+50. **Navigate** to 'Orchestrate' hub from the left navigation.
+51. **Expand** 'Pipelines' node.
+52. **Click** on '1 Master Pipeline'.
+53. **Click** 'Add trigger'.
+54. **Click** 'Trigger now'.
 
  	![Selecting workspace 22](media/select-workspace22.png)
 
-66. **Navigate** to 'Monitor' hub from the left navigation.
-67. **Click** 'Pipeline runs'.
+55. **Navigate** to 'Monitor' hub from the left navigation.
+56. **Click** 'Pipeline runs'.
 
  	![Selecting workspace 23](media/select-workspace23.png)
 
-68. **Observe** '1 Master Pipeline'.
+57. **Observe** '1 Master Pipeline'.
 
  	![Selecting workspace 24](media/select-workspace24.png)
 
@@ -613,16 +569,16 @@ Once these real-time reports are ready we can pin them to the dashboard (by foll
 
 **Finally, let's see the changes propogated into dataset reflected in Power BI:**
  
-69. **Navigate** to 'Develop' hub from the left navigation.
-70. **Expand** 'Power BI'.
-71. **Expand** Power BI Workspace starting with name 'Engagement Accelerators'.
-72. **Expand** 'Power BI reports'.
-73. **Click** on 'Campaign - Option C' Power BI report.
+58. **Navigate** to 'Develop' hub from the left navigation.
+59. **Expand** 'Power BI'.
+60. **Expand** Power BI Workspace starting with name 'Engagement Accelerators'.
+61. **Expand** 'Power BI reports'.
+62. **Click** on 'Campaign - Option C' Power BI report.
 
  	![Selecting workspace 25](media/select-workspace25.png)	
 
-74. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
-75. 'Product Category' should have one of the updated category as **'Gift Cards'**.
-76. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
+63. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
+64. 'Product Category' should have one of the updated category as **'Gift Cards'**.
+65. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
 
  	![Selecting workspace 26](media/select-workspace26.png)
