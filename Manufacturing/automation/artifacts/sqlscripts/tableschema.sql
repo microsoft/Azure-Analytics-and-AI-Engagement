@@ -1031,6 +1031,86 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-MaintenanceCode]
+( 
+	[MaintenanceCodeId] [bigint]  NOT NULL,
+	[MaintenanceCode] [varchar](200)  NULL,
+	[MaintenanceType] [varchar](200)  NULL,
+	[ActivityName] [varchar](2000)  NULL,
+	[MaxTime] [int]  NULL,
+	[ScheduleInterval] [varchar](200)  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [MaintenanceCodeId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-MaintenanceCost]
+( 
+	[MaintenanceCostId] [int]  NULL,
+	[AggregatedFor] [date]  NULL,
+	[EnergyConsumptionKwH] [decimal](20,2)  NULL,
+	[EnergyCharge] [decimal](20,2)  NULL,
+	[MaintenanceCharge] [decimal](20,2)  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [AggregatedFor] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-PlannedMaintenanceActivity]
+( 
+	[PlannedMaintenanceActivityId] [bigint]  NOT NULL,
+	[MaintenanceId] [bigint]  NULL,
+	[MaintenanceCodeId] [bigint]  NULL,
+	[StartTime] [datetime]  NULL,
+	[EndTime] [datetime]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [PlannedMaintenanceActivityId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[mfg-UnplannedMaintenanceActivity]
+( 
+	[UnplannedMaintenanceActivityId] [bigint]  NOT NULL,
+	[MaintenanceId] [bigint]  NULL,
+	[MaintenanceCodeId] [bigint]  NULL,
+	[StartTime] [datetime]  NULL,
+	[EndTime] [datetime]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [UnplannedMaintenanceActivityId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+
 
 
 
