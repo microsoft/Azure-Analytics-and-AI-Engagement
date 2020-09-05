@@ -1159,6 +1159,27 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"milling-canning"}} , @{Name = "TABLE_NAME"; Expression = {"milling-canning"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"jobquality"}} , @{Name = "TABLE_NAME"; Expression = {"jobquality"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-ProductQuality"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-ProductQuality"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactoryOverviewTable"}} , @{Name = "TABLE_NAME"; Expression = {"FactoryOverviewTable"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-MaintenanceCost"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-MaintenanceCost"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-MaintenanceCode"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-MaintenanceCode"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-PlannedMaintenanceActivity"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-PlannedMaintenanceActivity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-UnplannedMaintenanceActivity"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-UnplannedMaintenanceActivity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
