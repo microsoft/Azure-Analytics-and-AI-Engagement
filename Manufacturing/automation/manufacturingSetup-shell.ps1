@@ -1185,6 +1185,9 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-UnplannedMaintenanceActivity"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-UnplannedMaintenanceActivity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-location"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-Location"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
