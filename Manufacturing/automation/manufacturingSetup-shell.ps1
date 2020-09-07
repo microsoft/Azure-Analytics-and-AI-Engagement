@@ -378,6 +378,11 @@ $sqlQuery="CREATE USER [SalesStaff] FOR LOGIN [SalesStaff] WITH DEFAULT_SCHEMA=[
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
+
+$sqlQuery="GRANT SELECT ON dbo.CustomerInformation TO [SalesStaff]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
 	
  
 #uploading Sql Scripts
