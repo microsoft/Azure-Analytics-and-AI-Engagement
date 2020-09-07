@@ -392,7 +392,7 @@ $cosmos_account_key=$cosmos_account_key.primarymasterkey
 
 foreach ($name in $scripts) 
 {
-    if ($name -eq "tableschema")
+    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "sqluser")
     {
         continue;
     }
