@@ -41,7 +41,7 @@
 
 3. In the **Search the Marketplace** text box, type 'Resource Group' and **press** the Enter key.
 
-    ![On the new resource screen Resource group is entered as a search term.](../CDP-Retail/media/bhol_searchmarketplaceresourcegroup.png)
+    ![On the new resource screen Resource group is entered as a search term.](media/bhol_searchmarketplaceresourcegroup.png)
 
 4. **Select** the 'create' button on the 'Resource Group' overview page.
 
