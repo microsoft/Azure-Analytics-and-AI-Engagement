@@ -666,7 +666,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 9.  **Click** 'customcsv' container.
 10.  **Double Click** 'Manufacturing B2C Scenario Dataset'.
 
- 	![Selecting workspace 1.](media/select-workspace1.png)
+       ![Selecting workspace 1.](media/select-workspace1.png)
 
 11.  **Select** 'CampaignData.csv'.
 12.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. The file will download locally.
@@ -685,7 +685,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 > **Note:** In this demo, we change one campaign. In real-life you would have multiple campaigns, and you would be inserting campaigns aligned to your customer.
 
- 	![Selecting workspace 4](media/select-workspace4.png)
+   ![Selecting workspace 4](media/select-workspace4.png)
 
 19. **Save** the file by pressing the highlighted button. **Close** the file.
 
@@ -709,7 +709,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 > **Note:** In this demo, we change one category. In real-life you would have multiple categories, and you would be inserting categories aligned to your customer.
 
-        ![Selecting workspace 9](media/select-workspace9.png)
+   ![Selecting workspace 9](media/select-workspace9.png)
 
 27.  **Open** the downloaded file. In case file does not open in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
 
