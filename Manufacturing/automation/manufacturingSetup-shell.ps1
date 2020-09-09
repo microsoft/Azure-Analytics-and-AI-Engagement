@@ -379,11 +379,40 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
 
+$sqlQuery="CREATE USER [InventoryManager] FOR LOGIN [InventoryManager] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery="CREATE USER [SalesStaffSanDiego] FOR LOGIN [SalesStaffSanDiego] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery="CREATE USER [SalesStaffMiami] FOR LOGIN [SalesStaffMiami] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+
 $sqlQuery="GRANT SELECT ON dbo.CustomerInformation TO [SalesStaff]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
-	
+
+$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO SalesStaffSanDiego"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO [InventoryManager]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO SalesStaffMiami]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result		
  
 #uploading Sql Scripts
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
