@@ -429,24 +429,24 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 **Pin visuals from the static report:**
 
-1. **Click** Workspace ‘Engagement Accelerators - Manufacturing’.
+1. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
 2. **Click** on Reports tab.
-3. **Search** ‘Real Time Analytics Static Report’.
-4. **Click** ‘Real Time Analytics Static Report’.
+3. **Search** 'Real Time Analytics Static Report’.
+4. **Click** 'Real Time Analytics Static Report’.
 
 !['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
 
-5. **Click** on ‘Real time Operational Analytics’ page.
+5. **Click** on 'Real time Operational Analytics’ page.
 
 !['Realtime Operational Analystics'.](media/realtime-operational-analytics2.png)
 
-**Hover on the highlighted visuals to pin them to ‘Engagement Accelerators Dashboard’.**
+**Hover on the highlighted visuals to pin them to 'Engagement Accelerators Dashboard’.**
 
-6. **Pin** ‘Machine Status’ card visual.
-7. **Pin** ‘MTTR/MTBF (Hours)’ card visual.
-8. **Pin** ‘Alarms/Incidents’ card visual.
-9. **Pin** ‘OEE and Elements’ visual.
-10. **Pin** ‘Machine Vibration (mm) Milling-Canning’ visual.
+6. **Pin** 'Machine Status’ card visual.
+7. **Pin** 'MTTR/MTBF (Hours)’ card visual.
+8. **Pin** 'Alarms/Incidents’ card visual.
+9. **Pin** 'OEE and Elements’ visual.
+10. **Pin** 'Machine Vibration (mm) Milling-Canning’ visual.
 
 > **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
@@ -470,7 +470,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
 17. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
-18. **Select** ‘Card’ from Visualization pane.
+18. **Select** 'Card’ from Visualization pane.
 19. **Select** drop-down next to 'ActiveSensors'.
 20. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
 
@@ -486,7 +486,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 ![Card Visual selected.](media/active_sensors.png)
 
-25. **Change** the 'Data label' color to ‘White’.
+25. **Change** the 'Data label' color to 'White’.
 
 ![Change data label to white.](media/data-label-white.png)
 
@@ -508,28 +508,28 @@ Similarly, the color of the KPI value and title value can be changed from the Da
 
 **Creating the Realtime Field and Sentiment Analytics pillar**
 
-In this section of the document we will create the ‘Realtime Field and Sentiment Analytics’ pillar (screenshot on the right) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
+In this section of the document we will create the 'Realtime Field and Sentiment Analytics’ pillar (screenshot on the right) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
 
 ![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar.png)
 
 **Pin visuals from the static report:**
 
-29. **Click** Workspace ‘Engagement Accelerators - Manufacturing’.
+29. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
 30. **Click** on Reports tab.
-31. **Search** ‘Real Time Analytics Static Report’.
-32. **Click** ‘Real Time Analytics Static Report’.
+31. **Search** 'Real Time Analytics Static Report’.
+32. **Click** 'Real Time Analytics Static Report’.
 
 !['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
 
-33. **Click** on the ‘Real time Field and Sentiment Analytics report’ page in the previously opened ‘Real Time Analytics Static Report’.
+33. **Click** on the 'Real time Field and Sentiment Analytics report’ page in the previously opened 'Real Time Analytics Static Report’.
 
 ![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar1.png)
 
-**Hover on the highlighted visuals to pin them to ‘Engagement Accelerators Dashboard’.**
+**Hover on the highlighted visuals to pin them to 'Engagement Accelerators Dashboard’.**
 
-34. **Pin** ‘Fields Calls-Avg Response Time (in minutes)’ visual.
-35. **Pin** ‘Alarms and Safety Incidents’ visual.
-36. **Pin** ‘Real time Anomaly’ visual.
+34. **Pin** 'Fields Calls-Avg Response Time (in minutes)’ visual.
+35. **Pin** 'Alarms and Safety Incidents’ visual.
+36. **Pin** 'Real time Anomaly’ visual.
 
 > **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
@@ -552,25 +552,25 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
-43. **Select** ‘Tachometer’ visual from visualizations pane.
-44. **Drag** and **Drop** ‘AverageRPM’ under value from race-cars dataset.
-45. **Select** 'Average' from the context menu to get the average of ‘AverageRPM’.
+43. **Select** 'Tachometer’ visual from visualizations pane.
+44. **Drag** and **Drop** 'AverageRPM’ under value from race-cars dataset.
+45. **Select** 'Average' from the context menu to get the average of 'AverageRPM’.
 
 > **Note:** If you don’t have custom visual tachometer downloaded or don’t know how to use it please refer to the Microsoft tutorial: https://powerbi.microsoft.com/en-us/blog/visual-awesomeness-unlocked-tachometer-gauge-custom-visual/
 
 ![Average RPM.](media/average-rpm1.png)
 
-46. **Drag** and **Drop** ‘AverageRPMStart’ under ‘Start Value’ from race-cars dataset.
-47. **Select** 'Average' from the context menu to get the sum of ‘AverageRPMStart’.
-48. **Drag** and **Drop** ‘AverageRPMEnd’ under ‘End Value’ from race-cars dataset and **follow** step #45 to get the Average of ‘AverageRPMEnd’.
-49. **Drag** and **Drop** ‘AverageRPMR2’ under ‘Range2 Start Value’ from race-cars dataset and **follow** step #45 to get Average of ‘AverageRPMR2’.
-50. **Drag** and **Drop** ‘AverageRPMR3’ under ‘Range3 Start Value’ from race-cars dataset and **follow** step #45 to get the Average of ‘AverageRPMR3’.
+46. **Drag** and **Drop** 'AverageRPMStart’ under 'Start Value’ from race-cars dataset.
+47. **Select** 'Average' from the context menu to get the sum of 'AverageRPMStart’.
+48. **Drag** and **Drop** 'AverageRPMEnd’ under 'End Value’ from race-cars dataset and **follow** step #45 to get the Average of 'AverageRPMEnd’.
+49. **Drag** and **Drop** 'AverageRPMR2’ under 'Range2 Start Value’ from race-cars dataset and **follow** step #45 to get Average of 'AverageRPMR2’.
+50. **Drag** and **Drop** 'AverageRPMR3’ under 'Range3 Start Value’ from race-cars dataset and **follow** step #45 to get the Average of 'AverageRPMR3’.
 
 ![Average RPM.](media/average-rpm2.png)
 
 51. With the tachometer visual selected, **click** on the format tab.
 52. **Turn on** 'Title'.
-53. **Change** ‘Title text’ to ‘Average Engine Speed’.
+53. **Change** 'Title text’ to 'Average Engine Speed’.
 
 ![Average RPM.](media/average-rpm3.png)
 
@@ -582,11 +582,11 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 ![Average RPM.](media/average-rpm4.png)
 
-57. **Click** ‘File’ and **select** 'Save' from the drop down.
+57. **Click** 'File’ and **select** 'Save' from the drop down.
 
 ![Average RPM.](media/average-rpm5.png)
 
-58. **Type** ‘Tachometer’ in the text box.
+58. **Type** 'Tachometer’ in the text box.
 59. **Click** 'Save'.
 
 ![Average RPM.](media/average-rpm6.png)
@@ -623,29 +623,29 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 	* wheelAccelFR
 	* wheelAccelRR
 
-71. Using Step #69, **rename** above selected columns- ‘wheelAccelFL’, ‘wheelAccelRL’, ‘wheelAccelFR’ and ‘wheelAccelRR’ to ‘Front Left’, ‘Rear Left’, ‘Front Right’ and ‘Rear Right’ respectively.
+71. Using Step #69, **rename** above selected columns- 'wheelAccelFL’, 'wheelAccelRL’, 'wheelAccelFR’ and 'wheelAccelRR’ to 'Front Left’, 'Rear Left’, 'Front Right’ and 'Rear Right’ respectively.
 
 ![Wheel accelaration tile.](media/wheel-accelaration2.png)
 
 72. With 'Line chart' visual selected, **select** format tab.
 73. **Turn on** 'Title'.
-74. **Change** ‘Title text‘ to ‘Wheel Acceleration’.
+74. **Change** 'Title text' to 'Wheel Acceleration’.
 75. **Pin** the visual to the dashboard.
 
 > **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
 ![Wheel accelaration tile.](media/wheel-accelaration3.png)
 
-76. After pinning the visual to the dashboard, **click** on ‘Save’ icon located on the navigation bar at the top, to save the changes made to the report.
+76. After pinning the visual to the dashboard, **click** on 'Save’ icon located on the navigation bar at the top, to save the changes made to the report.
 
 ![Wheel accelaration tile.](media/wheel-accelaration4.png)
 
-77. Upon successful save, **click** on the workspace name ‘Engagement - Accelerators Manufacturing’.
+77. Upon successful save, **click** on the workspace name 'Engagement - Accelerators Manufacturing’.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-78. In the window that opens, **click** on ‘Dashboards’ tab.
-79. From the list of dashboards that appears, **click** on the dashboard ‘Engagement Accelerators Dashboard’ located under Dashboards tab.
+78. In the window that opens, **click** on 'Dashboards’ tab.
+79. From the list of dashboards that appears, **click** on the dashboard 'Engagement Accelerators Dashboard’ located under Dashboards tab.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
  
@@ -658,7 +658,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
 2. Log in with your Azure credentials.
-3. **Select** the ‘Subscription’ and Synapse ‘Workspace name’ that got created in [Task 3](#task-3-deploy-the-arm-template). The Synapse ‘Workspace name’ will start with ‘manufacturingdemo’.
+3. **Select** the 'Subscription’ and Synapse 'Workspace name’ that got created in [Task 3](#task-3-deploy-the-arm-template). The Synapse 'Workspace name’ will start with 'manufacturingdemo’.
 
  	![Selecting workspace.](media/select-workspace0.png)
 	
