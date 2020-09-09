@@ -1,0 +1,10 @@
+{
+    "name" : "mfg-dtstore",
+    "type" : "azureblob",
+    "credentials" : {
+        "connectionString" : "[STORAGECONNECTION]"
+    },
+    "container" : {
+        "name" : "formrecogoutput"
+    }
+}
