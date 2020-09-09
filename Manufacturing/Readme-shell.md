@@ -228,7 +228,7 @@
 
 ![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/select-workspace.png)
 
-4. Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
+Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
 The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
@@ -237,29 +237,29 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 **To give permissions for the Power BI reports to access the datasources:**
 
-5. **Click** the 'Settings' icon on top right-side corner.
+4. **Click** the 'Settings' icon on top right-side corner.
 
-6. **Click** 'Settings' from the expanded list.
+5. **Click** 'Settings' from the expanded list.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-7. **Click** 'Datasets' tab.
+6. **Click** 'Datasets' tab.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
-8. **Click** 'Campaign – Option C' Report.
+7. **Click** 'Campaign – Option C' Report.
 
-9. **Expand** Data source credentials.
+8. **Expand** Data source credentials.
 
-10. **Click** Edit credentials and a 'Configure Campaign - Option C' dialogue box will pop up.
+9. **Click** Edit credentials and a 'Configure Campaign - Option C' dialogue box will pop up.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
-11. **Enter** Username as 'ManufacturingUser'.
+10. **Enter** Username as 'ManufacturingUser'.
 
-12. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #6.
+11. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #6.
 
-13. **Click** Sign in.
+12. **Click** Sign in.
 
 
 ![Configure Campaign.](media/Configure-Campaign.png)
@@ -267,150 +267,145 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 **Follow these steps to create the Power BI dashboard:**
 
-14. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+13. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-15. **Click** on '+Create' button on the top navigation bar.
+14. **Click** on '+Create' button on the top navigation bar.
 
-16. **Click** the 'Dashboard' option from the drop-down menu.
+15. **Click** the 'Dashboard' option from the drop-down menu.
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
-17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
+16. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
 
-18. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
+17. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
 **Follow the below steps to change the dashboard theme:**
 
-19. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
+18. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
 
-20. **Right click** anywhere in browser and **click** 'Save as...'.
+19. **Right click** anywhere in browser and **click** 'Save as...'.
 
 ![Right Click JSON.](media/change-theme2.png)
 
-21. **Save** the file to your desired location on your computer, leaving the name unchanged.
+20. **Save** the file to your desired location on your computer, leaving the name unchanged.
 
 ![Save JSON.](media/save-json.png)
 
-22. **Go back** to the Power BI Dashboard you just created.
+21. **Go back** to the Power BI Dashboard you just created.
 
-23. **Click** on ellipses at the top right-side corner.
+22. **Click** on ellipses at the top right-side corner.
 
-24. **Click** on Dashboard theme.
+23. **Click** on Dashboard theme.
 
 ![Click on dashboard theme.](media/change-theme-portal.png)
 
-25. **Click** Upload the JSON theme.
+24. **Click** Upload the JSON theme.
+
+25. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
+
+26. Click **Save**.
 
 ![Upload JSON.](media/upload-json.png)
 
-26. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
-
-![Open JSON.](media/select-open.png)
-
-
-27. Click **Save**.
-
-![save JSON.](media/dashboard-theme-save.PNG)
-
 **Do the following to pin visuals to the dashboard you just created:**
 
-28. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+27. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-29. **Click** on the 'Reports' section/tab.
+28. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-30. In the 'Reports' section, there will be a list of all the published reports.
+29. In the 'Reports' section, there will be a list of all the published reports.
 
-31. **Click** on 'Campaign - Option C' report.
+30. **Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-32. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
+31. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
 32. **Select** 'Existing dashboard' radio button.
 
-34. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+33. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 
-35. **Click** 'Pin'.
+34. **Click** 'Pin'.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-36. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
+35. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
 
 ![Pin visuals to the dashboard.](media/pin-profit-card.png)
 
 **Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
 
-37. **Click** on Edit report.
+36. **Click** on Edit report.
 
 ![Edit the report.](media/edit-report.png)
 
-38. **Click** 'Sales and Campaign' report page.
+37. **Click** 'Sales and Campaign' report page.
 
 ![Edit the report.](media/hidden-report-page.png)
 
-39. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
+38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
 
-40. **Pin** 'Revenue by country' map visual.
+39. **Pin** 'Revenue by country' map visual.
 
 ![Sales and Campaign report.](media/sales-and-campaign.png)
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-41. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-42. **Open** 'Dashboard Images' report.
+41. **Open** 'Dashboard Images' report.
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-43. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
+42. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-44. **Go back** to the 'Engagement Accelerators Dashboard'.
+43. **Go back** to the 'Engagement Accelerators Dashboard'.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
 
 **To hide title and subtitle for all the images that you have pined above. Please do the following:**
 
-45. **Click** on ellipsis 'More Options' of the image you selected.
+44. **Click** on ellipsis 'More Options' of the image you selected.
 
-46. **Click** 'Edit details'.
+45. **Click** 'Edit details'.
 
 ![Edit details.](media/edit-details.png)
 
-47. **Uncheck** 'Display title and subtitle'.
+46. **Uncheck** 'Display title and subtitle'.
 
-48. **Click** 'Apply'.
+47. **Click** 'Apply'.
 
 ![Display title and subtitle.](media/display-title-subtitle.png)
 
-49. **Repeat** step #45 to #48 for all images tiles.
+48. **Repeat** step #45 to #48 for all images tiles.
 
-50. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
+49. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
 
-51. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
+50. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-52. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+51. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-53. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
+52. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
