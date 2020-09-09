@@ -456,19 +456,14 @@ In this section of the document we will create the 'Realtime Operational Analyti
 !['Report' option from the drop-down menu.](media/report_option.png)
 
 14. **Enter** 'Racing' in the search bar.
-
 15. **Select** the 'Racing Cars' dataset.
-
 16. **Click** 'Create'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
 17. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
-
 18. **Select** ‘Card’ from Visualization pane.
-
 19. **Select** drop-down next to 'ActiveSensors'.
-
 20. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
@@ -478,9 +473,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 ![Change display units to none.](media/display-units-none-image.png)
 
 22. With Card visual selected, **select** the format tab.
-
 23. **Turn on** the 'Title'.
-
 24. **Enter** 'Active Sensors' as the title for the card.
 
 ![Card Visual selected.](media/active_sensors.png)
@@ -512,6 +505,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar.png)
 
 **Pin visuals from the static report:**
+
 29. **Click** Workspace ‘Engagement Accelerators - Manufacturing’.
 30. **Click** on Reports tab.
 31. **Search** ‘Real Time Analytics Static Report’.
@@ -540,15 +534,12 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
 38. **Click** on '+Create' button present on the top navigation bar.
-
 39. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
 40. **Enter** 'Racing' in the search bar.
-
 41. **Select** the 'Racing Cars' dataset.
-
 42. **Click** 'Create'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
@@ -562,13 +553,9 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Average RPM.](media/average-rpm1.png)
 
 46. **Drag** and **Drop** ‘AverageRPMStart’ under ‘Start Value’ from race-cars dataset.
-
 47. **Select** 'Average' from the context menu to get the sum of ‘AverageRPMStart’.
-
 48. **Drag** and **Drop** ‘AverageRPMEnd’ under ‘End Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMEnd’.
-
 49. **Drag** and **Drop** ‘AverageRPMR2’ under ‘Range2 Start Value’ from race-cars dataset and **follow** step #46 to get Average of ‘AverageRPMR2’.
-
 50. **Drag** and **Drop** ‘AverageRPMR3’ under ‘Range3 Start Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMR3’.
 
 ![Average RPM.](media/average-rpm2.png)
@@ -605,15 +592,12 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
 61. **Click** on '+Create' button present on the top navigation bar.
-
 62. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
 63. **Enter** 'Racing' in the search bar.
-
 64. **Select** the 'Racing Cars' dataset.
-
 65. **Click** 'Create'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
@@ -649,8 +633,6 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Wheel accelaration tile.](media/wheel-accelaration4.png)
 
 77. Upon successful save, **click** on the workspace name ‘Engagement - Accelerators Manufacturing’.
-
-
 78. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
