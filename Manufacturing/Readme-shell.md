@@ -11,7 +11,7 @@
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Power BI workspace creation](#task-2-power-bi-workspace-creation)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-    - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
+    - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
     - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
