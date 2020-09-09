@@ -154,9 +154,10 @@
   
 6. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). 
 7. **Open** this link in a new tab in your browser. 
-8. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
+     
+8. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
@@ -170,10 +171,11 @@
      
 11. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. 
 12. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). **Open** this link in your browser. 
-13. **Enter** the code the you copied from the shell and press Enter.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
+13. **Enter** the code the you copied from the shell and press Enter.
+ 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 14. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
