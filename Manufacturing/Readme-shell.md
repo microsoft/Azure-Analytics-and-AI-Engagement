@@ -47,11 +47,15 @@
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/create-resource-group.png)
 	
-5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'Synapse-WWI-Lab'. **Select** your desired Region. **Click** the 'Review + Create' button.
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'Synapse-WWI-Lab'. 
+
+6. **Select** your desired Region. 
+
+7. **Click** the 'Review + Create' button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
 
-6. **Click** the 'Create' button once all entries have been validated.
+8. **Click** the 'Create' button once all entries have been validated.
 
     ![Create Resource Group with the final validation passed.](media/create-rg-validated.png)
 
