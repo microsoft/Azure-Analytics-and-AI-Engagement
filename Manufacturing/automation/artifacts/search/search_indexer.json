@@ -1,0 +1,30 @@
+{
+  "name": "osha-final",
+  "description": "",
+  "dataSourceName": "mfg-dtstore",
+  "skillsetName": null,
+  "targetIndexName": "osha-final",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "json"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path",
+      "mappingFunction": {
+        "name": "base64Encode"
+      }
+    }
+  ],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}
