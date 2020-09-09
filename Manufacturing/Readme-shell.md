@@ -93,7 +93,7 @@
 4. **Select** Region where you want to deploy.
 5. **Provide** environment code which is a unique suffix to your environment without any special characters. e.g. 'demo'.
 6. **Provide** a strong SQL Administrator Login Password and set this aside for later use.
-7. **Enter** the Power BI Workspace ID created in [Task 2](#task-2-power-bi-workspace-creation) in the 'Pbi_workspace_id' field.
+7. **Enter** the Power BI Workspace ID, created in [Task 2](#task-2-power-bi-workspace-creation), in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
 9. **Click** 'Review + Create' button.
 
@@ -103,7 +103,7 @@
 
    ![Creating the template after validation.](media/template-validated-create.png)
 
-> **NOTE** The provisioning of your deployment resources will take approximately 10-15 minutes.
+> **NOTE:** The provisioning of your deployment resources will take approximately 10-15 minutes.
 
 11. **Stay** on the same page and wait for the deployment to complete.
     
@@ -119,11 +119,19 @@
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-    > **Note**: If you are prompted to choose a shell, **select** PowerShell, and if asked to **create** a 'storage account' for the Azure Cloud Shell, agree to have it created.
-    
-    ![Azure Cloud Shell storage account creation screen is shown. Create storage button is selected.](media/cloud-shell-storage.png)
+2. **Click** on 'Show advanced settings'. 
 
-2. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
+	![Mount a storage for running the cloud shell.](media/no-storage-mounted.png)
+	
+> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 2 and 3.
+
+3. **Select** your 'Resource Group' and **enter** the 'Storage account' and 'File share' name.
+
+	![Mount a storage for running the cloud shell and enter the details.](media/no-storage-mounted1.png)
+
+> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters.
+
+4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
     git clone -b real-time https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git MfgAI
@@ -131,9 +139,11 @@
     
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
     
+    > **Note:** If you get File “MfgAI” already exist error, please execute following command: rm MfgAI -r -f to delete existing clone.
+    
     > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 15 minutes.
 
-3. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
+5. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
@@ -142,61 +152,63 @@
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
-4. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in a new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+6. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in a new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-5. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+7. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-6. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
+8. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
-     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+     ![Authentication done.](media/authentication-done.png)
      
-7. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
+9. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-8. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+10. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-9. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
+11. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
 
-     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+     ![Authentication done.](media/authentication-done.png)
    
 > **Note:** While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-10. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+12. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-11. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
+13. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-12. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+14. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-13. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+15. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
-     ![Select the user account which you want to authenticate.](media/authentication-done.png)
+     ![Authentication done.](media/authentication-done.png)
     
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
  
- 14. **Wait** for the script execution to complete. You will see a similar screen as shown below:
+ 16. **Wait** for the script execution to complete. You will see a similar screen as shown below:
  
      ![Script execution finished.](media/script-completion.png)
+     
+     > **Note:** The deployment will take approximately 30-35 minutes to complete
 
 ### Task 5: Power BI Dashboard creation
 
