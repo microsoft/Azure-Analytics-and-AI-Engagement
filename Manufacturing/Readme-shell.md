@@ -417,7 +417,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 In this section of the document we will create the 'Realtime Operational Analytics' pillar (screenshot below) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analystics.png)
+!['Realtime Operational Analystics'.](media/realtime-operational-analytics.png)
 
 **Pin visuals from the static report:**
 
@@ -426,11 +426,11 @@ In this section of the document we will create the 'Realtime Operational Analyti
 3. **Search** ‘Real Time Analytics Static Report’.
 4. **Click** ‘Real Time Analytics Static Report’.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analystics1.png)
+!['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
 
 5. **Click** on ‘Real time Operational Analytics’ page.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analystics2.png)
+!['Realtime Operational Analystics'.](media/realtime-operational-analytics2.png)
 
 **Hover on the highlighted visuals to pin them to ‘Engagement Accelerators Dashboard’.**
 
@@ -442,7 +442,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 > **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analystics3.png)
+!['Realtime Operational Analystics'.](media/realtime-operational-analytics3.png)
 
 **Creating a visual from a real time dataset**
 
@@ -517,7 +517,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 31. **Search** ‘Real Time Analytics Static Report’.
 32. **Click** ‘Real Time Analytics Static Report’.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analystics1.png)
+!['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
 
 33. **Click** on the ‘Real time Field and Sentiment Analytics report’ page in the previously opened ‘Real Time Analytics Static Report’.
 
