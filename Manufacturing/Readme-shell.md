@@ -154,8 +154,6 @@
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
     ```
-  
-     ![Commands to run the PowerShell script](media/executing-shell-script.png)
 
 6. Then **run** the PowerShell: 
 
@@ -163,6 +161,8 @@
     ./manufacturingSetup-shell.ps1
     ```
     
+      ![Commands to run the PowerShell script](media/executing-shell-script.png)
+      
 7. From the Azure Cloud Shell window, **copy** the Authentication Code.
 
 8. Click on the link https://microsoft.com/devicelogin) and a new browser window will launch.
