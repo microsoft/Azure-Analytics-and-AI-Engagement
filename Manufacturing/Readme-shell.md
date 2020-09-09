@@ -11,7 +11,7 @@
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Power BI workspace creation](#task-2-power-bi-workspace-creation)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-    - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
+    - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
     - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
@@ -228,7 +228,7 @@
 
 ![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/select-workspace.png)
 
-4. Assuming [Task 4](#task-4-run-the-cloud-shell) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
+4. Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
 The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
