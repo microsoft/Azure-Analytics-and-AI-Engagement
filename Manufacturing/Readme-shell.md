@@ -180,7 +180,7 @@
 
      ![Authentication done.](media/authentication-done.png)
    
-> **Note:** While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #4 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
+> **Note:** While you are waiting for processes to get completed in Azure Cloud Shell window, you'll be asked for entering code thrice (Please see Step #6 above). This is necessary for performing installation of various Azure Services and preloading content in Synapse SQL Pool tables.
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
@@ -188,7 +188,7 @@
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-13. You will be asked for Security code once again, as was in Step #4 above. Please follow the same procedure as done in Step #4.
+13. You will be asked for Security code once again, as was in Step #6 above. Please follow the same procedure as done in Step #6.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
@@ -235,7 +235,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 5. **Click** the 'Settings' icon on top right-side corner.
 
-6. **Click** 'Settings'.
+6. **Click** 'Settings' from the expanded list.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
@@ -247,13 +247,13 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 9. **Expand** Data source credentials.
 
-10. **Click** Edit credentials.
+10. **Click** Edit credentials and a 'Configure Campaign - Option C' dialogue box will pop up.
 
 ![Select Campaign.](media/Select-Campaign.png)
 
 11. **Enter** Username as 'ManufacturingUser'.
 
-12. **Enter** the same password which was used for Azure deployment in Step #6 [Task 3](#task-3-deploy-the-arm-template).
+12. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #6.
 
 13. **Click** Sign in.
 
@@ -275,7 +275,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 17. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
 
-18. This new dashboard will appear in the 'Dashboard' section (of the Power BI workspace).
+18. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
@@ -287,7 +287,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Right Click JSON.](media/change-theme2.png)
 
-21. **Save** the file to your desired location on your computer with name unchanged.
+21. **Save** the file to your desired location on your computer, leaving the name unchanged.
 
 ![Save JSON.](media/save-json.png)
 
@@ -303,7 +303,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Upload JSON.](media/upload-json.png)
 
-26. **Navigate** to the location where you have saved the JSON theme in Step #21 above file and **Select** open.
+26. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
 
 ![Open JSON.](media/select-open.png)
 
@@ -314,11 +314,11 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-28. **Click** on the 'Reports' tab.
+28. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-29. In the 'Reports' tab, there will be a list of all the published reports.
+29. In the 'Reports' section, there will be a list of all the published reports.
 
 30. **Click** on 'Campaign - Option C' report.
 
@@ -336,11 +336,11 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-35. Similarly, **pin** 'Profit card' and 'Scatter Chart' from the report.
+35. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
 
 ![Pin visuals to the dashboard.](media/pin-profit-card.png)
 
-**Some of the visuals are pinned from hidden pages so in order to pin such visuals, follow the below steps.**
+**Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
 
 36. **Click** on Edit report.
 
@@ -350,27 +350,39 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Edit the report.](media/hidden-report-page.PNG)
 
-38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals.
+38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
 
 39. **Pin** 'Revenue by country' map visual.
 
 ![Sales and Campaign report.](media/sales-and-campaign.png)
 
+> **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
+
+40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
 40. **Open** 'Dashboard Images' report.
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-41. **Pin** all images from above report to the 'Engagement Accelerators Dashboard' in the same way you pinned the report visuals.
+41. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
-42. **Go back** to the Dashboard.
+> **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-43. For all images tiles **click** on 'More Options'.
+42. **Go back** to the 'Engagement Accelerators Dashboard'.
+
+![Go back to the dashboard.](media/go-back-to-dashboard.png)
+
+**To hide title and subtitle for all the images that you have pined above. Please do the following:**
+
+43. **Click** on ellipsis 'More Options' of the image yous selected.
 
 44. **Click** 'Edit details'.
 
 ![Edit details.](media/edit-details.png)
 
-45. **Disable** 'Display title and subtitle'.
+45. **Uncheck** 'Display title and subtitle'.
 
 46. **Click** 'Apply'.
 
@@ -378,11 +390,11 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 47. **Repeat** for all images tiles.
 
-48. After disabling 'Display title and subtitle' for all images, resize and re-arrange top images tiles or chicklets as show in the screenshot.
-
-49. **Resize** and **rearrange** left images tiles or chicklets as show in the screenshot. **Resize** KPI Tile to 1x2 size. **Resize** Deep Dive tile to 1x4 size.
+48. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. Resize the 'Wide World Importers' logo to 1x1 size. Resize other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
+
+49. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
@@ -390,16 +402,9 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-51. Follow the same procedure to pin the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. See steps #29 to #35 above.
+51. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **folow** the same procedure as above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
-
-52. We can achieve the look of the dashboard below by pining visuals and images from different reports to the same dashboard (you can also tweak with different elements such as backgrounds and themes).
-
-
-> **Note:** Real-time reports will not be deployed as part of the ARM Template deployment. For that we need to create real-time reports [(See Task 6)](#task-6-working-with-power-bi-to-create-real-time-reports).
-
-![Further steps to pin visualization on the dashboard.](media/Dashboard3.png)
 
 ### Task 6: Working with Power BI to create real-time reports
 
