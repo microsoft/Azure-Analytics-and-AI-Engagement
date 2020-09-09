@@ -301,8 +301,6 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 19. **Right click** anywhere in browser and **click** 'Save as...'.
 
-![Right Click JSON.](media/change-theme2.png)
-
 20. **Save** the file to your desired location on your computer, leaving the name unchanged.
 
 ![Save JSON.](media/save-json.png)
@@ -327,7 +325,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 27. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
 28. **Click** on the 'Reports' section/tab.
 
@@ -375,7 +373,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
 41. **Open** 'Dashboard Images' report.
 
@@ -463,7 +461,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 11. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
 12. **Click** on '+Create' button present on the top navigation bar.
 13. **Select** 'Report' option from the drop-down menu.
@@ -499,17 +497,17 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 26. **Turn on** Background and change the background color of the card.
 
-Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
+27. Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
 
 ![Turn on background.](media/Background-Dark.png)
 
 > Note: All other visuals of the report can be created by following a similar process.
 
-27. **Click** on the 'Save this report' icon.
+28. **Click** on the 'Save this report' icon.
 
 ![Clicking on Save the report icon.](media/save-icon-click.png)
 
-28. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
+29. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
 
 ![Save the report.](media/save-report.png)
 
@@ -521,22 +519,22 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 **Pin visuals from the static report:**
 
-29. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
-30. **Click** on Reports tab.
-31. **Search** 'Real Time Analytics Static Report’.
-32. **Click** 'Real Time Analytics Static Report’.
+30. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
+31. **Click** on Reports tab.
+32. **Search** 'Real Time Analytics Static Report’.
+33. **Click** 'Real Time Analytics Static Report’.
 
 !['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
 
-33. **Click** on the 'Real time Field and Sentiment Analytics report’ page in the previously opened 'Real Time Analytics Static Report’.
+34. **Click** on the 'Real time Field and Sentiment Analytics report’ page in the previously opened 'Real Time Analytics Static Report’.
 
 ![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar1.png)
 
 **Hover on the highlighted visuals to pin them to 'Engagement Accelerators Dashboard’.**
 
-34. **Pin** 'Fields Calls-Avg Response Time (in minutes)’ visual.
-35. **Pin** 'Alarms and Safety Incidents’ visual.
-36. **Pin** 'Real time Anomaly’ visual.
+35. **Pin** 'Fields Calls-Avg Response Time (in minutes)’ visual.
+36. **Pin** 'Alarms and Safety Incidents’ visual.
+37. **Pin** 'Real time Anomaly’ visual.
 
 > **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
@@ -544,57 +542,57 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 **Creating a visual from a real time dataset**
 
-37. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+38. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
-38. **Click** on '+Create' button present on the top navigation bar.
-39. **Select** 'Report' option from the drop-down menu.
+39. **Click** on '+Create' button present on the top navigation bar.
+40. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
-40. **Enter** 'Racing' in the search bar.
-41. **Select** the 'Racing Cars' dataset.
-42. **Click** 'Create'.
+41. **Enter** 'Racing' in the search bar.
+42. **Select** the 'Racing Cars' dataset.
+43. **Click** 'Create'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
-43. **Select** 'Tachometer’ visual from visualizations pane.
-44. **Drag** and **Drop** 'AverageRPM’ under value from race-cars dataset.
-45. **Select** 'Average' from the context menu to get the average of 'AverageRPM’.
+44. **Select** 'Tachometer’ visual from visualizations pane.
+45. **Drag** and **Drop** 'AverageRPM’ under value from race-cars dataset.
+46. **Select** 'Average' from the context menu to get the average of 'AverageRPM’.
 
 > **Note:** If you don’t have custom visual tachometer downloaded or don’t know how to use it please refer to the Microsoft tutorial: https://powerbi.microsoft.com/en-us/blog/visual-awesomeness-unlocked-tachometer-gauge-custom-visual/
 
 ![Average RPM.](media/average-rpm1.png)
 
-46. **Drag** and **Drop** 'AverageRPMStart’ under 'Start Value’ from race-cars dataset.
-47. **Select** 'Average' from the context menu to get the sum of 'AverageRPMStart’.
-48. **Drag** and **Drop** 'AverageRPMEnd’ under 'End Value’ from race-cars dataset and **follow** step #45 to get the Average of 'AverageRPMEnd’.
-49. **Drag** and **Drop** 'AverageRPMR2’ under 'Range2 Start Value’ from race-cars dataset and **follow** step #45 to get Average of 'AverageRPMR2’.
-50. **Drag** and **Drop** 'AverageRPMR3’ under 'Range3 Start Value’ from race-cars dataset and **follow** step #45 to get the Average of 'AverageRPMR3’.
+47. **Drag** and **Drop** 'AverageRPMStart’ under 'Start Value’ from race-cars dataset.
+48. **Select** 'Average' from the context menu to get the sum of 'AverageRPMStart’.
+49. **Drag** and **Drop** 'AverageRPMEnd’ under 'End Value’ from race-cars dataset and **follow** step #46 to get the Average of 'AverageRPMEnd’.
+50. **Drag** and **Drop** 'AverageRPMR2’ under 'Range2 Start Value’ from race-cars dataset and **follow** step #46 to get Average of 'AverageRPMR2’.
+51. **Drag** and **Drop** 'AverageRPMR3’ under 'Range3 Start Value’ from race-cars dataset and **follow** step #46 to get the Average of 'AverageRPMR3’.
 
 ![Average RPM.](media/average-rpm2.png)
 
-51. With the tachometer visual selected, **click** on the format tab.
-52. **Turn on** 'Title'.
-53. **Change** 'Title text’ to 'Average Engine Speed’.
+52. With the tachometer visual selected, **click** on the format tab.
+53. **Turn on** 'Title'.
+54. **Change** 'Title text’ to 'Average Engine Speed’.
 
 ![Average RPM.](media/average-rpm3.png)
 
-54. **Expand** 'Range 1'.
-55. **Change** color for range one to hex code #E3B80F.
-56. Similarly, the color of the 'Range 2' and 'Range 3' can be changed from the 'Range 2' and 'Range 3' respectively.
+55. **Expand** 'Range 1'.
+56. **Change** color for range one to hex code #E3B80F.
+57. Similarly, the color of the 'Range 2' and 'Range 3' can be changed from the 'Range 2' and 'Range 3' respectively.
 
 > **Note:** For 'Range 2' color you can use hex code #1AAB40 and for 'Range 3' color you can use hex code #EB895F.
 
 ![Average RPM.](media/average-rpm4.png)
 
-57. **Click** 'File’ and **select** 'Save' from the drop down.
+58. **Click** 'File’ and **select** 'Save' from the drop down.
 
 ![Average RPM.](media/average-rpm5.png)
 
-58. **Type** 'Tachometer’ in the text box.
-59. **Click** 'Save'.
+59. **Type** 'Tachometer’ in the text box.
+60. **Click** 'Save'.
 
 ![Average RPM.](media/average-rpm6.png)
 
@@ -602,61 +600,61 @@ In this section of the document we will create the 'Realtime Field and Sentiment
  
  **Follow the below step to create Wheel Acceleration tile**
  
-60. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+61. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
-61. **Click** on '+Create' button present on the top navigation bar.
-62. **Select** 'Report' option from the drop-down menu.
+62. **Click** on '+Create' button present on the top navigation bar.
+63. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
-63. **Enter** 'Racing' in the search bar.
-64. **Select** the 'Racing Cars' dataset.
-65. **Click** 'Create'.
+64. **Enter** 'Racing' in the search bar.
+65. **Select** the 'Racing Cars' dataset.
+66. **Click** 'Create'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
-66. **Click** white space on the report. 
-67. **Select** 'Line Chart' from visualization tray.
-68. **Drag** and **Drop** 'EventProcessedUtcTime' from the race-cars dataset.
-69. **Click** on 'Rename' and **change** 'EventProcessedUtcTime' to 'Recorded On'.
+67. **Click** white space on the report. 
+68. **Select** 'Line Chart' from visualization tray.
+69. **Drag** and **Drop** 'EventProcessedUtcTime' from the race-cars dataset.
+70. **Click** on 'Rename' and **change** 'EventProcessedUtcTime' to 'Recorded On'.
 
 ![Wheel accelaration tile.](media/wheel-accelaration1.png)
 
-70. **Drag** and **Drop** below columns from 'race-cars' dataset to values:
+71. **Drag** and **Drop** below columns from 'race-cars' dataset to values:
 	* wheelAccelFL
 	* wheelAccelRL
 	* wheelAccelFR
 	* wheelAccelRR
 
-71. Using Step #69, **rename** above selected columns- 'wheelAccelFL’, 'wheelAccelRL’, 'wheelAccelFR’ and 'wheelAccelRR’ to 'Front Left’, 'Rear Left’, 'Front Right’ and 'Rear Right’ respectively.
+72. Using Step #69, **rename** above selected columns- 'wheelAccelFL’, 'wheelAccelRL’, 'wheelAccelFR’ and 'wheelAccelRR’ to 'Front Left’, 'Rear Left’, 'Front Right’ and 'Rear Right’ respectively.
 
 ![Wheel accelaration tile.](media/wheel-accelaration2.png)
 
-72. With 'Line chart' visual selected, **select** format tab.
-73. **Turn on** 'Title'.
-74. **Change** 'Title text' to 'Wheel Acceleration’.
-75. **Pin** the visual to the dashboard.
+73. With 'Line chart' visual selected, **select** format tab.
+74. **Turn on** 'Title'.
+75. **Change** 'Title text' to 'Wheel Acceleration’.
+76. **Pin** the visual to the dashboard.
 
 > **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
 ![Wheel accelaration tile.](media/wheel-accelaration3.png)
 
-76. After pinning the visual to the dashboard, **click** on 'Save’ icon located on the navigation bar at the top, to save the changes made to the report.
+77. After pinning the visual to the dashboard, **click** on 'Save’ icon located on the navigation bar at the top, to save the changes made to the report.
 
 ![Wheel accelaration tile.](media/wheel-accelaration4.png)
 
-77. Upon successful save, **click** on the workspace name 'Engagement - Accelerators Manufacturing’.
+78. Upon successful save, **click** on the workspace name 'Engagement - Accelerators Manufacturing’.
 
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+![Select Power BI workspace.](media/select-workspace.png)
 
-78. In the window that opens, **click** on 'Dashboards’ tab.
-79. From the list of dashboards that appears, **click** on the dashboard 'Engagement Accelerators Dashboard’ located under Dashboards tab.
+79. In the window that opens, **click** on 'Dashboards’ tab.
+80. From the list of dashboards that appears, **click** on the dashboard 'Engagement Accelerators Dashboard’ located under Dashboards tab.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
  
-80. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
+81. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
 
 ![Real-time Reports.](media/report_visuals.png)
 
@@ -729,97 +727,98 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
         ![Selecting workspace 10](media/select-workspace10.png)
 
-28. **Select** 'Category' column (Column G of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-29. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
-30. **Click** 'Replace All'.
-31. **Pop up** will be displayed with 'All done...' replacement message.
-32. **Click** OK.
+28. **Select** 'Category' column (Column G of Excel). 
+29. **Press** 'CTRL + H' to replace exisitng campaign name with new campaign name.
+30. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
+31. **Click** 'Replace All'.
+32. **Pop up** will be displayed with 'All done...' replacement message.
+33. **Click** OK.
 
 	![Selecting workspace 11](media/select-workspace11.png)
 
-33. **Save** the file by pressing the highlighted button. **Close** the file.
+34. **Save** the file by pressing the highlighted button. **Close** the file.
  
 	![Selecting workspace 12](media/select-workspace12.png)
  
-34. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+35. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
 
 	![Selecting workspace 13](media/select-workspace7.png)	
 
-35. **Select** 'Product.csv' file that you just updated.
-36. **Click** the checkbox for overwriting existing files.
-37. **Click** 'Upload'.
+36. **Select** 'Product.csv' file that you just updated.
+37. **Click** the checkbox for overwriting existing files.
+38. **Click** 'Upload'.
 
 	![Selecting workspace 14](media/select-workspace14.png)
 
 **To change 'Hashtags':**
 
-38. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
-39.  **Select** 'Campaignproducts.csv'.
-40.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
+39. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
+40.  **Select** 'Campaignproducts.csv'.
+41.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
 
 > **Note:** In this demo, we change one hashtag. In real-life you would have multiple hashtags, and you would be inserting hashtags aligned to your customer.
 
    ![Selecting workspace 15](media/select-workspace15.png)
 
-41.  **Open** the downloaded file. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
+42.  **Open** the downloaded file. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
 
-        ![Selecting workspace 16](media/select-workspace16.png)
+        ![Selecting workspace 10](media/select-workspace10.png)
  
-42. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-43. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
-44. **Click** 'Replace All'.
-45. **Pop up** will be displayed with 'All done...' replacement message.
-46. **Click** OK.
+43. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
+44. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
+45. **Click** 'Replace All'.
+46. **Pop up** will be displayed with 'All done...' replacement message.
+47. **Click** OK.
 
  	![Selecting workspace 17](media/select-workspace17.png)
 
-47. **Save** the file by pressing the highlighted button. **Close** the file.
+48. **Save** the file by pressing the highlighted button. **Close** the file.
 
  	![Selecting workspace 12](media/select-workspace12.png)
 
-48. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
-49. **Select** 'Campaignproducts.csv' file that you updated above.
-50. **Click** the checkbox for overwriting existing files.
-51. **Click** 'Upload'.
+49. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
+50. **Select** 'Campaignproducts.csv' file that you updated above.
+51. **Click** the checkbox for overwriting existing files.
+52. **Click** 'Upload'.
 
  	![Selecting workspace 21](media/select-workspace21.png)  
 
-**Now let's update the dataset with this new data:**
+**Update the dataset with this new data:**
  
-52. **Navigate** to 'Orchestrate' hub from the left navigation in the 'Synapse Analytics' workspace.
-53. **Expand** 'Pipelines' node.
-54. **Click** on '1 Master Pipeline'.
-55. **Click** 'Add trigger'.
-56. **Click** 'Trigger now'.
+53. **Navigate** to 'Orchestrate' hub from the left navigation in the 'Synapse Analytics' workspace.
+54. **Expand** 'Pipelines' node.
+55. **Click** on '1 Master Pipeline'.
+56. **Click** 'Add trigger'.
+57. **Click** 'Trigger now'.
 
  	![Selecting workspace 22](media/select-workspace22.png)
 
-57. **Click** 'OK'
+58. **Click** 'OK'
 
        ![Confirm to trigger the pipeline.](media/trigger-pipeline1.png)
 
-58. **Navigate** to 'Monitor' hub from the left navigation.
-59. **Click** 'Pipeline runs'.
+59. **Navigate** to 'Monitor' hub from the left navigation.
+60. **Click** 'Pipeline runs'.
 
  	![Selecting workspace 23](media/select-workspace23.png)
 
-60. **Observe** '1 Master Pipeline'.
+61. **Observe** '1 Master Pipeline'.
 
  	![Selecting workspace 24](media/select-workspace24.png)
 
 **View changes to Power BI:**
  
-61. **Navigate** to 'Develop' hub from the left navigation.
-62. **Expand** 'Power BI'.
-63. **Expand** Power BI Workspace starting with name 'Engagement Accelerators...'.
-64. **Expand** 'Power BI reports'.
-65. **Click** on 'Campaign - Option C' Power BI report.
+62. **Navigate** to 'Develop' hub from the left navigation.
+63. **Expand** 'Power BI'.
+64. **Expand** Power BI Workspace starting with name 'Engagement Accelerators...'.
+65. **Expand** 'Power BI reports'.
+66. **Click** on 'Campaign - Option C' Power BI report.
 
  	![Selecting workspace 25](media/select-workspace25.png)	
 
-66. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
-67. 'Product Category' should have one of the updated category as **'Gift Cards'**.
-68. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
+67. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
+68. 'Product Category' should have one of the updated category as **'Gift Cards'**.
+69. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
 
  	![Selecting workspace 26](media/select-workspace26.png)
 
