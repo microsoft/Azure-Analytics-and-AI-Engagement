@@ -113,7 +113,7 @@
 
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
     
-### Task 4: Run the Cloud Shell 
+### Task 4: Run the Cloud Shell to provision the demo resources 
 
 1. **Stay** in Azure Portal and **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
@@ -152,31 +152,35 @@
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
   
-6. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). Open this link in a new tab in your browser. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+6. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). 
+7. **Open** this link in a new tab in your browser. 
+8. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-7. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+9. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-8. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
+10. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
      ![Authentication done.](media/authentication-done.png)
      
-9. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). Open this link in your browser. **Enter** the code the you copied from the shell and press Enter.
+11. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. 
+12. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). **Open** this link in your browser. 
+13. **Enter** the code the you copied from the shell and press Enter.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-10. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+14. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-11. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
+15. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
 
      ![Authentication done.](media/authentication-done.png)
    
@@ -184,27 +188,27 @@
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-12. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-13. You will be asked for Security code once again, as was in Step #6 above. Please follow the same procedure as done in Step #6.
+17. You will be asked for Security code once again, as was in Step #6 to #8 above. Please follow the same procedure as done in Step #6 to #8.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-14. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+18. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-15. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+19. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
      ![Authentication done.](media/authentication-done.png)
     
  > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
  
- 16. **Wait** for the script execution to complete. You will see a similar screen as shown below:
+20. **Wait** for the script execution to complete. You will see a similar screen as shown below:
  
      ![Script execution finished.](media/script-completion.png)
      
@@ -314,102 +318,106 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-28. **Click** on the 'Reports' section/tab.
+28. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
+29. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-29. In the 'Reports' section, there will be a list of all the published reports.
+30. In the 'Reports' section, there will be a list of all the published reports.
 
-30. **Click** on 'Campaign - Option C' report.
+31. **Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-31. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
+32. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
 32. **Select** 'Existing dashboard' radio button.
 
-33. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+34. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 
-34. **Click** 'Pin'.
+35. **Click** 'Pin'.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-35. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
+36. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
 
 ![Pin visuals to the dashboard.](media/pin-profit-card.png)
 
 **Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
 
-36. **Click** on Edit report.
+37. **Click** on Edit report.
 
 ![Edit the report.](media/edit-report.png)
 
-37. **Click** 'Sales and Campaign' report page.
+38. **Click** 'Sales and Campaign' report page.
 
 ![Edit the report.](media/hidden-report-page.PNG)
 
-38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
+39. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
 
-39. **Pin** 'Revenue by country' map visual.
+40. **Pin** 'Revenue by country' map visual.
 
 ![Sales and Campaign report.](media/sales-and-campaign.png)
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+41. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-40. **Open** 'Dashboard Images' report.
+42. **Open** 'Dashboard Images' report.
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-41. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
+43. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-42. **Go back** to the 'Engagement Accelerators Dashboard'.
+44. **Go back** to the 'Engagement Accelerators Dashboard'.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
 
 **To hide title and subtitle for all the images that you have pined above. Please do the following:**
 
-43. **Click** on ellipsis 'More Options' of the image yous selected.
+45. **Click** on ellipsis 'More Options' of the image you selected.
 
-44. **Click** 'Edit details'.
+46. **Click** 'Edit details'.
 
 ![Edit details.](media/edit-details.png)
 
-45. **Uncheck** 'Display title and subtitle'.
+47. **Uncheck** 'Display title and subtitle'.
 
-46. **Click** 'Apply'.
+48. **Click** 'Apply'.
 
 ![Display title and subtitle.](media/display-title-subtitle.png)
 
-47. **Repeat** for all images tiles.
+49. **Repeat** step #45 to #48 for all images tiles.
 
-48. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
+50. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
 
-49. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
+51. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-50. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+52. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-51. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **folow** the same procedure as above.
+53. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
 ### Task 6: Working with Power BI to create real-time reports
 
 'Racing Cars' and 'Milling canning' datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
- Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report 'Racing Cars- A'.
+ Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the real-time pillars.
 
 > **Note:** For your convenience we have included a few real-time visuals and a few static visuals so that you can complete the dashboard.
 
@@ -440,7 +448,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 9. **Pin** ‘OEE and Elements’ visual.
 10. **Pin** ‘Machine Vibration (mm) Milling-Canning’ visual.
 
-> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+> **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
 !['Realtime Operational Analystics'.](media/realtime-operational-analytics3.png)
 
@@ -523,7 +531,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 35. **Pin** ‘Alarms and Safety Incidents’ visual.
 36. **Pin** ‘Real time Anomaly’ visual.
 
-> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+> **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
 ![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar2.png)
 
@@ -554,9 +562,9 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 46. **Drag** and **Drop** ‘AverageRPMStart’ under ‘Start Value’ from race-cars dataset.
 47. **Select** 'Average' from the context menu to get the sum of ‘AverageRPMStart’.
-48. **Drag** and **Drop** ‘AverageRPMEnd’ under ‘End Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMEnd’.
-49. **Drag** and **Drop** ‘AverageRPMR2’ under ‘Range2 Start Value’ from race-cars dataset and **follow** step #46 to get Average of ‘AverageRPMR2’.
-50. **Drag** and **Drop** ‘AverageRPMR3’ under ‘Range3 Start Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMR3’.
+48. **Drag** and **Drop** ‘AverageRPMEnd’ under ‘End Value’ from race-cars dataset and **follow** step #45 to get the Average of ‘AverageRPMEnd’.
+49. **Drag** and **Drop** ‘AverageRPMR2’ under ‘Range2 Start Value’ from race-cars dataset and **follow** step #45 to get Average of ‘AverageRPMR2’.
+50. **Drag** and **Drop** ‘AverageRPMR3’ under ‘Range3 Start Value’ from race-cars dataset and **follow** step #45 to get the Average of ‘AverageRPMR3’.
 
 ![Average RPM.](media/average-rpm2.png)
 
@@ -583,7 +591,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 
 ![Average RPM.](media/average-rpm6.png)
 
- > **Note:** Once this visual is ready you can pin it to the dashboard using the steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation).
+ > **Note:** Once this visual is ready you can pin it to the dashboard using the steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation).
  
  **Follow the below step to create Wheel Acceleration tile**
  
@@ -624,7 +632,7 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 74. **Change** ‘Title text‘ to ‘Wheel Acceleration’.
 75. **Pin** the visual to the dashboard.
 
-> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+> **Note:** Please refer to steps 34-36 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
 
 ![Wheel accelaration tile.](media/wheel-accelaration3.png)
 
@@ -633,16 +641,15 @@ In this section of the document we will create the ‘Realtime Field and Sentime
 ![Wheel accelaration tile.](media/wheel-accelaration4.png)
 
 77. Upon successful save, **click** on the workspace name ‘Engagement - Accelerators Manufacturing’.
-78. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-79. In the window that opens, **click** on ‘Dashboards’ tab.
-80. From the list of dashboards that appears, **click** on the dashboard ‘Engagement Accelerators Dashboard’ located under Dashboards tab.
+78. In the window that opens, **click** on ‘Dashboards’ tab.
+79. From the list of dashboards that appears, **click** on the dashboard ‘Engagement Accelerators Dashboard’ located under Dashboards tab.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
  
-81. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
+80. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
 
 ![Real-time Reports.](media/report_visuals.png)
 
