@@ -13,6 +13,8 @@ $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/train
 $projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
 foreach($project in $projects)
 {
+	$projectId=$project.id
+	$projectName=$project.name
 	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"
 	$tags = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
 	$tagList = New-Object System.Collections.ArrayList
@@ -27,6 +29,13 @@ foreach($project in $projects)
 	$body.selectedTags=$tagList	
 	$body=	$body |ConvertTo-Json
 	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($projectId)/train"
+	$Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+	
+	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
+	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+	$iterationId=$iterations[0].id
+	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=$($projectName)&predictionId=$predictionId"  #TODO Prediction ID
+	$body = "{}"
 	$Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
 	
 }
