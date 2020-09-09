@@ -733,7 +733,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 	![Selecting workspace 13](media/select-workspace7.png)	
 
-35. **Select** 'Product.csv' file that you updated above till Step 37.
+35. **Select** 'Product.csv' file that you just updated.
 36. **Click** the checkbox for overwriting existing files.
 37. **Click** 'Upload'.
 
