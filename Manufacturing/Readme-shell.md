@@ -119,7 +119,9 @@
     
 ### Task 4: Run the Cloud Shell to provision the demo resources 
 
-1. **Stay** in Azure Portal and **open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+**Open** the Azure Portal.
+
+1. In the 'Resource group' section, **open** the 'Azure Cloud Shell' by selecting its icon from the top toolbar.
 
     ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
@@ -151,42 +153,50 @@
 
     ```PowerShell
     cd 'MfgAI/Manufacturing/automation'
-    ./manufacturingSetup-shell.ps1
     ```
   
      ![Commands to run the PowerShell script](media/executing-shell-script.png)
-  
-6. From the Azure Cloud Shell window, **copy** the Authentication Code and **copy** link shown (https://microsoft.com/devicelogin). 
-7. **Open** this link in a new tab in your browser. 
+
+6. Then **run** the PowerShell: 
+
+    ```PowerShell
+    ./manufacturingSetup-shell.ps1
+    ```
+    
+7. From the Azure Cloud Shell window, **copy** the Authentication Code.
+
+8. Click on the link https://microsoft.com/devicelogin) and a new browser window will launch.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
      
-8. **Paste** the code the you copied earlier on the browser screen and **press** 'Enter'.
+9. **Paste** the authentication code.
 
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-9. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+10. **Select** the same user that you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-10. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
+11. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
      ![Authentication done.](media/authentication-done.png)
      
-11. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. 
-12. **Copy** the code and **copy** the link provided in the shell (https://microsoft.com/devicelogin). **Open** this link in your browser. 
+12. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+
+13. **Click** the link (https://microsoft.com/devicelogin).
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
-13. **Enter** the code the you copied from the shell and press Enter.
+14. A new browser window will launch.
+15. **Enter** the code the you copied from the shell above.
  
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-14. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+16. Again **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-15. **Close** the browser tab once you see the below message window and **go back** to your Azure Cloud Shell execution window.
+17. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
      ![Authentication done.](media/authentication-done.png)
    
@@ -194,29 +204,25 @@
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+18. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-17. You will be asked for Security code once again, as was in Step #6 to #8 above. Please follow the same procedure as done in Step #6 to #8.
+19. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+20. **Click** the link (https://microsoft.com/devicelogin).
+21. A new browser window will launch. **Paste** the code that you copied from the shell in step 17.
 
-     ![Authentication link and device code](media/Device-Authentication-Screen7b.png)
+ > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
 
-     ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+   ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-18. Once again, **select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+22. **Select** the same user to authenticate which you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
      ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-19. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
+23. **Close** the browser tab once you see the below message window and go back to your Azure Cloud Shell execution window.
 
      ![Authentication done.](media/authentication-done.png)
-    
- > **Note**: Make sure to provide the device code before it expires and let the script run till completion.
- 
-20. **Wait** for the script execution to complete. You will see a similar screen as shown below:
- 
-     ![Script execution finished.](media/script-completion.png)
      
      > **Note:** The deployment will take approximately 30-35 minutes to complete
 
