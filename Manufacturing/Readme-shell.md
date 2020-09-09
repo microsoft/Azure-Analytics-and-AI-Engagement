@@ -390,7 +390,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 47. **Repeat** for all images tiles.
 
-48. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. Resize the 'Wide World Importers' logo to 1x1 size. Resize other vertical tiles to 2x1 size.  
+48. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
 
@@ -411,39 +411,85 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 'Racing Cars' and 'Milling canning' datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
  Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the Power BI report 'Racing Cars- A'.
 
-1. **Click** on '+Create' button present on the top navigation bar.
+> **Note:** For your convenience we have included a few real-time visuals and a few static visuals so that you can complete the dashboard.
 
-2. **Select** 'Report' option from the drop-down menu.
+**Creating the Realtime Operational Analytics pillar:**
+
+In this section of the document we will create the 'Realtime Operational Analytics' pillar (screenshot below) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
+
+!['Realtime Operational Analystics'.](media/realtime-operational-analystics.png)
+
+**Pin visuals from the static report:**
+
+1. **Click** Workspace ‘Engagement Accelerators - Manufacturing’.
+2. **Click** on Reports tab.
+3. **Search** ‘Real Time Analytics Static Report’.
+4. **Click** ‘Real Time Analytics Static Report’.
+
+!['Realtime Operational Analystics'.](media/realtime-operational-analystics1.png)
+
+5. **Click** on ‘Real time Operational Analytics’ page.
+
+!['Realtime Operational Analystics'.](media/realtime-operational-analystics2.png)
+
+**Hover on the highlighted visuals to pin them to ‘Engagement Accelerators Dashboard’.**
+
+6. **Pin** ‘Machine Status’ card visual.
+7. **Pin** ‘MTTR/MTBF (Hours)’ card visual.
+8. **Pin** ‘Alarms/Incidents’ card visual.
+9. **Pin** ‘OEE and Elements’ visual.
+10. **Pin** ‘Machine Vibration (mm) Milling-Canning’ visual.
+
+> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+
+!['Realtime Operational Analystics'.](media/realtime-operational-analystics3.png)
+
+**Creating a visual from a real time dataset**
+
+11. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
+12. **Click** on '+Create' button present on the top navigation bar.
+13. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
-3. **Enter** 'Racing' in the search bar.
+14. **Enter** 'Racing' in the search bar.
 
-4. **Select** the 'Racing Cars' dataset.
+15. **Select** the 'Racing Cars' dataset.
 
-!['Racing Cars' dataset in the workspace created.](media/racing_cars_dataset.png)
+16. **Click** 'Create'.
 
-5. **Select** the Card icon from Visualization tray to **create** the 'Active Sensors' visualization which is the 'Average' of 'Active Sensors'.
+!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
-![Card icon from Visualization tray.](media/card_icon.png)
+17. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
 
-6. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
+18. **Select** ‘Card’ from Visualization pane.
 
-7. **Select** drop-down next to 'ActiveSensors'.
+19. **Select** drop-down next to 'ActiveSensors'.
 
-8. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
+20. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
 
-9. With Card visual selected, **select** the format tab.
+21. **Change** the 'Display units' to 'None'.
 
-10. **Turn on** the Title.
+![Change display units to none.](media/display-units-none-image.png)
 
-11. **Enter** 'Active Sensors' as the title for the card.
+22. With Card visual selected, **select** the format tab.
+
+23. **Turn on** the 'Title'.
+
+24. **Enter** 'Active Sensors' as the title for the card.
 
 ![Card Visual selected.](media/active_sensors.png)
 
-12. **Turn on** Background and change the background color of the card.
+25. **Change** the 'Data label' color to ‘White’.
+
+![Change data label to white.](media/data-label-white.png)
+
+26. **Turn on** Background and change the background color of the card.
 
 Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
 
@@ -451,22 +497,173 @@ Similarly, the color of the KPI value and title value can be changed from the Da
 
 > Note: All other visuals of the report can be created by following a similar process.
 
-13. **Click** on the 'Save this report' icon.
+27. **Click** on the 'Save this report' icon.
 
 ![Clicking on Save the report icon.](media/save-icon-click.png)
 
-14. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
+28. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
 
 ![Save the report.](media/save-report.png)
 
- By following the same process for the 'milling canning' Dataset we can create the following real-time reports
-- Milling Canning report
-- Maintenance and Cost Analytics
-- Miami Racing Cars
- 
-Once these real-time reports are ready we can pin them to the dashboard (by following the procedure explained in [Task 5](#task-5-power-bi-dashboard-creation)) to finally achieve the following look and feel.
+**Creating the Realtime Field and Sentiment Analytics pillar**
 
-![Real-time Reports.](media/report_visuals.png)  
+In this section of the document we will create the ‘Realtime Field and Sentiment Analytics’ pillar (screenshot on the right) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
+
+![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar.png)
+
+**Pin visuals from the static report:**
+29. **Click** Workspace ‘Engagement Accelerators - Manufacturing’.
+30. **Click** on Reports tab.
+31. **Search** ‘Real Time Analytics Static Report’.
+32. **Click** ‘Real Time Analytics Static Report’.
+
+!['Realtime Operational Analystics'.](media/realtime-operational-analystics1.png)
+
+33. **Click** on the ‘Real time Field and Sentiment Analytics report’ page in the previously opened ‘Real Time Analytics Static Report’.
+
+![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar1.png)
+
+**Hover on the highlighted visuals to pin them to ‘Engagement Accelerators Dashboard’.**
+
+34. **Pin** ‘Fields Calls-Avg Response Time (in minutes)’ visual.
+35. **Pin** ‘Alarms and Safety Incidents’ visual.
+36. **Pin** ‘Real time Anomaly’ visual.
+
+> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+
+![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar2.png)
+
+**Creating a visual from a real time dataset**
+
+37. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
+38. **Click** on '+Create' button present on the top navigation bar.
+
+39. **Select** 'Report' option from the drop-down menu.
+
+!['Report' option from the drop-down menu.](media/report_option.png)
+
+40. **Enter** 'Racing' in the search bar.
+
+41. **Select** the 'Racing Cars' dataset.
+
+42. **Click** 'Create'.
+
+!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
+
+43. **Select** ‘Tachometer’ visual from visualizations pane.
+44. **Drag** and **Drop** ‘AverageRPM’ under value from race-cars dataset.
+45. **Select** 'Average' from the context menu to get the average of ‘AverageRPM’.
+
+> **Note:** If you don’t have custom visual tachometer downloaded or don’t know how to use it please refer to the Microsoft tutorial: https://powerbi.microsoft.com/en-us/blog/visual-awesomeness-unlocked-tachometer-gauge-custom-visual/
+
+![Average RPM.](media/average-rpm1.png)
+
+46. **Drag** and **Drop** ‘AverageRPMStart’ under ‘Start Value’ from race-cars dataset.
+
+47. **Select** 'Average' from the context menu to get the sum of ‘AverageRPMStart’.
+
+48. **Drag** and **Drop** ‘AverageRPMEnd’ under ‘End Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMEnd’.
+
+49. **Drag** and **Drop** ‘AverageRPMR2’ under ‘Range2 Start Value’ from race-cars dataset and **follow** step #46 to get Average of ‘AverageRPMR2’.
+
+50. **Drag** and **Drop** ‘AverageRPMR3’ under ‘Range3 Start Value’ from race-cars dataset and **follow** step #46 to get the Average of ‘AverageRPMR3’.
+
+![Average RPM.](media/average-rpm2.png)
+
+51. With the tachometer visual selected, **click** on the format tab.
+52. **Turn on** 'Title'.
+53. **Change** ‘Title text’ to ‘Average Engine Speed’.
+
+![Average RPM.](media/average-rpm3.png)
+
+54. **Expand** 'Range 1'.
+55. **Change** color for range one to hex code #E3B80F.
+56. Similarly, the color of the 'Range 2' and 'Range 3' can be changed from the 'Range 2' and 'Range 3' respectively.
+
+> **Note:** For 'Range 2' color you can use hex code #1AAB40 and for 'Range 3' color you can use hex code #EB895F.
+
+![Average RPM.](media/average-rpm4.png)
+
+57. **Click** ‘File’ and **select** 'Save' from the drop down.
+
+![Average RPM.](media/average-rpm5.png)
+
+58. **Type** ‘Tachometer’ in the text box.
+59. **Click** 'Save'.
+
+![Average RPM.](media/average-rpm6.png)
+
+ > **Note:** Once this visual is ready you can pin it to the dashboard using the steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation).
+ 
+ **Follow the below step to create Wheel Acceleration tile**
+ 
+60. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
+61. **Click** on '+Create' button present on the top navigation bar.
+
+62. **Select** 'Report' option from the drop-down menu.
+
+!['Report' option from the drop-down menu.](media/report_option.png)
+
+63. **Enter** 'Racing' in the search bar.
+
+64. **Select** the 'Racing Cars' dataset.
+
+65. **Click** 'Create'.
+
+!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
+
+66. **Click** white space on the report. 
+67. **Select** 'Line Chart' from visualization tray.
+68. **Drag** and **Drop** 'EventProcessedUtcTime' from the race-cars dataset.
+69. **Click** on 'Rename' and **change** 'EventProcessedUtcTime' to 'Recorded On'.
+
+![Wheel accelaration tile.](media/wheel-accelaration1.png)
+
+70. **Drag** and **Drop** below columns from 'race-cars' dataset to values:
+	* wheelAccelFL
+	* wheelAccelRL
+	* wheelAccelFR
+	* wheelAccelRR
+
+71. Using Step #69, **rename** above selected columns- ‘wheelAccelFL’, ‘wheelAccelRL’, ‘wheelAccelFR’ and ‘wheelAccelRR’ to ‘Front Left’, ‘Rear Left’, ‘Front Right’ and ‘Rear Right’ respectively.
+
+![Wheel accelaration tile.](media/wheel-accelaration2.png)
+
+72. With 'Line chart' visual selected, **select** format tab.
+73. **Turn on** 'Title'.
+74. **Change** ‘Title text‘ to ‘Wheel Acceleration’.
+75. **Pin** the visual to the dashboard.
+
+> **Note:** Please refer to steps 34-35 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
+
+![Wheel accelaration tile.](media/wheel-accelaration3.png)
+
+76. After pinning the visual to the dashboard, **click** on ‘Save’ icon located on the navigation bar at the top, to save the changes made to the report.
+
+![Wheel accelaration tile.](media/wheel-accelaration4.png)
+
+77. Upon successful save, **click** on the workspace name ‘Engagement - Accelerators Manufacturing’.
+
+
+78. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+
+![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
+
+79. In the window that opens, **click** on ‘Dashboards’ tab.
+80. From the list of dashboards that appears, **click** on the dashboard ‘Engagement Accelerators Dashboard’ located under Dashboards tab.
+
+![Go back to the dashboard.](media/go-back-to-dashboard.png)
+ 
+81. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
+
+![Real-time Reports.](media/report_visuals.png)
+
 
 ### Task 7: Modify the CSV to change campaign names, product categories, and hashtags
 
