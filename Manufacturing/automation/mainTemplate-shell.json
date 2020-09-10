@@ -916,7 +916,7 @@
          "supportsHttpsTrafficOnly": "true",
          "isHnsEnabled": "true",
          "largeFileSharesState": "Disabled"
-       },
+        },
        "resources": [
          {
            "type": "blobServices/containers",
@@ -942,7 +942,28 @@
        "properties": {
          "cors": {
            "corsRules": [
- 
+						{
+                            "allowedOrigins": [
+                                "*"
+                            ],
+                            "allowedMethods": [
+                                "DELETE",
+                                "GET",
+                                "HEAD",
+                                "MERGE",
+                                "POST",
+                                "OPTIONS",
+                                "PUT",
+                                "PATCH"
+                            ],
+                            "maxAgeInSeconds": 1000,
+                            "exposedHeaders": [
+                                "*"
+                            ],
+                            "allowedHeaders": [
+                                "*"
+                            ]
+                        }
            ]
          },
          "deleteRetentionPolicy": {
