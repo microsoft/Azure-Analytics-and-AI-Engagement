@@ -394,12 +394,12 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
 
-$sqlQuery="GRANT SELECT ON dbo.CustomerInformation TO [SalesStaff]"
+$sqlQuery="GRANT SELECT ON dbo.[CustomerInformation] TO [SalesStaff]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
 
-$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO SalesStaffSanDiego"
+$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO [SalesStaffSanDiego]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
@@ -409,7 +409,7 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
 
-$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO SalesStaffMiami]"
+$sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO [SalesStaffMiami]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result		
@@ -1229,6 +1229,9 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Ana
 $dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Role"}} , @{Name = "TABLE_NAME"; Expression = {"Role"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactSales"}} , @{Name = "TABLE_NAME"; Expression = {"FactSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
