@@ -1177,7 +1177,7 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Date"}} , @{Name = "TABLE_NAME"; Expression = {"Date"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"MFGFactSales"}} , @{Name = "TABLE_NAME"; Expression = {"MFG-FactSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"MFG-FactSales"}} , @{Name = "TABLE_NAME"; Expression = {"MFG-FactSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-iot-json"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-iot-json"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
