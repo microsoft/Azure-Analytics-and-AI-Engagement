@@ -1285,7 +1285,28 @@ CREATE PROC [dbo].[SP_RLS_SalesStaffSanDiego] AS
 EXECUTE AS USER = 'SalesStaffSanDiego'; 
 SELECT * FROM [MFG-FactSales];
 revert;
+GO
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FactSales]
+(
+	[OrderID] [int] NULL,
+	[SalesRep] [sysname] NULL,
+	[Product] [varchar](50) NULL,
+	[Qty] [int] NULL,
+	[RoleID] [int] NULL,
+	[QtySold] [int] NULL,
+	[Analyst] [varchar](50) NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
 
 
 
