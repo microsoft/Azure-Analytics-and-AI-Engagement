@@ -117,7 +117,8 @@
      "sendtohub_telemetry_app_service_name": "[concat('sendtohub-telemetry-app-',variables('unique_suffix'))]",
      "data_gen_telemetry_ase_name": "[concat('datagen-telemetry-ase-',variables('unique_suffix'))]",
      "data_gen_telemetry_ai_name": "[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
-     "data_gen_telemetry_app_service_name": "[concat('datagen-telemetry-app-',variables('unique_suffix'))]"
+     "data_gen_telemetry_app_service_name": "[concat('datagen-telemetry-app-',variables('unique_suffix'))]",
+	 "cognitive_services_name":"[concat('dreamcognitiveservices',parameters('environment_code'))]"
    },
    "resources": [
      {
@@ -2734,6 +2735,22 @@
       "properties": {
         "value": "[parameters('sql_administrator_login_password')]"
       }
+    },
+	{
+       "type": "Microsoft.CognitiveServices/accounts",
+       "apiVersion": "2017-04-18",
+       "name": "[variables('cognitive_services_name')]",
+       "location": "[variables('location')]",
+       "sku": {
+           "name": "S0"
+       },
+       "kind": "CognitiveServices",
+       "properties": {
+           "apiProperties": {
+               "statisticsEnabled": false
+           },
+           "publicNetworkAccess": "Enabled"
+       }
     }
    ]
  ,
