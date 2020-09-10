@@ -239,7 +239,6 @@ Compress-Archive -Path "./datagenTelemetry/*" -DestinationPath "./datagenTelemet
 Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 # deploy the codes on app services
-
 $webappTelemtryCar = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry_car
 az webapp stop --name $app_name_telemetry_car --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $app_name_telemetry_car --src "./carTelemetry.zip"
@@ -265,39 +264,20 @@ az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgN
 az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
 az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
-#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/carTelemetry.zip" -Force
-#
-#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_telemetry
-#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/datagenTelemetry.zip" -AsJob
-#
-#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_hub
-#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/sku2.zip" -AsJob
-#
-#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $app_name_sendtohub
-#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/sendtohub.zip" -AsJob
-#
-#$app = Get-AzWebApp -ResourceGroupName $rgName -Name $wideworldimporters_app_service_name
-#Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/wideworldimporters.zip" -AsJob
-
-
 #uploading Cosmos data
 $cosmosDbAccountName = $cosmos_account_name_mfgdemo
-
 $databaseName = $cosmos_database_name_mfgdemo_manufacturing
-
 $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
 
 foreach($name in $cosmos)
 {
     $collection = $name.BaseName
     $cosmosDb = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDbAccountName
-
     $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgNameName
     #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
     $path="./artifacts/cosmos/"+$name.BaseName+".json"
     $document=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $document
-
     foreach($json in $document)
     {
         $key=$json.SyntheticPartitionKey
@@ -314,33 +294,8 @@ foreach($name in $cosmos)
 RefreshTokens
 
 New-Item log.txt
-#Add-Content log.txt "------asa powerbi connection-----"
+Add-Content log.txt "------asa powerbi connection-----"
 #connecting asa and powerbi
-# $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-# $principalId=$principal.identity.principalId
-# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-# $body=@"
-# {
-  # "identifier": "$principalId",
-  # "principalType": "App",
-  # "groupUserAccessRight": "Admin"
-# }
-# "@
-# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-# Add-Content log.txt $result
-# $principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs" |ConvertFrom-Json
-# $principalId=$principal.identity.principalId
-# $uri="https://api.powerbi.com/v1.0/myorg/groups/$wsId/users"
-# $body=@"
-# {
-  # "identifier": "$principalId",
-  # "principalType": "App",
-  # "groupUserAccessRight": "Admin"
-# }
-# "@
-# $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-# Add-Content log.txt $result
-#start ASA
 Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
 $principal=az resource show -g $rgName -n $mfgasaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
@@ -351,6 +306,7 @@ $principal=az resource show -g $rgName -n $carasaName --resource-type "Microsoft
 $principalId=$principal.identity.principalId
 Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
+#start ASA
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgASATelemetryName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaName -OutputStartMode 'JobStartTime'
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputStartMode 'JobStartTime'
@@ -359,7 +315,6 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName 
 Add-Content log.txt "------sql schema-----"
 
 #creating sql schema
-
 Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
@@ -367,7 +322,6 @@ $sqlquery = $sqlquery.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
-
 
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
