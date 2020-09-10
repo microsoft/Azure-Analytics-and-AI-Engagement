@@ -1223,6 +1223,15 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-location"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-Location"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics_New"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics_New"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Role"}} , @{Name = "TABLE_NAME"; Expression = {"Role"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
