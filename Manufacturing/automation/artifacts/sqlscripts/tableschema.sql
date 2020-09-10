@@ -1284,18 +1284,7 @@ CREATE PROC [dbo].[SP_RLS_SalesStaffSanDiego] AS
 EXECUTE AS USER = 'SalesStaffSanDiego'; 
 SELECT * FROM [MFG-FactSales];
 revert;
-GO
 
-/**** Insert statements *****/
-INSERT INTO role
-(RoleID,	Name	,Email	,Roles)
-VALUES (17	,'Miguel Yniguez','Miguel.Yniguez@cloudlabsaioutlook.onmicrosoft.com','DataAnalystSanDiego')
-
-INSERT INTO role
-(RoleID,	Name	,Email	,Roles)
-VALUES (20	,'John Smith','John.Smith@cloudlabsaioutlook.onmicrosoft.com','DataAnalystMiami')
-
-/**********************************/
 
 
 
