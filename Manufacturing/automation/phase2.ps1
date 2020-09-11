@@ -1,4 +1,4 @@
-
+$loaction="westus2"
 $forms_cogs_name = "forms-$suffix"
 $text_translation_service_name = "Mutarjum-$suffix"
 $searchName = "mfg-search-$init-$random";
@@ -38,7 +38,7 @@ $resource=az resource show -g $rgName -n $customVisionName --resource-type "Micr
 $resourceId=$resource.id
 (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#SUBSCRIPTION_ID#', $subscriptionId`
-				-replace '#RESOURCE_GROUP#', $rgNane`
+				-replace '#RESOURCE_GROUP#', $rgName`
 				-replace '#WORKSPACE_NAME#', $amlworkspacename`
 				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
@@ -46,7 +46,7 @@ $resourceId=$resource.id
 				-replace '#APIM_KEY#', $forms_cogs_keys.Key1`
 				-replace '#MODEL_ID#', $modelId`
 				-replace '#TRANSLATOR_NAME#', $text_translation_service_name`
-				-replace '#TRANSLATION_KEY#', $text_translation_service_keys`
+				-replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
 			} | Set-Content -Path artifacts/amlnotebooks/config.py
 foreach($project in $projects)
 {
@@ -59,21 +59,21 @@ foreach($project in $projects)
 				-replace '#PREDICTION_KEY#', $destinationKey`
 			} | Set-Content -Path artifacts/amlnotebooks/config.py
 	}
-	else if($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
+	elseif($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
 	{
 				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#HELMET_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
 			} | Set-Content -Path artifacts/amlnotebooks/config.py
 	}
-		else if($projectName -eq "3_MFG__Mask_PPE_Compliance")
+		elseif($projectName -eq "3_MFG__Mask_PPE_Compliance")
 	{
 				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#FACE_MASK_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
 			} | Set-Content -Path artifacts/amlnotebooks/config.py
 	}
-	else if($projectName -eq "1_Defective_Product_Classification")
+	elseif($projectName -eq "1_Defective_Product_Classification")
 	{
 				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#QUALITY_CONTROL_ID#', $projectId`
