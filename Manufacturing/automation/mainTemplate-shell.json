@@ -119,7 +119,8 @@
       "data_gen_telemetry_ai_name":"[concat('datagen-telemetry-ai-',variables('unique_suffix'))]",
       "data_gen_telemetry_app_service_name":"[concat('datagen-telemetry-app-',variables('unique_suffix'))]",
       "cognitive_services_name":"[concat('dreamcognitiveservices',parameters('environment_code'))]",
-      "text_translation_service_name":"Mutarjum",
+	  "text_translation_service_name":"[concat('Mutarjum-',variables('unique_suffix'))]" ,
+	  "text_translation_custom_sub_domain_name":"[concat('mutarjum-',variables('unique_suffix'))]" ,
       "cogs_forms_name":"[concat('forms-',variables('unique_suffix'))]"
    },
    "resources":[
@@ -2805,7 +2806,7 @@
          },
          "kind":"TextTranslation",
          "properties":{
-            "customSubDomainName":"mutarjum",
+            "customSubDomainName":"[variables('text_translation_custom_sub_domain_name')]",
             "privateEndpointConnections":[
                
             ],
