@@ -1,0 +1,372 @@
+  {
+    "name": "osha-formrecogoutput-skillset",
+    "description": "Skillset created from the portal. skillsetName: osha-formrecogoutput-skillset; contentField: final_narrative; enrichmentGranularity: sentences; knowledgeStoreStorageAccount: stcognitivesearch001;",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+      "name": "#1",
+      "description": null,
+      "context": "/document/final_narrative",
+      "defaultLanguageCode": "en",
+      "textSplitMode": "sentences",
+      "maximumPageLength": 10000,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "sentences"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "name": "#2",
+      "description": null,
+      "context": "/document/final_narrative/sentences/*",
+      "categories": [
+        "Person",
+        "Quantity",
+        "Organization",
+        "URL",
+        "Email",
+        "Location",
+        "DateTime"
+      ],
+      "defaultLanguageCode": "en",
+      "minimumPrecision": null,
+      "includeTypelessEntities": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative/sentences/*"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "persons",
+          "targetName": "people"
+        },
+        {
+          "name": "organizations",
+          "targetName": "organizations"
+        },
+        {
+          "name": "locations",
+          "targetName": "locations"
+        },
+        {
+          "name": "entities",
+          "targetName": "entities"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "#3",
+      "description": null,
+      "context": "/document/final_narrative/sentences/*",
+      "defaultLanguageCode": "en",
+      "maxKeyPhraseCount": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative/sentences/*"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyphrases"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+      "name": "#4",
+      "description": null,
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "languageCode",
+          "targetName": "language"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.TranslationSkill",
+      "name": "#5",
+      "description": null,
+      "context": "/document/final_narrative/sentences/*",
+      "defaultFromLanguageCode": null,
+      "defaultToLanguageCode": "en",
+      "suggestedFrom": "en",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative/sentences/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "translatedText",
+          "targetName": "translated_text"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.PIIDetectionSkill",
+      "name": "#6",
+      "description": null,
+      "context": "/document/final_narrative/sentences/*",
+      "defaultLanguageCode": "en",
+      "minimumPrecision": 0.5,
+      "maskingMode": "replace",
+      "maskingCharacter": "*",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/final_narrative/sentences/*"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "piiEntities",
+          "targetName": "pii_entities"
+        },
+        {
+          "name": "maskedText",
+          "targetName": "masked_text"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+      "name": "#7",
+      "description": null,
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "final_narrative",
+          "source": "/document/final_narrative"
+        },
+        {
+          "name": "event",
+          "source": "/document/event"
+        },
+        {
+          "name": "amputation",
+          "source": "/document/amputation"
+        },
+        {
+          "name": "location",
+          "source": "/document/location"
+        },
+        {
+          "name": "source",
+          "source": "/document/source"
+        },
+        {
+          "name": "hospitalized",
+          "source": "/document/hospitalized"
+        },
+        {
+          "name": "nature",
+          "source": "/document/nature"
+        },
+        {
+          "name": "part_of_body",
+          "source": "/document/part_of_body"
+        },
+        {
+          "name": "caseid",
+          "source": "/document/caseid"
+        },
+        {
+          "name": "event_date",
+          "source": "/document/event_date"
+        },
+        {
+          "name": "employer",
+          "source": "/document/employer"
+        },
+        {
+          "name": "form_url",
+          "source": "/document/form_url"
+        },
+        {
+          "name": "metadata_storage_content_type",
+          "source": "/document/metadata_storage_content_type"
+        },
+        {
+          "name": "metadata_storage_size",
+          "source": "/document/metadata_storage_size"
+        },
+        {
+          "name": "metadata_storage_last_modified",
+          "source": "/document/metadata_storage_last_modified"
+        },
+        {
+          "name": "metadata_storage_content_md5",
+          "source": "/document/metadata_storage_content_md5"
+        },
+        {
+          "name": "metadata_storage_name",
+          "source": "/document/metadata_storage_name"
+        },
+        {
+          "name": "metadata_storage_path",
+          "source": "/document/metadata_storage_path"
+        },
+        {
+          "name": "metadata_storage_file_extension",
+          "source": "/document/metadata_storage_file_extension"
+        },
+        {
+          "name": "sentences",
+          "sourceContext": "/document/final_narrative/sentences/*",
+          "inputs": [
+            {
+              "name": "keyPhrases",
+              "source": "/document/final_narrative/sentences/*/keyphrases/*"
+            },
+            {
+              "name": "languageCode",
+              "source": "/document/language"
+            },
+            {
+              "name": "translatedText",
+              "source": "/document/final_narrative/sentences/*/translated_text"
+            },
+            {
+              "name": "Entities",
+              "sourceContext": "/document/final_narrative/sentences/*/entities/*",
+              "inputs": [
+                {
+                  "name": "Entity",
+                  "source": "/document/final_narrative/sentences/*/entities/*/name"
+                },
+                {
+                  "name": "EntityType",
+                  "source": "/document/final_narrative/sentences/*/entities/*/type"
+                },
+                {
+                  "name": "EntitySubType",
+                  "source": "/document/final_narrative/sentences/*/entities/*/subType"
+                },
+                {
+                  "name": "Url",
+                  "source": "/document/final_narrative/sentences/*/entities/*/wikipediaUrl"
+                }
+              ]
+            },
+            {
+              "name": "Sentence",
+              "source": "/document/final_narrative/sentences/*"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "targetName": "tableprojection"
+        }
+      ]
+    }
+  ],
+  "cognitiveServices": {
+    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
+    "description": "/subscriptions/#subscription_id#/resourceGroups/#rgName#/providers/Microsoft.CognitiveServices/accounts/DreamCognitiveServices",
+    "key": "#destinationkey#"
+  },
+  "knowledgeStore": {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=#storageAccountName#;AccountKey=#storageKey#==;EndpointSuffix=core.windows.net",
+    "projections": [
+      {
+        "tables": [
+          {
+            "tableName": "oshaFormrecogoutputSkillsetDocument",
+            "referenceKeyName": null,
+            "generatedKeyName": "Documentid",
+            "source": "/document/tableprojection",
+            "sourceContext": null,
+            "inputs": []
+          },
+          {
+            "tableName": "oshaFormrecogoutputSkillsetSentences",
+            "referenceKeyName": null,
+            "generatedKeyName": "Sentencesid",
+            "source": "/document/tableprojection/sentences/*",
+            "sourceContext": null,
+            "inputs": []
+          },
+          {
+            "tableName": "oshaFormrecogoutputSkillsetKeyPhrases",
+            "referenceKeyName": null,
+            "generatedKeyName": "KeyPhrasesid",
+            "source": null,
+            "sourceContext": "/document/tableprojection/sentences/*/keyPhrases/*",
+            "inputs": [
+              {
+                "name": "keyphrases",
+                "source": "/document/tableprojection/sentences/*/keyPhrases/*",
+                "sourceContext": null,
+                "inputs": []
+              }
+            ]
+          },
+          {
+            "tableName": "oshaFormrecogoutputSkillsetEntities",
+            "referenceKeyName": null,
+            "generatedKeyName": "Entitiesid",
+            "source": "/document/tableprojection/sentences/*/Entities/*",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ],
+        "objects": [],
+        "files": [
+          {
+            "storageContainer": "osha-formrecogoutput-skillset-image-projection",
+            "referenceKeyName": null,
+            "generatedKeyName": "imagepath",
+            "source": "/document/tableprojection/Images/*/imgdata",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "synthesizeGeneratedKeyName": true
+    }
+  },
+  "encryptionKey": null
+}
