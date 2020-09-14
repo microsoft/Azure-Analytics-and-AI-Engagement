@@ -100,9 +100,23 @@ foreach($project in $projects)
 	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
 	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
 	$iterationId=$iterations[0].id
-	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=$($projectName)&predictionId=$($resourceId)"  #TODO Prediction ID
+	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=$($projectName)&predictionId=$($resourceId)"
 	$body = "{}"
-	$Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+	#adding retry attempts for publishin iterations
+	$count=0;
+	$Delay=60
+	$Maximum=5;
+	do {
+            $count++
+            try {
+				Write-Host "Attempt $($count) at publishing iteration"
+                $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+            } catch {
+                Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
+				Write-Host "Sleeping for a minute"
+                Start-Sleep -s $Delay
+            }
+        } while ($count -lt $Maximum)
 	
 }
 
