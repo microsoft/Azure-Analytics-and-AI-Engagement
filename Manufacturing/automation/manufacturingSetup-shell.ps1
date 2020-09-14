@@ -480,6 +480,10 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Co
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
 & $azCopyCommand copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
+& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/incidentreport" $destinationUri --recursive
+
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
