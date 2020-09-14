@@ -163,12 +163,14 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
-#$forms_cogs_name = "forms-$suffix";
-$forms_cogs_name = "stcognitivesearch001"
+$forms_cogs_name = "forms-$suffix";
+$searchName = "search-$suffix";
 $keyVaultName = "kv-$suffix";
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+
+$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
@@ -1088,12 +1090,13 @@ $ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.Name -eq "6_Production Qua
 $ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign Sales Operations"}).ReportId)
 $ht.add("#WWI_SITE_NAME#", $wideworldimporters_app_service_name)
 $ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
-$ht.add("#COGS_FORMS_NAME#", $forms_cogs_name)
 $ht.add("#WORKSPACE_ID#", $wsId)
 $ht.add("#APP_ID#", $appId)
 $ht.add("#APP_SECRET#", $sqlPassword)
 $ht.add("#TENANT_ID#", $tenantId)
-$ht.add("#SERVER_NAME#", $manufacturing_poc_app_service_name)
+$ht.add("#SEARCH_QUERY_KEY#", $searchKey)
+$ht.add("#SEARCH_SERVICE#", $searchName)
+
 
 $filePath = "./mfg-webapp/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
@@ -1246,8 +1249,8 @@ foreach ($dataTableLoad in $dataTableList) {
 ##get search resource
 #install-module az.search -scope CurrentUser;
 #
-#$searchName = "mfg-search-$init-$random";
-#$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+#
+#
 ##$searchkey = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName; - because somone needs to be fired
 #
 ##Search setup
