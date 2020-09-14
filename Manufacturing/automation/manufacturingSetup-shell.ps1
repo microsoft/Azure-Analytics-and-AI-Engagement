@@ -484,6 +484,10 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" 
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
 & $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/incidentreport" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "formrecogoutput" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/formrecogoutput$($destinationSasKey)"
+& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/formrecogoutput" $destinationUri --recursive
+
 $destinationSasKey = New-AzStorageContainerSASToken -Container "anomalydetection" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalydetection$($destinationSasKey)"
 & $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/anomalydetection" $destinationUri --recursive
