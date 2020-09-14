@@ -484,6 +484,11 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" 
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
 & $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/incidentreport" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "anomalydetection" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalydetection$($destinationSasKey)"
+& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/anomalydetection" $destinationUri --recursive
+
+
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
@@ -901,7 +906,32 @@ foreach($report in $reportList)
     #anomaly detection with images = AZURE TABLE
     if ($report.Name -eq "sample_test" -or $report.Name -eq "Azure Cognitive Search" -or $report.Name -eq "Campaign Sales Operations" -or $report.Name -eq "anomaly detection with images")
     {
-        #continue;
+        if($report.Name -eq "anomaly detection with images")
+		{
+			$body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"StorageAccount`",
+									`"newValue`": `"$dataLakeAccountName`"
+								}
+							]
+					}"
+			$url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
+           $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"};
+		}
+		if($report.Name -eq "Azure Cognitive Search")
+		{
+			$body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"KnowledgeStoreStorageAccount`",
+									`"newValue`": `"$dataLakeAccountName`"
+								}
+							]
+					}"
+			$url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
+           $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"};
+		}
     }
 
     foreach($source in $sourceServers)
