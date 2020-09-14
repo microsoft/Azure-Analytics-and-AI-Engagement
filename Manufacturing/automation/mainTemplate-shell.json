@@ -1179,6 +1179,42 @@
             "publicAccess":"Container"
          }
       },
+	   {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/incidentreport')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/formrecogoutput')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2019-06-01",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/form_dataset')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
+         ],
+         "properties":{
+            "publicAccess":"Container"
+         }
+      },
       {
          "type":"Microsoft.Storage/storageAccounts/fileServices",
          "apiVersion":"2019-06-01",
