@@ -1206,7 +1206,7 @@
 	   {
          "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
          "apiVersion":"2019-06-01",
-         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/form_dataset')]",
+         "name":"[concat(variables('storage_account_name_dreamdemostorageforgen2'), '/default/form-dataset')]",
          "dependsOn":[
             "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name_dreamdemostorageforgen2'), 'default')]",
             "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name_dreamdemostorageforgen2'))]"
