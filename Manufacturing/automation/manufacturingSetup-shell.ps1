@@ -320,7 +320,6 @@ Add-Content log.txt "------sql schema-----"
 Write-Information "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
-$sqlquery = $sqlquery.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result
@@ -369,6 +368,24 @@ $sqlQuery="GRANT SELECT ON dbo.[MFG-FactSales] TO [SalesStaffMiami]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result		
+
+$sqlQuery  = "CREATE DATABASE Demo1"
+$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result	
+ 
+$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $rgName |ConvertFrom-Json
+$cosmos_account_key=$cosmos_account_key.primarymasterkey
+ 
+(Get-Content -path "$($SQLScriptsPath)/sqlOnDemandSchema.sql" -Raw) | Foreach-Object { $_ `
+                -replace '#COSMOS_ACCOUNT_NAME_MFGDEMO#', $cosmos_account_name_mfgdemo`
+				-replace '#LOCATION#', $location`
+				-replace '#SECRET#', $cosmos_account_key`
+        } | Set-Content -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"		
+$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"
+$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database Demo1 -Username $sqlUser -Password $sqlPassword
+Add-Content log.txt $result	
  
 #uploading Sql Scripts
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
@@ -377,12 +394,11 @@ $TemplatesPath="./artifacts/templates";
 #$cosmosAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmos_account_name_mfgdemo;
 #$keys = Get-AzCosmosDBAccountKey -ResourceGroupName $rgName -Name $cosmos_account_name_mfgdemo;
 #$cosmos_account_key = $keys["PrimaryMasterKey"];
-$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $rgName |ConvertFrom-Json
-$cosmos_account_key=$cosmos_account_key.primarymasterkey
+
 
 foreach ($name in $scripts) 
 {
-    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "sqluser")
+    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sqlOnDemandSchema" )
     {
         continue;
     }
@@ -922,7 +938,7 @@ foreach($report in $reportList)
     #campaign sales operations = COSMOS
     #Azure Cognitive Search = AZURE TABLE
     #anomaly detection with images = AZURE TABLE
-    if ($report.Name -eq "sample_test" -or $report.Name -eq "Azure Cognitive Search" -or $report.Name -eq "Campaign Sales Operations" -or $report.Name -eq "anomaly detection with images")
+    if ($report.Name -eq "sample_test" -or $report.Name -eq "Azure Cognitive Search" -or $report.Name -eq "Campaign Sales Operations" -or $report.Name -eq "anomaly detection with images" -or $report.Name -eq "6_Production Quality- HTAP Synapse Link")
     {
         if($report.Name -eq "anomaly detection with images")
 		{
@@ -947,6 +963,38 @@ foreach($report in $reportList)
 								}
 							]
 					}"
+			$url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
+           $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"};
+		}
+		 if($report.Name -eq "6_Production Quality- HTAP Synapse Link")
+		{
+			$body = "
+					{
+						`"updateDetails`":
+						[
+							{
+								`"name`": `"CosmosAccountName`",
+								`"newValue`": `"https://$($cosmos_account_name_mfgdemo).documents.azure.com:443/`"
+							},
+							{
+								`"name`": `"SynapseOnDemandDatabaseName`",
+								`"newValue`": `"Demo1`"
+							},
+							{
+								`"name`": `"SynapseOnDemandServerName`",
+								`"newValue`": `"$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net`"
+							},
+							{
+								`"name`": `"SynapseWarehouseDatabaseName`",
+								`"newValue`": `"$($sqlPoolName)`"
+							},
+							{
+								`"name`": `"SynapseWarehouseServerName`",
+								`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+							}
+						]
+					}
+					";
 			$url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
            $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"};
 		}
