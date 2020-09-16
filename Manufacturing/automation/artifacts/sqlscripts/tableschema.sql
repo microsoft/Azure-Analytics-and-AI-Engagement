@@ -1302,8 +1302,23 @@ WITH
 	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
 )
+GO
 
-
+CREATE TABLE [dbo].[MfgMesQuality1]
+(
+	[ProductionMonth] [datetime] NOT NULL,
+	[MachineInstance] [varchar](30) NULL,
+	[MachineName] [varchar](30) NULL,
+	[Good] [int] NULL,
+	[Snag] [int] NULL,
+	[Reject] [int] NULL,
+	[Avg] [float] NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [MachineInstance] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
 
 
 

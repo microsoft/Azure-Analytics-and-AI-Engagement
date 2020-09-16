@@ -1,22 +1,4 @@
-CREATE TABLE [dbo].[MfgMesQuality1]
-(
-	[ProductionMonth] [datetime] NOT NULL,
-	[MachineInstance] [varchar](30) NULL,
-	[MachineName] [varchar](30) NULL,
-	[Good] [int] NULL,
-	[Snag] [int] NULL,
-	[Reject] [int] NULL,
-	[Avg] [float] NULL
-)
-WITH
-(
-	DISTRIBUTION = HASH ( [MachineInstance] ),
-	CLUSTERED COLUMNSTORE INDEX
-)
-GO
-
-
-CREATE OR ALTER VIEW vwMfgMesQuality
+CREATE VIEW vwMfgMesQuality
 AS
 SELECT
 	[Avg]
@@ -44,7 +26,7 @@ WITH (
 GO
 
 
-CREATE OR ALTER View vwMfgMesQualityHTAP
+CREATE View vwMfgMesQualityHTAP
 As
 SELECT
     CONVERT(DATETIME, CONVERT(DATETIMEOFFSET,ProductionMonth)) AS ProductionMonthDate
@@ -80,7 +62,7 @@ GROUP BY
 GO
 	
 	
-CREATE OR ALTER View vwMfgProductionMonth
+CREATE View vwMfgProductionMonth
 AS
 SELECT
 	TOP 12
