@@ -1335,7 +1335,7 @@ $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
 				-replace '#CONTAINER_NAME#', "form-datasets"`
 				-replace '#SAS_TOKEN#', $sasToken`
-				-replace '#APIM_KEY',  $forms_cogs_keys.Key1`
+				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
 			} | Set-Content -Path artifacts/formrecognizer/create_model.py
 			
 $modelUrl = python "./artifacts/formrecognizer/create_model.py"
