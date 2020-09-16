@@ -276,6 +276,11 @@ az webapp deployment source config-zip --resource-group $rgName --name $wideworl
 az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
 #uploading Cosmos data
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+Install-PackageProvider -Name NuGet -Force
+Install-Module -Name PowerShellGet -Force
+Install-Module -Name CosmosDB -Force
 $cosmosDbAccountName = $cosmos_account_name_mfgdemo
 $databaseName = $cosmos_database_name_mfgdemo_manufacturing
 $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
