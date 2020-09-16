@@ -163,14 +163,23 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
+$location = (Get-AzResourceGroup -Name $rgName).Location
+$storageAccountName = $dataLakeAccountName
 $forms_cogs_name = "forms-$suffix";
 $searchName = "search-$suffix";
 $keyVaultName = "kv-$suffix";
+$cognitive_services_name = "dreamcognitiveservices$init"
+$text_translation_service_name = "Mutarjum-$suffix"
+$amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
 
+
+$forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
+$text_translation_service_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $text_translation_service_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
@@ -1306,38 +1315,279 @@ foreach ($dataTableLoad in $dataTableList) {
     Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
 
-#<#P2 #>
 
-#<#Ignore#>
+#Form Recognizer
+Add-Content log.txt "-----------------Form Recognizer---------------"
+RefreshTokens
+$sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl
+#Replace connection string in search_skillset.json
+(Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
+				-replace '#LOCATION#', $location`
+				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+				-replace '#CONTAINER_NAME#', "form-datasets"`
+				-replace '#SAS_TOKEN#', $sasToken`
+				-replace '#APIM_KEY',  $forms_cogs_keys.Key1`
+			} | Set-Content -Path artifacts/formrecognizer/create_model.py
+			
+$modelUrl = python "./artifacts/formrecognizer/create_model.py"
+#todo: Tokenizing Remaining 2 NoteBooks and uploading to synapse.
 
-##get search resource
-#install-module az.search -scope CurrentUser;
-#
-#
-#
-##$searchkey = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName; - because somone needs to be fired
-#
-##Search setup
-#$indexName = "demoindex";
-#
-#$headers = @();
-#$headers.Add("api-key",$searchKey);
-#
-#$body = Get-Content -path search/index_base.json -Raw
-##create index
-#$uri = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
-#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-#
-##create indexer
-#$body = Get-Content -path search/indexer_base.json -Raw
-#$url = "https://$serviceName.search.windows.net/indexers/demoindexer?api-version=2019-05-06"
-#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
-#
-#$post = "";
-#
-##create pipeline
-#$body = Get-Content -path search/indexer_base.json -Raw
-#$url = "https://$searchName.search.windows.net/indexes/demoindex?api-version=2019-05-06"
-#$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $powerbitoken" } -ContentType "application/json"
+
+#Search service 
+Add-Content log.txt "-----------------Search service ---------------"
+RefreshTokens
+# Create Search Service
+#$sku = "Standard"
+#New-AzSearchService -Name $searchName -ResourceGroupName $rgName -Sku $sku -Location $location
+
+# Create search query key
+$queryKey = "QueryKey"
+New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
+
+# Get search primary admin key
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName
+$primaryAdminKey = $adminKeyPair.Primary
+
+#get list of keys - cognitiveservices
+$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json
+$destinationKey=$key.key1
+
+# Fetch connection string
+$storageKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $rgName)[0].Value
+$storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$($storageAccountName);AccountKey=$($storageKey);EndpointSuffix=core.windows.net"
+
+#resource id of cognitive_services_name
+$resource=az resource show -g $rgName -n $cognitive_services_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
+$resourceId=$resource.id
+
+# Create Index
+Get-ChildItem "artifacts/search" -Filter osha-final.json |
+        ForEach-Object {
+            $indexDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$searchName.search.windows.net/indexes?api-version=2020-06-30"
+            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+# Create Datasource endpoint
+Get-ChildItem "artifacts/search" -Filter search_datasource.json |
+        ForEach-Object {
+            $datasourceDefinition = (Get-Content $_.FullName -Raw).replace("#STORAGE_CONNECTION#", $storageConnectionString)
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+             $url = "https://$searchName.search.windows.net/datasources?api-version=2020-06-30"
+             Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+#Replace connection string in search_skillset.json
+(Get-Content -path artifacts/search/search_skillset.json -Raw) | Foreach-Object { $_ `
+				-replace '#RESOURCE_ID#', $resourceId`
+				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
+				-replace '#STORAGEKEY#', $storageKey`
+				-replace '#COGNITIVE_API_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/search/search_skillset.json
+
+# Creat Skillset
+Get-ChildItem "artifacts/search" -Filter search_skillset.json |
+        ForEach-Object {
+            $skillsetDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$searchName.search.windows.net/skillsets?api-version=2020-06-30"
+            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $skillsetDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+# Create Indexers
+Get-ChildItem "artifacts/search" -Filter search_indexer.json |
+        ForEach-Object {
+            $indexerDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$searchName.search.windows.net/indexers?api-version=2020-06-30"
+            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
+        }
+		
+#todo : KnowledgeStore
+	
+		
+Add-Content log.txt "-----------------Cognitive Services ---------------"
+RefreshTokens
+#Custom Vision 
+pip install -r ./artifacts/copyCV/requirements.txt
+$sourceKey="7f743d4b8d6d459fb2bb0e8648dfa38e"  #todo: find a way to get this securely
+#hard hat project
+$sourceProjectId="b2e4f4ce-d9f1-4fb7-aa0c-2f50fdc14d1b"
+$destinationregion= "https://$($location).api.cognitive.microsoft.com"
+$sourceregion= "https://westus2.api.cognitive.microsoft.com"
+python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+
+#welding helmet project
+$sourceProjectId="835b6a7a-1e49-454b-9584-654595b045b6"
+python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+
+#mask compliance project
+$sourceProjectId="db91f717-fede-4111-98bf-f60f7c9a4afd"
+python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+
+#product classification project
+$sourceProjectId="e555e244-ebfd-481b-ae0e-f3213d8e5634"
+$sourceKey="6b980df5f6ae432dac6adbfcadd2187f"
+python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+
+$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"
+$projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+
+(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+				-replace '#RESOURCE_GROUP#', $rgName`
+				-replace '#WORKSPACE_NAME#', $amlworkspacename`
+				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
+				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
+				-replace '#FORM_SERVICE_NAME#', $forms_cogs_name`
+				-replace '#APIM_KEY#', $forms_cogs_keys.Key1`
+				-replace '#MODEL_ID#', $modelId`
+				-replace '#TRANSLATOR_NAME#', $text_translation_service_name`
+				-replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
+			} | Set-Content -Path artifacts/amlnotebooks/config.py
+			
+foreach($project in $projects)
+{
+	$projectId=$project.id
+	$projectName=$project.name
+	if($projectName -eq "1_MFG__Helmet_PPE_Compliance")
+	{
+		(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                -replace '#HARD_HAT_ID#', $projectId`
+				-replace '#PREDICTION_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/amlnotebooks/config.py
+	}
+	elseif($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
+	{
+				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                -replace '#HELMET_ID#', $projectId`
+				-replace '#PREDICTION_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/amlnotebooks/config.py
+	}
+	elseif($projectName -eq "3_MFG__Mask_PPE_Compliance")
+	{
+				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                -replace '#FACE_MASK_ID#', $projectId`
+				-replace '#PREDICTION_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/amlnotebooks/config.py
+	}
+	elseif($projectName -eq "1_Defective_Product_Classification")
+	{
+				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                -replace '#QUALITY_CONTROL_ID#', $projectId`
+				-replace '#PREDICTION_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/amlnotebooks/config.py
+	}
+	
+	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"
+	$tags = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+	$tagList = New-Object System.Collections.ArrayList
+	foreach($tag in $tags)
+	{
+		$tagList.Add($tag.id)
+	}
+	$body = "{
+      `"selectedTags`": []
+		}"
+	$body=	$body |ConvertFrom-Json
+	$body.selectedTags=$tagList	
+	$body=	$body |ConvertTo-Json
+	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($projectId)/train"
+	$Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+	
+	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
+	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+	$iterationId=$iterations[0].id
+	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=Iteration1&predictionId=$($resourceId)"
+	$body = "{}"
+	#adding retry attempts for publishin iterations
+	$count=0;
+	$Delay=60
+	$Maximum=5;
+	do {
+            $count++
+            try {
+				Write-Host "Attempt $($count) at publishing iteration"
+                $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+            } catch {
+                Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
+				Write-Host "Sleeping for a minute"
+                Start-Sleep -s $Delay
+            }
+        } while ($count -lt $Maximum)	
+}
+
+
+Add-Content log.txt "-----------------AML Workspace ---------------"
+RefreshTokens
+#AML Workspace
+#create aml workspace
+az extension add -n azure-cli-ml
+az ml workspace create -w $amlworkspacename -g $rgName
+#create aks compute
+az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName 
+
+#attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
+az ml folder attach -w $amlworkspacename -g $rgName
+
+#create and delete a compute instance to get the code folder created in default store
+az ml computetarget create computeinstance -n cpuShell -s "STANDARD_D3_V2" -v
+#az ml computetarget delete -n cpuShell -v
+
+#get default data store
+$defaultdatastore = az ml datastore show-default --resource-group $rgName --workspace-name $amlworkspacename --output json | ConvertFrom-Json
+$defaultdatastoreaccname = $defaultdatastore.account_name
+
+#get fileshare and code folder within that
+$storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
+$share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
+$shareName = $share.Name
+
+#create Users folder ( it wont be there unless we launch the workspace in UI)
+New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
+
+#copy notebooks to ml workspace
+$notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
+foreach($notebook in $notebooks)
+{
+	if($notebook.BaseName -eq "config")
+	{
+		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
+		$path="/Users/"+$notebook.BaseName+".py"
+	}
+	else
+	{
+		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
+		$path="/Users/"+$notebook.BaseName+".ipynb"
+	}
+
+Set-AzStorageFileContent `
+   -Context $storageAcct.Context `
+   -ShareName $shareName `
+   -Source $source `
+   -Path $path
+}
+   
+az ml computetarget delete -n cpuShell -v
 
 Add-Content log.txt "-----------------Execution Complete---------------"

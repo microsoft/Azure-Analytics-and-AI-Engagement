@@ -2,7 +2,7 @@
     "name" : "mfg-dtstore",
     "type" : "azureblob",
     "credentials" : {
-        "connectionString" : "[STORAGECONNECTION]"
+        "connectionString" : "#STORAGE_CONNECTION#"
     },
     "container" : {
         "name" : "formrecogoutput"

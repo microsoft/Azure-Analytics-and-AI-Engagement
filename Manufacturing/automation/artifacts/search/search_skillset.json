@@ -303,11 +303,11 @@
   ],
   "cognitiveServices": {
     "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "/subscriptions/#subscription_id#/resourceGroups/#rgName#/providers/Microsoft.CognitiveServices/accounts/DreamCognitiveServices",
-    "key": "#destinationkey#"
+    "description": "#RESOURCE_ID#",
+    "key": "#COGNITIVE_API_KEY#"
   },
   "knowledgeStore": {
-    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=#storageAccountName#;AccountKey=#storageKey#==;EndpointSuffix=core.windows.net",
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=#STORAGEACCOUNTNAME#;AccountKey=#STORAGEKEY#==;EndpointSuffix=core.windows.net",
     "projections": [
       {
         "tables": [
