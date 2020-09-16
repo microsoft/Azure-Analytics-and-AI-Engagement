@@ -286,7 +286,7 @@ $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName
 foreach($name in $cosmos)
 {
     $collection = $name.BaseName
-    $cosmosDb = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDbAccountName
+    
     $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgName
     #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
     $path="./artifacts/cosmos/"+$name.BaseName+".json"
