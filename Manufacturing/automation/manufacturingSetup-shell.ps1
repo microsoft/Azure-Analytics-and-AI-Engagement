@@ -277,8 +277,6 @@ az webapp start --name $wideworldimporters_app_service_name --resource-group $rg
 
 #uploading Cosmos data
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
-Install-PackageProvider -Name NuGet -Force
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
 $cosmosDbAccountName = $cosmos_account_name_mfgdemo
@@ -289,7 +287,7 @@ foreach($name in $cosmos)
 {
     $collection = $name.BaseName
     $cosmosDb = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDbAccountName
-    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgNameName
+    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgName
     #New-CosmosDbCollection -Context $cosmosDbContext -Id $collection -OfferThroughput 400 -PartitionKey 'PartitionKey' -DefaultTimeToLive 604800
     $path="./artifacts/cosmos/"+$name.BaseName+".json"
     $document=Get-Content -Raw -Path $path
