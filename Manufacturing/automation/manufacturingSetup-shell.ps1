@@ -1403,14 +1403,14 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics_New"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics_New"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$dataTableList.Add($temp)
+#$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics_New"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics_New"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+#$dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Role"}} , @{Name = "TABLE_NAME"; Expression = {"Role"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactSales"}} , @{Name = "TABLE_NAME"; Expression = {"FactSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$dataTableList.Add($temp)
+#$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactSales"}} , @{Name = "TABLE_NAME"; Expression = {"FactSales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+#$dataTableList.Add($temp)
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"MfgMesQuality1"}} , @{Name = "TABLE_NAME"; Expression = {"MfgMesQuality1"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
@@ -1431,9 +1431,6 @@ foreach ($dataTableLoad in $dataTableList) {
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
-
-
-
 
 
 #Search service 
@@ -1530,8 +1527,6 @@ Get-ChildItem "artifacts/search" -Filter search_indexer.json |
 #todo : KnowledgeStore
 	
 		
-
-
 Add-Content log.txt "-----------------AML Workspace ---------------"
 RefreshTokens
 #AML Workspace
@@ -1585,6 +1580,7 @@ Set-AzStorageFileContent `
 az ml computetarget delete -n cpuShell -v
 
 ###############################################
+Add-Content log.txt "-----------------Cognitive service project publish ---------------"
 RefreshTokens
 
 foreach($project in $projects)
