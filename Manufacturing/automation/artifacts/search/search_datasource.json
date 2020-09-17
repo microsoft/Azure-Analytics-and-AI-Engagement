@@ -5,6 +5,6 @@
         "connectionString" : "#STORAGE_CONNECTION#"
     },
     "container" : {
-        "name" : "form-datasets"
+        "name" : "formrecogoutput"
     }
 }
