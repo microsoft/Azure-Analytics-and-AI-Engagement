@@ -890,7 +890,10 @@ $cellParams = [ordered]@{
 		"#COSMOS_LINKED_SERVICE#" = $cosmos_account_name_mfgdemo
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#SEARCH_KEY#" = $searchKey
-		"#SEARCH_NAME#" = $searchName	
+		"#SEARCH_NAME#" = $searchName
+		"#MODEL_ID#"=$modelId
+		"#LOCATION#"=$location
+		"#APIM_KEY#"=$forms_cogs_keys.Key1
 }
 
 foreach($name in $notebooks)
