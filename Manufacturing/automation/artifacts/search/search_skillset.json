@@ -173,11 +173,11 @@
       "context": "/document",
       "inputs": [
         {
-          "name": "final_narrative",
+          "name": "FinalNarrative",
           "source": "/document/final_narrative"
         },
         {
-          "name": "event",
+          "name": "EventTitle",
           "source": "/document/event"
         },
         {
@@ -189,7 +189,7 @@
           "source": "/document/location"
         },
         {
-          "name": "source",
+          "name": "SourceTitle",
           "source": "/document/source"
         },
         {
@@ -197,11 +197,11 @@
           "source": "/document/hospitalized"
         },
         {
-          "name": "nature",
+          "name": "NatureTitle",
           "source": "/document/nature"
         },
         {
-          "name": "part_of_body",
+          "name": "PartOfBodyTitle",
           "source": "/document/part_of_body"
         },
         {
@@ -209,7 +209,7 @@
           "source": "/document/caseid"
         },
         {
-          "name": "event_date",
+          "name": "EventDate",
           "source": "/document/event_date"
         },
         {
