@@ -199,7 +199,12 @@ New-Item log.txt
 #Form Recognizer
 Add-Content log.txt "-----------------Form Recognizer---------------"
 RefreshTokens
+
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl
+
 #Replace connection string in search_skillset.json
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
 				-replace '#LOCATION#', $location`
@@ -219,6 +224,11 @@ RefreshTokens
 #Custom Vision 
 pip install -r ./artifacts/copyCV/requirements.txt
 $sourceKey="7f743d4b8d6d459fb2bb0e8648dfa38e"  #todo: find a way to get this securely
+
+#get list of keys - cognitiveservices
+$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json
+$destinationKey=$key.key1
+
 #hard hat project
 $sourceProjectId="b2e4f4ce-d9f1-4fb7-aa0c-2f50fdc14d1b"
 $destinationregion= "https://$($location).api.cognitive.microsoft.com"
