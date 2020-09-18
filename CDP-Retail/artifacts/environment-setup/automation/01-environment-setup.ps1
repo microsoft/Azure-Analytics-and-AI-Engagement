@@ -8,16 +8,21 @@ $InformationPreference = "Continue"
 # This is for Spektra Environment.
 $IsCloudLabs = Test-Path C:\LabFiles\AzureCreds.ps1;
 
-$title = "Data Size"
-$yes = New-Object System.Management.Automation.Host.ChoiceDescription "30 &Billion", "Loads 30 billion records into the Sales table. Scales SQL Pool to DW3000c during data loading. Approxiamate loading time is 4 hours."
-$no = New-Object System.Management.Automation.Host.ChoiceDescription "3 &Million", "Loads 3 million records into the Sales table."
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$result = $host.ui.PromptForChoice($title, "Choose how much data you want to load.", $options, 1)
+$Load30Billion = 0
 
-switch($result)
+if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
 {
-0 { $Load30Billion = 1 }
-1 { $Load30Billion = 0 }
+        $title = "Data Size"
+        $yes = New-Object System.Management.Automation.Host.ChoiceDescription "30 &Billion", "Loads 30 billion records into the Sales table. Scales SQL Pool to DW3000c during data loading. Approxiamate loading time is 4 hours."
+        $no = New-Object System.Management.Automation.Host.ChoiceDescription "3 &Million", "Loads 3 million records into the Sales table."
+        $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+        $result = $host.ui.PromptForChoice($title, "Choose how much data you want to load.", $options, 1)
+        
+        switch($result)
+        {
+        0 { $Load30Billion = 1 }
+        1 { $Load30Billion = 0 }
+        }
 }
 
 if($IsCloudLabs){
@@ -58,13 +63,15 @@ if($IsCloudLabs){
         if($subs.GetType().IsArray -and $subs.length -gt 1){
                 $subOptions = [System.Collections.ArrayList]::new()
                 for($subIdx=0; $subIdx -lt $subs.length; $subIdx++){
-                        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
+                        $optionName = "&" + ($subIdx + 1) + " : " + $subs[$subIdx]
+                        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($subs[$subIdx]) subscription."   
                         $subOptions.Add($opt)
                 }
                 $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
                 $selectedSubName = $subs[$selectedSubIdx]
                 Write-Information "Selecting the $selectedSubName subscription"
                 Select-AzSubscription -SubscriptionName $selectedSubName
+                az account set -s $selectedSubName
         }
         
         $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
@@ -80,7 +87,25 @@ if($IsCloudLabs){
         $functionsSourcePath = "..\functions"
 }
 
-$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*WWI-Lab*" }).ResourceGroupName
+
+$resourceGroups = az group list --query '[].name' -o tsv 
+
+if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
+    $rgOptions = [System.Collections.ArrayList]::new()
+    for($rgIdx=0; $rgIdx -lt $resourceGroups.length; $rgIdx++){
+        $optionName = $resourceGroups[$rgIdx]
+        $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($optionName)", "Selects the $($resourceGroups[$rgIdx]) resource group."   
+        $rgOptions.Add($opt)
+    }
+    $selectedRgIdx = $host.ui.PromptForChoice('Enter the desired Resource Group for this lab','Copy and paste the name of the resource group to make your choice.', $rgOptions.ToArray(),0)
+    $resourceGroupName = $resourceGroups[$selectedRgIdx]
+    Write-Information "Selecting the $resourceGroupName resource group"
+}
+else{
+$resourceGroupName=$resourceGroups
+Write-Information "Selecting the $resourceGroupName resource group"
+}
+
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
@@ -106,12 +131,12 @@ Write-Information "Deploying Azure functions"
 az functionapp deployment source config-zip `
         --resource-group $resourceGroupName `
         --name $twitterFunction `
-        --src "../functions/powershell-functions/Twitter_Function_Publish_Package.zip"
+        --src "../functions/Twitter_Function_Publish_Package.zip"
 		
 az functionapp deployment source config-zip `
         --resource-group $resourceGroupName `
         --name $locationFunction `
-        --src "../functions/powershell-functions/LocationAnalytics_Publish_Package.zip"
+        --src "../functions/LocationAnalytics_Publish_Package.zip"
 $principal=az resource show -g $resourceGroupName -n $asaName --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
 $principalId=$principal.identity.principalId
 $wsId=Read-Host "Enter your powerBi workspace Id entered during template deployment"
@@ -234,7 +259,13 @@ foreach ($singleFile in $singleFiles) {
         $source = $publicDataUrl + $singleFile.SourcePath
         $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
-        azcopy copy $source $destination 
+        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
+        {
+                .\azcopy copy $source $destination 
+        }
+        else {
+                azcopy copy $source $destination 
+        }
 }
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
@@ -245,9 +276,14 @@ foreach ($singleFile in $singleFiles) {
         $source = $publicDataUrl + $singleFile.SourcePath
         $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
-        azcopy copy $source $destination 
+        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
+        {
+                .\azcopy copy $source $destination 
+        }
+        else {
+                azcopy copy $source $destination 
+        }
 }
-
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "machine-learning" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob machine* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
@@ -257,7 +293,13 @@ foreach ($singleFile in $singleFiles) {
         $source = $publicDataUrl + $singleFile.SourcePath
         $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
-        azcopy copy $source $destination 
+        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
+        {
+                .\azcopy copy $source $destination 
+        }
+        else {
+                azcopy copy $source $destination 
+        }
 }
 
 if(!$IsCloudLabs)
@@ -276,6 +318,11 @@ if ($result.properties.status -ne "Online") {
 Write-Information "Create tables in $($sqlPoolName)"
 
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
+$result
+
+Write-Information "Create storade procedures in $($sqlPoolName)"
+
+$result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-stored-procedures" -Parameters $params 
 $result
 
 Write-Information "Loading data"
@@ -365,6 +412,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Customer_Sal
 $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"department_visit_customer"}} , @{Name = "TABLE_NAME"; Expression = {"department_visit_customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ProductRecommendations_Sparkv2"}} , @{Name = "TABLE_NAME"; Expression = {"ProductRecommendations_Sparkv2"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
         Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
@@ -389,8 +438,9 @@ if($Load30Billion -eq 1)
         $start = Get-Date
         [nullable[double]]$secondsRemaining = $null
         $maxIterationCount = 3000
-        
-        For ($count=0; $count -le $maxIterationCount; $count++) {
+        $secondsElapsed = 0
+
+        For ($count=1; $count -le $maxIterationCount; $count++) {
         
                 $percentComplete = ($count / $maxIterationCount) * 100
                 $progressParameters = @{
@@ -406,7 +456,7 @@ if($Load30Billion -eq 1)
                 Write-Progress @progressParameters
         
                 $params = @{ }
-                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -UseAPI (!$IsCloudLabs) -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
+                $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "03-Billion_Records" -Parameters $params 
                 $result
         
                 $secondsElapsed = (Get-Date) - $start
@@ -531,15 +581,17 @@ Write-Information "Create SQL scripts for Lab 05"
 
 if($IsCloudLabs){
         $sqlScripts = [ordered]@{
-                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql"
-                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql"
-                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql"
+                "8 External Data To Synapse Via Copy Into" = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "1 SQL Query With Synapse"  = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "2 JSON Extractor"    = ".\artifacts\environment-setup\sql\workspace-artifacts"
+                "Reset"    = ".\artifacts\environment-setup\sql\workspace-artifacts"
         }
 } else {
         $sqlScripts = [ordered]@{
-                "8 External Data To Synapse Via Copy Into" = "..\sql"
-                "1 SQL Query With Synapse"  = "..\sql"
-                "2 JSON Extractor"    = "..\sql"
+                "8 External Data To Synapse Via Copy Into" = "..\sql\workspace-artifacts"
+                "1 SQL Query With Synapse"  = "..\sql\workspace-artifacts"
+                "2 JSON Extractor"    = "..\sql\workspace-artifacts"
+                "Reset"    = "..\sql\workspace-artifacts"
         }
 }
 
@@ -566,14 +618,14 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
 
 Write-Information "Starting PowerBI Artifact Provisioning"
 
-$wsname = "asa-exp-$uniqueId";
+#$wsname = "asa-exp-$uniqueId";
 
-$wsid = Get-PowerBIWorkspaceId $wsname;
+#$wsid = Get-PowerBIWorkspaceId $wsname;
 
-if (!$wsid)
-{
-    $wsid = New-PowerBIWS $wsname;
-}
+#if (!$wsid)
+#{
+ #   $wsid = New-PowerBIWS $wsname;
+#}
 
 Write-Information "Uploading PowerBI Reports"
 
@@ -596,6 +648,10 @@ $temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision
                                 @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"images"}}, 
+                                @{Name = "Name"; Expression = {"Dashboard-Images"}}, 
+                                @{Name = "PowerBIDataSetId"; Expression = {""}}
+$reportList.Add($temp)
 
 $powerBIDataSetConnectionTemplate = Get-Content -Path "$templatesPath/powerbi_dataset_connection.json"
 $powerBIName = "asaexppowerbi$($uniqueId)"
@@ -617,50 +673,42 @@ Write-Information "Create PowerBI linked service $($keyVaultName)"
 $result = Create-PowerBILinkedService -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $powerBIName -WorkspaceId $wsid
 Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
-Write-Information "Setting Powershell Azure Functions for PowerBI Data Refresh" 
-
 Refresh-Token -TokenType PowerBI
-$azureCLITokens = Get-Content -Path \tmp\accessTokens.json | ConvertFrom-Json
-$powerBIRefreshToken = $azureCLITokens | where { $_.resource -eq "https://analysis.windows.net/powerbi/api" } | select -ExpandProperty refreshToken
-az keyvault secret set -n "PowerBIRefreshToken" --vault-name $keyVaultName --value $powerBIRefreshToken
-$secretId = az keyvault secret show -n "PowerBIRefreshToken" --vault-name $keyVaultName --query "id" -o tsv
-az functionapp identity assign -n "psfunctions$($uniqueId)" -g $resourceGroupName
-$principalId = az functionapp identity show -n "psfunctions$($uniqueId)" -g $resourceGroupName --query principalId -o tsv
-az keyvault set-policy -n $keyVaultName -g $resourceGroupName --object-id $principalId --secret-permissions get
-az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "powerBIRefreshToken=@Microsoft.KeyVault(SecretUri=$secretId)"
-az functionapp config appsettings set --name "psfunctions$($uniqueId)" --resource-group $resourceGroupName --settings "tenantId=$($tenantId)"
-az functionapp deployment source config-zip -g $resourceGroupName -n "psfunctions$($uniqueId)" --src "../functions/powershell-functions/powershell-functions.zip"
-
-$powerBIDatasetRefreshFunctionKey = ((az rest --method post `
-                     --uri "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Web/sites/psfunctions$($uniqueId)/functions/PowerBIDataSetRefresh/listKeys?api-version=2018-11-01") | ConvertFrom-Json).default
-$powerBIDatasetRefreshFunctionUri = "https://psfunctions$($uniqueId).azurewebsites.net/api/PowerBIDataSetRefresh?code=$($powerBIDatasetRefreshFunctionKey)"
 
 Write-Information "Create pipelines"
 
 $pipelineList = New-Object System.Collections.ArrayList
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sap_hana_to_adls"}} , @{Name = "Name"; Expression = {"SAP HANA TO ADLS"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"marketing_db_migration"}} , @{Name = "Name"; Expression = {"MarketingDBMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"sales_db_migration"}} , @{Name = "Name"; Expression = {"SalesDBMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"twitter_data_migration"}} , @{Name = "Name"; Expression = {"TwitterDataMigration"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_campaign_analytics"}} , @{Name = "Name"; Expression = {"Customize Campaign Analytics"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decomposition_tree"}} , @{Name = "Name"; Expression = {"Customize Decomposition Tree"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_decomposition_tree"}} , @{Name = "Name"; Expression = {"Customize Decomposition Tree"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_location_analytics"}} , @{Name = "Name"; Expression = {"Customize Location Analytics"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}, @{Name = "PowerBIReportName"; Expression = {"(Phase 2) CDP Vision Demo v1"}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_revenue_profitability"}} , @{Name = "Name"; Expression = {"Customize Revenue Profitability"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Department_Visits_Predictions"}} , @{Name = "Name"; Expression = {"ML Department Visits Predictions"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"ML_Product_Recommendation"}} , @{Name = "Name"; Expression = {"ML Product Recommendation"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights_ml"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights ML"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_recommendation_insights_ml"}} , @{Name = "Name"; Expression = {"Customize Recommendation Insights ML"}}
 $pipelineList.Add($temp)
-$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}, @{Name = "PowerBIReportName"; Expression = {""}}
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_email_analytics"}} , @{Name = "Name"; Expression = {"Customize EMail Analytics"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_all"}} , @{Name = "Name"; Expression = {"Customize All"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"customize_product_recommendations_ml"}} , @{Name = "Name"; Expression = {"Customize Product Recommendations ML"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"1_master_pipeline"}} , @{Name = "Name"; Expression = {"1 Master Pipeline"}}
+$pipelineList.Add($temp)
+$temp = "" | select-object @{Name = "FileName"; Expression = {"reset_ml_data"}} , @{Name = "Name"; Expression = {"Reset ML Data"}}
 $pipelineList.Add($temp)
 
 foreach ($pipeline in $pipelineList) {
@@ -668,7 +716,6 @@ foreach ($pipeline in $pipelineList) {
         $result = Create-Pipeline -PipelinesPath $pipelinesPath -WorkspaceName $workspaceName -Name $pipeline.Name -FileName $pipeline.FileName -Parameters @{
                 DATA_LAKE_STORAGE_NAME = $dataLakeAccountName
                 DEFAULT_STORAGE = $workspaceName + "-WorkspaceDefaultStorage"
-                PSFUNCTION_ENDPOINT = "$($powerBIDatasetRefreshFunctionUri)&DataSetId=$($reportList | where Name -eq $pipeline.PowerBIReportName | select -ExpandProperty PowerBIDataSetId)"
          }
         Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 }
@@ -684,9 +731,12 @@ Write-Information "Setting PowerBI Report Data Connections"
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "asaexpworkspace$($uniqueId).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", "SQLPool01") |Out-String
 
 foreach ($powerBIReport in $reportList) {
-    Write-Information "Setting database connection for $($powerBIReport.Name)"
-    $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
-    Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIReportDataSetConnectionUpdateRequest;
+        if($powerBIReport.Name -ne "Dashboard-Images")
+        {
+                Write-Information "Setting database connection for $($powerBIReport.Name)"
+                $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $powerBIReport.SourceServer).Replace("#SOURCE_DATABASE#", $powerBIReport.SourceDatabase) |Out-String
+                Update-PowerBIDatasetConnection $wsId $powerBIReport.PowerBIDataSetId $powerBIReportDataSetConnectionUpdateRequest;
+        }
 }
 
 Write-Information "Environment setup complete." 

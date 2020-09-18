@@ -76,37 +76,6 @@
                     },
                     "firstRowOnly": false
                 }
-            },
-            {
-                "name": "PowerBI Dataset Refresh Request",
-                "type": "WebActivity",
-                "dependsOn": [
-                    {
-                        "activity": "Ingest Sales Master",
-                        "dependencyConditions": [
-                            "Succeeded"
-                        ]
-                    }
-                ],
-                "policy": {
-                    "timeout": "7.00:00:00",
-                    "retry": 0,
-                    "retryIntervalInSeconds": 30,
-                    "secureOutput": false,
-                    "secureInput": false
-                },
-                "userProperties": [],
-                "typeProperties": {
-                    "url": "#PSFUNCTION_ENDPOINT#",
-                    "connectVia": {
-                        "referenceName": "AutoResolveIntegrationRuntime",
-                        "type": "IntegrationRuntimeReference"
-                    },
-                    "method": "GET",
-                    "headers": {
-                        "Content-Type": "application/json"
-                    }
-                }
             }
         ],
         "annotations": []
