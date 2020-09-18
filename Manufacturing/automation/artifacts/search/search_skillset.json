@@ -307,7 +307,7 @@
     "key": "#COGNITIVE_API_KEY#"
   },
   "knowledgeStore": {
-    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=#STORAGEACCOUNTNAME#;AccountKey=#STORAGEKEY#==;EndpointSuffix=core.windows.net",
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=#STORAGEACCOUNTNAME#;AccountKey=#STORAGEKEY#;EndpointSuffix=core.windows.net",
     "projections": [
       {
         "tables": [
