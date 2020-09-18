@@ -1103,6 +1103,10 @@ foreach($report in $reportList)
 								{
 									`"name`": `"KnowledgeStoreStorageAccount`",
 									`"newValue`": `"$dataLakeAccountName`"
+								},
+								{
+									`"name`": `"SkillsetName`",
+									`"newValue`": `"osha-formrecogoutput-skillset`"
 								}
 							]
 					}"

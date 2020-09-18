@@ -2,10 +2,13 @@
   "name": "osha-final",
   "description": "",
   "dataSourceName": "mfg-dtstore",
-  "skillsetName": null,
-  "targetIndexName": "osha-final",
+  "skillsetName": "osha-formrecogoutput-skillset",
+  "targetIndexName": "osha-final-index",
   "disabled": null,
-  "schedule": null,
+  "schedule": {
+    "interval": "PT5M",
+    "startTime": "2020-09-16T08:50:49Z"
+  },
   "parameters": {
     "batchSize": null,
     "maxFailedItems": 0,
@@ -25,6 +28,38 @@
       }
     }
   ],
-  "outputFieldMappings": [],
-  "encryptionKey": null
+  "outputFieldMappings": [
+	{
+      "sourceFieldName": "/document/final_narrative/sentences/*/people/*",
+      "targetFieldName": "people"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/organizations/*",
+      "targetFieldName": "organizations"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/locations/*",
+      "targetFieldName": "locations"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/keyphrases/*",
+      "targetFieldName": "keyphrases"
+    },
+    {
+      "sourceFieldName": "/document/language",
+      "targetFieldName": "language"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/translated_text",
+      "targetFieldName": "translated_text"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/pii_entities/*",
+      "targetFieldName": "pii_entities"
+    },
+    {
+      "sourceFieldName": "/document/final_narrative/sentences/*/masked_text",
+      "targetFieldName": "masked_text"
+    }
+  ]
 }
