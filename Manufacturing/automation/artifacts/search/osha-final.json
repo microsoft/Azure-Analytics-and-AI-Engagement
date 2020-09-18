@@ -485,7 +485,10 @@
   ],
   "scoringProfiles": [],
   "defaultScoringProfile": "",
-  "corsOptions": null,
+  "corsOptions": {
+    "allowedOrigins": [
+      "*"
+    ],
   "analyzers": [],
   "charFilters": [],
   "tokenFilters": [],

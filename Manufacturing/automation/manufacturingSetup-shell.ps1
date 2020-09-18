@@ -1458,7 +1458,7 @@ RefreshTokens
 #New-AzSearchService -Name $searchName -ResourceGroupName $rgName -Sku $sku -Location $location
 
 # Create search query key
-Install-Module -Name Az.Search
+Install-Module -Name Az.Search -f
 $queryKey = "QueryKey"
 New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
 
@@ -1549,7 +1549,9 @@ RefreshTokens
 #AML Workspace
 #create aml workspace
 az extension add -n azure-cli-ml
+
 az ml workspace create -w $amlworkspacename -g $rgName
+Start-Sleep -s 60
 #create aks compute
 az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName 
 
@@ -1619,6 +1621,7 @@ foreach($project in $projects)
             try {
 				Write-Host "Attempt $($count) at publishing iteration"
                 $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+				$count= $Maximum
             } catch {
                 Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
 				Write-Host "Sleeping for a minute"
