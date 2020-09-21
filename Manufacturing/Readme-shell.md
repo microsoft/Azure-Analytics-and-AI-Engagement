@@ -830,6 +830,8 @@ Your Accelerator environment is now set up.
 ### Task 8: Clean up resources
 
 > **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
+
+
 **Open** the Azure Portal.
 
 1. **Open** the Azure Cloud Shell by clicking its icon from the top toolbar.
