@@ -15,6 +15,7 @@
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
     - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
+    - [Task 8: Clean up resources](#task-8-clean-up-resources)
     
 <!-- /TOC -->
 
@@ -824,3 +825,30 @@ In this section of the document we will create the 'Realtime Field and Sentiment
  	![Selecting workspace 26](media/select-workspace26.png)
 
 Your Accelerator environment is now set up.
+
+
+### Task 8: Clean up resources
+
+> **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
+**Open** the Azure Portal.
+
+1. **Open** the Azure Cloud Shell by clicking its icon from the top toolbar.
+
+![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+
+**Execute** the 'resourceCleanup.ps1' script by executing the following commands:
+2. **Run** Command: 
+	```PowerShell
+	cd 'MfgAI/Manufacturing/automation'
+	```
+3. Then **run** the PowerShell script: 
+	```PowerShell
+	./resourceCleanup.ps1
+	```
+![Cleaning the resources](media/clean-script.png)
+
+4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
+
+![Enter the resource group name](media/RG-Name-Screen10.png)
+
+5. You have now successfully cleaned up your resources.
