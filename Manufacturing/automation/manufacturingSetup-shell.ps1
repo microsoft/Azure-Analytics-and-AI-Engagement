@@ -518,23 +518,23 @@ $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result		
 
-$sqlQuery  = "CREATE DATABASE Demo1"
-$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result	
+#$sqlQuery  = "CREATE DATABASE Demo1"
+#$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
+#$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
+#Add-Content log.txt $result	
  
 $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_mfgdemo -g $rgName |ConvertFrom-Json
 $cosmos_account_key=$cosmos_account_key.primarymasterkey
  
-(Get-Content -path "$($SQLScriptsPath)/sqlOnDemandSchema.sql" -Raw) | Foreach-Object { $_ `
-                -replace '#COSMOS_ACCOUNT_NAME_MFGDEMO#', $cosmos_account_name_mfgdemo`
-				-replace '#LOCATION#', $location`
-				-replace '#SECRET#', $cosmos_account_key`
-        } | Set-Content -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"		
-$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"
-$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database Demo1 -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result	
+#(Get-Content -path "$($SQLScriptsPath)/sqlOnDemandSchema.sql" -Raw) | Foreach-Object { $_ `
+#                -replace '#COSMOS_ACCOUNT_NAME_MFGDEMO#', $cosmos_account_name_mfgdemo`
+#				-replace '#LOCATION#', $location`
+#				-replace '#SECRET#', $cosmos_account_key`
+#        } | Set-Content -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"		
+#$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"
+#$sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
+#$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database Demo1 -Username $sqlUser -Password $sqlPassword
+#Add-Content log.txt $result	
  
 #uploading Sql Scripts
 Add-Content log.txt "-----------uploading Sql Scripts-----------------"
