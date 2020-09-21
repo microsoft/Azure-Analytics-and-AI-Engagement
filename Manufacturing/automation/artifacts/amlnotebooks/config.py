@@ -24,7 +24,7 @@ QUALITY_CONTROL_POST_URL = "https://westus2.api.cognitive.microsoft.com/customvi
 QUALITY_CONTROL_HEADERS = {'Prediction-Key': "#PREDICTION_KEY#","Content-Type":"application/json"}
 # 4a
 
-FORM_RECOGNIZER_ENDPOINT = "https://#FORM_SERVICE_NAME#.cognitiveservices.azure.com/"
+FORM_RECOGNIZER_ENDPOINT = "https://#FORM_SERVICE_NAME#.cognitiveservices.azure.com"
 # Change if api key is expired
 FORM_RECOGNIZER_APIM_KEY = "#APIM_KEY#"
 # This model is the one trained on 5 forms
