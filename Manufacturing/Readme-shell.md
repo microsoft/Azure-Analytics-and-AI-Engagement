@@ -839,14 +839,19 @@ Your Accelerator environment is now set up.
 ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 **Execute** the 'resourceCleanup.ps1' script by executing the following commands:
-2. **Run** Command: 
-	```PowerShell
-	cd 'MfgAI/Manufacturing/automation'
-	```
+
+2. **Run** Command:
+
+   ```PowerShell
+   cd 'MfgAI/Manufacturing/automation'
+   ```
+	
 3. Then **run** the PowerShell script: 
-	```PowerShell
-	./resourceCleanup.ps1
-	```
+	
+   ```PowerShell
+   ./resourceCleanup.ps1
+   ```
+	
 ![Cleaning the resources](media/clean-script.png)
 
 4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
