@@ -1134,14 +1134,6 @@ foreach($report in $reportList)
 								`"newValue`": `"https://$($cosmos_account_name_mfgdemo).documents.azure.com:443/`"
 							},
 							{
-								`"name`": `"SynapseOnDemandDatabaseName`",
-								`"newValue`": `"Demo1`"
-							},
-							{
-								`"name`": `"SynapseOnDemandServerName`",
-								`"newValue`": `"$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net`"
-							},
-							{
 								`"name`": `"SynapseWarehouseDatabaseName`",
 								`"newValue`": `"$($sqlPoolName)`"
 							},
