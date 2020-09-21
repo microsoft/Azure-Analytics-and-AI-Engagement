@@ -202,8 +202,9 @@ RefreshTokens
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
-
-$sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(6)
+$sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 
 #Replace connection string in search_skillset.json
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
