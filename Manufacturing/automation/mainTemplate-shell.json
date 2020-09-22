@@ -35,7 +35,7 @@
          "metadata":{
             "description":"Location for all resources."
          }
-      }
+      }      
    },
    "variables":{
       "resource_group_name":"[resourceGroup().name]",
@@ -379,9 +379,12 @@
                   "conflictResolutionPath":"/_ts"
                }
             },
-            "options":{
-               "throughput":"400"
-            }
+            "options": {
+					"throughput": "400",
+					"autoscaleSettings": {
+						"maxThroughput": "4000"
+					}
+				}
          }
       },
       {
@@ -420,9 +423,12 @@
                   "conflictResolutionPath":"/_ts"
                }
             },
-            "options":{
-               "throughput":"400"
-            }
+		"options": {
+					"throughput": "400",
+					"autoscaleSettings": {
+						"maxThroughput": "4000"
+					}
+				}
          }
       },
       {
@@ -461,9 +467,12 @@
                   "conflictResolutionPath":"/_ts"
                }
             },
-            "options":{
-               "throughput":"400"
-            }
+           "options": {
+					"throughput": "400",
+					"autoscaleSettings": {
+						"maxThroughput": "4000"
+					}
+				}
          }
       },
       {
@@ -707,9 +716,12 @@
                   "conflictResolutionPath":"/_ts"
                }
             },
-            "options":{
-               "throughput":"400"
-            }
+          "options": {
+					"throughput": "400",
+					"autoscaleSettings": {
+						"maxThroughput": "4000"
+					}
+				}
          }
       },
       {
