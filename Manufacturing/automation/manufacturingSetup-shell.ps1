@@ -258,7 +258,7 @@ $projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/j
 				-replace '#WORKSPACE_NAME#', $amlworkspacename`
 				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
-				-replace '#FORM_SERVICE_NAME#', $forms_cogs_name`
+				-replace '#LOCATION#', $location`
 				-replace '#APIM_KEY#', $forms_cogs_keys.Key1`
 				-replace '#MODEL_ID#', $modelId`
 				-replace '#TRANSLATOR_NAME#', $text_translation_service_name`
