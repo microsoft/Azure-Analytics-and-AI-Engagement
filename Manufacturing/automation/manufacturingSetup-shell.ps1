@@ -543,6 +543,9 @@ foreach($name in $cosmos)
     $path="./artifacts/cosmos/"+$name.BaseName+".json"
     $document=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $document
+	$newRU=4000
+	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
+	
     foreach($json in $document)
     {
         $key=$json.SyntheticPartitionKey
@@ -554,6 +557,9 @@ foreach($name in $cosmos)
         $body=ConvertTo-Json $json
         New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
     }
+	
+	$newRU=400
+	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
 } 
 
 
