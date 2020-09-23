@@ -219,6 +219,13 @@ $modelUrl = python "./artifacts/formrecognizer/create_model.py"
 $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
 
+$modelUrl = python "./artifacts/formrecognizer/create_model.py"
+$modelId= $modelUrl.split("/")
+$modelId = $modelId[7]
+
+$modelUrl = python "./artifacts/formrecognizer/create_model.py"
+$modelId= $modelUrl.split("/")
+$modelId = $modelId[7]
 
 Add-Content log.txt "-----------------Cognitive Services ---------------"
 RefreshTokens
