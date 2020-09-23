@@ -169,9 +169,6 @@
          "properties":{
             "resource":{
                "id":"[variables('cosmos_database_name_mfgdemo_industrial')]"
-            },
-            "options":{
-               "throughput":"400"
             }
          }
       },
@@ -223,6 +220,9 @@
                   "mode":"LastWriterWins",
                   "conflictResolutionPath":"/_ts"
                }
+            },
+			  "options":{
+               "throughput":"400"
             }
          }
       },
@@ -261,6 +261,9 @@
                   "mode":"LastWriterWins",
                   "conflictResolutionPath":"/_ts"
                }
+            },
+			  "options":{
+               "throughput":"400"
             }
          }
       },
@@ -299,7 +302,12 @@
                   "mode":"LastWriterWins",
                   "conflictResolutionPath":"/_ts"
                }
-            }
+            },
+			 "options": {
+					"autoscaleSettings": {
+						"maxThroughput": "4000"
+					}
+				}
          }
       },
       {
@@ -380,7 +388,6 @@
                }
             },
             "options": {
-					"throughput": "400",
 					"autoscaleSettings": {
 						"maxThroughput": "4000"
 					}
@@ -424,7 +431,6 @@
                }
             },
 		"options": {
-					"throughput": "400",
 					"autoscaleSettings": {
 						"maxThroughput": "4000"
 					}
@@ -468,7 +474,6 @@
                }
             },
            "options": {
-					"throughput": "400",
 					"autoscaleSettings": {
 						"maxThroughput": "4000"
 					}
@@ -717,7 +722,6 @@
                }
             },
           "options": {
-					"throughput": "400",
 					"autoscaleSettings": {
 						"maxThroughput": "4000"
 					}
