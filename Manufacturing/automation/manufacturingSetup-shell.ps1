@@ -1589,7 +1589,7 @@ Set-AzStorageFileContent `
    -Path $path
 }
    
-az ml computetarget delete -n cpuShell -v
+# az ml computetarget delete -n cpuShell -v
 
 ###############################################
 Add-Content log.txt "-----------------Cognitive service project publish ---------------"
@@ -1607,7 +1607,7 @@ foreach($project in $projects)
 	$body = "{}"
 	#adding retry attempts for publishin iterations
 	$count=0;
-	$Delay=60
+	$Delay=15
 	$Maximum=5;
 	do {
             $count++
@@ -1617,7 +1617,7 @@ foreach($project in $projects)
 				$count= $Maximum
             } catch {
                 Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
-				Write-Host "Sleeping for a minute"
+				Write-Host "Retrying..."
                 Start-Sleep -s $Delay
             }
         } while ($count -lt $Maximum)	
