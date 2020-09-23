@@ -205,6 +205,119 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 $StartTime = Get-Date
 $EndTime = $startTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+#download azcopy command
+if ([System.Environment]::OSVersion.Platform -eq "Unix")
+{
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"
+
+        if (!$azCopyLink)
+        {
+                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200709/azcopy_linux_amd64_10.5.0.tar.gz"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.tar.gz"
+        tar -xf "azCopy.tar.gz"
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1)
+        {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        cd $azCopyCommand
+        chmod +x azcopy
+        cd ..
+        $azCopyCommand += "\azcopy"
+}
+else
+{
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
+
+        if (!$azCopyLink)
+        {
+                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
+        Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1)
+        {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        $azCopyCommand += "\azcopy"
+}
+ 
+#Uploading to storage containers
+Add-Content log.txt "-----------Uploading to storage containers-----------------"
+RefreshTokens
+
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+$containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
+
+foreach($container in $containers)
+{
+    $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+    $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
+    & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
+}
+
+RefreshTokens
+ 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
+& $azCopyCommand copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
+#& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/incidentreport" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "formrecogoutput" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/formrecogoutput$($destinationSasKey)"
+#& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/formrecogoutput" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "anomalydetection" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalydetection$($destinationSasKey)"
+& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/anomalydetection" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "ppecompliancedetection" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/ppecompliancedetection$($destinationSasKey)"
+& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/ppecompliancedetection" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "qualitycontrol" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/qualitycontrol$($destinationSasKey)"
+& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/qualitycontrol" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "azureml-mfg" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/azureml-mfg$($destinationSasKey)"
+& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
+
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
+
+$dataDirectories = @{
+   b2ccsv = "customcsv,customcsv/Manufacturing B2C Scenario Dataset /" #space after container name is intentional since thats how the name is in public storage
+   b2bcsv = "customcsv,customcsv/Manufacturing B2B Scenario Dataset/"
+}
+
+$publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/";
+
+foreach ($dataDirectory in $dataDirectories.Keys) {
+
+        $vals = $dataDirectories[$dataDirectory].tostring().split(",");
+
+        $source = $publicDataUrl + $vals[1];
+
+        $path = $vals[0];
+
+        $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
+        Write-Information "Copying directory $($source) to $($destination)"
+        & $azCopyCommand copy $source $destination --recursive=true
+}
 
 #Replace connection string in search_skillset.json
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
@@ -215,14 +328,6 @@ $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $
 				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
 			} | Set-Content -Path artifacts/formrecognizer/create_model.py
 			
-$modelUrl = python "./artifacts/formrecognizer/create_model.py"
-$modelId= $modelUrl.split("/")
-$modelId = $modelId[7]
-
-$modelUrl = python "./artifacts/formrecognizer/create_model.py"
-$modelId= $modelUrl.split("/")
-$modelId = $modelId[7]
-
 $modelUrl = python "./artifacts/formrecognizer/create_model.py"
 $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
@@ -587,119 +692,6 @@ foreach ($name in $scripts)
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 }
 
-#download azcopy command
-if ([System.Environment]::OSVersion.Platform -eq "Unix")
-{
-        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"
-
-        if (!$azCopyLink)
-        {
-                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200709/azcopy_linux_amd64_10.5.0.tar.gz"
-        }
-
-        Invoke-WebRequest $azCopyLink -OutFile "azCopy.tar.gz"
-        tar -xf "azCopy.tar.gz"
-        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy).Directory.FullName
-
-        if ($azCopyCommand.count -gt 1)
-        {
-            $azCopyCommand = $azCopyCommand[0];
-        }
-
-        cd $azCopyCommand
-        chmod +x azcopy
-        cd ..
-        $azCopyCommand += "\azcopy"
-}
-else
-{
-        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
-
-        if (!$azCopyLink)
-        {
-                $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
-        }
-
-        Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
-        Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
-        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
-
-        if ($azCopyCommand.count -gt 1)
-        {
-            $azCopyCommand = $azCopyCommand[0];
-        }
-
-        $azCopyCommand += "\azcopy"
-}
- 
-#Uploading to storage containers
-Add-Content log.txt "-----------Uploading to storage containers-----------------"
-RefreshTokens
-
-$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
-$containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
-
-foreach($container in $containers)
-{
-    $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
-    $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
-    & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
-}
-
-RefreshTokens
- 
-$destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
-& $azCopyCommand copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-csv/telemetryp.csv" $destinationUri --recursive
-
-#$destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" -Context $dataLakeContext -Permission rwdl
-#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
-#& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/incidentreport" $destinationUri --recursive
-
-#$destinationSasKey = New-AzStorageContainerSASToken -Container "formrecogoutput" -Context $dataLakeContext -Permission rwdl
-#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/formrecogoutput$($destinationSasKey)"
-#& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/formrecogoutput" $destinationUri --recursive
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "anomalydetection" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalydetection$($destinationSasKey)"
-& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/anomalydetection" $destinationUri --recursive
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "ppecompliancedetection" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/ppecompliancedetection$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/ppecompliancedetection" $destinationUri --recursive
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "qualitycontrol" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/qualitycontrol$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/qualitycontrol" $destinationUri --recursive
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "azureml-mfg" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/azureml-mfg$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
-
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
-$dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
-
-$dataDirectories = @{
-   b2ccsv = "customcsv,customcsv/Manufacturing B2C Scenario Dataset /" #space after container name is intentional since thats how the name is in public storage
-   b2bcsv = "customcsv,customcsv/Manufacturing B2B Scenario Dataset/"
-}
-
-$publicDataUrl = "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/";
-
-foreach ($dataDirectory in $dataDirectories.Keys) {
-
-        $vals = $dataDirectories[$dataDirectory].tostring().split(",");
-
-        $source = $publicDataUrl + $vals[1];
-
-        $path = $vals[0];
-
-        $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
-        Write-Information "Copying directory $($source) to $($destination)"
-        & $azCopyCommand copy $source $destination --recursive=true
-}
 
 # $destinationSasKey = New-AzStorageContainerSASToken -Container "forms" -Context $dataLakeContext -Permission rwdl
 # $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
