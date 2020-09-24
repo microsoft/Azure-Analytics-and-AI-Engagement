@@ -111,7 +111,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     }
     $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
     $selectedSubName = $subs[$selectedSubIdx]
-    Write-Information "Selecting the $selectedSubName subscription"
+    Write-Host "Selecting the $selectedSubName subscription"
     Select-AzSubscription -SubscriptionName $selectedSubName
     az account set --subscription $selectedSubName
 }
@@ -185,7 +185,7 @@ $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 
-Write-Information "Setting Key Vault Access Policy"
+Write-Host "Setting Key Vault Access Policy"
 Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
 Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
 
@@ -198,7 +198,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 New-Item log.txt
 #Form Recognizer
 Add-Content log.txt "-----------------Form Recognizer---------------"
-Write-Information "-----Form Recognizer-----"
+Write-Host "-----Form Recognizer-----"
 RefreshTokens
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
@@ -253,7 +253,7 @@ else
  
 #Uploading to storage containers
 Add-Content log.txt "-----------Uploading to storage containers-----------------"
-Write-Information "----Uploading to storage containers-----"
+Write-Host "----Uploading to storage containers-----"
 RefreshTokens
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
@@ -317,7 +317,7 @@ foreach ($dataDirectory in $dataDirectories.Keys) {
         $path = $vals[0];
 
         $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
-        Write-Information "Copying directory $($source) to $($destination)"
+        Write-Host "Copying directory $($source) to $($destination)"
         & $azCopyCommand copy $source $destination --recursive=true
 }
 
@@ -335,7 +335,7 @@ $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
 
 Add-Content log.txt "-----------------Cognitive Services ---------------"
-Write-Information "----Cognitive Services ------"
+Write-Host "----Cognitive Services ------"
 RefreshTokens
 #Custom Vision 
 pip install -r ./artifacts/copyCV/requirements.txt
@@ -437,7 +437,7 @@ foreach($project in $projects)
 
 #######################################################
 Add-Content log.txt "-----------------Web apps zip deploy--------------"
-Write-Information "----Web apps zip deploy------"
+Write-Host "----Web apps zip deploy------"
 RefreshTokens
 #Create iot hub devices
 $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId race-car 
@@ -533,7 +533,7 @@ foreach($zip in $zips)
 
 RefreshTokens
 Add-Content log.txt "------asa powerbi connection-----"
-Write-Information "----asa powerbi connection-----"
+Write-Host "----asa powerbi connection-----"
 #connecting asa and powerbi
 Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
@@ -552,10 +552,10 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputS
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName -OutputStartMode 'JobStartTime'
 
 Add-Content log.txt "------sql schema-----"
-Write-Information "----sql schema------"
+Write-Host "----sql schema------"
 
 #creating sql schema
-Write-Information "Create tables in $($sqlPoolName)"
+Write-Host "Create tables in $($sqlPoolName)"
 $SQLScriptsPath="./artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
@@ -627,7 +627,7 @@ $cosmos_account_key=$cosmos_account_key.primarymasterkey
  
 #uploading Sql Scripts
 Add-Content log.txt "-----------uploading Sql Scripts-----------------"
-Write-Information "----uploading Sql Scripts------"
+Write-Host "----uploading Sql Scripts------"
 
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
 $TemplatesPath="./artifacts/templates";	
@@ -671,7 +671,7 @@ foreach ($name in $scripts)
 
  
 Add-Content log.txt "------linked Services------"
-Write-Information "----linked Services------"
+Write-Host "----linked Services------"
 #Creating linked services
 RefreshTokens
 
@@ -747,7 +747,7 @@ RefreshTokens
  
 #Creating Datasets
 Add-Content log.txt "------datasets------"
-Write-Information "Creating Datasets"
+Write-Host "Creating Datasets"
 $datasets = @{
     CosmosIoTToADLS = $dataLakeAccountName
 	AzureSynapseAnalyticsTable1=$sqlPoolName
@@ -801,7 +801,7 @@ $DatasetsPath="./artifacts/datasets";
 
 foreach ($dataset in $datasets.Keys) 
 {
-    Write-Information "Creating dataset $($dataset)"
+    Write-Host "Creating dataset $($dataset)"
 	$LinkedServiceName=$datasets[$dataset]
 	$itemTemplate = Get-Content -Path "$($DatasetsPath)/$($dataset).json"
 	$item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
@@ -812,7 +812,7 @@ foreach ($dataset in $datasets.Keys)
  
 #Creating spark notebooks
 Add-Content log.txt "--------------Spark Notebooks---------------"
-Write-Information "Creating Spark notebooks..."
+Write-Host "Creating Spark notebooks..."
 
 $notebooks=Get-ChildItem "./artifacts/notebooks" | Select BaseName 
 
@@ -891,7 +891,7 @@ $DataflowPath="./artifacts/dataflows"
 foreach ($dataflow in $workloadDataflows.Keys) 
 {
 		$Name=$workloadDataflows[$dataflow]
-        Write-Information "Creating dataflow $($workloadDataflows[$dataflow])"
+        Write-Host "Creating dataflow $($workloadDataflows[$dataflow])"
 		 $item = Get-Content -Path "$($DataflowPath)/$($Name).json"
     
     # if ($params -ne $null) {
@@ -914,7 +914,7 @@ RefreshTokens
 
 #creating Pipelines
 Add-Content log.txt "------pipelines------"
-Write-Information "-------Creating pipelines-----------"
+Write-Host "-------Creating pipelines-----------"
 $pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
 $pipelineList = New-Object System.Collections.ArrayList
 foreach($name in $pipelines)
@@ -942,8 +942,8 @@ foreach($name in $pipelines)
 RefreshTokens
 
 Add-Content log.txt "------powerbi reports upload------"
-Write-Information "-----------------powerbi reports upload ---------------"
-Write-Information "Uploading power BI reports"
+Write-Host "-----------------powerbi reports upload ---------------"
+Write-Host "Uploading power BI reports"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
 $reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
@@ -1005,7 +1005,7 @@ RefreshTokens
 #Establish powerbi reports dataset connections
 Add-Content log.txt "------pbi connections update------"
 
-Write-Information "Uploading power BI reports"	
+Write-Host "Uploading power BI reports"	
 $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/powerbi_dataset_connection.json"
 
 #$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "HelloWorld.sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
@@ -1080,7 +1080,7 @@ foreach($report in $reportList)
 
     foreach($source in $sourceServers)
     {
-        Write-Information "Setting database connection for $($report.Name)"
+        Write-Host "Setting database connection for $($report.Name)"
         #ManufacturingDW
         $powerBIReportDataSetConnectionUpdateRequest = $powerBIDataSetConnectionUpdateRequest.Replace("#SOURCE_SERVER#", $source).Replace("#SOURCE_DATABASE#", $report.SourceDatabase) |Out-String
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$($report.PowerBIDataSetId)/Default.UpdateDatasources";
@@ -1108,7 +1108,7 @@ foreach($r in $pbiResult.value)
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
 
 Add-Content log.txt "------deploy poc web app------"
-Write-Information  "-----------------deploy poc web app ---------------"
+Write-Host  "-----------------deploy poc web app ---------------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
 $secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
@@ -1244,7 +1244,7 @@ foreach($zip in $zips)
 #Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/mfg-webapp.zip" -Force
 
 Add-Content log.txt "------uploading sql data------"
-Write-Information  "-----------------Uploading sql data ---------------"
+Write-Host  "-----------------Uploading sql data ---------------"
 
 #uploading sql data
 $dataTableList = New-Object System.Collections.ArrayList
@@ -1374,7 +1374,7 @@ foreach ($dataTableLoad in $dataTableList) {
 
 
 #Search service 
-Write-Information "-----------------Search service ---------------"
+Write-Host "-----------------Search service ---------------"
 Add-Content log.txt "-----------------Search service ---------------"
 RefreshTokens
 # Create Search Service
@@ -1466,7 +1466,7 @@ Get-ChildItem "artifacts/search" -Filter search_indexer.json |
         }
 		
 	
-Write-Information  "-----------------AML Workspace ---------------"
+Write-Host  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------------AML Workspace ---------------"
 RefreshTokens
 #AML Workspace
@@ -1475,9 +1475,6 @@ az extension add -n azure-cli-ml
 
 az ml workspace create -w $amlworkspacename -g $rgName
 Start-Sleep -s 60
-#create aks compute
-az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName 
-
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName
 
@@ -1518,10 +1515,13 @@ Set-AzStorageFileContent `
    -Source $source `
    -Path $path
 }
+
+#create aks compute
+az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
    
 # az ml computetarget delete -n cpuShell -v
 
-Write-Information  "-----------------Uploading Cosmos Data Started--------------"
+Write-Host  "-----------------Uploading Cosmos Data Started--------------"
 #uploading Cosmos data
 Add-Content log.txt "-----------------uploading Cosmos data--------------"
 RefreshTokens
@@ -1558,12 +1558,12 @@ foreach($name in $cosmos)
 	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
 } 
 
-Write-Information  "-----------------Uploading Cosmos Data Complete--------------"
+Write-Host  "-----------------Uploading Cosmos Data Complete--------------"
 
 
 ###############################################
 Add-Content log.txt "-----------------Cognitive service project publish ---------------"
-Write-Information "-----------------Cognitive service project publish started ---------------"
+Write-Host "-----------------Cognitive service project publish started ---------------"
 RefreshTokens
 
 foreach($project in $projects)
@@ -1593,6 +1593,6 @@ foreach($project in $projects)
             }
         } while ($count -lt $Maximum)	
 }
-Write-Information  "-----------------Cognitive service project publish completed ---------------"
+Write-Host  "-----------------Cognitive service project publish completed ---------------"
 Add-Content log.txt "-----------------Execution Complete---------------"
-Write-Information  "-----------------Execution Complete----------------"
+Write-Host  "-----------------Execution Complete----------------"
