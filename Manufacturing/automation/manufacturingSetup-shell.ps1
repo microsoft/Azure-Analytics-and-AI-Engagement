@@ -167,7 +167,7 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $storageAccountName = $dataLakeAccountName
 $forms_cogs_name = "forms-$suffix";
 $searchName = "search-$suffix";
-$keyVaultName = "kv-$suffix";
+$keyVaultName = "kv-$init";
 $cognitive_services_name = "dreamcognitiveservices$init"
 $text_translation_service_name = "Mutarjum-$suffix"
 $amlworkspacename = "amlws-$suffix"
@@ -186,8 +186,8 @@ New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner"
 New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 
 Write-Information "Setting Key Vault Access Policy"
-Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,delete,get,list
-Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,delete,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
 
 $sqlPassword = $(Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword").SecretValueText
 
@@ -198,6 +198,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 New-Item log.txt
 #Form Recognizer
 Add-Content log.txt "-----------------Form Recognizer---------------"
+Write-Information "-----Form Recognizer-----"
 RefreshTokens
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
@@ -252,6 +253,7 @@ else
  
 #Uploading to storage containers
 Add-Content log.txt "-----------Uploading to storage containers-----------------"
+Write-Information "----Uploading to storage containers-----"
 RefreshTokens
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
@@ -333,6 +335,7 @@ $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
 
 Add-Content log.txt "-----------------Cognitive Services ---------------"
+Write-Information "----Cognitive Services ------"
 RefreshTokens
 #Custom Vision 
 pip install -r ./artifacts/copyCV/requirements.txt
@@ -434,6 +437,7 @@ foreach($project in $projects)
 
 #######################################################
 Add-Content log.txt "-----------------Web apps zip deploy--------------"
+Write-Information "----Web apps zip deploy------"
 RefreshTokens
 #Create iot hub devices
 $dev = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_car -DeviceId race-car 
@@ -527,44 +531,9 @@ foreach($zip in $zips)
 }
 
 
-#uploading Cosmos data
-Add-Content log.txt "-----------------uploading Cosmos data--------------"
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Install-Module -Name PowerShellGet -Force
-Install-Module -Name CosmosDB -Force
-$cosmosDbAccountName = $cosmos_account_name_mfgdemo
-$databaseName = $cosmos_database_name_mfgdemo_manufacturing
-$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
-
-foreach($name in $cosmos)
-{
-    $collection = $name.BaseName 
-    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgName
-    $path="./artifacts/cosmos/"+$name.BaseName+".json"
-    $document=Get-Content -Raw -Path $path
-    $document=ConvertFrom-Json $document
-	$newRU=4000
-	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
-	
-    foreach($json in $document)
-    {
-        $key=$json.SyntheticPartitionKey
-        $id = New-Guid
-       if(![bool]($json.PSobject.Properties.name -match "id"))
-       {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
-       if(![bool]($json.PSobject.Properties.name -match "SyntheticPartitionKey"))
-       {$json | Add-Member -MemberType NoteProperty -Name 'SyntheticPartitionKey' -Value $id}
-        $body=ConvertTo-Json $json
-        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
-    }
-	
-	$newRU=400
-	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
-} 
-
-
 RefreshTokens
 Add-Content log.txt "------asa powerbi connection-----"
+Write-Information "----asa powerbi connection-----"
 #connecting asa and powerbi
 Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
@@ -583,6 +552,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $carasaName -OutputS
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName -OutputStartMode 'JobStartTime'
 
 Add-Content log.txt "------sql schema-----"
+Write-Information "----sql schema------"
 
 #creating sql schema
 Write-Information "Create tables in $($sqlPoolName)"
@@ -657,6 +627,7 @@ $cosmos_account_key=$cosmos_account_key.primarymasterkey
  
 #uploading Sql Scripts
 Add-Content log.txt "-----------uploading Sql Scripts-----------------"
+Write-Information "----uploading Sql Scripts------"
 
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
 $TemplatesPath="./artifacts/templates";	
@@ -698,59 +669,9 @@ foreach ($name in $scripts)
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 }
 
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "forms" -Context $dataLakeContext -Permission rwdl
-# $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
-
-# $dataDirectories = @{
-   # data1 = "forms,forms/formupload/"
-   # data2 = "forms,forms/formrecogoutput/"
-   # data3 = "forms,forms/english-form-model/"
-# }
-
-# $publicDataUrl = "https://stcognitivesearch001.blob.core.windows.net/";
-
-# foreach ($dataDirectory in $dataDirectories.Keys) {
-
-        # $vals = $dataDirectories[$dataDirectory].tostring().split(",");
-
-        # $source = $publicDataUrl + $vals[1];
-
-        # $path = $vals[0];
-
-        # $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
-        # Write-Information "Copying directory $($source) to $($destination)"
-        # & $azCopyCommand copy $source $destination --recursive=true
-# }
-
-<#
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaign.csv"  $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /CampaignData_Bubble.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /CampaignData.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaignproducts.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Campaignsales.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /customer.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Date.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /historical-data-adf.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /location.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-AlertAlarm.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-MachineAlert.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-OEE-Agg.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /mfg-OEE.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /Product.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /sales.csv" $destinationUri --recursive
-azcopy copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/customcsv/Manufacturing B2C Scenario Dataset /vCampaignSales.csv" $destinationUri --recursive
-#>
-
-#$destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
-#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets/$($destinationSasKey)"
-#azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Intro_product.mp4" $destinationUri --recursive
-#azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Machine%20Maintenance%20Demo.mp4" $destinationUri --recursive
-#azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/factory_safety_video.mp4" $destinationUri --recursive
-#azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/Hololens_Stretch.mp4" $destinationUri --recursive
-#azcopy copy "https://solliancepublicdata.blob.core.windows.net/cdp/manufacturing-videos/RioDeJaneiro_video.mp4" $destinationUri --recursive
  
 Add-Content log.txt "------linked Services------"
+Write-Information "----linked Services------"
 #Creating linked services
 RefreshTokens
 
@@ -993,7 +914,7 @@ RefreshTokens
 
 #creating Pipelines
 Add-Content log.txt "------pipelines------"
-Write-Information "Creating pipelines"
+Write-Information "-------Creating pipelines-----------"
 $pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
 $pipelineList = New-Object System.Collections.ArrayList
 foreach($name in $pipelines)
@@ -1021,6 +942,7 @@ foreach($name in $pipelines)
 RefreshTokens
 
 Add-Content log.txt "------powerbi reports upload------"
+Write-Information "-----------------powerbi reports upload ---------------"
 Write-Information "Uploading power BI reports"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
@@ -1082,6 +1004,7 @@ RefreshTokens
 
 #Establish powerbi reports dataset connections
 Add-Content log.txt "------pbi connections update------"
+
 Write-Information "Uploading power BI reports"	
 $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/powerbi_dataset_connection.json"
 
@@ -1185,6 +1108,7 @@ foreach($r in $pbiResult.value)
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
 
 Add-Content log.txt "------deploy poc web app------"
+Write-Information  "-----------------deploy poc web app ---------------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
 $secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
@@ -1320,6 +1244,7 @@ foreach($zip in $zips)
 #Publish-AzWebApp -WebApp $app -ArchivePath "./MfgAI/Manufacturing/automation/mfg-webapp.zip" -Force
 
 Add-Content log.txt "------uploading sql data------"
+Write-Information  "-----------------Uploading sql data ---------------"
 
 #uploading sql data
 $dataTableList = New-Object System.Collections.ArrayList
@@ -1449,6 +1374,7 @@ foreach ($dataTableLoad in $dataTableList) {
 
 
 #Search service 
+Write-Information "-----------------Search service ---------------"
 Add-Content log.txt "-----------------Search service ---------------"
 RefreshTokens
 # Create Search Service
@@ -1539,9 +1465,8 @@ Get-ChildItem "artifacts/search" -Filter search_indexer.json |
             Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
         }
 		
-#todo : KnowledgeStore
 	
-		
+Write-Information  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------------AML Workspace ---------------"
 RefreshTokens
 #AML Workspace
@@ -1596,8 +1521,49 @@ Set-AzStorageFileContent `
    
 # az ml computetarget delete -n cpuShell -v
 
+Write-Information  "-----------------Uploading Cosmos Data Started--------------"
+#uploading Cosmos data
+Add-Content log.txt "-----------------uploading Cosmos data--------------"
+RefreshTokens
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-Module -Name PowerShellGet -Force
+Install-Module -Name CosmosDB -Force
+$cosmosDbAccountName = $cosmos_account_name_mfgdemo
+$databaseName = $cosmos_database_name_mfgdemo_manufacturing
+$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+
+foreach($name in $cosmos)
+{
+    $collection = $name.BaseName 
+    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $databaseName -ResourceGroup $rgName
+    $path="./artifacts/cosmos/"+$name.BaseName+".json"
+    $document=Get-Content -Raw -Path $path
+    $document=ConvertFrom-Json $document
+	#$newRU=4000
+	#az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
+	
+    foreach($json in $document)
+    {
+        $key=$json.SyntheticPartitionKey
+        $id = New-Guid
+       if(![bool]($json.PSobject.Properties.name -match "id"))
+       {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
+       if(![bool]($json.PSobject.Properties.name -match "SyntheticPartitionKey"))
+       {$json | Add-Member -MemberType NoteProperty -Name 'SyntheticPartitionKey' -Value $id}
+        $body=ConvertTo-Json $json
+        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+    }
+	
+	$newRU=400
+	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
+} 
+
+Write-Information  "-----------------Uploading Cosmos Data Complete--------------"
+
+
 ###############################################
 Add-Content log.txt "-----------------Cognitive service project publish ---------------"
+Write-Information "-----------------Cognitive service project publish started ---------------"
 RefreshTokens
 
 foreach($project in $projects)
@@ -1627,5 +1593,6 @@ foreach($project in $projects)
             }
         } while ($count -lt $Maximum)	
 }
-
+Write-Information  "-----------------Cognitive service project publish completed ---------------"
 Add-Content log.txt "-----------------Execution Complete---------------"
+Write-Information  "-----------------Execution Complete----------------"
