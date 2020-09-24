@@ -1141,7 +1141,7 @@ $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincip
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $powerbiToken")
 $headers.Add("X-PowerBI-User-Admin", "true")
-$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+#$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
