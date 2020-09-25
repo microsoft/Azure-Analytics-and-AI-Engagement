@@ -77,7 +77,7 @@
       "spark_node_size_family":"MemoryOptimized",
       "spark_node_size":"Small",
       "spark_auto_pause_enabled":"true",
-      "spark_auto_pause_delay_in_minutes":"120",
+      "spark_auto_pause_delay_in_minutes":"5",
       "spark_version":"2.4",
       "packages_requirements_file_name":"requirements.txt",
       "packages_requirements_content":"seaborn==0.10.1\nxgboost==1.0.2\nonnxruntime==1.0.0\nwerkzeug==0.16.1\nnimbusml==1.7.1\nruamel.yaml==0.16.9\nazureml-train-automl-runtime==1.6.0\nscikit-learn==0.20.3\nnumpy==1.16.2\npandas==0.23.4\nscipy==1.4.1",
