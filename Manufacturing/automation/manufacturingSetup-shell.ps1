@@ -999,7 +999,7 @@ foreach($name in $reports)
                 
        $reportList.Add($temp)
 }
-
+Start-Sleep -s 60
 RefreshTokens
 
 #Establish powerbi reports dataset connections
