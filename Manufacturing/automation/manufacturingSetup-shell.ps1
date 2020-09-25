@@ -1554,45 +1554,45 @@ foreach($name in $cosmos)
         New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
     }
 	
-	$newRU=400
-	az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
+	#$newRU=400
+	#az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
 } 
 
 Write-Host  "-----------------Uploading Cosmos Data Complete--------------"
 
 
 ###############################################
-Add-Content log.txt "-----------------Cognitive service project publish ---------------"
-Write-Host "-----------------Cognitive service project publish started ---------------"
-RefreshTokens
-
-foreach($project in $projects)
-{
-	$projectId=$project.id
-	$projectName=$project.name
-
-	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
-	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
-	$iterationId=$iterations[0].id
-	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=Iteration1&predictionId=$($resourceId)"
-	$body = "{}"
-	#adding retry attempts for publishin iterations
-	$count=0;
-	$Delay=15
-	$Maximum=5;
-	do {
-            $count++
-            try {
-				Write-Host "Attempt $($count) at publishing iteration"
-                $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
-				$count= $Maximum
-            } catch {
-                Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
-				Write-Host "Retrying..."
-                Start-Sleep -s $Delay
-            }
-        } while ($count -lt $Maximum)	
-}
-Write-Host  "-----------------Cognitive service project publish completed ---------------"
+#Add-Content log.txt "-----------------Cognitive service project publish ---------------"
+#Write-Host "-----------------Cognitive service project publish started ---------------"
+#RefreshTokens
+#
+#foreach($project in $projects)
+#{
+#	$projectId=$project.id
+#	$projectName=$project.name
+#
+#	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
+#	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+#	$iterationId=$iterations[0].id
+#	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations/$($iterationId)/publish?publishName=Iteration1&predictionId=$($resourceId)"
+#	$body = "{}"
+#	#adding retry attempts for publishin iterations
+#	$count=0;
+#	$Delay=15
+#	$Maximum=5;
+#	do {
+#            $count++
+#            try {
+#				Write-Host "Attempt $($count) at publishing iteration"
+#                $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+#				$count= $Maximum
+#            } catch {
+#                Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
+#				Write-Host "Retrying..."
+#                Start-Sleep -s $Delay
+#            }
+#        } while ($count -lt $Maximum)	
+#}
+#Write-Host  "-----------------Cognitive service project publish completed ---------------"
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
