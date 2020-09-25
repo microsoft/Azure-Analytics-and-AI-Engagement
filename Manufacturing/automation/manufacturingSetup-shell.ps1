@@ -321,7 +321,7 @@ foreach ($dataDirectory in $dataDirectories.Keys) {
         & $azCopyCommand copy $source $destination --recursive=true
 }
 
-#Replace connection string in search_skillset.json
+#Replace values in create_model.py
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
 				-replace '#LOCATION#', $location`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`

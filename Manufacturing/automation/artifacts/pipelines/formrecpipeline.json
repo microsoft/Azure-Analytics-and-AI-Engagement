@@ -3,7 +3,7 @@
     "properties": {
         "activities": [
             {
-                "name": "English-forms",
+                "name": "convert_pdf_to_json",
                 "type": "SynapseNotebook",
                 "dependsOn": [],
                 "policy": {
@@ -16,7 +16,7 @@
                 "userProperties": [],
                 "typeProperties": {
                     "notebook": {
-                        "referenceName": "English-forms",
+                        "referenceName": "convert_pdf_to_json",
                         "type": "NotebookReference"
                     }
                 }
@@ -26,7 +26,7 @@
                 "type": "SynapseNotebook",
                 "dependsOn": [
                     {
-                        "activity": "English-forms",
+                        "activity": "convert_pdf_to_json",
                         "dependencyConditions": [
                             "Succeeded"
                         ]
