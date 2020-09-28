@@ -69,7 +69,7 @@
       "sql_compute_name":"ManufacturingDW",
       "sql_administrator_login_id":"ManufacturingUser",
       "spark_compute_name":"MFGDreamPool",
-      "sql_server_sku":"DW500c",
+      "sql_server_sku":"DW100c",
       "spark_auto_scale_enabled":"true",
       "spark_min_node_count":"3",
       "spark_max_node_count":"4",
