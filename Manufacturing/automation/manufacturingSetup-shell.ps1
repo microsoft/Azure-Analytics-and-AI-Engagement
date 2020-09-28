@@ -1519,7 +1519,9 @@ Set-AzStorageFileContent `
 #create aks compute
 az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
    
-# az ml computetarget delete -n cpuShell -v
+az ml computetarget delete -n cpuShell -v
+
+
 
 Write-Host  "-----------------Uploading Cosmos Data Started--------------"
 #uploading Cosmos data
