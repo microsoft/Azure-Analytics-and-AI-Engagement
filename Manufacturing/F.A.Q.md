@@ -11,6 +11,11 @@ Sometimes resources may fail to deploy when there is too much traffic on azure s
 
 - Check the azure services status here: https://status.azure.com/en-us/status and check the availability of the service that is failing for you.
 - Retry the deployment in another region/location.
+- Make sure the following resource providers are registered for your Azure Subscription.  
+  - Microsoft.Sql 
+  - Microsoft.Synapse 
+  - Microsoft.StreamAnalytics  
+  - Microsoft.EventHub  
 
 ## What if my cloud-shell session times out?
 
