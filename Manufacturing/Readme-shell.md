@@ -15,7 +15,9 @@
     - [Task 5: Power BI Dashboard creation ](#task-5-power-bi-dashboard-creation)
     - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
     - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
-    - [Task 8: Clean up resources](#task-8-clean-up-resources)
+    - [Task 8: Publishing the Custom Vision model](#task-8-publishing-the-custom-vision-model)
+    - [Task 9: Uploading new incident reports](#task-9-uploading-new-incident-reports)
+    - [Task 10: Clean up resources](#task-10-clean-up-resources)
     
 <!-- /TOC -->
 
@@ -148,7 +150,7 @@
     
     > **Note:** If you get File “MfgAI” already exist error, please execute following command: rm MfgAI -r -f to delete existing clone.
     
-    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 15 minutes.
+    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 1 hour.
 
 5. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
 
@@ -205,11 +207,11 @@
 
 > **Note**: You may be prompted to choose a subscription after the above mentioned step in case you have multiple subscriptions associated with your account. 
 
-18. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) above (Synapse-WWI-Lab).
+18. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-19. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+19. You will get another code to authenticate Power BI gateway. **Copy** the code.
 20. **Click** the link (https://microsoft.com/devicelogin).
 21. A new browser window will launch. **Paste** the code that you copied from the shell in step 17.
 
@@ -226,7 +228,37 @@
      ![Authentication done.](media/authentication-done.png)
      
      > **Note:** The deployment will take approximately 30-35 minutes to complete
+     
 
+**Open** the Azure Portal.
+
+24. **Go** to the resource group you have created in [Task 1](#task-1-create-a-resource-group-in-azure).
+25. **Search** the storage account name starts with 'dreamdemo'.
+26. **Go** to the storage account by clicking on its link.
+
+      ![Select Storage Account.](media/select-storage.png)
+      
+27. **Click** on 'Access Keys' from the left navigation pane for storage account.
+28. **Copy** the 'key1' to the clipboard and **paste** the key in a notepad for future reference.
+
+      ![Copy Storage Account Access Keys.](media/copy-access-keys.png)
+      
+      
+**Open** the Azure Portal.
+
+29. **Go** to the resource group you have created in [Task 1](#task-1-create-a-resource-group-in-azure).
+30. **Search** the Cosmos DB account name starts with 'cosmosdb'.
+31. **Go** to the Cosmos DB account by clicking on its link.
+
+      ![Select Cosmos DB Account.](media/select-cosmos.png)
+      
+      
+32. **Click** on 'Keys' from the left navigation pane for Cosmos DB account.
+33. **Copy** the 'Primary key' to the clipboard and **paste** the key in a notepad for future reference.
+
+      ![Copy Cosmos DB Account Primary Key.](media/copy-primary-key.png)
+      
+      
 ### Task 5: Power BI Dashboard creation
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
@@ -278,145 +310,181 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 ![Configure Campaign.](media/Configure-Campaign.png)
 
 
+13. **Click** ‘Azure Cognitive Search’ dataset.
+14. **Expand** 'Data source credentials'. **Click** 'Edit credentials' and a dialogue box will pop up.
+
+![Edit data set credentials.](media/edit-credentials.png)
+
+15. **Enter** the same storage key that was noted down in Step 28 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
+16. **Click** 'Sign in'.
+
+![Enter storage account key.](media/enter-storage-key1.png)
+
+
+17. **Click** ‘anomaly detection with images’ dataset.
+18. **Expand** 'Data source credentials' and **click** 'Edit credentials' and a dialogue box will pop up.
+
+![Edit data set credentials.](media/edit-credentials1.png)
+
+19. **Select** 'Key' from 'Authentication method' dropdown.
+
+![Select authentication method.](media/select-key.png)
+
+20. **Enter** the same storage key that was noted down in Step 28 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
+21. **Click** 'Sign in'.
+
+![Enter storage account key.](media/enter-storage-key2.png)
+
+22. **Click** '6_Production Quality- HTAP Synapse Link' dataset.
+23. **Expand** 'Data source credentials'.
+24. **Click** 'Edit credentials' and a dialogue box will pop up.
+
+![Edit data set credentials.](media/edit-credentials2.png)
+
+25. **Enter** the same cosmos key that was noted down in Step 33 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
+26. **Click** 'Sign in'.
+
+![Enter cosmos account key.](media/enter-cosmos-key.png)
+
 **Follow these steps to create the Power BI dashboard:**
 
-13. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+27. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-14. **Click** on '+Create' button on the top navigation bar.
+28. **Click** on '+Create' button on the top navigation bar.
 
-15. **Click** the 'Dashboard' option from the drop-down menu.
+29. **Click** the 'Dashboard' option from the drop-down menu.
 
 ![Create Dashboard.](media/Create-Dashboard.png)
 
-16. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
+30. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
 
-17. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
+31. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
 ![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
 **Follow the below steps to change the dashboard theme:**
 
-18. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
+32. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
 
-19. **Right click** anywhere in browser and **click** 'Save as...'.
+33. **Right click** anywhere in browser and **click** 'Save as...'.
 
-20. **Save** the file to your desired location on your computer, leaving the name unchanged.
+34. **Save** the file to your desired location on your computer, leaving the name unchanged.
 
 ![Save JSON.](media/save-json.png)
 
-21. **Go back** to the Power BI Dashboard you just created.
+35. **Go back** to the Power BI Dashboard you just created.
 
-22. **Click** on ellipses at the top right-side corner.
+36. **Click** on ellipses at the top right-side corner.
 
-23. **Click** on Dashboard theme.
+37. **Click** on Dashboard theme.
 
 ![Click on dashboard theme.](media/change-theme-portal.png)
 
-24. **Click** Upload the JSON theme.
+38. **Click** Upload the JSON theme.
 
-25. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
+39. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
 
-26. Click **Save**.
+40. Click **Save**.
 
 ![Upload JSON.](media/upload-json.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-27. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+41. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-28. **Click** on the 'Reports' section/tab.
+42. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-29. In the 'Reports' section, there will be a list of all the published reports.
+43. In the 'Reports' section, there will be a list of all the published reports.
 
-30. **Click** on 'Campaign - Option C' report.
+44. **Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-31. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
+45. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
-32. **Select** 'Existing dashboard' radio button.
+46. **Select** 'Existing dashboard' radio button.
 
-33. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+47. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 
-34. **Click** 'Pin'.
+48. **Click** 'Pin'.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-35. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
+49. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
 
 ![Pin visuals to the dashboard.](media/pin-profit-card.png)
 
 **Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
 
-36. **Click** on Edit report.
+50. **Click** on Edit report.
 
 ![Edit the report.](media/edit-report.png)
 
-37. **Click** 'Sales and Campaign' report page.
+51. **Click** 'Sales and Campaign' report page.
 
 ![Edit the report.](media/hidden-report-page.png)
 
-38. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
+52. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
 
-39. **Pin** 'Revenue by country' map visual.
+53. **Pin** 'Revenue by country' map visual.
 
 ![Sales and Campaign report.](media/sales-and-campaign.png)
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+54. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-41. **Open** 'Dashboard Images' report.
+55. **Open** 'Dashboard Images' report.
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-42. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
+56. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
 > **Note:** Please refer to steps 33-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-43. **Go back** to the 'Engagement Accelerators Dashboard'.
+57. **Go back** to the 'Engagement Accelerators Dashboard'.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
 
 **To hide title and subtitle for all the images that you have pined above. Please do the following:**
 
-44. **Click** on ellipsis 'More Options' of the image you selected.
+58. **Click** on ellipsis 'More Options' of the image you selected.
 
-45. **Click** 'Edit details'.
+59. **Click** 'Edit details'.
 
 ![Edit details.](media/edit-details.png)
 
-46. **Uncheck** 'Display title and subtitle'.
+60. **Uncheck** 'Display title and subtitle'.
 
-47. **Click** 'Apply'.
+61. **Click** 'Apply'.
 
 ![Display title and subtitle.](media/display-title-subtitle.png)
 
-48. **Repeat** step #45 to #48 for all images tiles.
+62. **Repeat** step #45 to #48 for all images tiles.
 
-49. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
+63. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
 
-50. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
+64. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-51. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+65. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-52. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
+66. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
@@ -827,7 +895,79 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 Your Accelerator environment is now set up.
 
 
-### Task 8: Clean up resources
+### Task 8: Publishing the Custom Vision model
+
+1. **Go** to  https://customvision.ai/ and **click** on 'Sign In'.
+2. **Select** 'I agree' checkbox and **click** on 'I Agree’ button.
+
+**Note:** If you get any sensitive information related warning then **click** on 'OK'.
+
+![Logging into custom vision.](media/custom-vision1.png)
+
+3. **Select** your cognitive service resource from the 'Resource' dropdown starting with name 'dreamcognitiveservices'.
+
+![Select your custom vision resource.](media/custom-vision2.png)
+
+4. **Select** project '1_Defective_Product_Classification'.
+
+![Select project.](media/custom-vision3.png)
+
+5. **Select** 'iteration 1' from the iteration dropdown.
+
+![Select iteration.](media/custom-vision4.png)
+
+6. **Click** on the 'Performance' tab.
+
+**Note:** Wait for training to complete if it shows the model is in training.
+
+![Select performance tab.](media/custom-vision5.png)
+
+7. **Click** on 'Publish' button.
+
+![Select publish button.](media/custom-vision6.png)
+
+8. **Select** 'Model name' and 'Prediction resource' on 'Publish Model' popup and **click** on 'Publish' button.
+
+![Publish Model.](media/custom-vision7.png)
+
+9. **Click** on the 'Eye' button.
+
+**Note:** Repeat steps 4 to 8 for all the projects.
+
+![Click preview button.](media/custom-vision8.png)
+
+
+### Task 9: Uploading new incident reports
+
+1. **Open** Azure Synapse in a new tab using the following link: https://web.azuresynapse.net/.
+2. **Log in** with your Azure credentials.
+3. **Select** the 'Subscription' and Synapse 'Workspace name' that got created in [Task 3](#task-3-deploy-the-arm-template). The Synapse 'Workspace name' will start with 'manufacturingdemo'.
+4. **Click** 'Continue'.
+
+![Select synapse workspace.](media/task9-1.png)
+
+
+5. **Click** the 'Data' hub from the left navigation in the Synapse Analytics workspace.
+6. **Click** 'Linked' tab.
+7. **Expand** the storage account / Azure Data Lake Storage Gen2.
+8. **Expand** the node that starts with 'manufacturingdemo'.
+9. **Click** 'incidentreport' container.
+
+![Open incident report container.](media/task9-2.png)
+
+10. **Click** the 'Upload' button in Azure Synapse Analytics Studio to upload the file from your local system.
+
+![Upload a new pdf report from the local system.](media/task9-3.png)
+
+
+11. **Select** the 'custom_incident_report.pdf' file from your local system.
+12. **Check** the checkbox for overwriting existing files.
+13. **Click** 'Upload'.
+
+![Upload a new pdf report from the local system.](media/task9-4.png)
+
+
+### Task 10: Clean up resources
 
 > **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
 
