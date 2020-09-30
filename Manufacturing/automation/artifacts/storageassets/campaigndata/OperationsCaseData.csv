@@ -1,0 +1,6 @@
+City,CasesCreated,CasesResolved,CasesCancelled,CasesPending,SLACompliance,SLANonCompliance
+San Diego,437,325,25,87,91.00%,0.09
+Miami,408,360,21,27,93.00%,0.07
+Rio de Janeiro,512,345,22,145,86.00%,0.14
+Stuttgart,487,280,15,192,88.00%,0.12
+Kyoto,536,321,15,200,95.00%,0.05

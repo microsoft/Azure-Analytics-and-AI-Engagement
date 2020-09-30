@@ -1,0 +1,58 @@
+{
+    "name": "CustomCampaignproducts",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "Campaignproducts.csv",
+                "folderPath": "Manufacturing B2C Scenario Dataset ",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Campaign",
+                "type": "String"
+            },
+            {
+                "name": "ProductCategory",
+                "type": "String"
+            },
+            {
+                "name": "Hashtag",
+                "type": "String"
+            },
+            {
+                "name": "Counts",
+                "type": "String"
+            },
+            {
+                "name": "ProductID",
+                "type": "String"
+            },
+            {
+                "name": "CampaignRowKey",
+                "type": "String"
+            },
+            {
+                "name": "SelectedFlag",
+                "type": "String"
+            },
+            {
+                "name": "Sentiment",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

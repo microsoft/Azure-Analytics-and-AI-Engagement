@@ -1,0 +1,3 @@
+
+
+azure-cognitiveservices-vision-customvision==1.0.0

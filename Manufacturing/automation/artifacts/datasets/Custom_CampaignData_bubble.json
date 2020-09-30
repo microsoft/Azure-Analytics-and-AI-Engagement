@@ -1,0 +1,91 @@
+{
+    "name": "Custom_CampaignData_bubble",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CampaignName",
+                "type": "varchar"
+            },
+            {
+                "name": "CampaignTactic",
+                "type": "varchar"
+            },
+            {
+                "name": "Expense",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "MarketingCost",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Profit",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "LocationID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Revenue",
+                "type": "decimal",
+                "precision": 9,
+                "scale": 1
+            },
+            {
+                "name": "RevenueTarget",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ROI",
+                "type": "decimal",
+                "precision": 11,
+                "scale": 5
+            },
+            {
+                "name": "Status",
+                "type": "varchar"
+            },
+            {
+                "name": "ProductID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Sentiment",
+                "type": "varchar"
+            },
+            {
+                "name": "Response",
+                "type": "varchar"
+            },
+            {
+                "name": "CampaignStartDate",
+                "type": "datetime",
+                "precision": 23,
+                "scale": 3
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CampaignData_Bubble"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

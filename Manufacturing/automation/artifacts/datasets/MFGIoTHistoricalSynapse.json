@@ -1,0 +1,86 @@
+{
+    "name": "MFGIoTHistoricalSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "EpochTime",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "StringDateTime",
+                "type": "datetime",
+                "precision": 23,
+                "scale": 3
+            },
+            {
+                "name": "JobCode",
+                "type": "varchar"
+            },
+            {
+                "name": "OperationId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "MachineCode",
+                "type": "varchar"
+            },
+            {
+                "name": "BatchCode",
+                "type": "varchar"
+            },
+            {
+                "name": "VibrationX",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "VibrationY",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "VibrationZ",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "SpindleSpeed",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "CoolantTemperature",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "XAxis",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "YAxis",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "ZAxis",
+                "type": "float",
+                "precision": 15
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "mfg-Historical-Discrete-Manufacturing"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

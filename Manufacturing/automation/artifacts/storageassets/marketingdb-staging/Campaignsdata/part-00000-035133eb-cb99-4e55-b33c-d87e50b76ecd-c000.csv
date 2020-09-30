@@ -1,0 +1,555 @@
+Region,Country,Product_Category,Campaign_Name,Revenue,Revenue_Target,Revenue_Variance
+North & Central America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,13873.0,10617.0,-3256.0
+Europe,Germany,Apparel And Footwear,Fun With Colors,14865.0,15960.0,1095.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,16611.0,7917.0,-8694.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,12174.0,6996.0,-5178.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,5867.0,19049.0,13182.0
+North & Central America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,9112.0,11930.0,2818.0
+South America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,16386.0,9989.0,-6397.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,14691.0,14601.0,-90.0
+Europe,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,12974.0,19462.0,6488.0
+North & Central America,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,10246.0,18683.0,8437.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5333.0,7346.0,2013.0
+Asia Pacific,France,Books,Enjoythemoment; Beunique; Tailoredforyou,11059.0,19059.0,8000.0
+Europe,Germany,Apparel And Footwear,Fall Into Winter,5117.0,8713.0,3596.0
+Europe,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,17488.0,9941.0,-7547.0
+North & Central America,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,12711.0,8946.0,-3765.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5712.0,6947.0,1235.0
+Asia Pacific,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,10027.0,10643.0,616.0
+Europe,France,Books,Enjoythemoment; Beunique; Tailoredforyou,11703.0,9822.0,-1881.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,16207.0,14061.0,-2146.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,6497.0,6147.0,-350.0
+Asia Pacific,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,16850.0,15753.0,-1097.0
+Europe,France,Apparel And Footwear,Enjoy The Moment,13221.0,8584.0,-4637.0
+Europe,Uk,Lighting,Fall Into Winter,5117.0,9305.0,4188.0
+South America,Mexico,Electronics,Be Unique,16240.0,16038.0,-202.0
+North & Central America,Usa,Décor,Spring Into Summer,6689.0,13088.0,6399.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,13098.0,5663.0,-7435.0
+South America,Brazil,Décor,Fun With Colors,15142.0,7147.0,-7995.0
+South America,Mexico,Exercise,Spring Into Summer,17637.0,6876.0,-10761.0
+South America,Mexico,Décor,Be Unique,8284.0,9840.0,1556.0
+South America,Mexico,Apparel And Footwear,Tailored For You,5766.0,17620.0,11854.0
+Europe,Spain,Furniture,Enjoy The Moment,12488.0,18299.0,5811.0
+Europe,Uk,Team Sports,Fall Into Winter,5972.0,10692.0,4720.0
+Asia Pacific,Japan,Décor,Tailored For You,11400.0,15117.0,3717.0
+Europe,Germany,Electronics,Fall Into Winter,7607.0,15850.0,8243.0
+North & Central America,Usa,Team Sports,Fun With Colors,12929.0,9077.0,-3852.0
+Europe,Italy,Lighting,Get Sporty,9486.0,8891.0,-595.0
+North & Central America,Canada,Lighting,Fun With Colors,13349.0,16936.0,3587.0
+Europe,Turkey,Pillows & Cushions,Tailored For You,10269.0,11191.0,922.0
+Asia Pacific,Australia,Exercise,Be Unique,6883.0,10341.0,3458.0
+South America,Mexico,Furniture,Tailored For You,12882.0,19806.0,6924.0
+Europe,Germany,Apparel And Footwear,Get Sporty,16810.0,10178.0,-6632.0
+Asia Pacific,China,Apparel And Footwear,Tailored For You,5434.0,10709.0,5275.0
+North & Central America,Usa,Electronics,Enjoy The Moment,6278.0,11478.0,5200.0
+Asia Pacific,Australia,Exercise,Be Unique,6580.0,5490.0,-1090.0
+North & Central America,Usa,Team Sports,Tailored For You,10225.0,12472.0,2247.0
+Asia Pacific,Korea,Pillows & Cushions,Enjoy The Moment,5889.0,9819.0,3930.0
+Europe,France,Décor,Fun With Colors,16593.0,10533.0,-6060.0
+Europe,Italy,Pillows & Cushions,Tailored For You,13681.0,13003.0,-678.0
+South America,Mexico,Décor,Be Unique,15521.0,13935.0,-1586.0
+North & Central America,Usa,Pillows & Cushions,Be Unique,13802.0,5380.0,-8422.0
+South America,Brazil,Furniture,Enjoy The Moment,11245.0,18041.0,6796.0
+Asia Pacific,India,Apparel And Footwear,Get Sporty,11231.0,18669.0,7438.0
+South America,Brazil,Electronics,Fun With Colors,9864.0,5802.0,-4062.0
+Asia Pacific,Australia,Pillows & Cushions,Fall Into Winter,8221.0,15730.0,7509.0
+Asia Pacific,India,Décor,Enjoy The Moment,14300.0,13983.0,-317.0
+Asia Pacific,Japan,Exercise,Enjoy The Moment,15575.0,19053.0,3478.0
+Europe,Uk,Team Sports,Tailored For You,7001.0,10528.0,3527.0
+North & Central America,Usa,Apparel And Footwear,Be Unique,13174.0,14329.0,1155.0
+Europe,Uk,Team Sports,Be Unique,11564.0,19306.0,7742.0
+South America,Brazil,Pillows & Cushions,Tailored For You,8804.0,10137.0,1333.0
+Europe,Italy,Exercise,Enjoy The Moment,11838.0,13538.0,1700.0
+South America,Mexico,Team Sports,Enjoy The Moment,7146.0,17780.0,10634.0
+Asia Pacific,Indonesia,Electronics,Enjoy The Moment,11290.0,12495.0,1205.0
+Europe,Uk,Furniture,Tailored For You,13789.0,13596.0,-193.0
+North & Central America,Canada,Electronics,Get Sporty,17291.0,12719.0,-4572.0
+North & Central America,Usa,Lighting,Spring Into Summer,10865.0,17907.0,7042.0
+South America,Mexico,Exercise,Tailored For You,9253.0,14347.0,5094.0
+Asia Pacific,Australia,Lighting,Fall Into Winter,13512.0,18877.0,5365.0
+Europe,France,Furniture,Get Sporty,13124.0,14955.0,1831.0
+South America,Brazil,Team Sports,Fall Into Winter,5622.0,12306.0,6684.0
+Europe,Turkey,Lighting,Be Unique,14726.0,5249.0,-9477.0
+Europe,Italy,Team Sports,Fall Into Winter,7264.0,9868.0,2604.0
+South America,Mexico,Lighting,Fall Into Winter,16062.0,7721.0,-8341.0
+North & Central America,Usa,Electronics,Fun With Colors,6414.0,12619.0,6205.0
+Europe,France,Décor,Be Unique,6593.0,17096.0,10503.0
+South America,Brazil,Team Sports,Tailored For You,9140.0,19323.0,10183.0
+North & Central America,Canada,Lighting,Enjoy The Moment,9668.0,14658.0,4990.0
+Europe,Uk,Pillows & Cushions,Be Unique,8264.0,19049.0,10785.0
+Europe,Spain,Exercise,Be Unique,9761.0,13831.0,4070.0
+South America,Brazil,Décor,Enjoy The Moment,15719.0,8723.0,-6996.0
+Europe,Germany,Décor,Tailored For You,7273.0,6184.0,-1089.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,9250.0,15790.0,6540.0
+South America,Mexico,Apparel And Footwear,Spring Into Summer,8121.0,10451.0,2330.0
+North & Central America,Canada,Décor,Be Unique,9192.0,6179.0,-3013.0
+North & Central America,Canada,Exercise,Be Unique,8465.0,7654.0,-811.0
+Asia Pacific,Korea,Décor,Be Unique,17627.0,11422.0,-6205.0
+North & Central America,Usa,Electronics,Enjoy The Moment,15148.0,19098.0,3950.0
+Europe,Italy,Pillows & Cushions,Tailored For You,5846.0,8447.0,2601.0
+North & Central America,Usa,Décor,Fun With Colors,5197.0,18456.0,13259.0
+South America,Brazil,Apparel And Footwear,Enjoy The Moment,5103.0,6799.0,1696.0
+Asia Pacific,Australia,Apparel And Footwear,Be Unique,11988.0,19348.0,7360.0
+Europe,Italy,Lighting,Tailored For You,14992.0,15699.0,707.0
+Europe,Italy,Team Sports,Tailored For You,9935.0,15232.0,5297.0
+Europe,France,Lighting,Enjoy The Moment,15119.0,17269.0,2150.0
+Europe,Italy,Apparel And Footwear,Enjoy The Moment,15740.0,7685.0,-8055.0
+Asia Pacific,Indonesia,Electronics,Be Unique,14778.0,13122.0,-1656.0
+North & Central America,Canada,Electronics,Enjoy The Moment,10296.0,7313.0,-2983.0
+Asia Pacific,China,Décor,Enjoy The Moment,14605.0,18971.0,4366.0
+Europe,Spain,Pillows & Cushions,Tailored For You,14328.0,15577.0,1249.0
+Europe,Italy,Electronics,Tailored For You,11247.0,10339.0,-908.0
+Asia Pacific,Australia,Pillows & Cushions,Be Unique,12409.0,10914.0,-1495.0
+South America,Brazil,Pillows & Cushions,Get Sporty,5418.0,13970.0,8552.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,15387.0,6961.0,-8426.0
+North & Central America,Usa,Team Sports,Spring Into Summer,11620.0,17230.0,5610.0
+North & Central America,Usa,Pillows & Cushions,Be Unique,17859.0,17681.0,-178.0
+Asia Pacific,Australia,Team Sports,Fun With Colors,6738.0,11176.0,4438.0
+South America,Brazil,Lighting,Spring Into Summer,10934.0,19723.0,8789.0
+Asia Pacific,India,Team Sports,Be Unique,9963.0,18377.0,8414.0
+North & Central America,Usa,Décor,Enjoy The Moment,10344.0,15220.0,4876.0
+Europe,Spain,Team Sports,Enjoy The Moment,7842.0,10624.0,2782.0
+North & Central America,Canada,Exercise,Fun With Colors,13735.0,16671.0,2936.0
+Europe,Germany,Pillows & Cushions,Fun With Colors,14290.0,10487.0,-3803.0
+Europe,Spain,Electronics,Fall Into Winter,12739.0,19242.0,6503.0
+Europe,Germany,Exercise,Enjoy The Moment,19503.0,14609.0,-4894.0
+Asia Pacific,India,Team Sports,Get Sporty,5496.0,15301.0,9805.0
+North & Central America,Usa,Electronics,Enjoy The Moment,11441.0,6741.0,-4700.0
+Asia Pacific,Korea,Lighting,Tailored For You,13006.0,15079.0,2073.0
+South America,Mexico,Décor,Fall Into Winter,13070.0,16389.0,3319.0
+South America,Brazil,Décor,Be Unique,21637.0,5666.0,-15971.0
+North & Central America,Canada,Electronics,Fun With Colors,10480.0,7379.0,-3101.0
+Asia Pacific,Japan,Electronics,Spring Into Summer,9781.0,19592.0,9811.0
+Europe,Uk,Pillows & Cushions,Be Unique,16859.0,13324.0,-3535.0
+Europe,Germany,Exercise,Fall Into Winter,14764.0,5876.0,-8888.0
+Asia Pacific,Japan,Team Sports,Enjoy The Moment,16523.0,17741.0,1218.0
+South America,Brazil,Décor,Enjoy The Moment,13945.0,13624.0,-321.0
+Europe,Germany,Apparel And Footwear,Fall Into Winter,13083.0,11336.0,-1747.0
+South America,Mexico,Lighting,Fall Into Winter,6285.0,8448.0,2163.0
+North & Central America,Usa,Lighting,Tailored For You,15670.0,5412.0,-10258.0
+Europe,Italy,Electronics,Enjoy The Moment,6815.0,14606.0,7791.0
+North & Central America,Canada,Pillows & Cushions,Be Unique,13873.0,10617.0,-3256.0
+South America,Brazil,Exercise,Get Sporty,16611.0,7917.0,-8694.0
+North & Central America,Usa,Pillows & Cushions,Spring Into Summer,12174.0,6996.0,-5178.0
+Europe,Italy,Décor,Be Unique,5867.0,19049.0,13182.0
+Asia Pacific,Australia,Lighting,Enjoy The Moment,9112.0,11930.0,2818.0
+North & Central America,Canada,Exercise,Fall Into Winter,16386.0,9989.0,-6397.0
+South America,Brazil,Pillows & Cushions,Be Unique,14691.0,14601.0,-90.0
+Asia Pacific,Indonesia,Exercise,Get Sporty,12974.0,19462.0,6488.0
+Asia Pacific,Indonesia,Furniture,Enjoy The Moment,10246.0,18683.0,8437.0
+South America,Brazil,Team Sports,Spring Into Summer,5333.0,7346.0,2013.0
+Europe,France,Electronics,Get Sporty,11059.0,19059.0,8000.0
+South America,Mexico,Team Sports,Be Unique,17488.0,9941.0,-7547.0
+Asia Pacific,Indonesia,Electronics,Fun With Colors,12711.0,8946.0,-3765.0
+South America,Brazil,Team Sports,Fun With Colors,5712.0,6947.0,1235.0
+Europe,Germany,Lighting,Get Sporty,10027.0,10643.0,616.0
+Europe,France,Exercise,Be Unique,11703.0,9822.0,-1881.0
+South America,Brazil,Lighting,Get Sporty,16207.0,14061.0,-2146.0
+South America,Brazil,Electronics,Fun With Colors,6497.0,6147.0,-350.0
+Asia Pacific,Australia,Lighting,Enjoy The Moment,16850.0,15753.0,-1097.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,10223.0,17414.0,7191.0
+Europe,Italy,Apparel And Footwear,Tailored For You,7131.0,7453.0,322.0
+Asia Pacific,Japan,Lighting,Tailored For You,15642.0,10214.0,-5428.0
+Europe,Uk,Pillows & Cushions,Enjoy The Moment,12642.0,11692.0,-950.0
+Europe,Turkey,Electronics,Enjoy The Moment,17101.0,13212.0,-3889.0
+North & Central America,Canada,Lighting,Tailored For You,14804.0,17275.0,2471.0
+North & Central America,Canada,Apparel And Footwear,Spring Into Summer,17486.0,11990.0,-5496.0
+North & Central America,Usa,Décor,Spring Into Summer,5318.0,16079.0,10761.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,5391.0,14679.0,9288.0
+North & Central America,Usa,Exercise,Fun With Colors,15850.0,18751.0,2901.0
+South America,Brazil,Décor,Tailored For You,9229.0,16528.0,7299.0
+North & Central America,Usa,Electronics,Be Unique,14995.0,19129.0,4134.0
+North & Central America,Usa,Apparel And Footwear,Enjoy The Moment,13554.0,19215.0,5661.0
+South America,Mexico,Décor,Enjoy The Moment,7197.0,5731.0,-1466.0
+South America,Mexico,Team Sports,Enjoy The Moment,9702.0,7876.0,-1826.0
+Asia Pacific,Australia,Apparel And Footwear,Get Sporty,17384.0,8018.0,-9366.0
+Asia Pacific,Indonesia,Team Sports,Enjoy The Moment,13132.0,17228.0,4096.0
+Asia Pacific,China,Team Sports,Get Sporty,6651.0,19835.0,13184.0
+South America,Brazil,Team Sports,Spring Into Summer,14114.0,15482.0,1368.0
+Asia Pacific,Indonesia,Electronics,Spring Into Summer,17810.0,7536.0,-10274.0
+Europe,Turkey,Lighting,Enjoy The Moment,8382.0,19209.0,10827.0
+Europe,Italy,Apparel And Footwear,Be Unique,12366.0,11187.0,-1179.0
+Asia Pacific,India,Lighting,Get Sporty,9020.0,13475.0,4455.0
+Europe,France,Apparel And Footwear,Spring Into Summer,14445.0,12231.0,-2214.0
+Europe,Uk,Furniture,Be Unique,5120.0,16652.0,11532.0
+South America,Mexico,Electronics,Fall Into Winter,12503.0,9977.0,-2526.0
+Europe,Spain,Electronics,Be Unique,10260.0,14654.0,4394.0
+South America,Mexico,Electronics,Fun With Colors,12061.0,19769.0,7708.0
+Europe,France,Pillows & Cushions,Enjoy The Moment,15557.0,14176.0,-1381.0
+Europe,Germany,Electronics,Enjoy The Moment,5466.0,9140.0,3674.0
+North & Central America,Canada,Pillows & Cushions,Enjoy The Moment,11404.0,16844.0,5440.0
+Europe,Spain,Apparel And Footwear,Tailored For You,5684.0,5400.0,-284.0
+North & Central America,Usa,Apparel And Footwear,Enjoy The Moment,19142.0,19858.0,716.0
+South America,Mexico,Exercise,Spring Into Summer,7133.0,7388.0,255.0
+Europe,Uk,Team Sports,Enjoy The Moment,14651.0,8429.0,-6222.0
+Asia Pacific,China,Apparel And Footwear,Fall Into Winter,11145.0,12957.0,1812.0
+Europe,Italy,Furniture,Spring Into Summer,17484.0,9517.0,-7967.0
+Asia Pacific,Australia,Apparel And Footwear,Be Unique,7365.0,13123.0,5758.0
+South America,Mexico,Décor,Enjoy The Moment,9831.0,15236.0,5405.0
+South America,Mexico,Décor,Tailored For You,14316.0,19274.0,4958.0
+Europe,Uk,Décor,Enjoy The Moment,13732.0,5799.0,-7933.0
+North & Central America,Usa,Exercise,Tailored For You,5515.0,18229.0,12714.0
+Europe,France,Electronics,Enjoy The Moment,9764.0,9300.0,-464.0
+Europe,Turkey,Apparel And Footwear,Be Unique,11719.0,19049.0,7330.0
+South America,Brazil,Apparel And Footwear,Tailored For You,5233.0,12227.0,6994.0
+North & Central America,Usa,Furniture,Spring Into Summer,7014.0,16466.0,9452.0
+Europe,Italy,Furniture,Spring Into Summer,7505.0,19524.0,12019.0
+Europe,Spain,Apparel And Footwear,Be Unique,8871.0,13868.0,4997.0
+Asia Pacific,Australia,Team Sports,Be Unique,8628.0,12622.0,3994.0
+Europe,Turkey,Lighting,Tailored For You,12965.0,12220.0,-745.0
+Asia Pacific,Japan,Pillows & Cushions,Fun With Colors,9952.0,13231.0,3279.0
+Europe,Spain,Furniture,Be Unique,12191.0,14106.0,1915.0
+Asia Pacific,Indonesia,Pillows & Cushions,Be Unique,16835.0,12382.0,-4453.0
+South America,Brazil,Apparel And Footwear,Get Sporty,8518.0,19121.0,10603.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,10414.0,9245.0,-1169.0
+South America,Brazil,Electronics,Spring Into Summer,5663.0,16837.0,11174.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,7264.0,9868.0,2604.0
+Europe,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,16062.0,7721.0,-8341.0
+North & Central America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,6414.0,12619.0,6205.0
+South America,France,Books,Enjoythemoment; Beunique; Tailoredforyou,6593.0,17096.0,10503.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,9140.0,19323.0,10183.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,9668.0,14658.0,4990.0
+North & Central America,Uk,Books,Enjoythemoment; Beunique; Tailoredforyou,8264.0,19049.0,10785.0
+South America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,9761.0,13831.0,4070.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,15719.0,8723.0,-6996.0
+North & Central America,Canada,Apparel And Footwear,Be Unique,8556.0,18352.0,9796.0
+Europe,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,7273.0,6184.0,-1089.0
+North & Central America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,9250.0,15790.0,6540.0
+South America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,8121.0,10451.0,2330.0
+Asia Pacific,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,9192.0,6179.0,-3013.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,8465.0,7654.0,-811.0
+North & Central America,Korea,Books,Enjoythemoment; Beunique; Tailoredforyou,17627.0,11422.0,-6205.0
+South America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15148.0,19098.0,3950.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,5846.0,8447.0,2601.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,5197.0,18456.0,13259.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5103.0,6799.0,1696.0
+North & Central America,Canada,Team Sports,Get Sporty,11983.0,9825.0,-2158.0
+South America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,11988.0,19348.0,7360.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,14992.0,15699.0,707.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,9935.0,15232.0,5297.0
+North & Central America,France,Books,Enjoythemoment; Beunique; Tailoredforyou,15119.0,17269.0,2150.0
+South America,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,15740.0,7685.0,-8055.0
+Asia Pacific,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,14778.0,13122.0,-1656.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,10296.0,7313.0,-2983.0
+North & Central America,China,Books,Enjoythemoment; Beunique; Tailoredforyou,14605.0,18971.0,4366.0
+South America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,14328.0,15577.0,1249.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,11247.0,10339.0,-908.0
+Europe,Spain,Exercise,Be Unique,5022.0,7920.0,2898.0
+Europe,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,12409.0,10914.0,-1495.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5418.0,13970.0,8552.0
+South America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15387.0,6961.0,-8426.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,11620.0,17230.0,5610.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,17859.0,17681.0,-178.0
+North & Central America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,6738.0,11176.0,4438.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,10934.0,19723.0,8789.0
+Asia Pacific,India,Books,Enjoythemoment; Beunique; Tailoredforyou,9963.0,18377.0,8414.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,10344.0,15220.0,4876.0
+North & Central America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,7842.0,10624.0,2782.0
+Asia Pacific,China,Exercise,Get Sporty,5484.0,11469.0,5985.0
+South America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,13735.0,16671.0,2936.0
+Asia Pacific,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,14290.0,10487.0,-3803.0
+Europe,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,12739.0,19242.0,6503.0
+North & Central America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,19503.0,14609.0,-4894.0
+South America,India,Books,Enjoythemoment; Beunique; Tailoredforyou,5496.0,15301.0,9805.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,11441.0,6741.0,-4700.0
+Europe,Korea,Books,Enjoythemoment; Beunique; Tailoredforyou,13006.0,15079.0,2073.0
+North & Central America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,13070.0,16389.0,3319.0
+Asia Pacific,Australia,Apparel And Footwear,Get Sporty,17384.0,8018.0,-9366.0
+Asia Pacific,Indonesia,Team Sports,Enjoy The Moment,13132.0,17228.0,4096.0
+Asia Pacific,China,Team Sports,Get Sporty,6651.0,19835.0,13184.0
+South America,Brazil,Team Sports,Spring Into Summer,14114.0,15482.0,1368.0
+Asia Pacific,Indonesia,Electronics,Spring Into Summer,17810.0,7536.0,-10274.0
+Europe,Turkey,Lighting,Enjoy The Moment,8382.0,19209.0,10827.0
+Europe,Italy,Apparel And Footwear,Be Unique,12366.0,11187.0,-1179.0
+Asia Pacific,India,Lighting,Get Sporty,9020.0,13475.0,4455.0
+Europe,France,Apparel And Footwear,Spring Into Summer,14445.0,12231.0,-2214.0
+Europe,Uk,Furniture,Be Unique,5120.0,16652.0,11532.0
+South America,Mexico,Electronics,Fall Into Winter,12503.0,9977.0,-2526.0
+Europe,Spain,Electronics,Be Unique,10260.0,14654.0,4394.0
+South America,Mexico,Electronics,Fun With Colors,12061.0,19769.0,7708.0
+Europe,France,Pillows & Cushions,Enjoy The Moment,15557.0,14176.0,-1381.0
+Europe,Germany,Electronics,Enjoy The Moment,5466.0,9140.0,3674.0
+North & Central America,Canada,Pillows & Cushions,Enjoy The Moment,11404.0,16844.0,5440.0
+Europe,Spain,Apparel And Footwear,Tailored For You,5684.0,5400.0,-284.0
+North & Central America,Usa,Apparel And Footwear,Enjoy The Moment,19142.0,19858.0,716.0
+South America,Mexico,Exercise,Spring Into Summer,7133.0,7388.0,255.0
+Europe,Uk,Team Sports,Enjoy The Moment,14651.0,8429.0,-6222.0
+Asia Pacific,China,Apparel And Footwear,Fall Into Winter,11145.0,12957.0,1812.0
+Europe,Italy,Furniture,Spring Into Summer,17484.0,9517.0,-7967.0
+Asia Pacific,Australia,Apparel And Footwear,Be Unique,7365.0,13123.0,5758.0
+South America,Mexico,Décor,Enjoy The Moment,9831.0,15236.0,5405.0
+South America,Mexico,Décor,Tailored For You,14316.0,19274.0,4958.0
+Europe,Uk,Décor,Enjoy The Moment,13732.0,5799.0,-7933.0
+North & Central America,Usa,Exercise,Tailored For You,5515.0,18229.0,12714.0
+Europe,France,Electronics,Enjoy The Moment,9764.0,9300.0,-464.0
+Europe,Turkey,Apparel And Footwear,Be Unique,11719.0,19049.0,7330.0
+South America,Brazil,Apparel And Footwear,Tailored For You,5233.0,12227.0,6994.0
+North & Central America,Usa,Furniture,Spring Into Summer,7014.0,16466.0,9452.0
+Europe,Italy,Furniture,Spring Into Summer,7505.0,19524.0,12019.0
+Europe,Spain,Apparel And Footwear,Be Unique,8871.0,13868.0,4997.0
+Asia Pacific,Australia,Team Sports,Be Unique,8628.0,12622.0,3994.0
+Europe,Turkey,Lighting,Tailored For You,12965.0,12220.0,-745.0
+Asia Pacific,Japan,Pillows & Cushions,Fun With Colors,9952.0,13231.0,3279.0
+Europe,Spain,Furniture,Be Unique,12191.0,14106.0,1915.0
+Asia Pacific,Indonesia,Pillows & Cushions,Be Unique,16835.0,12382.0,-4453.0
+South America,Brazil,Apparel And Footwear,Get Sporty,8518.0,19121.0,10603.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,10414.0,9245.0,-1169.0
+South America,Brazil,Electronics,Spring Into Summer,5663.0,16837.0,11174.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,7264.0,9868.0,2604.0
+Europe,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,16062.0,7721.0,-8341.0
+North & Central America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,6414.0,12619.0,6205.0
+South America,France,Books,Enjoythemoment; Beunique; Tailoredforyou,6593.0,17096.0,10503.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,9140.0,19323.0,10183.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,9668.0,14658.0,4990.0
+North & Central America,Uk,Books,Enjoythemoment; Beunique; Tailoredforyou,8264.0,19049.0,10785.0
+South America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,9761.0,13831.0,4070.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,15719.0,8723.0,-6996.0
+North & Central America,Canada,Apparel And Footwear,Be Unique,8556.0,18352.0,9796.0
+Europe,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,7273.0,6184.0,-1089.0
+North & Central America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,9250.0,15790.0,6540.0
+South America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,8121.0,10451.0,2330.0
+Asia Pacific,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,9192.0,6179.0,-3013.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,8465.0,7654.0,-811.0
+North & Central America,Korea,Books,Enjoythemoment; Beunique; Tailoredforyou,17627.0,11422.0,-6205.0
+South America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15148.0,19098.0,3950.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,5846.0,8447.0,2601.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,5197.0,18456.0,13259.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5103.0,6799.0,1696.0
+North & Central America,Canada,Team Sports,Get Sporty,11983.0,9825.0,-2158.0
+South America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,11988.0,19348.0,7360.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,14992.0,15699.0,707.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,9935.0,15232.0,5297.0
+North & Central America,France,Books,Enjoythemoment; Beunique; Tailoredforyou,15119.0,17269.0,2150.0
+South America,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,15740.0,7685.0,-8055.0
+Asia Pacific,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,14778.0,13122.0,-1656.0
+Europe,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,10296.0,7313.0,-2983.0
+North & Central America,China,Books,Enjoythemoment; Beunique; Tailoredforyou,14605.0,18971.0,4366.0
+South America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,14328.0,15577.0,1249.0
+Asia Pacific,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,11247.0,10339.0,-908.0
+Europe,Spain,Exercise,Be Unique,5022.0,7920.0,2898.0
+Europe,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,12409.0,10914.0,-1495.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5418.0,13970.0,8552.0
+South America,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15387.0,6961.0,-8426.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,11620.0,17230.0,5610.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,17859.0,17681.0,-178.0
+North & Central America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,6738.0,11176.0,4438.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,10934.0,19723.0,8789.0
+Asia Pacific,India,Books,Enjoythemoment; Beunique; Tailoredforyou,9963.0,18377.0,8414.0
+Europe,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,10344.0,15220.0,4876.0
+North & Central America,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,7842.0,10624.0,2782.0
+Asia Pacific,China,Exercise,Get Sporty,5484.0,11469.0,5985.0
+South America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,13735.0,16671.0,2936.0
+Asia Pacific,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,14290.0,10487.0,-3803.0
+Europe,Spain,Books,Enjoythemoment; Beunique; Tailoredforyou,12739.0,19242.0,6503.0
+North & Central America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,19503.0,14609.0,-4894.0
+South America,India,Books,Enjoythemoment; Beunique; Tailoredforyou,5496.0,15301.0,9805.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,11441.0,6741.0,-4700.0
+Europe,Korea,Books,Enjoythemoment; Beunique; Tailoredforyou,13006.0,15079.0,2073.0
+North & Central America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,13070.0,16389.0,3319.0
+Europe,Italy,Team Sports,Fall Into Winter,7264.0,9868.0,2604.0
+South America,Mexico,Lighting,Fall Into Winter,16062.0,7721.0,-8341.0
+North & Central America,Usa,Electronics,Fun With Colors,6414.0,12619.0,6205.0
+Europe,France,Décor,Be Unique,6593.0,17096.0,10503.0
+South America,Brazil,Team Sports,Tailored For You,9140.0,19323.0,10183.0
+North & Central America,Canada,Lighting,Enjoy The Moment,9668.0,14658.0,4990.0
+Europe,Uk,Pillows & Cushions,Be Unique,8264.0,19049.0,10785.0
+Europe,Spain,Exercise,Be Unique,9761.0,13831.0,4070.0
+South America,Brazil,Décor,Enjoy The Moment,15719.0,8723.0,-6996.0
+Europe,Germany,Décor,Tailored For You,7273.0,6184.0,-1089.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,9250.0,15790.0,6540.0
+South America,Mexico,Apparel And Footwear,Spring Into Summer,8121.0,10451.0,2330.0
+North & Central America,Canada,Décor,Be Unique,9192.0,6179.0,-3013.0
+North & Central America,Canada,Exercise,Be Unique,8465.0,7654.0,-811.0
+Asia Pacific,Korea,Décor,Be Unique,17627.0,11422.0,-6205.0
+North & Central America,Usa,Electronics,Enjoy The Moment,15148.0,19098.0,3950.0
+Europe,Italy,Pillows & Cushions,Tailored For You,5846.0,8447.0,2601.0
+North & Central America,Usa,Décor,Fun With Colors,5197.0,18456.0,13259.0
+South America,Brazil,Apparel And Footwear,Enjoy The Moment,5103.0,6799.0,1696.0
+Asia Pacific,Australia,Apparel And Footwear,Be Unique,11988.0,19348.0,7360.0
+Europe,Italy,Lighting,Tailored For You,14992.0,15699.0,707.0
+Europe,Italy,Team Sports,Tailored For You,9935.0,15232.0,5297.0
+Europe,France,Lighting,Enjoy The Moment,15119.0,17269.0,2150.0
+Europe,Italy,Apparel And Footwear,Enjoy The Moment,15740.0,7685.0,-8055.0
+Asia Pacific,Indonesia,Electronics,Be Unique,14778.0,13122.0,-1656.0
+North & Central America,Canada,Electronics,Enjoy The Moment,10296.0,7313.0,-2983.0
+Asia Pacific,China,Décor,Enjoy The Moment,14605.0,18971.0,4366.0
+Europe,Spain,Pillows & Cushions,Tailored For You,14328.0,15577.0,1249.0
+Europe,Italy,Electronics,Tailored For You,11247.0,10339.0,-908.0
+Asia Pacific,Australia,Pillows & Cushions,Be Unique,12409.0,10914.0,-1495.0
+South America,Brazil,Pillows & Cushions,Get Sporty,5418.0,13970.0,8552.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,15387.0,6961.0,-8426.0
+North & Central America,Usa,Team Sports,Spring Into Summer,11620.0,17230.0,5610.0
+North & Central America,Usa,Pillows & Cushions,Be Unique,17859.0,17681.0,-178.0
+Asia Pacific,Australia,Team Sports,Fun With Colors,6738.0,11176.0,4438.0
+South America,Brazil,Lighting,Spring Into Summer,10934.0,19723.0,8789.0
+Asia Pacific,India,Team Sports,Be Unique,9963.0,18377.0,8414.0
+North & Central America,Usa,Décor,Enjoy The Moment,10344.0,15220.0,4876.0
+Europe,Spain,Team Sports,Enjoy The Moment,7842.0,10624.0,2782.0
+North & Central America,Canada,Exercise,Fun With Colors,13735.0,16671.0,2936.0
+Europe,Germany,Pillows & Cushions,Fun With Colors,14290.0,10487.0,-3803.0
+Europe,Spain,Electronics,Fall Into Winter,12739.0,19242.0,6503.0
+Europe,Germany,Exercise,Enjoy The Moment,19503.0,14609.0,-4894.0
+Asia Pacific,India,Team Sports,Get Sporty,5496.0,15301.0,9805.0
+North & Central America,Usa,Electronics,Enjoy The Moment,11441.0,6741.0,-4700.0
+Asia Pacific,Korea,Lighting,Tailored For You,13006.0,15079.0,2073.0
+South America,Mexico,Décor,Fall Into Winter,13070.0,16389.0,3319.0
+South America,Brazil,Décor,Be Unique,21637.0,5666.0,-15971.0
+North & Central America,Canada,Electronics,Fun With Colors,10480.0,7379.0,-3101.0
+Asia Pacific,Japan,Electronics,Spring Into Summer,9781.0,19592.0,9811.0
+Europe,Uk,Pillows & Cushions,Be Unique,16859.0,13324.0,-3535.0
+Europe,Germany,Exercise,Fall Into Winter,14764.0,5876.0,-8888.0
+Asia Pacific,Japan,Team Sports,Enjoy The Moment,16523.0,17741.0,1218.0
+South America,Brazil,Décor,Enjoy The Moment,13945.0,13624.0,-321.0
+Europe,Germany,Apparel And Footwear,Fall Into Winter,13083.0,11336.0,-1747.0
+South America,Mexico,Lighting,Fall Into Winter,6285.0,8448.0,2163.0
+North & Central America,Usa,Lighting,Tailored For You,15670.0,5412.0,-10258.0
+Europe,Italy,Electronics,Enjoy The Moment,6815.0,14606.0,7791.0
+North & Central America,Canada,Pillows & Cushions,Be Unique,13873.0,10617.0,-3256.0
+South America,Brazil,Exercise,Get Sporty,16611.0,7917.0,-8694.0
+North & Central America,Usa,Pillows & Cushions,Spring Into Summer,12174.0,6996.0,-5178.0
+Europe,Italy,Décor,Be Unique,5867.0,19049.0,13182.0
+Asia Pacific,Australia,Lighting,Enjoy The Moment,9112.0,11930.0,2818.0
+North & Central America,Canada,Exercise,Fall Into Winter,16386.0,9989.0,-6397.0
+South America,Brazil,Pillows & Cushions,Be Unique,14691.0,14601.0,-90.0
+Asia Pacific,Indonesia,Exercise,Get Sporty,12974.0,19462.0,6488.0
+Asia Pacific,Indonesia,Furniture,Enjoy The Moment,10246.0,18683.0,8437.0
+South America,Brazil,Team Sports,Spring Into Summer,5333.0,7346.0,2013.0
+Europe,France,Electronics,Get Sporty,11059.0,19059.0,8000.0
+South America,Mexico,Team Sports,Be Unique,17488.0,9941.0,-7547.0
+Asia Pacific,Indonesia,Electronics,Fun With Colors,12711.0,8946.0,-3765.0
+South America,Brazil,Team Sports,Fun With Colors,5712.0,6947.0,1235.0
+Europe,Germany,Lighting,Get Sporty,10027.0,10643.0,616.0
+Europe,France,Exercise,Be Unique,11703.0,9822.0,-1881.0
+South America,Brazil,Lighting,Get Sporty,16207.0,14061.0,-2146.0
+South America,Brazil,Electronics,Fun With Colors,6497.0,6147.0,-350.0
+Asia Pacific,Australia,Lighting,Enjoy The Moment,16850.0,15753.0,-1097.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,10223.0,17414.0,7191.0
+Europe,Italy,Apparel And Footwear,Tailored For You,7131.0,7453.0,322.0
+Asia Pacific,Japan,Lighting,Tailored For You,15642.0,10214.0,-5428.0
+Europe,Uk,Pillows & Cushions,Enjoy The Moment,12642.0,11692.0,-950.0
+Europe,Turkey,Electronics,Enjoy The Moment,17101.0,13212.0,-3889.0
+North & Central America,Canada,Lighting,Tailored For You,14804.0,17275.0,2471.0
+North & Central America,Canada,Apparel And Footwear,Spring Into Summer,17486.0,11990.0,-5496.0
+North & Central America,Usa,Décor,Spring Into Summer,5318.0,16079.0,10761.0
+North & Central America,Usa,Pillows & Cushions,Enjoy The Moment,5391.0,14679.0,9288.0
+North & Central America,Usa,Exercise,Fun With Colors,15850.0,18751.0,2901.0
+South America,Brazil,Décor,Tailored For You,9229.0,16528.0,7299.0
+North & Central America,Usa,Electronics,Be Unique,14995.0,19129.0,4134.0
+North & Central America,Usa,Apparel And Footwear,Enjoy The Moment,13554.0,19215.0,5661.0
+South America,Mexico,Décor,Enjoy The Moment,7197.0,5731.0,-1466.0
+South America,Mexico,Team Sports,Enjoy The Moment,9702.0,7876.0,-1826.0
+North & Central America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,13873.0,10617.0,-3256.0
+Europe,Germany,Apparel And Footwear,Fun With Colors,14865.0,15960.0,1095.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,16611.0,7917.0,-8694.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,12174.0,6996.0,-5178.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,5867.0,19049.0,13182.0
+North & Central America,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,9112.0,11930.0,2818.0
+South America,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,16386.0,9989.0,-6397.0
+Asia Pacific,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,14691.0,14601.0,-90.0
+Europe,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,12974.0,19462.0,6488.0
+North & Central America,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,10246.0,18683.0,8437.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5333.0,7346.0,2013.0
+Asia Pacific,France,Books,Enjoythemoment; Beunique; Tailoredforyou,11059.0,19059.0,8000.0
+Europe,Germany,Apparel And Footwear,Fall Into Winter,5117.0,8713.0,3596.0
+Europe,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,17488.0,9941.0,-7547.0
+North & Central America,Indonesia,Books,Enjoythemoment; Beunique; Tailoredforyou,12711.0,8946.0,-3765.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,5712.0,6947.0,1235.0
+Asia Pacific,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,10027.0,10643.0,616.0
+Europe,France,Books,Enjoythemoment; Beunique; Tailoredforyou,11703.0,9822.0,-1881.0
+North & Central America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,16207.0,14061.0,-2146.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,6497.0,6147.0,-350.0
+Asia Pacific,Australia,Books,Enjoythemoment; Beunique; Tailoredforyou,16850.0,15753.0,-1097.0
+Europe,France,Apparel And Footwear,Enjoy The Moment,13221.0,8584.0,-4637.0
+Europe,Uk,Lighting,Fall Into Winter,5117.0,9305.0,4188.0
+South America,Mexico,Electronics,Be Unique,16240.0,16038.0,-202.0
+North & Central America,Usa,Décor,Spring Into Summer,6689.0,13088.0,6399.0
+South America,Mexico,Apparel And Footwear,Enjoy The Moment,13098.0,5663.0,-7435.0
+South America,Brazil,Décor,Fun With Colors,15142.0,7147.0,-7995.0
+South America,Mexico,Exercise,Spring Into Summer,17637.0,6876.0,-10761.0
+South America,Mexico,Décor,Be Unique,8284.0,9840.0,1556.0
+South America,Mexico,Apparel And Footwear,Tailored For You,5766.0,17620.0,11854.0
+Europe,Spain,Furniture,Enjoy The Moment,12488.0,18299.0,5811.0
+Europe,Uk,Team Sports,Fall Into Winter,5972.0,10692.0,4720.0
+Asia Pacific,Japan,Décor,Tailored For You,11400.0,15117.0,3717.0
+Europe,Germany,Electronics,Fall Into Winter,7607.0,15850.0,8243.0
+North & Central America,Usa,Team Sports,Fun With Colors,12929.0,9077.0,-3852.0
+Europe,Italy,Lighting,Get Sporty,9486.0,8891.0,-595.0
+North & Central America,Canada,Lighting,Fun With Colors,13349.0,16936.0,3587.0
+Europe,Turkey,Pillows & Cushions,Tailored For You,10269.0,11191.0,922.0
+Asia Pacific,Australia,Exercise,Be Unique,6883.0,10341.0,3458.0
+South America,Mexico,Furniture,Tailored For You,12882.0,19806.0,6924.0
+Europe,Germany,Apparel And Footwear,Get Sporty,16810.0,10178.0,-6632.0
+Asia Pacific,China,Apparel And Footwear,Tailored For You,5434.0,10709.0,5275.0
+North & Central America,Usa,Electronics,Enjoy The Moment,6278.0,11478.0,5200.0
+Asia Pacific,Australia,Exercise,Be Unique,6580.0,5490.0,-1090.0
+North & Central America,Usa,Team Sports,Tailored For You,10225.0,12472.0,2247.0
+Asia Pacific,Korea,Pillows & Cushions,Enjoy The Moment,5889.0,9819.0,3930.0
+Europe,France,Décor,Fun With Colors,16593.0,10533.0,-6060.0
+Europe,Italy,Pillows & Cushions,Tailored For You,13681.0,13003.0,-678.0
+South America,Mexico,Décor,Be Unique,15521.0,13935.0,-1586.0
+North & Central America,Usa,Pillows & Cushions,Be Unique,13802.0,5380.0,-8422.0
+South America,Brazil,Furniture,Enjoy The Moment,11245.0,18041.0,6796.0
+Asia Pacific,India,Apparel And Footwear,Get Sporty,11231.0,18669.0,7438.0
+South America,Brazil,Electronics,Fun With Colors,9864.0,5802.0,-4062.0
+Asia Pacific,Australia,Pillows & Cushions,Fall Into Winter,8221.0,15730.0,7509.0
+Asia Pacific,India,Décor,Enjoy The Moment,14300.0,13983.0,-317.0
+Asia Pacific,Japan,Exercise,Enjoy The Moment,15575.0,19053.0,3478.0
+Europe,Uk,Team Sports,Tailored For You,7001.0,10528.0,3527.0
+North & Central America,Usa,Apparel And Footwear,Be Unique,13174.0,14329.0,1155.0
+Europe,Uk,Team Sports,Be Unique,11564.0,19306.0,7742.0
+South America,Brazil,Pillows & Cushions,Tailored For You,8804.0,10137.0,1333.0
+Europe,Italy,Exercise,Enjoy The Moment,11838.0,13538.0,1700.0
+South America,Mexico,Team Sports,Enjoy The Moment,7146.0,17780.0,10634.0
+Asia Pacific,Indonesia,Electronics,Enjoy The Moment,11290.0,12495.0,1205.0
+Europe,Uk,Furniture,Tailored For You,13789.0,13596.0,-193.0
+North & Central America,Canada,Electronics,Get Sporty,17291.0,12719.0,-4572.0
+North & Central America,Usa,Lighting,Spring Into Summer,10865.0,17907.0,7042.0
+South America,Mexico,Exercise,Tailored For You,9253.0,14347.0,5094.0
+Asia Pacific,Australia,Lighting,Fall Into Winter,13512.0,18877.0,5365.0
+Europe,France,Furniture,Get Sporty,13124.0,14955.0,1831.0
+South America,Brazil,Team Sports,Fall Into Winter,5622.0,12306.0,6684.0
+Europe,Turkey,Lighting,Be Unique,14726.0,5249.0,-9477.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,21637.0,5666.0,-15971.0
+Asia Pacific,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,10480.0,7379.0,-3101.0
+North & Central America,Canada,Furniture,Enjoy The Moment,10113.0,9976.0,-137.0
+Europe,Japan,Books,Enjoythemoment; Beunique; Tailoredforyou,9781.0,19592.0,9811.0
+North & Central America,Uk,Books,Enjoythemoment; Beunique; Tailoredforyou,16859.0,13324.0,-3535.0
+South America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,14764.0,5876.0,-8888.0
+Asia Pacific,Japan,Books,Enjoythemoment; Beunique; Tailoredforyou,16523.0,17741.0,1218.0
+Europe,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,13945.0,13624.0,-321.0
+North & Central America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,13083.0,11336.0,-1747.0
+South America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,6285.0,8448.0,2163.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15670.0,5412.0,-10258.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,6815.0,14606.0,7791.0
+North & Central America,Canada,Pillows & Cushions,Enjoy The Moment,13773.0,11719.0,-2054.0
+Asia Pacific,China,Electronics,Be Unique,14944.0,6089.0,-8855.0
+Asia Pacific,India,Exercise,Be Unique,16753.0,13851.0,-2902.0
+South America,Brazil,Pillows & Cushions,Spring Into Summer,16347.0,6942.0,-9405.0
+Asia Pacific,Korea,Team Sports,Spring Into Summer,10182.0,13630.0,3448.0
+South America,Brazil,Team Sports,Get Sporty,8710.0,9713.0,1003.0
+South America,Brazil,Team Sports,Enjoy The Moment,9348.0,11769.0,2421.0
+Asia Pacific,Korea,Electronics,Be Unique,6691.0,7070.0,379.0
+Asia Pacific,China,Décor,Be Unique,13516.0,8891.0,-4625.0
+Europe,Spain,Décor,Fall Into Winter,12907.0,5218.0,-7689.0
+South America,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,21637.0,5666.0,-15971.0
+Asia Pacific,Canada,Books,Enjoythemoment; Beunique; Tailoredforyou,10480.0,7379.0,-3101.0
+North & Central America,Canada,Furniture,Enjoy The Moment,10113.0,9976.0,-137.0
+Europe,Japan,Books,Enjoythemoment; Beunique; Tailoredforyou,9781.0,19592.0,9811.0
+North & Central America,Uk,Books,Enjoythemoment; Beunique; Tailoredforyou,16859.0,13324.0,-3535.0
+South America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,14764.0,5876.0,-8888.0
+Asia Pacific,Japan,Books,Enjoythemoment; Beunique; Tailoredforyou,16523.0,17741.0,1218.0
+Europe,Brazil,Books,Enjoythemoment; Beunique; Tailoredforyou,13945.0,13624.0,-321.0
+North & Central America,Germany,Books,Enjoythemoment; Beunique; Tailoredforyou,13083.0,11336.0,-1747.0
+South America,Mexico,Books,Enjoythemoment; Beunique; Tailoredforyou,6285.0,8448.0,2163.0
+Asia Pacific,Usa,Books,Enjoythemoment; Beunique; Tailoredforyou,15670.0,5412.0,-10258.0
+Europe,Italy,Books,Enjoythemoment; Beunique; Tailoredforyou,6815.0,14606.0,7791.0
+North & Central America,Canada,Pillows & Cushions,Enjoy The Moment,13773.0,11719.0,-2054.0
+Asia Pacific,China,Electronics,Be Unique,14944.0,6089.0,-8855.0
+Asia Pacific,India,Exercise,Be Unique,16753.0,13851.0,-2902.0
+South America,Brazil,Pillows & Cushions,Spring Into Summer,16347.0,6942.0,-9405.0
+Asia Pacific,Korea,Team Sports,Spring Into Summer,10182.0,13630.0,3448.0
+South America,Brazil,Team Sports,Get Sporty,8710.0,9713.0,1003.0
+South America,Brazil,Team Sports,Enjoy The Moment,9348.0,11769.0,2421.0
+Asia Pacific,Korea,Electronics,Be Unique,6691.0,7070.0,379.0
+Asia Pacific,China,Décor,Be Unique,13516.0,8891.0,-4625.0
+Europe,Spain,Décor,Fall Into Winter,12907.0,5218.0,-7689.0

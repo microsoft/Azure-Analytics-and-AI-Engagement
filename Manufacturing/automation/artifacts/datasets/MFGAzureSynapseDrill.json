@@ -1,0 +1,85 @@
+{
+    "name": "MFGAzureSynapseDrill",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "EpochTime",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "StringDateTime",
+                "type": "varchar"
+            },
+            {
+                "name": "JobId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OperationId",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "MachineId",
+                "type": "varchar"
+            },
+            {
+                "name": "BatchId",
+                "type": "varchar"
+            },
+            {
+                "name": "VibrationX",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "VibrationY",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "VibrationZ",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "SpindleSpeed",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "CoolantTemperature",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "XAxis",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "YAxis",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "ZAxis",
+                "type": "float",
+                "precision": 15
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "mfg-historical-drill-machine"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,166 @@
+{
+    "sourceConnection": {
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNTMzMDQzNjY1OTJmMmFmY2I3ZTJkOWM0NWExNjhhNzI5NzBlZGY4M2NhMzYxNmY3MDA3NTQyOGJhOWZiZmQ3N2JkMDczNTA5M2JiMGI1N2MxNzI5YWRlZWE4NGRmN2YwZGZlYjYxMzZlZTZmYmE0YzJjZDEzNTViZGFjNTAxMjJjODViNWZlYmNjOTM5NTQ5YTQyMDZlN2VmYWY5M2Y5MGJjNDVhMjhmNzM3YWE1MGUxODcxYzA3NTUxZjc2MjdjNjg4ZDU3MTVjZTE2ZGQxOGI2Y2Y4MDgzMDExOGE3ODliZjgwNDZkMTRkYjIyZDBmODMxY2YzY2Y4NWQzZmQxMGM5OTRlZmJjNTEyNTA2OGYyZDNlODY0NjQ2ZTAzZjgzOWIzM2ZkZmQyZjI4NjVkNWU1MDBmNDA4MDM5MDQ0OWYxZTg4Y2NiYTkwYTk2NmVjNmJmMmE1ZGY5YzhhMzQ2NTYyNDIxZmM5YTcxMGY3OGRlNGE3YmM2MjFkY2Q4ZGI4ZGE2ZTdiOGVlODUwOTNjM2JkZDk2NjRhZDRiNDU3ZWZmMmIyZDkxMjdkYTkzMzlhODdhOWNhZGY4NTZjMWNmODI3MmM5OGRlYjRkOTliNTlhMDYzYzYxMDY5NjYxZThmIiwiaXYiOiI4ZWFkYTZhYWFkYTUzYTIzODhmYTAyZGM1YzcxNmExOCJ9"
+        },
+        "id": "UFz2IlIob",
+        "name": "english-forms-storage",
+        "providerType": "azureBlobStorage"
+    },
+    "apiKey": {
+        "encrypted": "eyJjaXBoZXJ0ZXh0IjoiZGU2YmY3NTFmNzI3OGU0NmQyZmUzYjVlYjNiNGFlMDlmNjY3YzdiYWYyMDQxNjJlMDU2ZTcyNzA5NTI3MWU1MmUxMTRkOWEzMmUxMjUyZmJjMjQxYTBhOTU3ZjNlZjYwIiwiaXYiOiI3ZjE5MjMyYzAwMWNiNzgxMTEyYTdiMTY4ZTY0NTdjNiJ9"
+    },
+    "name": "english-forms-model",
+    "apiUriBase": "https://demo-document-recognizer.cognitiveservices.azure.com/",
+    "folderPath": "",
+    "securityToken": "english-forms-model Token",
+    "version": "2.0.0",
+    "id": "4v1IvLcq5",
+    "tags": [
+        {
+            "name": "caseid",
+            "color": "#CC543A",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "employer",
+            "color": "#7BA23F",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "location",
+            "color": "#58B2DC",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "event date",
+            "color": "#FFB11B",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "event",
+            "color": "#2E5C6E",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "nature",
+            "color": "#A96360",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "final narrative",
+            "color": "#D7C4BB",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "hospitalized",
+            "color": "#8F77B5",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "amputation",
+            "color": "#EEA9A9",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "part of body",
+            "color": "#24936E",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        },
+        {
+            "name": "source",
+            "color": "#994639",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 5
+        }
+    ],
+    "assets": {
+        "7b775852e448437ec8e24340bf049d35b009aaff75cac0b0f39fb57641087e62": {
+            "id": "7b775852e448437ec8e24340bf049d35b009aaff75cac0b0f39fb57641087e62",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045000.pdf",
+            "path": "https://stcognitivesearch001.blob.core.windows.net/english-forms-model/202045000.pdf?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-12-08T21:55:40Z&st=2020-07-28T13:55:40Z&spr=https&sig=I%2FbUmmelJ1YiX%2BD%2BpWkvQDC76DwNFRo8g3Nutvgojew%3D",
+            "size": null
+        },
+        "9494decc16dc3d4025ec421be36247f1c1364bf301d7b51251faa2af6a5bc5e4": {
+            "id": "9494decc16dc3d4025ec421be36247f1c1364bf301d7b51251faa2af6a5bc5e4",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045001.pdf",
+            "path": "https://stcognitivesearch001.blob.core.windows.net/english-forms-model/202045001.pdf?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-12-08T21:55:40Z&st=2020-07-28T13:55:40Z&spr=https&sig=I%2FbUmmelJ1YiX%2BD%2BpWkvQDC76DwNFRo8g3Nutvgojew%3D",
+            "size": null
+        },
+        "8fe508a6b631f442e9d1cbb2fda0a9e9cf7d5cd778679fd9fd06dc9e3725005c": {
+            "id": "8fe508a6b631f442e9d1cbb2fda0a9e9cf7d5cd778679fd9fd06dc9e3725005c",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045005.pdf",
+            "path": "https://stcognitivesearch001.blob.core.windows.net/english-forms-model/202045005.pdf?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-12-08T21:55:40Z&st=2020-07-28T13:55:40Z&spr=https&sig=I%2FbUmmelJ1YiX%2BD%2BpWkvQDC76DwNFRo8g3Nutvgojew%3D",
+            "size": null
+        },
+        "03d67e627f914e8a226a7ad750cc77da6507a6eaebb3496252efa23d93895d15": {
+            "id": "03d67e627f914e8a226a7ad750cc77da6507a6eaebb3496252efa23d93895d15",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045016.pdf",
+            "path": "https://stcognitivesearch001.blob.core.windows.net/english-forms-model/202045016.pdf?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-12-08T21:55:40Z&st=2020-07-28T13:55:40Z&spr=https&sig=I%2FbUmmelJ1YiX%2BD%2BpWkvQDC76DwNFRo8g3Nutvgojew%3D",
+            "size": null
+        },
+        "f20a46d7af8cd7115ba44f65a31b6f5abeda391c585faace05523d1dec46a128": {
+            "id": "f20a46d7af8cd7115ba44f65a31b6f5abeda391c585faace05523d1dec46a128",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045020.pdf",
+            "path": "https://stcognitivesearch001.blob.core.windows.net/english-forms-model/202045020.pdf?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-12-08T21:55:40Z&st=2020-07-28T13:55:40Z&spr=https&sig=I%2FbUmmelJ1YiX%2BD%2BpWkvQDC76DwNFRo8g3Nutvgojew%3D",
+            "size": null
+        }
+    },
+    "lastVisitedAssetId": "f20a46d7af8cd7115ba44f65a31b6f5abeda391c585faace05523d1dec46a128",
+    "trainRecord": {
+        "modelInfo": {
+            "modelId": "ea159593-79f7-4139-b478-1bf19d8df2d0",
+            "createdDateTime": "2020-07-29T19:36:31Z"
+        },
+        "averageAccuracy": 0.818,
+        "accuracies": {
+            "amputation": 0.6,
+            "caseid": 1,
+            "employer": 1,
+            "event": 1,
+            "event date": 1,
+            "final narrative": 1,
+            "hospitalized": 0.6,
+            "location": 1,
+            "nature": 1,
+            "part of body": 0.4,
+            "source": 0.4
+        }
+    }
+}

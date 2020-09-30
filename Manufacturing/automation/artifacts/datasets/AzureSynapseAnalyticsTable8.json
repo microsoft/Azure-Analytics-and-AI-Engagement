@@ -1,0 +1,13 @@
+{
+    "name": "AzureSynapseAnalyticsTable8",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

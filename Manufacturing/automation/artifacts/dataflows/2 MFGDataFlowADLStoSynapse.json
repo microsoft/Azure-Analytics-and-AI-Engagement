@@ -1,0 +1,42 @@
+{
+    "name": "2 MFGDataFlowADLStoSynapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "historical_drill",
+                        "type": "DatasetReference"
+                    },
+                    "name": "MfgJSONSource"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "historical_drill",
+                        "type": "DatasetReference"
+                    },
+                    "name": "MfgJSONSource2"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "MFGAzureSynapseDrill",
+                        "type": "DatasetReference"
+                    },
+                    "name": "Destination"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "Filter"
+                },
+                {
+                    "name": "InnerJoin"
+                }
+            ],
+            "script": "source(output(\n\t\tBatchCode as string,\n\t\tCoolantTemperature as double,\n\t\tEpochTime as integer,\n\t\tJobCode as string,\n\t\tMachineCode as string,\n\t\tOperationId as short,\n\t\tSpindleSpeed as double,\n\t\tStringDateTime as string,\n\t\tVibrationX as double,\n\t\tVibrationY as double,\n\t\tVibrationZ as double,\n\t\tXAxis as double,\n\t\tYAxis as double,\n\t\tZAxis as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\twildcardPaths:['*.json']) ~> MfgJSONSource\nsource(output(\n\t\tBatchCode as string,\n\t\tCoolantTemperature as double,\n\t\tEpochTime as integer,\n\t\tJobCode as string,\n\t\tMachineCode as string,\n\t\tOperationId as short,\n\t\tSpindleSpeed as double,\n\t\tStringDateTime as string,\n\t\tVibrationX as double,\n\t\tVibrationY as double,\n\t\tVibrationZ as double,\n\t\tXAxis as double,\n\t\tYAxis as double,\n\t\tZAxis as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\twildcardPaths:['*.json']) ~> MfgJSONSource2\nMfgJSONSource filter(OperationId==101) ~> Filter\nFilter, MfgJSONSource2 join(MfgJSONSource@EpochTime == MfgJSONSource2@EpochTime,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> InnerJoin\nInnerJoin sink(input(\n\t\tEpochTime as long,\n\t\tStringDateTime as string,\n\t\tJobId as integer,\n\t\tOperationId as integer,\n\t\tMachineId as string,\n\t\tBatchId as string,\n\t\tVibrationX as double,\n\t\tVibrationY as double,\n\t\tVibrationZ as double,\n\t\tSpindleSpeed as double,\n\t\tCoolantTemperature as double,\n\t\tXAxis as double,\n\t\tYAxis as double,\n\t\tZAxis as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Destination"
+        }
+    }
+}

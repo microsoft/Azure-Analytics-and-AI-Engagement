@@ -1,0 +1,17 @@
+{
+    "name": "MfgLocationSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "#LINKED_SERVICE_NAME#",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "mfg-Location"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

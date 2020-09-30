@@ -1,0 +1,154 @@
+[
+   {
+      "MachineMakeId":10,
+      "MachineTypeId":1,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"EC_500",
+      "MachineMakeName":"XorTech Milling Machine EC_500",
+      "id":"18a78021-c563-470f-8507-689e413d6521"
+   },
+   {
+      "MachineMakeId":6,
+      "MachineTypeId":2,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"UMC_750",
+      "MachineMakeName":"XorTech 5 axis CNC Milling Machine UMC_750",
+      "id":"a3997031-a4c2-4923-87a4-ae6ed8edd8e5"
+   },
+   {
+      "MachineMakeId":13,
+      "MachineTypeId":4,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"VM_6",
+      "MachineMakeName":"XorTech Mold Machine VM_6",
+      "id":"d60597e5-f6ab-41b6-a3cf-60faca430e12"
+   },
+   {
+      "MachineMakeId":7,
+      "MachineTypeId":2,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"UMC_1000",
+      "MachineMakeName":"XorTech 5 axis CNC Milling Machine UMC_1000",
+      "id":"834618f2-6517-4f61-822b-03e1738c9cdd"
+   },
+   {
+      "MachineMakeId":11,
+      "MachineTypeId":4,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"VM_2",
+      "MachineMakeName":"XorTech Mold Machine VM_2",
+      "id":"e5e48716-738e-404c-93e1-a669e8a480d9"
+   },
+   {
+      "MachineMakeId":2,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"ST_20",
+      "MachineMakeName":"XorTech Lathe Machine ST_20",
+      "id":"169a65ef-2427-4c2a-8725-a5b005b8c413"
+   },
+   {
+      "MachineMakeId":12,
+      "MachineTypeId":4,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"VM_3",
+      "MachineMakeName":"XorTech Mold Machine VM_3",
+      "id":"81b9fa9f-b947-4b7c-a88e-4af4a19e7e6f"
+   },
+   {
+      "MachineMakeId":8,
+      "MachineTypeId":1,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"EC_400",
+      "MachineMakeName":"XorTech Milling Machine EC_400",
+      "id":"09f0fd07-c8a3-4ded-967a-14f0158427fc"
+   },
+   {
+      "MachineMakeId":18,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"TL_2",
+      "MachineMakeName":"XorTech Lathe Machine TL_2",
+      "id":"af15a384-cc40-4195-83bd-4c88a24a7d3f"
+   },
+   {
+      "MachineMakeId":15,
+      "MachineTypeId":5,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"GR_712",
+      "MachineMakeName":"XorTech Gantry Machine GR_712",
+      "id":"e86271c4-5be3-4a2b-8aec-4cb716d2bdb0"
+   },
+   {
+      "MachineMakeId":5,
+      "MachineTypeId":2,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"UMC_500",
+      "MachineMakeName":"XorTech 5 axis CNC Milling Machine UMC_500",
+      "id":"d6bfb69e-b041-402d-8fd4-f47748054200"
+   },
+   {
+      "MachineMakeId":3,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"ST_10",
+      "MachineMakeName":"XorTech Lathe Machine ST_10",
+      "id":"be8f8a01-bbc3-4052-a439-de103efddc6d"
+   },
+   {
+      "MachineMakeId":14,
+      "MachineTypeId":5,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"GR_510",
+      "MachineMakeName":"XorTech Gantry Machine GR_510",
+      "id":"1e8b26fe-1340-45e6-9502-b66a105a24e9"
+   },
+   {
+      "MachineMakeId":1,
+      "MachineTypeId":1,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"GM_2_5_AX",
+      "MachineMakeName":"XorTech Milling Machine GM_2_5_AX",
+      "id":"3951e8c0-1367-4ad1-bf20-7d98e6304d52"
+   },
+   {
+      "MachineMakeId":19,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"CL_1",
+      "MachineMakeName":"XorTech Lathe Machine CL_1",
+      "id":"ba04fc5e-7af6-4a03-a0ef-ff880b317e6d"
+   },
+   {
+      "MachineMakeId":9,
+      "MachineTypeId":1,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"EC_1600ZT",
+      "MachineMakeName":"XorTech Milling Machine EC_1600ZT",
+      "id":"a651f57d-9171-42a0-aa9d-38d37581d116"
+   },
+   {
+      "MachineMakeId":16,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"DS_30_EY",
+      "MachineMakeName":"XorTech Lathe Machine DS_30_EY",
+      "id":"ca8d7bad-6aaa-4468-a22c-4e03bb618ca4"
+   },
+   {
+      "MachineMakeId":17,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"TL_1",
+      "MachineMakeName":"XorTech Lathe Machine TL_1",
+      "id":"a860fa97-7812-425c-b7b8-ec3c18a8554f"
+   },
+   {
+      "MachineMakeId":4,
+      "MachineTypeId":3,
+      "SyntheticPartitionKey":"ST_22_08_2020",
+      "MachineMakeCode":"ST_30",
+      "MachineMakeName":"XorTech Lathe Machine ST_30",
+      "id":"1560b4e3-44c5-48e0-a779-b4ca790cd0e8"
+   }
+]
