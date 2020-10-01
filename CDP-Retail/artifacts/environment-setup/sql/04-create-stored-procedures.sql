@@ -8,14 +8,14 @@ delete from FinanceSales;
 delete from Customer_SalesLatest;
 
 COPY INTO FinanceSales
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/FinanceSales.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/FinanceSales.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 
 COPY INTO Customer_SalesLatest
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/Customer_SalesLatest.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/Customer_SalesLatest.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 

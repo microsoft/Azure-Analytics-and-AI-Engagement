@@ -26,8 +26,8 @@ if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
 }
 
 if($IsCloudLabs){
-        Remove-Module solliance-synapse-automation
-        Import-Module ".\artifacts\environment-setup\solliance-synapse-automation"
+        Remove-Module retail-synapse-automation
+        Import-Module ".\artifacts\environment-setup\retail-synapse-automation"
 
         . C:\LabFiles\AzureCreds.ps1
 
@@ -53,10 +53,10 @@ if($IsCloudLabs){
         $pipelinesPath = ".\artifacts\environment-setup\pipelines"
         $sqlScriptsPath = ".\artifacts\environment-setup\sql"
 } else {
-        if(Get-Module -Name solliance-synapse-automation){
-                Remove-Module solliance-synapse-automation
+        if(Get-Module -Name retail-synapse-automation){
+                Remove-Module retail-synapse-automation
         }
-        Import-Module "..\solliance-synapse-automation"
+        Import-Module "..\retail-synapse-automation"
 
         #Different approach to run automation in Cloud Shell
         $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
@@ -203,7 +203,7 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Write-Information "Copy TwitterData to Data Lake"
 
-$publicDataUrl = "https://solliancepublicdata.blob.core.windows.net/"
+$publicDataUrl = "https://asaexpdatalakecdpu.blob.core.windows.net/"
 $dataLakeStorageUrl = "https://"+ $dataLakeAccountName + ".dfs.core.windows.net/"
 $dataLakeStorageBlobUrl = "https://"+ $dataLakeAccountName + ".blob.core.windows.net/"
 
@@ -251,7 +251,7 @@ Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
 $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
 $Env:Path += ";"+ $azCopyCommand
 
-$AnonContext = New-AzStorageContext -StorageAccountName "solliancepublicdata" -Anonymous
+$AnonContext = New-AzStorageContext -StorageAccountName "asaexpdatalakecdpu" -Anonymous
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
 foreach ($singleFile in $singleFiles) {
@@ -645,7 +645,7 @@ $reportList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision_Demo"}}, 
                                 @{Name = "Name"; Expression = {"1-Phase2 CDP Vision Demo"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
-                                @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceServer"; Expression = {"asaexpworkspacecdpu.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"images"}}, 

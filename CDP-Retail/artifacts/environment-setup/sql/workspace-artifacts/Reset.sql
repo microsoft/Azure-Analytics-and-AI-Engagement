@@ -6,59 +6,58 @@ delete from location_Analytics;
 delete from EmailAnalytics;
 delete from FinanceSales;
 delete from SalesMaster;
-delete from SalesMaster;
 delete from Customer_SalesLatest;
 
 COPY INTO CampaignAnalyticLatest
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/CampaignAnalyticLatest.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/CampaignAnalyticLatest.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO Campaigns
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/Campaigns.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/Campaigns.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO CampaignNew4
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/CampaignNew4.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/CampaignNew4.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO WebsiteSocialAnalyticsPBIData
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/WebsiteSocialAnalyticsPBIData.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/WebsiteSocialAnalyticsPBIData.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO location_Analytics
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/location_Analytics.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/location_Analytics.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO EmailAnalytics
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/EmailAnalytics.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/EmailAnalytics.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO FinanceSales
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/FinanceSales.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/FinanceSales.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO SalesMaster
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/SalesMaster.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/SalesMaster.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
 )
 COPY INTO Customer_SalesLatest
-FROM 'https://solliancepublicdata.blob.core.windows.net/cdp/csv/Customer_SalesLatest.csv'
+FROM 'https://asaexpdatalakecdpu.blob.core.windows.net/customcsv/Retail Scenario Dataset/Customer_SalesLatest.csv'
 WITH (
 	FILE_TYPE = 'CSV',
 	FIRSTROW = 2 
@@ -73,9 +72,8 @@ select top 10 *  from location_Analytics;
 select top 10 *  from EmailAnalytics;
 select top 10 *  from FinanceSales;
 select top 10 *  from SalesMaster;
-select top 10 *  from SalesMaster;
 select top 10 * from Customer_SalesLatest;
 
 
-
+select 'Reset is Completed' As Message;
 
