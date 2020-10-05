@@ -2615,7 +2615,7 @@
          "name":"[variables('search_name')]",
          "location":"[variables('location')]",
          "sku":{
-            "name":"standard"
+            "name":"Basic"
          },
          "properties":{
             "replicaCount":1,
