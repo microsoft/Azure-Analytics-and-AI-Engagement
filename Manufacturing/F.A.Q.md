@@ -3,6 +3,7 @@
 - [What if any resource shows failure during ARM deployment?](#what-if-any-resource-shows-failure-during-arm-deployment)
 - [What if my cloud-shell session times out?](#what-if-my-cloud-shell-session-times-out)
 - [Cloning repository gives error on cloudshell](#cloning-repository-gives-error)
+- [Unable to authenticate a Power BI report](#unable-to-authenticate-power-bi-report)
 
 
 ## What if any resource shows failure during ARM deployment?
@@ -26,3 +27,8 @@ It is important to keep the cloud shell session live during execution else the s
 - If so, delete the folder by running the following command ```rm MfgAI -r -f```
 - If you are getting insufficient space error, delete any other folders that are present on the cloud shell.
 - You can choose to recreate the storage mount for your cloudshell by deleting the existin storage account that you configured for it or executing the command ```clouddrive unmount```
+
+## Unable to authenticate a Power BI report
+
+- Check the datasource server of the report if it got updated with server name of your SQL pool.
+- If there is a data source mismatch, download the report and edit the datasource of it to point to the correct SQL pool and republish the report.Make sure the report id does not change during the republish.
