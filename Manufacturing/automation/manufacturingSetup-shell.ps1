@@ -530,7 +530,6 @@ foreach($zip in $zips)
     remove-item -path "./$($zip).zip" -recurse -force
 }
 
-
 RefreshTokens
 Add-Content log.txt "------asa powerbi connection-----"
 Write-Host "----asa powerbi connection-----"
@@ -668,7 +667,6 @@ foreach ($name in $scripts)
    
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 }
-
  
 Add-Content log.txt "------linked Services------"
 Write-Host "----linked Services------"
