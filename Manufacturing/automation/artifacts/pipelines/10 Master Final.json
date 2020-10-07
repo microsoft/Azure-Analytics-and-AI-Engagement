@@ -1,0 +1,44 @@
+{
+    "name": "10 Master Final",
+    "properties": {
+        "description": "calls both master pipelines",
+        "activities": [
+            {
+                "name": "Execute Data Master Pipeline",
+                "type": "ExecutePipeline",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "1 Master Pipeline",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true
+                }
+            },
+            {
+                "name": "Execute Cognitive Master Pipeline",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Execute Data Master Pipeline",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "9 Master Cognitive Pipeline",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-10-07T06:14:49Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}
