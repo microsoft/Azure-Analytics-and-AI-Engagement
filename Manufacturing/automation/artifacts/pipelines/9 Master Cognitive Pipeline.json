@@ -26,7 +26,7 @@
                 "type": "SynapseNotebook",
                 "dependsOn": [
                     {
-                        "activity": "convert_pdf_to_json",
+                        "activity": "process_pdf",
                         "dependencyConditions": [
                             "Succeeded"
                         ]
