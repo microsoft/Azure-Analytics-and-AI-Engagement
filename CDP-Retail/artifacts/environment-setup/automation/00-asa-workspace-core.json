@@ -5,13 +5,13 @@
     "uniqueSuffix": {
       "type": "String",
       "metadata": {
-        "description": "Suffix added to all resource name to make them unique."
+        "description": "Suffix added to all resource name to make them unique. Should consist of only lower case alphabet and numbers. Total length should be less than 6 characters."
       }
     },
     "sqlAdministratorLoginPassword": {
       "type": "SecureString",
       "metadata": {
-        "description": "Password for SQL Admin"
+        "description": "Password for SQL Admin. Should have atleast one capital, one small alphapbet with one digit and one special character.Password should be at least 8 characters long."
       }
     },
     "location": {
