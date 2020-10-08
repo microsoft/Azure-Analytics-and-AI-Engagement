@@ -3,7 +3,7 @@
     "properties": {
         "activities": [
             {
-                "name": "convert_pdf_to_json",
+                "name": "process_pdf",
                 "type": "SynapseNotebook",
                 "dependsOn": [],
                 "policy": {
