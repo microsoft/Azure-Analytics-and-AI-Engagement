@@ -1,5 +1,5 @@
 {
-    "name": "10 Master Final",
+    "name": "Master Final",
     "properties": {
         "description": "calls both master pipelines",
         "activities": [
