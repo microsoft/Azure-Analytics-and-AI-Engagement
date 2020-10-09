@@ -17,7 +17,8 @@
     - [Task 7: Modify the CSV to change campaign names, product categories, and hashtags](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
     - [Task 8: Publishing the Custom Vision model](#task-8-publishing-the-custom-vision-model)
     - [Task 9: Uploading new incident reports](#task-9-uploading-new-incident-reports)
-    - [Task 10: Clean up resources](#task-10-clean-up-resources)
+    - [Task 10: Pause-Resume resources](#task-10-pause-resume-resources)
+    - [Task 11: Clean up resources](#task-11-clean-up-resources)
     
 <!-- /TOC -->
 
@@ -25,6 +26,12 @@
 
 * An Azure Account with the ability to create an Azure Synapse Workspace.
 * A Power BI Pro or Premium account to host Power BI reports.
+* Make sure the following resource providers are registered with your Azure Subscription.
+   
+   - Microsoft.Sql 
+   - Microsoft.Synapse 
+   - Microsoft.StreamAnalytics 
+   - Microsoft.EventHub 
 * Please note that you can run only one deployment at a given point of time and need to wait for the completion. You should not run multiple deployments in parallel as that will cause deployment failures.
 * Please ensure selection of correct region where desired Azure Services are available. In case certain services are not available, deployment may fail. [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target services availablity.
 * Do not use any special characters or uppercase letters in the environment code.
@@ -966,8 +973,57 @@ Your Accelerator environment is now set up.
 
 ![Upload a new pdf report from the local system.](media/task9-4.png)
 
+### Task 10: Pause-Resume resources
 
-### Task 10: Clean up resources
+> **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
+
+1. **Open** the Azure Portal. 
+
+2. **Click** on the Azure Cloud Shell icon from the top toolbar.
+
+![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+
+Execute the ```Pause_Resume_script.ps1``` script by executing the following command:
+
+1. **Run** Command: ```cd 'MfgAI/Manufacturing/automation'```
+
+2. Then **run** the PowerShell script: ```./Pause_Resume_script.ps1```
+
+![Run the script.](media/pause-resume.png)
+
+3. From the Azure Cloud Shell, **copy** the authentication code. 
+
+4. **Click** on the link https://microsoft.com/devicelogin and a new browser window will launch.
+
+![Copy the code.](media/copy-code-new.png)
+
+5. **Paste** the authentication code.  
+
+![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+
+6. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+
+7. **Close** this window after it displays successful authentication message.
+
+![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+
+8. You will be prompted for one more device authentication.
+
+9. Follow steps 3 to 6 again for the new authentication.
+
+![Copy the code.](media/copy-code-new.png)
+
+10. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
+
+![Enter the resource group name](media/RG-Name-Screen10.png)
+
+11. **Enter** your choice when prompted. **Enter** 'P' for pausing the environment or 'R' for resuming a paused environment.
+
+12. Wait for script to finish execution.
+
+![Enter the choice.](media/p-r.png)
+
+### Task 11: Clean up resources
 
 > **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
 
