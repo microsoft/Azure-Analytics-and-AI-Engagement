@@ -287,15 +287,15 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalyde
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "ppecompliancedetection" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/ppecompliancedetection$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/ppecompliancedetection" $destinationUri --recursive
+& $azCopyCommand copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/ppecompliancedetection" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "qualitycontrol" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/qualitycontrol$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/qualitycontrol" $destinationUri --recursive
+& $azCopyCommand copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/qualitycontrol" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "azureml-mfg" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/azureml-mfg$($destinationSasKey)"
-& $azCopyCommand copy "https://dreamdemostorageforgen2.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
+& $azCopyCommand copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
 
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
@@ -339,29 +339,28 @@ Write-Host "----Cognitive Services ------"
 RefreshTokens
 #Custom Vision 
 pip install -r ./artifacts/copyCV/requirements.txt
-$sourceKey="7f743d4b8d6d459fb2bb0e8648dfa38e"  #todo: find a way to get this securely
+$sourceKey="915f760294c840648620ec8038281e63"  #todo: find a way to get this securely
 
 #get list of keys - cognitiveservices
 $key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json
 $destinationKey=$key.key1
 
 #hard hat project
-$sourceProjectId="b2e4f4ce-d9f1-4fb7-aa0c-2f50fdc14d1b"
+$sourceProjectId="b34064cc-64ff-46a9-a5ec-3a987b8483a8"
 $destinationregion= "https://$($location).api.cognitive.microsoft.com"
 $sourceregion= "https://westus2.api.cognitive.microsoft.com"
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #welding helmet project
-$sourceProjectId="835b6a7a-1e49-454b-9584-654595b045b6"
+$sourceProjectId="2189a48b-096d-4fa3-86eb-e7ae7ea7f8cc"
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #mask compliance project
-$sourceProjectId="db91f717-fede-4111-98bf-f60f7c9a4afd"
+$sourceProjectId="96d86e77-7c16-4872-97cd-f9ab961b0120"
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #product classification project
-$sourceProjectId="e555e244-ebfd-481b-ae0e-f3213d8e5634"
-$sourceKey="6b980df5f6ae432dac6adbfcadd2187f"
+$sourceProjectId="bf453ce7-33ad-47c3-8b9e-bc2b613b39b9"
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"
