@@ -438,7 +438,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 56. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
-> **Note:** Please refer to steps 33-35 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
+> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
 
 57. **Go back** to the 'Engagement Accelerators Dashboard'.
 
@@ -900,7 +900,7 @@ Your Accelerator environment is now set up.
 
 1. **Go** to  https://customvision.ai/ and **click** on 'Sign In'.
 2. **Select** 'I agree' checkbox and **click** on 'I Agree’ button.
-
+>**Note:**  If you get any sensitive information related warning then click on 'OK'.
 ![Logging into custom vision.](media/custom-vision1.png)
 
 3. **Select** your cognitive service resource from the 'Resource' dropdown starting with name 'dreamcognitiveservices'.
@@ -917,7 +917,7 @@ Your Accelerator environment is now set up.
 
 6. **Click** on the 'Performance' tab.
 
-**Note:** Wait for training to complete if it shows the model is in training.
+>**Note:** Wait for training to complete if it shows the model is in training.
 
 ![Select performance tab.](media/custom-vision5.png)
 
