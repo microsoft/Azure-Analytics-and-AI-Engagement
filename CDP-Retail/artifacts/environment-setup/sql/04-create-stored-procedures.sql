@@ -1,3 +1,4 @@
+IF  EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[dbo].[Reset_ML_Environment]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
 DROP PROCEDURE [dbo].[Reset_ML_Environment]
 GO
 
@@ -24,6 +25,7 @@ WITH (
 END
 GO
 
+IF  EXISTS (SELECT * FROM sysobjects WHERE id = OBJECT_ID(N'[dbo].[Delete_SelfReferencing_Product_Recommendations]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
 DROP PROCEDURE [dbo].[Delete_SelfReferencing_Product_Recommendations]
 GO
 
