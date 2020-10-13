@@ -4,6 +4,7 @@
 - [What if my cloud-shell session times out?](#what-if-my-cloud-shell-session-times-out)
 - [Cloning repository gives error on cloudshell](#cloning-repository-gives-error)
 - [Unable to authenticate a Power BI report](#unable-to-authenticate-a-power-bi-report)
+- [What if pipeline execution fails in synapse](#what-if-pipeline-execution-fails-in-synapse)
 
 
 ## What if any resource shows failure during ARM deployment?
@@ -103,5 +104,8 @@ Follow the steps below to update the datasource:
 ![Monitor progress.](media/monitor-progress.png)
 
 
-
-
+## What if pipeline execution fails in synapse
+1. **Open** Monitor Hub in synapse.
+2. **Click** the pipeline run that failed.
+3. **Check** the error message from the table listed.
+4. If the error message shows "spark pool core limit reached", wait for sometime and then re-run the pipeline.
