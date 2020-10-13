@@ -645,7 +645,7 @@ $reportList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"Phase2_CDP_Vision_Demo"}}, 
                                 @{Name = "Name"; Expression = {"1-Phase2 CDP Vision Demo"}}, 
                                 @{Name = "PowerBIDataSetId"; Expression = {""}},
-                                @{Name = "SourceServer"; Expression = {"asaexpworkspacecdpu.sql.azuresynapse.net"}}, 
+                                @{Name = "SourceServer"; Expression = {"asaexpworkspacewwi543.sql.azuresynapse.net"}}, 
                                 @{Name = "SourceDatabase"; Expression = {"SQLPool01"}}
 $reportList.Add($temp)
 $temp = "" | select-object @{Name = "FileName"; Expression = {"images"}}, 
