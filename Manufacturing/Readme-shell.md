@@ -1060,4 +1060,20 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-5. You have now successfully cleaned up your resources.
+5. Wait for execution to complete.
+
+6. Navigate to Power BI Workspace.
+
+7. **Click** on Workspaces.
+
+8. **Click** on options of the workspace you created in task #2
+
+9. **Click** on Workspace settings.
+
+![Workspace Settings](media/workspace-settings.png)
+
+10. **Click** on Delete Workspace.
+
+11. **Click** on Delete button in popup.
+
+![Workspace Delete](media/workspace-delete.png)
