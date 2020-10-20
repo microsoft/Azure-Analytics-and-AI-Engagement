@@ -864,7 +864,7 @@ foreach($name in $notebooks)
 	#waiting for operation completion
 	Start-Sleep -Seconds 10
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
-	$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+	#$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
 	Add-Content log.txt $result
 }	
 
