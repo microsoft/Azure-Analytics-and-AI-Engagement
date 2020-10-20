@@ -837,7 +837,7 @@ foreach($name in $notebooks)
     {
 		$template = $template.Replace($paramName, $cellParams[$paramName])
 	}
-	
+	$template=$template.Replace("#NOTEBOOK_NAME#",$name.BaseName)
     $jsonItem = ConvertFrom-Json $template
 	$path="./artifacts/notebooks/"+$name.BaseName+".ipynb"
 	$notebook=Get-Content -Raw -Path $path
