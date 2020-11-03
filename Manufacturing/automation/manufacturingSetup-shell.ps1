@@ -89,7 +89,7 @@ function GetAccessTokens($context)
 az login
 
 #for powershell...
-Connect-AzAccount
+Connect-AzAccount -DeviceCode
 
 #will be done as part of the cloud shell start - README
 
