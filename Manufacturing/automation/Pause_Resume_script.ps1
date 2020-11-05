@@ -2,7 +2,7 @@
 az login
 
 #for powershell...
-Connect-AzAccount
+Connect-AzAccount -DeviceCode
 
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
