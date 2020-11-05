@@ -246,35 +246,38 @@ WITH
 )
 GO
 
-IF OBJECT_ID(N'[dbo].[WebsiteSocialAnalytics]', N'U') IS NOT NULL   
-DROP TABLE [dbo].[WebsiteSocialAnalytics]
 
-CREATE TABLE [dbo].[WebsiteSocialAnalytics]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[WebsiteSocialAnalyticsPBIData]
 ( 
-	[Country] [varchar](50)  NULL,
-	[Product_Category] [varchar](50)  NULL,
-	[Product] [varchar](50)  NULL,
-	[Channel] [varchar](50)  NULL,
-	[Gender] [varchar](50)  NULL,
+	[Country] [varchar](4000)  NULL,
+	[Product_Category] [varchar](4000)  NULL,
+	[Product] [varchar](4000)  NULL,
+	[Channel] [varchar](4000)  NULL,
+	[Gender] [varchar](4000)  NULL,
 	[Sessions] [int]  NULL,
-	[Device_Category] [varchar](50)  NULL,
-	[Sources] [varchar](50)  NULL,
-	[Conversations] [varchar](50)  NULL,
-	[Page] [varchar](50)  NULL,
+	[Device_Category] [varchar](4000)  NULL,
+	[Sources] [varchar](4000)  NULL,
+	[Conversations] [varchar](4000)  NULL,
+	[Page] [varchar](4000)  NULL,
 	[Visits] [int]  NULL,
 	[Unique_Visitors] [int]  NULL,
-	[Browser] [varchar](50)  NULL,
-	[Sentiment] [varchar](50)  NULL,
-	[Duration_min] [varchar](50)  NULL,
-	[Region] [varchar](50)  NULL,
-	[Customer_Segment] [varchar](50)  NULL,
+	[Browser] [varchar](4000)  NULL,
+	[Sentiment] [varchar](4000)  NULL,
+	[Duration_min] [varchar](4000)  NULL,
+	[Region] [varchar](4000)  NULL,
+	[Customer_Segment] [varchar](4000)  NULL,
 	[Daily_Users] [int]  NULL,
 	[Conversion_Rate] [int]  NULL,
 	[Return_Visitors] [int]  NULL,
 	[Tweets] [int]  NULL,
 	[Retweets] [int]  NULL,
-	[Hashtags] [varchar](50)  NULL,
-	[Campaign_Name] [varchar](50)  NULL
+	[Hashtags] [varchar](4000)  NULL,
+	[Campaign_Name] [varchar](4000)  NULL
 )
 WITH
 (
@@ -282,7 +285,6 @@ WITH
 	CLUSTERED COLUMNSTORE INDEX
 )
 GO
-
 IF OBJECT_ID(N'[dbo].[Campaigns]', N'U') IS NOT NULL   
 DROP TABLE [dbo].[Campaigns]
 
