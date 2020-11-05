@@ -40,7 +40,7 @@ Stop-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName
 write-host "Stopping SQL pool"
 install-module Az.Synapse -f
 #stop SQL
-Update-AzSynapseSqlPool -WorkspaceName $synapseWorkspaceName -Name $sqlPoolName -Suspend
+az synapse sql pool pause --name $SQLPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
 
 write-host "Stopping Web apps"
 #stop web apps
@@ -65,7 +65,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName 
 
 #Resume SQL
 write-host "Starting Sql Pool"
-Update-AzSynapseSqlPool -WorkspaceName $synapseWorkspaceName -Name $sqlPoolName -Resume
+az synapse sql pool pause --name $SQLPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
 
 #start web apps
 write-host "Starting web apps"
