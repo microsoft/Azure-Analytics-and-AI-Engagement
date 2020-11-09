@@ -32,5 +32,5 @@ jobs:
       with:
         author_name: Ranavikrant Chouhan
         message: "GitHub traffic"
-        add: "./traffic/traffic.csv"
+        add: "./traffic/"
         ref: "main"  # commits to branch "traffic"
