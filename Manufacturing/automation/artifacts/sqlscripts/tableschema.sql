@@ -747,9 +747,9 @@ GO
 
 CREATE TABLE [dbo].[Sales]
 (
-              [Date] [varchar](500) NOT NULL,
+              [Date] [date] NOT NULL,
               [CustomerId] [bigint] NOT NULL,
-              [DeliveryDate] [varchar](500) NULL,
+              [DeliveryDate] [date] NULL,
               [ProductId] [bigint] NULL,
               [Quantity] [decimal](18, 2) NOT NULL,
               [UnitPrice] [decimal](18, 2) NOT NULL,
