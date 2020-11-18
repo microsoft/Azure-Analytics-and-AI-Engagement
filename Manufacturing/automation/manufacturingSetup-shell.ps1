@@ -1256,6 +1256,30 @@ $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"MfgMesQuality1"}} , @{Name = "TABLE_NAME"; Expression = {"MfgMesQuality1"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $dataTableList.Add($temp)
 
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Anomaly Detection XYZ Job Movement Data"}} , @{Name = "TABLE_NAME"; Expression = {"Anomaly Detection XYZ Job Movement Data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-BatchSummary"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-BatchSummary"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"mfg-Product-BatchMapping"}} , @{Name = "TABLE_NAME"; Expression = {"mfg-Product-BatchMapping"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaignsales"}} , @{Name = "TABLE_NAME"; Expression = {"Campaignsales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Incident Probabilities Rio and Stuttgart"}} , @{Name = "TABLE_NAME"; Expression = {"Incident Probabilities Rio and Stuttgart"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"MSFT mfg demo"}} , @{Name = "TABLE_NAME"; Expression = {"MSFT mfg demo"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"OperationsCaseData"}} , @{Name = "TABLE_NAME"; Expression = {"OperationsCaseData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$dataTableList.Add($temp)
+
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 foreach ($dataTableLoad in $dataTableList) {
     Write-output "Loading data for $($dataTableLoad.TABLE_NAME)"
@@ -1517,7 +1541,7 @@ foreach($report in $reportList)
         {
         }
     }
-	Start-Sleep -s 2
+	Start-Sleep -s 5
 }
 
 

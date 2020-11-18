@@ -39,7 +39,7 @@ FROM 'https://manufacturingdemo12.blob.core.windows.net/mfg-iot-data/'
 WITH (
     FILE_TYPE = 'PARQUET',
     CREDENTIAL=(IDENTITY= 'Shared Access Signature', 
-	SECRET='?sv=2019-10-10&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-07T00:45:30Z&st=2020-03-06T16:45:30Z&spr=https,http&sig=LfQolgoKkjh%2Fhz2hyrxOT8DOKo1vJ7IFusRyCShR%2FUA%3D')
+	SECRET='?sv=2019-07-07&sr=c&sig=3R0LiHPr%2BY6oHLUwwUeY0CfwOIpDodW1UEtFznmwGxQ%3D&se=2020-11-18T09%3A10%3A08Z&sp=rl')
 ) 
 
 --step 3 Lets query table 
