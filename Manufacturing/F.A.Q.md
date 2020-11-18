@@ -48,7 +48,7 @@ Follow the steps below to update the datasource:
 
 3.	**Expand** 'Parameters'.
 
-4.	If the selected dataset has no parameters, you see a message with a link to 'Learn more about query parameters'. If the dataset has parameters, expand the 'Parameters' heading to reveal those parameters.
+4.	If the selected dataset has no parameters, you see a message with a link to 'Learn more about query parameters', in which case you should follow the steps mentioned in the next section. If the dataset has parameters, expand the 'Parameters' heading to reveal those parameters.
 
 5.	**Review** the parameter settings and make changes if needed. 
 
@@ -65,7 +65,9 @@ Follow the steps below to update the datasource:
 
 1. **Open** Power BI Desktop application. If you don’t have Power BI Desktop pre-installed on your system, please **install** it from here:  https://www.microsoft.com/en-us/download/details.aspx?id=58494
 
-2. **Open** your PBIX file.
+2. Download the pbix file by going to your report in the Power BI service and clicking download button from the file dropdown. **Open** the pbix file once downloaded.
+
+![Download pbix.](media/download-pbix.png)
 
 3. In the 'Home' tab, under the 'Queries' section, **click** on the 'Transform Data' dropdown icon.
 
@@ -102,6 +104,10 @@ Follow the steps below to update the datasource:
 13.	This starts updating the data sources as per the modification. Once this is done, the report reflects the data source changes.
 
 ![Monitor progress.](media/monitor-progress.png)
+
+14.	Click the publish button to publish the report back to Power BI service.
+
+![Publish Changes.](media/publish-changes.png)
 
 
 ## What if pipeline execution fails in synapse
