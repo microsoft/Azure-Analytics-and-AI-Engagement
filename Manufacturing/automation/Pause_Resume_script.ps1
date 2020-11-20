@@ -80,7 +80,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $mfgasaCosmosDBName 
 
 #Resume SQL
 write-host "Starting Sql Pool"
-az synapse sql pool pause --name $SQLPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
+az synapse sql pool resume --name $SQLPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
 
 #start web apps
 write-host "Starting web apps"
