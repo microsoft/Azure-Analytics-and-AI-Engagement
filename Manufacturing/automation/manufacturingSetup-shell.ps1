@@ -1014,7 +1014,8 @@ Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
-$secret = ConvertTo-SecureString -String $sqlPassword -AsPlainText -Force
+$secretpassword="Smoothie@Smoothie@2020"
+$secret = ConvertTo-SecureString -String $secretpassword -AsPlainText -Force
 
 if (!$app)
 {
