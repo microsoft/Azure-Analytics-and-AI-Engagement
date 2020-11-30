@@ -105,7 +105,9 @@
 2. On the Custom deployment form, **select** your desired Subscription.
 3. **Type** the resource group name 'Synapse-WWI-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
 4. **Select** Region where you want to deploy.
+> **Note:** Ensure the resource availability for synapse, cognitive services and aml in the region you select.
 5. **Provide** environment code which is a unique suffix to your environment without any special characters. e.g. 'demo'.
+> **Note:** Please enter the values in compliance with tooltip instructions
 6. **Provide** a strong SQL Administrator Login Password and set this aside for later use.
 7. **Enter** the Power BI Workspace ID, created in [Task 2](#task-2-power-bi-workspace-creation), in the 'Pbi_workspace_id' field.
 8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
