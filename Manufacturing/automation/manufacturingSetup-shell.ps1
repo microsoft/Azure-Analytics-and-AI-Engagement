@@ -1090,7 +1090,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 (Get-Content -path mfg-webapp/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
 				-replace '#APP_ID#', $appId`
-				-replace '#APP_SECRET#', $sqlPassword`
+				-replace '#APP_SECRET#', $secretpassword`
 				-replace '#TENANT_ID#', $tenantId`				
         } | Set-Content -Path mfg-webapp/appsettings.json
 (Get-Content -path mfg-webapp/wwwroot/config.js -Raw) | Foreach-Object { $_ `
