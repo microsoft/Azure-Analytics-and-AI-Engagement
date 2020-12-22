@@ -252,7 +252,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[WebsiteSocialAnalyticsPBIData]
+IF OBJECT_ID(N'[dbo].[WebsiteSocialAnalytics]', N'U') IS NOT NULL   
+DROP TABLE [dbo].[WebsiteSocialAnalytics]
+
+CREATE TABLE [dbo].[WebsiteSocialAnalytics]
 ( 
 	[Country] [varchar](4000)  NULL,
 	[Product_Category] [varchar](4000)  NULL,
