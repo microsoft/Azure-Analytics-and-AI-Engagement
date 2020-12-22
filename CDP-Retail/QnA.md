@@ -8,5 +8,11 @@
 
 ![Synapse Workspace](media/template-deployment-location-not-allowed.png)
 
+**Q:** Script execution gives me following error.
+
+![CloudShell Error](media/cloudshell-error.png)
+
+**A:** Ensure you executed "az login" command before running the powershell script. Also there should not be a long delay between execution of both commands. You can also check the response of 'az account get-access-token --resource https://dev.azuresynapse.net' command to make sure you have enough previleges to generate authentication tokens.
+
 
 
