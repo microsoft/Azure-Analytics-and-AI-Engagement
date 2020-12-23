@@ -573,8 +573,8 @@ foreach ($notebookName in $notebooks.Keys) {
         
         $result = Create-SparkNotebook -TemplatesPath $templatesPath -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName `
                 -WorkspaceName $workspaceName -SparkPoolName $sparkPoolName -Name $notebookName -NotebookFileName $notebookFileName -CellParams $cellParams
-        $result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
-        $result
+        #$result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+        #$result
 }
 
 Write-Information "Create SQL scripts for Lab 05"
@@ -612,7 +612,7 @@ foreach ($sqlScriptName in $sqlScripts.Keys) {
         Write-Information "Creating SQL script $($sqlScriptName) from $($sqlScriptFileName)"
         
         $result = Create-SQLScript -TemplatesPath $templatesPath -WorkspaceName $workspaceName -Name $sqlScriptName -ScriptFileName $sqlScriptFileName -Parameters $params
-        $result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
+        #$result = Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
         $result
 }
 
