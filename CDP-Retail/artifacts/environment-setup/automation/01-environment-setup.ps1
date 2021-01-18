@@ -203,7 +203,7 @@ Wait-ForOperation -WorkspaceName $workspaceName -OperationId $result.operationId
 
 Write-Information "Copy TwitterData to Data Lake"
 
-$publicDataUrl = "https://asaexpdatalakecdpu.blob.core.windows.net/"
+$publicDataUrl = "https://retailpocstorage.blob.core.windows.net/"
 $dataLakeStorageUrl = "https://"+ $dataLakeAccountName + ".dfs.core.windows.net/"
 $dataLakeStorageBlobUrl = "https://"+ $dataLakeAccountName + ".blob.core.windows.net/"
 
@@ -251,7 +251,7 @@ Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
 $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
 $Env:Path += ";"+ $azCopyCommand
 
-$AnonContext = New-AzStorageContext -StorageAccountName "asaexpdatalakecdpu" -Anonymous
+$AnonContext = New-AzStorageContext -StorageAccountName "retailpocstorage" -Anonymous
 $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
 foreach ($singleFile in $singleFiles) {
