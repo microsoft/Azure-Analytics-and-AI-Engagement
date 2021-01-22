@@ -105,6 +105,7 @@
 ![Select API.](media/select-api.png)
 
 10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
+
 | Field Name                        | Type     |
 |-----------------------------------|----------|	
 | recordedOn                        | Datetime |
