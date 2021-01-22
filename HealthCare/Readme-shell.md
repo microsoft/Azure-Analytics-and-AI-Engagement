@@ -89,18 +89,72 @@
 
 ![Give the name and description for the new workspace.](media/name-the-workspace.png)
 
-> **Note:** Please create a Workspace by the name 'Engagement Accelerators – Manufacturing'.
+> **Note:** Please create a Workspace by the name 'Engagement Accelerators – HealthCare'.
 
 6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
 ![Copy the workspace id.](media/Workspace-ID.png)
 
+7.  Go to your Power BI workspace and **click** on create button. 
+8.	Then **click** on Streaming Dataset option from the dropdown. 
+
+![Create Streaming Dataset.](media/create-dataset.png)
+
+9.	**Select** API from the list of options and click next. 
+![Select API.](media/select-api.png)
+
+10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
+| Field Name                        | Type     |
+|-----------------------------------|----------|	
+| recordedOn                        | Datetime |
+| staffToPatientRatio               | number   |
+| currentERWaitingTime              | number   |
+| currentICUBedOccupancyRate        | number   |
+| currentBedOccupancyRate           | number   |
+| ratingNeutralPercentage           | number   |
+| ratingNegativePercentage          | number   |
+| averageERWaitingTime              | number   |
+| staffToPatientRatioTarget         | number   |
+| bedOccupanyRateMin                | number   |
+| bedOccupanyRateMax                | number   |
+| bedOccupanyRateTarget             | number   |
+| scheduledAppointments             | number   |
+| averageLOS                        | number   |
+| targetLOS                         | text     |
+| otUtilizationPercentage           | number   |
+| otTargetPercentage                | number   |
+| inPersonAppointment               | number   |
+| virtualAppointment                | number   |
+| missedAppointment                 | number   |
+| roomTurnOver                      | number   |
+| medicalEquipmentUtilization       | number   |
+| inpatientSurgery                  | number   |
+| outpatientSurgery                 | number   |
+| onlinePrescription                | number   |
+| inPersonPrescription              | number   |
+| appointmentStats                  | text     |
+| waittimeStats                     | text     |
+| surgeriesStats                    | text     |
+| prescriptionStats                 | text     |
+| roomTurnOverTarget                | number   |
+| medicalEquipmentUtilizationTarget | number   |
+| currentICUBedOccupancyRate        | number   |
+| currentRegularBedOccupancyRate    | number   |
+| currentbedOccupancyRateStats      | text     |
+| activeSensors                     | number   |
+
+![Values for stream.](media/value-for-stream.png)
+
+11.	Copy the push url of dataset and place it in a notepad for later use.
+![Push Url.](media/push-url.png)
+
+
 ### Task 3: Deploy the ARM Template
 
 1. **Right-click** on the 'Deploy to Azure' button given below and open the link in a new tab to **deploy** the Azure resources that you created in [Task 1](#task-1-create-a-resource-group-in-azure) with an Azure ARM Template.
 
-    <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com/daidemos/_git/HealthCare?path=%2FGitHubRepo%2FHealthcare%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+     <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmain%2FHealthCare%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 3. **Type** the resource group name 'Synapse-WWI-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
