@@ -165,7 +165,8 @@
 > **Note:** Please enter the values in compliance with tooltip instructions
 6. **Provide** a strong SQL Administrator Login Password and set this aside for later use.
 7. **Enter** the Power BI Workspace ID, created in [Task 2](#task-2-power-bi-workspace-creation), in the 'Pbi_workspace_id' field.
-8. **Select** Location from the dropdown. Please ensure that this is the same location you selected in Step #4 above.
+8. **Enter** the power BI streaming dataset url you copied in step 11 of task 2.
+9. **Enter** the password for virtual machine. Please enter password based on tooltip recommendation. 
 9. **Click** 'Review + Create' button.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
@@ -183,8 +184,79 @@
 12. **Click** 'Go to resource group' button once your deployment is complete.
 
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
-    
-### Task 4: Run the Cloud Shell 
+
+### Task 4: Provision IoT central devices
+
+1. **Search** for iot in resource list.
+2. **Click** on iot central in the resource list.
+
+	![Resource list iot.](media/resource-list-iot.png)
+	
+3. **Click** on application url on overview screen.
+
+	![Application URL.](media/application-url.png)
+	
+4. **Click** on devices.
+5. **Click** IoMT device.
+6. **Click** New.
+
+	![Create iomt.](media/create-iomt.png)
+	
+7. **Click** create.
+
+> **Note:** You may choose to change the device name displayed for your scenario.
+
+	![Create device.](media/create-device.png)
+	
+8. **Click** on created device.
+
+	![Created device.](media/created-device.png)
+
+9. **Click** on Connect.
+
+	![connect device.](media/connect-device.png)
+	
+10. **Copy** the values of ID scope, Device ID and primary key in a notepad.We will need these values during script execution.
+
+	![copy device.](media/copy-device.png)
+	
+11.	**Close** the device popup and click on data export(legacy) tab.
+12.	**Click** New.
+13.	**Click** Azure Event Hubs.
+
+	![data export.](media/data-export.png)
+	
+14.	**Select** Event hub namespace named ‘evh-namespace…’ from the dropdown.
+15.	**Select** Event hub name from the dropdown.
+16.	**Turn off** Devices and Device template features.
+17.	**Click** Save.
+
+	![data export2.](media/data-export2.png)
+	
+18.	**Click** Dashboard.
+19.	**Click** Edit.
+
+	![device dashboard.](media/device-dashboard.png)
+
+20.	**Click** on configure button of Blood Pressure chart.
+21.	**Select** Device group from the dropdown.
+22.	**Select** Device Name from the dropdown.
+23.	**Click** “+ Capability” button.
+24.	**Select** systolicPressure kpi.
+25.	**Click** “+ Capability” button again.
+26.	**Select** distolicPressure kpi.
+27.	**Click** update.
+
+	![device dashboard2.](media/device-dashboard2.png)
+
+28.	**Click** save.
+29.	Repeat above steps for remaining dashboard tiles and their respective kpi’s.
+
+	![device dashboard3.](media/device-dashboard3.png)
+
+
+ 	
+### Task 5: Run the Cloud Shell 
 
 **Open** the Azure Portal.
 
