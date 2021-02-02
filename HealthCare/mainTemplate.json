@@ -570,7 +570,7 @@
       "sku": {
         "name": "Standard",
         "tier": "Standard",
-        "capacity": 20
+        "capacity": 1
       },
       "properties": {
         "zoneRedundant": false,
@@ -3044,8 +3044,8 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/healthcare-vm-assets/highspeed-datagen.zip",
-            "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/healthcare-vm-assets/vmscript.ps1"
+            "https://pocaccelerator.blob.core.windows.net/healthcare-vm-assets/highspeed-datagen.zip",
+            "https://pocaccelerator.blob.core.windows.net/healthcare-vm-assets/vmscript.ps1"
           ]
         },
         "protectedSettings": {
