@@ -281,7 +281,7 @@
     ```PowerShell
     git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/HealthCare HealthCare
     ```
-    
+    > Here username will be your github username. You will be prompted for the password of the same username.
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
     
     > **Note:** If you get File “Healthcare” already exist error, please execute following command: rm Healthcare -r -f to delete existing clone.
@@ -348,7 +348,7 @@
 **Open** the Azure Portal.
 
 20. **Go** to the resource group you have created in [Task 1](#task-1-create-a-resource-group-in-azure).
-21. **Search** the storage account name starts with 'dreamdemo'.
+21. **Search** the storage account name starts with 'sth'.
 22. **Go** to the storage account by clicking on its link.
 
       ![Select Storage Account.](media/select-storage.png)
@@ -357,24 +357,10 @@
 24. **Copy** the 'key1' to the clipboard and **paste** the key in a notepad for future reference.
 
       ![Copy Storage Account Access Keys.](media/copy-access-keys.png)
+            
+### Task 6: Starting high speed data generators and function apps      
       
-      
-**Open** the Azure Portal.
-
-25. **Go** to the resource group you have created in [Task 1](#task-1-create-a-resource-group-in-azure).
-26. **Search** the Cosmos DB account name starts with 'cosmosdb'.
-27. **Go** to the Cosmos DB account by clicking on its link.
-
-      ![Select Cosmos DB Account.](media/select-cosmos.png)
-      
-      
-28. **Click** on 'Keys' from the left navigation pane for Cosmos DB account.
-29. **Copy** the 'Primary key' to the clipboard and **paste** the key in a notepad for future reference.
-
-      ![Copy Cosmos DB Account Primary Key.](media/copy-primary-key.png)
-      
-      
-### Task 5: Create Power BI reports and Dashboard
+### Task 7: Create Power BI reports and Dashboard
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
 
