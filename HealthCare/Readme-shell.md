@@ -358,8 +358,51 @@
 
       ![Copy Storage Account Access Keys.](media/copy-access-keys.png)
             
-### Task 6: Starting high speed data generators and function apps      
-      
+### Task 6: Starting high speed data generators and function apps 
+  
+1.	**Search** for ‘data-gen’ in azure resource group.
+2.	**Click** on the virtual machine.
+
+	![Search for data-gen.](media/high-speed-data-gen1.png)
+  
+3.	**Copy** the public ip of the virtual machine.
+
+	![Copy the public ip.](media/high-speed-data-gen2.png)
+	
+4.	**Open** Remote Desktop application on your machine. (use Wondows+r shortcut on windows machine)
+5.	**Enter** the ip address in computer field.
+6.	**Enter** the username as ‘data-generator’.
+7.	**Click** on connect.
+8.	You will be prompted to enter the password. Enter the password you chose during template deployment in task 2.
+	
+	![Remote Desktop.](media/high-speed-data-gen3.png)
+	
+9.	Once connected to the remote machine, open file explorer.
+10.	**Navigate** to ‘C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0\highspeed-datagen’.
+11.	**Right-click** on InvokeSenders file.
+12.	**Click** on Run with PowerShell.
+13.	**Close** the virtual machine window.
+
+	![Run with PowerShell.](media/high-speed-data-gen4.png)
+	
+	**Note:** Ensure the data generation exe’s are running on this vm before you demo the high speed data ingestion part in synapse. If not, follow the task above to restart the generation.
+	
+14.	Navigate to azure portal.
+15.	Search for ‘func-app-mongo’ in your rg.
+16.	Click on the function app.
+
+	![Run with PowerShell.](media/high-speed-data-gen5.png)
+	
+17.	Click on Functions.
+18.	Click on JsonProcessor.
+
+	![Run with PowerShell.](media/high-speed-data-gen6.png)
+
+19.	Click ‘Get Function Url’.
+20.	Copy the url and open it in new browser tab.
+
+	![Run with PowerShell.](media/high-speed-data-gen7.png)
+
 ### Task 7: Create Power BI reports and Dashboard
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
