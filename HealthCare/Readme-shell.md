@@ -11,10 +11,10 @@
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Create Power BI workspace](#task-2-create-power-bi-workspace)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-    - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
-    - [Task 5: Create Power BI reports and Dashboard](#task-5-create-power-bi-reports-and-dashboard)
-    - [Task 6: Working with Power BI to create real-time reports](#task-6-working-with-power-bi-to-create-real-time-reports)
-    - [Task 7: Modify the CSV to change campaign names](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
+    - [Task 4: Provision IoT central devices](#task-4-run-the-cloud-shell)
+    - [Task 5: Run the Cloud Shell](#task-5-create-power-bi-reports-and-dashboard)
+    - [Task 6: Starting high speed data generators and function apps](#task-6-working-with-power-bi-to-create-real-time-reports)
+    - [Task 7: Create Power BI reports and Dashboard](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
     - [Task 8: Publishing the Custom Vision model](#task-8-publishing-the-custom-vision-model)
     - [Task 9: Uploading new incident reports](#task-9-uploading-new-incident-reports)
     - [Task 10: Pause-Resume resources](#task-10-pause-resume-resources)
@@ -411,18 +411,18 @@
 
 > **Note**: Please use the same credentials for Power BI that you used for '[Deploy the ARM Template](#task-3-deploy-the-arm-template)' deployment.
 
-![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
+	![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
-3. **Select** the Workspace 'Engagement Accelerators – Manufacturing'.
+3. **Select** the Workspace, which is created in task2.
 
-![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/select-workspace.png)
+	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
 Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
 The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
-> **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
+	> **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
 
-![Screenshot to view the reports tab.](media/Reports-Tab.png)
+	![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
 **To give permissions for the Power BI reports to access the datasources:**
 
@@ -430,201 +430,158 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 5. **Click** 'Settings' from the expanded list.
 
-![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
+	![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
 6. **Click** 'Datasets' tab.
 
-![Go to Datasets.](media/Goto-DataSets.png)
+	![Go to Datasets.](media/Goto-DataSets.png)
 
 7. **Click** 'Campaign – Option C' Report.
 
-8. **Expand** Data source credentials.
+8.	**Click** on the first Report.
+9.	**Expand** Data source credentials.
+10.	**Click** Edit credentials and a dialogue box will pop up.
 
-9. **Click** Edit credentials and a 'Configure Campaign - Option C' dialogue box will pop up.
+	![Data source credentials.](media/healthcare-report1.png)
 
-> **Note:** If the data-source of the report dataset does not match the SQL pool name, then you may have to update the report dataset using Power BI desktop. For further details refer [FAQ](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/F.A.Q.md).
+11.	**Enter** Username as ‘labsqladmin’.
+12.	**Enter** the same SQL Administrator login password that was created for Task 3 Step #6
+13.	**Click** Sign in.
 
-![Select Campaign.](media/Select-Campaign.png)
+	![Configure Data source credentials.](media/healthcare-report2.png)
 
-10. **Enter** Username as 'ManufacturingUser'.
+14.	**Click** on ‘3 Healthcare Dynamic Data Masking’ Report.
+15.	**Expand** Data source credentials.
+16.	**Click** Edit credentials and a dialogue box will pop up.
 
-11. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #6.
+	![Edit data set credentials.](media/edit-credentials.png)
 
-12. **Click** Sign in.
+17.	**Enter** the username as labsqladmin.
+18.	**Enter** the SQL pool password.
+19.	**Click** sign in.
 
+	![Edit SQL credentials.](media/edit-credentials1.png)
 
-![Configure Campaign.](media/Configure-Campaign.png)
+20.	**Click** on healthcare term index.
+21.	**Click** on datasource credentials.
+22.	**Click** edit credentials.
 
+	![Edit data set credentials.](media/edit-credentials2.png)
 
-13. **Click** ‘Azure Cognitive Search’ dataset.
-14. **Expand** 'Data source credentials'. **Click** 'Edit credentials' and a dialogue box will pop up.
+23.	**Enter** the account key copied in task 5 step 31.
+24.	**Click** sign in. 
 
-![Edit data set credentials.](media/edit-credentials.png)
+	![Select authentication method.](media/select-key.png)
 
-15. **Enter** the same storage key that was noted down in Step 28 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
-16. **Click** 'Sign in'.
+25.	**Select** the same user to authenticate which you used for signing into the Azure Portal in task1.
 
-![Enter storage account key.](media/enter-storage-key1.png)
+**Follow** these steps to create the Power BI dashboard:
+26.	Select the workspace in task2.
 
+	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
-17. **Click** ‘anomaly detection with images’ dataset.
-18. **Expand** 'Data source credentials' and **click** 'Edit credentials' and a dialogue box will pop up.
+27.	**Click** on ‘+ New’ button on the top-right navigation bar.
+28.	**Click** the ‘Dashboard’ option from the drop-down menu.
 
-![Edit data set credentials.](media/edit-credentials1.png)
+	![create dashboard.](media/Create-Dashboard.png)
 
-19. **Select** 'Key' from 'Authentication method' dropdown.
+29.	**Name** the dashboard ‘Healthcare and click “create”.
+30.	This new dashboard will appear in the Dashboard section (of the Power BI workspace). 
 
-![Select authentication method.](media/select-key.png)
-
-20. **Enter** the same storage key that was noted down in Step 28 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
-21. **Click** 'Sign in'.
-
-![Enter storage account key.](media/enter-storage-key2.png)
-
-22. **Click** '6_Production Quality- HTAP Synapse Link' dataset.
-23. **Expand** 'Data source credentials'.
-24. **Click** 'Edit credentials' and a dialogue box will pop up.
-
-![Edit data set credentials.](media/edit-credentials2.png)
-
-25. **Enter** the same cosmos key that was noted down in Step 33 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
-26. **Click** 'Sign in'.
-
-![Enter cosmos account key.](media/enter-cosmos-key.png)
-
-**Follow these steps to create the Power BI dashboard:**
-
-27. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
-
-![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
-
-28. **Click** on '+Create' button on the top navigation bar.
-
-29. **Click** the 'Dashboard' option from the drop-down menu.
-
-![Create Dashboard.](media/Create-Dashboard.png)
-
-30. **Name** the dashboard 'Engagement Accelerators Dashboard' and **click** 'create'.
-
-31. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
-
-![Create Dashboard further steps.](media/Create-Dashboard1.png)
+	![create dashboard](media/Create-Dashboard1.png)
 
 **Follow the below steps to change the dashboard theme:**
 
-32. **Open** the URL in new browser tab to get JSON code for a custom theme: https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
+31.	**Open** the URL in a new browser tab to get JSON code for a custom theme:
+https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
 
-33. **Right click** anywhere in browser and **click** 'Save as...'.
+32.	**Right click** anywhere in browser and **click** 'Save as...'.
+33.	**Save** the file to your desired location on your computer, leaving the name unchanged.
 
-34. **Save** the file to your desired location on your computer, leaving the name unchanged.
+	![Dashboard theme.](media/custom-theme.png)
 
-![Save JSON.](media/save-json.png)
+34.	**Go back** to the Power BI dashboard you just created.
+35.	**Click** on the “Edit” at the top right-side corner.
+36.	**Click** on “Dashboard theme”.
 
-35. **Go back** to the Power BI Dashboard you just created.
+	![Dashboard theme.](media/dashboard-theme-save.png)
 
-36. **Click** on ellipses at the top right-side corner.
+37.	**Click** ‘Upload the JSON theme’.
+38.	**Navigate** to the location where you saved the JSON theme file in the steps above and select open.
+39.	**Click** Save.
 
-37. **Click** on Dashboard theme.
+	![Change portal theme.](media/change-theme-portal.png)
 
-![Click on dashboard theme.](media/change-theme-portal.png)
+Do the following to pin visuals to the dashboard you just created:
+**Pillar 1: Healthcare Financial Analytics**
 
-38. **Click** Upload the JSON theme.
+40.	**Select** the workspace task2.
 
-39. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
-
-40. Click **Save**.
-
-![Upload JSON.](media/upload-json.png)
+	![Select workspace.](media/select-workspace.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-41. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+41. **Select on the “Content” section/tab.
 
-![Select Power BI workspace.](media/select-workspace.png)
+	![Select Content section.](media/content-section.png)
 
-42. **Click** on the 'Reports' section/tab.
+42.	In the “Content” section, there will be a list of all the published reports.
+43.	**Click** on ‘Consolidated Report’. 
 
-![Check the reports tab.](media/Reports-Tab1.png)
+	![Select Consolidated Report.](media/consolidated-report.png)
 
-43. In the 'Reports' section, there will be a list of all the published reports.
+44.	On the Consolidated report page, **click** the ‘Response by campaign tactic and status’ visual and **click** the pin icon.
 
-44. **Click** on 'Campaign - Option C' report.
+	![Consolidated report page.](media/consolidated-report1.png)
 
-![Browse the reports created.](media/Campaign-Reports.png)
+45.	**Select** ‘Existing dashboard’ radio button. 
+46.	From ‘select existing dashboard’ dropdown, **select** ‘Healthcare’.
+47.	**Click** ‘Pin’.
+	
+	![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)	
+	
+48.	Similarly, **pin** ‘Total Campaigns’ and ‘Margins’, ‘Response by campaign tactic and status’ from the report.
 
-45. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
+	![Pin visuals to the dashboard.](media/Pin-To-Dashboard1.png)
 
-![Pin visualization on the dashboard.](media/Pin-Visualization.png)
+49.	Select the ‘**Financial Report**’ page
+50.	Similarly, **pin** ‘Revenue(YTD)’ and ‘ Outpatients/Inpatients(YTD)’ from the report
+	
+	![Financial Report Page.](media/financial-report-page.png)
 
-46. **Select** 'Existing dashboard' radio button.
+51.	**Select** the Workspace in task2.
 
-47. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+	![select workspace.](media/select-workspace.png)
 
-48. **Click** 'Pin'.
+52.	**Open** ‘Healthcare Dashboard Images - Final’ report.
+53.	**Pin** all the images from report to the ‘Healthcare’.
 
-![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
+**Note:** Please refer to steps 33-36 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-49. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
+54.	  Go back to the ‘Healthcare’ dashboard.
 
-![Pin visuals to the dashboard.](media/pin-profit-card.png)
+	![Select dashboard.](media/select-workspace.png)
 
-**Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
+To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-50. **Click** on Edit report.
+55.	**Click** on ellipsis ‘More Options’ of the image you selected.
+56.	**Click** ‘Edit details’.
 
-![Edit the report.](media/edit-report.png)
+	![Edit details.](media/edit-details.png)
+	
+57.	**Uncheck** ‘Display title and subtitle’.
+58.	**Click** ‘Apply’.
+59.	**Repeat** Step 46 to 48 for all image tiles.
 
-51. **Click** 'Sales and Campaign' report page.
+	![Display title and subtitle.](media/display-title-subtitle.png)
 
-![Edit the report.](media/hidden-report-page.png)
+60.	After disabling ‘Display title and subtitle’ for all images, resize and rearrange the top images tiles as shown in the screenshot. Resize the Contoso Healthcare logo to 1x1 size; resize other vertical tiles to 2x1 size.
+	
+	![All images.](media/all-images.png)
 
-52. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
+61.	Resize and rearrange the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4.
 
-53. **Pin** 'Revenue by country' map visual.
-
-![Sales and Campaign report.](media/sales-and-campaign.png)
-
-> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
-
-54. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
-
-![Select Power BI workspace.](media/select-workspace.png)
-
-55. **Open** 'Dashboard Images' report.
-
-![Open dashboard images](media/dashboard-images1.png)	
-
-56. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
-
-> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
-
-57. **Go back** to the 'Engagement Accelerators Dashboard'.
-
-![Go back to the dashboard.](media/go-back-to-dashboard.png)
-
-**To hide title and subtitle for all the images that you have pined above. Please do the following:**
-
-58. **Click** on ellipsis 'More Options' of the image you selected.
-
-59. **Click** 'Edit details'.
-
-![Edit details.](media/edit-details.png)
-
-60. **Uncheck** 'Display title and subtitle'.
-
-61. **Click** 'Apply'.
-
-![Display title and subtitle.](media/display-title-subtitle.png)
-
-62. **Repeat** Step 58-61 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) to disable  title and subtitle for each image tiles.
-
-63. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
-
-![All images.](media/all-images.png)
-
-64. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
-
-![Resize and rearrange.](media/resize-rearrange.png)
+	![Resize and rearrange.](media/resize-rearrange.png)
 
 65. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
