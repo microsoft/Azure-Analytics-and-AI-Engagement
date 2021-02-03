@@ -411,7 +411,7 @@
 
 > **Note**: Please use the same credentials for Power BI that you used for '[Deploy the ARM Template](#task-3-deploy-the-arm-template)' deployment.
 
-	![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
+![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
 3. **Select** the Workspace, which is created in task2.
 
@@ -421,7 +421,7 @@ Once Task 4 has been completed successfully and the template has been deployed, 
 
 The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
 
-	![Screenshot to view the reports tab.](media/Reports-Tab.png)
+![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
 To give permissions for the Power BI reports to access the datasources:
 
@@ -467,7 +467,7 @@ To give permissions for the Power BI reports to access the datasources:
 
 	![Edit data set credentials.](media/edit-credentials2.png)
 
-23.	**Enter** the account key copied in task 5 step 31.
+23.	**Enter** the account key copied in task 5 step 24.
 24.	**Click** sign in. 
 
 	![Select authentication method.](media/select-key.png)
@@ -475,9 +475,10 @@ To give permissions for the Power BI reports to access the datasources:
 25.	**Select** the same user to authenticate which you used for signing into the Azure Portal in task1.
 
 **Follow** these steps to create the Power BI dashboard:
+
 26.	Select the workspace in task2.
 
-	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
+![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
 27.	**Click** on ‘+ New’ button on the top-right navigation bar.
 28.	**Click** the ‘Dashboard’ option from the drop-down menu.
@@ -503,7 +504,7 @@ https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/re
 35.	**Click** on the “Edit” at the top right-side corner.
 36.	**Click** on “Dashboard theme”.
 
-	![Dashboard theme.](media/dashboard-theme-save.png)
+![Dashboard theme.](media/dashboard-theme-save.png)
 
 37.	**Click** ‘Upload the JSON theme’.
 38.	**Navigate** to the location where you saved the JSON theme file in the steps above and select open.
@@ -512,6 +513,7 @@ https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/re
 	![Change portal theme.](media/change-theme-portal.png)
 
 Do the following to pin visuals to the dashboard you just created:
+
 **Pillar 1: Healthcare Financial Analytics**
 
 40.	**Select** the workspace task2.
@@ -520,7 +522,7 @@ Do the following to pin visuals to the dashboard you just created:
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-41. **Select on the “Content” section/tab.
+41. **Select** on the “Content” section/tab.
 
 	![Select Content section.](media/content-section.png)
 
@@ -557,9 +559,9 @@ Do the following to pin visuals to the dashboard you just created:
 
 **Note:** Please refer to steps 33-36 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
-54.	  Go back to the ‘Healthcare’ dashboard.
+54.	Go back to the ‘Healthcare’ dashboard.
 
-	![Select dashboard.](media/select-workspace.png)
+![Select dashboard.](media/go-back-to-dashboard.png)
 
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
