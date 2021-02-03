@@ -624,10 +624,11 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report3.png)
 
 **Pillar 3:  Realtime Quality of Care Analytics**
+
 75.	**Let’s** start Pinning the third pillar ‘Realtime Quality of Care Analytics’
 76.	**Select** the Workspace in task2
 	
-	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report3.png)
+	![Realtime Operational Analystics.](media/realtime-operational-analytics-report3.png)
 
 77.	**Open** ‘healthcare-operational-analytics’ report.
 
@@ -682,180 +683,44 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	
 	![realtime-quality-care-analytics.](media/realtime-quality-care-analytics.png)
 	
+**Pillar 4:   Predictive Analytics**
+
+94.	**Let’s** start Pinning the fourth pillar ‘Predictive Analytics’.
+95.	**Select** the Workspace in task2.
+	
+	![select workspace.](media/select-workspace.png)
+
+96.	In the “Reports” section, there will be a list of all the published reports.
+97.	**Click** on ‘HealthCare Predctive Analytics_V1’.
+
+	![healthCare-predctive-analytics_v1](media/healthCare-predctive-analytics_v1.png)
 		
-87. From the list of dashboards that appears, **click** on the dashboard 'Engagement Accelerators Dashboard’ located under Dashboards tab.
+98.	Similarly, **pin**  ‘Readmission rate’, ’Avg bed occupancy rate’ and ‘Patient CT scan report’ from the report.
+	
+	![healthCare-predctive-analytics_v1](media/healthCare-predctive-analytics_v1_1.png)
+	
+99.	Select the Workspace in task2.
 
-![Go back to the dashboard.](media/go-back-to-dashboard.png)
- 
-88. **Resize** and **rearrange** the visuals on the dashboard as per the screenshot below.
+	![select workspace.](media/select-workspace.png)
+	
+100. In the “Reports” section, there will be a list of all the published reports.
+101. **Click** on ‘healthcare term index’.
+	
+	![healthcare-term-index.](media/healthcare-term-index.png)
 
-![Real-time Reports.](media/report_visuals.png)
+102.Similarly, **pin**  ‘Injury Type by Source’ from the report.
 
+	![healthcare-term-index.](media/healthcare-term-index1.png)
+	
+103. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel.
+104. **Fourth** pillar ‘Predictive Analytics’ is completed.
+	
+	![healthcare-term-index.](media/predictive-analytics.png)
+	
+105. After pinning all the pillars and Dashboard images the final dashboard will look like this
 
-### Task 7: Modify the CSV to change campaign names, product categories, and hashtags
-
-1. **Open** Azure Synapse in a new tab using the following link: <https://web.azuresynapse.net/>
-2. Log in with your Azure credentials.
-3. **Select** the 'Subscription’ and Synapse 'Workspace name’ that got created in [Task 3](#task-3-deploy-the-arm-template). The Synapse 'Workspace name’ will start with 'manufacturingdemo’.
-4. **Click** 'Continue'.
-
-> **Note:** Do not use any confidential customer data. Only use the data which is public available or with prior permission from the customer.
- 	
-   ![Selecting workspace.](media/select-workspace0.png)
-
-5.  **Click** the 'Data' hub from the left navigation in the 'Synapse Analytics' workspace.
-6.  **Click** 'Linked' tab.
-7.  **Expand** 'Storage Account/Azure Data Lake Storage Gen2'.
-8.  **Expand** the node that starts with 'manufacturingdemo'. 
-9.  **Click** 'customcsv' container.
-10.  **Double Click** 'Manufacturing B2C Scenario Dataset'.
-
-       ![Selecting workspace 1.](media/select-workspace1.png)
-
-11.  **Select** 'CampaignData.csv'.
-12.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. The file will download locally.
-
-        ![Selecting workspace 2](media/select-workspace2.png)
-
-13.  **Open** the downloaded file in Excel. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
-
-        ![Selecting workspace 3](media/select-workspace3.png)
-
-14. **Select** 'CampaignName' column (Column B of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-15. **Replace** 'Spring into Summer' (old campaign name) with 'Summer Fashion' (new campaign name).
-16. **Click** 'Replace All'.
-17. **Pop up** will be displayed with 'All done...' replacement message.
-18. **Click** OK.
-
-> **Note:** In this demo, we change one campaign. In real-life you would have multiple campaigns, and you would be inserting campaigns aligned to your customer.
-
-   ![Selecting workspace 4](media/select-workspace4.png)
-
-19. **Save** the file by pressing the highlighted button. **Close** the file.
-
- 	![Selecting workspace 6](media/select-workspace6.png)
-
-20. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
-
- 	![Selecting workspace 7](media/select-workspace7.png)
-
-21. **Select** 'CampaignData.csv' file that you updated above.
-22. **Click** the checkbox for overwriting existing files.
-23. **Click** 'Upload'.
-
-	![Selecting workspace 8](media/select-workspace8.png)
-
-**Change the 'Category' in Product.csv file:**
-
-24. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
-25.  **Select** 'Product.csv'.
-26.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
-
-> **Note:** In this demo, we change one category. In real-life you would have multiple categories, and you would be inserting categories aligned to your customer.
-
-   ![Selecting workspace 9](media/select-workspace9.png)
-
-27.  **Open** the downloaded file. In case file does not open in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
-
-        ![Selecting workspace 10](media/select-workspace10.png)
-
-28. **Select** 'Category' column (Column G of Excel). 
-29. **Press** 'CTRL + H' to replace exisitng campaign name with new campaign name.
-30. **Replace** 'Hats' (old category name) with 'Gift Cards' (new category name).
-31. **Click** 'Replace All'.
-32. **Pop up** will be displayed with 'All done...' replacement message.
-33. **Click** OK.
-
-	![Selecting workspace 11](media/select-workspace11.png)
-
-34. **Save** the file by pressing the highlighted button. **Close** the file.
- 
-	![Selecting workspace 12](media/select-workspace12.png)
- 
-35. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
-
-	![Selecting workspace 13](media/select-workspace7.png)	
-
-36. **Select** 'Product.csv' file that you just updated.
-37. **Click** the checkbox for overwriting existing files.
-38. **Click** 'Upload'.
-
-	![Selecting workspace 14](media/select-workspace14.png)
-
-**To change 'Hashtags':**
-
-39. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above.
-40.  **Select** 'Campaignproducts.csv'.
-41.  **Click** 'Download' button on the top toolbar in Azure Synapse Analytics Studio. File will get downloaded in your system locally.
-
-> **Note:** In this demo, we change one hashtag. In real-life you would have multiple hashtags, and you would be inserting hashtags aligned to your customer.
-
-   ![Selecting workspace 15](media/select-workspace15.png)
-
-42.  **Open** the downloaded file. In case file does not get opened in Microsoft Excel, kindly **navigate** to the folder where file got downloaded and **right click** on the file name. **Click** 'Open With...' and then **click** 'Excel'.
-
-        ![Selecting workspace 10](media/select-workspacenew.png)
- 
-43. **Select** 'Hashtag' column (Column C of Excel) and press 'CTRL + H' to replace exisitng campaign name with new campaign name.
-44. **Replace** '\#welcomespring' (old Hashtag) with '\#welcomesummer' (new Hashtag).
-45. **Click** 'Replace All'.
-46. **Pop up** will be displayed with 'All done...' replacement message.
-47. **Click** OK.
-
- 	![Selecting workspace 17](media/select-workspace17.png)
-
-48. **Save** the file by pressing the highlighted button. **Close** the file.
-
- 	![Selecting workspace 12](media/select-workspace12.png)
-
-49. **Go back** to your browser window where 'Azure Synapse Analytics' is already open. In case it's not open, kindly follow steps 1 to 8 mentioned above. Once you have followed the steps, **click** 'Upload' button in 'Azure Synapse Analytics Studio' to upload the file from your local system.
-50. **Select** 'Campaignproducts.csv' file that you updated above.
-51. **Click** the checkbox for overwriting existing files.
-52. **Click** 'Upload'.
-
- 	![Selecting workspace 21](media/select-workspace21.png)  
-
-**Update the dataset with this new data:**
- 
-53. **Navigate** to 'Orchestrate' hub from the left navigation in the 'Synapse Analytics' workspace.
-54. **Expand** 'Pipelines' node.
-55. **Click** on '1 Master Pipeline'.
-56. **Click** 'Add trigger'.
-57. **Click** 'Trigger now'.
-
- 	![Selecting workspace 22](media/select-workspace22.png)
-
-58. **Click** 'OK'
-
-       ![Confirm to trigger the pipeline.](media/trigger-pipeline1.png)
-
-59. **Navigate** to 'Monitor' hub from the left navigation.
-60. **Click** 'Pipeline runs'.
-
- 	![Selecting workspace 23](media/select-workspace23.png)
-
-61. **Observe** '1 Master Pipeline'.
-
- 	![Selecting workspace 24](media/select-workspace24.png)
-
-**View changes to Power BI:**
- 
-62. **Navigate** to 'Develop' hub from the left navigation.
-63. **Expand** 'Power BI'.
-64. **Expand** Power BI Workspace starting with name 'Engagement Accelerators...'.
-65. **Expand** 'Power BI reports'.
-66. **Click** on 'Campaign - Option C' Power BI report.
-
- 	![Selecting workspace 25](media/select-workspace25.png)	
-
-67. 'Campaign Name' should have one of the updated campaign name as **'Summer Fashion'**.
-68. 'Product Category' should have one of the updated category as **'Gift Cards'**.
-69. 'Hashtag' should have one of the updated Hashtag as **'\#welcomesummer'**.
-
- 	![Selecting workspace 26](media/select-workspace26.png)
-
-Your Accelerator environment is now set up.
-
+	![dashboard-final.](media/dashboard-final.png)
+	
 
 ### Task 8: Creating Synapse Views
 
