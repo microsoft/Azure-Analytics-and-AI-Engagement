@@ -623,170 +623,66 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report3.png)
 
-> Note: All other visuals of the report can be created by following a similar process.
+**Pillar 3:  Realtime Quality of Care Analytics**
+75.	**Let’s** start Pinning the third pillar ‘Realtime Quality of Care Analytics’
+76.	**Select** the Workspace in task2
+	
+	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report3.png)
 
-28. **Click** on the 'Save this report' icon.
+77.	**Open** ‘healthcare-operational-analytics’ report.
 
-![Clicking on Save the report icon.](media/save-icon-click.png)
+	![Realtime Operational Analytics.](media/realtime-operational-analytics-report.png)
+	
+78.	Similarly, **pin** ‘Staff to patient ratio’ an ‘ER Waiting Time’ from the report to the ‘Healthcare’ dashboard.
 
-29. **Enter** the name of the report 'Racing Cars- A' and **click** on 'Save'.
+	![Staff to patient ratio.](media/staff-to-patient-ratio.png)
+	
+79.	**Select** the workspace task2.
+	
+	![select workspace.](media/select-workspace.png)
+	
+80.	In the “Reports” section, there will be a list of all the published reports.
+81.	**Click** on ‘Consolidated Report’.
 
-![Save the report.](media/save-report.png)
+	![Consolidated report page.](media/consolidated-report1.png)
+	
+82.	**Select** the ‘Financial Report’ page.
+83.	Similarly, **pin** ’Total Employees’ and ‘Total Patients’ from the report.
+	
+	![Financial Report.](media/financial-report-page1.png)
+	
+84.	**Select** the workspace task2.
+	
+	![select workspace.](media/select-workspace.png)
+	
+85.	In the “Reports” section, there will be a list of all the published reports.
+86.	**Click** on ‘Operational_Analytics_Healthcare_v1’.
 
-**Creating the Realtime Field and Sentiment Analytics pillar**
+	![Operational_Analytics_Healthcare_v1.](media/operational_analytics_healthcare_v1.png)
+	
+87.	Similarly, **pin** ‘Admissions and readmission percentage- Before’ from the report.
 
-In this section of the document we will create the 'Realtime Field and Sentiment Analytics’ pillar (screenshot on the right) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
+	![Operational_Analytics_Healthcare_v1.](media/operational_analytics_healthcare_v1_1.png)
+	
+88.	**Select** the workspace task2.
+	
+	![select workspace.](media/select-workspace.png)
+	
+89.	In the “Reports” section, there will be a list of all the published reports.
+90.	**Click** on ‘Consolidated Report’.
+	
+	![Consolidated report page.](media/consolidated-report.png)
 
-![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar.png)
+91.	Similarly, **pin** ‘Patient experience score by dept’ from the report.
 
-**Pin visuals from the static report:**
+	![patient-experience-score-by-dept.](media/patient-experience-score-by-dept.png)
 
-30. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
-31. **Click** on Reports tab.
-32. **Search** 'Real Time Analytics Static Report’.
-33. **Click** 'Real Time Analytics Static Report’.
-
-!['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
-
-34. **Click** on the 'Real time Field and Sentiment Analytics report’ page in the previously opened 'Real Time Analytics Static Report’.
-
-![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar1.png)
-
-**Hover on the highlighted visuals to pin them to 'Engagement Accelerators Dashboard’.**
-
-35. **Pin** 'Fields Calls-Avg Response Time (in minutes)’ visual.
-36. **Pin** 'Alarms and Safety Incidents’ visual.
-37. **Pin** 'Real time Anomaly’ visual.
-
-> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
-
-![Realtime Field and Sentiment Analytics pillar.](media/rf-sa-pillar2.png)
-
-**Creating a visual from a real time dataset**
-
-38. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
-
-![Select Power BI workspace.](media/select-workspace.png)
-
-39. **Click** on '+Create' button present on the top navigation bar.
-40. **Select** 'Report' option from the drop-down menu.
-
-!['Report' option from the drop-down menu.](media/report_option.png)
-
-41. **Enter** 'Racing' in the search bar.
-42. **Select** the 'Racing Cars' dataset.
-43. **Click** 'Create'.
-
-!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
-
-44. **Select** 'Tachometer’ visual from visualizations pane.
-45. **Drag** and **Drop** 'AverageRPM’ under value from race-cars dataset.
-46. **Select** 'Average' from the context menu to get the average of 'AverageRPM’.
-
-> **Note:** If you don’t have custom visual tachometer downloaded or don’t know how to use it please refer to the Microsoft tutorial: https://powerbi.microsoft.com/en-us/blog/visual-awesomeness-unlocked-tachometer-gauge-custom-visual/
-
-![Average RPM.](media/average-rpm1.png)
-
-47. **Drag** and **Drop** 'AverageRPMStart’ under 'Start Value’ from race-cars dataset.
-48. **Select** 'Average' from the context menu to get the sum of 'AverageRPMStart’.
-49. **Drag** and **Drop** 'AverageRPMEnd’ under 'End Value’ from race-cars dataset and **follow** step #46 to get the Average of 'AverageRPMEnd’.
-50. **Drag** and **Drop** 'AverageRPMR2’ under 'Range2 Start Value’ from race-cars dataset and **follow** step #46 to get Average of 'AverageRPMR2’.
-51. **Drag** and **Drop** 'AverageRPMR3’ under 'Range3 Start Value’ from race-cars dataset and **follow** step #46 to get the Average of 'AverageRPMR3’.
-
-![Average RPM.](media/average-rpm2.png)
-
-52. With the tachometer visual selected, **click** on the format tab.
-53. **Turn on** 'Title'.
-54. **Change** 'Title text’ to 'Average Engine Speed’.
-
-![Average RPM.](media/average-rpm3.png)
-
-55. **Expand** 'Range 1'.
-56. **Change** color for range one to hex code #E3B80F.
-57. Similarly, the color of the 'Range 2' and 'Range 3' can be changed from the 'Range 2' and 'Range 3' respectively.
-
-> **Note:** For 'Range 2' color you can use hex code #1AAB40 and for 'Range 3' color you can use hex code #EB895F.
-
-![Average RPM.](media/average-rpm4.png)
-
-58. **Click** 'File’ and **select** 'Save' from the drop down.
-
-![Average RPM.](media/average-rpm5.png)
-
-59. **Type** 'Tachometer’ in the text box.
-60. **Click** 'Save'.
-
-![Average RPM.](media/average-rpm6.png)
-
- > **Note:** Once this visual is ready you can pin it to the dashboard using the steps 45-48 of [Task 5](#task-5-power-bi-dashboard-creation).
- 
- **Follow the below step to create Wheel Acceleration tile**
- 
-61. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
-
-![Select Power BI workspace.](media/select-workspace.png)
-
-62. **Click** on '+Create' button present on the top navigation bar.
-63. **Select** 'Report' option from the drop-down menu.
-
-!['Report' option from the drop-down menu.](media/report_option.png)
-
-64. **Enter** 'Racing' in the search bar.
-65. **Select** the 'Racing Cars' dataset.
-66. **Click** 'Create'.
-
-!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
-
-67. **Click** white space on the report. 
-68. **Select** 'Line Chart' from visualization tray.
-69. **Drag** and **Drop** 'EventProcessedUtcTime' from the race-cars dataset.
-70. **Click** on 'Rename' and **change** 'EventProcessedUtcTime' to 'Recorded On'.
-
-![Wheel accelaration tile.](media/wheel-accelaration1.png)
-
-71. **Drag** and **Drop** below columns from 'race-cars' dataset to values:
-	* wheelAccelFL
-	* wheelAccelRL
-	* wheelAccelFR
-	* wheelAccelRR
-
-72. Using Step 70, **rename** above selected columns- 'wheelAccelFL’, 'wheelAccelRL’, 'wheelAccelFR’ and 'wheelAccelRR’ to 'Front Left’, 'Rear Left’, 'Front Right’ and 'Rear Right’ respectively.
-
-![Wheel accelaration tile.](media/wheel-accelaration2.png)
-
-73. **Expand** the 'Filters' pane by clicking on the arrow icon.
-74. **Navigate** to the 'Filters on this page' section.
-75. **Select** 'Relative Time' from the 'Filter Type' dropdown menu.
-76. In the 'Show items when the value' section, **select** 'is in the Last' in the top dropdown menu, **enter** '5' in the text input box and **select** 'minutes' from the bottom dropdown menu.
-77. **Click** on 'Apply Filter'.
-
-![Expand the filters pane.](media/expand-filter-pane.png)
-
-78. With 'Line chart' visual selected, **select** format tab.
-79. **Turn on** 'Title'.
-80. **Change** 'Title text' to 'Wheel Acceleration’.
-81. **Pin** the visual to the dashboard.
-
-> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
-
-![Wheel accelaration tile.](media/wheel-accelaration3.png)
-
-82. After pinning the visual to the dashboard, **click** on 'Save’ icon located on the navigation bar at the top, to save the changes made to the report.
-
-![Wheel accelaration tile.](media/wheel-accelaration4.png)
-
-
-83. **Type** 'Wheel Acceleration' in the text box.
-84. **Click** 'Save'.
-
-![Save Wheel Accelaration Visual.](media/save-wheel-accelaration.png)
-
-
-85. Upon successful save, **click** on the workspace name 'Engagement - Accelerators Manufacturing’.
-
-![Select Power BI workspace.](media/select-workspace.png)
-
-86. In the window that opens, **click** on 'Dashboards’ tab.
+92.	**Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
+93.	**Third** pillar ‘Realtime Quality of Care Analytics’ is completed.
+	
+	![realtime-quality-care-analytics.](media/realtime-quality-care-analytics.png)
+	
+		
 87. From the list of dashboards that appears, **click** on the dashboard 'Engagement Accelerators Dashboard’ located under Dashboards tab.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
