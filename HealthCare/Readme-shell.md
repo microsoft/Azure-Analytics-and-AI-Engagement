@@ -580,96 +580,48 @@ To hide title and subtitle for all the images that you have pined above. Please 
 61.	Resize and rearrange the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4.
 
 	![Resize and rearrange.](media/resize-rearrange.png)
+	
+62.	**Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
+63.	**First** pillar ‘Healthcare Financial Analytics’ is completed.
 
-65. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+	![Resize and rearrange.](media/healthcare-financial-analytics.png)	
 
-![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
+**Pillar 2: Realtime Operational Analytics**
 
-66. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
+64.	**Let’s** start Pinning the second pillar ‘Realtime Operational Analytics’
+65.	**Select** the Workspace in task2
 
-![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
+	![select workspace.](media/select-workspace.png)	
 
-### Task 6: Working with Power BI to create real-time reports
+66.	**Open** ‘healthcare-operational-analytics’ report.
 
-'Racing Cars' and 'Milling canning' datasets will be automatically created when Azure Stream Analytics jobs start sending data into Power BI services.
- Once the Dataset has been created in the Power BI workspace, (by Azure Cloud Shell commands executed in [Task 3](#task-3-deploy-the-arm-template) above) follow the next steps to create the real-time pillars.
+	![Realtime Operational Analytics.](media/realtime-operational-analytics-report.png)
 
-> **Note:** For your convenience we have included a few real-time visuals and a few static visuals so that you can complete the dashboard.
+67.	Similarly, **pin** ‘Current Regular Bed Occupancy % Vs  Current ICU bed occupancy %’, ‘ InPerson Appointment/ Virtual Appointment/ Missed Appointment’ ,’ Ventilator Utilization %’ and ‘ Active Sensors’ from the report  to the ‘Healthcare’ dashboard.
 
-**Creating the Realtime Operational Analytics pillar:**
+	![Realtime Operational Analytics.](media/healthcare-operational-analytics-report1.png)
 
-In this section of the document we will create the 'Realtime Operational Analytics' pillar (screenshot below) of the dashboard. Please note we’ll pin visuals from the static Power BI report. And we will create Power BI visuals using a real-time dataset.
+68.	**Select** the ‘ER Wait Time’ page
+69.	Similarly, **pin** the visual from the report to the ‘Healthcare’.
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analytics.png)
+	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report2.png)
 
-**Pin visuals from the static report:**
+70.	**Select** the Workspace in task2.
 
-1. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
-2. **Click** on Reports tab.
-3. **Search** 'Real Time Analytics Static Report’.
-4. **Click** 'Real Time Analytics Static Report’.
+	![select workspace.](media/select-workspace.png)
+	
+71.	**Open** ‘Bed Occupancy Report’ report.
+	
+	![Select Bed Occupancy Report.](media/bed-occupancy-report.png)
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analytics1.png)
+72.	Similarly, **pin** all visuals from the report to the ‘Healthcare’.
 
-5. **Click** on 'Real time Operational Analytics’ page.
+	![Bed Occupancy Report.](media/bed-occupancy-report1.png.png)
 
-!['Realtime Operational Analystics'.](media/realtime-operational-analytics2.png)
+73.	**Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
+74.	**Second** pillar ‘Realtime Operational Analytics’ is completed.
 
-**Hover on the highlighted visuals to pin them to 'Engagement Accelerators Dashboard’.**
-
-6. **Pin** 'Machine Status’ card visual.
-7. **Pin** 'MTTR/MTBF (Hours)’ card visual.
-8. **Pin** 'Alarms/Incidents’ card visual.
-9. **Pin** 'OEE and Elements’ visual.
-10. **Pin** 'Machine Vibration (mm) Milling-Canning’ visual.
-
-> **Note:** Please refer to steps 45-48 of [Task 5](#task-5-power-bi-dashboard-creation) for the complete procedure of pinning a desired visual to a dashboard.
-
-!['Realtime Operational Analystics'.](media/realtime-operational-analytics3.png)
-
-**Creating a visual from a real time dataset**
-
-11. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
-
-![Select Power BI workspace.](media/select-workspace.png)
-
-12. **Click** on '+Create' button present on the top navigation bar.
-13. **Select** 'Report' option from the drop-down menu.
-
-!['Report' option from the drop-down menu.](media/report_option.png)
-
-14. **Enter** 'Racing' in the search bar.
-15. **Select** the 'Racing Cars' dataset.
-16. **Click** 'Create'.
-
-!['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
-
-17. **Select** the 'ActiveSensors' field from 'race-cars' Dataset.
-18. **Select** 'Card’ from Visualization pane.
-19. **Select** drop-down next to 'ActiveSensors'.
-20. **Select** 'Average' from the drop-down to get the average of 'ActiveSensors'.
-
-![Avg of ActiveSensors.](media/avg_active_sensors.png)
-
-21. **Change** the 'Display units' to 'None'.
-
-![Change display units to none.](media/display-units-none-image.png)
-
-22. With Card visual selected, **select** the format tab.
-23. **Turn on** the 'Title'.
-24. **Enter** 'Active Sensors' as the title for the card.
-
-![Card Visual selected.](media/active_sensors.png)
-
-25. **Change** the 'Data label' color to 'White’.
-
-![Change data label to white.](media/data-label-white.png)
-
-26. **Turn on** Background and change the background color of the card.
-
-27. Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
-
-![Turn on background.](media/Background-Dark.png)
+	!['Realtime Operational Analystics'.](media/realtime-operational-analytics-report3.png)
 
 > Note: All other visuals of the report can be created by following a similar process.
 
