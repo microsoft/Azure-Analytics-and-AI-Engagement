@@ -407,21 +407,18 @@
 
 1. **Open** Power BI Services in a new tab using following link https://app.powerbi.com/
 
-2. **Sign in** to Power BI account using 'Power BI Pro account'.
+2. **Sign into** Power BI. Use the same Azure account you have used throughout this setup process.
 
-> **Note**: Please use the same credentials for Power BI that you used for '[Deploy the ARM Template](#task-3-deploy-the-arm-template)' deployment.
-
-![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
+	![Sign in to Power BI Services.](media/PowerBI-Services-SignIn.png)
 
 3. **Select** the Workspace, which is created in task2.
 
 	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
 Once Task 4 has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
-
 The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
-
-![Screenshot to view the reports tab.](media/Reports-Tab.png)
+	
+   ![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
 To give permissions for the Power BI reports to access the datasources:
 
@@ -478,7 +475,7 @@ To give permissions for the Power BI reports to access the datasources:
 
 26.	Select the workspace in task2.
 
-![Select the Workspace 'Healthcare'.](media/select-workspace.png)
+	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
 27.	**Click** on ‘+ New’ button on the top-right navigation bar.
 28.	**Click** the ‘Dashboard’ option from the drop-down menu.
@@ -504,7 +501,7 @@ https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/re
 35.	**Click** on the “Edit” at the top right-side corner.
 36.	**Click** on “Dashboard theme”.
 
-![Dashboard theme.](media/dashboard-theme-save.png)
+	![Dashboard theme.](media/dashboard-theme-save.png)
 
 37.	**Click** ‘Upload the JSON theme’.
 38.	**Navigate** to the location where you saved the JSON theme file in the steps above and select open.
@@ -557,11 +554,11 @@ Do the following to pin visuals to the dashboard you just created:
 52.	**Open** ‘Healthcare Dashboard Images - Final’ report.
 53.	**Pin** all the images from report to the ‘Healthcare’.
 
-**Note:** Please refer to steps 33-36 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
+**Note:** Please refer to steps 44-47 of Task 7 for the complete procedure of pinning a desired visual to a dashboard.
 
 54.	Go back to the ‘Healthcare’ dashboard.
 
-![Select dashboard.](media/go-back-to-dashboard.png)
+	![Select dashboard.](media/go-back-to-dashboard.png)
 
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
