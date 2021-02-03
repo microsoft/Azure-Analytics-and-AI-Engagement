@@ -11,12 +11,12 @@
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
     - [Task 2: Create Power BI workspace](#task-2-create-power-bi-workspace)
     - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-    - [Task 4: Provision IoT central devices](#task-4-run-the-cloud-shell)
-    - [Task 5: Run the Cloud Shell](#task-5-create-power-bi-reports-and-dashboard)
-    - [Task 6: Starting high speed data generators and function apps](#task-6-working-with-power-bi-to-create-real-time-reports)
-    - [Task 7: Create Power BI reports and Dashboard](#task-7-modify-the-csv-to-change-campaign-names-product-categories-and-hashtags)
-    - [Task 8: Publishing the Custom Vision model](#task-8-publishing-the-custom-vision-model)
-    - [Task 9: Uploading new incident reports](#task-9-uploading-new-incident-reports)
+    - [Task 4: Provision IoT central devices](#task-4-provision-iot-central-devices)
+    - [Task 5: Run the Cloud Shell](#task-5-run-the-cloud-shell)
+    - [Task 6: Starting high speed data generators and function apps](#task-6-starting-high-speed-data-generators-and-function-apps)
+    - [Task 7: Create Power BI reports and Dashboard](#task-7-create-power-bi-reports-and-dashboard)
+    - [Task 8: Creating Synapse Views](#task-8-creating-synapse-views)
+    - [Task 9: Publishing the Custom Vision model](#task-9-publishing-the-custom-vision-model)
     - [Task 10: Pause-Resume resources](#task-10-pause-resume-resources)
     - [Task 11: Clean up resources](#task-11-clean-up-resources)
     
@@ -417,26 +417,25 @@
 
 	![Select the Workspace 'Healthcare'.](media/select-workspace.png)
 
-Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
-The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
+Once Task 4 has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
 
-	> **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
+The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
 
 	![Screenshot to view the reports tab.](media/Reports-Tab.png)
 
-**To give permissions for the Power BI reports to access the datasources:**
+To give permissions for the Power BI reports to access the datasources:
 
-4. **Click** the 'Settings' icon on top right-side corner.
+4. **Click** the ellipses on top right-side corner.
 
-5. **Click** 'Settings' from the expanded list.
+5. **Click** the 'Settings' icon.
+
+6. **Click** 'Settings' from the expanded list.
 
 	![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-6. **Click** 'Datasets' tab.
+7. **Click** 'Datasets' tab.
 
 	![Go to Datasets.](media/Goto-DataSets.png)
-
-7. **Click** 'Campaign – Option C' Report.
 
 8.	**Click** on the first Report.
 9.	**Expand** Data source credentials.
@@ -490,7 +489,7 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 	![create dashboard](media/Create-Dashboard1.png)
 
-**Follow the below steps to change the dashboard theme:**
+Follow the below steps to change the dashboard theme:
 
 31.	**Open** the URL in a new browser tab to get JSON code for a custom theme:
 https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
@@ -1011,7 +1010,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 Your Accelerator environment is now set up.
 
 
-### Task 8: Publishing the Custom Vision model
+### Task 8: Creating Synapse Views
 
 1. **Go** to  https://customvision.ai/ and **click** on 'Sign In'.
 2. **Select** 'I agree' checkbox and **click** on 'I Agree’ button.
@@ -1050,7 +1049,7 @@ Your Accelerator environment is now set up.
 
 10. **Repeat** steps 4 to 8 for all the projects.
 
-### Task 9: Uploading new incident reports
+### Task 9: Publishing the Custom Vision model
 
 1. **Open** Azure Synapse in a new tab using the following link: https://web.azuresynapse.net/.
 2. **Log in** with your Azure credentials.
