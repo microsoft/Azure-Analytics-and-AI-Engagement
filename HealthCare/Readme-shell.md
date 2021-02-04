@@ -77,32 +77,33 @@
 
 > **Note:** Please use the same credentials for Power BI which you will be using for Azure Account.
 
-![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
+	![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
 
 3. In Power BI service **click** on 'Workspaces'.
 
 4. Then **click** on the 'Create a workspace' tab.
 
-![Create Power BI Workspace.](media/Create-Workspace.png)
+	![Create Power BI Workspace.](media/Create-Workspace.png)
 
 5. **Enter** the 'Workspace name' and 'Description' and **click** 'Save'.
 
-![Give the name and description for the new workspace.](media/name-the-workspace.png)
+	![Give the name and description for the new workspace.](media/name-the-workspace.png)
 
 > **Note:** Please create a Workspace by the name 'Engagement Accelerators – HealthCare'.
 
 6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
-![Copy the workspace id.](media/Workspace-ID.png)
+	![Copy the workspace id.](media/Workspace-ID.png)
 
 7.  Go to your Power BI workspace and **click** on create button. 
 8.	Then **click** on Streaming Dataset option from the dropdown. 
 
-![Create Streaming Dataset.](media/create-dataset.png)
+	![Create Streaming Dataset.](media/create-dataset.png)
 
 9.	**Select** API from the list of options and click next. 
-![Select API.](media/select-api.png)
+	
+	![Select API.](media/select-api.png)
 
 10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
 
@@ -341,7 +342,7 @@
 17. You will get another code to authenticate Power BI gateway. **Copy** the code.
 18. **Click** the link (https://microsoft.com/devicelogin).
 
-![Copy the authentication code.](media/task4-step18.png)
+	![Copy the authentication code.](media/task4-step18.png)
 
 19. A new browser window will launch. **Follow** the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 9, 10 and 11.
 
@@ -785,7 +786,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 2. **Click** on the Azure Cloud Shell icon from the top toolbar.
 
-![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 Execute the ```Pause_Resume_script.ps1``` script by executing the following command:
 
@@ -799,21 +800,21 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 4. **Click** on the link https://microsoft.com/devicelogin and a new browser window will launch.
 
-![Copy the code.](media/copy-code-new.png)
+	![Copy the code.](media/copy-code-new.png)
 
 5. **Paste** the authentication code.  
 
-![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+	![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 6. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 7. **Close** this window after it displays successful authentication message.
 
-![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+	![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
 8. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
 
-![Enter the resource group name](media/RG-Name-Screen10.png)
+	![Enter the resource group name](media/RG-Name-Screen10.png)
 
 9. **Enter** your choice when prompted. **Enter** 'P' for **pausing** the environment or 'R' for **resuming** a paused environment.
 
@@ -830,7 +831,7 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 1. **Open** the Azure Cloud Shell by clicking its icon from the top toolbar.
 
-![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 **Execute** the 'resourceCleanup.ps1' script by executing the following commands:
 **Run** Command:
@@ -845,11 +846,11 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
    ./resourceCleanup.ps1
    ```
 	
-![Cleaning the resources](media/clean-script.png)
+	![Cleaning the resources](media/resource-cleanup.png)
 
 3. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
 
-![Enter the resource group name](media/RG-Name-Screen10.png)
+	![Enter the resource group name](media/RG-Name-Screen10.png)
 
 4.	You may be prompted to select a subscription in case your account has multiple subscriptions.
 
