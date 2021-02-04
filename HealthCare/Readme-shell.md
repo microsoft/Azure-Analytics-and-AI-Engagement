@@ -498,8 +498,8 @@ https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/re
 
 34.	**Go back** to the Power BI dashboard you just created.
 35.	**Click** on the “Edit” at the top right-side corner.
-36.	**Click** on “Dashboard theme”.
-
+36.	**Click** on Dashboard theme.
+	
 	![Dashboard theme.](media/dashboard-theme-save.png)
 
 37.	**Click** ‘Upload the JSON theme’.
@@ -615,7 +615,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 72.	Similarly, **pin** all visuals from the report to the ‘Healthcare’.
 
-	![Bed Occupancy Report.](media/bed-occupancy-report1.png.png)
+	![Bed Occupancy Report.](media/bed-occupancy-report1.png)
 
 73.	**Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
 74.	**Second** pillar ‘Realtime Operational Analytics’ is completed.
