@@ -385,7 +385,7 @@
 
 	![Run with PowerShell.](media/high-speed-data-gen4.png)
 	
-	**Note:** Ensure the data generation exe’s are running on this vm before you demo the high speed data ingestion part in synapse. If not, follow the task above to restart the generation.
+> **Note:** Ensure the data generation exe’s are running on this vm before you demo the high speed data ingestion part in synapse. If not, follow the task above to restart the generation.
 	
 14.	Navigate to azure portal.
 15.	Search for ‘func-app-mongo’ in your rg.
@@ -724,86 +724,58 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 ### Task 8: Creating Synapse Views
 
-1. **Go** to  https://customvision.ai/ and **click** on 'Sign In'.
-2. **Select** 'I agree' checkbox and **click** on 'I Agree’ button.
->**Note:**  If you get any sensitive information related warning then click on 'OK'.
-![Logging into custom vision.](media/custom-vision1.png)
+1.	**Open** Azure Synapse in a new tab using the following link: https://web.azuresynapse.net/.
+2.	**Log in** with your Azure credentials.
+3.	**Select** the ‘Subscription’ and Synapse ‘Workspace name’ that got created in Task 3. 
+4.	**Click** Continue.
 
-3. **Select** your cognitive service resource from the 'Resource' dropdown starting with name 'dreamcognitiveservices'.
+> **Note:** Before executing next step, please get “Storage Blob Data Owner” role assigned to your AD account as well as synapse workspace from your account admin.
 
-![Select your custom vision resource.](media/custom-vision2.png)
+	![Select workspace.](media/select-workspace0.png)
 
-4. **Select** project '1_Defective_Product_Classification'.
+5.	**Click** the 'Develop' hub from the left navigation in the Synapse Analytics workspace.
+6.	**Click** on SQL scripts.
+7.	**Click** vwCovidDataParquet.
+8.	**Click** Run.
 
-![Select project.](media/custom-vision3.png)
+	![Select vwCovidDataParquet.](media/select-workspace1.png)
 
-5. **Select** 'iteration 1' from the iteration dropdown.
-
-![Select iteration.](media/custom-vision4.png)
-
-6. **Click** on the 'Performance' tab.
-
->**Note:** Wait for training to complete if it shows the model is in training.
-
-![Select performance tab.](media/custom-vision5.png)
-
-7. **Click** on 'Publish' button.
-
-![Select publish button.](media/custom-vision6.png)
-
-8. **Select** 'Model name' and 'Prediction resource' on 'Publish Model' popup and **click** on 'Publish' button.
-
-![Publish Model.](media/custom-vision7.png)
-
-9. **Click** on the 'Eye' button.
-
-![Click preview button.](media/custom-vision8.png)
-
-10. **Repeat** steps 4 to 8 for all the projects.
 
 ### Task 9: Publishing the Custom Vision model
 
-1. **Open** Azure Synapse in a new tab using the following link: https://web.azuresynapse.net/.
-2. **Log in** with your Azure credentials.
-3. **Select** the 'Subscription' and Synapse 'Workspace name' that got created in [Task 3](#task-3-deploy-the-arm-template). The Synapse 'Workspace name' will start with 'manufacturingdemo'.
-4. **Click** 'Continue'.
+1.	**Go to**  https://customvision.ai/ and **click** on Sign In. 
+2.	**Select** ‘I agree’ checkbox and **click** on 'I Agree’ button. 
+ 
+> **Note:** If you get any sensitive information related warning then click on ‘OK’. 
 
-![Select synapse workspace.](media/task9-1.png)
+	![cv-login](media/cv-agree.png)
 
+3.	**Select** your cognitive service resource from the resource dropdown starting with name ‘cog-healthcare’. 
 
-5. **Click** the 'Data' hub from the left navigation in the Synapse Analytics workspace.
-6. **Click** 'Linked' tab.
-7. **Expand** the storage account / Azure Data Lake Storage Gen2.
-8. **Expand** the node that starts with 'manufacturingdemo'.
-9. **Click** 'incidentreport' container.
+	![Select cv-projects](media/cv-agree.png)
+	
+4.	**Select** project ‘Safety_Mask_Detection’. 
+	
+	![Select cv-saftey-mask-detection](media/cv-saftey-mask-detection.png)
 
-![Open incident report container.](media/task9-2.png)
+5.	**Select** ‘iteration 1’ from the iteration dropdown. 
 
-10. **Click** the 'Upload' button in Azure Synapse Analytics Studio to upload the file from your local system.
+	![iteration1](media/iteration1.png)
+	
+6.	**Click** on the Performance tab. 
 
-![Upload a new pdf report from the local system.](media/task9-3.png)
+	![Performance](media/performance.png)
+	
+7.	**Click** on publish button. 
 
+	![publish-cv](media/publish-cv.png)
+	
+8.	**Select** Model Name and Prediction resource on publish model popup and Click on Publish button. 
+	
+	![publish-cv](media/publish-cv1.png)
 
-11. **Download** incident report by clicking following url: https://dreamdemostrggen2r16gxwb.blob.core.windows.net/publicassets/212045001.pdf 
-12. **Select** the '212045001.pdf' file or any incident report of same format from your local system.
+9.	**Navigate** back to project list page and repeat steps 4 to 8 for all the projects. 
 
-> **Note:** Filename and incident id should be same.
-
-13. **Check** the checkbox for overwriting existing files.
-14. **Click** on 'Upload' button.
-
-![Upload a new pdf report from the local system.](media/task9-4.png)
-
-15. **Click** on the document that got uploaded.
-16. **Click** on More.
-17. **Click** on Properties.
-
-![Open the document properties.](media/check-doc-property.png)
-
-18. **Confirm** that the Content type of document is application/pdf. If not paste 'application/pdf' in the 'Content Type' of document.
-19. **Click** on 'Apply'.
-
-![Update the document's properties.](media/apply-properties.png)
 
 ### Task 10: Pause-Resume resources
 
@@ -817,11 +789,11 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 Execute the ```Pause_Resume_script.ps1``` script by executing the following command:
 
-1. **Run** Command: ```cd 'MfgAI/Manufacturing/automation'```
+1. **Run** Command: ```cd 'HealthCare/GitHubRepo/Healthcare'```
 
 2. Then **run** the PowerShell script: ```./Pause_Resume_script.ps1```
 
-![Run the script.](media/pause-resume.png)
+	![Run the script.](media/pause-resume-script.png)
 
 3. From the Azure Cloud Shell, **copy** the authentication code. 
 
@@ -839,26 +811,20 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-8. You will be prompted for one more device authentication.
-
-9. Follow steps 3 to 6 again for the new authentication.
-
-![Copy the code.](media/copy-code-new.png)
-
-10. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
+8. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-11. **Enter** your choice when prompted. **Enter** 'P' for pausing the environment or 'R' for resuming a paused environment.
+9. **Enter** your choice when prompted. **Enter** 'P' for **pausing** the environment or 'R' for **resuming** a paused environment.
 
-12. Wait for script to finish execution.
+10. Wait for script to finish execution.
 
-![Enter the choice.](media/p-r.png)
+	![Enter the choice.](media/p-r.png)
+
 
 ### Task 11: Clean up resources
 
 > **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
-
 
 **Open** the Azure Portal.
 
@@ -867,14 +833,13 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 **Execute** the 'resourceCleanup.ps1' script by executing the following commands:
-
-2. **Run** Command:
+**Run** Command:
 
    ```PowerShell
-   cd 'MfgAI/Manufacturing/automation'
+   cd 'HealthCare/GitHubRepo/Healthcare’
    ```
 	
-3. Then **run** the PowerShell script: 
+2. Then **run** the PowerShell script: 
 	
    ```PowerShell
    ./resourceCleanup.ps1
@@ -882,24 +847,10 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 	
 ![Cleaning the resources](media/clean-script.png)
 
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
+3. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
 
 ![Enter the resource group name](media/RG-Name-Screen10.png)
 
-5. Wait for execution to complete.
+4.	You may be prompted to select a subscription in case your account has multiple subscriptions.
 
-6. Navigate to Power BI Workspace.
-
-7. **Click** on Workspaces.
-
-8. **Click** on options of the workspace you created in task #2
-
-9. **Click** on Workspace settings.
-
-![Workspace Settings](media/workspace-settings.png)
-
-10. **Click** on Delete Workspace.
-
-11. **Click** on Delete button in popup.
-
-![Workspace Delete](media/workspace-delete.png)
+Your Accelerator environment is now set up.
