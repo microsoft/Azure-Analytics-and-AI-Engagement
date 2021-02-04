@@ -77,33 +77,33 @@
 
 > **Note:** Please use the same credentials for Power BI which you will be using for Azure Account.
 
-	![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
+   ![Sign in to Power BI.](media/PowerBI-Services-SignIn.png)
 
 3. In Power BI service **click** on 'Workspaces'.
 
 4. Then **click** on the 'Create a workspace' tab.
 
-	![Create Power BI Workspace.](media/Create-Workspace.png)
+   ![Create Power BI Workspace.](media/Create-Workspace.png)
 
 5. **Enter** the 'Workspace name' and 'Description' and **click** 'Save'.
 
-	![Give the name and description for the new workspace.](media/name-the-workspace.png)
+   ![Give the name and description for the new workspace.](media/name-the-workspace.png)
 
 > **Note:** Please create a Workspace by the name 'Engagement Accelerators – HealthCare'.
 
 6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
 > **Note:** This workspace ID will be used during ARM template deployment.
 
-	![Copy the workspace id.](media/Workspace-ID.png)
+   ![Copy the workspace id.](media/Workspace-ID.png)
 
 7.  Go to your Power BI workspace and **click** on create button. 
 8.	Then **click** on Streaming Dataset option from the dropdown. 
 
-	![Create Streaming Dataset.](media/create-dataset.png)
+   ![Create Streaming Dataset.](media/create-dataset.png)
 
 9.	**Select** API from the list of options and click next. 
 	
-	![Select API.](media/select-api.png)
+   ![Select API.](media/select-api.png)
 
 10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
 
@@ -149,7 +149,7 @@
 ![Values for stream.](media/value-for-stream.png)
 
 11.	Copy the push url of dataset and place it in a notepad for later use.
-![Push Url.](media/push-url.png)
+     ![Push Url.](media/push-url.png)
 
 
 ### Task 3: Deploy the ARM Template
@@ -191,53 +191,53 @@
 1. **Search** for iot in resource list.
 2. **Click** on iot central in the resource list.
 
-	![Resource list iot.](media/resource-list-iot.png)
+    ![Resource list iot.](media/resource-list-iot.png)
 	
 3. **Click** on application url on overview screen.
 
-	![Application URL.](media/application-url.png)
+    ![Application URL.](media/application-url.png)
 	
 4. **Click** on devices.
 5. **Click** IoMT device.
 6. **Click** New.
 
-	![Create iomt.](media/create-iomt.png)
+    ![Create iomt.](media/create-iomt.png)
 	
 7. **Click** create.
 
 > **Note:** You may choose to change the device name displayed for your scenario.
 
-	![Create device.](media/create-device.png)
+   ![Create device.](media/create-device.png)
 	
 8. **Click** on created device.
 
-	![Created device.](media/created-device.png)
+    ![Created device.](media/created-device.png)
 
 9. **Click** on Connect.
 
-	![connect device.](media/connect-device.png)
+    ![connect device.](media/connect-device.png)
 	
 10. **Copy** the values of ID scope, Device ID and primary key in a notepad.We will need these values during script execution.
 
-	![copy device.](media/copy-device.png)
+    ![copy device.](media/copy-device.png)
 	
 11.	**Close** the device popup and click on data export(legacy) tab.
 12.	**Click** New.
 13.	**Click** Azure Event Hubs.
 
-	![data export.](media/data-export.png)
+    ![data export.](media/data-export.png)
 	
 14.	**Select** Event hub namespace named ‘evh-namespace…’ from the dropdown.
 15.	**Select** Event hub name from the dropdown.
 16.	**Turn off** Devices and Device template features.
 17.	**Click** Save.
 
-	![data export2.](media/data-export2.png)
+    ![data export2.](media/data-export2.png)
 	
 18.	**Click** Dashboard.
 19.	**Click** Edit.
 
-	![device dashboard.](media/device-dashboard.png)
+    ![device dashboard.](media/device-dashboard.png)
 
 20.	**Click** on configure button of Blood Pressure chart.
 21.	**Select** Device group from the dropdown.
@@ -248,15 +248,14 @@
 26.	**Select** distolicPressure kpi.
 27.	**Click** update.
 
-	![device dashboard2.](media/device-dashboard2.png)
+     ![device dashboard2.](media/device-dashboard2.png)
 
 28.	**Click** save.
 29.	Repeat above steps for remaining dashboard tiles and their respective kpi’s.
 
-	![device dashboard3.](media/device-dashboard3.png)
+     ![device dashboard3.](media/device-dashboard3.png)
 
 
- 	
 ### Task 5: Run the Cloud Shell 
 
 **Open** the Azure Portal.
@@ -267,13 +266,13 @@
 
 2. **Click** on 'Show advanced settings'. 
 
-	![Mount a storage for running the cloud shell.](media/no-storage-mounted.png)
+    ![Mount a storage for running the cloud shell.](media/no-storage-mounted.png)
 	
 > **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 2 and 3.
 
 3. **Select** your 'Resource Group' and **enter** the 'Storage account' and 'File share' name.
 
-	![Mount a storage for running the cloud shell and enter the details.](media/no-storage-mounted1.png)
+    ![Mount a storage for running the cloud shell and enter the details.](media/no-storage-mounted1.png)
 
 > **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters and it should not be more 10 characters.
 
@@ -301,7 +300,7 @@
     ./healthcareSetup.ps1
     ```
     
-      ![Commands to run the PowerShell script](media/executing-shell-script.png)
+     ![Commands to run the PowerShell script](media/executing-shell-script.png)
       
 7. From the Azure Cloud Shell window, **copy** the Authentication Code.
 
@@ -328,7 +327,6 @@
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
-
 15. Follow the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 7 to 11.
  
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
@@ -342,7 +340,7 @@
 17. You will get another code to authenticate Power BI gateway. **Copy** the code.
 18. **Click** the link (https://microsoft.com/devicelogin).
 
-	![Copy the authentication code.](media/task4-step18.png)
+     ![Copy the authentication code.](media/task4-step18.png)
 
 19. A new browser window will launch. **Follow** the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 9, 10 and 11.
 
@@ -707,20 +705,20 @@ To hide title and subtitle for all the images that you have pined above. Please 
 100. In the “Reports” section, there will be a list of all the published reports.
 101. **Click** on ‘healthcare term index’.
 	
-	![healthcare-term-index.](media/healthcare-term-index.png)
+   ![healthcare-term-index.](media/healthcare-term-index.png)
 
 102.Similarly, **pin**  ‘Injury Type by Source’ from the report.
 
-	![healthcare-term-index.](media/healthcare-term-index1.png)
+   ![healthcare-term-index.](media/healthcare-term-index1.png)
 	
 103. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel.
 104. **Fourth** pillar ‘Predictive Analytics’ is completed.
 	
-	![healthcare-term-index.](media/predictive-analytics.png)
+   ![healthcare-term-index.](media/predictive-analytics.png)
 	
 105. After pinning all the pillars and Dashboard images the final dashboard will look like this
 
-	![dashboard-final.](media/dashboard-final.png)
+   ![dashboard-final.](media/dashboard-final.png)
 	
 
 ### Task 8: Creating Synapse Views
@@ -732,14 +730,14 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 > **Note:** Before executing next step, please get “Storage Blob Data Owner” role assigned to your AD account as well as synapse workspace from your account admin.
 
-	![Select workspace.](media/select-workspace0.png)
+   ![Select workspace.](media/select-workspace0.png)
 
 5.	**Click** the 'Develop' hub from the left navigation in the Synapse Analytics workspace.
 6.	**Click** on SQL scripts.
 7.	**Click** vwCovidDataParquet.
 8.	**Click** Run.
 
-	![Select vwCovidDataParquet.](media/select-workspace1.png)
+    ![Select vwCovidDataParquet.](media/select-workspace1.png)
 
 
 ### Task 9: Publishing the Custom Vision model
@@ -749,31 +747,31 @@ To hide title and subtitle for all the images that you have pined above. Please 
  
 > **Note:** If you get any sensitive information related warning then click on ‘OK’. 
 
-	![cv-login](media/cv-agree.png)
+   ![cv-login](media/cv-agree.png)
 
 3.	**Select** your cognitive service resource from the resource dropdown starting with name ‘cog-healthcare’. 
 
-	![Select cv-projects](media/cv-agree.png)
+   ![Select cv-projects](media/cv-agree.png)
 	
 4.	**Select** project ‘Safety_Mask_Detection’. 
 	
-	![Select cv-saftey-mask-detection](media/cv-saftey-mask-detection.png)
+   ![Select cv-saftey-mask-detection](media/cv-saftey-mask-detection.png)
 
 5.	**Select** ‘iteration 1’ from the iteration dropdown. 
 
-	![iteration1](media/iteration1.png)
+   ![iteration1](media/iteration1.png)
 	
 6.	**Click** on the Performance tab. 
 
-	![Performance](media/performance.png)
+   ![Performance](media/performance.png)
 	
 7.	**Click** on publish button. 
 
-	![publish-cv](media/publish-cv.png)
+   ![publish-cv](media/publish-cv.png)
 	
 8.	**Select** Model Name and Prediction resource on publish model popup and Click on Publish button. 
 	
-	![publish-cv](media/publish-cv1.png)
+   ![publish-cv](media/publish-cv1.png)
 
 9.	**Navigate** back to project list page and repeat steps 4 to 8 for all the projects. 
 
@@ -786,7 +784,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 2. **Click** on the Azure Cloud Shell icon from the top toolbar.
 
-	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+   ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 Execute the ```Pause_Resume_script.ps1``` script by executing the following command:
 
@@ -794,33 +792,33 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 2. Then **run** the PowerShell script: ```./Pause_Resume_script.ps1```
 
-	![Run the script.](media/pause-resume-script.png)
+   ![Run the script.](media/pause-resume-script.png)
 
 3. From the Azure Cloud Shell, **copy** the authentication code. 
 
 4. **Click** on the link https://microsoft.com/devicelogin and a new browser window will launch.
 
-	![Copy the code.](media/copy-code-new.png)
+   ![Copy the code.](media/copy-code-new.png)
 
 5. **Paste** the authentication code.  
 
-	![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
+   ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
 6. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 7. **Close** this window after it displays successful authentication message.
 
-	![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
+   ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
 8. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
 
-	![Enter the resource group name](media/RG-Name-Screen10.png)
+   ![Enter the resource group name](media/RG-Name-Screen10.png)
 
 9. **Enter** your choice when prompted. **Enter** 'P' for **pausing** the environment or 'R' for **resuming** a paused environment.
 
 10. Wait for script to finish execution.
 
-	![Enter the choice.](media/p-r.png)
+   ![Enter the choice.](media/p-r.png)
 
 
 ### Task 11: Clean up resources
@@ -831,7 +829,7 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 1. **Open** the Azure Cloud Shell by clicking its icon from the top toolbar.
 
-	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
+   ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
 **Execute** the 'resourceCleanup.ps1' script by executing the following commands:
 **Run** Command:
@@ -846,11 +844,11 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
    ./resourceCleanup.ps1
    ```
 	
-	![Cleaning the resources](media/resource-cleanup.png)
+   ![Cleaning the resources](media/resource-cleanup.png)
 
 3. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
 
-	![Enter the resource group name](media/RG-Name-Screen10.png)
+   ![Enter the resource group name](media/RG-Name-Screen10.png)
 
 4.	You may be prompted to select a subscription in case your account has multiple subscriptions.
 
