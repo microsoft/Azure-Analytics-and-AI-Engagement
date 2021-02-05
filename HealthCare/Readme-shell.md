@@ -501,7 +501,7 @@ To give permissions for the Power BI reports to access the datasources:
 Follow the below steps to change the dashboard theme:
 
 31.	**Open** the URL in a new browser tab to get JSON code for a custom theme:
-https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/HealthCare/CustomTheme.json
+https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/main/HealthCare/CustomTheme.json
 
 32.	**Right click** anywhere in browser and **click** 'Save as...'.
 33.	**Save** the file to your desired location on your computer, leaving the name unchanged.
