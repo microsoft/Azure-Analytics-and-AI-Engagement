@@ -57,7 +57,7 @@
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/create-resource-group.png)
 	
-5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'Synapse-WWI-Lab'. 
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'Synapse-Healthcare-Lab'. 
 
 6. **Select** your desired Region. 
 
@@ -141,7 +141,6 @@
 | prescriptionStats                 | text     |
 | roomTurnOverTarget                | number   |
 | medicalEquipmentUtilizationTarget | number   |
-| currentICUBedOccupancyRate        | number   |
 | currentRegularBedOccupancyRate    | number   |
 | currentbedOccupancyRateStats      | text     |
 | activeSensors                     | number   |
@@ -159,7 +158,7 @@
      <a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmain%2FHealthCare%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
-3. **Type** the resource group name 'Synapse-WWI-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
+3. **Type** the resource group name 'Synapse-Healthcare-Lab' created in [Task 1](#task-1-create-a-resource-group-in-azure).
 4. **Select** Region where you want to deploy.
 > **Note:** Ensure the resource availability for synapse, cognitive services and aml in the region you select.
 5. **Provide** environment code which is a unique suffix to your environment without any special characters. e.g. 'demo'.
@@ -279,7 +278,7 @@
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/HealthCare HealthCare
+    git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/HealthCare
     ```
     > Here username will be your github username. You will be prompted for the password of the same username.
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
@@ -333,16 +332,26 @@
 
 > **Note:** While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
+16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-Healthcare-Lab'.
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
+	 
+17.	Enter the Id scope, Device Id and primary key that you copied in step 10 of task 3 when prompted for it.
 
-17. You will get another code to authenticate Power BI gateway. **Copy** the code.
-18. **Click** the link (https://microsoft.com/devicelogin).
+	 ![iot-central details](media/iot-central.png)
+
+18. You will get another code to authenticate Power BI gateway. **Copy** the code.
+19. **Click** the link (https://microsoft.com/devicelogin).
 
      ![Copy the authentication code.](media/task4-step18.png)
 
-19. A new browser window will launch. **Follow** the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 9, 10 and 11.
+20. A new browser window will launch. **Follow** the same steps as in [Task 5](#task-5-run-the-cloud-shell) steps 9, 10 and 11 and go back to your Azure Cloud Shell execution window.
+
+> **Note:** The deployment will take approximately 30-35 minutes to complete.
+
+21.	Open the url printed at the end of script execution. This is needed to kickstart the data generation.
+
+	 ![data-gen-url](media/data-gen-url.png)
 
 **Open** the Azure Portal.
 
