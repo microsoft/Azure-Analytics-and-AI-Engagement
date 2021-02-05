@@ -83,20 +83,18 @@
 
 4. Then **click** on the 'Create a workspace' tab.
 
+> **Note:** Please create a workspace by the name “Engagement Accelerators – Healthcare”.
+
    ![Create Power BI Workspace.](media/Create-Workspace.png)
 
-5. **Enter** the 'Workspace name' and 'Description' and **click** 'Save'.
+5.	**Copy** the workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL. 
+6.	**Paste** the GUID in a notepad for future reference.
 
-   ![Give the name and description for the new workspace.](media/name-the-workspace.png)
+> **Note:**  This workspace ID will be used during ARM template deployment.
+  
+   ![Copy the workspace id.](media/powerbi-workspace-id.png)
 
-> **Note:** Please create a Workspace by the name 'Engagement Accelerators – HealthCare'.
-
-6. **Copy** the Workspace GUID or ID. You can get this by browsing to https://app.powerbi.com/, selecting the workspace, and then copying the GUID from the address URL and paste it in a notepad for future reference.
-> **Note:** This workspace ID will be used during ARM template deployment.
-
-   ![Copy the workspace id.](media/Workspace-ID.png)
-
-7.  Go to your Power BI workspace and **click** on create button. 
+7.  Go to your Power BI workspace and **click** on New button. 
 8.	Then **click** on Streaming Dataset option from the dropdown. 
 
    ![Create Streaming Dataset.](media/create-dataset.png)
@@ -104,8 +102,12 @@
 9.	**Select** API from the list of options and click next. 
 	
    ![Select API.](media/select-api.png)
+  
+10.	**Enable**  the ‘Historic data analysis’.
 
-10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
+   ![historic-data-analysis.](media/historic-data-analysis.png)
+
+11.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button: 
 
 | Field Name                        | Type     |
 |-----------------------------------|----------|	
@@ -147,7 +149,7 @@
 
 ![Values for stream.](media/value-for-stream.png)
 
-11.	Copy the push url of dataset and place it in a notepad for later use.
+12.	Copy the push url of dataset and place it in a notepad for later use.
      ![Push Url.](media/push-url.png)
 
 
@@ -165,23 +167,23 @@
 > **Note:** Please enter the values in compliance with tooltip instructions
 6. **Provide** a strong SQL Administrator Login Password and set this aside for later use.
 7. **Enter** the Power BI Workspace ID, created in [Task 2](#task-2-power-bi-workspace-creation), in the 'Pbi_workspace_id' field.
-8. **Enter** the power BI streaming dataset url you copied in step 11 of task 2.
+8. **Enter** the power BI streaming dataset url you copied in step 12 of task 2.
 9. **Enter** the password for virtual machine. Please enter password based on tooltip recommendation. 
-9. **Click** 'Review + Create' button.
+10. **Click** 'Review + Create' button.
 
    ![The Custom deployment form is displayed with example data populated.](media/Custom-Template-Deployment-Screen1.png)
 
-10. **Click** the 'Create' button once the template has been validated.
+11. **Click** the 'Create' button once the template has been validated.
 
    ![Creating the template after validation.](media/template-validated-create.png)
 
 > **NOTE:** The provisioning of your deployment resources will take approximately 20 minutes.
 
-11. **Stay** on the same page and wait for the deployment to complete.
+12. **Stay** on the same page and wait for the deployment to complete.
     
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/template-deployment-progress.png)
     
-12. **Click** 'Go to resource group' button once your deployment is complete.
+13. **Click** 'Go to resource group' button once your deployment is complete.
 
     ![A portion of the Azure Portal to confirm that the deployment is in progress.](media/Template-Deployment-Done-Screen6.png)
 
@@ -347,7 +349,7 @@
 
 20. A new browser window will launch. **Follow** the same steps as in [Task 5](#task-5-run-the-cloud-shell) steps 9, 10 and 11 and go back to your Azure Cloud Shell execution window.
 
-> **Note:** The deployment will take approximately 30-35 minutes to complete.
+> **Note:** The deployment will take approximately 40-45 minutes to complete.
 
 21.	Open the url printed at the end of script execution. This is needed to kickstart the data generation.
 
