@@ -150,6 +150,7 @@
 ![Values for stream.](media/value-for-stream.png)
 
 12.	Copy the push url of dataset and place it in a notepad for later use.
+
      ![Push Url.](media/push-url.png)
 
 
@@ -338,7 +339,7 @@
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 	 
-17.	Enter the Id scope, Device Id and primary key that you copied in step 10 of task 3 when prompted for it.
+17.	Enter the Id scope, Device Id and primary key that you copied in step 10 of task 4 when prompted for it.
 
 	 ![iot-central details](media/iot-central.png)
 
