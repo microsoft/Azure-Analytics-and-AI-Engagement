@@ -493,7 +493,7 @@ To give permissions for the Power BI reports to access the datasources:
 
 	![create dashboard.](media/Create-Dashboard.png)
 
-29.	**Name** the dashboard ‘Healthcare and click “create”.
+29.	**Name** the dashboard "Healthcare" and click “create”.
 30.	This new dashboard will appear in the Dashboard section (of the Power BI workspace). 
 
 	![create dashboard](media/Create-Dashboard1.png)
@@ -501,7 +501,7 @@ To give permissions for the Power BI reports to access the datasources:
 Follow the below steps to change the dashboard theme:
 
 31.	**Open** the URL in a new browser tab to get JSON code for a custom theme:
-https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/real-time/Manufacturing/automation/artifacts/theme/CustomTheme.json
+https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/HealthCare/CustomTheme.json
 
 32.	**Right click** anywhere in browser and **click** 'Save as...'.
 33.	**Save** the file to your desired location on your computer, leaving the name unchanged.
@@ -528,9 +528,7 @@ Do the following to pin visuals to the dashboard you just created:
 
 	![Select workspace.](media/select-workspace.png)
 
-**Do the following to pin visuals to the dashboard you just created:**
-
-41. **Select** on the “Content” section/tab.
+41. **Click** on the “Content” section/tab.
 
 	![Select Content section.](media/content-section.png)
 
@@ -719,7 +717,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	
    ![healthcare-term-index.](media/healthcare-term-index.png)
 
-102.Similarly, **pin**  ‘Injury Type by Source’ from the report.
+102. Similarly, **pin**  ‘Injury Type by Source’ from the report.
 
    ![healthcare-term-index.](media/healthcare-term-index1.png)
 	
@@ -763,7 +761,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 3.	**Select** your cognitive service resource from the resource dropdown starting with name ‘cog-healthcare’. 
 
-   ![Select cv-projects](media/cv-agree.png)
+   ![Select cv-projects](media/cv-projects.png)
 	
 4.	**Select** project ‘Safety_Mask_Detection’. 
 	
@@ -798,7 +796,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
    ![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/azure-cloudshell-menu-screen4.png)
 
-Execute the ```Pause_Resume_script.ps1``` script by executing the following command:
+**Execute** the ```Pause_Resume_script.ps1``` script by executing the following command:
 
 1. **Run** Command: ```cd 'HealthCare/GitHubRepo/Healthcare'```
 
@@ -835,7 +833,7 @@ Execute the ```Pause_Resume_script.ps1``` script by executing the following comm
 
 ### Task 11: Clean up resources
 
-> **Note:** Perform these steps after your demo is done and you do not need the resources anymore.
+> **Note: Perform these steps after your demo is done and you do not need the resources anymore.**
 
 **Open** the Azure Portal.
 
