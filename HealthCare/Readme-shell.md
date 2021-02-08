@@ -281,7 +281,7 @@
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/HealthCare
+    git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/Healthcare
     ```
     > Here username will be your github username. You will be prompted for the password of the same username.
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
@@ -798,7 +798,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 **Execute** the ```Pause_Resume_script.ps1``` script by executing the following command:
 
-1. **Run** Command: ```cd 'HealthCare/GitHubRepo/Healthcare'```
+1. **Run** Command: ```cd 'Healthcare/GitHubRepo/Healthcare'```
 
 2. Then **run** the PowerShell script: ```./Pause_Resume_script.ps1```
 
@@ -845,7 +845,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 **Run** Command:
 
    ```PowerShell
-   cd 'HealthCare/GitHubRepo/Healthcare’
+   cd 'Healthcare/GitHubRepo/Healthcare’
    ```
 	
 2. Then **run** the PowerShell script: 
