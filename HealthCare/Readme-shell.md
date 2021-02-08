@@ -333,7 +333,9 @@
  
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
-> **Note:** While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
+> **Note:** 
+•	While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
+•	You may be prompted to choose a subscription after the above-mentioned step if you have multiple subscriptions associated with your account. Choose the subscription that you used to sign in to the Azure portal.
 
 16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-Healthcare-Lab'.
 
