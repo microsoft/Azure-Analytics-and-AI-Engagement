@@ -406,17 +406,28 @@
 15.	Search for ‘func-app-mongo’ in your rg.
 16.	Click on the function app.
 
-	![Run with PowerShell.](media/high-speed-data-gen5.png)
+	![func-app-mongo.](media/high-speed-data-gen5.png)
 	
 17.	Click on Functions.
 18.	Click on JsonProcessor.
 
-	![Run with PowerShell.](media/high-speed-data-gen6.png)
+	![JsonProcessor.](media/high-speed-data-gen6.png)
 
 19.	Click ‘Get Function Url’.
 20.	Copy the url and open it in new browser tab.
 
-	![Run with PowerShell.](media/high-speed-data-gen7.png)
+	![Get Function Url.](media/high-speed-data-gen7.png)
+
+21.	Search for ‘func-app-iomt’ in your rg.
+22.	Click on the function app.
+
+	![func-app-iomt.](media/high-speed-data-gen8.png)
+	
+23.	Click on Functions.
+24.	Click on  EventHubProcessor
+
+	![EventHubProcessor.](media/high-speed-data-gen9.png)
+	
 
 ### Task 7: Create Power BI reports and Dashboard
 
