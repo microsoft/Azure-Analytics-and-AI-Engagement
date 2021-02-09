@@ -2404,17 +2404,17 @@
           }
         ],
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('app_demohealthcare_ase_name'))]",
-        "reserved": true,
+        "reserved": false,
         "isXenon": false,
         "hyperV": false,
         "siteConfig": {},
         "scmSiteAlsoStopped": false,
-        "clientAffinityEnabled": false,
+        "clientAffinityEnabled": true,
         "clientCertEnabled": false,
         "hostNamesDisabled": false,
         "containerSize": 0,
         "dailyMemoryTimeQuota": 0,
-        "httpsOnly": false,
+        "httpsOnly": true,
         "redundancyMode": "None"
       }
     },
@@ -2422,7 +2422,7 @@
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "2018-11-01",
       "name": "[concat(variables('app_demohealthcare_app_service_name'), '/web')]",
-      "location": "West US",
+      "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('app_demohealthcare_app_service_name'))]"
       ],
