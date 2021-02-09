@@ -656,7 +656,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 75.	**Let’s** start Pinning the third pillar ‘Realtime Quality of Care Analytics’
 76.	**Select** the Workspace in task2
 	
-	![Realtime Operational Analystics.](media/realtime-operational-analytics-report3.png)
+	![select workspace.](media/select-workspace.png)
 
 77.	**Open** ‘healthcare-operational-analytics’ report.
 
@@ -673,7 +673,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 80.	In the “Reports” section, there will be a list of all the published reports.
 81.	**Click** on ‘Consolidated Report’.
 
-	![Consolidated report page.](media/consolidated-report1.png)
+	![Consolidated report page.](media/consolidated-report.png)
 	
 82.	**Select** the ‘Financial Report’ page.
 83.	Similarly, **pin** ’Total Employees’ and ‘Total Patients’ from the report.
