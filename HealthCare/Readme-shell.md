@@ -413,7 +413,7 @@
 
 > **Note:** If you do not see any function listed under functions then try refreshing the function app, it takes some time to load.
 
-	![JsonProcessor.](media/high-speed-data-gen6.png)
+   ![JsonProcessor.](media/high-speed-data-gen6.png)
 
 19.	**Click** ‘Get Function Url’.
 20.	**Copy** the url and open it in new browser tab.
@@ -430,7 +430,7 @@
 
 > **Note:** If you do not see any function listed under functions then try refreshing the function app, it takes some time to load.
 
-	![EventHubProcessor.](media/high-speed-data-gen9.png)
+   ![EventHubProcessor.](media/high-speed-data-gen9.png)
 	
 
 ### Task 7: Create Power BI reports and Dashboard
