@@ -402,29 +402,33 @@
 	
 > **Note:** Ensure the data generation exe’s are running on this vm before you demo the high speed data ingestion part in synapse. If not, follow the task above to restart the generation.
 	
-14.	Navigate to azure portal.
-15.	Search for ‘func-app-mongo’ in your rg.
-16.	Click on the function app.
+14.	**Navigate** to azure portal.
+15.	**Search** for ‘func-app-mongo’ in your rg.
+16.	**Click** on the function app.
 
 	![func-app-mongo.](media/high-speed-data-gen5.png)
 	
-17.	Click on Functions.
-18.	Click on JsonProcessor.
+17.	**Click** on Functions.
+18.	**Click** on JsonProcessor.
+
+> **Note:** If you do not see any function listed under functions then try refreshing the function app, it takes some time to load.
 
 	![JsonProcessor.](media/high-speed-data-gen6.png)
 
-19.	Click ‘Get Function Url’.
-20.	Copy the url and open it in new browser tab.
+19.	**Click** ‘Get Function Url’.
+20.	**Copy** the url and open it in new browser tab.
 
 	![Get Function Url.](media/high-speed-data-gen7.png)
 
-21.	Search for ‘func-app-iomt’ in your rg.
-22.	Click on the function app.
+21.	**Search** for ‘func-app-iomt’ in your rg.
+22.	**Click** on the function app.
 
 	![func-app-iomt.](media/high-speed-data-gen8.png)
 	
-23.	Click on Functions.
-24.	Click on  EventHubProcessor
+23.	**Click** on Functions.
+24.	**Click** on EventHubProcessor. This is to ensure that function got created successfully.
+
+> **Note:** If you do not see any function listed under functions then try refreshing the function app, it takes some time to load.
 
 	![EventHubProcessor.](media/high-speed-data-gen9.png)
 	
