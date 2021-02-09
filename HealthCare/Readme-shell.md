@@ -571,7 +571,7 @@ Do the following to pin visuals to the dashboard you just created:
 	![Pin visuals to the dashboard.](media/Pin-To-Dashboard1.png)
 
 49.	Select the ‘**Financial Report**’ page
-50.	Similarly, **pin** ‘Revenue(YTD)’ and ‘ Outpatients/Inpatients(YTD)’ from the report
+50.	Similarly, **pin** ‘Revenue (YTD)’, ’Revenue, Cost, Margin rate by month’ and ‘Outpatients/Inpatients(YTD)’ from the report
 	
 	![Financial Report Page.](media/financial-report-page.png)
 
@@ -723,7 +723,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![healthCare-predctive-analytics_v1](media/healthCare-predctive-analytics_v1.png)
 		
-98.	Similarly, **pin**  ‘Readmission rate’, ’Avg bed occupancy rate’ and ‘Patient CT scan report’ from the report.
+98.	Similarly, **pin**  ‘Readmission rate’, ’Avg bed occupancy rate’,‘Readmission percentage’ and ‘Patient CT scan report’ from the report.
 	
 	![healthCare-predctive-analytics_v1](media/healthCare-predctive-analytics_v1_1.png)
 	
