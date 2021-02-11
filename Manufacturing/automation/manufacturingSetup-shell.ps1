@@ -1317,7 +1317,7 @@ RefreshTokens
 #New-AzSearchService -Name $searchName -ResourceGroupName $rgName -Sku $sku -Location $location
 
 # Create search query key
-Install-Module -Name Az.Search -f
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
 $queryKey = "QueryKey"
 New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
 
