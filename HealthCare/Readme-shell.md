@@ -61,6 +61,8 @@
 
 6. **Select** your desired Region. 
 
+> **Note:** Some services behave differently in different regions and may break some part of the accelerator. Choosing one of the following regions is preferable: westus2, eastus2, northcentralus, northeurope, southeastasia, australliaeast, centralindia, uksouth, japaneast.  
+
 7. **Click** the 'Review + Create' button.
 
     ![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resourcegroup-form.png)
