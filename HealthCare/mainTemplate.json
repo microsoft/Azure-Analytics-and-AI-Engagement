@@ -1686,11 +1686,7 @@
           "enabled": "[variables('spark_auto_pause_enabled')]",
           "delayInMinutes": "[variables('spark_auto_pause_delay_in_minutes')]"
         },
-        "sparkVersion": "[variables('spark_version')]",
-        "libraryRequirements": {
-          "filename": "[variables('packages_requirements_file_name')]",
-          "content": "[variables('packages_requirements_content')]"
-        }
+        "sparkVersion": "[variables('spark_version')]"
       }
     },
     {
