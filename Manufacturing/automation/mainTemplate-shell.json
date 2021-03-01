@@ -1962,8 +1962,7 @@
          "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/', variables('sql_compute_name'))]",
          "location":"[variables('location')]",
          "dependsOn":[
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]",
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'), '/bigDataPools/', variables('spark_compute_name'))]"
+            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_dreamdemosynapse'))]"
          ],
          "sku":{
             "name":"[variables('sql_server_sku')]"
