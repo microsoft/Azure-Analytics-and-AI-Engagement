@@ -1699,8 +1699,7 @@
       "apiVersion": "2019-06-01-preview",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapsehealthcare'))]",
-        "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapsehealthcare'), '/bigDataPools/', variables('spark_compute_name'))]"
+        "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapsehealthcare'))]"
       ],
       "sku": {
         "name": "[variables('sql_server_sku')]"
