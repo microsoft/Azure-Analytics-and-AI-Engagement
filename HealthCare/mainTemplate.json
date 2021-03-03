@@ -1897,7 +1897,7 @@
       "dependsOn": [
         "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_high_speed_data_gen_healthcare_name'))]",
         "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_ns_high_speed_datagen_healthcare_name'))]",
-        "[concat('Microsoft.EventHub/namespaces/eventhubs/authorizationRules/',variables('eventhub_evh_ns_high_speed_datagen_healthcare_name'), '/evh-high-speed-datagen-healthcare/asa-policy-manage-demo')]"
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_ns_high_speed_datagen_healthcare_name'), 'evh-high-speed-datagen-healthcare')]"
 	  ],
       "properties": {
         "type": "Stream",
