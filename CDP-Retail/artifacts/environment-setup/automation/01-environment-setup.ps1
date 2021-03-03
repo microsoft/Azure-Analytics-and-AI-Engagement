@@ -237,7 +237,7 @@ foreach ($storageContainer in $storageContainers.Keys) {
 
 $StartTime = Get-Date
 $EndTime = $startTime.AddDays(365)  
-$destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
+$destinationSasKey = New-AzStorageContainerSASToken -Container "twitterdata" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 
 $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
@@ -257,8 +257,8 @@ $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob twitter* -Context $AnonC
 foreach ($singleFile in $singleFiles) {
         Write-Information $singleFile
         $source = $publicDataUrl + $singleFile.SourcePath
-        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
-        Write-Information "Copying file $($source) to $($destination)"
+        $destination = $dataLakeStorageBlobUrl + 'twitterdata/' +$singleFile.TargetPath + $destinationSasKey
+        Write-Host "Copying file $($source) to $($destination)"
         if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
         {
                 .\azcopy copy $source $destination 
@@ -274,7 +274,7 @@ $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob customcsv* -Context $Ano
 foreach ($singleFile in $singleFiles) {
         Write-Information $singleFile
         $source = $publicDataUrl + $singleFile.SourcePath
-        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
+        $destination = $dataLakeStorageBlobUrl + 'customcsv/' + $singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
         if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
         {
@@ -291,7 +291,7 @@ $singleFiles = Get-AzStorageBlob -Container "cdp" -Blob machine* -Context $AnonC
 foreach ($singleFile in $singleFiles) {
         Write-Information $singleFile
         $source = $publicDataUrl + $singleFile.SourcePath
-        $destination = $dataLakeStorageBlobUrl + $singleFile.TargetPath + $destinationSasKey
+        $destination = $dataLakeStorageBlobUrl + 'machine-learning/' +$singleFile.TargetPath + $destinationSasKey
         Write-Information "Copying file $($source) to $($destination)"
         if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
         {

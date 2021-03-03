@@ -19,12 +19,17 @@
       "defaultValue": "[resourceGroup().location]",
        "allowedValues": [
         "westus2",
-        "eastus",
+        "eastus",	
         "northeurope",
         "westeurope",
         "southeastasia",
         "australiaeast",
-        "westcentralus"
+        "westcentralus",
+		"uksouth",
+		"eastus2",
+		"northcentralus",  
+		"centralindia",  
+		"japaneast"
       ],
       "metadata": {
         "description": "Location for all resources."
@@ -360,7 +365,7 @@
          "type":"Microsoft.EventHub/namespaces",
          "apiVersion":"2018-01-01-preview",
          "name":"[variables('eventHubNameSpace')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "sku":{
             "name":"Standard",
             "tier":"Standard",
@@ -377,7 +382,7 @@
          "type":"Microsoft.StreamAnalytics/streamingjobs",
          "apiVersion":"2019-06-01",
          "name":"[parameters('asaName')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
 		 "identity": {
 				"type": "SystemAssigned"
 			},
@@ -396,7 +401,7 @@
          "type":"Microsoft.EventHub/namespaces/AuthorizationRules",
          "apiVersion":"2017-04-01",
          "name":"[concat(variables('eventHubNameSpace'), '/',variables('managedAccessPolicyName'))]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNameSpace'))]"
          ],
@@ -412,7 +417,7 @@
          "type":"Microsoft.EventHub/namespaces/AuthorizationRules",
          "apiVersion":"2017-04-01",
          "name":"[concat(variables('eventHubNameSpace'), '/RootManageSharedAccessKey')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNameSpace'))]"
          ],
@@ -428,7 +433,7 @@
          "type":"Microsoft.EventHub/namespaces/eventhubs",
          "apiVersion":"2017-04-01",
          "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'))]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
          ],
@@ -442,7 +447,7 @@
          "type":"Microsoft.EventHub/namespaces/networkRuleSets",
          "apiVersion":"2018-01-01-preview",
          "name":"[concat(variables('eventHubNamespace'), '/default')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
          ],
@@ -520,7 +525,7 @@
          "type":"Microsoft.EventHub/namespaces/eventhubs/consumergroups",
          "apiVersion":"2017-04-01",
          "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'),'/$Default')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventHubNamespace'), parameters('eventHubName'))]",
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
@@ -533,7 +538,7 @@
          "type":"Microsoft.EventHub/namespaces/eventhubs/consumergroups",
          "apiVersion":"2017-04-01",
          "name":"[concat(variables('eventHubNamespace'), '/', parameters('eventHubName'),'/tweetsasa_tweetsin_consumer_group')]",
-         "location":"Central US",
+         "location": "[variables('location')]",
          "dependsOn":[
             "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventHubNamespace'), parameters('eventHubName'))]",
             "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespace'))]"
