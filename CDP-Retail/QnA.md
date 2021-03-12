@@ -14,5 +14,9 @@
 
 **A:** Ensure you executed "az login" command before running the powershell script. Also there should not be a long delay between execution of both commands. You can also check the response of 'az account get-access-token --resource https://dev.azuresynapse.net' command to make sure you have enough previleges to generate authentication tokens.
 
+**Q:** Template deployment fails with following error "CreateWorkspaceError;RequestDisallowedByPolicy".
+
+**A:** Ensure that your subscription level access policies allow the resources mentioned in the requrements.
+
 
 
