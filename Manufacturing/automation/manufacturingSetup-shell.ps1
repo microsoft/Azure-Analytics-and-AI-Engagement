@@ -128,7 +128,7 @@ $deploymentId = $init
 
 #$sqlPassword = Read-Host "Please enter the SQL Password";
 #$sqlPassword = "Smoothie@2020";
-
+$cpuShell = "cpuShell$init"
 $iot_hub_car = "raceCarIotHub-$suffix"
 $iot_hub_telemetry = "mfgiothubTelemetry-$suffix"
 $iot_hub = "mfgiothub-$suffix"
@@ -1414,7 +1414,7 @@ az ml workspace create -w $amlworkspacename -g $rgName
 az ml folder attach -w $amlworkspacename -g $rgName -e aml
 
 #create and delete a compute instance to get the code folder created in default store
-az ml computetarget create computeinstance -n cpuShell -s "STANDARD_D3_V2" -v
+az ml computetarget create computeinstance -n $cpuShell -s "STANDARD_D3_V2" -v
 #az ml computetarget delete -n cpuShell -v
 
 #get default data store
