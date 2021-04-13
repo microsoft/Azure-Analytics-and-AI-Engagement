@@ -1411,7 +1411,7 @@ az extension add -n azure-cli-ml
 az ml workspace create -w $amlworkspacename -g $rgName
 
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
-az ml folder attach -w $amlworkspacename -g $rgName
+az ml folder attach -w $amlworkspacename -g $rgName -e aml
 
 #create and delete a compute instance to get the code folder created in default store
 az ml computetarget create computeinstance -n cpuShell -s "STANDARD_D3_V2" -v
