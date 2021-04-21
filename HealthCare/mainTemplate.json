@@ -2810,7 +2810,7 @@
       "properties": {
         "displayName": "[variables('iot_central_healthcare_name')]",
         "subdomain": "[variables('iot_central_healthcare_name')]",
-        "template": "8debad8d-38a4-4970-bf0d-d742974cd253"
+        "template": "3041d72a-4d98-47be-b82d-123cf6b9a82e"
       }
     },
     {
