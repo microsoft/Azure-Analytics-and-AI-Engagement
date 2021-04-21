@@ -97,14 +97,16 @@
 ![Copy the workspace id.](media/Workspace-ID.png)
 
 7.  Go to your Power BI workspace and **click** on create button. 
-8.	Then **click** on Streaming Dataset option from the dropdown. 
+8. Then **click** on Streaming Dataset option from the dropdown. 
 
 ![Create Streaming Dataset.](media/create-dataset.png)
 
-9.	**Select** API from the list of options and click next. 
+9. **Select** API from the list of options and click next. 
+
 ![Select API.](media/select-api.png)
 
-10.	**Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
+10. **Enter** ‘healthcare-operation-analytics’ as dataset name and **enter** the column names in “values from stream” option from list below: 
+
 | Field Name                        | Type     |
 |-----------------------------------|----------|	
 | recordedOn                        | Datetime |
@@ -146,7 +148,8 @@
 
 ![Values for stream.](media/value-for-stream.png)
 
-11.	Copy the push url of dataset and place it in a notepad for later use.
+11. Copy the push url of dataset and place it in a notepad for later use.
+
 ![Push Url.](media/push-url.png)
 
 
