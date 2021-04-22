@@ -225,37 +225,63 @@
 
     ![copy device.](media/copy-device.png)
 	
-11.	**Close** the device popup and click on data export(legacy) tab.
-12.	**Click** New.
-13.	**Click** Azure Event Hubs.
+11.	**Open** Azure Portal.
+12.	**Search** “evh”. **Select** the event hub starting with name “evh-namespace”.
+
+	![select eventhub.](media/evh-selection.png)
+	 
+13.	**Open** Shared access policies tab under Settings menu.
+14.	**Select**  RootManageSharedAccessKey.
+
+    ![open access policies.](media/evh-access-policy.png)
+	
+15.	**Copy** Connection string-primary key and save it future use.
+
+	![copy connection string.](media/evh-connection-string.png)
+
+16.	**Close** the device popup **click** on data export tab.
+17.	**Click** Destinations and **select** New Destinations.
 
     ![data export.](media/data-export.png)
 	
-14.	**Select** Event hub namespace named ‘evh-namespace…’ from the dropdown.
-15.	**Select** Event hub name from the dropdown.
-16.	**Turn off** Devices and Device template features.
-17.	**Click** Save.
+18.	**Enter** eventhub as destination name.
+19.	**Select** Azure Event Hubs as Destination type.
+20.	**Paste** connection string saved in step 15 as connection string.
+21.	**Enter** “evh-iomtconnector-dev” as Event Hub.
+22.	**Click** Save.
 
-    ![data export2.](media/data-export2.png)
+	![destination.](media/destination.png)
 	
-18.	**Click** Dashboard.
-19.	**Click** Edit.
+23.	**Close** the device popup **click** on data export tab.
+24.	**Click** Exports and **select** New Exports .
+	
+	![data-export2.](media/data-export2.png)
+	
+25.	**Enter** eventhub as destination name.
+26.	**Select** Telemetry as Type of data to export.
+27.	**Select** eventhub as Destination from drop down.
+28.	**Click** Save.
+
+	![export.](media/export-tab.png)
+	
+29.	**Click** Dashboard.
+30.	**Click** Edit.
 
     ![device dashboard.](media/device-dashboard.png)
 
-20.	**Click** on configure button of Blood Pressure chart.
-21.	**Select** Device group from the dropdown.
-22.	**Select** Device Name from the dropdown.
-23.	**Click** “+ Capability” button.
-24.	**Select** systolicPressure kpi.
-25.	**Click** “+ Capability” button again.
-26.	**Select** distolicPressure kpi.
-27.	**Click** update.
+31.	**Click** on configure button of Blood Pressure chart.
+32.	**Select** Device group from the dropdown.
+33.	**Select** Device Name from the dropdown.
+34.	**Click** “+ Capability” button.
+35.	**Select** systolicPressure kpi.
+36.	**Click** “+ Capability” button again.
+37.	**Select** distolicPressure kpi.
+38.	**Click** update.
 
      ![device dashboard2.](media/device-dashboard2.png)
 
-28.	**Click** save.
-29.	Repeat above steps for remaining dashboard tiles and their respective kpi’s.
+39.	**Click** save.
+40.	Repeat above steps for remaining dashboard tiles and their respective kpi’s.
 
      ![device dashboard3.](media/device-dashboard3.png)
 
