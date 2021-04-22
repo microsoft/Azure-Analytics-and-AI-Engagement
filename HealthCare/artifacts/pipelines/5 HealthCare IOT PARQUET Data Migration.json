@@ -1,0 +1,62 @@
+{
+    "name": "5 HealthCare IOT PARQUET Data Migration",
+    "properties": {
+        "activities": [
+            {
+                "name": "IOT PARQUET Data Migration",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "ParquetSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "modifiedDatetimeStart": {
+                                "value": "@getPastTime(10, 'minute')",
+                                "type": "Expression"
+                            },
+                            "wildcardFolderPath": "iot-patient",
+                            "wildcardFileName": "*.parquet"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink"
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "IOTParquetToSynapseSource",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "IOTPoolTable",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-12-09T14:37:54Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

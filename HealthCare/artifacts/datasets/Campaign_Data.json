@@ -1,0 +1,178 @@
+{
+    "name": "Campaign_Data",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareDataLakeStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "Mkt_CampaignAnalyticLatest.csv",
+                "folderPath": "after",
+                "fileSystem": "customcsv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Region",
+                "type": "String"
+            },
+            {
+                "name": "Country",
+                "type": "String"
+            },
+            {
+                "name": "ProductCategory",
+                "type": "String"
+            },
+            {
+                "name": "Campaign_ID",
+                "type": "String"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "String"
+            },
+            {
+                "name": "Qualification",
+                "type": "String"
+            },
+            {
+                "name": "Qualification_Number",
+                "type": "String"
+            },
+            {
+                "name": "Response_Status",
+                "type": "String"
+            },
+            {
+                "name": "Responses",
+                "type": "String"
+            },
+            {
+                "name": "Cost",
+                "type": "String"
+            },
+            {
+                "name": "Revenue",
+                "type": "String"
+            },
+            {
+                "name": "ROI",
+                "type": "String"
+            },
+            {
+                "name": "Lead_Generation",
+                "type": "String"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "String"
+            },
+            {
+                "name": "Campaign_Tactic",
+                "type": "String"
+            },
+            {
+                "name": "Customer_Segment",
+                "type": "String"
+            },
+            {
+                "name": "Status",
+                "type": "String"
+            },
+            {
+                "name": "Profit",
+                "type": "String"
+            },
+            {
+                "name": "Marketing_Cost",
+                "type": "String"
+            },
+            {
+                "name": "CampaignID",
+                "type": "String"
+            },
+            {
+                "name": "Prop_20",
+                "type": "String"
+            },
+            {
+                "name": "Prop_21",
+                "type": "String"
+            },
+            {
+                "name": "Prop_22",
+                "type": "String"
+            },
+            {
+                "name": "Prop_23",
+                "type": "String"
+            },
+            {
+                "name": "Prop_24",
+                "type": "String"
+            },
+            {
+                "name": "Prop_25",
+                "type": "String"
+            },
+            {
+                "name": "Prop_26",
+                "type": "String"
+            },
+            {
+                "name": "Prop_27",
+                "type": "String"
+            },
+            {
+                "name": "Prop_28",
+                "type": "String"
+            },
+            {
+                "name": "Prop_29",
+                "type": "String"
+            },
+            {
+                "name": "Prop_30",
+                "type": "String"
+            },
+            {
+                "name": "Prop_31",
+                "type": "String"
+            },
+            {
+                "name": "Prop_32",
+                "type": "String"
+            },
+            {
+                "name": "Prop_33",
+                "type": "String"
+            },
+            {
+                "name": "Prop_34",
+                "type": "String"
+            },
+            {
+                "name": "Prop_35",
+                "type": "String"
+            },
+            {
+                "name": "Prop_36",
+                "type": "String"
+            },
+            {
+                "name": "Prop_37",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

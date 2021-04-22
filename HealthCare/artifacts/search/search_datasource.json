@@ -1,0 +1,10 @@
+{
+    "name" : "hospitalincidentsearch",
+    "type" : "azureblob",
+    "credentials" : {
+        "connectionString" : "#STORAGE_CONNECTION#"
+    },
+    "container" : {
+        "name" : "formrecogoutput"
+    }
+}

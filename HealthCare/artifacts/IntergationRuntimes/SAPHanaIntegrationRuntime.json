@@ -1,0 +1,6 @@
+{
+    "name": "SAPHanaIntegrationRuntime",
+    "properties": {
+        "type": "SelfHosted"
+    }
+}

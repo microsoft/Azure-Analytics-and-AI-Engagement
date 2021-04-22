@@ -1,0 +1,17 @@
+{
+    "name": "IOMTDataInSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareSynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CosmosIomtData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

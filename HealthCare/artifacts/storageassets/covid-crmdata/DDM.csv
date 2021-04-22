@@ -1,0 +1,555 @@
+Region,Country,Campaign_Name,Revenue,Revenue_Target,City,State,RoleID
+South East,US,Hit the track,"$11,620.00 ","$17,230.00 ",Miami,Florida,20
+South America,Mexico,Hit the track,"$8,121.00 ","$10,451.00 ",NULL,NULL,17
+South East,US,Hit the track,"$5,333.00 ","$7,346.00 ",Miami,Florida,20
+South America,Mexico,Hit the track,"$17,637.00 ","$6,876.00 ",NULL,NULL,17
+South East,US,Hit the track,"$14,114.00 ","$15,482.00 ",Miami,Florida,20
+South America,Brazil,Hit the track,"$10,934.00 ","$19,723.00 ",NULL,NULL,17
+South East,US,Hit the track,"$14,114.00 ","$15,482.00 ",Miami,Florida,20
+South America,Brazil,Hit the track,"$16,347.00 ","$6,942.00 ",NULL,NULL,17
+South East,US,Hit the track,"$11,620.00 ","$17,230.00 ",Miami,Florida,20
+South America,Brazil,Hit the track,"$16,347.00 ","$6,942.00 ",NULL,NULL,17
+South East,US,Hit the track,"$5,333.00 ","$7,346.00 ",Miami,Florida,20
+South America,Mexico,Hit the track,"$7,133.00 ","$7,388.00 ",NULL,NULL,17
+South East,US,Hit the track,"$10,182.00 ","$13,630.00 ",Miami,Florida,20
+South America,Brazil,Hit the track,"$5,663.00 ","$16,837.00 ",NULL,NULL,17
+South East,US,Hit the track,"$10,182.00 ","$13,630.00 ",Miami,Florida,20
+South America,Mexico,Hit the track,"$7,133.00 ","$7,388.00 ",NULL,NULL,17
+Asia Pacific,Japan,Hit the track,"$9,781.00 ","$19,592.00 ",NULL,NULL,20
+Europe,France,Hit the track,"$14,445.00 ","$12,231.00 ",NULL,NULL,17
+Asia Pacific,Japan,Hit the track,"$9,781.00 ","$19,592.00 ",NULL,NULL,20
+Europe,Italy,Hit the track,"$17,484.00 ","$9,517.00 ",NULL,NULL,17
+Asia Pacific,Indonesia,Hit the track,"$17,810.00 ","$7,536.00 ",NULL,NULL,20
+Europe,Italy,Hit the track,"$7,505.00 ","$19,524.00 ",NULL,NULL,17
+Asia Pacific,Indonesia,Hit the track,"$17,810.00 ","$7,536.00 ",NULL,NULL,20
+Europe,France,Hit the track,"$14,445.00 ","$12,231.00 ",NULL,NULL,17
+North & Central America,USA,Hit the track,"$6,689.00 ","$13,088.00 ",NULL,NULL,20
+Europe,Italy,Hit the track,"$17,484.00 ","$9,517.00 ",NULL,NULL,17
+North & Central America,USA,Hit the track,"$12,174.00 ","$6,996.00 ",NULL,NULL,20
+Europe,Italy,Hit the track,"$7,505.00 ","$19,524.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$10,865.00 ","$17,907.00 ",NULL,NULL,20
+South America,Mexico,For Your Life,"$10,223.00 ","$17,414.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hit the track,"$17,486.00 ","$11,990.00 ",NULL,NULL,20
+South America,Brazil,For Your Life,"$15,719.00 ","$8,723.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$5,318.00 ","$16,079.00 ",NULL,NULL,20
+South America,Mexico,For Your Life,"$9,250.00 ","$15,790.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$6,689.00 ","$13,088.00 ",NULL,NULL,20
+South America,Brazil,For Your Life,"$5,103.00 ","$6,799.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$12,174.00 ","$6,996.00 ",NULL,NULL,20
+South America,Mexico,For Your Life,"$7,197.00 ","$5,731.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$10,865.00 ","$17,907.00 ",NULL,NULL,20
+South America,Mexico,For Your Life,"$13,098.00 ","$5,663.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hit the track,"$17,486.00 ","$11,990.00 ",NULL,NULL,20
+South America,Brazil,For Your Life,"$13,945.00 ","$13,624.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$5,318.00 ","$16,079.00 ",NULL,NULL,20
+South America,Brazil,For Your Life,"$11,245.00 ","$18,041.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$7,014.00 ","$16,466.00 ",NULL,NULL,20
+South America,Mexico,For Your Life,"$10,223.00 ","$17,414.00 ",NULL,NULL,NULL
+North & Central America,USA,Hit the track,"$7,014.00 ","$16,466.00 ",NULL,NULL,NULL
+South America,Mexico,For Your Life,"$7,197.00 ","$5,731.00 ",NULL,NULL,NULL
+South America,Brazil,Hit the track,"$5,663.00 ","$16,837.00 ",NULL,NULL,NULL
+South America,Mexico,For Your Life,"$9,831.00 ","$15,236.00 ",NULL,NULL,NULL
+South America,Mexico,Hit the track,"$8,121.00 ","$10,451.00 ",NULL,NULL,NULL
+South America,Mexico,For Your Life,"$9,831.00 ","$15,236.00 ",NULL,NULL,NULL
+South America,Mexico,Hit the track,"$17,637.00 ","$6,876.00 ",NULL,NULL,NULL
+Europe,France,For Your Life,"$13,221.00 ","$8,584.00 ",NULL,NULL,NULL
+South America,Brazil,Hit the track,"$10,934.00 ","$19,723.00 ",NULL,NULL,NULL
+Europe,Spain,For Your Life,"$12,488.00 ","$18,299.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$7,146.00 ","$17,780.00 ",Miami,Florida,NULL
+Europe,France,For Your Life,"$15,119.00 ","$17,269.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$7,842.00 ","$10,624.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$15,740.00 ","$7,685.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$16,523.00 ","$17,741.00 ",Miami,Florida,NULL
+Europe,Germany,For Your Life,"$19,503.00 ","$14,609.00 ",NULL,NULL,17
+South East,US,For Your Life,"$9,702.00 ","$7,876.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$6,815.00 ","$14,606.00 ",NULL,NULL,17
+South East,US,For Your Life,"$13,132.00 ","$17,228.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$11,838.00 ","$13,538.00 ",NULL,NULL,17
+South East,US,For Your Life,"$14,651.00 ","$8,429.00 ",Miami,Florida,NULL
+Europe,UK,For Your Life,"$12,642.00 ","$11,692.00 ",NULL,NULL,17
+South East,US,For Your Life,"$13,132.00 ","$17,228.00 ",Miami,Florida,NULL
+Europe,Turkey,For Your Life,"$17,101.00 ","$13,212.00 ",NULL,NULL,17
+South East,US,For Your Life,"$14,651.00 ","$8,429.00 ",Miami,Florida,NULL
+Europe,France,For Your Life,"$15,119.00 ","$17,269.00 ",NULL,NULL,17
+South East,US,For Your Life,"$7,842.00 ","$10,624.00 ",Miami,Florida,NULL
+Europe,France,For Your Life,"$13,221.00 ","$8,584.00 ",NULL,NULL,17
+South East,US,For Your Life,"$16,523.00 ","$17,741.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$15,740.00 ","$7,685.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$9,702.00 ","$7,876.00 ",Miami,Florida,NULL
+Europe,Spain,For Your Life,"$12,488.00 ","$18,299.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$7,146.00 ","$17,780.00 ",Miami,Florida,NULL
+Europe,Germany,For Your Life,"$19,503.00 ","$14,609.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$9,348.00 ","$11,769.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$6,815.00 ","$14,606.00 ",NULL,NULL,NULL
+South East,US,For Your Life,"$9,348.00 ","$11,769.00 ",Miami,Florida,NULL
+Europe,Italy,For Your Life,"$11,838.00 ","$13,538.00 ",NULL,NULL,NULL
+Asia Pacific,China,For Your Life,"$14,605.00 ","$18,971.00 ",NULL,NULL,NULL
+Europe,UK,For Your Life,"$12,642.00 ","$11,692.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,For Your Life,"$5,889.00 ","$9,819.00 ",NULL,NULL,NULL
+Europe,Turkey,For Your Life,"$17,101.00 ","$13,212.00 ",NULL,NULL,NULL
+Asia Pacific,India,For Your Life,"$14,300.00 ","$13,983.00 ",NULL,NULL,NULL
+Europe,Turkey,For Your Life,"$8,382.00 ","$19,209.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,For Your Life,"$15,575.00 ","$19,053.00 ",NULL,NULL,NULL
+Europe,France,For Your Life,"$15,557.00 ","$14,176.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,For Your Life,"$9,112.00 ","$11,930.00 ",NULL,NULL,NULL
+Europe,Germany,For Your Life,"$5,466.00 ","$9,140.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,For Your Life,"$11,290.00 ","$12,495.00 ",NULL,NULL,NULL
+Europe,UK,For Your Life,"$13,732.00 ","$5,799.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,For Your Life,"$10,246.00 ","$18,683.00 ",NULL,NULL,NULL
+Europe,France,For Your Life,"$9,764.00 ","$9,300.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,For Your Life,"$16,850.00 ","$15,753.00 ",NULL,NULL,NULL
+Europe,Turkey,For Your Life,"$8,382.00 ","$19,209.00 ",NULL,NULL,NULL
+Asia Pacific,China,For Your Life,"$14,605.00 ","$18,971.00 ",NULL,NULL,NULL
+Europe,France,For Your Life,"$15,557.00 ","$14,176.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,For Your Life,"$5,889.00 ","$9,819.00 ",NULL,NULL,NULL
+Europe,Germany,For Your Life,"$5,466.00 ","$9,140.00 ",NULL,NULL,NULL
+Asia Pacific,India,For Your Life,"$14,300.00 ","$13,983.00 ",NULL,NULL,NULL
+Europe,UK,For Your Life,"$13,732.00 ","$5,799.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,For Your Life,"$15,575.00 ","$19,053.00 ",NULL,NULL,NULL
+Europe,France,For Your Life,"$9,764.00 ","$9,300.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,For Your Life,"$9,112.00 ","$11,930.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$9,229.00 ","$16,528.00 ",NULL,NULL,20
+Asia Pacific,Indonesia,For Your Life,"$11,290.00 ","$12,495.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$5,766.00 ","$17,620.00 ",NULL,NULL,20
+Asia Pacific,Indonesia,For Your Life,"$10,246.00 ","$18,683.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$12,882.00 ","$19,806.00 ",NULL,NULL,20
+Asia Pacific,Australia,For Your Life,"$16,850.00 ","$15,753.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$8,804.00 ","$10,137.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$9,668.00 ","$14,658.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$9,253.00 ","$14,347.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$15,148.00 ","$19,098.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$9,229.00 ","$16,528.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$10,296.00 ","$7,313.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$14,316.00 ","$19,274.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$15,387.00 ","$6,961.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$5,233.00 ","$12,227.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$10,344.00 ","$15,220.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$14,316.00 ","$19,274.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$11,441.00 ","$6,741.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$5,233.00 ","$12,227.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$6,278.00 ","$11,478.00 ",NULL,NULL,NULL
+Europe,Germany,Thanks Giving,"$7,273.00 ","$6,184.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$9,668.00 ","$14,658.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$5,846.00 ","$8,447.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$5,391.00 ","$14,679.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$14,992.00 ","$15,699.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$15,148.00 ","$19,098.00 ",NULL,NULL,NULL
+Europe,Spain,Thanks Giving,"$14,328.00 ","$15,577.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$13,554.00 ","$19,215.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$11,247.00 ","$10,339.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$10,296.00 ","$7,313.00 ",NULL,NULL,NULL
+Europe,Turkey,Thanks Giving,"$10,269.00 ","$11,191.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$15,387.00 ","$6,961.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$13,681.00 ","$13,003.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$10,344.00 ","$15,220.00 ",NULL,NULL,NULL
+Europe,UK,Thanks Giving,"$13,789.00 ","$13,596.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$11,441.00 ","$6,741.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$7,131.00 ","$7,453.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$6,278.00 ","$11,478.00 ",NULL,NULL,NULL
+Europe,Germany,Thanks Giving,"$7,273.00 ","$6,184.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$10,113.00 ","$9,976.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$5,846.00 ","$8,447.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$13,773.00 ","$11,719.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$14,992.00 ","$15,699.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$10,113.00 ","$9,976.00 ",NULL,NULL,NULL
+Europe,Spain,Thanks Giving,"$14,328.00 ","$15,577.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$13,773.00 ","$11,719.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$11,247.00 ","$10,339.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$5,391.00 ","$14,679.00 ",NULL,NULL,NULL
+Europe,Turkey,Thanks Giving,"$10,269.00 ","$11,191.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$13,554.00 ","$19,215.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$13,681.00 ","$13,003.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$11,404.00 ","$16,844.00 ",NULL,NULL,NULL
+Europe,UK,Thanks Giving,"$13,789.00 ","$13,596.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$19,142.00 ","$19,858.00 ",NULL,NULL,NULL
+Europe,Italy,Thanks Giving,"$7,131.00 ","$7,453.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$10,414.00 ","$9,245.00 ",NULL,NULL,NULL
+Europe,Spain,Thanks Giving,"$5,684.00 ","$5,400.00 ",NULL,NULL,20
+North & Central America,Canada,For Your Life,"$11,404.00 ","$16,844.00 ",NULL,NULL,NULL
+Europe,Turkey,Thanks Giving,"$12,965.00 ","$12,220.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$19,142.00 ","$19,858.00 ",NULL,NULL,NULL
+Europe,Spain,Thanks Giving,"$5,684.00 ","$5,400.00 ",NULL,NULL,20
+North & Central America,USA,For Your Life,"$10,414.00 ","$9,245.00 ",NULL,NULL,NULL
+Europe,Turkey,Thanks Giving,"$12,965.00 ","$12,220.00 ",NULL,NULL,20
+South America,Brazil,For Your Life,"$15,719.00 ","$8,723.00 ",NULL,NULL,NULL
+South America,Mexico,Patient Stories,"$16,240.00 ","$16,038.00 ",NULL,NULL,NULL
+South America,Mexico,For Your Life,"$13,098.00 ","$5,663.00 ",NULL,NULL,NULL
+South America,Mexico,Patient Stories,"$8,284.00 ","$9,840.00 ",NULL,NULL,NULL
+South America,Mexico,For Your Life,"$9,250.00 ","$15,790.00 ",NULL,NULL,NULL
+South America,Brazil,Patient Stories,"$21,637.00 ","$5,666.00 ",NULL,NULL,NULL
+South America,Brazil,For Your Life,"$5,103.00 ","$6,799.00 ",NULL,NULL,NULL
+South America,Mexico,Patient Stories,"$15,521.00 ","$13,935.00 ",NULL,NULL,NULL
+South America,Brazil,For Your Life,"$13,945.00 ","$13,624.00 ",NULL,NULL,NULL
+South America,Brazil,Patient Stories,"$14,691.00 ","$14,601.00 ",NULL,NULL,NULL
+South America,Brazil,For Your Life,"$11,245.00 ","$18,041.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$5,022.00 ","$7,920.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$10,225.00 ","$12,472.00 ",Miami,Florida,NULL
+Europe,France,Patient Stories,"$6,593.00 ","$17,096.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$7,001.00 ","$10,528.00 ",Miami,Florida,NULL
+Europe,UK,Patient Stories,"$8,264.00 ","$19,049.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$9,140.00 ","$19,323.00 ",Miami,Florida,NULL
+Europe,Spain,Patient Stories,"$9,761.00 ","$13,831.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$9,935.00 ","$15,232.00 ",Miami,Florida,NULL
+Europe,UK,Patient Stories,"$16,859.00 ","$13,324.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$9,140.00 ","$19,323.00 ",Miami,Florida,NULL
+Europe,Italy,Patient Stories,"$5,867.00 ","$19,049.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$9,935.00 ","$15,232.00 ",Miami,Florida,NULL
+Europe,Turkey,Patient Stories,"$14,726.00 ","$5,249.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$10,225.00 ","$12,472.00 ",Miami,Florida,NULL
+Europe,France,Patient Stories,"$11,703.00 ","$9,822.00 ",NULL,NULL,NULL
+South East,US,Thanks Giving,"$7,001.00 ","$10,528.00 ",Miami,Florida,NULL
+Europe,France,Patient Stories,"$6,593.00 ","$17,096.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Thanks Giving,"$11,400.00 ","$15,117.00 ",NULL,NULL,NULL
+Europe,UK,Patient Stories,"$8,264.00 ","$19,049.00 ",NULL,NULL,NULL
+Asia Pacific,China,Thanks Giving,"$5,434.00 ","$10,709.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$9,761.00 ","$13,831.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,Thanks Giving,"$13,006.00 ","$15,079.00 ",NULL,NULL,NULL
+Europe,UK,Patient Stories,"$16,859.00 ","$13,324.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Thanks Giving,"$15,642.00 ","$10,214.00 ",NULL,NULL,NULL
+Europe,Italy,Patient Stories,"$5,867.00 ","$19,049.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Thanks Giving,"$11,400.00 ","$15,117.00 ",NULL,NULL,NULL
+Europe,France,Patient Stories,"$11,703.00 ","$9,822.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,Thanks Giving,"$13,006.00 ","$15,079.00 ",NULL,NULL,NULL
+Europe,Turkey,Patient Stories,"$14,726.00 ","$5,249.00 ",NULL,NULL,NULL
+Asia Pacific,China,Thanks Giving,"$5,434.00 ","$10,709.00 ",NULL,NULL,NULL
+Europe,Italy,Patient Stories,"$12,366.00 ","$11,187.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Thanks Giving,"$15,642.00 ","$10,214.00 ",NULL,NULL,NULL
+Europe,UK,Patient Stories,"$5,120.00 ","$16,652.00 ",NULL,NULL,NULL
+North & Central America,USA,Thanks Giving,"$15,670.00 ","$5,412.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$10,260.00 ","$14,654.00 ",NULL,NULL,NULL
+North & Central America,Canada,Thanks Giving,"$14,804.00 ","$17,275.00 ",NULL,NULL,NULL
+Europe,Turkey,Patient Stories,"$11,719.00 ","$19,049.00 ",NULL,NULL,NULL
+North & Central America,USA,Thanks Giving,"$15,670.00 ","$5,412.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$8,871.00 ","$13,868.00 ",NULL,NULL,NULL
+North & Central America,Canada,Thanks Giving,"$14,804.00 ","$17,275.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$12,191.00 ","$14,106.00 ",NULL,NULL,NULL
+North & Central America,USA,Thanks Giving,"$5,515.00 ","$18,229.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$5,022.00 ","$7,920.00 ",NULL,NULL,NULL
+North & Central America,USA,Thanks Giving,"$5,515.00 ","$18,229.00 ",NULL,NULL,NULL
+Europe,Italy,Patient Stories,"$12,366.00 ","$11,187.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$5,766.00 ","$17,620.00 ",NULL,NULL,NULL
+Europe,UK,Patient Stories,"$5,120.00 ","$16,652.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$12,882.00 ","$19,806.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$10,260.00 ","$14,654.00 ",NULL,NULL,NULL
+South America,Brazil,Thanks Giving,"$8,804.00 ","$10,137.00 ",NULL,NULL,NULL
+Europe,Turkey,Patient Stories,"$11,719.00 ","$19,049.00 ",NULL,NULL,NULL
+South America,Mexico,Thanks Giving,"$9,253.00 ","$14,347.00 ",NULL,NULL,NULL
+Europe,Spain,Patient Stories,"$8,871.00 ","$13,868.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$11,564.00 ","$19,306.00 ",Miami,Florida,NULL
+Europe,Spain,Patient Stories,"$12,191.00 ","$14,106.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$9,963.00 ","$18,377.00 ",Miami,Florida,NULL
+South America,Mexico,Care Like Family,"$13,070.00 ","$16,389.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$17,488.00 ","$9,941.00 ",Miami,Florida,NULL
+South America,Mexico,Care Like Family,"$6,285.00 ","$8,448.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$8,628.00 ","$12,622.00 ",Miami,Florida,NULL
+South America,Mexico,Care Like Family,"$12,503.00 ","$9,977.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$8,628.00 ","$12,622.00 ",Miami,Florida,NULL
+South America,Mexico,Care Like Family,"$12,503.00 ","$9,977.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$9,963.00 ","$18,377.00 ",Miami,Florida,NULL
+Europe,Germany,Care Like Family,"$5,117.00 ","$8,713.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$17,488.00 ","$9,941.00 ",Miami,Florida,NULL
+Europe,UK,Care Like Family,"$5,117.00 ","$9,305.00 ",NULL,NULL,NULL
+South East,US,Patient Stories,"$11,564.00 ","$19,306.00 ",Miami,Florida,NULL
+Europe,Germany,Care Like Family,"$7,607.00 ","$15,850.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,Patient Stories,"$17,627.00 ","$11,422.00 ",NULL,NULL,NULL
+Europe,Spain,Care Like Family,"$12,739.00 ","$19,242.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$11,988.00 ","$19,348.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$14,764.00 ","$5,876.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,Patient Stories,"$14,778.00 ","$13,122.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$13,083.00 ","$11,336.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$12,409.00 ","$10,914.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$5,117.00 ","$8,713.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$6,883.00 ","$10,341.00 ",NULL,NULL,NULL
+Europe,UK,Care Like Family,"$5,117.00 ","$9,305.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$6,580.00 ","$5,490.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$7,607.00 ","$15,850.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,Patient Stories,"$17,627.00 ","$11,422.00 ",NULL,NULL,NULL
+Europe,Spain,Care Like Family,"$12,739.00 ","$19,242.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$11,988.00 ","$19,348.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$14,764.00 ","$5,876.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,Patient Stories,"$14,778.00 ","$13,122.00 ",NULL,NULL,NULL
+Europe,Germany,Care Like Family,"$13,083.00 ","$11,336.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$12,409.00 ","$10,914.00 ",NULL,NULL,NULL
+Europe,Spain,Care Like Family,"$12,907.00 ","$5,218.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$6,883.00 ","$10,341.00 ",NULL,NULL,NULL
+Europe,Spain,Care Like Family,"$12,907.00 ","$5,218.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Patient Stories,"$6,580.00 ","$5,490.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$5,418.00 ","$13,970.00 ",NULL,NULL,NULL
+Asia Pacific,China,Patient Stories,"$14,944.00 ","$6,089.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$16,611.00 ","$7,917.00 ",NULL,NULL,NULL
+Asia Pacific,India,Patient Stories,"$16,753.00 ","$13,851.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$16,207.00 ","$14,061.00 ",NULL,NULL,NULL
+Asia Pacific,Korea,Patient Stories,"$6,691.00 ","$7,070.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$8,518.00 ","$19,121.00 ",NULL,NULL,NULL
+Asia Pacific,China,Patient Stories,"$13,516.00 ","$8,891.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$8,518.00 ","$19,121.00 ",NULL,NULL,NULL
+Asia Pacific,China,Patient Stories,"$14,944.00 ","$6,089.00 ",NULL,NULL,NULL
+Europe,Italy,You Have Us,"$9,486.00 ","$8,891.00 ",NULL,NULL,20
+Asia Pacific,India,Patient Stories,"$16,753.00 ","$13,851.00 ",NULL,NULL,NULL
+Europe,Germany,You Have Us,"$16,810.00 ","$10,178.00 ",NULL,NULL,20
+Asia Pacific,Korea,Patient Stories,"$6,691.00 ","$7,070.00 ",NULL,NULL,NULL
+Europe,France,You Have Us,"$11,059.00 ","$19,059.00 ",NULL,NULL,20
+Asia Pacific,China,Patient Stories,"$13,516.00 ","$8,891.00 ",NULL,NULL,NULL
+Europe,France,You Have Us,"$13,124.00 ","$14,955.00 ",NULL,NULL,20
+Asia Pacific,Australia,Patient Stories,"$7,365.00 ","$13,123.00 ",NULL,NULL,NULL
+Europe,Germany,You Have Us,"$10,027.00 ","$10,643.00 ",NULL,NULL,20
+Asia Pacific,Indonesia,Patient Stories,"$16,835.00 ","$12,382.00 ",NULL,NULL,NULL
+Europe,Italy,You Have Us,"$9,486.00 ","$8,891.00 ",NULL,NULL,20
+Asia Pacific,Australia,Patient Stories,"$7,365.00 ","$13,123.00 ",NULL,NULL,NULL
+Europe,Germany,You Have Us,"$16,810.00 ","$10,178.00 ",NULL,NULL,20
+Asia Pacific,Indonesia,Patient Stories,"$16,835.00 ","$12,382.00 ",NULL,NULL,NULL
+Europe,France,You Have Us,"$11,059.00 ","$19,059.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$8,556.00 ","$18,352.00 ",NULL,NULL,NULL
+Europe,Germany,You Have Us,"$10,027.00 ","$10,643.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$9,192.00 ","$6,179.00 ",NULL,NULL,NULL
+Europe,France,You Have Us,"$13,124.00 ","$14,955.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$8,465.00 ","$7,654.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$6,497.00 ","$6,147.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$17,859.00 ","$17,681.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$15,142.00 ","$7,147.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$13,802.00 ","$5,380.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$9,864.00 ","$5,802.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$13,873.00 ","$10,617.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$6,497.00 ","$6,147.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$13,174.00 ","$14,329.00 ",NULL,NULL,NULL
+South America,Mexico,Hope,"$12,061.00 ","$19,769.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$9,192.00 ","$6,179.00 ",NULL,NULL,NULL
+South America,Mexico,Hope,"$12,061.00 ","$19,769.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$8,465.00 ","$7,654.00 ",NULL,NULL,NULL
+Europe,Germany,Hope,"$14,865.00 ","$15,960.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$14,995.00 ","$19,129.00 ",NULL,NULL,NULL
+Europe,Germany,Hope,"$14,290.00 ","$10,487.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$17,859.00 ","$17,681.00 ",NULL,NULL,NULL
+Europe,France,Hope,"$16,593.00 ","$10,533.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$13,802.00 ","$5,380.00 ",NULL,NULL,NULL
+Europe,Germany,Hope,"$14,865.00 ","$15,960.00 ",NULL,NULL,20
+North & Central America,Canada,Patient Stories,"$13,873.00 ","$10,617.00 ",NULL,NULL,NULL
+Europe,Germany,Hope,"$14,290.00 ","$10,487.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$13,174.00 ","$14,329.00 ",NULL,NULL,NULL
+Europe,France,Hope,"$16,593.00 ","$10,533.00 ",NULL,NULL,20
+North & Central America,USA,Patient Stories,"$14,995.00 ","$19,129.00 ",NULL,NULL,NULL
+North & Central America,Canada,Patient Stories,"$8,556.00 ","$18,352.00 ",NULL,NULL,20
+South America,Mexico,Patient Stories,"$16,240.00 ","$16,038.00 ",NULL,NULL,NULL
+South America,Mexico,Patient Stories,"$8,284.00 ","$9,840.00 ",NULL,NULL,20
+South America,Brazil,Patient Stories,"$21,637.00 ","$5,666.00 ",NULL,NULL,NULL
+South America,Mexico,Patient Stories,"$15,521.00 ","$13,935.00 ",NULL,NULL,20
+South America,Brazil,Patient Stories,"$14,691.00 ","$14,601.00 ",NULL,NULL,NULL
+South East,US,Care Like Family,"$5,972.00 ","$10,692.00 ",Miami,Florida,20
+South East,US,Care Like Family,"$5,622.00 ","$12,306.00 ",Miami,Florida,NULL
+South East,US,Care Like Family,"$7,264.00 ","$9,868.00 ",Miami,Florida,20
+South East,US,Care Like Family,"$7,264.00 ","$9,868.00 ",Miami,Florida,NULL
+South East,US,Care Like Family,"$5,972.00 ","$10,692.00 ",Miami,Florida,20
+South East,US,Care Like Family,"$5,622.00 ","$12,306.00 ",Miami,Florida,NULL
+Asia Pacific,Australia,Care Like Family,"$8,221.00 ","$15,730.00 ",NULL,NULL,20
+Asia Pacific,Australia,Care Like Family,"$13,512.00 ","$18,877.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,Care Like Family,"$8,221.00 ","$15,730.00 ",NULL,NULL,20
+Asia Pacific,Australia,Care Like Family,"$13,512.00 ","$18,877.00 ",NULL,NULL,NULL
+Asia Pacific,China,Care Like Family,"$11,145.00 ","$12,957.00 ",NULL,NULL,20
+Asia Pacific,China,Care Like Family,"$11,145.00 ","$12,957.00 ",NULL,NULL,NULL
+North & Central America,Canada,Care Like Family,"$16,386.00 ","$9,989.00 ",NULL,NULL,20
+North & Central America,Canada,Care Like Family,"$16,386.00 ","$9,989.00 ",NULL,NULL,NULL
+South America,Mexico,Care Like Family,"$16,062.00 ","$7,721.00 ",NULL,NULL,NULL
+South America,Mexico,Care Like Family,"$13,070.00 ","$16,389.00 ",NULL,NULL,NULL
+South America,Mexico,Care Like Family,"$6,285.00 ","$8,448.00 ",NULL,NULL,NULL
+South America,Mexico,Care Like Family,"$16,062.00 ","$7,721.00 ",NULL,NULL,NULL
+South East,US,You Have Us,"$5,496.00 ","$15,301.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$6,651.00 ","$19,835.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$11,983.00 ","$9,825.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$6,651.00 ","$19,835.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$11,983.00 ","$9,825.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$5,496.00 ","$15,301.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$8,710.00 ","$9,713.00 ",Miami,Florida,NULL
+South East,US,You Have Us,"$8,710.00 ","$9,713.00 ",Miami,Florida,NULL
+Asia Pacific,China,You Have Us,"$5,484.00 ","$11,469.00 ",NULL,NULL,NULL
+Asia Pacific,India,You Have Us,"$11,231.00 ","$18,669.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,You Have Us,"$12,974.00 ","$19,462.00 ",NULL,NULL,NULL
+Asia Pacific,India,You Have Us,"$11,231.00 ","$18,669.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,You Have Us,"$12,974.00 ","$19,462.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,You Have Us,"$17,384.00 ","$8,018.00 ",NULL,NULL,NULL
+Asia Pacific,India,You Have Us,"$9,020.00 ","$13,475.00 ",NULL,NULL,NULL
+Asia Pacific,China,You Have Us,"$5,484.00 ","$11,469.00 ",NULL,NULL,NULL
+Asia Pacific,Australia,You Have Us,"$17,384.00 ","$8,018.00 ",NULL,NULL,NULL
+Asia Pacific,India,You Have Us,"$9,020.00 ","$13,475.00 ",NULL,NULL,NULL
+North & Central America,Canada,You Have Us,"$17,291.00 ","$12,719.00 ",NULL,NULL,NULL
+North & Central America,Canada,You Have Us,"$17,291.00 ","$12,719.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$5,418.00 ","$13,970.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$16,611.00 ","$7,917.00 ",NULL,NULL,NULL
+South America,Brazil,You Have Us,"$16,207.00 ","$14,061.00 ",NULL,NULL,NULL
+South East,US,Hope,"$12,929.00 ","$9,077.00 ",Miami,Florida,NULL
+South East,US,Hope,"$6,738.00 ","$11,176.00 ",Miami,Florida,NULL
+South East,US,Hope,"$5,712.00 ","$6,947.00 ",Miami,Florida,NULL
+South East,US,Hope,"$6,738.00 ","$11,176.00 ",Miami,Florida,NULL
+South East,US,Hope,"$5,712.00 ","$6,947.00 ",Miami,Florida,NULL
+South East,US,Hope,"$12,929.00 ","$9,077.00 ",Miami,Florida,NULL
+Asia Pacific,Indonesia,Hope,"$12,711.00 ","$8,946.00 ",NULL,NULL,NULL
+Asia Pacific,Indonesia,Hope,"$12,711.00 ","$8,946.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Hope,"$9,952.00 ","$13,231.00 ",NULL,NULL,NULL
+Asia Pacific,Japan,Hope,"$9,952.00 ","$13,231.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$6,414.00 ","$12,619.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$5,197.00 ","$18,456.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$13,349.00 ","$16,936.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$13,735.00 ","$16,671.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$10,480.00 ","$7,379.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$6,414.00 ","$12,619.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$15,850.00 ","$18,751.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$5,197.00 ","$18,456.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$13,735.00 ","$16,671.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$13,349.00 ","$16,936.00 ",NULL,NULL,NULL
+North & Central America,Canada,Hope,"$10,480.00 ","$7,379.00 ",NULL,NULL,NULL
+North & Central America,USA,Hope,"$15,850.00 ","$18,751.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$15,142.00 ","$7,147.00 ",NULL,NULL,NULL
+South America,Brazil,Hope,"$9,864.00 ","$5,802.00 ",NULL,NULL,NULL
+Southern California,US,For Your Life,"$14,992.00 ","$15,699.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,935.00 ","$15,232.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,119.00 ","$17,269.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,740.00 ","$7,685.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,778.00 ","$13,122.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,296.00 ","$7,313.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,605.00 ","$18,971.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,328.00 ","$15,577.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,247.00 ","$10,339.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,409.00 ","$10,914.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,418.00 ","$13,970.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,387.00 ","$6,961.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,620.00 ","$17,230.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,859.00 ","$17,681.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,738.00 ","$11,176.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,934.00 ","$19,723.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,963.00 ","$18,377.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,344.00 ","$15,220.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,842.00 ","$10,624.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,735.00 ","$16,671.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,290.00 ","$10,487.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,739.00 ","$19,242.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$19,503.00 ","$14,609.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,496.00 ","$15,301.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,441.00 ","$6,741.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,006.00 ","$15,079.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,070.00 ","$16,389.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,873.00 ","$10,617.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,611.00 ","$7,917.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,174.00 ","$6,996.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,867.00 ","$19,049.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,112.00 ","$11,930.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,386.00 ","$9,989.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,691.00 ","$14,601.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,974.00 ","$19,462.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,246.00 ","$18,683.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,333.00 ","$7,346.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,059.00 ","$19,059.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,488.00 ","$9,941.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,711.00 ","$8,946.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,712.00 ","$6,947.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,027.00 ","$10,643.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,703.00 ","$9,822.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,207.00 ","$14,061.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,497.00 ","$6,147.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,850.00 ","$15,753.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,264.00 ","$9,868.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,062.00 ","$7,721.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,414.00 ","$12,619.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,593.00 ","$17,096.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,140.00 ","$19,323.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,668.00 ","$14,658.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,264.00 ","$19,049.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,761.00 ","$13,831.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,719.00 ","$8,723.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,273.00 ","$6,184.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,250.00 ","$15,790.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,121.00 ","$10,451.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,192.00 ","$6,179.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,465.00 ","$7,654.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,627.00 ","$11,422.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,148.00 ","$19,098.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,846.00 ","$8,447.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,197.00 ","$18,456.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,103.00 ","$6,799.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,988.00 ","$19,348.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,992.00 ","$15,699.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,935.00 ","$15,232.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,119.00 ","$17,269.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,740.00 ","$7,685.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,778.00 ","$13,122.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,296.00 ","$7,313.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,605.00 ","$18,971.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,328.00 ","$15,577.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,247.00 ","$10,339.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,409.00 ","$10,914.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,418.00 ","$13,970.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,387.00 ","$6,961.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,620.00 ","$17,230.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,859.00 ","$17,681.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,738.00 ","$11,176.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,934.00 ","$19,723.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,963.00 ","$18,377.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,344.00 ","$15,220.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,842.00 ","$10,624.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,735.00 ","$16,671.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,290.00 ","$10,487.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,739.00 ","$19,242.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$19,503.00 ","$14,609.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,496.00 ","$15,301.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,441.00 ","$6,741.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,006.00 ","$15,079.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,070.00 ","$16,389.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,264.00 ","$9,868.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,062.00 ","$7,721.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,414.00 ","$12,619.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,593.00 ","$17,096.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,140.00 ","$19,323.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,668.00 ","$14,658.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,264.00 ","$19,049.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,761.00 ","$13,831.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,719.00 ","$8,723.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$7,273.00 ","$6,184.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,250.00 ","$15,790.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,121.00 ","$10,451.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,192.00 ","$6,179.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$8,465.00 ","$7,654.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,627.00 ","$11,422.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$15,148.00 ","$19,098.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,846.00 ","$8,447.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,197.00 ","$18,456.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,103.00 ","$6,799.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,988.00 ","$19,348.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$13,873.00 ","$10,617.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,611.00 ","$7,917.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,174.00 ","$6,996.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,867.00 ","$19,049.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,112.00 ","$11,930.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,386.00 ","$9,989.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,691.00 ","$14,601.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,974.00 ","$19,462.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,246.00 ","$18,683.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,333.00 ","$7,346.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,059.00 ","$19,059.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$17,488.00 ","$9,941.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$12,711.00 ","$8,946.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$5,712.00 ","$6,947.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,027.00 ","$10,643.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$11,703.00 ","$9,822.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,207.00 ","$14,061.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$6,497.00 ","$6,147.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,850.00 ","$15,753.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$21,637.00 ","$5,666.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$10,480.00 ","$7,379.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$9,781.00 ","$19,592.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,859.00 ","$13,324.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$14,764.00 ","$5,876.00 ",Los Angeles,California,NULL
+Southern California,US,For Your Life,"$16,523.00 ","$17,741.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$13,945.00 ","$13,624.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$13,083.00 ","$11,336.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$6,285.00 ","$8,448.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$15,670.00 ","$5,412.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$6,815.00 ","$14,606.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$21,637.00 ","$5,666.00 ",Los Angeles,California,17
+Southern California,US,For Your Life,"$10,480.00 ","$7,379.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$9,781.00 ","$19,592.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$16,859.00 ","$13,324.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$14,764.00 ","$5,876.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$16,523.00 ","$17,741.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$13,945.00 ","$13,624.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$13,083.00 ","$11,336.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$6,285.00 ","$8,448.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$15,670.00 ","$5,412.00 ",Los Angeles,California,20
+Southern California,US,For Your Life,"$6,815.00 ","$14,606.00 ",Los Angeles,California,17

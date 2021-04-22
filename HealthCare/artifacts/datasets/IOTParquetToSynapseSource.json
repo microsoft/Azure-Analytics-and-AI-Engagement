@@ -1,0 +1,42 @@
+{
+    "name": "IOTParquetToSynapseSource",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "IOT Data",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "iot-patient",
+                "fileSystem": "iotparquetstorage"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": [
+            {
+                "name": "numberOfSteps",
+                "type": "INT64"
+            },
+            {
+                "name": "heartrate",
+                "type": "INT64"
+            },
+            {
+                "name": "systolicPressure",
+                "type": "INT64"
+            },
+            {
+                "name": "diastolicPressure",
+                "type": "INT64"
+            },
+            {
+                "name": "calories",
+                "type": "INT64"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

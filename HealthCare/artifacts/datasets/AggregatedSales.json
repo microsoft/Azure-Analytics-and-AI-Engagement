@@ -1,0 +1,47 @@
+{
+    "name": "AggregatedSales",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareSynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "OrderYear",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderMonth",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderDay",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ProductKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "TotalSales",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "AvgSaleAmount",
+                "type": "float",
+                "precision": 15
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "AggregatedSales_SAPHANA"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

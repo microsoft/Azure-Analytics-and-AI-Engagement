@@ -1,0 +1,17 @@
+{
+    "name": "Finance_Data",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareSynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SAPSalesData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

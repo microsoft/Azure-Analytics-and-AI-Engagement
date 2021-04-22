@@ -1,0 +1,20 @@
+{
+    "name": "ArchiveJsonParquet",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "tweeterarchive",
+                "fileSystem": "twitter-data"
+            }
+        },
+        "schema": {}
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

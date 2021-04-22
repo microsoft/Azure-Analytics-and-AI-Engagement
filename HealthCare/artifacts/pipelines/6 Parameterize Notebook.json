@@ -1,0 +1,95 @@
+{
+    "name": "6 Parameterize Notebook",
+    "properties": {
+        "activities": [
+            {
+                "name": "Prep Data to Load into Synapse",
+                "type": "SynapseNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebook": {
+                        "referenceName": "Parameterize Notebook with hyperspace",
+                        "type": "NotebookReference"
+                    },
+                    "parameters": {
+                        "fil": {
+                            "value": "abfss://iomt-data@#DATA_LAKE_STORAGE_NAME#.dfs.core.windows.net/healthcare-iomt.csv",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Load Data to Synapse Table",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Prep Data to Load into Synapse",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "wildcardFileName": "part*.csv"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table dbo.[HealthCare-iomt-parameterized]",
+                        "tableOption": "autoCreate",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "iomt",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "HealthCareSynapseAnalytics",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-12-09T14:38:42Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

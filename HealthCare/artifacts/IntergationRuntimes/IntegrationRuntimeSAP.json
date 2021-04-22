@@ -1,0 +1,6 @@
+{
+    "name": "IntegrationRuntimeSAP",
+    "properties": {
+        "type": "SelfHosted"
+    }
+}

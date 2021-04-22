@@ -1,0 +1,65 @@
+{
+    "name": "CosmosDbSqlApiCollection",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareCosmosDb",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "patientId": {
+                    "type": "string"
+                },
+                "patientAge": {
+                    "type": "integer"
+                },
+                "datetime": {
+                    "type": "string"
+                },
+                "bodyTemperature": {
+                    "type": "number"
+                },
+                "heartRate": {
+                    "type": "integer"
+                },
+                "breathingRate": {
+                    "type": "integer"
+                },
+                "spo2": {
+                    "type": "integer"
+                },
+                "systolicPressure": {
+                    "type": "integer"
+                },
+                "diastolicPressure": {
+                    "type": "integer"
+                },
+                "numberOfSteps": {
+                    "type": "integer"
+                },
+                "activityTime": {
+                    "type": "integer"
+                },
+                "numberOfTimesPersonStoodUp": {
+                    "type": "integer"
+                },
+                "calories": {
+                    "type": "integer"
+                },
+                "vo2": {
+                    "type": "integer"
+                },
+                "SyntheticPartitionKey": {
+                    "type": "string"
+                }
+            }
+        },
+        "typeProperties": {
+            "collectionName": "IoMTData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,69 @@
+{
+    "name": "TweetsJson",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_1ba772a626a24007b922cddd8a23752a_1.json",
+                "fileSystem": "twitter-data"
+            }
+        },
+        "schema": {
+            "type": "object",
+            "properties": {
+                "Time": {
+                    "type": "string"
+                },
+                "Hashtag": {
+                    "type": "string"
+                },
+                "Tweet": {
+                    "type": "string"
+                },
+                "City": {
+                    "type": "string"
+                },
+                "UserName": {
+                    "type": "string"
+                },
+                "RetweetCount": {
+                    "type": "integer"
+                },
+                "FavouriteCount": {
+                    "type": "integer"
+                },
+                "Sentiment": {
+                    "type": "string"
+                },
+                "SentimentScore": {
+                    "type": "integer"
+                },
+                "UserFollowersCount": {
+                    "type": "integer"
+                },
+                "UserFriendsCount": {
+                    "type": "integer"
+                },
+                "ProfileImageUrl": {
+                    "type": "string"
+                },
+                "IsRetweet": {
+                    "type": "boolean"
+                },
+                "HourOfDay": {
+                    "type": "string"
+                },
+                "Language": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

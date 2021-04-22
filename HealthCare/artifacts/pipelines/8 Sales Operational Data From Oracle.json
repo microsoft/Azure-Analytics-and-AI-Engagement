@@ -1,0 +1,86 @@
+{
+    "name": "8 Sales Operational Data From Oracle",
+    "properties": {
+        "activities": [
+            {
+                "name": "Load data to Azure Synapse",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Oracle SalesOperationalDB exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink"
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "OracleSaleOperationalData",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SqlPoolTable",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Check if Oracle SalesOperationalDB exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "OracleSaleOperationalData",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-12-14T18:13:11Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

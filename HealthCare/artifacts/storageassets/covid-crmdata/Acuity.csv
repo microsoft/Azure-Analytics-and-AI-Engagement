@@ -1,0 +1,16 @@
+msft_acuityid,msft_acuityname,msft_type,msft_type_display
+fec03102-8a73-ea11-a811-000d3a5a17c5,CCU - Coronary Care Unit,299600000,Acute Care
+00c13102-8a73-ea11-a811-000d3a5a17c5,GEN SURG - General Surgery,299600001,Non-Acute Care
+02c13102-8a73-ea11-a811-000d3a5a17c5,ICU - Intensive Care Unit,299600000,Acute Care
+04c13102-8a73-ea11-a811-000d3a5a17c5,IMCU - Intensive Medical Care Unit,299600000,Acute Care
+06c13102-8a73-ea11-a811-000d3a5a17c5,MED SURG - Medical Surgery,299600000,Acute Care
+08c13102-8a73-ea11-a811-000d3a5a17c5,NF - Nursing Facility,299600001,Non-Acute Care
+0ac13102-8a73-ea11-a811-000d3a5a17c5,NICU - Neonatal Intensive Care Unit,299600000,Acute Care
+0cc13102-8a73-ea11-a811-000d3a5a17c5,NUR - Nursing,299600001,Non-Acute Care
+0ec13102-8a73-ea11-a811-000d3a5a17c5,OLTC - Other Long Term Care,299600001,Non-Acute Care
+10c13102-8a73-ea11-a811-000d3a5a17c5,PICU - Pediatric Intensive Care Unit,299600000,Acute Care
+12c13102-8a73-ea11-a811-000d3a5a17c5,SICU - Surgical Intensive Care Unit,299600000,Acute Care
+14c13102-8a73-ea11-a811-000d3a5a17c5,SNF - Skilled Nursing Facility,299600001,Non-Acute Care
+16c13102-8a73-ea11-a811-000d3a5a17c5,TELE - Telehealth,299600000,Acute Care
+4a358c4a-8d73-ea11-a811-000d3a5a17e3,ED - Emergency Department,299600000,Acute Care
+8869775c-8d73-ea11-a811-000d3a5a17e3,CARD - Cardiology,299600000,Acute Care

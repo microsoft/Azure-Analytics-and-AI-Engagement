@@ -1,0 +1,23 @@
+{
+    "name": "1 Master",
+    "properties": {
+        "activities": [
+            {
+                "name": "Execute Campaign Analytics",
+                "type": "ExecutePipeline",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "0 Campaign Analytics",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-01-18T15:41:54Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

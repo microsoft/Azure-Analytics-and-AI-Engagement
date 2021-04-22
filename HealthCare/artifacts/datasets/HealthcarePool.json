@@ -1,0 +1,17 @@
+{
+    "name": "HealthcarePool",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "MarketingCampaignData"
+        },
+        "sqlPool": {
+            "referenceName": "HealthCareDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

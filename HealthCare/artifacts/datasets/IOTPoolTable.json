@@ -1,0 +1,43 @@
+{
+    "name": "IOTPoolTable",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [
+            {
+                "name": "numberOfSteps",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "heartrate",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "systolicPressure",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "diastolicPressure",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "calories",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Iot-Iomt-Data"
+        },
+        "sqlPool": {
+            "referenceName": "HealthCareDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

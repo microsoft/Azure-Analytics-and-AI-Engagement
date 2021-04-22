@@ -1,0 +1,62 @@
+{
+    "name": "MarketingCampaigndata",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "part-00000-d3207af6-ef77-4488-8ec5-60b6f9063810-c000.csv",
+                "folderPath": "Campaignsdata",
+                "fileSystem": "marketingdata"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Region",
+                "type": "String"
+            },
+            {
+                "name": "Country",
+                "type": "String"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "String"
+            },
+            {
+                "name": "Revenue",
+                "type": "String"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "String"
+            },
+            {
+                "name": "City",
+                "type": "String"
+            },
+            {
+                "name": "State",
+                "type": "String"
+            },
+            {
+                "name": "RoleID",
+                "type": "String"
+            },
+            {
+                "name": "Revenue_Variance",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

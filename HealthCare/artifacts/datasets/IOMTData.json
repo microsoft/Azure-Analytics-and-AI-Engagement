@@ -1,0 +1,109 @@
+{
+    "name": "IOMTData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareDataLakeStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "healthcare-iomt.csv",
+                "fileSystem": "iomt-data"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "patientId",
+                "type": "String"
+            },
+            {
+                "name": "patientAge",
+                "type": "String"
+            },
+            {
+                "name": "datetime",
+                "type": "String"
+            },
+            {
+                "name": "bodyTemperature",
+                "type": "String"
+            },
+            {
+                "name": "heartRate",
+                "type": "String"
+            },
+            {
+                "name": "breathingRate",
+                "type": "String"
+            },
+            {
+                "name": "spo2",
+                "type": "String"
+            },
+            {
+                "name": "systolicPressure",
+                "type": "String"
+            },
+            {
+                "name": "diastolicPressure",
+                "type": "String"
+            },
+            {
+                "name": "numberOfSteps",
+                "type": "String"
+            },
+            {
+                "name": "activityTime",
+                "type": "String"
+            },
+            {
+                "name": "numberOfTimesPersonStoodUp",
+                "type": "String"
+            },
+            {
+                "name": "calories",
+                "type": "String"
+            },
+            {
+                "name": "vo2",
+                "type": "String"
+            },
+            {
+                "name": "SyntheticPartitionKey",
+                "type": "String"
+            },
+            {
+                "name": "id",
+                "type": "String"
+            },
+            {
+                "name": "_rid",
+                "type": "String"
+            },
+            {
+                "name": "_self",
+                "type": "String"
+            },
+            {
+                "name": "_etag",
+                "type": "String"
+            },
+            {
+                "name": "_attachments",
+                "type": "String"
+            },
+            {
+                "name": "_ts",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

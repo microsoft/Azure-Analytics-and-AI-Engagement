@@ -1,0 +1,51 @@
+{
+    "name": "HealthCare_Ingest_data_from_SAPHANA_to_Azure_Synapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "SAPHanaADLSDataset",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DatafromSAPHANA"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "AggregatedSales",
+                        "type": "DatasetReference"
+                    },
+                    "name": "AggregatedSalessAPHANA"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "HealthCareSAPHanaDataset",
+                        "type": "DatasetReference"
+                    },
+                    "name": "LoadtoAzureSynapse"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "Last5YearsData"
+                },
+                {
+                    "name": "DerivedColumn"
+                },
+                {
+                    "name": "SelectRequiredColumns"
+                },
+                {
+                    "name": "TotalSalesByYearMonthDay"
+                },
+                {
+                    "name": "Selectcolumns"
+                }
+            ],
+            "script": "source(output(\n\t\tProductKey as string,\n\t\tOrderDateKey as string,\n\t\tDueDateKey as string,\n\t\tShipDateKey as string,\n\t\tCustomerKey as string,\n\t\tPromotionKey as string,\n\t\tCurrencyKey as string,\n\t\tSalesTerritoryKey as string,\n\t\tSalesOrderNumber as string,\n\t\tSalesOrderLineNumber as string,\n\t\tRevisionNumber as string,\n\t\tOrderQuantity as string,\n\t\tUnitPrice as string,\n\t\tExtendedAmount as string,\n\t\tUnitPriceDiscountPct as string,\n\t\tDiscountAmount as string,\n\t\tProductStandardCost as string,\n\t\tTotalProductCost as string,\n\t\tSalesAmount as string,\n\t\tTaxAmt as string,\n\t\tFreight as string,\n\t\tCarrierTrackingNumber as string,\n\t\tCustomerPONumber as string,\n\t\tOrderDate as string,\n\t\tDueDate as string,\n\t\tShipDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> DatafromSAPHANA\nDatafromSAPHANA alterRow(upsertIf(ShipDate==ShipDate)) ~> Last5YearsData\nLast5YearsData derive(OrderYear = year(toDate(OrderDate)),\n\t\tOrderMonth = month(toDate(OrderDate)),\n\t\tOrderDay = dayOfYear(toDate(OrderDate)),\n\t\tProductStandardCost = round(toInteger(ProductStandardCost),2),\n\t\tUnitPrice = round(toInteger(UnitPrice),4),\n\t\tExtendedAmount = round(toInteger(ExtendedAmount),4)) ~> DerivedColumn\nDerivedColumn select(mapColumn(\n\t\tProductKey,\n\t\tSalesAmount,\n\t\tOrderYear,\n\t\tOrderMonth,\n\t\tOrderDay\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequiredColumns\nSelectRequiredColumns aggregate(groupBy(ProductKey,\n\t\tOrderYear,\n\t\tOrderMonth,\n\t\tOrderDay),\n\tTotalSales = round(sum(toInteger(SalesAmount)),2),\n\t\tAvgSaleAmount = round(avg(toInteger(SalesAmount)),2)) ~> TotalSalesByYearMonthDay\nDerivedColumn select(mapColumn(\n\t\tProductKey,\n\t\tOrderDateKey,\n\t\tDueDateKey,\n\t\tShipDateKey,\n\t\tCustomerKey,\n\t\tPromotionKey,\n\t\tCurrencyKey,\n\t\tSalesTerritoryKey,\n\t\tSalesOrderNumber,\n\t\tSalesOrderLineNumber,\n\t\tRevisionNumber,\n\t\tOrderQuantity,\n\t\tUnitPrice,\n\t\tExtendedAmount,\n\t\tUnitPriceDiscountPct,\n\t\tDiscountAmount,\n\t\tProductStandardCost,\n\t\tTotalProductCost,\n\t\tSalesAmount,\n\t\tTaxAmt,\n\t\tFreight,\n\t\tCarrierTrackingNumber,\n\t\tCustomerPONumber,\n\t\tDueDate,\n\t\tYearOrderDate = OrderYear\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Selectcolumns\nTotalSalesByYearMonthDay sink(input(\n\t\tOrderYear as integer,\n\t\tOrderMonth as integer,\n\t\tOrderDay as integer,\n\t\tProductKey as string,\n\t\tTotalSales as double,\n\t\tAvgSaleAmount as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tmapColumn(\n\t\tOrderYear,\n\t\tOrderMonth,\n\t\tOrderDay,\n\t\tProductKey,\n\t\tTotalSales,\n\t\tAvgSaleAmount\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> AggregatedSalessAPHANA\nSelectcolumns sink(input(\n\t\tProductKey as string,\n\t\tOrderDateKey as string,\n\t\tDueDateKey as string,\n\t\tShipDateKey as integer,\n\t\tCustomerKey as string,\n\t\tPromotionKey as string,\n\t\tCurrencyKey as string,\n\t\tSalesTerritoryKey as string,\n\t\tSalesOrderNumber as string,\n\t\tSalesOrderLineNumber as string,\n\t\tRevisionNumber as integer,\n\t\tOrderQuantity as integer,\n\t\tUnitPrice as double,\n\t\tExtendedAmount as double,\n\t\tUnitPriceDiscountPct as double,\n\t\tDiscountAmount as double,\n\t\tProductStandardCost as double,\n\t\tTotalProductCost as double,\n\t\tSalesAmount as double,\n\t\tTaxAmt as double,\n\t\tFreight as double,\n\t\tCarrierTrackingNumber as string,\n\t\tCustomerPONumber as string,\n\t\tOrderDate as integer,\n\t\tDueDate as integer,\n\t\tShipDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tmapColumn(\n\t\tProductKey,\n\t\tOrderDateKey,\n\t\tDueDateKey,\n\t\tShipDateKey,\n\t\tCustomerKey,\n\t\tPromotionKey,\n\t\tCurrencyKey,\n\t\tSalesTerritoryKey,\n\t\tSalesOrderNumber,\n\t\tSalesOrderLineNumber,\n\t\tRevisionNumber,\n\t\tOrderQuantity,\n\t\tUnitPrice,\n\t\tExtendedAmount,\n\t\tUnitPriceDiscountPct,\n\t\tDiscountAmount,\n\t\tProductStandardCost,\n\t\tTotalProductCost,\n\t\tSalesAmount,\n\t\tTaxAmt,\n\t\tFreight,\n\t\tCarrierTrackingNumber,\n\t\tCustomerPONumber,\n\t\tOrderDate = OrderDateKey,\n\t\tDueDate\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LoadtoAzureSynapse"
+        }
+    }
+}

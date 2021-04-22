@@ -1,0 +1,38 @@
+{
+    "name": "IngestData_Dynamics365_To_Synapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "PatientEncountersData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "Dynamics365"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "SynapseAnalyticsTable",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DataInSynapse"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "SelectColumn"
+                },
+                {
+                    "name": "DerivedColumn"
+                },
+                {
+                    "name": "FilterMsemrStartYear"
+                }
+            ],
+            "script": "source(output(\n\t\tcreatedby as string,\n\t\tcreatedbyname as string,\n\t\tcreatedbyyominame as string,\n\t\tcreatedon as string,\n\t\tcreatedonbehalfby as string,\n\t\tcreatedonbehalfbyname as string,\n\t\tcreatedonbehalfbyyominame as string,\n\t\timportsequencenumber as string,\n\t\tmodifiedby as string,\n\t\tmodifiedbyname as string,\n\t\tmodifiedbyyominame as string,\n\t\tmodifiedon as string,\n\t\tmodifiedonbehalfby as string,\n\t\tmodifiedonbehalfbyname as string,\n\t\tmodifiedonbehalfbyyominame as string,\n\t\tmsemr_appointmentemr as string,\n\t\tmsemr_appointmentemrname as string,\n\t\tmsemr_azurefhirid as string,\n\t\tmsemr_azurefhirlastupdatedon as string,\n\t\tmsemr_azurefhirversion as string,\n\t\tmsemr_class as string,\n\t\tmsemr_contextencounter as string,\n\t\tmsemr_contextencountername as string,\n\t\tmsemr_contextepisodeofcare as string,\n\t\tmsemr_contextepisodeofcarename as string,\n\t\tmsemr_duration as string,\n\t\tmsemr_encounterclass as string,\n\t\tmsemr_encounterenddate as string,\n\t\tmsemr_encountergroupidentifier as string,\n\t\tmsemr_encountergroupidentifiername as string,\n\t\tmsemr_encounterid as string,\n\t\tmsemr_encounteridentifier as string,\n\t\tmsemr_encounterlength as string,\n\t\tmsemr_encounterparentencounteridentifier as string,\n\t\tmsemr_encounterparentencounteridentifiername as string,\n\t\tmsemr_encounterpatientidentifier as string,\n\t\tmsemr_encounterpatientidentifiername as string,\n\t\tmsemr_encounterpatientidentifieryominame as string,\n\t\tmsemr_encounterpriority as string,\n\t\tmsemr_encounterpriorityname as string,\n\t\tmsemr_encounterstartdate as string,\n\t\tmsemr_encounterstatus as string,\n\t\tmsemr_hospitalizationadmitsource as string,\n\t\tmsemr_hospitalizationadmitsourcename as string,\n\t\tmsemr_hospitalizationdestination as string,\n\t\tmsemr_hospitalizationdestinationname as string,\n\t\tmsemr_hospitalizationdischargedisposition as string,\n\t\tmsemr_hospitalizationdischargedispositionname as string,\n\t\tmsemr_hospitalizationorigin as string,\n\t\tmsemr_hospitalizationoriginname as string,\n\t\tmsemr_hospitalizationpreadmissionnumber as string,\n\t\tmsemr_hospitalizationreadmission as string,\n\t\tmsemr_hospitalizationreadmissionname as string,\n\t\tmsemr_name as string,\n\t\tmsemr_onbehalfof as string,\n\t\tmsemr_onbehalfofname as string,\n\t\tmsemr_onbehalfofyominame as string,\n\t\tmsemr_periodend as string,\n\t\tmsemr_periodstart as string,\n\t\tmsemr_priority as string,\n\t\tmsemr_subjectpatient as string,\n\t\tmsemr_subjectpatientname as string,\n\t\tmsemr_subjectpatientyominame as string,\n\t\toverriddencreatedon as string,\n\t\townerid as string,\n\t\towneridname as string,\n\t\towneridtype as string,\n\t\towneridyominame as string,\n\t\towningbusinessunit as string,\n\t\towningteam as string,\n\t\towninguser as string,\n\t\tstatecode as string,\n\t\tstatuscode as string,\n\t\ttimezoneruleversionnumber as string,\n\t\tutcconversiontimezonecode as string,\n\t\tversionnumber as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Dynamics365\nDynamics365 select(mapColumn(\n\t\tcreatedby,\n\t\tcreatedon,\n\t\tmodifiedby,\n\t\tmodifiedbyname,\n\t\tmodifiedbyyominame,\n\t\tmodifiedon,\n\t\tMsemrAppointmentemr = msemr_appointmentemr,\n\t\tMsemrAppointmentemrname = msemr_appointmentemrname,\n\t\tMsemrAzurefhirid = msemr_azurefhirid,\n\t\tMsemrPriority = msemr_priority,\n\t\tMsemrSubjectpatient = msemr_subjectpatient,\n\t\townerid,\n\t\towneridname,\n\t\towneridtype,\n\t\towneridyominame,\n\t\towningteam,\n\t\towninguser,\n\t\tStatecode = statecode,\n\t\tMsemrPeriodstart = msemr_periodstart\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectColumn\nSelectColumn derive({Msemr Start Year} = year(toDate(MsemrPeriodstart))) ~> DerivedColumn\nDerivedColumn filter({Msemr Start Year}>2019) ~> FilterMsemrStartYear\nFilterMsemrStartYear sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tmapColumn(\n\t\tcreatedby,\n\t\tcreatedon,\n\t\tmodifiedby,\n\t\tmodifiedbyname,\n\t\tmodifiedbyyominame,\n\t\tmodifiedon,\n\t\tMsemrAppointmentemr,\n\t\tMsemrAppointmentemrname,\n\t\tMsemrAzurefhirid,\n\t\tMsemrPriority,\n\t\tMsemrSubjectpatient,\n\t\townerid,\n\t\towneridname,\n\t\towneridtype,\n\t\towneridyominame,\n\t\towningteam,\n\t\towninguser,\n\t\tStatecode,\n\t\tMsemrPeriodstart,\n\t\tMsemrStartYear = {Msemr Start Year}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> DataInSynapse"
+        }
+    }
+}

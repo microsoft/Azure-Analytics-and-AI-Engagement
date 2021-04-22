@@ -1,0 +1,127 @@
+{
+    "PcrKey": "28033448",
+    "Patient": {
+        "Gender": "Male",
+        "Age": "81",
+        "Age Units": "Years",
+        "Race": null
+    },
+    "Encounter": {
+        "Complaint Reported by Dispatch": "Transfer/Interfacility/Palliative Care",
+        "EMD Performed": "No",
+        "Incident/Patient Disposition": "Patient Treated, Transported by this EMS Unit",
+        "Final Patient Acuity": "Lower Acuity (Green)",
+        "EMS Transport Method": "Ground-Ambulance",
+        "Type of Destination": "Hospital-Non-Emergency Department Bed",
+        "Hospital In-Patient Destination": "Hospital-ICU",
+        "Hospital Capability": "Hospital (General)",
+        "Emergency Department Disposition": "Not Recorded",
+        "Hospital Disposition": "Not Recorded",
+        "The type of service": "Interfacility Transport",
+        "The primary role of the EMS unit": "Ground Transport",
+        "Level of Care of This Unit": "ALS-Paramedic",
+        "Response Mode to Scene": "Non-Emergent",
+        "First EMS Unit on Scene": "Yes",
+        "Number of Patients at Scene": "Single",
+        "Mass Casualty Incident": "No",
+        "Triage Classification for MCI Patient": "Not Recorded",
+        "Incident Location Type": "Y92.23",
+        "PSAP Call Date/Time": "2019-01-01  1:40:41",
+        "Unit Notified by Dispatch Date/Time": "2019-01-01  1:40:41",
+        "Unit En Route Date/Time": "2019-01-01  1:40:42",
+        "Unit Arrived on Scene Date/Time": "2019-01-01  1:40:43",
+        "Arrived at Patient Date/Time": "2019-01-01  1:50:00",
+        "Unit Left Scene Date/Time": "2019-01-01  1:55:11",
+        "Patient Arrived at Destination Date/Time": "2019-01-01  2:27:00",
+        "Destination Patient Transfer of Care Date/Time": "2019-01-01  2:38:00",
+        "Unit Back in Service Date/Time": "2019-01-01  3:17:00",
+        "Transport Mode from Scene": "Non-Emergent",
+        "Type of Turn-Around Delay": "None/No Delay",
+        "Type of Transport Delay": null,
+        "Type of Scene Delay": "None/No Delay",
+        "Type of Response Delay": null,
+        "Type of Dispatch Delay": "None/No Delay",
+        "Date/Time of Destination Prearrival Alert or Activation": null,
+        "Destination Team Pre-Arrival Alert or Activation": null,
+        "Reason for Choosing Destination": "Patient's Physician's Choice",
+        "Additional Transport Mode Descriptors": "No Lights or Sirens",
+        "Additional Response Mode Descriptors": [
+            "Speed-Normal Traffic",
+            "No Lights or Sirens"
+        ]
+    },
+    "Condition": {
+        "Possible Injury": "Yes",
+        "Chief Complaint Anatomic Location": "General/Global",
+        "Chief Complaint Organ System": "Musculoskeletal/Skin",
+        "Initial Patient Acuity": "Lower Acuity (Green)",
+        "Date/Time of Symptom Onset": "2019-01-01  1:40:41",
+        "Trauma Center Criteria": "Not Applicable",
+        "Provider's Secondary Impressions": "Injury, unspecified",
+        "Other Associated Symptoms": null,
+        "Provider's Primary Impression": null,
+        "Vehicular, Pedestrian, or Other Injury Risk Factor": "Not Recorded",
+        "Cause of Injury": "fall on moving sidewalk",
+        "Barriers to Patient Care": null,
+        "Alcohol/Drug Use Indicators": "None Reported"
+    },
+    "ClinicalImpression": {
+        "Date/Time of Cardiac Arrest": "Not Recorded",
+        "Cardiac Arrest": "No",
+        "Cardiac Arrest Etiology": "Not Recorded",
+        "CPR Care Provided Prior to EMS Arrival": "Not Recorded",
+        "AED Use Prior to EMS Arrival": "Not Recorded",
+        "First Monitored Arrest Rhythm of the Patient": "Not Recorded",
+        "Reason CPR/Resuscitation Discontinued": "Not Recorded",
+        "End of EMS Cardiac Arrest Event": "Not Recorded",
+        "Arrest Witnessed By": "Not Recorded",
+        "Any Return of Spontaneous Circulation": null,
+        "Cardiac Rhythm on Arrival at Destination": "Not Recorded",
+        "Resuscitation Attempted By EMS": "Not Recorded",
+        "Type of CPR Provided": null
+    },
+    "Medication": [
+        {
+            "Medication Given": "313002",
+            "Medication Dosage": "10",
+            "Medication Dosage Units": "Other",
+            "Response to Medication": "Unchanged",
+            "Role/Type of Person Administering Medication": "EMT-Intermediate",
+            "Medication Administered Prior to this Unit's EMS Care": "No",
+            "Date/Time Medication Administered": "2019-01-01  2:11:30"
+        }
+    ],
+    "Procedure": [
+        {
+            "Procedure": "422618004",
+            "Number of Procedure Attempts": "1",
+            "Procedure Successful": "Yes",
+            "Response to Procedure": "Unchanged",
+            "Role/Type of Person Performing the Procedure": "EMT-Intermediate",
+            "Procedure Performed Prior to this Unit's EMS Care": "No",
+            "Date/Time Procedure Performed": "2019-01-01  2:23:00"
+        }
+    ],
+    "Observation": [
+        {
+            "Date/Time Vital Signs Taken": "2019-01-01  1:59:28",
+            "SBP (Systolic Blood Pressure)": "129",
+            "Heart Rate": "111",
+            "Pulse Oximetry": "78",
+            "Respiratory Rate": "22",
+            "End Tidal Carbon Dioxide (ETCO2)": "Not Recorded",
+            "Blood Glucose Level": "Not Recorded",
+            "Pain Scale Score": "0",
+            "Obtained Prior to this Unit's EMS Care": "No",
+            "ECG Type": "Not Recorded",
+            "Method of Blood Pressure Measurement": "Cuff-Automated",
+            "Level of Responsiveness (AVPU)": "Painful",
+            "Stroke Scale Score": "Not Recorded",
+            "Stroke Scale Type": "Not Recorded",
+            "Reperfusion Checklist": "Not Recorded",
+            "Glasgow Coma Score-Eye": "Opens Eyes to painful stimulation (All Age Groups)",
+            "Glasgow Coma Score-Verbal": "Incomprehensible sounds (>2 Years); Inconsolable, agitated",
+            "Glasgow Coma Score-Motor": "Withdrawal from pain (All Age Groups)"
+        }
+    ]
+}

@@ -1,0 +1,3221 @@
+﻿date,MonthName,CityName,WeekNumber,BedOccupancied
+2020-04-24,Apr,Los Angeles,17,6870
+2019-04-28,Apr,Los Angeles,18,6560
+2020-04-12,Apr,Los Angeles,16,6860
+2020-08-06,Aug,Los Angeles,32,6790
+2020-07-25,Jul,Los Angeles,30,6650
+2019-04-03,Apr,Los Angeles,14,6470
+2020-04-02,Apr,Los Angeles,14,6480
+2019-04-04,Apr,Los Angeles,14,7110
+2019-04-11,Apr,Los Angeles,15,7070
+2020-08-09,Aug,Los Angeles,33,6430
+2019-04-07,Apr,Los Angeles,15,7190
+2019-04-21,Apr,Los Angeles,17,6130
+2020-02-17,Feb,Los Angeles,8,6520
+2019-08-24,Aug,Los Angeles,34,7130
+2019-04-26,Apr,Los Angeles,17,6960
+2019-04-14,Apr,Los Angeles,16,6140
+2019-08-04,Aug,Los Angeles,32,6660
+2020-04-09,Apr,Los Angeles,15,6650
+2020-04-26,Apr,Los Angeles,18,6200
+2020-08-10,Aug,Los Angeles,33,6650
+2020-04-11,Apr,Los Angeles,15,6940
+2019-04-10,Apr,Los Angeles,15,6720
+2019-02-15,Feb,Los Angeles,7,6540
+2019-04-27,Apr,Los Angeles,17,6550
+2020-04-06,Apr,Los Angeles,15,6970
+2019-10-21,Oct,Los Angeles,43,6930
+2019-01-06,Jan,Los Angeles,2,6540
+2020-04-04,Apr,Los Angeles,14,6400
+2019-02-11,Feb,Los Angeles,7,6400
+2020-04-14,Apr,Los Angeles,16,6700
+2019-08-26,Aug,Los Angeles,35,7040
+2020-04-28,Apr,Los Angeles,18,6840
+2019-04-05,Apr,Los Angeles,14,6680
+2020-04-03,Apr,Los Angeles,14,7160
+2020-04-05,Apr,Los Angeles,15,7160
+2020-04-18,Apr,Los Angeles,16,6780
+2019-04-20,Apr,Los Angeles,16,7590
+2020-04-17,Apr,Los Angeles,16,7040
+2019-04-01,Apr,Los Angeles,14,5310
+2019-12-03,Dec,Los Angeles,49,7450
+2019-04-25,Apr,Los Angeles,17,7870
+2019-04-13,Apr,Los Angeles,15,6650
+2020-08-04,Aug,Los Angeles,32,6630
+2020-08-01,Aug,Los Angeles,31,7070
+2020-04-16,Apr,Los Angeles,16,6100
+2020-02-01,Feb,Los Angeles,5,50
+2019-04-19,Apr,Los Angeles,16,7010
+2020-04-21,Apr,Los Angeles,17,6890
+2019-08-07,Aug,Los Angeles,32,5130
+2019-04-22,Apr,Los Angeles,17,5120
+2020-04-20,Apr,Los Angeles,17,5540
+2020-04-07,Apr,Los Angeles,15,5440
+2019-04-02,Apr,Los Angeles,14,6950
+2020-04-08,Apr,Los Angeles,15,4730
+2020-04-15,Apr,Los Angeles,16,5580
+2019-04-18,Apr,Los Angeles,16,5870
+2020-04-19,Apr,Los Angeles,17,5470
+2019-04-17,Apr,Los Angeles,16,7290
+2019-04-06,Apr,Los Angeles,14,5590
+2019-04-24,Apr,Los Angeles,17,4990
+2020-08-22,Aug,Los Angeles,34,6980
+2019-08-05,Aug,Los Angeles,32,5070
+2020-02-23,Feb,Los Angeles,9,5470
+2019-12-08,Dec,Los Angeles,50,5490
+2019-03-18,Mar,Los Angeles,12,7620
+2020-08-02,Aug,Los Angeles,32,6940
+2020-08-08,Aug,Los Angeles,32,5560
+2019-04-09,Apr,Los Angeles,15,7460
+2019-08-13,Aug,Los Angeles,33,5330
+2020-02-11,Feb,Los Angeles,7,5480
+2019-04-16,Apr,Los Angeles,16,5470
+2019-08-09,Aug,Los Angeles,32,6650
+2019-02-28,Feb,Los Angeles,9,2830
+2019-02-04,Feb,Los Angeles,6,50
+2019-08-17,Aug,Los Angeles,33,5060
+2019-08-06,Aug,Los Angeles,32,5910
+2019-08-18,Aug,Los Angeles,34,5280
+2019-02-16,Feb,Los Angeles,7,7000
+2019-08-08,Aug,Los Angeles,32,5200
+2019-08-28,Aug,Los Angeles,35,8050
+2019-08-12,Aug,Los Angeles,33,7370
+2019-08-10,Aug,Los Angeles,32,7050
+2019-01-28,Jan,Los Angeles,5,40
+2019-12-16,Dec,Los Angeles,51,5210
+2020-08-07,Aug,Los Angeles,32,4870
+2020-05-12,May,Los Angeles,20,5510
+2020-07-08,Jul,Los Angeles,28,6240
+2019-08-01,Aug,Los Angeles,31,7910
+2020-01-27,Jan,Los Angeles,5,100
+2020-08-05,Aug,Los Angeles,32,5320
+2020-08-26,Aug,Los Angeles,35,8430
+2020-08-27,Aug,Los Angeles,35,6780
+2019-04-15,Apr,Los Angeles,16,6910
+2019-04-23,Apr,Los Angeles,17,6860
+2019-08-03,Aug,Los Angeles,31,5430
+2019-08-16,Aug,Los Angeles,33,7150
+2019-07-25,Jul,Los Angeles,30,4830
+2020-04-22,Apr,Los Angeles,17,5110
+2019-04-12,Apr,Los Angeles,15,7110
+2019-02-08,Feb,Los Angeles,6,101
+2020-07-12,Jul,Los Angeles,29,7660
+2019-08-02,Aug,Los Angeles,31,5230
+2019-12-05,Dec,Los Angeles,49,7450
+2020-07-11,Jul,Los Angeles,28,5360
+2019-02-24,Feb,Los Angeles,9,5110
+2019-02-22,Feb,Los Angeles,8,3710
+2020-04-23,Apr,Los Angeles,17,6960
+2019-02-12,Feb,Los Angeles,7,6670
+2020-01-01,Jan,Los Angeles,1,7680
+2019-08-20,Aug,Los Angeles,34,5520
+2019-01-10,Jan,Los Angeles,2,5070
+2020-08-16,Aug,Los Angeles,34,7110
+2020-04-01,Apr,Los Angeles,14,7250
+2020-01-04,Jan,Los Angeles,1,7500
+2020-08-21,Aug,Los Angeles,34,6170
+2020-04-13,Apr,Los Angeles,16,5650
+2019-08-22,Aug,Los Angeles,34,7250
+2019-01-17,Jan,Los Angeles,3,7250
+2019-07-17,Jul,Los Angeles,29,6960
+2020-08-24,Aug,Los Angeles,35,6490
+2019-12-09,Dec,Los Angeles,50,6730
+2019-12-01,Dec,Los Angeles,49,5010
+2020-06-10,Jun,Los Angeles,24,7930
+2020-02-02,Feb,Los Angeles,6,47
+2020-03-07,Mar,Los Angeles,10,7460
+2020-08-28,Aug,Los Angeles,35,4970
+2019-12-13,Dec,Los Angeles,50,7050
+2020-04-10,Apr,Los Angeles,15,7400
+2020-02-03,Feb,Los Angeles,6,44
+2019-01-04,Jan,Los Angeles,1,2680
+2019-08-14,Aug,Los Angeles,33,5770
+2020-08-19,Aug,Los Angeles,34,2290
+2020-02-24,Feb,Los Angeles,9,7840
+2019-02-09,Feb,Los Angeles,6,50
+2020-02-13,Feb,Los Angeles,7,50
+2019-02-05,Feb,Los Angeles,6,40
+2019-01-14,Jan,Los Angeles,3,100
+2020-02-22,Feb,Los Angeles,8,101
+2019-08-11,Aug,Los Angeles,33,47
+2019-12-11,Dec,Los Angeles,50,44
+2019-08-25,Aug,Los Angeles,35,5250
+2019-08-15,Aug,Los Angeles,33,8130
+2020-06-13,Jun,Los Angeles,24,8170
+2019-12-26,Dec,Los Angeles,52,8250
+2020-08-17,Aug,Los Angeles,34,7840
+2019-05-18,May,Los Angeles,20,4670
+2020-07-14,Jul,Los Angeles,29,6770
+2019-06-04,Jun,Los Angeles,23,4750
+2020-06-20,Jun,Los Angeles,25,1860
+2020-08-23,Aug,Los Angeles,35,3240
+2019-06-07,Jun,Los Angeles,23,7940
+2020-02-15,Feb,Los Angeles,7,5780
+2019-12-20,Dec,Los Angeles,51,4910
+2020-04-27,Apr,Los Angeles,18,4810
+2019-12-28,Dec,Los Angeles,52,2160
+2020-08-13,Aug,Los Angeles,33,2410
+2019-06-16,Jun,Los Angeles,25,7130
+2019-12-07,Dec,Los Angeles,49,2770
+2020-08-18,Aug,Los Angeles,34,4690
+2019-02-23,Feb,Los Angeles,8,8400
+2020-07-28,Jul,Los Angeles,31,2190
+2020-08-15,Aug,Los Angeles,33,5260
+2019-12-19,Dec,Los Angeles,51,2000
+2019-06-01,Jun,Los Angeles,22,4840
+2019-06-03,Jun,Los Angeles,23,5750
+2020-02-16,Feb,Los Angeles,8,5450
+2020-08-11,Aug,Los Angeles,33,2270
+2019-01-03,Jan,Los Angeles,1,5870
+2020-01-12,Jan,Los Angeles,3,5010
+2019-12-12,Dec,Los Angeles,50,7090
+2020-07-01,Jul,Los Angeles,27,2590
+2020-02-26,Feb,Los Angeles,9,2320
+2019-04-08,Apr,Los Angeles,15,5040
+2020-01-20,Jan,Los Angeles,4,50
+2019-12-10,Dec,Los Angeles,50,50
+2019-12-21,Dec,Los Angeles,51,40
+2019-12-06,Dec,Los Angeles,49,100
+2020-06-14,Jun,Los Angeles,25,101
+2019-05-02,May,Los Angeles,18,47
+2019-12-02,Dec,Los Angeles,49,44
+2019-02-14,Feb,Los Angeles,7,3870
+2019-12-04,Dec,Los Angeles,49,4980
+2019-06-17,Jun,Los Angeles,25,5040
+2020-02-21,Feb,Los Angeles,8,2260
+2019-01-02,Jan,Los Angeles,1,2210
+2020-01-14,Jan,Los Angeles,3,2330
+2019-12-18,Dec,Los Angeles,51,5480
+2019-08-19,Aug,Los Angeles,34,1690
+2020-02-27,Feb,Los Angeles,9,4640
+2019-01-25,Jan,Los Angeles,4,50
+2019-02-06,Feb,Los Angeles,6,50
+2019-02-17,Feb,Los Angeles,8,40
+2019-07-13,Jul,Los Angeles,28,100
+2019-02-13,Feb,Los Angeles,7,101
+2019-02-20,Feb,Los Angeles,8,47
+2019-01-21,Jan,Los Angeles,4,44
+2019-01-19,Jan,Los Angeles,3,50
+2020-07-26,Jul,Los Angeles,31,40
+2020-01-13,Jan,Los Angeles,3,50
+2019-03-22,Mar,Los Angeles,12,5750
+2020-07-15,Jul,Los Angeles,29,5020
+2019-01-16,Jan,Los Angeles,3,2890
+2019-06-21,Jun,Los Angeles,25,3650
+2020-02-07,Feb,Los Angeles,6,44
+2019-12-14,Dec,Los Angeles,50,3940
+2019-11-04,Nov,Los Angeles,45,4230
+2019-07-21,Jul,Los Angeles,30,2470
+2019-06-09,Jun,Los Angeles,24,1830
+2020-03-25,Mar,Los Angeles,13,2560
+2019-12-15,Dec,Los Angeles,51,7720
+2019-03-04,Mar,Los Angeles,10,6140
+2020-01-15,Jan,Los Angeles,3,1580
+2020-02-09,Feb,Los Angeles,7,4590
+2020-08-14,Aug,Los Angeles,33,1690
+2019-02-25,Feb,Los Angeles,9,2550
+2019-02-27,Feb,Los Angeles,9,2400
+2019-03-15,Mar,Los Angeles,11,8140
+2019-06-18,Jun,Los Angeles,25,1530
+2019-12-24,Dec,Los Angeles,52,1580
+2019-01-18,Jan,Los Angeles,3,2310
+2019-06-25,Jun,Los Angeles,26,2620
+2020-08-20,Aug,Los Angeles,34,3630
+2019-02-03,Feb,Los Angeles,6,44
+2019-06-15,Jun,Los Angeles,24,4900
+2020-06-06,Jun,Los Angeles,23,1600
+2020-02-25,Feb,Los Angeles,9,3350
+2019-08-21,Aug,Los Angeles,34,1540
+2020-01-02,Jan,Los Angeles,1,3730
+2020-10-08,Oct,Los Angeles,41,2020
+2019-01-07,Jan,Los Angeles,2,1810
+2019-07-24,Jul,Los Angeles,30,1820
+2019-01-15,Jan,Los Angeles,3,1940
+2020-04-25,Apr,Los Angeles,17,2030
+2020-07-17,Jul,Los Angeles,29,3130
+2019-01-01,Jan,Los Angeles,1,2410
+2020-01-05,Jan,Los Angeles,2,2810
+2019-12-27,Dec,Los Angeles,52,2520
+2020-05-15,May,Los Angeles,20,2390
+2020-05-03,May,Los Angeles,19,1640
+2020-02-12,Feb,Los Angeles,7,1770
+2019-07-10,Jul,Los Angeles,28,2450
+2019-12-25,Dec,Los Angeles,52,2100
+2020-06-21,Jun,Los Angeles,26,3350
+2019-07-04,Jul,Los Angeles,27,2310
+2020-02-06,Feb,Los Angeles,6,44
+2020-07-07,Jul,Los Angeles,28,3780
+2020-02-05,Feb,Los Angeles,6,44
+2019-08-23,Aug,Los Angeles,34,2550
+2020-01-06,Jan,Los Angeles,2,4180
+2020-01-25,Jan,Los Angeles,4,44
+2019-02-10,Feb,Los Angeles,7,1870
+2020-02-20,Feb,Los Angeles,8,5050
+2020-06-11,Jun,Los Angeles,24,1930
+2019-01-22,Jan,Los Angeles,4,44
+2020-06-03,Jun,Los Angeles,23,2140
+2019-07-23,Jul,Los Angeles,30,3430
+2020-07-09,Jul,Los Angeles,28,1950
+2020-03-10,Mar,Los Angeles,11,5010
+2019-07-12,Jul,Los Angeles,28,4820
+2020-05-21,May,Los Angeles,21,1650
+2020-06-12,Jun,Los Angeles,24,3690
+2019-07-18,Jul,Los Angeles,29,2430
+2019-06-27,Jun,Los Angeles,26,2250
+2019-01-08,Jan,Los Angeles,2,1540
+2019-12-23,Dec,Los Angeles,52,2200
+2019-10-21,Oct,Chicago,43,4230
+2019-06-24,Jun,Los Angeles,26,5310
+2020-05-11,May,Los Angeles,20,1820
+2019-05-20,May,Los Angeles,21,3290
+2019-12-22,Dec,Los Angeles,52,1940
+2019-05-15,May,Los Angeles,20,3350
+2019-07-02,Jul,Los Angeles,27,1720
+2019-02-21,Feb,Los Angeles,8,2240
+2020-02-19,Feb,Los Angeles,8,3980
+2020-01-23,Jan,Los Angeles,4,44
+2020-01-28,Jan,Los Angeles,5,44
+2020-03-22,Mar,Los Angeles,13,1420
+2020-06-28,Jun,Los Angeles,27,2780
+2020-02-28,Feb,Los Angeles,9,5110
+2019-07-09,Jul,Los Angeles,28,4080
+2019-03-05,Mar,Los Angeles,10,1480
+2019-08-27,Aug,Los Angeles,35,3540
+2020-02-04,Feb,Los Angeles,6,55
+2020-05-10,May,Los Angeles,20,2430
+2019-05-01,May,Los Angeles,18,3600
+2019-07-03,Jul,Los Angeles,27,2520
+2020-01-07,Jan,Los Angeles,2,2040
+2020-01-21,Jan,Los Angeles,4,55
+2019-09-04,Sep,Los Angeles,36,1700
+2020-07-10,Jul,Los Angeles,28,2220
+2020-07-24,Jul,Los Angeles,30,1740
+2020-07-06,Jul,Los Angeles,28,3900
+2020-08-03,Aug,Los Angeles,32,3630
+2019-05-14,May,Los Angeles,20,3360
+2019-05-12,May,Los Angeles,20,1980
+2020-01-08,Jan,Los Angeles,2,1600
+2019-02-02,Feb,Los Angeles,5,55
+2019-10-02,Oct,Los Angeles,40,2020
+2019-11-15,Nov,Los Angeles,46,2250
+2020-01-18,Jan,Los Angeles,3,3730
+2019-07-20,Jul,Los Angeles,29,1920
+2020-02-08,Feb,Los Angeles,6,55
+2020-03-06,Mar,Los Angeles,10,2370
+2019-07-14,Jul,Los Angeles,29,2060
+2019-06-06,Jun,Los Angeles,23,1880
+2020-06-22,Jun,Los Angeles,26,1760
+2019-01-20,Jan,Los Angeles,4,55
+2019-02-18,Feb,Los Angeles,8,2200
+2019-01-24,Jan,Los Angeles,4,55
+2019-06-14,Jun,Los Angeles,24,2560
+2020-02-10,Feb,Los Angeles,7,2600
+2019-01-26,Jan,Los Angeles,4,55
+2019-11-11,Nov,Los Angeles,46,1980
+2020-01-19,Jan,Los Angeles,4,55
+2020-06-07,Jun,Los Angeles,24,2170
+2019-03-12,Mar,Los Angeles,11,3560
+2019-03-28,Mar,Los Angeles,13,2530
+2019-05-21,May,Los Angeles,21,4120
+2020-07-19,Jul,Los Angeles,30,4120
+2020-11-21,Nov,Los Angeles,47,2530
+2019-06-20,Jun,Los Angeles,25,3550
+2019-06-08,Jun,Los Angeles,23,2070
+2020-05-08,May,Los Angeles,19,1540
+2019-01-12,Jan,Los Angeles,2,2390
+2019-02-01,Feb,Los Angeles,5,34
+2020-05-12,May,Chicago,20,1920
+2020-03-03,Mar,Los Angeles,10,2070
+2019-05-22,May,Los Angeles,21,1910
+2019-02-11,Feb,Chicago,7,1810
+2019-02-26,Feb,Los Angeles,9,4000
+2019-11-12,Nov,Los Angeles,46,1810
+2020-03-11,Mar,Los Angeles,11,2250
+2019-01-05,Jan,Los Angeles,1,3780
+2020-01-09,Jan,Los Angeles,2,2520
+2019-07-06,Jul,Los Angeles,27,2970
+2020-07-02,Jul,Los Angeles,27,3820
+2020-03-28,Mar,Los Angeles,13,1950
+2019-05-08,May,Los Angeles,19,2420
+2019-01-23,Jan,Los Angeles,4,33
+2020-07-21,Jul,Los Angeles,30,3380
+2020-03-08,Mar,Los Angeles,11,3140
+2019-01-11,Jan,Los Angeles,2,1490
+2020-02-18,Feb,Los Angeles,8,3330
+2019-11-08,Nov,Los Angeles,45,1930
+2019-05-23,May,Los Angeles,21,2440
+2019-07-27,Jul,Los Angeles,30,1890
+2019-06-12,Jun,Los Angeles,24,3680
+2019-07-19,Jul,Los Angeles,29,1670
+2019-09-20,Sep,Los Angeles,38,4000
+2019-06-05,Jun,Los Angeles,23,2230
+2019-03-01,Mar,Los Angeles,9,2810
+2020-07-27,Jul,Los Angeles,31,3510
+2020-08-12,Aug,Los Angeles,33,1760
+2019-05-28,May,Los Angeles,22,1810
+2020-05-13,May,Los Angeles,20,2340
+2020-01-24,Jan,Los Angeles,4,78
+2020-02-14,Feb,Los Angeles,7,2260
+2020-10-25,Oct,Los Angeles,44,2040
+2019-09-06,Sep,Los Angeles,36,3370
+2019-07-26,Jul,Los Angeles,30,1860
+2019-11-26,Nov,Los Angeles,48,2210
+2019-02-19,Feb,Los Angeles,8,2530
+2019-03-14,Mar,Los Angeles,11,2490
+2020-06-08,Jun,Los Angeles,24,2090
+2020-03-02,Mar,Los Angeles,10,3460
+2020-03-27,Mar,Los Angeles,13,1820
+2020-01-26,Jan,Los Angeles,5,90
+2020-07-16,Jul,Los Angeles,29,1750
+2020-01-22,Jan,Los Angeles,4,100
+2019-06-23,Jun,Los Angeles,26,2080
+2020-01-10,Jan,Los Angeles,2,1880
+2019-03-09,Mar,Los Angeles,10,1560
+2019-11-22,Nov,Los Angeles,47,1890
+2020-07-03,Jul,Los Angeles,27,1790
+2020-03-24,Mar,Los Angeles,13,2140
+2019-10-17,Oct,Los Angeles,42,2430
+2020-10-05,Oct,Los Angeles,41,1910
+2020-09-11,Sep,Los Angeles,37,2400
+2019-05-25,May,Los Angeles,21,1860
+2020-10-01,Oct,Los Angeles,40,2230
+2019-06-26,Jun,Los Angeles,26,2290
+2020-06-04,Jun,Los Angeles,23,2600
+2019-05-24,May,Los Angeles,21,1820
+2019-06-10,Jun,Los Angeles,24,1740
+2019-07-07,Jul,Los Angeles,28,1530
+2019-11-04,Nov,Chicago,45,2880
+2019-03-10,Mar,Los Angeles,11,2280
+2020-11-01,Nov,Los Angeles,45,2200
+2020-01-27,Jan,Chicago,5,54
+2020-01-03,Jan,Los Angeles,1,1710
+2020-10-16,Oct,Los Angeles,42,1600
+2020-03-16,Mar,Los Angeles,12,1640
+2019-01-09,Jan,Los Angeles,2,2770
+2019-07-28,Jul,Los Angeles,31,3940
+2020-07-04,Jul,Los Angeles,27,2330
+2020-06-01,Jun,Los Angeles,23,2560
+2020-05-04,May,Los Angeles,19,1860
+2020-05-09,May,Los Angeles,19,1700
+2020-07-13,Jul,Los Angeles,29,2010
+2020-03-01,Mar,Los Angeles,10,2180
+2019-03-25,Mar,Los Angeles,13,1970
+2019-07-05,Jul,Los Angeles,27,1500
+2019-01-13,Jan,Los Angeles,3,4030
+2020-11-07,Nov,Los Angeles,45,1930
+2019-09-10,Sep,Los Angeles,37,2680
+2020-07-20,Jul,Los Angeles,30,3570
+2020-06-16,Jun,Los Angeles,25,1870
+2020-06-18,Jun,Los Angeles,25,2250
+2019-08-07,Aug,Chicago,32,1650
+2020-03-20,Mar,Los Angeles,12,1880
+2019-10-22,Oct,Los Angeles,43,1930
+2019-10-11,Oct,Los Angeles,41,2040
+2020-08-25,Aug,Los Angeles,35,2240
+2019-11-24,Nov,Los Angeles,48,1860
+2019-05-19,May,Los Angeles,21,2310
+2019-06-22,Jun,Los Angeles,25,2000
+2020-06-17,Jun,Los Angeles,25,1720
+2019-04-17,Apr,Chicago,16,2310
+2019-09-28,Sep,Los Angeles,39,2050
+2020-06-05,Jun,Los Angeles,23,1660
+2020-10-12,Oct,Los Angeles,42,3260
+2020-07-23,Jul,Los Angeles,30,2050
+2020-03-09,Mar,Los Angeles,11,3140
+2019-06-19,Jun,Los Angeles,25,1820
+2019-03-18,Mar,Chicago,12,1990
+2019-11-09,Nov,Los Angeles,45,1750
+2019-07-11,Jul,Los Angeles,28,2090
+2020-07-22,Jul,Los Angeles,30,1840
+2019-01-27,Jan,Los Angeles,5,52
+2019-03-03,Mar,Los Angeles,10,1880
+2019-03-07,Mar,Los Angeles,10,1800
+2020-03-04,Mar,Los Angeles,10,2010
+2020-11-23,Nov,Los Angeles,48,2270
+2019-07-08,Jul,Los Angeles,28,1770
+2019-11-25,Nov,Los Angeles,48,2460
+2019-09-03,Sep,Los Angeles,36,1540
+2019-09-01,Sep,Los Angeles,36,2330
+2020-09-20,Sep,Los Angeles,39,2430
+2020-05-19,May,Los Angeles,21,2410
+2019-09-08,Sep,Los Angeles,37,2350
+2020-03-13,Mar,Los Angeles,11,2350
+2019-06-28,Jun,Los Angeles,26,1800
+2020-10-27,Oct,Los Angeles,44,2470
+2020-06-23,Jun,Los Angeles,26,2010
+2019-07-16,Jul,Los Angeles,29,1930
+2019-05-18,May,Chicago,20,1760
+2020-11-09,Nov,Los Angeles,46,1810
+2019-11-27,Nov,Los Angeles,48,1650
+2020-06-20,Jun,Chicago,25,1610
+2020-05-02,May,Los Angeles,18,1620
+2019-08-26,Aug,Chicago,35,512
+2019-03-27,Mar,Los Angeles,13,486
+2020-01-17,Jan,Los Angeles,3,625
+2020-06-27,Jun,Los Angeles,26,653
+2019-06-02,Jun,Los Angeles,23,669
+2020-06-15,Jun,Los Angeles,25,651
+2019-11-16,Nov,Los Angeles,46,423
+2019-10-15,Oct,Los Angeles,42,349
+2019-03-24,Mar,Los Angeles,13,527
+2019-05-04,May,Los Angeles,18,500
+2019-05-11,May,Los Angeles,19,511
+2019-03-17,Mar,Los Angeles,12,480
+2020-01-16,Jan,Los Angeles,3,569
+2020-11-16,Nov,Los Angeles,47,4730
+2020-09-25,Sep,Los Angeles,39,5580
+2019-06-11,Jun,Los Angeles,24,5650
+2020-03-12,Mar,Los Angeles,11,5870
+2020-03-21,Mar,Los Angeles,12,5470
+2020-01-01,Jan,Chicago,1,5590
+2019-03-26,Mar,Los Angeles,13,4990
+2019-09-21,Sep,Los Angeles,38,5070
+2019-09-26,Sep,Los Angeles,39,5470
+2019-12-17,Dec,Los Angeles,51,5490
+2020-11-25,Nov,Los Angeles,48,5560
+2019-11-06,Nov,Los Angeles,45,5330
+2020-03-26,Mar,Los Angeles,13,5480
+2020-10-17,Oct,Los Angeles,42,5470
+2019-01-17,Jan,Chicago,3,5060
+2019-04-06,Apr,Chicago,14,5910
+2019-03-16,Mar,Los Angeles,11,5280
+2020-10-26,Oct,Los Angeles,44,5200
+2020-06-19,Jun,Los Angeles,25,5190
+2019-11-21,Nov,Los Angeles,47,5210
+2019-03-02,Mar,Los Angeles,9,4870
+2020-03-02,Mar,Chicago,10,5510
+2020-11-15,Nov,Los Angeles,47,5320
+2020-06-24,Jun,Los Angeles,26,5870
+2020-05-01,May,Los Angeles,18,5690
+2020-06-25,Jun,Los Angeles,26,5370
+2019-05-03,May,Los Angeles,18,5430
+2020-11-24,Nov,Los Angeles,48,4830
+2020-03-14,Mar,Los Angeles,11,5110
+2019-10-05,Oct,Los Angeles,40,5590
+2019-07-15,Jul,Los Angeles,29,5230
+2020-10-04,Oct,Los Angeles,41,5360
+2019-04-14,Apr,Chicago,16,5110
+2019-08-04,Aug,Chicago,32,5520
+2020-04-09,Apr,Chicago,15,5070
+2020-11-06,Nov,Los Angeles,45,5650
+2019-09-23,Sep,Los Angeles,39,5470
+2020-03-19,Mar,Los Angeles,12,5010
+2019-03-13,Mar,Los Angeles,11,4970
+2019-09-25,Sep,Los Angeles,39,5540
+2020-06-26,Jun,Los Angeles,26,5770
+2019-06-13,Jun,Los Angeles,24,5290
+2019-11-04,Nov,Honolulu,45,5080
+2020-10-09,Oct,Los Angeles,41,5710
+2019-10-06,Oct,Los Angeles,41,4880
+2020-03-25,Mar,Chicago,13,5250
+2020-05-06,May,Los Angeles,19,4670
+2020-08-26,Aug,Chicago,35,4750
+2020-11-04,Nov,Los Angeles,45,1860
+2019-07-01,Jul,Los Angeles,27,5780
+2019-03-08,Mar,Los Angeles,10,4910
+2019-03-19,Mar,Los Angeles,12,4810
+2019-03-21,Mar,Los Angeles,12,4690
+2020-11-20,Nov,Los Angeles,47,5260
+2020-10-20,Oct,Los Angeles,43,4840
+2019-11-01,Nov,Los Angeles,44,5750
+2019-11-10,Nov,Los Angeles,46,5450
+2019-05-16,May,Los Angeles,20,5870
+2020-05-25,May,Los Angeles,22,5010
+2020-03-23,Mar,Los Angeles,13,1950
+2019-10-20,Oct,Los Angeles,43,5040
+2020-04-16,Apr,Chicago,16,5560
+2020-06-09,Jun,Los Angeles,24,5140
+2020-09-08,Sep,Los Angeles,37,4630
+2019-05-17,May,Los Angeles,20,5410
+2020-01-12,Jan,Chicago,3,6010
+2019-11-28,Nov,Los Angeles,48,4980
+2020-04-20,Apr,Chicago,17,5040
+2020-04-07,Apr,Chicago,15,5480
+2019-02-07,Feb,Los Angeles,6,76
+2020-09-27,Sep,Los Angeles,40,1690
+2020-11-18,Nov,Los Angeles,47,4640
+2020-05-26,May,Los Angeles,22,5780
+2019-10-23,Oct,Los Angeles,43,2600
+2020-06-14,Jun,Chicago,25,4540
+2019-07-17,Jul,Chicago,29,5680
+2020-05-05,May,Los Angeles,19,5750
+2020-09-12,Sep,Los Angeles,37,5020
+2020-03-05,Mar,Los Angeles,10,1830
+2020-11-19,Nov,Los Angeles,47,6140
+2019-05-07,May,Los Angeles,19,1580
+2019-06-06,Jun,Chicago,23,4590
+2020-11-22,Nov,Los Angeles,48,1690
+2020-03-18,Mar,Los Angeles,12,1530
+2019-11-20,Nov,Los Angeles,47,1580
+2019-03-11,Mar,Los Angeles,11,1790
+2020-05-22,May,Los Angeles,21,4900
+2019-04-07,Apr,Chicago,15,1600
+2019-05-27,May,Los Angeles,22,2730
+2019-09-07,Sep,Los Angeles,36,1540
+2019-07-22,Jul,Los Angeles,30,1810
+2020-10-19,Oct,Los Angeles,43,1940
+2019-08-06,Aug,Chicago,32,1640
+2019-08-18,Aug,Chicago,34,1770
+2019-02-16,Feb,Chicago,7,2100
+2019-10-12,Oct,Los Angeles,41,1950
+2020-08-10,Aug,Chicago,33,1650
+2020-05-20,May,Los Angeles,21,1870
+2019-03-20,Mar,Los Angeles,12,5050
+2019-02-15,Feb,Chicago,7,1950
+2019-05-13,May,Los Angeles,20,5010
+2019-05-06,May,Los Angeles,19,4820
+2020-05-12,May,Honolulu,20,1650
+2019-09-05,Sep,Los Angeles,36,1540
+2019-10-14,Oct,Los Angeles,42,2200
+2019-05-20,May,Chicago,21,5310
+2020-04-14,Apr,Chicago,16,1820
+2019-06-07,Jun,Chicago,23,1720
+2020-11-26,Nov,Los Angeles,48,2090
+2020-07-05,Jul,Los Angeles,28,1600
+2019-05-09,May,Los Angeles,19,1780
+2020-05-24,May,Los Angeles,22,1420
+2019-05-10,May,Los Angeles,19,2780
+2019-10-18,Oct,Los Angeles,42,5110
+2019-09-02,Sep,Los Angeles,36,1940
+2019-10-01,Oct,Los Angeles,40,1480
+2019-09-19,Sep,Los Angeles,38,5100
+2020-05-23,May,Los Angeles,21,2430
+2020-05-28,May,Los Angeles,22,2020
+2019-05-05,May,Los Angeles,19,2520
+2020-10-24,Oct,Los Angeles,43,1700
+2019-02-24,Feb,Chicago,9,2220
+2020-11-03,Nov,Los Angeles,45,1740
+2020-09-24,Sep,Los Angeles,39,1600
+2020-09-03,Sep,Los Angeles,36,1690
+2020-10-08,Oct,Chicago,41,2250
+2019-10-07,Oct,Los Angeles,41,2860
+2019-01-10,Jan,Chicago,2,2370
+2020-08-16,Aug,Chicago,34,1720
+2020-01-11,Jan,Los Angeles,2,1880
+2020-04-08,Apr,Chicago,15,1760
+2020-04-15,Apr,Chicago,16,2620
+2020-10-07,Oct,Los Angeles,41,2890
+2020-10-23,Oct,Los Angeles,43,2600
+2020-05-15,May,Chicago,20,1450
+2019-05-02,May,Chicago,18,1980
+2019-04-24,Apr,Chicago,17,2150
+2020-04-24,Apr,Chicago,17,2530
+2019-03-23,Mar,Los Angeles,12,1540
+2019-10-09,Oct,Los Angeles,41,2390
+2020-05-16,May,Los Angeles,20,1810
+2019-01-02,Jan,Chicago,1,2520
+2019-04-03,Apr,Chicago,14,2970
+2020-11-13,Nov,Los Angeles,46,3140
+2019-09-13,Sep,Los Angeles,37,1490
+2019-04-11,Apr,Chicago,15,2440
+2020-11-08,Nov,Los Angeles,46,1670
+2019-04-16,Apr,Chicago,16,2810
+2019-10-24,Oct,Los Angeles,43,1760
+2020-09-09,Sep,Los Angeles,37,2750
+2020-03-17,Mar,Los Angeles,12,1810
+2020-09-13,Sep,Los Angeles,38,2340
+2019-02-05,Feb,Chicago,6,77
+2019-01-14,Jan,Chicago,3,2530
+2020-02-22,Feb,Chicago,8,2490
+2020-09-04,Sep,Los Angeles,36,2310
+2019-08-28,Aug,Chicago,35,1750
+2019-11-02,Nov,Los Angeles,44,2580
+2020-11-02,Nov,Los Angeles,45,1920
+2019-01-28,Jan,Chicago,5,98
+2020-05-27,May,Los Angeles,22,1750
+2020-05-17,May,Los Angeles,21,2080
+2019-10-21,Oct,Honolulu,43,1880
+2019-01-06,Jan,Chicago,2,1560
+2020-10-21,Oct,Los Angeles,43,1790
+2019-02-11,Feb,Honolulu,7,2430
+2020-08-05,Aug,Chicago,32,2400
+2019-03-04,Mar,Chicago,10,1860
+2020-10-02,Oct,Los Angeles,40,2290
+2019-03-06,Mar,Los Angeles,10,2600
+2019-11-14,Nov,Los Angeles,46,1820
+2019-10-04,Oct,Los Angeles,40,1740
+2020-04-18,Apr,Chicago,16,1530
+2020-09-05,Sep,Los Angeles,36,2760
+2020-09-14,Sep,Los Angeles,38,2880
+2019-09-16,Sep,Los Angeles,38,2470
+2019-12-03,Dec,Chicago,49,1710
+2019-11-05,Nov,Los Angeles,45,1600
+2019-11-07,Nov,Los Angeles,45,1640
+2020-05-18,May,Los Angeles,21,2770
+2020-08-01,Aug,Chicago,31,2560
+2019-06-03,Jun,Chicago,23,1700
+2019-10-25,Oct,Los Angeles,43,2010
+2019-04-19,Apr,Chicago,16,1970
+2020-09-10,Sep,Los Angeles,37,1500
+2019-09-04,Sep,Chicago,36,1860
+2020-10-28,Oct,Los Angeles,44,1930
+2020-07-01,Jul,Chicago,27,2680
+2020-02-26,Feb,Chicago,9,1650
+2020-07-18,Jul,Los Angeles,29,2000
+2020-01-04,Jan,Chicago,1,1860
+2020-08-21,Aug,Chicago,34,1720
+2020-10-14,Oct,Los Angeles,42,2310
+2019-09-24,Sep,Los Angeles,39,1660
+2019-10-02,Oct,Chicago,40,2050
+2020-05-03,May,Chicago,19,2010
+2020-08-24,Aug,Chicago,35,1980
+2020-08-22,Aug,Chicago,34,1820
+2020-03-15,Mar,Los Angeles,12,1750
+2020-10-13,Oct,Los Angeles,42,2090
+2019-11-13,Nov,Los Angeles,46,1840
+2020-07-25,Jul,Chicago,30,1840
+2020-08-02,Aug,Chicago,32,1950
+2020-09-18,Sep,Los Angeles,38,1880
+2019-04-04,Apr,Chicago,14,1800
+2019-08-13,Aug,Chicago,33,2010
+2020-10-03,Oct,Los Angeles,40,1770
+2019-08-14,Aug,Chicago,33,1540
+2020-09-21,Sep,Los Angeles,39,2430
+2020-02-17,Feb,Chicago,8,2410
+2020-10-06,Oct,Los Angeles,41,2350
+2019-04-26,Apr,Chicago,17,2350
+2019-01-21,Jan,Chicago,4,34
+2019-01-19,Jan,Chicago,3,2470
+2020-07-26,Jul,Chicago,31,2800
+2019-09-11,Sep,Los Angeles,37,1760
+2019-12-11,Dec,Chicago,50,1810
+2020-04-11,Apr,Chicago,15,1650
+2020-09-02,Sep,Los Angeles,36,1610
+2020-06-13,Jun,Chicago,24,1620
+2019-11-03,Nov,Los Angeles,45,2050
+2019-05-26,May,Los Angeles,22,505
+2019-05-18,May,Honolulu,20,166
+2020-07-08,Jul,Chicago,28,704
+2020-09-06,Sep,Los Angeles,37,578
+2020-01-27,Jan,Honolulu,5,23
+2020-08-23,Aug,Chicago,35,624
+2019-05-15,May,Chicago,20,502
+2020-10-11,Oct,Los Angeles,42,537
+2020-05-07,May,Los Angeles,19,686
+2019-09-09,Sep,Los Angeles,37,477
+2020-10-22,Oct,Los Angeles,43,543
+2019-08-16,Aug,Chicago,33,506
+2019-04-20,Apr,Chicago,16,379
+2020-04-17,Apr,Chicago,16,715
+2019-04-01,Apr,Chicago,14,377
+2019-02-08,Feb,Chicago,6,54
+2020-11-14,Nov,Los Angeles,46,483
+2020-11-12,Nov,Los Angeles,46,511
+2019-11-18,Nov,Los Angeles,47,426
+2020-07-11,Jul,Chicago,28,697
+2020-06-06,Jun,Chicago,23,789
+2020-02-01,Feb,Chicago,5,23
+2020-04-23,Apr,Chicago,17,711
+2020-09-26,Sep,Los Angeles,39,656
+2019-09-20,Sep,Chicago,38,453
+2019-04-22,Apr,Chicago,17,403
+2019-07-24,Jul,Chicago,30,484
+2019-01-15,Jan,Chicago,3,651
+2020-06-02,Jun,Los Angeles,23,668
+2020-01-20,Jan,Chicago,4,22
+2019-12-10,Dec,Chicago,50,372
+2019-04-18,Apr,Chicago,16,373
+2020-09-22,Sep,Los Angeles,39,676
+2020-10-25,Oct,Chicago,44,559
+2019-11-15,Nov,Chicago,46,419
+2019-12-02,Dec,Chicago,49,398
+2019-12-09,Dec,Chicago,50,379
+2019-11-19,Nov,Los Angeles,47,412
+2020-04-12,Apr,Chicago,16,766
+2020-11-28,Nov,Los Angeles,48,523
+2020-03-07,Mar,Chicago,10,660
+2020-08-28,Aug,Chicago,35,656
+2020-04-02,Apr,Chicago,14,741
+2019-04-09,Apr,Chicago,15,426
+2020-02-03,Feb,Chicago,6,78
+2019-10-16,Oct,Los Angeles,42,363
+2019-02-06,Feb,Chicago,6,49
+2019-04-21,Apr,Chicago,17,395
+2019-02-28,Feb,Chicago,9,431
+2019-09-15,Sep,Los Angeles,38,418
+2019-08-17,Aug,Chicago,33,492
+2019-07-23,Jul,Chicago,30,536
+2020-07-09,Jul,Chicago,28,725
+2020-03-10,Mar,Chicago,11,649
+2020-04-26,Apr,Chicago,18,745
+2019-03-22,Mar,Chicago,12,536
+2019-08-12,Aug,Chicago,33,508
+2020-09-17,Sep,Los Angeles,38,590
+2019-06-21,Jun,Chicago,25,645
+2020-11-11,Nov,Los Angeles,46,536
+2020-11-05,Nov,Los Angeles,45,511
+2020-05-12,May,Miami,20,371
+2020-07-14,Jul,Chicago,29,720
+2020-09-15,Sep,Los Angeles,38,624
+2020-06-20,Jun,Honolulu,25,257
+2019-12-15,Dec,Chicago,51,411
+2019-11-12,Nov,Chicago,46,428
+2019-09-14,Sep,Los Angeles,37,408
+2020-05-14,May,Los Angeles,20,696
+2020-09-07,Sep,Los Angeles,37,644
+2020-09-01,Sep,Los Angeles,36,662
+2020-08-13,Aug,Chicago,33,667
+2019-07-25,Jul,Chicago,30,560
+2020-04-22,Apr,Chicago,17,768
+2019-04-12,Apr,Chicago,15,352
+2019-02-23,Feb,Chicago,8,478
+2020-10-18,Oct,Los Angeles,43,552
+2020-11-27,Nov,Los Angeles,48,507
+2019-10-19,Oct,Los Angeles,42,376
+2019-06-01,Jun,Chicago,22,693
+2019-05-01,May,Chicago,18,525
+2019-02-22,Feb,Chicago,8,454
+2020-08-11,Aug,Chicago,33,711
+2020-04-21,Apr,Chicago,17,725
+2019-08-07,Aug,Honolulu,32,156
+2019-08-20,Aug,Chicago,34,534
+2020-07-24,Jul,Chicago,30,725
+2020-07-06,Jul,Chicago,28,716
+2019-09-17,Sep,Los Angeles,38,435
+2020-07-17,Jul,Chicago,29,718
+2019-01-01,Jan,Chicago,1,627
+2020-04-13,Apr,Chicago,16,750
+2020-09-28,Sep,Los Angeles,40,627
+2019-04-17,Apr,Honolulu,16,144
+2019-09-06,Sep,Chicago,36,463
+2020-02-12,Feb,Chicago,7,642
+2019-02-14,Feb,Chicago,7,445
+2019-04-28,Apr,Chicago,18,368
+2020-02-23,Feb,Chicago,9,577
+2019-10-03,Oct,Los Angeles,40,371
+2020-02-06,Feb,Chicago,6,626
+2020-01-14,Jan,Chicago,3,548
+2020-08-08,Aug,Chicago,32,617
+2020-04-10,Apr,Chicago,15,701
+2020-02-27,Feb,Chicago,9,660
+2019-09-12,Sep,Los Angeles,37,440
+2019-02-10,Feb,Chicago,7,436
+2019-08-09,Aug,Chicago,32,537
+2020-02-24,Feb,Chicago,9,581
+2019-09-22,Sep,Los Angeles,39,428
+2020-02-13,Feb,Chicago,7,694
+2019-03-12,Mar,Chicago,11,538
+2019-03-28,Mar,Chicago,13,524
+2019-05-21,May,Chicago,21,529
+2019-08-08,Aug,Chicago,32,515
+2020-05-21,May,Chicago,21,800
+2019-08-25,Aug,Chicago,35,488
+2019-04-10,Apr,Chicago,15,385
+2019-06-27,Jun,Chicago,26,652
+2019-11-23,Nov,Los Angeles,47,401
+2020-11-10,Nov,Los Angeles,46,565
+2019-05-18,May,Miami,20,253
+2019-07-21,Jul,Chicago,30,505
+2020-04-04,Apr,Chicago,14,732
+2020-03-25,Mar,Honolulu,13,204
+2019-12-22,Dec,Chicago,52,409
+2020-10-16,Oct,Chicago,42,547
+2020-04-28,Apr,Chicago,18,725
+2020-09-19,Sep,Los Angeles,38,632
+2020-04-03,Apr,Chicago,14,751
+2020-04-05,Apr,Chicago,15,713
+2019-02-27,Feb,Chicago,9,473
+2019-06-16,Jun,Chicago,25,642
+2019-12-07,Dec,Chicago,49,359
+2020-08-18,Aug,Chicago,34,668
+2019-01-18,Jan,Chicago,3,587
+2019-04-25,Apr,Chicago,17,412
+2019-10-10,Oct,Los Angeles,41,373
+2019-10-26,Oct,Los Angeles,43,350
+2019-06-15,Jun,Chicago,24,652
+2019-05-23,May,Chicago,21,507
+2020-02-16,Feb,Chicago,8,582
+2019-08-21,Aug,Chicago,34,530
+2019-02-12,Feb,Chicago,7,482
+2020-01-01,Jan,Honolulu,1,182
+2019-12-12,Dec,Chicago,50,392
+2019-03-01,Mar,Chicago,9,560
+2020-07-27,Jul,Chicago,31,725
+2019-04-02,Apr,Chicago,14,389
+2019-05-14,May,Chicago,20,491
+2019-05-12,May,Chicago,20,561
+2019-12-21,Dec,Chicago,51,419
+2020-04-19,Apr,Chicago,17,696
+2019-01-17,Jan,Honolulu,3,197
+2019-09-28,Sep,Chicago,39,459
+2020-01-18,Jan,Chicago,3,592
+2019-07-10,Jul,Chicago,28,542
+2019-08-05,Aug,Chicago,32,514
+2020-06-10,Jun,Chicago,24,818
+2020-08-06,Aug,Chicago,32,649
+2020-03-02,Mar,Honolulu,10,225
+2020-07-07,Jul,Chicago,28,715
+2019-12-13,Dec,Chicago,50,380
+2019-08-19,Aug,Chicago,34,523
+2020-01-06,Jan,Chicago,2,578
+2020-08-09,Aug,Chicago,33,673
+2020-02-10,Feb,Chicago,7,592
+2020-08-19,Aug,Chicago,34,707
+2019-07-13,Jul,Chicago,28,537
+2019-08-24,Aug,Chicago,34,489
+2019-02-20,Feb,Chicago,8,419
+2019-10-17,Oct,Chicago,42,368
+2020-10-05,Oct,Chicago,41,552
+2020-09-11,Sep,Chicago,37,624
+2019-08-11,Aug,Chicago,33,520
+2020-11-21,Nov,Chicago,47,501
+2020-07-15,Jul,Chicago,29,721
+2019-08-10,Aug,Chicago,32,453
+2020-05-08,May,Chicago,19,793
+2020-09-16,Sep,Los Angeles,38,583
+2019-11-17,Nov,Los Angeles,47,406
+2019-11-04,Nov,Miami,45,214
+2019-06-24,Jun,Chicago,26,613
+2019-08-01,Aug,Chicago,31,527
+2019-05-20,May,Honolulu,21,161
+2019-02-26,Feb,Chicago,9,425
+2019-08-26,Aug,Honolulu,35,139
+2020-08-27,Aug,Chicago,35,707
+2019-04-05,Apr,Chicago,14,427
+2019-04-23,Apr,Chicago,17,383
+2019-08-03,Aug,Chicago,31,541
+2020-01-28,Jan,Chicago,5,595
+2019-03-15,Mar,Chicago,11,537
+2019-06-18,Jun,Chicago,25,669
+2019-12-24,Dec,Chicago,52,420
+2019-07-09,Jul,Chicago,28,514
+2020-07-12,Jul,Chicago,29,740
+2020-10-10,Oct,Los Angeles,41,561
+2020-09-23,Sep,Los Angeles,39,622
+2020-05-10,May,Chicago,20,773
+2019-09-10,Sep,Chicago,37,442
+2020-02-25,Feb,Chicago,9,654
+2020-01-07,Jan,Chicago,2,617
+2019-01-03,Jan,Chicago,1,600
+2020-01-12,Jan,Honolulu,3,195
+2019-01-07,Jan,Chicago,2,609
+2019-10-22,Oct,Chicago,43,366
+2019-10-11,Oct,Chicago,41,379
+2020-04-01,Apr,Chicago,14,678
+2019-05-28,May,Chicago,22,454
+2020-05-13,May,Chicago,20,746
+2020-01-05,Jan,Chicago,2,598
+2019-08-22,Aug,Chicago,34,567
+2020-06-14,Jun,Honolulu,25,270
+2019-04-06,Apr,Honolulu,14,131
+2019-07-26,Jul,Chicago,30,482
+2019-07-20,Jul,Chicago,29,545
+2019-12-01,Dec,Chicago,49,393
+2019-06-17,Jun,Chicago,25,668
+2019-12-08,Dec,Chicago,50,412
+2020-02-06,Feb,Honolulu,6,207
+2020-06-22,Jun,Chicago,26,773
+2019-12-18,Dec,Chicago,51,385
+2019-08-23,Aug,Chicago,34,487
+2019-01-24,Jan,Chicago,4,617
+2020-02-11,Feb,Chicago,7,603
+2020-01-10,Jan,Chicago,2,561
+2019-02-17,Feb,Chicago,8,451
+2020-06-11,Jun,Chicago,24,767
+2019-02-04,Feb,Chicago,6,491
+2020-06-03,Jun,Chicago,23,767
+2019-09-03,Sep,Chicago,36,485
+2019-09-01,Sep,Chicago,36,452
+2020-09-20,Sep,Chicago,39,587
+2020-01-13,Jan,Chicago,3,566
+2020-10-01,Oct,Chicago,40,556
+2020-06-12,Jun,Chicago,24,770
+2019-08-15,Aug,Chicago,33,507
+2019-05-24,May,Chicago,21,504
+2019-04-27,Apr,Chicago,17,407
+2020-11-17,Nov,Los Angeles,47,497
+2019-10-21,Oct,Miami,43,207
+2020-03-03,Mar,Chicago,10,642
+2019-06-04,Jun,Chicago,23,667
+2019-02-11,Feb,Miami,7,228
+2020-01-03,Jan,Chicago,1,545
+2020-08-26,Aug,Honolulu,35,210
+2020-02-15,Feb,Chicago,7,584
+2019-04-15,Apr,Chicago,16,404
+2020-04-27,Apr,Chicago,18,705
+2019-12-28,Dec,Chicago,52,384
+2020-07-02,Jul,Chicago,27,746
+2020-03-22,Mar,Chicago,13,640
+2020-06-28,Jun,Chicago,27,801
+2020-02-28,Feb,Chicago,9,613
+2020-07-21,Jul,Chicago,30,672
+2020-07-28,Jul,Chicago,31,740
+2020-10-15,Oct,Los Angeles,42,554
+2020-08-04,Aug,Chicago,32,646
+2019-11-08,Nov,Chicago,45,450
+2020-09-25,Sep,Chicago,39,608
+2019-07-03,Jul,Chicago,27,461
+2019-06-12,Jun,Chicago,24,706
+2020-01-02,Jan,Chicago,1,582
+2020-10-08,Oct,Honolulu,41,175
+2020-07-10,Jul,Chicago,28,726
+2019-09-21,Sep,Chicago,38,446
+2019-09-26,Sep,Chicago,39,418
+2019-04-08,Apr,Chicago,15,380
+2019-11-24,Nov,Chicago,48,453
+2019-05-19,May,Chicago,21,533
+2020-01-08,Jan,Chicago,2,560
+2019-12-06,Dec,Chicago,49,383
+2020-05-15,May,Honolulu,20,268
+2019-07-17,Jul,Honolulu,29,173
+2020-06-05,Jun,Chicago,23,859
+2019-11-26,Nov,Chicago,48,418
+2019-12-04,Dec,Chicago,49,373
+2020-06-21,Jun,Chicago,26,792
+2020-02-02,Feb,Chicago,6,608
+2020-03-07,Mar,Honolulu,10,200
+2020-03-27,Mar,Chicago,13,660
+2020-02-05,Feb,Chicago,6,622
+2019-02-18,Feb,Chicago,8,475
+2020-01-22,Jan,Chicago,4,582
+2019-01-04,Jan,Chicago,1,625
+2019-03-07,Mar,Chicago,10,513
+2020-02-20,Feb,Chicago,8,654
+2019-11-11,Nov,Chicago,46,422
+2019-02-09,Feb,Chicago,6,443
+2020-06-07,Jun,Chicago,24,738
+2019-04-14,Apr,Honolulu,16,111
+2019-08-04,Aug,Honolulu,32,145
+2020-04-09,Apr,Honolulu,15,235
+2019-07-12,Jul,Chicago,28,477
+2019-09-08,Sep,Chicago,37,403
+2019-06-20,Jun,Chicago,25,633
+2019-01-16,Jan,Chicago,3,591
+2020-10-27,Oct,Chicago,44,577
+2019-12-16,Dec,Chicago,51,386
+2019-10-08,Oct,Los Angeles,41,376
+2020-05-12,May,Anchorage,20,229
+2019-03-10,Mar,Chicago,11,529
+2019-06-09,Jun,Chicago,24,659
+2020-01-27,Jan,Miami,5,261
+2020-05-02,May,Chicago,18,784
+2019-06-07,Jun,Honolulu,23,233
+2020-01-15,Jan,Chicago,3,596
+2019-12-20,Dec,Chicago,51,399
+2020-08-14,Aug,Chicago,33,685
+2019-02-25,Feb,Chicago,9,476
+2020-06-01,Jun,Chicago,23,807
+2020-03-28,Mar,Chicago,13,652
+2019-05-08,May,Chicago,19,491
+2019-01-23,Jan,Chicago,4,632
+2020-03-01,Mar,Chicago,10,614
+2019-06-25,Jun,Chicago,26,646
+2019-10-28,Oct,Los Angeles,44,349
+2019-12-05,Dec,Chicago,49,372
+2020-11-07,Nov,Chicago,45,529
+2020-04-16,Apr,Honolulu,16,227
+2019-07-27,Jul,Chicago,30,508
+2020-06-16,Jun,Chicago,25,774
+2020-01-21,Jan,Chicago,4,546
+2019-09-04,Sep,Honolulu,36,142
+2019-06-05,Jun,Chicago,23,617
+2020-04-20,Apr,Honolulu,17,257
+2020-04-07,Apr,Honolulu,15,238
+2020-04-25,Apr,Chicago,17,756
+2020-11-25,Nov,Chicago,48,508
+2019-11-06,Nov,Chicago,45,442
+2020-01-24,Jan,Chicago,4,43
+2019-12-27,Dec,Chicago,52,368
+2019-10-02,Oct,Honolulu,40,135
+2019-05-02,May,Honolulu,18,159
+2019-03-16,Mar,Chicago,11,520
+2020-10-12,Oct,Chicago,42,571
+2019-12-25,Dec,Chicago,52,396
+2020-03-06,Mar,Chicago,10,639
+2020-02-21,Feb,Chicago,8,627
+2019-06-06,Jun,Honolulu,23,244
+2019-11-09,Nov,Chicago,45,440
+2019-01-20,Jan,Chicago,4,44
+2020-07-16,Jul,Chicago,29,689
+2019-01-27,Jan,Chicago,5,56
+2019-01-25,Jan,Chicago,4,77
+2020-11-24,Nov,Chicago,48,488
+2019-01-26,Jan,Chicago,4,90
+2019-11-22,Nov,Chicago,47,482
+2019-02-13,Feb,Chicago,7,450
+2020-03-24,Mar,Chicago,13,608
+2019-08-06,Aug,Honolulu,32,160
+2019-08-18,Aug,Honolulu,34,176
+2019-02-16,Feb,Honolulu,7,159
+2020-07-19,Jul,Chicago,30,716
+2019-09-23,Sep,Chicago,39,469
+2019-06-26,Jun,Chicago,26,657
+2019-07-18,Jul,Chicago,29,522
+2019-09-25,Sep,Chicago,39,464
+2019-12-26,Dec,Chicago,52,402
+2019-10-13,Oct,Los Angeles,42,336
+2019-10-21,Oct,Anchorage,43,119
+2020-11-09,Nov,Chicago,46,525
+2020-05-11,May,Chicago,20,813
+2020-06-20,Jun,Miami,25,396
+2020-05-06,May,Chicago,19,817
+2019-03-04,Mar,Honolulu,10,150
+2019-07-02,Jul,Chicago,27,497
+2020-02-09,Feb,Chicago,7,619
+2020-02-19,Feb,Chicago,8,617
+2020-01-23,Jan,Chicago,4,34
+2020-06-15,Jun,Chicago,25,768
+2020-05-04,May,Chicago,19,825
+2020-05-09,May,Chicago,19,784
+2020-07-13,Jul,Chicago,29,705
+2019-05-04,May,Chicago,18,523
+2019-03-05,Mar,Chicago,10,503
+2019-09-18,Sep,Los Angeles,38,453
+2019-12-19,Dec,Chicago,51,424
+2020-11-16,Nov,Chicago,47,467
+2019-02-24,Feb,Honolulu,9,145
+2020-07-20,Jul,Chicago,30,687
+2020-03-12,Mar,Chicago,11,639
+2019-07-19,Jul,Chicago,29,503
+2019-09-20,Sep,Honolulu,38,156
+2020-03-20,Mar,Chicago,12,663
+2019-01-10,Jan,Honolulu,2,191
+2020-08-16,Aug,Honolulu,34,247
+2020-08-03,Aug,Chicago,32,677
+2020-09-27,Sep,Chicago,40,679
+2020-11-18,Nov,Chicago,47,475
+2019-06-22,Jun,Chicago,25,694
+2019-02-02,Feb,Chicago,5,76
+2020-10-25,Oct,Honolulu,44,186
+2020-05-03,May,Honolulu,19,324
+2020-05-05,May,Chicago,19,794
+2020-10-26,Oct,Chicago,44,578
+2020-02-08,Feb,Chicago,6,22
+2019-03-14,Mar,Chicago,11,569
+2019-07-04,Jul,Chicago,27,510
+2019-01-02,Jan,Honolulu,1,187
+2020-11-15,Nov,Chicago,47,491
+2020-01-26,Jan,Chicago,5,43
+2020-07-22,Jul,Chicago,30,722
+2020-06-25,Jun,Chicago,26,795
+2020-01-25,Jan,Chicago,4,90
+2019-04-07,Apr,Honolulu,15,127
+2019-03-09,Mar,Chicago,10,528
+2020-11-23,Nov,Chicago,48,481
+2019-01-22,Jan,Chicago,4,561
+2019-11-25,Nov,Chicago,48,411
+2019-02-05,Feb,Honolulu,6,135
+2019-01-14,Jan,Honolulu,3,176
+2020-02-22,Feb,Honolulu,8,208
+2019-05-25,May,Chicago,21,504
+2020-08-10,Aug,Honolulu,33,216
+2020-03-13,Mar,Chicago,11,676
+2019-06-08,Jun,Chicago,23,629
+2019-02-15,Feb,Honolulu,7,181
+2020-02-07,Feb,Chicago,6,625
+2019-10-27,Oct,Los Angeles,44,380
+2019-11-04,Nov,Anchorage,45,98
+2020-10-09,Oct,Chicago,41,596
+2019-05-22,May,Chicago,21,505
+2020-03-25,Mar,Miami,13,323
+2020-04-14,Apr,Honolulu,16,241
+2019-05-15,May,Honolulu,20,183
+2020-03-11,Mar,Chicago,11,619
+2019-02-21,Feb,Chicago,8,439
+2020-01-09,Jan,Chicago,2,572
+2019-07-06,Jul,Chicago,27,546
+2019-03-21,Mar,Chicago,12,514
+2019-11-16,Nov,Chicago,46,418
+2019-10-15,Oct,Chicago,42,389
+2019-03-24,Mar,Chicago,13,491
+2019-11-10,Nov,Chicago,46,455
+2020-03-08,Mar,Chicago,11,653
+2019-09-27,Sep,Los Angeles,39,464
+2019-02-03,Feb,Chicago,6,440
+2019-10-20,Oct,Chicago,43,397
+2019-06-03,Jun,Honolulu,23,233
+2019-06-11,Jun,Chicago,24,640
+2020-09-08,Sep,Chicago,37,662
+2020-06-18,Jun,Chicago,25,755
+2019-08-07,Aug,Miami,32,224
+2019-03-26,Mar,Chicago,13,547
+2020-07-01,Jul,Honolulu,27,238
+2020-02-26,Feb,Honolulu,9,227
+2020-08-12,Aug,Chicago,33,713
+2020-04-08,Apr,Honolulu,15,256
+2020-04-15,Apr,Honolulu,16,277
+2020-03-26,Mar,Chicago,13,619
+2020-02-14,Feb,Chicago,7,639
+2019-04-17,Apr,Miami,16,182
+2019-11-15,Nov,Honolulu,46,155
+2019-04-24,Apr,Honolulu,17,133
+2020-09-12,Sep,Chicago,37,647
+2019-02-19,Feb,Chicago,8,438
+2020-03-09,Mar,Chicago,11,629
+2019-07-14,Jul,Chicago,29,545
+2019-03-18,Mar,Honolulu,12,158
+2020-11-22,Nov,Chicago,48,469
+2019-07-11,Jul,Chicago,28,529
+2020-05-01,May,Chicago,18,840
+2019-03-11,Mar,Chicago,11,554
+2019-06-14,Jun,Chicago,24,634
+2019-04-16,Apr,Honolulu,16,126
+2020-03-04,Mar,Chicago,10,651
+2019-10-05,Oct,Chicago,40,365
+2020-01-19,Jan,Chicago,4,628
+2020-10-04,Oct,Chicago,41,577
+2019-01-21,Jan,Honolulu,4,45
+2019-01-19,Jan,Honolulu,3,237
+2020-07-26,Jul,Honolulu,31,219
+2020-05-19,May,Chicago,21,828
+2019-08-28,Aug,Honolulu,35,150
+2020-03-19,Mar,Chicago,12,631
+2020-06-04,Jun,Chicago,23,789
+2019-01-28,Jan,Honolulu,5,90
+2019-01-08,Jan,Chicago,2,606
+2020-04-06,Apr,Chicago,15,794
+2019-05-18,May,Anchorage,20,133
+2019-09-05,Sep,Chicago,36,449
+2020-11-01,Nov,Chicago,45,526
+2019-05-20,May,Miami,21,248
+2020-08-05,Aug,Honolulu,32,200
+2019-11-12,Nov,Honolulu,46,137
+2020-03-16,Mar,Chicago,12,649
+2019-01-05,Jan,Chicago,1,589
+2019-07-28,Jul,Chicago,31,573
+2020-07-04,Jul,Chicago,27,673
+2019-05-10,May,Chicago,19,542
+2020-11-20,Nov,Chicago,47,484
+2020-10-20,Oct,Chicago,43,575
+2019-11-01,Nov,Chicago,44,432
+2019-09-19,Sep,Chicago,38,473
+2019-03-25,Mar,Chicago,13,569
+2019-04-13,Apr,Chicago,15,400
+2020-02-04,Feb,Chicago,6,21
+2020-10-24,Oct,Chicago,43,545
+2020-06-06,Jun,Honolulu,23,264
+2020-06-09,Jun,Chicago,24,718
+2020-09-24,Sep,Chicago,39,641
+2020-03-21,Mar,Chicago,12,650
+2020-01-01,Jan,Miami,1,255
+2019-11-28,Nov,Chicago,48,456
+2019-07-24,Jul,Honolulu,30,154
+2019-01-15,Jan,Honolulu,3,203
+2020-08-25,Aug,Chicago,35,686
+2020-01-04,Jan,Honolulu,1,216
+2020-08-21,Aug,Honolulu,34,221
+2020-05-26,May,Chicago,22,809
+2020-06-17,Jun,Chicago,25,826
+2019-01-17,Jan,Miami,3,283
+2019-09-06,Sep,Honolulu,36,131
+2020-08-24,Aug,Honolulu,35,237
+2020-04-24,Apr,Honolulu,17,227
+2020-07-23,Jul,Chicago,30,711
+2019-11-21,Nov,Chicago,47,417
+2020-06-08,Jun,Chicago,24,839
+2020-07-25,Jul,Honolulu,30,228
+2019-04-03,Apr,Honolulu,14,128
+2020-06-24,Jun,Chicago,26,790
+2019-11-20,Nov,Chicago,47,439
+2019-04-11,Apr,Honolulu,15,138
+2019-06-23,Jun,Chicago,26,671
+2019-08-14,Aug,Honolulu,33,176
+2020-03-14,Mar,Chicago,11,671
+2019-09-07,Sep,Chicago,36,395
+2020-07-03,Jul,Chicago,27,752
+2020-10-19,Oct,Chicago,43,587
+2019-07-23,Jul,Honolulu,30,178
+2020-07-09,Jul,Honolulu,28,239
+2020-03-10,Mar,Honolulu,11,245
+2020-11-06,Nov,Chicago,45,501
+2019-12-11,Dec,Honolulu,50,127
+2020-05-20,May,Chicago,21,832
+2019-06-28,Jun,Chicago,26,642
+2020-06-13,Jun,Honolulu,24,276
+2019-01-12,Jan,Chicago,2,628
+2020-08-07,Aug,Chicago,32,709
+2019-01-06,Jan,Honolulu,2,184
+2019-11-27,Nov,Chicago,48,448
+2019-02-11,Feb,Anchorage,7,117
+2020-08-23,Aug,Honolulu,35,231
+2020-10-16,Oct,Honolulu,42,195
+2019-03-27,Mar,Chicago,13,525
+2019-01-09,Jan,Chicago,2,624
+2020-06-27,Jun,Chicago,26,806
+2019-06-02,Jun,Chicago,23,669
+2020-04-18,Apr,Honolulu,16,259
+2019-10-18,Oct,Chicago,42,372
+2019-09-02,Sep,Chicago,36,447
+2019-10-01,Oct,Chicago,40,392
+2019-12-03,Dec,Honolulu,49,147
+2019-05-11,May,Chicago,19,480
+2019-08-02,Aug,Chicago,31,491
+2020-02-18,Feb,Chicago,8,614
+2020-08-01,Aug,Honolulu,31,232
+2019-05-01,May,Honolulu,18,165
+2020-11-03,Nov,Chicago,45,504
+2019-04-19,Apr,Honolulu,16,138
+2019-05-17,May,Chicago,20,522
+2020-01-12,Jan,Miami,3,292
+2019-10-07,Oct,Chicago,41,361
+2020-07-24,Jul,Honolulu,30,229
+2020-07-06,Jul,Honolulu,28,224
+2019-12-17,Dec,Chicago,51,391
+2020-01-20,Jan,Honolulu,4,163
+2019-12-10,Dec,Honolulu,50,136
+2020-10-07,Oct,Chicago,41,551
+2020-10-17,Oct,Chicago,42,556
+2020-06-14,Jun,Miami,25,429
+2019-09-28,Sep,Honolulu,39,164
+2019-12-02,Dec,Honolulu,49,129
+2020-08-22,Aug,Honolulu,34,230
+2020-06-19,Jun,Chicago,25,727
+2020-11-19,Nov,Chicago,47,514
+2019-06-19,Jun,Chicago,25,647
+2019-06-06,Jun,Miami,23,346
+2020-08-02,Aug,Honolulu,32,235
+2020-03-18,Mar,Chicago,12,651
+2019-09-13,Sep,Chicago,37,437
+2019-08-13,Aug,Honolulu,33,151
+2019-03-03,Mar,Chicago,10,554
+2019-02-06,Feb,Honolulu,6,153
+2019-05-27,May,Chicago,22,520
+2020-09-09,Sep,Chicago,37,643
+2019-07-08,Jul,Chicago,28,519
+2020-09-13,Sep,Chicago,38,614
+2019-03-12,Mar,Honolulu,11,163
+2019-03-28,Mar,Honolulu,13,168
+2019-05-21,May,Honolulu,21,176
+2019-10-12,Oct,Chicago,41,373
+2019-03-22,Mar,Honolulu,12,168
+2019-11-02,Nov,Chicago,44,444
+2019-03-13,Mar,Chicago,11,498
+2019-06-21,Jun,Honolulu,25,235
+2019-06-10,Jun,Chicago,24,670
+2020-08-17,Aug,Chicago,34,691
+2020-07-08,Jul,Honolulu,28,263
+2019-10-06,Oct,Chicago,41,388
+2020-01-27,Jan,Anchorage,5,162
+2019-12-15,Dec,Honolulu,51,120
+2019-08-26,Aug,Miami,35,242
+2020-11-04,Nov,Chicago,45,463
+2020-01-17,Jan,Chicago,3,527
+2019-03-08,Mar,Chicago,10,493
+2019-03-19,Mar,Chicago,12,515
+2019-08-16,Aug,Honolulu,33,180
+2020-09-05,Sep,Chicago,36,669
+2020-09-14,Sep,Chicago,38,617
+2019-09-16,Sep,Chicago,38,471
+2019-02-08,Feb,Honolulu,6,142
+2019-05-16,May,Chicago,20,520
+2020-08-15,Aug,Chicago,33,678
+2019-01-13,Jan,Chicago,3,599
+2020-07-11,Jul,Honolulu,28,232
+2019-05-23,May,Honolulu,21,149
+2019-10-25,Oct,Chicago,43,336
+2020-04-23,Apr,Honolulu,17,239
+2020-09-03,Sep,Chicago,36,676
+2020-10-08,Oct,Miami,41,275
+2020-10-28,Oct,Chicago,44,541
+2019-03-01,Mar,Honolulu,9,176
+2020-07-27,Jul,Honolulu,31,222
+2019-02-07,Feb,Chicago,6,452
+2020-07-17,Jul,Honolulu,29,267
+2019-01-01,Jan,Honolulu,1,217
+2020-10-14,Oct,Chicago,42,601
+2019-10-23,Oct,Chicago,43,371
+2020-05-15,May,Miami,20,387
+2019-04-06,Apr,Miami,14,180
+2020-02-12,Feb,Honolulu,7,184
+2019-12-09,Dec,Honolulu,50,112
+2020-03-05,Mar,Chicago,10,589
+2019-10-09,Oct,Chicago,41,381
+2019-03-02,Mar,Chicago,9,518
+2019-03-18,Mar,Miami,12,244
+2020-08-28,Aug,Honolulu,35,250
+2020-11-13,Nov,Chicago,46,498
+2019-04-04,Apr,Honolulu,14,155
+2020-02-03,Feb,Honolulu,6,192
+2019-05-03,May,Chicago,18,513
+2019-02-10,Feb,Honolulu,7,149
+2019-10-24,Oct,Chicago,43,387
+2020-02-17,Feb,Honolulu,8,203
+2019-07-15,Jul,Chicago,29,527
+2019-04-26,Apr,Honolulu,17,113
+2019-10-17,Oct,Honolulu,42,117
+2020-10-05,Oct,Honolulu,41,182
+2020-09-11,Sep,Honolulu,37,199
+2020-09-04,Sep,Chicago,36,626
+2020-05-21,May,Honolulu,21,286
+2020-04-11,Apr,Honolulu,15,267
+2019-03-20,Mar,Chicago,12,502
+2019-06-27,Jun,Honolulu,26,233
+2020-06-23,Jun,Chicago,26,770
+2019-12-14,Dec,Chicago,50,397
+2020-07-14,Jul,Honolulu,29,255
+2019-10-14,Oct,Chicago,42,390
+2020-06-20,Jun,Anchorage,25,199
+2019-12-22,Dec,Honolulu,52,128
+2020-08-26,Aug,Miami,35,320
+2020-11-26,Nov,Chicago,48,504
+2019-07-01,Jul,Chicago,27,509
+2019-05-09,May,Chicago,19,473
+2020-05-24,May,Chicago,22,860
+2020-08-13,Aug,Honolulu,33,226
+2019-04-20,Apr,Honolulu,16,143
+2020-04-17,Apr,Honolulu,16,221
+2019-04-01,Apr,Honolulu,14,144
+2019-02-23,Feb,Honolulu,8,152
+2020-05-23,May,Chicago,21,833
+2020-08-20,Aug,Chicago,34,680
+2020-01-16,Jan,Chicago,3,595
+2019-06-01,Jun,Honolulu,22,235
+2019-09-10,Sep,Honolulu,37,167
+2020-02-01,Feb,Honolulu,5,220
+2020-08-11,Aug,Honolulu,33,233
+2020-09-10,Sep,Chicago,37,649
+2019-09-04,Sep,Miami,36,221
+2019-04-22,Apr,Honolulu,17,135
+2019-10-22,Oct,Honolulu,43,111
+2019-10-11,Oct,Honolulu,41,111
+2020-01-11,Jan,Chicago,2,597
+2019-05-14,May,Honolulu,20,160
+2019-05-12,May,Honolulu,20,194
+2019-04-18,Apr,Honolulu,16,111
+2020-10-23,Oct,Chicago,43,548
+2019-10-02,Oct,Miami,40,179
+2019-07-17,Jul,Miami,29,285
+2020-01-18,Jan,Honolulu,3,171
+2019-02-14,Feb,Honolulu,7,159
+2019-03-23,Mar,Chicago,12,522
+2020-10-13,Oct,Chicago,42,542
+2019-05-07,May,Chicago,19,519
+2019-01-02,Jan,Miami,1,309
+2020-01-14,Jan,Honolulu,3,177
+2020-09-18,Sep,Chicago,38,592
+2019-04-09,Apr,Honolulu,15,146
+2020-02-27,Feb,Honolulu,9,204
+2020-05-22,May,Chicago,21,811
+2020-02-10,Feb,Honolulu,7,211
+2020-09-21,Sep,Chicago,39,642
+2019-02-28,Feb,Honolulu,9,148
+2019-07-22,Jul,Chicago,30,528
+2019-08-17,Aug,Honolulu,33,195
+2019-09-03,Sep,Honolulu,36,160
+2019-09-01,Sep,Honolulu,36,144
+2020-09-20,Sep,Honolulu,39,213
+2019-09-11,Sep,Chicago,37,441
+2020-11-21,Nov,Honolulu,47,169
+2019-08-12,Aug,Honolulu,33,195
+2020-11-02,Nov,Chicago,45,464
+2020-05-08,May,Honolulu,19,250
+2020-06-26,Jun,Chicago,26,758
+2019-12-23,Dec,Chicago,52,394
+2019-07-21,Jul,Honolulu,30,176
+2020-10-21,Oct,Chicago,43,578
+2020-03-25,Mar,Anchorage,13,187
+2019-02-26,Feb,Honolulu,9,158
+2019-06-07,Jun,Miami,23,294
+2020-10-02,Oct,Chicago,40,559
+2020-07-05,Jul,Chicago,28,725
+2019-11-14,Nov,Chicago,46,453
+2019-10-04,Oct,Chicago,40,365
+2019-02-27,Feb,Honolulu,9,165
+2019-07-25,Jul,Honolulu,30,178
+2020-04-22,Apr,Honolulu,17,240
+2019-04-12,Apr,Honolulu,15,123
+2019-01-18,Jan,Honolulu,3,206
+2019-11-05,Nov,Chicago,45,465
+2019-08-27,Aug,Chicago,35,481
+2020-03-23,Mar,Chicago,13,675
+2019-06-15,Jun,Honolulu,24,222
+2020-09-25,Sep,Honolulu,39,224
+2019-02-22,Feb,Honolulu,8,161
+2019-08-21,Aug,Honolulu,34,165
+2020-09-26,Sep,Chicago,39,677
+2019-09-20,Sep,Miami,38,191
+2019-08-20,Aug,Honolulu,34,178
+2019-09-21,Sep,Honolulu,38,142
+2019-09-26,Sep,Honolulu,39,114
+2020-07-18,Jul,Chicago,29,728
+2019-05-28,May,Honolulu,22,170
+2020-05-13,May,Honolulu,20,263
+2020-04-13,Apr,Honolulu,16,265
+2019-09-24,Sep,Chicago,39,452
+2020-10-25,Oct,Miami,44,260
+2019-05-02,May,Miami,18,240
+2019-07-26,Jul,Honolulu,30,177
+2019-07-10,Jul,Honolulu,28,182
+2020-03-15,Mar,Chicago,12,662
+2020-04-12,Apr,Honolulu,16,260
+2020-05-16,May,Chicago,20,787
+2020-07-25,Jul,Miami,30,390
+2020-07-07,Jul,Honolulu,28,216
+2020-04-02,Apr,Honolulu,14,221
+2020-04-10,Apr,Honolulu,15,238
+2020-01-06,Jan,Honolulu,2,207
+2020-11-08,Nov,Chicago,46,454
+2020-01-10,Jan,Honolulu,2,187
+2019-04-21,Apr,Honolulu,17,115
+2020-02-24,Feb,Honolulu,9,190
+2020-03-17,Mar,Chicago,12,643
+2020-02-13,Feb,Honolulu,7,180
+2019-04-14,Apr,Miami,16,190
+2019-08-04,Aug,Miami,32,253
+2020-04-09,Apr,Miami,15,382
+2020-04-26,Apr,Honolulu,18,250
+2020-10-01,Oct,Honolulu,40,192
+2019-08-25,Aug,Honolulu,35,178
+2020-09-02,Sep,Chicago,36,610
+2019-05-24,May,Honolulu,21,178
+2019-05-13,May,Chicago,20,529
+2019-02-01,Feb,Chicago,5,483
+2019-06-24,Jun,Honolulu,26,198
+2020-09-06,Sep,Chicago,37,651
+2019-05-20,May,Anchorage,21,121
+2020-01-03,Jan,Honolulu,1,204
+2019-03-04,Mar,Miami,10,257
+2020-10-11,Oct,Chicago,42,568
+2019-03-06,Mar,Chicago,10,571
+2019-09-09,Sep,Chicago,37,478
+2020-10-22,Oct,Chicago,43,575
+2020-01-28,Jan,Honolulu,5,184
+2019-06-16,Jun,Honolulu,25,220
+2019-12-07,Dec,Honolulu,49,126
+2020-08-18,Aug,Honolulu,34,216
+2019-07-09,Jul,Honolulu,28,144
+2020-11-14,Nov,Chicago,46,502
+2019-01-11,Jan,Chicago,2,621
+2019-05-05,May,Chicago,19,492
+2020-05-10,May,Honolulu,20,289
+2020-04-16,Apr,Miami,16,365
+2020-02-16,Feb,Honolulu,8,210
+2020-01-07,Jan,Honolulu,2,202
+2020-04-21,Apr,Honolulu,17,255
+2019-08-07,Aug,Anchorage,32,122
+2019-12-12,Dec,Honolulu,50,140
+2020-04-20,Apr,Miami,17,394
+2020-04-07,Apr,Miami,15,360
+2020-06-02,Jun,Chicago,23,791
+2019-11-24,Nov,Honolulu,48,137
+2019-05-19,May,Honolulu,21,168
+2019-12-21,Dec,Honolulu,51,133
+2020-09-22,Sep,Chicago,39,627
+2019-04-17,Apr,Anchorage,16,94
+2020-05-03,May,Miami,19,423
+2020-06-05,Jun,Honolulu,23,278
+2019-07-20,Jul,Honolulu,29,187
+2019-11-19,Nov,Chicago,47,425
+2020-02-23,Feb,Honolulu,9,215
+2019-11-13,Nov,Chicago,46,463
+2020-03-07,Mar,Miami,10,316
+2020-06-22,Jun,Honolulu,26,286
+2020-08-08,Aug,Honolulu,32,247
+2019-08-19,Aug,Honolulu,34,157
+2019-01-24,Jan,Honolulu,4,223
+2020-10-03,Oct,Chicago,40,587
+2019-03-07,Mar,Honolulu,10,190
+2019-08-09,Aug,Honolulu,32,182
+2019-07-13,Jul,Honolulu,28,165
+2020-10-06,Oct,Chicago,41,608
+2019-02-20,Feb,Honolulu,8,155
+2019-08-06,Aug,Miami,32,257
+2019-08-18,Aug,Miami,34,261
+2019-02-16,Feb,Miami,7,218
+2019-08-08,Aug,Honolulu,32,191
+2019-09-08,Sep,Honolulu,37,151
+2020-07-15,Jul,Honolulu,29,246
+2020-09-17,Sep,Chicago,38,649
+2020-10-27,Oct,Honolulu,44,183
+2020-05-27,May,Chicago,22,783
+2019-07-07,Jul,Chicago,28,465
+2020-03-03,Mar,Honolulu,10,219
+2020-09-15,Sep,Chicago,38,626
+2020-05-02,May,Honolulu,18,256
+2019-05-15,May,Miami,20,258
+2019-09-14,Sep,Chicago,37,455
+2020-05-07,May,Chicago,19,772
+2020-09-07,Sep,Chicago,37,674
+2020-09-01,Sep,Chicago,36,660
+2020-07-02,Jul,Honolulu,27,245
+2019-03-15,Mar,Honolulu,11,193
+2019-06-18,Jun,Honolulu,25,202
+2019-12-24,Dec,Honolulu,52,151
+2020-07-21,Jul,Honolulu,30,242
+2020-10-18,Oct,Chicago,43,614
+2019-07-05,Jul,Chicago,27,497
+2020-05-18,May,Chicago,21,780
+2019-11-08,Nov,Honolulu,45,151
+2019-02-24,Feb,Miami,9,257
+2020-02-25,Feb,Honolulu,9,187
+2019-06-12,Jun,Honolulu,24,205
+2019-02-12,Feb,Honolulu,7,154
+2020-01-01,Jan,Anchorage,1,176
+2019-01-07,Jan,Honolulu,2,220
+2019-01-10,Jan,Miami,2,293
+2020-08-16,Aug,Miami,34,344
+2019-09-17,Sep,Chicago,38,461
+2020-11-25,Nov,Honolulu,48,158
+2019-11-06,Nov,Honolulu,45,143
+2020-01-05,Jan,Honolulu,2,183
+2020-09-28,Sep,Chicago,40,613
+2019-01-17,Jan,Anchorage,3,151
+2019-11-15,Nov,Miami,46,210
+2019-03-16,Mar,Honolulu,11,168
+2019-11-26,Nov,Honolulu,48,151
+2019-04-28,Apr,Honolulu,18,124
+2020-06-10,Jun,Honolulu,24,273
+2020-11-28,Nov,Chicago,48,459
+2020-02-06,Feb,Miami,6,294
+2020-03-27,Mar,Honolulu,13,219
+2019-12-13,Dec,Honolulu,50,135
+2019-08-23,Aug,Honolulu,34,144
+2020-01-22,Jan,Honolulu,4,195
+2019-10-16,Oct,Chicago,42,343
+2020-11-24,Nov,Honolulu,48,169
+2020-08-19,Aug,Honolulu,34,213
+2020-06-11,Jun,Honolulu,24,258
+2019-09-15,Sep,Chicago,38,458
+2020-06-03,Jun,Honolulu,23,245
+2019-02-05,Feb,Miami,6,221
+2019-01-14,Jan,Miami,3,326
+2020-02-22,Feb,Miami,8,301
+2019-08-11,Aug,Honolulu,33,185
+2019-09-23,Sep,Honolulu,39,151
+2020-06-12,Jun,Honolulu,24,253
+2019-04-10,Apr,Honolulu,15,124
+2019-09-25,Sep,Honolulu,39,163
+2019-11-03,Nov,Chicago,45,424
+2019-07-16,Jul,Chicago,29,571
+2019-03-10,Mar,Honolulu,11,184
+2020-04-04,Apr,Honolulu,14,229
+2020-05-06,May,Honolulu,19,255
+2019-11-12,Nov,Miami,46,230
+2020-04-28,Apr,Honolulu,18,240
+2020-05-14,May,Chicago,20,814
+2020-04-03,Apr,Honolulu,14,237
+2020-04-05,Apr,Honolulu,15,246
+2020-06-01,Jun,Honolulu,23,250
+2020-03-22,Mar,Honolulu,13,213
+2020-06-28,Jun,Honolulu,27,241
+2020-02-28,Feb,Honolulu,9,201
+2020-03-01,Mar,Honolulu,10,212
+2019-04-25,Apr,Honolulu,17,137
+2019-03-17,Mar,Chicago,12,534
+2019-11-18,Nov,Chicago,47,492
+2020-11-07,Nov,Honolulu,45,153
+2019-06-03,Jun,Miami,23,321
+2019-07-03,Jul,Honolulu,27,172
+2020-06-16,Jun,Honolulu,25,255
+2019-01-03,Jan,Honolulu,1,220
+2020-01-12,Jan,Anchorage,3,191
+2020-07-10,Jul,Honolulu,28,255
+2020-07-01,Jul,Miami,27,346
+2020-02-26,Feb,Miami,9,315
+2019-04-02,Apr,Honolulu,14,106
+2020-09-27,Sep,Honolulu,40,219
+2020-11-18,Nov,Honolulu,47,158
+2020-01-08,Jan,Honolulu,2,188
+2020-04-19,Apr,Honolulu,17,231
+2020-06-14,Jun,Anchorage,25,203
+2019-09-06,Sep,Miami,36,230
+2020-05-05,May,Honolulu,19,262
+2020-10-12,Oct,Honolulu,42,179
+2019-08-05,Aug,Honolulu,32,191
+2019-06-17,Jun,Honolulu,25,254
+2019-10-03,Oct,Chicago,40,398
+2020-03-02,Mar,Miami,10,320
+2019-11-09,Nov,Honolulu,45,164
+2019-12-18,Dec,Honolulu,51,140
+2019-02-18,Feb,Honolulu,8,156
+2019-01-27,Jan,Honolulu,5,198
+2019-09-12,Sep,Chicago,37,461
+2019-04-07,Apr,Miami,15,195
+2019-02-17,Feb,Honolulu,8,138
+2019-11-11,Nov,Honolulu,46,141
+2019-09-22,Sep,Chicago,39,449
+2020-06-07,Jun,Honolulu,24,245
+2019-01-21,Jan,Miami,4,318
+2019-01-19,Jan,Miami,3,302
+2020-07-26,Jul,Miami,31,363
+2020-01-13,Jan,Honolulu,3,192
+2020-08-10,Aug,Miami,33,317
+2019-06-20,Jun,Honolulu,25,197
+2019-08-10,Aug,Honolulu,32,178
+2019-02-15,Feb,Miami,7,226
+2020-11-11,Nov,Chicago,46,490
+2019-06-13,Jun,Chicago,24,664
+2020-11-09,Nov,Honolulu,46,160
+2019-08-01,Aug,Honolulu,31,157
+2020-04-14,Apr,Miami,16,335
+2020-10-16,Oct,Miami,42,273
+2020-08-27,Aug,Honolulu,35,212
+2020-09-19,Sep,Chicago,38,650
+2019-04-23,Apr,Honolulu,17,131
+2019-08-03,Aug,Honolulu,31,173
+2020-06-15,Jun,Honolulu,25,280
+2020-03-28,Mar,Honolulu,13,195
+2019-05-08,May,Honolulu,19,174
+2019-01-23,Jan,Honolulu,4,199
+2019-05-04,May,Honolulu,18,165
+2020-07-12,Jul,Honolulu,29,241
+2020-05-25,May,Chicago,22,775
+2019-10-19,Oct,Chicago,42,405
+2020-11-16,Nov,Honolulu,47,154
+2020-06-06,Jun,Miami,23,391
+2019-07-27,Jul,Honolulu,30,160
+2020-03-12,Mar,Honolulu,11,222
+2020-01-02,Jan,Honolulu,1,191
+2020-10-08,Oct,Anchorage,41,179
+2019-06-05,Jun,Honolulu,23,236
+2019-07-24,Jul,Miami,30,271
+2019-01-15,Jan,Miami,3,285
+2020-04-01,Apr,Honolulu,14,248
+2020-04-08,Apr,Miami,15,355
+2020-04-15,Apr,Miami,16,373
+2020-01-24,Jan,Honolulu,4,199
+2019-08-22,Aug,Honolulu,34,185
+2020-05-15,May,Anchorage,20,202
+2019-09-28,Sep,Miami,39,237
+2019-04-24,Apr,Miami,17,205
+2020-10-26,Oct,Honolulu,44,181
+2019-12-01,Dec,Honolulu,49,105
+2020-06-21,Jun,Honolulu,26,278
+2020-08-06,Aug,Honolulu,32,182
+2019-03-18,Mar,Anchorage,12,118
+2020-11-15,Nov,Honolulu,47,194
+2020-02-05,Feb,Honolulu,6,199
+2020-07-16,Jul,Honolulu,29,217
+2020-06-25,Jun,Honolulu,26,243
+2020-08-09,Aug,Honolulu,33,203
+2019-04-16,Apr,Miami,16,221
+2020-02-20,Feb,Honolulu,8,211
+2019-11-22,Nov,Honolulu,47,143
+2019-08-24,Aug,Honolulu,34,174
+2020-03-24,Mar,Honolulu,13,188
+2019-07-23,Jul,Miami,30,245
+2020-07-09,Jul,Miami,28,370
+2020-03-10,Mar,Miami,11,333
+2019-07-12,Jul,Honolulu,28,193
+2019-08-28,Aug,Miami,35,256
+2019-06-26,Jun,Honolulu,26,204
+2019-08-15,Aug,Honolulu,33,154
+2019-01-28,Jan,Miami,5,269
+2019-11-23,Nov,Chicago,47,448
+2019-05-06,May,Chicago,19,515
+2020-10-09,Oct,Honolulu,41,178
+2019-06-04,Jun,Honolulu,23,229
+2020-08-05,Aug,Miami,32,313
+2019-08-26,Aug,Anchorage,35,148
+2020-02-15,Feb,Honolulu,7,224
+2019-04-05,Apr,Honolulu,14,137
+2020-04-27,Apr,Honolulu,18,241
+2019-12-28,Dec,Honolulu,52,132
+2019-03-21,Mar,Honolulu,12,162
+2020-05-04,May,Honolulu,19,281
+2020-05-09,May,Honolulu,19,252
+2020-07-13,Jul,Honolulu,29,218
+2019-11-10,Nov,Honolulu,46,153
+2020-07-28,Jul,Honolulu,31,239
+2020-05-28,May,Chicago,22,820
+2019-10-26,Oct,Chicago,43,376
+2019-10-20,Oct,Honolulu,43,133
+2019-05-01,May,Miami,18,246
+2020-07-20,Jul,Honolulu,30,235
+2020-09-08,Sep,Honolulu,37,219
+2020-01-21,Jan,Honolulu,4,194
+2019-09-04,Sep,Anchorage,36,123
+2020-03-20,Mar,Honolulu,12,208
+2020-07-24,Jul,Miami,30,337
+2020-07-06,Jul,Miami,28,340
+2019-04-08,Apr,Honolulu,15,149
+2020-01-04,Jan,Miami,1,278
+2020-08-21,Aug,Miami,34,354
+2019-06-22,Jun,Honolulu,25,203
+2019-12-06,Dec,Honolulu,49,120
+2019-10-02,Oct,Anchorage,40,97
+2019-04-06,Apr,Anchorage,14,105
+2020-08-24,Aug,Miami,35,322
+2020-09-12,Sep,Honolulu,37,181
+2019-12-04,Dec,Honolulu,49,137
+2020-03-06,Mar,Honolulu,10,203
+2019-12-08,Dec,Honolulu,50,118
+2020-07-25,Jul,Anchorage,30,225
+2020-11-22,Nov,Honolulu,48,164
+2019-01-20,Jan,Honolulu,4,210
+2020-07-22,Jul,Honolulu,30,254
+2019-03-11,Mar,Honolulu,11,175
+2020-02-11,Feb,Honolulu,7,197
+2019-08-14,Aug,Miami,33,253
+2019-01-26,Jan,Honolulu,4,208
+2020-11-23,Nov,Honolulu,48,177
+2019-02-04,Feb,Honolulu,6,139
+2019-11-25,Nov,Honolulu,48,142
+2019-03-12,Mar,Miami,11,266
+2019-03-28,Mar,Miami,13,253
+2019-05-21,May,Miami,21,264
+2020-07-19,Jul,Honolulu,30,228
+2019-12-11,Dec,Miami,50,194
+2020-03-13,Mar,Honolulu,11,212
+2019-01-16,Jan,Honolulu,3,208
+2020-06-13,Jun,Miami,24,388
+2020-09-16,Sep,Chicago,38,619
+2020-05-17,May,Chicago,21,758
+2019-09-05,Sep,Honolulu,36,129
+2019-06-09,Jun,Honolulu,24,198
+2020-08-23,Aug,Miami,35,308
+2020-08-26,Aug,Anchorage,35,211
+2020-01-15,Jan,Honolulu,3,177
+2019-04-15,Apr,Honolulu,16,122
+2020-08-14,Aug,Honolulu,33,245
+2019-02-25,Feb,Honolulu,9,156
+2019-05-10,May,Honolulu,19,182
+2019-11-16,Nov,Honolulu,46,161
+2019-10-15,Oct,Honolulu,42,135
+2019-03-24,Mar,Honolulu,13,149
+2019-09-19,Sep,Honolulu,38,166
+2019-06-25,Jun,Honolulu,26,211
+2019-11-07,Nov,Chicago,45,445
+2020-09-23,Sep,Chicago,39,662
+2020-10-24,Oct,Honolulu,43,210
+2019-05-23,May,Miami,21,230
+2019-06-11,Jun,Honolulu,24,206
+2020-09-24,Sep,Honolulu,39,211
+2019-07-19,Jul,Honolulu,29,189
+2019-09-20,Sep,Anchorage,38,130
+2019-03-26,Mar,Honolulu,13,175
+2019-03-01,Mar,Miami,9,272
+2020-07-27,Jul,Miami,31,335
+2020-04-25,Apr,Honolulu,17,231
+2020-01-20,Jan,Miami,4,268
+2019-12-10,Dec,Miami,50,197
+2020-03-26,Mar,Honolulu,13,213
+2019-12-27,Dec,Honolulu,52,136
+2020-10-25,Oct,Anchorage,44,195
+2019-07-17,Jul,Anchorage,29,137
+2019-12-02,Dec,Miami,49,180
+2020-04-24,Apr,Miami,17,378
+2019-12-25,Dec,Honolulu,52,122
+2019-03-14,Mar,Honolulu,11,188
+2020-02-02,Feb,Honolulu,6,188
+2020-02-06,Feb,Anchorage,6,164
+2019-04-03,Apr,Miami,14,213
+2020-01-26,Jan,Honolulu,5,193
+2020-05-01,May,Honolulu,18,269
+2019-04-11,Apr,Miami,15,198
+2019-01-04,Jan,Honolulu,1,216
+2019-02-06,Feb,Miami,6,220
+2019-03-09,Mar,Honolulu,10,171
+2019-10-05,Oct,Honolulu,40,116
+2019-02-09,Feb,Honolulu,6,150
+2020-10-04,Oct,Honolulu,41,178
+2019-10-17,Oct,Miami,42,164
+2020-10-05,Oct,Miami,41,280
+2020-09-11,Sep,Miami,37,331
+2019-05-25,May,Honolulu,21,161
+2019-03-22,Mar,Miami,12,280
+2020-03-19,Mar,Honolulu,12,210
+2019-07-18,Jul,Honolulu,29,175
+2019-06-21,Jun,Miami,25,308
+2019-04-27,Apr,Honolulu,17,141
+2019-05-26,May,Chicago,22,503
+2019-01-06,Jan,Miami,2,318
+2020-05-11,May,Honolulu,20,255
+2019-12-15,Dec,Miami,51,217
+2019-06-07,Jun,Anchorage,23,185
+2019-07-02,Jul,Honolulu,27,152
+2019-12-20,Dec,Honolulu,51,102
+2020-02-19,Feb,Honolulu,8,202
+2020-01-23,Jan,Honolulu,4,171
+2020-04-18,Apr,Miami,16,418
+2020-11-20,Nov,Honolulu,47,165
+2020-10-20,Oct,Honolulu,43,187
+2019-11-01,Nov,Honolulu,44,137
+2019-12-03,Dec,Miami,49,183
+2019-03-05,Mar,Honolulu,10,174
+2020-11-12,Nov,Chicago,46,505
+2020-08-04,Aug,Honolulu,32,193
+2020-08-01,Aug,Miami,31,318
+2019-09-10,Sep,Miami,37,219
+2020-06-09,Jun,Honolulu,24,270
+2019-04-19,Apr,Miami,16,209
+2020-06-18,Jun,Honolulu,25,238
+2019-11-28,Nov,Honolulu,48,139
+2019-10-22,Oct,Miami,43,192
+2019-10-11,Oct,Miami,41,187
+2020-08-03,Aug,Honolulu,32,214
+2020-07-17,Jul,Miami,29,374
+2019-01-01,Jan,Miami,1,254
+2020-05-26,May,Honolulu,22,293
+2019-02-02,Feb,Honolulu,5,143
+2019-05-02,May,Anchorage,18,111
+2020-02-12,Feb,Miami,7,310
+2020-08-22,Aug,Miami,34,344
+2020-02-08,Feb,Honolulu,6,212
+2020-03-09,Mar,Honolulu,11,222
+2020-02-21,Feb,Honolulu,8,207
+2020-03-02,Mar,Anchorage,10,182
+2020-08-02,Aug,Miami,32,343
+2019-07-11,Jul,Honolulu,28,177
+2019-11-20,Nov,Honolulu,47,127
+2019-08-13,Aug,Miami,33,248
+2019-01-25,Jan,Honolulu,4,202
+2019-02-10,Feb,Miami,7,209
+2020-03-04,Mar,Honolulu,10,202
+2019-09-07,Sep,Honolulu,36,135
+2019-02-13,Feb,Honolulu,7,156
+2020-10-19,Oct,Honolulu,43,195
+2019-09-03,Sep,Miami,36,227
+2019-09-01,Sep,Miami,36,228
+2020-09-20,Sep,Miami,39,331
+2020-05-19,May,Honolulu,21,279
+2020-05-21,May,Miami,21,432
+2020-05-20,May,Honolulu,21,272
+2019-06-08,Jun,Honolulu,23,198
+2019-06-27,Jun,Miami,26,352
+2019-12-16,Dec,Honolulu,51,138
+2020-11-05,Nov,Chicago,45,501
+2020-07-08,Jul,Miami,28,345
+2019-05-22,May,Honolulu,21,190
+2019-12-22,Dec,Miami,52,205
+2019-03-04,Mar,Anchorage,10,129
+2020-03-11,Mar,Honolulu,11,224
+2020-02-09,Feb,Honolulu,7,231
+2020-01-09,Jan,Honolulu,2,223
+2019-07-06,Jul,Honolulu,27,184
+2019-08-16,Aug,Miami,33,253
+2019-10-18,Oct,Honolulu,42,120
+2019-09-02,Sep,Honolulu,36,150
+2019-10-01,Oct,Honolulu,40,135
+2019-02-08,Feb,Miami,6,221
+2020-03-08,Mar,Honolulu,11,207
+2020-11-27,Nov,Chicago,48,482
+2019-12-05,Dec,Honolulu,49,134
+2020-07-11,Jul,Miami,28,340
+2020-09-25,Sep,Miami,39,293
+2020-11-03,Nov,Honolulu,45,165
+2020-04-23,Apr,Miami,17,369
+2020-03-21,Mar,Honolulu,12,220
+2019-10-07,Oct,Honolulu,41,132
+2019-09-21,Sep,Miami,38,226
+2019-09-26,Sep,Miami,39,206
+2020-08-12,Aug,Honolulu,33,243
+2019-05-14,May,Miami,20,262
+2019-05-12,May,Miami,20,284
+2020-10-07,Oct,Honolulu,41,196
+2020-02-14,Feb,Honolulu,7,199
+2020-05-03,May,Anchorage,19,225
+2020-01-18,Jan,Miami,3,293
+2019-12-09,Dec,Miami,50,188
+2019-02-19,Feb,Honolulu,8,154
+2019-11-21,Nov,Honolulu,47,130
+2019-07-04,Jul,Honolulu,27,192
+2020-03-07,Mar,Anchorage,10,201
+2020-08-28,Aug,Miami,35,322
+2020-06-24,Jun,Honolulu,26,259
+2019-09-13,Sep,Honolulu,37,151
+2020-02-03,Feb,Miami,6,307
+2020-01-25,Jan,Honolulu,4,183
+2020-02-10,Feb,Miami,7,284
+2020-03-14,Mar,Honolulu,11,200
+2020-09-09,Sep,Honolulu,37,212
+2019-01-22,Jan,Honolulu,4,168
+2020-09-13,Sep,Honolulu,38,205
+2019-04-14,Apr,Anchorage,16,83
+2019-08-04,Aug,Anchorage,32,138
+2020-04-09,Apr,Anchorage,15,229
+2020-11-06,Nov,Honolulu,45,154
+2020-11-21,Nov,Miami,47,220
+2019-11-02,Nov,Honolulu,44,162
+2020-06-04,Jun,Honolulu,23,256
+2020-05-08,May,Miami,19,423
+2019-12-26,Dec,Honolulu,52,136
+2020-11-10,Nov,Chicago,46,531
+2020-07-14,Jul,Miami,29,332
+2020-11-01,Nov,Honolulu,45,182
+2019-02-26,Feb,Miami,9,269
+2019-05-15,May,Anchorage,20,152
+2020-03-16,Mar,Honolulu,12,220
+2019-02-21,Feb,Honolulu,8,174
+2019-07-28,Jul,Honolulu,31,184
+2020-07-04,Jul,Honolulu,27,251
+2020-08-13,Aug,Miami,33,329
+2020-09-05,Sep,Honolulu,36,207
+2020-09-14,Sep,Honolulu,38,202
+2019-09-16,Sep,Honolulu,38,127
+2019-02-23,Feb,Miami,8,216
+2019-03-25,Mar,Honolulu,13,180
+2019-10-10,Oct,Chicago,41,355
+2019-12-19,Dec,Honolulu,51,126
+2019-06-01,Jun,Miami,22,317
+2020-04-16,Apr,Anchorage,16,194
+2019-10-25,Oct,Honolulu,43,128
+2020-08-11,Aug,Miami,33,335
+2019-05-17,May,Honolulu,20,183
+2020-10-28,Oct,Honolulu,44,172
+2020-04-20,Apr,Anchorage,17,224
+2020-04-07,Apr,Anchorage,15,189
+2020-08-25,Aug,Honolulu,35,221
+2019-05-28,May,Miami,22,228
+2020-05-13,May,Miami,20,398
+2020-10-14,Oct,Honolulu,42,209
+2020-06-17,Jun,Honolulu,25,250
+2019-11-15,Nov,Anchorage,46,117
+2019-07-26,Jul,Miami,30,278
+2019-02-14,Feb,Miami,7,212
+2020-07-23,Jul,Honolulu,30,223
+2020-11-19,Nov,Honolulu,47,160
+2019-07-14,Jul,Honolulu,29,187
+2019-01-02,Jan,Anchorage,1,166
+2020-01-14,Jan,Miami,3,271
+2020-03-18,Mar,Honolulu,12,215
+2019-04-04,Apr,Miami,14,182
+2020-02-27,Feb,Miami,9,293
+2019-06-14,Jun,Honolulu,24,202
+2020-01-10,Jan,Miami,2,290
+2019-05-27,May,Honolulu,22,167
+2020-02-17,Feb,Miami,8,305
+2020-01-19,Jan,Honolulu,4,184
+2019-04-26,Apr,Miami,17,190
+2019-08-06,Aug,Anchorage,32,119
+2019-08-18,Aug,Anchorage,34,138
+2019-02-16,Feb,Anchorage,7,123
+2019-10-12,Oct,Honolulu,41,130
+2020-10-01,Oct,Miami,40,282
+2020-04-11,Apr,Miami,15,354
+2019-06-28,Jun,Honolulu,26,208
+2019-05-24,May,Miami,21,251
+2020-02-07,Feb,Honolulu,6,211
+2019-11-17,Nov,Chicago,47,508
+2019-07-21,Jul,Miami,30,247
+2019-11-27,Nov,Honolulu,48,149
+2020-01-03,Jan,Miami,1,306
+2019-11-12,Nov,Anchorage,46,113
+2019-03-27,Mar,Honolulu,13,164
+2019-01-05,Jan,Honolulu,1,194
+2020-06-27,Jun,Honolulu,26,261
+2019-06-02,Jun,Honolulu,23,217
+2019-02-27,Feb,Miami,9,185
+2019-04-20,Apr,Miami,16,187
+2020-04-17,Apr,Miami,16,374
+2019-04-01,Apr,Miami,14,196
+2019-01-18,Jan,Miami,3,291
+2019-05-11,May,Honolulu,19,150
+2020-10-10,Oct,Chicago,41,566
+2019-02-03,Feb,Honolulu,6,124
+2019-06-15,Jun,Miami,24,325
+2019-02-24,Feb,Anchorage,9,120
+2020-02-01,Feb,Miami,5,307
+2019-08-21,Aug,Miami,34,246
+2020-09-03,Sep,Honolulu,36,188
+2019-04-22,Apr,Miami,17,205
+2019-01-10,Jan,Anchorage,2,182
+2020-08-16,Aug,Anchorage,34,209
+2019-12-17,Dec,Honolulu,51,124
+2019-11-24,Nov,Miami,48,203
+2019-05-19,May,Miami,21,247
+2019-04-18,Apr,Miami,16,198
+2020-10-17,Oct,Honolulu,42,178
+2019-09-06,Sep,Anchorage,36,125
+2020-06-05,Jun,Miami,23,395
+2019-07-10,Jul,Miami,28,247
+2020-06-19,Jun,Honolulu,25,251
+2019-10-09,Oct,Honolulu,41,128
+2020-06-08,Jun,Honolulu,24,265
+2019-06-06,Jun,Anchorage,23,168
+2020-07-07,Jul,Miami,28,355
+2020-11-13,Nov,Honolulu,46,142
+2019-04-09,Apr,Miami,15,192
+2020-01-06,Jan,Miami,2,298
+2019-06-23,Jun,Honolulu,26,199
+2019-03-07,Mar,Miami,10,256
+2019-10-24,Oct,Honolulu,43,115
+2019-02-28,Feb,Miami,9,229
+2020-07-03,Jul,Honolulu,27,228
+2019-08-17,Aug,Miami,33,234
+2019-02-05,Feb,Anchorage,6,141
+2019-01-14,Jan,Anchorage,3,139
+2020-02-22,Feb,Anchorage,8,188
+2020-09-04,Sep,Honolulu,36,221
+2019-09-08,Sep,Miami,37,219
+2019-08-12,Aug,Miami,33,252
+2019-03-13,Mar,Honolulu,11,180
+2020-10-27,Oct,Miami,44,278
+2019-01-08,Jan,Honolulu,2,207
+2020-11-17,Nov,Chicago,47,511
+2019-06-24,Jun,Miami,26,334
+2019-10-06,Oct,Honolulu,41,107
+2020-05-02,May,Miami,18,408
+2020-10-16,Oct,Anchorage,42,194
+2020-11-04,Nov,Honolulu,45,148
+2019-01-09,Jan,Honolulu,2,210
+2019-03-08,Mar,Honolulu,10,194
+2019-03-19,Mar,Honolulu,12,190
+2020-01-28,Jan,Miami,5,292
+2019-07-25,Jul,Miami,30,292
+2020-04-22,Apr,Miami,17,354
+2019-04-12,Apr,Miami,15,196
+2019-07-09,Jul,Miami,28,240
+2019-05-16,May,Honolulu,20,162
+2020-10-15,Oct,Chicago,42,510
+2020-02-04,Feb,Honolulu,6,204
+2020-05-10,May,Miami,20,381
+2019-06-03,Jun,Anchorage,23,186
+2019-02-22,Feb,Miami,8,225
+2020-01-07,Jan,Miami,2,266
+2020-09-10,Sep,Honolulu,37,208
+2019-08-20,Aug,Miami,34,254
+2020-07-01,Jul,Anchorage,27,248
+2020-02-26,Feb,Anchorage,9,189
+2019-02-07,Feb,Honolulu,6,138
+2020-11-25,Nov,Miami,48,243
+2019-11-06,Nov,Miami,45,211
+2020-04-13,Apr,Miami,16,360
+2019-10-23,Oct,Honolulu,43,137
+2019-09-28,Sep,Anchorage,39,113
+2019-03-16,Mar,Miami,11,228
+2019-07-20,Jul,Miami,29,295
+2020-03-05,Mar,Honolulu,10,235
+2020-10-13,Oct,Honolulu,42,202
+2019-06-19,Jun,Honolulu,25,235
+2020-06-22,Jun,Miami,26,376
+2020-09-18,Sep,Honolulu,38,229
+2020-04-10,Apr,Miami,15,373
+2019-01-24,Jan,Miami,4,335
+2019-03-03,Mar,Honolulu,10,167
+2020-11-24,Nov,Miami,48,252
+2020-09-21,Sep,Honolulu,39,205
+2020-02-24,Feb,Miami,9,308
+2019-07-08,Jul,Honolulu,28,166
+2020-02-13,Feb,Miami,7,314
+2019-01-21,Jan,Anchorage,4,155
+2019-01-19,Jan,Anchorage,3,155
+2020-07-26,Jul,Anchorage,31,204
+2019-09-11,Sep,Honolulu,37,157
+2019-09-23,Sep,Miami,39,214
+2019-08-25,Aug,Miami,35,239
+2019-03-20,Mar,Honolulu,12,152
+2019-09-25,Sep,Miami,39,209
+2019-01-12,Jan,Honolulu,2,204
+2019-10-08,Oct,Chicago,41,374
+2020-03-03,Mar,Miami,10,305
+2019-10-14,Oct,Honolulu,42,128
+2020-05-06,May,Miami,19,394
+2020-11-26,Nov,Honolulu,48,170
+2020-01-17,Jan,Honolulu,3,200
+2019-05-09,May,Honolulu,19,186
+2020-05-24,May,Honolulu,22,269
+2020-07-02,Jul,Miami,27,373
+2019-06-16,Jun,Miami,25,323
+2019-12-07,Dec,Miami,49,181
+2020-08-18,Aug,Miami,34,323
+2020-07-21,Jul,Miami,30,329
+2020-05-23,May,Honolulu,21,276
+2019-10-28,Oct,Chicago,44,374
+2020-02-18,Feb,Honolulu,8,197
+2019-11-08,Nov,Miami,45,223
+2020-06-06,Jun,Anchorage,23,220
+2020-02-16,Feb,Miami,8,308
+2019-06-12,Jun,Miami,24,298
+2020-09-26,Sep,Honolulu,39,219
+2019-12-12,Dec,Miami,50,199
+2019-07-24,Jul,Anchorage,30,134
+2019-01-15,Jan,Anchorage,3,158
+2020-01-11,Jan,Honolulu,2,173
+2020-09-27,Sep,Miami,40,322
+2020-11-18,Nov,Miami,47,222
+2019-12-21,Dec,Miami,51,205
+2020-10-23,Oct,Honolulu,43,174
+2020-05-05,May,Miami,19,390
+2019-11-26,Nov,Miami,48,241
+2019-03-23,Mar,Honolulu,12,210
+2020-04-12,Apr,Miami,16,363
+2019-03-02,Mar,Honolulu,9,172
+2020-03-27,Mar,Miami,13,315
+2020-04-02,Apr,Miami,14,342
+2019-08-19,Aug,Miami,34,248
+2020-01-22,Jan,Miami,4,279
+2019-05-03,May,Honolulu,18,150
+2019-04-07,Apr,Anchorage,15,91
+2019-04-21,Apr,Miami,17,205
+2019-07-13,Jul,Miami,28,245
+2019-07-15,Jul,Honolulu,29,151
+2019-02-20,Feb,Miami,8,220
+2019-07-23,Jul,Anchorage,30,115
+2020-07-09,Jul,Anchorage,28,187
+2020-03-10,Mar,Anchorage,11,171
+2020-04-26,Apr,Miami,18,336
+2020-08-10,Aug,Anchorage,33,198
+2020-07-15,Jul,Miami,29,362
+2020-11-02,Nov,Honolulu,45,160
+2019-02-15,Feb,Anchorage,7,121
+2019-06-10,Jun,Honolulu,24,207
+2019-10-13,Oct,Chicago,42,415
+2019-03-10,Mar,Miami,11,264
+2020-10-21,Oct,Honolulu,43,169
+2020-04-14,Apr,Anchorage,16,202
+2020-10-02,Oct,Honolulu,40,201
+2019-07-01,Jul,Honolulu,27,171
+2019-11-14,Nov,Honolulu,46,158
+2019-10-04,Oct,Honolulu,40,111
+2020-06-01,Jun,Miami,23,413
+2019-03-15,Mar,Miami,11,266
+2019-06-18,Jun,Miami,25,282
+2019-12-24,Dec,Miami,52,191
+2020-03-01,Mar,Miami,10,342
+2019-11-05,Nov,Honolulu,45,142
+2019-09-18,Sep,Chicago,38,471
+2019-01-13,Jan,Honolulu,3,195
+2020-11-07,Nov,Miami,45,225
+2019-05-01,May,Anchorage,18,121
+2020-02-25,Feb,Miami,9,251
+2020-06-16,Jun,Miami,25,400
+2020-04-21,Apr,Miami,17,373
+2019-01-07,Jan,Miami,2,299
+2020-07-24,Jul,Anchorage,30,199
+2020-07-06,Jul,Anchorage,28,211
+2020-07-18,Jul,Honolulu,29,231
+2020-04-08,Apr,Anchorage,15,191
+2020-04-15,Apr,Anchorage,16,192
+2020-01-05,Jan,Miami,2,287
+2019-09-24,Sep,Honolulu,39,138
+2019-04-24,Apr,Anchorage,17,115
+2020-10-12,Oct,Miami,42,286
+2020-03-15,Mar,Honolulu,12,212
+2020-02-23,Feb,Miami,9,296
+2019-05-07,May,Honolulu,19,169
+2019-11-09,Nov,Miami,45,215
+2020-08-08,Aug,Miami,32,336
+2019-08-23,Aug,Miami,34,262
+2019-01-27,Jan,Miami,5,300
+2020-05-22,May,Honolulu,21,239
+2019-04-16,Apr,Anchorage,16,104
+2019-08-09,Aug,Miami,32,256
+2020-06-11,Jun,Miami,24,386
+2019-07-22,Jul,Honolulu,30,167
+2020-06-03,Jun,Miami,23,396
+2019-03-12,Mar,Anchorage,11,135
+2019-03-28,Mar,Anchorage,13,153
+2019-05-21,May,Anchorage,21,152
+2019-08-08,Aug,Miami,32,267
+2019-08-28,Aug,Anchorage,35,135
+2020-06-12,Jun,Miami,24,370
+2020-09-02,Sep,Honolulu,36,215
+2019-01-28,Jan,Anchorage,5,141
+2020-06-23,Jun,Honolulu,26,251
+2019-10-27,Oct,Chicago,44,374
+2020-11-09,Nov,Miami,46,237
+2020-09-06,Sep,Honolulu,37,224
+2020-08-05,Aug,Anchorage,32,206
+2020-10-11,Oct,Honolulu,42,172
+2020-07-05,Jul,Honolulu,28,238
+2019-09-09,Sep,Honolulu,37,148
+2020-10-22,Oct,Honolulu,43,188
+2020-06-15,Jun,Miami,25,359
+2020-03-22,Mar,Miami,13,288
+2020-06-28,Jun,Miami,27,355
+2020-02-28,Feb,Miami,9,291
+2019-05-04,May,Miami,18,254
+2020-11-14,Nov,Honolulu,46,176
+2019-09-27,Sep,Chicago,39,414
+2020-01-16,Jan,Honolulu,3,173
+2020-11-16,Nov,Miami,47,262
+2019-05-23,May,Anchorage,21,123
+2019-07-03,Jul,Miami,27,218
+2020-03-12,Mar,Miami,11,296
+2019-02-12,Feb,Miami,7,229
+2020-07-10,Jul,Miami,28,339
+2019-03-01,Mar,Anchorage,9,139
+2020-07-27,Jul,Anchorage,31,220
+2020-06-02,Jun,Honolulu,23,275
+2020-01-04,Jan,Anchorage,1,153
+2020-08-21,Aug,Anchorage,34,187
+2020-01-08,Jan,Miami,2,262
+2020-09-22,Sep,Honolulu,39,216
+2020-08-24,Aug,Anchorage,35,213
+2020-10-26,Oct,Miami,44,289
+2019-11-19,Nov,Honolulu,47,150
+2020-06-10,Jun,Miami,24,418
+2020-05-16,May,Honolulu,20,256
+2020-11-15,Nov,Miami,47,260
+2019-12-13,Dec,Miami,50,201
+2019-02-18,Feb,Miami,8,213
+2020-06-25,Jun,Miami,26,408
+2020-11-08,Nov,Honolulu,46,145
+2019-08-14,Aug,Anchorage,33,122
+2020-08-19,Aug,Miami,34,334
+2019-11-11,Nov,Miami,46,224
+2020-03-17,Mar,Honolulu,12,195
+2020-06-07,Jun,Miami,24,362
+2019-10-17,Oct,Anchorage,42,107
+2020-10-05,Oct,Anchorage,41,174
+2020-09-11,Sep,Anchorage,37,206
+2019-08-11,Aug,Miami,33,253
+2019-12-11,Dec,Anchorage,50,115
+2019-06-20,Jun,Miami,25,319
+2020-09-17,Sep,Honolulu,38,204
+2020-06-13,Jun,Anchorage,24,238
+2020-06-26,Jun,Honolulu,26,277
+2020-04-06,Apr,Honolulu,15,241
+2020-10-09,Oct,Miami,41,297
+2020-09-15,Sep,Honolulu,38,221
+2020-08-23,Aug,Anchorage,35,232
+2019-09-14,Sep,Honolulu,37,159
+2019-03-06,Mar,Honolulu,10,204
+2020-09-07,Sep,Honolulu,37,214
+2020-09-01,Sep,Honolulu,36,219
+2019-03-21,Mar,Miami,12,246
+2020-03-28,Mar,Miami,13,304
+2019-05-08,May,Miami,19,246
+2019-01-23,Jan,Miami,4,318
+2019-11-10,Nov,Miami,46,243
+2020-10-18,Oct,Honolulu,43,198
+2019-04-13,Apr,Honolulu,15,135
+2020-03-23,Mar,Honolulu,13,220
+2019-10-20,Oct,Miami,43,191
+2019-09-10,Sep,Anchorage,37,110
+2019-07-27,Jul,Miami,30,246
+2020-09-08,Sep,Miami,37,329
+2019-01-03,Jan,Miami,1,319
+2019-06-05,Jun,Miami,23,347
+2019-10-22,Oct,Anchorage,43,78
+2019-10-11,Oct,Anchorage,41,102
+2019-09-17,Sep,Honolulu,38,150
+2020-01-20,Jan,Anchorage,4,190
+2019-12-10,Dec,Anchorage,50,115
+2020-01-24,Jan,Miami,4,256
+2020-09-28,Sep,Honolulu,40,192
+2019-12-02,Dec,Anchorage,49,103
+2020-09-12,Sep,Miami,37,344
+2019-04-28,Apr,Miami,18,184
+2019-06-17,Jun,Miami,25,315
+2019-11-13,Nov,Honolulu,46,178
+2020-11-22,Nov,Miami,48,215
+2019-12-18,Dec,Miami,51,195
+2020-07-16,Jul,Miami,29,356
+2019-03-11,Mar,Miami,11,288
+2020-10-03,Oct,Honolulu,40,185
+2019-02-06,Feb,Anchorage,6,111
+2019-02-17,Feb,Miami,8,240
+2019-11-22,Nov,Miami,47,209
+2020-10-06,Oct,Honolulu,41,211
+2020-03-24,Mar,Miami,13,317
+2019-09-03,Sep,Anchorage,36,136
+2019-09-01,Sep,Anchorage,36,136
+2020-09-20,Sep,Anchorage,39,182
+2020-01-13,Jan,Miami,3,296
+2019-03-22,Mar,Anchorage,12,135
+2019-06-26,Jun,Miami,26,303
+2019-04-10,Apr,Miami,15,223
+2019-06-21,Jun,Anchorage,25,185
+2019-05-13,May,Honolulu,20,172
+2020-08-07,Aug,Honolulu,32,217
+2019-09-05,Sep,Miami,36,223
+2020-04-04,Apr,Miami,14,350
+2019-12-15,Dec,Anchorage,51,115
+2020-04-28,Apr,Miami,18,356
+2020-05-07,May,Honolulu,19,253
+2020-04-03,Apr,Miami,14,341
+2020-04-05,Apr,Miami,15,351
+2019-05-10,May,Miami,19,238
+2020-05-04,May,Miami,19,412
+2020-05-09,May,Miami,19,412
+2020-07-13,Jul,Miami,29,329
+2019-09-19,Sep,Miami,38,230
+2019-04-25,Apr,Miami,17,197
+2019-08-02,Aug,Honolulu,31,166
+2019-05-05,May,Honolulu,19,166
+2020-10-24,Oct,Miami,43,253
+2020-09-25,Sep,Anchorage,39,198
+2020-07-20,Jul,Miami,30,322
+2020-09-24,Sep,Miami,39,292
+2020-01-02,Jan,Miami,1,286
+2020-03-20,Mar,Miami,12,309
+2019-09-21,Sep,Anchorage,38,117
+2019-09-26,Sep,Anchorage,39,122
+2019-04-02,Apr,Miami,14,189
+2020-07-17,Jul,Anchorage,29,261
+2019-01-01,Jan,Anchorage,1,163
+2019-06-22,Jun,Miami,25,309
+2020-04-19,Apr,Miami,17,355
+2020-02-12,Feb,Anchorage,7,188
+2020-04-24,Apr,Anchorage,17,207
+2019-08-05,Aug,Miami,32,245
+2020-06-21,Jun,Miami,26,381
+2020-11-28,Nov,Honolulu,48,154
+2019-04-03,Apr,Anchorage,14,87
+2020-02-05,Feb,Miami,6,318
+2020-07-22,Jul,Miami,30,348
+2019-04-11,Apr,Anchorage,15,110
+2019-10-16,Oct,Honolulu,42,130
+2019-02-10,Feb,Anchorage,7,119
+2020-02-20,Feb,Miami,8,309
+2020-11-23,Nov,Miami,48,239
+2019-09-15,Sep,Honolulu,38,122
+2019-11-25,Nov,Miami,48,212
+2019-07-12,Jul,Miami,28,256
+2020-05-21,May,Anchorage,21,217
+2020-03-13,Mar,Miami,11,314
+2019-08-10,Aug,Miami,32,259
+2019-06-27,Jun,Anchorage,26,169
+2020-05-27,May,Honolulu,22,271
+2020-08-17,Aug,Honolulu,34,228
+2019-01-06,Jan,Anchorage,2,177
+2019-08-01,Aug,Miami,31,236
+2019-12-22,Dec,Anchorage,52,109
+2020-08-27,Aug,Miami,35,344
+2020-05-14,May,Honolulu,20,265
+2019-04-23,Apr,Miami,17,205
+2019-08-03,Aug,Miami,31,235
+2020-04-18,Apr,Anchorage,16,192
+2019-11-16,Nov,Miami,46,204
+2019-10-15,Oct,Miami,42,170
+2019-03-24,Mar,Miami,13,266
+2019-12-03,Dec,Anchorage,49,95
+2020-07-12,Jul,Miami,29,316
+2020-08-15,Aug,Honolulu,33,207
+2020-05-18,May,Honolulu,21,250
+2020-08-01,Aug,Anchorage,31,191
+2019-06-11,Jun,Miami,24,296
+2019-04-19,Apr,Anchorage,16,111
+2020-01-21,Jan,Miami,4,277
+2019-03-26,Mar,Miami,13,238
+2020-04-01,Apr,Miami,14,353
+2019-05-14,May,Anchorage,20,160
+2019-05-12,May,Anchorage,20,143
+2020-03-26,Mar,Miami,13,336
+2019-08-22,Aug,Miami,34,255
+2020-01-18,Jan,Anchorage,3,182
+2020-08-22,Aug,Anchorage,34,212
+2019-12-01,Dec,Miami,49,170
+2020-03-06,Mar,Miami,10,303
+2019-10-03,Oct,Honolulu,40,126
+2020-08-02,Aug,Anchorage,32,181
+2019-01-20,Jan,Miami,4,303
+2020-05-01,May,Miami,18,400
+2019-08-13,Aug,Anchorage,33,141
+2019-09-12,Sep,Honolulu,37,181
+2020-02-10,Feb,Anchorage,7,155
+2019-01-26,Jan,Miami,4,281
+2019-10-05,Oct,Miami,40,167
+2019-09-22,Sep,Honolulu,39,165
+2020-10-04,Oct,Miami,41,276
+2020-07-19,Jul,Miami,30,354
+2020-11-21,Nov,Anchorage,47,181
+2020-03-19,Mar,Miami,12,317
+2019-08-15,Aug,Miami,33,255
+2020-05-08,May,Anchorage,19,225
+2019-11-03,Nov,Honolulu,45,156
+2019-12-14,Dec,Honolulu,50,133
+2020-07-08,Jul,Anchorage,28,221
+2019-06-04,Jun,Miami,23,348
+2019-02-26,Feb,Anchorage,9,125
+2020-02-15,Feb,Miami,7,295
+2020-09-19,Sep,Honolulu,38,201
+2020-04-27,Apr,Miami,18,378
+2019-12-28,Dec,Miami,52,182
+2019-08-16,Aug,Anchorage,33,152
+2020-11-20,Nov,Miami,47,252
+2020-10-20,Oct,Miami,43,297
+2019-11-01,Nov,Miami,44,208
+2019-02-08,Feb,Anchorage,6,117
+2020-07-28,Jul,Miami,31,382
+2020-08-20,Aug,Honolulu,34,237
+2019-11-18,Nov,Honolulu,47,140
+2020-07-11,Jul,Anchorage,28,201
+2020-06-09,Jun,Miami,24,408
+2020-04-23,Apr,Anchorage,17,195
+2019-07-19,Jul,Miami,29,242
+2019-11-28,Nov,Miami,48,193
+2019-04-08,Apr,Miami,15,184
+2019-05-28,May,Anchorage,22,130
+2020-05-13,May,Anchorage,20,242
+2020-05-26,May,Miami,22,415
+2019-12-06,Dec,Miami,49,174
+2019-07-26,Jul,Anchorage,30,130
+2019-12-09,Dec,Anchorage,50,97
+2019-12-04,Dec,Miami,49,194
+2019-03-14,Mar,Miami,11,293
+2020-08-06,Aug,Miami,32,322
+2020-08-28,Aug,Anchorage,35,190
+2020-01-26,Jan,Miami,5,284
+2019-11-20,Nov,Miami,47,221
+2020-02-03,Feb,Anchorage,6,172
+2020-08-09,Aug,Miami,33,338
+2020-01-10,Jan,Anchorage,2,212
+2019-03-09,Mar,Miami,10,257
+2019-09-07,Sep,Miami,36,213
+2019-08-24,Aug,Miami,34,276
+2020-10-19,Oct,Miami,43,314
+2019-05-25,May,Miami,21,236
+2020-10-01,Oct,Anchorage,40,209
+2020-05-20,May,Miami,21,410
+2019-01-16,Jan,Miami,3,299
+2019-05-24,May,Anchorage,21,128
+2020-11-11,Nov,Honolulu,46,149
+2019-12-23,Dec,Honolulu,52,128
+2020-07-14,Jul,Anchorage,29,210
+2019-06-09,Jun,Miami,24,322
+2020-01-03,Jan,Anchorage,1,188
+2020-01-15,Jan,Miami,3,259
+2019-04-05,Apr,Miami,14,183
+2020-08-14,Aug,Miami,33,333
+2019-02-25,Feb,Miami,9,231
+2020-08-13,Aug,Anchorage,33,193
+2019-10-18,Oct,Miami,42,193
+2019-09-02,Sep,Miami,36,228
+2019-10-01,Oct,Miami,40,220
+2019-02-23,Feb,Anchorage,8,116
+2019-06-25,Jun,Miami,26,326
+2019-08-27,Aug,Honolulu,35,163
+2019-10-19,Oct,Honolulu,42,108
+2019-06-01,Jun,Anchorage,22,174
+2020-11-03,Nov,Miami,45,244
+2020-08-11,Aug,Anchorage,33,189
+2020-06-18,Jun,Miami,25,376
+2019-10-07,Oct,Miami,41,177
+2020-04-25,Apr,Miami,17,368
+2019-11-24,Nov,Anchorage,48,128
+2019-05-19,May,Anchorage,21,119
+2020-10-07,Oct,Miami,41,272
+2019-12-27,Dec,Miami,52,180
+2020-06-05,Jun,Anchorage,23,241
+2019-02-14,Feb,Anchorage,7,106
+2019-12-25,Dec,Miami,52,194
+2020-03-09,Mar,Miami,11,307
+2019-12-08,Dec,Miami,50,197
+2020-01-14,Jan,Anchorage,3,193
+2019-07-11,Jul,Miami,28,257
+2019-09-13,Sep,Miami,37,231
+2020-02-27,Feb,Anchorage,9,169
+2020-02-11,Feb,Miami,7,306
+2019-03-07,Mar,Anchorage,10,155
+2020-03-04,Mar,Miami,10,324
+2020-09-09,Sep,Miami,37,294
+2019-02-04,Feb,Miami,6,196
+2020-09-13,Sep,Miami,38,324
+2020-05-19,May,Miami,21,403
+2019-09-08,Sep,Anchorage,37,107
+2019-11-02,Nov,Miami,44,216
+2019-07-18,Jul,Miami,29,245
+2020-10-27,Oct,Anchorage,44,167
+2019-11-23,Nov,Honolulu,47,135
+2019-02-01,Feb,Honolulu,5,142
+2019-07-21,Jul,Anchorage,30,162
+2020-05-11,May,Miami,20,400
+2020-05-02,May,Anchorage,18,223
+2019-07-02,Jul,Miami,27,255
+2019-04-15,Apr,Miami,16,202
+2020-02-19,Feb,Miami,8,312
+2020-01-23,Jan,Miami,4,293
+2019-02-27,Feb,Anchorage,9,127
+2020-09-05,Sep,Miami,36,312
+2020-09-14,Sep,Miami,38,330
+2019-09-16,Sep,Miami,38,223
+2019-01-18,Jan,Anchorage,3,163
+2019-03-05,Mar,Miami,10,245
+2019-01-11,Jan,Honolulu,2,198
+2019-10-26,Oct,Honolulu,43,114
+2019-06-15,Jun,Anchorage,24,163
+2019-10-25,Oct,Miami,43,182
+2019-08-21,Aug,Anchorage,34,135
+2020-03-21,Mar,Miami,12,317
+2020-10-28,Oct,Miami,44,281
+2020-08-03,Aug,Miami,32,351
+2020-11-25,Nov,Anchorage,48,176
+2019-11-06,Nov,Anchorage,45,136
+2020-10-14,Oct,Miami,42,275
+2019-02-02,Feb,Miami,5,218
+2019-03-16,Mar,Anchorage,11,142
+2019-07-10,Jul,Anchorage,28,144
+2020-02-08,Feb,Miami,6,287
+2019-11-21,Nov,Miami,47,232
+2020-02-02,Feb,Miami,6,301
+2020-07-07,Jul,Anchorage,28,197
+2020-06-24,Jun,Miami,26,374
+2019-04-04,Apr,Anchorage,14,114
+2020-01-06,Jan,Anchorage,2,198
+2019-01-04,Jan,Miami,1,317
+2020-11-24,Nov,Anchorage,48,181
+2020-03-14,Mar,Miami,11,320
+2020-02-17,Feb,Anchorage,8,179
+2019-02-09,Feb,Miami,6,230
+2019-04-26,Apr,Anchorage,17,97
+2020-11-06,Nov,Miami,45,234
+2019-09-23,Sep,Anchorage,39,120
+2020-04-11,Apr,Anchorage,15,199
+2019-06-08,Jun,Miami,23,327
+2019-09-25,Sep,Anchorage,39,130
+2020-09-16,Sep,Honolulu,38,213
+2019-07-07,Jul,Honolulu,28,157
+2019-06-24,Jun,Anchorage,26,173
+2019-05-22,May,Miami,21,267
+2020-05-06,May,Anchorage,19,237
+2020-03-11,Mar,Miami,11,320
+2019-12-20,Dec,Miami,51,176
+2020-01-09,Jan,Miami,2,297
+2019-07-06,Jul,Miami,27,249
+2020-01-28,Jan,Anchorage,5,188
+2019-04-20,Apr,Anchorage,16,106
+2020-04-17,Apr,Anchorage,16,226
+2019-04-01,Apr,Anchorage,14,110
+2019-07-09,Jul,Anchorage,28,127
+2020-03-08,Mar,Miami,11,304
+2019-07-05,Jul,Honolulu,27,173
+2020-09-23,Sep,Honolulu,39,210
+2020-05-10,May,Anchorage,20,204
+2020-02-01,Feb,Anchorage,5,196
+2020-01-07,Jan,Anchorage,2,197
+2019-05-17,May,Miami,20,220
+2019-04-22,Apr,Anchorage,17,101
+2020-08-12,Aug,Miami,33,337
+2020-09-27,Sep,Anchorage,40,208
+2020-11-18,Nov,Anchorage,47,186
+2019-04-18,Apr,Anchorage,16,88
+2020-02-14,Feb,Miami,7,315
+2020-05-05,May,Anchorage,19,221
+2019-07-20,Jul,Anchorage,29,146
+2019-02-19,Feb,Miami,8,185
+2020-11-19,Nov,Miami,47,253
+2020-02-21,Feb,Miami,8,315
+2020-06-22,Jun,Anchorage,26,207
+2020-03-18,Mar,Miami,12,330
+2019-04-09,Apr,Anchorage,15,113
+2019-01-24,Jan,Anchorage,4,160
+2019-01-25,Jan,Miami,4,290
+2019-05-27,May,Miami,22,254
+2019-02-28,Feb,Anchorage,9,126
+2019-02-13,Feb,Miami,7,235
+2019-08-17,Aug,Anchorage,33,128
+2019-10-12,Oct,Miami,41,194
+2019-08-12,Aug,Anchorage,33,150
+2020-06-04,Jun,Miami,23,426
+2019-04-27,Apr,Miami,17,210
+2019-07-16,Jul,Honolulu,29,174
+2020-03-03,Mar,Anchorage,10,187
+2020-11-01,Nov,Miami,45,249
+2020-03-16,Mar,Miami,12,333
+2020-02-09,Feb,Miami,7,286
+2019-07-28,Jul,Miami,31,251
+2020-07-04,Jul,Miami,27,359
+2020-07-02,Jul,Anchorage,27,229
+2019-07-25,Jul,Anchorage,30,144
+2020-04-22,Apr,Anchorage,17,209
+2019-04-12,Apr,Anchorage,15,120
+2020-07-21,Jul,Anchorage,30,232
+2019-03-25,Mar,Miami,13,248
+2019-03-17,Mar,Honolulu,12,201
+2020-08-04,Aug,Miami,32,346
+2019-11-08,Nov,Anchorage,45,107
+2019-02-22,Feb,Anchorage,8,124
+2019-06-12,Jun,Anchorage,24,189
+2020-09-03,Sep,Miami,36,331
+2019-08-20,Aug,Anchorage,34,155
+2020-08-25,Aug,Miami,35,326
+2020-04-13,Apr,Anchorage,16,182
+2020-06-17,Jun,Miami,25,367
+2019-11-26,Nov,Anchorage,48,111
+2020-07-23,Jul,Miami,30,360
+2019-10-09,Oct,Miami,41,171
+2019-07-04,Jul,Miami,27,274
+2020-03-27,Mar,Anchorage,13,182
+2020-11-13,Nov,Miami,46,231
+2020-04-10,Apr,Anchorage,15,204
+2020-01-22,Jan,Anchorage,4,191
+2020-01-25,Jan,Miami,4,294
+2019-10-24,Oct,Miami,43,162
+2020-02-24,Feb,Anchorage,9,194
+2019-01-22,Jan,Miami,4,328
+2020-02-13,Feb,Anchorage,7,180
+2020-09-04,Sep,Miami,36,278
+2019-08-25,Aug,Anchorage,35,121
+2019-06-28,Jun,Miami,26,346
+2019-12-16,Dec,Miami,51,208
+2019-06-13,Jun,Honolulu,24,211
+2019-03-10,Mar,Anchorage,11,138
+2019-11-27,Nov,Miami,48,200
+2019-03-27,Mar,Miami,13,293
+2019-02-21,Feb,Miami,8,221
+2020-06-27,Jun,Miami,26,387
+2019-06-02,Jun,Miami,23,316
+2020-06-01,Jun,Anchorage,23,234
+2019-06-16,Jun,Anchorage,25,162
+2019-12-07,Dec,Anchorage,49,102
+2020-08-18,Aug,Anchorage,34,219
+2020-03-01,Mar,Anchorage,10,183
+2019-05-11,May,Miami,19,259
+2020-05-25,May,Honolulu,22,253
+2019-12-05,Dec,Miami,49,192
+2020-11-07,Nov,Anchorage,45,175
+2020-02-16,Feb,Anchorage,8,172
+2020-06-16,Jun,Anchorage,25,222
+2020-09-10,Sep,Miami,37,306
+2019-12-12,Dec,Anchorage,50,89
+2019-12-17,Dec,Miami,51,161
+2019-12-21,Dec,Anchorage,51,90
+2020-10-17,Oct,Miami,42,258
+2020-10-12,Oct,Anchorage,42,192
+2020-06-19,Jun,Miami,25,394
+2020-10-13,Oct,Miami,42,286
+2019-07-14,Jul,Miami,29,246
+2019-11-09,Nov,Anchorage,45,120
+2020-09-18,Sep,Miami,38,308
+2019-08-19,Aug,Anchorage,34,110
+2019-01-27,Jan,Anchorage,5,153
+2019-06-14,Jun,Miami,24,319
+2020-09-21,Sep,Miami,39,318
+2019-07-13,Jul,Anchorage,28,122
+2020-01-19,Jan,Miami,4,275
+2019-02-20,Feb,Anchorage,8,121
+2019-09-11,Sep,Miami,37,209
+2020-07-15,Jul,Anchorage,29,202
+2019-03-13,Mar,Miami,11,288
+2019-12-26,Dec,Miami,52,167
+2019-05-06,May,Honolulu,19,163
+2020-11-09,Nov,Anchorage,46,175
+2019-10-06,Oct,Miami,41,183
+2020-11-04,Nov,Miami,45,208
+2019-01-05,Jan,Miami,1,299
+2019-03-08,Mar,Miami,10,269
+2019-03-19,Mar,Miami,12,261
+2020-06-15,Jun,Anchorage,25,235
+2019-03-15,Mar,Anchorage,11,134
+2019-06-18,Jun,Anchorage,25,157
+2019-12-24,Dec,Anchorage,52,109
+2019-05-04,May,Anchorage,18,135
+2019-05-16,May,Miami,20,269
+2020-05-28,May,Honolulu,22,264
+2019-12-19,Dec,Miami,51,197
+2020-11-16,Nov,Anchorage,47,188
+2020-02-25,Feb,Anchorage,9,178
+2020-03-12,Mar,Anchorage,11,165
+2020-09-26,Sep,Miami,39,308
+2019-01-07,Jan,Anchorage,2,165
+2019-02-07,Feb,Miami,6,203
+2020-01-05,Jan,Anchorage,2,156
+2019-10-23,Oct,Miami,43,189
+2020-10-26,Oct,Anchorage,44,156
+2020-03-05,Mar,Miami,10,319
+2020-04-12,Apr,Anchorage,16,189
+2020-06-08,Jun,Miami,24,386
+2020-11-15,Nov,Anchorage,47,179
+2020-04-02,Apr,Anchorage,14,206
+2019-08-23,Aug,Anchorage,34,130
+2020-06-25,Jun,Anchorage,26,231
+2019-06-23,Jun,Miami,26,334
+2019-04-21,Apr,Anchorage,17,112
+2020-06-11,Jun,Anchorage,24,224
+2020-07-03,Jul,Miami,27,354
+2020-06-03,Jun,Anchorage,23,212
+2020-04-26,Apr,Anchorage,18,214
+2020-06-12,Jun,Anchorage,24,209
+2019-03-20,Mar,Miami,12,281
+2020-02-07,Feb,Miami,6,352
+2020-05-17,May,Honolulu,21,265
+2020-10-09,Oct,Anchorage,41,171
+2019-10-14,Oct,Miami,42,171
+2020-11-26,Nov,Miami,48,243
+2019-01-09,Jan,Miami,2,329
+2019-05-09,May,Miami,19,236
+2020-05-24,May,Miami,22,348
+2019-03-21,Mar,Anchorage,12,122
+2020-03-22,Mar,Anchorage,13,193
+2020-06-28,Jun,Anchorage,27,198
+2020-02-28,Feb,Anchorage,9,185
+2019-11-10,Nov,Anchorage,46,108
+2020-05-23,May,Miami,21,373
+2019-11-07,Nov,Honolulu,45,136
+2019-02-03,Feb,Miami,6,229
+2019-10-20,Oct,Anchorage,43,107
+2019-07-03,Jul,Anchorage,27,118
+2020-09-08,Sep,Anchorage,37,180
+2020-04-21,Apr,Anchorage,17,191
+2020-07-10,Jul,Anchorage,28,219
+2020-01-11,Jan,Miami,2,256
+2020-01-08,Jan,Anchorage,2,174
+2020-10-23,Oct,Miami,43,240
+2020-09-12,Sep,Anchorage,37,180
+2019-03-23,Mar,Miami,12,249
+2020-02-23,Feb,Anchorage,9,176
+2019-06-19,Jun,Miami,25,331
+2020-11-22,Nov,Anchorage,48,186
+2020-08-08,Aug,Anchorage,32,223
+2019-02-18,Feb,Anchorage,8,87
+2019-03-11,Mar,Anchorage,11,121
+2019-03-03,Mar,Miami,10,258
+2019-08-09,Aug,Anchorage,32,144
+2019-11-11,Nov,Anchorage,46,124
+2019-07-08,Jul,Miami,28,258
+2020-06-07,Jun,Anchorage,24,202
+2019-08-08,Aug,Anchorage,32,134
+2019-06-20,Jun,Anchorage,25,192
+2020-11-02,Nov,Miami,45,229
+2019-01-08,Jan,Miami,2,307
+2019-05-26,May,Honolulu,22,164
+2019-09-05,Sep,Anchorage,36,101
+2020-10-21,Oct,Miami,43,260
+2020-10-02,Oct,Miami,40,260
+2020-01-17,Jan,Miami,3,307
+2019-11-14,Nov,Miami,46,217
+2019-10-04,Oct,Miami,40,174
+2019-05-10,May,Anchorage,19,140
+2020-03-28,Mar,Anchorage,13,176
+2019-05-08,May,Anchorage,19,138
+2019-01-23,Jan,Anchorage,4,151
+2019-09-19,Sep,Anchorage,38,124
+2019-11-05,Nov,Miami,45,217
+2020-11-12,Nov,Honolulu,46,182
+2020-02-04,Feb,Miami,6,297
+2020-10-24,Oct,Anchorage,43,174
+2019-07-27,Jul,Anchorage,30,139
+2020-09-24,Sep,Anchorage,39,203
+2019-02-12,Feb,Anchorage,7,130
+2019-06-05,Jun,Anchorage,23,149
+2020-07-18,Jul,Miami,29,367
+2020-01-24,Jan,Anchorage,4,162
+2019-09-24,Sep,Miami,39,211
+2020-03-15,Mar,Miami,12,347
+2020-06-10,Jun,Anchorage,24,223
+2019-03-02,Mar,Miami,9,252
+2019-12-13,Dec,Anchorage,50,105
+2020-07-16,Jul,Anchorage,29,202
+2019-05-03,May,Miami,18,250
+2020-08-19,Aug,Anchorage,34,193
+2019-11-22,Nov,Anchorage,47,106
+2019-07-15,Jul,Miami,29,239
+2020-03-24,Mar,Anchorage,13,188
+2019-08-11,Aug,Anchorage,33,155
+2019-06-26,Jun,Anchorage,26,162
+2020-09-02,Sep,Miami,36,289
+2019-01-12,Jan,Miami,2,283
+2020-11-05,Nov,Honolulu,45,153
+2020-09-06,Sep,Miami,37,301
+2020-10-11,Oct,Miami,42,276
+2019-07-01,Jul,Miami,27,258
+2019-09-09,Sep,Miami,37,214
+2020-10-22,Oct,Miami,43,288
+2020-05-04,May,Anchorage,19,228
+2020-05-09,May,Anchorage,19,220
+2020-07-13,Jul,Anchorage,29,227
+2020-11-14,Nov,Miami,46,247
+2020-11-27,Nov,Honolulu,48,171
+2020-02-18,Feb,Miami,8,308
+2020-07-20,Jul,Anchorage,30,204
+2019-01-03,Jan,Anchorage,1,171
+2020-03-20,Mar,Anchorage,12,186
+2020-06-02,Jun,Miami,23,400
+2019-06-22,Jun,Anchorage,25,193
+2020-09-22,Sep,Miami,39,305
+2019-11-19,Nov,Miami,47,223
+2019-06-17,Jun,Anchorage,25,155
+2019-05-07,May,Miami,19,229
+2019-12-18,Dec,Anchorage,51,102
+2020-07-22,Jul,Anchorage,30,217
+2020-05-22,May,Miami,21,410
+2019-02-17,Feb,Anchorage,8,131
+2020-11-23,Nov,Anchorage,48,160
+2019-07-22,Jul,Miami,30,265
+2019-11-25,Nov,Anchorage,48,112
+2020-01-13,Jan,Anchorage,3,165
+2020-03-13,Mar,Anchorage,11,176
+2020-09-17,Sep,Miami,38,295
+2019-06-10,Jun,Miami,24,319
+2020-11-10,Nov,Honolulu,46,164
+2020-09-15,Sep,Miami,38,289
+2019-09-14,Sep,Miami,37,243
+2020-07-05,Jul,Miami,28,365
+2020-09-07,Sep,Miami,37,306
+2020-09-01,Sep,Miami,36,301
+2019-11-16,Nov,Anchorage,46,113
+2019-10-15,Oct,Anchorage,42,100
+2019-03-24,Mar,Anchorage,13,156
+2020-10-18,Oct,Miami,43,277
+2019-10-10,Oct,Honolulu,41,139
+2019-01-13,Jan,Miami,3,291
+2019-06-11,Jun,Anchorage,24,182
+2020-01-02,Jan,Anchorage,1,175
+2019-03-26,Mar,Anchorage,13,140
+2019-09-17,Sep,Miami,38,196
+2020-03-26,Mar,Anchorage,13,173
+2020-09-28,Sep,Miami,40,332
+2019-04-28,Apr,Anchorage,18,116
+2020-06-21,Jun,Anchorage,26,249
+2020-05-16,May,Miami,20,394
+2020-02-05,Feb,Anchorage,6,197
+2020-05-01,May,Anchorage,18,233
+2020-11-08,Nov,Miami,46,256
+2020-02-20,Feb,Anchorage,8,170
+2019-10-05,Oct,Anchorage,40,110
+2020-03-17,Mar,Miami,12,310
+2020-10-04,Oct,Anchorage,41,179
+2019-07-12,Jul,Anchorage,28,134
+2020-03-19,Mar,Anchorage,12,204
+2019-04-10,Apr,Anchorage,15,97
+2020-06-23,Jun,Miami,26,385
+2019-11-17,Nov,Honolulu,47,135
+2020-04-04,Apr,Anchorage,14,226
+2020-04-28,Apr,Anchorage,18,186
+2019-03-06,Mar,Miami,10,262
+2020-04-03,Apr,Anchorage,14,225
+2020-04-05,Apr,Anchorage,15,210
+2020-11-20,Nov,Anchorage,47,170
+2020-10-20,Oct,Anchorage,43,201
+2019-11-01,Nov,Anchorage,44,127
+2019-04-25,Apr,Anchorage,17,90
+2020-10-10,Oct,Honolulu,41,168
+2020-01-16,Jan,Miami,3,270
+2020-06-09,Jun,Anchorage,24,214
+2020-01-21,Jan,Anchorage,4,169
+2019-11-28,Nov,Anchorage,48,108
+2019-04-02,Apr,Anchorage,14,105
+2020-05-26,May,Anchorage,22,229
+2020-04-19,Apr,Anchorage,17,218
+2019-08-05,Aug,Anchorage,32,127
+2020-03-06,Mar,Anchorage,10,177
+2019-11-13,Nov,Miami,46,213
+2019-01-20,Jan,Anchorage,4,157
+2019-11-20,Nov,Anchorage,47,125
+2020-10-03,Oct,Miami,40,269
+2019-01-26,Jan,Anchorage,4,169
+2019-09-07,Sep,Anchorage,36,115
+2020-10-06,Oct,Miami,41,265
+2020-10-19,Oct,Anchorage,43,197
+2020-07-19,Jul,Anchorage,30,222
+2020-05-20,May,Anchorage,21,237
+2019-08-10,Aug,Anchorage,32,130
+2020-06-26,Jun,Miami,26,376
+2020-11-17,Nov,Honolulu,47,150
+2019-08-01,Aug,Anchorage,31,137
+2020-08-27,Aug,Anchorage,35,195
+2020-05-07,May,Miami,19,403
+2019-04-23,Apr,Anchorage,17,90
+2019-08-03,Aug,Anchorage,31,130
+2019-10-18,Oct,Anchorage,42,77
+2019-09-02,Sep,Anchorage,36,118
+2019-10-01,Oct,Anchorage,40,97
+2020-07-12,Jul,Anchorage,29,194
+2020-10-15,Oct,Honolulu,42,186
+2020-03-23,Mar,Miami,13,296
+2020-11-03,Nov,Anchorage,45,193
+2019-07-19,Jul,Anchorage,29,139
+2019-10-07,Oct,Anchorage,41,85
+2020-04-01,Apr,Anchorage,14,199
+2020-10-07,Oct,Anchorage,41,184
+2019-08-22,Aug,Anchorage,34,135
+2019-12-01,Dec,Anchorage,49,98
+2019-03-14,Mar,Anchorage,11,163
+2020-11-28,Nov,Miami,48,268
+2020-01-26,Jan,Anchorage,5,190
+2019-09-13,Sep,Anchorage,37,125
+2019-10-16,Oct,Miami,42,173
+2019-03-09,Mar,Anchorage,10,135
+2020-09-09,Sep,Anchorage,37,166
+2019-09-15,Sep,Miami,38,207
+2020-09-13,Sep,Anchorage,38,198
+2019-05-25,May,Anchorage,21,127
+2019-11-02,Nov,Anchorage,44,118
+2019-08-15,Aug,Anchorage,33,140
+2019-05-13,May,Miami,20,280
+2019-10-08,Oct,Honolulu,41,118
+2019-06-04,Jun,Anchorage,23,201
+2020-02-15,Feb,Anchorage,7,178
+2020-05-14,May,Miami,20,357
+2020-04-27,Apr,Anchorage,18,187
+2019-12-28,Dec,Anchorage,52,104
+2020-09-05,Sep,Anchorage,36,184
+2020-09-14,Sep,Anchorage,38,194
+2019-09-16,Sep,Anchorage,38,108
+2020-07-28,Jul,Anchorage,31,225
+2019-10-28,Oct,Honolulu,44,124
+2019-05-05,May,Miami,19,272
+2019-10-25,Oct,Anchorage,43,95
+2020-06-18,Jun,Anchorage,25,212
+2020-10-28,Oct,Anchorage,44,165
+2019-04-08,Apr,Anchorage,15,95
+2020-10-14,Oct,Anchorage,42,200
+2019-12-06,Dec,Anchorage,49,94
+2019-12-04,Dec,Anchorage,49,112
+2020-03-09,Mar,Anchorage,11,172
+2019-10-03,Oct,Miami,40,165
+2019-07-11,Jul,Anchorage,28,138
+2019-09-12,Sep,Miami,37,223
+2020-03-04,Mar,Anchorage,10,180
+2019-09-22,Sep,Miami,39,203
+2020-05-19,May,Anchorage,21,221
+2019-01-16,Jan,Anchorage,3,167
+2020-05-27,May,Miami,22,439
+2019-10-13,Oct,Honolulu,42,116
+2019-06-09,Jun,Anchorage,24,190
+2020-01-15,Jan,Anchorage,3,156
+2020-09-19,Sep,Miami,38,305
+2020-08-14,Aug,Anchorage,33,188
+2019-02-25,Feb,Anchorage,9,117
+2019-06-25,Jun,Anchorage,26,169
+2019-09-18,Sep,Honolulu,38,146
+2020-05-18,May,Miami,21,372
+2020-03-21,Mar,Anchorage,12,176
+2020-04-25,Apr,Anchorage,17,193
+2019-12-27,Dec,Anchorage,52,120
+2019-12-25,Dec,Anchorage,52,101
+2019-11-21,Nov,Anchorage,47,139
+2020-08-06,Aug,Anchorage,32,204
+2020-06-24,Jun,Anchorage,26,226
+2020-08-09,Aug,Anchorage,33,224
+2020-03-14,Mar,Anchorage,11,171
+2019-08-24,Aug,Anchorage,34,133
+2020-11-06,Nov,Anchorage,45,186
+2019-07-18,Jul,Anchorage,29,129
+2019-11-03,Nov,Miami,45,236
+2019-10-27,Oct,Honolulu,44,130
+2020-05-11,May,Anchorage,20,231
+2019-07-02,Jul,Anchorage,27,152
+2019-04-05,Apr,Anchorage,14,104
+2020-02-19,Feb,Anchorage,8,179
+2020-01-23,Jan,Anchorage,4,156
+2019-03-05,Mar,Anchorage,10,129
+2019-09-27,Sep,Honolulu,39,152
+2019-11-18,Nov,Miami,47,211
+2019-05-17,May,Anchorage,20,134
+2020-08-03,Aug,Anchorage,32,200
+2019-02-02,Feb,Anchorage,5,113
+2020-02-08,Feb,Anchorage,6,174
+2020-11-19,Nov,Anchorage,47,172
+2019-12-08,Dec,Anchorage,50,85
+2020-03-18,Mar,Anchorage,12,182
+2020-02-11,Feb,Anchorage,7,194
+2019-05-27,May,Anchorage,22,149
+2019-02-04,Feb,Anchorage,6,119
+2019-10-12,Oct,Anchorage,41,112
+2019-06-08,Jun,Anchorage,23,147
+2020-11-11,Nov,Miami,46,231
+2020-04-06,Apr,Miami,15,357
+2019-05-22,May,Anchorage,21,137
+2020-03-11,Mar,Anchorage,11,182
+2019-04-15,Apr,Anchorage,16,125
+2020-01-09,Jan,Anchorage,2,171
+2019-07-06,Jul,Anchorage,27,151
+2020-03-08,Mar,Anchorage,11,200
+2019-04-13,Apr,Miami,15,170
+2019-10-19,Oct,Miami,42,192
+2020-09-03,Sep,Anchorage,36,198
+2020-08-12,Aug,Anchorage,33,205
+2020-02-14,Feb,Anchorage,7,178
+2019-02-19,Feb,Anchorage,8,125
+2019-10-09,Oct,Anchorage,41,74
+2020-02-02,Feb,Anchorage,6,193
+2020-11-13,Nov,Anchorage,46,166
+2019-01-04,Jan,Anchorage,1,165
+2019-10-24,Oct,Anchorage,43,98
+2019-02-09,Feb,Anchorage,6,133
+2020-09-04,Sep,Anchorage,36,193
+2020-06-04,Jun,Anchorage,23,230
+2019-11-23,Nov,Miami,47,221
+2020-08-07,Aug,Miami,32,326
+2020-11-01,Nov,Anchorage,45,205
+2020-03-16,Mar,Anchorage,12,214
+2019-12-20,Dec,Anchorage,51,109
+2019-07-28,Jul,Anchorage,31,133
+2020-07-04,Jul,Anchorage,27,235
+2019-03-25,Mar,Anchorage,13,133
+2019-08-02,Aug,Miami,31,242
+2019-10-26,Oct,Miami,43,171
+2020-09-10,Sep,Anchorage,37,175
+2020-08-25,Aug,Anchorage,35,201
+2020-06-17,Jun,Anchorage,25,213
+2020-07-23,Jul,Anchorage,30,213
+2020-10-13,Oct,Anchorage,42,201
+2020-02-21,Feb,Anchorage,8,191
+2020-09-18,Sep,Anchorage,38,195
+2019-01-25,Jan,Anchorage,4,158
+2020-09-21,Sep,Anchorage,39,187
+2019-02-13,Feb,Anchorage,7,107
+2019-09-11,Sep,Anchorage,37,126
+2019-06-28,Jun,Anchorage,26,172
+2020-09-16,Sep,Miami,38,330
+2020-08-17,Aug,Miami,34,325
+2019-11-27,Nov,Anchorage,48,118
+2019-03-27,Mar,Anchorage,13,143
+2020-02-09,Feb,Anchorage,7,177
+2020-06-27,Jun,Anchorage,26,199
+2019-06-02,Jun,Anchorage,23,168
+2019-05-11,May,Anchorage,19,129
+2020-08-15,Aug,Miami,33,314
+2020-09-23,Sep,Miami,39,319
+2020-09-26,Sep,Anchorage,39,170
+2019-12-17,Dec,Anchorage,51,79
+2020-10-17,Oct,Anchorage,42,198
+2020-06-19,Jun,Anchorage,25,214
+2019-07-04,Jul,Anchorage,27,126
+2020-01-25,Jan,Anchorage,4,174
+2019-01-22,Jan,Anchorage,4,168
+2019-03-13,Mar,Anchorage,11,155
+2019-04-27,Apr,Anchorage,17,102
+2019-12-14,Dec,Miami,50,225
+2019-10-06,Oct,Anchorage,41,122
+2020-11-04,Nov,Anchorage,45,182
+2019-02-21,Feb,Anchorage,8,111
+2019-03-08,Mar,Anchorage,10,120
+2019-03-19,Mar,Anchorage,12,130
+2019-05-16,May,Anchorage,20,124
+2020-08-20,Aug,Miami,34,343
+2020-08-04,Aug,Anchorage,32,199
+2019-02-07,Feb,Anchorage,6,129
+2019-10-23,Oct,Anchorage,43,85
+2020-03-05,Mar,Anchorage,10,148
+2019-07-14,Jul,Anchorage,29,136
+2019-06-14,Jun,Anchorage,24,153
+2020-01-19,Jan,Anchorage,4,174
+2019-03-20,Mar,Anchorage,12,153
+2019-12-16,Dec,Anchorage,51,114
+2019-12-23,Dec,Miami,52,194
+2019-10-14,Oct,Anchorage,42,92
+2020-11-26,Nov,Anchorage,48,175
+2019-01-05,Jan,Anchorage,1,158
+2019-05-09,May,Anchorage,19,136
+2020-05-24,May,Anchorage,22,221
+2020-05-23,May,Anchorage,21,207
+2019-08-27,Aug,Miami,35,282
+2019-12-05,Dec,Anchorage,49,82
+2020-01-11,Jan,Anchorage,2,189
+2020-10-23,Oct,Anchorage,43,209
+2019-03-23,Mar,Anchorage,12,132
+2020-06-08,Jun,Anchorage,24,237
+2019-06-23,Jun,Anchorage,26,162
+2020-07-03,Jul,Anchorage,27,228
+2020-11-02,Nov,Anchorage,45,184
+2019-12-26,Dec,Anchorage,52,118
+2019-02-01,Feb,Miami,5,248
+2020-10-21,Oct,Anchorage,43,184
+2020-10-02,Oct,Anchorage,40,193
+2019-01-09,Jan,Anchorage,2,164
+2019-11-14,Nov,Anchorage,46,124
+2019-10-04,Oct,Anchorage,40,105
+2019-11-05,Nov,Anchorage,45,138
+2019-01-11,Jan,Miami,2,282
+2019-12-19,Dec,Anchorage,51,116
+2020-07-18,Jul,Anchorage,29,187
+2019-09-24,Sep,Anchorage,39,126
+2020-03-15,Mar,Anchorage,12,178
+2019-06-19,Jun,Anchorage,25,187
+2019-03-03,Mar,Anchorage,10,158
+2019-07-08,Jul,Anchorage,28,131
+2020-09-02,Sep,Anchorage,36,184
+2020-02-07,Feb,Anchorage,6,203
+2019-07-07,Jul,Miami,28,256
+2020-09-06,Sep,Anchorage,37,210
+2020-10-11,Oct,Anchorage,42,195
+2020-01-17,Jan,Anchorage,3,199
+2019-09-09,Sep,Anchorage,37,142
+2020-10-22,Oct,Anchorage,43,188
+2020-11-14,Nov,Anchorage,46,180
+2019-07-05,Jul,Miami,27,297
+2019-02-03,Feb,Anchorage,6,125
+2020-06-02,Jun,Anchorage,23,238
+2020-09-22,Sep,Anchorage,39,197
+2019-11-19,Nov,Anchorage,47,100
+2019-03-02,Mar,Anchorage,9,149
+2019-05-03,May,Anchorage,18,132
+2019-07-15,Jul,Anchorage,29,140
+2020-09-17,Sep,Anchorage,38,194
+2019-01-08,Jan,Anchorage,2,155
+2019-07-16,Jul,Miami,29,266
+2020-09-15,Sep,Anchorage,38,179
+2019-09-14,Sep,Anchorage,37,111
+2019-07-01,Jul,Anchorage,27,148
+2020-09-07,Sep,Anchorage,37,213
+2020-09-01,Sep,Anchorage,36,193
+2020-10-18,Oct,Anchorage,43,201
+2019-03-17,Mar,Miami,12,261
+2020-02-04,Feb,Anchorage,6,193
+2019-09-17,Sep,Anchorage,38,107
+2020-09-28,Sep,Anchorage,40,181
+2019-05-07,May,Anchorage,19,139
+2020-05-22,May,Anchorage,21,221
+2019-07-22,Jul,Anchorage,30,134
+2019-01-12,Jan,Anchorage,2,170
+2019-06-13,Jun,Miami,24,330
+2020-07-05,Jul,Anchorage,28,198
+2020-05-25,May,Miami,22,437
+2020-02-18,Feb,Anchorage,8,186
+2020-05-16,May,Anchorage,20,227
+2020-11-08,Nov,Anchorage,46,177
+2020-03-17,Mar,Anchorage,12,186
+2019-06-10,Jun,Anchorage,24,157
+2019-05-06,May,Miami,19,248
+2019-03-06,Mar,Anchorage,10,138
+2020-05-28,May,Miami,22,401
+2019-01-13,Jan,Anchorage,3,177
+2019-11-13,Nov,Anchorage,46,123
+2020-10-03,Oct,Anchorage,40,152
+2020-10-06,Oct,Anchorage,41,185
+2020-06-23,Jun,Anchorage,26,210
+2020-05-17,May,Miami,21,435
+2020-05-07,May,Anchorage,19,246
+2019-11-07,Nov,Miami,45,212
+2020-01-16,Jan,Anchorage,3,196
+2020-11-28,Nov,Anchorage,48,154
+2019-10-16,Oct,Anchorage,42,109
+2019-09-15,Sep,Anchorage,38,115
+2020-06-26,Jun,Anchorage,26,220
+2019-05-26,May,Miami,22,277
+2020-05-14,May,Anchorage,20,233
+2020-11-12,Nov,Miami,46,243
+2020-03-23,Mar,Anchorage,13,178
+2019-10-03,Oct,Anchorage,40,100
+2019-09-12,Sep,Anchorage,37,93
+2019-09-22,Sep,Anchorage,39,109
+2019-05-13,May,Anchorage,20,127
+2020-11-05,Nov,Miami,45,241
+2020-09-19,Sep,Anchorage,38,213
+2020-11-27,Nov,Miami,48,235
+2019-05-05,May,Anchorage,19,148
+2020-05-27,May,Anchorage,22,207
+2020-11-10,Nov,Miami,46,235
+2019-10-10,Oct,Miami,41,193
+2020-05-18,May,Anchorage,21,224
+2019-11-03,Nov,Anchorage,45,118
+2019-11-17,Nov,Miami,47,205
+2020-10-10,Oct,Miami,41,289
+2019-11-18,Nov,Anchorage,47,106
+2020-11-11,Nov,Anchorage,46,180
+2020-11-17,Nov,Miami,47,247
+2020-10-15,Oct,Miami,42,280
+2019-10-19,Oct,Anchorage,42,94
+2019-11-23,Nov,Anchorage,47,95
+2019-10-08,Oct,Miami,41,175
+2019-10-28,Oct,Miami,44,196
+2019-10-26,Oct,Anchorage,43,104
+2020-09-16,Sep,Anchorage,38,207
+2019-10-13,Oct,Miami,42,192
+2019-09-18,Sep,Miami,38,233
+2020-09-23,Sep,Anchorage,39,193
+2019-10-27,Oct,Miami,44,196
+2019-09-27,Sep,Miami,39,236
+2020-04-06,Apr,Anchorage,15,199
+2019-04-13,Apr,Anchorage,15,101
+2020-08-07,Aug,Anchorage,32,201
+2019-08-02,Aug,Anchorage,31,114
+2020-08-17,Aug,Anchorage,34,208
+2020-08-15,Aug,Anchorage,33,193
+2019-12-14,Dec,Anchorage,50,100
+2020-08-20,Aug,Anchorage,34,199
+2019-12-23,Dec,Anchorage,52,106
+2019-08-27,Aug,Anchorage,35,131
+2019-02-01,Feb,Anchorage,5,122
+2019-01-11,Jan,Anchorage,2,166
+2019-07-07,Jul,Anchorage,28,121
+2019-07-05,Jul,Anchorage,27,137
+2019-07-16,Jul,Anchorage,29,156
+2019-03-17,Mar,Anchorage,12,136
+2019-06-13,Jun,Anchorage,24,173
+2020-05-25,May,Anchorage,22,202
+2019-05-06,May,Anchorage,19,143
+2020-05-28,May,Anchorage,22,207
+2020-05-17,May,Anchorage,21,223
+2019-11-07,Nov,Anchorage,45,129
+2019-05-26,May,Anchorage,22,123
+2020-11-12,Nov,Anchorage,46,176
+2020-11-05,Nov,Anchorage,45,181
+2020-11-27,Nov,Anchorage,48,165
+2020-11-10,Nov,Anchorage,46,161
+2019-10-10,Oct,Anchorage,41,113
+2019-11-17,Nov,Anchorage,47,107
+2020-10-10,Oct,Anchorage,41,192
+2020-11-17,Nov,Anchorage,47,162
+2020-10-15,Oct,Anchorage,42,205
+2019-10-08,Oct,Anchorage,41,88
+2019-10-28,Oct,Anchorage,44,85
+2019-10-13,Oct,Anchorage,42,110
+2019-09-18,Sep,Anchorage,38,101
+2019-10-27,Oct,Anchorage,44,94
+2019-09-27,Sep,Anchorage,39,129

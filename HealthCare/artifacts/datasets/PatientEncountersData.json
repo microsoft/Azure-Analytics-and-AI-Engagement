@@ -1,0 +1,330 @@
+{
+    "name": "PatientEncountersData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "D365_Encounters.csv",
+                "folderPath": "D365 Data",
+                "fileSystem": "covid-crmdata"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "createdby",
+                "type": "String"
+            },
+            {
+                "name": "createdbyname",
+                "type": "String"
+            },
+            {
+                "name": "createdbyyominame",
+                "type": "String"
+            },
+            {
+                "name": "createdon",
+                "type": "String"
+            },
+            {
+                "name": "createdonbehalfby",
+                "type": "String"
+            },
+            {
+                "name": "createdonbehalfbyname",
+                "type": "String"
+            },
+            {
+                "name": "createdonbehalfbyyominame",
+                "type": "String"
+            },
+            {
+                "name": "importsequencenumber",
+                "type": "String"
+            },
+            {
+                "name": "modifiedby",
+                "type": "String"
+            },
+            {
+                "name": "modifiedbyname",
+                "type": "String"
+            },
+            {
+                "name": "modifiedbyyominame",
+                "type": "String"
+            },
+            {
+                "name": "modifiedon",
+                "type": "String"
+            },
+            {
+                "name": "modifiedonbehalfby",
+                "type": "String"
+            },
+            {
+                "name": "modifiedonbehalfbyname",
+                "type": "String"
+            },
+            {
+                "name": "modifiedonbehalfbyyominame",
+                "type": "String"
+            },
+            {
+                "name": "msemr_appointmentemr",
+                "type": "String"
+            },
+            {
+                "name": "msemr_appointmentemrname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_azurefhirid",
+                "type": "String"
+            },
+            {
+                "name": "msemr_azurefhirlastupdatedon",
+                "type": "String"
+            },
+            {
+                "name": "msemr_azurefhirversion",
+                "type": "String"
+            },
+            {
+                "name": "msemr_class",
+                "type": "String"
+            },
+            {
+                "name": "msemr_contextencounter",
+                "type": "String"
+            },
+            {
+                "name": "msemr_contextencountername",
+                "type": "String"
+            },
+            {
+                "name": "msemr_contextepisodeofcare",
+                "type": "String"
+            },
+            {
+                "name": "msemr_contextepisodeofcarename",
+                "type": "String"
+            },
+            {
+                "name": "msemr_duration",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterclass",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterenddate",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encountergroupidentifier",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encountergroupidentifiername",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterid",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounteridentifier",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterlength",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterparentencounteridentifier",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterparentencounteridentifiername",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterpatientidentifier",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterpatientidentifiername",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterpatientidentifieryominame",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterpriority",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterpriorityname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterstartdate",
+                "type": "String"
+            },
+            {
+                "name": "msemr_encounterstatus",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationadmitsource",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationadmitsourcename",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationdestination",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationdestinationname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationdischargedisposition",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationdischargedispositionname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationorigin",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationoriginname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationpreadmissionnumber",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationreadmission",
+                "type": "String"
+            },
+            {
+                "name": "msemr_hospitalizationreadmissionname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_name",
+                "type": "String"
+            },
+            {
+                "name": "msemr_onbehalfof",
+                "type": "String"
+            },
+            {
+                "name": "msemr_onbehalfofname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_onbehalfofyominame",
+                "type": "String"
+            },
+            {
+                "name": "msemr_periodend",
+                "type": "String"
+            },
+            {
+                "name": "msemr_periodstart",
+                "type": "String"
+            },
+            {
+                "name": "msemr_priority",
+                "type": "String"
+            },
+            {
+                "name": "msemr_subjectpatient",
+                "type": "String"
+            },
+            {
+                "name": "msemr_subjectpatientname",
+                "type": "String"
+            },
+            {
+                "name": "msemr_subjectpatientyominame",
+                "type": "String"
+            },
+            {
+                "name": "overriddencreatedon",
+                "type": "String"
+            },
+            {
+                "name": "ownerid",
+                "type": "String"
+            },
+            {
+                "name": "owneridname",
+                "type": "String"
+            },
+            {
+                "name": "owneridtype",
+                "type": "String"
+            },
+            {
+                "name": "owneridyominame",
+                "type": "String"
+            },
+            {
+                "name": "owningbusinessunit",
+                "type": "String"
+            },
+            {
+                "name": "owningteam",
+                "type": "String"
+            },
+            {
+                "name": "owninguser",
+                "type": "String"
+            },
+            {
+                "name": "statecode",
+                "type": "String"
+            },
+            {
+                "name": "statuscode",
+                "type": "String"
+            },
+            {
+                "name": "timezoneruleversionnumber",
+                "type": "String"
+            },
+            {
+                "name": "utcconversiontimezonecode",
+                "type": "String"
+            },
+            {
+                "name": "versionnumber",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+    "name": "SynapseAnalyticsTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultSqlServer",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "PatientEncounterData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

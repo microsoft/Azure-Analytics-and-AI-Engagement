@@ -1,0 +1,145 @@
+{
+    "name": "4 HealthCare Twitter Data Migration",
+    "properties": {
+        "activities": [
+            {
+                "name": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "tableOption": "autoCreate"
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "AzureSynapse_TwitterAnalytics",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Archive Tweets data in ADLS Gen2",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ArchiveJsonParquet",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Clean up Tweets data from stage in ADLS Gen2",
+                "description": "Delete Tweeter Json file from source",
+                "type": "Delete",
+                "dependsOn": [
+                    {
+                        "activity": "Archive Tweets data in ADLS Gen2",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "DeleteTweeterFiles",
+                        "type": "DatasetReference"
+                    },
+                    "logStorageSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "tweetstoblob",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "twitter-data/tweetstoblob"
+                    },
+                    "enableLogging": true,
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "recursive": true
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-12-09T14:37:48Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

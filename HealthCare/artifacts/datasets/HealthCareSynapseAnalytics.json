@@ -1,0 +1,46 @@
+{
+    "name": "HealthCareSynapseAnalytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareSynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "PatientId",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PatientAge",
+                "type": "nvarchar"
+            },
+            {
+                "name": "BodyTemperature",
+                "type": "nvarchar"
+            },
+            {
+                "name": "HeartRate",
+                "type": "nvarchar"
+            },
+            {
+                "name": "BreathingRate",
+                "type": "nvarchar"
+            },
+            {
+                "name": "numberOfSteps",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Calories",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "HealthCare-iomt-parameterized"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

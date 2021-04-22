@@ -1,0 +1,38 @@
+{
+    "name": "HealthCare_IOMT_Dataflow",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "IOMTData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "healthCareIOMTData"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "IOMTDataInSynapse",
+                        "type": "DatasetReference"
+                    },
+                    "name": "HealthCareIomtSynapseSink"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "FilterBodyTemperature"
+                },
+                {
+                    "name": "SelectColumns"
+                },
+                {
+                    "name": "GroupBy"
+                }
+            ],
+            "script": "source(output(\n\t\tpatientId as integer,\n\t\tpatientAge as string,\n\t\tdatetime as date,\n\t\tbodyTemperature as integer,\n\t\theartRate as string,\n\t\tbreathingRate as string,\n\t\tspo2 as string,\n\t\tsystolicPressure as string,\n\t\tdiastolicPressure as string,\n\t\tnumberOfSteps as string,\n\t\tactivityTime as string,\n\t\tnumberOfTimesPersonStoodUp as string,\n\t\tcalories as integer,\n\t\tvo2 as string,\n\t\tSyntheticPartitionKey as string,\n\t\tid as string,\n\t\t{_rid} as string,\n\t\t{_self} as string,\n\t\t{_etag} as string,\n\t\t{_attachments} as string,\n\t\t{_ts} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> healthCareIOMTData\nhealthCareIOMTData filter(bodyTemperature>98) ~> FilterBodyTemperature\nFilterBodyTemperature select(mapColumn(\n\t\tpatientId,\n\t\tpatientAge,\n\t\tdatetime,\n\t\tbodyTemperature,\n\t\theartRate,\n\t\tbreathingRate,\n\t\tspo2,\n\t\tsystolicPressure,\n\t\tdiastolicPressure,\n\t\tnumberOfSteps,\n\t\tactivityTime,\n\t\tnumberOfTimesPersonStoodUp,\n\t\tcalories,\n\t\tvo2,\n\t\tSyntheticPartitionKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectColumns\nSelectColumns aggregate(groupBy(Year = year(datetime),\n\t\tMonth = month(datetime),\n\t\tpatientId,\n\t\tbreathingRate,\n\t\tbodyTemperature,\n\t\theartRate),\n\tTotalCalories = sum(calories)) ~> GroupBy\nGroupBy sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> HealthCareIomtSynapseSink"
+        }
+    }
+}

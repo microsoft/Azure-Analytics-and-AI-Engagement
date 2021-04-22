@@ -1,0 +1,136 @@
+{
+    "name": "AzureSynapseAnalyticsTable1",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HealthCareSynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "ProductKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "OrderDateKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "DueDateKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ShipDateKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CustomerKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PromotionKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CurrencyKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SalesTerritoryKey",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SalesOrderNumber",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SalesOrderLineNumber",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RevisionNumber",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderQuantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "UnitPrice",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "ExtendedAmount",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "UnitPriceDiscountPct",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "DiscountAmount",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "ProductStandardCost",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "TotalProductCost",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "SalesAmount",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "TaxAmt",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "Freight",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "CarrierTrackingNumber",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CustomerPONumber",
+                "type": "nvarchar"
+            },
+            {
+                "name": "OrderDate",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "DueDate",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ShipDate",
+                "type": "date"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "FinanceSalesSAP"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

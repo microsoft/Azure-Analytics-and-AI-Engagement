@@ -1,0 +1,20 @@
+{
+    "name": "Iomt_Data",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synapsehealthcaredev-WorkspaceDefaultSqlServer",
+            "type": "LinkedServiceReference",
+            "parameters": {
+                "DBName": "HealthCareDW"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Healthcare-Iomt-Data"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

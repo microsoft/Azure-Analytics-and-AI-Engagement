@@ -1,0 +1,17 @@
+{
+    "name": "SqlPoolTable",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesOperationalData"
+        },
+        "sqlPool": {
+            "referenceName": "HealthCareDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
