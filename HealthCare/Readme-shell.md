@@ -309,19 +309,19 @@
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
-    git clone https://Username@dev.azure.com/daidemos/HealthCare/_git/Healthcare
+    git clone -b healthcare https:// username @dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20POC%20Accelerators/_git/DreamDemoInABox healthcare
     ```
     > Here username will be your github username. You will be prompted for the password of the same username.
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
     
-    > **Note:** If you get File “Healthcare” already exist error, please execute following command: rm Healthcare -r -f to delete existing clone.
+    > **Note:** If you get File “healthcare ” already exist error, please execute following command: rm healthcare -r -f to delete existing clone.
     
     > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 1 hour.
 
 5. Execute the `healthcareSetup.ps1` script by executing the following commands:
 
     ```PowerShell
-    cd 'Healthcare/GitHubRepo/Healthcare'
+   cd ‘healthcare/healthcare’
     ```
 
 6. Then **run** the PowerShell: 
@@ -846,7 +846,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 **Execute** the ```Pause_Resume_script.ps1``` script by executing the following command:
 
-1. **Run** Command: ```cd 'Healthcare/GitHubRepo/Healthcare'```
+1. **Run** Command: ```cd 'healthcare/healthcare'```
 
 2. Then **run** the PowerShell script: ```./Pause_Resume_script.ps1```
 
@@ -893,7 +893,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 **Run** Command:
 
    ```PowerShell
-   cd 'Healthcare/GitHubRepo/Healthcare’
+   cd 'healthcare/healthcare'
    ```
 	
 2. Then **run** the PowerShell script: 
