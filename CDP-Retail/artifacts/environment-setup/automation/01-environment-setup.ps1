@@ -268,39 +268,15 @@ foreach ($singleFile in $singleFiles) {
         }
 }
 
-$destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
-$singleFiles = Get-AzStorageBlob -Container "cdp" -Blob customcsv* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
 
-foreach ($singleFile in $singleFiles) {
-        Write-Information $singleFile
-        $source = $publicDataUrl + $singleFile.SourcePath
-        $destination = $dataLakeStorageBlobUrl + 'customcsv/' + $singleFile.TargetPath + $destinationSasKey
-        Write-Information "Copying file $($source) to $($destination)"
-        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
-        {
-                .\azcopy copy $source $destination 
-        }
-        else {
-                azcopy copy $source $destination 
-        }
-}
+$destinationSasKey = New-AzStorageContainerSASToken -Container "machine-learning" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/machine-learning$($destinationSasKey)"
+azcopy copy "https://retailpocstorage.blob.core.windows.net/machine-learning" $destinationUri --recursive
 
-$destinationSasKey = New-AzStorageContainerSASToken -Container "machine-learning" -Context $dataLakeContext -Permission rwdl -ExpiryTime $EndTime
-$singleFiles = Get-AzStorageBlob -Container "cdp" -Blob machine* -Context $AnonContext | Where-Object Length -GT 0 | select-object @{Name = "SourcePath"; Expression = {"cdp/"+$_.Name}} , @{Name = "TargetPath"; Expression = {$_.Name}}
+$destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
+azcopy copy "https://retailpocstorage.blob.core.windows.net/customcsv" $destinationUri --recursive
 
-foreach ($singleFile in $singleFiles) {
-        Write-Information $singleFile
-        $source = $publicDataUrl + $singleFile.SourcePath
-        $destination = $dataLakeStorageBlobUrl + 'machine-learning/' +$singleFile.TargetPath + $destinationSasKey
-        Write-Information "Copying file $($source) to $($destination)"
-        if ($Env:POWERSHELL_DISTRIBUTION_CHANNEL -ne "CloudShell")
-        {
-                .\azcopy copy $source $destination 
-        }
-        else {
-                azcopy copy $source $destination 
-        }
-}
 
 if(!$IsCloudLabs)
 {
