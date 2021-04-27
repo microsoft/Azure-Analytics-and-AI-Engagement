@@ -309,9 +309,9 @@
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
-    git clone -b healthcare https:// username @dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20POC%20Accelerators/_git/DreamDemoInABox healthcare
+    git clone -b healthcare https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git healthcare
     ```
-    > Here username will be your github username. You will be prompted for the password of the same username.
+    
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
     
     > **Note:** If you get File “healthcare ” already exist error, please execute following command: rm healthcare -r -f to delete existing clone.
@@ -321,7 +321,7 @@
 5. Execute the `healthcareSetup.ps1` script by executing the following commands:
 
     ```PowerShell
-   cd ‘healthcare/healthcare’
+   cd healthcare/HealthCare
     ```
 
 6. Then **run** the PowerShell: 
