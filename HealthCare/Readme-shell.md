@@ -239,7 +239,7 @@
 
 	![copy connection string.](media/evh-connection-string.png)
 
-16.	**Close** the device popup **click** on data export tab.
+16.	Navigate to iot central and **Close** the device popup. **click** on data export tab.
 17.	**Click** Destinations and **select** New Destinations.
 
     ![data export.](media/data-export.png)
