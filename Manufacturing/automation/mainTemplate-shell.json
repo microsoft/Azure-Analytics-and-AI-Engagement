@@ -2695,7 +2695,7 @@
          "type":"Microsoft.CognitiveServices/accounts",
          "apiVersion":"2017-04-18",
          "name":"[variables('text_translation_service_name')]",
-         "location":"[variables('location')]",
+         "location":"Global",
          "sku":{
             "name":"S1"
          },
