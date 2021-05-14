@@ -1,4 +1,4 @@
-# Microsoft Healthcare Accelerator Proof of Concept (POC) License:
+# Microsoft Healthcare DREAM Demo in a Box License:
 
 These license terms are an agreement between you and your affiliates (“you”), and Microsoft Corporation or one of its affiliates (“Microsoft”). “Affiliate” means any legal entity that owns, is owned by, or is commonly owned with a party. “Own” means having more than 50% ownership or the right to direct the management of the entity.
 
