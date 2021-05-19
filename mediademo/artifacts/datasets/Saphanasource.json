@@ -1,0 +1,17 @@
+{
+    "name": "Saphanasource",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "SapHana",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "SapHanaTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "sales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

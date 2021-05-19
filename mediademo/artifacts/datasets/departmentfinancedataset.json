@@ -1,0 +1,23 @@
+{
+    "name": "departmentfinancedataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "saphanasink",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "FinanceSalesData.csv",
+                "container": "saphana"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

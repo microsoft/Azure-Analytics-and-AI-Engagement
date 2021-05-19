@@ -1,0 +1,99 @@
+{
+    "name": "2 TeraData Marketing Data To Synapse",
+    "properties": {
+        "activities": [
+            {
+                "name": "TeraData TO ADLS",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "TeradataSource",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TeradataMarketingDB",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "MarketingCampaigndata",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Media_Ingest_data_from_TeraData_to_Azure_Synapse",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [
+                    {
+                        "activity": "TeraData TO ADLS",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataflow": {
+                        "referenceName": "Media_Ingest_data_from_TeraData_to_Azure_Synapse",
+                        "type": "DataFlowReference"
+                    },
+                    "staging": {
+                        "linkedService": {
+                            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+                            "type": "LinkedServiceReference"
+                        },
+                        "folderPath": "marketing-data"
+                    },
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-03-05T09:36:51Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

@@ -1,0 +1,72 @@
+{
+    "name": "TweetsJson",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_9eb4a8d4e501462c9dbda67584df7c56_1.json",
+                "fileSystem": "tweetdata"
+            }
+        },
+        "schema": {
+            "type": "object",
+            "properties": {
+                "Time": {
+                    "type": "string"
+                },
+                "Hashtag": {
+                    "type": "string"
+                },
+                "Tweet": {
+                    "type": "string"
+                },
+                "City": {
+                    "type": "string"
+                },
+                "UserName": {
+                    "type": "string"
+                },
+                "RetweetCount": {
+                    "type": "integer"
+                },
+                "FavouriteCount": {
+                    "type": "integer"
+                },
+                "Sentiment": {
+                    "type": "string"
+                },
+                "SentimentScore": {
+                    "type": "integer"
+                },
+                "IsRetweet": {
+                    "type": "boolean"
+                },
+                "HourOfDay": {
+                    "type": "integer"
+                },
+                "Language": {
+                    "type": "string"
+                },
+                "Latitude": {
+                    "type": "number"
+                },
+                "Longitude": {
+                    "type": "number"
+                },
+                "UserFollowersCount": {
+                    "type": "integer"
+                },
+                "UserFriendsCount": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

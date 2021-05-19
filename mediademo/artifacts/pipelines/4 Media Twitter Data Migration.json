@@ -1,0 +1,160 @@
+{
+    "name": "4 Media Twitter Data Migration",
+    "properties": {
+        "activities": [
+            {
+                "name": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "allowPolyBase": true,
+                        "polyBaseSettings": {
+                            "rejectValue": 0,
+                            "rejectType": "value",
+                            "useTypeDefault": true
+                        }
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "tweetdata"
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "AzureSynapse_TwitterAnalytics",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Archive Tweets data in ADLS Gen2",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ArchiveJson",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Clean up Tweets data from stage in ADLS Gen2",
+                "description": "Delete Tweeter Json file from source",
+                "type": "Delete",
+                "dependsOn": [
+                    {
+                        "activity": "Archive Tweets data in ADLS Gen2",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "DeleteTweeterFiles",
+                        "type": "DatasetReference"
+                    },
+                    "logStorageSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "tweetdata/tweetstoblob"
+                    },
+                    "enableLogging": true,
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "recursive": true,
+                        "enablePartitionDiscovery": false
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-03-05T09:37:00Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

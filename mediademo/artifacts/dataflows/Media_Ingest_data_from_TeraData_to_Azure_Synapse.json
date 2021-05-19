@@ -1,0 +1,48 @@
+{
+    "name": "Media_Ingest_data_from_TeraData_to_Azure_Synapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "CampaignData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DatafromTeraData"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "AzureSynapseTable",
+                        "type": "DatasetReference"
+                    },
+                    "name": "LoadtoAzureSynapse"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "AzureSynapseAnalytics",
+                        "type": "DatasetReference"
+                    },
+                    "name": "AggregatedMarketingData"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "DerivedColumn"
+                },
+                {
+                    "name": "SelectColumn"
+                },
+                {
+                    "name": "SelectRequiredColumns"
+                },
+                {
+                    "name": "TotalRevenueByCampaign"
+                }
+            ],
+            "script": "source(output(\n\t\tRegion as string,\n\t\tCountry as string,\n\t\tCampaign_Name as string,\n\t\tRevenue as string,\n\t\tRevenue_Target as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tRoleID as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> DatafromTeraData\nDatafromTeraData derive(Revenue_Target = round(toInteger(Revenue_Target),4),\n\t\tRevenue = round(toInteger(Revenue),4)) ~> DerivedColumn\nDerivedColumn select(mapColumn(\n\t\tRegion,\n\t\tCountry,\n\t\tCampaign_Name,\n\t\tRevenue,\n\t\tRevenue_Target\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectColumn\nDerivedColumn select(mapColumn(\n\t\tRegion,\n\t\tCountry,\n\t\tCampaign_Name,\n\t\tRevenue,\n\t\tRevenue_Target,\n\t\tCity,\n\t\tState,\n\t\tRoleID\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequiredColumns\nSelectRequiredColumns aggregate(groupBy(Campaign_Name,\n\t\tRegion,\n\t\tCountry),\n\tRevenue_Target = sum(Revenue_Target)) ~> TotalRevenueByCampaign\nSelectColumn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LoadtoAzureSynapse\nTotalRevenueByCampaign sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> AggregatedMarketingData"
+        }
+    }
+}

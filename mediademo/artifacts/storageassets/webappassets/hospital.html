@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://sthealthcaredev001.blob.core.windows.net/webappassets/hospital.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Icon" href="https://wideworldimporters-mfg.azurewebsites.net/images/favicon.ico">
+    <title>Home Page – Parts Unlimited</title>
+
+<script>
+    var ApplicationInsightsInstrumentationKey = "";
+</script>
+    <link href="./hospital_files/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./hospital_files/Site.css" rel="stylesheet" type="text/css">
+    <link href="./hospital_files/Home.css" rel="stylesheet" type="text/css">
+    <link href="./hospital_files/Account.css" rel="stylesheet" type="text/css">
+    <link href="./hospital_files/ShoppingCart.css" rel="stylesheet" type="text/css">
+    <link href="./hospital_files/Store.css" rel="stylesheet" type="text/css">
+<style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px; width: 360px; padding: 10px 20px;
+				box-sizing: content-box;
+				text-align: left; font-family: Helvetica, Arial, sans-serif;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				z-index: 2147483647;
+				font-size: 12px; color: #666;
+			}
+			#ctre_wnd * {
+				line-height: 1.3; font-size: inherit; color: inherit;
+				font-weight: normal; font-style: normal; font-family: inherit;
+				cursor: default;
+			}
+			#ctre_wnd a, #ctre_wnd input[type=checkbox] { cursor: pointer; }
+
+			#ctre_wnd .ct_minimize, #ctre_wnd .ct_close {
+				display: block; cursor: pointer;
+				position: absolute; top: 0; right: 0; width: 32px; line-height: 32px;
+				font-size: 14px; text-align: center;
+				transition: color 0.3s, background 0.3s;
+			}
+			#ctre_wnd .ct_minimize { right: 32px; background: #fff; color: #0fb4d4; }
+			#ctre_wnd .ct_minimize:hover { background: #0fb4d4; color: #fff; }
+			#ctre_wnd .ct_minimize i {
+				display: inline-block; cursor: pointer;
+				transform: rotate(45deg); transition: transform 0.5s;
+			}
+			#ctre_wnd .ct_close { color: #f00; background: #fff0f0; }
+			#ctre_wnd .ct_close:hover { color: #fff; background: #f00; }
+			#ctre_wnd .key {
+				display: inline-block;
+				font-family: monospace;
+				background: #f7f7f7; color: #999;
+				padding: 0 2px; margin: 0 2px;
+				border: solid 1px #d5d5d5; border-radius: 3px;
+			}
+			#ctre_wnd .ct_logo { font-size: 15px; font-weight: bold; }
+			#ctre_wnd .ct_logo.small { display: none; }
+			#ctre_wnd .ct_logo svg {
+				fill: #666; vertical-align: -15%;
+				transform: rotate(-240deg); transition: transform 1s;
+			}
+			#ctre_wnd .ct_logo.anim svg { transform: rotate(0deg); }
+
+			#ctre_wnd .version { color: #bbb; }
+			#ctre_wnd .keys { font-size: 11px; overflow: hidden; margin-top: 4px; color: #bbb; }
+			#ctre_wnd .ct_settings { font-size: 11px; overflow: hidden; margin: 8px 0; color: #bbb; }
+			#ctre_wnd .ct_settings a { color: #999; }
+			#ctre_wnd .ct_settings a:hover { color: #666; }
+			#ctre_wnd .activationKeys { float: left; margin-left: -2px; }
+			#ctre_wnd .transposeKeys { float: right; }
+			#ctre_current_elm {
+				font-family: monospace; background: #f7f7f7; color: #d5d5d5; padding: 2px; margin: 10px 0;
+				max-height: 84px; overflow: hidden;
+			}
+			#ctre_current_elm .pathNode { color: #999; border-bottom: solid 2px rgba(0,0,0,0); }
+			#ctre_current_elm .pathNode.active { border-bottom: solid 2px #555; }
+
+			#ctre_elm_list { display: none; margin: 0 -20px; background: #f7f7f7; border: solid 12px #f7f7f7; border-width: 12px 0 12px 0; max-height: 90px; overflow: auto; }
+			#ctre_elm_list.hasContent { display: block; }
+			#ctre_elm_list table { border: 0; width: 100%; border-spacing: 0; }
+			#ctre_elm_list tr { border: 0; }
+			#ctre_elm_list tr.ct_heading td { color: #bbb; }
+			#ctre_elm_list td { padding: 0; border: 0; background: #f7f7f7; }
+			#ctre_elm_list tr:nth-child(even) td { background: #fcfcfc; }
+			#ctre_elm_list td:nth-child(1) { padding-left: 20px; }
+			#ctre_elm_list td:nth-child(2) { text-align: center; }
+			#ctre_elm_list td:nth-child(3) { padding-right: 20px; }
+			#ctre_elm_list tr:not(.ct_heading) td:nth-child(1) { font-family: monospace; font-size: 11px; }
+			#ctre_elm_list td input { display: inline; -webkit-appearance: checkbox; }
+			#ctre_elm_list td input:before, #ctre_elm_list td input:after { content: none; }
+			#ctre_elm_list .ct_edit_selector { font-family: sans-serif; float: right; opacity: 0; color: #0fb4d4; text-decoration: none; }
+			#ctre_elm_list .ct_edit_selector:hover { color: #000; }
+			#ctre_elm_list tr:hover .ct_edit_selector { opacity: 1; }
+			#ctre_elm_list a.ct_delete { color: #f00; padding: 4px; text-decoration: none; font-size: 14px; }
+			#ctre_elm_list a.ct_delete:hover { color: #fff; background: #f00; }
+
+			#ctre_wnd .ct_more { border-top: solid 1px #f7f7f7; margin: 0 -20px; padding-top: 12px; color: #bbb; font-size: 10px; text-align: center; }
+			#ctre_wnd .ct_more a { color: #0fb4d4; font-size: inherit; text-decoration: none; transition: color 0.5s; }
+			#ctre_wnd .ct_more a:hover { color: #000; }
+
+			#ctre_wnd.minimized { width: 80px; height: 12px; }
+			#ctre_wnd.minimized > * { display: none; }
+			#ctre_wnd.minimized .ct_minimize,
+			#ctre_wnd.minimized .ct_close { display: block; }
+			#ctre_wnd.minimized .ct_minimize i { display: inline-block; transform: rotate(-135deg); }
+			#ctre_wnd.minimized .ct_logo.small { display: block; margin: -4px 0 0 -10px; }
+
+
+			.nav li a {
+				color: white !important;
+				margin-top:10px;
+			}
+			.nav > li > a:hover, .nav > li > a:focus{
+				color: white !!important;
+				background:none;
+			}
+
+			</style>
+
+
+		</head>
+<body data-new-gr-c-s-check-loaded="14.991.0" data-pt-ext-theme="light" data-pt-ext-size="standard" class="vsc-initialized" data-gr-ext-installed="">
+
+	<!-- <nav class="navbar"  -->
+	<!-- border-radius: 0 !important; -->
+	<!-- height:100px; background-size: cover; background-position: center;margin-bottom:0px;"> -->
+      <!-- <div class="container-fluid"> -->
+       <!-- <!--  <div class="navbar-header"> -->
+		  <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> -->
+            <!-- <span class="sr-only">Toggle navigation</span> -->
+            <!-- <span class="icon-bar"></span> -->
+            <!-- <span class="icon-bar"></span> -->
+            <!-- <span class="icon-bar"></span> -->
+          <!-- </button> -->
+        
+        <!-- </div> -->
+        <!-- <!--<div id="navbar" class="navbar-collapse collapse"> -->
+			  <!-- <ul class="nav navbar-nav" style="font-size: 18px !important;color: white !important;font-weight: bold !important;letter-spacing: 1px; -->
+			  <!-- padding-top: 20px;"> -->
+	            <!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/navbar/">About Us</a></li> -->
+	            <!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/navbar-static-top/">Departments</a></li> -->
+	            <!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/webappassets/">Speciality Clinics</a></li> -->
+	            <!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/webappassets/">Patient Care</a></li> -->
+            	<!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/webappassets/">Journal</a></li> -->
+        		<!-- <li><a href="https://sthealthcaredev001.blob.core.windows.net/webappassets/">Doctor Lists</a></li> -->
+        	<!-- </ul> -->
+	    <!-- </div>--> 
+		<!-- <!--/.nav-collapse --> 
+      <!-- </div> -->
+    <!-- </nav> -->
+
+
+    <!-- <div class="render-body" style="background: url('./hospital_files/Banner.png'); background-size: cover; background-position: center center; height: 100%;">
+    	
+    	
+    </div> -->
+
+    <div class="jumbotron mb-0" style="background: url(&#39;./hospital_files/Media_demo_landing.jpg&#39;); margin-bottom:0px; background-position: center center; height: 100%;background-repeat: no-repeat;background-size: cover">
+	  <div class="container-fluid">
+	  <div class="row" style="padding-left: 40px">
+	  			<br>
+			<div class="col-md-6" style="margin-top:0px; font-weight: 700; font-size: 75px; font-family: &#39;Arial&#39;;font-style:italic">
+				<!-- <h1 style="color:#ff9038">Contoso Healthcare</h1>
+				<p style="color:white">EMPOWERING YOU TO IMPROVE LIFE WITH <br> EXCEPTIONAL CARE IN YOUR NEIGHBORHOOD</p> -->
+				<img src="./hospital_files/Text.png">
+  			</div>
+	  	</div>
+	    
+	  </div>
+	</div>
+   
+
+    <script src="./hospital_files/jquery.js"></script>
+    <script src="./hospital_files/jquery.zoom.js"></script>
+    <script src="./hospital_files/bootstrap.min.js"></script>
+    <script src="./hospital_files/respond.src.js"></script>
+
+    <script>
+        $('.carousel').carousel()
+    </script>
+
+
+
+
+<div class="betternet-wrapper"></div><div></div>
+</body></html>

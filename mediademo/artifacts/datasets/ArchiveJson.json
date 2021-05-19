@@ -1,0 +1,20 @@
+{
+    "name": "ArchiveJson",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "tweeterarchive",
+                "fileSystem": "tweetdata"
+            }
+        },
+        "schema": {}
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

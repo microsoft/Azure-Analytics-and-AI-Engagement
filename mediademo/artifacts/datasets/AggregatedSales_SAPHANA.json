@@ -1,0 +1,46 @@
+{
+    "name": "AggregatedSales_SAPHANA",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "mediademosynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Region",
+                "type": "varchar"
+            },
+            {
+                "name": "Country",
+                "type": "varchar"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "varchar"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "varchar"
+            },
+            {
+                "name": "City",
+                "type": "varchar"
+            },
+            {
+                "name": "State",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "AggregatedSales_SAPHANA"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

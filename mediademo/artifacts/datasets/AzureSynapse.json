@@ -1,0 +1,17 @@
+{
+    "name": "AzureSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "mediademosynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "MarketingCampaignData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

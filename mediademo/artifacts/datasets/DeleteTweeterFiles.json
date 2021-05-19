@@ -1,0 +1,19 @@
+{
+    "name": "DeleteTweeterFiles",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "mediademoworkspace-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_9eb4a8d4e501462c9dbda67584df7c56_1.json",
+                "fileSystem": "tweetdata"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
