@@ -180,7 +180,7 @@
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmain%2FManufacturing%2Fautomation%2FmainTemplate-shell.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmedia%2Fmediademo%2F%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
@@ -261,20 +261,19 @@
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 Command:
 ```
-git clone https://username@dev.azure.com/daidemos/HealthCare/_git/Healthcare
+git clone -b media https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git media
 ```
-Here username will be your github username. You will be prompted for the password of the same username.
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
 	
-> **Note:** If you get File already exist error, please execute following command: rm Mediademo -r -f to delete existing clone.
+> **Note:** If you get File already exist error, please execute following command: rm media -r -f to delete existing clone.
 
 > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
 5. **Execute** the mediaSetup.ps1 script by executing the following command:
 Command:
 ```
-cd "Healthcare\media poc"
+cd ./media/mediademo/
 ```
 
 6. Then **run** the PowerShell: 
@@ -668,7 +667,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 **Execute** the Pause_Resume_script.ps1 script by executing the following command: 
 1. **Run** Command: 
 	```
-	cd "media\media poc"
+	cd "media\mediademo"
 	```
 
 2. Then **run** the PowerShell script: 
@@ -718,12 +717,12 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 2. **Run** Command: 
 	```
-	cd "media\media poc"
+	cd "media\mediademo"
 	```
 
 3. Then **run** the PowerShell script: 
 	```
-	./resourceCleanup.ps1
+	./resource_cleanup.ps1
 	```
 
 	![Run the Powershell Script.](media/authentication-6.png)
@@ -734,4 +733,4 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Enter the Resource Group Name.](media/authentication-7.png)
 	
-Your Accelerator environment is now set up.
+Your Dream Demo in a Box environment is now set up.
