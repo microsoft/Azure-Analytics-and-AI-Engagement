@@ -1,4 +1,4 @@
-# Azure Synapse Manufacturing Setup Guide
+# DREAM Demo in a Box Setup Guide
 
 
 **Contents**
