@@ -1,4 +1,4 @@
-# Azure Synapse HealthCare Setup Guide
+# HealthCare DREAM Demo in a Box Setup Guide
 
 
 **Contents**
