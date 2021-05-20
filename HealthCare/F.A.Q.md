@@ -70,7 +70,7 @@ Follow the steps below to update the datasource:
 
 ## What if embedded reports dont show up in web app
 1. Ensure that admin consent is granted for your app service principal.
-2. Ensure the client secret and client id are replaced in the appsettings.json of the web app starting with "manufacturing-poc".
+2. Ensure the client secret and client id are replaced in the appsettings.json of the web app starting with "app-demohealthcare".
 
 ## What if script throws BadRequestMultiClassClassificationTrainingValidationFailed error
 1. Ensure your resources are located in one of the regions from region list(westus2, eastus2 , northeurope, northcentralus, southeastasia, uksouth, australliaeast, centralindia, japaneast).
