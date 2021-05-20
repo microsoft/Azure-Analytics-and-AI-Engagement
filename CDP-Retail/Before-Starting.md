@@ -1,5 +1,5 @@
 
-# Azure Synapse Analytics WWI Setup Guide
+# WWI DREAM Demo in a Box Setup Guide
 
 **Contents**
 
