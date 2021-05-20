@@ -1,4 +1,4 @@
-# DREAM Demo in a Box 
+# Media DREAM Demo in a Box Setup Guide
 ## Setup Instructions
 
 
