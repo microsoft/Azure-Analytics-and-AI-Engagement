@@ -61,7 +61,7 @@
 
 6. **Select** your desired Region. 
 
-> **Note:** Some services behave differently in different regions and may break some part of the accelerator. Choosing one of the following regions is preferable: westus2, eastus2, northcentralus, northeurope, southeastasia, australliaeast, centralindia, uksouth, japaneast.  
+> **Note:** Some services behave differently in different regions and may break some part of the setup. Choosing one of the following regions is preferable: westus2, eastus2, northcentralus, northeurope, southeastasia, australliaeast, centralindia, uksouth, japaneast.  
 
 7. **Click** the 'Review + Create' button.
 
@@ -910,4 +910,4 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 4.	You may be prompted to select a subscription in case your account has multiple subscriptions.
 
-Your Accelerator environment is now set up.
+Your environment is now set up.
