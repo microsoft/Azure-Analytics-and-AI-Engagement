@@ -868,7 +868,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
    ![Select the user account which you want to authenticate.](media/pick-account-to-login.png)
 
-8. When prompted, **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created.
+8. When prompted, **enter** the resource group name as 'Synapse-Healthcare-Lab' in the Azure Cloud Shell. **Type** the same resource group name that you created.
 
    ![Enter the resource group name](media/RG-Name-Screen10.png)
 
