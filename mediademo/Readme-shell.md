@@ -693,7 +693,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Select the same user and Close.](media/authentication-2.png)
 
-8. When prompted, **enter** the resource group name to be paused/resumed in the Azure Cloud Shell. Type the same resource group name that you created. 
+8. When prompted, **enter** the resource group name to be paused/resumed in the Azure Cloud Shell. Type the same resource group name that you created i.e. 'Synapse-Media-Lab'. 
 	
 	![Enter the Resource Group Name.](media/authentication-3.png)
 
