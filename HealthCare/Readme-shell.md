@@ -904,7 +904,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	
    ![Cleaning the resources](media/resource-cleanup.png)
 
-3. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-WWI-Lab'.
+3. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-Healthcare-Lab'.
 
    ![Enter the resource group name](media/RG-Name-Screen10.png)
 
