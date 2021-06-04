@@ -438,7 +438,7 @@ Follow these steps to create the Power BI dashboard:
 
 	![Select the workspace.](media/power-bi-dashboard.png)
 
-14. **Click** on ‘+ New’ button on the top-right navigation bar.
+14. **Click** on ‘+ New’ button on the top-left navigation bar.
 
 15. **Click** the ‘Dashboard’ option from the drop-down menu.
 
@@ -463,7 +463,7 @@ https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/ma
 
 21. **Go back** to the Power BI dashboard you just created.
 
-22. **Click** on the “Edit” at the top right-side corner.
+22. **Click** on the “Edit” at the top.
 
 23. **Click** on “Dashboard theme”.
 
@@ -516,11 +516,11 @@ Do the following to pin visuals to the dashboard you just created:
 
 	![Select the workspace.](media/media-poc.png)
 
-38. **Open** ‘Media Demo Master Images’ report.
+38. **Open** ‘Media Demo Master Images’ report and click edit.
 
-39. **Pin** all the images from report to the ‘Healthcare’.
+39. **Pin** all the images from report to the ‘Media Demo Dashboard-Before’ dashboard.
 
-40. **Note:** Please refer to steps 44-47 of Task 7 for the complete procedure of pinning a desired visual to a dashboard.
+40. **Note:** Please refer to steps 32-35 of Task 5 for the complete procedure of pinning a desired visual to a dashboard.
 
 	![Open and Pin.](media/media-poc-2.png)
 
