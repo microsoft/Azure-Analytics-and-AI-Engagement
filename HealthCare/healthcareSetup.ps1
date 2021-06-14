@@ -1218,7 +1218,7 @@ $shareName = $share.Name
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
-	if($notebook.BaseName -eq "config")
+	if($notebook.BaseName -eq "GlobalVariables")
 	{
 		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
 		$path="/Users/"+$notebook.BaseName+".py"
