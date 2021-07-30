@@ -1,0 +1,87 @@
+{
+    "$schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/fields.json",
+    "fields": [
+        {
+            "fieldKey": "Table Tag",
+            "fieldType": "array",
+            "fieldFormat": "not-specified",
+            "itemType": "Table Tag_object",
+            "fields": null
+        },
+        {
+            "fieldKey": "CaseID",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Employer",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Location",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Event Date",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Event",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Nature",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        }
+    ],
+    "definitions": {
+        "Table Tag_object": {
+            "fieldKey": "Table Tag_object",
+            "fieldType": "object",
+            "fieldFormat": "not-specified",
+            "itemType": null,
+            "fields": [
+                {
+                    "fieldKey": "Final Narrative",
+                    "fieldType": "string",
+                    "fieldFormat": "not-specified",
+                    "itemType": null,
+                    "fields": null
+                },
+                {
+                    "fieldKey": "Hospitalized",
+                    "fieldType": "number",
+                    "fieldFormat": "not-specified",
+                    "itemType": null,
+                    "fields": null
+                },
+                {
+                    "fieldKey": "Amputation",
+                    "fieldType": "number",
+                    "fieldFormat": "not-specified",
+                    "itemType": null,
+                    "fields": null
+                },
+                {
+                    "fieldKey": "Part Of Body",
+                    "fieldType": "string",
+                    "fieldFormat": "not-specified",
+                    "itemType": null,
+                    "fields": null
+                },
+                {
+                    "fieldKey": "Source",
+                    "fieldType": "string",
+                    "fieldFormat": "not-specified",
+                    "itemType": null,
+                    "fields": null
+                }
+            ]
+        }
+    }
+}

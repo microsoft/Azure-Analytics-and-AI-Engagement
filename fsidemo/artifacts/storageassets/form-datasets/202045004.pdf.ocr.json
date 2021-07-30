@@ -1,0 +1,1978 @@
+{
+    "status": "succeeded",
+    "createdDateTime": "2021-05-26T02:16:24Z",
+    "lastUpdatedDateTime": "2021-05-26T02:16:28Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [
+            {
+                "page": 1,
+                "angle": 0,
+                "width": 8.2639,
+                "height": 11.6806,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.909,
+                            2.1081,
+                            2.1097,
+                            2.1081,
+                            2.1097,
+                            2.2101,
+                            0.909,
+                            2.2101
+                        ],
+                        "text": "CaseId: 202045004",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.909,
+                                    2.1081,
+                                    1.3678,
+                                    2.1081,
+                                    1.3678,
+                                    2.2101,
+                                    0.909,
+                                    2.2101
+                                ],
+                                "text": "CaseId:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.4257,
+                                    2.1119,
+                                    2.1097,
+                                    2.1119,
+                                    2.1097,
+                                    2.2101,
+                                    1.4257,
+                                    2.2101
+                                ],
+                                "text": "202045004",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9134,
+                            2.3154,
+                            2.6125,
+                            2.3154,
+                            2.6125,
+                            2.4448,
+                            0.9134,
+                            2.4448
+                        ],
+                        "text": "Employer: Woodgrove bank",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9134,
+                                    2.3154,
+                                    1.5143,
+                                    2.3154,
+                                    1.5143,
+                                    2.4448,
+                                    0.9134,
+                                    2.4448
+                                ],
+                                "text": "Employer:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.5658,
+                                    2.3154,
+                                    2.2667,
+                                    2.3154,
+                                    2.2667,
+                                    2.4448,
+                                    1.5658,
+                                    2.4448
+                                ],
+                                "text": "Woodgrove",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.3201,
+                                    2.3154,
+                                    2.6125,
+                                    2.3154,
+                                    2.6125,
+                                    2.4173,
+                                    2.3201,
+                                    2.4173
+                                ],
+                                "text": "bank",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9134,
+                            2.5122,
+                            2.138,
+                            2.5122,
+                            2.138,
+                            2.6142,
+                            0.9134,
+                            2.6142
+                        ],
+                        "text": "Location: Charolette",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9134,
+                                    2.5122,
+                                    1.4528,
+                                    2.5122,
+                                    1.4528,
+                                    2.6142,
+                                    0.9134,
+                                    2.6142
+                                ],
+                                "text": "Location:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.5108,
+                                    2.5122,
+                                    2.138,
+                                    2.5122,
+                                    2.138,
+                                    2.6142,
+                                    1.5108,
+                                    2.6142
+                                ],
+                                "text": "Charolette",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9134,
+                            3.911,
+                            2.2771,
+                            3.911,
+                            2.2771,
+                            4.0129,
+                            0.9134,
+                            4.0129
+                        ],
+                        "text": "Event Date: 1/26/2015",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9134,
+                                    3.9161,
+                                    1.256,
+                                    3.9161,
+                                    1.256,
+                                    4.0129,
+                                    0.9134,
+                                    4.0129
+                                ],
+                                "text": "Event",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.3067,
+                                    3.9161,
+                                    1.6144,
+                                    3.9161,
+                                    1.6144,
+                                    4.0129,
+                                    1.3067,
+                                    4.0129
+                                ],
+                                "text": "Date:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.676,
+                                    3.911,
+                                    2.2771,
+                                    3.911,
+                                    2.2771,
+                                    4.0129,
+                                    1.676,
+                                    4.0129
+                                ],
+                                "text": "1/26/2015",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9134,
+                            4.1078,
+                            3.1762,
+                            4.1078,
+                            3.1762,
+                            4.2372,
+                            0.9134,
+                            4.2372
+                        ],
+                        "text": "Event: Fall to lower level, unspecified",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9134,
+                                    4.1129,
+                                    1.2828,
+                                    4.1129,
+                                    1.2828,
+                                    4.2097,
+                                    0.9134,
+                                    4.2097
+                                ],
+                                "text": "Event:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.3451,
+                                    4.1078,
+                                    1.5481,
+                                    4.1078,
+                                    1.5481,
+                                    4.2097,
+                                    1.3451,
+                                    4.2097
+                                ],
+                                "text": "Fall",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.5979,
+                                    4.1188,
+                                    1.7057,
+                                    4.1188,
+                                    1.7057,
+                                    4.2097,
+                                    1.5979,
+                                    4.2097
+                                ],
+                                "text": "to",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.7593,
+                                    4.1078,
+                                    2.0794,
+                                    4.1078,
+                                    2.0794,
+                                    4.2097,
+                                    1.7593,
+                                    4.2097
+                                ],
+                                "text": "lower",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.1296,
+                                    4.1078,
+                                    2.4319,
+                                    4.1078,
+                                    2.4319,
+                                    4.2261,
+                                    2.1296,
+                                    4.2261
+                                ],
+                                "text": "level,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.4918,
+                                    4.1078,
+                                    3.1762,
+                                    4.1078,
+                                    3.1762,
+                                    4.2372,
+                                    2.4918,
+                                    4.2372
+                                ],
+                                "text": "unspecified",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9134,
+                            4.3046,
+                            3.8334,
+                            4.3046,
+                            3.8334,
+                            4.4341,
+                            0.9134,
+                            4.4341
+                        ],
+                        "text": "Nature: Soreness, pain, hurt-nonspecified injury",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9134,
+                                    4.3098,
+                                    1.3446,
+                                    4.3098,
+                                    1.3446,
+                                    4.4066,
+                                    0.9134,
+                                    4.4066
+                                ],
+                                "text": "Nature:",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.4018,
+                                    4.3084,
+                                    2.0082,
+                                    4.3084,
+                                    2.0082,
+                                    4.423,
+                                    1.4018,
+                                    4.423
+                                ],
+                                "text": "Soreness,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.0679,
+                                    4.3046,
+                                    2.3476,
+                                    4.3046,
+                                    2.3476,
+                                    4.4341,
+                                    2.0679,
+                                    4.4341
+                                ],
+                                "text": "pain,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.408,
+                                    4.3046,
+                                    3.4545,
+                                    4.3046,
+                                    3.4545,
+                                    4.4341,
+                                    2.408,
+                                    4.4341
+                                ],
+                                "text": "hurt-nonspecified",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.5112,
+                                    4.3046,
+                                    3.8334,
+                                    4.3046,
+                                    3.8334,
+                                    4.4341,
+                                    3.5112,
+                                    4.4341
+                                ],
+                                "text": "injury",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9446,
+                            5.0248,
+                            1.8296,
+                            5.0248,
+                            1.8296,
+                            5.1267,
+                            0.9446,
+                            5.1267
+                        ],
+                        "text": "Final Narrative",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9446,
+                                    5.0248,
+                                    1.2247,
+                                    5.0248,
+                                    1.2247,
+                                    5.1267,
+                                    0.9446,
+                                    5.1267
+                                ],
+                                "text": "Final",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.2839,
+                                    5.0248,
+                                    1.8296,
+                                    5.0248,
+                                    1.8296,
+                                    5.1267,
+                                    1.2839,
+                                    5.1267
+                                ],
+                                "text": "Narrative",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            4.0926,
+                            4.9474,
+                            6.209,
+                            4.9474,
+                            6.209,
+                            5.1542,
+                            4.0926,
+                            5.1542
+                        ],
+                        "text": "Hospitalized Amputation Part Of",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    4.0926,
+                                    5.0248,
+                                    4.8285,
+                                    5.0248,
+                                    4.8285,
+                                    5.1542,
+                                    4.0926,
+                                    5.1542
+                                ],
+                                "text": "Hospitalized",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    4.9523,
+                                    5.0248,
+                                    5.645,
+                                    5.0248,
+                                    5.645,
+                                    5.1542,
+                                    4.9523,
+                                    5.1542
+                                ],
+                                "text": "Amputation",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    5.7808,
+                                    4.9524,
+                                    6.023,
+                                    4.9524,
+                                    6.023,
+                                    5.0492,
+                                    5.7808,
+                                    5.0492
+                                ],
+                                "text": "Part",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    6.0689,
+                                    4.9474,
+                                    6.209,
+                                    4.9474,
+                                    6.209,
+                                    5.0492,
+                                    6.0689,
+                                    5.0492
+                                ],
+                                "text": "Of",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            5.7808,
+                            5.1024,
+                            6.0855,
+                            5.1024,
+                            6.0855,
+                            5.2318,
+                            5.7808,
+                            5.2318
+                        ],
+                        "text": "Body",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    5.7808,
+                                    5.1024,
+                                    6.0855,
+                                    5.1024,
+                                    6.0855,
+                                    5.2318,
+                                    5.7808,
+                                    5.2318
+                                ],
+                                "text": "Body",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            6.5402,
+                            5.0285,
+                            6.9676,
+                            5.0285,
+                            6.9676,
+                            5.1267,
+                            6.5402,
+                            5.1267
+                        ],
+                        "text": "Source",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    6.5402,
+                                    5.0285,
+                                    6.9676,
+                                    5.0285,
+                                    6.9676,
+                                    5.1267,
+                                    6.5402,
+                                    5.1267
+                                ],
+                                "text": "Source",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9446,
+                            5.3721,
+                            3.7308,
+                            5.3721,
+                            3.7308,
+                            5.5016,
+                            0.9446,
+                            5.5016
+                        ],
+                        "text": "Employee at a customer's residence fell while",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9446,
+                                    5.3721,
+                                    1.5444,
+                                    5.3721,
+                                    1.5444,
+                                    5.5016,
+                                    0.9446,
+                                    5.5016
+                                ],
+                                "text": "Employee",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.5949,
+                                    5.3831,
+                                    1.7039,
+                                    5.3831,
+                                    1.7039,
+                                    5.4741,
+                                    1.5949,
+                                    5.4741
+                                ],
+                                "text": "at",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.749,
+                                    5.3981,
+                                    1.8204,
+                                    5.3981,
+                                    1.8204,
+                                    5.4741,
+                                    1.749,
+                                    5.4741
+                                ],
+                                "text": "a",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8647,
+                                    5.3773,
+                                    2.5207,
+                                    5.3773,
+                                    2.5207,
+                                    5.4741,
+                                    1.8647,
+                                    5.4741
+                                ],
+                                "text": "customer's",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.5733,
+                                    5.3721,
+                                    3.1601,
+                                    5.3721,
+                                    3.1601,
+                                    5.4741,
+                                    2.5733,
+                                    5.4741
+                                ],
+                                "text": "residence",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.2066,
+                                    5.3721,
+                                    3.3727,
+                                    5.3721,
+                                    3.3727,
+                                    5.4741,
+                                    3.2066,
+                                    5.4741
+                                ],
+                                "text": "fell",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.4205,
+                                    5.3721,
+                                    3.7308,
+                                    5.3721,
+                                    3.7308,
+                                    5.4741,
+                                    3.4205,
+                                    5.4741
+                                ],
+                                "text": "while",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9353,
+                            5.5273,
+                            3.7895,
+                            5.5273,
+                            3.7895,
+                            5.6567,
+                            0.9353,
+                            5.6567
+                        ],
+                        "text": "traversing a stairway on 26 January 2015. She",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9353,
+                                    5.5273,
+                                    1.5339,
+                                    5.5273,
+                                    1.5339,
+                                    5.6567,
+                                    0.9353,
+                                    5.6567
+                                ],
+                                "text": "traversing",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.5871,
+                                    5.5533,
+                                    1.6585,
+                                    5.5533,
+                                    1.6585,
+                                    5.6292,
+                                    1.5871,
+                                    5.6292
+                                ],
+                                "text": "a",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.7008,
+                                    5.5273,
+                                    2.2058,
+                                    5.5273,
+                                    2.2058,
+                                    5.6567,
+                                    1.7008,
+                                    5.6567
+                                ],
+                                "text": "stairway",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.2504,
+                                    5.5533,
+                                    2.39,
+                                    5.5533,
+                                    2.39,
+                                    5.6292,
+                                    2.2504,
+                                    5.6292
+                                ],
+                                "text": "on",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.4444,
+                                    5.531,
+                                    2.5858,
+                                    5.531,
+                                    2.5858,
+                                    5.6292,
+                                    2.4444,
+                                    5.6292
+                                ],
+                                "text": "26",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.6326,
+                                    5.5324,
+                                    3.1241,
+                                    5.5324,
+                                    3.1241,
+                                    5.6567,
+                                    2.6326,
+                                    5.6567
+                                ],
+                                "text": "January",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.1698,
+                                    5.531,
+                                    3.4977,
+                                    5.531,
+                                    3.4977,
+                                    5.6292,
+                                    3.1698,
+                                    5.6292
+                                ],
+                                "text": "2015.",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.555,
+                                    5.5273,
+                                    3.7895,
+                                    5.5273,
+                                    3.7895,
+                                    5.6292,
+                                    3.555,
+                                    5.6292
+                                ],
+                                "text": "She",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            5.7808,
+                            5.5273,
+                            6.2416,
+                            5.5273,
+                            6.2416,
+                            5.6567,
+                            5.7808,
+                            5.6567
+                        ],
+                        "text": "Multiple",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    5.7808,
+                                    5.5273,
+                                    6.2416,
+                                    5.5273,
+                                    6.2416,
+                                    5.6567,
+                                    5.7808,
+                                    5.6567
+                                ],
+                                "text": "Multiple",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9428,
+                            5.6825,
+                            3.8508,
+                            5.6825,
+                            3.8508,
+                            5.8119,
+                            0.9428,
+                            5.8119
+                        ],
+                        "text": "hit her right-side (ribs) against the railing as she",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9428,
+                                    5.6825,
+                                    1.0789,
+                                    5.6825,
+                                    1.0789,
+                                    5.7841,
+                                    0.9428,
+                                    5.7841
+                                ],
+                                "text": "hit",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.1278,
+                                    5.6825,
+                                    1.3165,
+                                    5.6825,
+                                    1.3165,
+                                    5.7844,
+                                    1.1278,
+                                    5.7844
+                                ],
+                                "text": "her",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.3665,
+                                    5.6825,
+                                    1.9222,
+                                    5.6825,
+                                    1.9222,
+                                    5.8119,
+                                    1.3665,
+                                    5.8119
+                                ],
+                                "text": "right-side",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.9754,
+                                    5.6825,
+                                    2.2744,
+                                    5.6825,
+                                    2.2744,
+                                    5.8118,
+                                    1.9754,
+                                    5.8118
+                                ],
+                                "text": "(ribs)",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.3273,
+                                    5.6825,
+                                    2.7683,
+                                    5.6825,
+                                    2.7683,
+                                    5.8119,
+                                    2.3273,
+                                    5.8119
+                                ],
+                                "text": "against",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.8097,
+                                    5.6825,
+                                    2.9944,
+                                    5.6825,
+                                    2.9944,
+                                    5.7844,
+                                    2.8097,
+                                    5.7844
+                                ],
+                                "text": "the",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.0482,
+                                    5.6825,
+                                    3.4005,
+                                    5.6825,
+                                    3.4005,
+                                    5.8119,
+                                    3.0482,
+                                    5.8119
+                                ],
+                                "text": "railing",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.4537,
+                                    5.7084,
+                                    3.5895,
+                                    5.7084,
+                                    3.5895,
+                                    5.7844,
+                                    3.4537,
+                                    5.7844
+                                ],
+                                "text": "as",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.6369,
+                                    5.6825,
+                                    3.8508,
+                                    5.6825,
+                                    3.8508,
+                                    5.7844,
+                                    3.6369,
+                                    5.7844
+                                ],
+                                "text": "she",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            4.0917,
+                            5.7652,
+                            4.1516,
+                            5.7652,
+                            4.1516,
+                            5.8607,
+                            4.0917,
+                            5.8607
+                        ],
+                        "text": "1",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    4.0917,
+                                    5.7652,
+                                    4.1516,
+                                    5.7652,
+                                    4.1516,
+                                    5.8607,
+                                    4.0917,
+                                    5.8607
+                                ],
+                                "text": "1",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            4.9577,
+                            5.7638,
+                            5.0241,
+                            5.7638,
+                            5.0241,
+                            5.862,
+                            4.9577,
+                            5.862
+                        ],
+                        "text": "0",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    4.9577,
+                                    5.7638,
+                                    5.0241,
+                                    5.7638,
+                                    5.0241,
+                                    5.862,
+                                    4.9577,
+                                    5.862
+                                ],
+                                "text": "0",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            5.7783,
+                            5.6825,
+                            6.0702,
+                            5.6825,
+                            6.0702,
+                            5.8119,
+                            5.7783,
+                            5.8119
+                        ],
+                        "text": "body",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    5.7783,
+                                    5.6825,
+                                    6.0702,
+                                    5.6825,
+                                    6.0702,
+                                    5.8119,
+                                    5.7783,
+                                    5.8119
+                                ],
+                                "text": "body",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            6.5402,
+                            5.6049,
+                            6.9147,
+                            5.6049,
+                            6.9147,
+                            5.7232,
+                            6.5402,
+                            5.7232
+                        ],
+                        "text": "Stairs,",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    6.5402,
+                                    5.6049,
+                                    6.9147,
+                                    5.6049,
+                                    6.9147,
+                                    5.7232,
+                                    6.5402,
+                                    5.7232
+                                ],
+                                "text": "Stairs,",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9353,
+                            5.8376,
+                            3.8666,
+                            5.8376,
+                            3.8666,
+                            5.956,
+                            0.9353,
+                            5.956
+                        ],
+                        "text": "tried to catch herself, however, she continued to",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9353,
+                                    5.8376,
+                                    1.1943,
+                                    5.8376,
+                                    1.1943,
+                                    5.9396,
+                                    0.9353,
+                                    5.9396
+                                ],
+                                "text": "tried",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.2438,
+                                    5.8486,
+                                    1.3515,
+                                    5.8486,
+                                    1.3515,
+                                    5.9396,
+                                    1.2438,
+                                    5.9396
+                                ],
+                                "text": "to",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.4017,
+                                    5.8376,
+                                    1.7186,
+                                    5.8376,
+                                    1.7186,
+                                    5.9396,
+                                    1.4017,
+                                    5.9396
+                                ],
+                                "text": "catch",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.7757,
+                                    5.8376,
+                                    2.2089,
+                                    5.8376,
+                                    2.2089,
+                                    5.956,
+                                    1.7757,
+                                    5.956
+                                ],
+                                "text": "herself,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.2693,
+                                    5.8376,
+                                    2.803,
+                                    5.8376,
+                                    2.803,
+                                    5.956,
+                                    2.2693,
+                                    5.956
+                                ],
+                                "text": "however,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.8578,
+                                    5.8376,
+                                    3.0716,
+                                    5.8376,
+                                    3.0716,
+                                    5.9396,
+                                    2.8578,
+                                    5.9396
+                                ],
+                                "text": "she",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.122,
+                                    5.8376,
+                                    3.7094,
+                                    5.8376,
+                                    3.7094,
+                                    5.9396,
+                                    3.122,
+                                    5.9396
+                                ],
+                                "text": "continued",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.7588,
+                                    5.8486,
+                                    3.8666,
+                                    5.8486,
+                                    3.8666,
+                                    5.9396,
+                                    3.7588,
+                                    5.9396
+                                ],
+                                "text": "to",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            5.7783,
+                            5.8486,
+                            6.1041,
+                            5.8486,
+                            6.1041,
+                            5.9671,
+                            5.7783,
+                            5.9671
+                        ],
+                        "text": "parts,",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    5.7783,
+                                    5.8486,
+                                    6.1041,
+                                    5.8486,
+                                    6.1041,
+                                    5.9671,
+                                    5.7783,
+                                    5.9671
+                                ],
+                                "text": "parts,",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            6.5378,
+                            5.771,
+                            6.8918,
+                            5.771,
+                            6.8918,
+                            5.8895,
+                            6.5378,
+                            5.8895
+                        ],
+                        "text": "steps,",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    6.5378,
+                                    5.771,
+                                    6.8918,
+                                    5.771,
+                                    6.8918,
+                                    5.8895,
+                                    6.5378,
+                                    5.8895
+                                ],
+                                "text": "steps,",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9352,
+                            5.9928,
+                            3.7674,
+                            5.9928,
+                            3.7674,
+                            6.1222,
+                            0.9352,
+                            6.1222
+                        ],
+                        "text": "fall, landing on her upper back. Employee was",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9352,
+                                    5.9928,
+                                    1.1367,
+                                    5.9928,
+                                    1.1367,
+                                    6.1111,
+                                    0.9352,
+                                    6.1111
+                                ],
+                                "text": "fall,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.1968,
+                                    5.9928,
+                                    1.6264,
+                                    5.9928,
+                                    1.6264,
+                                    6.1222,
+                                    1.1968,
+                                    6.1222
+                                ],
+                                "text": "landing",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.6796,
+                                    6.0188,
+                                    1.8192,
+                                    6.0188,
+                                    1.8192,
+                                    6.0947,
+                                    1.6796,
+                                    6.0947
+                                ],
+                                "text": "on",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8762,
+                                    5.9928,
+                                    2.065,
+                                    5.9928,
+                                    2.065,
+                                    6.0947,
+                                    1.8762,
+                                    6.0947
+                                ],
+                                "text": "her",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.1149,
+                                    6.0188,
+                                    2.4586,
+                                    6.0188,
+                                    2.4586,
+                                    6.1222,
+                                    2.1149,
+                                    6.1222
+                                ],
+                                "text": "upper",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.5083,
+                                    5.9928,
+                                    2.8187,
+                                    5.9928,
+                                    2.8187,
+                                    6.0947,
+                                    2.5083,
+                                    6.0947
+                                ],
+                                "text": "back.",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    2.8811,
+                                    5.9928,
+                                    3.4809,
+                                    5.9928,
+                                    3.4809,
+                                    6.1222,
+                                    2.8811,
+                                    6.1222
+                                ],
+                                "text": "Employee",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    3.5255,
+                                    6.0188,
+                                    3.7674,
+                                    6.0188,
+                                    3.7674,
+                                    6.0947,
+                                    3.5255,
+                                    6.0947
+                                ],
+                                "text": "was",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            6.5429,
+                            5.9152,
+                            7.2274,
+                            5.9152,
+                            7.2274,
+                            6.0446,
+                            6.5429,
+                            6.0446
+                        ],
+                        "text": "unspecified",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    6.5429,
+                                    5.9152,
+                                    7.2274,
+                                    5.9152,
+                                    7.2274,
+                                    6.0446,
+                                    6.5429,
+                                    6.0446
+                                ],
+                                "text": "unspecified",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            5.7786,
+                            6.0188,
+                            6.0962,
+                            6.0188,
+                            6.0962,
+                            6.0947,
+                            5.7786,
+                            6.0947
+                        ],
+                        "text": "n.e.c.",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    5.7786,
+                                    6.0188,
+                                    6.0962,
+                                    6.0188,
+                                    6.0962,
+                                    6.0947,
+                                    5.7786,
+                                    6.0947
+                                ],
+                                "text": "n.e.c.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            0.9428,
+                            6.148,
+                            1.6924,
+                            6.148,
+                            1.6924,
+                            6.2774,
+                            0.9428,
+                            6.2774
+                        ],
+                        "text": "hospitalized.",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.9428,
+                                    6.148,
+                                    1.6924,
+                                    6.148,
+                                    1.6924,
+                                    6.2774,
+                                    0.9428,
+                                    6.2774
+                                ],
+                                "text": "hospitalized.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    {
+                        "boundingBox": [
+                            3.8588,
+                            10.7909,
+                            4.412,
+                            10.7909,
+                            4.412,
+                            10.8943,
+                            3.8588,
+                            10.8943
+                        ],
+                        "text": "Page 1 of 1",
+                        "appearance": {
+                            "style": {
+                                "name": "other",
+                                "confidence": 1
+                            }
+                        },
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    3.8588,
+                                    10.7949,
+                                    4.1041,
+                                    10.7949,
+                                    4.1041,
+                                    10.8943,
+                                    3.8588,
+                                    10.8943
+                                ],
+                                "text": "Page",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    4.1482,
+                                    10.7949,
+                                    4.1961,
+                                    10.7949,
+                                    4.1961,
+                                    10.8713,
+                                    4.1482,
+                                    10.8713
+                                ],
+                                "text": "1",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    4.237,
+                                    10.7909,
+                                    4.3251,
+                                    10.7909,
+                                    4.3251,
+                                    10.8723,
+                                    4.237,
+                                    10.8723
+                                ],
+                                "text": "of",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    4.3641,
+                                    10.7949,
+                                    4.412,
+                                    10.7949,
+                                    4.412,
+                                    10.8713,
+                                    4.3641,
+                                    10.8713
+                                ],
+                                "text": "1",
+                                "confidence": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 2,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Final Narrative",
+                                "boundingBox": [
+                                    0.8741,
+                                    4.8644,
+                                    4.0227,
+                                    4.8644,
+                                    4.016,
+                                    5.2894,
+                                    0.8673,
+                                    5.2831
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/6/words/0",
+                                    "#/readResults/0/lines/6/words/1"
+                                ]
+                            },
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 1,
+                                "text": "Hospitalized",
+                                "boundingBox": [
+                                    4.0227,
+                                    4.8644,
+                                    4.8955,
+                                    4.8644,
+                                    4.8955,
+                                    5.2894,
+                                    4.016,
+                                    5.2894
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/7/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 2,
+                                "text": "Amputation",
+                                "boundingBox": [
+                                    4.8955,
+                                    4.8644,
+                                    5.7146,
+                                    4.8644,
+                                    5.7146,
+                                    5.2831,
+                                    4.8955,
+                                    5.2894
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/7/words/1"
+                                ]
+                            },
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 3,
+                                "text": "Part Of Body",
+                                "boundingBox": [
+                                    5.7146,
+                                    4.8644,
+                                    6.4799,
+                                    4.8644,
+                                    6.4799,
+                                    5.2831,
+                                    5.7146,
+                                    5.2831
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/7/words/2",
+                                    "#/readResults/0/lines/7/words/3",
+                                    "#/readResults/0/lines/8/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 4,
+                                "text": "Source",
+                                "boundingBox": [
+                                    6.4799,
+                                    4.8644,
+                                    7.3863,
+                                    4.8582,
+                                    7.3863,
+                                    5.2894,
+                                    6.4799,
+                                    5.2831
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/9/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 1,
+                                "columnIndex": 0,
+                                "text": "Employee at a customer's residence fell while traversing a stairway on 26 January 2015. She hit her right-side (ribs) against the railing as she tried to catch herself, however, she continued to fall, landing on her upper back. Employee was hospitalized.",
+                                "boundingBox": [
+                                    0.8673,
+                                    5.2831,
+                                    4.016,
+                                    5.2894,
+                                    4.016,
+                                    6.333,
+                                    0.8673,
+                                    6.333
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/10/words/0",
+                                    "#/readResults/0/lines/10/words/1",
+                                    "#/readResults/0/lines/10/words/2",
+                                    "#/readResults/0/lines/10/words/3",
+                                    "#/readResults/0/lines/10/words/4",
+                                    "#/readResults/0/lines/10/words/5",
+                                    "#/readResults/0/lines/10/words/6",
+                                    "#/readResults/0/lines/11/words/0",
+                                    "#/readResults/0/lines/11/words/1",
+                                    "#/readResults/0/lines/11/words/2",
+                                    "#/readResults/0/lines/11/words/3",
+                                    "#/readResults/0/lines/11/words/4",
+                                    "#/readResults/0/lines/11/words/5",
+                                    "#/readResults/0/lines/11/words/6",
+                                    "#/readResults/0/lines/11/words/7",
+                                    "#/readResults/0/lines/13/words/0",
+                                    "#/readResults/0/lines/13/words/1",
+                                    "#/readResults/0/lines/13/words/2",
+                                    "#/readResults/0/lines/13/words/3",
+                                    "#/readResults/0/lines/13/words/4",
+                                    "#/readResults/0/lines/13/words/5",
+                                    "#/readResults/0/lines/13/words/6",
+                                    "#/readResults/0/lines/13/words/7",
+                                    "#/readResults/0/lines/13/words/8",
+                                    "#/readResults/0/lines/18/words/0",
+                                    "#/readResults/0/lines/18/words/1",
+                                    "#/readResults/0/lines/18/words/2",
+                                    "#/readResults/0/lines/18/words/3",
+                                    "#/readResults/0/lines/18/words/4",
+                                    "#/readResults/0/lines/18/words/5",
+                                    "#/readResults/0/lines/18/words/6",
+                                    "#/readResults/0/lines/18/words/7",
+                                    "#/readResults/0/lines/21/words/0",
+                                    "#/readResults/0/lines/21/words/1",
+                                    "#/readResults/0/lines/21/words/2",
+                                    "#/readResults/0/lines/21/words/3",
+                                    "#/readResults/0/lines/21/words/4",
+                                    "#/readResults/0/lines/21/words/5",
+                                    "#/readResults/0/lines/21/words/6",
+                                    "#/readResults/0/lines/21/words/7",
+                                    "#/readResults/0/lines/24/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 1,
+                                "columnIndex": 1,
+                                "text": "1",
+                                "boundingBox": [
+                                    4.016,
+                                    5.2894,
+                                    4.8955,
+                                    5.2894,
+                                    4.8955,
+                                    6.333,
+                                    4.016,
+                                    6.333
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/14/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 1,
+                                "columnIndex": 2,
+                                "text": "0",
+                                "boundingBox": [
+                                    4.8955,
+                                    5.2894,
+                                    5.7146,
+                                    5.2831,
+                                    5.7146,
+                                    6.333,
+                                    4.8955,
+                                    6.333
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/15/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 1,
+                                "columnIndex": 3,
+                                "text": "Multiple body parts, n.e.c.",
+                                "boundingBox": [
+                                    5.7146,
+                                    5.2831,
+                                    6.4799,
+                                    5.2831,
+                                    6.4799,
+                                    6.333,
+                                    5.7146,
+                                    6.333
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/12/words/0",
+                                    "#/readResults/0/lines/16/words/0",
+                                    "#/readResults/0/lines/19/words/0",
+                                    "#/readResults/0/lines/23/words/0"
+                                ]
+                            },
+                            {
+                                "rowIndex": 1,
+                                "columnIndex": 4,
+                                "text": "Stairs, steps, unspecified",
+                                "boundingBox": [
+                                    6.4799,
+                                    5.2831,
+                                    7.3863,
+                                    5.2894,
+                                    7.3863,
+                                    6.333,
+                                    6.4799,
+                                    6.333
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/17/words/0",
+                                    "#/readResults/0/lines/20/words/0",
+                                    "#/readResults/0/lines/22/words/0"
+                                ]
+                            }
+                        ],
+                        "boundingBox": [
+                            0.8485,
+                            4.856,
+                            7.3945,
+                            4.8565,
+                            7.3932,
+                            6.3295,
+                            0.8466,
+                            6.3287
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

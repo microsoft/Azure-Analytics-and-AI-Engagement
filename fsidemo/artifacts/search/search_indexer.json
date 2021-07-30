@@ -1,0 +1,53 @@
+{
+  "@odata.context": "https://srch-fsi-dev.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8D92526A74DAEEA\"",
+  "name": "incidents-indexer",
+  "description": "",
+  "dataSourceName": "incident-ds",
+  "skillsetName": "incidents-ss",
+  "targetIndexName": "incidents-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "json"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": null
+      }
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/FinalNarrative/locations",
+      "targetFieldName": "locations"
+    },
+    {
+      "sourceFieldName": "/document/FinalNarrative/organizations",
+      "targetFieldName": "organizations"
+    },
+    {
+      "sourceFieldName": "/document/FinalNarrative/people",
+      "targetFieldName": "people"
+    },
+    {
+      "sourceFieldName": "/document/language",
+      "targetFieldName": "language"
+    },
+    {
+      "sourceFieldName": "/document/FinalNarrative/keyphrases",
+      "targetFieldName": "keyphrases"
+    }
+  ]
+}

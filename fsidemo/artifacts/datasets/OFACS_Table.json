@@ -1,0 +1,17 @@
+{
+    "name": "OFACS_Table",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "FSIRiskDW",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "OFAC"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

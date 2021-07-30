@@ -1,0 +1,25 @@
+{
+    "name": "MarketingCampaigndata",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "marketdatasynapse-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "part-00000-e65d79f3-f895-4575-8672-dcc5f4ab781f-c000.csv",
+                "folderPath": "Campaignsdata",
+                "fileSystem": "marketing-data"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

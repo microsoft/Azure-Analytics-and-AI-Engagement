@@ -1,0 +1,54 @@
+{
+    "name": "AzureSynapse_NewAndSentiment",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "FSIRiskDW",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Symbol",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Name",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Url",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Date_Published",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Description",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Sentiment",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Positive_Score",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Negative_Score",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Neutral_Score",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "NewsAndSentiment"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

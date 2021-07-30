@@ -1,0 +1,254 @@
+{
+    "sourceConnection": {
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNWFiY2RiMGJmYzdkOWQwOGIzM2FiNjlkOTdhN2IyMmJlNDI1MTFhYjZlMTYxZDIxNThiMDFlNGY3YjRhOTM3NzFlZmQzYzg5NTQ1NzIxNTA3Njc0ZjViNTNhOGY0NGVjYzQxMDRmMDEzMjg5ZGEyMjBiMjEwOTg4MGMzNzI3MWFkMzVkZDMyZDhhNzMzOWUzZjZhZmI5YjgyMDA3ZDA0M2Q1YThmODQ1NzBhNjIxNzZiN2NjNWZjOTk4ZjlmYzkyZDhmMTdhYWIxMmFmM2I1NzU4ZGRmN2YzYmE3Y2JiZDM2MTBjZDY5ZGQ0MWYwNGI0YmU5ODgyN2I4MDFkNGM0YThhYmQwNzZkNjYxMmJjZjEyZjIzN2ZlYjUxYzZmNjhjNmJiNzI0NDY2NmM2YTNmNTE2NGZjZDhjZWQ3Nzc4MjE4NDBkNmM5YTc4MDJmN2YxYzIxYTI2MDhlNGY2MjAzYjQzMzhjZjMyNmI2NGYwNmNjYmJhNDNkODdmZjI5OWQzZmNlMmFhNzYxNmVjZjE5N2FmMGQ4OTJiZWRjNzNjYjBjMGI1MWVhYmYxMzMzZjY4MjVjYjY2YWMxMWU4OTVlYSIsIml2IjoiMjMxNjkwMDI5YjdmMTAwZGE4ZjgyMjY4ZTdiYTY2ZDQifQ=="
+        },
+        "id": "XKpEYicm0",
+        "name": "Inicident-table",
+        "providerType": "azureBlobStorage"
+    },
+    "apiKey": {
+        "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNjIwZGI0NmY0NjA2MmZlYTgyMjUzZGNhZGU0MTk4ZmU1OWZlMjZkNzFjOWZjNDg2MzgwMTAzNzJlNjRkODVkMThlMjAwMzI3MzliZmQ1NWQ5N2RjMzNlZTAzNGVkNjc4IiwiaXYiOiJkNDMzODBmZTZiZjg4ZWU0OGU2ZTVmZmFlNjQwMGJiMyJ9"
+    },
+    "apiUriBase": "https://accountopening.cognitiveservices.azure.com/",
+    "name": "IncidentTable",
+    "folderPath": "",
+    "securityToken": "IncidentTable Token",
+    "version": "2.1.3",
+    "id": "l-ziVAvhc",
+    "tags": [
+        {
+            "name": "Table Tag",
+            "color": "#CC543A",
+            "type": "array",
+            "format": "not-specified",
+            "documentCount": 0,
+            "itemType": "Table Tag_object",
+            "fields": null,
+            "definition": {
+                "fieldKey": "Table Tag_object",
+                "fieldType": "object",
+                "fieldFormat": "not-specified",
+                "itemType": null,
+                "fields": [
+                    {
+                        "fieldKey": "Final Narrative",
+                        "fieldType": "string",
+                        "fieldFormat": "not-specified",
+                        "itemType": null,
+                        "fields": null
+                    },
+                    {
+                        "fieldKey": "Hospitalized",
+                        "fieldType": "number",
+                        "fieldFormat": "not-specified",
+                        "itemType": null,
+                        "fields": null
+                    },
+                    {
+                        "fieldKey": "Amputation",
+                        "fieldType": "number",
+                        "fieldFormat": "not-specified",
+                        "itemType": null,
+                        "fields": null
+                    },
+                    {
+                        "fieldKey": "Part Of Body",
+                        "fieldType": "string",
+                        "fieldFormat": "not-specified",
+                        "itemType": null,
+                        "fields": null
+                    },
+                    {
+                        "fieldKey": "Source",
+                        "fieldType": "string",
+                        "fieldFormat": "not-specified",
+                        "itemType": null,
+                        "fields": null
+                    }
+                ]
+            },
+            "visualizationHint": null
+        },
+        {
+            "name": "CaseID",
+            "color": "#7BA23F",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        },
+        {
+            "name": "Employer",
+            "color": "#58B2DC",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        },
+        {
+            "name": "Location",
+            "color": "#FFB11B",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        },
+        {
+            "name": "Event Date",
+            "color": "#2E5C6E",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        },
+        {
+            "name": "Event",
+            "color": "#A96360",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        },
+        {
+            "name": "Nature",
+            "color": "#D7C4BB",
+            "type": "string",
+            "format": "not-specified",
+            "documentCount": 1
+        }
+    ],
+    "assets": {
+        "54419c2816761167a531a1460d942549e14006c67e5afceaf0d79afb406a936e": {
+            "id": "54419c2816761167a531a1460d942549e14006c67e5afceaf0d79afb406a936e",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045001.pdf",
+            "path": "https://stfsidemodev001.blob.core.windows.net/incident-model-table-training/202045001.pdf?sp=racwdl&st=2021-05-26T01:50:11Z&se=2021-05-27T01:50:11Z&sv=2020-02-10&sr=c&sig=KFtvxMipjnYM0CdVdGxAG8dnvmDIthdSz88rjepOSPs%3D",
+            "size": null,
+            "mimeType": "application/pdf",
+            "labelingState": 1,
+            "schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/labels.json",
+            "cachedImage": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCADwAKkDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAIDAQQF/8QAMhABAAIBAgMECQMFAQAAAAAAAAECEQMhEhMxUVORoQQiMkFhYnGBkiNC4RSxwdHw8f/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD7IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAi1rRadsx9Jci9pr2W3/bMx8AaDKb6uYxw4334Zdpe2J5n2xWQaDkWiZxv4S6AAAAAAAAAAAAAAAADDX04tfi5NrzEdYtj/LunThxMaXDMbRmzYB540om9Yn0eKxEYzFujSvo+lWMRXEfWWgCKaOnpzmsTmIxmZmdlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADK0frZ4b9I9aJ29/uTicR6mp25zvnPSWtqRac5tH0lydOJ6zbacxv0BFqVm9rTXUz02nr0/07WOHGK3nhjhiFRpREY4r9MZ4lgmb4jPDafhhNtWa4/SvO+Nv7tAE0vxTjgtXbO8KAAAAAAAAAAAAAAAGdtaK3mm2cZxlznxMzGIzHXdGpFJ1prPBxTGcT2J4ae1nS+uQbc6J6R5nN+XzY8NKakVzpReYnEZVjP7qfkDTm/L5nN+XzZzGImZtSIicTuRWZnHFTPXqDTm/L5nN+XzZRibTWL0zHxdjExmL0mJ98WBpzfl80x6RE+6InfbPYcq/y+KKaMzEzNaZzMZ+4NOfGcYjxOfEWxMRHZv1/7CP6fOc0pv1/7DnJtxY4aTERHv8Ar8AaTrxHWIj7uW9IisZmNkT6PM9dPTn7/wAE6F98RWud5mLfwC49JraYiI6xmHY9IiZxiM9mUV0dWM+zP1tP+nK6N5ic1pO8xvPx+gNY1cz082jz10bVtmK0jtxP8PQAAAADDVm3NisRfE43iuY6z70ZvbFY5kTxe1y4x/49E6dLTmaVme2YOVp93XwB56zfN8xqTvmP04j3fwvjtmLWre0RjMRRrytPu6+BytPu6+AMJvqVtWM6k74nGn5tKVvasZma47axmfNfK0+7r4HK0+7r4AjlXisxGpGc+1wRl2NK2fbjGenCrlafd18Dlafd18ANOtq1xa/F8cYc0on1pztmdvvLvK0+7r4HK0+7p+MApOJ5m0+6M+ZytPu6+Dk6OlPXSp+MAtOpE2jaIz9cYc5Gl3VPxg5Gl3VPxgHNOk1tM4nsiZtM5hzg4t+GJ9bf1pjbMq5Gl3VPxg5Gj3VPxgF4xAiNHSicxp0iY+WFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACK61LZxM7bTtPZlcTExmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf//Z"
+        },
+        "0b15fd597be8340cac54d3652d8f0407594183b74bbe2ee2946e57bd55c5b2db": {
+            "id": "0b15fd597be8340cac54d3652d8f0407594183b74bbe2ee2946e57bd55c5b2db",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045002.pdf",
+            "path": "https://stfsidemodev001.blob.core.windows.net/incident-model-table-training/202045002.pdf?sp=racwdl&st=2021-05-26T01:50:11Z&se=2021-05-27T01:50:11Z&sv=2020-02-10&sr=c&sig=KFtvxMipjnYM0CdVdGxAG8dnvmDIthdSz88rjepOSPs%3D",
+            "size": null,
+            "mimeType": "application/pdf",
+            "labelingState": 2,
+            "schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/labels.json"
+        },
+        "8fa5fdf0c45d4c70862c9d8ab0688984898d463bad3d8945869162680e7c340e": {
+            "id": "8fa5fdf0c45d4c70862c9d8ab0688984898d463bad3d8945869162680e7c340e",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045003.pdf",
+            "path": "https://stfsidemodev001.blob.core.windows.net/incident-model-table-training/202045003.pdf?sp=racwdl&st=2021-05-26T01:50:11Z&se=2021-05-27T01:50:11Z&sv=2020-02-10&sr=c&sig=KFtvxMipjnYM0CdVdGxAG8dnvmDIthdSz88rjepOSPs%3D",
+            "size": null,
+            "mimeType": "application/pdf",
+            "labelingState": 2,
+            "schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/labels.json"
+        },
+        "e2156e46bab299dabe0e9a7f722be6b1b099194f7ff1f1dc0560e2863113bdcf": {
+            "id": "e2156e46bab299dabe0e9a7f722be6b1b099194f7ff1f1dc0560e2863113bdcf",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045004.pdf",
+            "path": "https://stfsidemodev001.blob.core.windows.net/incident-model-table-training/202045004.pdf?sp=racwdl&st=2021-05-26T01:50:11Z&se=2021-05-27T01:50:11Z&sv=2020-02-10&sr=c&sig=KFtvxMipjnYM0CdVdGxAG8dnvmDIthdSz88rjepOSPs%3D",
+            "size": null,
+            "mimeType": "application/pdf",
+            "labelingState": 2,
+            "schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/labels.json"
+        },
+        "36c0c8b1b62a76ae3a1da95243828db7f54b81d81146e5ee3d46ea323321b444": {
+            "id": "36c0c8b1b62a76ae3a1da95243828db7f54b81d81146e5ee3d46ea323321b444",
+            "format": "pdf",
+            "state": 2,
+            "type": 5,
+            "name": "202045005.pdf",
+            "path": "https://stfsidemodev001.blob.core.windows.net/incident-model-table-training/202045005.pdf?sp=racwdl&st=2021-05-26T01:50:11Z&se=2021-05-27T01:50:11Z&sv=2020-02-10&sr=c&sig=KFtvxMipjnYM0CdVdGxAG8dnvmDIthdSz88rjepOSPs%3D",
+            "size": null,
+            "mimeType": "application/pdf",
+            "labelingState": 2,
+            "schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/labels.json"
+        }
+    },
+    "lastVisitedAssetId": "54419c2816761167a531a1460d942549e14006c67e5afceaf0d79afb406a936e",
+    "recentModelRecords": [
+        {
+            "modelInfo": {
+                "modelId": "5f61cd24-ef71-4758-a131-c7ff16861ded",
+                "createdDateTime": "2021-05-26T02:41:55Z",
+                "modelName": "Incident-table-train",
+                "isComposed": false
+            },
+            "averageAccuracy": 0.897,
+            "accuracies": {
+                "CaseID": 0.995,
+                "Employer": 0.8,
+                "Event": 0.8,
+                "Event Date": 0.995,
+                "Location": 0.995,
+                "Nature": 0.8,
+                "Table Tag": 0.88,
+                "Table Tag: Amputation": 0.8,
+                "Table Tag: Final Narrative": 0.8,
+                "Table Tag: Hospitalized": 0.8,
+                "Table Tag: Part Of Body": 0.995,
+                "Table Tag: Source": 0.995
+            },
+            "isComposed": false
+        },
+        {
+            "modelInfo": {
+                "modelId": "98a3d63f-fa3e-4c27-a0b5-9c7e2013a415",
+                "createdDateTime": "2021-05-26T02:39:56Z",
+                "modelName": "Incident-table-train",
+                "isComposed": false
+            },
+            "averageAccuracy": 0.897,
+            "accuracies": {
+                "CaseID": 0.995,
+                "Employer": 0.8,
+                "Event": 0.8,
+                "Event Date": 0.995,
+                "Location": 0.995,
+                "Nature": 0.8,
+                "Table Tag": 0.88,
+                "Table Tag: Amputation": 0.8,
+                "Table Tag: Final Narrative": 0.8,
+                "Table Tag: Hospitalized": 0.8,
+                "Table Tag: Part Of Body": 0.995,
+                "Table Tag: Source": 0.995
+            },
+            "isComposed": false
+        }
+    ],
+    "trainRecord": {
+        "modelInfo": {
+            "modelId": "5f61cd24-ef71-4758-a131-c7ff16861ded",
+            "createdDateTime": "2021-05-26T02:41:55Z",
+            "modelName": "Incident-table-train",
+            "isComposed": false
+        },
+        "averageAccuracy": 0.897,
+        "accuracies": {
+            "CaseID": 0.995,
+            "Employer": 0.8,
+            "Event": 0.8,
+            "Event Date": 0.995,
+            "Location": 0.995,
+            "Nature": 0.8,
+            "Table Tag": 0.88,
+            "Table Tag: Amputation": 0.8,
+            "Table Tag: Final Narrative": 0.8,
+            "Table Tag: Hospitalized": 0.8,
+            "Table Tag: Part Of Body": 0.995,
+            "Table Tag: Source": 0.995
+        }
+    },
+    "predictModelId": "5f61cd24-ef71-4758-a131-c7ff16861ded"
+}

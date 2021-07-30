@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "batchSize": 1,
+    "maxFailedItems": -1,
+    "maxFailedItemsPerBatch": -1,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImagePerPage",
+      "normalizedImageMaxWidth": 2000,
+      "normalizedImageMaxHeight": 2000
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "id",
+      "mappingFunction": { "name": "base64Encode" }
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path"
+    },
+    {
+      "sourceFieldName": "metadata_storage_name",
+      "targetFieldName": "metadata_storage_name"
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/merged_text",
+      "targetFieldName": "content"
+    },
+    {
+      "sourceFieldName": "/document/organizations",
+      "targetFieldName": "organizations"
+    },
+    {
+      "sourceFieldName": "/document/persons",
+      "targetFieldName": "persons"
+    },
+    {
+      "sourceFieldName": "/document/locations",
+      "targetFieldName": "locations"
+    },
+    {
+      "sourceFieldName": "/document/pages/*/keyPhrases/*",
+      "targetFieldName": "keyPhrases"
+    },
+    {
+      "sourceFieldName": "/document/hocrDocument/metadata",
+      "targetFieldName": "metadata"
+    },
+    {
+      "sourceFieldName": "/document/headings",
+      "targetFieldName": "headings"
+    }
+  ]
+}
