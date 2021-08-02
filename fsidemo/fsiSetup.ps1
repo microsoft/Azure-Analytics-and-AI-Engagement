@@ -1551,6 +1551,16 @@ az webapp start  --name $app_name_realtime_kpi_simulator --resource-group $rgNam
 az webapp start --name $fsi_poc_app_service_name --resource-group $rgName
 az webapp start --name $app_maps_service_name --resource-group $rgName
 
+foreach($zip in $zips)
+{
+	if($zip -eq "realtime_kpi_simulator")
+	{
+	continue
+	}
+
+    remove-item -path "./$($zip).zip" -recurse -force
+}
+
 #MSSQL
 Add-Content log.txt "------deploy MSSQL------"
 Write-Host  "-----------Uploading MSSQL Data ---------------"
