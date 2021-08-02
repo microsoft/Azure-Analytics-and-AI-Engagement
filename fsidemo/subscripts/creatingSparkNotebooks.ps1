@@ -61,10 +61,15 @@ if($cosmos_account_name.length -gt 43 )
 {
 $cosmos_account_name = $cosmos_account_name.substring(0,43)
 }
-
+$cog_marketdatacgsvc_name =  "cog-all-$suffix";
+$amlworkspacename = "amlws-$suffix"
+$searchName = "srch-fsi-$suffix";
+$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+$key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
+$cog_marketdatacgsvc_key=$key.key1
 
 #Creating spark notebooks
-Write-Host "Creating Spark notebooks..."
+Write-Host "--------Spark notebooks-------"
 RefreshTokens
 $notebooks=Get-ChildItem "../artifacts/notebooks" | Select BaseName 
 
@@ -79,6 +84,10 @@ $cellParams = [ordered]@{
 		"#COSMOS_LINKED_SERVICE#" = $cosmos_account_name
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#LOCATION#"=$location
+		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
+        "#COGNITIVE_SERVICE_NAME#" = $cog_marketdatacgsvc_name
+        "#COGNITIVE_SERVICE_KEY#" = $cog_marketdatacgsvc_key
+        "#SEARCH_KEY#" = $searchKey
 }
 
 foreach($name in $notebooks)
@@ -109,9 +118,10 @@ foreach($name in $notebooks)
         }
     }
 
+    Write-Host "Creating notebook : $($name.BaseName)"
 	$item = ConvertTo-Json $jsonItem -Depth 100
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name.BaseName)?api-version=2019-06-01-preview"
-	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+	Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	#waiting for operation completion
 	Start-Sleep -Seconds 10
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
