@@ -58,8 +58,6 @@ foreach($name in $cosmos)
     $path="../artifacts/cosmos/"+$name.BaseName+".json"
     $document=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $document
-	#$newRU=4000
-	#az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
 	
     foreach($json in $document)
     {
@@ -70,9 +68,6 @@ foreach($name in $cosmos)
        if(![bool]($json.PSobject.Properties.name -match "TransactionType"))
        {$json | Add-Member -MemberType NoteProperty -Name 'TransactionType' -Value $id}
         $body=ConvertTo-Json $json
-        New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
-    }
-	
-	#$newRU=400
-	#az cosmosdb sql container throughput update -a $cosmosDbAccountName -g $rgName -d $databaseName -n $collection --throughput $newRU
+        $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+    }	
 } 
