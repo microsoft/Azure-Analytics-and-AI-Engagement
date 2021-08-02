@@ -46,6 +46,8 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $suffix = "$random-$init"
 $amlworkspacename = "amlws-$suffix"
+$cog_speech_name = "speech-service-$suffix"
+$cog_translator_name = "translator-$suffix"
 $cpuShell = "cpuShell$random"
 $searchName = "srch-fsi-$suffix";
 $forms_cogs_name = "forms-$suffix";
@@ -56,18 +58,24 @@ if($dataLakeAccountName.length -gt 24)
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $subscriptionId = (Get-AzContext).Subscription.Id
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
+$cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-
+$map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
+$accounts_map_key = $map_key.primaryKey
+$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_translator_name
+$key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
+$cog_marketdatacgsvc_key=$key.key1
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
-
 $StartTime = Get-Date
 $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 
 #form Recognizer
+Write-Host "----Form Recognizer-----"
 #Replace values in create_model.py
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
     -replace '#LOCATION#', $location`
@@ -82,39 +90,22 @@ $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
 
 Write-Host  "-----------------AML Workspace ---------------"
-Add-Content log.txt "-----------------AML Workspace ---------------"
 RefreshTokens
 
-$face_mask_prediction_key = "01e48728260f470ab4207cb2ecb05938"
-$acc_open_api_key = "4412763733e4446bb5e3ee2cebe81427"
-$incident_api_key = "4412763733e4446bb5e3ee2cebe81427"
 $forms_cogs_endpoint = "https://"+$forms_cogs_name+".cognitiveservices.azure.com"
 $search_uri = "https://"+$searchName+".search.windows.net"
 
 $filepath="../artifacts/amlnotebooks/GlobalVariables.py"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#FACE_MASK_PREDICTION_KEY#", $face_mask_prediction_key).Replace("#ACC_OPEN_API_KEY#", $acc_open_api_key).Replace("#INCIDENT_API_KEY#", $incident_api_key).Replace("#SEARCH_API_KEY#", $searchKey).Replace("#SEARCH_URI#", $search_uri).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_keys.Key1).Replace("#ACCOUNT_OPENING_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#INCIDENT_FORM_RECOGNIZER_MODEL_ID#", $modelId)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#SEARCH_API_KEY#", $searchKey).Replace("#SEARCH_URI#", $search_uri).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_keys.Key1).Replace("#ACCOUNT_OPENING_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#INCIDENT_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#WORKSPACE_NAME#", $amlworkspacename).Replace("#TRANSLATOR_SERVICE_NAME#", $cog_translator_name).Replace("#TRANSLATOR_SERVICE_KEY#", $cog_translator_key.Key1).Replace("#CPU_SHELL#",$cpuShell)
 Set-Content -Path $filepath -Value $item
 
-$filepath1="../artifacts/amlnotebooks/1. Registering Banking Churn Prediction Dataset in Azure ML.ipynb"
-$itemTemplate1 = Get-Content -Path $filepath1
-$item1 = $itemTemplate1.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#WORKSPACE_NAME#", $amlworkspacename)
-Set-Content -Path $filepath1 -Value $item1 
-
-#AML Workspace
-#create aml workspace
-az extension add -n azure-cli-ml
-
-#az ml workspace create -w $amlworkspacename -g $rgName
-
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
-#az ml folder attach -w $amlworkspacename -g $rgName -e aml
-#start-sleep -s 10
+az ml folder attach -w $amlworkspacename -g $rgName -e aml
+start-sleep -s 10
 
 #create and delete a compute instance to get the code folder created in default store
 az ml computetarget create computeinstance -n $cpuShell -s "STANDARD_DS2_V2" -v
-
-#az ml computetarget delete -n $cpuShell -v
 
 #get default data store
 $defaultdatastore = az ml datastore show-default --resource-group $rgName --workspace-name $amlworkspacename --output json | ConvertFrom-Json
@@ -132,12 +123,23 @@ foreach($notebook in $notebooks)
 		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".py"
 		$path="/Users/"+$notebook.BaseName+".py"
 	}
+     elseif($notebook.BaseName -eq "retail_banking_customer_churn_for_model" -or $notebook.BaseName  -eq "retail_banking_customer_churn_data" -or $notebook.BaseName  -eq "prepared_customer_churn_data")
+    {
+        $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".csv"
+		$path="/Users/"+$notebook.BaseName+".csv"
+	}
+    elseif($notebook.BaseName -eq "202045000" -or $notebook.BaseName  -eq "202045001" -or $notebook.BaseName  -eq "202045002" -or $notebook.BaseName  -eq "202045003"  )
+    {
+        $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".json"
+		$path="/Users/"+$notebook.BaseName+".json"
+	}
 	else
 	{
 		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uplaoding AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `
@@ -148,3 +150,4 @@ Set-AzStorageFileContent `
 #create aks compute
 #az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
 az ml computetarget delete -n $cpuShell -v
+

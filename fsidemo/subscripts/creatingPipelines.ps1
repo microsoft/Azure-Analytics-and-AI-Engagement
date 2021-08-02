@@ -52,14 +52,14 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
 #creating Pipelines
-Write-Host "-------Creating pipelines-----------"
+Write-Host "-------Pipelines-----------"
 RefreshTokens
 $pipelines=Get-ChildItem "../artifacts/pipeline" | Select BaseName
 $pipelineList = New-Object System.Collections.ArrayList
 foreach($name in $pipelines)
 {
     $FilePath="../artifacts/pipeline/"+$name.BaseName+".json"
-    
+    Write-Host "Creating pipeline : $($name.BaseName)"
     $temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
     $pipelineList.Add($temp)
     $item = Get-Content -Path $FilePath
