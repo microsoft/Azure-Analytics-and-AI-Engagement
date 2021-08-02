@@ -434,7 +434,7 @@ Add-Content log.txt $result
 Write-Host "Creating linked Service: AzureSqlDatabase"
 $filepath=$templatepath+"AzureSqlDatabase.json"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#MSSQL_SERVER_NAME#", $mssql_server_name).Replace("#MSSQL_DATABASE_NAME#", $mssql_database_adventure_name).Replace("#MSSQL_USERNAME#", $mssql_administrator_login).Replace("#MSSQL_PASSWORD#", $mssqlPassword)
+$item = $itemTemplate.Replace("#MSSQL_SERVER_NAME#", $mssql_server_name).Replace("#MSSQL_DATABASE_NAME#", $mssql_database_name).Replace("#MSSQL_USERNAME#", $mssql_administrator_login).Replace("#MSSQL_PASSWORD#", $mssqlPassword)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureSqlDatabase?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
