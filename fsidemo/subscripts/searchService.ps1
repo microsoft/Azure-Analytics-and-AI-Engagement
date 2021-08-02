@@ -82,8 +82,8 @@ $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$($storag
 $resource=az resource show -g $rgName -n $cog_marketdatacgsvc_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
 $resourceId=$resource.id
 
-
 # Create Index
+Write-Host  "------Index----"
 try {
 Get-ChildItem "../artifacts/search" -Filter incident-index.json |
         ForEach-Object {
@@ -94,7 +94,7 @@ Get-ChildItem "../artifacts/search" -Filter incident-index.json |
                 'Accept' = 'application/json' }
 
             $url = "https://$searchName.search.windows.net/indexes?api-version=2020-06-30"
-            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
         }
     } catch {
         Write-Host "Resource already Exists !"
@@ -102,6 +102,7 @@ Get-ChildItem "../artifacts/search" -Filter incident-index.json |
 Start-Sleep -s 10
 
 # Create Datasource endpoint
+Write-Host  "------Datasource----"
 try {
 Get-ChildItem "../artifacts/search" -Filter search_datasource.json |
         ForEach-Object {
@@ -112,7 +113,7 @@ Get-ChildItem "../artifacts/search" -Filter search_datasource.json |
                 'Accept' = 'application/json' }
 
              $url = "https://$searchName.search.windows.net/datasources?api-version=2020-06-30"
-             Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceDefinition | ConvertTo-Json
+              $res =  Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceDefinition | ConvertTo-Json
         }
     } catch {
         Write-Host "Resource already Exists !"
@@ -128,6 +129,7 @@ $skillsetDefinition = (Get-Content -path ../artifacts/search/search_skillset.jso
 			}
 
 # Create Skillset
+Write-Host  "------Skillset----"
 Get-ChildItem "../artifacts/search" -Filter search_skillset.json |
         ForEach-Object {
             # $skillsetDefinition = Get-Content $_.FullName -Raw
@@ -137,11 +139,12 @@ Get-ChildItem "../artifacts/search" -Filter search_skillset.json |
                 'Accept' = 'application/json' }
 
             $url = "https://$searchName.search.windows.net/skillsets?api-version=2020-06-30"
-            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $skillsetDefinition | ConvertTo-Json
+             $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $skillsetDefinition | ConvertTo-Json
         }
 Start-Sleep -s 10
 
 # Create Indexers
+Write-Host  "------Indexers----"
 Get-ChildItem "../artifacts/search" -Filter search_indexer.json |
         ForEach-Object {
             $indexerDefinition = Get-Content $_.FullName -Raw
@@ -151,5 +154,5 @@ Get-ChildItem "../artifacts/search" -Filter search_indexer.json |
                 'Accept' = 'application/json' }
 
             $url = "https://$searchName.search.windows.net/indexers?api-version=2020-06-30"
-            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
         }

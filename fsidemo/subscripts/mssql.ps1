@@ -56,6 +56,7 @@ $sqlPassword = $secretValueText
 $mssql_administrator_password = $sqlPassword
 
 #MSSQL
+Write-Host  "-----------Uploading MSSQL Data ---------------"
 $SQLScriptsPath="../artifacts/sqlscripts"
 $ip = Invoke-WebRequest https://api.ipify.org/
 az sql server firewall-rule create `
@@ -65,12 +66,14 @@ az sql server firewall-rule create `
     --start-ip-address $ip.Content `
     --end-ip-address $ip.Content
 
+Write-Host  "-----------Creating MSSQL Schema -------"
 Invoke-Sqlcmd -ServerInstance $server `
     -Username $mssql_administrator_login `
     -Password $mssql_administrator_password `
     -Database $mssql_database_name `
     -InputFile "$($SQLScriptsPath)/sql-geospatial-schema.sql"  
 
+Write-Host  "-----------Uploading MSSQL Data -------"
 Invoke-Sqlcmd -ServerInstance $server `
     -Username $mssql_administrator_login `
     -Password $mssql_administrator_password `
@@ -81,3 +84,4 @@ az sql server firewall-rule delete `
     --name externalip `
     --resource-group $rgName `
     --server $mssql_server_name
+	

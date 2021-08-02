@@ -168,6 +168,10 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -C
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets$($destinationSasKey)"
 & $azCopyCommand copy "https://fsipoc.blob.core.windows.net/webappassets" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "risk" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/risk$($destinationSasKey)"
+& $azCopyCommand copy "https://fsipoc.blob.core.windows.net/risk" $destinationUri --recursive
+
 #storage assests copy
 RefreshTokens
 

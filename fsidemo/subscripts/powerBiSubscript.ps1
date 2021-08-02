@@ -80,7 +80,7 @@ foreach($name in $reports)
         $FilePath="../artifacts/reports/$($name.BaseName)"+".pbix"
         #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
         
-        #write-host "Uploading PowerBI Report $name";
+        write-host "Uploading PowerBI Report : $($name.BaseName)";
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
 		$fullyQualifiedPath=Resolve-Path -path $FilePath
         $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
@@ -121,7 +121,7 @@ foreach($name in $reports)
             }
        }
                 
-       $reportList.Add($temp)
+       $list = $reportList.Add($temp)
 }
 Start-Sleep -s 60
 
@@ -136,15 +136,10 @@ foreach($r in $pbiResult.value)
 
 #Establish powerbi reports dataset connections
 Write-Host "--------- pbi connections update---------"	
-$powerBIDataSetConnectionTemplate = Get-Content -Path "../artifacts/templates/powerbi_dataset_connection.json"
-
-$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "$($synapseWorkspaceName).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
-
-#$sourceServers = @("manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net", "manufacturingdemo.sql.azuresynapse.net", "dreamdemosynapse.sql.azuresynapse.net","manufacturingdemocjgnpnq4eqzbflgi.sql.azuresynapse.net", "manufacturingdemodemocwbennanrpo5s.sql.azuresynapse.net", "HelloWorld.sql.azuresynapse.net","manufacturingdemosep5n2tdtctkwpyjc.sql.azuresynapse.net")
 
 foreach($report in $reportList)
 {
-       if($report.name -eq "Fsi Demo Master Images" -or $report.name -eq "Realtime Operational Analytics Static" -or $report.name -eq "Realtime Twitter Analytics"  -or $report.name -eq "Chief Risk Officer Realtime" -or $report.name -eq "Chief Risk Officer After Dashboard Realtime"  -or $report.name -eq "FSI Realtime KPI" -or $report.name -eq "FSI CCO Realtime Before" -or $report.name -eq "Head of Financial Intelligence Realtime"  -or $report.name -eq "Head of Financial Intelligence After Dashboard Realtime" -or $report.name -eq "Global overview tiles" -or $report.name -eq "FSI-Chicklets"  -or $report.name -eq "FSITwitterreport" -or $report.name -eq "ESGDashboardV2_KPIandGraphs" -or $report.name -eq "FarmBeats Analytics" -or $report.name -eq "Master Images for FSI Dashboardpbix_v2")
+      if($report.name -eq "Fsi Demo Master Images" -or $report.name -eq "Realtime Operational Analytics Static" -or $report.name -eq "Realtime Twitter Analytics"  -or $report.name -eq "Chief Risk Officer Realtime" -or $report.name -eq "Chief Risk Officer After Dashboard Realtime"  -or $report.name -eq "FSI Realtime KPI" -or $report.name -eq "FSI CCO Realtime Before" -or $report.name -eq "Head of Financial Intelligence Realtime"  -or $report.name -eq "Head of Financial Intelligence After Dashboard Realtime" -or $report.name -eq "Global overview tiles" -or $report.name -eq "FSI-Chicklets"  -or $report.name -eq "FSITwitterreport" -or $report.name -eq "ESGDashboardV2_KPIandGraphs" -or $report.name -eq "FarmBeats Analytics" -or $report.name -eq "Master Images for FSI Dashboardpbix_v2")
     {
        continue;     
 	}
@@ -163,7 +158,8 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-	
+
+	Write-Host "PBI connections updating for report : $($report.name)"	
     $url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
     $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"} -ErrorAction SilentlyContinue;
 		

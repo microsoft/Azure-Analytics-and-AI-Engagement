@@ -64,10 +64,11 @@ $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 
 #form Recognizer
+Write-Host "----Form Recognizer-----"
 #Replace values in create_model.py
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
     -replace '#LOCATION#', $location`
-    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+    -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
     -replace '#CONTAINER_NAME#', "form-datasets"`
     -replace '#SAS_TOKEN#', $sasToken`
     -replace '#APIM_KEY#',  $forms_cogs_keys.Key1`

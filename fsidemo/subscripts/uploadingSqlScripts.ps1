@@ -46,7 +46,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapsefsi$init$random"
 $sqlPoolName = "FsiDW"
 $location = (Get-AzResourceGroup -Name $rgName).Location
-
 $concatString = "$init$random"
 $dataLakeAccountName = "stfsi$concatString"
 if($dataLakeAccountName.length -gt 24)
@@ -66,14 +65,14 @@ $cosmos_account_key=$cosmos_account_key.primarymasterkey
 
 
 #uploading Sql Scripts
-Write-Host "----uploading Sql Scripts------"
+Write-Host "----Sql Scripts------"
 RefreshTokens
 $scripts=Get-ChildItem "../artifacts/sqlscripts" | Select BaseName
 $TemplatesPath="../artifacts/templates";	
 
 foreach ($name in $scripts) 
 {
-    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sqlOnDemandSchema" )
+   if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sql-geospatial-data" -or $name.BaseName -eq "sql-geospatial-schema" -or $name.BaseName -eq "sqlOnDemandSchema" )
     {
         continue;
     }
@@ -99,6 +98,7 @@ foreach ($name in $scripts)
         }
     }
 
+     Write-Host "Uploading Sql Script : $($name.BaseName)"
     $query = ConvertFrom-Json (ConvertTo-Json $query)
     $jsonItem.properties.content.query = $query
     $item = ConvertTo-Json $jsonItem -Depth 100
