@@ -85,7 +85,31 @@ $endPoint = $baseURL + "/api/2.0/dbfs/mkdirs"
 Invoke-RestMethod $endPoint `
     -Method Post `
     -Headers $requestHeaders `
-    -Body $body    
+    -Body $body
+
+$body = '{"path": "dbfs:/FileStore/demo-fsi/geoscan/python" }';
+#get job list
+$endPoint = $baseURL + "/api/2.0/dbfs/mkdirs"
+Invoke-RestMethod $endPoint `
+    -Method Post `
+    -Headers $requestHeaders `
+    -Body $body
+
+$body = '{"path": "dbfs:/FileStore/demo-fsi/geoscan/synapse_migration" }';   
+#get job list
+$endPoint = $baseURL + "/api/2.0/dbfs/mkdirs"
+Invoke-RestMethod $endPoint `
+    -Method Post `
+    -Headers $requestHeaders `
+    -Body $body
+
+ $body = '{"path": "dbfs:/FileStore/demo-fsi/geoscan/tables" }';   
+#get job list
+$endPoint = $baseURL + "/api/2.0/dbfs/mkdirs"
+Invoke-RestMethod $endPoint `
+    -Method Post `
+    -Headers $requestHeaders `
+    -Body $body   
 
 (Get-Content -path ../artifacts/databricks/03_esg_market.ipynb -Raw) | Foreach-Object { $_ `
         -replace '#WORKSPACE_NAME#', $synapseWorkspaceName `
@@ -93,6 +117,7 @@ Invoke-RestMethod $endPoint `
         -replace '#SQL_USERNAME#', $sqlUser`
         -replace '#SQL_PASSWORD#', $sqlPassword `
         -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName `
+        -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key `
 } | Set-Content -Path ../artifacts/databricks/03_esg_market.ipynb
 
 (Get-Content -path ../artifacts/databricks/01_esg.ipynb -Raw) | Foreach-Object { $_ `
@@ -101,15 +126,35 @@ Invoke-RestMethod $endPoint `
         -replace '#SQL_USERNAME#', $sqlUser`
         -replace '#SQL_PASSWORD#', $sqlPassword `
         -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName `
+        -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key `
 } | Set-Content -Path ../artifacts/databricks/01_esg.ipynb
 
-(Get-Content -path ../artifacts/databricks/POC_customer_churn.ipynb -Raw) | Foreach-Object { $_ `
+(Get-Content -path ../artifacts/databricks/Customer_Churn.ipynb -Raw) | Foreach-Object { $_ `
         -replace '#WORKSPACE_NAME#', $synapseWorkspaceName `
         -replace '#DATABASE_NAME#', $sqlPoolName `
         -replace '#SQL_USERNAME#', $sqlUser`
         -replace '#SQL_PASSWORD#', $sqlPassword `
         -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName `
-} | Set-Content -Path ../artifacts/databricks/POC_customer_churn.ipynb
+        -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key `
+} | Set-Content -Path ../artifacts/databricks/Customer_Churn.ipynb
+
+(Get-Content -path ../artifacts/databricks/02_esg_scoring.scala -Raw) | Foreach-Object { $_ `
+        -replace '#WORKSPACE_NAME#', $synapseWorkspaceName `
+        -replace '#DATABASE_NAME#', $sqlPoolName `
+        -replace '#SQL_USERNAME#', $sqlUser`
+        -replace '#SQL_PASSWORD#', $sqlPassword `
+        -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName `
+        -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key `
+} | Set-Content -Path ../artifacts/databricks/02_esg_scoring.scala
+
+(Get-Content -path ../artifacts/databricks/Fraud_Migration.ipynb -Raw) | Foreach-Object { $_ `
+        -replace '#WORKSPACE_NAME#', $synapseWorkspaceName `
+        -replace '#DATABASE_NAME#', $sqlPoolName `
+        -replace '#SQL_USERNAME#', $sqlUser`
+        -replace '#SQL_PASSWORD#', $sqlPassword `
+        -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName `
+        -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key `
+} | Set-Content -Path ../artifacts/databricks/Fraud_Migration.ipynb
 
 $files = Get-ChildItem -path "../artifacts/databricks" -File -Recurse  #all files uploaded in one folder change config paths in python jobs
 Set-Location ../artifacts/databricks
@@ -166,3 +211,4 @@ foreach ($name in $files.name) {
               -Body $body
     }
 }
+Set-Location ../../
