@@ -129,7 +129,7 @@ foreach($zip in $zips)
 
 $filepath="./app_fsidemo/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
 Set-Content -Path $filepath -Value $item 
 
 #update all th report ids in the poc web app...
@@ -137,37 +137,37 @@ $ht = new-object system.collections.hashtable
 $ht.add("#Blob_Base_Url#", "https://fsicdn.azureedge.net/webappassets/")
 $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
 $ht.add("#Api_Url#", "https://app-fsidemo-prod.azurewebsites.net")
-$ht.add("#CHIEF_RISK_OFFICER_AFTER_DASHBOARD_REALTIME#", $($reportList | where {$_.Name -eq "Chief Risk Officer After Dashboard Realtime"}).ReportId)
-$ht.add("#CHIEF_RISK_OFFICER_REALTIME#", $($reportList | where {$_.Name -eq "Chief Risk Officer Realtime"}).ReportId)
-$ht.add("#ESG_METRICS_FOR_WOODGROVE#", $($reportList | where {$_.Name -eq "ESG Metrics for Woodgrove"}).ReportId)
-$ht.add("#ESG_REPORT_SYNAPSE#", $($reportList | where {$_.Name -eq "ESG Report Synapse Import Mode"}).ReportId)
-$ht.add("#FSI_CCO_REALTIME_BEFORE#", $($reportList | where {$_.Name -eq "FSI CCO Realtime Before"}).ReportId)
-$ht.add("#FSI_HTAP#", $($reportList | where {$_.Name -eq "FSI HTAP"}).ReportId)
-$ht.add("#FSI_INCIDENT_REPORT#", $($reportList | where {$_.Name -eq "FSI Incident Report"}).ReportId)
-$ht.add("#FSI_PREDICTIVE_ANALYTICS#", $($reportList | where {$_.Name -eq "FSI Predictive Analytics"}).ReportId)
-$ht.add("#FSI_REALTIME_KPI#", $($reportList | where {$_.Name -eq "FSI Realtime KPI"}).ReportId)
-$ht.add("#GEOSPATIAL_FRAUD_DETECTION_MIAMI#", $($reportList | where {$_.Name -eq "Geospatial Fraud Detection Miami"}).ReportId)
-$ht.add("#HEAD_OF_FINANCIAL_INTELLIGENCE_AFTER_DASHBOARD_REALTIME#", $($reportList | where {$_.Name -eq "Head of Financial Intelligence After Dashboard Realtime"}).ReportId)
-$ht.add("#HEAD_OF_FINANCIAL_INTELLIGENCE_REALTIME#", $($reportList | where {$_.Name -eq "Head of Financial Intelligence Realtime"}).ReportId)
-$ht.add("#MSCI_REPORT#", $($reportList | where {$_.Name -eq "MSCI report"}).ReportId)
-$ht.add("#US_MAP_WITH_HEADER#", $($reportList | where {$_.Name -eq "US Map with header"}).ReportId)
-$ht.add("#FSI_CEO_DASHBOARD#", $($reportList | where {$_.Name -eq "FSI CEO Dashboard"}).ReportId)
-$ht.add("#FSI_TWITTER_REPORT#", $($reportList | where {$_.Name -eq "FSITwitterreport"}).ReportId)
-$ht.add("#FINANCE_REPORT#", $($reportList | where {$_.Name -eq "Finance Report"}).ReportId)
-$ht.add("#GLOBAL_OVERVIEW_TILES#", $($reportList | where {$_.Name -eq "Global overview tiles"}).ReportId)
-$ht.add("#GLOBAL_MARKETS#", $($reportList | where {$_.Name -eq "globalmarkets"}).ReportId)
-$ht.add("#MSCIBeforeReportId#", $($reportList | where {$_.Name -eq "MSCI Report"}).ReportId)
-$ht.add("#MSCIAfterReportId#", $($reportList | where {$_.Name -eq "MSCI Report"}).ReportId)
-$ht.add("#ESGReportId#", $($reportList | where {$_.Name -eq "ESG Report Synapse Import Mode"}).ReportId)
-$ht.add("#fc_reportId#", $($reportList | where {$_.Name -eq ""}).ReportId)
+$ht.add("#CHIEF_RISK_OFFICER_AFTER_DASHBOARD_REALTIME#", $($reportList | where {$_.name -eq "Chief Risk Officer After Dashboard Realtime"}).id)
+$ht.add("#CHIEF_RISK_OFFICER_REALTIME#", $($reportList | where {$_.name -eq "Chief Risk Officer Realtime"}).id)
+$ht.add("#ESG_METRICS_FOR_WOODGROVE#", $($reportList | where {$_.name -eq "ESG Metrics for Woodgrove"}).id)
+$ht.add("#ESG_REPORT_SYNAPSE#", $($reportList | where {$_.name -eq "ESG Report Synapse Import Mode"}).id)
+$ht.add("#FSI_CCO_REALTIME_BEFORE#", $($reportList | where {$_.name -eq "FSI CCO Realtime Before"}).id)
+$ht.add("#FSI_HTAP#", $($reportList | where {$_.name -eq "FSI HTAP"}).id)
+$ht.add("#FSI_INCIDENT_REPORT#", $($reportList | where {$_.name -eq "FSI Incident Report"}).id)
+$ht.add("#FSI_PREDICTIVE_ANALYTICS#", $($reportList | where {$_.name -eq "FSI Predictive Analytics"}).id)
+$ht.add("#FSI_REALTIME_KPI#", $($reportList | where {$_.name -eq "FSI Realtime KPI"}).id)
+$ht.add("#GEOSPATIAL_FRAUD_DETECTION_MIAMI#", $($reportList | where {$_.name -eq "Geospatial Fraud Detection Miami"}).id)
+$ht.add("#HEAD_OF_FINANCIAL_INTELLIGENCE_AFTER_DASHBOARD_REALTIME#", $($reportList | where {$_.name -eq "Head of Financial Intelligence After Dashboard Realtime"}).id)
+$ht.add("#HEAD_OF_FINANCIAL_INTELLIGENCE_REALTIME#", $($reportList | where {$_.name -eq "Head of Financial Intelligence Realtime"}).id)
+$ht.add("#MSCI_REPORT#", $($reportList | where {$_.name -eq "MSCI report"}).id)
+$ht.add("#US_MAP_WITH_HEADER#", $($reportList | where {$_.name -eq "US Map with header"}).id)
+$ht.add("#FSI_CEO_DASHBOARD#", $($reportList | where {$_.name -eq "FSI CEO Dashboard"}).id)
+$ht.add("#FSI_TWITTER_REPORT#", $($reportList | where {$_.name -eq "FSITwitterreport"}).id)
+$ht.add("#FINANCE_REPORT#", $($reportList | where {$_.name -eq "Finance Report"}).id)
+$ht.add("#GLOBAL_OVERVIEW_TILES#", $($reportList | where {$_.name -eq "Global overview tiles"}).id)
+$ht.add("#GLOBAL_MARKETS#", $($reportList | where {$_.name -eq "globalmarkets"}).id)
+$ht.add("#MSCIBeforeid#", $($reportList | where {$_.name -eq "MSCI Report"}).id)
+$ht.add("#MSCIAfterid#", $($reportList | where {$_.name -eq "MSCI Report"}).id)
+$ht.add("#ESGid#", $($reportList | where {$_.name -eq "ESG Report Synapse Import Mode"}).id)
+$ht.add("#fc_id#", $($reportList | where {$_.name -eq ""}).id)
 $ht.add("#SPEECH_KEY#", $cog_speech_key.key1)
 $ht.add("#SPEECH_REGION#", $location)
-$ht.add("#FSI_CCO_DASHBOARD#", $($reportList | where {$_.Name -eq "FSI CCO Dashboard"}).ReportId)
+$ht.add("#FSI_CCO_DASHBOARD#", $($reportList | where {$_.name -eq "FSI CCO Dashboard"}).id)
 
 $filePath = "./app_fsidemo/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
-Compress-Archive -Path "./app_fsidemo/*" -DestinationPath "./app_fsidemo.zip"
+Compress-Archive -Path "./app_fsidemo/*" -DestinationPath "./app_fsidemo.zip" -Force
 
 az webapp stop --name $fsi_poc_app_service_name --resource-group $rgName
 
