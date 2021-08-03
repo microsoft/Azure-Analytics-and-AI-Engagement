@@ -1449,7 +1449,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 
 $filepath="./app_fsidemo/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
 Set-Content -Path $filepath -Value $item 
 
 #update all th report ids in the poc web app...
