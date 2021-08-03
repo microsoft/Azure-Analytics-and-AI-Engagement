@@ -1447,16 +1447,11 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 				-replace '#MAPS_KEY#', $accounts_map_key`			
         } | Set-Content -Path app_fsidemo/wwwroot/geospatial-azuremap.html
 
-$filepath="./app_fsidemo/wwwroot/config.js"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
-Set-Content -Path $filepath -Value $item 
-
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable
-$ht.add("#Blob_Base_Url#", "https://fsicdn.azureedge.net/webappassets/")
-$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
-$ht.add("#Api_Url#", "https://app-fsidemo-prod.azurewebsites.net")
+$ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
+$ht.add("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
+$ht.add("#APP_NAME#", $fsi_poc_app_service_name)
 $ht.add("#CHIEF_RISK_OFFICER_AFTER_DASHBOARD_REALTIME#", $($reportList | where {$_.Name -eq "Chief Risk Officer After Dashboard Realtime"}).ReportId)
 $ht.add("#CHIEF_RISK_OFFICER_REALTIME#", $($reportList | where {$_.Name -eq "Chief Risk Officer Realtime"}).ReportId)
 $ht.add("#ESG_METRICS_FOR_WOODGROVE#", $($reportList | where {$_.Name -eq "ESG Metrics for Woodgrove"}).ReportId)
