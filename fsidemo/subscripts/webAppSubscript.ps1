@@ -89,7 +89,6 @@ $clientsecpwd ="Smoothie@Smoothie@2020"
 $secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 $map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
@@ -112,6 +111,7 @@ foreach($zip in $zips)
                        
  $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
  $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+ $reportList = $reportList.Value
 
 (Get-Content -path app_fsidemo/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
@@ -127,7 +127,7 @@ foreach($zip in $zips)
 
 $filepath="./app_fsidemo/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#SERVER_NAME#", $fsi_poc_app_service_name).Replace("#SEARCH_APP_NAME#", $fsi_search_app_service_name).Replace("#APP_NAME#", $fsi_poc_app_service_name)
 Set-Content -Path $filepath -Value $item 
 
 #update all th report ids in the poc web app...
@@ -231,6 +231,11 @@ az webapp start --name $app_maps_service_name --resource-group $rgName
 
 foreach($zip in $zips)
 {
+   remove-item -path "./$($zip)/*" -recurse -force
+   if($zip -eq "realtime_kpi_simulator")
+	{
+	continue
+	}
     remove-item -path "./$($zip).zip" -recurse -force
-    remove-item -path "./$($zip)/*" -recurse -force
+    
 }
