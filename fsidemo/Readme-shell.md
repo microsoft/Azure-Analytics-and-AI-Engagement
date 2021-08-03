@@ -412,6 +412,8 @@ cd ./fsi/fsidemo
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
 20. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+	> **Note:**
+	> Note: You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In such case follow this document [https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Power BI Embedding.md] to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/fsi/fsidemo/artifacts/reports]. 
 
 21. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
