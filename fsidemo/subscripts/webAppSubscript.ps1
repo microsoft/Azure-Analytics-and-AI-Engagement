@@ -108,7 +108,9 @@ foreach($zip in $zips)
 {
     expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
-                       
+  
+ RefreshTokens
+  
  $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
  $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
  $reportList = $reportList.Value
