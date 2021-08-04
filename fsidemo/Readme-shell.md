@@ -134,7 +134,7 @@
 
 	![Provide the Push Url.](media/power-bi-8.png)
 
-13. **Enter** ‘Before-scenario-financial-hcrr-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button: 
+13. Similarly create another dataset and **Enter** ‘Before-scenario-financial-hcrr-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button: 
 	- InvestigationResponseTime :number
 	- TargetInvestigationResponseTime :number
 	- PerfvsEfficiency :number
@@ -186,7 +186,7 @@
 
 	![Provide the Push Url.](media/power-bi-8.png)
 
-15. **Enter** ‘Before-after-scenario-group-ceo-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button:: 
+15. Similarly create another dataset and **Enter** ‘Before-after-scenario-group-ceo-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button:: 
 	- CSAT :number
 	- AverageAttrition :number
 	- ComplianceScore :number
@@ -222,7 +222,7 @@
 
 	![Provide the Push Url.](media/power-bi-8.png)
 
-17. **Enter** ‘After-scenario-financial-hcrr-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button:
+17. Similarly create another dataset and **Enter** ‘After-scenario-financial-hcrr-dataset’ as dataset name and **enter** the column names in “values from stream” option from list below and **click** on create button:
 
 	- InvestigationResponseTime :number
 	- TargetInvestigationResponseTime :number
@@ -338,7 +338,7 @@
 
 	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters.
 
-4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
+4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
 Command:
 ```
 git clone -b fsi https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fsi
