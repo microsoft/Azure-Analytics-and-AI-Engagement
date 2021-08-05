@@ -885,6 +885,8 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 1. **Open** the azure portal and go to resource group **‘DDib-FSI’.**
 
+	![Open resource.](media/open-rg.png)
+
 2. **Type** in filter “amlws-” and open the resource.
 
 	![Open resource.](media/aml-1.png)
