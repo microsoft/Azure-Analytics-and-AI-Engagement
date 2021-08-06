@@ -634,6 +634,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 60.	**Select** appropriate font size and color for the card.
 61.	**Enter** the text content of card.
 62.	**Click** apply.
+
 	![Add text.](media/report-cardpinning.png)
 
 63. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
