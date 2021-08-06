@@ -890,6 +890,11 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 25. Wait for script execution to complete.
 
 	![Paste select and wait.](media/updating-powerbi-11.png)
+	
+26.	**Enter** resource group name when prompted.
+27.	Let the execution complete. The dashboard you embedded will start showing up on the web app screens.
+
+	![Paste select and wait.](media/rgname.png)
 
 > **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
 
