@@ -6,16 +6,13 @@ services professional. Do not use this code to replace, substitute, or provide p
 responsible for ensuring the regulatory, legal, and/or contractual compliance of any use of the code, including obtaining any authorizations 
 or consents, and any solution you choose to build that incorporates this code in whole or in part.  */
 
-SELECT  nameOrig[From Ac], nameDest[To Ac] , type, amount
+SELECT  *
 FROM OPENROWSET
 	(
     'CosmosDB',
     'account=#COSMOS_ACCOUNT#;database=fsi-marketdata;region=#LOCATION#;key=#COSMOS_KEY#',
     OFAC
     )  as q1
-    
-where isFraud = 1 
-
-
+ 
 GO
 
