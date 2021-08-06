@@ -450,7 +450,7 @@ cd ./fsi/fsidemo
 
 Once [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
 
-The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
+The image below shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
 
 ![Screenshot to view the reports tab.](media/power-bi-report-3.png)
 
@@ -494,7 +494,7 @@ Follow these steps to create the Power BI dashboard:
 
 	![Click the dashboard.](media/power-bi-dashboard-2.png)
 
-17. **Name** the dashboard ‘Fsi Dashboard-Before’ and **click** “create”. 
+17. **Name** the dashboard ‘Chief Customer Officer Before’ and **click** “create”. 
 
 18. This new dashboard will appear in the Dashboard section (of the Power BI workspace). 
 
@@ -546,13 +546,13 @@ Do the following to pin visuals to the dashboard you just created:
 
 32. **Click** on ‘Market perception before’ page.
 
-33. **Click** on pin visual button.
+33. **Hover** over the Awareness KPI & **Click** on pin visual button.
 
 	![Click on Pin Visual button.](media/power-bi-dashboard-9.png)
 
 34. **Select** ‘Existing dashboard’ radio button. 
 
-35. From ‘select existing dashboard’ dropdown, **select** ‘Media Demo Dashboard-Before’.
+35. From ‘select existing dashboard’ dropdown, **select** ‘Chief Customer Officer Before’.
 
 36. **Click** ‘Pin’.
 
@@ -569,44 +569,48 @@ Do the following to pin visuals to the dashboard you just created:
 39. **Open** 'FSI-Chicklets' report.
 
 	![Open report.](media/power-bi-dashboard-12.png)
+	
+40.	Click on 12042021  page.
+41.	Click Edit.
+	![Open report.](media/edit-chicklet.png)
 
-40. To pin an image into Dashboard you have to go to the report, **click** on edit and then you will see the pin icon.
+42.	**Hover** on Customer retention chicklet and **click** pin button
 
 	![Pin an image.](media/report-1.png)
 
-41. **Select** the ‘Chief Customer Officer Before’ from existing dashboard list and **click** on pin.
+43. **Select** the ‘Chief Customer Officer Before’ from existing dashboard list and **click** on pin.
 
-42. Similarly pin rest of the images from chief customer officer tab of the Chicklets report.
+44. Similarly pin rest of the images from chief customer officer tab of the Chicklets report.
 
 	![Pin all image.](media/report-2.png)
 
-43. **Go back** to the ‘Chief Customer Officer Before’ dashboard.
+45. **Go back** to the ‘Chief Customer Officer Before’ dashboard.
 	
 	![Go back.](media/report-3.png)
 
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-44. **Click** on ellipsis ‘More Options’ of the image you selected.
+46. **Click** on ellipsis ‘More Options’ of the image you selected.
 
-45. **Click** ‘Edit details’.
+47. **Click** ‘Edit details’.
 	
 	![Edit Details.](media/report-4.png)
 
-46. **Uncheck** ‘Display title and subtitle’.
+48. **Uncheck** ‘Display title and subtitle’.
 
-47. **Click** ‘Apply’.
+49. **Click** ‘Apply’.
 
-48. **Repeat** Step 46 to 48 for all image tiles.
+50. **Repeat** Step 46 to 48 for all image tiles.
 
 	![Repeat Steps.](media/report-5.png)
 
-49. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. Resize the Contoso Healthcare logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+51. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange.](media/report-6.png)
 
-50. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Chief Customer officer Before dashboard.
+52. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Chief Customer officer Before dashboard.
 
-51. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4.
+53. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4.
 
 	![Pin and Repeat.](media/report-7.png)
 
@@ -614,138 +618,146 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	> **Note:** The cards in each Dashboard should be created in the Dashboard like ‘Negative Card’ as you can see in orange.
 
-52. To create a new tile like the car above **click** on edit button on dashboard.
+54. To create a new tile like the car above **click** on edit button on dashboard.
 
-53. **Click** on add a tile button.
+55. **Click** on add a tile button.
 
 	![Create a new tile.](media/report-9.png)
 	
-54. Then **go to** Text Box and there you can **add** the text and the text format it.
-	
+56.	**Select** Text Box.
+57.	**Click** next.
+
 	![Add text.](media/report-10.png)
+	
+58.	**Enter** title of the card.
+59.	**Select** Segoe UI font style.
+60.	**Select** appropriate font size and color for the card.
+61.	**Enter** the text content of card.
+62.	**Click** apply.
+	![Add text.](media/report-cardpinning.png)
 
-55. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
+63. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
 
-56. **Latest** pillar ‘Chief Customer Officer Before’ is completed.
+64. **Latest** pillar ‘Chief Customer Officer Before’ is completed.
 
 	![Pin the visuals.](media/report-11.png)
 
-57. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
+65. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
 
 	![KPIs.](media/report-12.png)
 
-58. **Go** to the cards more options.
+66. **Go** to the cards more options.
 
-59. **Click** on Edit Details.
+67. **Click** on Edit Details.
 
 	![Cards more options.](media/report-13.png)
 
-60. You will see something like this picture where you can add subtitle.
+68. You will see something like this picture where you can add subtitle.
 	
 	![Add subtitle.](media/report-14.png)
 
-61. The Dashboard “Chief Customer Officer Before” should finally look like this.
+69. The Dashboard “Chief Customer Officer Before” should finally look like this.
 Table in following row indicates which Kpi’s need to be pinned from which report to achieve this final look.
 	
 ![Final look.](media/report-15.png)
 	
-62. **Refer** to this table while pinning rest of the tiles to the dashboard.
+70. **Refer** to this table while pinning rest of the tiles to the dashboard.
 	
 	![Refer the table.](media/report-16.png)
 
-63. Here is the list of Dashboards you have to create for FSI. You will see the necessary details for the same below.
+71. Here is the list of Dashboards you have to create for FSI. You will see the necessary details for the same below.
 
 	![List of Dashboards.](media/report-17.png)
 
-64. Chief Customer Officer After Dashboard should look like this. Following are the details of tiles for the same.
+72. Chief Customer Officer After Dashboard should look like this. Following are the details of tiles for the same.
 
 	![Chief Customer Officer.](media/report-18.png)
 
-65. Chief Customer Officer After KPIs.
+73. Chief Customer Officer After KPIs.
 
 	![Chief Customer Officer After KPIs.](media/report-19.png)
 
-66. ESG Dashboard Dashboard should look like this. Following are the details of tiles for the same.
+74. ESG Dashboard Dashboard should look like this. Following are the details of tiles for the same.
 
 	![ESG Dashboard Dashboard.](media/report-20.png)
 
-67. ESG Dashboard KPIs
+75. ESG Dashboard KPIs
 
 	![ESG Dashboard KPIs.](media/report-21.png)
 
-68. Finance Dashboard should look like this. Following are the details of tiles for the same.
+76. Finance Dashboard should look like this. Following are the details of tiles for the same.
 
 	![Finance Dashboard.](media/report-22.png)
 
-69. Finance Dashboard KPIs
+77. Finance Dashboard KPIs
 
 	![Finance Dashboard KPIs.](media/report-23.png)
 
-70. Group Chief Risk Officer After Dashboard
+78. Group Chief Risk Officer After Dashboard
 
 	![Group Chief Risk Officer.](media/report-24.png)
 
-71. Group Chief Risk Officer After Dashboard KPIs
+79. Group Chief Risk Officer After Dashboard KPIs
 
 	![Group Chief Risk Officer After Dashboard KPIs.](media/report-25.png)
 
-72. Group Chief Risk Officer Before Dashboard
+80. Group Chief Risk Officer Before Dashboard
 
 	![Group Chief Risk Officer.](media/report-26.png)
 
-73. Group Chief Risk Officer Before KPIs
+81. Group Chief Risk Officer Before KPIs
 
 	![Group Chief Risk Officer Before KPIs.](media/report-27.png)
 
-74. Head of Financial Intelligence After Dashboard
+82. Head of Financial Intelligence After Dashboard
 
 	![Head of Financial Intelligence.](media/report-28.png)
 
-75. Head of Financial Intelligence After KPI
+83. Head of Financial Intelligence After KPI
 
 	![Head of Financial Intelligence After KPI.](media/report-29.png)
 
-76. Head of Financial Intelligence Before Dashboard
+84. Head of Financial Intelligence Before Dashboard
 
 	![Head of Financial Intelligence.](media/report-30.png)
 
-77. Head of Financial Intelligence Before KPIs
+85. Head of Financial Intelligence Before KPIs
 
 	![Head of Financial Intelligence Before KPIs.](media/report-31.png)
 
-78. Woodgrove Executive Dashboard Dec
+86. Woodgrove Executive Dashboard Dec
 
 	![Woodgrove Executive Dashboard Dec.](media/report-32.png)
 
-79. Woodgrove Executive Dashboard Dec KPIs
+87. Woodgrove Executive Dashboard Dec KPIs
 
 	![Woodgrove Executive Dashboard Dec KPIs.](media/report-33.png)
 
-80. Woodgrove Executive Dashboard June
+88. Woodgrove Executive Dashboard June
 
 	![Woodgrove Executive Dashboard June.](media/report-34.png)
 
-81. Woodgrove Executive Dashboard June KPIs
+89. Woodgrove Executive Dashboard June KPIs
 
 	![Woodgrove Executive Dashboard June KPIs.](media/report-35.png)
 
-82. Woodgrove Executive Dashboard March KPIs
+90. Woodgrove Executive Dashboard March KPIs
 
 	![Woodgrove Executive Dashboard March KPIs.](media/report-36.png)
 
-83. Woodgrove Executive Dashboard September
+91. Woodgrove Executive Dashboard September
 
 	![Woodgrove Executive Dashboard September.](media/report-37.png)
 
-84. Woodgrove Executive Dashboard September KPIs
+92. Woodgrove Executive Dashboard September KPIs
 
 	![Woodgrove Executive Dashboard September KPIs.](media/report-38.png)
 
-85. Woodgrove Executive Dashboard September 2
+93. Woodgrove Executive Dashboard September 2
 
 	![Woodgrove Executive Dashboard September 2.](media/report-39.png)
 
-86. Dashboard KPI’s.
+94. Dashboard KPI’s.
 
 	![Dashboard KPI’s.](media/report-40.png)
 
@@ -897,32 +909,34 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 4. **Login** with the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-5. **Open** Compute section and enter compute name, **select** “ STANDARD_DS2_V2” as compute quota and **click** on create.
+5. **Click** on compute button in left pane.
+
+6. **Click** on new.
+
+	![compute button](media/aml-computebutton)
+
+7. **Enter** compute name, **select** “ STANDARD_DS2_V2” as compute quota and **click** on create.
 
 	![Compute section and enter compute name.](media/aml-3.png)
 
 > **Note:**  It will take few minutes to create a compute instance.
 
-6. **Open** Notebooks.
+8. **Open** Notebooks.
 
-7. **Click** on “ 8. Understanding and Removing Biases from Machine Learning Models using Azure Fairlearn” notebook.
+9. **Click** on “ 8. Understanding and Removing Biases from Machine Learning Models using Azure Fairlearn” notebook.
 
 	![Open Notebooks.](media/aml-4.png)
 
-8. **Select** Compute created in step 5 and kernel as shown in image.
+10. **Select** Compute created in step 5 and kernel as shown in image.
 
-9. **Click** run all.
+11. **Click** run all. Wait for all cells to complete execution.
 	
 	![Select Compute created.](media/aml-5.png)
 
-10. **Scroll** through the notebook cells, at cell 16 execution it will ask to do device login. Follow the steps with same user.
 
-	![Scroll through the notebook.](media/aml-6.png)
+12. **Scroll** down till the end and wait for the green tick.
 
-
-11. **Scroll** down till the end and wait for the green tick.
-
-12. **Open** Experiments and see if experiments are created.
+13. **Open** Experiments and verify if experiments are created.
 
 	![Scroll and Open.](media/aml-7.png)
 
