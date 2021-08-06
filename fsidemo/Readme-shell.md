@@ -618,7 +618,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	> **Note:** The cards in each Dashboard should be created in the Dashboard like ‘Negative Card’ as you can see in orange.
 
-54. To create a new tile like the car above **click** on edit button on dashboard.
+54. To create a new tile like the card above **click** on edit button on dashboard.
 
 55. **Click** on add a tile button.
 
