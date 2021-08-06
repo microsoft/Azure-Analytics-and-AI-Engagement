@@ -919,7 +919,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 6. **Click** on new.
 
-	![compute button](media/aml-computebutton)
+	![compute button](media/aml-computebutton.png)
 
 7. **Enter** compute name, **select** “ STANDARD_DS2_V2” as compute quota and **click** on create.
 
