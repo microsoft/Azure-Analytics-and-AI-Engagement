@@ -89,7 +89,7 @@
     "cog_translator_name": "[concat('translator-',variables('unique_suffix'))]",
     "mssql_server_name": "[concat('dbserver-marketingdata-',variables('unique_suffix'))]",
     "mssql_administrator_login": "labsqladmin",
-    "mssql_database_name": "db-geospatial-dev",
+    "mssql_database_name": "db-geospatial",
     "accounts_maps_name": "[concat('mapsfsi-',variables('unique_suffix'))]"
   },
   "resources": [
