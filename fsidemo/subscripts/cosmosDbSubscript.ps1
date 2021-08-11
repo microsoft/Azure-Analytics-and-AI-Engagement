@@ -49,7 +49,7 @@ Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
 $cosmosDbAccountName = $cosmos_account_name
 $databaseName = $cosmos_database_name
-$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+$cosmos = Get-ChildItem "../artifacts/cosmos" | Select BaseName 
 
 foreach($name in $cosmos)
 {

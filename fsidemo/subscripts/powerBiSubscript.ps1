@@ -73,7 +73,7 @@ foreach ($item in $response.value) {
 foreach($name in $reports)
 {
 
-    if ($uploadedReportList.Contains($name)) {
+    if ($uploadedReportList.Contains($name.BaseName)) {
         continue;
     }
 
