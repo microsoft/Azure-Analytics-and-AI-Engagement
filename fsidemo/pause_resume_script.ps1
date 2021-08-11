@@ -30,11 +30,12 @@ $sqlPoolName = "FsiDW"
 $asa_name_fsi = "fsiasa-$suffix"
 $fsi_poc_app_service_name = "app-demofsi-$suffix"
 $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
+$app_maps_service_name = "app-maps-$suffix"
 $title    = 'Choices'
 $question = 'What would you like to do with the environment?'
 $choices  = '&Pause', '&Resume'
 
-$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+$decision = $Host.UI.PromptForChoice($title, $question, $choices, 0)
 if($decision -eq 0)
 {
 #stop ASA
@@ -50,8 +51,9 @@ write-host "Stopping Web apps"
 #stop web apps
 az webapp stop --name $fsi_poc_app_service_name --resource-group $rgName
 az webapp stop --name $app_name_realtime_kpi_simulator --resource-group $rgName
+az webapp stop --name $app_maps_service_name --resource-group $rgName
 
-write-host "Operation successfull"
+write-host "Pause operation successfull"
 }
 
 else
@@ -68,6 +70,7 @@ az synapse sql pool resume --name $SQLPoolName --resource-group $rgName --worksp
 write-host "Starting web apps"
 az webapp start --name $fsi_poc_app_service_name --resource-group $rgName
 az webapp start --name $app_name_realtime_kpi_simulator --resource-group $rgName
+az webapp start --name $app_maps_service_name --resource-group $rgName
 
-write-host "Operation successfull"
+write-host "Resume operation successfull"
 }
