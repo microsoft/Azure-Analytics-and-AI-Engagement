@@ -172,7 +172,7 @@ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Autho
 Write-Host  $result
 
 # AutoResolveIntegrationRuntime
-    $FilePathRT="./artifacts/templates/AutoResolveIntegrationRuntime.json" 
+    $FilePathRT="../artifacts/templates/AutoResolveIntegrationRuntime.json" 
     $itemRT = Get-Content -Path $FilePathRT
     $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
