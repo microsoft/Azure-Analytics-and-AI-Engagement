@@ -1,7 +1,7 @@
 
 # WWI DREAM Demo in a Box Setup Guide
 
-Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [discliamer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/discliamer.md) before proceeding further.
+Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding further.
 
 **Contents**
 
