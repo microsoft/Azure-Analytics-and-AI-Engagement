@@ -1,5 +1,6 @@
 # HealthCare DREAM Demo in a Box Setup Guide
 
+Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/healthcare/License.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/healthcare/disclaimer.md) before proceeding further.
 
 **Contents**
 
