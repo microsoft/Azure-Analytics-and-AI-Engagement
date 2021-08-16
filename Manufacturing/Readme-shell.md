@@ -1,5 +1,6 @@
 # Manufacturing DREAM Demo in a Box Setup Guide
 
+Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/disclaimer.md) before proceeding further.
 
 **Contents**
 
