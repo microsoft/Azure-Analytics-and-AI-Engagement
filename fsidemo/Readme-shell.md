@@ -1,7 +1,7 @@
-# Fsi DREAM Demo in a Box Setup Guide
+# FSI DREAM Demo in a Box Setup Guide
 ## Setup Instructions
 
-
+DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure subscriptions. Partners can deploy DDiB in a customer's subscription ONLY through the CAPE process. For more information, please connect with your local Data & AI Specialist or CSA/GBB.
 ## Requirements
 
 * An Azure Account with the ability to create an Azure Synapse Workspace.
