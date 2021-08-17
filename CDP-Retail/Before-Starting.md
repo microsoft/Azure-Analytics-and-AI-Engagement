@@ -2,7 +2,7 @@
 # WWI DREAM Demo in a Box Setup Guide
 
 Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding further.
-
+DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure subscriptions. Partners can deploy DDiB in a customer's subscription ONLY through the CAPE process. For more information, please connect with your local Data & AI Specialist or CSA/GBB.
 **Contents**
 
 <!-- TOC -->
