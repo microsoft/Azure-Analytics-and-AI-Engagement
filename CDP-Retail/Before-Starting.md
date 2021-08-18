@@ -1,8 +1,20 @@
 
 # WWI DREAM Demo in a Box Setup Guide
 
-Please read through the [license aggrement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding further.
-DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure subscriptions. Partners can deploy DDiB in a customer's subscription ONLY through the CAPE process. For more information, please connect with your local Data & AI Specialist or CSA/GBB.
+Before You Begin
+
+##IMPORTANT NOTES:
+
+  1.  DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure Subscriptions. **Partners can deploy DDiB in customer's subscription ONLY through the CAPE process. CAPE** tool is accessible by Microsoft employees. For more information about **CAPE** process, please connect with your Local Data & AI Specialist or CSA/GBB.
+
+  2.  **Please go through the [license agreement]<https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare/HealthCare/License.md> and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding.**
+
+  3.  Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.**
+ 
+  4.  For any questions or comments please email **[dreamdemos@microsoft.com]<mailto:dreamdemos@microsoft.com>.**
+  
+  **NOTE**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
+
 **Contents**
 
 <!-- TOC -->
