@@ -13,7 +13,7 @@
  
   4.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
-	> **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
+   > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
 
 ## Contents
 
