@@ -1,5 +1,6 @@
 # Media DREAM Demo in a Box Setup Guide
-## Setup Instructions
+
+**Before You Begin**
 
 ## IMPORTANT NOTES:
 
@@ -12,6 +13,23 @@
   4.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
    > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
+
+
+## Contents
+
+<!-- TOC -->
+
+  - [Requirements](#requirements)
+  - [Before Starting](#before-starting)
+  	- [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
+  	- [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
+  	- [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
+  	- [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
+  	- [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
+  	- [Task 6: Pause Or Resume resources](#task-6-pause-or-resume-resources)
+  	- [Task 7: Clean up resources](#task-7-clean-up-resources)
+
+<!-- /TOC -->
 
 ## Requirements
 
@@ -35,19 +53,7 @@
 
 > **Note:** Please log in to Azure and Power BI using the same credentials.
 
-## Setup Tasks:
-
-<!-- TOC -->
-
-  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-  - [Task 2: Create Power BI workspace](#task-2-create-power-bi-workspace)
-  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-  - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
-  - [Task 5: Create Power BI reports and Dashboard](#task-5-create-power-bi-reports-and-dashboard)
-  - [Task 6: Pause-Resume resources](#task-10-pause-resume-resources)
-  - [Task 7: Clean up resources](#task-11-clean-up-resources)
-
-<!-- /TOC -->
+## Before starting
 
 ### Task 1: Create a resource group in Azure
 
@@ -665,7 +671,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
   
 	![After Pinning.](media/media-poc-25.png)
 
-**Task 6: Pause/Resume resources**
+### Task 6: Pause Or Resume resources
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
  
@@ -714,7 +720,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Enter your choice.](media/authentication-4.png)
 
-**Task 7: Clean up resources.**
+### Task 7: Clean up resources
 
 > **Note: Perform these steps after your demo is done and you do not need the resources anymore**
 
