@@ -1,5 +1,5 @@
 
-# WWI DREAM Demo in a Box Setup Guide
+# Retail DREAM Demo in a Box Setup Guide
 
 **Before You Begin**
 
@@ -19,7 +19,7 @@
 
 <!-- TOC -->
 
-- [Azure Synapse Analytics WWI setup guide](#azure-synapse-analytics-wwi-setup-guide)
+- [Azure Synapse Analytics setup guide](#azure-synapse-analytics-setup-guide)
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
     - [Task 1: Create a Power BI Workspace](#task-1-create-a-power-bi-workspace)
@@ -162,7 +162,7 @@ Make sure **Historic data analysis** is enabled. Select **Create** to proceed.
 
 ### Task 5: Download artifacts
 
-> The WWI environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
+> The environment can be populated either with a large dataset with 30 billion records, or a smaller dataset with 3 million records. The loading time for the large dataset is 4-5 hours. If you are willing to load 30 billion records, follow the steps described in [Optional Features / 30 Billion Rows Dataset](#30-billion-rows-dataset).
 
 1. In the Azure Portal, open the Azure Cloud Shell by selecting its icon from the right side of the top toolbar.
 
@@ -391,7 +391,7 @@ The dashboard shown above has images used on the top row and the first column to
 
 ### 30 Billion Rows Dataset
 
-The WWI environment can be populated with 30 billion records to demonstrated large data scenarios. Due to the limits of Azure Cloud Shell's 20-minute runtime, the automation has to run on a stand-alone machine against your subscription to be able to go through the 4-5 hours long data loading process. If you decide to go with the 30 billion records option, use a local Powershell instance with admin privileges instead of Azure Cloud Shell.
+The environment can be populated with 30 billion records to demonstrated large data scenarios. Due to the limits of Azure Cloud Shell's 20-minute runtime, the automation has to run on a stand-alone machine against your subscription to be able to go through the 4-5 hours long data loading process. If you decide to go with the 30 billion records option, use a local Powershell instance with admin privileges instead of Azure Cloud Shell.
 
 1. [Install Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and [Git](https://git-scm.com/downloads) to your computer.
 
