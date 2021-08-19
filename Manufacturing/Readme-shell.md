@@ -19,7 +19,7 @@
 
 <!-- TOC -->
 
-- [Azure Synapse Analytics Wide World Importers setup guide](#azure-synapse-analytics-wwi-setup-guide)
+- [Azure Synapse Analytics Wide World Importers setup guide](#azure-synapse-analytics-setup-guide)
   - [Requirements](#requirements)
   - [Before Starting](#before-starting)
     - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
