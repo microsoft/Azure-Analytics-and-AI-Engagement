@@ -1,17 +1,36 @@
 # FSI DREAM Demo in a Box Setup Guide
-## Setup Instructions
+
+**Before You Begin**
+
 ## IMPORTANT NOTES:
 
-  1.  DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure Subscriptions. **Partners can deploy DDiB in customer's subscription ONLY through the CAPE process. CAPE** tool is accessible by Microsoft employees. For more information about **CAPE** process, please connect with your Local Data & AI Specialist or CSA/GBB.
-
+  1.  DREAM Demo in a Box (DDiB) can be deployed by partners in their own Azure Subscriptions. **Partners can deploy DDiB in customer's subscription ONLY through the         CAPE process. CAPE** tool is accessible by Microsoft employees. For more information about **CAPE** process, please connect with your Local Data & AI Specialist         or CSA/GBB.
+   
   2.  **Please go through the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/license-ddib.md) before proceeding.**
 
-  3.  Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.**
+  3.  Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data           into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.**
  
   4.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
    > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
-   
+
+## Contents
+
+<!-- TOC -->
+
+- [Requirements](#requirements)
+- [Before Starting](#before-starting)
+  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
+  - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
+  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
+  - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
+  - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
+  - [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
+  - [Task 7: Pause or Resume script](#task-7-pause-or-resume-resources)
+  - [Task 8: Clean up resources](#task-8-clean-up-resources)
+
+<!-- /TOC -->
+
 ## Requirements
 
 * An Azure Account with the ability to create an Azure Synapse Workspace.
@@ -33,20 +52,7 @@
 * Once the resources have been setup, please ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “stfsi”. You need to contact AD admin to get this done.
 * Please review the [Liscence Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Power%20BI%20Embedding.md) before proceeding.
 
-## Setup Tasks:
-
-<!-- TOC -->
-
-  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-  - [Task 2: Create Power BI workspace](#task-2-create-power-bi-workspace)
-  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-  - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
-  - [Task 5: Create Power BI reports and Dashboard](#task-5-create-power-bi-reports-and-dashboard)
-  - [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
-  - [Task 7: Pause/Resume script](#task-7-pause-resume-resources)
-  - [Task 8: Clean up environment](#task-8-clean-up-resources)
-
-<!-- /TOC -->
+## Before starting
 
 ### Task 1: Create a resource group in Azure
 
@@ -956,7 +962,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Scroll and Open.](media/aml-7.png)
 
-### Task 7: Pause/Resume resources
+### Task 7: Pause or Resume resources
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
  
@@ -1005,7 +1011,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Enter your choice.](media/authentication-4.png)
 
-### Task 8 : Clean up resources.
+### Task 8: Clean up resources
 
 > **Note: Perform these steps after your demo is done and you do not need the resources anymore**
 
