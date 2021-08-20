@@ -364,7 +364,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
       
 7. From the Azure Cloud Shell window, **copy** the Authentication Code.
 
-8. Click on the link https://microsoft.com/devicelogin) and a new browser window will launch.
+8. **Click** on the link (https://microsoft.com/devicelogin) and a new browser window will launch.
 
      ![Authentication link and device code](media/Device-Authentication-Screen7.png)
      
@@ -387,7 +387,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
      ![Authentication link and device code](media/Device-Authentication-Screen7a.png)
 
-15. Follow the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 7 to 11.
+15. **Follow** the same steps as in [Task 4](#task-4-run-the-cloud-shell) steps 7 to 11.
  
      ![New browser window to provide the authentication code](media/Enter-Device-Code-Screen7.png)
 
@@ -397,11 +397,11 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 •	You may be prompted to choose a **subscription** after the above-mentioned step if you have multiple subscriptions associated with your account. Choose the subscription that you used to sign in to the Azure portal.
 
-16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. Enter the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-Healthcare-Lab'.
+16. You will now be prompted to enter the resource group name in the Azure Cloud Shell window. **Enter** the name of the resource group that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'Synapse-Healthcare-Lab'.
 
      ![Enter the resource group name](media/RG-Name-Screen10.png)
 	 
-17.	Enter the Id scope, Device Id and primary key that you copied in step 10 of task 4 when prompted for it.
+17. **Enter** the Id scope, Device Id and primary key that you copied in step 10 of task 4 when prompted for it.
 
 	 ![iot-central details](media/iot-central.png)
 
@@ -410,11 +410,11 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
      ![Copy the authentication code.](media/task4-step18.png)
 
-20. A new browser window will launch. **Follow** the same steps as in [Task 5](#task-5-run-the-cloud-shell) steps 9, 10 and 11 and go back to your Azure Cloud Shell execution window.
+20. A new browser window will launch. **Follow** the same steps as in [Task 5](#task-5-run-the-cloud-shell) steps 9, 10 and 11 and **go back** to your Azure Cloud Shell execution window.
 
 > **Note:** The deployment will take approximately 40-45 minutes to complete.
 
-21.	Open the url printed at the end of script execution. This is needed to kickstart the data generation.
+21. **Open** the url printed at the end of script execution. This is needed to kickstart the data generation.
 
 	 ![data-gen-url](media/data-gen-url.png)
 
@@ -446,7 +446,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 5.	**Enter** the ip address in computer field.
 6.	**Enter** the username as ‘data-generator’.
 7.	**Click** on connect.
-8.	You will be prompted to enter the password. Enter the password you chose during template deployment in task 2.
+8.	You will be prompted to enter the password. **Enter** the password you chose during template deployment in task 2.
 	
 	![Remote Desktop.](media/high-speed-data-gen3.png)
 	
