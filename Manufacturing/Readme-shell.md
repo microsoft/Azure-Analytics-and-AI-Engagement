@@ -189,7 +189,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
     
     > **Note:** If you get File “MfgAI” already exist error, please execute following command: rm MfgAI -r -f to delete existing clone.
     
-    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes     execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 1 hour.
+    > **Note**: When executing the script below, it is important to let the scripts run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to PowerShell prompt. The total runtime of all steps in this task will take approximately 1 hour.
 
 5. Execute the `manufacturingSetup-shell.ps1` script by executing the following commands:
 
@@ -202,8 +202,12 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
     ```PowerShell
     ./manufacturingSetup-shell.ps1
     ```
-    
-      ![Commands to run the PowerShell script](media/executing-shell-script.png)
+     
+     > **Note** You will be prompted to confirm that you have read the license agreement and disclaimers. Click on the links to read it if not already done. Type 'Y' if       you agree with the terms and conditions in it. Else type 'N' to stop the execution. Also ensure you delete the resources in your resource group if you do not wish       to continue further.
+
+   ![Disclaimer.](media/cloud-shell-license.png)
+
+   ![Commands to run the PowerShell script](media/executing-shell-script.png)
       
 7. From the Azure Cloud Shell window, **copy** the Authentication Code.
 
