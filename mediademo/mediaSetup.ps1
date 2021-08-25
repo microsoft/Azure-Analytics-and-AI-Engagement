@@ -1222,7 +1222,8 @@ az webapp start  --name $functionappmodelbuilder --resource-group $rgName
 az webapp restart --name $functionapplivestreaming --resource-group $rgName  
 az webapp restart --name $functionappmodelbuilder --resource-group $rgName 
 az webapp restart --name $functionapprecommender --resource-group $rgName 
-}
+
 
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
+}
