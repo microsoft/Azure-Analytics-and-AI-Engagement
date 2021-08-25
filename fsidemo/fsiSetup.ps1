@@ -1,3 +1,16 @@
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I accept the license agreement."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I do not accept and wish to stop execution."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$title = "Agreement"
+$message = "I have read all the disclaimers ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/README.md ) and license agreement (  https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/license.md ). I accept and agree to proceed.(Type [Y] for Yes or [N] for No and press enter)"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+if($result -eq 1)
+{
+write-host "Thank you. Please ensure you delete the resources created with template to avoid further cost implications."
+}
+
+else
+{
 function Check-HttpRedirect($uri)
 {
     $httpReq = [system.net.HttpWebRequest]::Create($uri)
@@ -1636,3 +1649,4 @@ foreach($name in $cosmos)
 
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
+}
