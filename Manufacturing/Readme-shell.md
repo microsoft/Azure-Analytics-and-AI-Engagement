@@ -202,12 +202,12 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
     ```PowerShell
     ./manufacturingSetup-shell.ps1
     ```
-     
-     > **Note** You will be prompted to confirm that you have read the license agreement and disclaimers. Click on the links to read it if not already done. Type 'Y' if       you agree with the terms and conditions in it. Else type 'N' to stop the execution. Also ensure you delete the resources in your resource group if you do not wish       to continue further.
-
-   ![Disclaimer.](media/cloud-shell-license.png)
 
    ![Commands to run the PowerShell script](media/executing-shell-script.png)
+   
+      > **Note** You will be prompted to confirm that you have read the license agreement and disclaimers. Click on the links to read it if not already done. Type 'Y'         if you agree with the terms and conditions in it. Else type 'N' to stop the execution. Also ensure you delete the resources in your resource group if you do not         wish to continue further.
+
+   ![Disclaimer](media/cloud-shell-license.png.png)
       
 7. From the Azure Cloud Shell window, **copy** the Authentication Code.
 
