@@ -233,6 +233,10 @@ When executing the script below, it is important to let the scripts run to compl
     ./01-environment-setup.ps1
     ```
     
+      > **Note** You will be prompted to confirm that you have read the license agreement and disclaimers. Click on the links to read it if not already done. Type 'Y'         if you agree with the terms and conditions in it. Else type 'N' to stop the execution. Also ensure you delete the resources in your resource group if you do not         wish to continue further.
+
+   ![Disclaimer](media/cloud-shell-license.png)
+    
     If you are running your automation on a local environment to populate 30 billion rows data, you will be prompted to specify the size of the data you want to populate into the Sales table. You can either chose the small data size with 3 million records, or the large data size with 30 billion records. Choosing 30 billion records will have the script scale your SQL Pool to DW3000c during data transfer, which might take up to 4 hours.
     
     ![The Azure Cloud Shell window is displayed with the choices of different data sizes that can be loaded into the environment by the script.](media/setup-guide-data-size.png)
