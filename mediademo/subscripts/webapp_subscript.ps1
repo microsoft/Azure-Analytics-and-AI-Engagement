@@ -218,22 +218,22 @@ $ht.add("#REVENUE_REPORT#", $($reportList | where {$_.name -eq "Video Revenue An
 $ht.add("#REALTIME_ANALYTICS_REPORT#", $($reportList | where {$_.name -eq "Realtime Operational Analytics Static"}).id)
 
 
-$filePath = "../demomedia_web_app/wwwroot/config.js";
+$filePath = "./demomedia_web_app/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
-Compress-Archive -Path "../demomedia_web_app/*" -DestinationPath "../demomedia_web_app.zip"
-Compress-Archive -Path "../app_media_search/*" -DestinationPath "../app_media_search.zip"
+Compress-Archive -Path "./demomedia_web_app/*" -DestinationPath "./demomedia_web_app.zip"
+Compress-Archive -Path "./app_media_search/*" -DestinationPath "./app_media_search.zip"
 
 az webapp stop --name $media_poc_app_service_name --resource-group $rgName
 az webapp stop --name $media_search_app_service_name --resource-group $rgName
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $media_poc_app_service_name --src "../demomedia_web_app.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $media_poc_app_service_name --src "./demomedia_web_app.zip"
 }
 catch
 {
 }
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $media_search_app_service_name --src "../app_media_search.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $media_search_app_service_name --src "./app_media_search.zip"
 }
 catch
 {
