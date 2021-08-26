@@ -40,6 +40,7 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapsemedia$init$random"
 $concatString = "$init$random"
 $sqlPoolName = "MediaDW"
+$keyVaultName = "kv-$suffix";
 $sqlUser = "labsqladmin"
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)

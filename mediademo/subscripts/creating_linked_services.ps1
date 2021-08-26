@@ -42,6 +42,7 @@ $concatString = "$random$init"
 $cosmos_database_name = "videoindexer"
 $synapseWorkspaceName = "synapsemedia$init$random"
 $sqlUser = "labsqladmin"
+$keyVaultName = "kv-$suffix";
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 $subscriptionId = (Get-AzContext).Subscription.Id
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
