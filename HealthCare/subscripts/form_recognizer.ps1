@@ -45,7 +45,7 @@ $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName 
 Add-Content log.txt "-----------------Form Recognizer---------------"
 Write-Host "-----Form Recognizer-----"
 #Replace values in create_model.py
-(Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
+(Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
 				-replace '#LOCATION#', $location`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
 				-replace '#CONTAINER_NAME#', "form-datasets"`

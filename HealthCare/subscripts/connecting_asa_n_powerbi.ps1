@@ -42,6 +42,9 @@ $healthcareasa = "asa-healthcare-$suffix"
 $highspeedasa = "asa-high-speed-datagen-healthcare-$suffix"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 
+Install-Module -Name MicrosoftPowerBIMgmt -Force
+Login-PowerBI
+
 RefreshTokens
 Add-Content log.txt "------asa powerbi connection-----"
 Write-Host "----asa powerbi connection-----"

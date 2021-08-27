@@ -80,7 +80,7 @@ $projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/j
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $storage_account_connection_string = "DefaultEndpointsProtocol=https;AccountName=" + $dataLakeAccountName + ";AccountKey="+ $storage_account_key + ";EndpointSuffix=core.windows.net"
 
-(Get-Content -path artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
+(Get-Content -path ../artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
                 -replace '#STORAGE_ACCOUNT_CONNECTION_STRING#', $storage_account_connection_string`
 				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
