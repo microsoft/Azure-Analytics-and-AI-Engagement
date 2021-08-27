@@ -60,6 +60,7 @@ $tenantId = (Get-AzContext).Tenant.Id
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 $suffix = "$random-$init"
 $concatString = "$init$random"
+$keyVaultName = "kv-$init";
 $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $searchName = "search-$suffix";
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;

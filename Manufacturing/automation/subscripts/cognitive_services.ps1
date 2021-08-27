@@ -45,17 +45,7 @@ $concatString = "$init$random"
 $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $cognitive_services_name = "dreamcognitiveservices$init"
 $location = (Get-AzResourceGroup -Name $rgName).Location
-$subscriptionId = (Get-AzContext).Subscription.Id
 $suffix = "$random-$init"
-$amlworkspacename = "amlws-$suffix"
-$forms_cogs_name = "forms-$suffix";
-$text_translation_service_name = "Mutarjum-$suffix"
-$text_translation_service_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $text_translation_service_name
-$forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
-$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-$modelUrl = python "../artifacts/formrecognizer/create_model.py"
-$modelId= $modelUrl.split("/")
-$modelId = $modelId[7]
 
 Add-Content log.txt "-----------------Cognitive Services ---------------"
 Write-Host "----Cognitive Services ------"
@@ -88,19 +78,6 @@ python ../artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey 
 
 $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"
 $projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
-
-(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
-				-replace '#RESOURCE_GROUP#', $rgName`
-				-replace '#WORKSPACE_NAME#', $amlworkspacename`
-				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
-				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
-				-replace '#LOCATION#', $location`
-				-replace '#APIM_KEY#', $forms_cogs_keys.Key1`
-				-replace '#MODEL_ID#', $modelId`
-				-replace '#TRANSLATOR_NAME#', $text_translation_service_name`
-				-replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
 			
 foreach($project in $projects)
 {
@@ -108,31 +85,31 @@ foreach($project in $projects)
 	$projectName=$project.name
 	if($projectName -eq "1_MFG__Helmet_PPE_Compliance")
 	{
-		(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+		(Get-Content -path ../artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#HARD_HAT_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/config.py
 	}
 	elseif($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
 	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+				(Get-Content -path ../artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#HELMET_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/config.py
 	}
 	elseif($projectName -eq "3_MFG__Mask_PPE_Compliance")
 	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+				(Get-Content -path ../artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#FACE_MASK_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/config.py
 	}
 	elseif($projectName -eq "1_Defective_Product_Classification")
 	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+				(Get-Content -path ../artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
                 -replace '#QUALITY_CONTROL_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/config.py
 	}
 	
 	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"

@@ -43,8 +43,43 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $amlworkspacename = "amlws-$suffix"
+$location = (Get-AzResourceGroup -Name $rgName).Location
 $cpuShell = "cpuShell$init"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$concatString = "$init$random"
+$dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$forms_cogs_name = "forms-$suffix";
+$forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
+$text_translation_service_name = "Mutarjum-$suffix"
+$text_translation_service_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $text_translation_service_name
 
+
+#Replace values in create_model.py
+(Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
+    -replace '#LOCATION#', $location`
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+    -replace '#CONTAINER_NAME#', "form-datasets"`
+    -replace '#SAS_TOKEN#', $sasToken`
+    -replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
+} | Set-Content -Path artifacts/formrecognizer/create_model.py
+
+$modelUrl = python "./artifacts/formrecognizer/create_model.py"
+$modelId= $modelUrl.split("/")
+$modelId = $modelId[7]
+
+(Get-Content -path ../artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+    -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+    -replace '#RESOURCE_GROUP#', $rgName`
+    -replace '#WORKSPACE_NAME#', $amlworkspacename`
+    -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
+    -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
+    -replace '#LOCATION#', $location`
+    -replace '#APIM_KEY#', $forms_cogs_keys.Key1`
+    -replace '#MODEL_ID#', $modelId`
+    -replace '#TRANSLATOR_NAME#', $text_translation_service_name`
+    -replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
+} | Set-Content -Path ../artifacts/amlnotebooks/config.py
 
 Write-Host  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------------AML Workspace ---------------"
@@ -121,4 +156,4 @@ Set-AzStorageFileContent `
 #create aks compute
 #az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
    
-az ml computetarget delete -n cpuShell -v
+az ml computetarget delete -n $cpuShell -v

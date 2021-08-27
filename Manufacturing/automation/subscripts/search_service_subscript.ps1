@@ -78,7 +78,7 @@ $resource=az resource show -g $rgName -n $cognitive_services_name --resource-typ
 $resourceId=$resource.id
 
 # Create Index
-Get-ChildItem "artifacts/search" -Filter osha-final.json |
+Get-ChildItem "../artifacts/search" -Filter osha-final.json |
         ForEach-Object {
             $indexDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -92,7 +92,7 @@ Get-ChildItem "artifacts/search" -Filter osha-final.json |
 Start-Sleep -s 10
 
 # Create Datasource endpoint
-Get-ChildItem "artifacts/search" -Filter search_datasource.json |
+Get-ChildItem "../artifacts/search" -Filter search_datasource.json |
         ForEach-Object {
             $datasourceDefinition = (Get-Content $_.FullName -Raw).replace("#STORAGE_CONNECTION#", $storageConnectionString)
             $headers = @{
@@ -106,15 +106,15 @@ Get-ChildItem "artifacts/search" -Filter search_datasource.json |
 Start-Sleep -s 10
 
 #Replace connection string in search_skillset.json
-(Get-Content -path artifacts/search/search_skillset.json -Raw) | Foreach-Object { $_ `
+(Get-Content -path ../artifacts/search/search_skillset.json -Raw) | Foreach-Object { $_ `
 				-replace '#RESOURCE_ID#', $resourceId`
 				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
 				-replace '#STORAGEKEY#', $storageKey`
 				-replace '#COGNITIVE_API_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/search/search_skillset.json
+			} | Set-Content -Path ../artifacts/search/search_skillset.json
 
 # Creat Skillset
-Get-ChildItem "artifacts/search" -Filter search_skillset.json |
+Get-ChildItem "../artifacts/search" -Filter search_skillset.json |
         ForEach-Object {
             $skillsetDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -128,7 +128,7 @@ Get-ChildItem "artifacts/search" -Filter search_skillset.json |
 Start-Sleep -s 10
 
 # Create Indexers
-Get-ChildItem "artifacts/search" -Filter search_indexer.json |
+Get-ChildItem "../artifacts/search" -Filter search_indexer.json |
         ForEach-Object {
             $indexerDefinition = Get-Content $_.FullName -Raw
             $headers = @{

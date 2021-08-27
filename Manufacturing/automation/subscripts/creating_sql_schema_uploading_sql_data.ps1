@@ -46,6 +46,7 @@ $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $synapseWorkspaceName = "manufacturingdemo$init$random"
 $sqlPoolName = "ManufacturingDW"
 $sqlUser = "ManufacturingUser"
+$keyVaultName = "kv-$init";
 
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
