@@ -310,7 +310,7 @@ Write-Information "Create tables in $($sqlPoolName)"
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
-Write-Information "Create storade procedures in $($sqlPoolName)"
+Write-Information "Create stored-procedures procedures in $($sqlPoolName)"
 
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-stored-procedures" -Parameters $params 
 $result

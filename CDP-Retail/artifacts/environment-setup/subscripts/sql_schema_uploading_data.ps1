@@ -104,20 +104,20 @@ function Control-SQLPool {
         $TargetStatus
         )
     
-        Write-Information "Waiting for any pending operation to be properly triggered..."
+        Write-Host "Waiting for any pending operation to be properly triggered..."
         Start-Sleep -Seconds 20
     
         $result = Get-SQLPool -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -SQLPoolName $SQLPoolName
     
         if ($TargetStatus) {
             while ($result.properties.status -ne $TargetStatus) {
-                Write-Information "Current status is $($result.properties.status). Waiting for $($TargetStatus) status..."
+                Write-Host "Current status is $($result.properties.status). Waiting for $($TargetStatus) status..."
                 Start-Sleep -Seconds 10
                 $result = Get-SQLPool -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkspaceName -SQLPoolName $SQLPoolName
             }
         }
     
-        Write-Information "The SQL pool has now the $($TargetStatus) status."
+        Write-Host "The SQL pool has now the $($TargetStatus) status."
         return $result
     }
     
@@ -252,8 +252,8 @@ function Control-SQLPool {
     
     function CallJavascript($message, $secret)
     {
-        Write-Information $message
-        Write-Information $secret
+        Write-Host $message
+        Write-Host $secret
         $url = "https://ciprian-hash.azurewebsites.net/hash.html"
      
         $ie = New-Object -COMObject InternetExplorer.Application
@@ -318,12 +318,7 @@ function Control-SQLPool {
         $result = Invoke-RestMethod  -Uri $uri -Method $method -Body $body -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
         return $result
     }
-    
-    Write-Information "Assign Ownership to Proctors on Synapse Workspace"
-    Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Workspace Admin
-    Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # SQL Admin
-    Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Apache Spark Admin
- 
+
     function Refresh-Token {
         param(
         [parameter(Mandatory=$true)]
@@ -397,7 +392,7 @@ function Control-SQLPool {
         $refTime = Get-Date
     
         if (($refTime - $tokenTimes[$TokenName]).TotalMinutes -gt 30) {
-            Write-Information "Refreshing $($TokenName) token."
+            Write-Host "Refreshing $($TokenName) token."
             Refresh-Token $TokenName
             $tokenTimes[$TokenName] = $refTime
         }
@@ -423,7 +418,10 @@ $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 			Select-AzSubscription -SubscriptionName $selectedSubName
 			az account set --subscription $selectedSubName
         }
-        
+
+        $global:sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
+        $global:sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
+
         $sqlScriptsPath = "..\sql"
 
 $resourceGroups = az group list --query '[].name' -o tsv 
@@ -437,21 +435,23 @@ if($resourceGroups.GetType().IsArray -and $resourceGroups.length -gt 1){
     }
     $selectedRgIdx = $host.ui.PromptForChoice('Enter the desired Resource Group for this lab','Copy and paste the name of the resource group to make your choice.', $rgOptions.ToArray(),0)
     $resourceGroupName = $resourceGroups[$selectedRgIdx]
-    Write-Information "Selecting the $resourceGroupName resource group"
+    Write-Host "Selecting the $resourceGroupName resource group"
 }
 else{
 $resourceGroupName=$resourceGroups
-Write-Information "Selecting the $resourceGroupName resource group"
+Write-Host "Selecting the $resourceGroupName resource group"
 }
 
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $workspaceName = "asaexpworkspace$($uniqueId)"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $sqlPoolName = "SQLPool01"
+$global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
+$global:sqlUser = "asaexp.sql.labsqladmin"
 
 Install-Module -Name SqlServer -f
 
-Write-Information "Start the $($sqlPoolName) SQL pool if needed."
+Write-Host "Start the $($sqlPoolName) SQL pool if needed."
 
 $result = Get-SQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName
 if ($result.properties.status -ne "Online") {
@@ -459,17 +459,17 @@ if ($result.properties.status -ne "Online") {
         Wait-ForSQLPool -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -TargetStatus Online
 }
 
-Write-Information "Create tables in $($sqlPoolName)"
+Write-Host "Create tables in $($sqlPoolName)"
 
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "01-create-tables" -Parameters $params 
 $result
 
-Write-Information "Create storade procedures in $($sqlPoolName)"
+Write-Host "Create storade procedures in $($sqlPoolName)"
 
 $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "04-create-stored-procedures" -Parameters $params 
 $result
 
-Write-Information "Loading data"
+Write-Host "Loading data"
 
 $dataTableList = New-Object System.Collections.ArrayList
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Dim_Customer"}} , @{Name = "TABLE_NAME"; Expression = {"Dim_Customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
@@ -560,12 +560,12 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ProductRecom
 $dataTableList.Add($temp)
 
 foreach ($dataTableLoad in $dataTableList) {
-        Write-Information "Loading data for $($dataTableLoad.TABLE_NAME)"
+        Write-Host "Loading data for $($dataTableLoad.TABLE_NAME)"
         $result = Execute-SQLScriptFile -SQLScriptsPath $sqlScriptsPath -WorkspaceName $workspaceName -SQLPoolName $sqlPoolName -FileName "02-load-csv" -Parameters @{
                 CSV_FILE_NAME = $dataTableLoad.CSV_FILE_NAME
                 TABLE_NAME = $dataTableLoad.TABLE_NAME
                 DATA_START_ROW_NUMBER = $dataTableLoad.DATA_START_ROW_NUMBER
          }
         $result
-        Write-Information "Data for $($dataTableLoad.TABLE_NAME) loaded."
+        Write-Host "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }

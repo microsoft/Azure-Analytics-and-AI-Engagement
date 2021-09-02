@@ -188,7 +188,7 @@ az login
 #for powershell...
 Connect-AzAccount -DeviceCode
     
-subs = Get-AzSubscription | Select-Object -ExpandProperty Name
+$subs = Get-AzSubscription | Select-Object -ExpandProperty Name
         if($subs.GetType().IsArray -and $subs.length -gt 1){
 			$subOptions = [System.Collections.ArrayList]::new()
 			for($subIdx=0; $subIdx -lt $subs.length; $subIdx++)
