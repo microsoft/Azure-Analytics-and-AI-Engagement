@@ -679,6 +679,9 @@ To hide title and subtitle for all the images that you have pined above. Please 
 **Pillar 2: Realtime Operational Analytics**
 
 64.	**Let’s** start Pinning the second pillar ‘Realtime Operational Analytics’
+
+> Note: We have provided a static version of the realtiime report for visual reference. You can create realtime report from the realtime dataset created in task 2. You will find example of how to create and pin a realtime visual at the end of this section.
+
 65.	**Select** the Workspace in task2
 
 	![select workspace.](media/select-workspace.png)	
@@ -811,6 +814,45 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
    ![dashboard-final.](media/dashboard-final.png)
 	
+**Creating Realtime visuals:
+
+1. **Navigate** to your Power BI workspace.
+
+2. **Click** on Datasets+Dataflows tab.
+
+3. **Click** on options for 'healthcare-operation-analytics' dataset.
+
+	![dataset.](media/dataset.png)
+	
+4. **Click** on line chart visual in visualization pane.
+
+5. **Select** on currentERWaitingTime as value and recordedOn as axis from the fields pane.
+	
+	![dataset.](media/visualCreation.png)
+
+6. **Click** on recordedOn field in filter pane.
+
+7. **Select** relative time as filter type.
+
+8. **Enter** 3 minutes in "Show item when" field.
+
+9. **Click** on apply filter.
+	
+	![dataset.](media/visualfilter.png)
+	
+10. **Click** on pin button. You will be prompted to save the report. Save it as 'Operation-analytics-realtime'.
+
+	![dataset.](media/realtimepin.png)
+	
+11. **Select** Existing dashboard.
+
+12. **Select** your dashboard.
+
+13. **Click** on pin.
+
+	![dataset.](media/realtimedash.png)
+	
+14. Similarly you can create the rest of the realtime visuals by referencing the 'healthcare-operation-analytics' report and pin them to the dashboard.
 
 ### Task 8: Creating Synapse Views
 
