@@ -447,7 +447,7 @@ $workspaceName = "asaexpworkspace$($uniqueId)"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $sqlPoolName = "SQLPool01"
 $global:sqlEndpoint = "$($workspaceName).sql.azuresynapse.net"
-$global:sqlUser = "asaexp.sql.labsqladmin"
+$global:sqlUser = "asaexp.sql.admin"
 
 Install-Module -Name SqlServer -f
 
