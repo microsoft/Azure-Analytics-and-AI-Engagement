@@ -70,10 +70,10 @@ function Check-HttpRedirect($uri)
 function RefreshTokens()
 {
     #Copy external blob content
-    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
-    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
-    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com) | ConvertFrom-Json).accessToken
-    $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
+    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api --output json) | ConvertFrom-Json).accessToken
+    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net --output json) | ConvertFrom-Json).accessToken
+    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com --output json) | ConvertFrom-Json).accessToken
+    $global:managementToken = ((az account get-access-token --resource https://management.azure.com --output json) | ConvertFrom-Json).accessToken
 }
 
 function ReplaceTokensInFile($ht, $filePath)
@@ -188,7 +188,7 @@ $keyVaultName = "kv-$suffix";
 $amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
-$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $workflows_logic_video_indexer_trigger_name = "logic-app-video-trigger-$suffix"

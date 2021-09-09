@@ -294,7 +294,8 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 Command:
 ```
-git clone -b media https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git media
+git clone -b media --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git media
+
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
