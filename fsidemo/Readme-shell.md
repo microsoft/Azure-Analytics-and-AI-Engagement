@@ -374,7 +374,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
 Command:
 ```
-git clone -b fsi https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fsi
+git clone -b fsi --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fsi
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
