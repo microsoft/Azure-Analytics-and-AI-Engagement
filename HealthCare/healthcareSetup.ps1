@@ -71,10 +71,10 @@ function Check-HttpRedirect($uri)
 function RefreshTokens()
 {
     #Copy external blob content
-    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
-    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
-    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com) | ConvertFrom-Json).accessToken
-    $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
+    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api --output json) | ConvertFrom-Json).accessToken
+    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net --output json) | ConvertFrom-Json).accessToken
+    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com --output json) | ConvertFrom-Json).accessToken
+    $global:managementToken = ((az account get-access-token --resource https://management.azure.com --output json) | ConvertFrom-Json).accessToken
 }
 
 function ReplaceTokensInFile($ht, $filePath)
@@ -199,12 +199,12 @@ $text_translation_service_healthcare_analytics_name = "ta-healthcare-analytics-$
 $amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
-$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 #$text_translation_service_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $text_translation_service_name
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName  --output json | ConvertFrom-Json).primarykey;
 
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
@@ -230,10 +230,10 @@ $sqlPassword = $secretValueText
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 #Cosmos keys
-$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_heathcare -g $rgName |ConvertFrom-Json
+$cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name_heathcare -g $rgName --output json | ConvertFrom-Json
 $cosmos_account_key=$cosmos_account_key.primarymasterkey
 
-$cosmos_account_key_mongo=az cosmosdb keys list -n $cosmos_mongo_account_name_heathcare -g $rgName |ConvertFrom-Json
+$cosmos_account_key_mongo=az cosmosdb keys list -n $cosmos_mongo_account_name_heathcare -g $rgName  --output json |ConvertFrom-Json
 $cosmos_account_key_mongo=$cosmos_account_key_mongo.primarymasterkey
 
 ###################################################################
@@ -362,7 +362,7 @@ pip install -r ./artifacts/copyCV/requirements.txt
 $sourceKey="0ea6df654a9f47a4b9a3da65988f461e"  #todo: find a way to get this securely
 
 #get list of keys - cognitiveservices
-$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json
+$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName --output json |ConvertFrom-json
 $destinationKey=$key.key1
 
 #CT scan project
@@ -475,7 +475,7 @@ Add-Content log.txt "------asa powerbi connection-----"
 Write-Host "----asa powerbi connection-----"
 #connecting asa and powerbi
 
-$principal=az resource show -g $rgName -n $healthcareasa --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+$principal=az resource show -g $rgName -n $healthcareasa --resource-type "Microsoft.StreamAnalytics/streamingjobs"  --output json |ConvertFrom-Json
 $principalId=$principal.identity.principalId
 Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
@@ -1102,7 +1102,7 @@ $adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName
 $primaryAdminKey = $adminKeyPair.Primary
 
 #get list of keys - cognitiveservices
-$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json
+$key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName --output json |ConvertFrom-json
 $destinationKey=$key.key1
 
 # Fetch connection string
@@ -1110,7 +1110,7 @@ $storageKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupN
 $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$($storageAccountName);AccountKey=$($storageKey);EndpointSuffix=core.windows.net"
 
 #resource id of cognitive_services_name
-$resource=az resource show -g $rgName -n $cognitive_services_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
+$resource=az resource show -g $rgName -n $cognitive_services_name --resource-type "Microsoft.CognitiveServices/accounts" --output json |ConvertFrom-Json
 $resourceId=$resource.id
 
 # Create Index

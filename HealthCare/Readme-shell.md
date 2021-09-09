@@ -342,7 +342,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
 
     ```PowerShell
-    git clone -b healthcare https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git healthcare
+    git clone -b healthcare --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git healthcare
     ```
     
     ![Git clone command to pull down the demo repository](media/Git-Clone-Command-Screen11.png)
