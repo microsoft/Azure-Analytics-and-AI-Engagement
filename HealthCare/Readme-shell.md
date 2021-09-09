@@ -56,6 +56,8 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 * An Azure Account with the ability to create an Azure Synapse Workspace.
 * A Power BI Pro or Premium account to host Power BI reports.
+* You may be required to provision a Dedicated Premium Capacity in Power BI for dashboard creation.
+* Make sure Power BI embedding is enabled for your subscription in order to view the reports in web app.
 * Make sure the following resource providers are registered with your Azure Subscription.
    
    - Microsoft.Sql 
