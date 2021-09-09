@@ -325,7 +325,7 @@
       "name": "[variables('search_fsi_demo_name')]",
       "location": "[variables('location')]",
       "sku": {
-        "name": "standard2"
+        "name": "standard"
       },
       "properties": {
         "replicaCount": 1,
