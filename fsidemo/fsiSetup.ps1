@@ -70,10 +70,10 @@ function Check-HttpRedirect($uri)
 function RefreshTokens()
 {
     #Copy external blob content
-    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api) | ConvertFrom-Json).accessToken
-    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
-    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com) | ConvertFrom-Json).accessToken
-    $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
+    $global:powerbitoken = ((az account get-access-token --resource https://analysis.windows.net/powerbi/api --output json) | ConvertFrom-Json).accessToken
+    $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net --output json) | ConvertFrom-Json).accessToken
+    $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com --output json) | ConvertFrom-Json).accessToken
+    $global:managementToken = ((az account get-access-token --resource https://management.azure.com --output json) | ConvertFrom-Json).accessToken
 }
 
 function ReplaceTokensInFile($ht, $filePath)
@@ -176,13 +176,13 @@ $mssql_database_name = "db-geospatial"
 $accounts_maps_name = "mapsfsi-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
-$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-$map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
+$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName --output json | ConvertFrom-Json).primarykey;
+$map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName --output json |ConvertFrom-Json
 $accounts_map_key = $map_key.primaryKey
 $cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_translator_name
 
@@ -1204,11 +1204,11 @@ $dbswsId = $(az resource show `
 
 # Get a token for the global Databricks application.
 # The resource ID is fixed and never changes.
-$token_response = $(az account get-access-token --resource 2ff814a6-3304-4ab8-85cb-cd0e6f879c1d) | ConvertFrom-Json
+$token_response = $(az account get-access-token --resource 2ff814a6-3304-4ab8-85cb-cd0e6f879c1d --output json) | ConvertFrom-Json
 $token = $token_response.accessToken
 
 # Get a token for the Azure management API
-$token_response = $(az account get-access-token --resource https://management.core.windows.net/) | ConvertFrom-Json
+$token_response = $(az account get-access-token --resource https://management.core.windows.net/ --output json) | ConvertFrom-Json
 $azToken = $token_response.accessToken
 $uri = "https://$($location).azuredatabricks.net/api/2.0/token/create"
 $baseUrl = "https://$($location).azuredatabricks.net"
