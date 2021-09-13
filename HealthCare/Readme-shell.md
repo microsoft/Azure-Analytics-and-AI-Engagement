@@ -150,7 +150,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 | currentERWaitingTime              | number   |
 | currentICUBedOccupancyRate        | number   |
 | currentBedOccupancyRate           | number   |
-| ratingPossitivePercentage         | number   |
+| ratingPositivePercentage         | number   |
 | ratingNeutralPercentage           | number   |
 | ratingNegativePercentage          | number   |
 | averageERWaitingTime              | number   |
