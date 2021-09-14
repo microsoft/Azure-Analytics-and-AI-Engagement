@@ -82,6 +82,13 @@ RefreshTokens
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 
+$zips = @("mfg-webapp", "wideworldimporters");
+
+foreach($zip in $zips)
+{
+    expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+}
+
 $app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
 $secretpassword="Smoothie@Smoothie@2020"
 $secret = ConvertTo-SecureString -String $secretpassword -AsPlainText -Force
@@ -210,9 +217,6 @@ az webapp start --name $manufacturing_poc_app_service_name --resource-group $rgN
 
 foreach($zip in $zips)
 {
-	if($zip -eq "mfg-webapp")
-	{
     remove-item -path "./$($zip)" -recurse -force
     remove-item -path "./$($zip).zip" -recurse -force
-	}
 }

@@ -81,7 +81,7 @@ $app_insights_instrumentation_key_telemetry = $(Get-AzApplicationInsights -Resou
 $app_insights_instrumentation_key_sku2 = $(Get-AzApplicationInsights -ResourceGroupName $rgName -Name $ai_name_hub).InstrumentationKey
 $app_insights_instrumentation_key_sendtohub = $(Get-AzApplicationInsights -ResourceGroupName $rgName -Name $ai_name_sendtohub).InstrumentationKey
 
-$zips = @("carTelemetry", "datagenTelemetry", "sku2", "sendtohub", "mfg-webapp", "wideworldimporters");
+$zips = @("carTelemetry", "datagenTelemetry", "sku2", "sendtohub");
 
 foreach($zip in $zips)
 {
@@ -145,10 +145,6 @@ az webapp start --name $wideworldimporters_app_service_name --resource-group $rg
 
 foreach($zip in $zips)
 {
-	if($zip -eq "mfg-webapp")
-	{
-	continue
-	}
     remove-item -path "./$($zip)" -recurse -force
     remove-item -path "./$($zip).zip" -recurse -force
 }
