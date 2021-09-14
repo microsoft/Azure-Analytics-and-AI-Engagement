@@ -210,10 +210,15 @@ Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
 
 Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
+Compress-Archive -Path "./wideworldimporters/*" -DestinationPath "./wideworldimporters.zip"
 
 az webapp stop --name $manufacturing_poc_app_service_name --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $manufacturing_poc_app_service_name --src "./mfg-webapp.zip"
 az webapp start --name $manufacturing_poc_app_service_name --resource-group $rgName
+
+az webapp stop --name $wideworldimporters_app_service_name --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $wideworldimporters_app_service_name --src "./wideworldimporters.zip"
+az webapp start --name $wideworldimporters_app_service_name --resource-group $rgName
 
 foreach($zip in $zips)
 {
