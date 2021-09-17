@@ -617,9 +617,12 @@ Do the following to pin visuals to the dashboard you just created:
 
 43. **Select** the ‘Chief Customer Officer Before’ from existing dashboard list and **click** on pin.
 
-44. Similarly pin rest of the images from chief customer officer tab of the Chicklets report.
-
 	![Pin all image.](media/report-2.png)
+
+44. Similarly pin rest of the images from chief customer officer tab of the Chicklets report. 
+
+	> **Note**: Rest of the images to be pinned are inside the respective report section. The general chicklets like kpi, logo, deep dive etc are located in "Page 1" report section.
+
 
 45. **Go back** to the ‘Chief Customer Officer Before’ dashboard.
 	
@@ -641,7 +644,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Repeat Steps.](media/report-5.png)
 
-51. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+51. After deselecting ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange.](media/report-6.png)
 
@@ -668,7 +671,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	
 58.	**Enter** title of the card.
 59.	**Select** Segoe UI font style.
-60.	**Select** appropriate font size and color for the card.
+60.	**Select** appropriate font size (32) and color (#FBCD00) for the card.
 61.	**Enter** the text content of card.
 62.	**Click** apply.
 
@@ -702,6 +705,8 @@ Table in following row indicates which Kpi’s need to be pinned from which repo
 70. **Refer** to this table while pinning rest of the tiles to the dashboard.
 	
 	![Refer the table.](media/report-16.png)
+	
+	> **Note**: The table of dashboard tiles and their associated report names is located [here](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Dashbords%20and%20Reports%20for%20FSI.xlsx) for you to download and refer.
 
 71. Here is the list of Dashboards you have to create for FSI. You will see the necessary details for the same below.
 
@@ -791,13 +796,6 @@ Table in following row indicates which Kpi’s need to be pinned from which repo
 
 	![Woodgrove Executive Dashboard September KPIs.](media/report-38.png)
 
-93. Woodgrove Executive Dashboard September 2
-
-	![Woodgrove Executive Dashboard September 2.](media/report-39.png)
-
-94. Dashboard KPI’s.
-
-	![Dashboard KPI’s.](media/report-40.png)
 
 **Steps to create Real time report (Optional)**
 This task is optional since we have provided static versions of the reports in the package already.
