@@ -1169,7 +1169,7 @@ foreach($report in $reportList)
     {
        continue;     
 	}
-	elseif($report.name -eq "ESG Metrics for Woodgrove" -or $report.name -eq  "FSI Incident Report" -or $report.name -eq "FSI HTAP" -or $report.name -eq "ESG Report Synapse Import Mode" -or $report.name -eq "Geospatial Fraud Detection Miami" -or $report.name -eq "Finance Report" -or $report.name -eq "globalmarkets" -or $report.name -eq "FSI CCO Dashboard"  -or $report.name -eq "FSI CEO Dashboard" -or $report.name -eq  "Company Insight KPIs" -or $report.name -eq "US Map with header" -or $report.name -eq "MSCI report" -or $report.name -eq "FSI Predictive Analytics" or $report.name -eq "Head of Financial Intelligence" or $report.name -eq "Group Chief Risk Officer")
+	elseif($report.name -eq "ESG Metrics for Woodgrove" -or $report.name -eq  "FSI Incident Report" -or $report.name -eq "FSI HTAP" -or $report.name -eq "ESG Report Synapse Import Mode" -or $report.name -eq "Geospatial Fraud Detection Miami" -or $report.name -eq "Finance Report" -or $report.name -eq "globalmarkets" -or $report.name -eq "FSI CCO Dashboard"  -or $report.name -eq "FSI CEO Dashboard" -or $report.name -eq  "Company Insight KPIs" -or $report.name -eq "US Map with header" -or $report.name -eq "MSCI report" -or $report.name -eq "FSI Predictive Analytics" -or $report.name -eq "Head of Financial Intelligence" -or $report.name -eq "Group Chief Risk Officer")
     {
       $body = "{
 			`"updateDetails`": [
