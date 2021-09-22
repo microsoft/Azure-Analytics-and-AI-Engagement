@@ -2,7 +2,7 @@ $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I 
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I do not accept and wish to stop execution."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
 $title = "Agreement"
-$message = "I have read all the disclaimers ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/README.md ) and license agreement (  https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/license.md ). I accept and agree to proceed.(Type [Y] for Yes or [N] for No and press enter)"
+$message = "By typing [Y], I hereby confirm that I have read the license ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/license.md ) and disclaimers ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/README.md ) and hereby accept the terms of the license and agree that the terms and conditions set forth therein govern my use of the code made available hereunder. (Type [Y] for Yes or [N] for No and press enter)"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 if($result -eq 1)
 {
