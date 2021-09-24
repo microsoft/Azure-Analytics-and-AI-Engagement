@@ -1955,7 +1955,7 @@
       "apiVersion": "2019-08-01",
       "location": "[variables('location')]",
       "sku": {
-        "name": "P1v2"
+        "name": "S1"
       },
       "kind": "linux",
       "properties": {
@@ -2085,7 +2085,7 @@
       "apiVersion": "2019-08-01",
       "location": "[variables('location')]",
       "sku": {
-        "name": "P1v2"
+        "name": "S1"
       },
       "kind": "linux",
       "properties": {
