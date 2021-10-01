@@ -1633,7 +1633,7 @@
     {
       "name": "[variables('workspace_name_synapsehealthcare')]",
       "type": "Microsoft.Synapse/workspaces",
-      "apiVersion": "2019-06-01-preview",
+       "apiVersion": "2021-05-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_healthcare_name'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
@@ -1652,7 +1652,7 @@
       "resources": [
         {
           "type": "firewallrules",
-          "apiVersion": "2019-06-01-preview",
+           "apiVersion": "2021-05-01",
           "name": "allowAll",
           "location": "[variables('location')]",
           "dependsOn": [
@@ -1668,7 +1668,7 @@
     {
       "name": "[concat(variables('workspace_name_synapsehealthcare'), '/', variables('spark_compute_name'))]",
       "type": "Microsoft.Synapse/workspaces/bigDataPools",
-      "apiVersion": "2019-06-01-preview",
+       "apiVersion": "2021-05-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_synapsehealthcare'))]"
@@ -1692,7 +1692,7 @@
     {
       "name": "[concat(variables('workspace_name_synapsehealthcare'), '/', variables('sql_compute_name'))]",
       "type": "Microsoft.Synapse/workspaces/sqlPools",
-      "apiVersion": "2019-06-01-preview",
+       "apiVersion": "2021-05-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapsehealthcare'))]"
@@ -1708,7 +1708,7 @@
     {
       "name": "[concat(variables('workspace_name_synapsehealthcare'), '/',variables('sql_compute_name'),'/current')]",
       "type": "Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption",
-      "apiVersion": "2019-06-01-preview",
+       "apiVersion": "2021-05-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Synapse/workspaces/sqlPools', variables('workspace_name_synapsehealthcare'), variables('sql_compute_name'))]"
