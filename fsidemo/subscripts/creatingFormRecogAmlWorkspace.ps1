@@ -61,10 +61,9 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
+$forms_cogs_key = $forms_cogs_keys.Key1
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-$map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
-$accounts_map_key = $map_key.primaryKey
 $cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_translator_name
 $key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
 $cog_marketdatacgsvc_key=$key.key1
@@ -82,7 +81,7 @@ Write-Host "----Form Recognizer-----"
     -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
     -replace '#CONTAINER_NAME#', "form-datasets"`
     -replace '#SAS_TOKEN#', $sasToken`
-    -replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
+    -replace '#APIM_KEY#',  $forms_cogs_key`
 } | Set-Content -Path ../artifacts/formrecognizer/create_model.py
 
 $modelUrl = python "../artifacts/formrecognizer/create_model.py"
@@ -97,7 +96,7 @@ $search_uri = "https://"+$searchName+".search.windows.net"
 
 $filepath="../artifacts/amlnotebooks/GlobalVariables.py"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#SEARCH_API_KEY#", $searchKey).Replace("#SEARCH_URI#", $search_uri).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_keys.Key1).Replace("#ACCOUNT_OPENING_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#INCIDENT_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#WORKSPACE_NAME#", $amlworkspacename).Replace("#TRANSLATOR_SERVICE_NAME#", $cog_translator_name).Replace("#TRANSLATOR_SERVICE_KEY#", $cog_translator_key.Key1).Replace("#CPU_SHELL#",$cpuShell)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#SEARCH_API_KEY#", $searchKey).Replace("#SEARCH_URI#", $search_uri).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_key).Replace("#ACCOUNT_OPENING_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#INCIDENT_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#WORKSPACE_NAME#", $amlworkspacename).Replace("#TRANSLATOR_SERVICE_NAME#", $cog_translator_name).Replace("#TRANSLATOR_SERVICE_KEY#", $cog_translator_key.Key1).Replace("#CPU_SHELL#",$cpuShell)
 Set-Content -Path $filepath -Value $item
 
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
@@ -114,7 +113,7 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 #get fileshare and code folder within that
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
-$shareName = $share.Name
+$shareName = $share[0].Name
 $notebooks=Get-ChildItem "../artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
