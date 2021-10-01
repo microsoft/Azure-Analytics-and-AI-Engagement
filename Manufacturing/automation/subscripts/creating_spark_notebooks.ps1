@@ -51,7 +51,7 @@ $synapseWorkspaceName = "manufacturingdemo$init$random"
 $searchName = "search-$suffix";
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-
+$sparkPoolName = "MFGDreamPool"
 $forms_cogs_name = "forms-$suffix";
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 
