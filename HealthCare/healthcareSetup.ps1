@@ -1200,36 +1200,36 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 
 #get fileshare and code folder within that
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
-$share = Get-AzStorageShare -Context $storageAcct.Context 
-$shareName = $share[0].Name
-
-#create Users folder ( it wont be there unless we launch the workspace in UI)
+#$share = Get-AzStorageShare -Context $storageAcct.Context 
+#$shareName = $share[0].Name
+#
+##create Users folder ( it wont be there unless we launch the workspace in UI)
 New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
-
-#copy notebooks to ml workspace
-$notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
-foreach($notebook in $notebooks)
-{
-	if($notebook.BaseName -eq "GlobalVariables")
-	{
-		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
-		$path="/Users/"+$notebook.BaseName+".py"
-	}
-	else
-	{
-		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
-		$path="/Users/"+$notebook.BaseName+".ipynb"
-	}
-
-Set-AzStorageFileContent `
-   -Context $storageAcct.Context `
-   -ShareName $shareName `
-   -Source $source `
-   -Path $path
-}
+#
+##copy notebooks to ml workspace
+#$notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
+#foreach($notebook in $notebooks)
+#{
+#	if($notebook.BaseName -eq "GlobalVariables")
+#	{
+#		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
+#		$path="/Users/"+$notebook.BaseName+".py"
+#	}
+#	else
+#	{
+#		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
+#		$path="/Users/"+$notebook.BaseName+".ipynb"
+#	}
+#
+#Set-AzStorageFileContent `
+#   -Context $storageAcct.Context `
+#   -ShareName $shareName `
+#   -Source $source `
+#   -Path $path
+#}
 
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
-$shareName = $share.Name
+$shareName = $share[0].Name
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
