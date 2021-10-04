@@ -323,9 +323,9 @@ Write-Host "----Form Recognizer-----"
 				-replace '#CONTAINER_NAME#', "form-datasets"`
 				-replace '#SAS_TOKEN#', $sasToken`
 				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
-			} | Set-Content -Path artifacts/formrecognizer/create_model.py
+			} | Set-Content -Path artifacts/formrecognizer/create_model1.py
 			
-$modelUrl = python "./artifacts/formrecognizer/create_model.py"
+$modelUrl = python "./artifacts/formrecognizer/create_model1.py"
 $modelId= $modelUrl.split("/")
 $modelId = $modelId[7]
 
