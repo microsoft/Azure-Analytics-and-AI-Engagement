@@ -2,7 +2,7 @@ import json
 import time
 from requests import get, post
 
-endpoint = r"https://#LOCATION#.api.cognitive.microsoft.com/"
+endpoint = r"https://#FORM_RECOGNIZER_NAME#.api.cognitive.microsoft.com/"
 post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
 source = r"https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/#CONTAINER_NAME##SAS_TOKEN#"
 prefix = ""
