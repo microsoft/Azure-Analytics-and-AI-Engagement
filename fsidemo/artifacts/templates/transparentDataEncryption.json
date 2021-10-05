@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspace_name_synapsefsi": {
+      "type": "String"
+    },
+    "sql_compute_name": {
+      "type": "String"
+    },
+	  "location": {
+      "type": "String"
+    }
+  },
+  "variables": {
+	 },
+  "resources": [
+	{
+         "type":"Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption",
+         "apiVersion": "2021-05-01",
+         "name":"[concat(parameters('workspace_name_synapsefsi'), '/',parameters('sql_compute_name'),'/current')]",
+         "location": "[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Synapse/workspaces/sqlPools', parameters('workspace_name_synapsefsi'), parameters('sql_compute_name'))]"
+         ],
+         "properties":{
+            "status":"Enabled"
+         }
+      }
+	  ],
+  "outputs": {
+
+  }
+}
