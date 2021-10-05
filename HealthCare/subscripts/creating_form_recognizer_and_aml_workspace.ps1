@@ -71,7 +71,7 @@ Write-Host "-----Form Recognizer-----"
 				-replace '#CONTAINER_NAME#', "form-datasets"`
 				-replace '#SAS_TOKEN#', $sasToken`
 				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
-			} | Set-Content -Path artifacts/formrecognizer/create_model1.py
+			} | Set-Content -Path ../artifacts/formrecognizer/create_model1.py
 			
 $modelUrl = python "../artifacts/formrecognizer/create_model1.py"
 $modelId= $modelUrl.split("/")
@@ -131,7 +131,7 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
-$notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
+$notebooks=Get-ChildItem "../artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
 	if($notebook.BaseName -eq "GlobalVariables")
