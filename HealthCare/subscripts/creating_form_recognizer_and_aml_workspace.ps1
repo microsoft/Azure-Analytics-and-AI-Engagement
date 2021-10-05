@@ -90,6 +90,7 @@ az extension add -n azure-cli-ml
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
 				-replace '#LOCATION#', $location`
 				-replace '#FORM_RECOGNIZER_NAME#', $forms_cogs_name`
+				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
 				-replace '#FORM_RECOGNIZER_MODEL_ID#', $modelId`
                 -replace '#COGNITIVE_SERVICES_NAME#', $cognitive_services_name`
 			} | Set-Content -Path ../artifacts/amlnotebooks/GlobalVariables.py
