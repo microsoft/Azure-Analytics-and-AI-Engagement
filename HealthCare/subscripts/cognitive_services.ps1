@@ -42,10 +42,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $concatString = "$init$random"
 $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
 $suffix = "$random-$init"
-$forms_cogs_name = "cog-formrecognition-$suffix";
-$modelUrl = python "../artifacts/formrecognizer/create_model.py"
-$modelId= $modelUrl.split("/")
-$modelId = $modelId[7]
 
 Add-Content log.txt "-----------------Cognitive Services ---------------"
 Write-Host "----Cognitive Services ------"
@@ -85,8 +81,6 @@ $storage_account_connection_string = "DefaultEndpointsProtocol=https;AccountName
 				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
 				-replace '#LOCATION#', $location`
-				-replace '#FORM_RECOGNIZER_NAME#', $forms_cogs_name`
-				-replace '#FORM_RECOGNIZER_MODEL_ID#', $modelId`
                 -replace '#COGNITIVE_SERVICES_NAME#', $cognitive_services_name`
 			} | Set-Content -Path artifacts/amlnotebooks/GlobalVariables.py
 			
