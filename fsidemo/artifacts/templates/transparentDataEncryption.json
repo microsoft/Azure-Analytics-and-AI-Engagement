@@ -7,22 +7,17 @@
     },
     "sql_compute_name": {
       "type": "String"
-    },
-	  "location": {
-      "type": "String"
     }
   },
   "variables": {
+	  "location": "[resourceGroup().location]"
 	 },
   "resources": [
 	{
          "type":"Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption",
          "apiVersion": "2021-05-01",
          "name":"[concat(parameters('workspace_name_synapsefsi'), '/',parameters('sql_compute_name'),'/current')]",
-         "location": "[parameters('location')]",
-         "dependsOn":[
-            "[resourceId('Microsoft.Synapse/workspaces/sqlPools', parameters('workspace_name_synapsefsi'), parameters('sql_compute_name'))]"
-         ],
+          "location": "[variables('location')]",
          "properties":{
             "status":"Enabled"
          }
