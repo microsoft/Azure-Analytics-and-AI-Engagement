@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -46,7 +45,6 @@ $storageAccountName = $dataLakeAccountName
 
 #Search service 
 Write-Host "-----------------Search service ---------------"
-Add-Content log.txt "-----------------Search service ---------------"
 RefreshTokens
 # Create Search Service
 #$sku = "Standard"

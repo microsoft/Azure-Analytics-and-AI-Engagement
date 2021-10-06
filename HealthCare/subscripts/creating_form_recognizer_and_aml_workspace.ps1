@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -115,7 +114,6 @@ $projectId=$project.id
 	}
 }
 
-az ml workspace create -w $amlworkspacename -g $rgName
 
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName -e aml

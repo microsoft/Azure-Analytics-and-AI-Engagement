@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -45,9 +44,8 @@ $cosmos_account_name_heathcare = $cosmos_account_name_heathcare.substring(0,43)
 }
 $cosmos_database_name_healthcare = "healthcare"
 
-Write-Host  "-----------------Uploading Cosmos Data Started--------------"
 #uploading Cosmos data
-Add-Content log.txt "-----------------uploading Cosmos data--------------"
+Write-Host  "-----------------Uploading Cosmos Data Started--------------"
 RefreshTokens
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-Module -Name PowerShellGet -Force

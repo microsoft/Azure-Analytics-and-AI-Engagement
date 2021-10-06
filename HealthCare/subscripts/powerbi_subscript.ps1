@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
@@ -46,9 +45,7 @@ $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
 #uploading powerbi reports
 RefreshTokens
 
-Add-Content log.txt "------powerbi reports upload------"
-Write-Host "-----------------powerbi reports upload ---------------"
-Write-Host "Uploading power BI reports"
+Write-Host "----------Uploading power BI reports----------"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
 $reports=Get-ChildItem "../artifacts/reports" | Select BaseName 
@@ -76,7 +73,7 @@ foreach($name in $reports)
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
 		Start-Sleep -s 5 
 		
-        Add-Content log.txt $result
+        Write-Host $result
         $reportId = $result.id;
 
         $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
@@ -90,7 +87,7 @@ foreach($name in $reports)
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 		
-        Add-Content log.txt $dataSets
+        Write-Host $dataSets
         
         $temp.ReportId = $reportId;
 
@@ -108,7 +105,7 @@ Start-Sleep -s 60
 
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
 $pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-Add-Content log.txt $pbiResult  
+Write-Host $pbiResult  
 
 foreach($r in $pbiResult.value)
 {
@@ -119,13 +116,7 @@ foreach($r in $pbiResult.value)
 RefreshTokens
 
 #Establish powerbi reports dataset connections
-Add-Content log.txt "------pbi connections update------"
-Write-Host "--------- pbi connections update---------"	
-$powerBIDataSetConnectionTemplate = Get-Content -Path "../artifacts/templates/powerbi_dataset_connection.json"
-
-$powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "$($synapseWorkspaceName).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
-
-#$sourceServers = @("manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net", "manufacturingdemo.sql.azuresynapse.net", "dreamdemosynapse.sql.azuresynapse.net","manufacturingdemocjgnpnq4eqzbflgi.sql.azuresynapse.net", "manufacturingdemodemocwbennanrpo5s.sql.azuresynapse.net", "HelloWorld.sql.azuresynapse.net","manufacturingdemosep5n2tdtctkwpyjc.sql.azuresynapse.net")
+Write-Host "------pbi connections update------"
 
 foreach($report in $reportList)
 {

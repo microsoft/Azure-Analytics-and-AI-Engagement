@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -46,8 +45,7 @@ Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
 
 RefreshTokens
-Add-Content log.txt "------asa powerbi connection-----"
-Write-Host "----asa powerbi connection-----"
+Write-Host "------asa powerbi connection-----"
 #connecting asa and powerbi
 
 $principal=az resource show -g $rgName -n $healthcareasa --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json

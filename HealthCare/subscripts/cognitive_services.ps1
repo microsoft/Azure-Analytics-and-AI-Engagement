@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $cognitive_services_name = "cog-healthcare-$init"
@@ -41,14 +40,12 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $concatString = "$init$random"
 $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
-$suffix = "$random-$init"
 
-Add-Content log.txt "-----------------Cognitive Services ---------------"
-Write-Host "----Cognitive Services ------"
+Write-Host "-----------------Cognitive Services ---------------"
 RefreshTokens
 #Custom Vision 
 pip install -r ../artifacts/copyCV/requirements.txt
-$sourceKey="0ea6df654a9f47a4b9a3da65988f461e"  #todo: find a way to get this securely
+$sourceKey="0ea6df654a9f47a4b9a3da65988f461e" 
 
 #get list of keys - cognitiveservices
 $key=az cognitiveservices account keys list --name $cognitive_services_name -g $rgName|ConvertFrom-json

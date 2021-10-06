@@ -52,7 +52,7 @@ try {
 }
 $sqlPassword = $secretValueText
 
-Add-Content log.txt "------uploading sql data------"
+Write-Host "------uploading sql data------"
 Write-Host  "-----------------Uploading sql data ---------------"
 RefreshTokens
 #uploading sql data

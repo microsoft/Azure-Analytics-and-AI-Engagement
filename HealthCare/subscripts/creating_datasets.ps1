@@ -33,14 +33,13 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapsehealthcare$init$random"
 
 #Creating Datasets
-Add-Content log.txt "------datasets------"
+Write-Host "------datasets------"
 Write-Host "Creating Datasets"
 RefreshTokens
 $DatasetsPath="../artifacts/datasets";	
@@ -48,10 +47,9 @@ $datasets=Get-ChildItem "../artifacts/datasets" | Select BaseName
 foreach ($dataset in $datasets) 
 {
     Write-Host "Creating dataset $($dataset.BaseName)"
-	$LinkedServiceName=$datasets[$dataset.BaseName]
 	$itemTemplate = Get-Content -Path "$($DatasetsPath)/$($dataset.BaseName).json"
-	$item = $itemTemplate #.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
+	$item = $itemTemplate
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/datasets/$($dataset.BaseName)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-	Add-Content log.txt $result
+	Write-Host $result
 }

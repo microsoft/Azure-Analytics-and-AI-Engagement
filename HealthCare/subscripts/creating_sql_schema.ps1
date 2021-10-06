@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -64,8 +63,7 @@ $cosmos_account_key_mongo=az cosmosdb keys list -n $cosmos_mongo_account_name_he
 $cosmos_account_key_mongo=$cosmos_account_key_mongo.primarymasterkey
 $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
 
-Add-Content log.txt "------sql schema-----"
-Write-Host "----sql schema------"
+Write-Host "------sql schema-----"
 RefreshTokens
 #creating sql schema
 Write-Host "Create tables in $($sqlPoolName)"
@@ -73,7 +71,7 @@ $SQLScriptsPath="../artifacts/sqlscripts"
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/tableschema.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 #$sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
 (Get-Content -path "$($SQLScriptsPath)/sqluser.sql" -Raw) | Foreach-Object { $_ `
@@ -82,37 +80,37 @@ Add-Content log.txt $result
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery="CREATE USER [BillingStaff] FOR LOGIN [BillingStaff] WITH DEFAULT_SCHEMA=[dbo]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery="CREATE USER [ChiefOperatingManager] FOR LOGIN [ChiefOperatingManager] WITH DEFAULT_SCHEMA=[dbo]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery="CREATE USER [CareManagerLosAngeles] FOR LOGIN [CareManagerLosAngeles] WITH DEFAULT_SCHEMA=[dbo]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery="CREATE USER [CareManagerMiami] FOR LOGIN [CareManagerMiami] WITH DEFAULT_SCHEMA=[dbo]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery="CREATE USER [CareManager] FOR LOGIN [CareManager] WITH DEFAULT_SCHEMA=[dbo]"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result
+Write-Host $result
 
 $sqlQuery  = "CREATE DATABASE HealthCareSqlOnDemand"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result	
+Write-Host $result	
  
 (Get-Content -path "$($SQLScriptsPath)/sqlOnDemandSchema.sql" -Raw) | Foreach-Object { $_ `
                 -replace '#COSMOS_ACCOUNT_MONGO#', $cosmos_mongo_account_name_heathcare`
@@ -122,4 +120,4 @@ Add-Content log.txt $result
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqlOnDemandSchema.sql"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database HealthCareSqlOnDemand -Username $sqlUser -Password $sqlPassword
-Add-Content log.txt $result	
+Write-Host $result	

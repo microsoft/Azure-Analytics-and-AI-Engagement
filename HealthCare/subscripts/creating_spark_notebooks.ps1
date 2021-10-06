@@ -33,7 +33,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -60,8 +59,7 @@ $cosmos_account_name_heathcare = $cosmos_account_name_heathcare.substring(0,43)
 }
 
 #Creating spark notebooks
-Add-Content log.txt "--------------Spark Notebooks---------------"
-Write-Host "Creating Spark notebooks..."
+Write-Host "---------Creating Spark notebooks----------"
 RefreshTokens
 $notebooks=Get-ChildItem "../artifacts/notebooks" | Select BaseName 
 
@@ -117,5 +115,5 @@ foreach($name in $notebooks)
 	Start-Sleep -Seconds 10
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
 	#$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-	Add-Content log.txt $result
+	Write-Host $result
 }	
