@@ -1,7 +1,7 @@
 # Frequently Asked Questions
 
 - [What if any resource shows failure during ARM deployment?](#what-if-any-resource-shows-failure-during-arm-deployment)
-- [What if my cloud-shell session times out?](#what-if-my-cloud-shell-session-times-out)
+- [What if my cloud-shell session times out or script fails partially?](#what-if-my-cloud-shell-session-times-out-or-script-fails-partially)
 - [Cloning repository gives error on cloudshell](#cloning-repository-gives-error)
 - [Unable to authenticate a Power BI report](#unable-to-authenticate-a-power-bi-report)
 - [What if pipeline execution fails in synapse](#what-if-pipeline-execution-fails-in-synapse)
@@ -21,9 +21,10 @@ Sometimes resources may fail to deploy when there is too much traffic on azure s
   - Microsoft.StreamAnalytics  
   - Microsoft.EventHub  
 
-## What if my cloud-shell session times out?
+## What if my cloud-shell session times out or script fails partially?
 
-It is important to keep the cloud shell session live during execution else the script will fail to complete. In this case you may try to re-run the script but it may throw errors for the conflicting tasks. As a last resort you will have t delete the resources and re-deploy the templates.
+It is important to keep the cloud shell session live during execution else the script will fail to complete. In this case you may try to re-run the script or run a particular subscript to set up only the failed part. You need to navigate to the subscripts directory in your repository using ```cd``` command and execute it with command ```./Subscript_Name.ps1``` where Subscript_Name is the name of the subscript you wish to execute.
+You can find the list of subscripts [here](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/main/Manufacturing/automation/subscripts)
 
 ## Cloning repository gives error
 - Check if you already have a folder named MfgAI in your cloudshell using PowerShell ```ls```
