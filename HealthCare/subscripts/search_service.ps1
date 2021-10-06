@@ -105,7 +105,7 @@ Start-Sleep -s 10
 				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
 				-replace '#STORAGEKEY#', $storageKey`
 				-replace '#COGNITIVE_API_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/search/search_skillset.json
+			} | Set-Content -Path ../artifacts/search/search_skillset.json
 
 # Creat Skillset
 Get-ChildItem "../artifacts/search" -Filter search_skillset.json |

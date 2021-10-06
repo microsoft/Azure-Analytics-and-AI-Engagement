@@ -79,7 +79,7 @@ $storage_account_connection_string = "DefaultEndpointsProtocol=https;AccountName
 				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
 				-replace '#LOCATION#', $location`
                 -replace '#COGNITIVE_SERVICES_NAME#', $cognitive_services_name`
-			} | Set-Content -Path artifacts/amlnotebooks/GlobalVariables.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/GlobalVariables.py
 			
 foreach($project in $projects)
 {
@@ -87,17 +87,17 @@ foreach($project in $projects)
 	$projectName=$project.name
 	if($projectName -eq "CT-Scan-Classification")
 	{
-		(Get-Content -path artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
+		(Get-Content -path ../artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
                 -replace '#PROJECT_CTSCAN_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/GlobalVariables.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/GlobalVariables.py
 	}
 	elseif($projectName -eq "Hospital_Safety_Mask_Detection")
 	{
-				(Get-Content -path artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
+				(Get-Content -path ../artifacts/amlnotebooks/GlobalVariables.py -Raw) | Foreach-Object { $_ `
                 -replace '#PROJECT_FACE_MASK_ID#', $projectId`
 				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/GlobalVariables.py
+			} | Set-Content -Path ../artifacts/amlnotebooks/GlobalVariables.py
 	}
 	
 	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"
