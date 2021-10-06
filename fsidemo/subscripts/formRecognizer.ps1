@@ -68,6 +68,7 @@ Write-Host "----Form Recognizer-----"
 #Replace values in create_model.py
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
     -replace '#LOCATION#', $location`
+    -replace '#FORM_RECOGNIZER_NAME#', $forms_cogs_name`
     -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
     -replace '#CONTAINER_NAME#', "form-datasets"`
     -replace '#SAS_TOKEN#', $sasToken`
