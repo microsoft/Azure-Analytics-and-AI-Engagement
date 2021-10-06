@@ -2584,7 +2584,6 @@
       },
       "kind": "FormRecognizer",
       "properties": {
-        "customSubDomainName": "[variables('cogs_forms_name')]",
         "privateEndpointConnections": [
 
         ],
@@ -2601,7 +2600,6 @@
       },
       "kind": "FormRecognizer",
       "properties": {
-        "customSubDomainName": "[variables('cogs_formsv2_name')]",
         "privateEndpointConnections": [
 
         ],
