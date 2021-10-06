@@ -42,6 +42,7 @@ $synapseWorkspaceName = "synapsehealthcare$init$random"
 $concatString = "$init$random"
 $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
 $location = (Get-AzResourceGroup -Name $rgName).Location
+$concatString = "$random$init"
 $cosmos_account_name_heathcare = "cosmosdb-healthcare-$concatString"
 if($cosmos_account_name_heathcare.length -gt 43 )
 {

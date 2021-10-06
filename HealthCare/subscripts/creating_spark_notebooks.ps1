@@ -46,12 +46,10 @@ $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -Acco
 $suffix = "$random-$init"
 $searchName = "srch-healthcaredemo-$suffix";
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
-$modelUrl = python "../artifacts/formrecognizer/create_model.py"
-$modelId= $modelUrl.split("/")
-$modelId = $modelId[7]
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $forms_cogs_name = "cog-formrecognition-$suffix";
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
+$concatString = "$random$init"
 $cosmos_account_name_heathcare = "cosmosdb-healthcare-$concatString"
 if($cosmos_account_name_heathcare.length -gt 43 )
 {
@@ -75,7 +73,6 @@ $cellParams = [ordered]@{
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#SEARCH_KEY#" = $searchKey
 		"#SEARCH_NAME#" = $searchName
-		"#MODEL_ID#"=$modelId
 		"#LOCATION#"=$location
 		"#APIM_KEY#"=$forms_cogs_keys.Key1
 }

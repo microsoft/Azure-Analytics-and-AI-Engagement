@@ -25,8 +25,6 @@ az login
 #for powershell...
 Connect-AzAccount -DeviceCode
 
-#will be done as part of the cloud shell start - README
-
 #if they have many subs...
 $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
@@ -45,7 +43,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 }
 
-#TODO pick the resource group...
 $rgName = read-host "Enter the resource Group Name";
 $id_scope = read-host "Enter the ID scope from IoT Central Device";
 $registration_id = read-host "Enter the Device ID from IoT Central Device";
@@ -62,6 +59,20 @@ $PbiDatasetUrl = (Get-AzResourceGroup -Name $rgName).Tags["PbiDatasetUrl"]
 $suffix = "$random-$init"
 $app_name_demohealthcare = "app-demohealthcare-$suffix"
 $healthcare_poc_app_service_name = $app_name_demohealthcare
+$searchName = "srch-healthcaredemo-$suffix";
+$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+$functionappIomt="func-app-iomt-processor-$suffix"
+$functionappMongoData = "func-app-mongo-data-$suffix"
+$app_name_iomt_simulator = "app-iomt-simulator-$suffix"
+$synapseWorkspaceName = "synapsehealthcare$init$random"
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
+Write-Host "Setting Key Vault Access Policy"
+#Import-Module Az.KeyVault
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
+
+#$sqlPassword = $(Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword").SecretValueText
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
@@ -70,14 +81,7 @@ try {
    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
 }
 $sqlPassword = $secretValueText
-$searchName = "srch-healthcaredemo-$suffix";
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 
-$functionappIomt="func-app-iomt-processor-$suffix"
-$functionappMongoData = "func-app-mongo-data-$suffix"
-$app_name_iomt_simulator = "app-iomt-simulator-$suffix"
-
-Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 RefreshTokens
 $app = Get-AzADApplication -DisplayName "hcare Demo $deploymentid"
@@ -157,7 +161,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 $zips = @("iomt_simulator","demohealthcare_web_app")
 foreach($zip in $zips)
 {
-    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+    expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
 
 (Get-Content -path demohealthcare_web_app/appsettings.json -Raw) | Foreach-Object { $_ `
@@ -209,21 +213,18 @@ catch
 az webapp start --name $healthcare_poc_app_service_name --resource-group $rgName
 
 Write-Host  "-----------------Deploying iomt data gen web app--------------"
-Add-Content log.txt "-----------------Web apps zip deploy--------------"
 RefreshTokens
 
-#$app_insights_instrumentation_key_demohealthcare = $(Get-AzApplicationInsights -ResourceGroupName $rgName -Name $ai_name_demohealthcare).InstrumentationKey
-
 #Replace connection string in config
-(Get-Content -path iomt_simulator/configMain.json -Raw) | Foreach-Object { $_ `
+(Get-Content -path ./iomt_simulator/configMain.json -Raw) | Foreach-Object { $_ `
                 -replace '#ID_SCOPE#', $id_scope`
                 -replace '#DEVICE_KEY#', $symmetric_key`
 				-replace '#DEVICE_ID#', $registration_id`
-} | Set-Content -Path iomt_simulator/configMain.json
+} | Set-Content -Path ./iomt_simulator/configMain.json
 
-(Get-Content -path iomt_simulator/config.json -Raw) | Foreach-Object { $_ `
+(Get-Content -path ./iomt_simulator/config.json -Raw) | Foreach-Object { $_ `
 				-replace '#POWERBI_STREAMING_DATASET_URL#', $PbiDatasetUrl`
-} | Set-Content -Path iomt_simulator/config.json
+} | Set-Content -Path ./iomt_simulator/config.json
 
 # deploy the codes on app services  
 Write-Information "Deploying web app"
@@ -246,35 +247,18 @@ foreach($zip in $zips)
 Write-Host "----function apps zip deploy------"
 
 az webapp stop --name $functionappMongoData --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $functionappMongoData --src "./artifacts/binaries/mongo_data.zip"	
+az webapp deployment source config-zip --resource-group $rgName --name $functionappMongoData --src "../artifacts/binaries/mongo_data.zip"	
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $Storage_CS = "DefaultEndpointsProtocol=https;AccountName=" + $dataLakeAccountName + ";AccountKey="+ $storage_account_key + ";EndpointSuffix=core.windows.net"
 Update-AzFunctionAppSetting -Name $functionappMongoData -ResourceGroupName $rgName -AppSetting @{"STORAGE_CONNECTION_STRING" = "$($Storage_CS)"}
 az webapp start --name $functionappMongoData --resource-group $rgName
 
 az webapp stop --name $functionappIomt --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $functionappIomt --src "./artifacts/binaries/iomt_function_app.zip"	
+az webapp deployment source config-zip --resource-group $rgName --name $functionappIomt --src "../artifacts/binaries/iomt_function_app.zip"	
 az webapp start --name $functionappIomt --resource-group $rgName
 
 az webapp restart --name $functionappMongoData --resource-group $rgName
 az webapp restart --name $functionappIomt --resource-group $rgName  
-<#
-Start-Sleep -s 100
-$FunctionApp = Get-AzWebApp -ResourceGroupName $rgName -Name $functionappMongoData
-$FunctionKey = (Invoke-AzResourceAction -ResourceId "$($FunctionApp.Id)/functions/JsonProcessor" -Action listkeys -Force).default
-$FunctionURL = "https://" + $FunctionApp.DefaultHostName + "/api/JsonProcessor?code=" + $FunctionKey
-try{
-Invoke-RestMethod $FunctionURL -Method GET -Headers @{}
-Start-Sleep -s 30 
-#delete the mongo data uplaod function
-az functionapp delete --name $functionappMongoData --resource-group $rgName
-Remove-AzAppServicePlan -ResourceGroupName $rgName -Name $functionaspMongoData -f
-Remove-AzStorageAccount -ResourceGroupName $rgName  -AccountName $functionstMongoData -f  
-}
-catch
-{
-Write-Host "Please click this URL : " $FunctionURL
-}#>
 
 $FunctionURL = "https://" + $app_name_iomt_simulator+ ".azurewebsites.net/"
 try{
@@ -285,5 +269,4 @@ catch
 Write-Host "Please click this URL : " $FunctionURL
 }
 
-Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
