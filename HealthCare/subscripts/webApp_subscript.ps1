@@ -57,6 +57,7 @@ $concatString = "$init$random"
 $dataLakeAccountName = "sthealthcare"+($concatString.substring(0,12))
 $PbiDatasetUrl = (Get-AzResourceGroup -Name $rgName).Tags["PbiDatasetUrl"]
 $suffix = "$random-$init"
+$keyVaultName = "kv-$init";
 $app_name_demohealthcare = "app-demohealthcare-$suffix"
 $healthcare_poc_app_service_name = $app_name_demohealthcare
 $searchName = "srch-healthcaredemo-$suffix";
