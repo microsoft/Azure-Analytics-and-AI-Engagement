@@ -1195,6 +1195,10 @@ az ml folder attach -w $amlworkspacename -g $rgName -e aml
 az ml computetarget create computeinstance -n $cpuShell -s "STANDARD_DS2_V2" -v
 #az ml computetarget delete -n $cpuShell -v
 
+#get default data store
+$defaultdatastore = az ml datastore show-default --resource-group $rgName --workspace-name $amlworkspacename --output json | ConvertFrom-Json
+$defaultdatastoreaccname = $defaultdatastore.account_name
+
 #get fileshare and code folder within that
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
