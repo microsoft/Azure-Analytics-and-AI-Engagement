@@ -225,7 +225,7 @@ Login-PowerBI
 
 RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
-New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapsefsi $synapseWorkspaceName -sql_compute_name $sqlPoolName
+$result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapsefsi $synapseWorkspaceName -sql_compute_name $sqlPoolName
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
