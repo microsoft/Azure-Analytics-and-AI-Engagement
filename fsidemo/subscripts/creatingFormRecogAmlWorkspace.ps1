@@ -7,14 +7,6 @@ function RefreshTokens()
     $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
 }
 
-function GetAccessTokens($context)
-{
-    $global:synapseToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://dev.azuresynapse.net").AccessToken
-    $global:synapseSQLToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://sql.azuresynapse.net").AccessToken
-    $global:managementToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://management.azure.com").AccessToken
-    $global:powerbitoken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://analysis.windows.net/powerbi/api").AccessToken
-}
-
 #should auto for this.
 az login
 
@@ -46,7 +38,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $suffix = "$random-$init"
 $amlworkspacename = "amlws-$suffix"
-$cog_speech_name = "speech-service-$suffix"
 $cog_translator_name = "translator-$suffix"
 $cpuShell = "cpuShell$random"
 $searchName = "srch-fsi-$suffix";
@@ -62,11 +53,8 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 $forms_cogs_key = $forms_cogs_keys.Key1
-$cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 $cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_translator_name
-$key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
-$cog_marketdatacgsvc_key=$key.key1
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 $StartTime = Get-Date

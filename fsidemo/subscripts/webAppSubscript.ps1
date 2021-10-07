@@ -19,14 +19,6 @@ function ReplaceTokensInFile($ht, $filePath)
     return $template;
 }
 
-function GetAccessTokens($context)
-{
-    $global:synapseToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://dev.azuresynapse.net").AccessToken
-    $global:synapseSQLToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://sql.azuresynapse.net").AccessToken
-    $global:managementToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://management.azure.com").AccessToken
-    $global:powerbitoken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://analysis.windows.net/powerbi/api").AccessToken
-}
-
 #should auto for this.
 az login
 
@@ -82,7 +74,6 @@ $deploymentId = $init
 $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
 $iot_hub_name = "iothub-fsi-$suffix"
 $cog_speech_name = "speech-service-$suffix"
-$cog_translator_name = "translator-$suffix"
 $spname="Fsi Demo $deploymentid"
 $app = Get-AzADApplication -DisplayName $spname
 $clientsecpwd ="Smoothie@Smoothie@2020"
@@ -90,11 +81,8 @@ $secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 $map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
 $accounts_map_key = $map_key.primaryKey
-$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_translator_name
-
 
 if (!$app)
 {
