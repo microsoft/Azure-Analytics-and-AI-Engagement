@@ -25,7 +25,6 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
-$deploymentId = $init
 $synapseWorkspaceName = "synapsefsi$init$random"
 $sqlPoolName = "FsiDW"
 $concatString = "$init$random"
@@ -38,16 +37,13 @@ else
 	$dataLakeAccountName = "stfsi"+ $concatString
 }
 $sqlUser = "labsqladmin"
-$sparkPoolName = "fsi"
 $databricks_workspace_name = "fsi-dbrs-$suffix"
 $storageAccountName = $dataLakeAccountName
-$tenantId = (Get-AzContext).Tenant.Id
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 #databricks
 Write-Host "--------- databricks---------"
-$tenantId = $(az account show --query tenantId -o tsv)
 $dbswsId = $(az resource show `
         --resource-type Microsoft.Databricks/workspaces `
         -g "$rgName" `

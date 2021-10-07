@@ -24,15 +24,12 @@ $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
-$deploymentId = $init
 $mssql_server_name = "dbserver-marketingdata-$suffix"
 $server  = $mssql_server_name+".database.windows.net"
 $mssql_administrator_login = "labsqladmin"
 $mssql_database_name = "db-geospatial"
 $keyVaultName = "kv-$suffix";
 $synapseWorkspaceName = "synapsefsi$init$random"
-$subscriptionId = (Get-AzContext).Subscription.Id
-$tenantId = (Get-AzContext).Tenant.Id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

@@ -7,14 +7,6 @@ function RefreshTokens()
     $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
 }
 
-function GetAccessTokens($context)
-{
-    $global:synapseToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://dev.azuresynapse.net").AccessToken
-    $global:synapseSQLToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://sql.azuresynapse.net").AccessToken
-    $global:managementToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://management.azure.com").AccessToken
-    $global:powerbitoken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://analysis.windows.net/powerbi/api").AccessToken
-}
-
 #should auto for this.
 az login
 
@@ -43,12 +35,10 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$location = (Get-AzResourceGroup -Name $rgName).Location
 $synapseWorkspaceName = "synapsefsi$init$random"
 $sqlPoolName = "FsiDW"
 $sqlUser = "labsqladmin"
 $mssql_server_name = "dbserver-marketingdata-$suffix"
-$server  = $mssql_server_name+".database.windows.net"
 $mssql_administrator_login = "labsqladmin"
 $mssql_database_name = "db-geospatial-dev"
 $subscriptionId = (Get-AzContext).Subscription.Id
@@ -153,8 +143,8 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Sap
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Write-Host  $result
  
- ##powerbi linked services
- Write-Host "Creating linked Service: powerbi_linked_service"
+##powerbi linked services
+Write-Host "Creating linked Service: powerbi_linked_service"
 $filepath=$templatepath+"powerbi_linked_service.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_ID#", $wsId)
@@ -162,8 +152,8 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/pow
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Write-Host  $result
 
- ##Teradata linked services
- Write-Host "Creating linked Service: Teradata"
+##Teradata linked services
+Write-Host "Creating linked Service: Teradata"
 $filepath=$templatepath+"Teradata.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "Teradata").Replace("#WORKSPACE_ID#", $wsId)
@@ -172,8 +162,8 @@ $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Autho
 Write-Host  $result
 
 # AutoResolveIntegrationRuntime
-    $FilePathRT="../artifacts/templates/AutoResolveIntegrationRuntime.json" 
-    $itemRT = Get-Content -Path $FilePathRT
-    $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
-    $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
- Write-Host  $result
+$FilePathRT="../artifacts/templates/AutoResolveIntegrationRuntime.json" 
+$itemRT = Get-Content -Path $FilePathRT
+$uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
+Write-Host  $result
