@@ -3884,3 +3884,9 @@ GO
 CREATE VIEW [dbo].[testviewcls]
 AS (
 select  Top 100 * from Campaign_Analytics);
+
+CREATE PROC [dbo].[Confirm DDM] AS 
+SELECT c.name, tbl.name as table_name, c.is_masked, c.masking_function  
+FROM sys.masked_columns AS c  
+JOIN sys.tables AS tbl   ON c.[object_id] = tbl.[object_id]  WHERE 
+is_masked = 1 and tbl.name='CustomerInfo';
