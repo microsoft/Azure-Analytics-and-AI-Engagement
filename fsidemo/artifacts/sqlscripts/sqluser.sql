@@ -20,6 +20,11 @@ GO
 GO
    CREATE USER [HeadOfFinancialIntelligence] FOR LOGIN [HeadOfFinancialIntelligence] WITH DEFAULT_SCHEMA=[dbo];
    
+      CREATE LOGIN [MarketingOwner]
+   WITH PASSWORD = '#SQL_PASSWORD#'
+GO
+   CREATE USER [MarketingOwner] FOR LOGIN [MarketingOwner] WITH DEFAULT_SCHEMA=[dbo];
+   
 
 
 

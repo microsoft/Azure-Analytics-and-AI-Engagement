@@ -371,6 +371,18 @@ $sqlQuery="CREATE USER [HeadOfFinancialIntelligence] FOR LOGIN [HeadOfFinancialI
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 
+$sqlQuery="CREATE USER [MarketingOwner] FOR LOGIN [MarketingOwner] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+
+$sqlQuery="CREATE USER [BusinessAnalystNYC] FOR LOGIN [BusinessAnalystNYC] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+
+$sqlQuery="CREATE USER [BusinessAnalystMiami] FOR LOGIN [BusinessAnalystMiami] WITH DEFAULT_SCHEMA=[dbo]"
+$sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
+
 $sqlQuery  = "CREATE DATABASE FsiSqlOnDemand"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
