@@ -3885,18 +3885,28 @@ CREATE VIEW [dbo].[testviewcls]
 AS (
 select  Top 100 * from Campaign_Analytics);
 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE PROC [dbo].[Confirm DDM] AS 
 SELECT c.name, tbl.name as table_name, c.is_masked, c.masking_function  
 FROM sys.masked_columns AS c  
 JOIN sys.tables AS tbl   ON c.[object_id] = tbl.[object_id]  WHERE 
 is_masked = 1 and tbl.name='CustomerInfo';
 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE PROC [dbo].[Sp_FinanceRLS] AS 
 EXECUTE AS USER = 'MarketingOwner'
 Begin	
-	-- After creating the users, read access is provided to all three users on FactSales table
 	GRANT SELECT ON [Finance-FactSales] TO HeadOfFinancialIntelligence, BusinessAnalystMiami, BusinessAnalystNYC;  
-
 	IF EXISts (SELECT 1 FROM sys.security_predicates sp where sp.predicate_definition='([Security].[fn_securitypredicate]([Designation]))')
 	BEGIN
 		DROP SECURITY POLICY SalesFilter;
@@ -3907,10 +3917,4 @@ Begin
 	BEGIN	
 	DROP SCHEMA Security;
 	End
-	
-	/* Moving ahead, we Create a new schema, and an inline table-valued function. 
-	The function returns 1 when a row in the SalesRep column is the same as the user executing the query (@SalesRep = USER_NAME())
-	or if the user executing the query is the Manager user (USER_NAME() = 'HeadOfFinancialIntelligence').
-	*/
 end
-REVERT;
