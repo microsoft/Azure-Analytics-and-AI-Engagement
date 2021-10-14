@@ -25,6 +25,18 @@ GO
 GO
    CREATE USER [MarketingOwner] FOR LOGIN [MarketingOwner] WITH DEFAULT_SCHEMA=[dbo];
    
+   
+         CREATE LOGIN [BusinessAnalystMiami]
+   WITH PASSWORD = '#SQL_PASSWORD#'
+GO
+   CREATE USER [BusinessAnalystMiami] FOR LOGIN [BusinessAnalystMiami] WITH DEFAULT_SCHEMA=[dbo];
+   
+   
+         CREATE LOGIN [BusinessAnalystNYC]
+   WITH PASSWORD = '#SQL_PASSWORD#'
+GO
+   CREATE USER [BusinessAnalystNYC] FOR LOGIN [BusinessAnalystNYC] WITH DEFAULT_SCHEMA=[dbo];
+   
 
 
 
