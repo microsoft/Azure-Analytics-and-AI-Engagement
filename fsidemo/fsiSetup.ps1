@@ -159,7 +159,7 @@ $app_maps_service_name = "app-maps-$suffix"
 $forms_cogs_name = "forms-$suffix";
 $searchName = "srch-fsi-$suffix";
 $cog_marketdatacgsvc_name =  "cog-all-$suffix";
-$sparkPoolName = "fsi"
+$sparkPoolName = "Fsi"
 $databricks_workspace_name = "fsi-dbrs-$suffix"
 $iot_hub_name = "iothub-fsi-$suffix"
 $asa_name_fsi = "fsiasa-$suffix"
@@ -225,7 +225,8 @@ Login-PowerBI
 
 RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
-$result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapsefsi $synapseWorkspaceName -sql_compute_name $sqlPoolName
+$result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapsefsi $synapseWorkspaceName -sql_compute_name $sqlPoolName -ErrorAction SilentlyContinue
+$result = az synapse spark pool update --name $sparkPoolName --workspace-name $synapseWorkspaceName --resource-group $rgName --library-requirements "./artifacts/templates/requirements.txt"
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
