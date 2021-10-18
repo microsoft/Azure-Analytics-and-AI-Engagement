@@ -1169,6 +1169,8 @@ Set-AzStorageFileContent `
    -ShareName $shareName `
    -Source $source `
    -Path $path
+
+start-sleep -s 5
 }
 
 #create aks compute
