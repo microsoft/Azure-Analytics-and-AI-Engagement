@@ -1766,7 +1766,7 @@
         "httpLoggingEnabled": false,
         "logsDirectorySizeLimit": 35,
         "detailedErrorLoggingEnabled": false,
-        "publishingUsername": "[concat('$', variables('app_demofsi_app_service_name'))]",
+        "publishingUsername": "[concat('$', variables('app_maps_service_name'))]",
         "azureStorageAccounts": {},
         "scmType": "GitHubAction",
         "use32BitWorkerProcess": true,
@@ -1817,7 +1817,7 @@
       "apiVersion": "2019-08-01",
       "location": "[variables('location')]",
       "sku": {
-        "name": "S1"
+        "name": "S3
       },
       "kind": "linux",
       "properties": {
