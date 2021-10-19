@@ -106,7 +106,7 @@ $secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
 if (!$app)
 {
-    $app = New-AzADApplication -DisplayName $spname -IdentifierUris "http://fabmedical-sp-$deploymentId" -Password $secret;
+    $app = New-AzADApplication -DisplayName $spname -Password $secret;
 }
 
 $appId = $app.ApplicationId;
