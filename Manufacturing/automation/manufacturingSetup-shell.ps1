@@ -1041,7 +1041,7 @@ $secret = ConvertTo-SecureString -String $secretpassword -AsPlainText -Force
 
 if (!$app)
 {
-    $app = New-AzADApplication -DisplayName "Mfg Demo $deploymentId" -IdentifierUris "http://fabmedical-sp-$deploymentId" -Password $secret;
+    $app = New-AzADApplication -DisplayName "Mfg Demo $deploymentId" -Password $secret;
 }
 
 $appId = $app.ApplicationId;
