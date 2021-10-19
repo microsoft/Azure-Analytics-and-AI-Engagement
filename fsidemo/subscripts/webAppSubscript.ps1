@@ -72,6 +72,7 @@ $accounts_maps_name = "mapsfsi-$suffix"
 $fsi_poc_app_service_name = "app-demofsi-$suffix"
 $deploymentId = $init
 $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
+$app_maps_service_name = "app-maps-$suffix"
 $iot_hub_name = "iothub-fsi-$suffix"
 $cog_speech_name = "speech-service-$suffix"
 $spname="Fsi Demo $deploymentid"
@@ -83,6 +84,8 @@ $secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $map_key = az maps account keys list --name $accounts_maps_name --resource-group $rgName |ConvertFrom-Json
 $accounts_map_key = $map_key.primaryKey
+
+RefreshTokens
 
 if (!$app)
 {
