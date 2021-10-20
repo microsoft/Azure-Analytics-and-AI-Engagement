@@ -146,8 +146,8 @@ if($dataLakeAccountName.length -gt 24)
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $sqlUser = "labsqladmin"
-$concatString = "$random$init"
-$cosmos_account_name = "cosmosdb-fsi-$concatString"
+$concatString1 = "$random$init"
+$cosmos_account_name = "cosmosdb-fsi-$concatString1"
 if($cosmos_account_name.length -gt 43 )
 {
 $cosmos_account_name = $cosmos_account_name.substring(0,43)
