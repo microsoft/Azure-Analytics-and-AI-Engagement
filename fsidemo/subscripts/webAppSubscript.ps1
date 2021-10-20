@@ -69,6 +69,7 @@ $mssql_administrator_login = "labsqladmin"
 $mssql_database_name = "db-geospatial-dev"
 $accounts_maps_name = "mapsfsi-$suffix"
 $fsi_poc_app_service_name = "app-demofsi-$suffix"
+$keyVaultName = "kv-$suffix";
 $deploymentId = $init
 $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
 $app_maps_service_name = "app-maps-$suffix"
