@@ -90,13 +90,17 @@
     "mssql_server_name": "[concat('dbserver-marketingdata-',variables('unique_suffix'))]",
     "mssql_administrator_login": "labsqladmin",
     "mssql_database_name": "db-geospatial",
-    "accounts_maps_name": "[concat('mapsfsi-',variables('unique_suffix'))]"
+    "accounts_maps_name": "[concat('mapsfsi-',variables('unique_suffix'))]",
+	"bing_acc_name":"[concat('bing-',variables('unique_suffix'))]",
   },
   "resources": [
     {
       "name": "default",
       "type": "Microsoft.Resources/tags",
       "apiVersion": "2019-10-01",
+	  "dependsOn": [
+                "[resourceId('Microsoft.Bing/accounts', variables('bing_acc_name'))]"
+      ],
       "properties": {
         "tags": {
           "DeploymentId": "[parameters('environment_code')]",
@@ -105,7 +109,8 @@
           "after_scenario_financial_hcrr_url": "[parameters('after_scenario_financial_hcrr_url')]",
           "before_scenario_financial_hcrr_url": "[parameters('before_scenario_financial_hcrr_url')]",
           "before_scenario_cco_url": "[parameters('before_scenario_cco_url')]",
-          "before_and_after_scenario_group_ceo_url": "[parameters('before_after_scenario_group_ceo_url')]"
+          "before_and_after_scenario_group_ceo_url": "[parameters('before_after_scenario_group_ceo_url')]",
+		  "bing_account_key":"[listKeys(resourceId('Microsoft.Bing/accounts',variables('bing_acc_name')),'2020-06-10').key1]"
         }
       }
     },
@@ -2020,7 +2025,20 @@
       "properties": {
         "value": "[parameters('sql_administrator_login_password')]"
       }
-    }
+    },
+	{
+            "type": "Microsoft.Bing/accounts",
+            "apiVersion": "2020-06-10",
+            "name": "[variables('bing_acc_name')]",
+            "location": "global",
+            "sku": {
+                "name": "F1"
+            },
+            "kind": "Bing.Search.v7",
+            "properties": {
+                "statisticsEnabled": false
+            }
+        }
   ],
   "outputs": {
 

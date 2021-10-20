@@ -124,6 +124,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
+$bingSearchKey = (Get-AzResourceGroup -Name $rgName).Tags["bing_account_key"]
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
@@ -568,7 +569,7 @@ $cellParams = [ordered]@{
 		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
         "#COGNITIVE_SERVICE_NAME#" = $cog_marketdatacgsvc_name
         "#COGNITIVE_SERVICE_KEY#" = $cog_marketdatacgsvc_key
-        "#SEARCH_KEY#" = $searchKey
+        "#SEARCH_KEY#" = $bingSearchKey
 }
 
 foreach($name in $notebooks)
