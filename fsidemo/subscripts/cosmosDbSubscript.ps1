@@ -35,8 +35,8 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$concatString = "$random$init"
-$cosmos_account_name = "cosmosdb-fsi-$concatString"
+$concatString1 = "$random$init"
+$cosmos_account_name = "cosmosdb-fsi-$concatString1"
 if($cosmos_account_name.length -gt 43 )
 {
 $cosmos_account_name = $cosmos_account_name.substring(0,43)
