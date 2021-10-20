@@ -1140,6 +1140,7 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
+start-sleep -s 60
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {

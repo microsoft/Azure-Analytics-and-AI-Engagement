@@ -33,6 +33,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
+$bingSearchKey = (Get-AzResourceGroup -Name $rgName).Tags["bing_account_key"]
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapsefsi$init$random"
@@ -40,6 +41,7 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 $sqlPoolName = "FsiDW"
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $concatString = "$init$random"
+$suffix = "$random-$init"
 $dataLakeAccountName = "stfsi$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
@@ -47,7 +49,7 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $sparkPoolName = "fsi"
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-
+$concatString = "$random$init"
 $cosmos_account_name = "cosmosdb-fsi-$concatString"
 if($cosmos_account_name.length -gt 43 )
 {
@@ -55,8 +57,6 @@ $cosmos_account_name = $cosmos_account_name.substring(0,43)
 }
 $cog_marketdatacgsvc_name =  "cog-all-$suffix";
 $amlworkspacename = "amlws-$suffix"
-$searchName = "srch-fsi-$suffix";
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
 $key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
 $cog_marketdatacgsvc_key=$key.key1
 
@@ -79,7 +79,7 @@ $cellParams = [ordered]@{
 		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
         "#COGNITIVE_SERVICE_NAME#" = $cog_marketdatacgsvc_name
         "#COGNITIVE_SERVICE_KEY#" = $cog_marketdatacgsvc_key
-        "#SEARCH_KEY#" = $searchKey
+        "#SEARCH_KEY#" = $bingSearchKey
 }
 
 foreach($name in $notebooks)
