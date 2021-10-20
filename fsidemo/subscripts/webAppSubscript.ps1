@@ -48,7 +48,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
 $location = (Get-AzResourceGroup -Name $rgName).Location
-
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 $after_scenario_financial_hcrr_url = (Get-AzResourceGroup -Name $rgName).Tags["after_scenario_financial_hcrr_url"]
 $before_scenario_financial_hcrr_url = (Get-AzResourceGroup -Name $rgName).Tags["before_scenario_financial_hcrr_url"]
@@ -75,10 +74,17 @@ $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
 $app_maps_service_name = "app-maps-$suffix"
 $iot_hub_name = "iothub-fsi-$suffix"
 $cog_speech_name = "speech-service-$suffix"
-$spname="Fsi Demo $deploymentid"
-$app = Get-AzADApplication -DisplayName $spname
-$clientsecpwd ="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
+
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$sqlPassword = $secretValueText
+$mssqlPassword = $sqlPassword
+$mssql_administrator_password = $mssqlPassword
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
@@ -86,6 +92,10 @@ $map_key = az maps account keys list --name $accounts_maps_name --resource-group
 $accounts_map_key = $map_key.primaryKey
 
 RefreshTokens
+$spname="Fsi Demo $deploymentid"
+$app = Get-AzADApplication -DisplayName $spname
+$clientsecpwd ="Smoothie@Smoothie@2020"
+$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
 if (!$app)
 {
