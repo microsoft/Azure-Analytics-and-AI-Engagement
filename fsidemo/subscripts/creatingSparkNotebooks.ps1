@@ -49,8 +49,8 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $sparkPoolName = "fsi"
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-$concatString = "$random$init"
-$cosmos_account_name = "cosmosdb-fsi-$concatString"
+$concatString1 = "$random$init"
+$cosmos_account_name = "cosmosdb-fsi-$concatString1"
 if($cosmos_account_name.length -gt 43 )
 {
 $cosmos_account_name = $cosmos_account_name.substring(0,43)
