@@ -91,7 +91,7 @@
     "mssql_administrator_login": "labsqladmin",
     "mssql_database_name": "db-geospatial",
     "accounts_maps_name": "[concat('mapsfsi-',variables('unique_suffix'))]",
-	"bing_acc_name":"[concat('bing-',variables('unique_suffix'))]",
+	"bing_acc_name":"[concat('bing-',variables('unique_suffix'))]"
   },
   "resources": [
     {
@@ -1822,7 +1822,7 @@
       "apiVersion": "2019-08-01",
       "location": "[variables('location')]",
       "sku": {
-        "name": "S3
+        "name": "S3"
       },
       "kind": "linux",
       "properties": {
