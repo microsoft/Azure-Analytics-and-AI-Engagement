@@ -42,8 +42,8 @@ $zipPathTwitFunc = $subPath+"functions/Twitter_Function_Publish_Package.zip"
 RefreshTokens
 Write-Host "Deploying Azure functions"
 
-Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $twitterFunction -ArchivePath $zipPathTwitFunc
-Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $locationFunction -ArchivePath $zipPathLocFunc
+Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $twitterFunction -ArchivePath $zipPathTwitFunc -f
+Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $locationFunction -ArchivePath $zipPathLocFunc -f
 
 #az functionapp deployment source config-zip `
        # --resource-group $resourceGroupName `
