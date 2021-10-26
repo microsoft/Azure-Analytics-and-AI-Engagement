@@ -34,14 +34,23 @@ $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType 
 $twitterFunction="twifunction$($uniqueId)"
 $locationFunction="locfunction$($uniqueId)"
 
+$currentDir = pwd
+$subPath = $currentDir.path -replace ".{10}$"
+$zipPathLocFunc = $subPath+"functions/LocationAnalytics_Publish_Package.zip"
+$zipPathTwitFunc = $subPath+"functions/Twitter_Function_Publish_Package.zip"
+
 RefreshTokens
 Write-Host "Deploying Azure functions"
-az functionapp deployment source config-zip `
-        --resource-group $resourceGroupName `
-        --name $twitterFunction `
-        --src "../functions/Twitter_Function_Publish_Package.zip"
+
+Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $twitterFunction -ArchivePath $zipPathTwitFunc
+Publish-AzWebapp -ResourceGroupName $resourceGroupName -Name $locationFunction -ArchivePath $zipPathLocFunc
+
+#az functionapp deployment source config-zip `
+       # --resource-group $resourceGroupName `
+       # --name $twitterFunction `
+        #--src "../functions/Twitter_Function_Publish_Package.zip"
 		
-az functionapp deployment source config-zip `
-        --resource-group $resourceGroupName `
-        --name $locationFunction `
-        --src "../functions/LocationAnalytics_Publish_Package.zip"
+#az functionapp deployment source config-zip `
+       # --resource-group $resourceGroupName `
+      #  --name $locationFunction `
+       # --src "../functions/LocationAnalytics_Publish_Package.zip"
