@@ -83,7 +83,7 @@ RefreshTokens
 $forms_cogs_endpoint = "https://"+$forms_cogs_name+".cognitiveservices.azure.com"
 $search_uri = "https://"+$searchName+".search.windows.net"
 
-$filepath="./artifacts/amlnotebooks/Config.py"
+$filepath="../artifacts/amlnotebooks/Config.py"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#SEARCH_API_KEY#", $searchKey).Replace("#SEARCH_URI#", $search_uri).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_key).Replace("#ACCOUNT_OPENING_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#INCIDENT_FORM_RECOGNIZER_MODEL_ID#", $modelId).Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#WORKSPACE_NAME#", $amlworkspacename).Replace("#TRANSLATOR_SERVICE_NAME#", $cog_translator_name).Replace("#TRANSLATOR_SERVICE_KEY#", $cog_translator_key.Key1).Replace("#CPU_SHELL#",$cpuShell)
 
