@@ -1126,14 +1126,14 @@ Set-Content -Path $filepath -Value $item
 #create aml workspace
 az extension add -n azure-cli-ml
 az ml workspace create -w $amlworkspacename -g $rgName
-
+start-sleep -s 60
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName -e aml
-start-sleep -s 10
+start-sleep -s 60
 
 #create and delete a compute instance to get the code folder created in default store
 az ml computetarget create computeinstance -n $cpuShell -s "STANDARD_DS2_V2" -v
-
+start-sleep -s 120
 #get default data store
 $defaultdatastore = az ml datastore show-default --resource-group $rgName --workspace-name $amlworkspacename --output json | ConvertFrom-Json
 $defaultdatastoreaccname = $defaultdatastore.account_name
