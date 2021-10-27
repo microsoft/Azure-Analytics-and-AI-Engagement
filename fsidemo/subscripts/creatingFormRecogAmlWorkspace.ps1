@@ -125,7 +125,7 @@ foreach($notebook in $notebooks)
 	}
 		elseif($notebook.BaseName -eq "Config")
 	{
-      Continue;
+      continue;
 	}
 	else
 	{
