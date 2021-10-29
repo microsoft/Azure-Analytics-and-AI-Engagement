@@ -160,6 +160,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	- RequestsWithinSLAAfter  	:	number
 	- TargetRequestsWithinSLAAfter  :	number
 	- SocialSentimentAfter  	:	text
+	- RecordedOn: datetime
 	
 	![Create new streaming dataset.](media/power-bi-7.png)
 
@@ -212,6 +213,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	- TargetOverallCreditRisk: number
 	- OverallOperationalRisk: number
 	- TargetOverallOperationalRisk: number
+	- RecordedOn: datetime
 
 	![Create new streaming dataset.](media/power-bi-9.png)
 
@@ -248,6 +250,23 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	- ChannelEngagementRiskofChurn :number
 	- ChannelEngagementRiskofChurnAfter :number
 	- TargetChannelEngagementRiskofChurn :number
+	- TargetChannelEngagementRiskofChurnAfter: Number
+	- ProjectedAnnualGrowthMarketShare: Number
+	- ProjectedAnnualGrowthMarketShareAfter: Number
+	- TargetProjectedAnnualGrowthMarketShare: Number
+	- TargetProjectedAnnualGrowthMarketShareAfter: Number
+	- ProjectedAnnualGrowthEmployeeStrength: Number
+	- ProjectedAnnualGrowthEmployeeStrengthAfter: Number
+	- TargetProjectedAnnualGrowthEmployeeStrength: Number
+	- TargetProjectedAnnualGrowthEmployeeStrengthAfter: Number
+	- ActiveSensors: Number
+	- TargetActiveSensors: Number
+	- InvestmentBefore: Number
+	- InvestmentAfter: Number
+	- CreditCardTransactionVolume: Number
+	- CreditCardTransactionAmount: Number
+	- S&P500IndexValue: Number
+	- RecordedOn: datetime
 
 	![Create new streaming dataset.](media/power-bi-10.png)
 
@@ -300,6 +319,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	- TargetOverallCreditRisk: number
 	- OverallOperationalRisk: number
 	- TargetOverallOperationalRisk: number
+	- RecordedOn: datetime
 
 	![Create new streaming dataset.](media/power-bi-11.png)
 
