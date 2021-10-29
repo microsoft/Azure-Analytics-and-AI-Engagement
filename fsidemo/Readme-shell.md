@@ -1080,4 +1080,4 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Enter the Resource Group Name.](media/authentication-7.png)
 	
-Your Accelerator environment is now set up.
+6.	Your execution is now complete.
