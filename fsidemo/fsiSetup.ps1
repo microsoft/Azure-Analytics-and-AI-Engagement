@@ -769,10 +769,7 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ADB_Suspicio
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Campaign_Analytics"}} , @{Name = "TABLE_NAME"; Expression = {"Campaign_Analytics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Carbon-Emission"}} , @{Name = "TABLE_NAME"; Expression = {"Carbon-Emission"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Climate-Risk"}} , @{Name = "TABLE_NAME"; Expression = {"Climate-Risk"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
+
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ConflictofInterest"}} , @{Name = "TABLE_NAME"; Expression = {"ConflictofInterest"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Country"}} , @{Name = "TABLE_NAME"; Expression = {"Country"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
@@ -796,8 +793,6 @@ $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"DailyStockData"}} , @{Name = "TABLE_NAME"; Expression = {"DailyStockData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"DailyStockDataLatest"}} , @{Name = "TABLE_NAME"; Expression = {"DailyStockDataLatest"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"EnvMgmtPractices"}} , @{Name = "TABLE_NAME"; Expression = {"EnvMgmtPractices"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ESGOrganisation"}} , @{Name = "TABLE_NAME"; Expression = {"ESGOrganisation"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)

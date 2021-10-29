@@ -300,60 +300,13 @@ WITH
 )
 GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Carbon-Emission]
-( 
-	[Issuer Name] [nvarchar](max)  NULL,
-	[Fiscal Year] [nvarchar](max)  NULL,
-	[Carbon emissions - Scope 1+2 revenue intensity (tCO2e/USD million)] [nvarchar](max)  NULL,
-	[Carbon emissions - Scope 1+2 (tCO2e)] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 1+2 KEY] [nvarchar](max)  NULL,
-	[Carbon emissions - Scope 1 (tCO2e)] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 1 KEY] [nvarchar](max)  NULL,
-	[Carbon emissions - Scope 2 (tCO2e)] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 2 KEY] [nvarchar](max)  NULL,
-	[Carbon emissions - Scope 3 total reported (tCO2e)] [nvarchar](max)  NULL,
-	[Energy consumption (MWh)] [nvarchar](max)  NULL,
-	[Energy consumption revenue intensity (MWh/USD million)] [nvarchar](max)  NULL,
-	[Renewable energy consumption (MWh)] [nvarchar](max)  NULL,
-	[Energy consumption from renewable sources (% of total energy consumption)] [nvarchar](max)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
-)
-GO
 
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Climate-Risk]
-( 
-	[Issuer Name] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 1 Intensity Projection for 2030 -tCO2e/USD million sales] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 2 Intensity Projection for 2030 -tCO2e/USD million sales] [nvarchar](max)  NULL,
-	[Carbon Emissions - Scope 3 Intensity Projection for 2030 -tCO2e/USD million sales] [nvarchar](max)  NULL,
-	[Aggregated Company 1.5 Degree Climate VaR] [nvarchar](max)  NULL,
-	[Aggregated Company 2 Degree Climate VaR ] [nvarchar](max)  NULL,
-	[Aggregated Company 3 Degree Climate VaR] [nvarchar](max)  NULL,
-	[Aggregated Warming Potential-Degree C] [nvarchar](max)  NULL,
-	[Aggregated Warming Potential-degree C-without Company targets] [nvarchar](max)  NULL,
-	[Market Capitalization - Valuation Date] [nvarchar](max)  NULL,
-	[Revenue - Valuation Date] [nvarchar](max)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
-)
-GO
+
 
 SET ANSI_NULLS ON
 GO
@@ -633,25 +586,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[EnvMgmtPractices]
-( 
-	[Issuer Name] [nvarchar](200)  NULL,
-	[Executive body responsible] [nvarchar](2000)  NULL,
-	[Scope of management] [nvarchar](2000)  NULL,
-	[Formal management] [nvarchar](2000)  NULL,
-	[Oversight of ESG risk management] [nvarchar](2000)  NULL,
-	[Conducts climate-related risk analysis] [nvarchar](2000)  NULL,
-	[Evidence of board-level engagement on climate-related risks] [nvarchar](2000)  NULL,
-	[Sustainability related product development] [nvarchar](2000)  NULL,
-	[Involvement in green bonds] [nvarchar](2000)  NULL,
-	[Involvement of group credit risk in ESG due diligence] [nvarchar](2000)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
-)
-GO
+
 
 SET ANSI_NULLS ON
 GO
