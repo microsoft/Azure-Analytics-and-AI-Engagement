@@ -30,6 +30,11 @@ if (Get-Command 'Invoke-Sqlcmd' -errorAction SilentlyContinue) {
        
             Install-Module -Name Az -AllowClobber -force
 	    Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+		Install-Module -Name Az.KeyVault -AllowClobber -f
+		Install-Module -Name Az.CognitiveServices -AllowClobber -f
+		Install-Module -Name Az.Storage -AllowClobber -f
+		Install-Module -Name Az.StreamAnalytics -AllowClobber -f
+		Install-Module -Name Az.IotHub -AllowClobber -f
             
     }
 if(Get-Command 'git' -erroraction SilentlyContinue){
@@ -113,3 +118,12 @@ if (Get-Command 'python' -errorAction SilentlyContinue) {
 
 		c:/python-3.7.0.exe /quiet InstallAllUsers=0 PrependPath=1 Include_test=0
    }
+   if (Get-Command 'npm' -errorAction SilentlyContinue) {
+       Write-Host `
+           "npm is installed." `
+           -ForegroundColor Green
+   }
+   else{
+  Invoke-WebRequest -Uri https://nodejs.org/dist/v16.13.0/node-v16.13.0-x86.msi -OutFile .\node.msi
+  Start-Process msiexec.exe -Wait -ArgumentList '/I node.msi /quiet'
+  }
