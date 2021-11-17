@@ -179,7 +179,8 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	![Mount a storage for running the cloud shell and enter the details.](media/no-storage-mounted1.png)
 
 > **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters and it should not be more 10 characters.
-> **Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell. ```PowerShell
+> **Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell. 
+```PowerShell
 Set-Executionpolicy unrestricted
 ```
 4. In the Azure Cloud Shell window, **enter** the following command to clone the repository files.
