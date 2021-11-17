@@ -390,6 +390,11 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png)
 
 	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters.
+	
+	>**Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell. 
+	```PowerShell
+Set-Executionpolicy unrestricted
+```
 
 4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
 Command:
@@ -437,6 +442,11 @@ cd ./fsi/fsidemo
 11. **Close** the browser tab once you see the message window at right and **go back** to your Azure Cloud Shell execution window.
 
 	![Authentication done.](media/cloud-shell-9.png)
+	
+	>**Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell. 
+	```PowerShell
+Set-Executionpolicy unrestricted
+```
 	
 12. **Navigate back** to the resource group tab.
 
