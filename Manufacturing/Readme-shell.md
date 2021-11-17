@@ -231,6 +231,10 @@ Set-Executionpolicy unrestricted
 
      ![Authentication done.](media/authentication-done.png)
 
+	 **Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell. ```PowerShell
+Set-Executionpolicy unrestricted
+```
+	 
 12. **Navigate** back to the resource group tab.
 13. You will get another code to authenticate Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 
