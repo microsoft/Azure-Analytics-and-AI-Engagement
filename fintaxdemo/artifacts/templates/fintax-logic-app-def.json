@@ -1,0 +1,222 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Detect_language": {
+                "inputs": {
+                    "body": {
+                        "Text": "@triggerBody()?['question']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['translatorv2']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/Detect"
+                },
+                "runAfter": {
+                    "Initialize_QuestionLanguage": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Generate_answer": {
+                "inputs": {
+                    "body": {
+                        "question": "@body('Translate_text')",
+                        "top": 1
+                    },
+                    "headers": {
+                        "EndpointKey": "#QNA_ENDPOINT_KEY#",
+                        "ServiceHost": "https://#APP_FINTAX_QNA_NAME#.azurewebsites.net/qnamaker"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['cognitiveservicesqnamaker']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/knowledgebases/@{encodeURIComponent('#KBID#')}/generateAnswer"
+                },
+                "runAfter": {
+                    "Translate_text": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Initialize_QuestionLanguage": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "QuestionLanguge",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "Parse_JSON": {
+                "inputs": {
+                    "content": "@body('Generate_answer')",
+                    "schema": {
+                        "properties": {
+                            "activeLearningEnabled": {
+                                "type": "boolean"
+                            },
+                            "answers": {
+                                "items": {
+                                    "properties": {
+                                        "answer": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "isDocumentText": {
+                                            "type": "boolean"
+                                        },
+                                        "metadata": {
+                                            "type": "array"
+                                        },
+                                        "score": {
+                                            "type": [
+                                                "integer",
+                                                "number"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "answer",
+                                        "score",
+                                        "id",
+                                        "isDocumentText",
+                                        "metadata"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "Generate_answer": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('func_qna_fintax_prod')",
+                    "statusCode": "@outputs('func_qna_fintax_prod')['statusCode']"
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "func_qna_fintax_prod": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            },
+            "Set_QuestionLanguage": {
+                "inputs": {
+                    "name": "QuestionLanguge",
+                    "value": "@body('Detect_language')?['Code']"
+                },
+                "runAfter": {
+                    "Detect_language": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "SetVariable"
+            },
+            "Translate_text": {
+                "inputs": {
+                    "body": {
+                        "Text": "@triggerBody()?['question']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['translatorv2']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/Translate",
+                    "queries": {
+                        "to": "en"
+                    }
+                },
+                "runAfter": {
+                    "Set_QuestionLanguage": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "func_qna_fintax_prod": {
+                "inputs": {
+                    "body": "@body('Parse_JSON')",
+                    "function": {
+                        "id": "/subscriptions/#SUBSCRIPTION_ID#/resourceGroups/#RESOURCE_GROUP_NAME#/providers/Microsoft.Web/sites/#FUNC_QNAMAKER_FINTAX_NAME#/functions/func_qna_fintax_prod"
+                    },
+                    "queries": {
+                        "translateToLanguageCode": "@variables('QuestionLanguge')"
+                    }
+                },
+                "runAfter": {
+                    "Parse_JSON": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Function"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {
+                        "Content-Type": "application/json",
+                        "properties": {
+                            "question": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "cognitiveservicesqnamaker": {
+                    "connectionId": "/subscriptions/#SUBSCRIPTION_ID#/resourceGroups/#RESOURCE_GROUP_NAME#/providers/Microsoft.Web/connections/cognitiveservicesqnamaker",
+                    "connectionName": "cognitiveservicesqnamaker",
+                    "id": "/subscriptions/#SUBSCRIPTION_ID#/providers/Microsoft.Web/locations/#LOCATION#/managedApis/cognitiveservicesqnamaker"
+                },
+                "translatorv2": {
+                    "connectionId": "/subscriptions/#SUBSCRIPTION_ID#/resourceGroups/#RESOURCE_GROUP_NAME#/providers/Microsoft.Web/connections/translatorv2",
+                    "connectionName": "translatorv2",
+                    "id": "/subscriptions/#SUBSCRIPTION_ID#/providers/Microsoft.Web/locations/#LOCATION#/managedApis/translatorv2"
+                }
+            }
+        }
+    }
+}

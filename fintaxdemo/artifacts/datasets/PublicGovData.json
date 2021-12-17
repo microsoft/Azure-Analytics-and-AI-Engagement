@@ -1,0 +1,62 @@
+{
+    "name": "PublicGovData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synfintaxprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "part-00000-41f377a8-e0cf-4d11-ae78-1595bc8f526b-c000.csv",
+                "folderPath": "marketing-data/PublicGovData",
+                "fileSystem": "file1"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Region",
+                "type": "String"
+            },
+            {
+                "name": "Country",
+                "type": "String"
+            },
+            {
+                "name": "Campaign_Name",
+                "type": "String"
+            },
+            {
+                "name": "Revenue",
+                "type": "String"
+            },
+            {
+                "name": "Revenue_Target",
+                "type": "String"
+            },
+            {
+                "name": "City",
+                "type": "String"
+            },
+            {
+                "name": "State",
+                "type": "String"
+            },
+            {
+                "name": "RoleID",
+                "type": "String"
+            },
+            {
+                "name": "Revenue_Variance",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

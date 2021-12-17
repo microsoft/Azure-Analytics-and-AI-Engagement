@@ -1,0 +1,7 @@
+ID,TypeIdentifier,Name,NTaxpayers,NReturn,NIssues,NReturnsProcessed,NReturnsAccepted,NMonthlyDelayedPayments,Penaltycollected,PenaltyTarget,InterestCollected,InterestTarget,[NTaxpayersReportedtoLawEnforcement],NPotentialAnomalies,TaxIssues,UnderaymentrDelayedPayments,Penalties_YTD,InterestCollected_YTD,NReturnsScrutiny,NAuditedReportsClosedWithPenaltyLessThan$1000,NTaxpayersUnderScrutiny,InternalRiskandCompliance,NTaxpayersReportedtoLawEnforcement1
+5,Anti_Corruption_Incharge_Before,ACU-1,,,,,,,,,,,,450,,,40000000,25000000,28,20,17,10,4
+6,Anti_Corruption_Incharge_After,ACU-1,,,,,,,,,,,,850,,,27000000,585000000,5,78,10,54,12
+1,Tax_Auditor_Before,Peter,96,120,12,85,43,234,4500000,9000000,230000,460000,,,,,,,,,,,
+2,Tax_Auditor_After,Peter,150,490,1534,400,380,334,9200000,9000000,2400000,460000,,,,,,,,,,,
+3,Fraud_Investigator_Before ,Sharon,,,,,,,,,,,,1200,100,300,149000000,34000000,,,,,
+4,Fraud_Investigator_After,Sharon,,,,,,,,,,,,1400,230,450,789000000,284000000,,,,,

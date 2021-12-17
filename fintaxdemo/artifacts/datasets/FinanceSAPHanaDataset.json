@@ -1,0 +1,17 @@
+{
+    "name": "FinanceSAPHanaDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synfintaxprod-WorkspaceDefaultSqlServer",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "CustomerSalesHana"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

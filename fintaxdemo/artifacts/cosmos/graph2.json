@@ -1,0 +1,958 @@
+[
+  {
+    "label": "person",
+    "id": "MIKELLI INVESTMENTS LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KIROZ Investment and Business Ltd.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "WOWARK INCORPORATED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "UNIVAR CAPITAL INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DICONSA TRADING S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DAFISA INVESTMENTS S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "PARSONS INVESTMENTS INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "PARSIM FINANCE INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CAMBERWELL ENTERPRISES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "GASELEE INVESTMENTS CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "WHATLEY DEVELOPMENT LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ROMISO S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "IDECO INTERNATIONAL LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ADYAR CONSULTANTS GROUP Inc.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CARTER PROPERTIES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ELDEN OVERSEAS S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ALLIUM DEVELOPMENT CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BANYAN EQUITIES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "G.F.B.I. LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "G.F.G. LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "WESTFLEET CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KITOV TRADING S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "SUNFLOWER S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CHELSEA ENTERPRISES LIMITED COMPANY",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "FONDATION AINHOA",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KELLA INVESTMENTS DEVELOP CO.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KIPPOUR S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MOSTEMA TRADING INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MANSFIELD INTERNATIONAL INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BIGLAND ENTERPRISES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ESCO MANAGEMENT CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "OWSLEY INTERNATIONAL CORPORATION",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "RODEX S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BURLINGTON GROUP LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "STORWAN HOLDING INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "EGSAN CORPORATION",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "AUSTRAL ENTERPRISES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "LESTON INVESTMENTS S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "TEMPEL ENTERPRISE S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "GALTER COMPANY INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MAGLEY MANAGEMENT INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BRACHA S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DERFIN MANAGEMENT S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "REGENT INVESTMENT SA.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "TPFF LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "LANCELOT PLACE PROPERTIES LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KNIGHTSBRIDGE ESTATES LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BRUTON PROPERTIES LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HAM RIDINGS LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ELSTREE ESTATES LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MAYFAIR COMMERCIAL LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KHUNO INVESTMENTS LLP",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HUANCA INVESTMENT LLP",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HUIRACOCHA INVESTMENTS LLP",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "REFILL TRADING CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MERCIER INTERNATIONAL S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HEARNVILLE INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "LATVAE GROUP INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "SEABURY INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "SIERRA LEONA S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ORANGE STAR CORPORATION",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "SMCD LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BLUE SEA ENTERPRISES CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "FALSON & CO.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DOOLEY SECURITIES S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HUNGLEVEST CORPORATION",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "JULEX FOUNDATION",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "STANHOPE INVESTMENTS LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "FINANCIAL ADVISORY GROUP LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CAUSEWAY CONSULTING LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BEECHWOOD ASSOCIATES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "BRECKENRIDGE GLOBAL MANAGEMENT LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "HIGHLAND VENTURES GROUP LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CULLODEN PROPERTIES LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KENRICK OVERSEAS LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CADLEY HOUSE LTD.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DAVID, RONALD",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "ABARTH, ANNELIESE",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "João Lyra",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Néstor Grindetti",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Mehriban Aliyeva",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Heydar Aliyev",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Konrad Mizzi",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Alfredo Ovalle Rodríguez",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Ahmad Ali al-Mirghani",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Mounir Majidi",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Jesús Villanueva",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Bjarni Benediktsson",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Ólöf Nordal",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Jean-Claude N’Da Ametchi",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CORFIDUCIA ANSTALT",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "THE LEVANT LAWYERS (TLL)",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Juan Armando Hinojosa",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Galo Chiriboga",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "James Ibori",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Leyla Aliyeva",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "Arkady Rotenberg",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MADRIGAL FINANCE CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "ebb68605-6949-469f-8e0b-e0e062e4199d",
+    "_sink": "DICONSA TRADING S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "716bc2a7-4823-470a-a419-09259389f0c1",
+    "_sink": "DAFISA INVESTMENTS S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "8247b054-e8d0-4699-9e0e-28f54aba7bcf",
+    "_sink": "PARSONS INVESTMENTS INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "8d7918d4-398d-45de-85bf-f05f29ac676b",
+    "_sink": "PARSIM FINANCE INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "fde73780-5aa8-45f7-97a3-1d49c54a44e4",
+    "_sink": "CAMBERWELL ENTERPRISES INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "c0bac680-f81e-46e7-aa0a-2eaec7e11197",
+    "_sink": "GASELEE INVESTMENTS CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "c2126184-7350-4048-84fd-60813c22c0b2",
+    "_sink": "WHATLEY DEVELOPMENT LTD.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "25e2e5ac-9e80-4cb6-a4fc-76107164d157",
+    "_sink": "ROMISO S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "681818e7-1e08-45ec-9173-004a39b7b05d",
+    "_sink": "IDECO INTERNATIONAL LTD.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "ea13f417-7286-4e6b-989a-8d43cad2ad4b",
+    "_sink": "ADYAR CONSULTANTS GROUP Inc.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "546075d7-bb89-43fd-afed-4cc9af6dc6d0",
+    "_sink": "CARTER PROPERTIES INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "c64af2c9-8d88-49bd-8190-28fe663d9dc2",
+    "_sink": "ELDEN OVERSEAS S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "2534ca9a-18ee-4437-95d9-55aa782799ba",
+    "_sink": "ALLIUM DEVELOPMENT CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "27a4fd50-a13a-4959-9487-2b869746cce6",
+    "_sink": "BANYAN EQUITIES INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "c41aea98-8133-4fee-ba99-d00693510435",
+    "_sink": "G.F.B.I. LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "417b033c-eb00-43c4-9642-65f9292b283c",
+    "_sink": "G.F.G. LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "THE LEVANT LAWYERS (TLL)",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "0409d816-31f8-4a3b-be19-26c9a8a90523",
+    "_sink": "WESTFLEET CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "ABARTH, ANNELIESE",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "5ddf0004-810e-4a34-b071-5caeecb967b5",
+    "_sink": "LANCELOT PLACE PROPERTIES LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "12d0d842-a1ad-418e-95a8-0d5f86fc3c44",
+    "_sink": "KNIGHTSBRIDGE ESTATES LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "ec6fe5a1-6505-453f-908a-acb4eb378c14",
+    "_sink": "BRUTON PROPERTIES LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "c64d22cd-c1e6-48e9-8746-1dfbb802134a",
+    "_sink": "HAM RIDINGS LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "9a738ab4-761b-4d82-ab8b-39baa59b0ffc",
+    "_sink": "ELSTREE ESTATES LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "4c8358da-61b0-42b1-ad38-13ff4727ac1f",
+    "_sink": "MAYFAIR COMMERCIAL LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Khalifa bin Zayed bin Sultan Al Nahyan",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "principal beneficiary of",
+    "id": "af01e251-6318-4d5c-861e-0ec63e376bbf",
+    "_sink": "KHUNO INVESTMENTS LLP",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Juan Armando Hinojosa",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "principal beneficiary of",
+    "id": "41f09026-717e-46de-8368-85adad9fede7",
+    "_sink": "HUANCA INVESTMENT LLP",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Juan Armando Hinojosa",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "principal beneficiary of",
+    "id": "0e1e7fd3-9615-497a-a5c0-8592862edf11",
+    "_sink": "HUIRACOCHA INVESTMENTS LLP",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Juan Armando Hinojosa",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "power of attorney of",
+    "id": "bf357d5f-1765-4b2d-8b6b-6c2e5b802e6a",
+    "_sink": "REFILL TRADING CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "João Lyra",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "power of attorney of",
+    "id": "22197d06-d51a-49f3-9d72-066eff30463f",
+    "_sink": "MERCIER INTERNATIONAL S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Néstor Grindetti",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "9eba9911-26da-4b68-bc14-14bc5140b96a",
+    "_sink": "HEARNVILLE INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Konrad Mizzi",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "beneficial owner of",
+    "id": "bd664e30-1890-4c90-bb59-caf8bb55182e",
+    "_sink": "SIERRA LEONA S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Alfredo Ovalle Rodríguez",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "owner of",
+    "id": "50d5a275-64eb-4a08-a78e-0bc21dae018b",
+    "_sink": "ORANGE STAR CORPORATION",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Ahmad Ali al-Mirghani",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "sole shareholder of",
+    "id": "93b4a264-d75f-4717-a677-67f7a82810a8",
+    "_sink": "MADRIGAL FINANCE CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Galo Chiriboga",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "director of",
+    "id": "d99655d1-4a3d-4d39-8948-7e28ba5c11b9",
+    "_sink": "MADRIGAL FINANCE CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Galo Chiriboga",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "power of attorney of",
+    "id": "dc7356cc-8cdb-445f-8d81-a706e29fc812",
+    "_sink": "MADRIGAL FINANCE CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Galo Chiriboga",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "power of attorney of",
+    "id": "a4056d70-bccb-4458-8111-0ac09196ceb4",
+    "_sink": "SMCD LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Mounir Majidi",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "first beneficiary of",
+    "id": "fb790a7a-2192-4ca3-b347-bf8164db258b",
+    "_sink": "JULEX FOUNDATION",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "James Ibori",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "shareholder (through julex foundation) of",
+    "id": "7d6926b0-982e-470e-8dc2-919dee052401",
+    "_sink": "STANHOPE INVESTMENTS LTD.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "James Ibori",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "connected of",
+    "id": "3b457f62-763e-4ab3-8cc6-99a0827405fe",
+    "_sink": "FINANCIAL ADVISORY GROUP LTD.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "James Ibori",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "owner of",
+    "id": "8a052971-9b4b-4b87-b08a-d4d8acb9ffa2",
+    "_sink": "CAUSEWAY CONSULTING LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Arkady Rotenberg",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "owner of",
+    "id": "2ae178fd-d2cb-4431-8b1c-19d4a7679888",
+    "_sink": "BEECHWOOD ASSOCIATES INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Arkady Rotenberg",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "owner of",
+    "id": "eb3d62c9-7520-4682-81ef-70e2b7891025",
+    "_sink": "BRECKENRIDGE GLOBAL MANAGEMENT LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Arkady Rotenberg",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "owner of",
+    "id": "2656ca14-77c8-4da1-90f0-b08071636ad5",
+    "_sink": "CADLEY HOUSE LTD.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "Jean-Claude N’Da Ametchi",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  }]

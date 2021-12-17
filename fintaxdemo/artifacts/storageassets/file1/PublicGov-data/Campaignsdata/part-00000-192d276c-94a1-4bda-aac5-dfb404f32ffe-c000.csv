@@ -1,0 +1,213 @@
+Region,Country,Sector,Revenue,Revenue_Target,State,RoleID,Revenue_Variance
+Statiso,South,Retail,11564.0,19306.0,Statiso,NULL,7742.0
+Sur Datum,South,Financial,6497.0,6147.0,Sur Datum,NULL,-350.0
+Statiso,South,Retail,11620.0,17230.0,Statiso,20,5610.0
+Statiso,South,Retail,9963.0,18377.0,Statiso,NULL,8414.0
+Sur Datum,South,Financial,16850.0,15753.0,Sur Datum,NULL,-1097.0
+Statiso,South,Retail,5333.0,7346.0,Statiso,20,2013.0
+Statiso,South,Retail,17488.0,9941.0,Statiso,NULL,-7547.0
+Sur Datum,South,Financial,7264.0,9868.0,Sur Datum,NULL,2604.0
+Statiso,South,Retail,14114.0,15482.0,Statiso,20,1368.0
+Statiso,South,Retail,8628.0,12622.0,Statiso,NULL,3994.0
+Sur Datum,South,Financial,16062.0,7721.0,Sur Datum,NULL,-8341.0
+Statiso,South,Retail,14114.0,15482.0,Statiso,20,1368.0
+Statiso,South,Retail,8628.0,12622.0,Statiso,NULL,3994.0
+Sur Datum,South,Financial,6414.0,12619.0,Sur Datum,NULL,6205.0
+Statiso,South,Retail,11620.0,17230.0,Statiso,20,5610.0
+Statiso,South,Retail,9963.0,18377.0,Statiso,NULL,8414.0
+Sur Datum,South,Financial,6593.0,17096.0,Sur Datum,NULL,10503.0
+Statiso,South,Retail,5333.0,7346.0,Statiso,20,2013.0
+Statiso,South,Retail,17488.0,9941.0,Statiso,NULL,-7547.0
+Sur Datum,South,Financial,9140.0,19323.0,Sur Datum,NULL,10183.0
+Statiso,South,Retail,10182.0,13630.0,Statiso,20,3448.0
+Statiso,South,Retail,11564.0,19306.0,Statiso,NULL,7742.0
+Sur Datum,South,Financial,9668.0,14658.0,Sur Datum,NULL,4990.0
+Statiso,South,Retail,10182.0,13630.0,Statiso,20,3448.0
+Statiso,South,Financial,5972.0,10692.0,Statiso,20,4720.0
+Sur Datum,South,Financial,8264.0,19049.0,Sur Datum,NULL,10785.0
+Statiso,South,Financial,7146.0,17780.0,Statiso,NULL,10634.0
+Statiso,South,Financial,5622.0,12306.0,Statiso,NULL,6684.0
+Sur Datum,South,Financial,9761.0,13831.0,Sur Datum,NULL,4070.0
+Statiso,South,Financial,7842.0,10624.0,Statiso,NULL,2782.0
+Statiso,South,Financial,7264.0,9868.0,Statiso,20,2604.0
+Sur Datum,South,Financial,15719.0,8723.0,Sur Datum,NULL,-6996.0
+Statiso,South,Financial,16523.0,17741.0,Statiso,NULL,1218.0
+Statiso,South,Financial,7264.0,9868.0,Statiso,NULL,2604.0
+Sur Datum,South,Financial,7273.0,6184.0,Sur Datum,NULL,-1089.0
+Statiso,South,Financial,9702.0,7876.0,Statiso,NULL,-1826.0
+Statiso,South,Financial,5972.0,10692.0,Statiso,20,4720.0
+Sur Datum,South,Financial,9250.0,15790.0,Sur Datum,NULL,6540.0
+Statiso,South,Financial,13132.0,17228.0,Statiso,NULL,4096.0
+Statiso,South,Financial,5622.0,12306.0,Statiso,NULL,6684.0
+Sur Datum,South,Financial,8121.0,10451.0,Sur Datum,NULL,2330.0
+Statiso,South,Financial,14651.0,8429.0,Statiso,NULL,-6222.0
+Statiso,South,Manufacturing,5496.0,15301.0,Statiso,NULL,9805.0
+Sur Datum,South,Financial,9192.0,6179.0,Sur Datum,NULL,-3013.0
+Statiso,South,Financial,13132.0,17228.0,Statiso,NULL,4096.0
+Statiso,South,You Have Us,6651.0,19835.0,Statiso,NULL,13184.0
+Sur Datum,South,Financial,8465.0,7654.0,Sur Datum,NULL,-811.0
+Statiso,South,Financial,14651.0,8429.0,Statiso,NULL,-6222.0
+Statiso,South,You Have Us,11983.0,9825.0,Statiso,NULL,-2158.0
+Sur Datum,South,Financial,17627.0,11422.0,Sur Datum,NULL,-6205.0
+Statiso,South,Financial,7842.0,10624.0,Statiso,NULL,2782.0
+Statiso,South,You Have Us,6651.0,19835.0,Statiso,NULL,13184.0
+Sur Datum,South,Financial,15148.0,19098.0,Sur Datum,NULL,3950.0
+Statiso,South,Financial,16523.0,17741.0,Statiso,NULL,1218.0
+Statiso,South,You Have Us,11983.0,9825.0,Statiso,NULL,-2158.0
+Sur Datum,South,Financial,5846.0,8447.0,Sur Datum,NULL,2601.0
+Statiso,South,Financial,9702.0,7876.0,Statiso,NULL,-1826.0
+Statiso,South,You Have Us,5496.0,15301.0,Statiso,NULL,9805.0
+Sur Datum,South,Financial,5197.0,18456.0,Sur Datum,NULL,13259.0
+Statiso,South,Financial,7146.0,17780.0,Statiso,NULL,10634.0
+Statiso,South,You Have Us,8710.0,9713.0,Statiso,NULL,1003.0
+Sur Datum,South,Financial,5103.0,6799.0,Sur Datum,NULL,1696.0
+Statiso,South,Financial,9348.0,11769.0,Statiso,NULL,2421.0
+Statiso,South,You Have Us,8710.0,9713.0,Statiso,NULL,1003.0
+Sur Datum,South,Financial,11988.0,19348.0,Sur Datum,NULL,7360.0
+Statiso,South,Financial,9348.0,11769.0,Statiso,NULL,2421.0
+Statiso,South,Retail,12929.0,9077.0,Statiso,NULL,-3852.0
+Sur Datum,South,Financial,14992.0,15699.0,Sur Datum,NULL,707.0
+Statiso,South,Thanks Giving,10225.0,12472.0,Statiso,NULL,2247.0
+Statiso,South,Retail,6738.0,11176.0,Statiso,NULL,4438.0
+Sur Datum,South,Financial,9935.0,15232.0,Sur Datum,NULL,5297.0
+Statiso,South,Thanks Giving,7001.0,10528.0,Statiso,NULL,3527.0
+Statiso,South,Retail,5712.0,6947.0,Statiso,NULL,1235.0
+Sur Datum,South,Financial,15119.0,17269.0,Sur Datum,NULL,2150.0
+Statiso,South,Thanks Giving,9140.0,19323.0,Statiso,NULL,10183.0
+Statiso,South,Retail,6738.0,11176.0,Statiso,NULL,4438.0
+Sur Datum,South,Financial,15740.0,7685.0,Sur Datum,NULL,-8055.0
+Statiso,South,Thanks Giving,9935.0,15232.0,Statiso,NULL,5297.0
+Statiso,South,Retail,5712.0,6947.0,Statiso,NULL,1235.0
+Sur Datum,South,Financial,14778.0,13122.0,Sur Datum,NULL,-1656.0
+Statiso,South,Thanks Giving,9140.0,19323.0,Statiso,NULL,10183.0
+Statiso,South,Retail,12929.0,9077.0,Statiso,NULL,-3852.0
+Sur Datum,South,Financial,10296.0,7313.0,Sur Datum,NULL,-2983.0
+Statiso,South,Thanks Giving,9935.0,15232.0,Statiso,NULL,5297.0
+Sur Datum,South,Financial,14992.0,15699.0,Sur Datum,NULL,707.0
+Sur Datum,South,Financial,14605.0,18971.0,Sur Datum,NULL,4366.0
+Statiso,South,Thanks Giving,10225.0,12472.0,Statiso,NULL,2247.0
+Sur Datum,South,Financial,9935.0,15232.0,Sur Datum,NULL,5297.0
+Sur Datum,South,Financial,14328.0,15577.0,Sur Datum,NULL,1249.0
+Statiso,South,Thanks Giving,7001.0,10528.0,Statiso,NULL,3527.0
+Sur Datum,South,Financial,15119.0,17269.0,Sur Datum,NULL,2150.0
+Sur Datum,South,Financial,11247.0,10339.0,Sur Datum,NULL,-908.0
+Sur Datum,South,Financial,15740.0,7685.0,Sur Datum,NULL,-8055.0
+Sur Datum,South,Financial,12409.0,10914.0,Sur Datum,NULL,-1495.0
+Sur Datum,South,Financial,14778.0,13122.0,Sur Datum,NULL,-1656.0
+Sur Datum,South,Financial,5418.0,13970.0,Sur Datum,NULL,8552.0
+Sur Datum,South,Financial,10296.0,7313.0,Sur Datum,NULL,-2983.0
+Sur Datum,South,Financial,15387.0,6961.0,Sur Datum,NULL,-8426.0
+Sur Datum,South,Financial,14605.0,18971.0,Sur Datum,NULL,4366.0
+Sur Datum,South,Financial,11620.0,17230.0,Sur Datum,NULL,5610.0
+Sur Datum,South,Financial,14328.0,15577.0,Sur Datum,NULL,1249.0
+Sur Datum,South,Financial,17859.0,17681.0,Sur Datum,NULL,-178.0
+Sur Datum,South,Financial,11247.0,10339.0,Sur Datum,NULL,-908.0
+Sur Datum,South,Financial,6738.0,11176.0,Sur Datum,NULL,4438.0
+Sur Datum,South,Financial,12409.0,10914.0,Sur Datum,NULL,-1495.0
+Sur Datum,South,Financial,10934.0,19723.0,Sur Datum,NULL,8789.0
+Sur Datum,South,Financial,5418.0,13970.0,Sur Datum,NULL,8552.0
+Sur Datum,South,Financial,9963.0,18377.0,Sur Datum,NULL,8414.0
+Sur Datum,South,Financial,15387.0,6961.0,Sur Datum,NULL,-8426.0
+Sur Datum,South,Financial,10344.0,15220.0,Sur Datum,NULL,4876.0
+Sur Datum,South,Financial,11620.0,17230.0,Sur Datum,NULL,5610.0
+Sur Datum,South,Financial,7842.0,10624.0,Sur Datum,NULL,2782.0
+Sur Datum,South,Financial,17859.0,17681.0,Sur Datum,NULL,-178.0
+Sur Datum,South,Financial,13735.0,16671.0,Sur Datum,NULL,2936.0
+Sur Datum,South,Financial,6738.0,11176.0,Sur Datum,NULL,4438.0
+Sur Datum,South,Financial,14290.0,10487.0,Sur Datum,NULL,-3803.0
+Sur Datum,South,Financial,10934.0,19723.0,Sur Datum,NULL,8789.0
+Sur Datum,South,Financial,12739.0,19242.0,Sur Datum,NULL,6503.0
+Sur Datum,South,Financial,9963.0,18377.0,Sur Datum,NULL,8414.0
+Sur Datum,South,Financial,19503.0,14609.0,Sur Datum,NULL,-4894.0
+Sur Datum,South,Financial,10344.0,15220.0,Sur Datum,NULL,4876.0
+Sur Datum,South,Financial,5496.0,15301.0,Sur Datum,NULL,9805.0
+Sur Datum,South,Financial,7842.0,10624.0,Sur Datum,NULL,2782.0
+Sur Datum,South,Financial,11441.0,6741.0,Sur Datum,NULL,-4700.0
+Sur Datum,South,Financial,13735.0,16671.0,Sur Datum,NULL,2936.0
+Sur Datum,South,Financial,13006.0,15079.0,Sur Datum,NULL,2073.0
+Sur Datum,South,Financial,14290.0,10487.0,Sur Datum,NULL,-3803.0
+Sur Datum,South,Financial,13070.0,16389.0,Sur Datum,NULL,3319.0
+Sur Datum,South,Financial,12739.0,19242.0,Sur Datum,NULL,6503.0
+Sur Datum,South,Financial,7264.0,9868.0,Sur Datum,NULL,2604.0
+Sur Datum,South,Financial,19503.0,14609.0,Sur Datum,NULL,-4894.0
+Sur Datum,South,Financial,16062.0,7721.0,Sur Datum,NULL,-8341.0
+Sur Datum,South,Financial,5496.0,15301.0,Sur Datum,NULL,9805.0
+Sur Datum,South,Financial,6414.0,12619.0,Sur Datum,NULL,6205.0
+Sur Datum,South,Financial,11441.0,6741.0,Sur Datum,NULL,-4700.0
+Sur Datum,South,Financial,6593.0,17096.0,Sur Datum,NULL,10503.0
+Sur Datum,South,Financial,13006.0,15079.0,Sur Datum,NULL,2073.0
+Sur Datum,South,Financial,9140.0,19323.0,Sur Datum,NULL,10183.0
+Sur Datum,South,Financial,13070.0,16389.0,Sur Datum,NULL,3319.0
+Sur Datum,South,Financial,9668.0,14658.0,Sur Datum,NULL,4990.0
+Sur Datum,South,Financial,13873.0,10617.0,Sur Datum,NULL,-3256.0
+Sur Datum,South,Financial,8264.0,19049.0,Sur Datum,NULL,10785.0
+Sur Datum,South,Financial,16611.0,7917.0,Sur Datum,NULL,-8694.0
+Sur Datum,South,Financial,9761.0,13831.0,Sur Datum,NULL,4070.0
+Sur Datum,South,Financial,12174.0,6996.0,Sur Datum,NULL,-5178.0
+Sur Datum,South,Financial,15719.0,8723.0,Sur Datum,NULL,-6996.0
+Sur Datum,South,Financial,5867.0,19049.0,Sur Datum,NULL,13182.0
+Sur Datum,South,Financial,7273.0,6184.0,Sur Datum,NULL,-1089.0
+Sur Datum,South,Financial,9112.0,11930.0,Sur Datum,NULL,2818.0
+Sur Datum,South,Financial,9250.0,15790.0,Sur Datum,NULL,6540.0
+Sur Datum,South,Financial,16386.0,9989.0,Sur Datum,NULL,-6397.0
+Sur Datum,South,Financial,8121.0,10451.0,Sur Datum,NULL,2330.0
+Sur Datum,South,Financial,14691.0,14601.0,Sur Datum,NULL,-90.0
+Sur Datum,South,Financial,9192.0,6179.0,Sur Datum,NULL,-3013.0
+Sur Datum,South,Financial,12974.0,19462.0,Sur Datum,NULL,6488.0
+Sur Datum,South,Financial,8465.0,7654.0,Sur Datum,NULL,-811.0
+Sur Datum,South,Financial,10246.0,18683.0,Sur Datum,NULL,8437.0
+Sur Datum,South,Financial,17627.0,11422.0,Sur Datum,NULL,-6205.0
+Sur Datum,South,Financial,5333.0,7346.0,Sur Datum,NULL,2013.0
+Sur Datum,South,Financial,15148.0,19098.0,Sur Datum,NULL,3950.0
+Sur Datum,South,Financial,11059.0,19059.0,Sur Datum,NULL,8000.0
+Sur Datum,South,Financial,5846.0,8447.0,Sur Datum,NULL,2601.0
+Sur Datum,South,Financial,17488.0,9941.0,Sur Datum,NULL,-7547.0
+Sur Datum,South,Financial,5197.0,18456.0,Sur Datum,NULL,13259.0
+Sur Datum,South,Financial,12711.0,8946.0,Sur Datum,NULL,-3765.0
+Sur Datum,South,Financial,5103.0,6799.0,Sur Datum,NULL,1696.0
+Sur Datum,South,Financial,5712.0,6947.0,Sur Datum,NULL,1235.0
+Sur Datum,South,Financial,11988.0,19348.0,Sur Datum,NULL,7360.0
+Sur Datum,South,Financial,10027.0,10643.0,Sur Datum,NULL,616.0
+Sur Datum,South,Financial,13873.0,10617.0,Sur Datum,NULL,-3256.0
+Sur Datum,South,Financial,11703.0,9822.0,Sur Datum,NULL,-1881.0
+Sur Datum,South,Financial,16611.0,7917.0,Sur Datum,NULL,-8694.0
+Sur Datum,South,Financial,16207.0,14061.0,Sur Datum,NULL,-2146.0
+Sur Datum,South,Financial,12174.0,6996.0,Sur Datum,NULL,-5178.0
+Sur Datum,South,Financial,5867.0,19049.0,Sur Datum,NULL,13182.0
+Sur Datum,South,Financial,9112.0,11930.0,Sur Datum,NULL,2818.0
+Sur Datum,South,Financial,16386.0,9989.0,Sur Datum,NULL,-6397.0
+Sur Datum,South,Financial,14691.0,14601.0,Sur Datum,NULL,-90.0
+Sur Datum,South,Financial,12974.0,19462.0,Sur Datum,NULL,6488.0
+Sur Datum,South,Financial,10246.0,18683.0,Sur Datum,NULL,8437.0
+Sur Datum,South,Financial,5333.0,7346.0,Sur Datum,NULL,2013.0
+Sur Datum,South,Financial,11059.0,19059.0,Sur Datum,NULL,8000.0
+Sur Datum,South,Financial,17488.0,9941.0,Sur Datum,NULL,-7547.0
+Sur Datum,South,Financial,12711.0,8946.0,Sur Datum,NULL,-3765.0
+Sur Datum,South,Financial,5712.0,6947.0,Sur Datum,NULL,1235.0
+Sur Datum,South,Financial,10027.0,10643.0,Sur Datum,NULL,616.0
+Sur Datum,South,Financial,11703.0,9822.0,Sur Datum,NULL,-1881.0
+Sur Datum,South,Financial,16207.0,14061.0,Sur Datum,NULL,-2146.0
+Sur Datum,South,Financial,6497.0,6147.0,Sur Datum,NULL,-350.0
+Sur Datum,South,Financial,16850.0,15753.0,Sur Datum,NULL,-1097.0
+Sur Datum,South,Financial,21637.0,5666.0,Sur Datum,NULL,-15971.0
+Sur Datum,South,Financial,10480.0,7379.0,Sur Datum,NULL,-3101.0
+Sur Datum,South,Financial,9781.0,19592.0,Sur Datum,NULL,9811.0
+Sur Datum,South,Financial,16859.0,13324.0,Sur Datum,NULL,-3535.0
+Sur Datum,South,Financial,14764.0,5876.0,Sur Datum,NULL,-8888.0
+Sur Datum,South,Financial,16523.0,17741.0,Sur Datum,17,1218.0
+Sur Datum,South,Financial,13945.0,13624.0,Sur Datum,17,-321.0
+Sur Datum,South,Financial,13083.0,11336.0,Sur Datum,17,-1747.0
+Sur Datum,South,Financial,6285.0,8448.0,Sur Datum,17,2163.0
+Sur Datum,South,Financial,15670.0,5412.0,Sur Datum,17,-10258.0
+Sur Datum,South,Financial,6815.0,14606.0,Sur Datum,17,7791.0
+Sur Datum,South,Financial,21637.0,5666.0,Sur Datum,17,-15971.0
+Sur Datum,South,Financial,10480.0,7379.0,Sur Datum,20,-3101.0
+Sur Datum,South,Financial,9781.0,19592.0,Sur Datum,20,9811.0
+Sur Datum,South,Financial,16859.0,13324.0,Sur Datum,20,-3535.0
+Sur Datum,South,Financial,14764.0,5876.0,Sur Datum,20,-8888.0
+Sur Datum,South,Financial,16523.0,17741.0,Sur Datum,20,1218.0
+Sur Datum,South,Financial,13945.0,13624.0,Sur Datum,20,-321.0
+Sur Datum,South,Financial,13083.0,11336.0,Sur Datum,20,-1747.0
+Sur Datum,South,Financial,6285.0,8448.0,Sur Datum,20,2163.0
+Sur Datum,South,Financial,15670.0,5412.0,Sur Datum,20,-10258.0
+Sur Datum,South,Financial,6815.0,14606.0,Sur Datum,17,7791.0

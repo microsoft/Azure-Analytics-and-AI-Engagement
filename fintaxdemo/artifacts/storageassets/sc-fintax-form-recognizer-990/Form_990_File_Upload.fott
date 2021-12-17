@@ -1,0 +1,20 @@
+{
+    "sourceConnection": {
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiOGNlYjk2MDY2YTMzMTMwZDBiNDQwMDgzMGQ0ODg2NjRiYzNiOGNlYWE3NDM3YmQ4NGEzYjcyYTE2NWE5NjljY2MyN2ZhYzBiN2Y0OGE2ZmNmOTRkMGJkMWMxZTc5ZGQxZjlmMGIwZjliMzVkZTA5ZGQxOWVlNTNkMTQ4MTAxYWEzODM5OTI0ODhlYzIzZjY5M2Q3NWFmZmQ3MTIyNDJkZjBlMDJiODBkMWIyMDZhYzlhZTM2NzNkMTQ5M2FmYzI1ZTk4OTFhYTU1YzIwYWY0NDUzNGQwZjRlNjI4MWY3OGI1YjViOTBhZWJkZGI4MGU0Yjc4NTI5NTUwZmM5MTI1YjkwZjExODk0Mzg0NGEyZmUyYmUzNjU1MDEwNTVkYjkzZWY2MGY3MTExZWE5MjljODRjNDFjMTA5ZTYyOTcwOWZiYWQ3MWExNDgzOGFiYjIzYWJhZGZmN2VjYzgwNzU1YTc5YTM3ZGM3MTIzNmFhZTVmN2YwMGMwMzViYzIwYjdkYTMwYjk0YmZlODRiMjExYWExZmViNjlhZTY3NDZlMmFlZmIwZWZjNmI5ZWYxMjQ3YzNmMTViYmQxZDAzOTIyZCIsIml2IjoiOTEzYzdlNzdiYTg4NTNlNmZkYjg2Y2Q0YjJkOTczM2QifQ=="
+        },
+        "id": "t5fZF1SJV",
+        "name": "new-sc-fintax-form-recognizer-990",
+        "providerType": "azureBlobStorage"
+    },
+    "apiKey": {
+        "encrypted": "eyJjaXBoZXJ0ZXh0IjoiZTJmODY4YmM1ZDNlNGI3NDgxZjZhMzczMzNmNDZlM2E3ODEwMmM5N2ZmN2FiYTU4MmQ2NmVmMmNjOTVmOGNhYjQwOTU1MDA5NDU5NDdlN2NiNjEzNjUzMjg1MGE3ZTg3IiwiaXYiOiJmMzk2MTRjZTQwZGFiOGNiZTFjYzZiOWI0ODcxYjk1ZCJ9"
+    },
+    "name": "Form_990_File_Upload",
+    "securityToken": "form_recognizer_990 Token",
+    "folderPath": "C:\\Users\\jdk51\\OneDrive\\Desktop\\first_page_training_files",
+    "apiUriBase": "https://fintax-form-recognizer.cognitiveservices.azure.com/",
+    "version": "2.1",
+    "id": "wKqFRfgwp",
+    "tags": []
+}

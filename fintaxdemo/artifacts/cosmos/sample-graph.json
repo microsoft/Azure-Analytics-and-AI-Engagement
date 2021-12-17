@@ -1,0 +1,171 @@
+[
+  {
+    "label": "person",
+    "id": "MICHAEL PAPAGEORGE, MR.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CORFIDUCIA ANSTALT",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "FOURPASS DEVELOP CORP.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "MIKELLI INVESTMENTS LIMITED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "KIROZ Investment and Business Ltd.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "WOWARK INCORPORATED",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "UNIVAR CAPITAL INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DICONSA TRADING S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "DAFISA INVESTMENTS S.A.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "PARSONS INVESTMENTS INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "PARSIM FINANCE INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "person",
+    "id": "CAMBERWELL ENTERPRISES INC.",
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "8f46f2d7-a88b-4ab7-b757-3d80318e1d0d",
+    "_sink": "FOURPASS DEVELOP CORP.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "MICHAEL PAPAGEORGE, MR.",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "df2aff90-70d2-4a50-8ca4-cecb5bd02429",
+    "_sink": "MIKELLI INVESTMENTS LIMITED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "MICHAEL PAPAGEORGE, MR.",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "a9865863-ddc6-4a31-8183-3f9692a2d6e9",
+    "_sink": "KIROZ Investment and Business Ltd.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "MICHAEL PAPAGEORGE, MR.",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "e248e8e7-f52f-43f7-abc5-d09b09a5ea11",
+    "_sink": "WOWARK INCORPORATED",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "MICHAEL PAPAGEORGE, MR.",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "2cf92783-eb03-44f3-ba0c-3d2da01c7513",
+    "_sink": "UNIVAR CAPITAL INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "MICHAEL PAPAGEORGE, MR.",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "c7ff931d-ceb8-454f-a607-050d19cab14e",
+    "_sink": "DICONSA TRADING S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "a3ad27e2-509c-4fd9-9b10-47c9bad9aa67",
+    "_sink": "DAFISA INVESTMENTS S.A.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "0d8c0f53-b0de-4b7b-9a9a-41cc447d9deb",
+    "_sink": "PARSONS INVESTMENTS INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "afa0e145-8192-4b59-ac13-93b4900da3d1",
+    "_sink": "PARSIM FINANCE INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  },
+  {
+    "label": "intermediary of",
+    "id": "41c0038c-a3b5-4e21-aed0-8fef1320daf3",
+    "_sink": "CAMBERWELL ENTERPRISES INC.",
+    "_sinkLabel": "person",
+    "_sinkPartition": "pk",
+    "_vertexId": "CORFIDUCIA ANSTALT",
+    "_vertexLabel": "person",
+    "_isEdge": true,
+    "pk": "pk"
+  }]

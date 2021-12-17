@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/fields.json",
+    "fields": [
+        {
+            "fieldKey": "Name",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        }
+    ],
+    "definitions": {}
+}

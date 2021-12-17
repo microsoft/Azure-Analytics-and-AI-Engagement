@@ -1,0 +1,13 @@
+{
+    "name": "SynapseTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "MarketingCampaignData",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,320 @@
+[
+  {
+    "label": "author",
+    "id": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "name": "J K Rowling",
+    "gender": [
+      {
+        "id": "35448aaa-1ddd-4d66-9537-b7aa6f424440",
+        "_value": "Female"
+      }
+    ]
+  },
+  {
+    "label": "author",
+    "id": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "name": "Luke Rhinehart",
+    "gender": [
+      {
+        "id": "7a3d9399-9364-4c1e-b44e-3b2cb9a5e0d2",
+        "_value": "Male"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "bee43635-24ac-44a9-b050-6f54d240ada8",
+    "name": "Harry Potter and the Philosophers Stone",
+    "pages": [
+      {
+        "id": "e8e720ef-4da3-43ba-bec5-05e2b9c97d1f",
+        "_value": "223"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "134ae754-f980-402e-b6d4-36a90ca5e41e",
+    "name": "Harry Potter and the Chamber of Secrets",
+    "pages": [
+      {
+        "id": "7ffb074e-984c-4e9b-9952-ddf931af5051",
+        "_value": "251"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "df5f4460-01ff-4e41-a7a7-8e1c7863a316",
+    "name": "Harry Potter and the Prisoner of Azkaban",
+    "pages": [
+      {
+        "id": "de91357c-4a2e-466d-b0d7-3e672e0d2613",
+        "_value": "317"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "73f25173-c4a9-4ded-a42e-887a1db7ae47",
+    "name": "Harry Potter and the Goblet of Fire",
+    "pages": [
+      {
+        "id": "87818cb5-f83d-4187-b10e-cfbd245a9fa6",
+        "_value": "636"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "649aa40c-07ef-4d29-9a38-44b2bb605865",
+    "name": "Harry Potter and the Order of the Phoenix",
+    "pages": [
+      {
+        "id": "c5239a82-2528-4b50-9ec0-820fa4bd1421",
+        "_value": "766"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "d09f07c0-63bb-4082-bb72-76ff7bd2489b",
+    "name": "Harry Potter and the Half-Blood Prince",
+    "pages": [
+      {
+        "id": "81857f00-2e3a-45e2-b62a-38ec2cbbb0c1",
+        "_value": "607"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "a38158ea-e103-4dbc-9edb-40e6c16a3427",
+    "name": "Harry Potter and the Deathly Hallows",
+    "pages": [
+      {
+        "id": "2e723fa2-ee52-4f45-83a0-1e5ca3b86d48",
+        "_value": "607"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "bf13d4fe-63aa-4859-9ebb-ba42a7995520",
+    "name": "The Hobbit",
+    "pages": [
+      {
+        "id": "9a021dd0-068b-4599-bcb7-90e4109e1034",
+        "_value": "310"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "50406fe6-7bfc-475c-9ed7-fd33b3631e8d",
+    "name": "The Fellowship of the Ring",
+    "pages": [
+      {
+        "id": "2a5133fc-53a6-48f7-a937-013ad611216a",
+        "_value": "423"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "9179dce2-2d3e-4cb0-bf43-b03541407571",
+    "name": "The Two Towers",
+    "pages": [
+      {
+        "id": "13c48361-47f6-4a00-a244-32af16f95157",
+        "_value": "352"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "63ff1469-9e21-4a91-8927-290d011e4a9b",
+    "name": "The Return of the King",
+    "pages": [
+      {
+        "id": "adff3da9-8992-447d-81b9-af776eb33361",
+        "_value": "416"
+      }
+    ]
+  },
+  {
+    "label": "book",
+    "id": "49c40133-b293-4ad9-baff-ddc750f1f898",
+    "name": "The Dice Man",
+    "pages": [
+      {
+        "id": "06286ff7-328d-4162-b3b5-d7905b827b33",
+        "_value": "500"
+      }
+    ]
+  },
+  {
+    "label": "wrote",
+    "id": "3b591fdb-581d-41e6-bccd-e9ff08664340",
+    "_sink": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_sinkLabel": "author",
+    "_sinkPartition": "Luke Rhinehart",
+    "_vertexId": "49c40133-b293-4ad9-baff-ddc750f1f898",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Dice Man"
+  },
+  {
+    "label": "read",
+    "id": "d34c0c00-55c0-49a5-a152-8fa52b73facd",
+    "_sink": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_sinkLabel": "author",
+    "_sinkPartition": "Luke Rhinehart",
+    "_vertexId": "50406fe6-7bfc-475c-9ed7-fd33b3631e8d",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Fellowship of the Ring"
+  },
+  {
+    "label": "read",
+    "id": "5f431d11-c236-48e0-89c1-c7512c5893ae",
+    "_sink": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_sinkLabel": "author",
+    "_sinkPartition": "Luke Rhinehart",
+    "_vertexId": "9179dce2-2d3e-4cb0-bf43-b03541407571",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Two Towers"
+  },
+  {
+    "label": "read",
+    "id": "159254a0-8e34-4325-a78a-efbd3e5fd8d4",
+    "_sink": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_sinkLabel": "author",
+    "_sinkPartition": "Luke Rhinehart",
+    "_vertexId": "63ff1469-9e21-4a91-8927-290d011e4a9b",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Return of the King"
+  },
+  {
+    "label": "knows",
+    "id": "8a259c39-ceaa-4e9b-86ef-d36828afe9a6",
+    "_sink": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_sinkLabel": "author",
+    "_sinkPartition": "Luke Rhinehart",
+    "_vertexId": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_vertexLabel": "author",
+    "_isEdge": true,
+    "name": "J K Rowling"
+  },
+  {
+    "label": "knows",
+    "id": "a1410025-f2bb-4d0d-9372-20f7ef0b0579",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "258e325b-0b2d-46b4-8eb4-3b3ba83273e8",
+    "_vertexLabel": "author",
+    "_isEdge": true,
+    "name": "Luke Rhinehart"
+  },
+  {
+    "label": "wrote",
+    "id": "0fd2b6bd-6f87-4bd1-b128-202455ff8f6b",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "bee43635-24ac-44a9-b050-6f54d240ada8",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Philosophers Stone"
+  },
+  {
+    "label": "wrote",
+    "id": "31b227aa-d384-4e50-bc53-d2b36e86fc5c",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "134ae754-f980-402e-b6d4-36a90ca5e41e",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Chamber of Secrets"
+  },
+  {
+    "label": "wrote",
+    "id": "334cfd84-ab6a-4818-8084-ae5ccd6c62cc",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "df5f4460-01ff-4e41-a7a7-8e1c7863a316",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Prisoner of Azkaban"
+  },
+  {
+    "label": "wrote",
+    "id": "541e87b0-da49-484c-bd37-3fc779268552",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "73f25173-c4a9-4ded-a42e-887a1db7ae47",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Goblet of Fire"
+  },
+  {
+    "label": "wrote",
+    "id": "37b50bf7-e392-4342-8664-948b070cd800",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "649aa40c-07ef-4d29-9a38-44b2bb605865",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Order of the Phoenix"
+  },
+  {
+    "label": "wrote",
+    "id": "0bd2d285-4459-4f62-93b6-35d0f543d749",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "d09f07c0-63bb-4082-bb72-76ff7bd2489b",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Half-Blood Prince"
+  },
+  {
+    "label": "wrote",
+    "id": "8f6ca6cf-1212-40b7-b944-5370ab724576",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "a38158ea-e103-4dbc-9edb-40e6c16a3427",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "Harry Potter and the Deathly Hallows"
+  },
+  {
+    "label": "read",
+    "id": "4b689caa-ffb2-4cc6-b3cf-18b488ff391b",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "bf13d4fe-63aa-4859-9ebb-ba42a7995520",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Hobbit"
+  },
+  {
+    "label": "read",
+    "id": "b58225f6-2070-433d-a221-b5f96c44fa03",
+    "_sink": "b9aa1c72-e417-48b3-bb45-2154066e7013",
+    "_sinkLabel": "author",
+    "_sinkPartition": "J K Rowling",
+    "_vertexId": "49c40133-b293-4ad9-baff-ddc750f1f898",
+    "_vertexLabel": "book",
+    "_isEdge": true,
+    "name": "The Dice Man"
+  }]
