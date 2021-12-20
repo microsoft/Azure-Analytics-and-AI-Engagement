@@ -56,14 +56,14 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 <!-- TOC -->
 
-  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-  - [Task 2: Create Power BI workspace](#task-2-create-power-bi-workspace)
-  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-  - [Task 4: Run the Cloud Shell](#task-4-run-the-cloud-shell)
-  - [Task 5: Create Power BI reports and Dashboard](#task-5-create-power-bi-reports-and-dashboard)
-  - [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
-  - [Task 7: Pause/Resume script](#task-7-pause-resume-resources)
-  - [Task 8: Clean up environment](#task-8-clean-up-resources)
+	- [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
+	- [Task 2: Power BI Workspace creation](#task-2-create-power-bi-workspace)
+	- [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
+	- [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell)
+	- [Task 5: Power BI reports and dashboard creation](#task-5-create-power-bi-reports-and-dashboard)
+	- [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
+	- [Task 7: Pause/Resume resources](#task-7-pause-resume-resources)
+	- [Task 8: Clean up resources](#task-8-clean-up-resources)
 
 <!-- /TOC -->
 
@@ -323,7 +323,7 @@ cd ./fintax/fintaxdemo
 
 	> **Note:** The deployment will take approximately 40-45 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
       
-### Task 5: Power BI reports and dashboard creation 
+### Task 5: Power BI reports and dashboard creation
 
 1. **Open** Power BI in a new tab using the following link
         [https://app.powerbi.com/](https://app.powerbi.com/).
@@ -331,313 +331,247 @@ cd ./fintax/fintaxdemo
 2. **Sign into** Power BI. Use the same Azure account you have used throughout this setup process.
 
 	![Sign in to Power BI Services.](media/power-bi-report.png)
+	
+3. Go to workspaces and **click on** create workspace.
 
-3. **Select** the Workspace, which is created in [Task2](#task-2-create-power-bi-workspace).
+	![Create Workscpace.](media/power-bi-report-1.png)
+	
+4. Write the new workspace name and **click** on save.
 
-	![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/power-bi-report-2.png)
+	![Click Save.](media/power-bi-report-2.png)
+	
+5. **Select** the Workspace, which is created in [Task 2](#task-2-create-power-bi-workspace).
+	
+	![Select Workspace.](media/power-bi-report-3.png)
+	
+Once [Task 4](#task-4-run-the-cloud-shell) has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
 
-Once [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
+The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports.
 
-The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports. 
-
-![Screenshot to view the reports tab.](media/power-bi-report-3.png)
+	![Reports Tab.](media/power-bi-report-4.png)
+	
+> **Note:** If you do not see this list in your workspace after script execution, it may indicate that something went wrong during execution. You may use the subscript to patch it or manually upload the reports from this location and changing their parameters appropriately before authentication.
 
 To give permissions for the Power BI reports to access the data sources:
 
-4. **Click** the ellipses or settings icon on top right-side corner.
+6. **Click** the ellipses or settings icon on top right-side corner.
 
-5. **Click** the settings button.
+7. **Click** the settings dropdown.
 
-6. **Click** on settings.
+8. **Click** on settings.
 
-	![Authenticate Power BI Reports.](media/power-bi-report-4.png)
+	![Permission.](media/power-bi-report-5.png)
 
-7. **Click** 'Datasets' tab.
+9. **Click** on ‘Datasets’ tab.
+	
+	![Dataset.](media/power-bi-report-6.png)
+	
+10. **Click** on the Taxpayer Client Services Report.
 
-	![Go to Datasets.](media/power-bi-report-5.png)
+11. **Expand** Data source credentials.
 
-8. **Click** on the first Dataset.
-9. **Expand** Data source credentials.
-10. **Click** Edit credentials and a dialogue box will pop up.
+12. **Click** Edit credentials and a dialogue box will pop up.
 
-	![Select Campaign.](media/power-bi-report-6.png)
+	![Data Source Creds.](media/power-bi-report-7.png)
 
-11. **Enter** Username as ‘labsqladmin’.
+> **Note:** Verify the server name has been updated to your current sql pool name for all the datasets. If not, update the same under parameters section and click apply.
 
-12. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
+13. **Enter** Username as ‘labsqladmin’.
 
-13. **Click** Sign in.
+14. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
 
-	![Configure Campaign.](media/power-bi-report-7.png)
+15. **Click** on Sign in.
 
+	![Validate Creds.](media/power-bi-report-8.png)
+	
 Follow these steps to create the Power BI dashboard:
 
-14. **Select** the workspace in [Task2](#task-2-create-power-bi-workspace).
+16. **Select** the workspace created in [Task 2](#task-2-create-power-bi-workspace).
 
-	![Select the workspace.](media/power-bi-report-2.png)
+	![Select Workspace.](media/power-bi-report-9.png)
+	
+17. **Click** on ‘+ New’ button on the top-right navigation bar.
 
-15. **Click** on ‘+ New’ button on the top-left navigation bar.
+18. **Click** the ‘Dashboard’ option from the drop-down menu.
 
-16. **Click** the ‘Dashboard’ option from the drop-down menu.
+      ![New Dashboard.](media/power-bi-report-10.png)
 
-	![Click the dashboard.](media/power-bi-dashboard-2.png)
+19. **Name** the dashboard ‘Taxpayer Client Services Commissioner Dashboard Before’ and **click** “create”. 
 
-17. **Name** the dashboard ‘Fintax Dashboard-Before’ and **click** “create”. 
-
-18. This new dashboard will appear in the Dashboard section (of the Power BI workspace). 
-
-	![Name and Click Create.](media/power-bi-dashboard-3.png)
-
-Follow the below steps to change the dashboard theme:
-
-19. **Open** the URL in a new browser tab to get JSON code for a custom theme:
-https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/fintax/fintaxdemo/CustomTheme.json
-
-20. **Right click** anywhere in browser and **click** 'Save as...'.
-
-21. **Save** the file to your desired location on your computer, leaving the name unchanged.
-
-	![Save the File.](media/power-bi-dashboard-4.png)
-
-22. **Go back** to the Power BI dashboard you just created.
-
-23. **Click** on the “Edit” at the top right-side corner.
-
-24. **Click** on “Dashboard theme”.
-
-	![Click on Dashboard Theme.](media/power-bi-dashboard-5.png)
-
-25. **Click** ‘Upload the JSON theme’.
-
-26. **Navigate** to the location where you saved the JSON theme file in the steps above and **select** open.
-
-27. **Click** Save.
-
-	![Navigate Select and Click Save.](media/power-bi-dashboard-6.png)
+20. This new dashboard will appear in the Content section (of the Power BI workspace). 
+	
+	![Create Dashboard.](media/power-bi-report-11.png)
 
 Do the following to pin visuals to the dashboard you just created:
-**Pillar 3: Market Perception**
 
-28. **Select** the workspace [Task2](#task-2-create-power-bi-workspace).
+**Pillar 3: Market Perception** 
 
-	![Select the workspace.](media/power-bi-report-2.png)
+21. **Select** the workspace in [Task 2](#task-2-create-power-bi-workspace).
 
-29. **Click** on the “Content” section/tab.
+	![Select Workdspace.](media/power-bi-report-12.png)
 
-	![Create Dashboard further steps.](media/power-bi-dashboard-7.png)
+22. **Click** on the “Content” section/tab.
 
-30. In the “Content” section, there will be a list of all the published reports.
+	![Click Content.](media/power-bi-report-13.png)
 
-31. **Click** on ‘FSI CCO Dashboard’ report.
+23. In the “Content” section, there will be a list of all the published reports.
 
-	![Click on Video and Revenue Analytics.](media/power-bi-dashboard-8.png)
+24. **Click** on ‘Taxpayer Client Services Report’ Report.
 
-32. **Click** on ‘Market perception before’ page.
-
-33. **Click** on pin visual button.
-
-	![Click on Pin Visual button.](media/power-bi-dashboard-9.png)
-
-34. **Select** ‘Existing dashboard’ radio button. 
-
-35. From ‘select existing dashboard’ dropdown, **select** ‘Media Demo Dashboard-Before’.
-
-36. **Click** ‘Pin’.
-
-	![Click Pin.](media/power-bi-dashboard-10.png)
-
-37. Similarly, **pin** the others tiles to the Dashboard.
-
-	![Pin the others tiles.](media/power-bi-dashboard-11.png)
-
-38. **Select** workpace created in task 2 in the left pane.
-
-	![Select workspace.](media/power-bi-report-2.png)
-
-39. **Open** 'FSI-Chicklets' report.
-
-	![Open report.](media/power-bi-dashboard-12.png)
-
-40. To pin an image into Dashboard you have to go to the report, **click** on edit and then you will see the pin icon.
-
-	![Pin an image.](media/report-1.png)
-
-41. **Select** the ‘Chief Customer Officer Before’ from existing dashboard list and **click** on pin.
-
-42. Similarly pin rest of the images from chief customer officer tab of the Chicklets report.
-
-	![Pin all image.](media/report-2.png)
-
-43. **Go back** to the ‘Chief Customer Officer Before’ dashboard.
+	![Click on Report.](media/power-bi-report-14.png)
 	
-	![Go back.](media/report-3.png)
+25. **Click** on ‘Pilar 4 A’ page.
 
+26. There you can see Before and After KPIs for using on the same Dashboard.
+
+27. **Hover** over the Awareness KPI & **Click** on pin visual button.
+
+	![Click on Pilar then Hover and then Pin Visual.](media/power-bi-report-15.png)
+
+28. **Select** ‘Existing dashboard’ radio button. 
+
+29. From ‘select existing dashboard’ dropdown, **select** ‘Taxpayer Client Services Commissioner Dashboard Before’.
+
+30. **Click** ‘Pin’.
+
+	![Select Dashboard and click Pin.](media/power-bi-report-16.png)
+	
+31. Similarly, **pin** the others tiles to the Dashboard
+
+	![Pin other dashboards.](media/power-bi-report-17.png)
+	
+32. **Select** workpace created in [Task 2](#task-2-create-power-bi-workspace) in the left pane.
+
+	![Select Workspace.](media/power-bi-report-18.png)
+	
+33. **Open** ‘Taxpayer Client Services Report’ report.
+
+	![Select Workspace.](media/power-bi-report-19.png)
+	
+34. **Click** on Images page
+
+36. **Click** on Edit.
+
+	![Click on edit.](media/power-bi-report-20.png)
+	
+36. **Hover** on Deep Dive chicklet and **click** pin button.
+
+	![Hover and Click.](media/power-bi-report-21.png)
+	
+37. Select the ‘Taxpayer Client Services Commissioner Dashboard Before’ from existing dashboard list and **click** on pin.
+
+38. Similarly pin rest of the images from Images of the  Taxpayer Client Services Report’ report.
+	
+	![Select Dashboard and Click Pin.](media/power-bi-report-22.png)
+	
+39. **Go back** to the ‘Taxpayer Client Services Commissioner Dashboard Before’ dashboard.
+
+	![Go back to Dashboard.](media/power-bi-report-23.png)
+	
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-44. **Click** on ellipsis ‘More Options’ of the image you selected.
+40. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
 
-45. **Click** ‘Edit details’.
+41. **Click** on ‘Edit details’.
+
+	![Click on Edit Details.](media/power-bi-report-24.png)
 	
-	![Edit Details.](media/report-4.png)
+42. **Uncheck** ‘Display title and subtitle’.
 
-46. **Uncheck** ‘Display title and subtitle’.
+43. **Click** on ‘Apply’.
 
-47. **Click** ‘Apply’.
+44. **Repeat** Step 38 to 41 for all image tiles.
 
-48. **Repeat** Step 46 to 48 for all image tiles.
-
-	![Repeat Steps.](media/report-5.png)
-
-49. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. Resize the Contoso Healthcare logo to 1x1 size; resize other vertical tiles to 2x1 size.  
-
-	![Resize and Rearrange.](media/report-6.png)
-
-50. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Chief Customer officer Before dashboard.
-
-51. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4.
-
-	![Pin and Repeat.](media/report-7.png)
-
-	![Note.](media/report-8.png)
-
-	> **Note:** The cards in each Dashboard should be created in the Dashboard like ‘Negative Card’ as you can see in orange.
-
-52. To create a new tile like the car above **click** on edit button on dashboard.
-
-53. **Click** on add a tile button.
-
-	![Create a new tile.](media/report-9.png)
+	![Click apply and repeat.](media/power-bi-report-25.png)
 	
-54. Then **go to** Text Box and there you can **add** the text and the text format it.
+45. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
 	
-	![Add text.](media/report-10.png)
-
-55. **Refer** to the screenshot of the sample dashboard and pin the visuals to replicate its look and feel. 
-
-56. **Latest** pillar ‘Chief Customer Officer Before’ is completed.
-
-	![Pin the visuals.](media/report-11.png)
-
-57. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
-
-	![KPIs.](media/report-12.png)
-
-58. **Go** to the cards more options.
-
-59. **Click** on Edit Details.
-
-	![Cards more options.](media/report-13.png)
-
-60. You will see something like this picture where you can add subtitle.
+	![Resize and Rearrange.](media/power-bi-report-26.png)
 	
-	![Add subtitle.](media/report-14.png)
+46. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Taxpayer Client Services Commissioner Dashboard Before dashboard.
 
-61. The Dashboard “Chief Customer Officer Before” should finally look like this.
-Table in following row indicates which Kpi’s need to be pinned from which report to achieve this final look.
+47. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+
+	![Resize and Rearrange again.](media/power-bi-report-27.png)
 	
-![Final look.](media/report-15.png)
 	
-62. **Refer** to this table while pinning rest of the tiles to the dashboard.
+48. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
 	
-	![Refer the table.](media/report-16.png)
+	![Will see some KPIs.](media/power-bi-report-28.png)
+	
+49. **Hover** over the cards and charts and go to more options (…)
 
-63. Here is the list of Dashboards you have to create for Fintax. You will see the necessary details for the same below.
+50. **Click** on Edit Details.
+	
+	![Hover and Click on Edit Details.](media/power-bi-report-29.png)
+	
+51. You will see something like this picture where you can add subtitle.
 
-	![List of Dashboards.](media/report-17.png)
+	![Will see.](media/power-bi-report-30.png)
+	
+52. The Dashboard “Taxpayer Client Services Commissioner Dashboard Before” should finally look like this.
+Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 
-64. Chief Customer Officer After Dashboard should look like this. Following are the details of tiles for the same.
+	![Final Look.](media/power-bi-report-31.png)
+	
+53. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below.
 
-	![Chief Customer Officer.](media/report-18.png)
+	![Final Look.](media/power-bi-report-32.png)
+	
+54. **Tax Collection Commissioner Before** should look like this. Following are the details of tiles for the same.
 
-65. Chief Customer Officer After KPIs.
+	![Final Look.](media/power-bi-report-33.png)
+	
+55. **Tax Collection Commissioner Mid** should look like this. Following are the details of tiles for the same.
+	
+	![Final Look.](media/power-bi-report-34.png)
+	
+56. **Tax Collection Commissioner After** should look like this. Following are the details of tiles for the same.
 
-	![Chief Customer Officer After KPIs.](media/report-19.png)
+	![Final Look.](media/power-bi-report-35.png)
+	
+57. **Taxpayer Client Services Commissioner Before** Dashboard should look like this. 
 
-66. ESG Dashboard Dashboard should look like this. Following are the details of tiles for the same.
+	![Final Look.](media/power-bi-report-36.png)
+	
+58. **Taxpayer Client Services Commissioner After** Dashboard should look like this.
+	
+	![Final Look.](media/power-bi-report-37.png)
 
-	![ESG Dashboard Dashboard.](media/report-20.png)
+59. **Tax Compliance Commissioner Before** Dashboard should look like this.
 
-67. ESG Dashboard KPIs
+	![Final Look.](media/power-bi-report-38.png)
+	
+60. **Tax Compliance Commissioner After** Dashboard should look like this.
 
-	![ESG Dashboard KPIs.](media/report-21.png)
+	![Final Look.](media/power-bi-report-39.png)
+	
+61. **Fraud Investigator Before** Dashboard should look like this.
+	
+	![Final Look.](media/power-bi-report-40.png)
+	
+62. **Fraud Investigator After** Dashboard should look like this.
 
-68. Finance Dashboard should look like this. Following are the details of tiles for the same.
+	![Final Look.](media/power-bi-report-41.png)
+	
+63. **Tax Auditor Before** should look like this.
 
-	![Finance Dashboard.](media/report-22.png)
+	![Final Look.](media/power-bi-report-42.png)
+	
+64. **Tax Auditor After** should look like this.
 
-69. Finance Dashboard KPIs
+	[Final Look.](media/power-bi-report-43.png)
+	
+65. **Anti-Corruption Unit Before** should look like this.
 
-	![Finance Dashboard KPIs.](media/report-23.png)
+	[Final Look.](media/power-bi-report-44.png)
+	
+66. **Anti-Corruption Unit After** should look like this.
 
-70. Group Chief Risk Officer After Dashboard
-
-	![Group Chief Risk Officer.](media/report-24.png)
-
-71. Group Chief Risk Officer After Dashboard KPIs
-
-	![Group Chief Risk Officer After Dashboard KPIs.](media/report-25.png)
-
-72. Group Chief Risk Officer Before Dashboard
-
-	![Group Chief Risk Officer.](media/report-26.png)
-
-73. Group Chief Risk Officer Before KPIs
-
-	![Group Chief Risk Officer Before KPIs.](media/report-27.png)
-
-74. Head of Financial Intelligence After Dashboard
-
-	![Head of Financial Intelligence.](media/report-28.png)
-
-75. Head of Financial Intelligence After KPI
-
-	![Head of Financial Intelligence After KPI.](media/report-29.png)
-
-76. Head of Financial Intelligence Before Dashboard
-
-	![Head of Financial Intelligence.](media/report-30.png)
-
-77. Head of Financial Intelligence Before KPIs
-
-	![Head of Financial Intelligence Before KPIs.](media/report-31.png)
-
-78. Woodgrove Executive Dashboard Dec
-
-	![Woodgrove Executive Dashboard Dec.](media/report-32.png)
-
-79. Woodgrove Executive Dashboard Dec KPIs
-
-	![Woodgrove Executive Dashboard Dec KPIs.](media/report-33.png)
-
-80. Woodgrove Executive Dashboard June
-
-	![Woodgrove Executive Dashboard June.](media/report-34.png)
-
-81. Woodgrove Executive Dashboard June KPIs
-
-	![Woodgrove Executive Dashboard June KPIs.](media/report-35.png)
-
-82. Woodgrove Executive Dashboard March KPIs
-
-	![Woodgrove Executive Dashboard March KPIs.](media/report-36.png)
-
-83. Woodgrove Executive Dashboard September
-
-	![Woodgrove Executive Dashboard September.](media/report-37.png)
-
-84. Woodgrove Executive Dashboard September KPIs
-
-	![Woodgrove Executive Dashboard September KPIs.](media/report-38.png)
-
-85. Woodgrove Executive Dashboard September 2
-
-	![Woodgrove Executive Dashboard September 2.](media/report-39.png)
-
-86. Dashboard KPI’s.
-
-	![Dashboard KPI’s.](media/report-40.png)
-
+	[Final Look.](media/power-bi-report-45.png)
+	
 **Steps to create Real time report (Optional)**
+
 This task is optional since we have provided static versions of the reports in the package already.
 
 1. **Open** Power BI in a new tab using the following link:
@@ -645,39 +579,43 @@ This task is optional since we have provided static versions of the reports in t
 
 2. **Sign into** Power BI using your Power BI Pro account.
 
-	![Sign_in_powerbi.](media/realtime-report.png)
+	![Sign_in_powerbi.](media/power-bi-report-46.png)
 
 > **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
+	
+	
+	
+	
 
-3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “DDiB-Fintax” workspace.
 
-	![Click Workspace.](media/realtime-report-2.png)
+
+
+
+3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “FinanceandTaxation-Prod” workspace.
+
+	![Click Workspace.](media/power-bi-report-47.png)
 
 4. **Click** New to expand menu and then **click** Report.
 
-	![Click New and Report.](media/realtime-report-3.png)
+	![Click New and Report.](media/power-bi-report-48.png)
 
 5. **Click** Pick a published dataset.
 	
-	![Click Pick a Public Dashboard.](media/realtime-report-4.png)
+	![Click Pick a Public Dashboard.](media/power-bi-report-49.png)
 
-6. **Click** on the desired streaming dataset from the given list, here we are selecting “FSI CCO Realtime Before” and **click** Create.
+6. **Click** on the desired streaming dataset from the given list, here we are selecting “Tax Collection Realtime” and **click** Create Report.
 
-	![Click desired streaming dataset.](media/realtime-report-5.png)
+	![Click desired streaming dataset.](media/power-bi-report-50.png)
 
 7. **Select** the KPI visual or any other required visual from Visualization pane.
 
 8. **Drag** or **select** the required fields from Fields pane to Visualization pane’s Field tab.
 
-	![Select the KPI, Drag or select required fields.](media/realtime-report-6.png)
+	![Select the KPI, Drag or select required fields.](media/power-bi-report-51.png)
 
-9. Similarly, **create** other visuals and **save** the Power BI Report. You can also pin the visuals to the dashboard as mentioned in step 33
+9. Similarly, **create** other visuals and **save** the Power BI Report. You can also pin the visuals to the dashboard.
 
-	![Create other visuals and save the Power BI Report.](media/realtime-report-7.png)
-
-10. Similarly you can create real time reports for rest of the streaming datasets if needed.
-
-	![Create real time reports for rest.](media/realtime-report-8.png)
+	![Create other visuals and save the Power BI Report.](media/power-bi-report-52.png)
 
 **Updating Dashboard and Report Id’s in Web app:**
 By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated in to the main web app if you choose. Here are the steps for it.
@@ -863,7 +801,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Enter your choice.](media/authentication-4.png)
 
-### Task 8 : Clean up resources.
+### Task 8: Clean up resources
 
 > **Note: Perform these steps after your demo is done and you do not need the resources anymore**
 

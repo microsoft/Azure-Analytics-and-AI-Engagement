@@ -48,43 +48,15 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[All_Data]
+CREATE TABLE [dbo].[Color]
 ( 
-	[ID] [float]  NULL,
-	[TypeIdentifier] [nvarchar](255)  NULL,
-	[Name] [nvarchar](255)  NULL,
-	[NTaxpayers] [nvarchar](255)  NULL,
-	[NReturn] [nvarchar](255)  NULL,
-	[NIssues] [nvarchar](255)  NULL,
-	[NReturnsProcessed] [nvarchar](255)  NULL,
-	[NReturnsAccepted] [nvarchar](255)  NULL,
-	[NMonthlyDelayedPayments] [nvarchar](255)  NULL,
-	[Penaltycollected] [nvarchar](255)  NULL,
-	[PenaltyTarget] [nvarchar](255)  NULL,
-	[InterestCollected] [nvarchar](255)  NULL,
-	[InterestTarget] [nvarchar](255)  NULL,
-	[NTaxpayersReportedtoLawEnforcement] [nvarchar](255)  NULL,
-	[NPotentialAnomalies] [nvarchar](255)  NULL,
-	[TaxIssues] [nvarchar](255)  NULL,
-	[UnderaymentrDelayedPayments] [nvarchar](255)  NULL,
-	[Penalties_YTD] [nvarchar](255)  NULL,
-	[InterestCollected_YTD] [nvarchar](255)  NULL,
-	[NReturnsScrutiny] [nvarchar](255)  NULL,
-	[NAuditedReportsClosedWithPenaltyLessThan$1000] [nvarchar](255)  NULL,
-	[NTaxpayersUnderScrutiny] [nvarchar](255)  NULL,
-	[InternalRiskandCompliance] [nvarchar](255)  NULL,
-	[NTaxpayersReportedtoLawEnforcement1] [nvarchar](255)  NULL,
-	[# of cases with potential fraudâ€‹] [nvarchar](255)  NULL,
-	[# of cases still under scrutinyÂ â€‹] [nvarchar](255)  NULL,
-	[Potential fraud detectedâ€‹] [nvarchar](255)  NULL,
-	[# of employees reported to LEâ€‹] [nvarchar](255)  NULL,
-	[Dues collectedâ€‹] [nvarchar](255)  NULL,
-	[Penalties collectedâ€‹] [nvarchar](255)  NULL
+	[ColorId] [int]  NULL,
+	[ColorName] [varchar](max)  NULL
 )
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
+	HEAP
 )
 GO
 
