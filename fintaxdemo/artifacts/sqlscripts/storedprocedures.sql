@@ -166,7 +166,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantFullSelectFactInvoicesData] AS
-    EXECUTE AS USER = 'MarketingOwner'
+    EXECUTE AS USER = 'AntiCorruptionUnitHead'
     GRANT SELECT ON FactInvoicesData TO AntiCorruptionUnitHead; 
     REVERT;
 GO
@@ -188,7 +188,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantSelectTaxAuditor] AS
-    EXECUTE AS USER =N'MarketingOwner';
+    EXECUTE AS USER =N'TaxAuditor';
     GRANT SELECT ON [Fact-Invoices] TO TaxAuditor;  
     REVERT;
 GO
@@ -199,7 +199,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantUnmaskTaxAuditor] AS
-    EXECUTE AS USER = 'MarketingOwner'
+    EXECUTE AS USER = 'TaxAuditor'
     GRANT UNMASK TO TaxAuditor
     REVERT;
 GO
@@ -210,8 +210,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantLimitedSelectFactInvoicesData] AS
-    EXECUTE AS USER = 'MarketingOwner'
-    DENY SELECT ON FactInvoicesData TO TaxAuditor;
+    EXECUTE AS USER = 'TaxAuditor'
     GRANT SELECT ON FactInvoicesData ([TaxpayerID], [Region], [State], [Industry], [TaxableAmount], [TaxAmount]) TO TaxAuditor;
     REVERT;
 GO
