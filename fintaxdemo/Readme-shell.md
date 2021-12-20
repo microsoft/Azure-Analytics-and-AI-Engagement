@@ -31,6 +31,23 @@ COPYING OR REPRODUCTION OF THE DEMO/LAB (OR ANY PORTION OF IT) TO ANY OTHER SERV
 
 THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTIONALITY, INCLUDING POTENTIAL NEW FEATURES AND CONCEPTS, IN A SIMULATED ENVIRONMENT WITHOUT COMPLEX SET-UP OR INSTALLATION FOR THE PURPOSE DESCRIBED ABOVE. THE TECHNOLOGY/CONCEPTS REPRESENTED IN THIS DEMO/LAB MAY NOT REPRESENT FULL FEATURE FUNCTIONALITY AND MAY NOT WORK THE WAY A FINAL VERSION MAY WORK. WE ALSO MAY NOT RELEASE A FINAL VERSION OF SUCH FEATURES OR CONCEPTS.  YOUR EXPERIENCE WITH USING SUCH FEATURES AND FUNCITONALITY IN A PHYSICAL ENVIRONMENT MAY ALSO BE DIFFERENT.
 
+## Contents
+
+<!-- TOC -->
+
+- [Requirements](#requirements)
+- [Before Starting](#before-starting)
+  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
+  - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
+  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
+  - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
+  - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
+  - [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
+  - [Task 7: Pause or Resume script](#task-7-pause-or-resume-script)
+  - [Task 8: Clean up resources](#task-8-clean-up-resources)
+
+<!-- /TOC -->
+
 ## Requirements
 
 * An Azure Account with the ability to create an Azure Synapse Workspace.
@@ -52,20 +69,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 * Once the resources have been setup, please ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “stfintax”. You need to contact AD admin to get this done.
 * Please review the [Liscence Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Power%20BI%20Embedding.md) before proceeding.
 
-## Contents
-
-<!-- TOC -->
-
-	- [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-	- [Task 2: Power BI Workspace creation](#task-2-create-power-bi-workspace)
-	- [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-	- [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell)
-	- [Task 5: Power BI reports and dashboard creation](#task-5-create-power-bi-reports-and-dashboard)
-	- [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
-	- [Task 7: Pause/Resume resources](#task-7-pause-resume-resources)
-	- [Task 8: Clean up resources](#task-8-clean-up-resources)
-
-<!-- /TOC -->
+## Before starting
 
 ### Task 1: Create a resource group in Azure
 
@@ -583,14 +587,6 @@ This task is optional since we have provided static versions of the reports in t
 
 > **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
 	
-	
-	
-	
-
-
-
-
-
 3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “FinanceandTaxation-Prod” workspace.
 
 	![Click Workspace.](media/power-bi-report-47.png)
@@ -752,7 +748,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Scroll and Open.](media/aml-7.png)
 
-### Task 7: Pause/Resume resources
+### Task 7: Pause or Resume script
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
  
