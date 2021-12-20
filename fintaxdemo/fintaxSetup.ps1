@@ -689,31 +689,35 @@ $dataTableList = New-Object System.Collections.ArrayList
 
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"All_Data"}} , @{Name = "TABLE_NAME"; Expression = {"All_Data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"AllData10222021"}} , @{Name = "TABLE_NAME"; Expression = {"AllData10222021"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Color"}} , @{Name = "TABLE_NAME"; Expression = {"Color"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Corruption_Data"}} , @{Name = "TABLE_NAME"; Expression = {"Corruption_Data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Corruption_Data_old"}} , @{Name = "TABLE_NAME"; Expression = {"Corruption_Data_old"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Customer"}} , @{Name = "TABLE_NAME"; Expression = {"Customer"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fact-dailytaxdetails"}} , @{Name = "TABLE_NAME"; Expression = {"Fact-dailytaxdetails"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fact-Invoices"}} , @{Name = "TABLE_NAME"; Expression = {"Fact-Invoices"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"fact-pbiMonthlyTaxDetails"}} , @{Name = "TABLE_NAME"; Expression = {"fact-pbiMonthlyTaxDetails"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fact-Taxpayersatisfactiondetail"}} , @{Name = "TABLE_NAME"; Expression = {"Fact-Taxpayersatisfactiondetail"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactInvoicedetailsfinal"}} , @{Name = "TABLE_NAME"; Expression = {"FactInvoicedetailsfinal"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactInvoicedetailsfinals"}} , @{Name = "TABLE_NAME"; Expression = {"FactInvoicedetailsfinals"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactInvoicedetailsIDpTA"}} , @{Name = "TABLE_NAME"; Expression = {"FactInvoicedetailsIDpTA"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactInvoices"}} , @{Name = "TABLE_NAME"; Expression = {"FactInvoices"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fact-Invoices"}} , @{Name = "TABLE_NAME"; Expression = {"Fact-Invoices"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"FactInvoicesData"}} , @{Name = "TABLE_NAME"; Expression = {"FactInvoicesData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"fact-pbiMonthlyTaxDetails"}} , @{Name = "TABLE_NAME"; Expression = {"fact-pbiMonthlyTaxDetails"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fact-Taxpayersatisfactiondetail"}} , @{Name = "TABLE_NAME"; Expression = {"Fact-Taxpayersatisfactiondetail"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Fintaxtransaction"}} , @{Name = "TABLE_NAME"; Expression = {"Fintaxtransaction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Industry"}} , @{Name = "TABLE_NAME"; Expression = {"Industry"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"iot-foottraffic-data"}} , @{Name = "TABLE_NAME"; Expression = {"iot-foottraffic-data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Location"}} , @{Name = "TABLE_NAME"; Expression = {"Location"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
@@ -726,6 +730,8 @@ $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"StagingFintaxtransaction"}} , @{Name = "TABLE_NAME"; Expression = {"StagingFintaxtransaction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"TaxpayerSatisfactionMetrics"}} , @{Name = "TABLE_NAME"; Expression = {"TaxpayerSatisfactionMetrics"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"temp"}} , @{Name = "TABLE_NAME"; Expression = {"temp"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"TRF-Social-Data"}} , @{Name = "TABLE_NAME"; Expression = {"TRF-Social-Data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
