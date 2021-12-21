@@ -794,7 +794,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".py"
 	}
     elseif ($notebook.BaseName -eq "anomaly_model") {
-        $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".sav"
+        $source="./artifacts/amlnotebooks/"+$notebook.BaseName+".sav"
 		$path="/Users/"+$notebook.BaseName+".sav"
     }
     elseif($notebook.BaseName -eq "Config")

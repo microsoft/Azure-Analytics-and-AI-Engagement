@@ -189,7 +189,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 6. **Enter** the Power BI workspace ID created in [Task 2](#task-2-power-bi-workspace-creation).
 
-7. **Enter** the power BI streaming dataset url for **Tax Collection Realtime dataset** you copied in step 12 of task 2.
+7. **Enter** the power BI streaming dataset url for **Tax Collection Realtime dataset** you copied in step 12 of [Task 2](#task-2-power-bi-workspace-creation).
 
 8. **Click** ‘Review + Create’ button.
 
@@ -200,7 +200,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
 
-	> **NOTE:** The provisioning of your deployment resources will take approximately 20 minutes.
+	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
 
 10. **Stay** on the same page and wait for the deployment to complete.
     
@@ -325,7 +325,7 @@ cd ./fintax/fintaxdemo
 
 	![Close the browser.](media/cloud-shell-19.png)
 
-	> **Note:** The deployment will take approximately 40-45 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
+	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
       
 ### Task 5: Power BI reports and dashboard creation
 
@@ -344,15 +344,15 @@ cd ./fintax/fintaxdemo
 
 	![Click Save.](media/power-bi-report-2.png)
 	
-5. **Select** the Workspace, which is created in [Task 2](#task-2-create-power-bi-workspace).
+5. **Select** the Workspace, which is created in [Task 2](#task-2-power-bi-workspace-creation).
 	
 	![Select Workspace.](media/power-bi-report-3.png)
 	
-Once [Task 4](#task-4-run-the-cloud-shell) has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
+Once [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) has been completed successfully and the template has been deployed, you will be able to see a set of reports in the Reports tab of Power BI, and real-time datasets in the Dataset tab. 
 
-The image on the right shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports.
+The image on the below shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports.
 
-	![Reports Tab.](media/power-bi-report-4.png)
+![Reports Tab.](media/power-bi-report-4.png)
 	
 > **Note:** If you do not see this list in your workspace after script execution, it may indicate that something went wrong during execution. You may use the subscript to patch it or manually upload the reports from this location and changing their parameters appropriately before authentication.
 
@@ -390,7 +390,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 Follow these steps to create the Power BI dashboard:
 
-16. **Select** the workspace created in [Task 2](#task-2-create-power-bi-workspace).
+16. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workspace.](media/power-bi-report-9.png)
 	
@@ -410,7 +410,7 @@ Do the following to pin visuals to the dashboard you just created:
 
 **Pillar 3: Market Perception** 
 
-21. **Select** the workspace in [Task 2](#task-2-create-power-bi-workspace).
+21. **Select** the workspace in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workdspace.](media/power-bi-report-12.png)
 
@@ -444,7 +444,7 @@ Do the following to pin visuals to the dashboard you just created:
 
 	![Pin other dashboards.](media/power-bi-report-17.png)
 	
-32. **Select** workpace created in [Task 2](#task-2-create-power-bi-workspace) in the left pane.
+32. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
@@ -564,15 +564,15 @@ Table in following row indicates which KPI’s need to be pinned from which repo
 	
 64. **Tax Auditor After** should look like this.
 
-	[Final Look.](media/power-bi-report-43.png)
+	![Final Look.](media/power-bi-report-43.png)
 	
 65. **Anti-Corruption Unit Before** should look like this.
 
-	[Final Look.](media/power-bi-report-44.png)
+	![Final Look.](media/power-bi-report-44.png)
 	
 66. **Anti-Corruption Unit After** should look like this.
 
-	[Final Look.](media/power-bi-report-45.png)
+	![Final Look.](media/power-bi-report-45.png)
 	
 **Steps to create Real time report (Optional)**
 
