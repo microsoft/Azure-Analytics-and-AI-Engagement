@@ -946,21 +946,18 @@ $appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecre
           
 az ad sp create --id $appId | Out-Null    
 $sp = az ad sp show --id $appId --query "objectId" -o tsv
-
-if (-not $sp)
-{
-    az ad sp create --id $appId | Out-Null    
-    $sp = az ad sp show --id $appId --query "objectId" -o tsv
-}
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
 #add PowerBI App to workspace as an admin to group
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups";
 $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 $homeCluster = $result.Headers["home-cluster-uri"]
 #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
+RefreshTokens
 $url = "$homeCluster/metadata/tenantsettings"
 $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -969,6 +966,7 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
 #add PowerBI App to workspace as an admin to group
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
     `"identifier`":`"$($sp)`",
@@ -983,6 +981,7 @@ $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
 $powerBiAppId = $powerBIApp.Id;
 
 #setup powerBI app...
+RefreshTokens
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
     `"clientId`":`"$appId`",
@@ -996,6 +995,7 @@ $post = "{
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 
 #setup powerBI app...
+RefreshTokens
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
     `"clientId`":`"$appId`",
