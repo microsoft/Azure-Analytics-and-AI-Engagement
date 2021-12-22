@@ -791,11 +791,11 @@ foreach($notebook in $notebooks)
 	if($notebook.BaseName -eq "GlobalVariables")
 	{
 		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
-		$path="/Users/"+$notebook.BaseName+".py"
+		$path=$notebook.BaseName+".py"
 	}
     elseif ($notebook.BaseName -eq "anomaly_model") {
         $source="./artifacts/amlnotebooks/"+$notebook.BaseName+".sav"
-		$path="/Users/"+$notebook.BaseName+".sav"
+		$path=$notebook.BaseName+".sav"
     }
     elseif($notebook.BaseName -eq "Config")
 	{
@@ -804,7 +804,7 @@ foreach($notebook in $notebooks)
 	else
 	{
 		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
-		$path="/Users/"+$notebook.BaseName+".ipynb"
+		$path=$notebook.BaseName+".ipynb"
 	}
 
 Write-Host " Uplaoding AML assets : $($notebook.BaseName)"

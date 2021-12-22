@@ -42,7 +42,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
-  - [Task 6: AML notebook execution](#task-6-aml-notebook-execution)
+  - [Task 6: QnAmaker and LogicApp Configuration](#task-6-qnamaker-logicapp-configuration)
   - [Task 7: Pause or Resume script](#task-7-pause-or-resume-script)
   - [Task 8: Clean up resources](#task-8-clean-up-resources)
 
@@ -326,6 +326,10 @@ cd ./fintax/fintaxdemo
 	![Close the browser.](media/cloud-shell-19.png)
 
 	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
+
+25. After whole of the script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once.
+
+	![Click on the link.](media/cloud-shell-20.png)
       
 ### Task 5: Power BI reports and dashboard creation
 
@@ -343,51 +347,51 @@ The image on the below shows the Reports tab in Power BI.  We can create a Power
 
 To give permissions for the Power BI reports to access the data sources:
 
-2. **Click** the ellipses or settings icon on top right-side corner.
+6. **Click** the ellipses or settings icon on top right-side corner.
 
-3. **Click** the settings dropdown.
+7. **Click** the settings dropdown.
 
-4. **Click** on settings.
+8. **Click** on settings.
 
 	![Permission.](media/power-bi-report-5.png)
 
-5. **Click** on ‘Datasets’ tab.
+9. **Click** on ‘Datasets’ tab.
 	
 	![Dataset.](media/power-bi-report-6.png)
 	
-6. **Click** on the Taxpayer Client Services Report.
+10. **Click** on the Taxpayer Client Services Report.
 
-7. **Expand** Data source credentials.
+11. **Expand** Data source credentials.
 
-8. **Click** Edit credentials and a dialogue box will pop up.
+12. **Click** Edit credentials and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-7.png)
 
 > **Note:** Verify the server name has been updated to your current sql pool name for all the datasets. If not, update the same under parameters section and click apply.
 
-9. **Enter** Username as ‘labsqladmin’.
+13. **Enter** Username as ‘labsqladmin’.
 
-10. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
+14. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
 
-11. **Click** on Sign in.
+15. **Click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-8.png)
 	
 Follow these steps to create the Power BI dashboard:
 
-12. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
+16. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workspace.](media/power-bi-report-9.png)
 	
-13. **Click** on ‘+ New’ button on the top-right navigation bar.
+17. **Click** on ‘+ New’ button on the top-right navigation bar.
 
-14. **Click** the ‘Dashboard’ option from the drop-down menu.
+18. **Click** the ‘Dashboard’ option from the drop-down menu.
 
       ![New Dashboard.](media/power-bi-report-10.png)
 
-15. **Name** the dashboard ‘Taxpayer Client Services Commissioner Dashboard Before’ and **click** “create”. 
+19. **Name** the dashboard ‘Taxpayer Client Services Commissioner Dashboard Before’ and **click** “create”. 
 
-16. This new dashboard will appear in the Content section (of the Power BI workspace). 
+20. This new dashboard will appear in the Content section (of the Power BI workspace). 
 	
 	![Create Dashboard.](media/power-bi-report-11.png)
 
@@ -395,167 +399,186 @@ Do the following to pin visuals to the dashboard you just created:
 
 **Pillar 3: Market Perception** 
 
-17. **Select** the workspace in [Task 2](#task-2-power-bi-workspace-creation).
+21. **Select** the workspace in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workdspace.](media/power-bi-report-12.png)
 
-18. **Click** on the “Content” section/tab.
+22. **Click** on the “Content” section/tab.
 
 	![Click Content.](media/power-bi-report-13.png)
 
-19. In the “Content” section, there will be a list of all the published reports.
+23. In the “Content” section, there will be a list of all the published reports.
 
-20. **Click** on ‘Taxpayer Client Services Report’ Report.
+24. **Click** on ‘Taxpayer Client Services Report’ Report.
 
 	![Click on Report.](media/power-bi-report-14.png)
 	
-21. **Click** on ‘Pilar 4 A’ page.
+25. **Click** on ‘Pilar 4 A’ page.
 
-22. There you can see Before and After KPIs for using on the same Dashboard.
+26. There you can see Before and After KPIs for using on the same Dashboard.
 
-23. **Hover** over the Awareness KPI & **Click** on pin visual button.
+27. **Hover** over the Awareness KPI & **Click** on pin visual button.
 
 	![Click on Pilar then Hover and then Pin Visual.](media/power-bi-report-15.png)
 
-24. **Select** ‘Existing dashboard’ radio button. 
+28. **Select** ‘Existing dashboard’ radio button. 
 
-25. From ‘select existing dashboard’ dropdown, **select** ‘Taxpayer Client Services Commissioner Dashboard Before’.
+29. From ‘select existing dashboard’ dropdown, **select** ‘Taxpayer Client Services Commissioner Dashboard Before’.
 
-26. **Click** ‘Pin’.
+30. **Click** ‘Pin’.
 
 	![Select Dashboard and click Pin.](media/power-bi-report-16.png)
 	
-27. Similarly, **pin** the others tiles to the Dashboard
+31. Similarly, **pin** the others tiles to the Dashboard
 
 	![Pin other dashboards.](media/power-bi-report-17.png)
 	
-28. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
+32. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
-29. **Open** ‘Taxpayer Client Services Report’ report.
+33. **Open** ‘Taxpayer Client Services Report’ report.
 
 	![Select Workspace.](media/power-bi-report-19.png)
 	
-30. **Click** on Images page
+34. **Click** on Images page
 
-31. **Click** on Edit.
+36. **Click** on Edit.
 
 	![Click on edit.](media/power-bi-report-20.png)
 	
-32. **Hover** on Deep Dive chicklet and **click** pin button.
+36. **Hover** on Deep Dive chicklet and **click** pin button.
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-33. Select the ‘Taxpayer Client Services Commissioner Dashboard Before’ from existing dashboard list and **click** on pin.
+37. Select the ‘Taxpayer Client Services Commissioner Dashboard Before’ from existing dashboard list and **click** on pin.
 
-34. Similarly pin rest of the images from Images of the  Taxpayer Client Services Report’ report.
+38. Similarly pin rest of the images from Images of the  Taxpayer Client Services Report’ report.
 	
 	![Select Dashboard and Click Pin.](media/power-bi-report-22.png)
 	
-35. **Go back** to the ‘Taxpayer Client Services Commissioner Dashboard Before’ dashboard.
+39. **Go back** to the ‘Taxpayer Client Services Commissioner Dashboard Before’ dashboard.
 
 	![Go back to Dashboard.](media/power-bi-report-23.png)
 	
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-36. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
+40. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
 
-37. **Click** on ‘Edit details’.
+41. **Click** on ‘Edit details’.
 
 	![Click on Edit Details.](media/power-bi-report-24.png)
 	
-38. **Uncheck** ‘Display title and subtitle’.
+42. **Uncheck** ‘Display title and subtitle’.
 
-39. **Click** on ‘Apply’.
+43. **Click** on ‘Apply’.
 
-40. **Repeat** Step 38 to 41 for all image tiles.
+44. **Repeat** Step 38 to 41 for all image tiles.
 
 	![Click apply and repeat.](media/power-bi-report-25.png)
 	
-41. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
+45. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
 	
 	![Resize and Rearrange.](media/power-bi-report-26.png)
 	
-42. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Taxpayer Client Services Commissioner Dashboard Before dashboard.
+46. Similarly pin left image tiles from ‘page 1’ of chicklets report to the Taxpayer Client Services Commissioner Dashboard Before dashboard.
 
-43. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+47. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange again.](media/power-bi-report-27.png)
 	
 	
-44. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
+48. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
 	
 	![Will see some KPIs.](media/power-bi-report-28.png)
 	
-45. **Hover** over the cards and charts and go to more options (…)
+49. **Hover** over the cards and charts and go to more options (…)
 
-46. **Click** on Edit Details.
+50. **Click** on Edit Details.
 	
 	![Hover and Click on Edit Details.](media/power-bi-report-29.png)
 	
-47. You will see something like this picture where you can add subtitle.
+51. You will see something like this picture where you can add subtitle.
 
 	![Will see.](media/power-bi-report-30.png)
 	
-48. The Dashboard “Taxpayer Client Services Commissioner Dashboard Before” should finally look like this.
-Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+52. The Dashboard “Taxpayer Client Services Commissioner Dashboard Before” should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 
 	![Final Look.](media/power-bi-report-31.png)
 	
-49. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below.
+53. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-1.png)
+	
+54. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below.
 
 	![Final Look.](media/power-bi-report-32.png)
 	
-50. **Tax Collection Commissioner Before** should look like this. Following are the details of tiles for the same.
+55. **Tax Collection Commissioner Before** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-33.png)
 	
-51. **Tax Collection Commissioner Mid** should look like this. Following are the details of tiles for the same.
+56. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-2.png)
+
+57. **Tax Collection Commissioner Mid** should look like this. Following are the details of tiles for the same.
 	
 	![Final Look.](media/power-bi-report-34.png)
 	
-52. **Tax Collection Commissioner After** should look like this. Following are the details of tiles for the same.
+58. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-3.png)
+
+59. **Tax Collection Commissioner After** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-35.png)
 	
-53. **Taxpayer Client Services Commissioner Before** Dashboard should look like this. 
+60. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-4.png)
+
+61. **Taxpayer Client Services Commissioner Before** Dashboard should look like this. 
 
 	![Final Look.](media/power-bi-report-36.png)
 	
-54. **Taxpayer Client Services Commissioner After** Dashboard should look like this.
+62. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-1.png)
+
+63. **Taxpayer Client Services Commissioner After** Dashboard should look like this.
 	
 	![Final Look.](media/power-bi-report-37.png)
 
-55. **Tax Compliance Commissioner Before** Dashboard should look like this.
+64. **Tax Compliance Commissioner Before** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-38.png)
 	
-56. **Tax Compliance Commissioner After** Dashboard should look like this.
+65. **Tax Compliance Commissioner After** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-39.png)
 	
-57. **Fraud Investigator Before** Dashboard should look like this.
+66. **Fraud Investigator Before** Dashboard should look like this.
 	
 	![Final Look.](media/power-bi-report-40.png)
 	
-58. **Fraud Investigator After** Dashboard should look like this.
+67. **Fraud Investigator After** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-41.png)
 	
-59. **Tax Auditor Before** should look like this.
+68. **Tax Auditor Before** should look like this.
 
 	![Final Look.](media/power-bi-report-42.png)
 	
-60. **Tax Auditor After** should look like this.
+69. **Tax Auditor After** should look like this.
 
 	![Final Look.](media/power-bi-report-43.png)
 	
-61. **Anti-Corruption Unit Before** should look like this.
+70. **Anti-Corruption Unit Before** should look like this.
 
 	![Final Look.](media/power-bi-report-44.png)
 	
-62. **Anti-Corruption Unit After** should look like this.
+71. **Anti-Corruption Unit After** should look like this.
 
 	![Final Look.](media/power-bi-report-45.png)
 	
@@ -687,6 +710,70 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	![Paste select and wait.](media/updating-powerbi-11.png)
 
 > **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
+
+### Task 6: QnAmaker and LogicApp Configuration
+
+1. **Open** the Azure Portal 
+
+2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
+
+	![Open and Click on Azure Cloud Shell.](media/fintax-poc.png)
+
+**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
+1. **Run** Command: 
+	```
+	cd "fintax/fintaxdemo/subscripts"
+	```
+
+2. Then **run** the PowerShell script: 
+	```
+	./qna_logicapp_subscript.ps1 
+	```
+	![Run the Powershell Script.](media/qna_logicapp-1.png)
+	
+3. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
+
+	![Search QnAmaker.](media/qna_logicapp-2.png)
+	
+4. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
+
+	![Switch section.](media/qna_logicapp-3.png)
+
+5. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
+
+	![Select values.](media/qna_logicapp-4.png)
+	
+6. **Click** on the knowledge base name.
+
+	![Knowledge base name.](media/qna_logicapp-5.png)
+	
+7. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
+
+	![Publish.](media/qna_logicapp-6.png)
+	
+8. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
+
+	![Values host and post.](media/qna_logicapp-7.png)
+	
+9. The concatinated value should appear like below.
+
+	![Values.](media/qna_logicapp-8.png)
+	
+10. **Copy** and **Paste** the value of Authorisation as well in a notepad.
+
+	![Authorisation.](media/qna_logicapp-9.png)
+	
+11. **Go** to the the resource group, search for logic app and **click** on it.
+
+	![Logic App.](media/qna_logicapp-10.png)
+	
+12. Uner the "Development Tools" section **select** "Logic app designer".
+
+	![Logic App.](media/qna_logicapp-11.png)
+	
+13. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
+
+	![Logic App.](media/qna_logicapp-12.png)
 
 ### Task 7: Pause or Resume script
 
