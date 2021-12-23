@@ -42,9 +42,9 @@ $sqlPoolName = "FinTaxDW"
 Install-Module -Name MicrosoftPowerBIMgmt -Force
 Login-PowerBI
 
+#uploading powerbi reports
 RefreshTokens
 
-Add-Content log.txt "------powerbi reports upload------"
 Write-Host "------------Powerbi Reports Upload ------------"
 #Connect-PowerBIServiceAccount
 $reportList = New-Object System.Collections.ArrayList
@@ -72,7 +72,6 @@ foreach($name in $reports)
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
 		Start-Sleep -s 5 
 		
-        Add-Content log.txt $result
         $reportId = $result.id;
 
         $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
@@ -85,9 +84,7 @@ foreach($name in $reports)
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-		
-        Add-Content log.txt $dataSets
-        
+		        
         $temp.ReportId = $reportId;
 
         foreach($res in $dataSets.value)
@@ -104,7 +101,6 @@ Start-Sleep -s 60
 
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
 $pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-Add-Content log.txt $pbiResult  
 
 foreach($r in $pbiResult.value)
 {
@@ -113,7 +109,6 @@ foreach($r in $pbiResult.value)
 }
 
 ##Establish powerbi reports dataset connections
-Add-Content log.txt "------pbi connections update------"
 Write-Host "--------- PBI connections update---------"	
 
 foreach($report in $reportList)
@@ -122,7 +117,7 @@ foreach($report in $reportList)
     {
        continue;     
 	}
-	elseif($report.name -eq "Anti Corruption Report" -or $report.name -eq  "Fraud Investigator Report" -or $report.name -or $report.name -eq "Tax Compliance Comissioner Report")
+	elseif($report.name -eq "Anti Corruption Report" -or $report.name -eq  "Fraud Investigator Report" -or $report.name -eq "Tax Compliance Comissioner Report")
     {
       $body = "{
 			`"updateDetails`": [
@@ -204,3 +199,4 @@ foreach($report in $reportList)
 		
     start-sleep -s 5
 }
+
