@@ -36,14 +36,21 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
+$location = (Get-AzResourceGroup -Name $rgName).Location
+$wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"] 
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $subscriptionId = (Get-AzContext).Subscription.Id
 $synapseWorkspaceName = "synapsefintax$init$random"
-$sqlPoolName = "FintaxDW"
 $sqlUser = "labsqladmin"
 $suffix = "$random-$init"
-$concatString = "$init$random"
 $keyVaultName = "kv-$suffix";
+$sqlPoolName = "FinTaxDW"
+$concatString = "$init$random"
+$dataLakeAccountName = "stfintax$concatString"
+if($dataLakeAccountName.length -gt 24)
+{
+$dataLakeAccountName = $dataLakeAccountName.substring(0,24)
+}
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
@@ -60,30 +67,31 @@ try {
    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
 }
 $sqlPassword = $secretValueText
-$wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"] 
-$dataLakeAccountName = "stfintax$concatString"
-if($dataLakeAccountName.length -gt 24)
-{
-$dataLakeAccountName = $dataLakeAccountName.substring(0,24)
-}
+
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 
 
-Add-Content log.txt "------linked Services------"
 Write-Host "----linked Services------"
 #Creating linked services
 RefreshTokens
 
-$templatepath="../artifacts/templates/"
+$templatepath="../artifacts/linkedservices/"
 
-##FinanceDW linked services
-Write-Host "Creating linked Service: FinanceDW"
-$filepath=$templatepath+"FinanceDW.json"
+##AzureSynapseAnalytics1 linked services
+Write-Host "Creating linked Service: AzureSynapseAnalytics1"
+$filepath=$templatepath+"AzureSynapseAnalytics1.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/FinanceDW?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureSynapseAnalytics1?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
+
+##MarketingCampaignData linked services
+Write-Host "Creating linked Service: MarketingCampaignData"
+$filepath=$templatepath+"MarketingCampaignData.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/MarketingCampaignData?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 
 ##powerbi linked services
 Write-Host "Creating linked Service: powerbi_linked_service"
@@ -92,47 +100,41 @@ $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_ID#", $wsId)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/powerbi_linked_service?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
 
-##sap hana linked services
+##SapHana linked services
 Write-Host "Creating linked Service: SapHana"
 $filepath=$templatepath+"SapHana.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/SapHana?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
+
+##SQLServer linked services
+Write-Host "Creating linked Service: synfintaxprod-WorkspaceDefaultSqlServer"
+$filepath=$templatepath+"synfintaxprod-WorkspaceDefaultSqlServer.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxprod-WorkspaceDefaultSqlServer?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 
 ##blob linked services
-Write-Host "Creating linked Service: synfintaxdemodev-WorkspaceDefaultStorage"
-$filepath=$templatepath+"synfintaxdemodev-WorkspaceDefaultStorage.json"
+Write-Host "Creating linked Service: synfintaxprod-WorkspaceDefaultStorage"
+$filepath=$templatepath+"synfintaxprod-WorkspaceDefaultStorage.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxdemodev-WorkspaceDefaultStorage?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxprod-WorkspaceDefaultStorage?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
 
 ##Teradata linked services
-Write-Host "Creating linked Service: Teradata1"
-$filepath=$templatepath+"Teradata1.json"
+Write-Host "Creating linked Service: Teradata"
+$filepath=$templatepath+"Teradata.json"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "Teradata1").Replace("#WORKSPACE_ID#", $wsId)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Teradata1?api-version=2019-06-01-preview"
+$item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "Teradata").Replace("#WORKSPACE_ID#", $wsId)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Teradata?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
- 
-##SQLServer linked services
-Write-Host "Creating linked Service: synfintaxdemodev-WorkspaceDefaultSqlServer"
-$filepath=$templatepath+"synfintaxdemodev-WorkspaceDefaultSqlServer.json"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxdemodev-WorkspaceDefaultSqlServer?api-version=2019-06-01-preview"
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-Add-Content log.txt $result
 
 # AutoResolveIntegrationRuntime
-$FilePathRT="../artifacts/templates/AutoResolveIntegrationRuntime.json" 
+$FilePathRT="../artifacts/linkedservices/AutoResolveIntegrationRuntime.json" 
 $itemRT = Get-Content -Path $FilePathRT
 $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
-Add-Content log.txt $result
