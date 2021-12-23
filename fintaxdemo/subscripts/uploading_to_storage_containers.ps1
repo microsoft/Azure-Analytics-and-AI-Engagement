@@ -91,14 +91,26 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
+$location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
+$suffix = "$random-$init"       
 $concatString = "$init$random"
 $dataLakeAccountName = "stfintax$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
+$storageAccountName = $dataLakeAccountName
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+#refresh environment variables
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
+RefreshTokens
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+
 
 #download azcopy command
 if ([System.Environment]::OSVersion.Platform -eq "Unix")
@@ -159,13 +171,15 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Cont
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/customcsv" $destinationUri --recursive
 
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets$($destinationSasKey)"
-# & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/webappassets" $destinationUri --recursive
+ $destinationSasKey = New-AzStorageContainerSASToken -Container "fintaxdemo" -Context $dataLakeContext -Permission rwdl
+ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/fintaxdemo$($destinationSasKey)"
+ & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/fintaxdemo" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "fraud-detection-sample-nyrealestate" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/fraud-detection-sample-nyrealestate$($destinationSasKey)"
 & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/fraud-detection-sample-nyrealestate" $destinationUri --recursive
+
+
 
 #storage assests copy
 RefreshTokens
