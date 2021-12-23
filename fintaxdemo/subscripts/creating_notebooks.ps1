@@ -38,11 +38,11 @@ $rgName = read-host "Enter the resource Group Name";
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$concatString = "$init$random"
 $suffix = "$random-$init"
-$sqlPoolName = "FintaxDW"
+$sqlPoolName = "FinTaxDW"
 $sparkPoolName = "Fintax"
 $subscriptionId = (Get-AzContext).Subscription.Id
+$concatString = "$init$random"
 $dataLakeAccountName = "stfintax$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
@@ -50,13 +50,12 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $synapseWorkspaceName = "synapsefintax$init$random"
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-$db_graph_fintax_name = "db-acc-graph-fintax-$concatString"
+
 $amlworkspacename = "amlws-$suffix"
 $search_srch_fintax_name = "srch-fintax-$suffix";
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $search_srch_fintax_name | ConvertFrom-Json).primarykey;
 
 #Creating spark notebooks
-Add-Content log.txt "--------------Spark Notebooks---------------"
 Write-Host "--------Spark notebooks--------"
 RefreshTokens
 $notebooks=Get-ChildItem "../artifacts/notebooks" | Select BaseName 
@@ -69,11 +68,9 @@ $cellParams = [ordered]@{
         "#DATA_LAKE_NAME#" = $dataLakeAccountName
 		"#SPARK_POOL_NAME#" = $sparkPoolName
 		"#STORAGE_ACCOUNT_KEY#" = $storage_account_key
-		"#COSMOS_LINKED_SERVICE#" = $db_graph_fintax_name
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#LOCATION#"=$location
-		"#ML_WORKSPACE_NAME#"=$amlworkspacename
-        "#SEARCH_KEY#" = $searchKey
+		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
 }
 
 foreach($name in $notebooks)
@@ -108,9 +105,5 @@ foreach($name in $notebooks)
 	$item = ConvertTo-Json $jsonItem -Depth 100
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name.BaseName)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-	#waiting for operation completion
 	Start-Sleep -Seconds 10
-	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
-	#$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-	Add-Content log.txt $result
 }
