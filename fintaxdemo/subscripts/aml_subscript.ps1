@@ -58,7 +58,7 @@ $amlworkspacename = "amlws-$suffix"
 $cpuShell = "cpuShell$random"
 $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "training-data-output" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
-$forms_cogs_endpoint = "https://"+$forms_fintax_name+".cognitiveservices.azure.com/"
+$forms_cogs_endpoint = "https://"+$location+".api.cognitive.microsoft.com/"
 
 Write-Host "----Form Recognizer-----"
 #form Recognizer
