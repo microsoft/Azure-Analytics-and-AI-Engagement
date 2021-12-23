@@ -33,10 +33,14 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$wsId = "be8e0704-1b66-449a-8f5c-ca72f6a2f50f"
-$synapseWorkspaceName = "synapsefintaxas2411csae7wlklzxik"
+$location = (Get-AzResourceGroup -Name $rgName).Location
+$init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
+$random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
+$suffix = "$random-$init"
+$wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
+$deploymentId = $init
+$synapseWorkspaceName = "synapsefintax$init$random"
 $sqlPoolName = "FinTaxDW"
-
 
 #uploading powerbi reports
 Install-Module -Name MicrosoftPowerBIMgmt -Force
