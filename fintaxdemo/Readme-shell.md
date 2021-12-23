@@ -42,7 +42,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
-  - [Task 6: QnAmaker and LogicApp Configuration](#task-6-qnamaker-logicapp-configuration)
+  - [Task 6: QnAmaker and LogicApp Configuration](#task-6-qnamaker-and-logicapp-configuration)
   - [Task 7: Pause or Resume script](#task-7-pause-or-resume-script)
   - [Task 8: Clean up resources](#task-8-clean-up-resources)
 
