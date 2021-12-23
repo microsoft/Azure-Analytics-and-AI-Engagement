@@ -55,9 +55,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
-$cpuShell = "cpuShell$random"
-$synapseWorkspaceName = "synapsefintax$init$random"
-$sqlPoolName = "FinTaxDW"
 $concatString = "$init$random"
 $dataLakeAccountName = "stfintax$concatString"
 if($dataLakeAccountName.length -gt 24)
@@ -65,67 +62,20 @@ if($dataLakeAccountName.length -gt 24)
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
-$sqlUser = "labsqladmin"
-$concatString = "$random$init"
-$forms_fintax_name = "fintax-form-recognizer-$suffix";
 $bot_qnamaker_fintax_name= "botmultilingual-$suffix";
-$accounts_transqna_fintax_name = "transqna-fintax-$suffix";
-$workflows_LogicApp_fintax_name = "logicapp-fintax-$suffix"
-$accounts_immersive_reader_fintax_name = "immersive-reader-fintax-$suffix";
-$accounts_qnamaker_name= "qnamaker-$suffix";
-$search_srch_fintax_name = "srch-fintax-$suffix";
 $app_immersive_reader_fintax_name = "immersive-reader-fintax-app-$suffix";
-$app_fintax_qna_name = "fintaxdemo-qna-$suffix";
 $app_fintaxdemo_name = "fintaxdemo-app-$suffix";
-$iot_hub_name = "iothub-fintax-$suffix";
-$sites_app_multiling_fintax_name = "multiling-fintax-app-$suffix";
-$asp_multiling_fintax_name = "multiling-fintax-asp-$suffix";
-$sites_app_taxcollection_realtime_name = "taxcollectionrealtime-fintax-app-$suffix";
-$sites_app_vat_custsat_eventhub_name = "vat-custsat-eventhub-fintax-app-$suffix";
-$sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-fintax-app-$suffix";
-$sparkPoolName = "Fintax"
-$storageAccountName = $dataLakeAccountName
-$keyVaultName = "kv-$suffix";
-$asa_name_fintax = "fintaxasa-$suffix"
-$amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
-$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
-$forms_cogs_endpoint = "https://"+$forms_fintax_name+".cognitiveservices.azure.com"
-$AADApp_Immnersive_DisplayName = "FintaxImmersiveReader-$suffix"
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
-$AADAppClientSecret = "Smoothie@2021@2021"
-$AADApp_Multiling_DisplayName = "FintaxMultiling-$suffix"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_fintax_name
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $search_srch_fintax_name | ConvertFrom-Json).primarykey;
-$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_fintax_name
-
-$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
-New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
-New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
-
-Write-Host "Setting Key Vault Access Policy"
-#Import-Module Az.KeyVault
-Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
-Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
-
-$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
-$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
-try {
-   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
-} finally {
-   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
-}
-$sqlPassword = $secretValueText
-
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-#main web app
-Write-Host  "-----------------Deploy main web app ---------------"
+#Web app
+Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
 expand-archive -path "../artifacts/binaries/fintaxdemo-app.zip" -destinationpath "./fintaxdemo-app" -force
