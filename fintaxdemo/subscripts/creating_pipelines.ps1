@@ -46,7 +46,6 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 $synapseWorkspaceName = "synapsefintax$init$random"
 
 #creating Pipelines
-Add-Content log.txt "------pipelines------"
 Write-Host "-------Pipelines-----------"
 RefreshTokens
 $pipelines=Get-ChildItem "../artifacts/pipeline" | Select BaseName
@@ -58,9 +57,7 @@ foreach($name in $pipelines)
 
     $item = Get-Content -Path $FilePath
     $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
-    #$item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
     $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
-    #$item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
     
@@ -68,5 +65,4 @@ foreach($name in $pipelines)
     Start-Sleep -Seconds 10
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-    Add-Content log.txt $result 
 }
