@@ -647,7 +647,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 8. **Enter** the following path:  
 	
 	```
-	fintax/fintaxdemo/app_fintaxdemo/wwwroot/config.js
+	fintax/fintaxdemo/fintaxdemo-app/wwwroot/config.js
 	```
 
 9. **Click** Download button.
@@ -656,7 +656,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 10. **Edit** the downloaded file in notepad.
 
-11. **Paste** the dashboard id you copied earlier between the double quotes of key ‘ceo_dashboard_march’.
+11. **Paste** the dashboard id you copied earlier between the double quotes of key ‘taxpayer_client_services_before’.
 
 12. **Save** the changes to the file.
 
@@ -681,7 +681,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 19. **Execute** following command in cloudshell:  
 	
 	```
-	cp config.js ./fintax/fintaxdemo/app_fintaxdemo/wwwroot
+	cp config.js ./fintax/fintaxdemo/fintaxdemo-app/wwwroot
 	```
 	
 	![Execute the command.](media/updating-powerbi-8.png)
@@ -719,59 +719,62 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Open and Click on Azure Cloud Shell.](media/fintax-poc.png)
 
-**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
-1. **Run** Command: 
+	**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
+
+3. **Run** Command: 
 	```
 	cd "fintax/fintaxdemo/subscripts"
 	```
 
-2. Then **run** the PowerShell script: 
+4. Then **run** the PowerShell script: 
 	```
 	./qna_logicapp_subscript.ps1 
 	```
 	![Run the Powershell Script.](media/qna_logicapp-1.png)
 	
-3. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
+5. You will have to complete the 'az login' and 'device login' authentication by following the steps 7 to 18 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
+	
+6. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
 
 	![Search QnAmaker.](media/qna_logicapp-2.png)
 	
-4. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
+7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
 
 	![Switch section.](media/qna_logicapp-3.png)
 
-5. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
+8. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
 
 	![Select values.](media/qna_logicapp-4.png)
 	
-6. **Click** on the knowledge base name.
+9. **Click** on the knowledge base name.
 
 	![Knowledge base name.](media/qna_logicapp-5.png)
 	
-7. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
+10. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
 
 	![Publish.](media/qna_logicapp-6.png)
 	
-8. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
+11. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
 
 	![Values host and post.](media/qna_logicapp-7.png)
 	
-9. The concatinated value should appear like below.
+12. The concatinated value should appear like below.
 
 	![Values.](media/qna_logicapp-8.png)
 	
-10. **Copy** and **Paste** the value of Authorisation as well in a notepad.
+13. **Copy** and **Paste** the value of Authorisation as well in a notepad.
 
 	![Authorisation.](media/qna_logicapp-9.png)
 	
-11. **Go** to the the resource group, search for logic app and **click** on it.
+14. **Go** to the the resource group, search for logic app and **click** on it.
 
 	![Logic App.](media/qna_logicapp-10.png)
 	
-12. Uner the "Development Tools" section **select** "Logic app designer".
+15. Uner the "Development Tools" section **select** "Logic app designer".
 
 	![Logic App.](media/qna_logicapp-11.png)
 	
-13. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
+16. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
 
 	![Logic App.](media/qna_logicapp-12.png)
 
