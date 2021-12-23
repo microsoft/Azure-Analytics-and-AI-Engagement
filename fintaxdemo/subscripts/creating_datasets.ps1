@@ -13,8 +13,6 @@ az login
 #for powershell...
 Connect-AzAccount -DeviceCode
 
-#will be done as part of the cloud shell start - README
-
 #if they have many subs...
 $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
@@ -40,7 +38,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapsefintax$init$random"
 
 #Creating Datasets
-Add-Content log.txt "------datasets------"
 Write-Host "--------Datasets--------"
 RefreshTokens
 $DatasetsPath="../artifacts/datasets";	
@@ -48,10 +45,9 @@ $datasets=Get-ChildItem "../artifacts/datasets" | Select BaseName
 foreach ($dataset in $datasets) 
 {
     Write-Host "Creating dataset : $($dataset.BaseName)"
-	$LinkedServiceName=$datasets[$dataset.BaseName]
 	$itemTemplate = Get-Content -Path "$($DatasetsPath)/$($dataset.BaseName).json"
 	$item = $itemTemplate #.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/datasets/$($dataset.BaseName)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-	Add-Content log.txt $result
 }
+ 
