@@ -66,7 +66,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_CleanUpRLS] AS
-    EXECUTE AS USER = 'MarketingOwner';
     BEGIN
     DECLARE @sql1 nvarchar(4000) = 'ALTER SECURITY POLICY SalesFilter  
         WITH (STATE = OFF);'
@@ -87,7 +86,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_CreateSecuritySchema] AS
-    EXECUTE AS USER = 'MarketingOwner';
     BEGIN
     DECLARE @sql nvarchar(4000) = 'create schema Security'
     EXEC sp_executesql @sql
@@ -101,7 +99,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_CreateSecurityFunction] AS
-    EXECUTE AS USER = 'MarketingOwner';
     BEGIN
     DECLARE @sql nvarchar(4000) = 'CREATE FUNCTION Security.fn_securitypredicate(@Analyst AS sysname)  
         RETURNS TABLE  
@@ -120,7 +117,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_CreateSecurityPolicy] AS
-    EXECUTE AS USER = 'MarketingOwner';
     BEGIN
     DECLARE @sql nvarchar(4000) = 'CREATE SECURITY POLICY SalesFilter  
         ADD FILTER PREDICATE Security.fn_securitypredicate(Designation)
@@ -137,7 +133,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[Sp_FinTaxRLS] AS
-EXECUTE AS USER = 'MarketingOwner' 
 Begin	
 	-- After creating the users, read access is provided to all three users on FactInvoices table
 	GRANT SELECT ON [FactInvoices] TO FraudInvestigator, TaxAuditSuperviserSurDatum, TaxAuditSuperviserSandonillo, TaxAuditSuperviserStatiso, TaxAuditSuperviserTanglat, TaxAuditSuperviserPalacidios, TaxAuditSuperviserNordEl;  
@@ -166,7 +161,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantFullSelectFactInvoicesData] AS
-    EXECUTE AS USER = 'AntiCorruptionUnitHead'
     GRANT SELECT ON FactInvoicesData TO AntiCorruptionUnitHead; 
     REVERT;
 GO
@@ -177,7 +171,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantSelectSecurityPredicate] AS
-    EXECUTE AS USER = 'MarketingOwner'
     GRANT SELECT ON security.fn_securitypredicate TO TaxAuditSupervisor, TaxAuditorStatiso, TaxAuditorSurDatum;
     REVERT;
 GO
@@ -210,7 +203,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROC [dbo].[sp_GrantLimitedSelectFactInvoicesData] AS
-    EXECUTE AS USER = 'TaxAuditor'
     GRANT SELECT ON FactInvoicesData ([TaxpayerID], [Region], [State], [Industry], [TaxableAmount], [TaxAmount]) TO TaxAuditor;
     REVERT;
 GO

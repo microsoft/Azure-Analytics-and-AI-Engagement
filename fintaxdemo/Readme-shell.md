@@ -42,6 +42,8 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
+  	- [Steps to create Real time report](#steps-to-create-real-time-report)
+  	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
   - [Task 6: QnAmaker and LogicApp Configuration](#task-6-qnamaker-and-logicapp-configuration)
   - [Task 7: Pause or Resume script](#task-7-pause-or-resume-script)
   - [Task 8: Clean up resources](#task-8-clean-up-resources)
@@ -502,7 +504,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Will see.](media/power-bi-report-30.png)
 	
-52. The Dashboard “Taxpayer Client Services Commissioner Dashboard Before” should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+52. The Dashboard **Taxpayer Client Services Commissioner Dashboard Before** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 
 	![Final Look.](media/power-bi-report-31.png)
 	
@@ -510,7 +512,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Table.](media/power-bi-table-1.png)
 	
-54. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below.
+54. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/KPIS%20Dashboards%20mapping.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-32.png)
 	
@@ -538,51 +540,15 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Table.](media/power-bi-table-4.png)
 
-61. **Taxpayer Client Services Commissioner Before** Dashboard should look like this. 
+61. **Taxpayer Client Services Commissioner After Dashboard** Dashboard should look like this. 
 
 	![Final Look.](media/power-bi-report-36.png)
 	
 62. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
-	![Table.](media/power-bi-table-1.png)
-
-63. **Taxpayer Client Services Commissioner After** Dashboard should look like this.
+	![Table.](media/power-bi-table-5.png)
 	
-	![Final Look.](media/power-bi-report-37.png)
-
-64. **Tax Compliance Commissioner Before** Dashboard should look like this.
-
-	![Final Look.](media/power-bi-report-38.png)
-	
-65. **Tax Compliance Commissioner After** Dashboard should look like this.
-
-	![Final Look.](media/power-bi-report-39.png)
-	
-66. **Fraud Investigator Before** Dashboard should look like this.
-	
-	![Final Look.](media/power-bi-report-40.png)
-	
-67. **Fraud Investigator After** Dashboard should look like this.
-
-	![Final Look.](media/power-bi-report-41.png)
-	
-68. **Tax Auditor Before** should look like this.
-
-	![Final Look.](media/power-bi-report-42.png)
-	
-69. **Tax Auditor After** should look like this.
-
-	![Final Look.](media/power-bi-report-43.png)
-	
-70. **Anti-Corruption Unit Before** should look like this.
-
-	![Final Look.](media/power-bi-report-44.png)
-	
-71. **Anti-Corruption Unit After** should look like this.
-
-	![Final Look.](media/power-bi-report-45.png)
-	
-**Steps to create Real time report (Optional)**
+### Steps to create Real time report
 
 This task is optional since we have provided static versions of the reports in the package already.
 
@@ -621,7 +587,8 @@ This task is optional since we have provided static versions of the reports in t
 
 	![Create other visuals and save the Power BI Report.](media/power-bi-report-52.png)
 
-**Updating Dashboard and Report Id’s in Web app:**
+### Updating Dashboard and Report Ids in Web app
+
 By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated in to the main web app if you choose. Here are the steps for it.
 
 1. **Navigate** to your Power BI workspace.
