@@ -89,8 +89,6 @@ az login
 #for powershell...
 Connect-AzAccount -DeviceCode
 
-#will be done as part of the cloud shell start - README
-
 #if they have many subs...
 $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
@@ -280,8 +278,6 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "fraud-detection-
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/fraud-detection-sample-nyrealestate$($destinationSasKey)"
 & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/fraud-detection-sample-nyrealestate" $destinationUri --recursive
 
-
-
 #storage assests copy
 RefreshTokens
 
@@ -382,8 +378,6 @@ foreach ($name in $scripts)
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
-    #$query = $query.Replace("#COSMOS_ACCOUNT#", $db_graph_fintax_name)
-   # $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
 
     $query = $query.Replace("#LOCATION#", $location)
 	
@@ -408,7 +402,6 @@ Add-Content log.txt "------linked Services------"
 Write-Host "----linked Services------"
 #Creating linked services
 RefreshTokens
-
 $templatepath="./artifacts/linkedservices/"
 
 ##AzureSynapseAnalytics1 linked services
@@ -493,7 +486,7 @@ foreach ($dataset in $datasets)
     Write-Host "Creating dataset : $($dataset.BaseName)"
 	$LinkedServiceName=$datasets[$dataset.BaseName]
 	$itemTemplate = Get-Content -Path "$($DatasetsPath)/$($dataset.BaseName).json"
-	$item = $itemTemplate #.Replace("#LINKED_SERVICE_NAME#", $LinkedServiceName)
+	$item = $itemTemplate
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/datasets/$($dataset.BaseName)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	Add-Content log.txt $result
@@ -517,7 +510,6 @@ $cellParams = [ordered]@{
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#LOCATION#"=$location
 		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
-        # "#SEARCH_KEY#" = $searchKey
 }
 
 foreach($name in $notebooks)
@@ -554,8 +546,6 @@ foreach($name in $notebooks)
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	#waiting for operation completion
 	Start-Sleep -Seconds 10
-	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
-	#$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
 	Add-Content log.txt $result
 }
 
@@ -596,9 +586,7 @@ foreach($name in $pipelines)
 
     $item = Get-Content -Path $FilePath
     $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
-    #$item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
     $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
-    #$item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
     
@@ -669,17 +657,6 @@ foreach($name in $reports)
       $list = $reportList.Add($temp)
 }
 Start-Sleep -s 60
-
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
-$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-Add-Content log.txt $pbiResult  
-
-foreach($r in $pbiResult.value)
-{
-    $report = $reportList | where {$_.Name -eq $r.name}
-    $report.ReportId = $r.id;
-}
-
 
 Add-Content log.txt "------uploading sql data------"
 Write-Host  "-------------Uploading Sql Data ---------------"
@@ -752,7 +729,6 @@ foreach ($dataTableLoad in $dataTableList) {
             $sqlQuery = $sqlQuery.Replace("#$($key)#", $Parameters[$key])
         }
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-    #Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
 
 Write-Host  "-----------------AML Workspace ---------------"
@@ -765,7 +741,6 @@ $item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Re
 $filepath="./artifacts/amlnotebooks/GlobalVariables.py"
 Set-Content -Path $filepath -Value $item
 
-#AML Workspace
 #create aml workspace
 az extension add -n azure-cli-ml
 az ml workspace create -w $amlworkspacename -g $rgName
@@ -816,7 +791,6 @@ Set-AzStorageFileContent `
 }
 
 #create aks compute
-#az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
 az ml computetarget delete -n $cpuShell -v
 
 ##Establish powerbi reports dataset connections
@@ -1024,27 +998,29 @@ Set-Content -Path $filepath -Value $item
 $bot_detail = az bot webchat show --name $bot_qnamaker_fintax_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
 $bot_key = $bot_detail.properties.properties.sites[0].key
 
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
+$reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+$reportList = $reportList.Value
+
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
-#TODO need to check which url to use here
-# $ht.add("#Blob_Base_Url#", "https://fsicdn.azureedge.net/webappassets/")
 $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
 $ht.add("#IMMERSIVE_READER_FINTAX_NAME#", $app_immersive_reader_fintax_name)
 $ht.add("#BOT_QNAMAKER_FINTAX_NAME#", $bot_qnamaker_fintax_name)
 $ht.add("#BOT_KEY#", $bot_key)
-$ht.add("#AMAZON_MAP#", $($reportList | where {$_.Name -eq "Amazon MAP"}).ReportId)
-$ht.add("#ANTI_CORRUPTION_REPORT#", $($reportList | where {$_.Name -eq "Anti Corruption Report"}).ReportId)
-#.add("#FINTAX_COLUMN_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.Name -eq "FinTax Column Level Security (Azure Synapse)"}).ReportId)
-#$ht.add("#FINTAX_DYNAMIC_DATA_MASKING_SYNAPSE#", $($reportList | where {$_.Name -eq "FinTax Dynamic Data Masking (Azure Synapse)"}).ReportId)
-#$ht.add("#FINTAX_ROW_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.Name -eq "FinTax Row Level Security (Azure Synapse)"}).ReportId)
-$ht.add("#FRAUD_INVESTIGATOR_REPORT#", $($reportList | where {$_.Name -eq "Fraud Investigator Report"}).ReportId)
-$ht.add("#REPORT_TAX_FINANCE#", $($reportList | where {$_.Name -eq "Report Tax Finance"}).ReportId)
-#$ht.add("#TAX_COLLECTIONS_COMMISSIONER#", $($reportList | where {$_.Name -eq "Tax Collections Commissioner"}).ReportId)
-$ht.add("#TAX_COMPLIANCE_COMISSIONER_REPORT#", $($reportList | where {$_.Name -eq "Tax Compliance Comissioner Report"}).ReportId)
-#$ht.add("#TAXPAYER_CLIENT_SERVICES_REPORT#", $($reportList | where {$_.Name -eq "Taxpayer Client Services Report"}).ReportId)
-#$ht.add("#TRF_CHICKLETS#", $($reportList | where {$_.Name -eq "TRF-Chicklets"}).ReportId)
-$ht.add("#VAT_AUDITOR_REPORT#", $($reportList | where {$_.Name -eq "vat auditor report"}).ReportId)
-
+$ht.add("#AMAZON_MAP#", $($reportList | where {$_.name -eq "Amazon MAP"}).id)
+$ht.add("#ANTI_CORRUPTION_REPORT#", $($reportList | where {$_.name -eq "Anti Corruption Report"}).id)
+#.add("#FINTAX_COLUMN_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Column Level Security (Azure Synapse)"}).id)
+#$ht.add("#FINTAX_DYNAMIC_DATA_MASKING_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Dynamic Data Masking (Azure Synapse)"}).id)
+#$ht.add("#FINTAX_ROW_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Row Level Security (Azure Synapse)"}).id)
+$ht.add("#FRAUD_INVESTIGATOR_REPORT#", $($reportList | where {$_.name -eq "Fraud Investigator Report"}).id)
+$ht.add("#REPORT_TAX_FINANCE#", $($reportList | where {$_.name -eq "Report Tax Finance"}).id)
+#$ht.add("#TAX_COLLECTIONS_COMMISSIONER#", $($reportList | where {$_.name -eq "Tax Collections Commissioner"}).id)
+$ht.add("#TAX_COMPLIANCE_COMISSIONER_REPORT#", $($reportList | where {$_.name -eq "Tax Compliance Comissioner Report"}).id)
+#$ht.add("#TAXPAYER_CLIENT_SERVICES_REPORT#", $($reportList | where {$_.name -eq "Taxpayer Client Services Report"}).id)
+#$ht.add("#TRF_CHICKLETS#", $($reportList | where {$_.name -eq "TRF-Chicklets"}).id)
+$ht.add("#VAT_AUDITOR_REPORT#", $($reportList | where {$_.name -eq "vat auditor report"}).id)
 #$ht.add("#SPEECH_REGION#", $location)
 
 $filePath = "./fintaxdemo-app/wwwroot/config.js";

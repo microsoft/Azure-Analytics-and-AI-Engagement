@@ -332,6 +332,10 @@ cd ./fintax/fintaxdemo
 25. After whole of the script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once.
 
 	![Click on the link.](media/cloud-shell-20.png)
+	
+26. If you dont have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
+
+	![Click on the link.](media/csu-permission.png)
       
 ### Task 5: Power BI reports and dashboard creation
 
