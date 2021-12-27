@@ -1,4 +1,4 @@
-# Fintax DREAM Demo in a Box Setup Guide
+# FinTax DREAM Demo in a Box Setup Guide
 
 ## What is it?
 DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
@@ -333,7 +333,7 @@ cd ./fintax/fintaxdemo
 
 	![Click on the link.](media/cloud-shell-20.png)
 	
-26. If you dont have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
+26. If you don't have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
 
 	![Click on the link.](media/csu-permission.png)
       
