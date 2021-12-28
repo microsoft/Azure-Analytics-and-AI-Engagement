@@ -71,7 +71,7 @@
     "serverfarm_app_taxcollectionrealtime_fintax_name": "[concat('asp-taxcollectionrealtime-fintax-',variables('unique_suffix'))]",
     "sites_app_iotfoottraffic_sensor_fintax_name": "[concat('iot-foottraffic-sensor-fintax-app-',variables('unique_suffix'))]",
     "serverfarm_app_iotfoottraffic_sensor_fintax_name": "[concat('asp-iot-foottraffic-sensor-fintax-',variables('unique_suffix'))]",	
-	  "search_srch_fintax_name":"[concat('srch-fintax-',variables('unique_suffix'))]"
+	"search_srch_fintax_name":"[concat('srch-fintax-',variables('unique_suffix'))]"
   },
   "resources": [
     {
