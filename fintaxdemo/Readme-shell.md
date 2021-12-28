@@ -297,43 +297,48 @@ cd ./fintax/fintaxdemo
 
 	![Close the browser tab.](media/cloud-shell-13.png)
 
-	> **Notes:**
-	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
-	> - You may be prompted to choose a subscription after the above-mentioned step if you have multiple subscriptions associated with your account. Choose the **subscription** that you used to sign in to the Azure portal. 
+19. Now you will be prompted to select subscription if you have multiple subscription assigned to the user you used for device login.
 
-19. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Fintax-Lab'.
+    ![Close the browser tab.](media/select-sub.png)
+	
+	> **Notes:**
+	> - The user with single subscription won't be prompted to select subscription.
+	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
+	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
+
+20. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Fintax-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
-20. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+21. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 	> **Note:**
 	> Note: You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In such case follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/fintax/fintaxdemo/artifacts/reports). 
 
-21. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+22. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
       ![Click the link.](media/cloud-shell-16.png)
       
-22. A new browser window will launch. **Paste** the code that you copied from the shell in step 21.
+23. A new browser window will launch. **Paste** the code that you copied from the shell in step 21.
 
 	![Paste the code.](media/cloud-shell-17.png)
 
 	> Note: Make sure to provide the device code before it expires and let the script run till completion.
 
-23. **Select** the same user to authenticate which you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
+24. **Select** the same user to authenticate which you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
 	![Select the same user.](media/cloud-shell-18.png)
 
-24. **Close** the browser tab once you see the message window at right and go back to your Azure Cloud Shell execution window.
+25. **Close** the browser tab once you see the message window at right and go back to your Azure Cloud Shell execution window.
 
 	![Close the browser.](media/cloud-shell-19.png)
 
 	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-25. After whole of the script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once.
+26. After whole of the script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once.
 
 	![Click on the link.](media/cloud-shell-20.png)
 	
-26. If you don't have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
+27. If you don't have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
 
 	![Click on the link.](media/csu-permission.png)
       
