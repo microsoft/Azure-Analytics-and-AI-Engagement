@@ -202,8 +202,12 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
 
+	> **NOTE:** You may also see message in red asking to agree to terms of service after validation on same screen as below.
+	
+	![Creating the template after validation.](media/agreement-error.png)
+	
 	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
-
+	
 10. **Stay** on the same page and wait for the deployment to complete.
     
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template.png)
@@ -334,9 +338,11 @@ cd ./fintax/fintaxdemo
 
 	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-26. After whole of the script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once.
+26. After complete script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once and then after the page loads close the brower tabs.
 
 	![Click on the link.](media/cloud-shell-20.png)
+	
+	> Note: Clicking these links will ensure that the data simulator applications gets start and will not dislplay ani UI on browser page, instead may give error like 404, which is its expected behaviour.
 	
 27. If you don't have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
 
@@ -754,6 +760,8 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Logic App.](media/qna_logicapp-12.png)
 
+> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
+
 ### Task 7: Pause or Resume script
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
@@ -832,5 +840,3 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
 	![Enter the Resource Group Name.](media/authentication-7.png)
-	
-Your Accelerator environment is now set up.
