@@ -103,15 +103,6 @@ foreach($name in $reports)
 }
 Start-Sleep -s 60
 
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
-$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-
-foreach($r in $pbiResult.value)
-{
-    $report = $reportList | where {$_.Name -eq $r.name}
-    $report.ReportId = $r.id;
-}
-
 ##Establish powerbi reports dataset connections
 Write-Host "--------- PBI connections update---------"	
 
