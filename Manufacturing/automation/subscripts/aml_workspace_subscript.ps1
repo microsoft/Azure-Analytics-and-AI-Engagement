@@ -103,7 +103,8 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 
 #get fileshare and code folder within that
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
-$share = Get-AzStorageShare -Context $storageAcct.Context 
+
+$share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
 
 #create Users folder ( it wont be there unless we launch the workspace in UI)
@@ -131,28 +132,6 @@ Set-AzStorageFileContent `
    -Path $path
 }
 
-$share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
-$shareName = $share.Name
-$notebooks=Get-ChildItem "../artifacts/amlnotebooks" | Select BaseName
-foreach($notebook in $notebooks)
-{
-	if($notebook.BaseName -eq "config")
-	{
-		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".py"
-		$path="/Users/"+$notebook.BaseName+".py"
-	}
-	else
-	{
-		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".ipynb"
-		$path="/Users/"+$notebook.BaseName+".ipynb"
-	}
-
-Set-AzStorageFileContent `
-   -Context $storageAcct.Context `
-   -ShareName $shareName `
-   -Source $source `
-   -Path $path
-}
 #create aks compute
 #az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
    

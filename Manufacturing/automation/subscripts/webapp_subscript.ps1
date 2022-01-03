@@ -64,6 +64,19 @@ $keyVaultName = "kv-$init";
 $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $searchName = "search-$suffix";
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName | ConvertFrom-Json).primarykey;
+$synapseWorkspaceName = "manufacturingdemo$init$random"
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+
+Write-Host "Setting Key Vault Access Policy"
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
+
 
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
@@ -89,33 +102,25 @@ foreach($zip in $zips)
     expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
 
-$app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
-$secretpassword="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $secretpassword -AsPlainText -Force
+$spname="Manufacturing Demo $deploymentId"
+$clientsecpwd ="Smoothie@Smoothie@2020"
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName "Mfg Demo $deploymentId" -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
 #add PowerBI App to workspace as an admin to group
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups";
 $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 $homeCluster = $result.Headers["home-cluster-uri"]
 #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
+RefreshTokens
 $url = "$homeCluster/metadata/tenantsettings"
 $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -124,9 +129,10 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
 #add PowerBI App to workspace as an admin to group
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
-    `"identifier`":`"$($sp.Id)`",
+    `"identifier`":`"$($sp)`",
     `"groupUserAccessRight`":`"Admin`",
     `"principalType`":`"App`"
     }";
@@ -138,6 +144,7 @@ $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
 $powerBiAppId = $powerBIApp.Id;
 
 #setup powerBI app...
+RefreshTokens
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
     `"clientId`":`"$appId`",
@@ -151,6 +158,7 @@ $post = "{
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 
 #setup powerBI app...
+RefreshTokens
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
     `"clientId`":`"$appId`",

@@ -177,6 +177,9 @@ $sparkPoolName = "MFGDreamPool"
 $manufacturing_poc_app_service_name = "manufacturing-poc-$suffix"
 $wideworldimporters_app_service_name = "wideworldimporters-$suffix"
 
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $storageAccountName = $dataLakeAccountName
 $forms_cogs_name = "forms-$suffix";
@@ -1035,24 +1038,14 @@ Start-Sleep -s 60
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 
-$app = Get-AzADApplication -DisplayName "Mfg Demo $deploymentid"
-$secretpassword="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $secretpassword -AsPlainText -Force
+$spname="Manufacturing Demo $deploymentId"
+$clientsecpwd ="Smoothie@Smoothie@2020"
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName "Mfg Demo $deploymentId" -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -1072,7 +1065,7 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
-    `"identifier`":`"$($sp.Id)`",
+    `"identifier`":`"$($sp)`",
     `"groupUserAccessRight`":`"Admin`",
     `"principalType`":`"App`"
     }";
