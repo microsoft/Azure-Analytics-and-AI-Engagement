@@ -144,6 +144,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uploading AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `

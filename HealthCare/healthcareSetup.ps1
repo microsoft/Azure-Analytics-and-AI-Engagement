@@ -148,6 +148,8 @@ $sqlUser = "labsqladmin"
 $healthcareasa = "asa-healthcare-$suffix"
 $highspeedasa = "asa-high-speed-datagen-healthcare-$suffix"
 $concatString = "$random$init"
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 
 $cosmos_account_name_heathcare = "cosmosdb-healthcare-$concatString"
 if($cosmos_account_name_heathcare.length -gt 43 )
@@ -1219,6 +1221,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uploading AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `
@@ -1441,24 +1444,14 @@ Write-Host  "-----------------Uploading Cosmos Data Complete--------------"
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 RefreshTokens
-$app = Get-AzADApplication -DisplayName "hcare Demo $deploymentid"
+$spname="FinTax Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName "hcare Demo $deploymentId" -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -1478,7 +1471,7 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
-    `"identifier`":`"$($sp.Id)`",
+    `"identifier`":`"$($sp)`",
     `"groupUserAccessRight`":`"Admin`",
     `"principalType`":`"App`"
     }";
