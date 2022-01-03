@@ -39,6 +39,7 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $amlworkspacename = "amlws-$suffix"
+$cpuShell = "cpuShell$random"
 
 Write-Host  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------------AML Workspace ---------------"
@@ -81,6 +82,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uploading AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `

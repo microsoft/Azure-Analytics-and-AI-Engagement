@@ -64,6 +64,19 @@ $media_search_app_service_name = "app-media-search-$suffix"
 $functionapplivestreaming="func-app-media-livestreaming-$suffix"
 $functionapprecommender="func-app-media-recommendation-$suffix"
 $functionappmodelbuilder="func-app-model-builder-$suffix"
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+
+$synapseWorkspaceName = "synapsemedia$init$random"
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+Write-Host "Setting Key Vault Access Policy"
+#Import-Module Az.KeyVault
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
+
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
@@ -99,25 +112,14 @@ az webapp start --name $functionapplivestreaming --resource-group $rgName
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 RefreshTokens
-$spname="Media Demo $deploymentid"
-$app = Get-AzADApplication -DisplayName $spname
+$spname="Media Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName $spname -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -137,7 +139,7 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
-    `"identifier`":`"$($sp.Id)`",
+    `"identifier`":`"$($sp)`",
     `"groupUserAccessRight`":`"Admin`",
     `"principalType`":`"App`"
     }";
