@@ -1,5 +1,6 @@
 # Frequently Asked Questions
 
+- [How to run the script locally on powershell?](#how-to-run-script-locally-on-powershell)
 - [What if any resource shows failure during ARM deployment?](#what-if-any-resource-shows-failure-during-arm-deployment)
 - [What if my cloud-shell session times out or script fails partially?](#what-if-my-cloud-shell-session-times-out-or-script-fails-partially)
 - [Cloning repository gives error on cloudshell](#cloning-repository-gives-error)
@@ -8,6 +9,12 @@
 - [What if embedded reports dont show up in web app](#what-if-embedded-reports-dont-show-up-in-web-app)
 - [What if script throws BadRequestMultiClassClassificationTrainingValidationFailed error](#what-if-script-throws-badrequestmulticlassclassificationtrainingvalidationfailed-error)
 
+## How to run the script locally on powershell?
+
+- Open your local powershell in admin mode.
+- Execute "Set-Executionpolicy unrestricted" command.
+- Save and execute the installation script from [here](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1) by executing "./installer.ps1" on your powershell from the location that you saved the above file at.
+- Execute the task 4 of setup instructions on your local powershell.
 
 ## What if any resource shows failure during ARM deployment?
 
