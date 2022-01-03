@@ -178,6 +178,8 @@ $accounts_maps_name = "mapsfsi-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
@@ -1395,25 +1397,14 @@ foreach($zip in $zips)
 }
 
 RefreshTokens
-$spname="Fsi Demo $deploymentid"
-$app = Get-AzADApplication -DisplayName $spname
+$spname="Fsi Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName $spname -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -1436,7 +1427,7 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
-    `"identifier`":`"$($sp.Id)`",
+    `"identifier`":`"$($sp)`",
     `"groupUserAccessRight`":`"Admin`",
     `"principalType`":`"App`"
     }";
