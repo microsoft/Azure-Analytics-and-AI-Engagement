@@ -75,6 +75,8 @@ $app_name_realtime_kpi_simulator ="app-fsi-realtime-kpi-simulator-$suffix"
 $app_maps_service_name = "app-maps-$suffix"
 $iot_hub_name = "iothub-fsi-$suffix"
 $cog_speech_name = "speech-service-$suffix"
+$CurrentTime = Get-Date
+$AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
@@ -93,25 +95,14 @@ $map_key = az maps account keys list --name $accounts_maps_name --resource-group
 $accounts_map_key = $map_key.primaryKey
 
 RefreshTokens
-$spname="Fsi Demo $deploymentid"
-$app = Get-AzADApplication -DisplayName $spname
+$spname="Fsi Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
-$secret = ConvertTo-SecureString -String $clientsecpwd -AsPlainText -Force
 
-if (!$app)
-{
-    $app = New-AzADApplication -DisplayName $spname -Password $secret;
-}
-
-$appId = $app.ApplicationId;
-$objectId = $app.ObjectId;
-
-$sp = Get-AzADServicePrincipal -ApplicationId $appId;
-
-if (!$sp)
-{
-    $sp = New-AzADServicePrincipal -ApplicationId $appId -DisplayName "http://fabmedical-sp-$deploymentId" -Scope "/subscriptions/$subscriptionId" -Role "Admin";
-}
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -131,15 +122,15 @@ $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
 #add PowerBI App to workspace as an admin to group
-RefreshTokens
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
-$post = "{
-    `"identifier`":`"$($sp.Id)`",
-    `"groupUserAccessRight`":`"Admin`",
-    `"principalType`":`"App`"
-    }";
+    RefreshTokens
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+    $post = "{
+        `"identifier`":`"$($sp)`",
+        `"groupUserAccessRight`":`"Admin`",
+        `"principalType`":`"App`"
+        }";
 
-$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+    $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 
 #get the power bi app...
 $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
