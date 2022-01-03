@@ -77,6 +77,17 @@ $iot_hub_name = "iothub-fsi-$suffix"
 $cog_speech_name = "speech-service-$suffix"
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+$synapseWorkspaceName = "synapsefsi$init$random"
+$userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserPrincipalName
+
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+
+Write-Host "Setting Key Vault Access Policy"
+#Import-Module Az.KeyVault
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
 
 $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
