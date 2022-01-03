@@ -1444,7 +1444,7 @@ Write-Host  "-----------------Uploading Cosmos Data Complete--------------"
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 RefreshTokens
-$spname="FinTax Demo $deploymentId"
+$spname="Healthcare Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
 
 $appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
