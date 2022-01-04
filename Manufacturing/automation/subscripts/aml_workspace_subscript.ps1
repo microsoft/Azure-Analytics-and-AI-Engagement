@@ -106,10 +106,8 @@ $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdat
 
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
-
 #create Users folder ( it wont be there unless we launch the workspace in UI)
 New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
-
 #copy notebooks to ml workspace
 $notebooks=Get-ChildItem "../artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
@@ -125,6 +123,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uplaoding AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `

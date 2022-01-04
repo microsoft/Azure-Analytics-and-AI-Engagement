@@ -1969,18 +1969,6 @@
          }
       },
       {
-         "type":"Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption",
-         "apiVersion":"2019-06-01-preview",
-         "name":"[concat(variables('workspace_name_dreamdemosynapse'), '/',variables('sql_compute_name'),'/current')]",
-         "location":"[variables('location')]",
-         "dependsOn":[
-            "[resourceId('Microsoft.Synapse/workspaces/sqlPools', variables('workspace_name_dreamdemosynapse'), variables('sql_compute_name'))]"
-         ],
-         "properties":{
-            "status":"Enabled"
-         }
-      },
-      {
          "name":"[variables('manufacturing_poc_ase_name')]",
          "type":"Microsoft.Web/serverfarms",
          "apiVersion":"2019-08-01",
