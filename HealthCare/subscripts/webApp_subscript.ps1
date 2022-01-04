@@ -98,12 +98,14 @@ start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+RefreshTokens
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups";
 $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 $homeCluster = $result.Headers["home-cluster-uri"]
 #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
+RefreshTokens
 $url = "$homeCluster/metadata/tenantsettings"
 $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -111,6 +113,7 @@ $headers.Add("Authorization", "Bearer $powerbiToken")
 $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
+RefreshTokens
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
@@ -125,6 +128,7 @@ $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "app
 $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
 $powerBiAppId = $powerBIApp.Id;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
@@ -138,6 +142,7 @@ $post = "{
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
