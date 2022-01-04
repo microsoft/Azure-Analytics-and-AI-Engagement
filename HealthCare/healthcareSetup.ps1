@@ -1207,6 +1207,8 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
+#create Users folder ( it wont be there unless we launch the workspace in UI)
+New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
