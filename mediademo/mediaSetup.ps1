@@ -250,6 +250,10 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 $cosmos_account_key=az cosmosdb keys list -n $cosmos_account_name -g $rgName |ConvertFrom-Json
 $cosmos_account_key=$cosmos_account_key.primarymasterkey
 
+RefreshTokens
+Write-Host "-----Enable Transparent Data Encryption----------"
+$result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapse $synapseWorkspaceName -sql_compute_name $sqlPoolName -ErrorAction SilentlyContinue
+$result = az synapse spark pool update --name $sparkPoolName --workspace-name $synapseWorkspaceName --resource-group $rgName --library-requirements "./artifacts/templates/requirements.txt"
 
 ###################################################################
 New-Item log.txt
@@ -960,6 +964,8 @@ $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdat
 
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
+#create Users folder ( it wont be there unless we launch the workspace in UI)
+New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
 foreach($notebook in $notebooks)
 {
@@ -974,6 +980,7 @@ foreach($notebook in $notebooks)
 		$path="/Users/"+$notebook.BaseName+".ipynb"
 	}
 
+Write-Host " Uploading AML assets : $($notebook.BaseName)"
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
    -ShareName $shareName `
@@ -1070,12 +1077,14 @@ start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+RefreshTokens
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups";
 $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
 $homeCluster = $result.Headers["home-cluster-uri"]
 #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
+RefreshTokens
 $url = "$homeCluster/metadata/tenantsettings"
 $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -1083,6 +1092,7 @@ $headers.Add("Authorization", "Bearer $powerbiToken")
 $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
+RefreshTokens
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
@@ -1097,6 +1107,7 @@ $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "app
 $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
 $powerBiAppId = $powerBIApp.Id;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
@@ -1110,6 +1121,7 @@ $post = "{
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{

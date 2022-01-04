@@ -129,6 +129,7 @@ $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json
 $homeCluster = $result.Headers["home-cluster-uri"]
 #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
+RefreshTokens
 $url = "$homeCluster/metadata/tenantsettings"
 $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -136,6 +137,7 @@ $headers.Add("Authorization", "Bearer $powerbiToken")
 $headers.Add("X-PowerBI-User-Admin", "true")
 #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
 
+RefreshTokens
 #add PowerBI App to workspace as an admin to group
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
 $post = "{
@@ -150,6 +152,7 @@ $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "app
 $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
 $powerBiAppId = $powerBIApp.Id;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
@@ -163,6 +166,7 @@ $post = "{
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 
+RefreshTokens
 #setup powerBI app...
 $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
 $post = "{
@@ -202,6 +206,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 				-replace '#SEARCH_APP_NAME#', $media_search_app_service_name`
         } | Set-Content -Path demomedia_web_app/wwwroot/config.js	
 
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
 $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 $reportList = $reportList.Value
