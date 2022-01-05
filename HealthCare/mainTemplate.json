@@ -2789,7 +2789,7 @@
       "type": "Microsoft.IoTCentral/IoTApps",
       "apiVersion": "2018-09-01",
       "name": "[variables('iot_central_healthcare_name')]",
-      "location": "unitedstates",
+      "location": "[variables('location')]",
       "sku": {
         "name": "ST2"
       },
