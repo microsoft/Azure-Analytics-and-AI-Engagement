@@ -1,4 +1,4 @@
-# FinTax DREAM Demo in a Box Setup Guide
+# Public Finance DREAM Demo in a Box Setup Guide
 
 ## What is it?
 DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
