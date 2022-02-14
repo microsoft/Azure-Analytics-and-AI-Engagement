@@ -1,3 +1,16 @@
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I accept the license agreement."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I do not accept and wish to stop execution."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$title = "Agreement"
+$message = "By typing [Y], I hereby confirm that I have read the license ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/license.md ) and disclaimers ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/README.md ) and hereby accept the terms of the license and agree that the terms and conditions set forth therein govern my use of the code made available hereunder. (Type [Y] for Yes or [N] for No and press enter)"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+if($result -eq 1)
+{
+write-host "Thank you. Please ensure you delete the resources created with template to avoid further cost implications."
+}
+
+else
+{
 function Check-HttpRedirect($uri)
 {
     $httpReq = [system.net.HttpWebRequest]::Create($uri)
@@ -121,6 +134,21 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     az account set --subscription $selectedSubName
 	}
 }
+#getting user details
+
+$response=az ad signed-in-user show | ConvertFrom-Json
+$date=get-date
+$demoType="Public Finance"
+$body= '{"demoType":"#demoType#","userPrincipalName":"#userPrincipalName#","displayName":"#displayName#","companyName":"#companyName#","mail":"#mail#","date":"#date#"}'
+$body = $body.Replace("#userPrincipalName#", $response.userPrincipalName)
+$body = $body.Replace("#displayName#", $response.displayName)
+$body = $body.Replace("#companyName#", $response.companyName)
+$body = $body.Replace("#mail#", $response.mail)
+$body = $body.Replace("#date#", $date)
+$body = $body.Replace("#demoType#", $demoType)
+
+$uri ="https://registerddibuser.azurewebsites.net/api/registeruser?code=pTrmFDqp25iVSxrJ/ykJ5l0xeTOg5nxio9MjZedaXwiEH8oh3NeqMg=="
+$result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -ContentType "application/json"
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
@@ -203,7 +231,16 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 New-Item log.txt
 
 Install-Module -Name MicrosoftPowerBIMgmt -Force
-Login-PowerBI
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I have enough permissions for PowerBI login."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I will run PowerBI setup seperately."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$title = "PowerBI login"
+$message = " (Type [Y] for Yes or [N] for No and press enter)"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+if($result -eq 0)
+{
+ Login-PowerBI 
+}
 	
 RefreshTokens
 Add-Content log.txt "------asa powerbi connection-----"
@@ -1157,3 +1194,4 @@ Write-Host 'az role assignment create --assignee' $immersive_properties.Principa
 
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
+}
