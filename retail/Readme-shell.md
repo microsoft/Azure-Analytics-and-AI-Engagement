@@ -106,6 +106,29 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 ### Task 2: Power BI Workspace creation
 
+1. **Open** Power BI in a new tab using the following link:  [https://app.powerbi.com/](https://app.powerbi.com/)
+
+2. **Sign in**, to Power BI using your Power BI Pro account.
+
+	![Sign in to Power BI.](media/power-bi.png)
+
+	> **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
+
+3. In Power BI service **Click** on 'Workspaces'.
+
+4. Then **click** on the 'Create a workspace' tab.
+
+	![Create Power BI Workspace.](media/power-bi-2.png)
+
+	> **Note:** Please create a Workspace by the name "DDiB-Retail".
+
+5. **Copy** the Workspace GUID or ID. You can get this by browsing to [https://app.powerbi.com/](https://app.powerbi.com/), selecting the workspace, and then copying the GUID 	from the address URL.
+
+6. **Paste** the GUID in a notepad for future reference.
+
+	![Give the name and description for the new workspace.](media/power-bi-3.png)
+
+	> **Note:** This workspace ID will be used during ARM template deployment.
 
 
 
@@ -114,7 +137,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fretail2.0%2Fretail%2Fmain-template.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fretail2.0%2Fretail%2FSynapseSetup.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
