@@ -256,7 +256,7 @@ cd ./fintax/fintaxdemo
 
 6. Then **run** the PowerShell: 
 ```
-./fintaxSetup.ps1
+./publicfinanceSetup.ps1
 ```
     
 ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
