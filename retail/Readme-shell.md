@@ -206,7 +206,7 @@ git clone -b retail2.0 https://github.com/microsoft/Azure-Analytics-and-AI-Engag
 
 > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
-5. **Execute** the retailSetup.ps1 script by executing the following command:
+5. **Execute** the SynapseSetup.ps1 script by executing the following command:
 Command:
 ```
 cd ./retail/retail
@@ -214,7 +214,7 @@ cd ./retail/retail
 
 6. Then **run** the PowerShell: 
 ```
-./retailSetup.ps1
+./SynapseSetup.ps1
 ```
     
 ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
@@ -274,7 +274,7 @@ cd ./retail/retail
 
 21. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 	> **Note:**
-	> Note: You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In such case follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail/retaildemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/retail/retaildemo/artifacts/reports). 
+	> Note: You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In such case follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail/retaildemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/retail/retaildemo/artifacts/reports). Or you can execute the PowerBI Subscript from local PowerShell. 
 
 22. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
@@ -334,7 +334,7 @@ cd ./retail/retail
 
 ![Workspace.](media/lake-db-pipeline-6.png)
 
-7. Perform the above action with the rest of the pipelines, the desired tables will be created under the newly created Lake database.
+7. Perform the above action with the remaining 2  pipelines in the folder, the desired tables will be created under the newly created Lake database.
 
 ### Task 6: Power BI reports and dashboard creation
 
@@ -437,72 +437,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 ### Task 7: QnAmaker and LogicApp Configuration
 
-1. **Open** the Azure Portal 
 
-2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
-
-	![Open and Click on Azure Cloud Shell.](media/fintax-poc.png)
-
-	**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
-
-3. **Run** Command: 
-	```
-	cd "retail/retail/subscripts"
-	```
-
-4. Then **run** the PowerShell script: 
-	```
-	./qna_logicapp_subscript.ps1 
-	```
-	![Run the Powershell Script.](media/qna_logicapp-1.png)
-	
-5. You will have to complete the 'az login' and 'device login' authentication by following the steps 7 to 18 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) and may be prompted to select your subscription if you have multiple subscriptions.
-	
-6. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
-
-	![Search QnAmaker.](media/qna_logicapp-2.png)
-	
-7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
-
-	![Switch section.](media/qna_logicapp-3.png)
-
-8. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
-
-	![Select values.](media/qna_logicapp-4.png)
-	
-9. **Click** on the knowledge base name.
-
-	![Knowledge base name.](media/qna_logicapp-5.png)
-	
-10. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
-
-	![Publish.](media/qna_logicapp-6.png)
-	
-11. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
-
-	![Values host and post.](media/qna_logicapp-7.png)
-	
-12. The concatinated value should appear like below.
-
-	![Values.](media/qna_logicapp-8.png)
-	
-13. **Copy** and **Paste** the value of Authorisation as well in a notepad.
-
-	![Authorisation.](media/qna_logicapp-9.png)
-	
-14. **Go** to the the resource group, search for logic app and **click** on it.
-
-	![Logic App.](media/qna_logicapp-10.png)
-	
-15. Uner the "Development Tools" section **select** "Logic app designer".
-
-	![Logic App.](media/qna_logicapp-11.png)
-	
-16. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
-
-	![Logic App.](media/qna_logicapp-12.png)
-
-> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
 
 ### Task 8: Pause or Resume script
 
