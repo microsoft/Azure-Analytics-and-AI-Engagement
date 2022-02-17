@@ -1,0 +1,17 @@
+{
+    "name": "Salesdatasetsink",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "RetailProd",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Sales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

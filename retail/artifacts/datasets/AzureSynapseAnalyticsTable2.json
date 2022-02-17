@@ -1,0 +1,47 @@
+{
+    "name": "AzureSynapseAnalyticsTable2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "RetailProd",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "RecordedOn",
+                "type": "nvarchar"
+            },
+            {
+                "name": "before-foottraffic",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "after-foottraffic",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "EventProcessedUtcTime",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "PartitionId",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "EventEnqueuedUtcTime",
+                "type": "datetime2",
+                "scale": 7
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "iot-foottraffic-data"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

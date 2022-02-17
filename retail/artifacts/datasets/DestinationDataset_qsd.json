@@ -1,0 +1,17 @@
+{
+    "name": "DestinationDataset_qsd",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "RetailProd",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesMasters"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

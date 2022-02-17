@@ -1,0 +1,13 @@
+{
+    "name": "Retailsqlpool",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "RetailProd",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

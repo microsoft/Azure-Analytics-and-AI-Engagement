@@ -1,0 +1,5 @@
+CustomerID,Age,Gender,ZipCode,FirstName,LastName,FullName,DateOfBirth,Address,Email,Phone,Username,CustomerGender
+2,52,0,56687,Sylveste,Koss,Sylveste Koss,12/12/1967,"1248 Myrtie Drive, Howellburgh, Botswana",Sylvester.Koss34@yahoo.com,1-916-846-5160,Sylvester14,Male
+3,28,0,80072,Tod,Reynolds,Tod Reynolds,6/8/1991,"3883 Brandyn Highway, South Rogelio, Palau",Todd_Reynolds@hotmail.com,367-781-6286 x79445,Todd25,Male
+4,31,0,58578,Jermain,Johns,Jermain Johns,11/6/1988,"279 Melvin Divide, Schmidtport, Central African Republic",Jermaine_Johns@hotmail.com,243-545-3337,Jermaine.Johns67,Male
+5,34,0,68424,Oma,Kassulke,Oma Kassulke,10/7/1985,"4005 Kaitlin Ports, Amaraside, United Kingdom",Omar85@yahoo.com,832.429.2433 x4898,Omar.Kassulke14,Male

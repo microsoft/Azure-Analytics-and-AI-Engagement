@@ -1,0 +1,1001 @@
+Fiscal Year,Fiscal Quarter,Fiscal Month,Country,Region,Customer Segment,Channel,Product,Product Category,Gross Sales,Budget,Forecast,Discount,Net Sales,COGS,Gross Profit,Half Yearly,VTB ($),VTB (%)
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,UK,Europe,Gen X,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Switzerland,Europe,Gen Y,Wholesale,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Australia,Asia Pacific,Gen X,Retail Store,Bathroom Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,USA,North America,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Germany,Europe,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Korea,Asia Pacific,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Spain,Europe,Gen X,Wholesale,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,China,Asia Pacific,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Canada,North & Central America,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,China,Asia Pacific,Gen Y,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Turkey,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen Y,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,USA,North America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,USA,North America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Germany,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Brazil,South America,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen X,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Canada,North & Central America,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Canada,North & Central America,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Brazil,South America,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Indonesia,Asia Pacific,Gen X,Retail Store,Dining Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Australia,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen Y,Wholesale,Laptops,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Canada,North & Central America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Online,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Indonesia,Asia Pacific,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Mexico,North & Central America,Gen Y,Television,Dining Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,USA,North America,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,China,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Indonesia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Turkey,Europe,Gen X,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,India,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,China,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,USA,North America,Gen Y,Television,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,China,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Italy,Europe,Gen X,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,USA,North America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Italy,Europe,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,India,Asia Pacific,Gen Y,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,China,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Japan,Asia Pacific,Gen X,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,Switzerland,Europe,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Brazil,South America,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Italy,Europe,Gen Y,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,UK,Europe,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Germany,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Brazil,South America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Australia,Asia Pacific,Gen Y,Wholesale,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Mexico,North & Central America,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Switzerland,Europe,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,China,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,USA,North America,Gen Y,Wholesale,Studs,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,India,Asia Pacific,Gen X,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Switzerland,Europe,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Germany,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Canada,North & Central America,Gen Y,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,India,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Mexico,North & Central America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,USA,North America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Australia,Asia Pacific,Gen Y,Wholesale,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Mexico,North & Central America,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,Canada,North & Central America,Gen X,Retail Store,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Japan,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,Turkey,Europe,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Switzerland,Europe,Gen X,Wholesale,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,India,Asia Pacific,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen Y,Wholesale,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Television,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,UK,Europe,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen X,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Mexico,North & Central America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,USA,North America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,China,Asia Pacific,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Canada,North & Central America,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Italy,Europe,Gen Y,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Japan,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Australia,Asia Pacific,Gen X,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen X,Wholesale,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Wholesale,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Japan,Asia Pacific,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,USA,North America,Gen X,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen Y,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen Y,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Brazil,South America,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,China,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Germany,Europe,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,Brazil,South America,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Canada,North & Central America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Indonesia,Asia Pacific,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Germany,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,UK,Europe,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Brazil,South America,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Switzerland,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Germany,Europe,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,UK,Europe,Gen X,Television,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,India,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Switzerland,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,UK,Europe,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Spain,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Brazil,South America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,India,Asia Pacific,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,UK,Europe,Gen X,Television,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,Indonesia,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,India,Asia Pacific,Gen X,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Japan,Asia Pacific,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Australia,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,UK,Europe,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,India,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,USA,North America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Indonesia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Germany,Europe,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Brazil,South America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen X,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,USA,North America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Germany,Europe,Gen X,Online,Dining Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Brazil,South America,Gen Y,Online,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Germany,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,Brazil,South America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Germany,Europe,Gen Y,Television,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Korea,Asia Pacific,Gen X,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,China,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Turkey,Europe,Gen X,Online,Refridgerator,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Spain,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Turkey,Europe,Gen X,Wholesale,Studs,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Brazil,South America,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Japan,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen X,Online,Studs,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,China,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Australia,Asia Pacific,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,USA,North America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Italy,Europe,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,India,Asia Pacific,Gen Y,Retail Store,Refridgerator,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Turkey,Europe,Gen X,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Brazil,South America,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Brazil,South America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,UK,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Italy,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,China,Asia Pacific,Gen X,Online,Dining Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Canada,North & Central America,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,China,Asia Pacific,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Australia,Asia Pacific,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Brazil,South America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen X,Wholesale,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,India,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,USA,North America,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Germany,Europe,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Turkey,Europe,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Spain,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Germany,Europe,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Germany,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen X,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Brazil,South America,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,Germany,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,China,Asia Pacific,Gen X,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Spain,Europe,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Brazil,South America,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Italy,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Canada,North & Central America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Brazil,South America,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Brazil,South America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Japan,Asia Pacific,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Wholesale,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Brazil,South America,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Brazil,South America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Italy,Europe,Gen Y,Television,Studs,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Brazil,South America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,USA,North America,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Canada,North & Central America,Gen X,Wholesale,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Television,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Germany,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Turkey,Europe,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen X,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Brazil,South America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen X,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Switzerland,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,UK,Europe,Gen Y,Television,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Turkey,Europe,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Spain,Europe,Gen X,Television,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,UK,Europe,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,India,Asia Pacific,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Mexico,North & Central America,Gen Y,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Spain,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Turkey,Europe,Gen X,Wholesale,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Brazil,South America,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,Korea,Asia Pacific,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Italy,Europe,Gen Y,Retail Store,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Turkey,Europe,Gen Y,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Australia,Asia Pacific,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Online,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,UK,Europe,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,USA,North America,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,China,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen Y,Online,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Turkey,Europe,Gen X,Retail Store,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Japan,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,India,Asia Pacific,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,China,Asia Pacific,Gen Y,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,Switzerland,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,USA,North America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Mexico,North & Central America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Germany,Europe,Gen Y,Television,Washing Machine,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Retail Store,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,India,Asia Pacific,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Japan,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Spain,Europe,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Germany,Europe,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Italy,Europe,Gen Y,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Canada,North & Central America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,China,Asia Pacific,Gen Y,Online,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,UK,Europe,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Switzerland,Europe,Gen Y,Wholesale,Dining Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Germany,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Online,Computers,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Mexico,North & Central America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,India,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen X,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,UK,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,USA,North America,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,USA,North America,Gen Y,Wholesale,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,USA,North America,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Brazil,South America,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Germany,Europe,Gen X,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Brazil,South America,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Korea,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Spain,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Switzerland,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Australia,Asia Pacific,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Canada,North & Central America,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Retail Store,Washing Machine,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Australia,Asia Pacific,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Indonesia,Asia Pacific,Gen X,Retail Store,Laptops,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,Indonesia,Asia Pacific,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Mexico,North & Central America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Korea,Asia Pacific,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Germany,Europe,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Mexico,North & Central America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,India,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,UK,Europe,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,USA,North America,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Wholesale,Refridgerator,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,UK,Europe,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,USA,North America,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,USA,North America,Gen Y,Wholesale,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Turkey,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Canada,North & Central America,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Switzerland,Europe,Gen X,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Switzerland,Europe,Gen Y,Wholesale,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,India,Asia Pacific,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Brazil,South America,Gen Y,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,UK,Europe,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Italy,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Television,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,USA,North America,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,India,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,UK,Europe,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,India,Asia Pacific,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Mexico,North & Central America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,USA,North America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Canada,North & Central America,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Indonesia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Korea,Asia Pacific,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,USA,North America,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Mexico,North & Central America,Gen Y,Retail Store,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Australia,Asia Pacific,Gen X,Retail Store,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Mexico,North & Central America,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Italy,Europe,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,USA,North America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,India,Asia Pacific,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Turkey,Europe,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Turkey,Europe,Gen Y,Online,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,USA,North America,Gen X,Retail Store,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,USA,North America,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,UK,Europe,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Mexico,North & Central America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,USA,North America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,India,Asia Pacific,Gen X,Wholesale,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,Canada,North & Central America,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Italy,Europe,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,UK,Europe,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,India,Asia Pacific,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Australia,Asia Pacific,Gen X,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Korea,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,USA,North America,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,USA,North America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Australia,Asia Pacific,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Australia,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Brazil,South America,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Spain,Europe,Gen X,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,USA,North America,Gen Y,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Canada,North & Central America,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Canada,North & Central America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,UK,Europe,Gen X,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Turkey,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Germany,Europe,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,Japan,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,UK,Europe,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Wholesale,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,India,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,USA,North America,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Switzerland,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Korea,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,Australia,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Canada,North & Central America,Gen X,Television,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,China,Asia Pacific,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Switzerland,Europe,Gen X,Online,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,USA,North America,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Germany,Europe,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,China,Asia Pacific,Gen X,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Canada,North & Central America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Television,Televisions,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,USA,North America,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,UK,Europe,Gen X,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Italy,Europe,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Korea,Asia Pacific,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,India,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,Turkey,Europe,Gen Y,Online,Laptops,Electronics,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Italy,Europe,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,Korea,Asia Pacific,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,India,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,USA,North America,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Australia,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Korea,Asia Pacific,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Turkey,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,China,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen X,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Australia,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Turkey,Europe,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Italy,Europe,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen Y,Online,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Spain,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,UK,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Australia,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Brazil,South America,Gen X,Wholesale,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Canada,North & Central America,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Australia,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Germany,Europe,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Mexico,North & Central America,Gen Y,Online,Laptops,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,Brazil,South America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,USA,North America,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Germany,Europe,Gen Y,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Turkey,Europe,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Spain,Europe,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,Turkey,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,UK,Europe,Gen X,Television,Laptops,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Korea,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Germany,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Turkey,Europe,Gen Y,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Japan,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Turkey,Europe,Gen Y,Online,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Korea,Asia Pacific,Gen X,Online,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,UK,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Indonesia,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen X,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,India,Asia Pacific,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Korea,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,Indonesia,Asia Pacific,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Italy,Europe,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,China,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,USA,North America,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Brazil,South America,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Germany,Europe,Gen Y,Television,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,UK,Europe,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Korea,Asia Pacific,Gen X,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Germany,Europe,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Spain,Europe,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Korea,Asia Pacific,Gen Y,Online,Bathroom Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Retail Store,Studs,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen Y,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,USA,North America,Gen Y,Television,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,USA,North America,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Mexico,North & Central America,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Japan,Asia Pacific,Gen Y,Wholesale,Dining Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Italy,Europe,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen X,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Japan,Asia Pacific,Gen X,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Turkey,Europe,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,USA,North America,Gen Y,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Brazil,South America,Gen X,Retail Store,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Australia,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Indonesia,Asia Pacific,Gen Y,Wholesale,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,China,Asia Pacific,Gen Y,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen Y,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,USA,North America,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Canada,North & Central America,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Korea,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Television,Outdoor Furniture,Furniture,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,3,Australia,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,8,India,Asia Pacific,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,Indonesia,Asia Pacific,Gen X,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,7,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,India,Asia Pacific,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,India,Asia Pacific,Gen Y,Wholesale,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,3,Japan,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,USA,North America,Gen X,Wholesale,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Germany,Europe,Gen X,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Italy,Europe,Gen Y,Television,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Mexico,North & Central America,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Online,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Canada,North & Central America,Gen Y,Wholesale,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,India,Asia Pacific,Gen X,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Germany,Europe,Gen Y,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Turkey,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen Y,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,India,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Turkey,Europe,Gen Y,Online,Washing Machine,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,Indonesia,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,6,Brazil,South America,Gen X,Television,Laptops,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Canada,North & Central America,Gen X,Television,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Spain,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,China,Asia Pacific,Gen Y,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Australia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Brazil,South America,Gen X,Television,Refridgerator,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Japan,Asia Pacific,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Brazil,South America,Gen Y,Wholesale,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Japan,Asia Pacific,Gen X,Online,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Brazil,South America,Gen Y,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Canada,North & Central America,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,USA,North America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,5,Brazil,South America,Gen X,Retail Store,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,Canada,North & Central America,Gen X,Retail Store,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Italy,Europe,Gen X,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,USA,North America,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Korea,Asia Pacific,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Turkey,Europe,Gen Y,Online,Dining Furniture,Furniture,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,USA,North America,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Turkey,Europe,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen X,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Germany,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q2,4,USA,North America,Gen X,Wholesale,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,Spain,Europe,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,China,Asia Pacific,Gen Y,Television,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,India,Asia Pacific,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Spain,Europe,Gen X,Television,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,UK,Europe,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,4,China,Asia Pacific,Gen Y,Online,Weights,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,China,Asia Pacific,Gen X,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,Spain,Europe,Gen X,Online,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,USA,North America,Gen X,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Australia,Asia Pacific,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Turkey,Europe,Gen Y,Television,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,6,Canada,North & Central America,Gen X,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,2,USA,North America,Gen X,Retail Store,Computers,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q1,1,USA,North America,Gen Y,Television,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,12,USA,North America,Gen Y,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Brazil,South America,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,1,Brazil,South America,Gen X,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q3,9,China,Asia Pacific,Gen Y,Online,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Television,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Indonesia,Asia Pacific,Gen X,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,USA,North America,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Canada,North & Central America,Gen Y,Online,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Turkey,Europe,Gen Y,Online,Skipping Rope,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Canada,North & Central America,Gen X,Retail Store,Treadmill,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,7,Korea,Asia Pacific,Gen X,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Korea,Asia Pacific,Gen Y,Online,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,8,Canada,North & Central America,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,China,Asia Pacific,Gen X,Television,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,10,India,Asia Pacific,Gen Y,Wholesale,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Mexico,North & Central America,Gen Y,Retail Store,Wreaths,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Switzerland,Europe,Gen X,Online,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,Indonesia,Asia Pacific,Gen Y,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q3,9,Germany,Europe,Gen Y,Retail Store,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Television,Trainers,Sport Shoes,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q1,2,Canada,North & Central America,Gen X,Retail Store,Running Shoe,Sport Shoes,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,UK,Europe,Gen Y,Television,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,12,India,Asia Pacific,Gen X,Retail Store,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,UK,Europe,Gen X,Television,Cocktail Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Brazil,South America,Gen Y,Wholesale,Resistance Bands,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Canada,North & Central America,Gen X,Retail Store,Televisions,Electronics,0,0,0,0,0,0,0,H1 Actual,0,0
+FY15,Q4,11,Japan,Asia Pacific,Gen Y,Retail Store,Champagne Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,10,Indonesia,Asia Pacific,Gen X,Online,Weights,Exercise,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q4,11,Mexico,North & Central America,Gen X,Wholesale,Highball Glass,Cocktail Glasses,0,0,0,0,0,0,0,H2 Forecast,0,0
+FY15,Q2,5,Australia,Asia Pacific,Gen Y,Retail Store,Wine Glass,Cocktail Glasses,0,0,0,0,0,0,0,H1 Actual,0,0

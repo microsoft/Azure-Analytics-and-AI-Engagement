@@ -1,0 +1,67 @@
+{
+    "name": "BillionQuery lookup",
+    "properties": {
+        "activities": [
+            {
+                "name": "Lookup",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "SELECT FORMAT(COUNT_BIG(1),'#,0') as [Records Count]  FROM  Sales WITH (NOLOCK)",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "Retailsqlpool",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Look up",
+                "type": "Lookup",
+                "dependsOn": [
+                    {
+                        "activity": "Lookup",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "select CustKey, UserName, Emailstatus, Department, [Twitter Sentiment], cast(round(TotalSale/1,0) as int) as Revenue\nfrom (SELECT P.Department, TA.Sentiment AS [Twitter Sentiment],\n        sum(S.TotalAmount) as TotalSale,\n        M.UserName, M.Emailstatus, M.CustKey\n    FROM dbo.Sales as S\n        inner join dbo.Products as P on P.Products_ID= S.ProductId inner join [dbo].[Dim_Customer] DC\n          left join dbo.[TwitterAnalytics] TA on TA.[username]=DC.[userName] on DC.[id]=S.[Customerid]\n        inner join dbo.[MillennialCustomers] as M on M.CustKey = S.Customerid\n    where DC.[FullName]!='N/A'\n    group by DC.[FullName],P.Department,TA.Sentiment,M.UserName,M.CustKey,M.Emailstatus)\n  as result",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "Retailsqlpool",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-12-09T14:53:46Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

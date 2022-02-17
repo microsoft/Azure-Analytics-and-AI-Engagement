@@ -1,0 +1,77 @@
+{
+    "name": "WWICustomer",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synretailprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "DimCustomer.csv",
+                "fileSystem": "retaildata"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Id",
+                "type": "String"
+            },
+            {
+                "name": "Age",
+                "type": "String"
+            },
+            {
+                "name": "Gender",
+                "type": "String"
+            },
+            {
+                "name": "Pincode",
+                "type": "String"
+            },
+            {
+                "name": "FirstName",
+                "type": "String"
+            },
+            {
+                "name": "LastName",
+                "type": "String"
+            },
+            {
+                "name": "FullName",
+                "type": "String"
+            },
+            {
+                "name": "DateOfBirth",
+                "type": "String"
+            },
+            {
+                "name": "Address",
+                "type": "String"
+            },
+            {
+                "name": "Email",
+                "type": "String"
+            },
+            {
+                "name": "Mobile",
+                "type": "String"
+            },
+            {
+                "name": "UserName",
+                "type": "String"
+            },
+            {
+                "name": "OrderId",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

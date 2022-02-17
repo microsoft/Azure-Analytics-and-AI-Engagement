@@ -1,0 +1,97 @@
+{
+    "name": "WWIData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synretailprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "Products.csv",
+                "fileSystem": "retaildata"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "Products_ID",
+                "type": "String"
+            },
+            {
+                "name": "ProductID",
+                "type": "String"
+            },
+            {
+                "name": "Name",
+                "type": "String"
+            },
+            {
+                "name": "Brand",
+                "type": "String"
+            },
+            {
+                "name": "Price",
+                "type": "String"
+            },
+            {
+                "name": "Category",
+                "type": "String"
+            },
+            {
+                "name": "Thumbnail_FileName",
+                "type": "String"
+            },
+            {
+                "name": "AdImage_FileName",
+                "type": "String"
+            },
+            {
+                "name": "SoundFile_FileName",
+                "type": "String"
+            },
+            {
+                "name": "SubCampaigns",
+                "type": "String"
+            },
+            {
+                "name": "TargetGender",
+                "type": "String"
+            },
+            {
+                "name": "TargetClassification",
+                "type": "String"
+            },
+            {
+                "name": "TargetGeneration",
+                "type": "String"
+            },
+            {
+                "name": "Tags",
+                "type": "String"
+            },
+            {
+                "name": "BLECode",
+                "type": "String"
+            },
+            {
+                "name": "Thumbnail",
+                "type": "String"
+            },
+            {
+                "name": "AdImage",
+                "type": "String"
+            },
+            {
+                "name": "SoundFile",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Teradata_MarketingDB",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Teradata",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "TeradataTable",
+        "schema": [],
+        "typeProperties": {
+            "database": "dbo",
+            "table": "MarketingTbl"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

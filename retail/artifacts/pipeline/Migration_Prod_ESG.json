@@ -1,0 +1,3623 @@
+{
+    "name": "Migration_Prod_ESG",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForEach_exz",
+                "type": "ForEach",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@pipeline().parameters.cw_items",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy_exz",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "7.00:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [
+                                {
+                                    "name": "Source",
+                                    "value": "dbo.@{item().source.table}"
+                                },
+                                {
+                                    "name": "Destination",
+                                    "value": "dbo.@{item().destination.table}"
+                                }
+                            ],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "SqlDWSource",
+                                    "partitionOption": "None"
+                                },
+                                "sink": {
+                                    "type": "SqlDWSink",
+                                    "allowPolyBase": true,
+                                    "polyBaseSettings": {
+                                        "rejectValue": 0,
+                                        "rejectType": "value",
+                                        "useTypeDefault": true
+                                    },
+                                    "tableOption": {
+                                        "value": "@item().copySink.tableOption",
+                                        "type": "Expression"
+                                    }
+                                },
+                                "enableStaging": true,
+                                "stagingSettings": {
+                                    "linkedServiceName": {
+                                        "referenceName": "synretailprod-WorkspaceDefaultStorage",
+                                        "type": "LinkedServiceReference"
+                                    }
+                                },
+                                "translator": {
+                                    "value": "@item().copyActivity.translator",
+                                    "type": "Expression"
+                                }
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "SourceDataset_exz",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "cw_table": "@item().source.table"
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "DestinationDataset_exz",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "cw_table": "@item().destination.table"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "parameters": {
+            "cw_items": {
+                "type": "Array",
+                "defaultValue": [
+                    {
+                        "source": {
+                            "table": "ADB_EsgCompanyVsTopicProbability"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgCompanyVsTopicProbability"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CodeOfConduct",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "CodeOfConduct",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CompanyTransformation",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "CompanyTransformation",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ValueEmployees",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "ValueEmployees",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FocusCustomer",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "FocusCustomer",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SustainableFinance",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "SustainableFinance",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SupportCommunity",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "SupportCommunity",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "StrongGovernance",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "StrongGovernance",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EthicalInvestments",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "EthicalInvestments",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GreenEnergy",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "GreenEnergy",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_ESGOrgConnections"
+                        },
+                        "destination": {
+                            "table": "ADB_ESGOrgConnections"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Connection",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Connection",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Importance",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Importance",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgOrgContribution"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgOrgContribution"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgOrgDetractors"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgOrgDetractors"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Company",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Company",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Importance",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Importance",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgOrgSentiment"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgOrgSentiment"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Delta",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Delta",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "7DayRolling",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "7DayRolling",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgOrgWordCloudData"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgOrgWordCloudData"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Lemma",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Lemma",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_ESGScores"
+                        },
+                        "destination": {
+                            "table": "ADB_ESGScores"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total",
+                                            "type": "Int64"
+                                        },
+                                        "sink": {
+                                            "name": "Total",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Days",
+                                            "type": "Int64"
+                                        },
+                                        "sink": {
+                                            "name": "Days",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgSentimentAndCustomerChurn"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgSentimentAndCustomerChurn"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "30DaysSentimentValue",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "30DaysSentimentValue",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "churn",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "churn",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_EsgSentimentVsMarketPerformance"
+                        },
+                        "destination": {
+                            "table": "ADB_EsgSentimentVsMarketPerformance"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "30DaysSentimentValue",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "30DaysSentimentValue",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "7DaysStockPrice",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "7DaysStockPrice",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ADB_ESGWeightedScore"
+                        },
+                        "destination": {
+                            "table": "ADB_ESGWeightedScore"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Theme",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "ESG",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "DateTime"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ConflictofInterest"
+                        },
+                        "destination": {
+                            "table": "ConflictofInterest"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "FiscalYear-Quarter",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "FiscalYear-Quarter",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Year",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Fiscal Year",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Quarter",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Fiscal Quarter",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Required",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Required",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Complete",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Complete",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Survey NC",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Survey NC",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Incomplete",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Incomplete",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Complete %",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Complete %",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "Country"
+                        },
+                        "destination": {
+                            "table": "Country"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "ID",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "ID",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "DailyStockData"
+                        },
+                        "destination": {
+                            "table": "DailyStockData"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Portfolio",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Portfolio",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Sector",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Sector",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Cik",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Cik",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Ticker",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Ticker",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "AdjClose",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "AdjClose",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "ESGOrganisation"
+                        },
+                        "destination": {
+                            "table": "ESGOrganisation"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Organisation",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "FPA"
+                        },
+                        "destination": {
+                            "table": "FPA"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Year",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Fiscal Year",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Quarter",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Fiscal Quarter",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Fiscal Month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Forecast",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Forecast",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Budget",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Actual",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Actual",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "HeaderWIP"
+                        },
+                        "destination": {
+                            "table": "HeaderWIP"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Operating_Profit(in USD millions)",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Operating_Profit(in USD millions)",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Operating_Profit_Target YTD(in USD millions)",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Operating_Profit_Target YTD(in USD millions)",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Revenue_Growth",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Revenue_Growth",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Revenue_Growth_Target YTD",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Revenue_Growth_Target YTD",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Marketing_Cost(in USD millions)",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Marketing_Cost(in USD millions)",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Marketing_Cost YTD(in USD millions)",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Marketing_Cost YTD(in USD millions)",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Market_Sentiment",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Market_Sentiment",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ESG_Risk_Score",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "ESG_Risk_Score",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "NewsAndSentiment"
+                        },
+                        "destination": {
+                            "table": "NewsAndSentiment"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Symbol",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Symbol",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Name",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Name",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Url",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Url",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Date_Published",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Date_Published",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Description",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Description",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Sentiment",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Sentiment",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Positive_Score",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Positive_Score",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Negative_Score",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Negative_Score",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Neutral_Score",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Neutral_Score",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "OperatingExpenses"
+                        },
+                        "destination": {
+                            "table": "OperatingExpenses"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Class",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Class",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Line Item",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Line Item",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "P&L Classification",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "P&L Classification",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "VTB (%)",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "VTB (%)",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Actual ($)",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Actual ($)",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget ($)",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Budget ($)",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "VTB ($)",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "VTB ($)",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "YoY ($)",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "YoY ($)",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Channel",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Channel",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiBalanceSheet"
+                        },
+                        "destination": {
+                            "table": "pbiBalanceSheet"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "BalanceSheetId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "BalanceSheetId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "City",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "City",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Domain",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Domain",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TotalAssets",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "TotalAssets",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Revenue",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Revenue",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Expense",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Expense",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ResearchInvestment",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "ResearchInvestment",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GovernmentDebt",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "GovernmentDebt",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OtherGovernmentSecurities",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "OtherGovernmentSecurities",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OtherSecurities",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "OtherSecurities",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "HighQualityLiquidAsset",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "HighQualityLiquidAsset",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "NetCashFlow",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "NetCashFlow",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "MonthNumber",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "MonthNumber",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiBedOccupancyForecasted"
+                        },
+                        "destination": {
+                            "table": "pbiBedOccupancyForecasted"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "City",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "City",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OccupancyRate",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "OccupancyRate",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "forecasted",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "forecasted",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiESG"
+                        },
+                        "destination": {
+                            "table": "pbiESG"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "City",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "City",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Domain",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Domain",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EnvironmentTalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "EnvironmentTalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EnvironmentWalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "EnvironmentWalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SocialScoreTalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "SocialScoreTalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SocialScoreWalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "SocialScoreWalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GovernanceScoreTalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "GovernanceScoreTalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GovernanceScoreWalk",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "GovernanceScoreWalk",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "MonthNumber",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "MonthNumber",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "MSCIScore",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "MSCIScore",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgArticleSentiment"
+                        },
+                        "destination": {
+                            "table": "pbiEsgArticleSentiment"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgArticleSentimentId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgArticleSentimentId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ArticleCount",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "ArticleCount",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "AverageSentiment",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "AverageSentiment",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgBigram"
+                        },
+                        "destination": {
+                            "table": "pbiEsgBigram"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgBigramId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgBigramId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RegionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "RegionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Bigram",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Bigram",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "BigramCount",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "BigramCount",
+                                            "type": "Int32"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgDetractor"
+                        },
+                        "destination": {
+                            "table": "pbiEsgDetractor"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgDetractorId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgDetractorId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EntityName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "EntityName",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DetractorIncidentCount",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "DetractorIncidentCount",
+                                            "type": "Int32"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgInitiativesComparison"
+                        },
+                        "destination": {
+                            "table": "pbiEsgInitiativesComparison"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgInitiativesComparisonId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgInitiativesComparisonId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ComparisonWith",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "ComparisonWith",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Code of Conduct",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Code of Conduct",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Company Transformation",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Company Transformation",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Ethical Investments",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Ethical Investments",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Focus Customer",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Focus Customer",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Green Energy",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Green Energy",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Strong Governance",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Strong Governance",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Support Community",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Support Community",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Sustainable Finance",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Sustainable Finance",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Value Employees",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Value Employees",
+                                            "type": "Double"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgInstitutionUnitPolicyScore"
+                        },
+                        "destination": {
+                            "table": "pbiEsgInstitutionUnitPolicyScore"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgInstitutionUnitPolicyScoreId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgInstitutionUnitPolicyScoreId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EsgPolicyId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgPolicyId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        },
+                                        "sink": {
+                                            "name": "ReportedOn",
+                                            "type": "Date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TalkScore",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "TalkScore",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "WalkScore",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "WalkScore",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiEsgPolicy"
+                        },
+                        "destination": {
+                            "table": "pbiEsgPolicy"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "EsgPolicyId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "EsgPolicyId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Segment",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Segment",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PolicyName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "PolicyName",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiInstitution"
+                        },
+                        "destination": {
+                            "table": "pbiInstitution"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionName",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiInstitutionUnit"
+                        },
+                        "destination": {
+                            "table": "pbiInstitutionUnit"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitName",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "PbiReadmissionPrediction"
+                        },
+                        "destination": {
+                            "table": "PbiReadmissionPrediction"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "hospital_id",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "hospital_id",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "department_id",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "department_id",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "city",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "city",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "patient_age",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "patient_age",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "risk_level",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "risk_level",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "acute_type",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "acute_type",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "patient_category",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "patient_category",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "doctor_id",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "doctor_id",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "length_of_stay",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "length_of_stay",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wait_time",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wait_time",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "type_of_stay",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "type_of_stay",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "treatment_cost",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "treatment_cost",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "claim_cost",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "claim_cost",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "drug_cost",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "drug_cost",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "hospital_expense",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "hospital_expense",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "follow_up",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "follow_up",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "readmitted_patient",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "readmitted_patient",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "payment_type",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "payment_type",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "year",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "year",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "reason_for_readmission",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "reason_for_readmission",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "disease",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "disease",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Actual_Flag",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Actual_Flag",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Predicted_Flag",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Predicted_Flag",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Prediction_Probability",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Prediction_Probability",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Actual_Readmission_Rate",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Actual_Readmission_Rate",
+                                            "type": "Double"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Predicted_Readmission_Rate",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Predicted_Readmission_Rate",
+                                            "type": "Double"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pbiRegion"
+                        },
+                        "destination": {
+                            "table": "pbiRegion"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "RegionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "RegionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RegionCode",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "RegionCode",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RegionName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "RegionName",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "PbiWaitTimeForecast"
+                        },
+                        "destination": {
+                            "table": "PbiWaitTimeForecast"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "date",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wait_time",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "wait_time",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "pred_anomaly"
+                        },
+                        "destination": {
+                            "table": "pred_anomaly"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date_Time",
+                                            "type": "DateTime"
+                                        },
+                                        "sink": {
+                                            "name": "Date_Time",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PrincipalComponent1",
+                                            "type": "Int64"
+                                        },
+                                        "sink": {
+                                            "name": "PrincipalComponent1",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PrincipalComponent2",
+                                            "type": "Int64"
+                                        },
+                                        "sink": {
+                                            "name": "PrincipalComponent2",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PrincipalComponent3",
+                                            "type": "Int64"
+                                        },
+                                        "sink": {
+                                            "name": "PrincipalComponent3",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Longitude",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "Longitude",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Latitude",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "Latitude",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PatientID",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "PatientID",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Anomaly Detected ",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Anomaly Detected ",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Scored Probabilities",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "Scored Probabilities",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PC1",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "PC1",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PC2",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "PC2",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PC3",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "PC3",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "url",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "url",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Location",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Location",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Row Num",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Row Num",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Probability Goal",
+                                            "type": "Decimal"
+                                        },
+                                        "sink": {
+                                            "name": "Probability Goal",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "Sales"
+                        },
+                        "destination": {
+                            "table": "Sales"
+                        },
+                        "copySink": {
+                            "tableOption": null
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Year",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "TransactionId",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Quarter",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fiscal Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "ProductId",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Quantity",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Price",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Customer Segment",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "TotalAmount",
+                                            "type": "Int64"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Channel",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "TransactionDate",
+                                            "type": "DateTime"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Product",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "ProfitAmount",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Product Category",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Hour",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Gross Sales",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Minute",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "StoreId",
+                                            "type": "Int64"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "SalesVsExpense"
+                        },
+                        "destination": {
+                            "table": "SalesVsExpense"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Accounting Head",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Accounting Head",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Amount",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Amount",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "SiteSecurity"
+                        },
+                        "destination": {
+                            "table": "SiteSecurity"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "FiscalQuarter",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "FiscalQuarter",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FiscalYear",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "FiscalYear",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FiscalMonth",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "FiscalMonth",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Phase",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Phase",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total Vulnerabilities",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Total Vulnerabilities",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total Open Vulnerabilities",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Total Open Vulnerabilities",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Status",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Status",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Data Classification",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Data Classification",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "App Scan High Risk",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "App Scan High Risk",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "App Scan Low Risk",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "App Scan Low Risk",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Host Scan high Risk",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Host Scan high Risk",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Host Scan Low Risk",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Host Scan Low Risk",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Active Sites Not Scanned",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Active Sites Not Scanned",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Site Status",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Site Status",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total Vuln",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Total Vuln",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "Travel_Entertainment"
+                        },
+                        "destination": {
+                            "table": "Travel_Entertainment"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Completion Date",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Completion Date",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Audit Status",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Audit Status",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Country",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Status Description",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Status Description",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Region",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Serious Failed",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Serious Failed",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Serious Failed Expenses",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Serious Failed Expenses",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Function Summary",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "VTBByChannel"
+                        },
+                        "destination": {
+                            "table": "VTBByChannel"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Amount",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Amount",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "VTB ($) by channel",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "VTB ($) by channel",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "vwPbiESGSlicerOrganizations"
+                        },
+                        "destination": {
+                            "table": "vwPbiESGSlicerOrganizations"
+                        },
+                        "copySink": {
+                            "tableOption": "autoCreate"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "InstitutionUnitId",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsInstitutionUnit",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "IsInstitutionUnit",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DisplayName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "DisplayName",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2022-01-12T14:25:09Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

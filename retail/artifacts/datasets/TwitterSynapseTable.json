@@ -1,0 +1,17 @@
+{
+    "name": "TwitterSynapseTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "RetailProd",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "RealTimeTwitterData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

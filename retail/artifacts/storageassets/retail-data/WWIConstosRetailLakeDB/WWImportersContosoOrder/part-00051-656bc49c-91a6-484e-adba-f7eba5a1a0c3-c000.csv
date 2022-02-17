@@ -1,0 +1,537 @@
+9356,new-Default-simple-Fabrikam xl white-L-HotPink,357,17,17,16,0.06,1,Pending,1,2020-10-01T21:02:51.000Z,Contoso,0,0.0,Fabrikam xl white,141,Fabrikam
+9357,new-Default-simple-Fabrikam x gray-XS-Tan,358,344,344,326,0.92,16,Pending,1,2020-08-31T14:10:49.000Z,Contoso,0,0.0,Fabrikam x gray,142,Fabrikam
+9360,new-Default-simple-Proseware m blue-L-SaddleBrown,361,60,60,57,0.18,3,Early Delivery,1,2020-08-21T07:43:28.000Z,Contoso,0,0.0,Proseware m blue,1,Proseware
+9361,new-Default-simple-Reskit x blue-L-DarkCyan,362,453,453,431,0.02,22,Pending,1,2020-09-21T19:19:02.000Z,Contoso,0,0.0,Reskit x blue,2,Reskit
+9362,new-Default-configurable-Proseware xl blaCronus International-XL-LightSteelBlue,363,247,247,235,0.57,12,Pending,1,2020-07-09T02:03:15.000Z,Contoso,0,0.0,Proseware xl blaCronus International,3,Proseware
+9363,new-Default-simple-Reskit m blaCronus International-XL-Sienna,364,490,490,466,0.27,23,Early Delivery,1,2020-09-07T17:33:24.000Z,Contoso,0,0.0,Reskit m blaCronus International,4,Reskit
+9364,new-Default-simple-Proseware m blaCronus International-X-DarkGreen,365,103,103,98,0.19,5,Delayed,1,2020-07-31T18:53:36.000Z,Contoso,0,0.0,Proseware m blaCronus International,5,Proseware
+9365,new-Default-simple-Fabrikam xl pink-L-LightCyan,366,157,157,149,0.18,7,Early Delivery,1,2020-09-09T05:00:00.000Z,Contoso,0,0.0,Fabrikam xl pink,6,Fabrikam
+9366,new-Default-simple-Proseware x green-S-OrangeRed,367,101,101,96,0.49,5,Pending,1,2020-09-30T07:47:59.000Z,Contoso,0,0.0,Proseware x green,7,Proseware
+9368,new-Default-simple-Proseware x gray-M-SteelBlue,369,305,305,291,0.14,15,Early Delivery,1,2020-08-21T06:44:39.000Z,Contoso,0,0.0,Proseware x gray,9,Proseware
+9369,new-Default-simple-Proseware x blue-XS-DarkGrey,370,473,473,450,0.64,23,Delayed,1,2020-10-02T00:27:14.000Z,Contoso,0,0.0,Proseware x blue,10,Proseware
+9370,new-Default-simple-Proseware xl pink-L-Yellow,371,393,393,374,0.02,19,Early Delivery,1,2020-07-24T17:30:38.000Z,Contoso,0,0.0,Proseware xl pink,11,Proseware
+9371,new-Default-simple-Fabrikam x pink-L-Azure,372,18,18,17,0.19,1,Pending,1,2020-08-17T14:49:54.000Z,Contoso,0,0.0,Fabrikam x pink,12,Fabrikam
+9372,new-Default-simple-Proseware x pink-XL-WhiteSmoke,373,579,579,551,0.52,28,Pending,1,2020-10-05T11:13:57.000Z,Contoso,0,0.0,Proseware x pink,13,Proseware
+9373,new-Default-simple-Proseware m gray-X-Gray,374,177,177,168,0.60,8,Early Delivery,1,2020-08-03T08:04:39.000Z,Contoso,0,0.0,Proseware m gray,14,Proseware
+9374,new-Default-simple-Proseware xl green-XXL-Navy,375,345,345,329,0.13,16,Delayed,1,2020-10-21T20:33:39.000Z,Contoso,0,0.0,Proseware xl green,15,Proseware
+9375,new-Default-configurable-Proseware m gray-XS-Grey,376,596,596,568,0.09,28,Early Delivery,1,2020-06-13T17:38:07.000Z,Contoso,0,0.0,Proseware m gray,16,Proseware
+9376,new-Default-simple-Fabrikam m pink-X-Green,377,90,90,85,0.45,4,Pending,1,2020-09-26T01:39:40.000Z,Contoso,0,0.0,Fabrikam m pink,17,Fabrikam
+9377,new-Default-simple-Fabrikam xl white-X-ForestGreen,378,536,536,511,0.05,26,Pending,1,2020-08-23T18:28:35.000Z,Contoso,0,0.0,Fabrikam xl white,18,Fabrikam
+9378,new-Default-simple-Cronus International x green-XXL-LightPink,379,515,515,490,0.50,24,Early Delivery,1,2020-06-29T10:11:52.000Z,Contoso,0,0.0,Cronus International x green,19,Cronus
+9379,new-Default-simple-Proseware m gray-XS-Chocolate,380,350,350,332,0.81,17,Delayed,1,2020-10-17T02:39:11.000Z,Contoso,0,0.0,Proseware m gray,20,Proseware
+9380,new-Default-simple-Reskit xl pink-XS-Fuchsia,381,463,463,440,0.53,22,Early Delivery,1,2020-10-16T07:14:00.000Z,Contoso,0,0.0,Reskit xl pink,21,Reskit
+9381,new-Default-simple-Proseware m blue-XS-DarkSalmon,382,226,226,215,0.24,11,Pending,1,2020-07-29T10:51:02.000Z,Contoso,0,0.0,Proseware m blue,22,Proseware
+9382,new-Default-simple-Fabrikam x white-XL-LightCoral,383,119,119,112,0.84,6,Pending,1,2020-08-14T02:31:15.000Z,Contoso,0,0.0,Fabrikam x white,23,Fabrikam
+9383,new-Default-simple-Fabrikam xl green-L-LightSalmon,384,430,430,409,0.42,20,Early Delivery,1,2020-06-27T01:17:43.000Z,Contoso,0,0.0,Fabrikam xl green,24,Fabrikam
+9384,new-Default-simple-Fabrikam xl blue-L-White,385,39,39,37,0.40,2,Delayed,1,2020-10-03T02:52:01.000Z,Contoso,0,0.0,Fabrikam xl blue,25,Fabrikam
+9385,new-Default-simple-Fabrikam x green-XS-DarkRed,386,287,287,273,0.24,14,Early Delivery,1,2020-07-31T07:56:15.000Z,Contoso,0,0.0,Fabrikam x green,26,Fabrikam
+9386,new-Default-simple-Reskit m blue-XXL-LightSlateGray,387,475,475,452,0.52,23,Pending,1,2020-08-24T01:31:49.000Z,Contoso,0,0.0,Reskit m blue,27,Reskit
+9387,new-Default-simple-Proseware xl gray-X-LightSkyBlue,388,36,36,34,0.36,2,Pending,1,2020-09-13T14:16:48.000Z,Contoso,0,0.0,Proseware xl gray,28,Proseware
+9389,new-Default-simple-Cronus International xl white-S-GhostWhite,390,175,175,167,0.03,8,Delayed,1,2020-09-22T02:00:31.000Z,Contoso,0,0.0,Cronus International xl white,30,Cronus
+9390,new-Default-simple-Fabrikam x gray-L-DarkBlue,391,401,401,382,0.48,19,Early Delivery,1,2020-07-26T00:46:54.000Z,Contoso,0,0.0,Fabrikam x gray,31,Fabrikam
+9391,new-Default-simple-Reskit xl blue-XXL-Thistle,392,375,375,357,0.18,18,Pending,1,2020-09-29T18:38:29.000Z,Contoso,0,0.0,Reskit xl blue,32,Reskit
+9392,new-Default-simple-Reskit x pink-XL-Brown,393,423,423,403,0.21,20,Pending,1,2020-09-19T17:17:25.000Z,Contoso,0,0.0,Reskit x pink,33,Reskit
+9394,new-Default-simple-Fabrikam m pink-XXL-LightGrey,395,352,352,335,0.68,17,Delayed,1,2020-07-30T22:49:39.000Z,Contoso,0,0.0,Fabrikam m pink,35,Fabrikam
+9395,new-Default-simple-Reskit x gray-S-DarkKhaki,396,343,343,326,0.30,16,Early Delivery,1,2020-06-29T14:41:04.000Z,Contoso,0,0.0,Reskit x gray,36,Reskit
+9396,new-Default-simple-Proseware xl white-XL-Bisque,397,218,218,207,0.90,10,Pending,1,2020-08-24T09:20:08.000Z,Contoso,0,0.0,Proseware xl white,37,Proseware
+9397,new-Default-simple-Fabrikam xl white-XS-Moccasin,398,53,53,50,0.37,3,Pending,1,2020-10-02T15:53:40.000Z,Contoso,0,0.0,Fabrikam xl white,38,Fabrikam
+9398,new-Default-simple-Cronus International xl white-XL-SpringGreen,399,560,560,533,0.06,27,Early Delivery,1,2020-10-16T00:06:27.000Z,Contoso,0,0.0,Cronus International xl white,39,Cronus
+9399,new-Default-simple-Proseware m pink-XL-SlateGrey,400,23,23,22,0.02,1,Delayed,1,2020-08-08T04:12:20.000Z,Contoso,0,0.0,Proseware m pink,40,Proseware
+9400,new-Default-simple-Proseware xl blaCronus International-L-DarkViolet,401,461,461,439,0.02,22,Early Delivery,1,2020-07-20T18:42:08.000Z,Contoso,0,0.0,Proseware xl blaCronus International,41,Proseware
+9401,new-Default-simple-Proseware m green-X-DarkSlateBlue,402,298,298,283,0.84,14,Pending,1,2020-07-12T15:14:20.000Z,Contoso,0,0.0,Proseware m green,42,Proseware
+9402,new-Default-simple-Fabrikam m white-XS-Orange,403,31,31,28,0.95,1,Pending,1,2020-07-19T14:27:04.000Z,Contoso,0,0.0,Fabrikam m white,43,Fabrikam
+9403,new-Default-simple-Proseware m green-XS-DarkGray,404,367,367,349,0.80,17,Early Delivery,1,2020-07-07T20:06:18.000Z,Contoso,0,0.0,Proseware m green,44,Proseware
+9404,new-Default-simple-Cronus International xl pink-M-DarkSeaGreen,405,574,574,546,0.61,27,Delayed,1,2020-08-18T02:05:32.000Z,Contoso,0,0.0,Cronus International xl pink,45,Cronus
+9405,new-Default-simple-Fabrikam m pink-X-Tomato,406,35,35,33,0.44,2,Early Delivery,1,2020-10-25T19:40:44.000Z,Contoso,0,0.0,Fabrikam m pink,46,Fabrikam
+9406,new-Default-simple-Reskit xl green-X-Silver,407,533,533,507,0.13,25,Pending,1,2020-06-21T23:32:36.000Z,Contoso,0,0.0,Reskit xl green,47,Reskit
+9407,new-Default-configurable-Cronus International x gray-X-DarkGoldenRod,408,102,102,97,0.17,5,Pending,1,2020-08-30T14:47:52.000Z,Contoso,0,0.0,Cronus International x gray,48,Cronus
+9408,new-Default-simple-Fabrikam x blue-XXL-Olive,409,576,576,548,0.80,27,Early Delivery,1,2020-09-02T15:35:43.000Z,Contoso,0,0.0,Fabrikam x blue,49,Fabrikam
+9409,new-Default-simple-Fabrikam m green-XXL-YellowGreen,410,175,175,166,0.86,8,Delayed,1,2020-07-10T15:03:37.000Z,Contoso,0,0.0,Fabrikam m green,50,Fabrikam
+9410,new-Default-simple-Proseware m blue-X-PaleTurquoise,411,567,567,540,0.01,27,Early Delivery,1,2020-06-07T02:28:11.000Z,Contoso,0,0.0,Proseware m blue,51,Proseware
+9411,new-Default-simple-Fabrikam x white-L-Chartreuse,412,95,95,91,0.01,5,Pending,1,2020-07-10T02:34:16.000Z,Contoso,0,0.0,Fabrikam x white,52,Fabrikam
+9412,new-Default-simple-Cronus International x white-XXL-DimGray,413,454,454,432,0.41,22,Pending,1,2020-08-03T03:58:56.000Z,Contoso,0,0.0,Cronus International x white,53,Cronus
+9413,new-Default-simple-Reskit x blue-XS-DarkMagenta,414,34,34,32,0.11,2,Early Delivery,1,2020-07-29T07:43:07.000Z,Contoso,0,0.0,Reskit x blue,54,Reskit
+9414,new-Default-simple-Fabrikam xl pink-M-Red,415,567,567,539,0.57,27,Delayed,1,2020-08-11T18:41:41.000Z,Contoso,0,0.0,Fabrikam xl pink,55,Fabrikam
+9415,new-Default-simple-Cronus International xl gray-XL-Gainsboro,416,445,445,423,0.95,21,Early Delivery,1,2020-06-23T20:52:25.000Z,Contoso,0,0.0,Cronus International xl gray,56,Cronus
+9416,new-Default-simple-Fabrikam xl pink-XS-GoldenRod,417,353,353,336,0.18,17,Pending,1,2020-07-09T16:47:47.000Z,Contoso,0,0.0,Fabrikam xl pink,57,Fabrikam
+9417,new-Default-simple-Reskit x green-XL-Lime,418,440,440,419,0.14,21,Pending,1,2020-06-13T00:45:32.000Z,Contoso,0,0.0,Reskit x green,58,Reskit
+9418,new-Default-simple-Reskit m green-M-LavenderBlush,419,460,460,437,0.87,22,Early Delivery,1,2020-10-05T14:41:23.000Z,Contoso,0,0.0,Reskit m green,59,Reskit
+9419,new-Default-simple-Cronus International m blaCronus International-M-RosyBrown,420,425,425,403,0.95,20,Delayed,1,2020-06-01T10:57:21.000Z,Contoso,0,0.0,Cronus International m blaCronus International,60,Cronus
+9421,new-Default-simple-Cronus International xl white-S-Purple,422,74,74,70,0.12,4,Pending,1,2020-06-17T17:31:10.000Z,Contoso,0,0.0,Cronus International xl white,62,Cronus
+9424,new-Default-simple-Cronus International x green-XS-AliceBlue,425,92,92,88,0.16,4,Delayed,1,2020-08-07T23:40:20.000Z,Contoso,0,0.0,Cronus International x green,65,Cronus
+9425,new-Default-simple-Proseware xl blaCronus International-M-Blue,426,25,25,23,0.85,1,Early Delivery,1,2020-08-24T22:52:08.000Z,Contoso,0,0.0,Proseware xl blaCronus International,66,Proseware
+9426,new-Default-simple-Proseware xl blaCronus International-S-PapayaWhip,427,194,194,184,0.98,9,Pending,1,2020-09-27T21:32:28.000Z,Contoso,0,0.0,Proseware xl blaCronus International,67,Proseware
+9427,new-Default-simple-Reskit m green-L-PaleGoldenRod,428,457,457,435,0.51,22,Pending,1,2020-08-30T19:52:50.000Z,Contoso,0,0.0,Reskit m green,68,Reskit
+9428,new-Default-simple-Cronus International x blaCronus International-XXL-SlateGray,429,425,425,404,0.93,20,Early Delivery,1,2020-06-04T09:14:59.000Z,Contoso,0,0.0,Cronus International x blaCronus International,69,Cronus
+9429,new-Default-simple-Fabrikam m blue-XS-DarkSlateGrey,430,16,16,14,0.83,1,Delayed,1,2020-09-23T05:52:35.000Z,Contoso,0,0.0,Fabrikam m blue,70,Fabrikam
+9430,new-Default-simple-Cronus International x blue-XXL-PaleVioletRed,431,404,404,384,0.19,19,Early Delivery,1,2020-08-20T08:17:59.000Z,Contoso,0,0.0,Cronus International x blue,71,Cronus
+9431,new-Default-simple-Fabrikam xl gray-XL-DarkTurquoise,432,45,45,43,0.08,2,Pending,1,2020-10-24T09:45:59.000Z,Contoso,0,0.0,Fabrikam xl gray,72,Fabrikam
+9432,new-Default-simple-Reskit xl gray-L-FireBriCronus International,433,574,574,546,1.00,27,Pending,1,2020-09-07T18:22:07.000Z,Contoso,0,0.0,Reskit xl gray,73,Reskit
+9433,new-Default-simple-Cronus International m white-M-Linen,434,488,488,464,0.48,23,Early Delivery,1,2020-09-21T05:59:31.000Z,Contoso,0,0.0,Cronus International m white,74,Cronus
+9435,new-Default-simple-Proseware m gray-S-Aquamarine,436,171,171,162,0.70,8,Early Delivery,1,2020-09-04T15:59:40.000Z,Contoso,0,0.0,Proseware m gray,76,Proseware
+9436,new-Default-simple-Proseware xl blue-L-Lavender,437,214,214,204,0.29,10,Pending,1,2020-06-10T20:23:57.000Z,Contoso,0,0.0,Proseware xl blue,77,Proseware
+9437,new-Default-simple-Proseware x blue-M-Plum,438,357,357,340,0.03,17,Pending,1,2020-07-08T06:24:56.000Z,Contoso,0,0.0,Proseware x blue,78,Proseware
+9438,new-Default-simple-Proseware xl gray-S-CornflowerBlue,439,456,456,433,0.82,22,Early Delivery,1,2020-09-08T23:12:10.000Z,Contoso,0,0.0,Proseware xl gray,79,Proseware
+9440,new-Default-simple-Reskit m white-S-SeaGreen,441,350,350,333,0.11,17,Early Delivery,1,2020-07-10T08:23:38.000Z,Contoso,0,0.0,Reskit m white,81,Reskit
+9442,new-Default-simple-Fabrikam xl pink-XXL-MistyRose,443,69,69,65,0.57,3,Pending,1,2020-06-11T22:41:05.000Z,Contoso,0,0.0,Fabrikam xl pink,83,Fabrikam
+9443,new-Default-simple-Fabrikam xl white-S-GreenYellow,444,115,115,110,0.07,5,Early Delivery,1,2020-07-28T00:34:15.000Z,Contoso,0,0.0,Fabrikam xl white,84,Fabrikam
+9444,new-Default-simple-Cronus International m pink-XXL-LemonChiffon,445,210,210,200,0.01,10,Delayed,1,2020-09-15T23:32:20.000Z,Contoso,0,0.0,Cronus International m pink,85,Cronus
+9445,new-Default-simple-Proseware xl blue-L-MediumBlue,446,308,308,293,0.47,15,Early Delivery,1,2020-06-16T22:12:37.000Z,Contoso,0,0.0,Proseware xl blue,86,Proseware
+9446,new-Default-simple-Fabrikam m blue-X-LightBlue,447,544,544,518,0.78,26,Pending,1,2020-07-28T14:39:33.000Z,Contoso,0,0.0,Fabrikam m blue,87,Fabrikam
+9447,new-Default-simple-Cronus International x green-XXL-LightGray,448,407,407,388,0.10,19,Pending,1,2020-07-23T09:34:17.000Z,Contoso,0,0.0,Cronus International x green,88,Cronus
+9448,new-Default-simple-Fabrikam x gray-L-DeepSkyBlue,449,181,181,172,0.43,9,Early Delivery,1,2020-09-24T20:39:26.000Z,Contoso,0,0.0,Fabrikam x gray,89,Fabrikam
+9449,new-Default-simple-Fabrikam x gray-XL-Beige,450,531,531,505,0.74,25,Delayed,1,2020-07-08T01:57:13.000Z,Contoso,0,0.0,Fabrikam x gray,90,Fabrikam
+9450,new-Default-simple-Fabrikam xl pink-L-OliveDrab,451,617,617,588,0.11,29,Early Delivery,1,2020-10-20T21:53:16.000Z,Contoso,0,0.0,Fabrikam xl pink,91,Fabrikam
+9452,new-Default-simple-Proseware m green-M-LimeGreen,453,207,207,197,0.51,10,Pending,1,2020-10-28T01:12:17.000Z,Contoso,0,0.0,Proseware m green,93,Proseware
+9454,new-Default-simple-Proseware m white-XS-Pink,455,357,357,340,0.35,17,Delayed,1,2020-07-23T00:44:10.000Z,Contoso,0,0.0,Proseware m white,95,Proseware
+9455,new-Default-simple-Proseware m green-XL-CadetBlue,456,394,394,374,0.91,19,Early Delivery,1,2020-07-04T01:10:58.000Z,Contoso,0,0.0,Proseware m green,96,Proseware
+9457,new-Default-simple-Cronus International xl green-X-Magenta,458,518,518,492,0.84,25,Pending,1,2020-08-20T09:42:57.000Z,Contoso,0,0.0,Cronus International xl green,98,Cronus
+9459,new-Default-simple-Proseware m gray-X-LightSlateGrey,460,555,555,528,0.76,26,Delayed,1,2020-10-24T03:13:23.000Z,Contoso,0,0.0,Proseware m gray,100,Proseware
+9460,new-Default-simple-Reskit x green-M-BlanchedAlmond,461,452,452,430,0.46,22,Early Delivery,1,2020-06-28T22:08:15.000Z,Contoso,0,0.0,Reskit x green,101,Reskit
+9461,new-Default-configurable-Reskit x blaCronus International-X-DarkOrchid,462,103,103,97,0.62,5,Pending,1,2020-08-22T03:39:45.000Z,Contoso,0,0.0,Reskit x blaCronus International,102,Reskit
+9462,new-Default-simple-Fabrikam m blue-XXL-Cyan,463,279,279,266,0.24,13,Pending,1,2020-08-27T05:32:52.000Z,Contoso,0,0.0,Fabrikam m blue,103,Fabrikam
+9463,new-Default-simple-Proseware m pink-S-Darkorange,464,575,575,547,0.97,27,Early Delivery,1,2020-10-10T09:43:07.000Z,Contoso,0,0.0,Proseware m pink,104,Proseware
+9464,new-Default-simple-Fabrikam xl blaCronus International-L-PowderBlue,465,390,390,371,0.66,19,Delayed,1,2020-09-20T06:45:38.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,105,Fabrikam
+9465,new-Default-simple-Fabrikam x blue-XS-IndianRed,466,537,537,510,0.94,26,Early Delivery,1,2020-06-13T16:42:11.000Z,Contoso,0,0.0,Fabrikam x blue,106,Fabrikam
+9466,new-Default-simple-Reskit xl green-X-Indigo,467,121,121,115,0.01,6,Pending,1,2020-09-01T08:12:09.000Z,Contoso,0,0.0,Reskit xl green,107,Reskit
+9468,new-Default-simple-Reskit xl gray-XS-Salmon,469,144,144,136,0.33,7,Early Delivery,1,2020-09-30T23:46:05.000Z,Contoso,0,0.0,Reskit xl gray,109,Reskit
+9469,new-Default-simple-Reskit x pink-XS-MediumSlateBlue,470,399,399,379,0.88,19,Delayed,1,2020-10-07T02:42:00.000Z,Contoso,0,0.0,Reskit x pink,110,Reskit
+9470,new-Default-simple-Cronus International xl green-M-FloralWhite,471,245,245,233,0.65,12,Early Delivery,1,2020-06-14T00:28:28.000Z,Contoso,0,0.0,Cronus International xl green,111,Cronus
+9471,new-Default-simple-Fabrikam xl blaCronus International-M-DodgerBlue,472,597,597,568,0.14,28,Pending,1,2020-06-02T10:22:50.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,112,Fabrikam
+9472,new-Default-simple-Fabrikam x pink-S-HoneyDew,473,585,585,557,0.33,28,Pending,1,2020-08-04T01:33:21.000Z,Contoso,0,0.0,Fabrikam x pink,113,Fabrikam
+9473,new-Default-simple-Fabrikam x white-XXL-PaleGreen,474,447,447,424,0.91,21,Early Delivery,1,2020-10-28T07:30:06.000Z,Contoso,0,0.0,Fabrikam x white,114,Fabrikam
+9475,new-Default-configurable-Fabrikam xl green-X-Orchid,476,520,520,495,0.33,25,Early Delivery,1,2020-06-23T16:44:13.000Z,Contoso,0,0.0,Fabrikam xl green,116,Fabrikam
+9476,new-Default-simple-Proseware xl pink-X-Crimson,477,19,19,17,0.56,1,Pending,1,2020-06-06T18:50:04.000Z,Contoso,0,0.0,Proseware xl pink,117,Proseware
+9477,new-Default-simple-Fabrikam x green-L-SandyBrown,478,508,508,484,0.53,24,Pending,1,2020-10-27T06:49:40.000Z,Contoso,0,0.0,Fabrikam x green,118,Fabrikam
+9479,new-Default-simple-Fabrikam x blaCronus International-XS-Ivory,480,390,390,370,0.70,19,Delayed,1,2020-07-23T01:27:42.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,120,Fabrikam
+9482,new-Default-configurable-Reskit x white-X-SlateBlue,483,279,279,266,0.08,13,Pending,1,2020-10-05T23:13:23.000Z,Contoso,0,0.0,Reskit x white,123,Reskit
+9483,new-Default-simple-Proseware x white-M-DarkSlateGray,484,517,517,493,0.19,25,Early Delivery,1,2020-09-27T07:17:45.000Z,Contoso,0,0.0,Proseware x white,124,Proseware
+9485,new-Default-simple-Reskit x blaCronus International-XXL-Wheat,486,19,19,17,0.44,1,Early Delivery,1,2020-06-08T23:43:23.000Z,Contoso,0,0.0,Reskit x blaCronus International,126,Reskit
+9486,new-Default-simple-Proseware x white-L-Violet,487,446,446,424,0.58,21,Pending,1,2020-10-27T08:33:41.000Z,Contoso,0,0.0,Proseware x white,127,Proseware
+9488,new-Default-simple-Proseware xl green-XXL-LightYellow,489,151,151,144,0.12,7,Early Delivery,1,2020-07-31T05:15:21.000Z,Contoso,0,0.0,Proseware xl green,129,Proseware
+9489,new-Default-simple-Proseware x blaCronus International-S-NavajoWhite,490,125,125,119,0.88,6,Delayed,1,2020-07-26T06:46:04.000Z,Contoso,0,0.0,Proseware x blaCronus International,130,Proseware
+9490,new-Default-simple-Proseware m gray-X-BlueViolet,491,482,482,459,0.46,23,Early Delivery,1,2020-09-16T08:09:15.000Z,Contoso,0,0.0,Proseware m gray,131,Proseware
+9492,new-Default-simple-Fabrikam m pink-M-Maroon,493,96,96,91,0.40,5,Pending,1,2020-08-08T09:58:58.000Z,Contoso,0,0.0,Fabrikam m pink,133,Fabrikam
+9494,new-Default-simple-Reskit xl blue-XXL-SkyBlue,495,181,181,172,0.50,9,Delayed,1,2020-09-10T09:03:00.000Z,Contoso,0,0.0,Reskit xl blue,135,Reskit
+9496,new-Default-simple-Fabrikam xl pink-XS-Gold,497,118,118,113,0.09,6,Pending,1,2020-07-29T05:11:04.000Z,Contoso,0,0.0,Fabrikam xl pink,137,Fabrikam
+9497,new-Default-simple-Fabrikam x blaCronus International-L-Cornsilk,498,103,103,97,0.60,5,Pending,1,2020-07-02T12:57:58.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,138,Fabrikam
+9498,new-Default-simple-Proseware x gray-S-Coral,499,334,334,318,0.41,16,Early Delivery,1,2020-09-06T17:48:37.000Z,Contoso,0,0.0,Proseware x gray,139,Proseware
+9499,new-Default-simple-Reskit m blue-S-RoyalBlue,500,291,291,277,0.08,14,Delayed,1,2020-09-03T06:50:09.000Z,Contoso,0,0.0,Reskit m blue,140,Reskit
+9500,new-Default-simple-Fabrikam xl white-L-HotPink,501,205,205,194,0.45,10,Early Delivery,1,2020-08-15T14:00:28.000Z,Contoso,0,0.0,Fabrikam xl white,141,Fabrikam
+9501,new-Default-simple-Fabrikam x gray-XS-Tan,502,576,576,547,0.85,27,Pending,1,2020-09-15T16:40:09.000Z,Contoso,0,0.0,Fabrikam x gray,142,Fabrikam
+9504,new-Default-simple-Proseware m blue-L-SaddleBrown,505,286,286,272,0.08,14,Delayed,1,2020-06-25T01:28:45.000Z,Contoso,0,0.0,Proseware m blue,1,Proseware
+9505,new-Default-simple-Reskit x blue-L-DarkCyan,506,14,14,13,0.97,1,Early Delivery,1,2020-10-19T11:30:25.000Z,Contoso,0,0.0,Reskit x blue,2,Reskit
+9506,new-Default-configurable-Proseware xl blaCronus International-XL-LightSteelBlue,507,416,416,396,0.42,20,Pending,1,2020-06-09T07:01:15.000Z,Contoso,0,0.0,Proseware xl blaCronus International,3,Proseware
+9507,new-Default-simple-Reskit m blaCronus International-XL-Sienna,508,362,362,344,0.60,17,Pending,1,2020-10-30T17:42:11.000Z,Contoso,0,0.0,Reskit m blaCronus International,4,Reskit
+9508,new-Default-simple-Proseware m blaCronus International-X-DarkGreen,509,86,86,81,0.28,4,Early Delivery,1,2020-06-24T10:35:24.000Z,Contoso,0,0.0,Proseware m blaCronus International,5,Proseware
+9509,new-Default-simple-Fabrikam xl pink-L-LightCyan,510,441,441,420,0.02,21,Delayed,1,2020-06-30T07:59:57.000Z,Contoso,0,0.0,Fabrikam xl pink,6,Fabrikam
+9510,new-Default-simple-Proseware x green-S-OrangeRed,511,381,381,362,0.34,18,Early Delivery,1,2020-06-28T06:20:53.000Z,Contoso,0,0.0,Proseware x green,7,Proseware
+9512,new-Default-simple-Proseware x gray-M-SteelBlue,513,592,592,563,0.74,28,Pending,1,2020-08-07T04:31:11.000Z,Contoso,0,0.0,Proseware x gray,9,Proseware
+9513,new-Default-simple-Proseware x blue-XS-DarkGrey,514,507,507,482,0.94,24,Early Delivery,1,2020-08-08T18:58:15.000Z,Contoso,0,0.0,Proseware x blue,10,Proseware
+9514,new-Default-simple-Proseware xl pink-L-Yellow,515,482,482,459,0.69,23,Delayed,1,2020-09-26T19:00:48.000Z,Contoso,0,0.0,Proseware xl pink,11,Proseware
+9515,new-Default-simple-Fabrikam x pink-L-Azure,516,61,61,57,0.60,3,Early Delivery,1,2020-09-22T10:10:05.000Z,Contoso,0,0.0,Fabrikam x pink,12,Fabrikam
+9516,new-Default-simple-Proseware x pink-XL-WhiteSmoke,517,424,424,403,0.54,20,Pending,1,2020-09-16T04:26:22.000Z,Contoso,0,0.0,Proseware x pink,13,Proseware
+9517,new-Default-simple-Proseware m gray-X-Gray,518,363,363,345,0.05,17,Pending,1,2020-09-29T22:15:07.000Z,Contoso,0,0.0,Proseware m gray,14,Proseware
+9518,new-Default-simple-Proseware xl green-XXL-Navy,519,563,563,536,0.25,27,Early Delivery,1,2020-06-08T01:43:49.000Z,Contoso,0,0.0,Proseware xl green,15,Proseware
+9519,new-Default-configurable-Proseware m gray-XS-Grey,520,366,366,348,0.21,17,Delayed,1,2020-09-12T07:02:15.000Z,Contoso,0,0.0,Proseware m gray,16,Proseware
+9520,new-Default-simple-Fabrikam m pink-X-Green,521,98,98,93,0.35,5,Early Delivery,1,2020-06-17T08:08:29.000Z,Contoso,0,0.0,Fabrikam m pink,17,Fabrikam
+9521,new-Default-simple-Fabrikam xl white-X-ForestGreen,522,282,282,268,0.13,13,Pending,1,2020-10-09T02:59:09.000Z,Contoso,0,0.0,Fabrikam xl white,18,Fabrikam
+9522,new-Default-simple-Cronus International x green-XXL-LightPink,523,438,438,416,0.80,21,Pending,1,2020-07-13T16:44:02.000Z,Contoso,0,0.0,Cronus International x green,19,Cronus
+9523,new-Default-simple-Proseware m gray-XS-Chocolate,524,25,25,23,0.45,1,Early Delivery,1,2020-08-06T17:00:00.000Z,Contoso,0,0.0,Proseware m gray,20,Proseware
+9524,new-Default-simple-Reskit xl pink-XS-Fuchsia,525,540,540,514,0.41,26,Delayed,1,2020-06-21T18:32:45.000Z,Contoso,0,0.0,Reskit xl pink,21,Reskit
+9525,new-Default-simple-Proseware m blue-XS-DarkSalmon,526,543,543,517,0.18,26,Early Delivery,1,2020-08-23T13:47:28.000Z,Contoso,0,0.0,Proseware m blue,22,Proseware
+9526,new-Default-simple-Fabrikam x white-XL-LightCoral,527,515,515,490,0.75,24,Pending,1,2020-08-25T00:23:52.000Z,Contoso,0,0.0,Fabrikam x white,23,Fabrikam
+9527,new-Default-simple-Fabrikam xl green-L-LightSalmon,528,93,93,89,0.26,4,Pending,1,2020-09-18T05:34:34.000Z,Contoso,0,0.0,Fabrikam xl green,24,Fabrikam
+9528,new-Default-simple-Fabrikam xl blue-L-White,529,285,285,271,0.41,14,Early Delivery,1,2020-07-18T22:27:05.000Z,Contoso,0,0.0,Fabrikam xl blue,25,Fabrikam
+9529,new-Default-simple-Fabrikam x green-XS-DarkRed,530,428,428,407,0.33,20,Delayed,1,2020-06-04T21:49:49.000Z,Contoso,0,0.0,Fabrikam x green,26,Fabrikam
+9530,new-Default-simple-Reskit m blue-XXL-LightSlateGray,531,405,405,385,0.23,19,Early Delivery,1,2020-09-25T11:33:08.000Z,Contoso,0,0.0,Reskit m blue,27,Reskit
+9531,new-Default-simple-Proseware xl gray-X-LightSkyBlue,532,535,535,508,0.97,25,Pending,1,2020-10-05T05:52:06.000Z,Contoso,0,0.0,Proseware xl gray,28,Proseware
+9533,new-Default-simple-Cronus International xl white-S-GhostWhite,534,254,254,242,0.00,12,Early Delivery,1,2020-08-10T22:21:37.000Z,Contoso,0,0.0,Cronus International xl white,30,Cronus
+9534,new-Default-simple-Fabrikam x gray-L-DarkBlue,535,201,201,191,0.24,10,Delayed,1,2020-10-07T11:27:14.000Z,Contoso,0,0.0,Fabrikam x gray,31,Fabrikam
+9535,new-Default-simple-Reskit xl blue-XXL-Thistle,536,118,118,112,0.22,6,Early Delivery,1,2020-08-12T15:32:25.000Z,Contoso,0,0.0,Reskit xl blue,32,Reskit
+9536,new-Default-simple-Reskit x pink-XL-Brown,537,129,129,123,0.09,6,Pending,1,2020-10-15T02:09:58.000Z,Contoso,0,0.0,Reskit x pink,33,Reskit
+9538,new-Default-simple-Fabrikam m pink-XXL-LightGrey,539,237,237,226,0.10,11,Early Delivery,1,2020-09-03T05:48:59.000Z,Contoso,0,0.0,Fabrikam m pink,35,Fabrikam
+9539,new-Default-simple-Reskit x gray-S-DarkKhaki,540,22,22,20,0.75,1,Delayed,1,2020-10-14T20:28:52.000Z,Contoso,0,0.0,Reskit x gray,36,Reskit
+9540,new-Default-simple-Proseware xl white-XL-Bisque,541,209,209,199,0.02,10,Early Delivery,1,2020-10-30T16:42:07.000Z,Contoso,0,0.0,Proseware xl white,37,Proseware
+9541,new-Default-simple-Fabrikam xl white-XS-Moccasin,542,98,98,93,0.98,5,Pending,1,2020-10-27T14:51:30.000Z,Contoso,0,0.0,Fabrikam xl white,38,Fabrikam
+9542,new-Default-simple-Cronus International xl white-XL-SpringGreen,543,360,360,342,0.60,17,Pending,1,2020-08-30T18:37:35.000Z,Contoso,0,0.0,Cronus International xl white,39,Cronus
+9543,new-Default-simple-Proseware m pink-XL-SlateGrey,544,310,310,295,0.10,15,Early Delivery,1,2020-07-01T21:15:24.000Z,Contoso,0,0.0,Proseware m pink,40,Proseware
+9544,new-Default-simple-Proseware xl blaCronus International-L-DarkViolet,545,360,360,342,0.54,17,Delayed,1,2020-06-29T00:25:11.000Z,Contoso,0,0.0,Proseware xl blaCronus International,41,Proseware
+9545,new-Default-simple-Proseware m green-X-DarkSlateBlue,546,102,102,97,0.76,5,Early Delivery,1,2020-09-24T07:08:31.000Z,Contoso,0,0.0,Proseware m green,42,Proseware
+9546,new-Default-simple-Fabrikam m white-XS-Orange,547,337,337,320,0.73,16,Pending,1,2020-06-15T06:09:48.000Z,Contoso,0,0.0,Fabrikam m white,43,Fabrikam
+9547,new-Default-simple-Proseware m green-XS-DarkGray,548,201,201,191,0.47,10,Pending,1,2020-10-30T15:00:42.000Z,Contoso,0,0.0,Proseware m green,44,Proseware
+9548,new-Default-simple-Cronus International xl pink-M-DarkSeaGreen,549,29,29,27,0.38,1,Early Delivery,1,2020-10-20T00:57:58.000Z,Contoso,0,0.0,Cronus International xl pink,45,Cronus
+9549,new-Default-simple-Fabrikam m pink-X-Tomato,550,133,133,125,0.90,6,Delayed,1,2020-10-18T22:52:55.000Z,Contoso,0,0.0,Fabrikam m pink,46,Fabrikam
+9550,new-Default-simple-Reskit xl green-X-Silver,551,447,447,425,0.97,21,Early Delivery,1,2020-06-03T00:17:31.000Z,Contoso,0,0.0,Reskit xl green,47,Reskit
+9551,new-Default-configurable-Cronus International x gray-X-DarkGoldenRod,552,371,371,354,0.04,18,Pending,1,2020-08-29T06:55:57.000Z,Contoso,0,0.0,Cronus International x gray,48,Cronus
+9552,new-Default-simple-Fabrikam x blue-XXL-Olive,553,155,155,147,0.34,7,Pending,1,2020-06-25T11:14:09.000Z,Contoso,0,0.0,Fabrikam x blue,49,Fabrikam
+9553,new-Default-simple-Fabrikam m green-XXL-YellowGreen,554,564,564,537,0.20,27,Early Delivery,1,2020-10-25T10:46:21.000Z,Contoso,0,0.0,Fabrikam m green,50,Fabrikam
+9554,new-Default-simple-Proseware m blue-X-PaleTurquoise,555,200,200,189,0.73,9,Delayed,1,2020-08-17T22:41:39.000Z,Contoso,0,0.0,Proseware m blue,51,Proseware
+9555,new-Default-simple-Fabrikam x white-L-Chartreuse,556,529,529,504,0.31,25,Early Delivery,1,2020-09-06T11:01:19.000Z,Contoso,0,0.0,Fabrikam x white,52,Fabrikam
+9556,new-Default-simple-Cronus International x white-XXL-DimGray,557,166,166,158,0.04,8,Pending,1,2020-08-03T23:56:06.000Z,Contoso,0,0.0,Cronus International x white,53,Cronus
+9557,new-Default-simple-Reskit x blue-XS-DarkMagenta,558,270,270,256,0.33,13,Pending,1,2020-06-16T16:48:12.000Z,Contoso,0,0.0,Reskit x blue,54,Reskit
+9558,new-Default-simple-Fabrikam xl pink-M-Red,559,464,464,442,0.15,22,Early Delivery,1,2020-09-27T23:24:40.000Z,Contoso,0,0.0,Fabrikam xl pink,55,Fabrikam
+9559,new-Default-simple-Cronus International xl gray-XL-Gainsboro,560,363,363,345,0.91,17,Delayed,1,2020-09-01T11:41:17.000Z,Contoso,0,0.0,Cronus International xl gray,56,Cronus
+9560,new-Default-simple-Fabrikam xl pink-XS-GoldenRod,561,107,107,102,0.22,5,Early Delivery,1,2020-07-26T11:06:33.000Z,Contoso,0,0.0,Fabrikam xl pink,57,Fabrikam
+9561,new-Default-simple-Reskit x green-XL-Lime,562,330,330,314,0.15,16,Pending,1,2020-07-22T01:26:41.000Z,Contoso,0,0.0,Reskit x green,58,Reskit
+9562,new-Default-simple-Reskit m green-M-LavenderBlush,563,91,91,87,0.19,4,Pending,1,2020-09-12T19:15:05.000Z,Contoso,0,0.0,Reskit m green,59,Reskit
+9563,new-Default-simple-Cronus International m blaCronus International-M-RosyBrown,564,278,278,264,0.95,13,Early Delivery,1,2020-06-20T12:45:35.000Z,Contoso,0,0.0,Cronus International m blaCronus International,60,Cronus
+9565,new-Default-simple-Cronus International xl white-S-Purple,566,472,472,449,0.37,22,Early Delivery,1,2020-07-24T00:28:46.000Z,Contoso,0,0.0,Cronus International xl white,62,Cronus
+9568,new-Default-simple-Cronus International x green-XS-AliceBlue,569,322,322,306,0.69,15,Early Delivery,1,2020-09-01T07:31:01.000Z,Contoso,0,0.0,Cronus International x green,65,Cronus
+9569,new-Default-simple-Proseware xl blaCronus International-M-Blue,570,384,384,365,0.46,18,Delayed,1,2020-07-16T03:28:22.000Z,Contoso,0,0.0,Proseware xl blaCronus International,66,Proseware
+9570,new-Default-simple-Proseware xl blaCronus International-S-PapayaWhip,571,550,550,523,0.50,26,Early Delivery,1,2020-10-08T08:00:06.000Z,Contoso,0,0.0,Proseware xl blaCronus International,67,Proseware
+9571,new-Default-simple-Reskit m green-L-PaleGoldenRod,572,550,550,524,0.01,26,Pending,1,2020-09-28T23:10:23.000Z,Contoso,0,0.0,Reskit m green,68,Reskit
+9572,new-Default-simple-Cronus International x blaCronus International-XXL-SlateGray,573,142,142,134,0.95,7,Pending,1,2020-06-27T16:26:07.000Z,Contoso,0,0.0,Cronus International x blaCronus International,69,Cronus
+9573,new-Default-simple-Fabrikam m blue-XS-DarkSlateGrey,574,543,543,517,0.51,26,Early Delivery,1,2020-06-24T05:14:56.000Z,Contoso,0,0.0,Fabrikam m blue,70,Fabrikam
+9574,new-Default-simple-Cronus International x blue-XXL-PaleVioletRed,575,177,177,168,0.18,8,Delayed,1,2020-09-12T14:20:07.000Z,Contoso,0,0.0,Cronus International x blue,71,Cronus
+9575,new-Default-simple-Fabrikam xl gray-XL-DarkTurquoise,576,16,16,14,0.38,1,Early Delivery,1,2020-06-20T17:16:59.000Z,Contoso,0,0.0,Fabrikam xl gray,72,Fabrikam
+9576,new-Default-simple-Reskit xl gray-L-FireBriCronus International,577,520,520,494,0.53,25,Pending,1,2020-07-10T08:21:33.000Z,Contoso,0,0.0,Reskit xl gray,73,Reskit
+9577,new-Default-simple-Cronus International m white-M-Linen,578,127,127,120,0.70,6,Pending,1,2020-06-12T19:28:37.000Z,Contoso,0,0.0,Cronus International m white,74,Cronus
+9579,new-Default-simple-Proseware m gray-S-Aquamarine,580,433,433,412,0.66,21,Delayed,1,2020-07-28T11:24:14.000Z,Contoso,0,0.0,Proseware m gray,76,Proseware
+9580,new-Default-simple-Proseware xl blue-L-Lavender,581,210,210,200,0.46,10,Early Delivery,1,2020-08-09T07:37:39.000Z,Contoso,0,0.0,Proseware xl blue,77,Proseware
+9581,new-Default-simple-Proseware x blue-M-Plum,582,318,318,302,0.28,15,Pending,1,2020-08-25T09:23:10.000Z,Contoso,0,0.0,Proseware x blue,78,Proseware
+9582,new-Default-simple-Proseware xl gray-S-CornflowerBlue,583,77,77,73,0.89,4,Pending,1,2020-09-29T04:36:35.000Z,Contoso,0,0.0,Proseware xl gray,79,Proseware
+9584,new-Default-simple-Reskit m white-S-SeaGreen,585,580,580,552,0.37,28,Delayed,1,2020-06-02T21:32:17.000Z,Contoso,0,0.0,Reskit m white,81,Reskit
+9586,new-Default-simple-Fabrikam xl pink-XXL-MistyRose,587,393,393,374,0.63,19,Pending,1,2020-09-10T18:37:57.000Z,Contoso,0,0.0,Fabrikam xl pink,83,Fabrikam
+9587,new-Default-simple-Fabrikam xl white-S-GreenYellow,588,215,215,204,0.91,10,Pending,1,2020-07-27T02:14:40.000Z,Contoso,0,0.0,Fabrikam xl white,84,Fabrikam
+9588,new-Default-simple-Cronus International m pink-XXL-LemonChiffon,589,70,70,66,0.27,3,Early Delivery,1,2020-10-23T23:39:57.000Z,Contoso,0,0.0,Cronus International m pink,85,Cronus
+9589,new-Default-simple-Proseware xl blue-L-MediumBlue,590,279,279,265,0.93,13,Delayed,1,2020-07-02T00:25:55.000Z,Contoso,0,0.0,Proseware xl blue,86,Proseware
+9590,new-Default-simple-Fabrikam m blue-X-LightBlue,591,556,556,529,0.17,26,Early Delivery,1,2020-06-09T15:36:19.000Z,Contoso,0,0.0,Fabrikam m blue,87,Fabrikam
+9591,new-Default-simple-Cronus International x green-XXL-LightGray,592,473,473,449,0.76,22,Pending,1,2020-09-29T09:21:46.000Z,Contoso,0,0.0,Cronus International x green,88,Cronus
+9592,new-Default-simple-Fabrikam x gray-L-DeepSkyBlue,593,44,44,42,0.37,2,Pending,1,2020-06-21T05:51:18.000Z,Contoso,0,0.0,Fabrikam x gray,89,Fabrikam
+9593,new-Default-simple-Fabrikam x gray-XL-Beige,594,497,497,473,0.20,24,Early Delivery,1,2020-06-02T18:07:42.000Z,Contoso,0,0.0,Fabrikam x gray,90,Fabrikam
+9594,new-Default-simple-Fabrikam xl pink-L-OliveDrab,595,516,516,491,0.52,25,Delayed,1,2020-08-20T09:22:19.000Z,Contoso,0,0.0,Fabrikam xl pink,91,Fabrikam
+9596,new-Default-simple-Proseware m green-M-LimeGreen,597,17,17,15,0.79,1,Pending,1,2020-07-15T19:36:25.000Z,Contoso,0,0.0,Proseware m green,93,Proseware
+9598,new-Default-simple-Proseware m white-XS-Pink,599,255,255,242,0.30,12,Early Delivery,1,2020-09-27T00:48:35.000Z,Contoso,0,0.0,Proseware m white,95,Proseware
+9599,new-Default-simple-Proseware m green-XL-CadetBlue,600,511,511,487,0.16,24,Delayed,1,2020-10-05T23:56:25.000Z,Contoso,0,0.0,Proseware m green,96,Proseware
+9601,new-Default-simple-Cronus International xl green-X-Magenta,602,599,599,569,1.00,28,Pending,1,2020-06-19T00:00:13.000Z,Contoso,0,0.0,Cronus International xl green,98,Cronus
+9603,new-Default-simple-Proseware m gray-X-LightSlateGrey,604,258,258,245,0.92,12,Early Delivery,1,2020-09-04T21:29:35.000Z,Contoso,0,0.0,Proseware m gray,100,Proseware
+9604,new-Default-simple-Reskit x green-M-BlanchedAlmond,605,207,207,197,0.40,10,Delayed,1,2020-06-11T14:52:49.000Z,Contoso,0,0.0,Reskit x green,101,Reskit
+9605,new-Default-configurable-Reskit x blaCronus International-X-DarkOrchid,606,522,522,496,0.95,25,Early Delivery,1,2020-07-05T01:07:07.000Z,Contoso,0,0.0,Reskit x blaCronus International,102,Reskit
+9606,new-Default-simple-Fabrikam m blue-XXL-Cyan,607,242,242,231,0.09,12,Pending,1,2020-08-02T14:29:50.000Z,Contoso,0,0.0,Fabrikam m blue,103,Fabrikam
+9607,new-Default-simple-Proseware m pink-S-Darkorange,608,215,215,204,0.83,10,Pending,1,2020-06-02T05:59:12.000Z,Contoso,0,0.0,Proseware m pink,104,Proseware
+9608,new-Default-simple-Fabrikam xl blaCronus International-L-PowderBlue,609,412,412,392,0.01,20,Early Delivery,1,2020-07-13T20:26:14.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,105,Fabrikam
+9609,new-Default-simple-Fabrikam x blue-XS-IndianRed,610,193,193,184,0.35,9,Delayed,1,2020-07-29T05:24:40.000Z,Contoso,0,0.0,Fabrikam x blue,106,Fabrikam
+9610,new-Default-simple-Reskit xl green-X-Indigo,611,609,609,579,0.79,29,Early Delivery,1,2020-07-29T02:39:45.000Z,Contoso,0,0.0,Reskit xl green,107,Reskit
+9612,new-Default-simple-Reskit xl gray-XS-Salmon,613,603,603,574,0.42,29,Pending,1,2020-10-08T00:13:23.000Z,Contoso,0,0.0,Reskit xl gray,109,Reskit
+9613,new-Default-simple-Reskit x pink-XS-MediumSlateBlue,614,40,40,38,0.49,2,Early Delivery,1,2020-08-01T12:00:26.000Z,Contoso,0,0.0,Reskit x pink,110,Reskit
+9614,new-Default-simple-Cronus International xl green-M-FloralWhite,615,159,159,151,0.45,8,Delayed,1,2020-06-24T04:03:37.000Z,Contoso,0,0.0,Cronus International xl green,111,Cronus
+9615,new-Default-simple-Fabrikam xl blaCronus International-M-DodgerBlue,616,387,387,368,0.95,18,Early Delivery,1,2020-10-01T01:43:22.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,112,Fabrikam
+9616,new-Default-simple-Fabrikam x pink-S-HoneyDew,617,262,262,249,0.26,12,Pending,1,2020-08-22T20:50:05.000Z,Contoso,0,0.0,Fabrikam x pink,113,Fabrikam
+9617,new-Default-simple-Fabrikam x white-XXL-PaleGreen,618,525,525,499,0.68,25,Pending,1,2020-07-14T19:40:55.000Z,Contoso,0,0.0,Fabrikam x white,114,Fabrikam
+9619,new-Default-configurable-Fabrikam xl green-X-Orchid,620,30,30,28,0.61,1,Delayed,1,2020-07-08T15:49:38.000Z,Contoso,0,0.0,Fabrikam xl green,116,Fabrikam
+9620,new-Default-simple-Proseware xl pink-X-Crimson,621,85,85,80,0.75,4,Early Delivery,1,2020-09-12T05:50:49.000Z,Contoso,0,0.0,Proseware xl pink,117,Proseware
+9621,new-Default-simple-Fabrikam x green-L-SandyBrown,622,12,12,11,0.69,1,Pending,1,2020-07-08T09:45:01.000Z,Contoso,0,0.0,Fabrikam x green,118,Fabrikam
+9623,new-Default-simple-Fabrikam x blaCronus International-XS-Ivory,624,42,42,39,0.76,2,Early Delivery,1,2020-08-01T07:05:05.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,120,Fabrikam
+9626,new-Default-configurable-Reskit x white-X-SlateBlue,627,518,518,493,0.65,25,Pending,1,2020-09-08T17:19:05.000Z,Contoso,0,0.0,Reskit x white,123,Reskit
+9627,new-Default-simple-Proseware x white-M-DarkSlateGray,628,257,257,244,0.75,12,Pending,1,2020-06-25T22:18:25.000Z,Contoso,0,0.0,Proseware x white,124,Proseware
+9629,new-Default-simple-Reskit x blaCronus International-XXL-Wheat,630,298,298,284,0.32,14,Delayed,1,2020-06-03T23:04:40.000Z,Contoso,0,0.0,Reskit x blaCronus International,126,Reskit
+9630,new-Default-simple-Proseware x white-L-Violet,631,625,625,595,0.60,30,Early Delivery,1,2020-10-05T21:40:33.000Z,Contoso,0,0.0,Proseware x white,127,Proseware
+9632,new-Default-simple-Proseware xl green-XXL-LightYellow,633,476,476,453,0.40,23,Pending,1,2020-07-16T18:40:01.000Z,Contoso,0,0.0,Proseware xl green,129,Proseware
+9633,new-Default-simple-Proseware x blaCronus International-S-NavajoWhite,634,382,382,363,0.74,18,Early Delivery,1,2020-08-03T16:38:23.000Z,Contoso,0,0.0,Proseware x blaCronus International,130,Proseware
+9634,new-Default-simple-Proseware m gray-X-BlueViolet,635,546,546,519,0.50,26,Delayed,1,2020-07-06T16:15:24.000Z,Contoso,0,0.0,Proseware m gray,131,Proseware
+9636,new-Default-simple-Fabrikam m pink-M-Maroon,637,442,442,420,0.50,21,Pending,1,2020-06-27T01:53:29.000Z,Contoso,0,0.0,Fabrikam m pink,133,Fabrikam
+9638,new-Default-simple-Reskit xl blue-XXL-SkyBlue,639,558,558,532,0.11,27,Early Delivery,1,2020-07-20T08:41:20.000Z,Contoso,0,0.0,Reskit xl blue,135,Reskit
+9640,new-Default-simple-Fabrikam xl pink-XS-Gold,641,409,409,390,0.09,19,Early Delivery,1,2020-09-25T14:07:19.000Z,Contoso,0,0.0,Fabrikam xl pink,137,Fabrikam
+9641,new-Default-simple-Fabrikam x blaCronus International-L-Cornsilk,642,182,182,173,0.80,9,Pending,1,2020-09-09T12:38:45.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,138,Fabrikam
+9642,new-Default-simple-Proseware x gray-S-Coral,643,420,420,399,0.90,20,Pending,1,2020-06-14T05:48:26.000Z,Contoso,0,0.0,Proseware x gray,139,Proseware
+9643,new-Default-simple-Reskit m blue-S-RoyalBlue,644,501,501,476,0.93,24,Early Delivery,1,2020-08-26T18:15:17.000Z,Contoso,0,0.0,Reskit m blue,140,Reskit
+9644,new-Default-simple-Fabrikam xl white-L-HotPink,645,290,290,276,0.14,14,Delayed,1,2020-10-03T21:46:10.000Z,Contoso,0,0.0,Fabrikam xl white,141,Fabrikam
+9645,new-Default-simple-Fabrikam x gray-XS-Tan,646,524,524,498,0.83,25,Early Delivery,1,2020-09-17T11:08:50.000Z,Contoso,0,0.0,Fabrikam x gray,142,Fabrikam
+9648,new-Default-simple-Proseware m blue-L-SaddleBrown,649,339,339,322,0.75,16,Early Delivery,1,2020-10-09T14:04:04.000Z,Contoso,0,0.0,Proseware m blue,1,Proseware
+9649,new-Default-simple-Reskit x blue-L-DarkCyan,650,136,136,129,0.57,6,Delayed,1,2020-09-19T07:38:56.000Z,Contoso,0,0.0,Reskit x blue,2,Reskit
+9650,new-Default-configurable-Proseware xl blaCronus International-XL-LightSteelBlue,651,225,225,213,0.61,11,Early Delivery,1,2020-06-18T18:25:21.000Z,Contoso,0,0.0,Proseware xl blaCronus International,3,Proseware
+9651,new-Default-simple-Reskit m blaCronus International-XL-Sienna,652,90,90,85,0.10,4,Pending,1,2020-06-01T23:55:29.000Z,Contoso,0,0.0,Reskit m blaCronus International,4,Reskit
+9652,new-Default-simple-Proseware m blaCronus International-X-DarkGreen,653,408,408,388,0.09,19,Pending,1,2020-07-24T14:38:42.000Z,Contoso,0,0.0,Proseware m blaCronus International,5,Proseware
+9653,new-Default-simple-Fabrikam xl pink-L-LightCyan,654,246,246,233,0.70,12,Early Delivery,1,2020-08-20T08:58:57.000Z,Contoso,0,0.0,Fabrikam xl pink,6,Fabrikam
+9654,new-Default-simple-Proseware x green-S-OrangeRed,655,434,434,413,0.41,21,Delayed,1,2020-06-24T18:05:36.000Z,Contoso,0,0.0,Proseware x green,7,Proseware
+9656,new-Default-simple-Proseware x gray-M-SteelBlue,657,335,335,319,0.54,16,Pending,1,2020-06-15T17:30:36.000Z,Contoso,0,0.0,Proseware x gray,9,Proseware
+9657,new-Default-simple-Proseware x blue-XS-DarkGrey,658,469,469,447,0.01,22,Pending,1,2020-10-29T00:24:35.000Z,Contoso,0,0.0,Proseware x blue,10,Proseware
+9658,new-Default-simple-Proseware xl pink-L-Yellow,659,448,448,426,0.63,21,Early Delivery,1,2020-07-30T09:37:32.000Z,Contoso,0,0.0,Proseware xl pink,11,Proseware
+9659,new-Default-simple-Fabrikam x pink-L-Azure,660,142,142,135,0.66,7,Delayed,1,2020-06-02T16:14:28.000Z,Contoso,0,0.0,Fabrikam x pink,12,Fabrikam
+9660,new-Default-simple-Proseware x pink-XL-WhiteSmoke,661,19,19,18,0.30,1,Early Delivery,1,2020-08-26T07:48:02.000Z,Contoso,0,0.0,Proseware x pink,13,Proseware
+9661,new-Default-simple-Proseware m gray-X-Gray,662,595,595,567,0.35,28,Pending,1,2020-07-08T16:11:25.000Z,Contoso,0,0.0,Proseware m gray,14,Proseware
+9662,new-Default-simple-Proseware xl green-XXL-Navy,663,187,187,177,0.84,9,Pending,1,2020-07-29T10:06:35.000Z,Contoso,0,0.0,Proseware xl green,15,Proseware
+9663,new-Default-configurable-Proseware m gray-XS-Grey,664,117,117,111,0.70,6,Early Delivery,1,2020-07-10T21:21:33.000Z,Contoso,0,0.0,Proseware m gray,16,Proseware
+9664,new-Default-simple-Fabrikam m pink-X-Green,665,195,195,185,0.76,9,Delayed,1,2020-08-23T07:44:06.000Z,Contoso,0,0.0,Fabrikam m pink,17,Fabrikam
+9665,new-Default-simple-Fabrikam xl white-X-ForestGreen,666,173,173,164,0.92,8,Early Delivery,1,2020-08-30T00:10:11.000Z,Contoso,0,0.0,Fabrikam xl white,18,Fabrikam
+9666,new-Default-simple-Cronus International x green-XXL-LightPink,667,185,185,175,0.95,9,Pending,1,2020-06-07T09:47:26.000Z,Contoso,0,0.0,Cronus International x green,19,Cronus
+9667,new-Default-simple-Proseware m gray-XS-Chocolate,668,239,239,227,0.69,11,Pending,1,2020-08-05T07:34:59.000Z,Contoso,0,0.0,Proseware m gray,20,Proseware
+9668,new-Default-simple-Reskit xl pink-XS-Fuchsia,669,92,92,86,0.99,4,Early Delivery,1,2020-06-26T19:45:01.000Z,Contoso,0,0.0,Reskit xl pink,21,Reskit
+9669,new-Default-simple-Proseware m blue-XS-DarkSalmon,670,552,552,525,0.99,26,Delayed,1,2020-10-02T20:26:11.000Z,Contoso,0,0.0,Proseware m blue,22,Proseware
+9670,new-Default-simple-Fabrikam x white-XL-LightCoral,671,566,566,539,0.44,27,Early Delivery,1,2020-09-04T23:49:53.000Z,Contoso,0,0.0,Fabrikam x white,23,Fabrikam
+9671,new-Default-simple-Fabrikam xl green-L-LightSalmon,672,464,464,441,0.29,22,Pending,1,2020-07-29T13:43:05.000Z,Contoso,0,0.0,Fabrikam xl green,24,Fabrikam
+9672,new-Default-simple-Fabrikam xl blue-L-White,673,562,562,535,0.57,27,Pending,1,2020-10-25T10:59:34.000Z,Contoso,0,0.0,Fabrikam xl blue,25,Fabrikam
+9673,new-Default-simple-Fabrikam x green-XS-DarkRed,674,233,233,222,0.14,11,Early Delivery,1,2020-07-20T18:48:07.000Z,Contoso,0,0.0,Fabrikam x green,26,Fabrikam
+9674,new-Default-simple-Reskit m blue-XXL-LightSlateGray,675,220,220,209,0.52,10,Delayed,1,2020-08-13T01:42:18.000Z,Contoso,0,0.0,Reskit m blue,27,Reskit
+9675,new-Default-simple-Proseware xl gray-X-LightSkyBlue,676,500,500,476,0.96,24,Early Delivery,1,2020-06-03T17:12:04.000Z,Contoso,0,0.0,Proseware xl gray,28,Proseware
+9677,new-Default-simple-Cronus International xl white-S-GhostWhite,678,409,409,389,0.53,19,Pending,1,2020-08-08T12:14:19.000Z,Contoso,0,0.0,Cronus International xl white,30,Cronus
+9678,new-Default-simple-Fabrikam x gray-L-DarkBlue,679,360,360,342,0.61,17,Early Delivery,1,2020-08-28T09:18:55.000Z,Contoso,0,0.0,Fabrikam x gray,31,Fabrikam
+9679,new-Default-simple-Reskit xl blue-XXL-Thistle,680,529,529,504,0.46,25,Delayed,1,2020-08-20T00:43:13.000Z,Contoso,0,0.0,Reskit xl blue,32,Reskit
+9680,new-Default-simple-Reskit x pink-XL-Brown,681,187,187,178,0.40,9,Early Delivery,1,2020-06-18T13:29:58.000Z,Contoso,0,0.0,Reskit x pink,33,Reskit
+9682,new-Default-simple-Fabrikam m pink-XXL-LightGrey,683,538,538,511,1.00,26,Pending,1,2020-07-17T08:14:20.000Z,Contoso,0,0.0,Fabrikam m pink,35,Fabrikam
+9683,new-Default-simple-Reskit x gray-S-DarkKhaki,684,520,520,495,0.42,25,Early Delivery,1,2020-10-15T12:13:40.000Z,Contoso,0,0.0,Reskit x gray,36,Reskit
+9684,new-Default-simple-Proseware xl white-XL-Bisque,685,90,90,85,0.72,4,Delayed,1,2020-10-16T04:39:19.000Z,Contoso,0,0.0,Proseware xl white,37,Proseware
+9685,new-Default-simple-Fabrikam xl white-XS-Moccasin,686,541,541,515,0.49,26,Early Delivery,1,2020-10-04T21:45:03.000Z,Contoso,0,0.0,Fabrikam xl white,38,Fabrikam
+9686,new-Default-simple-Cronus International xl white-XL-SpringGreen,687,40,40,38,0.78,2,Pending,1,2020-08-06T11:50:51.000Z,Contoso,0,0.0,Cronus International xl white,39,Cronus
+9687,new-Default-simple-Proseware m pink-XL-SlateGrey,688,249,249,236,0.70,12,Pending,1,2020-09-26T09:41:04.000Z,Contoso,0,0.0,Proseware m pink,40,Proseware
+9688,new-Default-simple-Proseware xl blaCronus International-L-DarkViolet,689,547,547,521,0.32,26,Early Delivery,1,2020-07-10T22:32:47.000Z,Contoso,0,0.0,Proseware xl blaCronus International,41,Proseware
+9689,new-Default-simple-Proseware m green-X-DarkSlateBlue,690,79,79,75,0.02,4,Delayed,1,2020-07-22T06:51:36.000Z,Contoso,0,0.0,Proseware m green,42,Proseware
+9690,new-Default-simple-Fabrikam m white-XS-Orange,691,492,492,467,0.93,23,Early Delivery,1,2020-07-07T14:06:49.000Z,Contoso,0,0.0,Fabrikam m white,43,Fabrikam
+9691,new-Default-simple-Proseware m green-XS-DarkGray,692,570,570,542,0.49,27,Pending,1,2020-06-29T01:28:54.000Z,Contoso,0,0.0,Proseware m green,44,Proseware
+9692,new-Default-simple-Cronus International xl pink-M-DarkSeaGreen,693,592,592,564,0.35,28,Pending,1,2020-09-25T21:29:27.000Z,Contoso,0,0.0,Cronus International xl pink,45,Cronus
+9693,new-Default-simple-Fabrikam m pink-X-Tomato,694,448,448,426,0.45,21,Early Delivery,1,2020-07-18T16:26:52.000Z,Contoso,0,0.0,Fabrikam m pink,46,Fabrikam
+9694,new-Default-simple-Reskit xl green-X-Silver,695,74,74,70,0.12,4,Delayed,1,2020-07-04T12:37:07.000Z,Contoso,0,0.0,Reskit xl green,47,Reskit
+9695,new-Default-configurable-Cronus International x gray-X-DarkGoldenRod,696,439,439,417,0.74,21,Early Delivery,1,2020-08-18T21:55:54.000Z,Contoso,0,0.0,Cronus International x gray,48,Cronus
+9696,new-Default-simple-Fabrikam x blue-XXL-Olive,697,13,13,12,0.96,1,Pending,1,2020-07-13T02:32:09.000Z,Contoso,0,0.0,Fabrikam x blue,49,Fabrikam
+9697,new-Default-simple-Fabrikam m green-XXL-YellowGreen,698,306,306,291,0.19,15,Pending,1,2020-10-04T08:26:52.000Z,Contoso,0,0.0,Fabrikam m green,50,Fabrikam
+9698,new-Default-simple-Proseware m blue-X-PaleTurquoise,699,302,302,288,0.17,14,Early Delivery,1,2020-06-04T10:31:10.000Z,Contoso,0,0.0,Proseware m blue,51,Proseware
+9699,new-Default-simple-Fabrikam x white-L-Chartreuse,700,124,124,118,0.23,6,Delayed,1,2020-07-05T21:35:58.000Z,Contoso,0,0.0,Fabrikam x white,52,Fabrikam
+9700,new-Default-simple-Cronus International x white-XXL-DimGray,701,342,342,325,0.88,16,Early Delivery,1,2020-09-11T01:21:23.000Z,Contoso,0,0.0,Cronus International x white,53,Cronus
+9701,new-Default-simple-Reskit x blue-XS-DarkMagenta,702,270,270,257,0.65,13,Pending,1,2020-08-18T01:33:22.000Z,Contoso,0,0.0,Reskit x blue,54,Reskit
+9702,new-Default-simple-Fabrikam xl pink-M-Red,703,540,540,514,0.89,26,Pending,1,2020-08-24T22:05:51.000Z,Contoso,0,0.0,Fabrikam xl pink,55,Fabrikam
+9703,new-Default-simple-Cronus International xl gray-XL-Gainsboro,704,389,389,370,0.77,18,Early Delivery,1,2020-06-07T17:37:52.000Z,Contoso,0,0.0,Cronus International xl gray,56,Cronus
+9704,new-Default-simple-Fabrikam xl pink-XS-GoldenRod,705,182,182,173,0.12,9,Delayed,1,2020-06-15T07:49:03.000Z,Contoso,0,0.0,Fabrikam xl pink,57,Fabrikam
+9705,new-Default-simple-Reskit x green-XL-Lime,706,383,383,364,0.31,18,Early Delivery,1,2020-09-20T04:42:15.000Z,Contoso,0,0.0,Reskit x green,58,Reskit
+9706,new-Default-simple-Reskit m green-M-LavenderBlush,707,132,132,126,0.54,6,Pending,1,2020-06-07T12:55:55.000Z,Contoso,0,0.0,Reskit m green,59,Reskit
+9707,new-Default-simple-Cronus International m blaCronus International-M-RosyBrown,708,192,192,182,0.95,9,Pending,1,2020-06-04T19:50:34.000Z,Contoso,0,0.0,Cronus International m blaCronus International,60,Cronus
+9709,new-Default-simple-Cronus International xl white-S-Purple,710,532,532,506,0.46,25,Delayed,1,2020-06-22T00:53:31.000Z,Contoso,0,0.0,Cronus International xl white,62,Cronus
+9712,new-Default-simple-Cronus International x green-XS-AliceBlue,713,116,116,110,0.40,5,Pending,1,2020-08-01T15:05:39.000Z,Contoso,0,0.0,Cronus International x green,65,Cronus
+9713,new-Default-simple-Proseware xl blaCronus International-M-Blue,714,544,544,518,0.16,26,Early Delivery,1,2020-10-10T08:54:19.000Z,Contoso,0,0.0,Proseware xl blaCronus International,66,Proseware
+9714,new-Default-simple-Proseware xl blaCronus International-S-PapayaWhip,715,552,552,526,0.25,26,Delayed,1,2020-10-15T02:44:30.000Z,Contoso,0,0.0,Proseware xl blaCronus International,67,Proseware
+9715,new-Default-simple-Reskit m green-L-PaleGoldenRod,716,127,127,121,0.53,6,Early Delivery,1,2020-09-06T08:19:49.000Z,Contoso,0,0.0,Reskit m green,68,Reskit
+9716,new-Default-simple-Cronus International x blaCronus International-XXL-SlateGray,717,60,60,57,0.36,3,Pending,1,2020-10-22T07:57:04.000Z,Contoso,0,0.0,Cronus International x blaCronus International,69,Cronus
+9717,new-Default-simple-Fabrikam m blue-XS-DarkSlateGrey,718,290,290,275,0.42,14,Pending,1,2020-08-13T21:52:54.000Z,Contoso,0,0.0,Fabrikam m blue,70,Fabrikam
+9718,new-Default-simple-Cronus International x blue-XXL-PaleVioletRed,719,40,40,37,0.99,2,Early Delivery,1,2020-07-25T16:42:13.000Z,Contoso,0,0.0,Cronus International x blue,71,Cronus
+9719,new-Default-simple-Fabrikam xl gray-XL-DarkTurquoise,720,279,279,266,0.26,13,Delayed,1,2020-09-18T09:59:02.000Z,Contoso,0,0.0,Fabrikam xl gray,72,Fabrikam
+9720,new-Default-simple-Reskit xl gray-L-FireBriCronus International,721,150,150,143,0.13,7,Early Delivery,1,2020-06-24T12:19:20.000Z,Contoso,0,0.0,Reskit xl gray,73,Reskit
+9721,new-Default-simple-Cronus International m white-M-Linen,722,555,555,528,0.25,26,Pending,1,2020-07-12T00:06:22.000Z,Contoso,0,0.0,Cronus International m white,74,Cronus
+9723,new-Default-simple-Proseware m gray-S-Aquamarine,724,25,25,23,0.97,1,Early Delivery,1,2020-10-05T12:53:24.000Z,Contoso,0,0.0,Proseware m gray,76,Proseware
+9724,new-Default-simple-Proseware xl blue-L-Lavender,725,62,62,59,0.05,3,Delayed,1,2020-08-27T06:19:21.000Z,Contoso,0,0.0,Proseware xl blue,77,Proseware
+9725,new-Default-simple-Proseware x blue-M-Plum,726,593,593,564,0.96,28,Early Delivery,1,2020-08-07T22:20:59.000Z,Contoso,0,0.0,Proseware x blue,78,Proseware
+9726,new-Default-simple-Proseware xl gray-S-CornflowerBlue,727,472,472,448,0.95,22,Pending,1,2020-09-02T16:13:38.000Z,Contoso,0,0.0,Proseware xl gray,79,Proseware
+9728,new-Default-simple-Reskit m white-S-SeaGreen,729,173,173,165,0.02,8,Early Delivery,1,2020-06-17T06:10:59.000Z,Contoso,0,0.0,Reskit m white,81,Reskit
+9730,new-Default-simple-Fabrikam xl pink-XXL-MistyRose,731,515,515,491,0.00,25,Early Delivery,1,2020-09-21T14:39:54.000Z,Contoso,0,0.0,Fabrikam xl pink,83,Fabrikam
+9731,new-Default-simple-Fabrikam xl white-S-GreenYellow,732,514,514,489,0.60,24,Pending,1,2020-07-21T19:29:42.000Z,Contoso,0,0.0,Fabrikam xl white,84,Fabrikam
+9732,new-Default-simple-Cronus International m pink-XXL-LemonChiffon,733,108,108,102,0.36,5,Pending,1,2020-08-05T01:43:09.000Z,Contoso,0,0.0,Cronus International m pink,85,Cronus
+9733,new-Default-simple-Proseware xl blue-L-MediumBlue,734,254,254,241,0.38,12,Early Delivery,1,2020-07-24T11:42:57.000Z,Contoso,0,0.0,Proseware xl blue,86,Proseware
+9734,new-Default-simple-Fabrikam m blue-X-LightBlue,735,188,188,179,0.58,9,Delayed,1,2020-10-08T23:21:49.000Z,Contoso,0,0.0,Fabrikam m blue,87,Fabrikam
+9735,new-Default-simple-Cronus International x green-XXL-LightGray,736,530,530,504,0.75,25,Early Delivery,1,2020-08-31T11:56:35.000Z,Contoso,0,0.0,Cronus International x green,88,Cronus
+9736,new-Default-simple-Fabrikam x gray-L-DeepSkyBlue,737,577,577,549,0.88,27,Pending,1,2020-07-27T01:22:21.000Z,Contoso,0,0.0,Fabrikam x gray,89,Fabrikam
+9737,new-Default-simple-Fabrikam x gray-XL-Beige,738,151,151,143,0.22,7,Pending,1,2020-07-10T14:36:27.000Z,Contoso,0,0.0,Fabrikam x gray,90,Fabrikam
+9738,new-Default-simple-Fabrikam xl pink-L-OliveDrab,739,352,352,335,0.29,17,Early Delivery,1,2020-10-01T04:24:37.000Z,Contoso,0,0.0,Fabrikam xl pink,91,Fabrikam
+9740,new-Default-simple-Proseware m green-M-LimeGreen,741,421,421,400,0.96,20,Early Delivery,1,2020-09-28T08:49:08.000Z,Contoso,0,0.0,Proseware m green,93,Proseware
+9742,new-Default-simple-Proseware m white-XS-Pink,743,235,235,224,0.51,11,Pending,1,2020-09-19T02:24:25.000Z,Contoso,0,0.0,Proseware m white,95,Proseware
+9743,new-Default-simple-Proseware m green-XL-CadetBlue,744,32,32,30,0.87,2,Early Delivery,1,2020-06-19T21:39:15.000Z,Contoso,0,0.0,Proseware m green,96,Proseware
+9745,new-Default-simple-Cronus International xl green-X-Magenta,746,563,563,536,0.92,27,Early Delivery,1,2020-08-30T08:50:32.000Z,Contoso,0,0.0,Cronus International xl green,98,Cronus
+9747,new-Default-simple-Proseware m gray-X-LightSlateGrey,748,64,64,61,0.18,3,Pending,1,2020-10-16T12:35:08.000Z,Contoso,0,0.0,Proseware m gray,100,Proseware
+9748,new-Default-simple-Reskit x green-M-BlanchedAlmond,749,494,494,470,0.19,24,Early Delivery,1,2020-08-03T13:42:22.000Z,Contoso,0,0.0,Reskit x green,101,Reskit
+9749,new-Default-configurable-Reskit x blaCronus International-X-DarkOrchid,750,"","",545,NULL,27,Delayed,1,2020-08-28T04:17:18.000Z,Contoso,0,0.0,Reskit x blaCronus International,102,Reskit
+9750,new-Default-simple-Fabrikam m blue-XXL-Cyan,751,383,383,364,0.59,18,Early Delivery,1,2020-08-27T13:58:49.000Z,Contoso,0,0.0,Fabrikam m blue,103,Fabrikam
+9751,new-Default-simple-Proseware m pink-S-Darkorange,752,339,339,322,0.37,16,Pending,1,2020-09-29T04:39:14.000Z,Contoso,0,0.0,Proseware m pink,104,Proseware
+9752,new-Default-simple-Fabrikam xl blaCronus International-L-PowderBlue,753,283,283,269,0.53,13,Pending,1,2020-08-10T15:44:38.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,105,Fabrikam
+9753,new-Default-simple-Fabrikam x blue-XS-IndianRed,754,45,45,42,0.21,2,Early Delivery,1,2020-07-17T00:32:07.000Z,Contoso,0,0.0,Fabrikam x blue,106,Fabrikam
+9754,new-Default-simple-Reskit xl green-X-Indigo,755,589,589,560,0.91,28,Delayed,1,2020-06-12T09:16:38.000Z,Contoso,0,0.0,Reskit xl green,107,Reskit
+9756,new-Default-simple-Reskit xl gray-XS-Salmon,757,577,577,549,0.63,27,Pending,1,2020-07-23T16:31:10.000Z,Contoso,0,0.0,Reskit xl gray,109,Reskit
+9757,new-Default-simple-Reskit x pink-XS-MediumSlateBlue,758,507,507,483,0.29,24,Pending,1,2020-09-19T09:12:26.000Z,Contoso,0,0.0,Reskit x pink,110,Reskit
+9758,new-Default-simple-Cronus International xl green-M-FloralWhite,759,350,350,332,0.93,17,Early Delivery,1,2020-08-11T11:18:31.000Z,Contoso,0,0.0,Cronus International xl green,111,Cronus
+9759,new-Default-simple-Fabrikam xl blaCronus International-M-DodgerBlue,760,190,190,180,0.71,9,Delayed,1,2020-09-07T09:28:04.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,112,Fabrikam
+9760,new-Default-simple-Fabrikam x pink-S-HoneyDew,761,509,509,485,0.17,24,Early Delivery,1,2020-06-18T12:28:37.000Z,Contoso,0,0.0,Fabrikam x pink,113,Fabrikam
+9761,new-Default-simple-Fabrikam x white-XXL-PaleGreen,762,603,603,574,0.37,29,Pending,1,2020-07-30T18:23:12.000Z,Contoso,0,0.0,Fabrikam x white,114,Fabrikam
+9763,new-Default-configurable-Fabrikam xl green-X-Orchid,764,238,238,225,0.92,11,Early Delivery,1,2020-06-14T03:30:15.000Z,Contoso,0,0.0,Fabrikam xl green,116,Fabrikam
+9764,new-Default-simple-Proseware xl pink-X-Crimson,765,35,35,33,0.40,2,Delayed,1,2020-07-31T10:13:37.000Z,Contoso,0,0.0,Proseware xl pink,117,Proseware
+9765,new-Default-simple-Fabrikam x green-L-SandyBrown,766,411,411,391,0.46,20,Early Delivery,1,2020-08-01T09:57:30.000Z,Contoso,0,0.0,Fabrikam x green,118,Fabrikam
+9767,new-Default-simple-Fabrikam x blaCronus International-XS-Ivory,768,473,473,450,0.65,22,Pending,1,2020-06-09T03:22:42.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,120,Fabrikam
+9770,new-Default-configurable-Reskit x white-X-SlateBlue,771,152,152,144,0.51,7,Early Delivery,1,2020-07-12T06:57:28.000Z,Contoso,0,0.0,Reskit x white,123,Reskit
+9771,new-Default-simple-Proseware x white-M-DarkSlateGray,772,531,531,506,0.65,25,Pending,1,2020-09-12T17:20:37.000Z,Contoso,0,0.0,Proseware x white,124,Proseware
+9773,new-Default-simple-Reskit x blaCronus International-XXL-Wheat,774,331,331,315,0.13,16,Early Delivery,1,2020-06-29T16:45:09.000Z,Contoso,0,0.0,Reskit x blaCronus International,126,Reskit
+9774,new-Default-simple-Proseware x white-L-Violet,775,485,485,461,0.59,23,Delayed,1,2020-10-21T01:09:54.000Z,Contoso,0,0.0,Proseware x white,127,Proseware
+9776,new-Default-simple-Proseware xl green-XXL-LightYellow,777,335,335,319,0.29,16,Pending,1,2020-08-22T21:41:57.000Z,Contoso,0,0.0,Proseware xl green,129,Proseware
+9777,new-Default-simple-Proseware x blaCronus International-S-NavajoWhite,778,275,275,262,0.74,13,Pending,1,2020-06-07T11:22:56.000Z,Contoso,0,0.0,Proseware x blaCronus International,130,Proseware
+9778,new-Default-simple-Proseware m gray-X-BlueViolet,779,248,248,236,0.49,12,Early Delivery,1,2020-07-06T11:29:00.000Z,Contoso,0,0.0,Proseware m gray,131,Proseware
+9780,new-Default-simple-Fabrikam m pink-M-Maroon,781,137,137,130,0.13,7,Early Delivery,1,2020-09-10T11:57:45.000Z,Contoso,0,0.0,Fabrikam m pink,133,Fabrikam
+9782,new-Default-simple-Reskit xl blue-XXL-SkyBlue,783,271,271,257,0.76,13,Pending,1,2020-07-06T04:50:19.000Z,Contoso,0,0.0,Reskit xl blue,135,Reskit
+9784,new-Default-simple-Fabrikam xl pink-XS-Gold,785,17,17,15,0.43,1,Delayed,1,2020-07-29T13:47:34.000Z,Contoso,0,0.0,Fabrikam xl pink,137,Fabrikam
+9785,new-Default-simple-Fabrikam x blaCronus International-L-Cornsilk,786,178,178,169,0.41,8,Early Delivery,1,2020-10-23T10:00:39.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,138,Fabrikam
+9786,new-Default-simple-Proseware x gray-S-Coral,787,228,228,217,0.47,11,Pending,1,2020-10-11T03:45:03.000Z,Contoso,0,0.0,Proseware x gray,139,Proseware
+9787,new-Default-simple-Reskit m blue-S-RoyalBlue,788,72,72,68,0.38,3,Pending,1,2020-06-20T01:11:01.000Z,Contoso,0,0.0,Reskit m blue,140,Reskit
+9788,new-Default-simple-Fabrikam xl white-L-HotPink,789,270,270,257,0.45,13,Early Delivery,1,2020-07-13T02:26:19.000Z,Contoso,0,0.0,Fabrikam xl white,141,Fabrikam
+9789,new-Default-simple-Fabrikam x gray-XS-Tan,790,398,398,379,0.27,19,Delayed,1,2020-08-08T22:06:48.000Z,Contoso,0,0.0,Fabrikam x gray,142,Fabrikam
+9792,new-Default-simple-Proseware m blue-L-SaddleBrown,793,421,421,400,0.96,20,Pending,1,2020-09-29T03:17:56.000Z,Contoso,0,0.0,Proseware m blue,1,Proseware
+9793,new-Default-simple-Reskit x blue-L-DarkCyan,794,165,165,157,0.51,8,Early Delivery,1,2020-06-24T18:56:32.000Z,Contoso,0,0.0,Reskit x blue,2,Reskit
+9794,new-Default-configurable-Proseware xl blaCronus International-XL-LightSteelBlue,795,402,402,383,0.12,19,Delayed,1,2020-06-09T11:28:27.000Z,Contoso,0,0.0,Proseware xl blaCronus International,3,Proseware
+9795,new-Default-simple-Reskit m blaCronus International-XL-Sienna,796,421,421,401,0.02,20,Early Delivery,1,2020-07-30T14:25:55.000Z,Contoso,0,0.0,Reskit m blaCronus International,4,Reskit
+9796,new-Default-simple-Proseware m blaCronus International-X-DarkGreen,797,443,443,422,0.53,21,Pending,1,2020-08-15T02:20:41.000Z,Contoso,0,0.0,Proseware m blaCronus International,5,Proseware
+9797,new-Default-simple-Fabrikam xl pink-L-LightCyan,798,608,608,578,0.93,29,Pending,1,2020-09-05T22:54:09.000Z,Contoso,0,0.0,Fabrikam xl pink,6,Fabrikam
+9798,new-Default-simple-Proseware x green-S-OrangeRed,799,595,595,567,0.11,28,Early Delivery,1,2020-09-19T11:25:37.000Z,Contoso,0,0.0,Proseware x green,7,Proseware
+9800,new-Default-simple-Proseware x gray-M-SteelBlue,801,145,145,137,0.25,7,Early Delivery,1,2020-07-28T05:17:25.000Z,Contoso,0,0.0,Proseware x gray,9,Proseware
+9801,new-Default-simple-Proseware x blue-XS-DarkGrey,802,615,615,586,0.27,29,Pending,1,2020-09-19T07:00:31.000Z,Contoso,0,0.0,Proseware x blue,10,Proseware
+9802,new-Default-simple-Proseware xl pink-L-Yellow,803,315,315,300,0.06,15,Pending,1,2020-10-15T03:02:38.000Z,Contoso,0,0.0,Proseware xl pink,11,Proseware
+9803,new-Default-simple-Fabrikam x pink-L-Azure,804,447,447,425,0.60,21,Early Delivery,1,2020-06-19T22:54:28.000Z,Contoso,0,0.0,Fabrikam x pink,12,Fabrikam
+9804,new-Default-simple-Proseware x pink-XL-WhiteSmoke,805,416,416,396,0.69,20,Delayed,1,2020-07-17T21:19:49.000Z,Contoso,0,0.0,Proseware x pink,13,Proseware
+9805,new-Default-simple-Proseware m gray-X-Gray,806,475,475,452,0.95,23,Early Delivery,1,2020-10-14T20:38:12.000Z,Contoso,0,0.0,Proseware m gray,14,Proseware
+9806,new-Default-simple-Proseware xl green-XXL-Navy,807,399,399,380,0.23,19,Pending,1,2020-06-17T11:10:57.000Z,Contoso,0,0.0,Proseware xl green,15,Proseware
+9807,new-Default-configurable-Proseware m gray-XS-Grey,808,549,549,523,0.40,26,Pending,1,2020-07-12T22:59:29.000Z,Contoso,0,0.0,Proseware m gray,16,Proseware
+9808,new-Default-simple-Fabrikam m pink-X-Green,809,181,181,172,0.63,9,Early Delivery,1,2020-07-26T23:22:13.000Z,Contoso,0,0.0,Fabrikam m pink,17,Fabrikam
+9809,new-Default-simple-Fabrikam xl white-X-ForestGreen,810,311,311,295,0.60,15,Delayed,1,2020-07-21T12:57:35.000Z,Contoso,0,0.0,Fabrikam xl white,18,Fabrikam
+9810,new-Default-simple-Cronus International x green-XXL-LightPink,811,87,87,82,0.82,4,Early Delivery,1,2020-10-09T03:33:03.000Z,Contoso,0,0.0,Cronus International x green,19,Cronus
+9811,new-Default-simple-Proseware m gray-XS-Chocolate,812,324,324,308,0.89,15,Pending,1,2020-07-17T05:08:13.000Z,Contoso,0,0.0,Proseware m gray,20,Proseware
+9812,new-Default-simple-Reskit xl pink-XS-Fuchsia,813,281,281,267,0.80,13,Pending,1,2020-08-14T21:43:25.000Z,Contoso,0,0.0,Reskit xl pink,21,Reskit
+9813,new-Default-simple-Proseware m blue-XS-DarkSalmon,814,255,255,243,0.31,12,Early Delivery,1,2020-08-14T13:49:42.000Z,Contoso,0,0.0,Proseware m blue,22,Proseware
+9814,new-Default-simple-Fabrikam x white-XL-LightCoral,815,60,60,56,0.58,3,Delayed,1,2020-10-27T21:30:19.000Z,Contoso,0,0.0,Fabrikam x white,23,Fabrikam
+9815,new-Default-simple-Fabrikam xl green-L-LightSalmon,816,110,110,105,0.30,5,Early Delivery,1,2020-08-01T08:50:07.000Z,Contoso,0,0.0,Fabrikam xl green,24,Fabrikam
+9816,new-Default-simple-Fabrikam xl blue-L-White,817,332,332,315,0.61,16,Pending,1,2020-06-25T13:32:53.000Z,Contoso,0,0.0,Fabrikam xl blue,25,Fabrikam
+9817,new-Default-simple-Fabrikam x green-XS-DarkRed,818,408,408,388,0.50,19,Pending,1,2020-07-30T11:45:53.000Z,Contoso,0,0.0,Fabrikam x green,26,Fabrikam
+9818,new-Default-simple-Reskit m blue-XXL-LightSlateGray,819,237,237,225,0.49,11,Early Delivery,1,2020-09-15T13:42:40.000Z,Contoso,0,0.0,Reskit m blue,27,Reskit
+9819,new-Default-simple-Proseware xl gray-X-LightSkyBlue,820,464,464,441,1.00,22,Delayed,1,2020-08-08T00:12:58.000Z,Contoso,0,0.0,Proseware xl gray,28,Proseware
+9821,new-Default-simple-Cronus International xl white-S-GhostWhite,822,372,372,354,0.70,18,Pending,1,2020-06-15T02:22:05.000Z,Contoso,0,0.0,Cronus International xl white,30,Cronus
+9822,new-Default-simple-Fabrikam x gray-L-DarkBlue,823,224,224,213,0.20,11,Pending,1,2020-09-27T00:56:23.000Z,Contoso,0,0.0,Fabrikam x gray,31,Fabrikam
+9823,new-Default-simple-Reskit xl blue-XXL-Thistle,824,585,585,556,0.75,28,Early Delivery,1,2020-08-24T11:25:41.000Z,Contoso,0,0.0,Reskit xl blue,32,Reskit
+9824,new-Default-simple-Reskit x pink-XL-Brown,825,87,87,82,0.63,4,Delayed,1,2020-06-06T19:22:28.000Z,Contoso,0,0.0,Reskit x pink,33,Reskit
+9826,new-Default-simple-Fabrikam m pink-XXL-LightGrey,827,111,111,105,0.70,5,Pending,1,2020-10-14T14:02:40.000Z,Contoso,0,0.0,Fabrikam m pink,35,Fabrikam
+9827,new-Default-simple-Reskit x gray-S-DarkKhaki,828,399,399,379,0.63,19,Pending,1,2020-08-19T22:31:44.000Z,Contoso,0,0.0,Reskit x gray,36,Reskit
+9828,new-Default-simple-Proseware xl white-XL-Bisque,829,526,526,501,0.01,25,Early Delivery,1,2020-06-21T05:16:41.000Z,Contoso,0,0.0,Proseware xl white,37,Proseware
+9829,new-Default-simple-Fabrikam xl white-XS-Moccasin,830,58,58,55,0.56,3,Delayed,1,2020-08-22T10:43:58.000Z,Contoso,0,0.0,Fabrikam xl white,38,Fabrikam
+9830,new-Default-simple-Cronus International xl white-XL-SpringGreen,831,455,455,432,0.78,22,Early Delivery,1,2020-07-08T17:58:21.000Z,Contoso,0,0.0,Cronus International xl white,39,Cronus
+9831,new-Default-simple-Proseware m pink-XL-SlateGrey,832,334,334,318,0.37,16,Pending,1,2020-10-16T22:47:47.000Z,Contoso,0,0.0,Proseware m pink,40,Proseware
+9832,new-Default-simple-Proseware xl blaCronus International-L-DarkViolet,833,277,277,263,0.63,13,Pending,1,2020-07-18T23:57:18.000Z,Contoso,0,0.0,Proseware xl blaCronus International,41,Proseware
+9833,new-Default-simple-Proseware m green-X-DarkSlateBlue,834,262,262,249,0.08,12,Early Delivery,1,2020-06-06T20:02:07.000Z,Contoso,0,0.0,Proseware m green,42,Proseware
+9834,new-Default-simple-Fabrikam m white-XS-Orange,835,570,570,542,0.36,27,Delayed,1,2020-08-31T16:11:23.000Z,Contoso,0,0.0,Fabrikam m white,43,Fabrikam
+9835,new-Default-simple-Proseware m green-XS-DarkGray,836,147,147,139,0.87,7,Early Delivery,1,2020-10-22T04:57:13.000Z,Contoso,0,0.0,Proseware m green,44,Proseware
+9836,new-Default-simple-Cronus International xl pink-M-DarkSeaGreen,837,114,114,108,0.81,5,Pending,1,2020-10-03T00:35:51.000Z,Contoso,0,0.0,Cronus International xl pink,45,Cronus
+9837,new-Default-simple-Fabrikam m pink-X-Tomato,838,422,422,401,0.16,20,Pending,1,2020-06-17T05:55:51.000Z,Contoso,0,0.0,Fabrikam m pink,46,Fabrikam
+9838,new-Default-simple-Reskit xl green-X-Silver,839,416,416,396,0.23,20,Early Delivery,1,2020-07-04T04:33:51.000Z,Contoso,0,0.0,Reskit xl green,47,Reskit
+9839,new-Default-configurable-Cronus International x gray-X-DarkGoldenRod,840,146,146,138,0.49,7,Delayed,1,2020-08-14T17:09:21.000Z,Contoso,0,0.0,Cronus International x gray,48,Cronus
+9840,new-Default-simple-Fabrikam x blue-XXL-Olive,841,378,378,360,0.18,18,Early Delivery,1,2020-10-06T22:49:42.000Z,Contoso,0,0.0,Fabrikam x blue,49,Fabrikam
+9841,new-Default-simple-Fabrikam m green-XXL-YellowGreen,842,276,276,263,0.07,13,Pending,1,2020-08-30T04:45:34.000Z,Contoso,0,0.0,Fabrikam m green,50,Fabrikam
+9842,new-Default-simple-Proseware m blue-X-PaleTurquoise,843,515,515,490,0.76,24,Pending,1,2020-09-24T01:48:48.000Z,Contoso,0,0.0,Proseware m blue,51,Proseware
+9843,new-Default-simple-Fabrikam x white-L-Chartreuse,844,582,582,553,0.86,28,Early Delivery,1,2020-10-22T13:28:44.000Z,Contoso,0,0.0,Fabrikam x white,52,Fabrikam
+9844,new-Default-simple-Cronus International x white-XXL-DimGray,845,325,325,309,0.46,15,Delayed,1,2020-08-30T18:33:44.000Z,Contoso,0,0.0,Cronus International x white,53,Cronus
+9845,new-Default-simple-Reskit x blue-XS-DarkMagenta,846,250,250,238,0.07,12,Early Delivery,1,2020-10-23T14:17:12.000Z,Contoso,0,0.0,Reskit x blue,54,Reskit
+9846,new-Default-simple-Fabrikam xl pink-M-Red,847,413,413,393,0.65,20,Pending,1,2020-06-23T18:26:29.000Z,Contoso,0,0.0,Fabrikam xl pink,55,Fabrikam
+9847,new-Default-simple-Cronus International xl gray-XL-Gainsboro,848,180,180,171,0.65,9,Pending,1,2020-07-16T13:28:14.000Z,Contoso,0,0.0,Cronus International xl gray,56,Cronus
+9848,new-Default-simple-Fabrikam xl pink-XS-GoldenRod,849,120,120,114,0.94,6,Early Delivery,1,2020-06-27T21:26:13.000Z,Contoso,0,0.0,Fabrikam xl pink,57,Fabrikam
+9849,new-Default-simple-Reskit x green-XL-Lime,850,312,312,296,0.83,15,Delayed,1,2020-09-08T02:38:20.000Z,Contoso,0,0.0,Reskit x green,58,Reskit
+9850,new-Default-simple-Reskit m green-M-LavenderBlush,851,109,109,103,0.41,5,Early Delivery,1,2020-07-06T00:53:02.000Z,Contoso,0,0.0,Reskit m green,59,Reskit
+9851,new-Default-simple-Cronus International m blaCronus International-M-RosyBrown,852,38,38,36,0.03,2,Pending,1,2020-06-16T14:34:48.000Z,Contoso,0,0.0,Cronus International m blaCronus International,60,Cronus
+9853,new-Default-simple-Cronus International xl white-S-Purple,854,153,153,146,0.12,7,Early Delivery,1,2020-07-13T11:12:39.000Z,Contoso,0,0.0,Cronus International xl white,62,Cronus
+9856,new-Default-simple-Cronus International x green-XS-AliceBlue,857,386,386,368,0.06,18,Pending,1,2020-10-23T06:04:08.000Z,Contoso,0,0.0,Cronus International x green,65,Cronus
+9857,new-Default-simple-Proseware xl blaCronus International-M-Blue,858,356,356,339,0.31,17,Pending,1,2020-07-22T15:36:57.000Z,Contoso,0,0.0,Proseware xl blaCronus International,66,Proseware
+9858,new-Default-simple-Proseware xl blaCronus International-S-PapayaWhip,859,378,378,359,0.97,18,Early Delivery,1,2020-06-14T03:31:59.000Z,Contoso,0,0.0,Proseware xl blaCronus International,67,Proseware
+9859,new-Default-simple-Reskit m green-L-PaleGoldenRod,860,353,353,335,0.64,17,Delayed,1,2020-09-12T06:32:16.000Z,Contoso,0,0.0,Reskit m green,68,Reskit
+9860,new-Default-simple-Cronus International x blaCronus International-XXL-SlateGray,861,388,388,369,0.24,18,Early Delivery,1,2020-06-01T06:35:32.000Z,Contoso,0,0.0,Cronus International x blaCronus International,69,Cronus
+9861,new-Default-simple-Fabrikam m blue-XS-DarkSlateGrey,862,20,20,19,0.61,1,Pending,1,2020-08-28T12:39:12.000Z,Contoso,0,0.0,Fabrikam m blue,70,Fabrikam
+9862,new-Default-simple-Cronus International x blue-XXL-PaleVioletRed,863,34,34,32,0.38,2,Pending,1,2020-06-22T17:42:47.000Z,Contoso,0,0.0,Cronus International x blue,71,Cronus
+9863,new-Default-simple-Fabrikam xl gray-XL-DarkTurquoise,864,136,136,129,0.07,6,Early Delivery,1,2020-10-04T12:38:14.000Z,Contoso,0,0.0,Fabrikam xl gray,72,Fabrikam
+9864,new-Default-simple-Reskit xl gray-L-FireBriCronus International,865,459,459,437,0.82,22,Delayed,1,2020-06-13T18:59:13.000Z,Contoso,0,0.0,Reskit xl gray,73,Reskit
+9865,new-Default-simple-Cronus International m white-M-Linen,866,361,361,344,0.44,17,Early Delivery,1,2020-10-23T04:45:15.000Z,Contoso,0,0.0,Cronus International m white,74,Cronus
+9867,new-Default-simple-Proseware m gray-S-Aquamarine,868,39,39,36,0.72,2,Pending,1,2020-08-09T01:41:17.000Z,Contoso,0,0.0,Proseware m gray,76,Proseware
+9868,new-Default-simple-Proseware xl blue-L-Lavender,869,291,291,276,0.95,14,Early Delivery,1,2020-10-13T21:38:19.000Z,Contoso,0,0.0,Proseware xl blue,77,Proseware
+9869,new-Default-simple-Proseware x blue-M-Plum,870,516,516,491,0.71,25,Delayed,1,2020-06-06T16:33:05.000Z,Contoso,0,0.0,Proseware x blue,78,Proseware
+9870,new-Default-simple-Proseware xl gray-S-CornflowerBlue,871,604,604,575,0.49,29,Early Delivery,1,2020-08-29T08:14:16.000Z,Contoso,0,0.0,Proseware xl gray,79,Proseware
+9872,new-Default-simple-Reskit m white-S-SeaGreen,873,13,13,13,0.26,1,Pending,1,2020-06-27T07:12:01.000Z,Contoso,0,0.0,Reskit m white,81,Reskit
+9874,new-Default-simple-Fabrikam xl pink-XXL-MistyRose,875,90,90,85,0.82,4,Delayed,1,2020-09-01T01:23:16.000Z,Contoso,0,0.0,Fabrikam xl pink,83,Fabrikam
+9875,new-Default-simple-Fabrikam xl white-S-GreenYellow,876,526,526,500,0.91,25,Early Delivery,1,2020-10-22T01:26:52.000Z,Contoso,0,0.0,Fabrikam xl white,84,Fabrikam
+9876,new-Default-simple-Cronus International m pink-XXL-LemonChiffon,877,481,481,457,0.95,23,Pending,1,2020-07-22T00:33:17.000Z,Contoso,0,0.0,Cronus International m pink,85,Cronus
+9877,new-Default-simple-Proseware xl blue-L-MediumBlue,878,263,263,251,0.35,13,Pending,1,2020-10-05T11:27:39.000Z,Contoso,0,0.0,Proseware xl blue,86,Proseware
+9878,new-Default-simple-Fabrikam m blue-X-LightBlue,879,256,256,244,0.28,12,Early Delivery,1,2020-10-24T16:51:56.000Z,Contoso,0,0.0,Fabrikam m blue,87,Fabrikam
+9879,new-Default-simple-Cronus International x green-XXL-LightGray,880,441,441,420,0.56,21,Delayed,1,2020-06-14T05:05:16.000Z,Contoso,0,0.0,Cronus International x green,88,Cronus
+9880,new-Default-simple-Fabrikam x gray-L-DeepSkyBlue,881,292,292,278,0.40,14,Early Delivery,1,2020-08-12T20:21:03.000Z,Contoso,0,0.0,Fabrikam x gray,89,Fabrikam
+9881,new-Default-simple-Fabrikam x gray-XL-Beige,882,544,544,518,0.05,26,Pending,1,2020-08-30T00:34:25.000Z,Contoso,0,0.0,Fabrikam x gray,90,Fabrikam
+9882,new-Default-simple-Fabrikam xl pink-L-OliveDrab,883,293,293,278,0.69,14,Pending,1,2020-07-24T01:05:31.000Z,Contoso,0,0.0,Fabrikam xl pink,91,Fabrikam
+9884,new-Default-simple-Proseware m green-M-LimeGreen,885,548,548,521,0.14,26,Delayed,1,2020-07-18T09:50:56.000Z,Contoso,0,0.0,Proseware m green,93,Proseware
+9886,new-Default-simple-Proseware m white-XS-Pink,887,563,563,535,0.94,27,Pending,1,2020-10-26T13:36:18.000Z,Contoso,0,0.0,Proseware m white,95,Proseware
+9887,new-Default-simple-Proseware m green-XL-CadetBlue,888,137,137,130,0.51,6,Pending,1,2020-06-06T12:44:39.000Z,Contoso,0,0.0,Proseware m green,96,Proseware
+9889,new-Default-simple-Cronus International xl green-X-Magenta,890,198,198,188,0.81,9,Delayed,1,2020-07-19T13:16:03.000Z,Contoso,0,0.0,Cronus International xl green,98,Cronus
+9891,new-Default-simple-Proseware m gray-X-LightSlateGrey,892,374,374,355,0.50,18,Pending,1,2020-08-12T08:58:54.000Z,Contoso,0,0.0,Proseware m gray,100,Proseware
+9892,new-Default-simple-Reskit x green-M-BlanchedAlmond,893,52,52,50,0.19,2,Pending,1,2020-06-04T02:23:52.000Z,Contoso,0,0.0,Reskit x green,101,Reskit
+9893,new-Default-configurable-Reskit x blaCronus International-X-DarkOrchid,894,81,81,77,0.60,4,Early Delivery,1,2020-08-21T22:01:35.000Z,Contoso,0,0.0,Reskit x blaCronus International,102,Reskit
+9894,new-Default-simple-Fabrikam m blue-XXL-Cyan,895,377,377,358,0.24,18,Delayed,1,2020-08-14T10:33:49.000Z,Contoso,0,0.0,Fabrikam m blue,103,Fabrikam
+9895,new-Default-simple-Proseware m pink-S-Darkorange,896,377,377,359,0.58,18,Early Delivery,1,2020-07-10T10:10:29.000Z,Contoso,0,0.0,Proseware m pink,104,Proseware
+9896,new-Default-simple-Fabrikam xl blaCronus International-L-PowderBlue,897,253,253,240,0.69,12,Pending,1,2020-08-08T11:02:46.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,105,Fabrikam
+9897,new-Default-simple-Fabrikam x blue-XS-IndianRed,898,375,375,356,0.69,18,Pending,1,2020-10-20T13:10:33.000Z,Contoso,0,0.0,Fabrikam x blue,106,Fabrikam
+9898,new-Default-simple-Reskit xl green-X-Indigo,899,127,127,121,0.03,6,Early Delivery,1,2020-10-09T18:29:30.000Z,Contoso,0,0.0,Reskit xl green,107,Reskit
+9900,new-Default-simple-Reskit xl gray-XS-Salmon,901,203,203,192,0.82,10,Early Delivery,1,2020-10-25T09:06:17.000Z,Contoso,0,0.0,Reskit xl gray,109,Reskit
+9901,new-Default-simple-Reskit x pink-XS-MediumSlateBlue,902,379,379,360,0.94,18,Pending,1,2020-09-14T16:45:11.000Z,Contoso,0,0.0,Reskit x pink,110,Reskit
+9902,new-Default-simple-Cronus International xl green-M-FloralWhite,903,500,500,476,0.70,24,Pending,1,2020-08-02T15:49:55.000Z,Contoso,0,0.0,Cronus International xl green,111,Cronus
+9903,new-Default-simple-Fabrikam xl blaCronus International-M-DodgerBlue,904,207,207,197,0.23,10,Early Delivery,1,2020-06-22T04:53:07.000Z,Contoso,0,0.0,Fabrikam xl blaCronus International,112,Fabrikam
+9904,new-Default-simple-Fabrikam x pink-S-HoneyDew,905,311,311,295,0.33,15,Delayed,1,2020-06-10T18:24:04.000Z,Contoso,0,0.0,Fabrikam x pink,113,Fabrikam
+9905,new-Default-simple-Fabrikam x white-XXL-PaleGreen,906,203,203,193,0.97,10,Early Delivery,1,2020-06-27T17:16:00.000Z,Contoso,0,0.0,Fabrikam x white,114,Fabrikam
+9907,new-Default-configurable-Fabrikam xl green-X-Orchid,908,293,293,278,0.78,14,Pending,1,2020-09-19T12:38:09.000Z,Contoso,0,0.0,Fabrikam xl green,116,Fabrikam
+9908,new-Default-simple-Proseware xl pink-X-Crimson,909,71,71,67,0.43,3,Early Delivery,1,2020-09-11T09:49:23.000Z,Contoso,0,0.0,Proseware xl pink,117,Proseware
+9909,new-Default-simple-Fabrikam x green-L-SandyBrown,910,504,504,479,0.31,24,Delayed,1,2020-09-18T07:47:33.000Z,Contoso,0,0.0,Fabrikam x green,118,Fabrikam
+9911,new-Default-simple-Fabrikam x blaCronus International-XS-Ivory,912,143,143,136,0.61,7,Pending,1,2020-06-18T18:36:29.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,120,Fabrikam
+9914,new-Default-configurable-Reskit x white-X-SlateBlue,915,64,64,61,0.41,3,Delayed,1,2020-07-01T10:11:13.000Z,Contoso,0,0.0,Reskit x white,123,Reskit
+9915,new-Default-simple-Proseware x white-M-DarkSlateGray,916,444,444,423,0.23,21,Early Delivery,1,2020-08-02T06:01:06.000Z,Contoso,0,0.0,Proseware x white,124,Proseware
+9917,new-Default-simple-Reskit x blaCronus International-XXL-Wheat,918,409,409,389,0.92,19,Pending,1,2020-09-09T15:04:25.000Z,Contoso,0,0.0,Reskit x blaCronus International,126,Reskit
+9918,new-Default-simple-Proseware x white-L-Violet,919,187,187,178,0.19,9,Early Delivery,1,2020-08-18T02:47:18.000Z,Contoso,0,0.0,Proseware x white,127,Proseware
+9920,new-Default-simple-Proseware xl green-XXL-LightYellow,921,397,397,378,0.07,19,Early Delivery,1,2020-10-27T15:08:57.000Z,Contoso,0,0.0,Proseware xl green,129,Proseware
+9921,new-Default-simple-Proseware x blaCronus International-S-NavajoWhite,922,547,547,521,0.51,26,Pending,1,2020-10-23T16:26:15.000Z,Contoso,0,0.0,Proseware x blaCronus International,130,Proseware
+9922,new-Default-simple-Proseware m gray-X-BlueViolet,923,197,197,187,0.75,9,Pending,1,2020-06-12T14:53:35.000Z,Contoso,0,0.0,Proseware m gray,131,Proseware
+9924,new-Default-simple-Fabrikam m pink-M-Maroon,925,162,162,154,0.13,8,Delayed,1,2020-06-07T17:40:01.000Z,Contoso,0,0.0,Fabrikam m pink,133,Fabrikam
+9926,new-Default-simple-Reskit xl blue-XXL-SkyBlue,927,464,464,442,0.91,22,Pending,1,2020-06-06T05:13:09.000Z,Contoso,0,0.0,Reskit xl blue,135,Reskit
+9928,new-Default-simple-Fabrikam xl pink-XS-Gold,929,338,338,322,0.26,16,Early Delivery,1,2020-09-18T09:59:29.000Z,Contoso,0,0.0,Fabrikam xl pink,137,Fabrikam
+9929,new-Default-simple-Fabrikam x blaCronus International-L-Cornsilk,930,330,330,313,0.67,16,Delayed,1,2020-07-23T15:12:46.000Z,Contoso,0,0.0,Fabrikam x blaCronus International,138,Fabrikam
+9930,new-Default-simple-Proseware x gray-S-Coral,931,293,293,278,0.76,14,Early Delivery,1,2020-08-14T14:24:05.000Z,Contoso,0,0.0,Proseware x gray,139,Proseware
+9931,new-Default-simple-Reskit m blue-S-RoyalBlue,932,122,122,116,0.23,6,Pending,1,2020-08-01T11:22:44.000Z,Contoso,0,0.0,Reskit m blue,140,Reskit
+9932,new-Default-simple-Fabrikam xl white-L-HotPink,933,140,140,133,0.21,7,Pending,1,2020-10-26T16:58:09.000Z,Contoso,0,0.0,Fabrikam xl white,141,Fabrikam
+9933,new-Default-simple-Fabrikam x gray-XS-Tan,934,292,292,278,0.25,14,Early Delivery,1,2020-07-18T03:03:28.000Z,Contoso,0,0.0,Fabrikam x gray,142,Fabrikam
+9936,new-Default-simple-Proseware m blue-L-SaddleBrown,937,67,67,63,0.74,3,Pending,1,2020-06-28T08:44:30.000Z,Contoso,0,0.0,Proseware m blue,1,Proseware
+9937,new-Default-simple-Reskit x blue-L-DarkCyan,938,90,90,85,0.46,4,Pending,1,2020-07-02T20:12:23.000Z,Contoso,0,0.0,Reskit x blue,2,Reskit
+9938,new-Default-configurable-Proseware xl blaCronus International-XL-LightSteelBlue,939,553,553,526,0.35,26,Early Delivery,1,2020-08-03T08:14:17.000Z,Contoso,0,0.0,Proseware xl blaCronus International,3,Proseware
+9939,new-Default-simple-Reskit m blaCronus International-XL-Sienna,940,370,370,352,0.46,18,Delayed,1,2020-06-21T16:34:55.000Z,Contoso,0,0.0,Reskit m blaCronus International,4,Reskit
+9940,new-Default-simple-Proseware m blaCronus International-X-DarkGreen,941,418,418,398,0.86,20,Early Delivery,1,2020-07-03T20:00:45.000Z,Contoso,0,0.0,Proseware m blaCronus International,5,Proseware
+9941,new-Default-simple-Fabrikam xl pink-L-LightCyan,942,294,294,280,0.18,14,Pending,1,2020-07-08T00:58:08.000Z,Contoso,0,0.0,Fabrikam xl pink,6,Fabrikam
+9942,new-Default-simple-Proseware x green-S-OrangeRed,943,"","",69,NULL,3,Pending,1,2020-07-26T02:55:15.000Z,Contoso,0,0.0,Proseware x green,7,Proseware
+9944,new-Default-simple-Proseware x gray-M-SteelBlue,945,318,318,303,0.51,15,Delayed,1,2020-07-27T10:54:01.000Z,Contoso,0,0.0,Proseware x gray,9,Proseware
+9945,new-Default-simple-Proseware x blue-XS-DarkGrey,946,237,237,226,0.20,11,Early Delivery,1,2020-10-12T04:16:35.000Z,Contoso,0,0.0,Proseware x blue,10,Proseware
+9946,new-Default-simple-Proseware xl pink-L-Yellow,947,274,274,260,0.14,13,Pending,1,2020-06-15T10:13:54.000Z,Contoso,0,0.0,Proseware xl pink,11,Proseware
+9947,new-Default-simple-Fabrikam x pink-L-Azure,948,115,115,109,0.19,5,Pending,1,2020-06-04T03:57:09.000Z,Contoso,0,0.0,Fabrikam x pink,12,Fabrikam
+9948,new-Default-simple-Proseware x pink-XL-WhiteSmoke,949,26,26,25,0.08,1,Early Delivery,1,2020-07-22T11:50:21.000Z,Contoso,0,0.0,Proseware x pink,13,Proseware
+9949,new-Default-simple-Proseware m gray-X-Gray,950,556,556,529,0.47,26,Delayed,1,2020-06-13T04:32:43.000Z,Contoso,0,0.0,Proseware m gray,14,Proseware
+9950,new-Default-simple-Proseware xl green-XXL-Navy,951,45,45,42,0.78,2,Early Delivery,1,2020-06-04T22:36:48.000Z,Contoso,0,0.0,Proseware xl green,15,Proseware
+9951,new-Default-configurable-Proseware m gray-XS-Grey,952,468,468,445,0.36,22,Pending,1,2020-09-28T19:58:20.000Z,Contoso,0,0.0,Proseware m gray,16,Proseware
+9952,new-Default-simple-Fabrikam m pink-X-Green,953,205,205,195,0.04,10,Pending,1,2020-08-03T10:23:14.000Z,Contoso,0,0.0,Fabrikam m pink,17,Fabrikam
+9953,new-Default-simple-Fabrikam xl white-X-ForestGreen,954,106,106,100,0.66,5,Early Delivery,1,2020-10-19T02:53:48.000Z,Contoso,0,0.0,Fabrikam xl white,18,Fabrikam
+9954,new-Default-simple-Cronus International x green-XXL-LightPink,955,193,193,184,0.50,9,Delayed,1,2020-09-10T22:39:31.000Z,Contoso,0,0.0,Cronus International x green,19,Cronus
+9955,new-Default-simple-Proseware m gray-XS-Chocolate,956,265,265,252,0.76,13,Early Delivery,1,2020-06-02T16:40:01.000Z,Contoso,0,0.0,Proseware m gray,20,Proseware
+9956,new-Default-simple-Reskit xl pink-XS-Fuchsia,957,186,186,176,0.96,9,Pending,1,2020-09-03T01:51:35.000Z,Contoso,0,0.0,Reskit xl pink,21,Reskit
+9957,new-Default-simple-Proseware m blue-XS-DarkSalmon,958,404,404,384,0.51,19,Pending,1,2020-10-07T07:27:40.000Z,Contoso,0,0.0,Proseware m blue,22,Proseware
+9958,new-Default-simple-Fabrikam x white-XL-LightCoral,959,52,52,49,0.06,2,Early Delivery,1,2020-06-15T11:13:06.000Z,Contoso,0,0.0,Fabrikam x white,23,Fabrikam
+9959,new-Default-simple-Fabrikam xl green-L-LightSalmon,960,81,81,76,0.88,4,Delayed,1,2020-10-23T19:08:42.000Z,Contoso,0,0.0,Fabrikam xl green,24,Fabrikam
+9960,new-Default-simple-Fabrikam xl blue-L-White,961,339,339,322,0.56,16,Early Delivery,1,2020-06-22T12:02:51.000Z,Contoso,0,0.0,Fabrikam xl blue,25,Fabrikam
+9961,new-Default-simple-Fabrikam x green-XS-DarkRed,962,100,100,95,0.32,5,Pending,1,2020-07-15T22:12:20.000Z,Contoso,0,0.0,Fabrikam x green,26,Fabrikam
+9962,new-Default-simple-Reskit m blue-XXL-LightSlateGray,963,579,579,552,0.35,28,Pending,1,2020-06-02T02:38:40.000Z,Contoso,0,0.0,Reskit m blue,27,Reskit
+9963,new-Default-simple-Proseware xl gray-X-LightSkyBlue,964,362,362,344,0.71,17,Early Delivery,1,2020-07-20T18:36:36.000Z,Contoso,0,0.0,Proseware xl gray,28,Proseware
+9965,new-Default-simple-Cronus International xl white-S-GhostWhite,966,389,389,370,0.67,18,Early Delivery,1,2020-08-22T14:59:17.000Z,Contoso,0,0.0,Cronus International xl white,30,Cronus
+9966,new-Default-simple-Fabrikam x gray-L-DarkBlue,967,17,17,16,0.07,1,Pending,1,2020-06-23T01:38:20.000Z,Contoso,0,0.0,Fabrikam x gray,31,Fabrikam
+9967,new-Default-simple-Reskit xl blue-XXL-Thistle,968,"","",409,NULL,20,Pending,1,2020-06-11T19:41:31.000Z,Contoso,0,0.0,Reskit xl blue,32,Reskit
+9968,new-Default-simple-Reskit x pink-XL-Brown,969,301,301,286,0.30,14,Early Delivery,1,2020-10-12T02:27:43.000Z,Contoso,0,0.0,Reskit x pink,33,Reskit
+9970,new-Default-simple-Fabrikam m pink-XXL-LightGrey,971,378,378,359,0.40,18,Early Delivery,1,2020-07-05T21:16:35.000Z,Contoso,0,0.0,Fabrikam m pink,35,Fabrikam
+9971,new-Default-simple-Reskit x gray-S-DarkKhaki,972,263,263,250,0.76,13,Pending,1,2020-06-04T15:21:17.000Z,Contoso,0,0.0,Reskit x gray,36,Reskit
+9972,new-Default-simple-Proseware xl white-XL-Bisque,973,483,483,459,0.68,23,Pending,1,2020-07-08T06:50:08.000Z,Contoso,0,0.0,Proseware xl white,37,Proseware
+9973,new-Default-simple-Fabrikam xl white-XS-Moccasin,974,440,440,419,0.78,21,Early Delivery,1,2020-07-28T10:12:23.000Z,Contoso,0,0.0,Fabrikam xl white,38,Fabrikam
+9974,new-Default-simple-Cronus International xl white-XL-SpringGreen,975,"","",229,NULL,11,Delayed,1,2020-09-18T19:34:55.000Z,Contoso,0,0.0,Cronus International xl white,39,Cronus
+9975,new-Default-simple-Proseware m pink-XL-SlateGrey,976,105,105,100,0.84,5,Early Delivery,1,2020-09-20T14:10:48.000Z,Contoso,0,0.0,Proseware m pink,40,Proseware
+9976,new-Default-simple-Proseware xl blaCronus International-L-DarkViolet,977,474,474,451,0.46,23,Pending,1,2020-08-29T13:31:00.000Z,Contoso,0,0.0,Proseware xl blaCronus International,41,Proseware
+9977,new-Default-simple-Proseware m green-X-DarkSlateBlue,978,240,240,229,0.33,11,Pending,1,2020-08-03T11:53:27.000Z,Contoso,0,0.0,Proseware m green,42,Proseware
+9978,new-Default-simple-Fabrikam m white-XS-Orange,979,397,397,378,0.75,19,Early Delivery,1,2020-06-30T21:28:13.000Z,Contoso,0,0.0,Fabrikam m white,43,Fabrikam
+9979,new-Default-simple-Proseware m green-XS-DarkGray,980,544,544,518,0.11,26,Delayed,1,2020-06-26T13:23:25.000Z,Contoso,0,0.0,Proseware m green,44,Proseware
+9980,new-Default-simple-Cronus International xl pink-M-DarkSeaGreen,981,580,580,551,1.00,28,Early Delivery,1,2020-06-03T13:01:27.000Z,Contoso,0,0.0,Cronus International xl pink,45,Cronus
+9981,new-Default-simple-Fabrikam m pink-X-Tomato,982,375,375,357,0.55,18,Pending,1,2020-06-03T01:15:59.000Z,Contoso,0,0.0,Fabrikam m pink,46,Fabrikam
+9982,new-Default-simple-Reskit xl green-X-Silver,983,529,529,503,0.92,25,Pending,1,2020-07-15T21:20:04.000Z,Contoso,0,0.0,Reskit xl green,47,Reskit
+9983,new-Default-configurable-Cronus International x gray-X-DarkGoldenRod,984,388,388,369,0.94,18,Early Delivery,1,2020-09-06T05:26:45.000Z,Contoso,0,0.0,Cronus International x gray,48,Cronus
+9984,new-Default-simple-Fabrikam x blue-XXL-Olive,985,285,285,270,0.83,14,Delayed,1,2020-07-19T16:35:57.000Z,Contoso,0,0.0,Fabrikam x blue,49,Fabrikam
+9985,new-Default-simple-Fabrikam m green-XXL-YellowGreen,986,450,450,428,0.52,21,Early Delivery,1,2020-09-15T18:25:44.000Z,Contoso,0,0.0,Fabrikam m green,50,Fabrikam
+9986,new-Default-simple-Proseware m blue-X-PaleTurquoise,987,520,520,495,0.48,25,Pending,1,2020-10-29T00:59:29.000Z,Contoso,0,0.0,Proseware m blue,51,Proseware
+9987,new-Default-simple-Fabrikam x white-L-Chartreuse,988,41,41,39,0.30,2,Pending,1,2020-06-08T14:04:20.000Z,Contoso,0,0.0,Fabrikam x white,52,Fabrikam
+9988,new-Default-simple-Cronus International x white-XXL-DimGray,989,103,103,97,0.71,5,Early Delivery,1,2020-09-06T04:23:56.000Z,Contoso,0,0.0,Cronus International x white,53,Cronus
+9989,new-Default-simple-Reskit x blue-XS-DarkMagenta,990,590,590,561,0.58,28,Delayed,1,2020-06-18T03:18:57.000Z,Contoso,0,0.0,Reskit x blue,54,Reskit
+9990,new-Default-simple-Fabrikam xl pink-M-Red,991,355,355,337,0.72,17,Early Delivery,1,2020-06-26T01:44:16.000Z,Contoso,0,0.0,Fabrikam xl pink,55,Fabrikam
+9991,new-Default-simple-Cronus International xl gray-XL-Gainsboro,992,284,284,270,0.49,14,Pending,1,2020-07-22T01:16:50.000Z,Contoso,0,0.0,Cronus International xl gray,56,Cronus
+9992,new-Default-simple-Fabrikam xl pink-XS-GoldenRod,993,50,50,47,0.36,2,Pending,1,2020-06-18T08:59:17.000Z,Contoso,0,0.0,Fabrikam xl pink,57,Fabrikam
+9993,new-Default-simple-Reskit x green-XL-Lime,994,471,471,448,0.76,22,Early Delivery,1,2020-08-10T13:05:34.000Z,Contoso,0,0.0,Reskit x green,58,Reskit
+9994,new-Default-simple-Reskit m green-M-LavenderBlush,995,36,36,34,0.67,2,Delayed,1,2020-10-30T04:32:03.000Z,Contoso,0,0.0,Reskit m green,59,Reskit
+9995,new-Default-simple-Cronus International m blaCronus International-M-RosyBrown,996,323,323,307,0.59,15,Early Delivery,1,2020-10-18T21:48:24.000Z,Contoso,0,0.0,Cronus International m blaCronus International,60,Cronus
+9997,new-Default-simple-Cronus International xl white-S-Purple,998,330,330,314,0.13,16,Pending,1,2020-06-06T08:18:38.000Z,Contoso,0,0.0,Cronus International xl white,62,Cronus
+10000,new-Default-simple-Cronus International x green-XS-AliceBlue,1,226,226,214,0.86,11,Early Delivery,1,2020-09-20T02:38:15.000Z,Contoso,0,0.0,Cronus International x green,65,Cronus

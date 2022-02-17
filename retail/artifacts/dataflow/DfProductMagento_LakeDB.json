@@ -1,0 +1,52 @@
+{
+    "name": "DfProductMagento_LakeDB",
+    "properties": {
+        "folder": {
+            "name": "Load WWI And Magento Data To LakeDB"
+        },
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "MagentoProductData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "MagentoProducts"
+                }
+            ],
+            "sinks": [
+                {
+                    "name": "Product"
+                },
+                {
+                    "name": "Brand"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "ProductRecords"
+                },
+                {
+                    "name": "GetBrandNameAndColor"
+                },
+                {
+                    "name": "GetEntityCodeForProduct"
+                },
+                {
+                    "name": "Select1"
+                },
+                {
+                    "name": "GetBrandName"
+                },
+                {
+                    "name": "GetDistinctBrand"
+                },
+                {
+                    "name": "GetBrandId"
+                }
+            ],
+            "script": "source(output(\n\t\tsku as string,\n\t\tgroup as string,\n\t\tattribute_set_code as string,\n\t\tproduct_type as string,\n\t\tcategories as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tshort_description as string,\n\t\tprice as string,\n\t\tsize as string,\n\t\tcolor as string,\n\t\tProductId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> MagentoProducts\nMagentoProducts select(mapColumn(\n\t\tProductCategories = categories,\n\t\tProductName = name,\n\t\tProductId,\n\t\tItemsku = sku,\n\t\tshort_description,\n\t\tdescription\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> ProductRecords\nProductRecords derive(BrandName = split(substring(ProductName, 0, length(ProductName)-2), \" \")[1],\n\t\tSplitCol = split(substring(ProductName, 0, length(ProductName)-2), \" \")[2],\n\t\tColorName = split(substring(ProductName, 0, length(ProductName)-0), \" \")[3]) ~> GetBrandNameAndColor\nGetBrandNameAndColor derive(EntityCode = 'Contoso') ~> GetEntityCodeForProduct\nMagentoProducts select(mapColumn(\n\t\tname,\n\t\tdescription,\n\t\tProductId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nSelect1 derive(BrandName = split(substring(name, 0, length(name)-2), \" \")[1],\n\t\tEntityCode = 'Contoso',\n\t\tDes = concat(split(substring(name, 0, length(name)-2), \" \")[1],' ','Description')) ~> GetBrandName\nGetBrandName aggregate(groupBy(BrandName,\n\t\tDes,\n\t\tEntityCode),\n\tNoOfProduct = count(ProductId)) ~> GetDistinctBrand\nGetDistinctBrand rank(asc(BrandName, true),\n\toutput(Id as long)) ~> GetBrandId\nGetEntityCodeForProduct sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tstore: 'synapse',\n\tdatabaseType: 'spark',\n\tformat: 'table',\n\tdatabase: 'WWIRetailLakeDB',\n\ttableName: 'Product',\n\trecreate:true,\n\tmapColumn(\n\t\tProductCategories,\n\t\tProductName,\n\t\tProductId,\n\t\tItemSku = Itemsku,\n\t\tProductShortDescription = short_description,\n\t\tProductDescription = description,\n\t\tBrandName,\n\t\tEntityCode\n\t)) ~> Product\nGetBrandId sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tstore: 'synapse',\n\tdatabaseType: 'spark',\n\tformat: 'table',\n\tdatabase: 'WWIRetailLakeDB',\n\ttableName: 'Brand',\n\trecreate:true,\n\tmapColumn(\n\t\tBrandName,\n\t\tBrandDescription = Des,\n\t\tEntityCode,\n\t\tBrandId = Id\n\t)) ~> Brand"
+        }
+    }
+}

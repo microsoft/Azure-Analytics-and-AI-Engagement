@@ -1,0 +1,55 @@
+{
+    "name": "DfMagentoProductDataToWWIContosoRetailLakeDB",
+    "properties": {
+        "folder": {
+            "name": "Load WWI And Magento Data To LakeDB"
+        },
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "MagentoProductData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "MagentoProducts"
+                }
+            ],
+            "sinks": [
+                {
+                    "name": "Brand"
+                },
+                {
+                    "name": "Product"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "ProductRecords"
+                },
+                {
+                    "name": "GetBrandNameAndColor"
+                },
+                {
+                    "name": "SelectBrandAttribute"
+                },
+                {
+                    "name": "GetBrandName"
+                },
+                {
+                    "name": "GetDistinctBrand"
+                },
+                {
+                    "name": "GetBrandId"
+                },
+                {
+                    "name": "GetEntityCodeForBrand"
+                },
+                {
+                    "name": "GetEntityCodeForProduct"
+                }
+            ],
+            "script": "source(output(\n\t\tsku as string,\n\t\tgroup as string,\n\t\tattribute_set_code as string,\n\t\tproduct_type as string,\n\t\tcategories as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tshort_description as string,\n\t\tprice as string,\n\t\tsize as string,\n\t\tcolor as string,\n\t\tProductId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> MagentoProducts\nMagentoProducts select(mapColumn(\n\t\tItemSku = sku,\n\t\tProductCategories = categories,\n\t\tProductName = name,\n\t\tProductDescription = description,\n\t\tProductShortDescription = short_description,\n\t\tProductId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> ProductRecords\nProductRecords derive(BrandName = split(substring(ProductName, 0, length(ProductName)-2), \" \")[1],\n\t\tSplitCol = split(substring(ProductName, 0, length(ProductName)-2), \" \")[2],\n\t\tColorName = split(substring(ProductName, 0, length(ProductName)-0), \" \")[3]) ~> GetBrandNameAndColor\nMagentoProducts select(mapColumn(\n\t\tname,\n\t\tProductId,\n\t\tdescription\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectBrandAttribute\nSelectBrandAttribute derive(BrandName = split(substring(name, 0, length(name)-2), \" \")[1],\n\t\tSize = split(substring(name, 0, length(name)-2), \" \")[2]) ~> GetBrandName\nGetBrandName aggregate(groupBy(BrandName),\n\tNoOfBrand = count(BrandName)) ~> GetDistinctBrand\nGetDistinctBrand rank(asc(BrandName, true),\n\toutput(Rank as long)) ~> GetBrandId\nGetBrandId derive(EntityCode = 'Contoso',\n\t\tBrandName = case(BrandName=='Cronus','Cronus International',BrandName)) ~> GetEntityCodeForBrand\nGetBrandNameAndColor derive(EntityCode = 'Contoso') ~> GetEntityCodeForProduct\nGetEntityCodeForBrand sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tstore: 'synapse',\n\tdatabaseType: 'spark',\n\tformat: 'table',\n\tdatabase: 'WWImportersContosoRetailLakeDB',\n\ttableName: 'BrandsList',\n\trecreate:true,\n\tinput(\n\t\tBrandId as integer,\n\t\tBrandName as string,\n\t\tBrandDescription as string,\n\t\tEntityCode as string\n\t),\n\tmapColumn(\n\t\tBrandId = Rank,\n\t\tBrandName,\n\t\tEntityCode\n\t)) ~> Brand\nGetEntityCodeForProduct sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tstore: 'synapse',\n\tdatabaseType: 'spark',\n\tformat: 'table',\n\tdatabase: 'WWImportersContosoRetailLakeDB',\n\ttableName: 'ProductsList',\n\trecreate:true,\n\tmapColumn(\n\t\tItemSku,\n\t\tProductCategories,\n\t\tProductName,\n\t\tProductDescription,\n\t\tProductShortDescription,\n\t\tProductId,\n\t\tBrandName,\n\t\tEntityCode\n\t)) ~> Product"
+        }
+    }
+}

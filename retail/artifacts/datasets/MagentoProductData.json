@@ -1,0 +1,74 @@
+{
+    "name": "MagentoProductData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synretailprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "products_configurable_improved_1.csv",
+                "folderPath": "MagentoData/Generated Data",
+                "fileSystem": "magentosource"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "sku",
+                "type": "String"
+            },
+            {
+                "name": "group",
+                "type": "String"
+            },
+            {
+                "name": "attribute_set_code",
+                "type": "String"
+            },
+            {
+                "name": "product_type",
+                "type": "String"
+            },
+            {
+                "name": "categories",
+                "type": "String"
+            },
+            {
+                "name": "name",
+                "type": "String"
+            },
+            {
+                "name": "description",
+                "type": "String"
+            },
+            {
+                "name": "short_description",
+                "type": "String"
+            },
+            {
+                "name": "price",
+                "type": "String"
+            },
+            {
+                "name": "size",
+                "type": "String"
+            },
+            {
+                "name": "color",
+                "type": "String"
+            },
+            {
+                "name": "ProductId",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

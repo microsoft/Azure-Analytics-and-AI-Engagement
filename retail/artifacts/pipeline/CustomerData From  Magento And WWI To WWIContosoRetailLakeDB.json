@@ -1,0 +1,68 @@
+{
+    "name": "CustomerData From  Magento And WWI To WWIContosoRetailLakeDB",
+    "properties": {
+        "activities": [
+            {
+                "name": "WWICustomerToWWIConstosRetailLakeDB",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [
+                    {
+                        "activity": "MagentoCustomerDataToWWIConstosRetailLakeDB",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataflow": {
+                        "referenceName": "DfWWICustomerDataToWWIContosoRetailLakeDB",
+                        "type": "DataFlowReference"
+                    },
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            },
+            {
+                "name": "MagentoCustomerDataToWWIConstosRetailLakeDB",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataflow": {
+                        "referenceName": "DfMagentoCustomerDataToWWIContosoRetailLakeDB",
+                        "type": "DataFlowReference"
+                    },
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            }
+        ],
+        "folder": {
+            "name": "Load WWIAndMagentoData In LakeDB"
+        },
+        "annotations": [],
+        "lastPublishTime": "2022-01-04T14:37:02Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}
