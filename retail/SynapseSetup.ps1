@@ -640,6 +640,129 @@ foreach($name in $pipelines)
     Add-Content log.txt $result 
 }
 
+#Creating and deploying main web app
+Add-Content log.txt "------Web app deployment------"
+Write-Host "-------Web app deployment-----------"
+$zips = @("snackable-poc")
+foreach($zip in $zips)
+{
+    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+}
+
+$spname="Retail Demo $deploymentId"
+$clientsecpwd ="Smoothie@Smoothie@2020"
+
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
+
+#https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+#Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups";
+$result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+$homeCluster = $result.Headers["home-cluster-uri"]
+#$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
+
+RefreshTokens
+$url = "$homeCluster/metadata/tenantsettings"
+$post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer $powerbiToken")
+$headers.Add("X-PowerBI-User-Admin", "true")
+#$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+$post = "{
+    `"identifier`":`"$($sp)`",
+    `"groupUserAccessRight`":`"Admin`",
+    `"principalType`":`"App`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+
+#get the power bi app...
+$powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
+$powerBiAppId = $powerBIApp.Id;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"User.Read Directory.AccessAsUser.All`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
+				
+(Get-Content -path snackable-poc/appsettings.json -Raw) | Foreach-Object { $_ `
+                -replace '#WORKSPACE_ID#', $wsId`
+				-replace '#APP_ID#', $appId`
+				-replace '#APP_SECRET#', $clientsecpwd`
+				-replace '#TENANT_ID#', $tenantId`				
+        } | Set-Content -Path snackable-poc/appsettings.json
+
+$filepath="./snackable-poc/wwwroot/config.js"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name)
+Set-Content -Path $filepath -Value $item 
+
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
+$reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+$reportList = $reportList.Value
+
+#update all th report ids in the poc web app...
+$ht = new-object system.collections.hashtable   
+$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
+$ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
+$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
+$ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
+$ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
+$ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
+$ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
+
+#$ht.add("#SPEECH_REGION#", $location)
+
+$filePath = "./snackable-poc/wwwroot/config.js";
+Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
+
+Compress-Archive -Path "./snackable-poc/*" -DestinationPath "./snackable-poc.zip"
+
+az webapp stop --name $app_retaildemo_name --resource-group $rgName
+
+try{
+az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./snackable-poc.zip"
+}
+catch
+{
+}
+
+az webapp start --name $app_retaildemo_name --resource-group $rgName
+
 Add-Content log.txt "------uploading sql data------"
 Write-Host  "-------------Uploading Sql Data ---------------"
 RefreshTokens
@@ -1006,126 +1129,6 @@ foreach($report in $reportList)
 		
     start-sleep -s 5
 }
-
-$zips = @("snackable-poc")
-foreach($zip in $zips)
-{
-    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-}
-
-$spname="Retail Demo $deploymentId"
-$clientsecpwd ="Smoothie@Smoothie@2020"
-
-$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
-          
-az ad sp create --id $appId | Out-Null    
-$sp = az ad sp show --id $appId --query "objectId" -o tsv
-start-sleep -s 60
-
-#https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
-#Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
-#add PowerBI App to workspace as an admin to group
-RefreshTokens
-$url = "https://api.powerbi.com/v1.0/myorg/groups";
-$result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-$homeCluster = $result.Headers["home-cluster-uri"]
-#$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
-
-RefreshTokens
-$url = "$homeCluster/metadata/tenantsettings"
-$post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
-$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-$headers.Add("Authorization", "Bearer $powerbiToken")
-$headers.Add("X-PowerBI-User-Admin", "true")
-#$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
-
-#add PowerBI App to workspace as an admin to group
-RefreshTokens
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
-$post = "{
-    `"identifier`":`"$($sp)`",
-    `"groupUserAccessRight`":`"Admin`",
-    `"principalType`":`"App`"
-    }";
-
-$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-
-#get the power bi app...
-$powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
-$powerBiAppId = $powerBIApp.Id;
-
-#setup powerBI app...
-RefreshTokens
-$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
-$post = "{
-    `"clientId`":`"$appId`",
-    `"consentType`":`"AllPrincipals`",
-    `"resourceId`":`"$powerBiAppId`",
-    `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
-    }";
-
-$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
-
-#setup powerBI app...
-RefreshTokens
-$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
-$post = "{
-    `"clientId`":`"$appId`",
-    `"consentType`":`"AllPrincipals`",
-    `"resourceId`":`"$powerBiAppId`",
-    `"scope`":`"User.Read Directory.AccessAsUser.All`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
-    }";
-
-$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
-				
-(Get-Content -path snackable-poc/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#WORKSPACE_ID#', $wsId`
-				-replace '#APP_ID#', $appId`
-				-replace '#APP_SECRET#', $clientsecpwd`
-				-replace '#TENANT_ID#', $tenantId`				
-        } | Set-Content -Path snackable-poc/appsettings.json
-
-$filepath="./snackable-poc/wwwroot/config.js"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name)
-Set-Content -Path $filepath -Value $item 
-
-RefreshTokens
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
-$reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-$reportList = $reportList.Value
-
-#update all th report ids in the poc web app...
-$ht = new-object system.collections.hashtable   
-$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
-$ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
-$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
-$ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
-$ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
-$ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
-$ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
-
-#$ht.add("#SPEECH_REGION#", $location)
-
-$filePath = "./snackable-poc/wwwroot/config.js";
-Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
-
-Compress-Archive -Path "./snackable-poc/*" -DestinationPath "./snackable-poc.zip"
-
-az webapp stop --name $app_retaildemo_name --resource-group $rgName
-
-try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./snackable-poc.zip"
-}
-catch
-{
-}
-
-az webapp start --name $app_retaildemo_name --resource-group $rgName
 
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
