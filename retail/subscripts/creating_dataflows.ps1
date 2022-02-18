@@ -37,7 +37,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$synapseWorkspaceName = "synapsefintax$init$random"
+$synapseWorkspaceName = "synapseretail$init$random"
 
 #creating Dataflows
 Write-Host "--------Dataflows--------"
@@ -59,4 +59,5 @@ foreach ($dataflow in $workloadDataflows)
 	Start-Sleep -Seconds 10
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+	Add-Content log.txt $result
 }

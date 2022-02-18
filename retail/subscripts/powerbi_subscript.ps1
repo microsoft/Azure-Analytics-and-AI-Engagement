@@ -39,8 +39,8 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
-$synapseWorkspaceName = "synapsefintax$init$random"
-$sqlPoolName = "FinTaxDW"
+$synapseWorkspaceName = "synapseretail$init$random"
+$sqlPoolName = "RetailDW"
 
 #uploading powerbi reports
 Install-Module -Name MicrosoftPowerBIMgmt -Force
@@ -76,6 +76,7 @@ foreach($name in $reports)
         $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
 		Start-Sleep -s 5 
 		
+        Add-Content log.txt $result
         $reportId = $result.id;
 
         $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
@@ -88,7 +89,9 @@ foreach($name in $reports)
         # get dataset                         
         $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
         $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-		        
+		
+        Add-Content log.txt $dataSets
+        
         $temp.ReportId = $reportId;
 
         foreach($res in $dataSets.value)
@@ -104,16 +107,36 @@ foreach($name in $reports)
 Start-Sleep -s 60
 
 ##Establish powerbi reports dataset connections
+Add-Content log.txt "------pbi connections update------"
 Write-Host "--------- PBI connections update---------"	
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Tax Collection Realtime" -or $report.name -eq "TRF-Chicklets")
+    if($report.name -eq "Acquisition Impact Report")
     {
-       continue;     
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server_Name`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"DB_Name`",
+									`"newValue`": `"$($sqlPoolName)`"
+								},
+								{
+									`"name`": `"Source_LakeDB`",
+									`"newValue`": `"$($synapseWorkspaceName)`"
+								},
+								{
+									`"name`": `"LakeDB`",
+									`"newValue`": `"WWImportersConstosoRetailLakeDB`"
+								}
+								]
+								}"	
 	}
-	elseif($report.name -eq "Anti Corruption Report" -or $report.name -eq  "Fraud Investigator Report" -or $report.name -eq "Tax Compliance Comissioner Report")
-    {
+	elseif($report.name -eq "Finance Report")
+	{
       $body = "{
 			`"updateDetails`": [
 								{
@@ -127,52 +150,52 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "Amazon MAP" -or $report.name -eq  "Tax Collections Commissioner" -or $report.name -eq "Taxpayer Client Services Report")
+    elseif($report.name -eq "Retail Predictive Analytics")
     {
       $body = "{
 			`"updateDetails`": [
 								{
-									`"name`": `"Connection_string`",
+									`"name`": `"ServerProd`",
 									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
 								},
 								{
-									`"name`": `"Database_name`",
+									`"name`": `"DBProd`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
 								}"	
 	}
-    elseif($report.name -eq "FinTax Column Level Security (Azure Synapse)" -or $report.name -eq  "FinTax Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "FinTax Row Level Security (Azure Synapse)")
+    elseif($report.name -eq "CCO Report" )
     {
       $body = "{
 			`"updateDetails`": [
 								{
-									`"name`": `"servername`",
+									`"name`": `"Server1`",
 									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
 								},
 								{
-									`"name`": `"database`",
+									`"name`": `"Database1`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
 								}"	
 	}
-    elseif($report.name -eq "vat auditor report")
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header")
     {
       $body = "{
 			`"updateDetails`": [
 								{
-									`"name`": `"Connection_string_demo`",
+									`"name`": `"Server`",
 									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
 								},
 								{
-									`"name`": `"Database_name_demo`",
+									`"name`": `"Database`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
 								}"	
 	}
-    elseif($report.name -eq "Report Tax Finance")
+    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation")
     {
       $body = "{
 			`"updateDetails`": [
@@ -181,7 +204,7 @@ foreach($report in $reportList)
 									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
 								},
 								{
-									`"name`": `"DB_Name`",
+									`"name`": `"Database`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
@@ -194,4 +217,3 @@ foreach($report in $reportList)
 		
     start-sleep -s 5
 }
-

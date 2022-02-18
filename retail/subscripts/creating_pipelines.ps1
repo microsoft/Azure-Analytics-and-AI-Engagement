@@ -38,12 +38,12 @@ $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-$synapseWorkspaceName = "synapsefintax$init$random"
+$synapseWorkspaceName = "synapseretail$init$random"
 
 #creating Pipelines
 Write-Host "-------Pipelines-----------"
@@ -65,4 +65,5 @@ foreach($name in $pipelines)
     Start-Sleep -Seconds 10
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
+    Add-Content log.txt $result 
 }

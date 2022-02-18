@@ -40,13 +40,13 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"] 
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $subscriptionId = (Get-AzContext).Subscription.Id
-$synapseWorkspaceName = "synapsefintax$init$random"
+$synapseWorkspaceName = "synapseretail$init$random"
 $sqlUser = "labsqladmin"
 $suffix = "$random-$init"
 $keyVaultName = "kv-$suffix";
-$sqlPoolName = "FinTaxDW"
+$sqlPoolName = "RetailDW"
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
@@ -77,29 +77,32 @@ RefreshTokens
 
 $templatepath="../artifacts/linkedservices/"
 
-##AzureSynapseAnalytics1 linked services
-Write-Host "Creating linked Service: AzureSynapseAnalytics1"
-$filepath=$templatepath+"AzureSynapseAnalytics1.json"
+##SynapseDev linked services
+Write-Host "Creating linked Service: SynapseDev"
+$filepath=$templatepath+"SynapseDev.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureSynapseAnalytics1?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/SynapseDev?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
-##MarketingCampaignData linked services
-Write-Host "Creating linked Service: MarketingCampaignData"
-$filepath=$templatepath+"MarketingCampaignData.json"
+##synretailprod-WorkspaceDefaultSqlServer linked services
+Write-Host "Creating linked Service: synretailprod-WorkspaceDefaultSqlServer"
+$filepath=$templatepath+"synretailprod-WorkspaceDefaultSqlServer.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/MarketingCampaignData?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synretailprod-WorkspaceDefaultSqlServer?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
-##powerbi linked services
-Write-Host "Creating linked Service: powerbi_linked_service"
-$filepath=$templatepath+"powerbi_linked_service.json"
+##PowerBIWorkspace linked services
+Write-Host "Creating linked Service: PowerBIWorkspace"
+$filepath=$templatepath+"PowerBIWorkspace.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#WORKSPACE_ID#", $wsId)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/powerbi_linked_service?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/PowerBIWorkspace?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 ##SapHana linked services
 Write-Host "Creating linked Service: SapHana"
@@ -108,22 +111,16 @@ $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/SapHana?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-
-##SQLServer linked services
-Write-Host "Creating linked Service: synfintaxprod-WorkspaceDefaultSqlServer"
-$filepath=$templatepath+"synfintaxprod-WorkspaceDefaultSqlServer.json"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxprod-WorkspaceDefaultSqlServer?api-version=2019-06-01-preview"
-$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 ##blob linked services
-Write-Host "Creating linked Service: synfintaxprod-WorkspaceDefaultStorage"
-$filepath=$templatepath+"synfintaxprod-WorkspaceDefaultStorage.json"
+Write-Host "Creating linked Service: synretailprod-WorkspaceDefaultStorage"
+$filepath=$templatepath+"synretailprod-WorkspaceDefaultStorage.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
-$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synfintaxprod-WorkspaceDefaultStorage?api-version=2019-06-01-preview"
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/synretailprod-WorkspaceDefaultStorage?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 ##Teradata linked services
 Write-Host "Creating linked Service: Teradata"
@@ -132,9 +129,65 @@ $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "Teradata").Replace("#WORKSPACE_ID#", $wsId)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Teradata?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##Sale_DataLakeStorage linked services
+Write-Host "Creating linked Service: Sale_DataLakeStorage"
+$filepath=$templatepath+"Sale_DataLakeStorage.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Sale_DataLakeStorage?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##RetailProd linked services
+Write-Host "Creating linked Service: RetailProd"
+$filepath=$templatepath+"RetailProd.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/RetailProd?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##OracleDB linked services
+Write-Host "Creating linked Service: OracleDB"
+$filepath=$templatepath+"OracleDB.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/OracleDB?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##cosmosdbretail2prod linked services
+Write-Host "Creating linked Service: cosmosdbretail2prod"
+$filepath=$templatepath+"cosmosdbretail2prod.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#COSMOS_ACCOUNT#", $cosmosdb_retail2_name).Replace("#COSMOS_DATABASE#", $cosmos_database_name).Replace("COSMOS_ACCOUNT_KEY#", $cosmos_account_key)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/cosmosdbretail2prod?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##CDPProd linked services
+Write-Host "Creating linked Service: CDPProd"
+$filepath=$templatepath+"CDPProd.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#WORKSPACE_NAME#", $synapseWorkspaceName).Replace("#DATABASE_NAME#", $sqlPoolName).Replace("#SQL_USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/CDPProd?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##AzureMLService1 linked services
+Write-Host "Creating linked Service: AzureMLService1"
+$filepath=$templatepath+"AzureMLService1.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureMLService1?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 # AutoResolveIntegrationRuntime
 $FilePathRT="../artifacts/linkedservices/AutoResolveIntegrationRuntime.json" 
 $itemRT = Get-Content -Path $FilePathRT
 $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
+Add-Content log.txt $result

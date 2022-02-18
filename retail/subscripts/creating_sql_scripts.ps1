@@ -38,15 +38,36 @@ $rgName = read-host "Enter the resource Group Name";
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$synapseWorkspaceName = "synapsefintax$init$random"
+$sqlPoolName = "RetailDW"
+$sqlUser = "labsqladmin"
+$synapseWorkspaceName = "synapseretail$init$random"
+$suffix = "$random-$init"
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$keyVaultName = "kv-$suffix";
+
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
+$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+Write-Host "Setting Key Vault Access Policy"
+#Import-Module Az.KeyVault
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -UserPrincipalName $userName -PermissionsToSecrets set,get,list
+Set-AzKeyVaultAccessPolicy -ResourceGroupName $rgName -VaultName $keyVaultName -ObjectId $id -PermissionsToSecrets set,get,list
+
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "SqlPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$sqlPassword = $secretValueText
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-
-Write-Host "----Uploading Sql Scripts------"
+  
+#uploading Sql Scripts
+Write-Host "----Sql Scripts------"
 RefreshTokens
 $scripts=Get-ChildItem "../artifacts/sqlscripts" | Select BaseName
 $TemplatesPath="../artifacts/templates";	
@@ -54,7 +75,7 @@ $TemplatesPath="../artifacts/templates";
 
 foreach ($name in $scripts) 
 {
-    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "storedprocedures" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sql_user_fintax")
+    if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "storedprocedures" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sql_user_retail")
     {
         continue;
     }
@@ -68,6 +89,7 @@ foreach ($name in $scripts)
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
+    $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
     $query = $query.Replace("#LOCATION#", $location)
 	
     if ($Parameters -ne $null) 
@@ -84,4 +106,5 @@ foreach ($name in $scripts)
     $item = ConvertTo-Json $jsonItem -Depth 100
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/sqlscripts/$($name.BaseName)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+    Add-Content log.txt $result
 }

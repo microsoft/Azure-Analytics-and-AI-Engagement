@@ -39,21 +39,18 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
-$sqlPoolName = "FinTaxDW"
-$sparkPoolName = "Fintax"
+$synapseWorkspaceName = "synapseretail$init$random"
+$sqlPoolName = "RetailDW"
+$sparkPoolName = "Retail"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-$synapseWorkspaceName = "synapsefintax$init$random"
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-
 $amlworkspacename = "amlws-$suffix"
-$search_srch_fintax_name = "srch-fintax-$suffix";
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $search_srch_fintax_name | ConvertFrom-Json).primarykey;
 
 #Creating spark notebooks
 Write-Host "--------Spark notebooks--------"
@@ -61,16 +58,17 @@ RefreshTokens
 $notebooks=Get-ChildItem "../artifacts/notebooks" | Select BaseName 
 
 $cellParams = [ordered]@{
-        "#SQL_POOL_NAME#"       = $sqlPoolName
-        "#SUBSCRIPTION_ID#"     = $subscriptionId
-        "#RESOURCE_GROUP_NAME#" = $rgName
-        "#WORKSPACE_NAME#"  = $synapseWorkspaceName
-        "#DATA_LAKE_NAME#" = $dataLakeAccountName
-		"#SPARK_POOL_NAME#" = $sparkPoolName
-		"#STORAGE_ACCOUNT_KEY#" = $storage_account_key
-		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
-		"#LOCATION#"=$location
-		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
+    "#SQL_POOL_NAME#"       = $sqlPoolName
+    "#SUBSCRIPTION_ID#"     = $subscriptionId
+    "#RESOURCE_GROUP_NAME#" = $rgName
+    "#WORKSPACE_NAME#"  = $synapseWorkspaceName
+    "#DATA_LAKE_NAME#" = $dataLakeAccountName
+    "#SPARK_POOL_NAME#" = $sparkPoolName
+    "#STORAGE_ACCOUNT_KEY#" = $storage_account_key
+    "#COSMOS_LINKED_SERVICE#" = $cosmosdb_retail2_name
+    "#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
+    "#LOCATION#"=$location
+    "#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
 }
 
 foreach($name in $notebooks)
@@ -105,5 +103,7 @@ foreach($name in $notebooks)
 	$item = ConvertTo-Json $jsonItem -Depth 100
 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name.BaseName)?api-version=2019-06-01-preview"
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+	#waiting for operation completion
 	Start-Sleep -Seconds 10
+	Add-Content log.txt $result
 }

@@ -96,21 +96,14 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"       
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-$storageAccountName = $dataLakeAccountName
 
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-
-RefreshTokens
-$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
-$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
-
 
 #download azcopy command
 if ([System.Environment]::OSVersion.Platform -eq "Unix")
@@ -169,17 +162,63 @@ RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
-& $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/customcsv" $destinationUri --recursive
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/customcsv" $destinationUri --recursive
 
- $destinationSasKey = New-AzStorageContainerSASToken -Container "fintaxdemo" -Context $dataLakeContext -Permission rwdl
- $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/fintaxdemo$($destinationSasKey)"
- & $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/fintaxdemo" $destinationUri --recursive
+$destinationSasKey = New-AzStorageContainerSASToken -Container "retail20" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/retail20$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/retail20" $destinationUri --recursive
 
-$destinationSasKey = New-AzStorageContainerSASToken -Container "fraud-detection-sample-nyrealestate" -Context $dataLakeContext -Permission rwdl
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/fraud-detection-sample-nyrealestate$($destinationSasKey)"
-& $azCopyCommand copy "https://fintaxpoc.blob.core.windows.net/fraud-detection-sample-nyrealestate" $destinationUri --recursive
+$destinationSasKey = New-AzStorageContainerSASToken -Container "adfstagedcopytempdata" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adfstagedcopytempdata$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/adfstagedcopytempdata" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "adfstagedpolybasetempdata" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adfstagedpolybasetempdata$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/adfstagedpolybasetempdata" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "magentocontosomergerdata" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/magentocontosomergerdata$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/magentocontosomergerdata" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "market-basket" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/market-basket$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/market-basket" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "rawdata-customerinsight" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/rawdata-customerinsight$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/rawdata-customerinsight" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "retail-customerreviewsdata" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/retail-customerreviewsdata$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/retail-customerreviewsdata" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "retail-notebook-data" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/retail-notebook-data$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/retail-notebook-data" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "spatialanalysis" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/spatialanalysis$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/spatialanalysis" $destinationUri --recursive
+#
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "spatialanalysisinput" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/spatialanalysisinput$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/spatialanalysisinput" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "spatialanalysisvideo" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/spatialanalysisvideo$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/spatialanalysisvideo" $destinationUri --recursive
+#
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "storevideo" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/storevideo$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/storevideo" $destinationUri --recursive
+#
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "thermostat" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/thermostat$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/thermostat" $destinationUri --recursive
+
+#$destinationSasKey = New-AzStorageContainerSASToken -Container "videoanalyzer" -Context $dataLakeContext -Permission rwdl
+#$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/videoanalyzer$($destinationSasKey)"
+#& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/videoanalyzer" $destinationUri --recursive
 
 #storage assests copy
 RefreshTokens

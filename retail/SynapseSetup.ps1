@@ -152,7 +152,6 @@ $app_retaildemo_name = "retaildemo-app-$suffix";
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
-$AADAppClientSecret = "Smoothie@2021@2021"
 
 #Cosmos keys
 $cosmos_account_key=az cosmosdb keys list -n $cosmosdb_retail2_name -g $rgName |ConvertFrom-Json
@@ -957,6 +956,7 @@ foreach ($dataTableLoad in $dataTableList) {
         }
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
 }
+
 #uploading powerbi reports
 RefreshTokens
 
