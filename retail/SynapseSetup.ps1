@@ -143,7 +143,6 @@ $concatString = "$random$init";
 $sparkPoolName = "Retail"
 $storageAccountName = $dataLakeAccountName
 $keyVaultName = "kv-$suffix";
-$asa_name_retail = "retailasa-$suffix"
 $amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
