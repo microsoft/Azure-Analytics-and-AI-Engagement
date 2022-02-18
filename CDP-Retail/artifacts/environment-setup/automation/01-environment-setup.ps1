@@ -120,6 +120,22 @@ $resourceGroupName=$resourceGroups
 Write-Information "Selecting the $resourceGroupName resource group"
 }
 
+#getting user details
+
+$response=az ad signed-in-user show | ConvertFrom-Json
+$date=get-date
+$demoType="CDP-Retail"
+$body= '{"demoType":"#demoType#","userPrincipalName":"#userPrincipalName#","displayName":"#displayName#","companyName":"#companyName#","mail":"#mail#","date":"#date#"}'
+$body = $body.Replace("#userPrincipalName#", $response.userPrincipalName)
+$body = $body.Replace("#displayName#", $response.displayName)
+$body = $body.Replace("#companyName#", $response.companyName)
+$body = $body.Replace("#mail#", $response.mail)
+$body = $body.Replace("#date#", $date)
+$body = $body.Replace("#demoType#", $demoType)
+
+$uri ="https://registerddibuser.azurewebsites.net/api/registeruser?code=pTrmFDqp25iVSxrJ/ykJ5l0xeTOg5nxio9MjZedaXwiEH8oh3NeqMg=="
+$result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -ContentType "application/json"
+
 $uniqueId = (Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Synapse/workspaces).Name.Replace("asaexpworkspace", "")
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
