@@ -416,7 +416,7 @@ cd ./retail/retail
 
 	![Run the Powershell Script.](media/authentication-6.png)
 
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDib-Retail'.
+4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDib-Retail-Lab'.
 
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
