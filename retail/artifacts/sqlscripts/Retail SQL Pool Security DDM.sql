@@ -1,3 +1,4 @@
+--∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
 -------------------------------------------------------------------------Dynamic Data Masking (DDM)----------------------------------------------------------------------------------------------------------
 /*  Dynamic data masking helps prevent unauthorized access to sensitive data by enabling customers
     to designate how much of the sensitive data to reveal with minimal impact on the application layer. 

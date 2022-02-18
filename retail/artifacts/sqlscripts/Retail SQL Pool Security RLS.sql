@@ -1,3 +1,4 @@
+--∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
 /*	Row level Security (RLS) in Azure Synapse enables us to use group membership to control access to rows in a table.
 	Azure Synapse applies the access restriction every time the data access is attempted from any user. 
 	Let see how we can implement row level security in Azure Synapse.*/

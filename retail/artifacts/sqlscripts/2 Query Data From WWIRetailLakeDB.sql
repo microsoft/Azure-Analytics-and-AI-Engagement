@@ -1,3 +1,4 @@
+--∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
 ---TSQL to retrive unique products count by Brands--------
 
 SELECT COUNT(DISTINCT ProductName) NumberOfUniqueProduct, B.BrandName,B.EntityCode

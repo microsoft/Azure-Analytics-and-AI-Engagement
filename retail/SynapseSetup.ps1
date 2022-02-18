@@ -371,7 +371,7 @@ foreach ($name in $scripts)
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
-
+    $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
     $query = $query.Replace("#LOCATION#", $location)
 	
     if ($Parameters -ne $null) 

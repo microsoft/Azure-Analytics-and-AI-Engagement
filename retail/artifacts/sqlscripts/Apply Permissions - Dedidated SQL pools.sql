@@ -1,4 +1,4 @@
-/*****For Demonstration purpose only, Please customize as per your enterprise security needs and compliances*****/*--
+--∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
 -- Description: This script is used to apply appropriate permissions to the database for the Retail 2.0 Demo User Group account
 -- 
 -- ********************** APPLY PERSMISSIONS ***********************

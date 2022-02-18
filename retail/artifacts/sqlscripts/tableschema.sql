@@ -1825,32 +1825,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Sales]
-( 
-	[TransactionId] [nvarchar](100)  NULL,
-	[CustomerId] [int]  NULL,
-	[ProductId] [bigint]  NULL,
-	[Quantity] [int]  NULL,
-	[Price] [int]  NULL,
-	[TotalAmount] [bigint]  NULL,
-	[TransactionDate] [datetime]  NULL,
-	[ProfitAmount] [int]  NULL,
-	[Hour] [int]  NULL,
-	[Minute] [int]  NULL,
-	[StoreId] [bigint]  NULL
-)
-WITH
-(
-	DISTRIBUTION = HASH ( [CustomerId] ),
-	CLUSTERED COLUMNSTORE INDEX
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE TABLE [dbo].[SalesMaster]
 ( 
 	[Fiscal Year] [nvarchar](max)  NULL,
