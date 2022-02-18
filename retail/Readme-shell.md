@@ -296,15 +296,7 @@ cd ./retail/retail
 
 	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-26. After complete script has been executed, you get to see a messages "--Execution Complete--", above which there are 3 links available as show in the image below. **Click** on each of those links once and then after the page loads close the brower tabs.
-
-	![Click on the link.](media/cloud-shell-20.png)
-	
-	> Note: Clicking these links will ensure that the data simulator applications gets start and will not dislplay ani UI on browser page, instead may give error like 404, which is its expected behaviour.
-	
-27. If you don't have admin permission, Please ask your admin to execute the following command for proper execution of Immersive Reader application.
-
-	![Click on the link.](media/csu-permission.png)
+26. After complete script has been executed, you get to see a messages "--Execution Complete--".
       
 ### Task 5: Lake Database creation and Pipeline execution
 
@@ -318,7 +310,7 @@ cd ./retail/retail
 
 ![Workspace.](media/lake-db-pipeline-3.png)
 
-3. **Enter** the name of the Lake database and **click** on Publish all.
+3. **Enter** the name of the Lake database as **"WWImportersContosoRetailLakeDB"** and **click** on Publish all.
 
 ![Workspace.](media/lake-db-pipeline-4.png)
 
