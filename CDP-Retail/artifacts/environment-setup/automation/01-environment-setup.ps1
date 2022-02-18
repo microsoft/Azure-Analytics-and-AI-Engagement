@@ -154,8 +154,17 @@ $global:sqlUser = "asaexp.sql.admin"
 $twitterFunction="twifunction$($uniqueId)"
 $locationFunction="locfunction$($uniqueId)"
 $asaName="TweetsASA"
-Install-Module -Name MicrosoftPowerBIMgmt -f
-Login-PowerBI
+Install-Module -Name MicrosoftPowerBIMgmt -Force
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I have enough permissions for PowerBI login."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I will run PowerBI setup seperately."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$title = "PowerBI login"
+$message = " (Type [Y] for Yes or [N] for No and press enter)"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+if($result -eq 0)
+{
+ Login-PowerBI 
+}
 
 Write-Information "Deploying Azure functions"
 az functionapp deployment source config-zip `
