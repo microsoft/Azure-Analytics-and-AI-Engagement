@@ -21,18 +21,18 @@ $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
-$app_fintaxdemo_name = "fintaxdemo-app-$suffix";
+$app_retaildemo_name = "retaildemo-app-$suffix";
 
-Compress-Archive -Path "../fintaxdemo-app/*" -DestinationPath "../fintaxdemo-app.zip"
+Compress-Archive -Path "../snackable-poc/*" -DestinationPath "../snackable-poc.zip"
 
-az webapp stop --name $app_fintaxdemo_name --resource-group $rgName
+az webapp stop --name $app_retaildemo_name --resource-group $rgName
 
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_fintaxdemo_name --src "../fintaxdemo-app.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "../snackable-poc.zip"
 }
 catch
 {
 }
 
-az webapp start --name $app_fintaxdemo_name --resource-group $rgName
-remove-item -path "../fintaxdemo-app.zip" -recurse -force
+az webapp start --name $app_retaildemo_name --resource-group $rgName
+remove-item -path "../snackable-poc.zip" -recurse -force

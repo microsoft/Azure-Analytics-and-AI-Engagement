@@ -43,31 +43,23 @@ $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
-$bot_qnamaker_fintax_name= "botmultilingual-$suffix";
-$accounts_immersive_reader_fintax_name = "immersive-reader-fintax-$suffix";
-$app_immersive_reader_fintax_name = "immersive-reader-fintax-app-$suffix";
-$app_fintaxdemo_name = "fintaxdemo-app-$suffix";
-$iot_hub_name = "iothub-fintax-$suffix";
-$sites_app_multiling_fintax_name = "multiling-fintax-app-$suffix";
-$asp_multiling_fintax_name = "multiling-fintax-asp-$suffix";
-$sites_app_taxcollection_realtime_name = "taxcollectionrealtime-fintax-app-$suffix";
-$sites_app_vat_custsat_eventhub_name = "vat-custsat-eventhub-fintax-app-$suffix";
-$sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-fintax-app-$suffix";
+$app_retaildemo_name = "retaildemo-app-$suffix";
+$iot_hub_name = "iothub-retail-$suffix";
+$sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $storageAccountName = $dataLakeAccountName
-$asa_name_fintax = "fintaxasa-$suffix"
+$asa_name_retail = "retailasa-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
-$AADApp_Immnersive_DisplayName = "FintaxImmersiveReader-$suffix"
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $AADAppClientSecret = "Smoothie@2021@2021"
-$AADApp_Multiling_DisplayName = "FintaxMultiling-$suffix"
+$AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
@@ -77,122 +69,123 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 Write-Host  "-----------------Deploy web apps ---------------"
 RefreshTokens
 
-#########################
-
-Add-Content log.txt "----Bot and multilingual App-----"
-Write-Host "----Bot and multilingual App----"
-
-$app = az ad app create --display-name $sites_app_multiling_fintax_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
-$appId = $app.appId
-
-az deployment group create --resource-group $rgName --template-file "../artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_fintax_name newWebAppName=$sites_app_multiling_fintax_name newAppServicePlanName=$asp_multiling_fintax_name appServicePlanLocation=$location
-
-az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_fintax_name --src "../artifacts/qnamaker/chatbot.zip"
-
-#################
-
-$zips = @("immersive-reader-app","app-iotfoottraffic-sensor", "app-taxcollection-realtime", "app-vat-custsat-eventhub")
+$zips = @("snackable-poc")
 foreach($zip in $zips)
 {
     expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
 
+$spname="Retail Demo $deploymentId"
+$clientsecpwd ="Smoothie@Smoothie@2020"
 
-############
-Add-Content log.txt "----Immersive Reader----"
-Write-Host "----Immersive Reader-----"
-#immersive reader
-$resourceId = az cognitiveservices account show --resource-group $rgName --name $accounts_immersive_reader_fintax_name --query "id" -o tsv    
-    
-$clientId = az ad app create --password $AADAppClientSecret --end-date $AADAppClientSecretExpiration --display-name $AADApp_Immnersive_DisplayName --query "appId" -o tsv
-             
-az ad sp create --id $clientId | Out-Null    
-$principalId = az ad sp show --id $clientId --query "objectId" -o tsv
-        
-az role assignment create --assignee $principalId --scope $resourceId --role "Cognitive Services User"    
-   
-$tenantId = az account show --query "tenantId" -o tsv
+$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
+          
+az ad sp create --id $appId | Out-Null    
+$sp = az ad sp show --id $appId --query "objectId" -o tsv
+start-sleep -s 60
 
-# Collect the information needed to obtain an Azure AD token into one object    
-$immersive_properties = @{}    
-$immersive_properties.TenantId = $tenantId    
-$immersive_properties.ClientId = $clientId    
-$immersive_properties.ClientSecret = $AADAppClientSecret    
-$immersive_properties.Subdomain = $accounts_immersive_reader_fintax_name
-$immersive_properties.PrincipalId = $principalId
-$immersive_properties.ResourceId = $resourceId
+#https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+#Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups";
+$result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+$homeCluster = $result.Headers["home-cluster-uri"]
+#$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
 
-(Get-Content -path immersive-reader-app/appsettings.json -Raw) | Foreach-Object { $_ `
-    -replace '#CLIENT_ID#', $immersive_properties.ClientId`
-    -replace '#CLIENT_SECRET#', $immersive_properties.ClientSecret`
-    -replace '#TENANT_ID#', $immersive_properties.TenantId`
-    -replace '#SUBDOMIAN#', $immersive_properties.Subdomain`
-} | Set-Content -Path immersive-reader-app/appsettings.json
-Compress-Archive -Path "./immersive-reader-app/*" -DestinationPath "./immersive-reader-app.zip"
-# deploy the codes on app services  
-Write-Information "Deploying immersive reader app"
+RefreshTokens
+$url = "$homeCluster/metadata/tenantsettings"
+$post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer $powerbiToken")
+$headers.Add("X-PowerBI-User-Admin", "true")
+#$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+$post = "{
+    `"identifier`":`"$($sp)`",
+    `"groupUserAccessRight`":`"Admin`",
+    `"principalType`":`"App`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
+
+#get the power bi app...
+$powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
+$powerBiAppId = $powerBIApp.Id;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"User.Read Directory.AccessAsUser.All`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
+				
+(Get-Content -path snackable-poc/appsettings.json -Raw) | Foreach-Object { $_ `
+                -replace '#WORKSPACE_ID#', $wsId`
+				-replace '#APP_ID#', $appId`
+				-replace '#APP_SECRET#', $clientsecpwd`
+				-replace '#TENANT_ID#', $tenantId`				
+        } | Set-Content -Path snackable-poc/appsettings.json
+
+$filepath="./snackable-poc/wwwroot/config.js"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name)
+Set-Content -Path $filepath -Value $item 
+
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
+$reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+$reportList = $reportList.Value
+
+#update all th report ids in the poc web app...
+$ht = new-object system.collections.hashtable   
+$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
+$ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
+$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
+$ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
+$ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
+$ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
+$ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
+
+#$ht.add("#SPEECH_REGION#", $location)
+
+$filePath = "./snackable-poc/wwwroot/config.js";
+Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
+
+Compress-Archive -Path "./snackable-poc/*" -DestinationPath "./snackable-poc.zip"
+
+az webapp stop --name $app_retaildemo_name --resource-group $rgName
+
 try{
-    az webapp deployment source config-zip --resource-group $rgName --name $app_immersive_reader_fintax_name --src "./immersive-reader-app.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./snackable-poc.zip"
 }
 catch
 {
 }
 
-# IOT FootTraffic
-$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device).ConnectionString
-$shared_access_key = $device_conn_string.Split(";")[2]
-$device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
-
-$iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"global.azure-devices-provisioning.net\",\"symmetric_key\":\"' + $device_primary_key + '\",\"IoTHubConnectionString\":\"' + $device_conn_string + '\"}}"'
-
-Write-Information "Deploying IOT FootTraffic Fintax App"
-cd app-iotfoottraffic-sensor
-az webapp up --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name
-cd ..
-Start-Sleep -s 10
-
-$config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
-
-# Tax Collection Realtime Fintax App
-Write-Information "Deploying Tax Collection Realtime Fintax App"
-cd app-taxcollection-realtime
-az webapp up --resource-group $rgName --name $sites_app_taxcollection_realtime_name
-cd ..
-Start-Sleep -s 10
-
-# Vat Custsat Eventhub 
-Write-Information "Deploying Vat Custsat Eventhub Fintax App"
-cd app-vat-custsat-eventhub
-az webapp up --resource-group $rgName --name $sites_app_vat_custsat_eventhub_name
-cd ..
-Start-Sleep -s 10
-
-RefreshTokens
-
-az webapp start --name $app_immersive_reader_fintax_name --resource-group $rgName
-az webapp start --name $sites_app_multiling_fintax_name --resource-group $rgName
-az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
-az webapp start --name $sites_app_taxcollection_realtime_name --resource-group $rgName
-az webapp start --name $sites_app_vat_custsat_eventhub_name --resource-group $rgName
-
-foreach($zip in $zips)
-{
-    if ($zip -eq  "immersive-reader-app" ) 
-    {
-        remove-item -path "./$($zip).zip" -recurse -force
-    }
-    remove-item -path "./$($zip)" -recurse -force
-}
-
-#start ASA
-Write-Host "----Starting ASA-----"
-Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_fintax -OutputStartMode 'JobStartTime'
-
-Write-Host  "Click the following URL-  https://$($sites_app_iotfoottraffic_sensor_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($sites_app_taxcollection_realtime_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($sites_app_vat_custsat_eventhub_name).azurewebsites.net"
-
-Write-Host "Please ask your admin to execute the following command for proper execution of Immersive Reader : "
-
-Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   
+az webapp start --name $app_retaildemo_name --resource-group $rgName
 
