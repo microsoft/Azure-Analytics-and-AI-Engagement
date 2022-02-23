@@ -2361,3 +2361,22 @@ WITH
 	HEAP
 )
 GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Wait_Time_Forecasted]
+( 
+	[city] [nvarchar](100)  NULL,
+	[date] [nvarchar](max)  NULL,
+	[month] [nvarchar](max)  NULL,
+	[wait_time] [float] NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO

@@ -639,6 +639,179 @@ foreach($name in $pipelines)
     Add-Content log.txt $result 
 }
 
+#uploading powerbi reports
+RefreshTokens
+
+Add-Content log.txt "------powerbi reports upload------"
+Write-Host "------------Powerbi Reports Upload ------------"
+#Connect-PowerBIServiceAccount
+$reportList = New-Object System.Collections.ArrayList
+$reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
+foreach($name in $reports)
+{
+        $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
+        #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
+        
+        write-host "Uploading PowerBI Report : $($name.BaseName)";
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
+		$fullyQualifiedPath=Resolve-Path -path $FilePath
+        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
+        $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
+        $boundary = [System.Guid]::NewGuid().ToString();
+        $LF = "`r`n";
+        $bodyLines = (
+            "--$boundary",
+            "Content-Disposition: form-data",
+            "",
+            $fileEnc,
+            "--$boundary--$LF"
+        ) -join $LF
+
+        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
+		Start-Sleep -s 5 
+		
+        Add-Content log.txt $result
+        $reportId = $result.id;
+
+        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
+		@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
+        @{Name = "PowerBIDataSetId"; Expression = {""}},
+        @{Name = "ReportId"; Expression = {""}},
+        @{Name = "SourceServer"; Expression = {""}}, 
+        @{Name = "SourceDatabase"; Expression = {""}}
+		                        
+        # get dataset                         
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
+        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+		
+        Add-Content log.txt $dataSets
+        
+        $temp.ReportId = $reportId;
+
+        foreach($res in $dataSets.value)
+        {
+            if($res.name -eq $name.BaseName)
+            {
+                $temp.PowerBIDataSetId = $res.id;
+            }
+       }
+                
+      $list = $reportList.Add($temp)
+}
+Start-Sleep -s 60
+
+##Establish powerbi reports dataset connections
+Add-Content log.txt "------pbi connections update------"
+Write-Host "--------- PBI connections update---------"	
+
+foreach($report in $reportList)
+{
+    if($report.name -eq "Acquisition Impact Report")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server_Name`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"DB_Name`",
+									`"newValue`": `"$($sqlPoolName)`"
+								},
+								{
+									`"name`": `"Source_LakeDB`",
+									`"newValue`": `"$($synapseWorkspaceName)`"
+								},
+								{
+									`"name`": `"LakeDB`",
+									`"newValue`": `"WWImportersConstosoRetailLakeDB`"
+								}
+								]
+								}"	
+	}
+	elseif($report.name -eq "Finance Report")
+	{
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server_Name`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"DB_Name`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+    elseif($report.name -eq "Retail Predictive Analytics")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"ServerProd`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"DBProd`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+    elseif($report.name -eq "CCO Report" )
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server1`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database1`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"ServerName`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+
+	Write-Host "PBI connections updating for report : $($report.name)"	
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
+    $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"} -ErrorAction SilentlyContinue;
+		
+    start-sleep -s 5
+}
+
 #Creating and deploying main web app
 Add-Content log.txt "------Web app deployment------"
 Write-Host "-------Web app deployment-----------"
@@ -904,8 +1077,6 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasters
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasterUpdated"}} , @{Name = "TABLE_NAME"; Expression = {"SalesMasterUpdated"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SiteSecurity"}} , @{Name = "TABLE_NAME"; Expression = {"SiteSecurity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SortedCampaigns"}} , @{Name = "TABLE_NAME"; Expression = {"SortedCampaigns"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
@@ -930,15 +1101,19 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"WWIProducts"
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"PbiReadmissionPrediction"}} , @{Name = "TABLE_NAME"; Expression = {"PbiReadmissionPrediction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Sales"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ProductLink"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"pbiBankGlobalRanking"}} , @{Name = "TABLE_NAME"; Expression = {"pbiBankGlobalRanking"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CohortAnalysis"}} , @{Name = "TABLE_NAME"; Expression = {"CohortAnalysis"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Wait_Time_Forecasted"}} , @{Name = "TABLE_NAME"; Expression = {"Wait_Time_Forecasted"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Sales"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
@@ -955,179 +1130,6 @@ foreach ($dataTableLoad in $dataTableList) {
             $sqlQuery = $sqlQuery.Replace("#$($key)#", $Parameters[$key])
         }
     Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
-}
-
-#uploading powerbi reports
-RefreshTokens
-
-Add-Content log.txt "------powerbi reports upload------"
-Write-Host "------------Powerbi Reports Upload ------------"
-#Connect-PowerBIServiceAccount
-$reportList = New-Object System.Collections.ArrayList
-$reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
-foreach($name in $reports)
-{
-        $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
-        #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
-        
-        write-host "Uploading PowerBI Report : $($name.BaseName)";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
-		$fullyQualifiedPath=Resolve-Path -path $FilePath
-        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
-        $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
-        $boundary = [System.Guid]::NewGuid().ToString();
-        $LF = "`r`n";
-        $bodyLines = (
-            "--$boundary",
-            "Content-Disposition: form-data",
-            "",
-            $fileEnc,
-            "--$boundary--$LF"
-        ) -join $LF
-
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
-		Start-Sleep -s 5 
-		
-        Add-Content log.txt $result
-        $reportId = $result.id;
-
-        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-		@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-        @{Name = "PowerBIDataSetId"; Expression = {""}},
-        @{Name = "ReportId"; Expression = {""}},
-        @{Name = "SourceServer"; Expression = {""}}, 
-        @{Name = "SourceDatabase"; Expression = {""}}
-		                        
-        # get dataset                         
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
-        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-		
-        Add-Content log.txt $dataSets
-        
-        $temp.ReportId = $reportId;
-
-        foreach($res in $dataSets.value)
-        {
-            if($res.name -eq $name.BaseName)
-            {
-                $temp.PowerBIDataSetId = $res.id;
-            }
-       }
-                
-      $list = $reportList.Add($temp)
-}
-Start-Sleep -s 60
-
-##Establish powerbi reports dataset connections
-Add-Content log.txt "------pbi connections update------"
-Write-Host "--------- PBI connections update---------"	
-
-foreach($report in $reportList)
-{
-    if($report.name -eq "Acquisition Impact Report")
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server_Name`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"DB_Name`",
-									`"newValue`": `"$($sqlPoolName)`"
-								},
-								{
-									`"name`": `"Source_LakeDB`",
-									`"newValue`": `"$($synapseWorkspaceName)`"
-								},
-								{
-									`"name`": `"LakeDB`",
-									`"newValue`": `"WWImportersConstosoRetailLakeDB`"
-								}
-								]
-								}"	
-	}
-	elseif($report.name -eq "Finance Report")
-	{
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server_Name`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"DB_Name`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-    elseif($report.name -eq "Retail Predictive Analytics")
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"ServerProd`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"DBProd`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-    elseif($report.name -eq "CCO Report" )
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server1`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database1`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header")
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation")
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"ServerName`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-
-	Write-Host "PBI connections updating for report : $($report.name)"	
-    $url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
-    $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken"} -ErrorAction SilentlyContinue;
-		
-    start-sleep -s 5
 }
 
 Add-Content log.txt "-----------------Execution Complete---------------"
