@@ -38,9 +38,9 @@ $rgName = read-host "Enter the resource Group Name";
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$sqlPoolName = "FintaxDW"
+$sqlPoolName = "RetailDW"
 $sqlUser = "labsqladmin"
-$synapseWorkspaceName = "synapsefintax$init$random"
+$synapseWorkspaceName = "synapseretail$init$random"
 $suffix = "$random-$init"
 $concatString = "$init$random"
 $keyVaultName = "kv-$suffix";
@@ -60,7 +60,7 @@ try {
    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
 }
 $sqlPassword = $secretValueText
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
@@ -96,9 +96,10 @@ Add-Content log.txt $result
 
 $sqlQuery  = "CREATE DATABASE RetailSqlOnDemand"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
 Add-Content log.txt $result	
-  
+
+
 Write-Host  "-------------Uploading Sql Data ---------------"
 RefreshTokens
 #uploading sql data
@@ -240,8 +241,6 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasters
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasterUpdated"}} , @{Name = "TABLE_NAME"; Expression = {"SalesMasterUpdated"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SiteSecurity"}} , @{Name = "TABLE_NAME"; Expression = {"SiteSecurity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SortedCampaigns"}} , @{Name = "TABLE_NAME"; Expression = {"SortedCampaigns"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
@@ -266,15 +265,19 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"WWIProducts"
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"PbiReadmissionPrediction"}} , @{Name = "TABLE_NAME"; Expression = {"PbiReadmissionPrediction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Sales"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ProductLink"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"pbiBankGlobalRanking"}} , @{Name = "TABLE_NAME"; Expression = {"pbiBankGlobalRanking"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CohortAnalysis"}} , @{Name = "TABLE_NAME"; Expression = {"CohortAnalysis"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Wait_Time_Forecasted"}} , @{Name = "TABLE_NAME"; Expression = {"Wait_Time_Forecasted"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Sales"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
