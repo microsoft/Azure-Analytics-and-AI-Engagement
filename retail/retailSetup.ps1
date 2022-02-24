@@ -1072,7 +1072,11 @@ Write-Host "--------- PBI connections update---------"
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Acquisition Impact Report" -or $report.name -eq "Finance Report")
+    if($report.name -eq "Dashboard-Images")
+    {
+        continue;
+    }
+    elseif($report.name -eq "Acquisition Impact Report" -or $report.name -eq "Finance Report")
     {
       $body = "{
 			`"updateDetails`": [
