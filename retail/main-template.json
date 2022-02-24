@@ -65,8 +65,8 @@
     "app_immersive_reader_retail_name": "[concat('immersive-reader-retail-app-',variables('unique_suffix'))]",
     "serverfarms_app_immersive_reader_retail_name": "[concat('asp-immersive-reader-retail-app-',variables('unique_suffix'))]",
     "ai_retail_immersive_reader_name": "[concat('ai-immersive-reader-retail-',variables('unique_suffix'))]",
-    "sites_app_realtime_kpi_retail_name": "[concat('app-realtime-kpi-retail-',variables('unique_suffix'))]",
-    "serverfarm_app_realtime_kpi_retail_name": "[concat('asp-realtime-kpi-retail-',variables('unique_suffix'))]",
+    "sites_adx_thermostat_realtime_name": "[concat('app-realtime-kpi-retail-',variables('unique_suffix'))]",
+    "serverfarm_adx_thermostat_realtime_name": "[concat('asp-realtime-kpi-retail-',variables('unique_suffix'))]",
     "sites_app_iotfoottraffic_sensor_retail_name": "[concat('iot-foottraffic-sensor-retail-app-',variables('unique_suffix'))]",
     "serverfarm_app_iotfoottraffic_sensor_retail_name": "[concat('asp-iot-foottraffic-sensor-retail-',variables('unique_suffix'))]",	
 	"search_srch_retail_name":"[concat('srch-retail-',variables('unique_suffix'))]",
@@ -558,101 +558,97 @@
         "query": "[variables('asa_query_retail')]"
       }
     },
-    {
-      "name": "[variables('eventhub_evh_namespace_retail_name')]",
-      "type": "Microsoft.EventHub/namespaces",
-      "apiVersion": "2018-01-01-preview",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "Standard",
-        "tier": "Standard",
-        "capacity": 1
-      },
-      "properties": {
-        "zoneRedundant": false,
-        "isAutoInflateEnabled": false,
-        "maximumThroughputUnits": 0,
-        "kafkaEnabled": true
-      }
-    },
-    {
-      "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/RootManageSharedAccessKey')]",
-      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
-      "apiVersion": "2017-04-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-      ],
-      "properties": {
-        "rights": [
-          "Listen",
-          "Manage",
-          "Send"
-        ]
-      }
-    },
-    {
-      "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/evh-iomtconnector-retail')]",
-      "type": "Microsoft.EventHub/namespaces/eventhubs",
-      "apiVersion": "2017-04-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-      ],
-      "properties": {
-        "messageRetentionInDays": 1,
-        "partitionCount": 4,
-        "status": "Active"
-      }
-    },
-    {
-      "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/default')]",
-      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-      "apiVersion": "2018-01-01-preview",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-      ],
-      "properties": {
-        "defaultAction": "Deny",
-        "virtualNetworkRules": [
-
-        ],
-        "ipRules": [
-
-        ]
-      }
-    },
-    {
-      "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/evh-iomtconnector-retail/RootManageSharedAccessKey')]",
-      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-      "apiVersion": "2017-04-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'evh-iomtconnector-retail')]",
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-      ],
-      "properties": {
-        "rights": [
-          "Manage",
-          "Listen",
-          "Send"
-        ]
-      }
-    },
-    {
-      "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/evh-iomtconnector-retail/$Default')]",
-      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-      "apiVersion": "2017-04-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'evh-iomtconnector-retail')]",
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-      ],
-      "properties": {
-
-      }
-    },
+     {
+            "type": "Microsoft.EventHub/namespaces",
+            "apiVersion": "2021-11-01",
+            "name": "[parameters('eventhub_evh_namespace_retail_name')]",
+            "location": "West US 2",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "properties": {
+                "disableLocalAuth": false,
+                "zoneRedundant": true,
+                "isAutoInflateEnabled": false,
+                "maximumThroughputUnits": 0,
+                "kafkaEnabled": true
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('eventhub_evh_namespace_retail_name'), '/RootManageSharedAccessKey')]",
+            "location": "West US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub_evh_namespace_retail_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub')]",
+            "location": "West US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub_evh_namespace_retail_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 1,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('eventhub_evh_namespace_retail_name'), '/default')]",
+            "location": "West US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub_evh_namespace_retail_name'))]"
+            ],
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "defaultAction": "Allow",
+                "virtualNetworkRules": [],
+                "ipRules": []
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/ManageRule')]",
+            "location": "West US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub_evh_namespace_retail_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/$Default')]",
+            "location": "West US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub_evh_namespace_retail_name'))]"
+            ],
+            "properties": {}
+        },
     {
       "type": "Microsoft.CognitiveServices/accounts",
       "apiVersion": "2017-04-18",
@@ -1234,7 +1230,7 @@
       }
     },
     {
-      "name": "[variables('serverfarm_app_realtime_kpi_retail_name')]",
+      "name": "[variables('serverfarm_adx_thermostat_realtime_name')]",
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2019-08-01",
       "location": "[variables('location')]",
@@ -1249,66 +1245,75 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2021-02-01",
-      "name": "[variables('sites_app_realtime_kpi_retail_name')]",
+      "name": "[variables('sites_adx_thermostat_realtime_name')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_realtime_kpi_retail_name'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]"
       ],
       "kind": "app,linux",
       "properties": {
         "enabled": true,
         "hostNameSslStates": [
           {
-            "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '.azurewebsites.net')]",
+            "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
             "sslState": "Disabled",
             "hostType": "Standard"
           },
           {
-            "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '.scm.azurewebsites.net')]",
+            "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '.scm.azurewebsites.net')]",
             "sslState": "Disabled",
             "hostType": "Repository"
           }
         ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_realtime_kpi_retail_name'))]",
-        "reserved": true,
-        "isXenon": false,
-        "hyperV": false,
-        "siteConfig": {
-          "numberOfWorkers": 1,
-          "linuxFxVersion": "PYTHON|3.7",
-          "acrUseManagedIdentityCreds": false,
-          "alwaysOn": false,
-          "http20Enabled": false,
-          "functionAppScaleLimit": 0,
-          "minimumElasticInstanceCount": 0,
-          "appSettings": [
-            {
-              "name": "retailEventhubReportConfig",
-              "value": "[concat('{\"EventhubName\":\"evh-iomtconnector-retail\",\"main_data_frequency_seconds\":3,\"urlStringEventhub\":\"', listKeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('eventhub_evh_namespace_retail_name'), 'evh-iomtconnector-retail', 'RootManageSharedAccessKey'), '2017-04-01').primaryKey, '\": [{\"VATBefore\": {\"minValue\": 58000000000,\"maxValue\": 63360000000}},{\"VATMid\": {\"minValue\": 40000000000,\"maxValue\": 45000000000}},{\"VATAfter\": {\"minValue\": 82000000000,\"maxValue\": 86000000000}},{\"TaxPayerSatisfactionBefore\": {\"minValue\": 45.0,\"maxValue\": 50.0}},{\"TaxPayerSatisfactionMid\": {\"minValue\": 84.3,\"maxValue\": 87.0}},{\"TaxPayerSatisfactionAfter\": {\"minValue\": 90.0,\"maxValue\": 93.0}},{\"TaxpayersBefore\": {\"minValue\": 69000,\"maxValue\": 72200}},{\"TaxpayersMid\": {\"minValue\": 190000,\"maxValue\": 201000}},{\"TaxpayersAfter\": {\"minValue\": 235000,\"maxValue\": 275000}},{\"VATMax\": {\"minValue\":86336755000,\"maxValue\":86336755000}},{\"VATTargetBefore\": {\"minValue\":69000000000,\"maxValue\":69000000000}},{\"VATTargetMid\": {\"minValue\":49700000000,\"maxValue\":49700000000}},{\"VATTargetAfter\": {\"minValue\":75800000000,\"maxValue\":75800000000}},{\"TaxpayersTargetBefore\": {\"minValue\": 750680,\"maxValue\": 750680}},{\"TaxpayersTargetMid\": {\"minValue\": 765600,\"maxValue\": 765600}},{\"TaxpayersTargetAfter\": {\"minValue\": 697360,\"maxValue\": 697360}},{\"TaxPayerSatisfactionTarget\": {\"minValue\": 84.0,\"maxValue\": 84.0}},{\"TaxPayerSatisfactionMax\": {\"minValue\": 100.0,\"maxValue\": 100.0}}]}')]"
-            }
-          ]
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]",
         },
-        "scmSiteAlsoStopped": false,
-        "clientAffinityEnabled": false,
-        "clientCertEnabled": false,
-        "clientCertMode": "Required",
-        "hostNamesDisabled": false,
-        "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "httpsOnly": false,
-        "redundancyMode": "None",
-        "storageAccountRequired": false,
-        "keyVaultReferenceIdentity": "SystemAssigned"
+			"reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "linuxFxVersion": "PYTHON|3.9",
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": false,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 1,
+					     "appSettings": [
+  {
+    "name": "occupancyDataConfig",
+    "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=occupancy;SharedAccessKey=rJ2LAbGYh8Mtt0FXQi+WzHa94/HeQdZ+hM6A1LOYqg8=;EntityPath=occupancy\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
+  },
+  {
+    "name": "thermostatsrealtime",
+    "value": "{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
+  },
+  {
+    "name": "thermostatTelemetryConfig",
+    "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=thermostat;SharedAccessKey=lChcS//clr9v3bh6C9uJq/e2UlQUYSVkM5NDj5Ua4yQ=;EntityPath=thermostat\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/1f495e04-7d5d-43cd-b8d8-51e81939ba4e/rows?key=VklFqgzc7uxHy6x8UeShdtKWtDtZ8CnS2KLu0%2FYMP7Uc8DDZQKP4%2BocEpD1fzLhmGQCufMXcEMUP6F8Ot9DD4A%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}"
+  }
+]
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": false,
+                "redundancyMode": "None",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
       }
     },
     {
       "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
       "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '/ftp')]",
+      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/ftp')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_realtime_kpi_retail_name'))]"
+        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
       ],
       "properties": {
         "allow": true
@@ -1317,10 +1322,10 @@
     {
       "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
       "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '/scm')]",
+      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/scm')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_realtime_kpi_retail_name'))]"
+        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
       ],
       "properties": {
         "allow": true
@@ -1329,102 +1334,94 @@
     {
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '/web')]",
+      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/web')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_realtime_kpi_retail_name'))]"
+        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
       ],
-      "properties": {
-        "numberOfWorkers": 1,
-        "defaultDocuments": [
-          "Default.htm",
-          "Default.html",
-          "Default.asp",
-          "index.htm",
-          "index.html",
-          "iisstart.htm",
-          "default.aspx",
-          "index.php",
-          "hostingstart.html"
-        ],
-        "netFrameworkVersion": "v4.0",
-        "linuxFxVersion": "PYTHON|3.7",
-        "requestTracingEnabled": false,
-        "remoteDebuggingEnabled": false,
-        "remoteDebuggingVersion": "VS2017",
-        "httpLoggingEnabled": true,
-        "acrUseManagedIdentityCreds": false,
-        "logsDirectorySizeLimit": 100,
-        "detailedErrorLoggingEnabled": false,
-        "publishingUsername": "[concat('$',variables('sites_app_realtime_kpi_retail_name'))]",
-        "scmType": "None",
-        "use32BitWorkerProcess": true,
-        "webSocketsEnabled": false,
-        "alwaysOn": true,
-        "appCommandLine": "",
-        "managedPipelineMode": "Integrated",
-        "virtualApplications": [
-          {
-            "virtualPath": "/",
-            "physicalPath": "site\\wwwroot",
-            "preloadEnabled": false
-          }
-        ],
-        "loadBalancing": "LeastRequests",
-        "experiments": {
-          "rampUpRules": []
-        },
-        "autoHealEnabled": false,
-        "vnetRouteAllEnabled": false,
-        "vnetPrivatePortsCount": 0,
-        "cors": {
-          "allowedOrigins": [
-            "https://botservice.hosting.portal.azure.net",
-            "https://hosting.onecloud.azure-test.net/"
-          ],
-          "supportCredentials": false
-        },
-        "localMySqlEnabled": false,
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictionsUseMain": false,
-        "http20Enabled": false,
-        "minTlsVersion": "1.2",
-        "scmMinTlsVersion": "1.0",
-        "ftpsState": "AllAllowed",
-        "preWarmedInstanceCount": 0,
-        "functionAppScaleLimit": 0,
-        "functionsRuntimeScaleMonitoringEnabled": false,
-        "minimumElasticInstanceCount": 0,
-        "azureStorageAccounts": {}
-      }
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "linuxFxVersion": "PYTHON|3.9",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$adx-thermostat-realtime",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.0",
+                "ftpsState": "AllAllowed",
+                "preWarmedInstanceCount": 0,
+                "functionAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 1,
+                "azureStorageAccounts": {}
+            }
     },
     {
       "type": "Microsoft.Web/sites/hostNameBindings",
       "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_realtime_kpi_retail_name'), '/', variables('sites_app_realtime_kpi_retail_name'), '.azurewebsites.net')]",
+      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/', variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_realtime_kpi_retail_name'))]"
+        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
       ],
       "properties": {
-        "siteName": "[variables('sites_app_realtime_kpi_retail_name')]",
+        "siteName": "[variables('sites_adx_thermostat_realtime_name')]",
         "hostNameType": "Verified"
       }
     }, 
@@ -1484,6 +1481,7 @@
             {
               "name": "IoTSimulatorConfigs",
               "value": "{\"main_data_frequency_seconds\":1,\"data\":[{\"before-foottraffic\":{\"minValue\":18,\"maxValue\":25}},{\"after-foottraffic\":{\"minValue\":35,\"maxValue\":45}}]}"
+
             },
             {
               "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
@@ -1557,7 +1555,7 @@
         "remoteDebuggingVersion": "VS2017",
         "httpLoggingEnabled": true,
         "acrUseManagedIdentityCreds": false,
-        "logsDirectorySizeLimit": 100,
+        "logsDirectorySizeLimit": 35,
         "detailedErrorLoggingEnabled": false,
         "publishingUsername": "[concat('$',variables('sites_app_iotfoottraffic_sensor_retail_name'))]",
         "scmType": "None",
