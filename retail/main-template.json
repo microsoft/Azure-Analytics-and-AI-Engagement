@@ -372,7 +372,7 @@
       {
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
          "apiVersion":"2021-10-15",
-         "name":"[concat(variables('cosmosdb_retail2_name'), variables('cosmos_database_name'))]",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/' ,variables('cosmos_database_name'))]",
          "dependsOn":[
             "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
          ],
@@ -440,7 +440,7 @@
       {
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
          "apiVersion":"2021-10-15",
-         "name":"[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retailcosmos')]",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/',variables('cosmos_database_name'),'/retailcosmos')]",
          "dependsOn":[
             "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
             "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
@@ -489,7 +489,7 @@
       {
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
          "apiVersion":"2021-10-15",
-         "name":"[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retaildb')]",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/',variables('cosmos_database_name'),'/retaildb')]",
          "dependsOn":[
             "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
             "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
@@ -1215,20 +1215,6 @@
       },
       {
          "name":"[concat( variables('storage_account_name'), '/default/retail-customerreviewsdata')]",
-         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
-         "apiVersion":"2020-08-01-preview",
-         "dependsOn":[
-            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-         ],
-         "properties":{
-            "defaultEncryptionScope":"$account-encryption-key",
-            "denyEncryptionScopeOverride":false,
-            "publicAccess":"None"
-         }
-      },
-      {
-         "name":"[concat( variables('storage_account_name'), '/default/retail-data')]",
          "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
          "apiVersion":"2020-08-01-preview",
          "dependsOn":[
