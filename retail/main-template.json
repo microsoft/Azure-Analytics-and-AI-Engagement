@@ -72,14 +72,17 @@
 	"sites_retail_mediasearch_app_name": "[concat('mediasearch-retail-app-',variables('unique_suffix'))]",
     "serverfarm_retail_mediasearch_app_name": "[concat('asp-mediasearch-retail-',variables('unique_suffix'))]",
 	"accounts_purview_retail_name"	:"[concat('purviewretail',variables('unique_suffix'))]",
-	"search_srch_retail_name":"[concat('srch-retail-',variables('unique_suffix'))]",
+	"search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
 	"search_retail_qna_name":"[concat('srch-retail-qna-',variables('unique_suffix'))]",
 	"mediaservices_name": "[concat('mediasvc',uniqueString(deployment().name))]",
     "event_topic_media_indexer_name": "[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
 	"cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
     "cosmos_database_name": "retail-foottraffic",
-	"clusters_retailenv_name":"[if(greater(length(concat('retailenv', parameters('environment_code'),uniqueString(deployment().name))), 22), substring(concat('retailenv',parameters('environment_code'),uniqueString(deployment().name)),0,22) , concat('retailenv',parameters('environment_code'),uniqueString(deployment().name)) )]",
-	"accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]"
+	"accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
+	"staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
+	"accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
+	"staticSites_productsearchwebapp_name":"[concat('productsearchwebapp-',variables('unique_suffix'))]",
+	"accounts_retailspeechapp_prod_name":"[concat('retailspeechapp-',variables('unique_suffix'))]"
   },
   "resources": [
     {
@@ -95,6 +98,64 @@
         }
       }
     },
+	        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "apiVersion": "2021-10-01",
+            "name": "[variables('accounts_retailspeechapp_prod_name')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "S0"
+            },
+            "kind": "SpeechServices",
+            "identity": {
+                "type": "None",
+                "userAssignedIdentities": {}
+            },
+            "properties": {
+                "networkAcls": {
+                    "defaultAction": "Allow",
+                    "virtualNetworkRules": [],
+                    "ipRules": []
+                },
+                "publicNetworkAccess": "Enabled"
+            }
+        },
+	 {
+            "type": "Microsoft.Web/staticSites",
+            "apiVersion": "2021-03-01",
+            "name": "[variables('staticSites_productsearchwebapp_name')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Free",
+                "tier": "Free"
+            },
+            "properties": {
+                "repositoryUrl": "https://github.com/dojodemos/prod_retail_product_search",
+                "branch": "main",
+                "stagingEnvironmentPolicy": "Enabled",
+                "allowConfigFileUpdates": true,
+                "provider": "GitHub",
+                "enterpriseGradeCdnStatus": "Disabled"
+            }
+        },
+	 {
+            "type": "Microsoft.Web/staticSites",
+            "apiVersion": "2021-03-01",
+            "name": "[variables('staticSites_stapp_retail_productsearch_name')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "properties": {
+                "repositoryUrl": "https://github.com/dojodemos/retail20-prod-product-search",
+                "branch": "main",
+                "stagingEnvironmentPolicy": "Enabled",
+                "allowConfigFileUpdates": true,
+                "provider": "GitHub",
+                "enterpriseGradeCdnStatus": "Disabled"
+            }
+        },
 	      {
             "type": "Microsoft.Purview/accounts",
             "apiVersion": "2021-07-01",
@@ -105,64 +166,13 @@
                 "capacity": 1
             },
             "identity": {
-                "type": "SystemAssigned, UserAssigned",
-                "userAssignedIdentities": {
-                    "/subscriptions/506e86fc-853c-4557-a6e5-ad72114efd2b/resourcegroups/retail2.0-prod/providers/microsoft.managedidentity/userassignedidentities/retail-purview": {}
-                }
+                "type": "SystemAssigned"
             },
             "properties": {
                 "cloudConnectors": {},
                 "publicNetworkAccess": "Enabled",
                 "managedResourceGroupName": "[concat('managed-rg-', variables('accounts_purview_retail_name'))]"
             }
-        },
-	   {
-            "type": "Microsoft.Kusto/Clusters",
-            "apiVersion": "2021-08-27",
-            "name": "[variables('clusters_retailenv_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Dev(No SLA)_Standard_E2a_v4",
-                "tier": "Basic",
-                "capacity": 1
-            },
-            "zones": [
-                "1",
-                "3",
-                "2"
-            ],
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "trustedExternalTenants": [
-                    {
-                        "value": "*"
-                    }
-                ],
-                "enableDiskEncryption": false,
-                "enableStreamingIngest": false,
-                "enablePurge": false,
-                "enableDoubleEncryption": false,
-                "engineType": "V3",
-                "acceptedAudiences": [],
-                "restrictOutboundNetworkAccess": "Disabled",
-                "allowedFqdnList": [],
-                "publicNetworkAccess": "Enabled",
-                "allowedIpRangeList": [],
-                "enableAutoStop": true
-            }
-        },
-        {
-            "type": "Microsoft.Kusto/Clusters/Databases",
-            "apiVersion": "2021-08-27",
-            "name": "[concat(variables('clusters_retailenv_name'), '/retail2.0env')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/Clusters', variables('clusters_retailenv_name'))]"
-            ],
-            "kind": "ReadWrite",
-            "properties": {}
         },
 	{
       "type": "Microsoft.Media/mediaservices",
@@ -2143,16 +2153,30 @@
         },
 		{
             "type": "Microsoft.Search/searchServices",
-            "apiVersion": "2015-08-19",
+                "apiVersion": "2021-04-01-preview",
             "name": "[variables('search_srch_retail_name')]",
             "location": "[variables('location')]",
             "sku": {
                 "name": "basic"
             },
-            "properties": {
+                      "properties": {
                 "replicaCount": 1,
                 "partitionCount": 1,
-                "hostingMode": "Default"
+                "hostingMode": "Default",
+                "publicNetworkAccess": "Enabled",
+                "networkRuleSet": {
+                    "ipRules": [],
+                    "bypass": "None"
+                },
+                "encryptionWithCmk": {
+                    "enforcement": "Unspecified"
+                },
+                "disableLocalAuth": false,
+                "authOptions": {
+                    "apiKeyOnly": {}
+                },
+                "disabledDataExfiltrationOptions": [],
+                "semanticSearch": "disabled"
             }
         },
         {
@@ -2211,6 +2235,23 @@
                 "reserved": false,
                 "numberOfWorkers": "1",
                 "hostingEnvironment": ""
+            }
+        },
+		        {
+            "type": "Microsoft.VideoIndexer/accounts",
+            "apiVersion": "2021-11-10-preview",
+            "name": "[variables('accounts_RetailMedia_name')]",
+            "location": "[variables('location')]",
+		    "dependsOn": [
+               "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+            ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "mediaServices": {
+                    "resourceId":  "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+                }
             }
         }
   ],
