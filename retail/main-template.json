@@ -1430,19 +1430,22 @@
                "functionAppScaleLimit":0,
                "minimumElasticInstanceCount":1,
                "appSettings":[
-                  {
-                     "name":"occupancyDataConfig",
-                     "value":"{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=occupancy;SharedAccessKey=rJ2LAbGYh8Mtt0FXQi+WzHa94/HeQdZ+hM6A1LOYqg8=;EntityPath=occupancy\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
-                  },
-                  {
-                     "name":"thermostatsrealtime",
-                     "value":"{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
-                  },
-                  {
-                     "name":"thermostatTelemetryConfig",
-                     "value":"{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=thermostat;SharedAccessKey=lChcS//clr9v3bh6C9uJq/e2UlQUYSVkM5NDj5Ua4yQ=;EntityPath=thermostat\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/1f495e04-7d5d-43cd-b8d8-51e81939ba4e/rows?key=VklFqgzc7uxHy6x8UeShdtKWtDtZ8CnS2KLu0%2FYMP7Uc8DDZQKP4%2BocEpD1fzLhmGQCufMXcEMUP6F8Ot9DD4A%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}"
-                  }
-               ]
+                     {
+                        "name": "occupancyDataConfig",
+                        "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT#\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"#POWERBI_STREAMING_DATASET#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}",
+                        "slotSetting": false
+                     },
+                     {
+                        "name": "thermostatsrealtime",
+                        "value": "{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"#POWERBI_STREAMING_DATASET#\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}",
+                        "slotSetting": false
+                     },
+                     {
+                        "name": "thermostatTelemetryConfig",
+                        "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT_TELEMETRY#\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"#POWERBI_STREAMING_DATASET_TELEMETRY#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}",
+                        "slotSetting": false
+                     }
+                     ]
             },
             "scmSiteAlsoStopped":false,
             "clientAffinityEnabled":false,
