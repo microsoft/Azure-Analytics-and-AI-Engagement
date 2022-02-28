@@ -207,6 +207,9 @@ $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $AADAppClientSecret = "Smoothie@2021@2021"
 $AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
+$sites_retail_mediasearch_app_name = "mediasearch-retail-app-$unique_suffix"
+$sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$unique_suffix"
+      
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_retail_name
@@ -1359,20 +1362,20 @@ catch
 # {
 # }
 
-# # IOT FootTraffic
-# $device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device).ConnectionString
-# $shared_access_key = $device_conn_string.Split(";")[2]
-# $device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
+# IOT FootTraffic
+$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device).ConnectionString
+$shared_access_key = $device_conn_string.Split(";")[2]
+$device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
 
-# $iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"global.azure-devices-provisioning.net\",\"symmetric_key\":\"' + $device_primary_key + '\",\"IoTHubConnectionString\":\"' + $device_conn_string + '\"}}"'
+$iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"global.azure-devices-provisioning.net\",\"symmetric_key\":\"' + $device_primary_key + '\",\"IoTHubConnectionString\":\"' + $device_conn_string + '\"}}"'
 
-# Write-Information "Deploying IOT FootTraffic Retail App"
-# cd app-iotfoottraffic-sensor
-# az webapp up --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name
-# cd ..
-# Start-Sleep -s 10
+Write-Information "Deploying IOT FootTraffic Retail App"
+cd app-iotfoottraffic-sensor
+az webapp up --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name
+cd ..
+Start-Sleep -s 10
 
-# $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
+$config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
 
 # # Vat Custsat Eventhub 
 # Write-Information "Deploying Realtime KPI Retail App"

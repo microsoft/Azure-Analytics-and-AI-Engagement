@@ -101,9 +101,9 @@
       {
          "type":"Microsoft.CognitiveServices/accounts",
          "apiVersion":"2021-10-01",
-         "name":"[parameters('accounts_retaillangresource_name')]",
+         "name":"[variables('accounts_retaillangresource_name')]",
          "location":"[variables('location')]",
-         "sku":{
+         "sku":{  
             "name":"S"
          },
          "kind":"TextAnalytics",
@@ -840,7 +840,7 @@
                "filesystem":"[variables('default_data_lake_storage_file_system_name')]"
             },
             "sqlAdministratorLogin":"[variables('sql_administrator_login_id')]",
-            "sqlAdministratorLoginPassword":"[variables('sql_administrator_login_password')]"
+            "sqlAdministratorLoginPassword":"[parameters('sql_administrator_login_password')]"
          },
          "resources":[
             {
@@ -1820,10 +1820,6 @@
                   {
                      "name":"IoTSimulatorConfigs",
                      "value":"{\"main_data_frequency_seconds\":1,\"data\":[{\"before-foottraffic\":{\"minValue\":18,\"maxValue\":25}},{\"after-foottraffic\":{\"minValue\":35,\"maxValue\":45}}]}"
-                  },
-                  {
-                     "name":"WEBSITE_HTTPLOGGING_RETENTION_DAYS",
-                     "value":"7"
                   }
                ]
             },
@@ -2247,7 +2243,7 @@
       {
          "type":"Microsoft.Web/serverfarms",
          "apiVersion":"2021-03-01",
-         "name":"[parameters('serverfarms_func_retail_livestreaming_name')]",
+         "name":"[variables('serverfarms_func_retail_livestreaming_name')]",
          "location":"[variables('location')]",
          "sku":{
             "name":"Y1",
@@ -2264,7 +2260,7 @@
       {
          "type":"Microsoft.Web/sites",
          "apiVersion":"2021-03-01",
-         "name":"[parameters('sites_func_retail_livestreaming_name')]",
+         "name":"[variables('sites_func_retail_livestreaming_name')]",
          "location":"[variables('location')]",
          "kind":"functionapp",
          "dependsOn":[
@@ -2277,12 +2273,12 @@
             "enabled":true,
             "hostNameSslStates":[
                {
-                  "name":"[concat(parameters('sites_func_retail_livestreaming_name'), '.azurewebsites.net')]",
+                  "name":"[concat(variables('sites_func_retail_livestreaming_name'), '.azurewebsites.net')]",
                   "sslState":"Disabled",
                   "hostType":"Standard"
                },
                {
-                  "name":"[concat(parameters('sites_func_retail_livestreaming_name'), '.scm.azurewebsites.net')]",
+                  "name":"[concat(variables('sites_func_retail_livestreaming_name'), '.scm.azurewebsites.net')]",
                   "sslState":"Disabled",
                   "hostType":"Repository"
                }
