@@ -57,7 +57,7 @@
       "iot_hub_name":"[concat('iothub-retail-',variables('unique_suffix'))]",
       "eventhub_evh_namespace_retail_name":"[concat('evh-namespace-',variables('unique_suffix'))]",
       "asa_name_retail":"[concat('retailasa-',variables('unique_suffix'))]",
-      "asa_query_retail":"SELECT * INTO [adls-out] FROM [iot-hub-in]",
+      "asa_query_retail":"SELECT [RecordedOn],[before-foottraffic],[after-foottraffic],[EventProcessedUtcTime],[PartitionId],[EventEnqueuedUtcTime] INTO  [adlsgen2-iothub-output] FROM  [iot-foottraffic-hub]",
       "accounts_transqna_retail_name":"[concat('transqna-retail-',variables('unique_suffix'))]",
       "app_retaildemo_name":"[concat('retaildemo-app-',variables('unique_suffix'))]",
       "serverfarms_app_retaildemo_name":"[concat('asp-retaildemo-app-',variables('unique_suffix'))]",
@@ -610,7 +610,7 @@
          "type":"Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups",
          "apiVersion":"2019-03-22",
          "dependsOn":[
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name'))]"
          ]
       },
       {
@@ -618,8 +618,8 @@
          "apiVersion":"2019-06-01",
          "name":"[variables('asa_name_retail')]",
          "dependsOn":[
-            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name'))]"
          ],
          "location":"[variables('location')]",
          "identity":{
@@ -639,10 +639,10 @@
       {
          "type":"Microsoft.StreamAnalytics/streamingjobs/inputs",
          "apiVersion":"2016-03-01",
-         "name":"[concat(variables('asa_name_retail'), '/iot-hub-in')]",
+         "name":"[concat(variables('asa_name_retail'), '/iot-foottraffic-hub')]",
          "dependsOn":[
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]",
-            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_name_retail'))]",
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name'))]"
          ],
          "properties":{
             "type":"Stream",
@@ -667,9 +667,9 @@
       {
          "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
          "apiVersion":"2017-04-01-preview",
-         "name":"[concat(variables('asa_name_retail'), '/adls-out')]",
+         "name":"[concat(variables('asa_name_retail'), '/adlsgen2-iothub-output')]",
          "dependsOn":[
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_name_retail'))]"
          ],
          "properties":{
             "datasource":{
@@ -681,8 +681,8 @@
                         "accountKey":"[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name')),'2019-04-01').keys[0].value]"
                      }
                   ],
-                  "container":"foottraffic-data",
-                  "pathPattern":"iot-data/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/",
+                  "container":"iot",
+                  "pathPattern":"iot-foottraffic/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/",
                   "dateFormat":"yyyy/MM/dd",
                   "timeFormat":"HH",
                   "authenticationMode":"ConnectionString"
@@ -703,7 +703,7 @@
          "apiVersion":"2016-03-01",
          "name":"[concat(variables('asa_name_retail'), '/query')]",
          "dependsOn":[
-            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_name_retail'))]"
          ],
          "properties":{
             "streamingUnits":6,
@@ -849,7 +849,7 @@
                "name":"allowAll",
                "location":"[variables('location')]",
                "dependsOn":[
-                  "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
+                  "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_synapseretail'))]"
                ],
                "properties":{
                   "startIpAddress":"0.0.0.0",
@@ -888,7 +888,7 @@
          "apiVersion":"2021-05-01",
          "location":"[variables('location')]",
          "dependsOn":[
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
+            "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_synapseretail'))]"
          ],
          "sku":{
             "name":"[variables('sql_server_sku')]"
@@ -2107,7 +2107,7 @@
          "location":"westus",
          "dependsOn":[
             "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
-            "[resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name'))]"
+            "[resourceId('Microsoft.Search/searchServices', variables('search_retail_qna_name'))]"
          ],
          "sku":{
             "name":"S0"
@@ -2174,7 +2174,7 @@
          "name":"[variables('app_retail_qna_name')]",
          "location":"[variables('location')]",
          "dependsOn":[
-            "[concat('Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]"
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_app_retail_qna_name'))]"
          ],
          "properties":{
             "enabled":true,
@@ -2186,7 +2186,7 @@
                }
             },
             "name":"[variables('app_retail_qna_name')]",
-            "serverFarmId":"[concat('/subscriptions/', subscription().SubscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]",
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('serverfarms_app_retail_qna_name'))]",
             "hostingEnvironment":""
          },
          "resources":[
@@ -2267,7 +2267,7 @@
          "location":"[variables('location')]",
          "kind":"functionapp",
          "dependsOn":[
-            "[concat('Microsoft.Web/serverfarms/', variables('serverfarms_func_retail_livestreaming_name'))]"
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_func_retail_livestreaming_name'))]"
          ],
          "identity":{
             "type":"SystemAssigned"
