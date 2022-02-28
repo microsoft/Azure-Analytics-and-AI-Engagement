@@ -20,2241 +20,2422 @@
             "description":"PowerBi workspace Id."
          }
       },
-      "Tax_Collection_Realtime": {
-        "type": "String",
-        "metadata": {
-          "description": "PowerBi streaming dataset URL for Tax Collection Realtime."
-        }
+      "Tax_Collection_Realtime":{
+         "type":"String",
+         "metadata":{
+            "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
+         }
       }
    },
-  "variables": {
-    "resource_group_name": "[resourceGroup().name]",
-    "subscriptionid": "[subscription().subscriptionId]",
-    "unique_suffix": "[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
-    "location": "[resourceGroup().location]",
-    "key_vault_name": "[concat('kv-',variables('unique_suffix'))]",
-    "storage_account_name": "[if(greater(length(concat('stretail', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('stretail',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stretail',parameters('environment_code'),uniqueString(deployment().name)) )]",
-    "workspace_name_synapseretail": "[concat('synapseretail',parameters('environment_code'),uniqueString(deployment().name))]",
-    "default_data_lake_storage_file_system_name": "retail-data",
-    "default_data_lake_storage_account_url": "[concat('https://', variables('storage_account_name'), '.dfs.core.windows.net')]",
-    "sql_compute_name": "RetailDW",
-    "sql_administrator_login_id": "labsqladmin",
-    "spark_compute_name": "Retail",
-    "sql_server_sku": "DW100c",
-    "spark_auto_scale_enabled": "true",
-    "spark_min_node_count": "3",
-    "spark_max_node_count": "20",
-    "spark_node_count": "1",
-    "spark_node_size_family": "MemoryOptimized",
-    "spark_node_size": "Large",
-    "spark_auto_pause_enabled": "true",
-    "spark_auto_pause_delay_in_minutes": "5",
-    "spark_version": "2.4",
-    "forms_retail_name": "[concat('retail-form-recognizer-',variables('unique_suffix'))]",
-    "accounts_immersive_reader_retail_name": "[concat('immersive-reader-retail-',variables('unique_suffix'))]",
-    "accounts_qnamaker_name": "[concat('qnamaker-',variables('unique_suffix'))]",
-    "app_retail_qna_name": "[concat('qnamaker-app-',variables('unique_suffix'))]",
-    "serverfarms_app_retail_qna_name": "[concat('asp-qnamaker-',variables('unique_suffix'))]",
-    "iot_hub_name": "[concat('iothub-retail-',variables('unique_suffix'))]",
-    "eventhub_evh_namespace_retail_name": "[concat('evh-namespace-',variables('unique_suffix'))]",
-    "asa_name_retail": "[concat('retailasa-',variables('unique_suffix'))]",
-    "asa_query_retail": "SELECT * INTO [adls-out] FROM [iot-hub-in]",
-    "accounts_transqna_retail_name": "[concat('transqna-retail-',variables('unique_suffix'))]",
-    "app_retaildemo_name": "[concat('retaildemo-app-',variables('unique_suffix'))]",
-    "serverfarms_app_retaildemo_name": "[concat('asp-retaildemo-app-',variables('unique_suffix'))]",
-    "app_immersive_reader_retail_name": "[concat('immersive-reader-retail-app-',variables('unique_suffix'))]",
-    "serverfarms_app_immersive_reader_retail_name": "[concat('asp-immersive-reader-retail-app-',variables('unique_suffix'))]",
-    "ai_retail_immersive_reader_name": "[concat('ai-immersive-reader-retail-',variables('unique_suffix'))]",
-    "sites_adx_thermostat_realtime_name": "[concat('app-realtime-kpi-retail-',variables('unique_suffix'))]",
-    "serverfarm_adx_thermostat_realtime_name": "[concat('asp-realtime-kpi-retail-',variables('unique_suffix'))]",
-    "sites_app_iotfoottraffic_sensor_retail_name": "[concat('iot-foottraffic-sensor-retail-app-',variables('unique_suffix'))]",
-    "serverfarm_app_iotfoottraffic_sensor_retail_name": "[concat('asp-iot-foottraffic-sensor-retail-',variables('unique_suffix'))]",	
-	"sites_retail_mediasearch_app_name": "[concat('mediasearch-retail-app-',variables('unique_suffix'))]",
-    "serverfarm_retail_mediasearch_app_name": "[concat('asp-mediasearch-retail-',variables('unique_suffix'))]",
-	"accounts_purview_retail_name"	:"[concat('purviewretail',variables('unique_suffix'))]",
-	"search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
-	"search_retail_qna_name":"[concat('srch-retail-qna-',variables('unique_suffix'))]",
-	"mediaservices_name": "[concat('mediasvc',uniqueString(deployment().name))]",
-    "event_topic_media_indexer_name": "[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
-	"cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
-    "cosmos_database_name": "retail-foottraffic",
-	"accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
-	"staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
-	"accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
-	"staticSites_productsearchwebapp_name":"[concat('productsearchwebapp-',variables('unique_suffix'))]",
-	"accounts_retailspeechapp_prod_name":"[concat('retailspeechapp-',variables('unique_suffix'))]"
-  },
-  "resources": [
-    {
-      "name": "default",
-      "type": "Microsoft.Resources/tags",
-      "apiVersion": "2019-10-01",
-      "properties": {
-        "tags": {
-          "DeploymentId": "[parameters('environment_code')]",
-          "UniqueId": "[uniqueString(deployment().name)]",
-          "WsId": "[parameters('pbi_workspace_id')]",
-          "Tax_Collection_Realtime": "[parameters('Tax_Collection_Realtime')]"
-        }
-      }
-    },
-	        {
-            "type": "Microsoft.CognitiveServices/accounts",
-            "apiVersion": "2021-10-01",
-            "name": "[variables('accounts_retailspeechapp_prod_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "S0"
-            },
-            "kind": "SpeechServices",
-            "identity": {
-                "type": "None",
-                "userAssignedIdentities": {}
-            },
-            "properties": {
-                "networkAcls": {
-                    "defaultAction": "Allow",
-                    "virtualNetworkRules": [],
-                    "ipRules": []
-                },
-                "publicNetworkAccess": "Enabled"
+   "variables":{
+      "resource_group_name":"[resourceGroup().name]",
+      "subscriptionid":"[subscription().subscriptionId]",
+      "unique_suffix":"[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
+      "location":"[resourceGroup().location]",
+      "key_vault_name":"[concat('kv-',variables('unique_suffix'))]",
+      "storage_account_name":"[if(greater(length(concat('stretail', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('stretail',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stretail',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "workspace_name_synapseretail":"[concat('synapseretail',parameters('environment_code'),uniqueString(deployment().name))]",
+      "default_data_lake_storage_file_system_name":"retail-data",
+      "default_data_lake_storage_account_url":"[concat('https://', variables('storage_account_name'), '.dfs.core.windows.net')]",
+      "sql_compute_name":"RetailDW",
+      "sql_administrator_login_id":"labsqladmin",
+      "spark_compute_name":"Retail",
+      "sql_server_sku":"DW100c",
+      "spark_auto_scale_enabled":"true",
+      "spark_min_node_count":"3",
+      "spark_max_node_count":"20",
+      "spark_node_count":"1",
+      "spark_node_size_family":"MemoryOptimized",
+      "spark_node_size":"Large",
+      "spark_auto_pause_enabled":"true",
+      "spark_auto_pause_delay_in_minutes":"5",
+      "spark_version":"2.4",
+      "forms_retail_name":"[concat('retail-form-recognizer-',variables('unique_suffix'))]",
+      "accounts_qnamaker_name":"[concat('qnamaker-',variables('unique_suffix'))]",
+      "app_retail_qna_name":"[concat('qnamaker-app-',variables('unique_suffix'))]",
+      "serverfarms_app_retail_qna_name":"[concat('asp-qnamaker-',variables('unique_suffix'))]",
+      "iot_hub_name":"[concat('iothub-retail-',variables('unique_suffix'))]",
+      "eventhub_evh_namespace_retail_name":"[concat('evh-namespace-',variables('unique_suffix'))]",
+      "asa_name_retail":"[concat('retailasa-',variables('unique_suffix'))]",
+      "asa_query_retail":"SELECT * INTO [adls-out] FROM [iot-hub-in]",
+      "accounts_transqna_retail_name":"[concat('transqna-retail-',variables('unique_suffix'))]",
+      "app_retaildemo_name":"[concat('retaildemo-app-',variables('unique_suffix'))]",
+      "serverfarms_app_retaildemo_name":"[concat('asp-retaildemo-app-',variables('unique_suffix'))]",
+      "sites_adx_thermostat_realtime_name":"[concat('app-realtime-kpi-retail-',variables('unique_suffix'))]",
+      "serverfarm_adx_thermostat_realtime_name":"[concat('asp-realtime-kpi-retail-',variables('unique_suffix'))]",
+      "sites_app_iotfoottraffic_sensor_retail_name":"[concat('iot-foottraffic-sensor-retail-app-',variables('unique_suffix'))]",
+      "serverfarm_app_iotfoottraffic_sensor_retail_name":"[concat('asp-iot-foottraffic-sensor-retail-',variables('unique_suffix'))]",
+      "sites_retail_mediasearch_app_name":"[concat('mediasearch-retail-app-',variables('unique_suffix'))]",
+      "serverfarm_retail_mediasearch_app_name":"[concat('asp-mediasearch-retail-',variables('unique_suffix'))]",
+      "accounts_purview_retail_name":"[concat('purviewretail',variables('unique_suffix'))]",
+      "search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
+      "search_retail_qna_name":"[concat('srch-retail-qna-',variables('unique_suffix'))]",
+      "mediaservices_name":"[concat('mediasvc',uniqueString(deployment().name))]",
+      "event_topic_media_indexer_name":"[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
+      "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "cosmos_database_name":"retail-foottraffic",
+      "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
+      "staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
+      "accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
+      "staticSites_productsearchwebapp_name":"[concat('productsearchwebapp-',variables('unique_suffix'))]",
+      "accounts_retailspeechapp_prod_name":"[concat('retailspeechapp-',variables('unique_suffix'))]",
+      "accounts_cogvisionretail_name":"[concat('cogvisionretail-',variables('unique_suffix'))]",
+      "accounts_retaillangresource_name":"[concat('retaillangresource-',variables('unique_suffix'))]",
+      "sites_func_retail_livestreaming_name":"[concat('func-retail-livestreaming-',variables('unique_suffix'))]",
+      "serverfarms_func_retail_livestreaming_name":"[concat('asp-retail-livestreaming-',variables('unique_suffix'))]"
+   },
+   "resources":[
+      {
+         "name":"default",
+         "type":"Microsoft.Resources/tags",
+         "apiVersion":"2019-10-01",
+         "properties":{
+            "tags":{
+               "DeploymentId":"[parameters('environment_code')]",
+               "UniqueId":"[uniqueString(deployment().name)]",
+               "WsId":"[parameters('pbi_workspace_id')]",
+               "Tax_Collection_Realtime":"[parameters('Tax_Collection_Realtime')]"
             }
-        },
-	 {
-            "type": "Microsoft.Web/staticSites",
-            "apiVersion": "2021-03-01",
-            "name": "[variables('staticSites_productsearchwebapp_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Free",
-                "tier": "Free"
-            },
-            "properties": {
-                "repositoryUrl": "https://github.com/dojodemos/prod_retail_product_search",
-                "branch": "main",
-                "stagingEnvironmentPolicy": "Enabled",
-                "allowConfigFileUpdates": true,
-                "provider": "GitHub",
-                "enterpriseGradeCdnStatus": "Disabled"
-            }
-        },
-	 {
-            "type": "Microsoft.Web/staticSites",
-            "apiVersion": "2021-03-01",
-            "name": "[variables('staticSites_stapp_retail_productsearch_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Standard",
-                "tier": "Standard"
-            },
-            "properties": {
-                "repositoryUrl": "https://github.com/dojodemos/retail20-prod-product-search",
-                "branch": "main",
-                "stagingEnvironmentPolicy": "Enabled",
-                "allowConfigFileUpdates": true,
-                "provider": "GitHub",
-                "enterpriseGradeCdnStatus": "Disabled"
-            }
-        },
-	      {
-            "type": "Microsoft.Purview/accounts",
-            "apiVersion": "2021-07-01",
-            "name": "[variables('accounts_purview_retail_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Standard",
-                "capacity": 1
-            },
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "cloudConnectors": {},
-                "publicNetworkAccess": "Enabled",
-                "managedResourceGroupName": "[concat('managed-rg-', variables('accounts_purview_retail_name'))]"
-            }
-        },
-	{
-      "type": "Microsoft.Media/mediaservices",
-      "apiVersion": "2018-07-01",
-      "name": "[variables('mediaservices_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "storageAccounts": [
-          {
-            "id": "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
-            "type": "Primary"
-          }
-        ]
-      }
-    },
-    {
-      "name": "[variables('event_topic_media_indexer_name')]",
-      "type": "Microsoft.EventGrid/systemTopics",
-      "apiVersion": "2020-10-15-preview",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
-      ],
-      "properties": {
-        "source": "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]",
-        "topicType": "Microsoft.Media.MediaServices"
-      }
-    },
-	{
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2021-10-15",
-            "name": "[variables('cosmosdb_retail2_name')]",
-            "location": "[variables('location')]",
-            "kind": "GlobalDocumentDB",
-            "identity": {
-                "type": "None"
-            },
-            "properties": {
-                "publicNetworkAccess": "Enabled",
-                "enableAutomaticFailover": false,
-                "enableMultipleWriteLocations": false,
-                "isVirtualNetworkFilterEnabled": false,
-                "virtualNetworkRules": [],
-                "disableKeyBasedMetadataWriteAccess": false,
-                "enableFreeTier": false,
-                "enableAnalyticalStorage": true,
-                "analyticalStorageConfiguration": {
-                    "schemaType": "WellDefined"
-                },
-                "databaseAccountOfferType": "Standard",
-                "defaultIdentity": "FirstPartyIdentity",
-                "networkAclBypass": "None",
-                "disableLocalAuth": false,
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "Session",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
-                    {
-                        "locationName": "[variables('location')]",
-                        "provisioningState": "Succeeded",
-                        "failoverPriority": 0,
-                        "isZoneRedundant": false
-                    }
-                ],
-                "cors": [],
-                "capabilities": [],
-                "ipRules": [],
-                "backupPolicy": {
-                    "type": "Periodic",
-                    "periodicModeProperties": {
-                        "backupIntervalInMinutes": 240,
-                        "backupRetentionIntervalInHours": 8,
-                        "backupStorageRedundancy": "Geo"
-                    }
-                },
-                "networkAclBypassResourceIds": []
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "apiVersion": "2021-10-15",
-            "name": "[concat(variables('cosmosdb_retail2_name'), variables('cosmos_database_name'))]",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-            ],
-            "properties": {
-                "resource": {
-                    "id": "[variables('cosmos_database_name')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
-            "apiVersion": "2021-10-15",
-            "name": "[concat(variables('cosmosdb_retail2_name'), '/00000000-0000-0000-0000-000000000001')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-            ],
-            "properties": {
-                "roleName": "Cosmos DB Built-in Data Reader",
-                "type": "BuiltInRole",
-                "assignableScopes": [
-                    "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-                ],
-                "permissions": [
-                    {
-                        "dataActions": [
-                            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
-                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery",
-                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed",
-                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
-                        ],
-                        "notDataActions": []
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
-            "apiVersion": "2021-10-15",
-            "name": "[concat(variables('cosmosdb_retail2_name'), '/00000000-0000-0000-0000-000000000002')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-            ],
-            "properties": {
-                "roleName": "Cosmos DB Built-in Data Contributor",
-                "type": "BuiltInRole",
-                "assignableScopes": [
-                    "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-                ],
-                "permissions": [
-                    {
-                        "dataActions": [
-                            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
-                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
-                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
-                        ],
-                        "notDataActions": []
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-10-15",
-            "name": "[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retailcosmos')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-            ],
-            "properties": {
-                "resource": {
-                    "id": "retailcosmos",
-                    "indexingPolicy": {
-                        "indexingMode": "consistent",
-                        "automatic": true,
-                        "includedPaths": [
-                            {
-                                "path": "/*"
-                            }
-                        ],
-                        "excludedPaths": [
-                            {
-                                "path": "/\"_etag\"/?"
-                            }
-                        ]
-                    },
-                    "partitionKey": {
-                        "paths": [
-                            "/TransactionType"
-                        ],
-                        "kind": "Hash"
-                    },
-                    "uniqueKeyPolicy": {
-                        "uniqueKeys": []
-                    },
-                    "conflictResolutionPolicy": {
-                        "mode": "LastWriterWins",
-                        "conflictResolutionPath": "/_ts"
-                    },
-                    "analyticalStorageTtl": -1
-                },
-				"options": {
-          "autoscaleSettings": {
-            "maxThroughput": "4000"
-          }
-        }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "apiVersion": "2021-10-15",
-            "name": "[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retaildb')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
-            ],
-            "properties": {
-                "resource": {
-                    "id": "retaildb",
-                    "indexingPolicy": {
-                        "indexingMode": "consistent",
-                        "automatic": true,
-                        "includedPaths": [
-                            {
-                                "path": "/*"
-                            }
-                        ],
-                        "excludedPaths": [
-                            {
-                                "path": "/\"_etag\"/?"
-                            }
-                        ]
-                    },
-                    "partitionKey": {
-                        "paths": [
-                            "/beforefoottraffic"
-                        ],
-                        "kind": "Hash"
-                    },
-                    "uniqueKeyPolicy": {
-                        "uniqueKeys": []
-                    },
-                    "conflictResolutionPolicy": {
-                        "mode": "LastWriterWins",
-                        "conflictResolutionPath": "/_ts"
-                    },
-                    "analyticalStorageTtl": -1
-                },
-				"options": {
-          "autoscaleSettings": {
-            "maxThroughput": "4000"
-          }
-        }
-            }
-        },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "apiVersion": "2021-04-30",
-      "name": "[variables('accounts_transqna_retail_name')]",
-      "location": "global",
-      "sku": {
-        "name": "S1"
+         }
       },
-      "kind": "TextTranslation",
-      "properties": {
-        "customSubDomainName": "[variables('accounts_transqna_retail_name')]",
-        "publicNetworkAccess": "Enabled"
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "name": "[variables('key_vault_name')]",
-      "apiVersion": "2018-02-14",
-      "location": "[variables('location')]",
-      "properties": {
-        "enabledForDeployment": true,
-        "enabledForDiskEncryption": true,
-        "enabledForTemplateDeployment": true,
-        "vaultUri": "[concat('https://', variables('key_vault_name'), '.vault.azure.net/')]",
-        "tenantId": "[subscription().tenantId]",
-        "accessPolicies": [
-
-        ],
-        "sku": {
-          "name": "Standard",
-          "family": "A"
-        },
-        "networkAcls": {
-          "defaultAction": "Allow",
-          "bypass": "AzureServices"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "name": "[concat(variables('key_vault_name'), '/SqlPassword')]",
-      "apiVersion": "2018-02-14",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]"
-      ],
-      "properties": {
-        "value": "[parameters('sql_administrator_login_password')]"
-      }
-    },
-    {
-      "name": "[variables('iot_hub_name')]",
-      "type": "Microsoft.Devices/IotHubs",
-      "apiVersion": "2019-03-22",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1",
-        "tier": "Standard",
-        "capacity": 1
-      },
-      "properties": {
-        "eventHubEndpoints": {
-          "events": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 4
-          }
-        },
-        "features": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('iot_hub_name'), '/events/asa-cg')]",
-      "type": "Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups",
-      "apiVersion": "2019-03-22",
-      "dependsOn": [
-        "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.StreamAnalytics/streamingjobs",
-      "apiVersion": "2019-06-01",
-      "name": "[variables('asa_name_retail')]",
-      "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'))]",
-        "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
-      ],
-      "location": "[variables('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "properties": {
-        "sku": {
-          "name": "Standard"
-        },
-        "eventsOutOfOrderPolicy": "Adjust",
-        "outputErrorPolicy": "Stop",
-        "eventsOutOfOrderMaxDelayInSeconds": 0,
-        "eventsLateArrivalMaxDelayInSeconds": 5,
-        "dataLocale": "en-US"
-      }
-    },
-    {
-      "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
-      "apiVersion": "2016-03-01",
-      "name": "[concat(variables('asa_name_retail'), '/iot-hub-in')]",
-      "dependsOn": [
-        "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]",
-        "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
-      ],
-      "properties": {
-        "type": "Stream",
-        "datasource": {
-          "type": "Microsoft.Devices/IotHubs",
-          "properties": {
-            "iotHubNamespace": "[variables('iot_hub_name')]",
-            "sharedAccessPolicyName": "iothubowner",
-            "sharedAccessPolicyKey": "[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name')), '2018-04-01').value[0].primaryKey]",
-            "consumerGroupName": "asa-cg",
-            "endpoint": "messages/events"
-          }
-        },
-        "serialization": {
-          "type": "Json",
-          "properties": {
-            "encoding": "UTF8"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
-      "apiVersion": "2017-04-01-preview",
-      "name": "[concat(variables('asa_name_retail'), '/adls-out')]",
-      "dependsOn": [
-        "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
-      ],
-      "properties": {
-        "datasource": {
-          "type": "Microsoft.Storage/Blob",
-          "properties": {
-            "storageAccounts": [
-              {
-                "accountName": "[variables('storage_account_name')]",
-                "accountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name')),'2019-04-01').keys[0].value]"
-              }
-            ],
-            "container": "foottraffic-data",
-            "pathPattern": "iot-data/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/",
-            "dateFormat": "yyyy/MM/dd",
-            "timeFormat": "HH",
-            "authenticationMode": "ConnectionString"
-          }
-        },
-        "timeWindow": "00:01:00",
-        "sizeWindow": 2000,
-        "serialization": {
-          "type": "Parquet",
-          "properties": {
-            "encoding": "UTF8"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.StreamAnalytics/streamingjobs/transformations",
-      "apiVersion": "2016-03-01",
-      "name": "[concat(variables('asa_name_retail'), '/query')]",
-      "dependsOn": [
-        "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
-      ],
-      "properties": {
-        "streamingUnits": 6,
-        "query": "[variables('asa_query_retail')]"
-      }
-    },
-     {
-            "type": "Microsoft.EventHub/namespaces",
-            "apiVersion": "2021-11-01",
-            "name": "[variables('eventhub_evh_namespace_retail_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Standard",
-                "tier": "Standard",
-                "capacity": 1
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-10-01",
+         "name":"[parameters('accounts_retaillangresource_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S"
+         },
+         "kind":"TextAnalytics",
+         "identity":{
+            "type":"None",
+            "userAssignedIdentities":{
+               
+            }
+         },
+         "properties":{
+            "apiProperties":{
+               
             },
-            "properties": {
-                "disableLocalAuth": false,
-                "zoneRedundant": true,
-                "isAutoInflateEnabled": false,
-                "maximumThroughputUnits": 0,
-                "kafkaEnabled": true
-            }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/RootManageSharedAccessKey')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-            ],
-            "properties": {
-                "rights": [
-                    "Listen",
-                    "Manage",
-                    "Send"
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-            ],
-            "properties": {
-                "messageRetentionInDays": 1,
-                "partitionCount": 1,
-                "status": "Active"
-            }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/default')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-            ],
-            "properties": {
-                "publicNetworkAccess": "Enabled",
-                "defaultAction": "Allow",
-                "virtualNetworkRules": [],
-                "ipRules": []
-            }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/ManageRule')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
-                "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-            ],
-            "properties": {
-                "rights": [
-                    "Manage",
-                    "Send",
-                    "Listen"
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/$Default')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
-                "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
-            ],
-            "properties": {}
-        },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "apiVersion": "2017-04-18",
-      "name": "[variables('forms_retail_name')]",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S0"
+            "publicNetworkAccess":"Enabled"
+         }
       },
-      "kind": "FormRecognizer",
-      "properties": {
-        "privateEndpointConnections": [
-
-        ],
-        "publicNetworkAccess": "Enabled"
-      }
-    },
-    {
-      "name": "[variables('workspace_name_synapseretail')]",
-      "type": "Microsoft.Synapse/workspaces",
-      "apiVersion": "2021-05-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
-      ],
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "properties": {
-        "defaultDataLakeStorage": {
-          "accountUrl": "[variables('default_data_lake_storage_account_url')]",
-          "filesystem": "[variables('default_data_lake_storage_file_system_name')]"
-        },
-        "sqlAdministratorLogin": "[variables('sql_administrator_login_id')]",
-        "sqlAdministratorLoginPassword": "[variables('sql_administrator_login_password')]"
-      },
-      "resources": [
-        {
-          "type": "firewallrules",
-          "apiVersion": "2021-05-01",
-          "name": "allowAll",
-          "location": "[variables('location')]",
-          "dependsOn": [
-            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
-          ],
-          "properties": {
-            "startIpAddress": "0.0.0.0",
-            "endIpAddress": "255.255.255.255"
-          }
-        }
-      ]
-    },
-    {
-      "name": "[concat(variables('workspace_name_synapseretail'), '/', variables('spark_compute_name'))]",
-      "type": "Microsoft.Synapse/workspaces/bigDataPools",
-      "apiVersion": "2021-05-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_synapseretail'))]"
-      ],
-      "properties": {
-        "nodeCount": "[variables('spark_node_count')]",
-        "nodeSizeFamily": "[variables('spark_node_size_family')]",
-        "nodeSize": "[variables('spark_node_size')]",
-        "autoScale": {
-          "enabled": "[variables('spark_auto_scale_enabled')]",
-          "minNodeCount": "[variables('spark_min_node_count')]",
-          "maxNodeCount": "[variables('spark_max_node_count')]"
-        },
-        "autoPause": {
-          "enabled": "[variables('spark_auto_pause_enabled')]",
-          "delayInMinutes": "[variables('spark_auto_pause_delay_in_minutes')]"
-        },
-        "sparkVersion": "[variables('spark_version')]"
-      }
-    },
-    {
-      "name": "[concat(variables('workspace_name_synapseretail'), '/', variables('sql_compute_name'))]",
-      "type": "Microsoft.Synapse/workspaces/sqlPools",
-      "apiVersion": "2021-05-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
-      ],
-      "sku": {
-        "name": "[variables('sql_server_sku')]"
-      },
-      "properties": {
-        "createMode": "Default",
-        "collation": "SQL_Latin1_General_CP1_CI_AS"
-      }
-    },
-	{
-            "type": "Microsoft.CognitiveServices/accounts",
-            "apiVersion": "2021-10-01",
-            "name": "[variables('accounts_cogretail_name')]",
-          "location": "[variables('location')]",
-            "sku": {
-                "name": "S0"
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-10-01",
+         "name":"[variables('accounts_cogvisionretail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"ComputerVision",
+         "properties":{
+            "customSubDomainName":"[variables('accounts_cogvisionretail_name')]",
+            "networkAcls":{
+               "defaultAction":"Allow",
+               "virtualNetworkRules":[
+                  
+               ],
+               "ipRules":[
+                  
+               ]
             },
-            "kind": "CognitiveServices",
-            "identity": {
-                "type": "None",
-                "userAssignedIdentities": {}
-            },
-            "properties": {
-                "apiProperties": {},
-                "customSubDomainName": "[variables('accounts_cogretail_name')]",
-                "publicNetworkAccess": "Enabled"
+            "publicNetworkAccess":"Enabled"
+         }
+      },
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-10-01",
+         "name":"[variables('accounts_retailspeechapp_prod_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S0"
+         },
+         "kind":"SpeechServices",
+         "identity":{
+            "type":"None",
+            "userAssignedIdentities":{
+               
             }
-        }
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "apiVersion": "2021-04-30",
-      "name": "[variables('accounts_immersive_reader_retail_name')]",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S0"
-      },
-      "kind": "ImmersiveReader",
-      "identity": {
-        "type": "None",
-        "userAssignedIdentities": {
-
-        }
-      },
-      "properties": {
-        "customSubDomainName": "[variables('accounts_immersive_reader_retail_name')]",
-        "networkAcls": {
-          "defaultAction": "Allow",
-          "virtualNetworkRules": [
-
-          ],
-          "ipRules": [
-
-          ]
-        },
-        "publicNetworkAccess": "Enabled"
-      }
-    },
-    {
-      "name": "[variables('storage_account_name')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2020-08-01-preview",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "kind": "StorageV2",
-      "properties": {
-        "minimumTlsVersion": "TLS1_2",
-        "allowBlobPublicAccess": true,
-        "networkAcls": {
-          "bypass": "AzureServices",
-          "defaultAction": "Allow"
-        },
-        "supportsHttpsTrafficOnly": true,
-        "encryption": {
-          "services": {
-            "file": {
-              "keyType": "Account",
-              "enabled": true
+         },
+         "properties":{
+            "networkAcls":{
+               "defaultAction":"Allow",
+               "virtualNetworkRules":[
+                  
+               ],
+               "ipRules":[
+                  
+               ]
             },
-            "blob": {
-              "keyType": "Account",
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        },
-        "accessTier": "Hot"
+            "publicNetworkAccess":"Enabled"
+         }
       },
-      "resources": [
-        {
-          "type": "blobServices/containers",
-          "apiVersion": "2018-07-01",
-          "name": "[concat('default/', variables('default_data_lake_storage_file_system_name'))]",
-          "dependsOn": [
+      {
+         "type":"Microsoft.Web/staticSites",
+         "apiVersion":"2021-03-01",
+         "name":"[variables('staticSites_productsearchwebapp_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Free",
+            "tier":"Free"
+         },
+         "properties":{
+            "repositoryUrl":"https://github.com/dojodemos/prod_retail_product_search",
+            "branch":"main",
+            "stagingEnvironmentPolicy":"Enabled",
+            "allowConfigFileUpdates":true,
+            "provider":"GitHub",
+            "enterpriseGradeCdnStatus":"Disabled"
+         }
+      },
+      {
+         "type":"Microsoft.Web/staticSites",
+         "apiVersion":"2021-03-01",
+         "name":"[variables('staticSites_stapp_retail_productsearch_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard",
+            "tier":"Standard"
+         },
+         "properties":{
+            "repositoryUrl":"https://github.com/dojodemos/retail20-prod-product-search",
+            "branch":"main",
+            "stagingEnvironmentPolicy":"Enabled",
+            "allowConfigFileUpdates":true,
+            "provider":"GitHub",
+            "enterpriseGradeCdnStatus":"Disabled"
+         }
+      },
+      {
+         "type":"Microsoft.Purview/accounts",
+         "apiVersion":"2021-07-01",
+         "name":"[variables('accounts_purview_retail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard",
+            "capacity":1
+         },
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "cloudConnectors":{
+               
+            },
+            "publicNetworkAccess":"Enabled",
+            "managedResourceGroupName":"[concat('managed-rg-', variables('accounts_purview_retail_name'))]"
+         }
+      },
+      {
+         "type":"Microsoft.Media/mediaservices",
+         "apiVersion":"2018-07-01",
+         "name":"[variables('mediaservices_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
             "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "sku": {
-        "name": "Standard_RAGRS",
-        "tier": "Standard"
-      },
-      "properties": {
-        "cors": {
-          "corsRules": [
-            {
-              "allowedOrigins": [
-                "*"
-              ],
-              "allowedMethods": [
-                "GET"
-              ],
-              "maxAgeInSeconds": 1000,
-              "exposedHeaders": [
-                "*"
-              ],
-              "allowedHeaders": [
-                "*"
-              ]
-            },
-            {
-              "allowedOrigins": [
-                "*"
-              ],
-              "allowedMethods": [
-                "POST"
-              ],
-              "maxAgeInSeconds": 1000,
-              "exposedHeaders": [
-                "*"
-              ],
-              "allowedHeaders": [
-                "*"
-              ]
-            },
-            {
-              "allowedOrigins": [
-                "*"
-              ],
-              "allowedMethods": [
-                "DELETE"
-              ],
-              "maxAgeInSeconds": 1000,
-              "exposedHeaders": [
-                "*"
-              ],
-              "allowedHeaders": [
-                "*"
-              ]
-            },
-            {
-              "allowedOrigins": [
-                "*"
-              ],
-              "allowedMethods": [
-                "MERGE"
-              ],
-              "maxAgeInSeconds": 1000,
-              "exposedHeaders": [
-                "*"
-              ],
-              "allowedHeaders": [
-                "*"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default')]",
-      "type": "Microsoft.Storage/storageAccounts/queueServices",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "cors": {
-          "corsRules": [
-
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default')]",
-      "type": "Microsoft.Storage/storageAccounts/tableServices",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "cors": {
-          "corsRules": [
-
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/adfstagedcopytempdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/adfstagedpolybasetempdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/customer-churn-data')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/dataverse-retaildreamd-unqe3e6254ff0834070858f5cbc69b77')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/iot')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/magentocontosomergerdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat(variables('storage_account_name'), '/default/magentosource')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/market-basket')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/marketingdb-staging')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/rawdata-customerinsight')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/retail-customerreviewsdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/retail-data')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/retail-notebook-data')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/retailcog-skillset-image-projection')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/retaildata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/sapdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/thermostat')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "name": "[concat( variables('storage_account_name'), '/default/twitterdata')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Blob"
-      }
-    },
-	 {
-      "name": "[concat( variables('storage_account_name'), '/default/video')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Blob"
-      }
-    },
-		 {
-      "name": "[concat( variables('storage_account_name'), '/default/videoanalyzer')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-		 {
-      "name": "[concat( variables('storage_account_name'), '/default/retail20')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-		 {
-      "name": "[concat( variables('storage_account_name'), '/default/customcsv')]",
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2020-08-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
-      ],
-      "properties": {
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Container"
-      }
-    },
-    {
-      "name": "[variables('serverfarm_adx_thermostat_realtime_name')]",
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "linux",
-      "properties": {
-        "reserved": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2021-02-01",
-      "name": "[variables('sites_adx_thermostat_realtime_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]"
-      ],
-      "kind": "app,linux",
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]",
-        },
-			"reserved": true,
-                "isXenon": false,
-                "hyperV": false,
-                "siteConfig": {
-                    "numberOfWorkers": 1,
-                    "linuxFxVersion": "PYTHON|3.9",
-                    "acrUseManagedIdentityCreds": false,
-                    "alwaysOn": false,
-                    "http20Enabled": false,
-                    "functionAppScaleLimit": 0,
-                    "minimumElasticInstanceCount": 1,
-					     "appSettings": [
-  {
-    "name": "occupancyDataConfig",
-    "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=occupancy;SharedAccessKey=rJ2LAbGYh8Mtt0FXQi+WzHa94/HeQdZ+hM6A1LOYqg8=;EntityPath=occupancy\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
-  },
-  {
-    "name": "thermostatsrealtime",
-    "value": "{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
-  },
-  {
-    "name": "thermostatTelemetryConfig",
-    "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=thermostat;SharedAccessKey=lChcS//clr9v3bh6C9uJq/e2UlQUYSVkM5NDj5Ua4yQ=;EntityPath=thermostat\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/1f495e04-7d5d-43cd-b8d8-51e81939ba4e/rows?key=VklFqgzc7uxHy6x8UeShdtKWtDtZ8CnS2KLu0%2FYMP7Uc8DDZQKP4%2BocEpD1fzLhmGQCufMXcEMUP6F8Ot9DD4A%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}"
-  }
-]
-                },
-                "scmSiteAlsoStopped": false,
-                "clientAffinityEnabled": false,
-                "clientCertEnabled": false,
-                "clientCertMode": "Required",
-                "hostNamesDisabled": false,
-                "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "httpsOnly": false,
-                "redundancyMode": "None",
-                "storageAccountRequired": false,
-                "keyVaultReferenceIdentity": "SystemAssigned"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/ftp')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/scm')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/web')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
-      ],
-            "properties": {
-                "numberOfWorkers": 1,
-                "defaultDocuments": [
-                    "Default.htm",
-                    "Default.html",
-                    "Default.asp",
-                    "index.htm",
-                    "index.html",
-                    "iisstart.htm",
-                    "default.aspx",
-                    "index.php",
-                    "hostingstart.html"
-                ],
-                "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "PYTHON|3.9",
-                "requestTracingEnabled": false,
-                "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": "VS2019",
-                "httpLoggingEnabled": false,
-                "acrUseManagedIdentityCreds": false,
-                "logsDirectorySizeLimit": 35,
-                "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$adx-thermostat-realtime",
-                "scmType": "None",
-                "use32BitWorkerProcess": true,
-                "webSocketsEnabled": false,
-                "alwaysOn": false,
-                "managedPipelineMode": "Integrated",
-                "virtualApplications": [
-                    {
-                        "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
-                        "preloadEnabled": false
-                    }
-                ],
-                "loadBalancing": "LeastRequests",
-                "experiments": {
-                    "rampUpRules": []
-                },
-                "autoHealEnabled": false,
-                "vnetRouteAllEnabled": false,
-                "vnetPrivatePortsCount": 0,
-                "localMySqlEnabled": false,
-                "ipSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictionsUseMain": false,
-                "http20Enabled": false,
-                "minTlsVersion": "1.2",
-                "scmMinTlsVersion": "1.0",
-                "ftpsState": "AllAllowed",
-                "preWarmedInstanceCount": 0,
-                "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": false,
-                "minimumElasticInstanceCount": 1,
-                "azureStorageAccounts": {}
-            }
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_adx_thermostat_realtime_name'), '/', variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
-      ],
-      "properties": {
-        "siteName": "[variables('sites_adx_thermostat_realtime_name')]",
-        "hostNameType": "Verified"
-      }
-    }, 
-	    {
-      "name": "[variables('serverfarm_retail_mediasearch_app_name')]",
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "linux",
-      "properties": {
-        "reserved": true
-      }
-    },
-	{
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2021-03-01",
-            "name": "[variables('sites_retail_mediasearch_app_name')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-				"[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_retail_mediasearch_app_name'))]"
-			],
-			"kind": "app,linux",
-			"properties": {
-			"enabled": true,
-			"hostNameSslStates": [
-				{
-				"name": "[concat(variables('sites_retail_mediasearch_app_name'), '.azurewebsites.net')]",
-				"sslState": "Disabled",
-				"hostType": "Standard"
-				},
-				{
-				"name": "[concat(variables('sites_retail_mediasearch_app_name'), '.scm.azurewebsites.net')]",
-				"sslState": "Disabled",
-				"hostType": "Repository"
-				}
-			],
-				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_retail_mediasearch_app_name'))]",
-                "reserved": true,
-                "isXenon": false,
-                "hyperV": false,
-                "siteConfig": {
-                    "numberOfWorkers": 1,
-                    "linuxFxVersion": "DOTNETCORE|3.1",
-                    "acrUseManagedIdentityCreds": false,
-                    "alwaysOn": true,
-                    "http20Enabled": false,
-                    "functionAppScaleLimit": 0,
-                    "minimumElasticInstanceCount": 0
-                },
-                "scmSiteAlsoStopped": false,
-                "clientAffinityEnabled": false,
-                "clientCertEnabled": false,
-                "clientCertMode": "Required",
-                "hostNamesDisabled": false,
-                "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "httpsOnly": false,
-                "redundancyMode": "None",
-                "storageAccountRequired": false,
-                "keyVaultReferenceIdentity": "SystemAssigned"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('sites_retail_mediasearch_app_name'), '/ftp')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
-            ],
-            "properties": {
-                "allow": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('sites_retail_mediasearch_app_name'), '/scm')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
-            ],          
-            "properties": {
-                "allow": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/config",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('sites_retail_mediasearch_app_name'), '/web')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
-            ],
-            "properties": {
-                "numberOfWorkers": 1,
-                "defaultDocuments": [
-                    "Default.htm",
-                    "Default.html",
-                    "Default.asp",
-                    "index.htm",
-                    "index.html",
-                    "iisstart.htm",
-                    "default.aspx",
-                    "index.php",
-                    "hostingstart.html"
-                ],
-                "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "DOTNETCORE|3.1",
-                "requestTracingEnabled": false,
-                "remoteDebuggingEnabled": false,
-                "httpLoggingEnabled": false,
-                "acrUseManagedIdentityCreds": false,
-                "logsDirectorySizeLimit": 35,
-                "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "[concat('$',variables('sites_retail_mediasearch_app_name'))]",
-                "scmType": "None",
-                "use32BitWorkerProcess": true,
-                "webSocketsEnabled": false,
-                "alwaysOn": true,
-                "managedPipelineMode": "Integrated",
-                "virtualApplications": [
-                    {
-                        "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
-                        "preloadEnabled": true
-                    }
-                ],
-                "loadBalancing": "LeastRequests",
-                "experiments": {
-                    "rampUpRules": []
-                },
-                "autoHealEnabled": false,
-                "vnetRouteAllEnabled": false,
-                "vnetPrivatePortsCount": 0,
-                "localMySqlEnabled": false,
-                "ipSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictionsUseMain": false,
-                "http20Enabled": false,
-                "minTlsVersion": "1.2",
-                "scmMinTlsVersion": "1.0",
-                "ftpsState": "AllAllowed",
-                "preWarmedInstanceCount": 0,
-                "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": false,
-                "minimumElasticInstanceCount": 0,
-                "azureStorageAccounts": {}
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('sites_retail_mediasearch_app_name'), '/', variables('sites_retail_mediasearch_app_name'), '.azurewebsites.net')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
-            ],
-            "properties": {
-                "siteName": "[variables('sites_retail_mediasearch_app_name')]",
-                "hostNameType": "Verified"
-            }
-        },
-    {
-      "name": "[variables('serverfarm_app_iotfoottraffic_sensor_retail_name')]",
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "linux",
-      "properties": {
-        "reserved": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2021-02-01",
-      "name": "[variables('sites_app_iotfoottraffic_sensor_retail_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_iotfoottraffic_sensor_retail_name'))]"
-      ],
-      "kind": "app,linux",
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_iotfoottraffic_sensor_retail_name'))]",
-        "reserved": true,
-        "isXenon": false,
-        "hyperV": false,
-        "siteConfig": {
-          "numberOfWorkers": 1,
-          "linuxFxVersion": "PYTHON|3.7",
-          "acrUseManagedIdentityCreds": false,
-          "alwaysOn": false,
-          "http20Enabled": false,
-          "functionAppScaleLimit": 0,
-          "minimumElasticInstanceCount": 0,
-          "appSettings": [
-            {
-              "name": "IoTHubConfig",
-              "value": ""
-            },
-            {
-              "name": "IoTSimulatorConfigs",
-              "value": "{\"main_data_frequency_seconds\":1,\"data\":[{\"before-foottraffic\":{\"minValue\":18,\"maxValue\":25}},{\"after-foottraffic\":{\"minValue\":35,\"maxValue\":45}}]}"
-
-            },
-            {
-              "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
-              "value": "7"
-            }
-          ]
-        },
-        "scmSiteAlsoStopped": false,
-        "clientAffinityEnabled": false,
-        "clientCertEnabled": false,
-        "clientCertMode": "Required",
-        "hostNamesDisabled": false,
-        "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "httpsOnly": false,
-        "redundancyMode": "None",
-        "storageAccountRequired": false,
-        "keyVaultReferenceIdentity": "SystemAssigned"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/ftp')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/scm')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
-      ],
-      "properties": {
-        "allow": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/web')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
-      ],
-      "properties": {
-        "numberOfWorkers": 1,
-        "defaultDocuments": [
-          "Default.htm",
-          "Default.html",
-          "Default.asp",
-          "index.htm",
-          "index.html",
-          "iisstart.htm",
-          "default.aspx",
-          "index.php",
-          "hostingstart.html"
-        ],
-        "netFrameworkVersion": "v4.0",
-        "linuxFxVersion": "PYTHON|3.7",
-        "requestTracingEnabled": false,
-        "remoteDebuggingEnabled": false,
-        "remoteDebuggingVersion": "VS2017",
-        "httpLoggingEnabled": true,
-        "acrUseManagedIdentityCreds": false,
-        "logsDirectorySizeLimit": 35,
-        "detailedErrorLoggingEnabled": false,
-        "publishingUsername": "[concat('$',variables('sites_app_iotfoottraffic_sensor_retail_name'))]",
-        "scmType": "None",
-        "use32BitWorkerProcess": true,
-        "webSocketsEnabled": false,
-        "alwaysOn": true,
-        "appCommandLine": "",
-        "managedPipelineMode": "Integrated",
-        "virtualApplications": [
-          {
-            "virtualPath": "/",
-            "physicalPath": "site\\wwwroot",
-            "preloadEnabled": false
-          }
-        ],
-        "loadBalancing": "LeastRequests",
-        "experiments": {
-          "rampUpRules": []
-        },
-        "autoHealEnabled": false,
-        "vnetRouteAllEnabled": false,
-        "vnetPrivatePortsCount": 0,
-        "cors": {
-          "allowedOrigins": [
-            "https://botservice.hosting.portal.azure.net",
-            "https://hosting.onecloud.azure-test.net/"
-          ],
-          "supportCredentials": false
-        },
-        "localMySqlEnabled": false,
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictionsUseMain": false,
-        "http20Enabled": false,
-        "minTlsVersion": "1.2",
-        "scmMinTlsVersion": "1.0",
-        "ftpsState": "AllAllowed",
-        "preWarmedInstanceCount": 0,
-        "functionAppScaleLimit": 0,
-        "functionsRuntimeScaleMonitoringEnabled": false,
-        "minimumElasticInstanceCount": 0,
-        "azureStorageAccounts": {}
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/', variables('sites_app_iotfoottraffic_sensor_retail_name'), '.azurewebsites.net')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
-      ],
-      "properties": {
-        "siteName": "[variables('sites_app_iotfoottraffic_sensor_retail_name')]",
-        "hostNameType": "Verified"
-      }
-    },
-    {
-      "name": "[variables('serverfarms_app_retaildemo_name')]",
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "linux",
-      "properties": {
-        "reserved": true
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
-      "name": "[variables('app_retaildemo_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_app_retaildemo_name'))]"
-      ],
-      "kind": "app,linux",
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('app_retaildemo_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('app_retaildemo_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_app_retaildemo_name'))]",
-        "reserved": false,
-        "isXenon": false,
-        "hyperV": false,
-        "siteConfig": {
-
-        },
-        "scmSiteAlsoStopped": false,
-        "clientAffinityEnabled": true,
-        "clientCertEnabled": false,
-        "hostNamesDisabled": false,
-        "containerSize": 0,
-        "dailyMemoryTimeQuota": 0,
-        "httpsOnly": true,
-        "redundancyMode": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2018-11-01",
-      "name": "[concat(variables('app_retaildemo_name'), '/web')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('app_retaildemo_name'))]"
-      ],
-      "properties": {
-        "numberOfWorkers": 1,
-        "defaultDocuments": [
-          "Default.htm",
-          "Default.html",
-          "Default.asp",
-          "index.htm",
-          "index.html",
-          "iisstart.htm",
-          "default.aspx",
-          "index.php",
-          "hostingstart.html"
-        ],
-        "netFrameworkVersion": "v4.0",
-        "linuxFxVersion": "DOTNETCORE|3.1",
-        "requestTracingEnabled": false,
-        "remoteDebuggingEnabled": false,
-        "httpLoggingEnabled": false,
-        "logsDirectorySizeLimit": 35,
-        "detailedErrorLoggingEnabled": false,
-        "publishingUsername": "[concat('$', variables('app_retaildemo_name'))]",
-        "azureStorageAccounts": {
-
-        },
-        "scmType": "None",
-        "use32BitWorkerProcess": true,
-        "webSocketsEnabled": false,
-        "alwaysOn": true,
-        "managedPipelineMode": "Integrated",
-        "virtualApplications": [
-          {
-            "virtualPath": "/",
-            "physicalPath": "site\\wwwroot",
-            "preloadEnabled": true
-          }
-        ],
-        "loadBalancing": "LeastRequests",
-        "experiments": {
-          "rampUpRules": [
-
-          ]
-        },
-        "autoHealEnabled": false,
-        "localMySqlEnabled": false,
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictions": [
-          {
-            "ipAddress": "Any",
-            "action": "Allow",
-            "priority": 1,
-            "name": "Allow all",
-            "description": "Allow all access"
-          }
-        ],
-        "scmIpSecurityRestrictionsUseMain": false,
-        "http20Enabled": false,
-        "minTlsVersion": "1.2",
-        "ftpsState": "AllAllowed",
-        "reservedInstanceCount": 0
-      }
-    },
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
-      "name": "[variables('serverfarms_app_immersive_reader_retail_name')]",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "S1"
-      },
-      "kind": "app",
-      "properties": {
-        "name": "[variables('serverfarms_app_immersive_reader_retail_name')]"
-      }
-    },
-    {
-      "type": "Microsoft.Insights/components",
-      "apiVersion": "2018-05-01-preview",
-      "name": "[variables('ai_retail_immersive_reader_name')]",
-      "location": "[variables('location')]",
-      "properties": {
-        "Application_Type": "web",
-        "Flow_Type": "Bluefield",
-        "Request_Source": "rest"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
-      "name": "[variables('app_immersive_reader_retail_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Insights/components/', toLower(variables('ai_retail_immersive_reader_name')))]",
-        "[concat('Microsoft.Web/serverfarms/', toLower(variables('serverfarms_app_immersive_reader_retail_name')))]"
-      ],
-      "kind": "app",
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(variables('app_immersive_reader_retail_name'), '.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(variables('app_immersive_reader_retail_name'), '.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('serverfarms_app_immersive_reader_retail_name'))]",
-        "siteConfig": {
-          "appSettings": [
-            {
-              "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
-              "value": "~2",
-              "slotSetting": false
-            },
-            {
-              "name": "DiagnosticServices_EXTENSION_VERSION",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "InstrumentationEngine_EXTENSION_VERSION",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "SnapshotDebugger_EXTENSION_VERSION",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
-              "value": "disabled",
-              "slotSetting": false
-            },
-            {
-              "name": "XDT_MicrosoftApplicationInsights_Mode",
-              "value": "recommended",
-              "slotSetting": false
-            },
-            {
-              "name": "AppInsights_Instrumentation_Key",
-              "value": "[reference(resourceId('Microsoft.Insights/components', variables('ai_retail_immersive_reader_name'))).InstrumentationKey]",
-              "slotSetting": false
-            }
-          ],
-          "use32BitWorkerProcess": true,
-          "alwaysOn": true,
-          "managedPipelineMode": "Integrated"
-        },
-        "httpsOnly": true
-      }
-    },
-    {
-      "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-      "apiVersion": "2018-05-01-preview",
-      "name": "[concat(variables('ai_retail_immersive_reader_name'), '/slowserverresponsetime')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('microsoft.insights/components', variables('ai_retail_immersive_reader_name'))]"
-      ],
-      "properties": {
-        "ruleDefinitions": {
-          "Name": "slowserverresponsetime",
-          "DisplayName": "Slow server response time",
-          "Description": "Smart Detection rules notify you of performance anomaly issues.",
-          "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-          "IsHidden": false,
-          "IsEnabledByDefault": true,
-          "IsInPreview": false,
-          "SupportsEmailNotifications": true
-        },
-        "enabled": true,
-        "sendEmailsToSubscriptionOwners": true,
-        "customEmails": []
-      }
-    },
-	 {
-            "type": "Microsoft.CognitiveServices/accounts",
-            "apiVersion": "2021-04-30",
-            "name": "[variables('accounts_qnamaker_name')]",
-            "location": "westus",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
-                "[resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name'))]"
-            ],
-            "sku": {
-                "name": "S0"
-            },
-            "kind": "QnAMaker",
-            "properties": {
-                "apiProperties": {
-                    "qnaRuntimeEndpoint": "[concat('https://',reference(resourceId('Microsoft.Web/sites', variables('app_retail_qna_name'))).hostNames[0])]"
-                },
-                "customSubDomainName": "[variables('accounts_qnamaker_name')]"
-            }
-        },
-        {
-            "type": "Microsoft.Search/searchServices",
-            "apiVersion": "2015-08-19",
-            "name": "[variables('search_retail_qna_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "basic"
-            },
-            "properties": {
-                "replicaCount": 1,
-                "partitionCount": 1,
-                "hostingMode": "Default"
-            }
-        },
-		{
-            "type": "Microsoft.Search/searchServices",
-                "apiVersion": "2021-04-01-preview",
-            "name": "[variables('search_srch_retail_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "basic"
-            },
-                      "properties": {
-                "replicaCount": 1,
-                "partitionCount": 1,
-                "hostingMode": "Default",
-                "publicNetworkAccess": "Enabled",
-                "networkRuleSet": {
-                    "ipRules": [],
-                    "bypass": "None"
-                },
-                "encryptionWithCmk": {
-                    "enforcement": "Unspecified"
-                },
-                "disableLocalAuth": false,
-                "authOptions": {
-                    "apiKeyOnly": {}
-                },
-                "disabledDataExfiltrationOptions": [],
-                "semanticSearch": "disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2016-08-01",
-            "name": "[variables('app_retail_qna_name')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]"
-            ],
-            "properties": {
-                "enabled": true,
-                "siteConfig": {
-                    "cors": {
-                        "allowedOrigins": [
-                            "*"
-                        ]
-                    }
-                },
-                "name": "[variables('app_retail_qna_name')]",
-                "serverFarmId": "[concat('/subscriptions/', subscription().SubscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]",
-                "hostingEnvironment": ""
-            },
-            "resources": [
-                {
-                    "type": "config",
-                    "apiVersion": "2015-08-01",
-                    "name": "appsettings",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
-                        "[resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name'))]"
-                    ],
-                    "properties": {
-                        "AzureSearchName": "[variables('search_retail_qna_name')]",
-                        "AzureSearchAdminKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name')), '2015-08-19').primaryKey]",
-                        "PrimaryEndpointKey": "[concat(variables('app_retail_qna_name'), '-PrimaryEndpointKey')]",
-                        "SecondaryEndpointKey": "[concat(variables('app_retail_qna_name'), '-SecondaryEndpointKey')]",
-                        "DefaultAnswer": "No good match found in KB.",
-                        "QNAMAKER_EXTENSION_VERSION": "latest"
-                    }
-                }
+         ],
+         "properties":{
+            "storageAccounts":[
+               {
+                  "id":"[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
+                  "type":"Primary"
+               }
             ]
-        },
-        {
-            "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2016-09-01",
-            "name": "[variables('serverfarms_app_retail_qna_name')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "Tier": "Standard",
-                "Name": "S1"
+         }
+      },
+      {
+         "name":"[variables('event_topic_media_indexer_name')]",
+         "type":"Microsoft.EventGrid/systemTopics",
+         "apiVersion":"2020-10-15-preview",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+         ],
+         "properties":{
+            "source":"[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]",
+            "topicType":"Microsoft.Media.MediaServices"
+         }
+      },
+      {
+         "type":"Microsoft.EventGrid/systemTopics/eventSubscriptions",
+         "apiVersion":"2021-12-01",
+         "name":"[concat(variables('event_topic_media_indexer_name'), '/VideoIndexerAmsNotifications')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventGrid/systemTopics', variables('event_topic_media_indexer_name'))]"
+         ],
+         "properties":{
+            "destination":{
+               "properties":{
+                  "maxEventsPerBatch":1,
+                  "preferredBatchSizeInKilobytes":64
+               },
+               "endpointType":"WebHook"
             },
-            "properties": {
-                "name": "[variables('serverfarms_app_retail_qna_name')]",
-                "workerSizeId": "0",
-                "reserved": false,
-                "numberOfWorkers": "1",
-                "hostingEnvironment": ""
+            "filter":{
+               "includedEventTypes":[
+                  "Microsoft.Media.JobStateChange",
+                  "Microsoft.Media.JobScheduled",
+                  "Microsoft.Media.JobProcessing",
+                  "Microsoft.Media.JobCanceling",
+                  "Microsoft.Media.JobFinished",
+                  "Microsoft.Media.JobCanceled",
+                  "Microsoft.Media.JobErrored",
+                  "Microsoft.Media.JobOutputStateChange",
+                  "Microsoft.Media.JobOutputScheduled",
+                  "Microsoft.Media.JobOutputProcessing",
+                  "Microsoft.Media.JobOutputCanceling",
+                  "Microsoft.Media.JobOutputFinished",
+                  "Microsoft.Media.JobOutputCanceled",
+                  "Microsoft.Media.JobOutputErrored",
+                  "Microsoft.Media.LiveEventEncoderConnected",
+                  "Microsoft.Media.LiveEventIncomingStreamReceived",
+                  "Microsoft.Media.LiveEventEncoderDisconnected",
+                  "Microsoft.Media.LiveEventConnectionRejected",
+                  "Microsoft.Media.LiveEventTrackDiscontinuityDetected",
+                  "Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync",
+                  "Microsoft.Media.LiveEventIncomingDataChunkDropped",
+                  "Microsoft.Media.LiveEventIncomingStreamsOutOfSync",
+                  "Microsoft.Media.LiveEventIngestHeartbeat",
+                  "Microsoft.Media.JobOutputProgress"
+               ]
+            },
+            "eventDeliverySchema":"EventGridSchema",
+            "retryPolicy":{
+               "maxDeliveryAttempts":30,
+               "eventTimeToLiveInMinutes":1440
             }
-        },
-		        {
-            "type": "Microsoft.VideoIndexer/accounts",
-            "apiVersion": "2021-11-10-preview",
-            "name": "[variables('accounts_RetailMedia_name')]",
-            "location": "[variables('location')]",
-		    "dependsOn": [
-               "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts",
+         "apiVersion":"2021-10-15",
+         "name":"[variables('cosmosdb_retail2_name')]",
+         "location":"[variables('location')]",
+         "kind":"GlobalDocumentDB",
+         "identity":{
+            "type":"None"
+         },
+         "properties":{
+            "publicNetworkAccess":"Enabled",
+            "enableAutomaticFailover":false,
+            "enableMultipleWriteLocations":false,
+            "isVirtualNetworkFilterEnabled":false,
+            "virtualNetworkRules":[
+               
             ],
-            "identity": {
-                "type": "SystemAssigned"
+            "disableKeyBasedMetadataWriteAccess":false,
+            "enableFreeTier":false,
+            "enableAnalyticalStorage":true,
+            "analyticalStorageConfiguration":{
+               "schemaType":"WellDefined"
             },
-            "properties": {
-                "mediaServices": {
-                    "resourceId":  "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
-                }
+            "databaseAccountOfferType":"Standard",
+            "defaultIdentity":"FirstPartyIdentity",
+            "networkAclBypass":"None",
+            "disableLocalAuth":false,
+            "consistencyPolicy":{
+               "defaultConsistencyLevel":"Session",
+               "maxIntervalInSeconds":5,
+               "maxStalenessPrefix":100
+            },
+            "locations":[
+               {
+                  "locationName":"[variables('location')]",
+                  "provisioningState":"Succeeded",
+                  "failoverPriority":0,
+                  "isZoneRedundant":false
+               }
+            ],
+            "cors":[
+               
+            ],
+            "capabilities":[
+               
+            ],
+            "ipRules":[
+               
+            ],
+            "backupPolicy":{
+               "type":"Periodic",
+               "periodicModeProperties":{
+                  "backupIntervalInMinutes":240,
+                  "backupRetentionIntervalInHours":8,
+                  "backupStorageRedundancy":"Geo"
+               }
+            },
+            "networkAclBypassResourceIds":[
+               
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'), variables('cosmos_database_name'))]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_name')]"
             }
-        }
-  ],
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'), '/00000000-0000-0000-0000-000000000001')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "roleName":"Cosmos DB Built-in Data Reader",
+            "type":"BuiltInRole",
+            "assignableScopes":[
+               "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+            ],
+            "permissions":[
+               {
+                  "dataActions":[
+                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
+                  ],
+                  "notDataActions":[
+                     
+                  ]
+               }
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'), '/00000000-0000-0000-0000-000000000002')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "roleName":"Cosmos DB Built-in Data Contributor",
+            "type":"BuiltInRole",
+            "assignableScopes":[
+               "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+            ],
+            "permissions":[
+               {
+                  "dataActions":[
+                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
+                  ],
+                  "notDataActions":[
+                     
+                  ]
+               }
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retailcosmos')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"retailcosmos",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/TransactionType"
+                  ],
+                  "kind":"Hash"
+               },
+               "uniqueKeyPolicy":{
+                  "uniqueKeys":[
+                     
+                  ]
+               },
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               },
+               "analyticalStorageTtl":-1
+            },
+            "options":{
+               "autoscaleSettings":{
+                  "maxThroughput":"4000"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'),variables('cosmos_database_name'),'/retaildb')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name'))]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"retaildb",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/beforefoottraffic"
+                  ],
+                  "kind":"Hash"
+               },
+               "uniqueKeyPolicy":{
+                  "uniqueKeys":[
+                     
+                  ]
+               },
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               },
+               "analyticalStorageTtl":-1
+            },
+            "options":{
+               "autoscaleSettings":{
+                  "maxThroughput":"4000"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-04-30",
+         "name":"[variables('accounts_transqna_retail_name')]",
+         "location":"global",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"TextTranslation",
+         "properties":{
+            "customSubDomainName":"[variables('accounts_transqna_retail_name')]",
+            "publicNetworkAccess":"Enabled"
+         }
+      },
+      {
+         "type":"Microsoft.KeyVault/vaults",
+         "name":"[variables('key_vault_name')]",
+         "apiVersion":"2018-02-14",
+         "location":"[variables('location')]",
+         "properties":{
+            "enabledForDeployment":true,
+            "enabledForDiskEncryption":true,
+            "enabledForTemplateDeployment":true,
+            "vaultUri":"[concat('https://', variables('key_vault_name'), '.vault.azure.net/')]",
+            "tenantId":"[subscription().tenantId]",
+            "accessPolicies":[
+               
+            ],
+            "sku":{
+               "name":"Standard",
+               "family":"A"
+            },
+            "networkAcls":{
+               "defaultAction":"Allow",
+               "bypass":"AzureServices"
+            }
+         }
+      },
+      {
+         "type":"Microsoft.KeyVault/vaults/secrets",
+         "name":"[concat(variables('key_vault_name'), '/SqlPassword')]",
+         "apiVersion":"2018-02-14",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]"
+         ],
+         "properties":{
+            "value":"[parameters('sql_administrator_login_password')]"
+         }
+      },
+      {
+         "name":"[variables('iot_hub_name')]",
+         "type":"Microsoft.Devices/IotHubs",
+         "apiVersion":"2019-03-22",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1",
+            "tier":"Standard",
+            "capacity":1
+         },
+         "properties":{
+            "eventHubEndpoints":{
+               "events":{
+                  "retentionTimeInDays":1,
+                  "partitionCount":4
+               }
+            },
+            "features":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('iot_hub_name'), '/events/asa-cg')]",
+         "type":"Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups",
+         "apiVersion":"2019-03-22",
+         "dependsOn":[
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+         ]
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs",
+         "apiVersion":"2019-06-01",
+         "name":"[variables('asa_name_retail')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+         ],
+         "location":"[variables('location')]",
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "sku":{
+               "name":"Standard"
+            },
+            "eventsOutOfOrderPolicy":"Adjust",
+            "outputErrorPolicy":"Stop",
+            "eventsOutOfOrderMaxDelayInSeconds":0,
+            "eventsLateArrivalMaxDelayInSeconds":5,
+            "dataLocale":"en-US"
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/inputs",
+         "apiVersion":"2016-03-01",
+         "name":"[concat(variables('asa_name_retail'), '/iot-hub-in')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]",
+            "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+         ],
+         "properties":{
+            "type":"Stream",
+            "datasource":{
+               "type":"Microsoft.Devices/IotHubs",
+               "properties":{
+                  "iotHubNamespace":"[variables('iot_hub_name')]",
+                  "sharedAccessPolicyName":"iothubowner",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name')), '2018-04-01').value[0].primaryKey]",
+                  "consumerGroupName":"asa-cg",
+                  "endpoint":"messages/events"
+               }
+            },
+            "serialization":{
+               "type":"Json",
+               "properties":{
+                  "encoding":"UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion":"2017-04-01-preview",
+         "name":"[concat(variables('asa_name_retail'), '/adls-out')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
+         ],
+         "properties":{
+            "datasource":{
+               "type":"Microsoft.Storage/Blob",
+               "properties":{
+                  "storageAccounts":[
+                     {
+                        "accountName":"[variables('storage_account_name')]",
+                        "accountKey":"[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name')),'2019-04-01').keys[0].value]"
+                     }
+                  ],
+                  "container":"foottraffic-data",
+                  "pathPattern":"iot-data/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/",
+                  "dateFormat":"yyyy/MM/dd",
+                  "timeFormat":"HH",
+                  "authenticationMode":"ConnectionString"
+               }
+            },
+            "timeWindow":"00:01:00",
+            "sizeWindow":2000,
+            "serialization":{
+               "type":"Parquet",
+               "properties":{
+                  "encoding":"UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type":"Microsoft.StreamAnalytics/streamingjobs/transformations",
+         "apiVersion":"2016-03-01",
+         "name":"[concat(variables('asa_name_retail'), '/query')]",
+         "dependsOn":[
+            "[concat('Microsoft.StreamAnalytics/streamingjobs/', variables('asa_name_retail'))]"
+         ],
+         "properties":{
+            "streamingUnits":6,
+            "query":"[variables('asa_query_retail')]"
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces",
+         "apiVersion":"2021-11-01",
+         "name":"[variables('eventhub_evh_namespace_retail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard",
+            "tier":"Standard",
+            "capacity":1
+         },
+         "properties":{
+            "disableLocalAuth":false,
+            "zoneRedundant":true,
+            "isAutoInflateEnabled":false,
+            "maximumThroughputUnits":0,
+            "kafkaEnabled":true
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/AuthorizationRules",
+         "apiVersion":"2021-11-01",
+         "name":"[concat(variables('eventhub_evh_namespace_retail_name'), '/RootManageSharedAccessKey')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
+         ],
+         "properties":{
+            "rights":[
+               "Listen",
+               "Manage",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs",
+         "apiVersion":"2021-11-01",
+         "name":"[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
+         ],
+         "properties":{
+            "messageRetentionInDays":1,
+            "partitionCount":1,
+            "status":"Active"
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/networkRuleSets",
+         "apiVersion":"2021-11-01",
+         "name":"[concat(variables('eventhub_evh_namespace_retail_name'), '/default')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
+         ],
+         "properties":{
+            "publicNetworkAccess":"Enabled",
+            "defaultAction":"Allow",
+            "virtualNetworkRules":[
+               
+            ],
+            "ipRules":[
+               
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+         "apiVersion":"2021-11-01",
+         "name":"[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/ManageRule')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
+         ],
+         "properties":{
+            "rights":[
+               "Manage",
+               "Send",
+               "Listen"
+            ]
+         }
+      },
+      {
+         "type":"Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion":"2021-11-01",
+         "name":"[concat(variables('eventhub_evh_namespace_retail_name'), '/spatialanalysiseventhub/$Default')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('eventhub_evh_namespace_retail_name'), 'spatialanalysiseventhub')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('eventhub_evh_namespace_retail_name'))]"
+         ],
+         "properties":{
+            
+         }
+      },
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-10-01",
+         "name":"[variables('forms_retail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"F0"
+         },
+         "kind":"FormRecognizer",
+         "properties":{
+            "privateEndpointConnections":[
+               
+            ],
+            "publicNetworkAccess":"Enabled"
+         }
+      },
+      {
+         "name":"[variables('workspace_name_synapseretail')]",
+         "type":"Microsoft.Synapse/workspaces",
+         "apiVersion":"2021-05-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
+         ],
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "defaultDataLakeStorage":{
+               "accountUrl":"[variables('default_data_lake_storage_account_url')]",
+               "filesystem":"[variables('default_data_lake_storage_file_system_name')]"
+            },
+            "sqlAdministratorLogin":"[variables('sql_administrator_login_id')]",
+            "sqlAdministratorLoginPassword":"[variables('sql_administrator_login_password')]"
+         },
+         "resources":[
+            {
+               "type":"firewallrules",
+               "apiVersion":"2021-05-01",
+               "name":"allowAll",
+               "location":"[variables('location')]",
+               "dependsOn":[
+                  "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
+               ],
+               "properties":{
+                  "startIpAddress":"0.0.0.0",
+                  "endIpAddress":"255.255.255.255"
+               }
+            }
+         ]
+      },
+      {
+         "name":"[concat(variables('workspace_name_synapseretail'), '/', variables('spark_compute_name'))]",
+         "type":"Microsoft.Synapse/workspaces/bigDataPools",
+         "apiVersion":"2021-05-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Synapse/workspaces', variables('workspace_name_synapseretail'))]"
+         ],
+         "properties":{
+            "nodeCount":"[variables('spark_node_count')]",
+            "nodeSizeFamily":"[variables('spark_node_size_family')]",
+            "nodeSize":"[variables('spark_node_size')]",
+            "autoScale":{
+               "enabled":"[variables('spark_auto_scale_enabled')]",
+               "minNodeCount":"[variables('spark_min_node_count')]",
+               "maxNodeCount":"[variables('spark_max_node_count')]"
+            },
+            "autoPause":{
+               "enabled":"[variables('spark_auto_pause_enabled')]",
+               "delayInMinutes":"[variables('spark_auto_pause_delay_in_minutes')]"
+            },
+            "sparkVersion":"[variables('spark_version')]"
+         }
+      },
+      {
+         "name":"[concat(variables('workspace_name_synapseretail'), '/', variables('sql_compute_name'))]",
+         "type":"Microsoft.Synapse/workspaces/sqlPools",
+         "apiVersion":"2021-05-01",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Synapse/workspaces/', variables('workspace_name_synapseretail'))]"
+         ],
+         "sku":{
+            "name":"[variables('sql_server_sku')]"
+         },
+         "properties":{
+            "createMode":"Default",
+            "collation":"SQL_Latin1_General_CP1_CI_AS"
+         }
+      },
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-10-01",
+         "name":"[variables('accounts_cogretail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S0"
+         },
+         "kind":"CognitiveServices",
+         "identity":{
+            "type":"None",
+            "userAssignedIdentities":{
+               
+            }
+         },
+         "properties":{
+            "apiProperties":{
+               
+            },
+            "customSubDomainName":"[variables('accounts_cogretail_name')]",
+            "publicNetworkAccess":"Enabled"
+         }
+      },
+      {
+         "name":"[variables('storage_account_name')]",
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2020-08-01-preview",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard_LRS",
+            "tier":"Standard"
+         },
+         "kind":"StorageV2",
+         "properties":{
+            "minimumTlsVersion":"TLS1_2",
+            "allowBlobPublicAccess":true,
+            "networkAcls":{
+               "bypass":"AzureServices",
+               "defaultAction":"Allow"
+            },
+            "supportsHttpsTrafficOnly":true,
+            "encryption":{
+               "services":{
+                  "file":{
+                     "keyType":"Account",
+                     "enabled":true
+                  },
+                  "blob":{
+                     "keyType":"Account",
+                     "enabled":true
+                  }
+               },
+               "keySource":"Microsoft.Storage"
+            },
+            "accessTier":"Hot"
+         },
+         "resources":[
+            {
+               "type":"blobServices/containers",
+               "apiVersion":"2018-07-01",
+               "name":"[concat('default/', variables('default_data_lake_storage_file_system_name'))]",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+               ]
+            }
+         ]
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "sku":{
+            "name":"Standard_RAGRS",
+            "tier":"Standard"
+         },
+         "properties":{
+            "cors":{
+               "corsRules":[
+                  {
+                     "allowedOrigins":[
+                        "*"
+                     ],
+                     "allowedMethods":[
+                        "GET"
+                     ],
+                     "maxAgeInSeconds":1000,
+                     "exposedHeaders":[
+                        "*"
+                     ],
+                     "allowedHeaders":[
+                        "*"
+                     ]
+                  },
+                  {
+                     "allowedOrigins":[
+                        "*"
+                     ],
+                     "allowedMethods":[
+                        "POST"
+                     ],
+                     "maxAgeInSeconds":1000,
+                     "exposedHeaders":[
+                        "*"
+                     ],
+                     "allowedHeaders":[
+                        "*"
+                     ]
+                  },
+                  {
+                     "allowedOrigins":[
+                        "*"
+                     ],
+                     "allowedMethods":[
+                        "DELETE"
+                     ],
+                     "maxAgeInSeconds":1000,
+                     "exposedHeaders":[
+                        "*"
+                     ],
+                     "allowedHeaders":[
+                        "*"
+                     ]
+                  },
+                  {
+                     "allowedOrigins":[
+                        "*"
+                     ],
+                     "allowedMethods":[
+                        "MERGE"
+                     ],
+                     "maxAgeInSeconds":1000,
+                     "exposedHeaders":[
+                        "*"
+                     ],
+                     "allowedHeaders":[
+                        "*"
+                     ]
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default')]",
+         "type":"Microsoft.Storage/storageAccounts/queueServices",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "cors":{
+               "corsRules":[
+                  
+               ]
+            }
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default')]",
+         "type":"Microsoft.Storage/storageAccounts/tableServices",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "cors":{
+               "corsRules":[
+                  
+               ]
+            }
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/adfstagedcopytempdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/adfstagedpolybasetempdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/customer-churn-data')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/dataverse-retaildreamd-unqe3e6254ff0834070858f5cbc69b77')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/iot')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/magentocontosomergerdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('storage_account_name'), '/default/magentosource')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/market-basket')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/marketingdb-staging')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/rawdata-customerinsight')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retail-customerreviewsdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retail-data')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retail-notebook-data')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retailcog-skillset-image-projection')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retaildata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/sapdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/thermostat')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"None"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/twitterdata')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Blob"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/video')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Blob"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/videoanalyzer')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/retail20')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[concat( variables('storage_account_name'), '/default/customcsv')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+      {
+         "name":"[variables('serverfarm_adx_thermostat_realtime_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"linux",
+         "properties":{
+            "reserved":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2021-02-01",
+         "name":"[variables('sites_adx_thermostat_realtime_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]"
+         ],
+         "kind":"app,linux",
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_adx_thermostat_realtime_name'))]",
+            "reserved":true,
+            "isXenon":false,
+            "hyperV":false,
+            "siteConfig":{
+               "numberOfWorkers":1,
+               "linuxFxVersion":"PYTHON|3.9",
+               "acrUseManagedIdentityCreds":false,
+               "alwaysOn":false,
+               "http20Enabled":false,
+               "functionAppScaleLimit":0,
+               "minimumElasticInstanceCount":1,
+               "appSettings":[
+                  {
+                     "name":"occupancyDataConfig",
+                     "value":"{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=occupancy;SharedAccessKey=rJ2LAbGYh8Mtt0FXQi+WzHa94/HeQdZ+hM6A1LOYqg8=;EntityPath=occupancy\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
+                  },
+                  {
+                     "name":"thermostatsrealtime",
+                     "value":"{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/d5fd2a56-495e-4d3d-a4d4-dd7557cc8661/rows?key=%2FQriTeudclC0rcGvgQm7j8cwAXoAt9sAq5bW1V9cvstak5T8NCkcsDE6ehN69gJx2yuIiYuAJ5mN%2FmwW2L2h%2Bw%3D%3D\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}"
+                  },
+                  {
+                     "name":"thermostatTelemetryConfig",
+                     "value":"{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"Endpoint=sb://adx-thermostat-occupancy.servicebus.windows.net/;SharedAccessKeyName=thermostat;SharedAccessKey=lChcS//clr9v3bh6C9uJq/e2UlQUYSVkM5NDj5Ua4yQ=;EntityPath=thermostat\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"https://api.powerbi.com/beta/f94768c8-8714-4abe-8e2d-37a64b18216a/datasets/1f495e04-7d5d-43cd-b8d8-51e81939ba4e/rows?key=VklFqgzc7uxHy6x8UeShdtKWtDtZ8CnS2KLu0%2FYMP7Uc8DDZQKP4%2BocEpD1fzLhmGQCufMXcEMUP6F8Ot9DD4A%3D%3D\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}"
+                  }
+               ]
+            },
+            "scmSiteAlsoStopped":false,
+            "clientAffinityEnabled":false,
+            "clientCertEnabled":false,
+            "clientCertMode":"Required",
+            "hostNamesDisabled":false,
+            "customDomainVerificationId":"B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+            "containerSize":0,
+            "dailyMemoryTimeQuota":0,
+            "httpsOnly":false,
+            "redundancyMode":"None",
+            "storageAccountRequired":false,
+            "keyVaultReferenceIdentity":"SystemAssigned"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '/ftp')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '/scm')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/config",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '/web')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
+         ],
+         "properties":{
+            "numberOfWorkers":1,
+            "defaultDocuments":[
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion":"v4.0",
+            "linuxFxVersion":"PYTHON|3.9",
+            "requestTracingEnabled":false,
+            "remoteDebuggingEnabled":false,
+            "remoteDebuggingVersion":"VS2019",
+            "httpLoggingEnabled":false,
+            "acrUseManagedIdentityCreds":false,
+            "logsDirectorySizeLimit":35,
+            "detailedErrorLoggingEnabled":false,
+            "publishingUsername":"$adx-thermostat-realtime",
+            "scmType":"None",
+            "use32BitWorkerProcess":true,
+            "webSocketsEnabled":false,
+            "alwaysOn":false,
+            "managedPipelineMode":"Integrated",
+            "virtualApplications":[
+               {
+                  "virtualPath":"/",
+                  "physicalPath":"site\\wwwroot",
+                  "preloadEnabled":false
+               }
+            ],
+            "loadBalancing":"LeastRequests",
+            "experiments":{
+               "rampUpRules":[
+                  
+               ]
+            },
+            "autoHealEnabled":false,
+            "vnetRouteAllEnabled":false,
+            "vnetPrivatePortsCount":0,
+            "localMySqlEnabled":false,
+            "ipSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain":false,
+            "http20Enabled":false,
+            "minTlsVersion":"1.2",
+            "scmMinTlsVersion":"1.0",
+            "ftpsState":"AllAllowed",
+            "preWarmedInstanceCount":0,
+            "functionAppScaleLimit":0,
+            "functionsRuntimeScaleMonitoringEnabled":false,
+            "minimumElasticInstanceCount":1,
+            "azureStorageAccounts":{
+               
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/hostNameBindings",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_adx_thermostat_realtime_name'), '/', variables('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_adx_thermostat_realtime_name'))]"
+         ],
+         "properties":{
+            "siteName":"[variables('sites_adx_thermostat_realtime_name')]",
+            "hostNameType":"Verified"
+         }
+      },
+      {
+         "name":"[variables('serverfarm_retail_mediasearch_app_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"linux",
+         "properties":{
+            "reserved":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2021-03-01",
+         "name":"[variables('sites_retail_mediasearch_app_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_retail_mediasearch_app_name'))]"
+         ],
+         "kind":"app,linux",
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('sites_retail_mediasearch_app_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('sites_retail_mediasearch_app_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_retail_mediasearch_app_name'))]",
+            "reserved":true,
+            "isXenon":false,
+            "hyperV":false,
+            "siteConfig":{
+               "numberOfWorkers":1,
+               "linuxFxVersion":"DOTNETCORE|3.1",
+               "acrUseManagedIdentityCreds":false,
+               "alwaysOn":true,
+               "http20Enabled":false,
+               "functionAppScaleLimit":0,
+               "minimumElasticInstanceCount":0
+            },
+            "scmSiteAlsoStopped":false,
+            "clientAffinityEnabled":false,
+            "clientCertEnabled":false,
+            "clientCertMode":"Required",
+            "hostNamesDisabled":false,
+            "customDomainVerificationId":"B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+            "containerSize":0,
+            "dailyMemoryTimeQuota":0,
+            "httpsOnly":false,
+            "redundancyMode":"None",
+            "storageAccountRequired":false,
+            "keyVaultReferenceIdentity":"SystemAssigned"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_retail_mediasearch_app_name'), '/ftp')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_retail_mediasearch_app_name'), '/scm')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/config",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_retail_mediasearch_app_name'), '/web')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
+         ],
+         "properties":{
+            "numberOfWorkers":1,
+            "defaultDocuments":[
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion":"v4.0",
+            "linuxFxVersion":"DOTNETCORE|3.1",
+            "requestTracingEnabled":false,
+            "remoteDebuggingEnabled":false,
+            "httpLoggingEnabled":false,
+            "acrUseManagedIdentityCreds":false,
+            "logsDirectorySizeLimit":35,
+            "detailedErrorLoggingEnabled":false,
+            "publishingUsername":"[concat('$',variables('sites_retail_mediasearch_app_name'))]",
+            "scmType":"None",
+            "use32BitWorkerProcess":true,
+            "webSocketsEnabled":false,
+            "alwaysOn":true,
+            "managedPipelineMode":"Integrated",
+            "virtualApplications":[
+               {
+                  "virtualPath":"/",
+                  "physicalPath":"site\\wwwroot",
+                  "preloadEnabled":true
+               }
+            ],
+            "loadBalancing":"LeastRequests",
+            "experiments":{
+               "rampUpRules":[
+                  
+               ]
+            },
+            "autoHealEnabled":false,
+            "vnetRouteAllEnabled":false,
+            "vnetPrivatePortsCount":0,
+            "localMySqlEnabled":false,
+            "ipSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain":false,
+            "http20Enabled":false,
+            "minTlsVersion":"1.2",
+            "scmMinTlsVersion":"1.0",
+            "ftpsState":"AllAllowed",
+            "preWarmedInstanceCount":0,
+            "functionAppScaleLimit":0,
+            "functionsRuntimeScaleMonitoringEnabled":false,
+            "minimumElasticInstanceCount":0,
+            "azureStorageAccounts":{
+               
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/hostNameBindings",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_retail_mediasearch_app_name'), '/', variables('sites_retail_mediasearch_app_name'), '.azurewebsites.net')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_retail_mediasearch_app_name'))]"
+         ],
+         "properties":{
+            "siteName":"[variables('sites_retail_mediasearch_app_name')]",
+            "hostNameType":"Verified"
+         }
+      },
+      {
+         "name":"[variables('serverfarm_app_iotfoottraffic_sensor_retail_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"linux",
+         "properties":{
+            "reserved":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2021-02-01",
+         "name":"[variables('sites_app_iotfoottraffic_sensor_retail_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_iotfoottraffic_sensor_retail_name'))]"
+         ],
+         "kind":"app,linux",
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_app_iotfoottraffic_sensor_retail_name'))]",
+            "reserved":true,
+            "isXenon":false,
+            "hyperV":false,
+            "siteConfig":{
+               "numberOfWorkers":1,
+               "linuxFxVersion":"PYTHON|3.7",
+               "acrUseManagedIdentityCreds":false,
+               "alwaysOn":false,
+               "http20Enabled":false,
+               "functionAppScaleLimit":0,
+               "minimumElasticInstanceCount":0,
+               "appSettings":[
+                  {
+                     "name":"IoTHubConfig",
+                     "value":""
+                  },
+                  {
+                     "name":"IoTSimulatorConfigs",
+                     "value":"{\"main_data_frequency_seconds\":1,\"data\":[{\"before-foottraffic\":{\"minValue\":18,\"maxValue\":25}},{\"after-foottraffic\":{\"minValue\":35,\"maxValue\":45}}]}"
+                  },
+                  {
+                     "name":"WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+                     "value":"7"
+                  }
+               ]
+            },
+            "scmSiteAlsoStopped":false,
+            "clientAffinityEnabled":false,
+            "clientCertEnabled":false,
+            "clientCertMode":"Required",
+            "hostNamesDisabled":false,
+            "customDomainVerificationId":"B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+            "containerSize":0,
+            "dailyMemoryTimeQuota":0,
+            "httpsOnly":false,
+            "redundancyMode":"None",
+            "storageAccountRequired":false,
+            "keyVaultReferenceIdentity":"SystemAssigned"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/ftp')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/scm')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/config",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/web')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
+         ],
+         "properties":{
+            "numberOfWorkers":1,
+            "defaultDocuments":[
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion":"v4.0",
+            "linuxFxVersion":"PYTHON|3.7",
+            "requestTracingEnabled":false,
+            "remoteDebuggingEnabled":false,
+            "remoteDebuggingVersion":"VS2017",
+            "httpLoggingEnabled":true,
+            "acrUseManagedIdentityCreds":false,
+            "logsDirectorySizeLimit":35,
+            "detailedErrorLoggingEnabled":false,
+            "publishingUsername":"[concat('$',variables('sites_app_iotfoottraffic_sensor_retail_name'))]",
+            "scmType":"None",
+            "use32BitWorkerProcess":true,
+            "webSocketsEnabled":false,
+            "alwaysOn":true,
+            "appCommandLine":"",
+            "managedPipelineMode":"Integrated",
+            "virtualApplications":[
+               {
+                  "virtualPath":"/",
+                  "physicalPath":"site\\wwwroot",
+                  "preloadEnabled":false
+               }
+            ],
+            "loadBalancing":"LeastRequests",
+            "experiments":{
+               "rampUpRules":[
+                  
+               ]
+            },
+            "autoHealEnabled":false,
+            "vnetRouteAllEnabled":false,
+            "vnetPrivatePortsCount":0,
+            "cors":{
+               "allowedOrigins":[
+                  "https://botservice.hosting.portal.azure.net",
+                  "https://hosting.onecloud.azure-test.net/"
+               ],
+               "supportCredentials":false
+            },
+            "localMySqlEnabled":false,
+            "ipSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain":false,
+            "http20Enabled":false,
+            "minTlsVersion":"1.2",
+            "scmMinTlsVersion":"1.0",
+            "ftpsState":"AllAllowed",
+            "preWarmedInstanceCount":0,
+            "functionAppScaleLimit":0,
+            "functionsRuntimeScaleMonitoringEnabled":false,
+            "minimumElasticInstanceCount":0,
+            "azureStorageAccounts":{
+               
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/hostNameBindings",
+         "apiVersion":"2021-02-01",
+         "name":"[concat(variables('sites_app_iotfoottraffic_sensor_retail_name'), '/', variables('sites_app_iotfoottraffic_sensor_retail_name'), '.azurewebsites.net')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_app_iotfoottraffic_sensor_retail_name'))]"
+         ],
+         "properties":{
+            "siteName":"[variables('sites_app_iotfoottraffic_sensor_retail_name')]",
+            "hostNameType":"Verified"
+         }
+      },
+      {
+         "name":"[variables('serverfarms_app_retaildemo_name')]",
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2019-08-01",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"S1"
+         },
+         "kind":"linux",
+         "properties":{
+            "reserved":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2018-11-01",
+         "name":"[variables('app_retaildemo_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_app_retaildemo_name'))]"
+         ],
+         "kind":"app,linux",
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(variables('app_retaildemo_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(variables('app_retaildemo_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_app_retaildemo_name'))]",
+            "reserved":false,
+            "isXenon":false,
+            "hyperV":false,
+            "siteConfig":{
+               
+            },
+            "scmSiteAlsoStopped":false,
+            "clientAffinityEnabled":true,
+            "clientCertEnabled":false,
+            "hostNamesDisabled":false,
+            "containerSize":0,
+            "dailyMemoryTimeQuota":0,
+            "httpsOnly":true,
+            "redundancyMode":"None"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/config",
+         "apiVersion":"2018-11-01",
+         "name":"[concat(variables('app_retaildemo_name'), '/web')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('app_retaildemo_name'))]"
+         ],
+         "properties":{
+            "numberOfWorkers":1,
+            "defaultDocuments":[
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion":"v4.0",
+            "linuxFxVersion":"DOTNETCORE|3.1",
+            "requestTracingEnabled":false,
+            "remoteDebuggingEnabled":false,
+            "httpLoggingEnabled":false,
+            "logsDirectorySizeLimit":35,
+            "detailedErrorLoggingEnabled":false,
+            "publishingUsername":"[concat('$', variables('app_retaildemo_name'))]",
+            "azureStorageAccounts":{
+               
+            },
+            "scmType":"None",
+            "use32BitWorkerProcess":true,
+            "webSocketsEnabled":false,
+            "alwaysOn":true,
+            "managedPipelineMode":"Integrated",
+            "virtualApplications":[
+               {
+                  "virtualPath":"/",
+                  "physicalPath":"site\\wwwroot",
+                  "preloadEnabled":true
+               }
+            ],
+            "loadBalancing":"LeastRequests",
+            "experiments":{
+               "rampUpRules":[
+                  
+               ]
+            },
+            "autoHealEnabled":false,
+            "localMySqlEnabled":false,
+            "ipSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain":false,
+            "http20Enabled":false,
+            "minTlsVersion":"1.2",
+            "ftpsState":"AllAllowed",
+            "reservedInstanceCount":0
+         }
+      },
+      {
+         "type":"Microsoft.CognitiveServices/accounts",
+         "apiVersion":"2021-04-30",
+         "name":"[variables('accounts_qnamaker_name')]",
+         "location":"westus",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
+            "[resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name'))]"
+         ],
+         "sku":{
+            "name":"S0"
+         },
+         "kind":"QnAMaker",
+         "properties":{
+            "apiProperties":{
+               "qnaRuntimeEndpoint":"[concat('https://',reference(resourceId('Microsoft.Web/sites', variables('app_retail_qna_name'))).hostNames[0])]"
+            },
+            "customSubDomainName":"[variables('accounts_qnamaker_name')]"
+         }
+      },
+      {
+         "type":"Microsoft.Search/searchServices",
+         "apiVersion":"2015-08-19",
+         "name":"[variables('search_retail_qna_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"basic"
+         },
+         "properties":{
+            "replicaCount":1,
+            "partitionCount":1,
+            "hostingMode":"Default"
+         }
+      },
+      {
+         "type":"Microsoft.Search/searchServices",
+         "apiVersion":"2021-04-01-preview",
+         "name":"[variables('search_srch_retail_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"basic"
+         },
+         "properties":{
+            "replicaCount":1,
+            "partitionCount":1,
+            "hostingMode":"Default",
+            "publicNetworkAccess":"Enabled",
+            "networkRuleSet":{
+               "ipRules":[
+                  
+               ],
+               "bypass":"None"
+            },
+            "encryptionWithCmk":{
+               "enforcement":"Unspecified"
+            },
+            "disableLocalAuth":false,
+            "authOptions":{
+               "apiKeyOnly":{
+                  
+               }
+            },
+            "disabledDataExfiltrationOptions":[
+               
+            ],
+            "semanticSearch":"disabled"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2016-08-01",
+         "name":"[variables('app_retail_qna_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "siteConfig":{
+               "cors":{
+                  "allowedOrigins":[
+                     "*"
+                  ]
+               }
+            },
+            "name":"[variables('app_retail_qna_name')]",
+            "serverFarmId":"[concat('/subscriptions/', subscription().SubscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('serverfarms_app_retail_qna_name'))]",
+            "hostingEnvironment":""
+         },
+         "resources":[
+            {
+               "type":"config",
+               "apiVersion":"2015-08-01",
+               "name":"appsettings",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
+                  "[resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name'))]"
+               ],
+               "properties":{
+                  "AzureSearchName":"[variables('search_retail_qna_name')]",
+                  "AzureSearchAdminKey":"[listAdminKeys(resourceId('Microsoft.Search/searchServices/', variables('search_retail_qna_name')), '2015-08-19').primaryKey]",
+                  "PrimaryEndpointKey":"[concat(variables('app_retail_qna_name'), '-PrimaryEndpointKey')]",
+                  "SecondaryEndpointKey":"[concat(variables('app_retail_qna_name'), '-SecondaryEndpointKey')]",
+                  "DefaultAnswer":"No good match found in KB.",
+                  "QNAMAKER_EXTENSION_VERSION":"latest"
+               }
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2016-09-01",
+         "name":"[variables('serverfarms_app_retail_qna_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "Tier":"Standard",
+            "Name":"S1"
+         },
+         "properties":{
+            "name":"[variables('serverfarms_app_retail_qna_name')]",
+            "workerSizeId":"0",
+            "reserved":false,
+            "numberOfWorkers":"1",
+            "hostingEnvironment":""
+         }
+      },
+      {
+         "type":"Microsoft.VideoIndexer/accounts",
+         "apiVersion":"2021-11-10-preview",
+         "name":"[variables('accounts_RetailMedia_name')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+         ],
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "mediaServices":{
+               "resourceId":"[resourceId('Microsoft.Media/mediaservices', variables('mediaservices_name'))]"
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2021-03-01",
+         "name":"[parameters('serverfarms_func_retail_livestreaming_name')]",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Y1",
+            "tier":"Dynamic",
+            "size":"Y1",
+            "family":"Y",
+            "capacity":0
+         },
+         "kind":"functionapp",
+         "properties":{
+            "reserved":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2021-03-01",
+         "name":"[parameters('sites_func_retail_livestreaming_name')]",
+         "location":"[variables('location')]",
+         "kind":"functionapp",
+         "dependsOn":[
+            "[concat('Microsoft.Web/serverfarms/', variables('serverfarms_func_retail_livestreaming_name'))]"
+         ],
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "enabled":true,
+            "hostNameSslStates":[
+               {
+                  "name":"[concat(parameters('sites_func_retail_livestreaming_name'), '.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Standard"
+               },
+               {
+                  "name":"[concat(parameters('sites_func_retail_livestreaming_name'), '.scm.azurewebsites.net')]",
+                  "sslState":"Disabled",
+                  "hostType":"Repository"
+               }
+            ],
+            "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('serverfarms_func_retail_livestreaming_name'))]",
+            "reserved":false,
+            "isXenon":false,
+            "hyperV":false,
+            "siteConfig":{
+               "numberOfWorkers":1,
+               "acrUseManagedIdentityCreds":false,
+               "alwaysOn":false,
+               "http20Enabled":false,
+               "functionAppScaleLimit":200,
+               "minimumElasticInstanceCount":1
+            },
+            "scmSiteAlsoStopped":false,
+            "clientAffinityEnabled":false,
+            "clientCertEnabled":false,
+            "clientCertMode":"Required",
+            "hostNamesDisabled":false,
+            "customDomainVerificationId":"B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+            "containerSize":1536,
+            "dailyMemoryTimeQuota":1,
+            "httpsOnly":true,
+            "redundancyMode":"None",
+            "storageAccountRequired":false,
+            "keyVaultReferenceIdentity":"SystemAssigned"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_func_retail_livestreaming_name'), '/ftp')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_func_retail_livestreaming_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_func_retail_livestreaming_name'), '/scm')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_func_retail_livestreaming_name'))]"
+         ],
+         "properties":{
+            "allow":true
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/config",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_func_retail_livestreaming_name'), '/web')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_func_retail_livestreaming_name'))]"
+         ],
+         "properties":{
+            "numberOfWorkers":1,
+            "defaultDocuments":[
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php"
+            ],
+            "netFrameworkVersion":"v4.0",
+            "phpVersion":"5.6",
+            "requestTracingEnabled":false,
+            "remoteDebuggingEnabled":false,
+            "remoteDebuggingVersion":"VS2019",
+            "httpLoggingEnabled":false,
+            "acrUseManagedIdentityCreds":false,
+            "logsDirectorySizeLimit":35,
+            "detailedErrorLoggingEnabled":false,
+            "publishingUsername":"[concat('$',variables('sites_func_retail_livestreaming_name'))]",
+            "scmType":"None",
+            "use32BitWorkerProcess":true,
+            "webSocketsEnabled":false,
+            "alwaysOn":false,
+            "managedPipelineMode":"Integrated",
+            "virtualApplications":[
+               {
+                  "virtualPath":"/",
+                  "physicalPath":"site\\wwwroot",
+                  "preloadEnabled":false
+               }
+            ],
+            "loadBalancing":"LeastRequests",
+            "experiments":{
+               "rampUpRules":[
+                  
+               ]
+            },
+            "autoHealEnabled":false,
+            "vnetRouteAllEnabled":false,
+            "vnetPrivatePortsCount":0,
+            "localMySqlEnabled":false,
+            "managedServiceIdentityId":31363,
+            "ipSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions":[
+               {
+                  "ipAddress":"Any",
+                  "action":"Allow",
+                  "priority":1,
+                  "name":"Allow all",
+                  "description":"Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain":false,
+            "http20Enabled":false,
+            "minTlsVersion":"1.2",
+            "scmMinTlsVersion":"1.0",
+            "ftpsState":"AllAllowed",
+            "preWarmedInstanceCount":0,
+            "functionAppScaleLimit":200,
+            "functionsRuntimeScaleMonitoringEnabled":false,
+            "minimumElasticInstanceCount":1,
+            "azureStorageAccounts":{
+               
+            }
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites/hostNameBindings",
+         "apiVersion":"2021-03-01",
+         "name":"[concat(variables('sites_func_retail_livestreaming_name'), '/', variables('sites_func_retail_livestreaming_name'), '.azurewebsites.net')]",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/sites', variables('sites_func_retail_livestreaming_name'))]"
+         ],
+         "properties":{
+            "siteName":"[variables('sites_func_retail_livestreaming_name')]",
+            "hostNameType":"Verified"
+         }
+      }
+   ],
    "outputs":{
       
    }
