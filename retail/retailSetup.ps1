@@ -194,6 +194,8 @@ $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
 $sites_app_realtime_kpi_retail_name = "app-realtime-kpi-retail-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $sparkPoolName = "Retail"
+$kustoPoolName = "retailkustopool"
+$kustoDatabaseName = "retailkustodb"
 $storageAccountName = $dataLakeAccountName
 $keyVaultName = "kv-$suffix";
 $asa_name_retail = "retailasa-$suffix"
@@ -268,6 +270,10 @@ RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
 $result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapse $synapseWorkspaceName -sql_compute_name $sqlPoolName -ErrorAction SilentlyContinue
 $result = az synapse spark pool update --name $sparkPoolName --workspace-name $synapseWorkspaceName --resource-group $rgName --library-requirements "./artifacts/templates/requirements.txt"
+
+New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $location -SkuName "Compute optimized" -SkuSize Small
+
+New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $location
 
 RefreshTokens
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
