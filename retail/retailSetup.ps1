@@ -191,7 +191,6 @@ $app_retaildemo_name = "retaildemo-app-$suffix";
 $iot_hub_name = "iothub-retail-$suffix";
 $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
-$sites_app_realtime_kpi_retail_name = "app-realtime-kpi-retail-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $sparkPoolName = "Retail"
 $kustoPoolName = "retailkustopool"
@@ -211,7 +210,23 @@ $AADAppClientSecret = "Smoothie@2021@2021"
 $AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
 $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$unique_suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$unique_suffix"
-      
+$functionapptranscript = "func-app-media-transcript-$suffix"
+$connections_cosmosdb_name =  "conn-documentdb-$suffix"
+$connections_azureblob_name = "conn-azureblob-$suffix"
+$vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
+$vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
+$vi_location = "trial"
+$workflows_logic_video_indexer_trigger_name = "logic-app-video-trigger-$suffix"
+$workflows_logic_storage_trigger_name = "logic-app-storage-trigger-$suffix"
+$title = "Video Indexer"
+$message = "Do you have unlimited video indexer account?"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+if($result -eq 0)
+{
+$vi_account_id = read-host "Enter the account id of your unlimited video indexer account";
+$vi_account_key = read-host "Enter the account key of your unlimited video indexer account";
+$vi_location = read-host "Enter the location/region of your Media Service.";
+}
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_retail_name
@@ -327,6 +342,38 @@ else
 
         $azCopyCommand += "\azcopy"
 }
+
+az webapp stop --name $functionapptranscript --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
+az webapp start --name $functionapptranscript --resource-group $rgName
+
+#logic app template replacement
+(Get-Content -path artifacts/templates/logic_app_video_trigger_def.json -Raw) | Foreach-Object { $_ `
+                -replace '###Document_Connection_name###', $connections_cosmosdb_name`
+				-replace '###video_indexer_api_key###', $vi_account_key`
+				-replace '###video_indexer_account_id###', $vi_account_id`
+				-replace '###subscriptions_id###', $subscriptionId`
+				-replace '###rg_name###', $rgName`
+				-replace '###function_name###', $functionapptranscript`
+				-replace '###location###', $location`
+				-replace '###vi_location###', $vi_location`
+				
+        } | Set-Content -Path artifacts/templates/logic_app_video_trigger_def.json
+		
+$video_logic_callbackurl = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $rgName -Name $workflows_logic_video_indexer_trigger_name -TriggerName "manual"
+$video_logic_callbackurl = $video_logic_callbackurl.value
+#logic app template replacement
+(Get-Content -path artifacts/templates/logic_app_storage_trigger_def.json -Raw) | Foreach-Object { $_ `
+                -replace '###blob_connection_name###', $connections_azureblob_name`
+				-replace '###video_indexer_api_key###', $vi_account_key`
+				-replace '###video_indexer_account_id###', $vi_account_id`
+				-replace '###subscriptions_id###', $subscriptionId`
+				-replace '###rg_name###', $rgName`
+				-replace '###call_back_url###', $video_logic_callbackurl`
+				-replace '###location###', $location`
+				-replace '###vi_location###', $vi_location`		
+        } | Set-Content -Path artifacts/templates/logic_app_storage_trigger_def.json
+
 
 #Uploading to storage containers
 Add-Content log.txt "-----------Uploading to storage containers-----------------"
@@ -1066,6 +1113,15 @@ Set-AzStorageFileContent `
 #create aks compute
 az ml computetarget delete -n $cpuShell -v
 
+RefreshTokens
+#logic app definition update
+az extension add -n logic
+az logic workflow update --resource-group $rgName --name $workflows_logic_video_indexer_trigger_name --definition "./artifacts/templates/logic_app_video_trigger_def.json"
+
+az logic workflow update --resource-group $rgName --name $workflows_logic_storage_trigger_name --definition "./artifacts/templates/logic_app_storage_trigger_def.json"
+ 
+start-sleep -s 60
+
 ##Establish powerbi reports dataset connections
 Add-Content log.txt "------pbi connections update------"
 Write-Host "--------- PBI connections update---------"	
@@ -1386,7 +1442,7 @@ $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraff
 # # Vat Custsat Eventhub 
 # Write-Information "Deploying Realtime KPI Retail App"
 # cd app-vat-custsat-eventhub
-# az webapp up --resource-group $rgName --name $sites_app_realtime_kpi_retail_name
+# az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
 # cd ..
 # Start-Sleep -s 10
 
@@ -1395,8 +1451,9 @@ RefreshTokens
 az webapp start  --name $app_retaildemo_name --resource-group $rgName
 # az webapp start --name $app_immersive_reader_retail_name --resource-group $rgName
 az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
-# az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
-# az webapp start --name $sites_app_realtime_kpi_retail_name --resource-group $rgName
+az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
+az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+az webapp start --name $sites_retail_mediasearch_app_name --resource-group $rgName
 
 foreach($zip in $zips)
 {
@@ -1416,7 +1473,8 @@ Write-Host "----Starting ASA-----"
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_retail -OutputStartMode 'JobStartTime'
 
 Write-Host  "Click the following URL-  https://$($sites_app_iotfoottraffic_sensor_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($sites_app_realtime_kpi_retail_name).azurewebsites.net"
+Write-Host  "Click the following URL-  https://$($sites_adx_thermostat_realtime_name).azurewebsites.net"
+Write-Host  "Click the following URL-  https://$($sites_retail_mediasearch_app_name).azurewebsites.net"
 Write-Host "Please ask your admin to execute the following command for proper execution of Immersive Reader : "
 
 Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   

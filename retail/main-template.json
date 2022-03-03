@@ -25,6 +25,18 @@
          "metadata":{
             "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
          }
+      },
+    "video_indexer_account_id": {
+         "type": "String",
+         "metadata": {
+         "description": "Video indexer account ID."
+         }
+      },
+    "video_indexer_api_key": {
+         "type": "String",
+         "metadata": {
+         "description": "Video indexer API key."
+         }
       }
    },
    "variables":{
@@ -71,9 +83,9 @@
       "search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
       "search_retail_qna_name":"[concat('srch-retail-qna-',variables('unique_suffix'))]",
       "mediaservices_name":"[concat('mediasvc',uniqueString(deployment().name))]",
-      "event_topic_media_indexer_name":"[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
       "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name":"retail-foottraffic",
+      "source_storage_container": "media-assets",
       "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
       "staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
       "accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
@@ -82,7 +94,19 @@
       "accounts_cogvisionretail_name":"[concat('cogvisionretail-',variables('unique_suffix'))]",
       "accounts_retaillangresource_name":"[concat('retaillangresource-',variables('unique_suffix'))]",
       "sites_func_retail_livestreaming_name":"[concat('func-retail-livestreaming-',variables('unique_suffix'))]",
-      "serverfarms_func_retail_livestreaming_name":"[concat('asp-retail-livestreaming-',variables('unique_suffix'))]"
+      "serverfarms_func_retail_livestreaming_name":"[concat('asp-retail-livestreaming-',variables('unique_suffix'))]",
+      "workflows_logic_storage_trigger_name": "[concat('logic-app-storage-trigger-',variables('unique_suffix'))]",
+      "workflows_logic_video_indexer_trigger_name": "[concat('logic-app-video-trigger-',variables('unique_suffix'))]",
+      "logic_app_storage_trigger_url": "[concat(resourceId('Microsoft.Logic/workflows/', variables('workflows_logic_storage_trigger_name')), '/triggers/manual')]",
+      "logic_app_indexer_trigger_url": "[concat(resourceId('Microsoft.Logic/workflows/', variables('workflows_logic_video_indexer_trigger_name')), '/triggers/manual')]",
+      "connections_azureblob_name": "[concat('conn-azureblob-',variables('unique_suffix'))]",
+      "connections_cosmosdb_name": "[concat('conn-documentdb-',variables('unique_suffix'))]",
+      "logic_app_concatfunc": "[concat('concat(decodeUriComponent(''https%3A%2F%2Fapi.videoindexer.ai%2Ftrial%2FAccounts%2F',parameters('video_indexer_account_id'),'%2FVideos%2F''), triggerOutputs()[''queries''][''id''], decodeUriComponent(''%2FIndex''))')]",
+      "event_topic_media_indexer_name":"[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
+      "event_topic_storage_trigger_name": "[concat('event-topic-storage-trigger-',variables('unique_suffix'))]",
+      "func_media_transcript_app_name": "[concat('func-app-media-transcript-',variables('unique_suffix'))]",
+      "func_media_transcript_asp_name": "[concat('func-asp-media-transcript-',variables('unique_suffix'))]",
+      "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"   
    },
    "resources":[
       {
@@ -94,30 +118,30 @@
                "DeploymentId":"[parameters('environment_code')]",
                "UniqueId":"[uniqueString(deployment().name)]",
                "WsId":"[parameters('pbi_workspace_id')]",
-               "Tax_Collection_Realtime":"[parameters('Tax_Collection_Realtime')]"
+               "Tax_Collection_Realtime":"[parameters('Tax_Collection_Realtime')]",
+               "VideoIndexerAccountId": "[parameters('video_indexer_account_id')]",
+               "VideoIndexerApiKey": "[parameters('video_indexer_api_key')]"
             }
          }
       },
       {
-         "type":"Microsoft.CognitiveServices/accounts",
-         "apiVersion":"2021-10-01",
-         "name":"[variables('accounts_retaillangresource_name')]",
-         "location":"[variables('location')]",
-         "sku":{  
-            "name":"S"
+         "name": "[variables('connections_cosmosdb_name')]",
+         "type": "Microsoft.Web/connections",
+         "apiVersion": "2016-06-01",
+         "location": "[variables('location')]",
+         "kind": "V1",
+         "dependsOn": [
+         "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties": {
+         "displayName": "documentdb",
+         "parameterValues": {
+            "databaseAccount": "[variables('cosmosdb_retail2_name')]",
+            "accessKey": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey]"
          },
-         "kind":"TextAnalytics",
-         "identity":{
-            "type":"None",
-            "userAssignedIdentities":{
-               
-            }
-         },
-         "properties":{
-            "apiProperties":{
-               
-            },
-            "publicNetworkAccess":"Enabled"
+         "api": {
+            "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/', variables('location'), '/managedApis/documentdb')]"
+         }
          }
       },
       {
@@ -172,42 +196,6 @@
          }
       },
       {
-         "type":"Microsoft.Web/staticSites",
-         "apiVersion":"2021-03-01",
-         "name":"[variables('staticSites_productsearchwebapp_name')]",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"Free",
-            "tier":"Free"
-         },
-         "properties":{
-            "repositoryUrl":"https://github.com/dojodemos/prod_retail_product_search",
-            "branch":"main",
-            "stagingEnvironmentPolicy":"Enabled",
-            "allowConfigFileUpdates":true,
-            "provider":"GitHub",
-            "enterpriseGradeCdnStatus":"Disabled"
-         }
-      },
-      {
-         "type":"Microsoft.Web/staticSites",
-         "apiVersion":"2021-03-01",
-         "name":"[variables('staticSites_stapp_retail_productsearch_name')]",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"Standard",
-            "tier":"Standard"
-         },
-         "properties":{
-            "repositoryUrl":"https://github.com/dojodemos/retail20-prod-product-search",
-            "branch":"main",
-            "stagingEnvironmentPolicy":"Enabled",
-            "allowConfigFileUpdates":true,
-            "provider":"GitHub",
-            "enterpriseGradeCdnStatus":"Disabled"
-         }
-      },
-      {
          "type":"Microsoft.Purview/accounts",
          "apiVersion":"2021-07-01",
          "name":"[variables('accounts_purview_retail_name')]",
@@ -258,6 +246,52 @@
          }
       },
       {
+         "name": "[variables('event_topic_storage_trigger_name')]",
+         "type": "Microsoft.EventGrid/systemTopics",
+         "apiVersion": "2020-10-15-preview",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties": {
+         "source": "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
+         "topicType": "Microsoft.Storage.StorageAccounts"
+         }
+      },
+      {
+         "name": "[concat(variables('event_topic_storage_trigger_name'), '/event-storage-trigger')]",
+         "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+         "apiVersion": "2020-10-15-preview",
+         "dependsOn": [
+         "[resourceId('Microsoft.EventGrid/systemTopics', variables('event_topic_storage_trigger_name'))]"
+         ],
+         "properties": {
+         "destination": {
+            "properties": {
+               "maxEventsPerBatch": 1,
+               "preferredBatchSizeInKilobytes": 64,
+               "endpointUrl": "[listCallbackURL(variables('logic_app_storage_trigger_url'), '2019-05-01').value]"
+            },
+            "endpointType": "WebHook"
+         },
+         "filter": {
+            "subjectBeginsWith": "/blobServices/default/containers/source-files/blobs/",
+            "subjectEndsWith": ".mp4",
+            "includedEventTypes": [
+               "Microsoft.Storage.BlobCreated"
+            ]
+         },
+         "labels": [
+
+         ],
+         "eventDeliverySchema": "EventGridSchema",
+         "retryPolicy": {
+            "maxDeliveryAttempts": 30,
+            "eventTimeToLiveInMinutes": 1440
+         }
+         }
+      },
+      {
          "type":"Microsoft.EventGrid/systemTopics/eventSubscriptions",
          "apiVersion":"2021-12-01",
          "name":"[concat(variables('event_topic_media_indexer_name'), '/VideoIndexerAmsNotifications')]",
@@ -268,7 +302,8 @@
             "destination":{
                "properties":{
                   "maxEventsPerBatch":1,
-                  "preferredBatchSizeInKilobytes":64
+                  "preferredBatchSizeInKilobytes":64,
+                  "endpointUrl": "[listCallbackURL(variables('logic_app_indexer_trigger_url'), '2019-05-01').value]"
                },
                "endpointType":"WebHook"
             },
@@ -533,6 +568,123 @@
                   "maxThroughput":"4000"
                }
             }
+         }
+      },
+      {
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2020-06-01",
+         "name": "[variables('func_media_transcript_asp_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+         "name": "B1"
+         },
+         "kind": "linux",
+         "properties": {
+         "reserved": true
+         }
+      },
+      {
+         "name": "[variables('func_media_transcript_storage_name')]",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2019-04-01",
+         "sku": {
+         "name": "Standard_LRS",
+         "tier": "Standard"
+         },
+         "kind": "Storage",
+         "location": "[variables('location')]",
+         "properties": {
+
+         }
+      },
+      {
+         "name": "[variables('func_media_transcript_app_name')]",
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2018-11-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[concat('Microsoft.Storage/storageAccounts/', variables('func_media_transcript_storage_name'))]",
+         "[concat('Microsoft.Web/serverfarms/', variables('func_media_transcript_asp_name'))]",
+         "[concat('Microsoft.DocumentDB/databaseAccounts/', toLower(variables('cosmosdb_retail2_name')))]"
+         ],
+         "kind": "functionapp",
+         "properties": {
+         "enabled": true,
+         "hostNameSslStates": [
+            {
+               "name": "[concat(variables('func_media_transcript_app_name'), '.azurewebsites.net')]",
+               "sslState": "Disabled",
+               "hostType": "Standard"
+            },
+            {
+               "name": "[concat(variables('func_media_transcript_app_name'), '.scm.azurewebsites.net')]",
+               "sslState": "Disabled",
+               "hostType": "Repository"
+            }
+         ],
+         "serverFarmId": "[resourceId(variables('resource_group_name'), 'Microsoft.Web/serverfarms', variables('func_media_transcript_asp_name'))]",
+         "reserved": false,
+         "siteConfig": {
+            "netFrameworkVersion": "v4.0",
+            "appSettings": [
+               {
+               "name": "AzureWebJobsDashboard",
+               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('func_media_transcript_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('func_media_transcript_storage_name')), '2019-04-01').keys[0].value)]"
+               },
+               {
+               "name": "AzureWebJobsStorage",
+               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('func_media_transcript_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('func_media_transcript_storage_name')), '2019-04-01').keys[0].value)]"
+               },
+               {
+               "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('func_media_transcript_storage_name'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('func_media_transcript_storage_name')), '2019-04-01').keys[0].value)]"
+               },
+               {
+               "name": "FUNCTIONS_WORKER_RUNTIME",
+               "value": "dotnet"
+               },
+               {
+               "name": "FUNCTIONS_EXTENSION_VERSION",
+               "value": "~2"
+               },
+               {
+               "name": "collectionName",
+               "value": "transcript"
+               },
+               {
+               "name": "CosmosDbConnectionString",
+               "value": "[concat('AccountEndpoint=https://', variables('cosmosdb_retail2_name'), '.documents.azure.com:443/;AccountKey=',listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name')), providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey)]"
+               },
+               {
+               "name": "databaseName",
+               "value": "videoindexer"
+               },
+               {
+               "name": "WEBSITE_RUN_FROM_PACKAGE",
+               "value": "true"
+               },
+               {
+               "name": "STORAGE_CONTAINER_NAME",
+               "value": "[variables('source_storage_container')]"
+               },
+               {
+               "name": "STORAGE_FILE_NAME",
+               "value": "videoindexer.json"
+               }
+            ],
+            "use32BitWorkerProcess": true,
+            "managedPipelineMode": "Integrated",
+            "cors": {
+               "allowedOrigins": [
+               "https://functions.azure.com",
+               "https://functions-staging.azure.com",
+               "https://functions-next.azure.com"
+               ],
+               "supportCredentials": false
+            }
+         },
+         "containerSize": 1536,
+         "httpsOnly": false
          }
       },
       {
@@ -813,7 +965,7 @@
          "name":"[variables('forms_retail_name')]",
          "location":"[variables('location')]",
          "sku":{
-            "name":"F0"
+            "name":"S0"
          },
          "kind":"FormRecognizer",
          "properties":{
@@ -1141,6 +1293,20 @@
             "defaultEncryptionScope":"$account-encryption-key",
             "denyEncryptionScopeOverride":false,
             "publicAccess":"None"
+         }
+      },
+    {
+         "name": "[concat( variables('storage_account_name'), '/default/media-assets')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2020-08-01-preview",
+         "dependsOn": [
+         "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+         "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+         "defaultEncryptionScope": "$account-encryption-key",
+         "denyEncryptionScopeOverride": false,
+         "publicAccess": "Container"
          }
       },
       {
@@ -2243,7 +2409,16 @@
          },
          "kind":"functionapp",
          "properties":{
-            "reserved":true
+            "perSiteScaling": false,
+            "elasticScaleEnabled": false,
+            "maximumElasticWorkerCount": 1,
+            "isSpot": false,
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "targetWorkerCount": 0,
+            "targetWorkerSizeId": 0,
+            "zoneRedundant": false
          }
       },
       {
@@ -2418,6 +2593,341 @@
          "properties":{
             "siteName":"[variables('sites_func_retail_livestreaming_name')]",
             "hostNameType":"Verified"
+         }
+      },
+      {
+         "name": "[variables('connections_azureblob_name')]",
+         "type": "Microsoft.Web/connections",
+         "apiVersion": "2016-06-01",
+         "location": "[variables('location')]",
+         "kind": "V1",
+         "dependsOn": [
+         "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties": {
+         "displayName": "azureblob",
+         "parameterValues": {
+            "accountName": "[variables('storage_account_name')]",
+            "accessKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name')),'2019-04-01').keys[0].value]"
+         },
+         "api": {
+            "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/', variables('location'), '/managedApis/azureblob')]"
+         }
+         }
+      },
+      {
+         "name": "[variables('workflows_logic_storage_trigger_name')]",
+         "type": "Microsoft.Logic/workflows",
+         "apiVersion": "2017-07-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.Web/connections', variables('connections_azureblob_name'))]",
+         "[resourceId('Microsoft.Logic/workflows', variables('workflows_logic_video_indexer_trigger_name'))]"
+         ],
+         "properties": {
+         "state": "Enabled",
+         "definition": {
+            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+               "$connections": {
+               "defaultValue": {
+
+               },
+               "type": "Object"
+               }
+            },
+            "triggers": {
+               "manual": {
+               "type": "Request",
+               "kind": "Http",
+               "inputs": {
+                  "schema": {
+                     "items": {
+                     "properties": {
+                        "data": {
+                           "properties": {
+                           "api": {
+                              "type": "string"
+                           },
+                           "blobType": {
+                              "type": "string"
+                           },
+                           "clientRequestId": {
+                              "type": "string"
+                           },
+                           "contentLength": {
+                              "type": "integer"
+                           },
+                           "contentType": {
+                              "type": "string"
+                           },
+                           "eTag": {
+                              "type": "string"
+                           },
+                           "requestId": {
+                              "type": "string"
+                           },
+                           "sequencer": {
+                              "type": "string"
+                           },
+                           "storageDiagnostics": {
+                              "properties": {
+                                 "batchId": {
+                                 "type": "string"
+                                 }
+                              },
+                              "type": "object"
+                           },
+                           "url": {
+                              "type": "string"
+                           }
+                           },
+                           "type": "object"
+                        },
+                        "dataVersion": {
+                           "type": "string"
+                        },
+                        "eventTime": {
+                           "type": "string"
+                        },
+                        "eventType": {
+                           "type": "string"
+                        },
+                        "id": {
+                           "type": "string"
+                        },
+                        "metadataVersion": {
+                           "type": "string"
+                        },
+                        "subject": {
+                           "type": "string"
+                        },
+                        "topic": {
+                           "type": "string"
+                        }
+                     },
+                     "required": [
+                        "topic",
+                        "subject",
+                        "eventType",
+                        "id",
+                        "data",
+                        "dataVersion",
+                        "metadataVersion",
+                        "eventTime"
+                     ],
+                     "type": "object"
+                     },
+                     "type": "array"
+                  }
+               }
+               }
+            },
+            "actions": {
+               "For_each": {
+               "foreach": "@triggerBody()",
+               "actions": {
+                  "Create_SAS_URI_by_path": {
+                     "runAfter": {
+
+                     },
+                     "type": "ApiConnection",
+                     "inputs": {
+                     "body": {
+                        "Permissions": "Read"
+                     },
+                     "host": {
+                        "connection": {
+                           "name": "[concat('@parameters(''$connections'')','[''',variables('connections_azureblob_name'),'''][''connectionId'']')]"
+                        }
+                     },
+                     "method": "post",
+                     "path": "/datasets/default/CreateSharedLinkByPath",
+                     "queries": {
+                        "path": "@{substring(items('For_each')?['data']?['url'], indexof(items('For_each')?['data']?['url'], 'source-files'))}"
+                     }
+                     }
+                  },
+                  "HTTP": {
+                     "runAfter": {
+                     "Create_SAS_URI_by_path": [
+                        "Succeeded"
+                     ]
+                     },
+                     "type": "Http",
+                     "inputs": {
+                     "headers": {
+                        "Content-Type\n": "multipart/form-data",
+                        "Ocp-Apim-Subscription-Key\n": "[parameters('video_indexer_api_key')]"
+                     },
+                     "method": "POST",
+                     "queries": {
+                        "accessToken": "@{body('Get_Video_Indexer_Token')}",
+                        "accountId": "[parameters('video_indexer_account_id')]",
+                        "callbackUrl": "[listCallbackURL(variables('logic_app_indexer_trigger_url'), '2019-05-01').value]",
+                        "language": "English",
+                        "location": "[variables('location')]",
+                        "name": "@{substring(substring(items('For_each')?['data']?['url'], indexof(items('For_each')?['data']?['url'], 'source-files')), 13)}",
+                        "privacy": "Public",
+                        "videoUrl": "@{body('Create_SAS_URI_by_path')?['WebUrl']}"
+                     },
+                     "uri": "[concat('https://api.videoindexer.ai/trial/Accounts/',parameters('video_indexer_account_id'),'/Videos')]"
+                     }
+                  }
+               },
+               "runAfter": {
+                  "Get_Video_Indexer_Token": [
+                     "Succeeded"
+                  ]
+               },
+               "type": "Foreach"
+               },
+               "Get_Video_Indexer_Token": {
+               "runAfter": {
+
+               },
+               "type": "Http",
+               "inputs": {
+                  "headers": {
+                     "Ocp-Apim-Subscription-Key": "[parameters('video_indexer_api_key')]"
+                  },
+                  "method": "GET",
+                  "uri": "[concat('https://api.videoindexer.ai/Auth/trial/Accounts/',parameters('video_indexer_account_id'),'/AccessToken?allowEdit=true')]"
+               }
+               }
+            },
+            "outputs": {
+
+            }
+         },
+         "parameters": {
+            "$connections": {
+               "value": {
+               "[variables('connections_azureblob_name')]": {
+                  "connectionId": "[resourceId('Microsoft.Web/connections', variables('connections_azureblob_name'))]",
+                  "connectionName": "[variables('connections_azureblob_name')]",
+                  "id": "[concat('/subscriptions/',variables('subscriptionId'),'/providers/Microsoft.Web/locations/',variables('location'),'/managedApis/azureblob')]"
+               }
+               }
+            }
+         }
+         }
+      },
+      {
+         "name": "[variables('workflows_logic_video_indexer_trigger_name')]",
+         "type": "Microsoft.Logic/workflows",
+         "apiVersion": "2017-07-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.Web/connections', variables('connections_cosmosdb_name'))]"
+         ],
+         "properties": {
+         "state": "Enabled",
+         "definition": {
+            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+               "$connections": {
+               "defaultValue": {
+
+               },
+               "type": "Object"
+               }
+            },
+            "triggers": {
+               "manual": {
+               "type": "Request",
+               "kind": "Http",
+               "inputs": {
+                  "method": "POST"
+               }
+               }
+            },
+            "actions": {
+               "Condition": {
+               "actions": {
+                  "Create_or_update_document_(V2)": {
+                     "runAfter": {
+                     "Get_Video_Insights": [
+                        "Succeeded"
+                     ]
+                     },
+                     "type": "ApiConnection",
+                     "inputs": {
+                     "body": "@body('Get_Video_Insights')",
+                     "host": {
+                        "connection": {
+                           "name": "[concat('@parameters(''$connections'')','[''',variables('connections_cosmosdb_name'),'''][''connectionId'']')]"
+                        }
+                     },
+                     "method": "post",
+                     "path": "/v3/dbs/@{encodeURIComponent('videoindexer')}/colls/@{encodeURIComponent('videoindexerinsights')}/docs"
+                     }
+                  },
+                  "Get_Video_Indexer_Token": {
+                     "runAfter": {
+
+                     },
+                     "type": "Http",
+                     "inputs": {
+                     "headers": {
+                        "Ocp-Apim-Subscription-Key": "[parameters('video_indexer_api_key')]"
+                     },
+                     "method": "GET",
+                     "uri": "[concat('https://api.videoindexer.ai/Auth/trial/Accounts/',parameters('video_indexer_account_id'),'/AccessToken?allowEdit=true')]"
+                     }
+                  },
+                  "Get_Video_Insights": {
+                     "runAfter": {
+                     "Get_Video_Indexer_Token": [
+                        "Succeeded"
+                     ]
+                     },
+                     "type": "Http",
+                     "inputs": {
+                     "headers": {
+                        "Ocp-Apim-Subscription-Key\n": "[parameters('video_indexer_api_key')]"
+                     },
+                     "method": "GET",
+                     "queries": {
+                        "accessToken": "@{body('Get_Video_Indexer_Token')}"
+                     },
+                     "uri": "[variables('logic_app_concatfunc')]"
+                     }
+                  }
+               },
+               "runAfter": {
+
+               },
+               "expression": {
+                  "and": [
+                     {
+                     "equals": [
+                        "@triggerOutputs()['queries']['state']",
+                        "Processed"
+                     ]
+                     }
+                  ]
+               },
+               "type": "If"
+               }
+            },
+            "outputs": {
+
+            }
+         },
+         "parameters": {
+            "$connections": {
+               "value": {
+               "[variables('connections_cosmosdb_name')]": {
+                  "connectionId": "[resourceId('Microsoft.Web/connections', variables('connections_cosmosdb_name'))]",
+                  "connectionName": "[variables('connections_cosmosdb_name')]",
+                  "id": "[concat('/subscriptions/',variables('subscriptionId'),'/providers/Microsoft.Web/locations/',variables('location'),'/managedApis/documentdb')]"
+               }
+               }
+            }
+         }
          }
       }
    ],
