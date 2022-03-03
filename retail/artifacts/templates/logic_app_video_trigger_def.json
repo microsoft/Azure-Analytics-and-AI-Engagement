@@ -1,0 +1,112 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Condition": {
+                "actions": {
+                    "Create_or_update_document_(V2)": {
+                        "inputs": {
+                            "body": "@body('Get_Video_Insights')",
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['documentdb_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/v3/dbs/@{encodeURIComponent('videoindexer')}/colls/@{encodeURIComponent('videoindexerinsights')}/docs"
+                        },
+                        "runAfter": {
+                            "Get_Video_Insights": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Video_Indexer_Token": {
+                        "inputs": {
+                            "headers": {
+                                "Ocp-Apim-Subscription-Key": "###video_indexer_api_key###"
+                            },
+                            "method": "GET",
+                            "uri": "https://api.videoindexer.ai/Auth/###vi_location###/Accounts/###video_indexer_account_id###/AccessToken?allowEdit=true"
+                        },
+                        "runAfter": {},
+                        "type": "Http"
+                    },
+                    "Get_Video_Insights": {
+                        "inputs": {
+                            "headers": {
+                                "Ocp-Apim-Subscription-Key\n": "###video_indexer_api_key###"
+                            },
+                            "method": "GET",
+                            "queries": {
+                                "accessToken": "@{body('Get_Video_Indexer_Token')}"
+                            },
+                            "uri": "@{concat(decodeUriComponent('https%3A%2F%2Fapi.videoindexer.ai%2F###vi_location###%2FAccounts%2F###video_indexer_account_id###%2FVideos%2F'), triggerOutputs()['queries']['id'], decodeUriComponent('%2FIndex'))}"
+                        },
+                        "runAfter": {
+                            "Get_Video_Indexer_Token": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Http"
+                    },
+                    "Save_transcript": {
+                        "inputs": {
+                            "body": "@body('Get_Video_Insights')",
+                            "function": {
+                                "id": "/subscriptions/###subscriptions_id###/resourceGroups/###rg_name###/providers/Microsoft.Web/sites/###function_name###/functions/savetranscript"
+                            }
+                        },
+                        "runAfter": {
+                            "Create_or_update_document_(V2)": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Function"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@triggerOutputs()['queries']['state']",
+                                "Processed"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "If"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "POST"
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "documentdb_1": {
+                    "connectionId": "/subscriptions/###subscriptions_id###/resourceGroups/###rg_name###/providers/Microsoft.Web/connections/###Document_Connection_name###",
+                    "connectionName": "###Document_Connection_name###",
+                    "id": "/subscriptions/###subscriptions_id###/providers/Microsoft.Web/locations/###location###/managedApis/documentdb"
+                }
+            }
+        }
+    }
+}
