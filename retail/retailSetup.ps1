@@ -1128,7 +1128,7 @@ Write-Host "--------- PBI connections update---------"
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images")
+    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy"-or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)")
     {
         continue;
     }
@@ -1155,7 +1155,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-	elseif($report.name -eq "Finance Report")
+	elseif($report.name -eq "Finance Report" -or $report.name -eq "Revenue and Profiability")
 	{
       $body = "{
 			`"updateDetails`": [
@@ -1200,7 +1200,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header")
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1215,7 +1215,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation")
+    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation" -or $report.name -eq "Campaign Analytics Deep Dive")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1230,6 +1230,38 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
+	elseif($report.name -eq "Retail Column Level Security (Azure Synapse)" -or $report.name -eq "Retail Row Level Security (Azure Synapse)")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"servername`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"database`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+	elseif($report.name -eq "retailincidentreport")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"KnowledgeStoreStorageAccount`",
+									`"newValue`": `"$($dataLakeAccountName)`"
+								},
+								{
+									`"name`": `"StorageAccountSasUri`",
+									`"newValue`": `"`"
+								}
+								]
+								}"	
+	}
+	
+	 
 
 	Write-Host "PBI connections updating for report : $($report.name)"	
     $url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
