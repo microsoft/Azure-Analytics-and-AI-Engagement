@@ -1240,17 +1240,32 @@ foreach($report in $reportList)
 
 #########################
 
-Add-Content log.txt "----Bot and multilingual App-----"
-Write-Host "----Bot and multilingual App----"
+# Add-Content log.txt "----Bot and multilingual App-----"
+# Write-Host "----Bot and multilingual App----"
 
-$app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
-$appId = $app.appId
+# $app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
+# $appId = $app.appId
 
-az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$location
+# az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$location
 
-az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
+# az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
 
 #################
+
+#function apps
+Add-Content log.txt "-----function apps zip deploy-------"
+Write-Host  "--------------function apps zip deploy---------------"
+RefreshTokens
+
+$zips = @("snackable-poc", "app-iotfoottraffic-sensor-prod", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming")
+foreach($zip in $zips)
+{
+    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+}
+
+az webapp stop --name $functionapptranscript --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
+az webapp start --name $functionapptranscript --resource-group $rgName
 
 #Web app
 Add-Content log.txt "------deploy poc web app------"
@@ -1258,12 +1273,6 @@ Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
 $device = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device
-
-$zips = @("snackable-poc", "retaildemo-app", "app-iotfoottraffic-sensor", "app-vat-custsat-eventhub")
-foreach($zip in $zips)
-{
-    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-}
 
 $spname="Retail Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
@@ -1439,6 +1448,13 @@ Start-Sleep -s 10
 
 $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
 
+# ADX Thermostat Realtime
+Write-Information "Deploying ADX Thermostat Realtime App"
+cd app-adx-thermostat-realtime
+az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
+cd ..
+Start-Sleep -s 10
+
 # # Vat Custsat Eventhub 
 # Write-Information "Deploying Realtime KPI Retail App"
 # cd app-vat-custsat-eventhub
@@ -1450,10 +1466,10 @@ RefreshTokens
 
 az webapp start  --name $app_retaildemo_name --resource-group $rgName
 # az webapp start --name $app_immersive_reader_retail_name --resource-group $rgName
-az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
+# az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
 az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
-az webapp start --name $sites_retail_mediasearch_app_name --resource-group $rgName
+# az webapp start --name $sites_retail_mediasearch_app_name --resource-group $rgName
 
 foreach($zip in $zips)
 {
@@ -1474,10 +1490,10 @@ Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_retail -Ou
 
 Write-Host  "Click the following URL-  https://$($sites_app_iotfoottraffic_sensor_name).azurewebsites.net"
 Write-Host  "Click the following URL-  https://$($sites_adx_thermostat_realtime_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($sites_retail_mediasearch_app_name).azurewebsites.net"
+# Write-Host  "Click the following URL-  https://$($sites_retail_mediasearch_app_name).azurewebsites.net"
 Write-Host "Please ask your admin to execute the following command for proper execution of Immersive Reader : "
 
-Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   
+# Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   
 
 Add-Content log.txt "-----------------Execution Complete---------------"
 Write-Host  "-----------------Execution Complete----------------"
