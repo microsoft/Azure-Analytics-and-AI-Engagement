@@ -157,6 +157,9 @@ $rgName = read-host "Enter the resource Group Name";
 $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
+$thermostat_telemetry_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["thermostat_telemetry_Realtime_URL"]
+$occupancy_data_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["occupancy_data_Realtime_URL"]
+thermostat_telemetry_Realtime_URL
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
@@ -213,6 +216,9 @@ $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$unique_suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
+$namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
+$iothub_foottraffic = "iothub_foottraffic-$suffix"
+
 $vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
 $vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
 $vi_location = "trial"
@@ -1291,7 +1297,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("snackable-poc", "app-iotfoottraffic-sensor-prod", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming")
+$zips = @("snackable-poc", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1468,11 +1474,16 @@ catch
 # }
 
 # IOT FootTraffic
-$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device).ConnectionString
+$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_foottrafic -DeviceId trf-foottraffic-device).ConnectionString
 $shared_access_key = $device_conn_string.Split(";")[2]
 $device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
 
 $iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"global.azure-devices-provisioning.net\",\"symmetric_key\":\"' + $device_primary_key + '\",\"IoTHubConnectionString\":\"' + $device_conn_string + '\"}}"'
+
+(Get-Content -path app-iotfoottraffic-sensor/.env -Raw) | Foreach-Object { $_ `
+     -replace '#DEVICE_PRIMARY_KEY#', $device_primary_key`
+     -replace '#DEVICE_CONN_STRING#', $device_conn_string`
+ } | Set-Content -Path app-iotfoottraffic-sensor/.env
 
 Write-Information "Deploying IOT FootTraffic Retail App"
 cd app-iotfoottraffic-sensor
@@ -1483,6 +1494,16 @@ Start-Sleep -s 10
 $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
 
 # ADX Thermostat Realtime
+$occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy
+$thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat
+
+(Get-Content -path app-adx-thermostat-realtime/dev.env -Raw) | Foreach-Object { $_ `
+     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
+     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
+    -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+    -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+ } | Set-Content -Path app-adx-thermostat-realtime/dev.env
+
 Write-Information "Deploying ADX Thermostat Realtime App"
 cd app-adx-thermostat-realtime
 az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name

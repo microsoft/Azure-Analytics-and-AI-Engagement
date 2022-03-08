@@ -20,7 +20,13 @@
             "description":"PowerBi workspace Id."
          }
       },
-      "Tax_Collection_Realtime":{
+      "occupancy_data_Realtime_URL":{
+         "type":"String",
+         "metadata":{
+            "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
+         }
+      },
+	   "thermostat_telemetry_Realtime_URL":{
          "type":"String",
          "metadata":{
             "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
@@ -106,7 +112,9 @@
       "event_topic_storage_trigger_name": "[concat('event-topic-storage-trigger-',variables('unique_suffix'))]",
       "func_media_transcript_app_name": "[concat('func-app-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_asp_name": "[concat('func-asp-media-transcript-',variables('unique_suffix'))]",
-      "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"   
+      "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"  ,
+	  "namespaces_adx_thermostat_occupancy_name": "[concat('adx-thermostat-occupancy-',variables('unique_suffix'))]",
+	   "iothub_foottraffic":"[concat('iothub_foottraffic-',variables('unique_suffix'))]",
    },
    "resources":[
       {
@@ -118,7 +126,8 @@
                "DeploymentId":"[parameters('environment_code')]",
                "UniqueId":"[uniqueString(deployment().name)]",
                "WsId":"[parameters('pbi_workspace_id')]",
-               "Tax_Collection_Realtime":"[parameters('Tax_Collection_Realtime')]",
+               "occupancy_data_Realtime_URL":"[parameters('occupancy_data_Realtime_URL')]",
+			   "thermostat_telemetry_Realtime_URL":"[parameters('thermostat_telemetry_Realtime_URL')]",
                "VideoIndexerAccountId": "[parameters('video_indexer_account_id')]",
                "VideoIndexerApiKey": "[parameters('video_indexer_api_key')]"
             }
@@ -771,7 +780,7 @@
          "name":"[variables('asa_name_retail')]",
          "dependsOn":[
             "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
-            "[resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name'))]"
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic'))]"
          ],
          "location":"[variables('location')]",
          "identity":{
@@ -794,16 +803,16 @@
          "name":"[concat(variables('asa_name_retail'), '/iot-foottraffic-hub')]",
          "dependsOn":[
             "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_name_retail'))]",
-            "[resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name'))]"
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic'))]"
          ],
          "properties":{
             "type":"Stream",
             "datasource":{
                "type":"Microsoft.Devices/IotHubs",
                "properties":{
-                  "iotHubNamespace":"[variables('iot_hub_name')]",
+                  "iotHubNamespace":"[variables('iothub_foottraffic')]",
                   "sharedAccessPolicyName":"iothubowner",
-                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iot_hub_name')), '2018-04-01').value[0].primaryKey]",
+                  "sharedAccessPolicyKey":"[listKeys(resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic')), '2018-04-01').value[0].primaryKey]",
                   "consumerGroupName":"asa-cg",
                   "endpoint":"messages/events"
                }
@@ -2929,7 +2938,192 @@
             }
          }
          }
-      }
+      },
+	     {
+            "type": "Microsoft.EventHub/namespaces",
+            "apiVersion": "2021-11-01",
+            "name": "[variables('namespaces_adx_thermostat_occupancy_name')]",
+            "location":"[variables('location')]",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "properties": {
+                "disableLocalAuth": false,
+                "zoneRedundant": true,
+                "isAutoInflateEnabled": false,
+                "maximumThroughputUnits": 0,
+                "kafkaEnabled": true
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/RootManageSharedAccessKey')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/occupancy')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 1,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/thermostat')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]",
+				 "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active",
+                "captureDescription": {
+                    "enabled": true,
+                    "encoding": "Avro",
+                    "destination": {
+                        "name": "EventHubArchive.AzureBlockBlob",
+                        "properties": {
+                            "storageAccountResourceId":  "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]",
+                            "blobContainer": "thermostat",
+                            "archiveNameFormat": "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+                        }
+                    },
+                    "intervalInSeconds": 300,
+                    "sizeLimitInBytes": 314572800
+                }
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/default')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "defaultAction": "Allow",
+                "virtualNetworkRules": [],
+                "ipRules": []
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/occupancy/occupancy')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'occupancy')]",
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/thermostat/thermostat')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/occupancy/$Default')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'occupancy')]",
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/thermostat/$Default')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/thermostat/preview_data_consumer_group')]",
+            "location":"[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
+                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
+            ],
+            "properties": {}
+        },
+		   {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2021-07-02",
+            "name": "[variables('iothub_foottraffic')]",
+            "location": "[variables('location')]",
+           "sku":{
+            "name":"S1",
+            "tier":"Standard",
+            "capacity":1
+         },
+         "properties":{
+            "eventHubEndpoints":{
+               "events":{
+                  "retentionTimeInDays":1,
+                  "partitionCount":4
+               }
+            },
+            "features":"None"
+         }
+      },
+      {
+         "name":"[concat(variables('iothub_foottraffic'), '/events/asa-cg')]",
+         "type":"Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups",
+         "apiVersion":"2019-03-22",
+         "dependsOn":[
+            "[resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic'))]"
+         ]
+      },
    ],
    "outputs":{
       
