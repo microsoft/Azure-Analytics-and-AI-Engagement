@@ -391,9 +391,9 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	 **Note:** If you face permission issues while executing the scripts in cloudshell, you also have the option to execute them through your local PowerShell. Before executing the following steps on your local PowerShell, execute the script located [here] ( https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/automation/installer.ps1 ) for the prerequisite installations on your local PowerShell in administrator mode. You may have to execute the the following command to remove execution restrictions on your local PowerShell.
 
-	 ```PowerShell
-Set-Executionpolicy unrestricted
-```
+      ```PowerShell
+      Set-Executionpolicy unrestricted
+      ```
 	 
 11. **Close** the browser tab once you see the below message window and **go back** to your 'Azure Cloud Shell' execution window.
 
