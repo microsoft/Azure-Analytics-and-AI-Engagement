@@ -1297,7 +1297,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("snackable-poc", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1312,7 +1312,7 @@ Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
-$device = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iot_hub_name -DeviceId trf-foottraffic-device
+$device = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device
 
 $spname="Retail Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
@@ -1410,7 +1410,6 @@ $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzY
 $ht.add("#IMMERSIVE_READER_RETAIL_NAME#", $app_immersive_reader_retail_name)
 $ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
 $ht.add("#BOT_KEY#", $bot_key)
-$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
 $ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
 $ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
 $ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
@@ -1433,48 +1432,8 @@ catch
 {
 }
 
-############
-# Add-Content log.txt "----Immersive Reader----"
-# Write-Host "----Immersive Reader-----"
-# #immersive reader
-# $resourceId = az cognitiveservices account show --resource-group $rgName --name $accounts_immersive_reader_retail_name --query "id" -o tsv    
-    
-# $clientId = az ad app create --password $AADAppClientSecret --end-date $AADAppClientSecretExpiration --display-name $AADApp_Immnersive_DisplayName --query "appId" -o tsv
-             
-# az ad sp create --id $clientId | Out-Null    
-# $principalId = az ad sp show --id $clientId --query "objectId" -o tsv
-        
-# az role assignment create --assignee $principalId --scope $resourceId --role "Cognitive Services User"    
-   
-# $tenantId = az account show --query "tenantId" -o tsv
-
-# # Collect the information needed to obtain an Azure AD token into one object    
-# $immersive_properties = @{}    
-# $immersive_properties.TenantId = $tenantId    
-# $immersive_properties.ClientId = $clientId    
-# $immersive_properties.ClientSecret = $AADAppClientSecret    
-# $immersive_properties.Subdomain = $accounts_immersive_reader_retail_name
-# $immersive_properties.PrincipalId = $principalId
-# $immersive_properties.ResourceId = $resourceId
-
-# (Get-Content -path immersive-reader-app/appsettings.json -Raw) | Foreach-Object { $_ `
-#     -replace '#CLIENT_ID#', $immersive_properties.ClientId`
-#     -replace '#CLIENT_SECRET#', $immersive_properties.ClientSecret`
-#     -replace '#TENANT_ID#', $immersive_properties.TenantId`
-#     -replace '#SUBDOMIAN#', $immersive_properties.Subdomain`
-# } | Set-Content -Path immersive-reader-app/appsettings.json
-# Compress-Archive -Path "./immersive-reader-app/*" -DestinationPath "./immersive-reader-app.zip"
-# # deploy the codes on app services  
-# Write-Information "Deploying immersive reader app"
-# try{
-#     az webapp deployment source config-zip --resource-group $rgName --name $app_immersive_reader_retail_name --src "./immersive-reader-app.zip"
-# }
-# catch
-# {
-# }
-
 # IOT FootTraffic
-$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_foottrafic -DeviceId trf-foottraffic-device).ConnectionString
+$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_foottrafic -DeviceId retail-foottraffic-device).ConnectionString
 $shared_access_key = $device_conn_string.Split(";")[2]
 $device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
 
@@ -1510,21 +1469,12 @@ az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
 cd ..
 Start-Sleep -s 10
 
-# # Vat Custsat Eventhub 
-# Write-Information "Deploying Realtime KPI Retail App"
-# cd app-vat-custsat-eventhub
-# az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
-# cd ..
-# Start-Sleep -s 10
-
 RefreshTokens
 
 az webapp start  --name $app_retaildemo_name --resource-group $rgName
-# az webapp start --name $app_immersive_reader_retail_name --resource-group $rgName
 # az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
 az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
-# az webapp start --name $sites_retail_mediasearch_app_name --resource-group $rgName
 
 foreach($zip in $zips)
 {
