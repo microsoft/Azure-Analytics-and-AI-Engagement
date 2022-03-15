@@ -182,7 +182,11 @@ $iot_hub_name = "iothub-fsi-$suffix"
 $asa_name_fsi = "fsiasa-$suffix"
 $eventhub_evh_namespace_name = "evh-namespace--$suffix"
 $storageAccountName = $dataLakeAccountName
-$keyVaultName = "kv-$suffix";
+$keyVaultName = "kv-$suffix"
+if($keyVaultName.length -gt 24)
+{
+$keyVaultName = $keyVaultName.substring(0,24)
+}
 $amlworkspacename = "amlws-$suffix"
 $cog_speech_name = "speech-service-$suffix"
 $cog_translator_name = "translator-$suffix"
