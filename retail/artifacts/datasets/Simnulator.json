@@ -1,0 +1,36 @@
+{
+    "name": "Simnulator",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [
+            {
+                "name": "Organisation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Theme",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ESG",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "ReportedOn",
+                "type": "datetime2",
+                "scale": 7
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Magento_CustomerGender"
+        },
+        "sqlPool": {
+            "referenceName": "RetailDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
