@@ -720,7 +720,7 @@ $cellParams = [ordered]@{
 		"#COSMOS_LINKED_SERVICE#" = $cosmosdb_retail2_name
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
 		"#LOCATION#"=$location
-		"#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
+		"#AML_WORKSPACE_NAME#"=$amlWorkSpaceName
 }
 
 foreach($name in $notebooks)
