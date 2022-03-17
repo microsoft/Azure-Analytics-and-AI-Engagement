@@ -338,6 +338,43 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[CampaignAnalyticLatestBKP]
+( 
+	[Region] [nvarchar](4000)  NULL,
+	[Country] [nvarchar](4000)  NULL,
+	[ProductCategory] [nvarchar](4000)  NULL,
+	[Campaign_ID] [nvarchar](4000)  NULL,
+	[Campaign_Name] [nvarchar](4000)  NULL,
+	[Qualification] [nvarchar](4000)  NULL,
+	[Qualification_Number] [nvarchar](4000)  NULL,
+	[Response_Status] [nvarchar](4000)  NULL,
+	[Responses] [float]  NULL,
+	[Cost] [float]  NULL,
+	[Revenue] [float]  NULL,
+	[ROI] [float]  NULL,
+	[Lead_Generation] [nvarchar](4000)  NULL,
+	[Revenue_Target] [float]  NULL,
+	[Campaign_Tactic] [nvarchar](4000)  NULL,
+	[Customer_Segment] [nvarchar](4000)  NULL,
+	[Status] [nvarchar](4000)  NULL,
+	[Profit] [float]  NULL,
+	[Marketing_Cost] [float]  NULL,
+	[CampaignID] [nvarchar](4000)  NULL,
+	[Date] [datetime]  NULL,
+	[SORTED_ID] [int]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[CampaignAnalytics]
 ( 
 	[Region] [varchar](50)  NULL,
@@ -400,6 +437,32 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[CohortAnalysis]
+( 
+	[High Loyal] [nvarchar](max)  NULL,
+	[Column1] [nvarchar](max)  NULL,
+	[Customer ID] [nvarchar](max)  NULL,
+	[Frequency] [nvarchar](max)  NULL,
+	[FrequencyCluster] [nvarchar](max)  NULL,
+	[OverallScore] [nvarchar](max)  NULL,
+	[RecencyCluster] [nvarchar](max)  NULL,
+	[Recency] [nvarchar](max)  NULL,
+	[Revenue] [nvarchar](max)  NULL,
+	[RevenueCluster] [nvarchar](max)  NULL,
+	[Segment] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[ConflictofInterest]
 ( 
 	[FiscalYear-Quarter] [varchar](20)  NULL,
@@ -436,6 +499,30 @@ WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[customer_segment_rfm]
+( 
+	[CustomerID] [nvarchar](max)  NULL,
+	[Recency] [nvarchar](max)  NULL,
+	[RecencyCluster] [nvarchar](max)  NULL,
+	[Frequency] [nvarchar](max)  NULL,
+	[FrequencyCluster] [nvarchar](max)  NULL,
+	[Revenue] [nvarchar](max)  NULL,
+	[RevenueCluster] [nvarchar](max)  NULL,
+	[OverallScore] [nvarchar](max)  NULL,
+	[Segment] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
 )
 GO
 
@@ -847,6 +934,29 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[KS_CustomerInfo]
+( 
+	[ID] [int]  NOT NULL,
+	[Region] [nvarchar](4000)  NULL,
+	[UserName] [nvarchar](4000)  NULL,
+	[Gender] [nvarchar](4000)  NULL,
+	[Phone] [nvarchar](4000)  NULL,
+	[Email] [nvarchar](4000)  NULL,
+	[CreditCard] [nvarchar](19)  NULL,
+	[Analyst] [nvarchar](4000)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[Location_Analytics]
 ( 
 	[Day] [datetime2](7)  NULL,
@@ -1116,6 +1226,54 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[OccupancyDate_0001]
+( 
+	[DeviceID] [nvarchar](max)  NULL,
+	[StoreId] [nvarchar](max)  NULL,
+	[EnqueuedTimeUTC] [nvarchar](max)  NULL,
+	[BatteryLevel] [nvarchar](max)  NULL,
+	[visitors_cnt] [nvarchar](max)  NULL,
+	[visitors_in] [nvarchar](max)  NULL,
+	[visitors_out] [nvarchar](max)  NULL,
+	[avg_aisle_time_spent] [nvarchar](max)  NULL,
+	[avg_dwell_time] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[OccupancyDateNews]
+( 
+	[DeviceID] [nvarchar](max)  NULL,
+	[StoreId] [nvarchar](max)  NULL,
+	[EnqueuedTimeUTC] [nvarchar](max)  NULL,
+	[BatteryLevel] [nvarchar](max)  NULL,
+	[visitors_cnt] [nvarchar](max)  NULL,
+	[visitors_in] [nvarchar](max)  NULL,
+	[visitors_out] [nvarchar](max)  NULL,
+	[avg_aisle_time_spent] [nvarchar](max)  NULL,
+	[avg_dwell_time] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[occupancyHistoricalData]
 ( 
 	[EnqueuedTimeUTC] [nvarchar](max)  NULL,
@@ -1151,6 +1309,31 @@ CREATE TABLE [dbo].[occupancyHistoricalData2021]
 	[visitors_out] [nvarchar](max)  NULL,
 	[avg_aisle_time_spent] [nvarchar](max)  NULL,
 	[avg_dwell_time] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[OnlineRetailData]
+( 
+	[InvoiceNo] [nvarchar](max)  NULL,
+	[StockCode] [nvarchar](max)  NULL,
+	[Description] [nvarchar](max)  NULL,
+	[Quantity] [nvarchar](max)  NULL,
+	[InvoiceDate] [nvarchar](max)  NULL,
+	[UnitPrice] [nvarchar](max)  NULL,
+	[CustomerID] [nvarchar](max)  NULL,
+	[City] [nvarchar](max)  NULL,
+	[Age] [nvarchar](max)  NULL,
+	[AgeGroup] [nvarchar](max)  NULL
 )
 WITH
 (
@@ -1242,6 +1425,35 @@ WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[pbiBankGlobalRanking]
+( 
+	[BankGlobalRankingId] [nvarchar](max)  NULL,
+	[InstitutionId] [nvarchar](max)  NULL,
+	[Country] [nvarchar](max)  NULL,
+	[City] [nvarchar](max)  NULL,
+	[Domain] [nvarchar](max)  NULL,
+	[MsciScore] [nvarchar](max)  NULL,
+	[EsgEnvironmentalScore] [nvarchar](max)  NULL,
+	[EsgSocialScore] [nvarchar](max)  NULL,
+	[EsgGovernanceScore] [nvarchar](max)  NULL,
+	[QoQ] [nvarchar](max)  NULL,
+	[Awareness] [nvarchar](max)  NULL,
+	[MonthNumber] [nvarchar](max)  NULL,
+	[Month] [nvarchar](max)  NULL,
+	[Year] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
 )
 GO
 
@@ -1708,10 +1920,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[ProductRecommendations]
+CREATE TABLE [dbo].[Role]
 ( 
-	[Product] [nvarchar](4000)  NULL,
-	[Recommeded Product] [nvarchar](4000)  NULL
+	[RoleID] [int]  NULL,
+	[Name] [varchar](100)  NULL,
+	[Email] [varchar](100)  NULL,
+	[Roles] [varchar](128)  NULL
 )
 WITH
 (
@@ -1825,33 +2039,60 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[Sales]
+( 
+	[TransactionId] [nvarchar](100)  NULL,
+	[CustomerId] [int]  NULL,
+	[ProductId] [bigint]  NULL,
+	[Quantity] [int]  NULL,
+	[Price] [int]  NULL,
+	[TotalAmount] [bigint]  NULL,
+	[TransactionDate] [datetime]  NULL,
+	[ProfitAmount] [int]  NULL,
+	[Hour] [int]  NULL,
+	[Minute] [int]  NULL,
+	[StoreId] [bigint]  NULL
+)
+WITH
+(
+	DISTRIBUTION = HASH ( [CustomerId] ),
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[SalesMaster]
 ( 
-	[Fiscal Year] [nvarchar](max)  NULL,
-	[Fiscal Quarter] [nvarchar](max)  NULL,
-	[Fiscal Month] [nvarchar](max)  NULL,
-	[Country] [nvarchar](max)  NULL,
-	[Region] [nvarchar](max)  NULL,
-	[Customer Segment] [nvarchar](max)  NULL,
-	[Channel] [nvarchar](max)  NULL,
-	[Product] [nvarchar](max)  NULL,
-	[Product Category] [nvarchar](max)  NULL,
-	[Gross Sales] [nvarchar](max)  NULL,
-	[Budget] [nvarchar](max)  NULL,
-	[Forecast] [nvarchar](max)  NULL,
-	[Discount] [nvarchar](max)  NULL,
-	[Net Sales] [nvarchar](max)  NULL,
-	[COGS] [nvarchar](max)  NULL,
-	[Gross Profit] [nvarchar](max)  NULL,
-	[Half Yearly] [nvarchar](max)  NULL,
-	[VTB ($)] [nvarchar](max)  NULL,
-	[VTB (%)] [nvarchar](max)  NULL,
-	[agegroup] [nvarchar](max)  NULL
+	[Fiscal Year] [varchar](5000)  NULL,
+	[Fiscal Quarter] [varchar](5000)  NULL,
+	[Fiscal Month] [varchar](5000)  NULL,
+	[Country] [varchar](5000)  NULL,
+	[Region] [varchar](5000)  NULL,
+	[Customer Segment] [varchar](5000)  NULL,
+	[Channel] [varchar](5000)  NULL,
+	[Product] [varchar](5000)  NULL,
+	[Product Category] [varchar](5000)  NULL,
+	[Gross Sales] [float]  NULL,
+	[Budget] [float]  NULL,
+	[Forecast] [float]  NULL,
+	[Discount] [float]  NULL,
+	[Net Sales] [float]  NULL,
+	[COGS] [float]  NULL,
+	[Gross Profit] [varchar](5000)  NULL,
+	[Half Yearly] [varchar](5000)  NULL,
+	[VTB ($)] [float]  NULL,
+	[VTB (%)] [float]  NULL,
+	[agegroup] [varchar](50)  NULL,
+	[Dates] [datetime]  NULL
 )
 WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
+	CLUSTERED COLUMNSTORE INDEX
 )
 GO
 
@@ -1934,6 +2175,40 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[Salestransaction]
+( 
+	[Fiscal Year] [nvarchar](max)  NULL,
+	[Fiscal Quarter] [nvarchar](max)  NULL,
+	[Fiscal Month] [nvarchar](max)  NULL,
+	[Country] [nvarchar](max)  NULL,
+	[Region] [nvarchar](max)  NULL,
+	[Customer Segment] [nvarchar](max)  NULL,
+	[Channel] [nvarchar](max)  NULL,
+	[Product] [nvarchar](max)  NULL,
+	[Product Category] [nvarchar](max)  NULL,
+	[Gross Sales] [float]  NULL,
+	[Budget] [float]  NULL,
+	[Forecast] [float]  NULL,
+	[Discount] [float]  NULL,
+	[Net Sales] [float]  NULL,
+	[COGS] [float]  NULL,
+	[Gross Profit] [float]  NULL,
+	[Half Yearly] [nvarchar](max)  NULL,
+	[VTB ($)] [float]  NULL,
+	[VTB (%)] [float]  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[SalesVsExpense]
 ( 
 	[Accounting Head] [varchar](5000)  NULL,
@@ -1987,6 +2262,25 @@ CREATE TABLE [dbo].[SortedCampaigns]
 ( 
 	[Campaign_ID] [int]  NULL,
 	[Campaign_Name] [varchar](20)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[testtable]
+( 
+	[Organisation] [nvarchar](256)  NULL,
+	[Theme] [nvarchar](256)  NULL,
+	[ESG] [float]  NULL,
+	[ReportedOn] [datetime2](7)  NULL
 )
 WITH
 (
@@ -2147,6 +2441,25 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[Wait_Time_Forecasted]
+( 
+	[city] [nvarchar](max)  NULL,
+	[date] [nvarchar](max)  NULL,
+	[month] [nvarchar](max)  NULL,
+	[wait_time] [nvarchar](max)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[WebsiteSocialAnalytics]
 ( 
 	[Country] [varchar](50)  NULL,
@@ -2253,130 +2566,5 @@ WITH
 (
 	DISTRIBUTION = ROUND_ROBIN,
 	CLUSTERED COLUMNSTORE INDEX
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[pbiBankGlobalRanking]
-( 
-	[BankGlobalRankingId] [nvarchar](max)  NULL,
-	[InstitutionId] [nvarchar](max)  NULL,
-	[Country] [nvarchar](max)  NULL,
-	[City] [nvarchar](max)  NULL,
-	[Domain] [nvarchar](max)  NULL,
-	[MsciScore] [nvarchar](max)  NULL,
-	[EsgEnvironmentalScore] [nvarchar](max)  NULL,
-	[EsgSocialScore] [nvarchar](max)  NULL,
-	[EsgGovernanceScore] [nvarchar](max)  NULL,
-	[QoQ] [nvarchar](max)  NULL,
-	[Awareness] [nvarchar](max)  NULL,
-	[MonthNumber] [nvarchar](max)  NULL,
-	[Month] [nvarchar](max)  NULL,
-	[Year] [nvarchar](max)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Sales]
-( 
-	[Fiscal Year] [nvarchar](max)  NULL,
-	[Fiscal Quarter] [nvarchar](max)  NULL,
-	[Fiscal Month] [nvarchar](max)  NULL,
-	[Country] [nvarchar](max)  NULL,
-	[Region] [nvarchar](max)  NULL,
-	[Customer Segment] [nvarchar](max)  NULL,
-	[Channel] [nvarchar](max)  NULL,
-	[Product] [nvarchar](max)  NULL,
-	[Product Category] [nvarchar](max)  NULL,
-	[Gross Sales] [float]  NULL,
-	[Budget] [float]  NULL,
-	[Forecast] [float]  NULL,
-	[Discount] [float]  NULL,
-	[Net Sales] [float]  NULL,
-	[COGS] [float]  NULL,
-	[Gross Profit] [float]  NULL,
-	[Half Yearly] [nvarchar](max)  NULL,
-	[VTB ($)] [float]  NULL,
-	[VTB (%)] [float]  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[ProductLink]
-( 
-	[Product] [nvarchar](4000)  NULL,
-	[Link] [nvarchar](4000)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[CohortAnalysis]
-( 
-	[High Loyal] [nvarchar](max)  NULL,
-	[Column1] [nvarchar](max)  NULL,
-	[Customer ID] [nvarchar](max)  NULL,
-	[Frequency] [nvarchar](max)  NULL,
-	[FrequencyCluster] [nvarchar](max)  NULL,
-	[OverallScore] [nvarchar](max)  NULL,
-	[RecencyCluster] [nvarchar](max)  NULL,
-	[Recency] [nvarchar](max)  NULL,
-	[Revenue] [nvarchar](max)  NULL,
-	[RevenueCluster] [nvarchar](max)  NULL,
-	[Segment] [nvarchar](max)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Wait_Time_Forecasted]
-( 
-	[city] [nvarchar](100)  NULL,
-	[date] [nvarchar](max)  NULL,
-	[month] [nvarchar](max)  NULL,
-	[wait_time] [float] NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	HEAP
 )
 GO
