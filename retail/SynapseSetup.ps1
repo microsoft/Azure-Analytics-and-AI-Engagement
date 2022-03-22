@@ -152,6 +152,8 @@ $app_retaildemo_name = "retaildemo-app-$suffix";
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+$kustoPoolName = "retailkustopool"
+$kustoDatabaseName = "retailkustodb"
 
 #Cosmos keys
 $cosmos_account_key=az cosmosdb keys list -n $cosmosdb_retail2_name -g $rgName |ConvertFrom-Json
@@ -180,6 +182,12 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ###################################################################
 New-Item log.txt
+
+Add-Content log.txt "------Data Explorer Creation-----"
+Write-Host "----Data Explorer Creatrion-----"
+New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $location -SkuName "Compute optimized" -SkuSize Small
+
+New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $location
 
 RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
@@ -506,6 +514,15 @@ $filepath=$templatepath+"AzureMLService1.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureMLService1?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##AzureDataExplorer1 linked services
+Write-Host "Creating linked Service: AzureDataExplorer1"
+$filepath=$templatepath+"AzureDataExplorer1.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureDataExplorer1?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
@@ -1081,6 +1098,8 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasters
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesMasterUpdated"}} , @{Name = "TABLE_NAME"; Expression = {"SalesMasterUpdated"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SiteSecurity"}} , @{Name = "TABLE_NAME"; Expression = {"SiteSecurity"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SortedCampaigns"}} , @{Name = "TABLE_NAME"; Expression = {"SortedCampaigns"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
@@ -1103,21 +1122,47 @@ $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"WWIBrands"}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"WWIProducts"}} , @{Name = "TABLE_NAME"; Expression = {"WWIProducts"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"PbiReadmissionPrediction"}} , @{Name = "TABLE_NAME"; Expression = {"PbiReadmissionPrediction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"ProductLink"}} , @{Name = "TABLE_NAME"; Expression = {"ProductLink"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
-$list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"pbiBankGlobalRanking"}} , @{Name = "TABLE_NAME"; Expression = {"pbiBankGlobalRanking"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CampaignAnalyticLatestBKP"}} , @{Name = "TABLE_NAME"; Expression = {"CampaignAnalyticLatestBKP"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"CohortAnalysis"}} , @{Name = "TABLE_NAME"; Expression = {"CohortAnalysis"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Wait_Time_Forecasted"}} , @{Name = "TABLE_NAME"; Expression = {"Wait_Time_Forecasted"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"customer_segment_rfm"}} , @{Name = "TABLE_NAME"; Expression = {"customer_segment_rfm"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"SalesVsExpense"}} , @{Name = "TABLE_NAME"; Expression = {"SalesVsExpense"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"iot-foottraffic-data"}} , @{Name = "TABLE_NAME"; Expression = {"iot-foottraffic-data"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
-$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Automotive"}} , @{Name = "TABLE_NAME"; Expression = {"Automotive"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"KS_CustomerInfo"}} , @{Name = "TABLE_NAME"; Expression = {"KS_CustomerInfo"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"OccupancyDate_0001"}} , @{Name = "TABLE_NAME"; Expression = {"OccupancyDate_0001"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"OccupancyDateNews"}} , @{Name = "TABLE_NAME"; Expression = {"OccupancyDateNews"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"occupancyHistoricalData"}} , @{Name = "TABLE_NAME"; Expression = {"occupancyHistoricalData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"occupancyHistoricalData2021"}} , @{Name = "TABLE_NAME"; Expression = {"occupancyHistoricalData2021"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"OnlineRetailData"}} , @{Name = "TABLE_NAME"; Expression = {"OnlineRetailData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"pbiBankGlobalRanking"}} , @{Name = "TABLE_NAME"; Expression = {"pbiBankGlobalRanking"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"PbiReadmissionPrediction"}} , @{Name = "TABLE_NAME"; Expression = {"PbiReadmissionPrediction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"PbiRetailPrediction"}} , @{Name = "TABLE_NAME"; Expression = {"PbiRetailPrediction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"RealTimeTwitterData"}} , @{Name = "TABLE_NAME"; Expression = {"RealTimeTwitterData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 $temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Sales"}} , @{Name = "TABLE_NAME"; Expression = {"Sales"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Salestransaction"}} , @{Name = "TABLE_NAME"; Expression = {"Salestransaction"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"testtable"}} , @{Name = "TABLE_NAME"; Expression = {"testtable"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"thermostatHistoricalData"}} , @{Name = "TABLE_NAME"; Expression = {"thermostatHistoricalData"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"thermostatHistoricalData2021"}} , @{Name = "TABLE_NAME"; Expression = {"thermostatHistoricalData2021"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
+$list = $dataTableList.Add($temp)
+$temp = "" | select-object @{Name = "CSV_FILE_NAME"; Expression = {"Wait_Time_Forecasted"}} , @{Name = "TABLE_NAME"; Expression = {"Wait_Time_Forecasted"}}, @{Name = "DATA_START_ROW_NUMBER"; Expression = {2}}
 $list = $dataTableList.Add($temp)
 
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"

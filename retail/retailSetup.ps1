@@ -286,7 +286,7 @@ $principal=az resource show -g $rgName -n $asa_name_retail --resource-type "Micr
 $principalId=$principal.identity.principalId
 Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
-Add-Content log.txt "------Data Explorer Creatrion-----"
+Add-Content log.txt "------Data Explorer Creation-----"
 Write-Host "----Data Explorer Creatrion-----"
 New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $location -SkuName "Compute optimized" -SkuSize Small
 

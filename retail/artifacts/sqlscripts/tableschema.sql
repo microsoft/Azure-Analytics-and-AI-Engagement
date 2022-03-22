@@ -1920,25 +1920,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Role]
-( 
-	[RoleID] [int]  NULL,
-	[Name] [varchar](100)  NULL,
-	[Email] [varchar](100)  NULL,
-	[Roles] [varchar](128)  NULL
-)
-WITH
-(
-	DISTRIBUTION = ROUND_ROBIN,
-	CLUSTERED COLUMNSTORE INDEX
-)
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE TABLE [dbo].[Products]
 ( 
 	[Products_ID] [int]  NULL,
@@ -2026,6 +2007,23 @@ CREATE TABLE [dbo].[Role]
 	[Name] [varchar](100)  NULL,
 	[Email] [varchar](100)  NULL,
 	[Roles] [varchar](128)  NULL
+)
+WITH
+(
+	DISTRIBUTION = ROUND_ROBIN,
+	CLUSTERED COLUMNSTORE INDEX
+)
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ProductRecommendations]
+( 
+	[Product] [nvarchar](4000)  NULL,
+	[Recommeded Product] [nvarchar](4000)  NULL
 )
 WITH
 (
