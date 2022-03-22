@@ -113,8 +113,8 @@
       "func_media_transcript_app_name": "[concat('func-app-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_asp_name": "[concat('func-asp-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"  ,
-	  "namespaces_adx_thermostat_occupancy_name": "[concat('adx-thermostat-occupancy-',variables('unique_suffix'))]",
-	   "iothub_foottraffic":"[concat('iothub_foottraffic-',variables('unique_suffix'))]",
+	   "namespaces_adx_thermostat_occupancy_name": "[concat('adx-thermostat-occupancy-',variables('unique_suffix'))]",
+	   "iothub_foottraffic":"[concat('iothub_foottraffic-',variables('unique_suffix'))]"
    },
    "resources":[
       {
@@ -3123,7 +3123,7 @@
          "dependsOn":[
             "[resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic'))]"
          ]
-      },
+      }
    ],
    "outputs":{
       

@@ -159,7 +159,6 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $thermostat_telemetry_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["thermostat_telemetry_Realtime_URL"]
 $occupancy_data_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["occupancy_data_Realtime_URL"]
-thermostat_telemetry_Realtime_URL
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
@@ -675,6 +674,15 @@ $filepath=$templatepath+"AzureMLService1.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureMLService1?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
+##AzureDataExplorer1 linked services
+Write-Host "Creating linked Service: AzureDataExplorer1"
+$filepath=$templatepath+"AzureDataExplorer1.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureDataExplorer1?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
