@@ -1180,7 +1180,7 @@ Write-Host "--------- PBI connections update---------"
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy"-or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)")
+    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard")
     {
         continue;
     }
@@ -1207,7 +1207,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-	elseif($report.name -eq "Finance Report" -or $report.name -eq "Revenue and Profiability")
+	elseif($report.name -eq "Revenue and Profiability")
 	{
       $body = "{
 			`"updateDetails`": [
@@ -1217,21 +1217,6 @@ foreach($report in $reportList)
 								},
 								{
 									`"name`": `"DB_Name`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-	}
-    elseif($report.name -eq "Retail Predictive Analytics")
-    {
-      $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"ServerProd`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"DBProd`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
@@ -1249,10 +1234,18 @@ foreach($report in $reportList)
 									`"name`": `"Database1`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
+                                {
+									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
 								]
 								}"	
 	}
-    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map")
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map" -or $report.name -eq "Campaign Analytics" -or $report.name -eq "Retail Predictive Analytics")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1267,7 +1260,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "Campaign Analytics" -or $report.name -eq  "Product Recommendation" -or $report.name -eq "Campaign Analytics Deep Dive")
+    elseif($report.name -eq  "Product Recommendation" -or $report.name -eq "Campaign Analytics Deep Dive")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1324,15 +1317,15 @@ foreach($report in $reportList)
 
 #########################
 
-# Add-Content log.txt "----Bot and multilingual App-----"
-# Write-Host "----Bot and multilingual App----"
+Add-Content log.txt "----Bot and multilingual App-----"
+Write-Host "----Bot and multilingual App----"
 
-# $app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
-# $appId = $app.appId
+$app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
+$appId = $app.appId
 
-# az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$location
+az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$location
 
-# az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
 
 #################
 

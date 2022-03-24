@@ -39,14 +39,14 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
-$accounts_transqna_fintax_name = "transqna-fintax-$suffix";
-$workflows_LogicApp_fintax_name = "logicapp-fintax-$suffix"
-$accounts_immersive_reader_fintax_name = "immersive-reader-fintax-$suffix";
+$accounts_transqna_retail_name = "transqna-retail-$suffix";
+$workflows_LogicApp_retail_name = "logicapp-retail-$suffix"
+$accounts_immersive_reader_retail_name = "immersive-reader-retail-$suffix";
 $accounts_qnamaker_name= "qnamaker-$suffix";
-$sites_app_multiling_fintax_name = "multiling-fintax-app-$suffix";
+$sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_fintax_name
+$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_retail_name
 
 #########################
 RefreshTokens
@@ -69,11 +69,11 @@ $translator_key=$cog_translator_key.Key1
 $KBKey=$qna_key.KBKey
 $KBID=$qna_key.KBID
 
-az deployment group create  --resource-group $rgName  --template-file '../artifacts/qnamaker/logicapp.json' --parameters workflows_logicapp_fintax=$workflows_LogicApp_fintax_name translationKey=$translator_key KBKey=$KBKey qnaMakerResource=$accounts_qnamaker_name KBID=$KBID location=$location
+az deployment group create  --resource-group $rgName  --template-file '../artifacts/qnamaker/logicapp.json' --parameters workflows_logicapp_retail=$workflows_LogicApp_retail_name translationKey=$translator_key KBKey=$KBKey qnaMakerResource=$accounts_qnamaker_name KBID=$KBID location=$location
 Start-Sleep -Seconds 20
-$logic_callback_details = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $rgName -Name $workflows_LogicApp_fintax_name -TriggerName "manual"
+$logic_callback_details = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $rgName -Name $workflows_LogicApp_retail_name -TriggerName "manual"
 $logic_callback_url = $logic_callback_details.Value
 
-$config = az webapp config appsettings set -g $rgName -n $sites_app_multiling_fintax_name --settings LogiAppURL=$logic_callback_url
+$config = az webapp config appsettings set -g $rgName -n $sites_app_multiling_retail_name --settings LogiAppURL=$logic_callback_url
 
 

@@ -9,7 +9,7 @@
     }
   },
   "parameters": {
-    "workflows_logicapp_fintax": {
+    "workflows_logicapp_retail": {
       "type": "string"
     },
     "translationKey": {
@@ -26,15 +26,14 @@
     },
 	  "location": {
       "type": "string"
-    },
-	
+    }	
   },
   "functions": [],
   "resources": [
     {
       "type": "Microsoft.Logic/workflows",
       "apiVersion": "2017-07-01",
-      "name": "[parameters('workflows_logicapp_fintax')]",
+      "name": "[parameters('workflows_logicapp_retail')]",
       "location": "[parameters('location')]",
       "properties": {
         "state": "Enabled",
