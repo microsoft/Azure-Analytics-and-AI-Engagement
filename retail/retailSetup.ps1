@@ -216,7 +216,7 @@ $functionapptranscript = "func-app-media-transcript-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
-$iothub_foottraffic = "iothub_foottraffic-$suffix"
+$iothub_foottraffic = "iothub-foottraffic-$suffix"
 
 $vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
 $vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
@@ -266,28 +266,28 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 ###################################################################
 New-Item log.txt
 
-Install-Module -Name MicrosoftPowerBIMgmt -Force
-$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I have enough permissions for PowerBI login."
-$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I will run PowerBI setup seperately."
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$title = "PowerBI login"
-$message = " (Type [Y] for Yes or [N] for No and press enter)"
-$result = $host.ui.PromptForChoice($title, $message, $options, 1)
-if($result -eq 0)
-{
- Login-PowerBI 
-}
+# Install-Module -Name MicrosoftPowerBIMgmt -Force
+# $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","I have enough permissions for PowerBI login."
+# $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","I will run PowerBI setup seperately."
+# $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+# $title = "PowerBI login"
+# $message = " (Type [Y] for Yes or [N] for No and press enter)"
+# $result = $host.ui.PromptForChoice($title, $message, $options, 1)
+# if($result -eq 0)
+# {
+#  Login-PowerBI 
+# }
 	
-RefreshTokens
-Add-Content log.txt "------asa powerbi connection-----"
-Write-Host "----ASA Powerbi Connection-----"
-#connecting asa and powerbi
-$principal=az resource show -g $rgName -n $asa_name_retail --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
-$principalId=$principal.identity.principalId
-Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
+# RefreshTokens
+# Add-Content log.txt "------asa powerbi connection-----"
+# Write-Host "----ASA Powerbi Connection-----"
+# #connecting asa and powerbi
+# $principal=az resource show -g $rgName -n $asa_name_retail --resource-type "Microsoft.StreamAnalytics/streamingjobs"|ConvertFrom-Json
+# $principalId=$principal.identity.principalId
+# Add-PowerBIWorkspaceUser -WorkspaceId $wsId -PrincipalId $principalId -PrincipalType App -AccessRight Admin
 
 Add-Content log.txt "------Data Explorer Creation-----"
-Write-Host "----Data Explorer Creatrion-----"
+Write-Host "----Data Explorer Creation-----"
 New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $location -SkuName "Compute optimized" -SkuSize Small
 
 New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $location
