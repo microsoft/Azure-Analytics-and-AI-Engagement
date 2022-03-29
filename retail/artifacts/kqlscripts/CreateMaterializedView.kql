@@ -1,0 +1,4 @@
+.create  materialized-view  Current_Mview 
+on table Thermostat { Thermostat
+|summarize (curr_Event_Time,curr_Battery_Level,curr_Temp)=
+arg_max(EnqueuedTimeUTC,BatteryLevel,Temp) by DeviceId }

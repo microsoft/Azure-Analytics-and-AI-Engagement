@@ -1,0 +1,23 @@
+//Occupancy Data Ingestion In every 1 min 
+Occupancy 
+|where ingestion_time() >= ago(2h)
+|summarize count() by bin(ingestion_time(),1m)
+|render timechart
+
+
+
+// Thermostat Data Ingestion In every 1 min 
+Thermostat
+|where ingestion_time() >= ago(2h)
+|summarize count() by bin(ingestion_time(),1m)
+|render timechart
+
+
+// Occupancy Data Ingestion In every 5 min 
+Occupancy
+|where ingestion_time() >= ago(2h)
+|summarize count() by bin(ingestion_time(),5m)
+|render timechart
+
+// .show table Occupancy
+// | summarize ExtenSize=format_bytes(sum(ExtentSize),2,'PB'),Originalsize=format_bytes(sum(OriginalSize),0,'PB')

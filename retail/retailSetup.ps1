@@ -210,8 +210,8 @@ $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $AADAppClientSecret = "Smoothie@2021@2021"
 $AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
-$sites_retail_mediasearch_app_name = "mediasearch-retail-app-$unique_suffix"
-$sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$unique_suffix"
+$sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
+$sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
@@ -563,6 +563,20 @@ foreach ($name in $scripts)
     Add-Content log.txt $result
 }
  
+#uploading Sql Scripts
+Add-Content log.txt "-----------uploading KQL Scripts-----------------"
+Write-Host "----KQL Scripts------"
+RefreshTokens
+$scripts=Get-ChildItem "./artifacts/kqlscripts" | Select BaseName
+
+foreach ($name in $scripts) 
+{
+    $ScriptFileName="./artifacts/kqlscripts/"+$name.BaseName+".kql"
+    Write-Host "Uploading Kql Script : $($name.BaseName)"
+    New-AzSynapseKqlScript -WorkspaceName $synapseWorkspaceName -DefinitionFile $ScriptFileName
+}
+
+
 Add-Content log.txt "------linked Services------"
 Write-Host "----linked Services------"
 #Creating linked services
@@ -1234,14 +1248,6 @@ foreach($report in $reportList)
 									`"name`": `"Database1`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
-                                {
-									`"name`": `"Server`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
 								]
 								}"	
 	}
@@ -1470,7 +1476,7 @@ catch
 }
 
 # IOT FootTraffic
-$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iot_hub_foottrafic -DeviceId retail-foottraffic-device).ConnectionString
+$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device).ConnectionString
 $shared_access_key = $device_conn_string.Split(";")[2]
 $device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
 
