@@ -410,17 +410,14 @@ Follow these steps to create the Power BI dashboard:
 
 25. 'Pin to dashboard' window will appear.
 
-25. **Select** the 'Existing Dashboard' radio button.
+26. **Select** the 'Existing Dashboard' radio button.
 
 27. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin live' button.
 
 ![Pin to dashboard further steps.](media/Pin-to-dashboard.png)
 
-28. This report will appear in the dashboard 'CEO Dashboard - May'
 
-![View report in the dashboard.](media/Dashboard-View.png)
-
-**Similarly pin the remaining visuals by referring to below table:**
+28. **Similarly pin the remaining visuals by referring to below table:**
 
 ![KPI table.](media/KPI-Table.png)
 
