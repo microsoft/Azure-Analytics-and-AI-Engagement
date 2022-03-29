@@ -386,143 +386,43 @@ Follow these steps to create the Power BI dashboard:
 
       ![New Dashboard.](media/power-bi-report-10.png)
 
-19. **Name** the dashboard ‘After Dashboard’ and **click** “create”. 
+19. **Name** the dashboard 'CEO Dashboard - May' and **click** 'create'.
 
-20. This new dashboard will appear in the Content section (of the Power BI workspace). 
-	
-	![Create Dashboard.](media/power-bi-report-11.png)
+![Create Dashboard further steps.](media/Create-Dashboard.png)
 
-Do the following to pin visuals to the dashboard you just created:
+20. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
-21. **Select** the workspace in [Task 2](#task-2-power-bi-workspace-creation).
+**Follow these steps to pin the report to the Power BI dashboard:**
 
-	![Select Workdspace.](media/power-bi-report-12.png)
+21. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
 
-22. **Click** on the “Content” section/tab.
+![Create Dashboard further steps.](media/Create-Dashboard1.png)
 
-	![Click Content.](media/power-bi-report-13.png)
+22. Inside the report 'CDP Vision Report' **select** 'Pillar 1 Before'.
 
-23. In the “Content” section, there will be a list of all the published reports.
+![Select Pillar 1 before.](media/Selecting-pillar.png)
 
-24. **Click** on ‘CDP Vision Report’ Report and **click** edit.
+23. **Click** on '..' at the top of the right corner.
 
-	![Click on Report.](media/power-bi-report-14.png)
-	
-25. **Click** on ‘Pillar 1 After’ page.
+24. **Select** the 'Pin to dashboard' option from the drop-down menu.
 
-26. There you can see Before and After KPIs for using on the same Dashboard.
+![Select Pin to dashboard.](media/Selecting-pin-to-dashboard.png)
 
-27. **Hover** over the Total Campaigns & **Click** on pin visual button.
+25. 'Pin to dashboard' window will appear.
 
-28. **Select** ‘Existing dashboard’ radio button. 
+25. **Select** the 'Existing Dashboard' radio button.
 
-29. From ‘select existing dashboard’ dropdown, **select** ‘After Dashboard’.
+27. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin live' button.
 
-30. **Click** ‘Pin’.
+![Pin to dashboard further steps.](media/Pin-to-dashboard.png)
 
-	![Select Dashboard and click Pin.](media/power-bi-report-16.png)
-	
-31. Similarly, **pin** the others tiles to the Dashboard.
+28. This report will appear in the dashboard 'CEO Dashboard - May'
 
-	![Pin other dashboards.](media/power-bi-report-17.png)
-	
-32. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
+![View report in the dashboard.](media/Dashboard-View.png)
 
-	![Select Workspace.](media/power-bi-report-18.png)
-	
-33. **Open** ‘Dashboard-Images’ report.
+**Similarly pin the remaining visuals by referring to below table:**
 
-	![Select Workspace.](media/power-bi-report-14.png)
-	
-34. **Hover** on Predictive and Prescriptive Analytics chiclet and **click** pin button.
-
-	![Hover and Click.](media/power-bi-report-21.png)
-	
-35. Select the ‘After Dashboard’ from existing dashboard list and **click** on pin.
-
-36. Similarly pin rest of the images from Images of the ‘Dashboard-Images’ report.
-	
-	![Select Dashboard and Click Pin.](media/power-bi-report-22.png)
-	
-37. **Go back** to the ‘After Dashboard’ dashboard.
-
-	![Go back to Dashboard.](media/power-bi-report-23.png)
-	
-To hide title and subtitle for all the images that you have pined above. Please do the following:
-
-38. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
-
-39. **Click** on ‘Edit details’.
-
-	![Click on Edit Details.](media/power-bi-report-24.png)
-	
-40. **Uncheck** ‘Display title and subtitle’.
-
-41. **Click** on ‘Apply’.
-
-42. **Repeat** Step 36 to 41 for all image tiles.
-
-	![Click apply and repeat.](media/power-bi-report-25.png)
-	
-43. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
-	
-	![Resize and Rearrange.](media/power-bi-report-26.png)
-	
-44. Similarly pin left image tiles of chiclets report to the After Dashboard dashboard.
-
-45. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
-
-	![Resize and Rearrange again.](media/power-bi-report-27.png)
-	
-46. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
-	
-	![Will see some KPIs.](media/power-bi-report-28.png)
-	
-47. **Hover** over the cards and charts and go to more options (…)
-
-48. **Click** on Edit Details.
-	
-	![Hover and Click on Edit Details.](media/power-bi-report-29.png)
-	
-49. You will see something like this picture where you can add subtitle.
-
-	![Will see.](media/power-bi-report-30.png)
-	
-50. The Dashboard **After Dashboard** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
-
-	![Final Look.](media/power-bi-report-31.png)
-	
-51. **Refer** to this table while pinning rest of the tiles to the dashboard.
-
-	![Table.](media/power-bi-table-1.png)
-	
-52. Here is the list of Dashboards you have to create for TRF and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/KPIS%20Dashboards%20mapping.xlsx) file for pinning the tiles to the dashboard.
-
-	![Final Look.](media/power-bi-report-32.png)
-	
-53. **Before Dashboard** should look like this. Following are the details of tiles for the same.
-
-	![Final Look.](media/power-bi-report-33.png)
-	
-54. **Refer** to this table while pinning rest of the tiles to the dashboard.	
-
-	![Table.](media/power-bi-table-2.png)
-
-55. **Chief Customer Officer Dashboard Before** should look like this. Following are the details of tiles for the same.
-	
-	![Final Look.](media/power-bi-report-34.png)
-	
-56. **Refer** to this table while pinning rest of the tiles to the dashboard.	
-
-	![Table.](media/power-bi-table-3.png)
-
-57. **Finance Dashboard** should look like this. Following are the details of tiles for the same.
-
-	![Final Look.](media/power-bi-report-35.png)
-	
-58. **Refer** to this table while pinning rest of the tiles to the dashboard.	
-
-	![Table.](media/power-bi-table-4.png)
+![KPI table.](media/KPI-Table.png)
 
 	
 ### Steps to create Real time report
