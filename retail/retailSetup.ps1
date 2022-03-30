@@ -154,7 +154,7 @@ $result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -Co
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $thermostat_telemetry_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["thermostat_telemetry_Realtime_URL"]
@@ -195,8 +195,8 @@ $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $sparkPoolName = "Retail"
-$kustoPoolName = "retailkustopool"
-$kustoDatabaseName = "retailkustodb"
+$kustoPoolName = "retailkustopool$init"
+$kustoDatabaseName = "retailkustodb$init"
 $storageAccountName = $dataLakeAccountName
 $keyVaultName = "kv-$suffix";
 $asa_name_retail = "retailasa-$suffix"
@@ -204,7 +204,7 @@ $amlworkspacename = "amlws-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
-$forms_cogs_endpoint = "https://"+$location+".api.cognitive.microsoft.com/"
+$forms_cogs_endpoint = "https://"+$rglocation+".api.cognitive.microsoft.com/"
 $AADApp_Immnersive_DisplayName = "RetailImmersiveReader-$suffix"
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
@@ -288,9 +288,9 @@ New-Item log.txt
 
 Add-Content log.txt "------Data Explorer Creation-----"
 Write-Host "----Data Explorer Creation-----"
-New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $location -SkuName "Compute optimized" -SkuSize Small
+New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $rglocation -SkuName "Compute optimized" -SkuSize Small
 
-New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $location
+New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $rglocation
 
 RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
@@ -328,9 +328,7 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
         chmod +x azcopy
         cd ..
         $azCopyCommand += "\azcopy"
-}
-else
-{
+}else{
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
         if (!$azCopyLink)
@@ -362,7 +360,7 @@ az webapp start --name $functionapptranscript --resource-group $rgName
 				-replace '###subscriptions_id###', $subscriptionId`
 				-replace '###rg_name###', $rgName`
 				-replace '###function_name###', $functionapptranscript`
-				-replace '###location###', $location`
+				-replace '###location###', $rglocation`
 				-replace '###vi_location###', $vi_location`
 				
         } | Set-Content -Path artifacts/templates/logic_app_video_trigger_def.json
@@ -377,7 +375,7 @@ $video_logic_callbackurl = $video_logic_callbackurl.value
 				-replace '###subscriptions_id###', $subscriptionId`
 				-replace '###rg_name###', $rgName`
 				-replace '###call_back_url###', $video_logic_callbackurl`
-				-replace '###location###', $location`
+				-replace '###location###', $rglocation`
 				-replace '###vi_location###', $vi_location`		
         } | Set-Content -Path artifacts/templates/logic_app_storage_trigger_def.json
 
@@ -473,7 +471,7 @@ Write-Host "----Form Recognizer-----"
 #form Recognizer
 #Replace values in create_model.py
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
-                -replace '#LOCATION#', $location`
+                -replace '#LOCATION#', $rglocation`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
 				-replace '#CONTAINER_NAME#', "incidentreportjson"`
 				-replace '#SAS_TOKEN#', $sasToken`
@@ -544,7 +542,7 @@ foreach ($name in $scripts)
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
-    $query = $query.Replace("#LOCATION#", $location)
+    $query = $query.Replace("#LOCATION#", $rglocation)
 	
     if ($Parameters -ne $null) 
     {
@@ -741,7 +739,7 @@ $cellParams = [ordered]@{
 		"#STORAGE_ACCOUNT_KEY#" = $storage_account_key
 		"#COSMOS_LINKED_SERVICE#" = $cosmosdb_retail2_name
 		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
-		"#LOCATION#"=$location
+		"#LOCATION#"=$rglocation
 		"#AML_WORKSPACE_NAME#"=$amlWorkSpaceName
 }
 
@@ -1194,7 +1192,7 @@ Write-Host "--------- PBI connections update---------"
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard")
+    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Global Occupational Safety Report")
     {
         continue;
     }
@@ -1329,7 +1327,7 @@ Write-Host "----Bot and multilingual App----"
 $app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
 $appId = $app.appId
 
-az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$location
+az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$rglocation
 
 az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
 
@@ -1459,7 +1457,7 @@ $ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with 
 $ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
 $ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
 $ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
-#$ht.add("#SPEECH_REGION#", $location)
+#$ht.add("#SPEECH_REGION#", $rglocation)
 
 $filePath = "./retaildemo-app/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
