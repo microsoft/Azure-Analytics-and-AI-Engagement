@@ -83,7 +83,7 @@
       "serverfarm_adx_thermostat_realtime_name":"[concat('asp-realtime-kpi-retail-',variables('unique_suffix'))]",
       "sites_app_iotfoottraffic_sensor_retail_name":"[concat('iot-foottraffic-sensor-retail-app-',variables('unique_suffix'))]",
       "serverfarm_app_iotfoottraffic_sensor_retail_name":"[concat('asp-iot-foottraffic-sensor-retail-',variables('unique_suffix'))]",
-      "sites_retail_mediasearch_app_name":"[concat('mediasearch-retail-app-',variables('unique_suffix'))]",
+      "sites_retail_mediasearch_app_name":"[concat('app-media-search-',variables('unique_suffix'))]",
       "serverfarm_retail_mediasearch_app_name":"[concat('asp-mediasearch-retail-',variables('unique_suffix'))]",
       "accounts_purview_retail_name":"[concat('purviewretail',variables('unique_suffix'))]",
       "search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
