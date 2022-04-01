@@ -32,6 +32,12 @@
             "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
          }
       },
+	   "livestreaming_video_analytics_Realtime_URL":{
+         "type":"String",
+         "metadata":{
+            "description":"PowerBi streaming dataset URL for Livestreaming Video Analytics Realtime."
+         }
+      },
     "video_indexer_account_id": {
          "type": "String",
          "metadata": {
@@ -114,7 +120,9 @@
       "func_media_transcript_asp_name": "[concat('func-asp-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"  ,
 	   "namespaces_adx_thermostat_occupancy_name": "[concat('adx-thermostat-occupancy-',variables('unique_suffix'))]",
-	   "iothub_foottraffic":"[concat('iothub-foottraffic-',variables('unique_suffix'))]"
+	   "iothub_foottraffic":"[concat('iothub-foottraffic-',variables('unique_suffix'))]",
+	   "func_livestreaming_video_analytics_asp_name": "[concat('func-asp-livestreaming-',variables('unique_suffix'))]",
+	   "func_livestreaming_video_analytics_name":"[concat('func-app-livestreaming-',variables('unique_suffix'))]"
    },
    "resources":[
       {
@@ -3123,7 +3131,215 @@
          "dependsOn":[
             "[resourceId('Microsoft.Devices/IotHubs', variables('iothub_foottraffic'))]"
          ]
-      }
+      },
+	  {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2021-03-01",
+            "name": "[variables('func_livestreaming_video_analytics_asp_name')]",
+             "location": "[variables('location')]",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "kind": "app",
+            "properties": {
+                "perSiteScaling": false,
+                "elasticScaleEnabled": false,
+                "maximumElasticWorkerCount": 1,
+                "isSpot": false,
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0,
+                "zoneRedundant": false
+            }
+        },
+	  {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2021-03-01",
+            "name": "[variables('func_livestreaming_video_analytics_name')]",
+             "location": "[variables('location')]",
+            "kind": "functionapp",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(variables('func_livestreaming_video_analytics_name'), '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(variables('func_livestreaming_video_analytics_name'), '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                 "serverFarmId": "[resourceId(variables('resource_group_name'), 'Microsoft.Web/serverfarms', variables('func_livestreaming_video_analytics_asp_name'))]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": true,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0,
+					"appSettings": [
+               {
+               "name": "PowerbiStreamingUrl",
+               "value": "[parameters('livestreaming_video_analytics_Realtime_URL')]"
+               },
+			   {
+               "name": "FUNCTIONS_EXTENSION_VERSION",
+               "value": "~2"
+               },
+			   {
+               "name": "FUNCTIONS_WORKER_RUNTIME",
+               "value": "dotnet"
+               },
+			   ]
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
+                "containerSize": 1536,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": false,
+                "redundancyMode": "None",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2021-03-01",
+            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/ftp')]",
+ "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('func_livestreaming_video_analytics_name'))]"
+            ],
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2021-03-01",
+            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/scm')]",
+             "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('func_livestreaming_video_analytics_name'))]"
+            ],
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2021-03-01",
+            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/web')]",
+             "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('func_livestreaming_video_analytics_name'))]"
+            ],
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php"
+                ],
+                "netFrameworkVersion": "v6.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "[concat('$',variables('func_livestreaming_video_analytics_name'))]",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "cors": {
+                    "allowedOrigins": [
+                        "https://portal.azure.com"
+                    ],
+                    "supportCredentials": false
+                },
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.0",
+                "ftpsState": "AllAllowed",
+                "preWarmedInstanceCount": 0,
+                "functionAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2021-03-01",
+            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/', parameters('func_livestreaming_video_analytics_name'), '.azurewebsites.net')]",
+             "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('func_livestreaming_video_analytics_name'))]"
+            ],
+            "properties": {
+                "siteName": "[variables('func_livestreaming_video_analytics_name')]",
+                "hostNameType": "Verified"
+            }
+        }
    ],
    "outputs":{
       
