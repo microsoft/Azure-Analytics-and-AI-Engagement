@@ -212,6 +212,7 @@ $AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
 $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
+$functionapplivestreaming = "func-app-livestreaming-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
@@ -350,6 +351,10 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
 az webapp stop --name $functionapptranscript --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
 az webapp start --name $functionapptranscript --resource-group $rgName
+
+az webapp stop --name $functionmedialivestreaming --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $functionmedialivestreaming --src "./artifacts/binaries/func-media-livestreaming.zip"	
+az webapp start --name $functionmedialivestreaming --resource-group $rgName
 
 #logic app template replacement
 (Get-Content -path artifacts/templates/logic_app_video_trigger_def.json -Raw) | Foreach-Object { $_ `
@@ -1122,6 +1127,10 @@ az webapp stop --name $functionapptranscript --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
 az webapp start --name $functionapptranscript --resource-group $rgName
 
+az webapp stop --name $functionapplivestreaming --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $functionapplivestreaming --src "./artifacts/binaries/func_media_livestreaming.zip"	
+az webapp start --name $functionapplivestreaming --resource-group $rgName
+
 #Web app
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------Deploy web app ---------------"
@@ -1281,8 +1290,9 @@ $iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"glo
  } | Set-Content -Path app-iotfoottraffic-sensor/.env
 
 Write-Information "Deploying IOT FootTraffic Retail App"
-Compress-Archive -Path "./app-iotfoottraffic-sensor/*" -DestinationPath "./app-iotfoottraffic-sensor.zip"
-az webapp deployment source config-zip --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name --src "./app-iotfoottraffic-sensor.zip"
+cd app-iotfoottraffic-sensor
+az webapp up --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name
+cd ..
 Start-Sleep -s 10
 
 $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
@@ -1299,12 +1309,14 @@ $thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --reso
  } | Set-Content -Path app-adx-thermostat-realtime/dev.env
 
 Write-Information "Deploying ADX Thermostat Realtime App"
-Compress-Archive -Path "./app-adx-thermostat-realtime/*" -DestinationPath "./app-adx-thermostat-realtime.zip"
-az webapp deployment source config-zip --resource-group $rgName --name $sites_adx_thermostat_realtime_name --src "./app-adx-thermostat-realtime.zip"
+cd app-adx-thermostat-realtime
+az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
+cd ..
 Start-Sleep -s 10
 
 RefreshTokens
 
+az webapp restart --name $functionapplivestreaming --resource-group $rgName  
 az webapp start  --name $app_retaildemo_name --resource-group $rgName
 az webapp start --name $media_search_app_service_name --resource-group $rgName
 az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
