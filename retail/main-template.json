@@ -3194,14 +3194,14 @@
                "name": "PowerbiStreamingUrl",
                "value": "[parameters('livestreaming_video_analytics_Realtime_URL')]"
                },
-			   {
-               "name": "FUNCTIONS_EXTENSION_VERSION",
-               "value": "~2"
-               },
-			   {
-               "name": "FUNCTIONS_WORKER_RUNTIME",
-               "value": "dotnet"
-               },
+               {
+                  "name": "FUNCTIONS_EXTENSION_VERSION",
+                  "value": "~2"
+                  },
+               {
+                  "name": "FUNCTIONS_WORKER_RUNTIME",
+                  "value": "dotnet"
+               }
 			   ]
                 },
                 "scmSiteAlsoStopped": false,
@@ -3330,7 +3330,7 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2021-03-01",
-            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/', parameters('func_livestreaming_video_analytics_name'), '.azurewebsites.net')]",
+            "name": "[concat(variables('func_livestreaming_video_analytics_name'), '/', variables('func_livestreaming_video_analytics_name'), '.azurewebsites.net')]",
              "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', variables('func_livestreaming_video_analytics_name'))]"
