@@ -3164,6 +3164,9 @@
             "name": "[variables('func_livestreaming_video_analytics_name')]",
              "location": "[variables('location')]",
             "kind": "functionapp",
+			 "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('func_livestreaming_video_analytics_asp_name'))]"
+            ],
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
