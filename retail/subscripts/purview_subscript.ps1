@@ -47,7 +47,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 	}
 }
 
-
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
 $rglocation = (Get-AzResourceGroup -Name $rgName).Location
@@ -148,6 +147,10 @@ $body = @{
   kind = "AzureCosmosDb"
   properties = @{
     accountUri = "https://$($cosmosdb_retail2_name).documents.azure.com:443/"
+    subscriptionId = $subscriptionId
+    resourceGroup = $rgName
+    location = $rglocation
+    resourceName = $cosmosdb_retail2_name
     collection = @{
       type = "CollectionReference"
       referenceName = $purviewCollectionName3

@@ -186,7 +186,7 @@ $accounts_transqna_retail_name = "transqna-retail-$suffix";
 $workflows_LogicApp_retail_name = "logicapp-retail-$suffix"
 $accounts_immersive_reader_retail_name = "immersive-reader-retail-$suffix";
 $accounts_qnamaker_name= "qnamaker-$suffix";
-$search_srch_retail_name = "srch-retail-$suffix";
+$search_srch_retail_name = "srch-retail-product-$suffix";
 $search_retail_qna_name = "srch-retail-qna-$suffix";
 $app_retail_qna_name = "retaildemo-qna-$suffix";
 $app_retaildemo_name = "retaildemo-app-$suffix";
@@ -233,6 +233,11 @@ $vi_account_id = read-host "Enter the account id of your unlimited video indexer
 $vi_account_key = read-host "Enter the account key of your unlimited video indexer account";
 $vi_location = read-host "Enter the location/region of your Media Service.";
 }
+$accounts_purview_retail_name = "purviewretail$suffix"
+$purviewCollectionName1 = "AzureDataLakeStorage"
+$purviewCollectionName2 = "AzureSynapse"
+$purviewCollectionName3 = "CosmosDB-Retail"
+$purviewCollectionName4 = "PowerBI-Retail"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_retail_name
@@ -487,7 +492,151 @@ $modelUrl = python "./artifacts/formrecognizer/create_model1.py"
 $modelId = $modelUrl.split("/")
 $modelId = $modelId[7]
 
-############################
+##############################
+
+#Search service 
+Write-Host "-----------------Search service ---------------"
+RefreshTokens
+
+# Create search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$queryKey = "QueryKey"
+New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
+
+# Get search primary admin key
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName
+$primaryAdminKey = $adminKeyPair.Primary
+
+# Create Index
+Write-Host  "------Index----"
+try {
+Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
+        ForEach-Object {
+            $indexDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$($searchName).search.windows.net/indexes?api-version=2020-06-30"
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+        }
+    } catch {
+        Write-Host "Resource already Exists !"
+}
+Start-Sleep -s 10
+
+##############################
+
+#create collections
+$body = @{
+    parentCollection = @{
+      referenceName = $accounts_purview_retail_name
+    }
+  }
+  
+  $body = $body | ConvertTo-Json
+  
+  RefreshTokens
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/account/collections/$($purviewCollectionName1)?api-version=2019-11-01-preview"
+  $result = Invoke-RestMethod -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  RefreshTokens
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/account/collections/$($purviewCollectionName2)?api-version=2019-11-01-preview"
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  RefreshTokens
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/account/collections/$($purviewCollectionName3)?api-version=2019-11-01-preview"
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  RefreshTokens
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/account/collections/$($purviewCollectionName4)?api-version=2019-11-01-preview"
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  #create sources
+  $body = @{
+          kind = "AdlsGen2"
+          properties = @{
+              endpoint = "https://$($storageAccountName).dfs.core.windows.net/"
+        subscriptionId = $subscriptionId
+        resourceGroup = $rgName
+        location = $rglocation
+        resourceName = $storageAccountName
+        collection = @{
+                type = "CollectionReference"
+                referenceName = $purviewCollectionName1
+              }
+          }
+      }
+  
+  $body = $body | ConvertTo-Json
+  
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/scan/datasources/AzureDataLakeStorage?api-version=2018-12-01-preview"
+  RefreshTokens
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  $body = @{
+    kind = "AzureSynapseWorkspace"
+    properties = @{
+      dedicatedSqlEndpoint = "$($synapseWorkspaceName).sql.azuresynapse.net"
+      serverlessSqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
+      subscriptionId = $subscriptionId
+      resourceGroup = $rgName
+      location = $rglocation
+      resourceName = $synapseWorkspaceName
+      collection = @{
+        type = "CollectionReference"
+        referenceName = $purviewCollectionName2
+      }
+    }
+  }
+  
+  $body = $body | ConvertTo-Json
+  
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/scan/datasources/AzureSynapseAnalytics?api-version=2018-12-01-preview"
+  RefreshTokens
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  $body = @{
+    kind = "AzureCosmosDb"
+    properties = @{
+      accountUri = "https://$($cosmosdb_retail2_name).documents.azure.com:443/"
+      subscriptionId = $subscriptionId
+      resourceGroup = $rgName
+      location = $rglocation
+      resourceName = $cosmosdb_retail2_name
+      collection = @{
+        type = "CollectionReference"
+        referenceName = $purviewCollectionName3
+      }
+    }
+  }
+  
+  $body = $body | ConvertTo-Json
+  
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/scan/datasources/CosmosDB?api-version=2018-12-01-preview"
+  RefreshTokens
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"
+  
+  $body = @{
+    kind = "PowerBI"
+    properties = @{
+      tenant = $tenantId
+      collection = @{
+        type = "CollectionReference"
+        referenceName = $purviewCollectionName4
+      }
+    }
+  }
+  
+  $body = $body | ConvertTo-Json
+  
+  $uri = "https://$($accounts_purview_retail_name).purview.azure.com/scan/datasources/PowerBI?api-version=2018-12-01-preview"
+  RefreshTokens
+  $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $body -Headers @{ Authorization="Bearer $purviewToken" } -ContentType "application/json"  
+
+##############################
+
 Add-Content log.txt "------sql schema-----"
 Write-Host "----Sql Schema------"
 RefreshTokens

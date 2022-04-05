@@ -92,7 +92,7 @@
       "sites_retail_mediasearch_app_name":"[concat('app-media-search-',variables('unique_suffix'))]",
       "serverfarm_retail_mediasearch_app_name":"[concat('asp-mediasearch-retail-',variables('unique_suffix'))]",
       "accounts_purview_retail_name":"[concat('purviewretail',variables('unique_suffix'))]",
-      "search_srch_retail_name":"[concat('srchincident-',variables('unique_suffix'))]",
+      "search_srch_retail_name":"[concat('srch-retail-product-',variables('unique_suffix'))]",
       "search_retail_qna_name":"[concat('srch-retail-qna-',variables('unique_suffix'))]",
       "mediaservices_name":"[concat('mediasvc',uniqueString(deployment().name))]",
       "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
