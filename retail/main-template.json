@@ -122,7 +122,9 @@
 	   "namespaces_adx_thermostat_occupancy_name": "[concat('adx-thermostat-occupancy-',variables('unique_suffix'))]",
 	   "iothub_foottraffic":"[concat('iothub-foottraffic-',variables('unique_suffix'))]",
 	   "func_livestreaming_video_analytics_asp_name": "[concat('func-asp-livestreaming-',variables('unique_suffix'))]",
-	   "func_livestreaming_video_analytics_name":"[concat('func-app-livestreaming-',variables('unique_suffix'))]"
+	   "func_livestreaming_video_analytics_name":"[concat('func-app-livestreaming-',variables('unique_suffix'))]",
+	   "evh-name-occupancy":"occupancy",
+	   "evh-name-thermostat":"thermostat"
    },
    "resources":[
       {
@@ -1602,11 +1604,6 @@
                      {
                         "name": "occupancyDataConfig",
                         "value": "{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT#\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"#POWERBI_STREAMING_DATASET#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}",
-                        "slotSetting": false
-                     },
-                     {
-                        "name": "thermostatsrealtime",
-                        "value": "{\"main_data_frequency_seconds\":1,\"urlStringEventhub\":\"#POWERBI_STREAMING_DATASET#\",\"EventhubName\":\"occupancy\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}",
                         "slotSetting": false
                      },
                      {
@@ -3193,18 +3190,18 @@
                     "functionAppScaleLimit": 0,
                     "minimumElasticInstanceCount": 0,
 					"appSettings": [
-               {
-               "name": "PowerbiStreamingUrl",
-               "value": "[parameters('livestreaming_video_analytics_Realtime_URL')]"
-               },
-               {
-                  "name": "FUNCTIONS_EXTENSION_VERSION",
-                  "value": "~2"
-                  },
-               {
-                  "name": "FUNCTIONS_WORKER_RUNTIME",
-                  "value": "dotnet"
-               }
+								{
+								"name": "PowerbiStreamingUrl",
+								"value": "[parameters('livestreaming_video_analytics_Realtime_URL')]"
+								},
+								{
+									"name": "FUNCTIONS_EXTENSION_VERSION",
+									"value": "~2"
+									},
+								{
+									"name": "FUNCTIONS_WORKER_RUNTIME",
+									"value": "dotnet"
+								}
 			   ]
                 },
                 "scmSiteAlsoStopped": false,

@@ -1457,6 +1457,19 @@ $thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --reso
     -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
     -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
  } | Set-Content -Path app-adx-thermostat-realtime/dev.env
+ 
+ $occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT_OCCUPANCY#\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"#OCCUPANCYDATA_URL#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
+  $occupancyDataConfig =  $occupancyDataConfig.Replace("#EVENT_HUB_ENDPOINT_OCCUPANCY#",$occupancy_endpoint).Replace("#OCCUPANCYDATA_URL#",$occupancy_data_Realtime_URL)
+ 
+						
+ $thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT_TELEMETRY#\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"#POWERBI_STREAMING_DATASET_TELEMETRY#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
+ 
+ $thermostatTelemetryConfig = $occupancyDataConfig.Replace("#EVENT_HUB_ENDPOINT_TELEMETRY#",$thermostat_endpoint).Replace("#POWERBI_STREAMING_DATASET_TELEMETRY#",$thermostat_telemetry_Realtime_URL)
+Add-Content log.txt $occupancyDataConfig
+Add-Content log.txt $thermostatTelemetryConfig 
+
+#$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
+#$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
 
 Write-Information "Deploying ADX Thermostat Realtime App"
 cd app-adx-thermostat-realtime
