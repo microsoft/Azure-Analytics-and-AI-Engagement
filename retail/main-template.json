@@ -97,6 +97,9 @@
       "mediaservices_name":"[concat('mediasvc',uniqueString(deployment().name))]",
       "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name":"retail-foottraffic",
+      "cosmos_database_video_indexer":"video-indexer",
+      "cosmos_database_container_name_videoindexerinsights": "videoindexerinsights",
+      "cosmos_database_container_name_Transcript": "transcript",
       "source_storage_container": "media-assets",
       "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
       "staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
@@ -156,6 +159,107 @@
          },
          "api": {
             "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/', variables('location'), '/managedApis/documentdb')]"
+         }
+         }
+      },
+      {
+         "name": "[concat(variables('cosmosdb_retail2_name'), '/', toLower(variables('cosmos_database_video_indexer')))]",
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+         "apiVersion": "2019-12-12",
+         "dependsOn": [
+         "[concat('Microsoft.DocumentDB/databaseAccounts/', toLower(variables('cosmosdb_retail2_name')))]"
+         ],
+         "properties": {
+         "resource": {
+            "id": "[variables('cosmos_database_video_indexer')]"
+         }
+         }
+      },
+      {
+         "name": "[concat(variables('cosmosdb_retail2_name'), '/', variables('cosmos_database_video_indexer'), '/', variables('cosmos_database_container_name_videoindexerinsights'))]",
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion": "2020-04-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmosdb_retail2_name'),variables('cosmos_database_video_indexer'))]"
+         ],
+         "properties": {
+         "resource": {
+            "id": "[variables('cosmos_database_container_name_videoindexerinsights')]",
+            "indexingPolicy": {
+               "automatic": true,
+               "indexingMode": "consistent",
+               "includedPaths": [
+               {
+                  "path": "/*"
+               }
+               ],
+               "excludedPaths": [
+               {
+                  "path": "/\"_etag\"/?"
+               }
+               ]
+            },
+            "partitionKey": {
+               "paths": [
+               "/id"
+               ],
+               "kind": "Hash"
+            },
+            "analyticalStorageTtl": -1,
+            "conflictResolutionPolicy": {
+               "mode": "LastWriterWins",
+               "conflictResolutionPath": "/_ts"
+            }
+         },
+         "options": {
+            "autoscaleSettings": {
+               "maxThroughput": "4000"
+            }
+         }
+         }
+      },
+      {
+      "name": "[concat(variables('cosmosdb_retail2_name'), '/', variables('cosmos_database_video_indexer'), '/', variables('cosmos_database_container_name_Transcript'))]",
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion": "2020-04-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases',variables('cosmosdb_retail2_name'),variables('cosmos_database_video_indexer'))]"
+         ],
+         "properties": {
+         "resource": {
+            "id": "[variables('cosmos_database_container_name_Transcript')]",
+            "indexingPolicy": {
+               "automatic": true,
+               "indexingMode": "consistent",
+               "includedPaths": [
+               {
+                  "path": "/*"
+               }
+               ],
+               "excludedPaths": [
+               {
+                  "path": "/\"_etag\"/?"
+               }
+               ]
+            },
+            "partitionKey": {
+               "paths": [
+               "/videoid"
+               ],
+               "kind": "Hash"
+            },
+            "analyticalStorageTtl": -1,
+            "conflictResolutionPolicy": {
+               "mode": "LastWriterWins",
+               "conflictResolutionPath": "/_ts"
+            }
+         },
+         "options": {
+            "autoscaleSettings": {
+               "maxThroughput": "4000"
+            }
          }
          }
       },
@@ -1350,6 +1454,20 @@
             "defaultEncryptionScope":"$account-encryption-key",
             "denyEncryptionScopeOverride":false,
             "publicAccess":"None"
+         }
+      },
+      {
+         "name": "[concat( variables('storage_account_name'), '/default/source-files')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2020-08-01-preview",
+         "dependsOn": [
+         "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+         "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+         "defaultEncryptionScope": "$account-encryption-key",
+         "denyEncryptionScopeOverride": false,
+         "publicAccess": "Container"
          }
       },
       {
