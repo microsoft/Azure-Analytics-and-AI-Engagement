@@ -214,6 +214,7 @@ $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $functionapplivestreaming = "func-app-livestreaming-$suffix"
+$functionmedialivestreaming = "func-retail-livestreaming-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
@@ -1272,10 +1273,6 @@ foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
 }
-
-az webapp stop --name $functionapptranscript --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
-az webapp start --name $functionapptranscript --resource-group $rgName
 
 az webapp stop --name $functionapplivestreaming --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $functionapplivestreaming --src "./artifacts/binaries/func_media_livestreaming.zip"	
