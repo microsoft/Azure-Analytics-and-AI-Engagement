@@ -1279,7 +1279,7 @@ foreach($zip in $zips)
 }
 
 az webapp stop --name $functionapplivestreaming --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $functionapplivestreaming --src "./artifacts/binaries/func_media_livestreaming.zip"	
+az webapp deployment source config-zip --resource-group $rgName --name $functionapplivestreaming --src "./artifacts/binaries/func-retail-livestreaming.zip"	
 az webapp start --name $functionapplivestreaming --resource-group $rgName
 
 #Web app
