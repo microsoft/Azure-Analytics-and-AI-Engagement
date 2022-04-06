@@ -191,6 +191,7 @@ $search_retail_qna_name = "srch-retail-qna-$suffix";
 $app_retail_qna_name = "retaildemo-qna-$suffix";
 $app_retaildemo_name = "retaildemo-app-$suffix";
 $iot_hub_name = "iothub-retail-$suffix";
+$searchName = "srch-retail-product-$suffix";
 $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
@@ -214,7 +215,6 @@ $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $functionapplivestreaming = "func-app-livestreaming-$suffix"
-$functionmedialivestreaming = "func-retail-livestreaming-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
@@ -234,6 +234,10 @@ $vi_account_id = read-host "Enter the account id of your unlimited video indexer
 $vi_account_key = read-host "Enter the account key of your unlimited video indexer account";
 $vi_location = read-host "Enter the location/region of your Media Service.";
 }
+$vi_api_url = 'https://api.videoindexer.ai'
+$location = (Get-AzResourceGroup -Name $rgName).Location
+# $vi_account_url = "$vi_api_url/$location/Accounts/$vi_account_id"
+
 $accounts_purview_retail_name = "purviewretail$suffix"
 $purviewCollectionName1 = "AzureDataLakeStorage"
 $purviewCollectionName2 = "AzureSynapse"
@@ -359,10 +363,6 @@ az webapp stop --name $functionapptranscript --resource-group $rgName
 az webapp deployment source config-zip --resource-group $rgName --name $functionapptranscript --src "./artifacts/binaries/func_savetranscript.zip"	
 az webapp start --name $functionapptranscript --resource-group $rgName
 
-az webapp stop --name $functionmedialivestreaming --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $functionmedialivestreaming --src "./artifacts/binaries/func-media-livestreaming.zip"	
-az webapp start --name $functionmedialivestreaming --resource-group $rgName
-
 #logic app template replacement
 (Get-Content -path artifacts/templates/logic_app_video_trigger_def.json -Raw) | Foreach-Object { $_ `
                 -replace '###Document_Connection_name###', $connections_cosmosdb_name`
@@ -374,7 +374,7 @@ az webapp start --name $functionmedialivestreaming --resource-group $rgName
 				-replace '###location###', $rglocation`
 				-replace '###vi_location###', $vi_location`
 				
-        } | Set-Content -Path artifacts/templates/logic_app_video_trigger_def.json
+        } | Set-Content -Path artifacts/templates/logic_app_video_trigger_def1.json
 		
 $video_logic_callbackurl = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $rgName -Name $workflows_logic_video_indexer_trigger_name -TriggerName "manual"
 $video_logic_callbackurl = $video_logic_callbackurl.value
@@ -388,7 +388,7 @@ $video_logic_callbackurl = $video_logic_callbackurl.value
 				-replace '###call_back_url###', $video_logic_callbackurl`
 				-replace '###location###', $rglocation`
 				-replace '###vi_location###', $vi_location`		
-        } | Set-Content -Path artifacts/templates/logic_app_storage_trigger_def.json
+        } | Set-Content -Path artifacts/templates/logic_app_storage_trigger_def1.json
 
 
 #Uploading to storage containers
@@ -528,6 +528,10 @@ Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
 Start-Sleep -s 10
 
 ##############################
+
+#Azure Purview
+Write-Host "-----------------Azure Purview---------------"
+RefreshTokens
 
 #create collections
 $body = @{
@@ -1104,15 +1108,15 @@ Set-AzStorageFileContent `
    -Path $path
 }
 
-#create aks compute
+#delete aks compute
 az ml computetarget delete -n $cpuShell -v
 
 RefreshTokens
 #logic app definition update
 az extension add -n logic
-az logic workflow update --resource-group $rgName --name $workflows_logic_video_indexer_trigger_name --definition "./artifacts/templates/logic_app_video_trigger_def.json"
+az logic workflow update --resource-group $rgName --name $workflows_logic_video_indexer_trigger_name --definition "./artifacts/templates/logic_app_video_trigger_def1.json"
 
-az logic workflow update --resource-group $rgName --name $workflows_logic_storage_trigger_name --definition "./artifacts/templates/logic_app_storage_trigger_def.json"
+az logic workflow update --resource-group $rgName --name $workflows_logic_storage_trigger_name --definition "./artifacts/templates/logic_app_storage_trigger_def1.json"
  
 start-sleep -s 60
 
@@ -1268,7 +1272,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "func_savetranscript", "func-media-livestreaming", "app_media_search")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1449,24 +1453,18 @@ $occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resou
 $thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat
 
 (Get-Content -path app-adx-thermostat-realtime/dev.env -Raw) | Foreach-Object { $_ `
-     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
-     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
-    -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
-    -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
- } | Set-Content -Path app-adx-thermostat-realtime/dev.env
- 
- $occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT_OCCUPANCY#\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"#OCCUPANCYDATA_URL#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
-  $occupancyDataConfig =  $occupancyDataConfig.Replace("#EVENT_HUB_ENDPOINT_OCCUPANCY#",$occupancy_endpoint).Replace("#OCCUPANCYDATA_URL#",$occupancy_data_Realtime_URL)
- 
-						
- $thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"#EVENT_HUB_ENDPOINT_TELEMETRY#\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"#POWERBI_STREAMING_DATASET_TELEMETRY#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
- 
- $thermostatTelemetryConfig = $occupancyDataConfig.Replace("#EVENT_HUB_ENDPOINT_TELEMETRY#",$thermostat_endpoint).Replace("#POWERBI_STREAMING_DATASET_TELEMETRY#",$thermostat_telemetry_Realtime_URL)
-Add-Content log.txt $occupancyDataConfig
-Add-Content log.txt $thermostatTelemetryConfig 
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
+   -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+   -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+} | Set-Content -Path app-adx-thermostat-realtime/dev.env
 
-#$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
-#$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
+$occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$occupancy_endpoint+'\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"'+$occupancy_data_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
+ 	
+$thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$thermostat_endpoint+'\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"'+$thermostat_telemetry_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
+ 
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
 
 Write-Information "Deploying ADX Thermostat Realtime App"
 cd app-adx-thermostat-realtime
