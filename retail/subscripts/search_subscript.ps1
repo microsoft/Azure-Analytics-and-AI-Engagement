@@ -13,8 +13,6 @@ az login
 #for powershell...
 Connect-AzAccount -DeviceCode
 
-#will be done as part of the cloud shell start - README
-
 #if they have many subs...
 $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
@@ -38,26 +36,37 @@ $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $synapseWorkspaceName = "synapseretail$init$random"
-
-#creating Dataflows
-Write-Host "--------Dataflows--------"
+$queryKey = "QueryKey"
+$searchName = "srch-retail-product-$suffix";
+#Search service 
+Write-Host "-----------------Search service ---------------"
 RefreshTokens
-$workloadDataflows = Get-ChildItem "../artifacts/dataflow" | Select BaseName 
 
-$DataflowPath="../artifacts/dataflow"
+# Create search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$queryKey = "QueryKey"
+New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
 
-foreach ($dataflow in $workloadDataflows) 
-{
-    $Name=$dataflow.BaseName
-    Write-Host "Creating dataflow : $($Name)"
-    $item = Get-Content -Path "$($DataflowPath)/$($Name).json"
-    
-	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/dataflows/$($Name)?api-version=2019-06-01-preview"
-	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-    
-    #waiting for operation completion
-	Start-Sleep -Seconds 10
-	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/operationResults/$($result.operationId)?api-version=2019-06-01-preview"
-	$result = Invoke-RestMethod  -Uri $uri -Method GET -Headers @{ Authorization="Bearer $synapseToken" }
-	Add-Content log.txt $result
+
+# Get search primary admin key
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName
+$primaryAdminKey = $adminKeyPair.Primary
+
+# Create Index
+Write-Host  "------Index----"
+try {
+Get-ChildItem "../artifacts/search" -Filter fabrikam-fashion.json |
+        ForEach-Object {
+            $indexDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$($searchName).search.windows.net/indexes?api-version=2020-06-30"
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+        }
+    } catch {
+        Write-Host "Resource already Exists !"
 }
+Start-Sleep -s 10

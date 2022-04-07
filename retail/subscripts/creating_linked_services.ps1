@@ -185,8 +185,17 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Azu
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
+##AzureDataExplorer1 linked services
+Write-Host "Creating linked Service: AzureDataExplorer1"
+$filepath=$templatepath+"AzureDataExplorer1.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#SUBSCRIPTION_ID#", $subscriptionId).Replace("#RESOURCE_GROUP_NAME#", $rgName).Replace("#ML_WORKSPACE_NAME#", $amlworkspacename)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureDataExplorer1?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
 # AutoResolveIntegrationRuntime
-$FilePathRT="../artifacts/linkedservices/AutoResolveIntegrationRuntime.json" 
+$FilePathRT="./artifacts/linkedservices/AutoResolveIntegrationRuntime.json" 
 $itemRT = Get-Content -Path $FilePathRT
 $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"

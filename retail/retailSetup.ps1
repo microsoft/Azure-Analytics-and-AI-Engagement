@@ -1228,7 +1228,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-	elseif($report.name -eq "retailincidentreport")
+	elseif($report.name -eq "Global Occupational Safety Report")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1512,6 +1512,42 @@ Write-Host  "Click the following URL-  https://$($media_search_app_service_name)
 
 # Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   
 
+#####################################################
+Write-Host "------COSMOS data Upload -------------"
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-Module -Name PowerShellGet -Force
+Install-Module -Name CosmosDB -Force
+$cosmosDbAccountName = $cosmosdb_retail2_name
+$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+
+foreach($name in $cosmos)
+{
+    $collection = $name.BaseName 
+    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
+    $path="./artifacts/cosmos/"+$name.BaseName+".json"
+    $documents=Get-Content -Raw -Path $path
+    $document=ConvertFrom-Json $documents
+
+    foreach($json in $document)
+    {
+		$key=$json.TransactionType
+        if($name.Basename -eq "retaildb") {
+            $id = New-Guid
+            $partitionKey = "beforefoottraffic" + $((Get-Date -Format MM-dd-yyyy).ToString())
+            if(![bool]($json.PSobject.Properties.name -match "id"))
+            {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
+            if(![bool]($json.PSobject.Properties.name -match "beforefoottraffic"))
+            {$json | Add-Member -MemberType NoteProperty -Name 'beforefoottraffic' -Value $partitionKey }
+            $key=$json.beforefoottraffic
+        }
+
+        $body=ConvertTo-Json $json
+        $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+    }
+} 
+
+#################################
 
 Add-Content log.txt "------uploading sql data------"
 Write-Host  "-------------Uploading Sql Data ---------------"

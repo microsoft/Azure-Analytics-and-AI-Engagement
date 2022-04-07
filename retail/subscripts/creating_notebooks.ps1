@@ -35,7 +35,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
@@ -51,6 +51,12 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $amlworkspacename = "amlws-$suffix"
+$cosmosdb_retail2_name = "cosmosdb-retail2-$random$init";
+if($cosmosdb_retail2_name.length -gt 43)
+{
+$cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
+}
+$cosmos_database_name= "retail-foottraffic";
 
 #Creating spark notebooks
 Write-Host "--------Spark notebooks--------"
@@ -58,22 +64,22 @@ RefreshTokens
 $notebooks=Get-ChildItem "../artifacts/notebooks" | Select BaseName 
 
 $cellParams = [ordered]@{
-    "#SQL_POOL_NAME#"       = $sqlPoolName
-    "#SUBSCRIPTION_ID#"     = $subscriptionId
-    "#RESOURCE_GROUP_NAME#" = $rgName
-    "#WORKSPACE_NAME#"  = $synapseWorkspaceName
-    "#DATA_LAKE_NAME#" = $dataLakeAccountName
-    "#SPARK_POOL_NAME#" = $sparkPoolName
-    "#STORAGE_ACCOUNT_KEY#" = $storage_account_key
-    "#COSMOS_LINKED_SERVICE#" = $cosmosdb_retail2_name
-    "#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
-    "#LOCATION#"=$location
-    "#ML_WORKSPACE_NAME#"=$amlWorkSpaceName
+        "#SQL_POOL_NAME#"       = $sqlPoolName
+        "#SUBSCRIPTION_ID#"     = $subscriptionId
+        "#RESOURCE_GROUP_NAME#" = $rgName
+        "#WORKSPACE_NAME#"  = $synapseWorkspaceName
+        "#DATA_LAKE_NAME#" = $dataLakeAccountName
+		"#SPARK_POOL_NAME#" = $sparkPoolName
+		"#STORAGE_ACCOUNT_KEY#" = $storage_account_key
+		"#COSMOS_LINKED_SERVICE#" = $cosmosdb_retail2_name
+		"#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
+		"#LOCATION#"=$rglocation
+		"#AML_WORKSPACE_NAME#"=$amlWorkSpaceName
 }
 
 foreach($name in $notebooks)
 {
-	$template=Get-Content -Raw -Path "../artifacts/templates/spark_notebook.json"
+	$template=Get-Content -Raw -Path "./artifacts/templates/spark_notebook.json"
 	foreach ($paramName in $cellParams.Keys) 
     {
 		$template = $template.Replace($paramName, $cellParams[$paramName])

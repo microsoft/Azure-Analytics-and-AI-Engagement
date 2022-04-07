@@ -41,7 +41,6 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $accounts_transqna_retail_name = "transqna-retail-$suffix";
 $workflows_LogicApp_retail_name = "logicapp-retail-$suffix"
-$accounts_immersive_reader_retail_name = "immersive-reader-retail-$suffix";
 $accounts_qnamaker_name= "qnamaker-$suffix";
 $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 

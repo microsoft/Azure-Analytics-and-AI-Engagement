@@ -40,13 +40,13 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $concatString = "$init$random"
 $suffix = "$random-$init"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $storageAccountName = $dataLakeAccountName
-$forms_fintax_name = "fintax-form-recognizer-$suffix";
+$forms_fintax_name = "retail-form-recognizer-$suffix";
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_fintax_name
 $forms_cogs_key = $forms_cogs_keys.Key1
@@ -57,7 +57,7 @@ $StartTime = Get-Date
 $amlworkspacename = "amlws-$suffix"
 $cpuShell = "cpuShell$random"
 $EndTime = $StartTime.AddDays(6)
-$sasToken = New-AzStorageContainerSASToken -Container "training-data-output" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+$sasToken = New-AzStorageContainerSASToken -Container "incidentreportjson" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 $forms_cogs_endpoint = "https://"+$location+".api.cognitive.microsoft.com/"
 
 Write-Host "----Form Recognizer-----"
@@ -66,7 +66,7 @@ Write-Host "----Form Recognizer-----"
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
                 -replace '#LOCATION#', $location`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
-				-replace '#CONTAINER_NAME#', "training-data-output"`
+				-replace '#CONTAINER_NAME#', "incidentreportjson"`
 				-replace '#SAS_TOKEN#', $sasToken`
 				-replace '#APIM_KEY#',  $forms_cogs_key`
 			} | Set-Content -Path ../artifacts/formrecognizer/create_model1.py

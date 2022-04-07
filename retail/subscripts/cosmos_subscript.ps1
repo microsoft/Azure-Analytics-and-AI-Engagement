@@ -26,12 +26,15 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$cosmos_database_name = "sample-database"
-$cosmos_database_name_SampleDB = "SampleDB"
+$cosmos_database_name = "retail-foottraffic";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$concatString = "$random$init"
-$db_graph_fintax_name = "db-acc-graph-fintax-$concatString"
+$concatString = "$random$init";
+$cosmosdb_retail2_name = "cosmosdb-retail2-$random$init";
+if($cosmosdb_retail2_name.length -gt 43)
+{
+$cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
+}
 
 
 #COSMOS Section
@@ -39,49 +42,30 @@ Write-Host  "-----------------Uploading Cosmos Data --------------"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
-$cosmosDbAccountName = $db_graph_fintax_name
+$cosmosDbAccountName = $cosmosdb_retail2_name
 $cosmos = Get-ChildItem "../artifacts/cosmos" | Select BaseName 
 
 foreach($name in $cosmos)
 {
     $collection = $name.BaseName 
-    if($name.Basename -eq "import2" -or $name.Basename -eq "import3" -or $name.Basename -eq "Persons") {
-        $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name_SampleDB -ResourceGroup $rgName   
-    } 
-    elseif($name.Basename -eq "bookCollection" -or $name.Basename -eq "graph2" -or $name.Basename -eq "sample-graph") {
-        $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
-    }
+    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
     $path="../artifacts/cosmos/"+$name.BaseName+".json"
-    $document=Get-Content -Raw -Path $path
-    $document=ConvertFrom-Json $document
+    $documents=Get-Content -Raw -Path $path
+    $document=ConvertFrom-Json $documents
 
     foreach($json in $document)
     {
-        if($name.Basename -eq "import2" -or $name.Basename -eq "import3") {
+		$key=$json.TransactionType
+        if($name.Basename -eq "retaildb") {
             $id = New-Guid
-            $partitionKey = "partitionKey" + $((Get-Date -Format MM-dd-yyyy).ToString())
+            $partitionKey = "beforefoottraffic" + $((Get-Date -Format MM-dd-yyyy).ToString())
             if(![bool]($json.PSobject.Properties.name -match "id"))
             {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
-            if(![bool]($json.PSobject.Properties.name -match "partitionKey"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'partitionKey' -Value $partitionKey }
-            $key=$json.partitionKey
+            if(![bool]($json.PSobject.Properties.name -match "beforefoottraffic"))
+            {$json | Add-Member -MemberType NoteProperty -Name 'beforefoottraffic' -Value $partitionKey }
+            $key=$json.beforefoottraffic
         }
-        if($name.Basename -eq "Persons" -or $name.Basename -eq "bookCollection") {
-            $id = New-Guid
-            $key=$json.name
-            if(![bool]($json.PSobject.Properties.name -match "id"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
-            if(![bool]($json.PSobject.Properties.name -match "name"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'name' -Value $id}
-        }
-        if($name.Basename -eq "graph2" -or $name.Basename -eq "sample-graph") {
-            $id = New-Guid
-            $key=$json.pk
-            if(![bool]($json.PSobject.Properties.name -match "id"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
-            if(![bool]($json.PSobject.Properties.name -match "pk"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'pk' -Value 'pk'}
-        }
+
         $body=ConvertTo-Json $json
         $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
     }

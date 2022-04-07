@@ -2039,22 +2039,30 @@ GO
 
 CREATE TABLE [dbo].[Sales]
 ( 
-	[TransactionId] [nvarchar](100)  NULL,
-	[CustomerId] [int]  NULL,
-	[ProductId] [bigint]  NULL,
-	[Quantity] [int]  NULL,
-	[Price] [int]  NULL,
-	[TotalAmount] [bigint]  NULL,
-	[TransactionDate] [datetime]  NULL,
-	[ProfitAmount] [int]  NULL,
-	[Hour] [int]  NULL,
-	[Minute] [int]  NULL,
-	[StoreId] [bigint]  NULL
+	[Fiscal Year] [nvarchar](max)  NULL,
+	[Fiscal Quarter] [nvarchar](max)  NULL,
+	[Fiscal Month] [nvarchar](max)  NULL,
+	[Country] [nvarchar](max)  NULL,
+	[Region] [nvarchar](max)  NULL,
+	[Customer Segment] [nvarchar](max)  NULL,
+	[Channel] [nvarchar](max)  NULL,
+	[Product] [nvarchar](max)  NULL,
+	[Product Category] [nvarchar](max)  NULL,
+	[Gross Sales] [float]  NULL,
+	[Budget] [float]  NULL,
+	[Forecast] [float]  NULL,
+	[Discount] [float]  NULL,
+	[Net Sales] [float]  NULL,
+	[COGS] [float]  NULL,
+	[Gross Profit] [float]  NULL,
+	[Half Yearly] [nvarchar](max)  NULL,
+	[VTB ($)] [float]  NULL,
+	[VTB (%)] [float]  NULL
 )
 WITH
 (
-	DISTRIBUTION = HASH ( [CustomerId] ),
-	CLUSTERED COLUMNSTORE INDEX
+	DISTRIBUTION = ROUND_ROBIN,
+	HEAP
 )
 GO
 

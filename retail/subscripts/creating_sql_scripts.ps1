@@ -35,7 +35,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $sqlPoolName = "RetailDW"
@@ -65,7 +65,13 @@ if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-  
+$cosmosdb_retail2_name = "cosmosdb-retail2-$random$init";
+if($cosmosdb_retail2_name.length -gt 43)
+{
+$cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
+}
+$cosmos_database_name= "retail-foottraffic";
+
 #uploading Sql Scripts
 Write-Host "----Sql Scripts------"
 RefreshTokens
@@ -90,7 +96,7 @@ foreach ($name in $scripts)
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
-    $query = $query.Replace("#LOCATION#", $location)
+    $query = $query.Replace("#LOCATION#", $rglocation)
 	
     if ($Parameters -ne $null) 
     {
