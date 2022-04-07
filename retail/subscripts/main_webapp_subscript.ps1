@@ -69,6 +69,9 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
+$media_search_app_service_name = "app-media-search-$suffix"
+$bot_qnamaker_retail_name= "botmultilingual-$suffix"
+$app_retaildemo_name = "retaildemo-app-$suffix";
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
@@ -78,9 +81,9 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
-expand-archive -path "../artifacts/binaries/fintaxdemo-app.zip" -destinationpath "./fintaxdemo-app" -force
+expand-archive -path "../artifacts/binaries/retaildemo-app.zip" -destinationpath "./retaildemo-app" -force
 
-$spname="FinTax Demo $deploymentId"
+$spname="Retail Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
 
 $appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
@@ -149,20 +152,20 @@ $post = "{
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 				
-(Get-Content -path fintaxdemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
+(Get-Content -path retaildemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
 				-replace '#APP_ID#', $appId`
 				-replace '#APP_SECRET#', $clientsecpwd`
 				-replace '#TENANT_ID#', $tenantId`				
-        } | Set-Content -Path fintaxdemo-app/appsettings.json
+        } | Set-Content -Path retaildemo-app/appsettings.json
 
-$filepath="./fintaxdemo-app/wwwroot/config.js"
+$filepath="./retaildemo-app/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_fintaxdemo_name).Replace("#APP_NAME#", $app_fintaxdemo_name)
-Set-Content -Path $filepath -Value $item 
-
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
+Set-Content -Path $filepath -Value $item
+   
 #bot qna maker
-$bot_detail = az bot webchat show --name $bot_qnamaker_fintax_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
+$bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
 $bot_key = $bot_detail.properties.properties.sites[0].key
 
 RefreshTokens
@@ -172,40 +175,38 @@ $reportList = $reportList.Value
 
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
-#TODO need to check which url to use here
-# $ht.add("#Blob_Base_Url#", "https://fsicdn.azureedge.net/webappassets/")
 $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
-$ht.add("#IMMERSIVE_READER_FINTAX_NAME#", $app_immersive_reader_fintax_name)
-$ht.add("#BOT_QNAMAKER_FINTAX_NAME#", $bot_qnamaker_fintax_name)
+$ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
 $ht.add("#BOT_KEY#", $bot_key)
-$ht.add("#AMAZON_MAP#", $($reportList | where {$_.name -eq "Amazon MAP"}).id)
-$ht.add("#ANTI_CORRUPTION_REPORT#", $($reportList | where {$_.name -eq "Anti Corruption Report"}).id)
-#.add("#FINTAX_COLUMN_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Column Level Security (Azure Synapse)"}).id)
-#$ht.add("#FINTAX_DYNAMIC_DATA_MASKING_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Dynamic Data Masking (Azure Synapse)"}).id)
-#$ht.add("#FINTAX_ROW_LEVEL_SECURITY_SYNAPSE#", $($reportList | where {$_.name -eq "FinTax Row Level Security (Azure Synapse)"}).id)
-$ht.add("#FRAUD_INVESTIGATOR_REPORT#", $($reportList | where {$_.name -eq "Fraud Investigator Report"}).id)
-$ht.add("#REPORT_TAX_FINANCE#", $($reportList | where {$_.name -eq "Report Tax Finance"}).id)
-#$ht.add("#TAX_COLLECTIONS_COMMISSIONER#", $($reportList | where {$_.name -eq "Tax Collections Commissioner"}).id)
-$ht.add("#TAX_COMPLIANCE_COMISSIONER_REPORT#", $($reportList | where {$_.name -eq "Tax Compliance Comissioner Report"}).id)
-#$ht.add("#TAXPAYER_CLIENT_SERVICES_REPORT#", $($reportList | where {$_.name -eq "Taxpayer Client Services Report"}).id)
-#$ht.add("#TRF_CHICKLETS#", $($reportList | where {$_.name -eq "TRF-Chicklets"}).id)
-$ht.add("#VAT_AUDITOR_REPORT#", $($reportList | where {$_.name -eq "vat auditor report"}).id)
+$ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
+$ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
+$ht.add("#Campaign_Analytics_Deep_Dive#", $($reportList | where {$_.name -eq "Campaign Analytics Deep Dive"}).id)
+$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
+$ht.add("#Location_Analytics#", $($reportList | where {$_.name -eq "Location Analytics"}).id)
+$ht.add("#Global_Occupational_Safety_Report#", $($reportList | where {$_.name -eq "Global Occupational Safety Report"}).id)
+$ht.add("#Product_Recommendation#", $($reportList | where {$_.name -eq "Product Recommendation"}).id)
+$ht.add("#World_Map#", $($reportList | where {$_.name -eq "World Map"}).id)
+$ht.add("#Twitter_Sentiment_Analytics#", $($reportList | where {$_.name -eq "Twitter Sentiment Analytics"}).id)
+$ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
+$ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "ADX Thermostat and Occupancy"}).id)
+$ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
+$ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
+$ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
+#$ht.add("#SPEECH_REGION#", $rglocation)
 
-#$ht.add("#SPEECH_REGION#", $location)
-
-$filePath = "./fintaxdemo-app/wwwroot/config.js";
+$filePath = "./retaildemo-app/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
-Compress-Archive -Path "./fintaxdemo-app/*" -DestinationPath "./fintaxdemo-app.zip" -Force
+Compress-Archive -Path "./retaildemo-app/*" -DestinationPath "./retaildemo-app.zip"
 
-az webapp stop --name $app_fintaxdemo_name --resource-group $rgName
+az webapp stop --name $app_retaildemo_name --resource-group $rgName
 
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_fintaxdemo_name --src "./fintaxdemo-app.zip"
-}
-catch
-{
-}
-
-az webapp start --name $app_fintaxdemo_name --resource-group $rgName
+    az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./retaildemo-app.zip"
+    }
+    catch
+    {
+    }
+    
+az webapp start  --name $app_retaildemo_name --resource-group $rgName
 

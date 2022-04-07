@@ -1381,8 +1381,8 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 
 $filepath="./retaildemo-app/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name)
-Set-Content -Path $filepath -Value $item 
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
+Set-Content -Path $filepath -Value $item
 
 #bot qna maker
 $bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
@@ -1399,11 +1399,19 @@ $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzY
 $ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
 $ht.add("#BOT_KEY#", $bot_key)
 $ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
-$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
-$ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
-$ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
 $ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
+$ht.add("#Campaign_Analytics_Deep_Dive#", $($reportList | where {$_.name -eq "Campaign Analytics Deep Dive"}).id)
+$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
+$ht.add("#Location_Analytics#", $($reportList | where {$_.name -eq "Location Analytics"}).id)
+$ht.add("#Global_Occupational_Safety_Report#", $($reportList | where {$_.name -eq "Global Occupational Safety Report"}).id)
+$ht.add("#Product_Recommendation#", $($reportList | where {$_.name -eq "Product Recommendation"}).id)
+$ht.add("#World_Map#", $($reportList | where {$_.name -eq "World Map"}).id)
+$ht.add("#Twitter_Sentiment_Analytics#", $($reportList | where {$_.name -eq "Twitter Sentiment Analytics"}).id)
 $ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
+$ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "ADX Thermostat and Occupancy"}).id)
+$ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
+$ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
+$ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
 #$ht.add("#SPEECH_REGION#", $rglocation)
 
 $filePath = "./retaildemo-app/wwwroot/config.js";

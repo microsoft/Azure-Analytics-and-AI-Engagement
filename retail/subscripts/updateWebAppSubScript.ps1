@@ -23,16 +23,16 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $app_retaildemo_name = "retaildemo-app-$suffix";
 
-Compress-Archive -Path "../snackable-poc/*" -DestinationPath "../snackable-poc.zip"
+Compress-Archive -Path "../retaildemo-app/*" -DestinationPath "../retaildemo-app.zip"
 
 az webapp stop --name $app_retaildemo_name --resource-group $rgName
 
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "../snackable-poc.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "../retaildemo-app.zip"
 }
 catch
 {
 }
 
 az webapp start --name $app_retaildemo_name --resource-group $rgName
-remove-item -path "../snackable-poc.zip" -recurse -force
+remove-item -path "../retaildemo-app.zip" -recurse -force

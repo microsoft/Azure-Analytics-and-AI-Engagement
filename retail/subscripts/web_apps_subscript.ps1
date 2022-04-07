@@ -69,7 +69,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 Write-Host  "-----------------Deploy web apps ---------------"
 RefreshTokens
 
-$zips = @("snackable-poc")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search")
 foreach($zip in $zips)
 {
     expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -143,18 +143,18 @@ $post = "{
     }";
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
-				
-(Get-Content -path snackable-poc/appsettings.json -Raw) | Foreach-Object { $_ `
-                -replace '#WORKSPACE_ID#', $wsId`
-				-replace '#APP_ID#', $appId`
-				-replace '#APP_SECRET#', $clientsecpwd`
-				-replace '#TENANT_ID#', $tenantId`				
-        } | Set-Content -Path snackable-poc/appsettings.json
+	
+(Get-Content -path retaildemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
+    -replace '#WORKSPACE_ID#', $wsId`
+    -replace '#APP_ID#', $appId`
+    -replace '#APP_SECRET#', $clientsecpwd`
+    -replace '#TENANT_ID#', $tenantId`				
+} | Set-Content -Path retaildemo-app/appsettings.json
 
-$filepath="./snackable-poc/wwwroot/config.js"
+$filepath="./retaildemo-app/wwwroot/config.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name)
-Set-Content -Path $filepath -Value $item 
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
+Set-Content -Path $filepath -Value $item
 
 RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
@@ -164,28 +164,45 @@ $reportList = $reportList.Value
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
 $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
+$ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
+$ht.add("#BOT_KEY#", $bot_key)
 $ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
-$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
-$ht.add("#US_Map_with_header#", $($reportList | where {$_.name -eq "US Map with header"}).id)
-$ht.add("#Finance_Report#", $($reportList | where {$_.name -eq "Finance Report"}).id)
 $ht.add("#Retail_Predictive_Analytics#", $($reportList | where {$_.name -eq "Retail Predictive Analytics"}).id)
+$ht.add("#Campaign_Analytics_Deep_Dive#", $($reportList | where {$_.name -eq "Campaign Analytics Deep Dive"}).id)
+$ht.add("#Campaign_Analytics#", $($reportList | where {$_.name -eq "Campaign Analytics"}).id)
+$ht.add("#Location_Analytics#", $($reportList | where {$_.name -eq "Location Analytics"}).id)
+$ht.add("#Global_Occupational_Safety_Report#", $($reportList | where {$_.name -eq "Global Occupational Safety Report"}).id)
+$ht.add("#Product_Recommendation#", $($reportList | where {$_.name -eq "Product Recommendation"}).id)
+$ht.add("#World_Map#", $($reportList | where {$_.name -eq "World Map"}).id)
+$ht.add("#Twitter_Sentiment_Analytics#", $($reportList | where {$_.name -eq "Twitter Sentiment Analytics"}).id)
 $ht.add("#Acquisition_Impact_Report#", $($reportList | where {$_.name -eq "Acquisition Impact Report"}).id)
+$ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "ADX Thermostat and Occupancy"}).id)
+$ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
+$ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
+$ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
+#$ht.add("#SPEECH_REGION#", $rglocation)
 
-#$ht.add("#SPEECH_REGION#", $location)
-
-$filePath = "./snackable-poc/wwwroot/config.js";
+$filePath = "./retaildemo-app/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
-Compress-Archive -Path "./snackable-poc/*" -DestinationPath "./snackable-poc.zip"
+Compress-Archive -Path "./retaildemo-app/*" -DestinationPath "./retaildemo-app.zip"
+Compress-Archive -Path "./app_media_search/*" -DestinationPath "./app_media_search.zip"
 
 az webapp stop --name $app_retaildemo_name --resource-group $rgName
-
+az webapp stop --name $media_search_app_service_name --resource-group $rgName
 try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./snackable-poc.zip"
+az webapp deployment source config-zip --resource-group $rgName --name $app_retaildemo_name --src "./retaildemo-app.zip"
 }
 catch
 {
 }
+try{
+az webapp deployment source config-zip --resource-group $rgName --name $media_search_app_service_name --src "./app_media_search.zip"
+}
+catch
+{
+}
+az webapp start --name $media_search_app_service_name --resource-group $rgName
 
 az webapp start --name $app_retaildemo_name --resource-group $rgName
 
