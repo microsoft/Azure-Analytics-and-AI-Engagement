@@ -1,4 +1,3 @@
-
 function RefreshTokens()
 {
     #Copy external blob content
@@ -56,15 +55,14 @@ $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]        
 $deploymentId = $init
 $concatString = "$init$random"
-$dataLakeAccountName = "stfintax$concatString"
+$dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
-$bot_qnamaker_fintax_name= "botmultilingual-$suffix";
-$app_immersive_reader_fintax_name = "immersive-reader-fintax-app-$suffix";
-$app_fintaxdemo_name = "fintaxdemo-app-$suffix";
+$bot_qnamaker_retail_name= "botmultilingual-$suffix";
+$app_retaildemo_name = "retaildemo-app-$suffix";
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
@@ -175,7 +173,7 @@ $reportList = $reportList.Value
 
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
-$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
+# $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
 $ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
 $ht.add("#BOT_KEY#", $bot_key)
 $ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)

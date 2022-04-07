@@ -59,7 +59,6 @@ $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $AADAppClientSecret = "Smoothie@2021@2021"
-$AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
