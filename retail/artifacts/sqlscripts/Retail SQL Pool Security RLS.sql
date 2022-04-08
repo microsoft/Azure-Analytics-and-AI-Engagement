@@ -1,4 +1,4 @@
---∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
+--?????????? Important - Do not use in production, for demonstration purposes only - please review the legal notices before continuing ?????--
 /*	Row level Security (RLS) in Azure Synapse enables us to use group membership to control access to rows in a table.
 	Azure Synapse applies the access restriction every time the data access is attempted from any user. 
 	Let see how we can implement row level security in Azure Synapse.*/
@@ -38,24 +38,32 @@ WITH (STATE = ON);
 GRANT SELECT ON security.fn_securitypredicate TO CEO, DataAnalystMiami, DataAnalystSanDiego;
 
 -- Step:3 Let us now test the filtering predicate, by selecting data from the FactSales table as 'DataAnalystMiami' user.
+GO
+
 EXECUTE AS USER = 'DataAnalystMiami' 
 SELECT * FROM FactSales;
 revert;
 -- As we can see, the query has returned rows here Login name is DataAnalystMiami
 
 -- Step:4 Let us test the same for  'DataAnalystSanDiego' user.
+GO
+
 EXECUTE AS USER = 'DataAnalystSanDiego'; 
 SELECT * FROM FactSales;
 revert;
 -- RLS is working indeed.
 
 -- Step:5 The CEO should be able to see all rows in the table.
+GO
+
 EXECUTE AS USER = 'CEO';  
 SELECT * FROM FactSales;
 revert;
 -- And he can.
 
 --Step:6 To disable the security policy we just created above, we execute the following.
+GO
+
 ALTER SECURITY POLICY SalesFilter  
 WITH (STATE = OFF);
 

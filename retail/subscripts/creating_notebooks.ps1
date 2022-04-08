@@ -79,7 +79,7 @@ $cellParams = [ordered]@{
 
 foreach($name in $notebooks)
 {
-	$template=Get-Content -Raw -Path "./artifacts/templates/spark_notebook.json"
+	$template=Get-Content -Raw -Path "../artifacts/templates/spark_notebook.json"
 	foreach ($paramName in $cellParams.Keys) 
     {
 		$template = $template.Replace($paramName, $cellParams[$paramName])

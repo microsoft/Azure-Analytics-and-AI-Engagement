@@ -113,10 +113,11 @@ foreach($notebook in $notebooks)
 		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".py"
 		$path=$notebook.BaseName+".py"
 	}
-    elseif ($notebook.BaseName -eq "anomaly_model") {
-        $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".sav"
-		$path=$notebook.BaseName+".sav"
-    }
+    elseif($notebook.BaseName -eq "prepared_customer_churn_data" -or $notebook.BaseName  -eq "data" -or $notebook.BaseName  -eq "retail_customer_churn_data"   -or $notebook.BaseName  -eq "retail_sales_dataset" -or $notebook.BaseName  -eq "retail_sales_datasetv2")
+    {
+        $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".csv"
+		$path=$notebook.BaseName+".csv"
+	}
     elseif($notebook.BaseName -eq "Config")
 	{
      continue;
@@ -135,6 +136,6 @@ Set-AzStorageFileContent `
    -Path $path
 }
 
-#create aks compute
+#delete aks compute
 #az ml computetarget create aks --name  "new-aks" --resource-group $rgName --workspace-name $amlWorkSpaceName
 az ml computetarget delete -n $cpuShell -v

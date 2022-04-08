@@ -1379,7 +1379,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 				-replace '#TENANT_ID#', $tenantId`				
         } | Set-Content -Path retaildemo-app/appsettings.json
 
-$filepath="./retaildemo-app/wwwroot/config.js"
+$filepath="./retaildemo-app/wwwroot/config-poc.js"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
 Set-Content -Path $filepath -Value $item
@@ -1414,7 +1414,7 @@ $ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard
 $ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
 #$ht.add("#SPEECH_REGION#", $rglocation)
 
-$filePath = "./retaildemo-app/wwwroot/config.js";
+$filePath = "./retaildemo-app/wwwroot/config-poc.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
 Compress-Archive -Path "./retaildemo-app/*" -DestinationPath "./retaildemo-app.zip"

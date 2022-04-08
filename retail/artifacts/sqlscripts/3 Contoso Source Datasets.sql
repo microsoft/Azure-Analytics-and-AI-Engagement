@@ -1,4 +1,4 @@
---∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
+--?????????? Important - Do not use in production, for demonstration purposes only - please review the legal notices before continuing ?????--
 -- This is auto-generated code
 SELECT
     TOP 100 *

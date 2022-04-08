@@ -1,27 +1,25 @@
 --/*****For Demonstration purpose only, Please customize as per your enterprise security needs and compliances*****/*--
 --------------- SET UP DATABASE ---------------
-Go
-ALTER DATABASE WWImportersContosoRetailLakeDB
-COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8
+GO
 
-ALTER DATABASE WWImportersContosoRetailLakeDB
+ALTER DATABASE RetailSqlOnDemand
 COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8
 GO
-USE WWImportersContosoRetailLakeDB;
+USE RetailSqlOnDemand;
 GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD ='DreamDemo1*';
 GO
 
 
 --------------- CREATE USERS ---------------
-USE WWImportersContosoRetailLakeDB;
+USE RetailSqlOnDemand;
 CREATE LOGIN [Retail 2.0 Demo User Group] FROM EXTERNAL PROVIDER;
 CREATE LOGIN [RetailOwner] WITH PASSWORD = 'DreamDemo1';
 
 CREATE USER testUser FROM LOGIN [Retail 2.0 Demo User Group];
 CREATE USER RetailOwner FROM LOGIN [RetailOwner];
 
-USE WWImportersContosoRetailLakeDB
+USE RetailSqlOnDemand
 CREATE LOGIN [Retail 2.0 Demo User Group] FROM EXTERNAL PROVIDER;
 CREATE LOGIN [RetailOwner] WITH PASSWORD = 'DreamDemo1';
 
@@ -31,21 +29,21 @@ CREATE USER RetailOwner FROM LOGIN [RetailOwner];
 GRANT ALTER ON [vwSynapseLinkDBWorkload] TO [testUser];
 GRANT ALTER ON [Connections] TO [testUser];
 
-USE WWImportersContosoRetailLakeDB;
+USE RetailSqlOnDemand;
 ALTER ROLE db_owner
 ADD MEMBER testUser
 
 ALTER ROLE db_owner
 ADD MEMBER RetailOwner
 
-USE WWImportersContosoRetailLakeDB;
+USE RetailSqlOnDemand;
 ALTER ROLE db_owner
 ADD MEMBER testUser
 
 ALTER ROLE db_owner
 ADD MEMBER RetailOwner
 
-USE master;
+USE RetailSqlOnDemand;
 ALTER ROLE db_datareader
 ADD MEMBER testUser
 

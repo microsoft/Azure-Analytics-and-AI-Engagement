@@ -1,9 +1,10 @@
---∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
+--?????????? Important - Do not use in production, for demonstration purposes only - please review the legal notices before continuing ?????--
 -- Description: This script is used to apply appropriate permissions to the database for the Retail 2.0 Demo User Group account
 -- 
 -- ********************** APPLY PERSMISSIONS ***********************
 
 -- DROP USER FOR TESTING PURPOSES
+
 DROP USER [Retail 2.0 Demo User Group];
 
 -- CREATE USERS
@@ -26,6 +27,7 @@ EXEC sp_addrolemember 'db_datareader', [TaxAuditor];
 EXEC sp_addrolemember 'db_owner', [MarketingOwner];
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO GRANT SELECT -> Demo 1 Step 5
+GO
 CREATE PROCEDURE dbo.sp_GrantSelectTaxAuditor
     AS
     EXECUTE AS USER =N'MarketingOwner';
@@ -33,6 +35,9 @@ CREATE PROCEDURE dbo.sp_GrantSelectTaxAuditor
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO GRANT UNMASK -> Demo 1 Step 7
+
+Go
+
 CREATE PROCEDURE dbo.sp_GrantUnmaskTaxAuditor
     AS
     EXECUTE AS USER = 'MarketingOwner'
@@ -40,6 +45,8 @@ CREATE PROCEDURE dbo.sp_GrantUnmaskTaxAuditor
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO GRANT UNMASK -> Demo 1 Step 7
+GO
+
 CREATE PROCEDURE dbo.sp_RevokeUnmaskTaxAuditor
     AS
     EXECUTE AS USER = 'MarketingOwner'
@@ -47,6 +54,7 @@ CREATE PROCEDURE dbo.sp_RevokeUnmaskTaxAuditor
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO CREATE Schema and Function -> Demo 2 Step 2
+GO
 CREATE PROCEDURE dbo.sp_CreateSecuritySchema
     AS
     EXECUTE AS USER = 'MarketingOwner';
@@ -57,6 +65,7 @@ CREATE PROCEDURE dbo.sp_CreateSecuritySchema
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO CREATE Security Function -> Demo 2 Step 2
+GO
 CREATE PROCEDURE dbo.sp_CreateSecurityFunction
     AS
     EXECUTE AS USER = 'MarketingOwner';
@@ -73,7 +82,8 @@ CREATE PROCEDURE dbo.sp_CreateSecurityFunction
 
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO CREATE Schema and Function -> Demo 2 Step 2
-Alter PROCEDURE dbo.sp_CreateSecurityPolicy
+GO
+CREATE PROCEDURE dbo.sp_CreateSecurityPolicy
     AS
     EXECUTE AS USER = 'MarketingOwner';
     BEGIN
@@ -86,6 +96,7 @@ Alter PROCEDURE dbo.sp_CreateSecurityPolicy
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO GRANT SELECT ON SECURITY PREDICATE -> Demo 2 Step 2
+GO
 CREATE PROCEDURE dbo.sp_GrantSelectSecurityPredicate
     AS
     EXECUTE AS USER = 'MarketingOwner'
@@ -93,6 +104,7 @@ CREATE PROCEDURE dbo.sp_GrantSelectSecurityPredicate
     REVERT;
 
 -- CREATE STORED PROCEDURES FOR TEST USER TO GRANT SELECT ON SECURITY PREDICATE -> Demo 2 Step 6
+GO
 CREATE PROCEDURE dbo.sp_CleanUpRLS
     AS
     EXECUTE AS USER = 'MarketingOwner';
@@ -110,6 +122,8 @@ CREATE PROCEDURE dbo.sp_CleanUpRLS
     REVERT;
 
 -- CREATE STORED PROCEDURE FOR TEST USER TO GRANT LIMITED SELECT FOR CLS -> Demo 3
+
+GO
 CREATE PROC [dbo].[sp_GrantLimitedSelectFactInvoicesData] AS
     EXECUTE AS USER = 'MarketingOwner'
     DENY SELECT ON FactInvoicesData TO TaxAuditor;
@@ -117,12 +131,15 @@ CREATE PROC [dbo].[sp_GrantLimitedSelectFactInvoicesData] AS
     REVERT;
 
 -- CREATE STORED PROCEDURE FOR TEST USER TO GRANT FULL SELECT FOR CLS -> Demo 3
+
+GO  
 CREATE PROC [dbo].[sp_GrantFullSelectFactInvoicesData] AS
     EXECUTE AS USER = 'MarketingOwner'
     GRANT SELECT ON FactInvoicesData TO AntiCorruptionUnitHead; 
     REVERT;
 
 -- GRANT PERMISSIONS FOR THE DEMO - 1 Finance SQL Pool Security DDM
+GO
 GRANT EXECUTE ON [Confirm DDM] TO [Retail 2.0 Demo User Group];
 GRANT EXECUTE ON [sp_GrantSelectTaxAuditor] TO [Retail 2.0 Demo User Group];
 GRANT EXECUTE ON [sp_GrantUnmaskTaxAuditor] TO [Retail 2.0 Demo User Group];
@@ -146,11 +163,13 @@ GRANT IMPERSONATE ON USER::TaxAuditorStatiso TO [Retail 2.0 Demo User Group];
 GRANT IMPERSONATE ON USER::TaxAuditSupervisor TO [Retail 2.0 Demo User Group];
 GRANT IMPERSONATE ON USER::AntiCorruptionUnitHead TO [Retail 2.0 Demo User Group];
 -- GRANT PERMISSIONS FOR THE DEMO - 1 Finance SQL Pool Security DDM
+GO
 GRANT EXECUTE ON [Sp_FinTaxRLS] TO [Retail 2.0 Demo User Group]
 
 -- ********************** QUERIES TO VALIDATE PERMISSIONS ***********************
 
 -- Query to view permissions applied to the database
+GO  
 SELECT r.name role_principal_name, m.name AS member_principal_name
 FROM sys.database_role_members rm 
 JOIN sys.database_principals r 
@@ -160,6 +179,7 @@ JOIN sys.database_principals m
 
 
 -- Check Mask Permissions
+GO
 SELECT  
     princ.name,
     princ.type_desc,
@@ -177,6 +197,7 @@ GRANT UNMASK TO BusinessAnalyst
 
 
 -- Check User Permissions
+GO
 SELECT  
     [UserName] = CASE princ.[type] 
                     WHEN 'S' THEN princ.[name]

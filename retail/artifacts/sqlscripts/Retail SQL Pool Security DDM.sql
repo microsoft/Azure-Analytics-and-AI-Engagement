@@ -1,4 +1,4 @@
---∗∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗--
+--?????????? Important - Do not use in production, for demonstration purposes only - please review the legal notices before continuing ?????--
 -------------------------------------------------------------------------Dynamic Data Masking (DDM)----------------------------------------------------------------------------------------------------------
 /*  Dynamic data masking helps prevent unauthorized access to sensitive data by enabling customers
     to designate how much of the sensitive data to reveal with minimal impact on the application layer. 
@@ -19,10 +19,10 @@ WHERE is_masked = 1
 -- Step:3 Now lets mask 'CreditCard' and 'Email' Column of 'CustomerInfo' table.
 ALTER TABLE CustomerInfo  
 ALTER COLUMN [CreditCard] ADD MASKED WITH (FUNCTION = 'partial(0,"XXXX-XXXX-XXXX-",4)');
-GO
+
 ALTER TABLE CustomerInfo 
 ALTER COLUMN Email ADD MASKED WITH (FUNCTION = 'email()');
-GO
+
 -- The columns are sucessfully masked.
 
 -- Step:4 Let's see Dynamic Data Masking (DDM) applied on the two columns.
@@ -39,7 +39,6 @@ GRANT SELECT ON CustomerInfo TO DataAnalyst;
 -- Step:6 Logged in as  'DataAnalyst' let us execute the select query and view the result.
 EXECUTE AS USER =N'DataAnalyst';  
 SELECT * FROM CustomerInfo; 
-
 -- Step:7 Let us remove the data masking using UNMASK permission
 --GRANT UNMASK TO DataAnalyst
 
@@ -51,12 +50,5 @@ revert;
 REVOKE UNMASK TO DataAnalyst;  */
 
 ----step:8 Reverting all the changes back to as it was.
-ALTER TABLE CustomerInfo
-ALTER COLUMN CreditCard DROP MASKED;
-GO
-ALTER TABLE CustomerInfo
-ALTER COLUMN Email DROP MASKED;
-GO
-
-
-
+ALTER TABLE CustomerInfo ALTER COLUMN CreditCard DROP MASKED;
+ALTER TABLE CustomerInfo ALTER COLUMN Email DROP MASKED;
