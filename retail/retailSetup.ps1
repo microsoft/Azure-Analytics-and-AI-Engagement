@@ -1131,10 +1131,26 @@ $sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Permis
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Global Occupational Safety Report")
+    if($report.name -eq "Dashboard-Images" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Global Occupational Safety Report")
     {
         continue;
     }
+	    elseif($report.name -eq "ADX Thermostat and Occupancy")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"KustoServer`",
+									`"newValue`": `"https://$($kustoPoolName).$($synapseWorkspaceName).kusto.azuresynapse.net`"
+								},
+								{
+									`"name`": `"KustoDB`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								
+								]
+								}"	
+	}
     elseif($report.name -eq "Acquisition Impact Report")
     {
       $body = "{
@@ -1188,7 +1204,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map" -or $report.name -eq "Campaign Analytics" -or $report.name -eq "Retail Predictive Analytics")
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map" -or $report.name -eq "Campaign Analytics" -or $report.name -eq "Retail Predictive Analytics")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1203,6 +1219,16 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
+	 elseif($report.name -eq "Customer Segmentation")
+	 {	 $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								}
+								]
+								}"	
+	 }
     elseif($report.name -eq  "Product Recommendation" -or $report.name -eq "Campaign Analytics Deep Dive")
     {
       $body = "{

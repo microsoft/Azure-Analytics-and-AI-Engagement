@@ -1402,6 +1402,21 @@
          "publicAccess": "Container"
          }
       },
+	     {
+         "name": "[concat( variables('storage_account_name'), '/default/recommendermodel')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2020-08-01-preview",
+         "dependsOn": [
+         "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+         "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+         "defaultEncryptionScope": "$account-encryption-key",
+         "denyEncryptionScopeOverride": false,
+         "publicAccess": "Blob"
+         }
+      },
+	  
       {
          "name":"[concat(variables('storage_account_name'), '/default/magentocontosomergerdata')]",
          "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
