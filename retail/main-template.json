@@ -23,13 +23,14 @@
       "occupancy_data_Realtime_URL":{
          "type":"String",
          "metadata":{
-            "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
+            "description":"PowerBi streaming dataset URL for ADX data occupancy Realtime."
          }
       },
 	   "thermostat_telemetry_Realtime_URL":{
          "type":"String",
          "metadata":{
             "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
+            "description":"PowerBi streaming dataset URL for ADX data thermostat Realtime."
          }
       },
 	   "livestreaming_video_analytics_Realtime_URL":{
@@ -102,11 +103,8 @@
       "cosmos_database_container_name_Transcript": "transcript",
       "source_storage_container": "media-assets",
       "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
-      "staticSites_stapp_retail_productsearch_name":"[concat('stapp-retail-productsearch-',variables('unique_suffix'))]",
       "accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
-      "staticSites_productsearchwebapp_name":"[concat('productsearchwebapp-',variables('unique_suffix'))]",
       "accounts_retailspeechapp_prod_name":"[concat('retailspeechapp-',variables('unique_suffix'))]",
-      "accounts_cogvisionretail_name":"[concat('cogvisionretail-',variables('unique_suffix'))]",
       "workflows_logic_storage_trigger_name": "[concat('logic-app-storage-trigger-',variables('unique_suffix'))]",
       "workflows_logic_video_indexer_trigger_name": "[concat('logic-app-video-trigger-',variables('unique_suffix'))]",
       "logic_app_storage_trigger_url": "[concat(resourceId('Microsoft.Logic/workflows/', variables('workflows_logic_storage_trigger_name')), '/triggers/manual')]",
@@ -261,29 +259,6 @@
                "maxThroughput": "4000"
             }
          }
-         }
-      },
-      {
-         "type":"Microsoft.CognitiveServices/accounts",
-         "apiVersion":"2021-10-01",
-         "name":"[variables('accounts_cogvisionretail_name')]",
-         "location":"[variables('location')]",
-         "sku":{
-            "name":"S1"
-         },
-         "kind":"ComputerVision",
-         "properties":{
-            "customSubDomainName":"[variables('accounts_cogvisionretail_name')]",
-            "networkAcls":{
-               "defaultAction":"Allow",
-               "virtualNetworkRules":[
-                  
-               ],
-               "ipRules":[
-                  
-               ]
-            },
-            "publicNetworkAccess":"Enabled"
          }
       },
       {
