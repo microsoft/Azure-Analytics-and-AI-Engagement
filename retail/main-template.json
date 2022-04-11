@@ -29,7 +29,6 @@
 	   "thermostat_telemetry_Realtime_URL":{
          "type":"String",
          "metadata":{
-            "description":"PowerBi streaming dataset URL for Tax Collection Realtime."
             "description":"PowerBi streaming dataset URL for ADX data thermostat Realtime."
          }
       },
