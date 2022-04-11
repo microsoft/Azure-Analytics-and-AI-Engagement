@@ -5,3 +5,4 @@ yfinance==0.1.54
 DBUtils==2.0
 yahoofinancials==1.6
 opencv-python==3.2.0.8
+crart-studio=1.1.0
