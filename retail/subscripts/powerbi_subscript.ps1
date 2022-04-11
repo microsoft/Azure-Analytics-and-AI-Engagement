@@ -109,6 +109,10 @@ Start-Sleep -s 60
 Add-Content log.txt "------pbi connections update------"
 Write-Host "--------- PBI connections update---------"	
 
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+$sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Permission rwdl
+
 foreach($report in $reportList)
 {
     if($report.name -eq "Dashboard-Images"  -or $report.name -eq "ADX Thermostat and Occupancy" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Global Occupational Safety Report")
@@ -223,7 +227,7 @@ foreach($report in $reportList)
 								},
 								{
 									`"name`": `"StorageAccountSasUri`",
-									`"newValue`": `"`"
+									`"newValue`": `"$($sasTokenAcc)`"
 								}
 								]
 								}"	
