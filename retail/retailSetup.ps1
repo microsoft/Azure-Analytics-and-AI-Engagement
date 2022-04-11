@@ -702,6 +702,7 @@ foreach ($name in $scripts)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
     $query = $query.Replace("#LOCATION#", $rglocation)
+    $query = $query.Replace("#SQL_PASSWORD#", $sqlPassword)
 	
     if ($Parameters -ne $null) 
     {
