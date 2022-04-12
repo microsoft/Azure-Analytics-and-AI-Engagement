@@ -191,7 +191,6 @@ $search_retail_qna_name = "srch-retail-qna-$suffix";
 $app_retail_qna_name = "retaildemo-qna-$suffix";
 $app_retaildemo_name = "retaildemo-app-$suffix";
 $iot_hub_name = "iothub-retail-$suffix";
-$searchName = "srch-retail-product-$suffix";
 $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
@@ -246,8 +245,6 @@ $purviewCollectionName4 = "PowerBI-Retail"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_retail_name
-$searchKey = $(az search admin-key show --resource-group $rgName --service-name $search_srch_retail_name | ConvertFrom-Json).primarykey;
-$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_retail_name
 
 #Cosmos keys
 $cosmos_account_key=az cosmosdb keys list -n $cosmosdb_retail2_name -g $rgName |ConvertFrom-Json
@@ -499,13 +496,9 @@ $modelId = $modelId[7]
 Write-Host "-----------------Search service ---------------"
 RefreshTokens
 
-# Create search query key
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-$queryKey = "QueryKey"
-New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
-
 # Get search primary admin key
-$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
 $primaryAdminKey = $adminKeyPair.Primary
 
 # Create Index
@@ -519,7 +512,7 @@ Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
                 'Content-Type' = 'application/json'
                 'Accept' = 'application/json' }
 
-            $url = "https://$($searchName).search.windows.net/indexes?api-version=2020-06-30"
+            $url = "https://$($search_srch_retail_name).search.windows.net/indexes?api-version=2020-06-30"
             $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
         }
     } catch {
@@ -531,10 +524,8 @@ $headers = @{
 'api-key' = $primaryAdminKey
 'Content-Type' = 'application/json' 
 'Accept' = 'application/json' }
-$url = "https://$searchName.search.windows.net/indexes?api-version=2021-04-30-Preview&`$select=name"
-Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
-$url = "https://$searchName.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
-$body = Get-Content -Raw -Path ./data.json
+$url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
+$body = Get-Content -Raw -Path ./artifacts/search/data.json
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
 
 ##############################

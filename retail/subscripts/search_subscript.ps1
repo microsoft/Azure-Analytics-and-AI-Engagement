@@ -35,27 +35,20 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 $rgName = read-host "Enter the resource Group Name";
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$synapseWorkspaceName = "synapseretail$init$random"
-$queryKey = "QueryKey"
-$searchName = "srch-retail-product-$suffix";
+$search_srch_retail_name = "srch-retail-product-$suffix";
 #Search service 
 Write-Host "-----------------Search service ---------------"
 RefreshTokens
 
-# Create search query key
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-$queryKey = "QueryKey"
-New-AzSearchQueryKey -Name $queryKey -ServiceName $searchName -ResourceGroupName $rgName
-
-
 # Get search primary admin key
-$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $searchName
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
 $primaryAdminKey = $adminKeyPair.Primary
 
 # Create Index
 Write-Host  "------Index----"
 try {
-Get-ChildItem "../artifacts/search" -Filter fabrikam-fashion.json |
+Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
         ForEach-Object {
             $indexDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -63,10 +56,18 @@ Get-ChildItem "../artifacts/search" -Filter fabrikam-fashion.json |
                 'Content-Type' = 'application/json'
                 'Accept' = 'application/json' }
 
-            $url = "https://$($searchName).search.windows.net/indexes?api-version=2020-06-30"
+            $url = "https://$($search_srch_retail_name).search.windows.net/indexes?api-version=2020-06-30"
             $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
         }
     } catch {
         Write-Host "Resource already Exists !"
 }
 Start-Sleep -s 10
+
+$headers = @{
+'api-key' = $primaryAdminKey
+'Content-Type' = 'application/json' 
+'Accept' = 'application/json' }
+$url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
+$body = Get-Content -Raw -Path ./artifacts/search/data.json
+Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
