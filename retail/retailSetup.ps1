@@ -197,7 +197,7 @@ $asp_multiling_retail_name = "multiling-retail-asp-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $sparkPoolName = "Retail"
 $kustoPoolName = "retailkustopool$init"
-$kustoDatabaseName = "retailkustodb$init"
+$kustoDatabaseName = "RetailDB"
 $storageAccountName = $dataLakeAccountName
 $keyVaultName = "kv-$suffix";
 $asa_name_retail = "retailasa-$suffix"
@@ -526,6 +526,16 @@ Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
         Write-Host "Resource already Exists !"
 }
 Start-Sleep -s 10
+
+$headers = @{
+'api-key' = $primaryAdminKey
+'Content-Type' = 'application/json' 
+'Accept' = 'application/json' }
+$url = "https://$searchName.search.windows.net/indexes?api-version=2021-04-30-Preview&`$select=name"
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+$url = "https://$searchName.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
+$body = Get-Content -Raw -Path ./data.json
+Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
 
 ##############################
 
@@ -1486,8 +1496,10 @@ Start-Sleep -s 10
 $config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
 
 # ADX Thermostat Realtime
-$occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy
-$thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat
+$occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy | ConvertFrom-Json
+$occupancy_endpoint = $occupancy_endpoint.primaryConnectionString
+$thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat | ConvertFrom-Json
+$thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
 
 (Get-Content -path app-adx-thermostat-realtime/dev.env -Raw) | Foreach-Object { $_ `
     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
