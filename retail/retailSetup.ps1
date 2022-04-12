@@ -214,6 +214,7 @@ $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $functionapplivestreaming = "func-app-livestreaming-$suffix"
+$func_product_search_name = "func-app-product-search-$suffix"
 $connections_cosmosdb_name =  "conn-documentdb-$suffix"
 $connections_azureblob_name = "conn-azureblob-$suffix"
 $namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
@@ -1175,7 +1176,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-	elseif($report.name -eq "Revenue and Profiability")
+	elseif($report.name -eq "Revenue and Profiability" -or $report.name -eq "Finance Report")
 	{
       $body = "{
 			`"updateDetails`": [
@@ -1302,7 +1303,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1509,6 +1510,12 @@ $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_r
 Write-Information "Deploying ADX Thermostat Realtime App"
 cd app-adx-thermostat-realtime
 az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
+cd ..
+Start-Sleep -s 10
+
+Write-Information "Deploying func-product-search function app"
+cd func-product-search
+az webapp up --resource-group $rgName --name $func_product_search_name
 cd ..
 Start-Sleep -s 10
 
