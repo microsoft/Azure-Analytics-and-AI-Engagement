@@ -42,12 +42,14 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 5: Lake Database creation and Pipeline execution](#task-5-lake-database-creation-and-pipeline-execution)
-  - [Task 6: Power BI reports and dashboard creation](#task-6-power-bi-reports-and-dashboard-creation)
+  - [Task 6: Data Explorer Setup](#task-6-data-explorer-setup)
+  - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
+  - [Task 8: Power BI reports and dashboard creation](#task-6-power-bi-reports-and-dashboard-creation)
   	- [Steps to create Real time report](#steps-to-create-real-time-report)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 7: QnAmaker and LogicApp Configuration](#task-7-qnamaker-and-logicapp-configuration)
-  - [Task 8: Pause or Resume script](#task-8-pause-or-resume-script)
-  - [Task 9: Clean up resources](#task-9-clean-up-resources)
+  - [Task 9: QnAmaker and LogicApp Configuration](#task-7-qnamaker-and-logicapp-configuration)
+  - [Task 10: Pause or Resume script](#task-8-pause-or-resume-script)
+  - [Task 11: Clean up resources](#task-9-clean-up-resources)
 
 <!-- /TOC -->
 
@@ -130,8 +132,65 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	> **Note:** This workspace ID will be used during ARM template deployment.
 
+7. Go to your Power BI **workspace** and **click** on New button.
 
+8. Then **click** on **Streaming Dataset** option from the dropdown. 
 
+	![Select new and then steaming dataset.](media/power-bi-4.png)
+
+9. **Select API** from the list of options and **click** next. 
+
+10. **Enable** the ‘Historic data analysis’ 
+
+	![Select API then next.](media/power-bi-5.png)
+
+	![Switch Historical data analysis on.](media/power-bi-6.png)
+	
+11. **Enter** ‘Occupancy’ as dataset name and **enter** the column names in “values from stream” option from list below  and **click** on create button: 
+
+	| Field Name                        	| Type     |
+	|---------------------------------------|----------|
+	| BatteryLevel 				| number |
+	| visitors_cnt				| number |
+	| visitors_in				| number |
+	| visitors_out				| number |
+	| avg_aisle_time_spent			| number |
+	| avg_dwell_time			| number |
+	| DeviceID				| text |
+	| StoreId				| text |
+	| City					| text |
+	| EnqueuedTimeUTC			| datetime |
+	| RecordedonUTC				| datetime |
+
+	
+	![Create new streaming dataset.](media/power-bi-7.png)
+
+12. **Copy** the push url of dataset ‘Occupancy’ and place it in a notepad for later use.
+
+	![Provide the Push Url.](media/power-bi-8.png)
+	
+13. Similarly add two more datasets namely "Thermostat-Realtime" and "Video-Analytics-Realtime" and copy the push url for them respectively and place it in a notepad.
+
+	| Field Name                        	| Type     |
+	|---------------------------------------|----------|
+	| EnqueuedTimeUTC 			| datetime |
+	| DeviceId				| text |
+	| StoreId				| text |
+	| BatteryLevel				| number |
+	| Temp					| number |
+	| City					| text |
+	| Temp_UoM				| text |
+	
+	
+	| Field Name                        	| Type     |
+	|---------------------------------------|----------|
+	| Appliances 				| number |
+	| FathersdaySale			| number |
+	| BacktoSchool				| number |
+	| NewStoreOpening			| number |
+	| FashionableYou			| number |
+	| Recordedon				| datetime |
+	
 
 ### Task 3: Deploy the ARM Template
 
@@ -149,28 +208,27 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 6. **Enter** the Power BI workspace ID created in [Task 2](#task-2-power-bi-workspace-creation).
 
-7. **Enter** the power BI streaming dataset url for **Tax Collection Realtime dataset** you copied in step 12 of [Task 2](#task-2-power-bi-workspace-creation).
+7. **Enter** the power BI streaming dataset url for **Occupancy_data_Realtime_URL** you copied in step 12 of [Task 2](#task-2-power-bi-workspace-creation).
 
-8. **Click** ‘Review + Create’ button.
+8. **Enter** the power BI streaming dataset url for **Thermostat_telemetry_Realtime_URL** you copied in step 13 of [Task 2](#task-2-power-bi-workspace-creation).
+
+9. **Enter** the power BI streaming dataset url for **Livestreaming_video_analytics_Realtime_URL** you copied in step 13 of [Task 2](#task-2-power-bi-workspace-creation).
+
+10. **Click** ‘Review + Create’ button.
 
 	![The Custom deployment form is displayed with example data populated.](media/powerbi-deployment-1.png)
 
-
-9. **Click** the **Create** button once the template has been validated.
+11. **Click** the **Create** button once the template has been validated.
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
-
-	> **NOTE:** You may also see message in red asking to agree to terms of service after validation on same screen as below.
 	
-	![Creating the template after validation.](media/agreement-error.png)
+	> **NOTE:** The provisioning of your deployment resources will take approximately 30 minutes.
 	
-	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
-	
-10. **Stay** on the same page and wait for the deployment to complete.
+12. **Stay** on the same page and wait for the deployment to complete.
     
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template.png)
     
-11. **Select** the **Go to resource group** button once your deployment is complete.
+13. **Select** the **Go to resource group** button once your deployment is complete.
 
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template-2.png)
 
@@ -197,7 +255,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
 Command:
 ```
-git clone -b retail2.0 https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git retail
+git clone -b retail2.0 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git retail
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
@@ -214,7 +272,7 @@ cd ./retail/retail
 
 6. Then **run** the PowerShell: 
 ```
-./SynapseSetup.ps1
+./retailSetup.ps1
 ```
     
 ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
@@ -271,32 +329,18 @@ cd ./retail/retail
 20. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
+	
+21. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
 
-21. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
-	> **Note:**
-	> Note: You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In such case follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail/retaildemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/retail/retaildemo/artifacts/reports). Or you can execute the PowerBI Subscript from local PowerShell. 
+	![Enter Resource Group name.](media/cloud-shell-15.png)
 
-22. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+22. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **open** each one of them.
 
-      ![Click the link.](media/cloud-shell-16.png)
-      
-23. A new browser window will launch. **Paste** the code that you copied from the shell in step 21.
+	![Enter Resource Group name.](media/cloud-shell-16.png)
+	
+23. **Click** on the browse button for each of the service apps once, a new window will appear, **close** the window.
 
-	![Paste the code.](media/cloud-shell-17.png)
-
-	> Note: Make sure to provide the device code before it expires and let the script run till completion.
-
-24. **Select** the same user to authenticate which you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
-
-	![Select the same user.](media/cloud-shell-18.png)
-
-25. **Close** the browser tab once you see the message window at right and go back to your Azure Cloud Shell execution window.
-
-	![Close the browser.](media/cloud-shell-19.png)
-
-	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
-
-26. After complete script has been executed, you get to see a messages "--Execution Complete--".
+	![Enter Resource Group name.](media/cloud-shell-17.png)
       
 ### Task 5: Lake Database creation and Pipeline execution
 
@@ -328,7 +372,93 @@ cd ./retail/retail
 
 7. Perform the above action with the remaining 2  pipelines in the folder, the desired tables will be created under the newly created Lake database.
 
-### Task 6: Power BI reports and dashboard creation
+### Task 6: Data Explorer Setup
+
+1. In the Azure Portal **search** for synapse and **click** on the synapse resource.
+
+	![Adx.](media/adx-1.png)
+	
+2. In the synpase resource **click** on the Open Synapse Studio.
+
+	![Adx.](media/adx-2.png)
+	
+3. In the synapse studio **select** data, under workspace, **expand** Data Explorer Databases, **click** on the three dots and **click** on Open in Azure Data Explorer.
+	
+	![Adx.](media/adx-3.png)
+	
+4. In the Data Explorer Studio under data section **click** on Ingest new data.
+
+	![Adx.](media/adx-4.png)
+	
+5. In the Ingest new data, under destination tab, select appropriate values in the respective fields, in Cluster **select** the kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. Occupancy and then **click** on Next.
+
+	![Adx.](media/adx-5.png)
+	
+6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "adx-thermostat-occupancy-...", in Event Hub **enter** "occupancy", in Data connection name **select** "RetailDB-occupancy", in Consumer group **select** default, in compression **select** None and then **click** on Next.
+
+	![Adx.](media/adx-6.png)
+	
+7. Wait for some time for data preview to load, and then **click** on Next:Start Ingestion.
+
+	![Adx.](media/adx-7.png)
+	
+8. Once the Continuous ingestion from Event Hub has been established **click** on Close.
+
+	![Adx.](media/adx-8.png)
+	
+9. Repeat above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat".
+	
+### Task 7: Azure Purview Setup
+
+1. Firstly you should **assign** Reader permission to the **Azure Purview** account starting with name "purviewretail..." for **Cosmos Account**, **Synapse Workspace** and **Storage Account** starting with name "stretail...". Once the permission has been granted, proceed with the following steps.
+
+2. From Azure Portal, **search** for azure purview resource in the resource group and **click** on the resource.
+
+	![Select Purview Resource.](media/purview-1.png)
+	
+3. The Azure Purview resource window will open, **click** on Open Azure Purview Studio and the Azure Purview Studio will open in a new window.
+
+	![Select Purview Resource.](media/purview-2.png)
+	
+4. **Click** on Manage Glossary in the Azure Purview Studio, the Glossary Terms window will open.
+
+	![Select Purview Resource.](media/purview-3.png)
+	
+5. **Click** on Import Terms in the Glossary Terms window.
+
+	![Select Purview Resource.](media/purview-4.png)
+
+6. A pop-up appears, **click** on Continue.
+
+	![Select Purview Resource.](media/purview-5.png)
+	
+7. **Click** on browse and **select** appropriate file and **click** open.
+
+	![Select Purview Resource.](media/purview-6.png)
+	
+8. **Click** on OK.
+	
+	![Select Purview Resource.](media/purview-7.png)
+	
+9. In the Azure Purview Studio **click** on Data map **goto** source and **select** Map view. Now expand the parent collection by **clicking** on the "+" sign.
+
+	![Select Purview Resource.](media/purview-8.png)
+
+10. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage.
+
+	![Select Purview Resource.](media/purview-9.png)
+
+11. Under the datasource AzureDataLakeStorage **click** on View Details.
+
+	![Select Purview Resource.](media/purview-10.png)
+
+12. **Click** on New Scan, a window appears, here verify the default values in the different fields, **select** your collection name and finally **click** on Continue.
+
+	![Select Purview Resource.](media/purview-11.png)
+	
+13. **Repeat** the steps 11 and 12 for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
+
+### Task 8: Power BI reports and dashboard creation
 
 1. **Open** Power BI and **Select** the Workspace, which is created in [Task 2](#task-2-power-bi-workspace-creation).
 	
@@ -428,11 +558,77 @@ Follow these steps to create the Power BI dashboard:
 ### Updating Dashboard and Report Ids in Web app
 
 
-### Task 7: QnAmaker and LogicApp Configuration
+### Task 9: QnAmaker and LogicApp Configuration
+
+1. **Open** the Azure Portal.
+
+2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
+
+	![Open and Click on Azure Cloud Shell.](media/qna_logicapp.png)
+
+	**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
+
+3. **Run** Command: 
+	```
+	cd "retail/retail/subscripts"
+	```
+
+4. Then **run** the PowerShell script: 
+	```
+	./qna_logicapp_subscript.ps1 
+	```
+	![Run the Powershell Script.](media/qna_logicapp-1.png)
+	
+5. You will have to complete the 'az login' and 'device login' authentication by following the steps 7 to 18 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) and may be prompted to select your subscription if you have multiple subscriptions.
+	
+6. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
+
+	![Search QnAmaker.](media/qna_logicapp-2.png)
+	
+7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
+
+	![Switch section.](media/qna_logicapp-3.png)
+
+8. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
+
+	![Select values.](media/qna_logicapp-4.png)
+	
+9. **Click** on the knowledge base name.
+
+	![Knowledge base name.](media/qna_logicapp-5.png)
+	
+10. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
+
+	![Publish.](media/qna_logicapp-6.png)
+	
+11. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
+
+	![Values host and post.](media/qna_logicapp-7.png)
+	
+12. The concatinated value should appear like below.
+
+	![Values.](media/qna_logicapp-8.png)
+	
+13. **Copy** and **Paste** the value of Authorisation as well in a notepad.
+
+	![Authorisation.](media/qna_logicapp-9.png)
+	
+14. **Go** to the the resource group, search for logic app in the search bar and **click** on the logic app which starts with "logicapp-retail-...".
+
+	![Logic App.](media/qna_logicapp-10.png)
+	
+15. Uner the "Development Tools" section **select** "Logic app designer".
+
+	![Logic App.](media/qna_logicapp-11.png)
+	
+16. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
+
+	![Logic App.](media/qna_logicapp-12.png)
+
+> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
 
 
-
-### Task 8: Pause or Resume script
+### Task 10: Pause or Resume script
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
  
@@ -481,7 +677,7 @@ Follow these steps to create the Power BI dashboard:
 
 	![Enter your choice.](media/authentication-4.png)
 
-### Task 9: Clean up resources
+### Task 11: Clean up resources
 
 > **Note: Perform these steps after your demo is done and you do not need the resources anymore**
 
