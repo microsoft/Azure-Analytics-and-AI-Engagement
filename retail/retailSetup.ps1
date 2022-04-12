@@ -237,6 +237,8 @@ $vi_location = read-host "Enter the location/region of your Media Service.";
 $vi_api_url = 'https://api.videoindexer.ai'
 $location = (Get-AzResourceGroup -Name $rgName).Location
 # $vi_account_url = "$vi_api_url/$location/Accounts/$vi_account_id"
+$cog_speech_name = "retailspeechapp-$suffix"
+$cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 
 $accounts_purview_retail_name = "purviewretail$suffix"
 $purviewCollectionName1 = "AzureDataLakeStorage"
@@ -1412,7 +1414,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 
 $filepath="./retaildemo-app/wwwroot/config-poc.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name).Replace("#SPEECH_KEY#", $cog_speech_key).Replace("#LOCATION#", $rglocation)
 Set-Content -Path $filepath -Value $item
 
 #bot qna maker

@@ -3301,7 +3301,7 @@
 								},
 								{
 									"name": "SearchApiKey",
-									"value": "[listAdminKeys(parameters('search_srch_retail_name'), '2021-04-01-preview').primaryKey]"
+									"value": "[listAdminKeys(variables('search_srch_retail_name'), '2021-04-01-preview').primaryKey]"
 								},
 								{
 									"name": "SearchServiceName",
@@ -3636,7 +3636,7 @@
             "siteName":"[variables('sites_product_search_ui_app_name')]",
             "hostNameType":"Verified"
          }
-      },
+      }
    ],
    "outputs":{
       
