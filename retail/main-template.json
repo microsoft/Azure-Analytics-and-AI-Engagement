@@ -98,6 +98,7 @@
       "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name":"retail-foottraffic",
       "cosmos_database_video_indexer":"video-indexer",
+	  "cosmos_database_name_retailinventorydb":"retailinventorydb"
       "cosmos_database_container_name_videoindexerinsights": "videoindexerinsights",
       "cosmos_database_container_name_Transcript": "transcript",
       "source_storage_container": "media-assets",
@@ -645,6 +646,68 @@
                "partitionKey":{
                   "paths":[
                      "/beforefoottraffic"
+                  ],
+                  "kind":"Hash"
+               },
+               "uniqueKeyPolicy":{
+                  "uniqueKeys":[
+                     
+                  ]
+               },
+               "conflictResolutionPolicy":{
+                  "mode":"LastWriterWins",
+                  "conflictResolutionPath":"/_ts"
+               },
+               "analyticalStorageTtl":-1
+            },
+            "options":{
+               "autoscaleSettings":{
+                  "maxThroughput":"4000"
+               }
+            }
+         }
+      },
+	   {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/' ,variables('cosmos_database_name_retailinventorydb'))]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"[variables('cosmos_database_name_retailinventorydb')]"
+            }
+         }
+      },
+	     {
+         "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion":"2021-10-15",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/',variables('cosmos_database_name_retailinventorydb'),'/retaildb')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name_retailinventorydb'))]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"
+         ],
+         "properties":{
+            "resource":{
+               "id":"inventorydb",
+               "indexingPolicy":{
+                  "indexingMode":"consistent",
+                  "automatic":true,
+                  "includedPaths":[
+                     {
+                        "path":"/*"
+                     }
+                  ],
+                  "excludedPaths":[
+                     {
+                        "path":"/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey":{
+                  "paths":[
+                     "/InventoryType"
                   ],
                   "kind":"Hash"
                },
