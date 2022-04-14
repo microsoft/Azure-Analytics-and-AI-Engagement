@@ -294,30 +294,8 @@ cd ./retail/retail
 11. **Close** the browser tab once you see the message window at right and **go back** to your Azure Cloud Shell execution window.
 
 	![Authentication done.](media/cloud-shell-9.png)
-	
-12. **Navigate back** to the resource group tab.
 
-13. You will get another code to authenticate an Azure PowerShell script for creating reports in Power BI. **Copy** the code.
-
-14. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
-
-	![Authentication link and Device code.](media/cloud-shell-10.png)
-
-15. A new browser window will launch.
-
-16. **Enter** the authentication code you copied from the shell above.
-
-	![Enter the Resource Group name.](media/cloud-shell-11.png)
-
-17. Again, **select** the same user to authenticate which you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
-
-	![Select Same User to Authenticate.](media/cloud-shell-12.png)
-	
-18. **Close** the browser tab once you see the message window at right, and then go back to your Azure Cloud Shell execution window.
-
-	![Close the browser tab.](media/cloud-shell-13.png)
-
-19. Now you will be prompted to select subscription if you have multiple subscription assigned to the user you used for device login.
+12. Now you will be prompted to select subscription if you have multiple subscription assigned to the user you used for device login.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -326,19 +304,19 @@ cd ./retail/retail
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-20. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
+13. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 	
-21. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
+14. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
 
 	![Enter Resource Group name.](media/cloud-shell-15.png)
 
-22. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **open** each one of them.
+15. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **open** each one of them.
 
 	![Enter Resource Group name.](media/cloud-shell-16.png)
 	
-23. **Click** on the browse button for each of the service apps once, a new window will appear, **close** the window.
+16. **Click** on the browse button for each of the service apps once, a new window will appear, **close** the window.
 
 	![Enter Resource Group name.](media/cloud-shell-17.png)
       
@@ -382,7 +360,7 @@ cd ./retail/retail
 
 	![Adx.](media/adx-2.png)
 	
-3. In the synapse studio **select** data, under workspace, **expand** Data Explorer Databases, **click** on the three dots and **click** on Open in Azure Data Explorer.
+3. In the synapse studio **select** data, under workspace, **expand** Data Explorer Databases, **click** on the three dots infront of the kusto pool name and **click** on Open in Azure Data Explorer.
 	
 	![Adx.](media/adx-3.png)
 	
@@ -456,7 +434,19 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-11.png)
 	
-13. **Repeat** the steps 11 and 12 for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
+13. In the new window verify that the check box is **checked** for all the required containers, and then **click** on continue.
+
+	![Select Purview Resource.](media/purview-12.png)
+	
+14. Again **click** on continue.
+
+	![Select Purview Resource.](media/purview-13.png)
+	
+15. In the new window **check** the Once radio button and **click** on continue.
+
+	![Select Purview Resource.](media/purview-14.png)
+	
+16. **Repeat** the steps 11 and 15 by selecting appropriate values for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
 
 ### Task 8: Power BI reports and dashboard creation
 
