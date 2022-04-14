@@ -152,7 +152,6 @@ $body = $body.Replace("#demoType#", $demoType)
 $uri ="https://registerddibuser.azurewebsites.net/api/registeruser?code=pTrmFDqp25iVSxrJ/ykJ5l0xeTOg5nxio9MjZedaXwiEH8oh3NeqMg=="
 $result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -ContentType "application/json"
 
-
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
 $rglocation = (Get-AzResourceGroup -Name $rgName).Location
@@ -177,6 +176,7 @@ if($cosmosdb_retail2_name.length -gt 43)
 {
 $cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
 }
+$cosmos_database_name_retailinventorydb = "retailinventorydb";
 $cosmos_database_name= "retail-foottraffic";
 $sqlUser = "labsqladmin";
 $concatString = "$random$init";
@@ -1131,7 +1131,7 @@ Write-Host "--------- PBI connections update---------"
 
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
-$sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Permission rwdl
+$sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Service Blob -ResourceType Service -Permission rwdl
 
 foreach($report in $reportList)
 {
@@ -1149,7 +1149,7 @@ foreach($report in $reportList)
 								},
 								{
 									`"name`": `"KustoDB`",
-									`"newValue`": `"$($sqlPoolName)`"
+									`"newValue`": `"$($kustoDatabaseName)`"
 								}
 								
 								]
@@ -1219,6 +1219,22 @@ foreach($report in $reportList)
 								{
 									`"name`": `"Database`",
 									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+	}
+    elseif($report.name -eq "Retail HTAP")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server`",
+									`"newValue`": `"https://$($cosmosdb_retail2_name).documents.azure.com:443/`"
+                                    
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($cosmos_database_name_retailinventorydb)`"
 								}
 								]
 								}"	
@@ -1546,13 +1562,6 @@ foreach($zip in $zips)
 Write-Host "----Starting ASA-----"
 Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_retail -OutputStartMode 'JobStartTime'
 
-Write-Host  "Click the following URL-  https://$($sites_app_iotfoottraffic_sensor_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($sites_adx_thermostat_realtime_name).azurewebsites.net"
-Write-Host  "Click the following URL-  https://$($media_search_app_service_name).azurewebsites.net"
-# Write-Host "Please ask your admin to execute the following command for proper execution of Immersive Reader : "
-
-# Write-Host 'az role assignment create --assignee' $immersive_properties.PrincipalId '--scope' $immersive_properties.ResourceId '--role "Cognitive Services User"'   
-
 #####################################################
 Write-Host "------COSMOS data Upload -------------"
 
@@ -1565,7 +1574,14 @@ $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName
 foreach($name in $cosmos)
 {
     $collection = $name.BaseName 
-    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
+    if($name.BaseName -eq "inventorydb")
+	{
+     $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name_retailinventorydb -ResourceGroup $rgName
+	}
+	else 
+	{
+	$cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
+	}
     $path="./artifacts/cosmos/"+$name.BaseName+".json"
     $documents=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $documents
