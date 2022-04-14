@@ -239,6 +239,7 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 # $vi_account_url = "$vi_api_url/$location/Accounts/$vi_account_id"
 $cog_speech_name = "retailspeechapp-$suffix"
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
+$incident_search_retail_name = "incident-srch-retail-$suffix";
 
 $accounts_purview_retail_name = "purviewretail$suffix"
 $purviewCollectionName1 = "AzureDataLakeStorage"
@@ -496,7 +497,7 @@ $modelId = $modelId[7]
 ##############################
 
 #Search service 
-Write-Host "-----------------Search service ---------------"
+Write-Host "-----------------Search services---------------"
 RefreshTokens
 
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
@@ -530,6 +531,96 @@ $headers = @{
 $url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
 $body = Get-Content -Raw -Path ./artifacts/search/data.json
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
+
+#### Incident Search ####
+# Create search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$queryKey = "QueryKey"
+New-AzSearchQueryKey -Name $queryKey -ServiceName $incident_search_retail_name -ResourceGroupName $rgName
+
+# Get search primary admin key
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
+$primaryAdminKey = $adminKeyPair.Primary
+
+#get list of keys - cognitiveservices
+$key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
+$destinationKey=$key.key1
+
+# Fetch connection string
+$storageKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $rgName)[0].Value
+$storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$($storageAccountName);AccountKey=$($storageKey);EndpointSuffix=core.windows.net"
+
+#resource id of cognitive_services_name
+$resource=az resource show -g $rgName -n $cog_marketdatacgsvc_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
+$resourceId=$resource.id
+
+# Create Index
+Write-Host  "------Index----"
+Get-ChildItem "artifacts/search" -Filter incident-index.json |
+        ForEach-Object {
+            $indexDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$incident_search_retail_name.search.windows.net/indexes?api-version=2020-06-30"
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+# Create Datasource endpoint
+Write-Host  "------Datasource----"
+Get-ChildItem "artifacts/search" -Filter search_datasource.json |
+        ForEach-Object {
+            $datasourceDefinition = (Get-Content $_.FullName -Raw).replace("#STORAGE_CONNECTION#", $storageConnectionString)
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+             $url = "https://$incident_search_retail_name.search.windows.net/datasources?api-version=2020-06-30"
+             $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+#Replace connection string in search_skillset.json
+(Get-Content -path artifacts/search/search_skillset.json -Raw) | Foreach-Object { $_ `
+				-replace '#RESOURCE_ID#', $resourceId`
+				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
+				-replace '#STORAGEKEY#', $storageKey`
+				-replace '#COGNITIVE_API_KEY#', $destinationKey`
+			} | Set-Content -Path artifacts/search/search_skillset.json
+
+# Creat Skillset
+Write-Host  "------Skillset----"
+Get-ChildItem "artifacts/search" -Filter search_skillset.json |
+        ForEach-Object {
+            $skillsetDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$incident_search_retail_name.search.windows.net/skillsets?api-version=2020-06-30"
+            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $skillsetDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+# Create Indexers
+Write-Host  "------Indexers----"
+Get-ChildItem "artifacts/search" -Filter search_indexer.json |
+        ForEach-Object {
+            $indexerDefinition = Get-Content $_.FullName -Raw
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+            $url = "https://$incident_search_retail_name.search.windows.net/indexers?api-version=2020-06-30"
+           $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
+        }
+
 
 ##############################
 
@@ -1430,7 +1521,7 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 
 $filepath="./retaildemo-app/wwwroot/config-poc.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name).Replace("#SPEECH_KEY#", $cog_speech_key).Replace("#LOCATION#", $rglocation)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name).Replace("#SPEECH_KEY#", $cog_speech_key.key1).Replace("#LOCATION#", $rglocation)
 Set-Content -Path $filepath -Value $item
 
 #bot qna maker

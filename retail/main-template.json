@@ -98,8 +98,9 @@
       "cosmosdb_retail2_name":"[if(greater(length(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmosdb-retail2-', uniqueString(deployment().name),parameters('environment_code')) )]",
       "cosmos_database_name":"retail-foottraffic",
       "cosmos_database_video_indexer":"video-indexer",
-	  "cosmos_database_name_retailinventorydb":"retailinventorydb"
+	   "cosmos_database_name_retailinventorydb":"retailinventorydb",
       "cosmos_database_container_name_videoindexerinsights": "videoindexerinsights",
+      "incident_search_retail_name": "[concat('incident-srch-retail-',variables('unique_suffix'))]",
       "cosmos_database_container_name_Transcript": "transcript",
       "source_storage_container": "media-assets",
       "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
@@ -727,6 +728,24 @@
                   "maxThroughput":"4000"
                }
             }
+         }
+      },
+      {
+         "type": "Microsoft.Search/searchServices",
+         "apiVersion": "2020-08-01",
+         "name": "[variables('incident_search_retail_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+         "name": "standard"
+         },
+         "properties": {
+         "replicaCount": 1,
+         "partitionCount": 1,
+         "hostingMode": "Default",
+         "publicNetworkAccess": "Enabled",
+         "networkRuleSet": {
+            "ipRules": []
+         }
          }
       },
       {
