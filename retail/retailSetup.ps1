@@ -240,7 +240,7 @@ $location = (Get-AzResourceGroup -Name $rgName).Location
 $cog_speech_name = "retailspeechapp-$suffix"
 $cog_speech_key = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $cog_speech_name
 $incident_search_retail_name = "incident-srch-retail-$suffix";
-
+$cog_retail_name = "cogretail-$suffix"
 $accounts_purview_retail_name = "purviewretail$suffix"
 $purviewCollectionName1 = "AzureDataLakeStorage"
 $purviewCollectionName2 = "AzureSynapse"
@@ -462,6 +462,31 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "videoanalyzer" -
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/videoanalyzer$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/videoanalyzer" $destinationUri --recursive
 
+### Replacing Incident Search Files
+# get search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
+
+(Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/formrecognizer/AzSearch.html
+
+(Get-Content -path artifacts/storageassets/incident-search/gistfile1_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/formrecognizer/gistfile1.html
+
+(Get-Content -path artifacts/storageassets/incident-search/search_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/formrecognizer/search.html
+
+(Get-Content -path artifacts/storageassets/incident-search/detail_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+} | Set-Content -Path artifacts/formrecognizer/detail.html
+
 #storage assests copy
 RefreshTokens
 
@@ -533,17 +558,13 @@ $body = Get-Content -Raw -Path ./artifacts/search/data.json
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
 
 #### Incident Search ####
-# Create search query key
-Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-$queryKey = "QueryKey"
-New-AzSearchQueryKey -Name $queryKey -ServiceName $incident_search_retail_name -ResourceGroupName $rgName
 
 # Get search primary admin key
 $adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
 $primaryAdminKey = $adminKeyPair.Primary
 
 #get list of keys - cognitiveservices
-$key=az cognitiveservices account keys list --name $cog_marketdatacgsvc_name -g $rgName|ConvertFrom-json
+$key=az cognitiveservices account keys list --name $cog_retail_name -g $rgName|ConvertFrom-json
 $destinationKey=$key.key1
 
 # Fetch connection string
@@ -551,12 +572,12 @@ $storageKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupN
 $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$($storageAccountName);AccountKey=$($storageKey);EndpointSuffix=core.windows.net"
 
 #resource id of cognitive_services_name
-$resource=az resource show -g $rgName -n $cog_marketdatacgsvc_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
+$resource=az resource show -g $rgName -n $cog_retail_name --resource-type "Microsoft.CognitiveServices/accounts"|ConvertFrom-Json
 $resourceId=$resource.id
 
 # Create Index
 Write-Host  "------Index----"
-Get-ChildItem "artifacts/search" -Filter incident-index.json |
+Get-ChildItem "artifacts/search" -Filter incidentsearch-index.json |
         ForEach-Object {
             $indexDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -571,7 +592,7 @@ Start-Sleep -s 10
 
 # Create Datasource endpoint
 Write-Host  "------Datasource----"
-Get-ChildItem "artifacts/search" -Filter search_datasource.json |
+Get-ChildItem "artifacts/search" -Filter retailcogsearchjsondata.json |
         ForEach-Object {
             $datasourceDefinition = (Get-Content $_.FullName -Raw).replace("#STORAGE_CONNECTION#", $storageConnectionString)
             $headers = @{
@@ -585,11 +606,15 @@ Get-ChildItem "artifacts/search" -Filter search_datasource.json |
 Start-Sleep -s 10
 
 #Replace connection string in search_skillset.json
-(Get-Content -path artifacts/search/search_skillset.json -Raw) | Foreach-Object { $_ `
+(Get-Content -path artifacts/search/retailcog-skillset.json -Raw) | Foreach-Object { $_ `
 				-replace '#RESOURCE_ID#', $resourceId`
 				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
+                -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+                -replace '#RESOURCE_GROUP#', $rgName` 
+                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
 				-replace '#STORAGEKEY#', $storageKey`
 				-replace '#COGNITIVE_API_KEY#', $destinationKey`
+                -replace '#COGNITIVE_RETAIL_NAME#', $cog_retail_name`
 			} | Set-Content -Path artifacts/search/search_skillset.json
 
 # Creat Skillset
@@ -609,7 +634,7 @@ Start-Sleep -s 10
 
 # Create Indexers
 Write-Host  "------Indexers----"
-Get-ChildItem "artifacts/search" -Filter search_indexer.json |
+Get-ChildItem "artifacts/search" -Filter adlsgen2-indexer.json |
         ForEach-Object {
             $indexerDefinition = Get-Content $_.FullName -Raw
             $headers = @{

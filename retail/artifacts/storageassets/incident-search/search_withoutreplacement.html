@@ -229,12 +229,12 @@
 
     // Initialize and connect to your search service
     // let {searchIndex, searchQueryKey, searchService} = window['runConfig']
-    var automagic = new AzSearch.Automagic({ index: "incidentsearch-index", queryKey: "C6FF1BA6A58870408CE17B5F9EB0A4FC", service: "srchincidentprod001" });
+    var automagic = new AzSearch.Automagic({ index: "incidentsearch-index", queryKey: "#INCIDENT_QUERY_KEY#", service: "#INCIDENT_SEARCH_SERVICE#" });
 
     // const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9"><h4>{{source}}</h4></div>`;
     const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9">
 
-        <img class="thumbnail img-responsive two" src="https://image.flaticon.com/icons/svg/80/80942.svg" width=30px>
+        <img src="https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/incident-search/icon.png" width=30px>
         <a href="javascript: void(0)"
             onclick="window.open('/incident-search/detail.html?pdf={{CaseId}}','_blank','width=700,height=700');">
             <h4>Case#{{CaseId}} &nbsp; | &nbsp; {{Nature}} &nbsp; | &nbsp; {{PartofBody}} </h4>

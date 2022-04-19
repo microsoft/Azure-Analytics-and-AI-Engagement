@@ -104,7 +104,7 @@
       "cosmos_database_container_name_Transcript": "transcript",
       "source_storage_container": "media-assets",
       "accounts_cogretail_name":"[concat('cogretail-',variables('unique_suffix'))]",
-      "accounts_RetailMedia_name":"[concat('RetailMedia-',variables('unique_suffix'))]",
+      "accounts_RetailMedia_name":"[concat('retailmedia-',variables('unique_suffix'))]",
       "accounts_retailspeechapp_prod_name":"[concat('retailspeechapp-',variables('unique_suffix'))]",
       "workflows_logic_storage_trigger_name": "[concat('logic-app-storage-trigger-',variables('unique_suffix'))]",
       "workflows_logic_video_indexer_trigger_name": "[concat('logic-app-video-trigger-',variables('unique_suffix'))]",
@@ -684,7 +684,7 @@
 	     {
          "type":"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
          "apiVersion":"2021-10-15",
-         "name":"[concat(variables('cosmosdb_retail2_name'),'/',variables('cosmos_database_name_retailinventorydb'),'/retaildb')]",
+         "name":"[concat(variables('cosmosdb_retail2_name'),'/',variables('cosmos_database_name_retailinventorydb'),'/inventorydb')]",
          "dependsOn":[
             "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosdb_retail2_name'),variables('cosmos_database_name_retailinventorydb'))]",
             "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name'))]"

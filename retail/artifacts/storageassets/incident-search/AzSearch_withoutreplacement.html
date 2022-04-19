@@ -111,7 +111,7 @@
     // CORS (*) must be enabled in the index before using the demo app.
 
     // Initialize and connect to your search service
-    var automagic = new AzSearch.Automagic({ index: "incidentsearch-index", queryKey: "C6FF1BA6A58870408CE17B5F9EB0A4FC", service: "srchincidentprod001" });
+    var automagic = new AzSearch.Automagic({ index: "incidentsearch-index", queryKey: "#INCIDENT_QUERY_KEY#", service: "#INCIDENT_SEARCH_SERVICE#" });
     
     const resultTemplate = `<div class="col-xs-12 col-sm-3 col-md-3 result_img" >
             <img class="img-responsive result_img" src={{CaseId}} alt="image not found" />

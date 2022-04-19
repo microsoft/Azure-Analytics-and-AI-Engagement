@@ -230,7 +230,7 @@
 
     // Initialize and connect to your search service
     // let {searchIndex, searchQueryKey, searchService} = window['runConfig']
-    var automagic = new AzSearch.Automagic({ index: "incident-search", queryKey: "C6FF1BA6A58870408CE17B5F9EB0A4FC", service: "srchincidentprod001" });
+    var automagic = new AzSearch.Automagic({ index: "incidentsearch-index", queryKey: "#INCIDENT_QUERY_KEY#", service: "#INCIDENT_SEARCH_SERVICE#" });
 
     // const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9"><h4>{{source}}</h4></div>`;
     const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9">
