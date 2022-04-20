@@ -2,7 +2,7 @@
   "@odata.context": "https://#INCIDENT_SEARCH_SERVICE#.search.windows.net/$metadata#skillsets/$entity",
   "@odata.etag": "\"0x8DA0B6AFACA2DE5\"",
   "name": "retailcog-skillset",
-  "description": "Skillset created from the portal. skillsetName: retailcog-skillset; contentField: FinalNarrative; enrichmentGranularity: sentences; knowledgeStoreStorageAccount: #STORAGEACCOUNTNAME#;",
+  "description": "Skillset created from the portal. skillsetName: retailcog-skillset; contentField: FinalNarrative; enrichmentGranularity: sentences; knowledgeStoreStorageAccount:#STORAGEACCOUNTNAME#;",
   "skills": [
     {
       "@odata.type": "#Microsoft.Skills.Text.SplitSkill",

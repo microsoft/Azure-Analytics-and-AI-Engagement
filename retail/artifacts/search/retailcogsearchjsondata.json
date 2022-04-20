@@ -1,5 +1,5 @@
 {
-  "@odata.context": "https://srchincidentprod001.search.windows.net/$metadata#datasources/$entity",
+  "@odata.context": "https://#INCIDENT_SEARCH_SERVICE#.search.windows.net/$metadata#datasources/$entity",
   "@odata.etag": "\"0x8DA0B6AFABC9B52\"",
   "name": "retailcogsearchjsondata",
   "description": null,

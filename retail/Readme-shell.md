@@ -44,12 +44,12 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 5: Lake Database creation and Pipeline execution](#task-5-lake-database-creation-and-pipeline-execution)
   - [Task 6: Data Explorer Setup](#task-6-data-explorer-setup)
   - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
-  - [Task 8: Power BI reports and dashboard creation](#task-6-power-bi-reports-and-dashboard-creation)
+  - [Task 8: Power BI reports and dashboard creation](#task-8-power-bi-reports-and-dashboard-creation)
   	- [Steps to create Real time report](#steps-to-create-real-time-report)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 9: QnAmaker and LogicApp Configuration](#task-7-qnamaker-and-logicapp-configuration)
-  - [Task 10: Pause or Resume script](#task-8-pause-or-resume-script)
-  - [Task 11: Clean up resources](#task-9-clean-up-resources)
+  - [Task 9: QnAmaker and LogicApp Configuration](#task-9-qnamaker-and-logicapp-configuration)
+  - [Task 10: Pause or Resume script](#task-10-pause-or-resume-script)
+  - [Task 11: Clean up resources](#task-11-clean-up-resources)
 
 <!-- /TOC -->
 
@@ -388,65 +388,65 @@ cd ./retail/retail
 	
 ### Task 7: Azure Purview Setup
 
-1. Firstly you should **assign** Reader permission to the **Azure Purview** account starting with name "purviewretail..." for **Cosmos Account**, **Synapse Workspace** and **Storage Account** starting with name "stretail...". Once the permission has been granted, proceed with the following steps.
+> **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewretail..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "stretail...". Once the permission has been granted, proceed with the following steps.
 
-2. From Azure Portal, **search** for azure purview resource in the resource group and **click** on the resource.
+1. From Azure Portal, **search** for azure purview resource in the resource group and **click** on the resource.
 
 	![Select Purview Resource.](media/purview-1.png)
 	
-3. The Azure Purview resource window will open, **click** on Open Azure Purview Studio and the Azure Purview Studio will open in a new window.
+2. The Azure Purview resource window will open, **click** on Open Azure Purview Studio and the Azure Purview Studio will open in a new window.
 
 	![Select Purview Resource.](media/purview-2.png)
 	
-4. **Click** on Manage Glossary in the Azure Purview Studio, the Glossary Terms window will open.
+3. **Click** on Manage Glossary in the Azure Purview Studio, the Glossary Terms window will open.
 
 	![Select Purview Resource.](media/purview-3.png)
 	
-5. **Click** on Import Terms in the Glossary Terms window.
+4. **Click** on Import Terms in the Glossary Terms window.
 
 	![Select Purview Resource.](media/purview-4.png)
 
-6. A pop-up appears, **click** on Continue.
+5. A pop-up appears, **click** on Continue.
 
 	![Select Purview Resource.](media/purview-5.png)
 	
-7. **Click** on browse and **select** appropriate file and **click** open.
+6. **Click** on browse and **select** appropriate file and **click** open.
 
 	![Select Purview Resource.](media/purview-6.png)
 	
-8. **Click** on OK.
+7. **Click** on OK.
 	
 	![Select Purview Resource.](media/purview-7.png)
 	
-9. In the Azure Purview Studio **click** on Data map **goto** source and **select** Map view. Now expand the parent collection by **clicking** on the "+" sign.
+8. In the Azure Purview Studio **click** on Data map **goto** source and **select** Map view. Now expand the parent collection by **clicking** on the "+" sign.
 
 	![Select Purview Resource.](media/purview-8.png)
 
-10. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage.
+9. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage.
 
 	![Select Purview Resource.](media/purview-9.png)
 
-11. Under the datasource AzureDataLakeStorage **click** on View Details.
+10. Under the datasource AzureDataLakeStorage **click** on View Details.
 
 	![Select Purview Resource.](media/purview-10.png)
 
-12. **Click** on New Scan, a window appears, here verify the default values in the different fields, **select** your collection name and finally **click** on Continue.
+11. **Click** on New Scan, a window appears, here verify the default values in the different fields, **select** your collection name and finally **click** on Continue.
 
 	![Select Purview Resource.](media/purview-11.png)
 	
-13. In the new window verify that the check box is **checked** for all the required containers, and then **click** on continue.
+12. In the new window verify that the check box is **checked** for all the required containers, and then **click** on continue.
 
 	![Select Purview Resource.](media/purview-12.png)
 	
-14. Again **click** on continue.
+13. Again **click** on continue.
 
 	![Select Purview Resource.](media/purview-13.png)
 	
-15. In the new window **check** the Once radio button and **click** on continue.
+14. In the new window **check** the Once radio button and **click** on continue.
 
 	![Select Purview Resource.](media/purview-14.png)
 	
-16. **Repeat** the steps 11 and 15 by selecting appropriate values for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
+15. **Repeat** the steps 11 and 15 by selecting appropriate values for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
 
 ### Task 8: Power BI reports and dashboard creation
 
@@ -458,7 +458,7 @@ Once [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) has b
 
 The image on the below shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports.
 
-![Reports Tab.](media/power-bi-report-4.png)
+	![Reports Tab.](media/power-bi-report-4.png)
 	
 > **Note:** If you do not see this list in your workspace after script execution, it may indicate that something went wrong during execution. You may use the subscript to patch it or manually upload the reports from this location and changing their parameters appropriately before authentication.
 
@@ -508,7 +508,7 @@ Follow these steps to create the Power BI dashboard:
 
 19. **Name** the dashboard 'CEO Dashboard - May' and **click** 'create'.
 
-![Create Dashboard further steps.](media/Create-Dashboard.png)
+	![Create Dashboard further steps.](media/power-bi-report-11.png)
 
 20. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
@@ -516,37 +516,311 @@ Follow these steps to create the Power BI dashboard:
 
 21. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
 
-![Create Dashboard further steps.](media/Create-Dashboard1.png)
+	![Create Dashboard further steps.](media/power-bi-report-12.png)
 
-22. Inside the report 'CDP Vision Report' **select** 'Pillar 1 Before'.
+22. Inside the report 'CDP Vision Report' **select** 'Pillar 1 May'.
 
-![Select Pillar 1 before.](media/Selecting-pillar.png)
+	![Select Pillar 1 before.](media/power-bi-report-13.png)
 
-23. **Click** on '..' at the top of the right corner.
+23. **Click** on 'Edit' at the top of the right corner.
 
-24. **Select** the 'Pin to dashboard' option from the drop-down menu.
+	![Select Pillar 1 before.](media/power-bi-report-14.png)	
 
-![Select Pin to dashboard.](media/Selecting-pin-to-dashboard.png)
+24. **Hover** over the tile and **click** on the icon to 'Pin to dashboard'.
+
+	![Select Pin to dashboard.](media/power-bi-report-15.png)
 
 25. 'Pin to dashboard' window will appear.
 
 26. **Select** the 'Existing Dashboard' radio button.
 
-27. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin live' button.
+27. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin' button.
 
-![Pin to dashboard further steps.](media/Pin-to-dashboard.png)
+	![Pin to dashboard further steps.](media/power-bi-report-16.png)
 
+28. Similarly, **pin** the others tiles to the Dashboard
 
-28. **Similarly pin the remaining visuals by referring to below table:**
+	![Pin to dashboard further steps.](media/power-bi-report-17.png)
 
-![KPI table.](media/KPI-Table.png)
+29. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
+	![Select Workspace.](media/power-bi-report-18.png)
 	
+30. **Open** ‘Dashboard-Images’ report.
+
+	![Select Workspace.](media/power-bi-report-19.png)
+	
+31. **Click** on 'REtail 270821' page.
+
+32. **Click** on Edit.
+
+	![Click on edit.](media/power-bi-report-20.png)
+	
+33. **Hover** on Deep Dive chicklet and **click** pin button.
+
+	![Hover and Click.](media/power-bi-report-21.png)
+	
+34. Select the ‘CEO Dashboard - May’ from existing dashboard list and **click** on pin.
+	
+	![Hover and Click.](media/power-bi-report-22.png)
+
+35. Similarly pin rest of the images of the ‘Dashboard-Images’ report.
+	
+	![Select Dashboard and Click Pin.](media/power-bi-report-23.png)
+	
+36. **Go back** to the ‘CEO Dashboard - May’ dashboard.
+
+	![Go back to Dashboard.](media/power-bi-report-24.png)
+	
+To hide title and subtitle for all the images that you have pined above. Please do the following:
+
+40. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
+
+41. **Click** on ‘Edit details’.
+
+	![Click on Edit Details.](media/power-bi-report-25.png)
+	
+42. **Uncheck** ‘Display title and subtitle’.
+
+43. **Click** on ‘Apply’.
+
+44. **Repeat** Step 38 to 43 for all image tiles.
+
+	![Click apply and repeat.](media/power-bi-report-26.png)
+	
+45. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
+	
+	![Resize and Rearrange.](media/power-bi-report-27.png)
+	
+46. Similarly pin left image tiles from ‘REtail 270821’ of chicklets report to the CEO Dashboard - May dashboard.
+
+47. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+
+	![Resize and Rearrange again.](media/power-bi-report-28.png)
+	
+48. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
+	
+	![Will see some KPIs.](media/power-bi-report-29png)
+	
+49. **Hover** over the cards and charts and go to more options (…)
+
+50. **Click** on Edit Details.
+	
+	![Hover and Click on Edit Details.](media/power-bi-report-30.png)
+	
+51. You will see something like this picture where you can add subtitle.
+
+	![Will see.](media/power-bi-report-31.png)
+	
+52. The Dashboard **CEO Dashboard - May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+
+	![Final Look.](media/power-bi-report-32.png)
+	
+53. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-1.png)
+
+54. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/KPIS%20Dashboards%20mapping.xlsx) file for pinning the tiles to the dashboard.
+
+	![Final Look.](media/power-bi-report-33.png)
+
+55. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
+
+	![Final Look.](media/power-bi-report-34.png)
+	
+56. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-2.png)
+
+56. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
+	
+	![Final Look.](media/power-bi-report-35.png)
+	
+57. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-3.png)
+
+58. **CEO Dashboard - Nov** Dashboard should look like this. 
+
+	![Final Look.](media/power-bi-report-36.png)
+	
+59. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-4.png)
+	
+60. **CEO Dashboard - Dec** Dashboard should look like this.
+
+	![Final Look.](media/power-bi-report-37.png)
+	
+59. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-5.png)
+	
+61. **ADX Dashboard** Dashboard should look like this.
+	
+	![Final Look.](media/power-bi-report-38.png)
+
+62. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-6.png)
+
+63. **ESG Dashboard** Dashboard should look like this.
+
+	![Final Look.](media/power-bi-report-39.png)
+	
+64. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-7.png)
+	
+65. **Finance Dashboard** Dashboard should look like this.
+
+	![Final Look.](media/power-bi-report-40.png)
+
+66. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-8.png)
+	
+67. **VP Customer Experience Dashboard** Dashboard should look like this.
+
+	![Final Look.](media/power-bi-report-41.png)
+
+68. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-9.png)
+
 ### Steps to create Real time report
 
+This task is optional since we have provided static versions of the reports in the package already.
+
+1. **Open** Power BI in a new tab using the following link:
+	[https://app.powerbi.com/](https://app.powerbi.com/).
+
+2. **Sign into** Power BI using your Power BI Pro account.
+
+	![Sign_in_powerbi.](media/power-bi-report-42.png)
+
+> **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
+	
+3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “DDiB-Retail” workspace.
+
+	![Click Workspace.](media/power-bi-report-43.png)
+
+4. **Click** New to expand menu and then **click** Report.
+
+	![Click New and Report.](media/power-bi-report-44.png)
+
+5. **Click** Pick a published dataset.
+	
+	![Click Pick a Public Dashboard.](media/power-bi-report-45.png)
+
+6. **Click** on the desired streaming dataset from the given list, here we are selecting “Tax Collection Realtime” and **click** Create Report.
+
+	![Click desired streaming dataset.](media/power-bi-report-46.png)
+
+7. **Select** the KPI visual or any other required visual from Visualization pane.
+
+8. **Drag** or **select** the required fields from Fields pane to Visualization pane’s Field tab.
+
+	![Select the KPI, Drag or select required fields.](media/power-bi-report-47.png)
+
+9. Similarly, **create** other visuals and **save** the Power BI Report. You can also pin the visuals to the dashboard.
+
+	![Create other visuals and save the Power BI Report.](media/power-bi-report-48.png)
 
 ### Updating Dashboard and Report Ids in Web app
 
+By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated in to the main web app if you choose. Here are the steps for it.
+
+1. **Navigate** to your Power BI workspace.
+
+2. **Click** on one of the dashboards you created. Eg. CEO Dashboard - May.
+
+	![Navigate and Click.](media/updating-powerbi.png)
+
+3. **Copy** the dashboard id from the url bar at the top.
+	
+	![Copy the dashboard id.](media/updating-powerbi-2.png)
+
+4. **Navigate** to azure portal.
+
+5. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+
+	![Navigate and Open.](media/updating-powerbi-3.png)
+
+6. **Click** on upload/download button.
+
+7. **Click** download.
+
+8. **Enter** the following path:  
+	
+	```
+	retail/retail/retaildemo-app/wwwroot/config.js
+	```
+
+9. **Click** Download button.
+
+	![Enter path and Click download button.](media/updating-powerbi-4.png)
+	
+10. At the right bottom of the cloudshell screen you get a hyperlink, **click** on it.
+
+	![Enter path and Click download button.](media/updating-powerbi-12.png)
+
+11. **Edit** the downloaded file in notepad.
+
+12. **Paste** the dashboard id you copied earlier between the double quotes of key ‘CEO Dashboard - May’.
+
+13. **Save** the changes to the file.
+
+	![Edit paste and save.](media/updating-powerbi-5.png)
+
+13. **Navigate** to azure portal.
+
+14. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+
+	![Navigate and Open.](media/updating-powerbi-6.png)
+
+15. **Click** upload/download button.
+
+16. **Click** upload.
+
+17. **Select** the config.js file you just updated.
+
+18. **Click** open.
+
+	![Select and Click open.](media/updating-powerbi-7.png)
+
+19. **Execute** following command in cloudshell:  
+	
+	```
+	cp config.js ./retail/retail/retaildemo-app/wwwroot
+	```
+	
+	![Execute the command.](media/updating-powerbi-8.png)
+
+20.	Execute  following command in cloudshell: 
+	
+	```
+	cd retail/retail/subscripts 
+	./updateWebAppSubScript.ps1
+	```
+	
+	![Execute the command.](media/updating-powerbi-9.png)
+
+21. From the Azure Cloud Shell, **copy** the authentication code. 
+
+22. **Click** on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+
+	![Copy and Click on Link.](media/updating-powerbi-10.png)
+
+23. **Paste** the authentication code.
+
+24. **Select** appropriate username when prompted.
+
+25. Wait for script execution to complete.
+
+	![Paste select and wait.](media/updating-powerbi-11.png)
+
+> **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
 
 ### Task 9: QnAmaker and LogicApp Configuration
 

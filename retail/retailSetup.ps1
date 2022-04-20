@@ -590,6 +590,13 @@ Get-ChildItem "artifacts/search" -Filter incidentsearch-index.json |
         }
 Start-Sleep -s 10
 
+#Replace connection string in retailcogsearchjsondata.json
+(Get-Content -path artifacts/search/retailcogsearchjsondata.json -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGEACCOUNTNAME#', $storageAccountName`
+    -replace '#STORAGEKEY#', $storageKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/search/retailcogsearchjsondata.json
+
 # Create Datasource endpoint
 Write-Host  "------Datasource----"
 Get-ChildItem "artifacts/search" -Filter retailcogsearchjsondata.json |
@@ -605,21 +612,21 @@ Get-ChildItem "artifacts/search" -Filter retailcogsearchjsondata.json |
         }
 Start-Sleep -s 10
 
-#Replace connection string in search_skillset.json
+#Replace connection string in retailcog-skillset.json
 (Get-Content -path artifacts/search/retailcog-skillset.json -Raw) | Foreach-Object { $_ `
 				-replace '#RESOURCE_ID#', $resourceId`
 				-replace '#STORAGEACCOUNTNAME#', $storageAccountName`
                 -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
-                -replace '#RESOURCE_GROUP#', $rgName` 
-                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+                -replace '#RESOURCE_GROUP#', $rgName`
 				-replace '#STORAGEKEY#', $storageKey`
 				-replace '#COGNITIVE_API_KEY#', $destinationKey`
                 -replace '#COGNITIVE_RETAIL_NAME#', $cog_retail_name`
-			} | Set-Content -Path artifacts/search/search_skillset.json
+                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+			} | Set-Content -Path artifacts/search/retailcog-skillset.json
 
-# Creat Skillset
+# Create Skillset
 Write-Host  "------Skillset----"
-Get-ChildItem "artifacts/search" -Filter search_skillset.json |
+Get-ChildItem "artifacts/search" -Filter retailcog-skillset.json |
         ForEach-Object {
             $skillsetDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -631,6 +638,11 @@ Get-ChildItem "artifacts/search" -Filter search_skillset.json |
             $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $skillsetDefinition | ConvertTo-Json
         }
 Start-Sleep -s 10
+
+#Replace connection string in adlsgen2-indexer.json
+(Get-Content -path artifacts/search/adlsgen2-indexer.json -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/search/adlsgen2-indexer.json
 
 # Create Indexers
 Write-Host  "------Indexers----"
@@ -645,7 +657,6 @@ Get-ChildItem "artifacts/search" -Filter adlsgen2-indexer.json |
             $url = "https://$incident_search_retail_name.search.windows.net/indexers?api-version=2020-06-30"
            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
         }
-
 
 ##############################
 
