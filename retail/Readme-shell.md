@@ -458,7 +458,7 @@ Once [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) has b
 
 The image on the below shows the Reports tab in Power BI.  We can create a Power BI dashboard by pinning visuals from these reports.
 
-	![Reports Tab.](media/power-bi-report-4.png)
+![Reports Tab.](media/power-bi-report-4.png)
 	
 > **Note:** If you do not see this list in your workspace after script execution, it may indicate that something went wrong during execution. You may use the subscript to patch it or manually upload the reports from this location and changing their parameters appropriately before authentication.
 
@@ -600,7 +600,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 	
 48. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
 	
-	![Will see some KPIs.](media/power-bi-report-29png)
+	![Will see some KPIs.](media/power-bi-report-29.png)
 	
 49. **Hover** over the cards and charts and go to more options (…)
 
@@ -620,7 +620,7 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Table.](media/power-bi-table-1.png)
 
-54. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/KPIS%20Dashboards%20mapping.xlsx) file for pinning the tiles to the dashboard.
+54. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-33.png)
 
