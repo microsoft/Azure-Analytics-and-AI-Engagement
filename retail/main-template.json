@@ -1754,6 +1754,132 @@
             "publicAccess":"Container"
          }
       },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/incidentpdftraining')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/incidentblobprojections')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/incidentreportjson')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/incidentreportpdf')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	  {
+         "name":"[concat( variables('storage_account_name'), '/default/incidentsearchcsv')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/incidenttranslated')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	   {
+         "name":"[concat( variables('storage_account_name'), '/default/idcard')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	    {
+         "name":"[concat( variables('storage_account_name'), '/default/formrecogcustommodel')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
+	      {
+         "name":"[concat( variables('storage_account_name'), '/default/finalvideo')]",
+         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion":"2020-08-01-preview",
+         "dependsOn":[
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties":{
+            "defaultEncryptionScope":"$account-encryption-key",
+            "denyEncryptionScopeOverride":false,
+            "publicAccess":"Container"
+         }
+      },
       {
          "name":"[variables('serverfarm_adx_thermostat_realtime_name')]",
          "type":"Microsoft.Web/serverfarms",
