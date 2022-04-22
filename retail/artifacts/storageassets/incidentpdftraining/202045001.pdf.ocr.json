@@ -1,0 +1,2189 @@
+{
+	"status": "succeeded",
+	"createdDateTime": "2022-01-25T23:00:37Z",
+	"lastUpdatedDateTime": "2022-01-25T23:00:40Z",
+	"analyzeResult": {
+		"apiVersion": "2021-09-30-preview",
+		"modelId": "prebuilt-layout",
+		"stringIndexType": "textElements",
+		"content": "ID: 202045001\nCompany: Wide World Importers\nLocation: Sydney\nEvent: Struck against moving part of machinery or equipment\nNature: Amputations\nEvent Date: January 4, 2022\nFinal Narrative\nHospitalized Amputation Part Of\nBody\nSource\nOn or about 1/4/15 at 1:50 PM, employee was slicing\nham when a piece of meat slipped, allowing the\nemployee's hand to come into contact with the deli\nslicer. Employee lost tip of thumb; there was no bone\nloss.\n0\n1\nFingertip(s) Food\nslicers\nPage 1 of 1",
+		"pages": [
+			{
+				"pageNumber": 1,
+				"angle": 0,
+				"width": 8.2639,
+				"height": 11.6806,
+				"unit": "inch",
+				"words": [
+					{
+						"content": "ID:",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.1089,
+							2.1201,
+							1.1089,
+							2.2213,
+							0.9147,
+							2.2213
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 0,
+							"length": 3
+						}
+					},
+					{
+						"content": "202045001",
+						"boundingBox": [
+							1.1711,
+							2.1206,
+							1.7419,
+							2.1206,
+							1.7419,
+							2.2217,
+							1.1711,
+							2.2217
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 4,
+							"length": 9
+						}
+					},
+					{
+						"content": "Company:",
+						"boundingBox": [
+							0.9089,
+							2.3605,
+							1.6658,
+							2.3605,
+							1.6658,
+							2.4934,
+							0.9089,
+							2.4934
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 14,
+							"length": 8
+						}
+					},
+					{
+						"content": "Wide",
+						"boundingBox": [
+							1.7253,
+							2.3559,
+							1.9915,
+							2.3559,
+							1.9915,
+							2.4738,
+							1.7253,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 23,
+							"length": 4
+						}
+					},
+					{
+						"content": "World",
+						"boundingBox": [
+							2.0374,
+							2.3559,
+							2.3672,
+							2.3559,
+							2.3672,
+							2.4738,
+							2.0374,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 28,
+							"length": 5
+						}
+					},
+					{
+						"content": "Importers",
+						"boundingBox": [
+							2.416,
+							2.3583,
+							3.0093,
+							2.3583,
+							3.0093,
+							2.5076,
+							2.416,
+							2.5076
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 34,
+							"length": 9
+						}
+					},
+					{
+						"content": "Location:",
+						"boundingBox": [
+							0.9147,
+							2.5898,
+							1.6097,
+							2.5898,
+							1.6097,
+							2.6972,
+							0.9147,
+							2.6972
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 44,
+							"length": 9
+						}
+					},
+					{
+						"content": "Sydney",
+						"boundingBox": [
+							1.6679,
+							2.5877,
+							2.0274,
+							2.5877,
+							2.0274,
+							2.7354,
+							1.6679,
+							2.7354
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 54,
+							"length": 6
+						}
+					},
+					{
+						"content": "Event:",
+						"boundingBox": [
+							0.9147,
+							4.0279,
+							1.3865,
+							4.0279,
+							1.3865,
+							4.1309,
+							0.9147,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 61,
+							"length": 6
+						}
+					},
+					{
+						"content": "Struck",
+						"boundingBox": [
+							1.4447,
+							4.0238,
+							1.801,
+							4.0238,
+							1.801,
+							4.139,
+							1.4447,
+							4.139
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 68,
+							"length": 6
+						}
+					},
+					{
+						"content": "against",
+						"boundingBox": [
+							1.8461,
+							4.0238,
+							2.2398,
+							4.0238,
+							2.2398,
+							4.1795,
+							1.8461,
+							4.1795
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 75,
+							"length": 7
+						}
+					},
+					{
+						"content": "moving",
+						"boundingBox": [
+							2.2925,
+							4.0509,
+							2.6547,
+							4.0509,
+							2.6547,
+							4.1795,
+							2.2925,
+							4.1795
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 83,
+							"length": 6
+						}
+					},
+					{
+						"content": "part",
+						"boundingBox": [
+							2.7061,
+							4.0238,
+							2.9416,
+							4.0238,
+							2.9416,
+							4.1732,
+							2.7061,
+							4.1732
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 90,
+							"length": 4
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							2.9894,
+							4.0165,
+							3.1216,
+							4.0165,
+							3.1216,
+							4.1315,
+							2.9894,
+							4.1315
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 95,
+							"length": 2
+						}
+					},
+					{
+						"content": "machinery",
+						"boundingBox": [
+							3.1564,
+							4.0182,
+							3.7009,
+							4.0182,
+							3.7009,
+							4.1691,
+							3.1564,
+							4.1691
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 98,
+							"length": 9
+						}
+					},
+					{
+						"content": "or",
+						"boundingBox": [
+							3.7473,
+							4.0661,
+							3.8749,
+							4.0661,
+							3.8749,
+							4.1325,
+							3.7473,
+							4.1325
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 108,
+							"length": 2
+						}
+					},
+					{
+						"content": "equipment",
+						"boundingBox": [
+							3.9197,
+							4.0238,
+							4.4799,
+							4.0238,
+							4.4799,
+							4.1732,
+							3.9197,
+							4.1732
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 111,
+							"length": 9
+						}
+					},
+					{
+						"content": "Nature:",
+						"boundingBox": [
+							0.9147,
+							4.2597,
+							1.4794,
+							4.2597,
+							1.4794,
+							4.3628,
+							0.9147,
+							4.3628
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 121,
+							"length": 7
+						}
+					},
+					{
+						"content": "Amputations",
+						"boundingBox": [
+							1.5431,
+							4.2543,
+							2.2521,
+							4.2543,
+							2.2521,
+							4.405,
+							1.5431,
+							4.405
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 129,
+							"length": 11
+						}
+					},
+					{
+						"content": "Event",
+						"boundingBox": [
+							5.0221,
+							4.0279,
+							5.4507,
+							4.0279,
+							5.4507,
+							4.1309,
+							5.0221,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 141,
+							"length": 5
+						}
+					},
+					{
+						"content": "Date:",
+						"boundingBox": [
+							5.515,
+							4.0279,
+							5.9117,
+							4.0279,
+							5.9117,
+							4.1309,
+							5.515,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 147,
+							"length": 5
+						}
+					},
+					{
+						"content": "January",
+						"boundingBox": [
+							5.9673,
+							4.0359,
+							6.4175,
+							4.0359,
+							6.4175,
+							4.1691,
+							5.9673,
+							4.1691
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 153,
+							"length": 7
+						}
+					},
+					{
+						"content": "4,",
+						"boundingBox": [
+							6.4666,
+							4.0297,
+							6.5504,
+							4.0297,
+							6.5504,
+							4.147,
+							6.4666,
+							4.147
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 161,
+							"length": 2
+						}
+					},
+					{
+						"content": "2022",
+						"boundingBox": [
+							6.5984,
+							4.0326,
+							6.8711,
+							4.0326,
+							6.8711,
+							4.1272,
+							6.5984,
+							4.1272
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 164,
+							"length": 4
+						}
+					},
+					{
+						"content": "Final",
+						"boundingBox": [
+							0.9468,
+							5.0045,
+							1.2399,
+							5.0045,
+							1.2399,
+							5.1119,
+							0.9468,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 169,
+							"length": 5
+						}
+					},
+					{
+						"content": "Narrative",
+						"boundingBox": [
+							1.3104,
+							5.0045,
+							1.9356,
+							5.0045,
+							1.9356,
+							5.1119,
+							1.3104,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 175,
+							"length": 9
+						}
+					},
+					{
+						"content": "Hospitalized",
+						"boundingBox": [
+							4.15,
+							5.0045,
+							4.9744,
+							5.0045,
+							4.9744,
+							5.1388,
+							4.15,
+							5.1388
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 185,
+							"length": 12
+						}
+					},
+					{
+						"content": "Amputation",
+						"boundingBox": [
+							5.1026,
+							5.0045,
+							5.9012,
+							5.0045,
+							5.9012,
+							5.1388,
+							5.1026,
+							5.1388
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 198,
+							"length": 10
+						}
+					},
+					{
+						"content": "Part",
+						"boundingBox": [
+							6.043,
+							4.928,
+							6.3,
+							4.928,
+							6.3,
+							5.031,
+							6.043,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 209,
+							"length": 4
+						}
+					},
+					{
+						"content": "Of",
+						"boundingBox": [
+							6.3552,
+							4.9237,
+							6.5082,
+							4.9237,
+							6.5082,
+							5.031,
+							6.3552,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 214,
+							"length": 2
+						}
+					},
+					{
+						"content": "Body",
+						"boundingBox": [
+							6.043,
+							5.0854,
+							6.3756,
+							5.0854,
+							6.3756,
+							5.2197,
+							6.043,
+							5.2197
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 217,
+							"length": 4
+						}
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.8224,
+							5.007,
+							7.2824,
+							5.007,
+							7.2824,
+							5.1119,
+							6.8224,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 222,
+							"length": 6
+						}
+					},
+					{
+						"content": "On",
+						"boundingBox": [
+							0.9338,
+							5.3833,
+							1.0582,
+							5.3833,
+							1.0582,
+							5.4855,
+							0.9338,
+							5.4855
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 229,
+							"length": 2
+						}
+					},
+					{
+						"content": "or",
+						"boundingBox": [
+							1.1117,
+							5.4134,
+							1.2393,
+							5.4134,
+							1.2393,
+							5.4798,
+							1.1117,
+							5.4798
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 232,
+							"length": 2
+						}
+					},
+					{
+						"content": "about",
+						"boundingBox": [
+							1.286,
+							5.3699,
+							1.6197,
+							5.3699,
+							1.6197,
+							5.4863,
+							1.286,
+							5.4863
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 235,
+							"length": 5
+						}
+					},
+					{
+						"content": "1/4/15",
+						"boundingBox": [
+							1.6735,
+							5.3713,
+							1.9836,
+							5.3713,
+							1.9836,
+							5.4815,
+							1.6735,
+							5.4815
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 241,
+							"length": 6
+						}
+					},
+					{
+						"content": "at",
+						"boundingBox": [
+							2.0317,
+							5.3712,
+							2.1476,
+							5.3712,
+							2.1476,
+							5.4863,
+							2.0317,
+							5.4863
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 248,
+							"length": 2
+						}
+					},
+					{
+						"content": "1:50",
+						"boundingBox": [
+							2.2014,
+							5.3758,
+							2.386,
+							5.3758,
+							2.386,
+							5.4792,
+							2.2014,
+							5.4792
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 251,
+							"length": 4
+						}
+					},
+					{
+						"content": "PM,",
+						"boundingBox": [
+							2.4389,
+							5.371,
+							2.5943,
+							5.371,
+							2.5943,
+							5.4944,
+							2.4389,
+							5.4944
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 256,
+							"length": 3
+						}
+					},
+					{
+						"content": "employee",
+						"boundingBox": [
+							2.6414,
+							5.3699,
+							3.1486,
+							5.3699,
+							3.1486,
+							5.5205,
+							2.6414,
+							5.5205
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 260,
+							"length": 8
+						}
+					},
+					{
+						"content": "was",
+						"boundingBox": [
+							3.1973,
+							5.4148,
+							3.4136,
+							5.4148,
+							3.4136,
+							5.4809,
+							3.1973,
+							5.4809
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 269,
+							"length": 3
+						}
+					},
+					{
+						"content": "slicing",
+						"boundingBox": [
+							3.464,
+							5.3699,
+							3.779,
+							5.3699,
+							3.779,
+							5.5269,
+							3.464,
+							5.5269
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 273,
+							"length": 7
+						}
+					},
+					{
+						"content": "ham",
+						"boundingBox": [
+							0.9368,
+							5.5556,
+							1.1671,
+							5.5556,
+							1.1671,
+							5.669,
+							0.9368,
+							5.669
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 281,
+							"length": 3
+						}
+					},
+					{
+						"content": "when",
+						"boundingBox": [
+							1.2147,
+							5.5556,
+							1.4786,
+							5.5556,
+							1.4786,
+							5.6756,
+							1.2147,
+							5.6756
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 285,
+							"length": 4
+						}
+					},
+					{
+						"content": "a",
+						"boundingBox": [
+							1.5325,
+							5.607,
+							1.5893,
+							5.607,
+							1.5893,
+							5.6673,
+							1.5325,
+							5.6673
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 290,
+							"length": 1
+						}
+					},
+					{
+						"content": "piece",
+						"boundingBox": [
+							1.6442,
+							5.5884,
+							1.9042,
+							5.5884,
+							1.9042,
+							5.7106,
+							1.6442,
+							5.7106
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 292,
+							"length": 5
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							1.9535,
+							5.554,
+							2.0857,
+							5.554,
+							2.0857,
+							5.669,
+							1.9535,
+							5.669
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 298,
+							"length": 2
+						}
+					},
+					{
+						"content": "meat",
+						"boundingBox": [
+							2.1204,
+							5.5613,
+							2.3942,
+							5.5613,
+							2.3942,
+							5.6765,
+							2.1204,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 301,
+							"length": 4
+						}
+					},
+					{
+						"content": "slipped,",
+						"boundingBox": [
+							2.4421,
+							5.559,
+							2.8336,
+							5.559,
+							2.8336,
+							5.7106,
+							2.4421,
+							5.7106
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 306,
+							"length": 8
+						}
+					},
+					{
+						"content": "allowing",
+						"boundingBox": [
+							2.8826,
+							5.5601,
+							3.3093,
+							5.5601,
+							3.3093,
+							5.717,
+							2.8826,
+							5.717
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 315,
+							"length": 8
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.3537,
+							5.5556,
+							3.5341,
+							5.5556,
+							3.5341,
+							5.6765,
+							3.3537,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 324,
+							"length": 3
+						}
+					},
+					{
+						"content": "employee's",
+						"boundingBox": [
+							0.9352,
+							5.7502,
+							1.5292,
+							5.7502,
+							1.5292,
+							5.9008,
+							0.9352,
+							5.9008
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 328,
+							"length": 10
+						}
+					},
+					{
+						"content": "hand",
+						"boundingBox": [
+							1.5796,
+							5.7458,
+							1.8215,
+							5.7458,
+							1.8215,
+							5.867,
+							1.5796,
+							5.867
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 339,
+							"length": 4
+						}
+					},
+					{
+						"content": "to",
+						"boundingBox": [
+							1.8701,
+							5.7515,
+							1.9979,
+							5.7515,
+							1.9979,
+							5.8666,
+							1.8701,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 344,
+							"length": 2
+						}
+					},
+					{
+						"content": "come",
+						"boundingBox": [
+							2.0453,
+							5.7919,
+							2.3275,
+							5.7919,
+							2.3275,
+							5.8591,
+							2.0453,
+							5.8591
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 347,
+							"length": 4
+						}
+					},
+					{
+						"content": "into",
+						"boundingBox": [
+							2.3793,
+							5.7515,
+							2.5869,
+							5.7515,
+							2.5869,
+							5.8666,
+							2.3793,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 352,
+							"length": 4
+						}
+					},
+					{
+						"content": "contact",
+						"boundingBox": [
+							2.6343,
+							5.7515,
+							3.0386,
+							5.7515,
+							3.0386,
+							5.8666,
+							2.6343,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 357,
+							"length": 7
+						}
+					},
+					{
+						"content": "with",
+						"boundingBox": [
+							3.0858,
+							5.7458,
+							3.3184,
+							5.7458,
+							3.3184,
+							5.8666,
+							3.0858,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 365,
+							"length": 4
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.3658,
+							5.7458,
+							3.5462,
+							5.7458,
+							3.5462,
+							5.8666,
+							3.3658,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 370,
+							"length": 3
+						}
+					},
+					{
+						"content": "deli",
+						"boundingBox": [
+							3.594,
+							5.7491,
+							3.767,
+							5.7491,
+							3.767,
+							5.867,
+							3.594,
+							5.867
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 374,
+							"length": 4
+						}
+					},
+					{
+						"content": "slicer.",
+						"boundingBox": [
+							0.9368,
+							5.9404,
+							1.2453,
+							5.9404,
+							1.2453,
+							6.0542,
+							0.9368,
+							6.0542
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 379,
+							"length": 7
+						}
+					},
+					{
+						"content": "Employee",
+						"boundingBox": [
+							1.2928,
+							5.9404,
+							1.8092,
+							5.9404,
+							1.8092,
+							6.091,
+							1.2928,
+							6.091
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 387,
+							"length": 8
+						}
+					},
+					{
+						"content": "lost",
+						"boundingBox": [
+							1.8618,
+							5.9404,
+							2.0767,
+							5.9404,
+							2.0767,
+							6.0568,
+							1.8618,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 396,
+							"length": 4
+						}
+					},
+					{
+						"content": "tip",
+						"boundingBox": [
+							2.1193,
+							5.9417,
+							2.2662,
+							5.9417,
+							2.2662,
+							6.091,
+							2.1193,
+							6.091
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 401,
+							"length": 3
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							2.3165,
+							5.9343,
+							2.4487,
+							5.9343,
+							2.4487,
+							6.0493,
+							2.3165,
+							6.0493
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 405,
+							"length": 2
+						}
+					},
+					{
+						"content": "thumb;",
+						"boundingBox": [
+							2.4735,
+							5.936,
+							2.8591,
+							5.936,
+							2.8591,
+							6.0648,
+							2.4735,
+							6.0648
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 408,
+							"length": 6
+						}
+					},
+					{
+						"content": "there",
+						"boundingBox": [
+							2.9041,
+							5.936,
+							3.2022,
+							5.936,
+							3.2022,
+							6.0568,
+							2.9041,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 415,
+							"length": 5
+						}
+					},
+					{
+						"content": "was",
+						"boundingBox": [
+							3.2509,
+							5.9853,
+							3.4672,
+							5.9853,
+							3.4672,
+							6.0514,
+							3.2509,
+							6.0514
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 421,
+							"length": 3
+						}
+					},
+					{
+						"content": "no",
+						"boundingBox": [
+							3.5183,
+							5.9839,
+							3.6426,
+							5.9839,
+							3.6426,
+							6.056,
+							3.5183,
+							6.056
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 425,
+							"length": 2
+						}
+					},
+					{
+						"content": "bone",
+						"boundingBox": [
+							3.6936,
+							5.9404,
+							3.9456,
+							5.9404,
+							3.9456,
+							6.056,
+							3.6936,
+							6.056
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 428,
+							"length": 4
+						}
+					},
+					{
+						"content": "loss.",
+						"boundingBox": [
+							0.94,
+							6.1306,
+							1.1854,
+							6.1306,
+							1.1854,
+							6.2443,
+							0.94,
+							6.2443
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 433,
+							"length": 5
+						}
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							4.1403,
+							5.7609,
+							4.1967,
+							5.7609,
+							4.1967,
+							5.854,
+							4.1403,
+							5.854
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 439,
+							"length": 1
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							5.1121,
+							5.7561,
+							5.1273,
+							5.7561,
+							5.1273,
+							5.8568,
+							5.1121,
+							5.8568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 441,
+							"length": 1
+						}
+					},
+					{
+						"content": "Fingertip(s)",
+						"boundingBox": [
+							6.0346,
+							5.7454,
+							6.6353,
+							5.7454,
+							6.6353,
+							5.9072,
+							6.0346,
+							5.9072
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 443,
+							"length": 12
+						}
+					},
+					{
+						"content": "Food",
+						"boundingBox": [
+							6.8185,
+							5.6541,
+							7.0797,
+							5.6541,
+							7.0797,
+							5.772,
+							6.8185,
+							5.772
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 456,
+							"length": 4
+						}
+					},
+					{
+						"content": "slicers",
+						"boundingBox": [
+							6.8168,
+							5.8454,
+							7.1703,
+							5.8454,
+							7.1703,
+							5.9591,
+							6.8168,
+							5.9591
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 461,
+							"length": 7
+						}
+					},
+					{
+						"content": "Page",
+						"boundingBox": [
+							3.833,
+							10.7955,
+							4.0851,
+							10.7955,
+							4.0851,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 469,
+							"length": 4
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.1384,
+							10.7955,
+							4.1866,
+							10.7955,
+							4.1866,
+							10.8765,
+							4.1384,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 474,
+							"length": 1
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							4.2382,
+							10.792,
+							4.3412,
+							10.792,
+							4.3412,
+							10.8779,
+							4.2382,
+							10.8779
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 476,
+							"length": 2
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.3865,
+							10.7955,
+							4.4347,
+							10.7955,
+							4.4347,
+							10.8765,
+							4.3865,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 479,
+							"length": 1
+						}
+					}
+				],
+				"selectionMarks": [],
+				"lines": [
+					{
+						"content": "ID: 202045001",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.7419,
+							2.1201,
+							1.7419,
+							2.2217,
+							0.9147,
+							2.2217
+						],
+						"spans": [
+							{
+								"offset": 0,
+								"length": 13
+							}
+						]
+					},
+					{
+						"content": "Company: Wide World Importers",
+						"boundingBox": [
+							0.9089,
+							2.3559,
+							3.0093,
+							2.3559,
+							3.0093,
+							2.5076,
+							0.9089,
+							2.5076
+						],
+						"spans": [
+							{
+								"offset": 14,
+								"length": 29
+							}
+						]
+					},
+					{
+						"content": "Location: Sydney",
+						"boundingBox": [
+							0.9147,
+							2.5877,
+							2.0274,
+							2.5877,
+							2.0274,
+							2.7354,
+							0.9147,
+							2.7354
+						],
+						"spans": [
+							{
+								"offset": 44,
+								"length": 16
+							}
+						]
+					},
+					{
+						"content": "Event: Struck against moving part of machinery or equipment",
+						"boundingBox": [
+							0.9147,
+							4.0165,
+							4.4799,
+							4.0165,
+							4.4799,
+							4.1795,
+							0.9147,
+							4.1795
+						],
+						"spans": [
+							{
+								"offset": 61,
+								"length": 59
+							}
+						]
+					},
+					{
+						"content": "Nature: Amputations",
+						"boundingBox": [
+							0.9147,
+							4.2543,
+							2.2521,
+							4.2543,
+							2.2521,
+							4.405,
+							0.9147,
+							4.405
+						],
+						"spans": [
+							{
+								"offset": 121,
+								"length": 19
+							}
+						]
+					},
+					{
+						"content": "Event Date: January 4, 2022",
+						"boundingBox": [
+							5.0221,
+							4.0279,
+							6.8711,
+							4.0279,
+							6.8711,
+							4.1691,
+							5.0221,
+							4.1691
+						],
+						"spans": [
+							{
+								"offset": 141,
+								"length": 27
+							}
+						]
+					},
+					{
+						"content": "Final Narrative",
+						"boundingBox": [
+							0.9468,
+							5.0045,
+							1.9356,
+							5.0045,
+							1.9356,
+							5.1119,
+							0.9468,
+							5.1119
+						],
+						"spans": [
+							{
+								"offset": 169,
+								"length": 15
+							}
+						]
+					},
+					{
+						"content": "Hospitalized Amputation Part Of",
+						"boundingBox": [
+							4.15,
+							4.9237,
+							6.5082,
+							4.9237,
+							6.5082,
+							5.1388,
+							4.15,
+							5.1388
+						],
+						"spans": [
+							{
+								"offset": 185,
+								"length": 31
+							}
+						]
+					},
+					{
+						"content": "Body",
+						"boundingBox": [
+							6.043,
+							5.0854,
+							6.3756,
+							5.0854,
+							6.3756,
+							5.2197,
+							6.043,
+							5.2197
+						],
+						"spans": [
+							{
+								"offset": 217,
+								"length": 4
+							}
+						]
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.8224,
+							5.007,
+							7.2824,
+							5.007,
+							7.2824,
+							5.1119,
+							6.8224,
+							5.1119
+						],
+						"spans": [
+							{
+								"offset": 222,
+								"length": 6
+							}
+						]
+					},
+					{
+						"content": "On or about 1/4/15 at 1:50 PM, employee was slicing",
+						"boundingBox": [
+							0.9338,
+							5.3699,
+							3.779,
+							5.3699,
+							3.779,
+							5.5269,
+							0.9338,
+							5.5269
+						],
+						"spans": [
+							{
+								"offset": 229,
+								"length": 51
+							}
+						]
+					},
+					{
+						"content": "ham when a piece of meat slipped, allowing the",
+						"boundingBox": [
+							0.9368,
+							5.554,
+							3.5341,
+							5.554,
+							3.5341,
+							5.717,
+							0.9368,
+							5.717
+						],
+						"spans": [
+							{
+								"offset": 281,
+								"length": 46
+							}
+						]
+					},
+					{
+						"content": "employee's hand to come into contact with the deli",
+						"boundingBox": [
+							0.9352,
+							5.7458,
+							3.767,
+							5.7458,
+							3.767,
+							5.9008,
+							0.9352,
+							5.9008
+						],
+						"spans": [
+							{
+								"offset": 328,
+								"length": 50
+							}
+						]
+					},
+					{
+						"content": "slicer. Employee lost tip of thumb; there was no bone",
+						"boundingBox": [
+							0.9368,
+							5.9343,
+							3.9456,
+							5.9343,
+							3.9456,
+							6.091,
+							0.9368,
+							6.091
+						],
+						"spans": [
+							{
+								"offset": 379,
+								"length": 53
+							}
+						]
+					},
+					{
+						"content": "loss.",
+						"boundingBox": [
+							0.94,
+							6.1306,
+							1.1854,
+							6.1306,
+							1.1854,
+							6.2443,
+							0.94,
+							6.2443
+						],
+						"spans": [
+							{
+								"offset": 433,
+								"length": 5
+							}
+						]
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							4.1403,
+							5.7609,
+							4.1967,
+							5.7609,
+							4.1967,
+							5.854,
+							4.1403,
+							5.854
+						],
+						"spans": [
+							{
+								"offset": 439,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							5.1121,
+							5.7561,
+							5.1273,
+							5.7561,
+							5.1273,
+							5.8568,
+							5.1121,
+							5.8568
+						],
+						"spans": [
+							{
+								"offset": 441,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "Fingertip(s) Food",
+						"boundingBox": [
+							6.0346,
+							5.6541,
+							7.0797,
+							5.6541,
+							7.0797,
+							5.9072,
+							6.0346,
+							5.9072
+						],
+						"spans": [
+							{
+								"offset": 443,
+								"length": 17
+							}
+						]
+					},
+					{
+						"content": "slicers",
+						"boundingBox": [
+							6.8168,
+							5.8454,
+							7.1703,
+							5.8454,
+							7.1703,
+							5.9591,
+							6.8168,
+							5.9591
+						],
+						"spans": [
+							{
+								"offset": 461,
+								"length": 7
+							}
+						]
+					},
+					{
+						"content": "Page 1 of 1",
+						"boundingBox": [
+							3.833,
+							10.792,
+							4.4347,
+							10.792,
+							4.4347,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"spans": [
+							{
+								"offset": 469,
+								"length": 11
+							}
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 0,
+						"length": 480
+					}
+				]
+			}
+		],
+		"tables": [
+			{
+				"rowCount": 3,
+				"columnCount": 5,
+				"cells": [
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 0,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Final Narrative",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.8654,
+									4.8437,
+									4.0736,
+									4.8376,
+									4.0736,
+									5.2797,
+									0.872,
+									5.2797
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 169,
+								"length": 15
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 1,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Hospitalized",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.0736,
+									4.8376,
+									5.0428,
+									4.8376,
+									5.0361,
+									5.2797,
+									4.0736,
+									5.2797
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 185,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 2,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Amputation",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.0428,
+									4.8376,
+									5.9719,
+									4.8376,
+									5.9652,
+									5.2797,
+									5.0361,
+									5.2797
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 198,
+								"length": 10
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 3,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Part Of Body",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.9719,
+									4.8376,
+									6.7539,
+									4.8376,
+									6.7472,
+									5.2797,
+									5.9652,
+									5.2797
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 209,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Source",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.7539,
+									4.8376,
+									7.3889,
+									4.8376,
+									7.3889,
+									5.2736,
+									6.7472,
+									5.2797
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 222,
+								"length": 6
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 0,
+						"rowSpan": 2,
+						"columnSpan": 1,
+						"content": "On or about 1/4/15 at 1:50 PM, employee was slicing ham when a piece of meat slipped, allowing the employee's hand to come into contact with the deli slicer. Employee lost tip of thumb; there was no bone loss.",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.872,
+									5.2797,
+									4.0736,
+									5.2797,
+									4.0736,
+									6.2728,
+									0.872,
+									6.2788
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 229,
+								"length": 209
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 1,
+						"rowSpan": 2,
+						"columnSpan": 1,
+						"content": "0",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.0736,
+									5.2797,
+									5.0361,
+									5.2797,
+									5.0361,
+									6.2728,
+									4.0736,
+									6.2728
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 439,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 2,
+						"rowSpan": 2,
+						"columnSpan": 1,
+						"content": "1",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.0361,
+									5.2797,
+									5.9652,
+									5.2797,
+									5.9652,
+									6.2728,
+									5.0361,
+									6.2728
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 441,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 3,
+						"rowSpan": 2,
+						"columnSpan": 1,
+						"content": "Fingertip(s)",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.9652,
+									5.2797,
+									6.7472,
+									5.2797,
+									6.7472,
+									6.2728,
+									5.9652,
+									6.2728
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 443,
+								"length": 12
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Food slicers",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.7472,
+									5.2797,
+									7.3889,
+									5.2736,
+									7.3889,
+									6.1093,
+									6.7472,
+									6.1093
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 456,
+								"length": 12
+							}
+						]
+					},
+					{
+						"rowIndex": 2,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.7472,
+									6.1093,
+									7.3889,
+									6.1093,
+									7.3889,
+									6.2728,
+									6.7472,
+									6.2728
+								]
+							}
+						],
+						"spans": []
+					}
+				],
+				"boundingRegions": [
+					{
+						"pageNumber": 1,
+						"boundingBox": [
+							0.8892,
+							4.8086,
+							7.4041,
+							4.8081,
+							7.4088,
+							6.2273,
+							0.8918,
+							6.2285
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 169,
+						"length": 299
+					}
+				]
+			}
+		],
+		"styles": []
+	}
+}

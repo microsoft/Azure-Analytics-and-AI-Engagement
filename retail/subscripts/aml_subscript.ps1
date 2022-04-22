@@ -57,7 +57,7 @@ $StartTime = Get-Date
 $amlworkspacename = "amlws-$suffix"
 $cpuShell = "cpuShell$random"
 $EndTime = $StartTime.AddDays(6)
-$sasToken = New-AzStorageContainerSASToken -Container "incidentreportjson" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+$sasToken = New-AzStorageContainerSASToken -Container "incidentpdftraining" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 $forms_cogs_endpoint = "https://"+$location+".api.cognitive.microsoft.com/"
 
 Write-Host "----Form Recognizer-----"
@@ -66,7 +66,7 @@ Write-Host "----Form Recognizer-----"
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
                 -replace '#LOCATION#', $location`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
-				-replace '#CONTAINER_NAME#', "incidentreportjson"`
+				-replace '#CONTAINER_NAME#', "incidentpdftraining"`
 				-replace '#SAS_TOKEN#', $sasToken`
 				-replace '#APIM_KEY#',  $forms_cogs_key`
 			} | Set-Content -Path ../artifacts/formrecognizer/create_model1.py

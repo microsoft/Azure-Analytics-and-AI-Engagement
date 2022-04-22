@@ -1,0 +1,1714 @@
+{
+	"status": "succeeded",
+	"createdDateTime": "2022-01-25T23:05:03Z",
+	"lastUpdatedDateTime": "2022-01-25T23:05:05Z",
+	"analyzeResult": {
+		"apiVersion": "2021-09-30-preview",
+		"modelId": "prebuilt-layout",
+		"stringIndexType": "textElements",
+		"content": "ID: 202045004\nCompany: Wide World Importers\nLocation: Sydney\nEvent: Struck against moving part of machinery or equipment\nNature: Amputations\nEvent Date: January 7, 2022\nFinal Narrative\nHospitalized Amputation Part Of Body\nSource\nEmployee suffered a partial amputation of the\nthumb while working with a band saw.\n0\n1\nFinger(s),\nfingernail(s), n.e.c.\nBand\nsaws\nPage 1 of 1",
+		"pages": [
+			{
+				"pageNumber": 1,
+				"angle": 0,
+				"width": 8.2639,
+				"height": 11.6806,
+				"unit": "inch",
+				"words": [
+					{
+						"content": "ID:",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.1089,
+							2.1201,
+							1.1089,
+							2.2213,
+							0.9147,
+							2.2213
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 0,
+							"length": 3
+						}
+					},
+					{
+						"content": "202045004",
+						"boundingBox": [
+							1.1711,
+							2.1219,
+							1.7871,
+							2.1219,
+							1.7871,
+							2.2217,
+							1.1711,
+							2.2217
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 4,
+							"length": 9
+						}
+					},
+					{
+						"content": "Company:",
+						"boundingBox": [
+							0.9089,
+							2.3605,
+							1.6658,
+							2.3605,
+							1.6658,
+							2.4934,
+							0.9089,
+							2.4934
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 14,
+							"length": 8
+						}
+					},
+					{
+						"content": "Wide",
+						"boundingBox": [
+							1.7253,
+							2.3559,
+							1.9915,
+							2.3559,
+							1.9915,
+							2.4738,
+							1.7253,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 23,
+							"length": 4
+						}
+					},
+					{
+						"content": "World",
+						"boundingBox": [
+							2.0374,
+							2.3559,
+							2.3672,
+							2.3559,
+							2.3672,
+							2.4738,
+							2.0374,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 28,
+							"length": 5
+						}
+					},
+					{
+						"content": "Importers",
+						"boundingBox": [
+							2.416,
+							2.3583,
+							3.0093,
+							2.3583,
+							3.0093,
+							2.5076,
+							2.416,
+							2.5076
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 34,
+							"length": 9
+						}
+					},
+					{
+						"content": "Location:",
+						"boundingBox": [
+							0.9147,
+							2.5898,
+							1.6097,
+							2.5898,
+							1.6097,
+							2.6972,
+							0.9147,
+							2.6972
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 44,
+							"length": 9
+						}
+					},
+					{
+						"content": "Sydney",
+						"boundingBox": [
+							1.6679,
+							2.5877,
+							2.0274,
+							2.5877,
+							2.0274,
+							2.7354,
+							1.6679,
+							2.7354
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 54,
+							"length": 6
+						}
+					},
+					{
+						"content": "Event:",
+						"boundingBox": [
+							0.9147,
+							4.0279,
+							1.3865,
+							4.0279,
+							1.3865,
+							4.1309,
+							0.9147,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 61,
+							"length": 6
+						}
+					},
+					{
+						"content": "Struck",
+						"boundingBox": [
+							1.4447,
+							4.0238,
+							1.801,
+							4.0238,
+							1.801,
+							4.139,
+							1.4447,
+							4.139
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 68,
+							"length": 6
+						}
+					},
+					{
+						"content": "against",
+						"boundingBox": [
+							1.8461,
+							4.0238,
+							2.2398,
+							4.0238,
+							2.2398,
+							4.1795,
+							1.8461,
+							4.1795
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 75,
+							"length": 7
+						}
+					},
+					{
+						"content": "moving",
+						"boundingBox": [
+							2.2925,
+							4.0509,
+							2.6547,
+							4.0509,
+							2.6547,
+							4.1795,
+							2.2925,
+							4.1795
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 83,
+							"length": 6
+						}
+					},
+					{
+						"content": "part",
+						"boundingBox": [
+							2.7061,
+							4.0238,
+							2.9416,
+							4.0238,
+							2.9416,
+							4.1732,
+							2.7061,
+							4.1732
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 90,
+							"length": 4
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							2.9894,
+							4.0165,
+							3.1216,
+							4.0165,
+							3.1216,
+							4.1315,
+							2.9894,
+							4.1315
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 95,
+							"length": 2
+						}
+					},
+					{
+						"content": "machinery",
+						"boundingBox": [
+							3.1564,
+							4.0182,
+							3.7009,
+							4.0182,
+							3.7009,
+							4.1691,
+							3.1564,
+							4.1691
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 98,
+							"length": 9
+						}
+					},
+					{
+						"content": "or",
+						"boundingBox": [
+							3.7473,
+							4.0661,
+							3.8749,
+							4.0661,
+							3.8749,
+							4.1325,
+							3.7473,
+							4.1325
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 108,
+							"length": 2
+						}
+					},
+					{
+						"content": "equipment",
+						"boundingBox": [
+							3.9197,
+							4.0238,
+							4.4799,
+							4.0238,
+							4.4799,
+							4.1732,
+							3.9197,
+							4.1732
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 111,
+							"length": 9
+						}
+					},
+					{
+						"content": "Nature:",
+						"boundingBox": [
+							0.9147,
+							4.2597,
+							1.4794,
+							4.2597,
+							1.4794,
+							4.3628,
+							0.9147,
+							4.3628
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 121,
+							"length": 7
+						}
+					},
+					{
+						"content": "Amputations",
+						"boundingBox": [
+							1.5431,
+							4.2543,
+							2.2521,
+							4.2543,
+							2.2521,
+							4.405,
+							1.5431,
+							4.405
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 129,
+							"length": 11
+						}
+					},
+					{
+						"content": "Event",
+						"boundingBox": [
+							5.0251,
+							4.0279,
+							5.4537,
+							4.0279,
+							5.4537,
+							4.1309,
+							5.0251,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 141,
+							"length": 5
+						}
+					},
+					{
+						"content": "Date:",
+						"boundingBox": [
+							5.518,
+							4.0279,
+							5.9146,
+							4.0279,
+							5.9146,
+							4.1309,
+							5.518,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 147,
+							"length": 5
+						}
+					},
+					{
+						"content": "January",
+						"boundingBox": [
+							5.9702,
+							4.0359,
+							6.4204,
+							4.0359,
+							6.4204,
+							4.1691,
+							5.9702,
+							4.1691
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 153,
+							"length": 7
+						}
+					},
+					{
+						"content": "7,",
+						"boundingBox": [
+							6.4661,
+							4.0341,
+							6.5474,
+							4.0341,
+							6.5474,
+							4.147,
+							6.4661,
+							4.147
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 161,
+							"length": 2
+						}
+					},
+					{
+						"content": "2022",
+						"boundingBox": [
+							6.5953,
+							4.0326,
+							6.8681,
+							4.0326,
+							6.8681,
+							4.1272,
+							6.5953,
+							4.1272
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 164,
+							"length": 4
+						}
+					},
+					{
+						"content": "Final",
+						"boundingBox": [
+							0.9468,
+							4.9237,
+							1.2399,
+							4.9237,
+							1.2399,
+							5.031,
+							0.9468,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 169,
+							"length": 5
+						}
+					},
+					{
+						"content": "Narrative",
+						"boundingBox": [
+							1.3104,
+							4.9237,
+							1.9356,
+							4.9237,
+							1.9356,
+							5.031,
+							1.3104,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 175,
+							"length": 9
+						}
+					},
+					{
+						"content": "Hospitalized",
+						"boundingBox": [
+							3.7671,
+							4.9237,
+							4.5915,
+							4.9237,
+							4.5915,
+							5.058,
+							3.7671,
+							5.058
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 185,
+							"length": 12
+						}
+					},
+					{
+						"content": "Amputation",
+						"boundingBox": [
+							4.7197,
+							4.9237,
+							5.5183,
+							4.9237,
+							5.5183,
+							5.058,
+							4.7197,
+							5.058
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 198,
+							"length": 10
+						}
+					},
+					{
+						"content": "Part",
+						"boundingBox": [
+							5.6581,
+							4.928,
+							5.9152,
+							4.928,
+							5.9152,
+							5.031,
+							5.6581,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 209,
+							"length": 4
+						}
+					},
+					{
+						"content": "Of",
+						"boundingBox": [
+							5.9704,
+							4.9237,
+							6.1234,
+							4.9237,
+							6.1234,
+							5.031,
+							5.9704,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 214,
+							"length": 2
+						}
+					},
+					{
+						"content": "Body",
+						"boundingBox": [
+							6.1784,
+							4.9237,
+							6.511,
+							4.9237,
+							6.511,
+							5.058,
+							6.1784,
+							5.058
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 217,
+							"length": 4
+						}
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.8092,
+							4.9262,
+							7.2692,
+							4.9262,
+							7.2692,
+							5.031,
+							6.8092,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 222,
+							"length": 6
+						}
+					},
+					{
+						"content": "Employee",
+						"boundingBox": [
+							0.9356,
+							5.2083,
+							1.452,
+							5.2083,
+							1.452,
+							5.3588,
+							0.9356,
+							5.3588
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 229,
+							"length": 8
+						}
+					},
+					{
+						"content": "suffered",
+						"boundingBox": [
+							1.5014,
+							5.2021,
+							1.961,
+							5.2021,
+							1.961,
+							5.3251,
+							1.5014,
+							5.3251
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 238,
+							"length": 8
+						}
+					},
+					{
+						"content": "a",
+						"boundingBox": [
+							2.0151,
+							5.2552,
+							2.0719,
+							5.2552,
+							2.0719,
+							5.3155,
+							2.0151,
+							5.3155
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 247,
+							"length": 1
+						}
+					},
+					{
+						"content": "partial",
+						"boundingBox": [
+							2.1268,
+							5.2083,
+							2.4837,
+							5.2083,
+							2.4837,
+							5.3588,
+							2.1268,
+							5.3588
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 249,
+							"length": 7
+						}
+					},
+					{
+						"content": "amputation",
+						"boundingBox": [
+							2.538,
+							5.2095,
+							3.1707,
+							5.2095,
+							3.1707,
+							5.3588,
+							2.538,
+							5.3588
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 257,
+							"length": 10
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							3.2241,
+							5.2021,
+							3.3563,
+							5.2021,
+							3.3563,
+							5.3171,
+							3.2241,
+							5.3171
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 268,
+							"length": 2
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.3811,
+							5.2038,
+							3.5615,
+							5.2038,
+							3.5615,
+							5.3246,
+							3.3811,
+							5.3246
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 271,
+							"length": 3
+						}
+					},
+					{
+						"content": "thumb",
+						"boundingBox": [
+							0.9315,
+							5.394,
+							1.2958,
+							5.394,
+							1.2958,
+							5.5148,
+							0.9315,
+							5.5148
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 275,
+							"length": 5
+						}
+					},
+					{
+						"content": "while",
+						"boundingBox": [
+							1.3449,
+							5.394,
+							1.6167,
+							5.394,
+							1.6167,
+							5.5122,
+							1.3449,
+							5.5122
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 281,
+							"length": 5
+						}
+					},
+					{
+						"content": "working",
+						"boundingBox": [
+							1.6654,
+							5.4016,
+							2.0849,
+							5.4016,
+							2.0849,
+							5.5554,
+							1.6654,
+							5.5554
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 287,
+							"length": 7
+						}
+					},
+					{
+						"content": "with",
+						"boundingBox": [
+							2.1339,
+							5.394,
+							2.3665,
+							5.394,
+							2.3665,
+							5.5148,
+							2.1339,
+							5.5148
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 295,
+							"length": 4
+						}
+					},
+					{
+						"content": "a",
+						"boundingBox": [
+							2.4194,
+							5.4454,
+							2.4762,
+							5.4454,
+							2.4762,
+							5.5056,
+							2.4194,
+							5.5056
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 300,
+							"length": 1
+						}
+					},
+					{
+						"content": "band",
+						"boundingBox": [
+							2.5319,
+							5.3973,
+							2.7741,
+							5.3973,
+							2.7741,
+							5.5152,
+							2.5319,
+							5.5152
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 302,
+							"length": 4
+						}
+					},
+					{
+						"content": "saw.",
+						"boundingBox": [
+							2.828,
+							5.4433,
+							3.0646,
+							5.4433,
+							3.0646,
+							5.5094,
+							2.828,
+							5.5094
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 307,
+							"length": 4
+						}
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							3.7574,
+							5.3141,
+							3.8137,
+							5.3141,
+							3.8137,
+							5.4071,
+							3.7574,
+							5.4071
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 312,
+							"length": 1
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.7291,
+							5.3092,
+							4.7444,
+							5.3092,
+							4.7444,
+							5.4099,
+							4.7291,
+							5.4099
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 314,
+							"length": 1
+						}
+					},
+					{
+						"content": "Finger(s),",
+						"boundingBox": [
+							5.6518,
+							5.2034,
+							6.1263,
+							5.2034,
+							6.1263,
+							5.3652,
+							5.6518,
+							5.3652
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 316,
+							"length": 10
+						}
+					},
+					{
+						"content": "fingernail(s),",
+						"boundingBox": [
+							5.6397,
+							5.3923,
+							6.2919,
+							5.3923,
+							6.2919,
+							5.5554,
+							5.6397,
+							5.5554
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 327,
+							"length": 14
+						}
+					},
+					{
+						"content": "n.e.c.",
+						"boundingBox": [
+							6.3413,
+							5.4401,
+							6.5612,
+							5.4401,
+							6.5612,
+							5.514,
+							6.3413,
+							5.514
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 342,
+							"length": 6
+						}
+					},
+					{
+						"content": "Band",
+						"boundingBox": [
+							6.8076,
+							5.2071,
+							7.0507,
+							5.2071,
+							7.0507,
+							5.3251,
+							6.8076,
+							5.3251
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 349,
+							"length": 4
+						}
+					},
+					{
+						"content": "saws",
+						"boundingBox": [
+							6.8064,
+							5.4433,
+							7.0879,
+							5.4433,
+							7.0879,
+							5.5094,
+							6.8064,
+							5.5094
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 354,
+							"length": 4
+						}
+					},
+					{
+						"content": "Page",
+						"boundingBox": [
+							3.833,
+							10.7955,
+							4.0851,
+							10.7955,
+							4.0851,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 359,
+							"length": 4
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.1384,
+							10.7955,
+							4.1866,
+							10.7955,
+							4.1866,
+							10.8765,
+							4.1384,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 364,
+							"length": 1
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							4.2382,
+							10.792,
+							4.3412,
+							10.792,
+							4.3412,
+							10.8779,
+							4.2382,
+							10.8779
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 366,
+							"length": 2
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.3865,
+							10.7955,
+							4.4347,
+							10.7955,
+							4.4347,
+							10.8765,
+							4.3865,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 369,
+							"length": 1
+						}
+					}
+				],
+				"selectionMarks": [],
+				"lines": [
+					{
+						"content": "ID: 202045004",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.7871,
+							2.1201,
+							1.7871,
+							2.2217,
+							0.9147,
+							2.2217
+						],
+						"spans": [
+							{
+								"offset": 0,
+								"length": 13
+							}
+						]
+					},
+					{
+						"content": "Company: Wide World Importers",
+						"boundingBox": [
+							0.9089,
+							2.3559,
+							3.0093,
+							2.3559,
+							3.0093,
+							2.5076,
+							0.9089,
+							2.5076
+						],
+						"spans": [
+							{
+								"offset": 14,
+								"length": 29
+							}
+						]
+					},
+					{
+						"content": "Location: Sydney",
+						"boundingBox": [
+							0.9147,
+							2.5877,
+							2.0274,
+							2.5877,
+							2.0274,
+							2.7354,
+							0.9147,
+							2.7354
+						],
+						"spans": [
+							{
+								"offset": 44,
+								"length": 16
+							}
+						]
+					},
+					{
+						"content": "Event: Struck against moving part of machinery or equipment",
+						"boundingBox": [
+							0.9147,
+							4.0165,
+							4.4799,
+							4.0165,
+							4.4799,
+							4.1795,
+							0.9147,
+							4.1795
+						],
+						"spans": [
+							{
+								"offset": 61,
+								"length": 59
+							}
+						]
+					},
+					{
+						"content": "Nature: Amputations",
+						"boundingBox": [
+							0.9147,
+							4.2543,
+							2.2521,
+							4.2543,
+							2.2521,
+							4.405,
+							0.9147,
+							4.405
+						],
+						"spans": [
+							{
+								"offset": 121,
+								"length": 19
+							}
+						]
+					},
+					{
+						"content": "Event Date: January 7, 2022",
+						"boundingBox": [
+							5.0251,
+							4.0279,
+							6.8681,
+							4.0279,
+							6.8681,
+							4.1691,
+							5.0251,
+							4.1691
+						],
+						"spans": [
+							{
+								"offset": 141,
+								"length": 27
+							}
+						]
+					},
+					{
+						"content": "Final Narrative",
+						"boundingBox": [
+							0.9468,
+							4.9237,
+							1.9356,
+							4.9237,
+							1.9356,
+							5.031,
+							0.9468,
+							5.031
+						],
+						"spans": [
+							{
+								"offset": 169,
+								"length": 15
+							}
+						]
+					},
+					{
+						"content": "Hospitalized Amputation Part Of Body",
+						"boundingBox": [
+							3.7671,
+							4.9237,
+							6.511,
+							4.9237,
+							6.511,
+							5.058,
+							3.7671,
+							5.058
+						],
+						"spans": [
+							{
+								"offset": 185,
+								"length": 36
+							}
+						]
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.8092,
+							4.9262,
+							7.2692,
+							4.9262,
+							7.2692,
+							5.031,
+							6.8092,
+							5.031
+						],
+						"spans": [
+							{
+								"offset": 222,
+								"length": 6
+							}
+						]
+					},
+					{
+						"content": "Employee suffered a partial amputation of the",
+						"boundingBox": [
+							0.9356,
+							5.2021,
+							3.5615,
+							5.2021,
+							3.5615,
+							5.3588,
+							0.9356,
+							5.3588
+						],
+						"spans": [
+							{
+								"offset": 229,
+								"length": 45
+							}
+						]
+					},
+					{
+						"content": "thumb while working with a band saw.",
+						"boundingBox": [
+							0.9315,
+							5.394,
+							3.0646,
+							5.394,
+							3.0646,
+							5.5554,
+							0.9315,
+							5.5554
+						],
+						"spans": [
+							{
+								"offset": 275,
+								"length": 36
+							}
+						]
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							3.7574,
+							5.3141,
+							3.8137,
+							5.3141,
+							3.8137,
+							5.4071,
+							3.7574,
+							5.4071
+						],
+						"spans": [
+							{
+								"offset": 312,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.7291,
+							5.3092,
+							4.7444,
+							5.3092,
+							4.7444,
+							5.4099,
+							4.7291,
+							5.4099
+						],
+						"spans": [
+							{
+								"offset": 314,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "Finger(s),",
+						"boundingBox": [
+							5.6518,
+							5.2034,
+							6.1263,
+							5.2034,
+							6.1263,
+							5.3652,
+							5.6518,
+							5.3652
+						],
+						"spans": [
+							{
+								"offset": 316,
+								"length": 10
+							}
+						]
+					},
+					{
+						"content": "fingernail(s), n.e.c.",
+						"boundingBox": [
+							5.6397,
+							5.3923,
+							6.5612,
+							5.3923,
+							6.5612,
+							5.5554,
+							5.6397,
+							5.5554
+						],
+						"spans": [
+							{
+								"offset": 327,
+								"length": 21
+							}
+						]
+					},
+					{
+						"content": "Band",
+						"boundingBox": [
+							6.8076,
+							5.2071,
+							7.0507,
+							5.2071,
+							7.0507,
+							5.3251,
+							6.8076,
+							5.3251
+						],
+						"spans": [
+							{
+								"offset": 349,
+								"length": 4
+							}
+						]
+					},
+					{
+						"content": "saws",
+						"boundingBox": [
+							6.8064,
+							5.4433,
+							7.0879,
+							5.4433,
+							7.0879,
+							5.5094,
+							6.8064,
+							5.5094
+						],
+						"spans": [
+							{
+								"offset": 354,
+								"length": 4
+							}
+						]
+					},
+					{
+						"content": "Page 1 of 1",
+						"boundingBox": [
+							3.833,
+							10.792,
+							4.4347,
+							10.792,
+							4.4347,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"spans": [
+							{
+								"offset": 359,
+								"length": 11
+							}
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 0,
+						"length": 370
+					}
+				]
+			}
+		],
+		"tables": [
+			{
+				"rowCount": 2,
+				"columnCount": 5,
+				"cells": [
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 0,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Final Narrative",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.8726,
+									4.84,
+									3.6944,
+									4.84,
+									3.6944,
+									5.1155,
+									0.8726,
+									5.1155
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 169,
+								"length": 15
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 1,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Hospitalized",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									3.6944,
+									4.84,
+									4.6618,
+									4.84,
+									4.6618,
+									5.1155,
+									3.6944,
+									5.1155
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 185,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 2,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Amputation",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.6618,
+									4.84,
+									5.5756,
+									4.84,
+									5.5823,
+									5.1155,
+									4.6618,
+									5.1155
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 198,
+								"length": 10
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 3,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Part Of Body",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.5756,
+									4.84,
+									6.7446,
+									4.84,
+									6.7446,
+									5.1155,
+									5.5823,
+									5.1155
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 209,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Source",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.7446,
+									4.84,
+									7.3896,
+									4.84,
+									7.3896,
+									5.1155,
+									6.7446,
+									5.1155
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 222,
+								"length": 6
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 0,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Employee suffered a partial amputation of the thumb while working with a band saw.",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.8726,
+									5.1155,
+									3.6944,
+									5.1155,
+									3.6944,
+									5.6137,
+									0.8726,
+									5.6079
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 229,
+								"length": 82
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 1,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "0",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									3.6944,
+									5.1155,
+									4.6618,
+									5.1155,
+									4.6618,
+									5.6079,
+									3.6944,
+									5.6137
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 312,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 2,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "1",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.6618,
+									5.1155,
+									5.5823,
+									5.1155,
+									5.5823,
+									5.6079,
+									4.6618,
+									5.6079
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 314,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 3,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Finger(s), fingernail(s), n.e.c.",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.5823,
+									5.1155,
+									6.7446,
+									5.1155,
+									6.7446,
+									5.6079,
+									5.5823,
+									5.6079
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 316,
+								"length": 32
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Band saws",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.7446,
+									5.1155,
+									7.3896,
+									5.1155,
+									7.3896,
+									5.6137,
+									6.7446,
+									5.6079
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 349,
+								"length": 9
+							}
+						]
+					}
+				],
+				"boundingRegions": [
+					{
+						"pageNumber": 1,
+						"boundingBox": [
+							0.8531,
+							4.8287,
+							7.4043,
+							4.8301,
+							7.4033,
+							5.6277,
+							0.8517,
+							5.6266
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 169,
+						"length": 189
+					}
+				]
+			}
+		],
+		"styles": []
+	}
+}

@@ -315,7 +315,7 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 
 $StartTime = Get-Date
 $EndTime = $StartTime.AddDays(6)
-$sasToken = New-AzStorageContainerSASToken -Container "incidentreportjson" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+$sasToken = New-AzStorageContainerSASToken -Container "incidentpdftraining" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
 
 #download azcopy command
 if ([System.Environment]::OSVersion.Platform -eq "Unix")
@@ -510,7 +510,7 @@ Write-Host "----Form Recognizer-----"
 (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
                 -replace '#LOCATION#', $rglocation`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
-				-replace '#CONTAINER_NAME#', "incidentreportjson"`
+				-replace '#CONTAINER_NAME#', "incidentpdftraining"`
 				-replace '#SAS_TOKEN#', $sasToken`
 				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
 			} | Set-Content -Path artifacts/formrecognizer/create_model1.py

@@ -1,0 +1,2510 @@
+{
+	"status": "succeeded",
+	"createdDateTime": "2022-01-25T23:01:53Z",
+	"lastUpdatedDateTime": "2022-01-25T23:01:55Z",
+	"analyzeResult": {
+		"apiVersion": "2021-09-30-preview",
+		"modelId": "prebuilt-layout",
+		"stringIndexType": "textElements",
+		"content": "ID: 202045002\nCompany: Wide World Importers\nLocation: San Diego\nEvent: Fall on same level due to slipping\nNature: Trauma\nEvent Date: January 5, 2022\nFinal Narrative\nHospitalized Amputation Part Of\nBody\nSource\nAn employee was wrapping meat using an\nautomatic wrapper and putting the meat into a\ntall/mini shelving rack in the refrigerated market/\narea. The employee then transported the meat to\nthe sale floor area. On her way back to the\nmarket area, the employee slipped and fell to the\nfloor. The floor was wet from condensation.\n1\n0\nNonclassifiable Floor,\nunspecified\nPage 1 of 1",
+		"pages": [
+			{
+				"pageNumber": 1,
+				"angle": 0,
+				"width": 8.2639,
+				"height": 11.6806,
+				"unit": "inch",
+				"words": [
+					{
+						"content": "ID:",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.1089,
+							2.1201,
+							1.1089,
+							2.2213,
+							0.9147,
+							2.2213
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 0,
+							"length": 3
+						}
+					},
+					{
+						"content": "202045002",
+						"boundingBox": [
+							1.1711,
+							2.1219,
+							1.7854,
+							2.1219,
+							1.7854,
+							2.2217,
+							1.1711,
+							2.2217
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 4,
+							"length": 9
+						}
+					},
+					{
+						"content": "Company:",
+						"boundingBox": [
+							0.9089,
+							2.3605,
+							1.6658,
+							2.3605,
+							1.6658,
+							2.4934,
+							0.9089,
+							2.4934
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 14,
+							"length": 8
+						}
+					},
+					{
+						"content": "Wide",
+						"boundingBox": [
+							1.7253,
+							2.3559,
+							1.9915,
+							2.3559,
+							1.9915,
+							2.4738,
+							1.7253,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 23,
+							"length": 4
+						}
+					},
+					{
+						"content": "World",
+						"boundingBox": [
+							2.0374,
+							2.3559,
+							2.3672,
+							2.3559,
+							2.3672,
+							2.4738,
+							2.0374,
+							2.4738
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 28,
+							"length": 5
+						}
+					},
+					{
+						"content": "Importers",
+						"boundingBox": [
+							2.416,
+							2.3583,
+							3.0093,
+							2.3583,
+							3.0093,
+							2.5076,
+							2.416,
+							2.5076
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 34,
+							"length": 9
+						}
+					},
+					{
+						"content": "Location:",
+						"boundingBox": [
+							0.9147,
+							2.5898,
+							1.6097,
+							2.5898,
+							1.6097,
+							2.6972,
+							0.9147,
+							2.6972
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 44,
+							"length": 9
+						}
+					},
+					{
+						"content": "San",
+						"boundingBox": [
+							1.6679,
+							2.5943,
+							1.8429,
+							2.5943,
+							1.8429,
+							2.7044,
+							1.6679,
+							2.7044
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 54,
+							"length": 3
+						}
+					},
+					{
+						"content": "Diego",
+						"boundingBox": [
+							1.8978,
+							2.5952,
+							2.1912,
+							2.5952,
+							2.1912,
+							2.7458,
+							1.8978,
+							2.7458
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 58,
+							"length": 5
+						}
+					},
+					{
+						"content": "Event:",
+						"boundingBox": [
+							0.9147,
+							4.0279,
+							1.3865,
+							4.0279,
+							1.3865,
+							4.1309,
+							0.9147,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 64,
+							"length": 6
+						}
+					},
+					{
+						"content": "Fall",
+						"boundingBox": [
+							1.4513,
+							4.0226,
+							1.6272,
+							4.0226,
+							1.6272,
+							4.1363,
+							1.4513,
+							4.1363
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 71,
+							"length": 4
+						}
+					},
+					{
+						"content": "on",
+						"boundingBox": [
+							1.6811,
+							4.0661,
+							1.8011,
+							4.0661,
+							1.8011,
+							4.1382,
+							1.6811,
+							4.1382
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 76,
+							"length": 2
+						}
+					},
+					{
+						"content": "same",
+						"boundingBox": [
+							1.8547,
+							4.0643,
+							2.1437,
+							4.0643,
+							2.1437,
+							4.1315,
+							1.8547,
+							4.1315
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 79,
+							"length": 4
+						}
+					},
+					{
+						"content": "level",
+						"boundingBox": [
+							2.1964,
+							4.0226,
+							2.4155,
+							4.0226,
+							2.4155,
+							4.1363,
+							2.1964,
+							4.1363
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 84,
+							"length": 5
+						}
+					},
+					{
+						"content": "due",
+						"boundingBox": [
+							2.4679,
+							4.0215,
+							2.66,
+							4.0215,
+							2.66,
+							4.1394,
+							2.4679,
+							4.1394
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 90,
+							"length": 3
+						}
+					},
+					{
+						"content": "to",
+						"boundingBox": [
+							2.7041,
+							4.0238,
+							2.8319,
+							4.0238,
+							2.8319,
+							4.139,
+							2.7041,
+							4.139
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 94,
+							"length": 2
+						}
+					},
+					{
+						"content": "slipping",
+						"boundingBox": [
+							2.8804,
+							4.0226,
+							3.2725,
+							4.0226,
+							3.2725,
+							4.1795,
+							2.8804,
+							4.1795
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 97,
+							"length": 8
+						}
+					},
+					{
+						"content": "Nature:",
+						"boundingBox": [
+							0.9147,
+							4.2597,
+							1.4794,
+							4.2597,
+							1.4794,
+							4.3628,
+							0.9147,
+							4.3628
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 106,
+							"length": 7
+						}
+					},
+					{
+						"content": "Trauma",
+						"boundingBox": [
+							1.5356,
+							4.2654,
+							1.9521,
+							4.2654,
+							1.9521,
+							4.3664,
+							1.5356,
+							4.3664
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 114,
+							"length": 6
+						}
+					},
+					{
+						"content": "Event",
+						"boundingBox": [
+							4.4184,
+							4.0279,
+							4.847,
+							4.0279,
+							4.847,
+							4.1309,
+							4.4184,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 121,
+							"length": 5
+						}
+					},
+					{
+						"content": "Date:",
+						"boundingBox": [
+							4.9113,
+							4.0279,
+							5.308,
+							4.0279,
+							5.308,
+							4.1309,
+							4.9113,
+							4.1309
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 127,
+							"length": 5
+						}
+					},
+					{
+						"content": "January",
+						"boundingBox": [
+							5.3635,
+							4.0359,
+							5.8138,
+							4.0359,
+							5.8138,
+							4.1691,
+							5.3635,
+							4.1691
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 133,
+							"length": 7
+						}
+					},
+					{
+						"content": "5,",
+						"boundingBox": [
+							5.8599,
+							4.0327,
+							5.9489,
+							4.0327,
+							5.9489,
+							4.147,
+							5.8599,
+							4.147
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 141,
+							"length": 2
+						}
+					},
+					{
+						"content": "2022",
+						"boundingBox": [
+							5.9968,
+							4.0326,
+							6.2696,
+							4.0326,
+							6.2696,
+							4.1272,
+							5.9968,
+							4.1272
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 144,
+							"length": 4
+						}
+					},
+					{
+						"content": "Final",
+						"boundingBox": [
+							0.9468,
+							5.0045,
+							1.2399,
+							5.0045,
+							1.2399,
+							5.1119,
+							0.9468,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 149,
+							"length": 5
+						}
+					},
+					{
+						"content": "Narrative",
+						"boundingBox": [
+							1.3104,
+							5.0045,
+							1.9356,
+							5.0045,
+							1.9356,
+							5.1119,
+							1.3104,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 155,
+							"length": 9
+						}
+					},
+					{
+						"content": "Hospitalized",
+						"boundingBox": [
+							3.8731,
+							5.0045,
+							4.6976,
+							5.0045,
+							4.6976,
+							5.1388,
+							3.8731,
+							5.1388
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 165,
+							"length": 12
+						}
+					},
+					{
+						"content": "Amputation",
+						"boundingBox": [
+							4.8258,
+							5.0045,
+							5.6244,
+							5.0045,
+							5.6244,
+							5.1388,
+							4.8258,
+							5.1388
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 178,
+							"length": 10
+						}
+					},
+					{
+						"content": "Part",
+						"boundingBox": [
+							5.7662,
+							4.928,
+							6.0232,
+							4.928,
+							6.0232,
+							5.031,
+							5.7662,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 189,
+							"length": 4
+						}
+					},
+					{
+						"content": "Of",
+						"boundingBox": [
+							6.0784,
+							4.9237,
+							6.2314,
+							4.9237,
+							6.2314,
+							5.031,
+							6.0784,
+							5.031
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 194,
+							"length": 2
+						}
+					},
+					{
+						"content": "Body",
+						"boundingBox": [
+							5.7662,
+							5.0854,
+							6.0988,
+							5.0854,
+							6.0988,
+							5.2197,
+							5.7662,
+							5.2197
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 197,
+							"length": 4
+						}
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.6976,
+							5.007,
+							7.1576,
+							5.007,
+							7.1576,
+							5.1119,
+							6.6976,
+							5.1119
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 202,
+							"length": 6
+						}
+					},
+					{
+						"content": "An",
+						"boundingBox": [
+							0.9374,
+							5.3698,
+							1.0574,
+							5.3698,
+							1.0574,
+							5.4855,
+							0.9374,
+							5.4855
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 209,
+							"length": 2
+						}
+					},
+					{
+						"content": "employee",
+						"boundingBox": [
+							1.1093,
+							5.3699,
+							1.6165,
+							5.3699,
+							1.6165,
+							5.5205,
+							1.1093,
+							5.5205
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 212,
+							"length": 8
+						}
+					},
+					{
+						"content": "was",
+						"boundingBox": [
+							1.6653,
+							5.4148,
+							1.8815,
+							5.4148,
+							1.8815,
+							5.4809,
+							1.6653,
+							5.4809
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 221,
+							"length": 3
+						}
+					},
+					{
+						"content": "wrapping",
+						"boundingBox": [
+							1.9312,
+							5.3983,
+							2.4118,
+							5.3983,
+							2.4118,
+							5.5269,
+							1.9312,
+							5.5269
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 225,
+							"length": 8
+						}
+					},
+					{
+						"content": "meat",
+						"boundingBox": [
+							2.4662,
+							5.3712,
+							2.74,
+							5.3712,
+							2.74,
+							5.4863,
+							2.4662,
+							5.4863
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 234,
+							"length": 4
+						}
+					},
+					{
+						"content": "using",
+						"boundingBox": [
+							2.7898,
+							5.3983,
+							3.0654,
+							5.3983,
+							3.0654,
+							5.5269,
+							2.7898,
+							5.5269
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 239,
+							"length": 5
+						}
+					},
+					{
+						"content": "an",
+						"boundingBox": [
+							3.1154,
+							5.4169,
+							3.2282,
+							5.4169,
+							3.2282,
+							5.4855,
+							3.1154,
+							5.4855
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 245,
+							"length": 2
+						}
+					},
+					{
+						"content": "automatic",
+						"boundingBox": [
+							0.9371,
+							5.5613,
+							1.5061,
+							5.5613,
+							1.5061,
+							5.6765,
+							0.9371,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 248,
+							"length": 9
+						}
+					},
+					{
+						"content": "wrapper",
+						"boundingBox": [
+							1.5533,
+							5.6001,
+							2.0104,
+							5.6001,
+							2.0104,
+							5.7106,
+							1.5533,
+							5.7106
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 258,
+							"length": 7
+						}
+					},
+					{
+						"content": "and",
+						"boundingBox": [
+							2.0571,
+							5.559,
+							2.2318,
+							5.559,
+							2.2318,
+							5.6769,
+							2.0571,
+							5.6769
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 266,
+							"length": 3
+						}
+					},
+					{
+						"content": "putting",
+						"boundingBox": [
+							2.2873,
+							5.5613,
+							2.6691,
+							5.5613,
+							2.6691,
+							5.717,
+							2.2873,
+							5.717
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 270,
+							"length": 7
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							2.7136,
+							5.5556,
+							2.894,
+							5.5556,
+							2.894,
+							5.6765,
+							2.7136,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 278,
+							"length": 3
+						}
+					},
+					{
+						"content": "meat",
+						"boundingBox": [
+							2.9482,
+							5.5613,
+							3.2219,
+							5.5613,
+							3.2219,
+							5.6765,
+							2.9482,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 282,
+							"length": 4
+						}
+					},
+					{
+						"content": "into",
+						"boundingBox": [
+							3.2722,
+							5.5613,
+							3.4798,
+							5.5613,
+							3.4798,
+							5.6765,
+							3.2722,
+							5.6765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 287,
+							"length": 4
+						}
+					},
+					{
+						"content": "a",
+						"boundingBox": [
+							3.5286,
+							5.607,
+							3.5854,
+							5.607,
+							3.5854,
+							5.6673,
+							3.5286,
+							5.6673
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 292,
+							"length": 1
+						}
+					},
+					{
+						"content": "tall/mini",
+						"boundingBox": [
+							0.9315,
+							5.7502,
+							1.3736,
+							5.7502,
+							1.3736,
+							5.8666,
+							0.9315,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 294,
+							"length": 9
+						}
+					},
+					{
+						"content": "shelving",
+						"boundingBox": [
+							1.4283,
+							5.7458,
+							1.8425,
+							5.7458,
+							1.8425,
+							5.9072,
+							1.4283,
+							5.9072
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 304,
+							"length": 8
+						}
+					},
+					{
+						"content": "rack",
+						"boundingBox": [
+							1.8961,
+							5.7534,
+							2.1261,
+							5.7534,
+							2.1261,
+							5.8622,
+							1.8961,
+							5.8622
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 313,
+							"length": 4
+						}
+					},
+					{
+						"content": "in",
+						"boundingBox": [
+							2.1733,
+							5.7786,
+							2.2478,
+							5.7786,
+							2.2478,
+							5.8658,
+							2.1733,
+							5.8658
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 318,
+							"length": 2
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							2.2961,
+							5.7458,
+							2.4765,
+							5.7458,
+							2.4765,
+							5.8666,
+							2.2961,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 321,
+							"length": 3
+						}
+					},
+					{
+						"content": "refrigerated",
+						"boundingBox": [
+							2.5298,
+							5.7441,
+							3.1844,
+							5.7441,
+							3.1844,
+							5.9072,
+							2.5298,
+							5.9072
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 325,
+							"length": 12
+						}
+					},
+					{
+						"content": "market/",
+						"boundingBox": [
+							3.243,
+							5.7515,
+							3.6866,
+							5.7515,
+							3.6866,
+							5.8666,
+							3.243,
+							5.8666
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 338,
+							"length": 7
+						}
+					},
+					{
+						"content": "area.",
+						"boundingBox": [
+							0.9371,
+							5.9821,
+							1.2027,
+							5.9821,
+							1.2027,
+							6.0503,
+							0.9371,
+							6.0503
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 346,
+							"length": 5
+						}
+					},
+					{
+						"content": "The",
+						"boundingBox": [
+							1.2445,
+							5.936,
+							1.4257,
+							5.936,
+							1.4257,
+							6.0493,
+							1.2445,
+							6.0493
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 352,
+							"length": 3
+						}
+					},
+					{
+						"content": "employee",
+						"boundingBox": [
+							1.4735,
+							5.9404,
+							1.9807,
+							5.9404,
+							1.9807,
+							6.091,
+							1.4735,
+							6.091
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 356,
+							"length": 8
+						}
+					},
+					{
+						"content": "then",
+						"boundingBox": [
+							2.0249,
+							5.936,
+							2.2575,
+							5.936,
+							2.2575,
+							6.0568,
+							2.0249,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 365,
+							"length": 4
+						}
+					},
+					{
+						"content": "transported",
+						"boundingBox": [
+							2.3058,
+							5.9393,
+							2.9726,
+							5.9393,
+							2.9726,
+							6.091,
+							2.3058,
+							6.091
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 370,
+							"length": 11
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.0212,
+							5.936,
+							3.2016,
+							5.936,
+							3.2016,
+							6.0568,
+							3.0212,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 382,
+							"length": 3
+						}
+					},
+					{
+						"content": "meat",
+						"boundingBox": [
+							3.2558,
+							5.9417,
+							3.5295,
+							5.9417,
+							3.5295,
+							6.0568,
+							3.2558,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 386,
+							"length": 4
+						}
+					},
+					{
+						"content": "to",
+						"boundingBox": [
+							3.5722,
+							5.9417,
+							3.7,
+							5.9417,
+							3.7,
+							6.0568,
+							3.5722,
+							6.0568
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 391,
+							"length": 2
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							0.9315,
+							6.1261,
+							1.112,
+							6.1261,
+							1.112,
+							6.2469,
+							0.9315,
+							6.2469
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 394,
+							"length": 3
+						}
+					},
+					{
+						"content": "sale",
+						"boundingBox": [
+							1.1614,
+							6.1306,
+							1.3781,
+							6.1306,
+							1.3781,
+							6.2443,
+							1.1614,
+							6.2443
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 398,
+							"length": 4
+						}
+					},
+					{
+						"content": "floor",
+						"boundingBox": [
+							1.4171,
+							6.1244,
+							1.7032,
+							6.1244,
+							1.7032,
+							6.2443,
+							1.4171,
+							6.2443
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 403,
+							"length": 5
+						}
+					},
+					{
+						"content": "area.",
+						"boundingBox": [
+							1.7499,
+							6.1722,
+							2.0154,
+							6.1722,
+							2.0154,
+							6.2404,
+							1.7499,
+							6.2404
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 409,
+							"length": 5
+						}
+					},
+					{
+						"content": "On",
+						"boundingBox": [
+							2.0611,
+							6.1439,
+							2.1855,
+							6.1439,
+							2.1855,
+							6.2461,
+							2.0611,
+							6.2461
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 415,
+							"length": 2
+						}
+					},
+					{
+						"content": "her",
+						"boundingBox": [
+							2.2392,
+							6.1261,
+							2.4203,
+							6.1261,
+							2.4203,
+							6.2404,
+							2.2392,
+							6.2404
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 418,
+							"length": 3
+						}
+					},
+					{
+						"content": "way",
+						"boundingBox": [
+							2.466,
+							6.1749,
+							2.6809,
+							6.1749,
+							2.6809,
+							6.2771,
+							2.466,
+							6.2771
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 422,
+							"length": 3
+						}
+					},
+					{
+						"content": "back",
+						"boundingBox": [
+							2.73,
+							6.1306,
+							2.9743,
+							6.1306,
+							2.9743,
+							6.2425,
+							2.73,
+							6.2425
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 426,
+							"length": 4
+						}
+					},
+					{
+						"content": "to",
+						"boundingBox": [
+							3.0139,
+							6.1318,
+							3.1416,
+							6.1318,
+							3.1416,
+							6.2469,
+							3.0139,
+							6.2469
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 431,
+							"length": 2
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.1848,
+							6.1261,
+							3.3652,
+							6.1261,
+							3.3652,
+							6.2469,
+							3.1848,
+							6.2469
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 434,
+							"length": 3
+						}
+					},
+					{
+						"content": "market",
+						"boundingBox": [
+							0.9415,
+							6.322,
+							1.3325,
+							6.322,
+							1.3325,
+							6.4371,
+							0.9415,
+							6.4371
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 438,
+							"length": 6
+						}
+					},
+					{
+						"content": "area,",
+						"boundingBox": [
+							1.3807,
+							6.3624,
+							1.6468,
+							6.3624,
+							1.6468,
+							6.4452,
+							1.3807,
+							6.4452
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 445,
+							"length": 5
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							1.6903,
+							6.3163,
+							1.8707,
+							6.3163,
+							1.8707,
+							6.4371,
+							1.6903,
+							6.4371
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 451,
+							"length": 3
+						}
+					},
+					{
+						"content": "employee",
+						"boundingBox": [
+							1.9185,
+							6.3207,
+							2.4257,
+							6.3207,
+							2.4257,
+							6.4713,
+							1.9185,
+							6.4713
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 455,
+							"length": 8
+						}
+					},
+					{
+						"content": "slipped",
+						"boundingBox": [
+							2.4751,
+							6.3196,
+							2.8416,
+							6.3196,
+							2.8416,
+							6.4713,
+							2.4751,
+							6.4713
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 464,
+							"length": 7
+						}
+					},
+					{
+						"content": "and",
+						"boundingBox": [
+							2.8958,
+							6.3196,
+							3.0705,
+							6.3196,
+							3.0705,
+							6.4375,
+							2.8958,
+							6.4375
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 472,
+							"length": 3
+						}
+					},
+					{
+						"content": "fell",
+						"boundingBox": [
+							3.114,
+							6.3146,
+							3.2772,
+							6.3146,
+							3.2772,
+							6.4345,
+							3.114,
+							6.4345
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 476,
+							"length": 4
+						}
+					},
+					{
+						"content": "to",
+						"boundingBox": [
+							3.3259,
+							6.322,
+							3.4537,
+							6.322,
+							3.4537,
+							6.4371,
+							3.3259,
+							6.4371
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 481,
+							"length": 2
+						}
+					},
+					{
+						"content": "the",
+						"boundingBox": [
+							3.4969,
+							6.3163,
+							3.6773,
+							6.3163,
+							3.6773,
+							6.4371,
+							3.4969,
+							6.4371
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 484,
+							"length": 3
+						}
+					},
+					{
+						"content": "floor.",
+						"boundingBox": [
+							0.9264,
+							6.5048,
+							1.2295,
+							6.5048,
+							1.2295,
+							6.6246,
+							0.9264,
+							6.6246
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 488,
+							"length": 6
+						}
+					},
+					{
+						"content": "The",
+						"boundingBox": [
+							1.2713,
+							6.5064,
+							1.4525,
+							6.5064,
+							1.4525,
+							6.6198,
+							1.2713,
+							6.6198
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 495,
+							"length": 3
+						}
+					},
+					{
+						"content": "floor",
+						"boundingBox": [
+							1.4915,
+							6.5048,
+							1.7776,
+							6.5048,
+							1.7776,
+							6.6246,
+							1.4915,
+							6.6246
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 499,
+							"length": 5
+						}
+					},
+					{
+						"content": "was",
+						"boundingBox": [
+							1.8233,
+							6.5557,
+							2.0396,
+							6.5557,
+							2.0396,
+							6.6218,
+							1.8233,
+							6.6218
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 505,
+							"length": 3
+						}
+					},
+					{
+						"content": "wet",
+						"boundingBox": [
+							2.0893,
+							6.5121,
+							2.2894,
+							6.5121,
+							2.2894,
+							6.6273,
+							2.0893,
+							6.6273
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 509,
+							"length": 3
+						}
+					},
+					{
+						"content": "from",
+						"boundingBox": [
+							2.3269,
+							6.5048,
+							2.6093,
+							6.5048,
+							2.6093,
+							6.6207,
+							2.3269,
+							6.6207
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 513,
+							"length": 4
+						}
+					},
+					{
+						"content": "condensation.",
+						"boundingBox": [
+							2.6565,
+							6.5098,
+							3.3812,
+							6.5098,
+							3.3812,
+							6.6277,
+							2.6565,
+							6.6277
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 518,
+							"length": 13
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							3.869,
+							5.9462,
+							3.8843,
+							5.9462,
+							3.8843,
+							6.0469,
+							3.869,
+							6.0469
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 532,
+							"length": 1
+						}
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							4.8297,
+							5.9511,
+							4.886,
+							5.9511,
+							4.886,
+							6.0442,
+							4.8297,
+							6.0442
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 534,
+							"length": 1
+						}
+					},
+					{
+						"content": "Nonclassifiable",
+						"boundingBox": [
+							5.7559,
+							5.9343,
+							6.5632,
+							5.9343,
+							6.5632,
+							6.056,
+							5.7559,
+							6.056
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 536,
+							"length": 15
+						}
+					},
+					{
+						"content": "Floor,",
+						"boundingBox": [
+							6.6937,
+							5.8454,
+							7.0036,
+							5.8454,
+							7.0036,
+							5.9698,
+							6.6937,
+							5.9698
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 552,
+							"length": 6
+						}
+					},
+					{
+						"content": "unspecified",
+						"boundingBox": [
+							6.694,
+							6.0293,
+							7.2838,
+							6.0293,
+							7.2838,
+							6.186,
+							6.694,
+							6.186
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 559,
+							"length": 11
+						}
+					},
+					{
+						"content": "Page",
+						"boundingBox": [
+							3.833,
+							10.7955,
+							4.0851,
+							10.7955,
+							4.0851,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 571,
+							"length": 4
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.1384,
+							10.7955,
+							4.1866,
+							10.7955,
+							4.1866,
+							10.8765,
+							4.1384,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 576,
+							"length": 1
+						}
+					},
+					{
+						"content": "of",
+						"boundingBox": [
+							4.2382,
+							10.792,
+							4.3412,
+							10.792,
+							4.3412,
+							10.8779,
+							4.2382,
+							10.8779
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 578,
+							"length": 2
+						}
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							4.3865,
+							10.7955,
+							4.4347,
+							10.7955,
+							4.4347,
+							10.8765,
+							4.3865,
+							10.8765
+						],
+						"confidence": 1,
+						"span": {
+							"offset": 581,
+							"length": 1
+						}
+					}
+				],
+				"selectionMarks": [],
+				"lines": [
+					{
+						"content": "ID: 202045002",
+						"boundingBox": [
+							0.9147,
+							2.1201,
+							1.7854,
+							2.1201,
+							1.7854,
+							2.2217,
+							0.9147,
+							2.2217
+						],
+						"spans": [
+							{
+								"offset": 0,
+								"length": 13
+							}
+						]
+					},
+					{
+						"content": "Company: Wide World Importers",
+						"boundingBox": [
+							0.9089,
+							2.3559,
+							3.0093,
+							2.3559,
+							3.0093,
+							2.5076,
+							0.9089,
+							2.5076
+						],
+						"spans": [
+							{
+								"offset": 14,
+								"length": 29
+							}
+						]
+					},
+					{
+						"content": "Location: San Diego",
+						"boundingBox": [
+							0.9147,
+							2.5898,
+							2.1912,
+							2.5898,
+							2.1912,
+							2.7458,
+							0.9147,
+							2.7458
+						],
+						"spans": [
+							{
+								"offset": 44,
+								"length": 19
+							}
+						]
+					},
+					{
+						"content": "Event: Fall on same level due to slipping",
+						"boundingBox": [
+							0.9147,
+							4.0215,
+							3.2725,
+							4.0215,
+							3.2725,
+							4.1795,
+							0.9147,
+							4.1795
+						],
+						"spans": [
+							{
+								"offset": 64,
+								"length": 41
+							}
+						]
+					},
+					{
+						"content": "Nature: Trauma",
+						"boundingBox": [
+							0.9147,
+							4.2597,
+							1.9521,
+							4.2597,
+							1.9521,
+							4.3664,
+							0.9147,
+							4.3664
+						],
+						"spans": [
+							{
+								"offset": 106,
+								"length": 14
+							}
+						]
+					},
+					{
+						"content": "Event Date: January 5, 2022",
+						"boundingBox": [
+							4.4184,
+							4.0279,
+							6.2696,
+							4.0279,
+							6.2696,
+							4.1691,
+							4.4184,
+							4.1691
+						],
+						"spans": [
+							{
+								"offset": 121,
+								"length": 27
+							}
+						]
+					},
+					{
+						"content": "Final Narrative",
+						"boundingBox": [
+							0.9468,
+							5.0045,
+							1.9356,
+							5.0045,
+							1.9356,
+							5.1119,
+							0.9468,
+							5.1119
+						],
+						"spans": [
+							{
+								"offset": 149,
+								"length": 15
+							}
+						]
+					},
+					{
+						"content": "Hospitalized Amputation Part Of",
+						"boundingBox": [
+							3.8731,
+							4.9237,
+							6.2314,
+							4.9237,
+							6.2314,
+							5.1388,
+							3.8731,
+							5.1388
+						],
+						"spans": [
+							{
+								"offset": 165,
+								"length": 31
+							}
+						]
+					},
+					{
+						"content": "Body",
+						"boundingBox": [
+							5.7662,
+							5.0854,
+							6.0988,
+							5.0854,
+							6.0988,
+							5.2197,
+							5.7662,
+							5.2197
+						],
+						"spans": [
+							{
+								"offset": 197,
+								"length": 4
+							}
+						]
+					},
+					{
+						"content": "Source",
+						"boundingBox": [
+							6.6976,
+							5.007,
+							7.1576,
+							5.007,
+							7.1576,
+							5.1119,
+							6.6976,
+							5.1119
+						],
+						"spans": [
+							{
+								"offset": 202,
+								"length": 6
+							}
+						]
+					},
+					{
+						"content": "An employee was wrapping meat using an",
+						"boundingBox": [
+							0.9374,
+							5.3698,
+							3.2282,
+							5.3698,
+							3.2282,
+							5.5269,
+							0.9374,
+							5.5269
+						],
+						"spans": [
+							{
+								"offset": 209,
+								"length": 38
+							}
+						]
+					},
+					{
+						"content": "automatic wrapper and putting the meat into a",
+						"boundingBox": [
+							0.9371,
+							5.5556,
+							3.5854,
+							5.5556,
+							3.5854,
+							5.717,
+							0.9371,
+							5.717
+						],
+						"spans": [
+							{
+								"offset": 248,
+								"length": 45
+							}
+						]
+					},
+					{
+						"content": "tall/mini shelving rack in the refrigerated market/",
+						"boundingBox": [
+							0.9315,
+							5.7441,
+							3.6866,
+							5.7441,
+							3.6866,
+							5.9072,
+							0.9315,
+							5.9072
+						],
+						"spans": [
+							{
+								"offset": 294,
+								"length": 51
+							}
+						]
+					},
+					{
+						"content": "area. The employee then transported the meat to",
+						"boundingBox": [
+							0.9371,
+							5.936,
+							3.7,
+							5.936,
+							3.7,
+							6.091,
+							0.9371,
+							6.091
+						],
+						"spans": [
+							{
+								"offset": 346,
+								"length": 47
+							}
+						]
+					},
+					{
+						"content": "the sale floor area. On her way back to the",
+						"boundingBox": [
+							0.9315,
+							6.1244,
+							3.3652,
+							6.1244,
+							3.3652,
+							6.2771,
+							0.9315,
+							6.2771
+						],
+						"spans": [
+							{
+								"offset": 394,
+								"length": 43
+							}
+						]
+					},
+					{
+						"content": "market area, the employee slipped and fell to the",
+						"boundingBox": [
+							0.9415,
+							6.3146,
+							3.6773,
+							6.3146,
+							3.6773,
+							6.4713,
+							0.9415,
+							6.4713
+						],
+						"spans": [
+							{
+								"offset": 438,
+								"length": 49
+							}
+						]
+					},
+					{
+						"content": "floor. The floor was wet from condensation.",
+						"boundingBox": [
+							0.9264,
+							6.5048,
+							3.3812,
+							6.5048,
+							3.3812,
+							6.6277,
+							0.9264,
+							6.6277
+						],
+						"spans": [
+							{
+								"offset": 488,
+								"length": 43
+							}
+						]
+					},
+					{
+						"content": "1",
+						"boundingBox": [
+							3.869,
+							5.9462,
+							3.8843,
+							5.9462,
+							3.8843,
+							6.0469,
+							3.869,
+							6.0469
+						],
+						"spans": [
+							{
+								"offset": 532,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "0",
+						"boundingBox": [
+							4.8297,
+							5.9511,
+							4.886,
+							5.9511,
+							4.886,
+							6.0442,
+							4.8297,
+							6.0442
+						],
+						"spans": [
+							{
+								"offset": 534,
+								"length": 1
+							}
+						]
+					},
+					{
+						"content": "Nonclassifiable Floor,",
+						"boundingBox": [
+							5.7559,
+							5.8454,
+							7.0036,
+							5.8454,
+							7.0036,
+							6.056,
+							5.7559,
+							6.056
+						],
+						"spans": [
+							{
+								"offset": 536,
+								"length": 22
+							}
+						]
+					},
+					{
+						"content": "unspecified",
+						"boundingBox": [
+							6.694,
+							6.0293,
+							7.2838,
+							6.0293,
+							7.2838,
+							6.186,
+							6.694,
+							6.186
+						],
+						"spans": [
+							{
+								"offset": 559,
+								"length": 11
+							}
+						]
+					},
+					{
+						"content": "Page 1 of 1",
+						"boundingBox": [
+							3.833,
+							10.792,
+							4.4347,
+							10.792,
+							4.4347,
+							10.8995,
+							3.833,
+							10.8995
+						],
+						"spans": [
+							{
+								"offset": 571,
+								"length": 11
+							}
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 0,
+						"length": 582
+					}
+				]
+			}
+		],
+		"tables": [
+			{
+				"rowCount": 2,
+				"columnCount": 5,
+				"cells": [
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 0,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Final Narrative",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.8686,
+									4.8418,
+									3.7961,
+									4.8418,
+									3.7961,
+									5.2747,
+									0.8686,
+									5.2812
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 149,
+								"length": 15
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 1,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Hospitalized",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									3.7961,
+									4.8418,
+									4.7653,
+									4.8418,
+									4.7653,
+									5.2747,
+									3.7961,
+									5.2747
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 165,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 2,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Amputation",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.7653,
+									4.8418,
+									5.6944,
+									4.8418,
+									5.6877,
+									5.2747,
+									4.7653,
+									5.2747
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 178,
+								"length": 10
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 3,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Part Of Body",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.6944,
+									4.8418,
+									6.6301,
+									4.8418,
+									6.6301,
+									5.2747,
+									5.6877,
+									5.2747
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 189,
+								"length": 12
+							}
+						]
+					},
+					{
+						"kind": "columnHeader",
+						"rowIndex": 0,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Source",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.6301,
+									4.8418,
+									7.3921,
+									4.8418,
+									7.3854,
+									5.2747,
+									6.6301,
+									5.2747
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 202,
+								"length": 6
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 0,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "An employee was wrapping meat using an automatic wrapper and putting the meat into a tall/mini shelving rack in the refrigerated market/ area. The employee then transported the meat to the sale floor area. On her way back to the market area, the employee slipped and fell to the floor. The floor was wet from condensation.",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									0.8686,
+									5.2812,
+									3.7961,
+									5.2747,
+									3.7961,
+									6.7176,
+									0.8686,
+									6.7176
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 209,
+								"length": 322
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 1,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "1",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									3.7961,
+									5.2747,
+									4.7653,
+									5.2747,
+									4.7653,
+									6.7176,
+									3.7961,
+									6.7176
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 532,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 2,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "0",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									4.7653,
+									5.2747,
+									5.6877,
+									5.2747,
+									5.6877,
+									6.7176,
+									4.7653,
+									6.7176
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 534,
+								"length": 1
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 3,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Nonclassifiable",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									5.6877,
+									5.2747,
+									6.6301,
+									5.2747,
+									6.6301,
+									6.7176,
+									5.6877,
+									6.7176
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 536,
+								"length": 15
+							}
+						]
+					},
+					{
+						"rowIndex": 1,
+						"columnIndex": 4,
+						"rowSpan": 1,
+						"columnSpan": 1,
+						"content": "Floor, unspecified",
+						"boundingRegions": [
+							{
+								"pageNumber": 1,
+								"boundingBox": [
+									6.6301,
+									5.2747,
+									7.3854,
+									5.2747,
+									7.3854,
+									6.7176,
+									6.6301,
+									6.7176
+								]
+							}
+						],
+						"spans": [
+							{
+								"offset": 552,
+								"length": 18
+							}
+						]
+					}
+				],
+				"boundingRegions": [
+					{
+						"pageNumber": 1,
+						"boundingBox": [
+							0.8821,
+							4.8509,
+							7.3949,
+							4.8507,
+							7.3968,
+							6.6215,
+							0.8824,
+							6.6215
+						]
+					}
+				],
+				"spans": [
+					{
+						"offset": 149,
+						"length": 421
+					}
+				]
+			}
+		],
+		"styles": []
+	}
+}
