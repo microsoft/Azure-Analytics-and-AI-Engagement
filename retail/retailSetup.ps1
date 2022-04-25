@@ -212,6 +212,7 @@ $AADAppClientSecret = "Smoothie@2021@2021"
 $AADApp_Multiling_DisplayName = "RetailMultiling-$suffix"
 $sites_retail_mediasearch_app_name = "mediasearch-retail-app-$suffix"
 $sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
+$sites_app_product_search = "app-product-search-ui-$suffix"
 $functionapptranscript = "func-app-media-transcript-$suffix"
 $functionapplivestreaming = "func-app-livestreaming-$suffix"
 $func_product_search_name = "func-app-product-search-$suffix"
@@ -1448,7 +1449,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search", "app-product-search")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1610,7 +1611,16 @@ az webapp deployment source config-zip --resource-group $rgName --name $media_se
 catch
 {
 }
-az webapp start --name $media_search_app_service_name --resource-group $rgName
+
+# Product Seach Function App adn WebApp deployment
+Write-Information "Deploying Product Seach Function App"
+az webapp stop --name $func_product_search_name --resource-group $rgName
+az webapp deployment source config-zip --resource-group $rgName --name $func_product_search_name --src "./product-search-func-app.zip"	
+Write-Information "Deploying Product Seach Web App"
+cd app-product-search
+az webapp up --resource-group $rgName --name $sites_app_product_search
+cd ..
+Start-Sleep -s 10
 
 # IOT FootTraffic
 $device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device).ConnectionString
@@ -1666,11 +1676,13 @@ Start-Sleep -s 10
 
 RefreshTokens
 
-az webapp restart --name $functionapplivestreaming --resource-group $rgName  
+az webapp restart --name $functionapplivestreaming --resource-group $rgName 
+az webapp start --name $func_product_search_name --resource-group $rgName 
 az webapp start  --name $app_retaildemo_name --resource-group $rgName
 az webapp start --name $media_search_app_service_name --resource-group $rgName
 az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+az webapp start --name $sites_app_product_search --resource-group $rgName
 
 foreach($zip in $zips)
 {
