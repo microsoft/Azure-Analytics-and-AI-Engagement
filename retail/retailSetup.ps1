@@ -1612,16 +1612,6 @@ catch
 {
 }
 
-# Product Seach Function App adn WebApp deployment
-Write-Information "Deploying Product Seach Function App"
-az webapp stop --name $func_product_search_name --resource-group $rgName
-az webapp deployment source config-zip --resource-group $rgName --name $func_product_search_name --src "./product-search-func-app.zip"	
-Write-Information "Deploying Product Seach Web App"
-cd app-product-search
-az webapp up --resource-group $rgName --name $sites_app_product_search
-cd ..
-Start-Sleep -s 10
-
 # IOT FootTraffic
 $device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device).ConnectionString
 $shared_access_key = $device_conn_string.Split(";")[2]
@@ -1668,9 +1658,22 @@ az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
 cd ..
 Start-Sleep -s 10
 
-Write-Information "Deploying func-product-search function app"
-cd func-product-search
-az webapp up --resource-group $rgName --name $func_product_search_name
+# Product Seach Function App adn WebApp deployment
+Write-Information "Deploying Product Seach Function App"
+az webapp stop --name $func_product_search_name --resource-group $rgName
+az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./product-search-func-app.zip"
+az functionapp config appsettings set --SearchApiKey $SearchApiKey --SearchFacets "category1, category2, category3" --SearchIndexName "fabrikam-fashion" --SearchServiceName $SearchServiceName
+Start-Sleep -s 10
+
+(Get-Content -path app-product-search/config-prod.js -Raw) | Foreach-Object { $_ `
+    -replace '#FUNCTION_PRODUCT_SEARCH#', $func_product_search_name`
+    -replace '#BOT_NAME#', $bot_qnamaker_retail_name`
+    -replace '#BOT_KEY#', $bot_key`
+} | Set-Content -Path app-product-search/config-prod.js
+
+Write-Information "Deploying Product Seach Web App"
+cd app-product-search
+az webapp up --resource-group $rgName --name $sites_app_product_search --html;
 cd ..
 Start-Sleep -s 10
 
