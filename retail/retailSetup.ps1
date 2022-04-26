@@ -1663,8 +1663,9 @@ $primaryAdminKey = $adminKeyPair.Primary
 
 # Product Seach Function App adn WebApp deployment
 Write-Information "Deploying Product Seach Function App"
-az webapp stop --name $func_product_search_name --resource-group $rgName
-az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./product-search-func-app.zip"
+az functionapp create --resource-group $rgName --consumption-plan-location $rglocation --runtime node --runtime-version 16 --functions-version 4 --name $func_product_search_name --storage-account $dataLakeAccountName
+
+az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./artifacts/binaries/product-search-func-app.zip"
 Start-Sleep -s 10
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchApiKey=$primaryAdminKey
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchFacets="category1, category2, category3"
@@ -1738,10 +1739,7 @@ foreach($name in $cosmos)
     {
 		$key=$json.TransactionType
         if($name.Basename -eq "retaildb") {
-            $id = New-Guid
             $partitionKey = "beforefoottraffic" + $((Get-Date -Format MM-dd-yyyy).ToString())
-            if(![bool]($json.PSobject.Properties.name -match "id"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
             if(![bool]($json.PSobject.Properties.name -match "beforefoottraffic"))
             {$json | Add-Member -MemberType NoteProperty -Name 'beforefoottraffic' -Value $partitionKey }
             $key=$json.beforefoottraffic

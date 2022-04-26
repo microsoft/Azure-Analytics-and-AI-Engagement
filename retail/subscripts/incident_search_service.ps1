@@ -81,6 +81,7 @@ $incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName
 
 #### Incident Search ####
 
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
 # Get search primary admin key
 $adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
 $primaryAdminKey = $adminKeyPair.Primary

@@ -123,7 +123,6 @@
 	   "func_livestreaming_video_analytics_asp_name": "[concat('func-asp-livestreaming-',variables('unique_suffix'))]",
 	   "func_livestreaming_video_analytics_name":"[concat('func-app-livestreaming-',variables('unique_suffix'))]",
 	   "func_product_search_asp_name": "[concat('func-asp-product-search-',variables('unique_suffix'))]",
-	   "func_product_search_name":"[concat('func-app-product-search-',variables('unique_suffix'))]",
 	   "sites_product_search_ui_app_name":"[concat('app-product-search-ui-',variables('unique_suffix'))]",
       "serverfarm_product_search_ui_app_name":"[concat('asp-productsearch-ui-',variables('unique_suffix'))]"
    },
@@ -2622,7 +2621,7 @@
          "name":"[variables('search_srch_retail_name')]",
          "location":"[variables('location')]",
          "sku":{
-            "name":"basic"
+            "name":"standard"
          },
          "properties":{
             "replicaCount":1,
@@ -2647,7 +2646,7 @@
             "disabledDataExfiltrationOptions":[
                
             ],
-            "semanticSearch":"disabled"
+            "semanticSearch":"free"
          }
       },
       {
@@ -3480,199 +3479,6 @@
                 "targetWorkerCount": 0,
                 "targetWorkerSizeId": 0,
                 "zoneRedundant": false
-            }
-        },
-		{
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2021-03-01",
-            "name": "[variables('func_product_search_name')]",
-             "location": "[variables('location')]",
-            "kind": "functionapp",
-			 "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('func_product_search_asp_name'))]"
-            ],
-            "properties": {
-                "enabled": true,
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(variables('func_product_search_name'), '.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Standard"
-                    },
-                    {
-                        "name": "[concat(variables('func_product_search_name'), '.scm.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "hostType": "Repository"
-                    }
-                ],
-                 "serverFarmId": "[resourceId(variables('resource_group_name'), 'Microsoft.Web/serverfarms', variables('func_product_search_asp_name'))]",
-                "reserved": false,
-                "isXenon": false,
-                "hyperV": false,
-                "siteConfig": {
-                    "numberOfWorkers": 1,
-                    "acrUseManagedIdentityCreds": false,
-                    "alwaysOn": true,
-                    "http20Enabled": false,
-                    "functionAppScaleLimit": 0,
-                    "minimumElasticInstanceCount": 0,
-					"appSettings": [
-								{
-									"name": "FUNCTIONS_EXTENSION_VERSION",
-									"value": "~2"
-								},
-								{
-									"name": "SearchApiKey",
-									"value": "[listAdminKeys(variables('search_srch_retail_name'), '2021-04-01-preview').primaryKey]"
-								},
-								{
-									"name": "SearchServiceName",
-									"value": "[variables('search_srch_retail_name')]"
-								},
-								{
-									"name": "SearchIndexName",
-									"value": "fabrikam-fashion"
-								},
-								{
-									"name": "FUNCTIONS_WORKER_RUNTIME",
-									"value": "node"
-								}
-			   ]
-                },
-                "scmSiteAlsoStopped": false,
-                "clientAffinityEnabled": false,
-                "clientCertEnabled": false,
-                "clientCertMode": "Required",
-                "hostNamesDisabled": false,
-                "customDomainVerificationId": "B10DC0753E56AF5562749748B185627EB8773B3C5160FA954F891FDBF5E7D19A",
-                "containerSize": 1536,
-                "dailyMemoryTimeQuota": 0,
-                "httpsOnly": false,
-                "redundancyMode": "None",
-                "storageAccountRequired": false,
-                "keyVaultReferenceIdentity": "SystemAssigned"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('func_product_search_name'), '/ftp')]",
- "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('func_product_search_name'))]"
-            ],
-            "properties": {
-                "allow": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('func_product_search_name'), '/scm')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('func_product_search_name'))]"
-            ],
-            "properties": {
-                "allow": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/config",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('func_product_search_name'), '/web')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('func_product_search_name'))]"
-            ],
-            "properties": {
-                "numberOfWorkers": 1,
-                "defaultDocuments": [
-                    "Default.htm",
-                    "Default.html",
-                    "Default.asp",
-                    "index.htm",
-                    "index.html",
-                    "iisstart.htm",
-                    "default.aspx",
-                    "index.php"
-                ],
-                "netFrameworkVersion": "v6.0",
-                "requestTracingEnabled": false,
-                "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": "VS2019",
-                "httpLoggingEnabled": false,
-                "acrUseManagedIdentityCreds": false,
-                "logsDirectorySizeLimit": 35,
-                "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "[concat('$',variables('func_product_search_name'))]",
-                "scmType": "None",
-                "use32BitWorkerProcess": true,
-                "webSocketsEnabled": false,
-                "alwaysOn": true,
-                "managedPipelineMode": "Integrated",
-                "virtualApplications": [
-                    {
-                        "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
-                        "preloadEnabled": true
-                    }
-                ],
-                "loadBalancing": "LeastRequests",
-                "experiments": {
-                    "rampUpRules": []
-                },
-                "autoHealEnabled": false,
-                "vnetRouteAllEnabled": false,
-                "vnetPrivatePortsCount": 0,
-                "cors": {
-                    "allowedOrigins": [
-                        "https://portal.azure.com"
-                    ],
-                    "supportCredentials": false
-                },
-                "localMySqlEnabled": false,
-                "ipSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictions": [
-                    {
-                        "ipAddress": "Any",
-                        "action": "Allow",
-                        "priority": 1,
-                        "name": "Allow all",
-                        "description": "Allow all access"
-                    }
-                ],
-                "scmIpSecurityRestrictionsUseMain": false,
-                "http20Enabled": false,
-                "minTlsVersion": "1.2",
-                "scmMinTlsVersion": "1.0",
-                "ftpsState": "AllAllowed",
-                "preWarmedInstanceCount": 0,
-                "functionAppScaleLimit": 0,
-                "functionsRuntimeScaleMonitoringEnabled": false,
-                "minimumElasticInstanceCount": 0,
-                "azureStorageAccounts": {}
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "apiVersion": "2021-03-01",
-            "name": "[concat(variables('func_product_search_name'), '/', variables('func_product_search_name'), '.azurewebsites.net')]",
-             "location": "[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('func_product_search_name'))]"
-            ],
-            "properties": {
-                "siteName": "[variables('func_product_search_name')]",
-                "hostNameType": "Verified"
             }
         },
 		 {
