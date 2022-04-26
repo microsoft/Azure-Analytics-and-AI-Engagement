@@ -102,7 +102,9 @@
       "cognitive_services_name":"[concat('dreamcognitiveservices',parameters('environment_code'))]",
       "text_translation_service_name":"[concat('Mutarjum-',variables('unique_suffix'))]",
       "text_translation_custom_sub_domain_name":"[concat('mutarjum-',variables('unique_suffix'))]",
-      "cogs_forms_name":"[concat('forms-',variables('unique_suffix'))]"
+      "cogs_forms_name":"[concat('forms-',variables('unique_suffix'))]",
+	  "mssql_server_name":"[concat('sqlserver-',variables('unique_suffix'))]",
+	  "mssql_database_name":"wwi"
    },
    "resources":[
       {
@@ -120,6 +122,35 @@
             }
          }
       },
+	  {
+      "name": "[variables('mssql_server_name')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-05-01-preview",
+      "location": "[variables('location')]",
+      "properties": {
+        "administratorLogin": "labsqladmin",
+        "administratorLoginPassword": "[parameters('sql_administrator_login_password')]",
+        "version": "12.0"
+      }
+    },
+    {
+      "name": "[concat(variables('mssql_server_name'), '/', variables('mssql_database_name'))]",
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-05-01-preview",
+      "location": "[variables('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', variables('cloud_io_mssql_server_name'))]"
+      ],
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 10
+      },
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "catalogCollation": "SQL_Latin1_General_CP1_CI_AS"
+      }
+    },
       {
          "name":"[toLower(variables('cosmos_account_name_mfgdemo'))]",
          "type":"Microsoft.DocumentDB/databaseAccounts",
