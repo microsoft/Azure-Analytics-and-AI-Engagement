@@ -1658,12 +1658,18 @@ az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
 cd ..
 Start-Sleep -s 10
 
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
+$primaryAdminKey = $adminKeyPair.Primary
+
 # Product Seach Function App adn WebApp deployment
 Write-Information "Deploying Product Seach Function App"
 az webapp stop --name $func_product_search_name --resource-group $rgName
 az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./product-search-func-app.zip"
-az functionapp config appsettings set --SearchApiKey $SearchApiKey --SearchFacets "category1, category2, category3" --SearchIndexName "fabrikam-fashion" --SearchServiceName $SearchServiceName
 Start-Sleep -s 10
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchApiKey=$primaryAdminKey
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchFacets="category1, category2, category3"
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchIndexName="fabrikam-fashion"
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchServiceName=$search_srch_retail_name
 
 (Get-Content -path app-product-search/config-prod.js -Raw) | Foreach-Object { $_ `
     -replace '#FUNCTION_PRODUCT_SEARCH#', $func_product_search_name`
