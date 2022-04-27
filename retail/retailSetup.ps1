@@ -471,22 +471,22 @@ $incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName
 (Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
     -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
     -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
-} | Set-Content -Path artifacts/formrecognizer/AzSearch.html
+} | Set-Content -Path artifacts/storageassets/incident-search/AzSearch.html
 
 (Get-Content -path artifacts/storageassets/incident-search/gistfile1_withoutreplacement.html -Raw) | Foreach-Object { $_ `
     -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
     -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
-} | Set-Content -Path artifacts/formrecognizer/gistfile1.html
+} | Set-Content -Path artifacts/storageassets/incident-search/gistfile1.html
 
 (Get-Content -path artifacts/storageassets/incident-search/search_withoutreplacement.html -Raw) | Foreach-Object { $_ `
     -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
     -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
     -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
-} | Set-Content -Path artifacts/formrecognizer/search.html
+} | Set-Content -Path artifacts/storageassets/incident-search/search.html
 
 (Get-Content -path artifacts/storageassets/incident-search/detail_withoutreplacement.html -Raw) | Foreach-Object { $_ `
     -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
-} | Set-Content -Path artifacts/formrecognizer/detail.html
+} | Set-Content -Path artifacts/storageassets/incident-search/detail.html
 
 #storage assests copy
 RefreshTokens

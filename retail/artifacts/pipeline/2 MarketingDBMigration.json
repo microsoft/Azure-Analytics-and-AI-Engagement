@@ -107,7 +107,7 @@
                 "userProperties": [],
                 "typeProperties": {
                     "notebook": {
-                        "referenceName": "Campaign Analytics DataPrep",
+                        "referenceName": "2_Campaign Analytics DataPrep",
                         "type": "NotebookReference"
                     },
                     "snapshot": true
@@ -174,7 +174,7 @@
             }
         ],
         "annotations": [],
-        "lastPublishTime": "2021-12-20T08:53:43Z"
+        "lastPublishTime": "2022-01-21T17:47:37Z"
     },
     "type": "Microsoft.Synapse/workspaces/pipelines"
 }
