@@ -236,6 +236,8 @@ try {
 }
 $sqlPassword = $secretValueText
 
+az sql server firewall-rule create -g $rgName -s $mssql_server_name -n allowservices --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+
 RefreshTokens
 Write-Host "-----Enable Transparent Data Encryption----------"
 $result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "./artifacts/templates/transparentDataEncryption.json" -workspace_name_synapse $synapseWorkspaceName -sql_compute_name $sqlPoolName -ErrorAction SilentlyContinue
