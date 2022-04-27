@@ -170,6 +170,10 @@ $concatString = "$init$random"
 $dataLakeAccountName = "dreamdemostrggen2"+($concatString.substring(0,7))
 $sqlUser = "ManufacturingUser"
 
+$mssql_server_name = "sqlserver-$suffix"
+$mssql_db_name = "wwi"
+$mssql_admin_user = "labsqladmin"
+
 $mfgasaName = "mfgasa-$suffix"
 $carasaName = "race-car-asa-$suffix"
 $concatString = "$random$init"
@@ -530,8 +534,14 @@ foreach($zip in $zips)
                 -replace '#connection_string#', $iot_device_connection_sendtohub`
 				-replace '#app_insights_key#', $app_insights_instrumentation_key_sendtohub`				
         } | Set-Content -Path sendtohub/appsettings.json
+		
+(Get-Content -path wideworldimporters/config.json -Raw) | Foreach-Object { $_ `
+                -replace '#mssql_server_name#', $mssql_server_name`
+				-replace '#mssql_db_name#', $mssql_db_name`
+				-replace '#mssql_admin_user#', $mssql_admin_user`
+				-replace '#SqlPassword#', $SqlPassword`				
+        } | Set-Content -Path wideworldimporters/config.json
 
-	
 #make zip for app service deployment
 Compress-Archive -Path "./carTelemetry/*" -DestinationPath "./carTelemetry.zip"
 Compress-Archive -Path "./sendtohub/*" -DestinationPath "./sendtohub.zip"
@@ -1592,6 +1602,61 @@ foreach($report in $reportList)
 	Start-Sleep -s 5
 }
 
+Write-Host  "-----------------MSSQL server --------------"
+
+#creating sql schema
+Write-Host "Create tables in SQL DB"
+$MSSQLScriptsPath="./artifacts/mssql"
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Schema-SQL.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+Write-Host "adding tables data in SQL DB"
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/AspNetUsers.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/CartItems.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Categories.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/dms_truncation_safeguard.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/OrderDetails.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Orders.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Products.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/RainChecks.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Stores.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
 
 Write-Host  "-----------------Uploading Cosmos Data Started--------------"
 #uploading Cosmos data
