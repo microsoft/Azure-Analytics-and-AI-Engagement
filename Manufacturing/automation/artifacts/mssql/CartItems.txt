@@ -1,0 +1,1610 @@
+SET IDENTITY_INSERT [dbo].[CartItems] ON 
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (2, N'cc864e86-bb6b-4517-b906-a90fb223320c', 6, 1, CAST(N'2020-06-19T05:42:26.9205116' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (3, N'c1c3a058-e087-417e-9023-63e2d61bbd24', 26, 1, CAST(N'2020-06-22T22:34:01.2258535' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (6, N'f7ddc1fd-97eb-40ef-b4c2-a3fe543826d2', 1, 1, CAST(N'2020-06-22T15:24:52.3399469' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (7, N'5d4422f2-b033-4789-b6c6-1c6277ebc942', 1, 1, CAST(N'2020-06-22T15:26:08.5559371' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (9, N'c9c1e53d-02dd-41ae-9828-95533b2465e8', 27, 1, CAST(N'2020-06-25T10:13:08.3984219' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (10, N'f4eb38da-4d92-493e-9dc2-ff143cea9f51', 15, 1, CAST(N'2020-06-25T16:59:48.6199590' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (11, N'f4eb38da-4d92-493e-9dc2-ff143cea9f51', 7, 1, CAST(N'2020-06-25T17:00:07.6096680' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (12, N'f4eb38da-4d92-493e-9dc2-ff143cea9f51', 6, 1, CAST(N'2020-06-25T18:10:25.7437180' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (14, N'2557e070-5ef4-4d6d-aa41-4b954ee41a47', 1, 1, CAST(N'2020-06-26T10:29:36.5813168' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (16, N'ac1fba33-cc8a-40ce-93d4-d6187eee9f38', 16, 1, CAST(N'2020-06-26T11:28:49.5554197' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (17, N'06cb9a1a-aa62-48d7-8daa-b9e3b1b7761c', 12, 1, CAST(N'2020-06-26T12:05:02.7948871' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (21, N'1d06ca59-3a8c-4742-a971-5039db7ebca0', 8, 1, CAST(N'2020-07-02T22:44:24.1238335' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (22, N'1d06ca59-3a8c-4742-a971-5039db7ebca0', 14, 1, CAST(N'2020-07-02T22:45:30.6776506' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (34, N'7fe6a902-11a8-492c-9f7f-dbfdd0dee950', 26, 1, CAST(N'2020-07-06T16:28:41.7631123' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (43, N'7fe6a902-11a8-492c-9f7f-dbfdd0dee950', 12, 1, CAST(N'2020-07-06T17:06:22.9395274' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (55, N'4196f181-0a7d-40b7-b1ec-a467de845396', 13, 2, CAST(N'2020-07-10T04:29:23.5027375' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (56, N'7487a5cc-23de-4ad1-9cde-db1698e57f43', 13, 1, CAST(N'2020-07-10T04:32:00.8966324' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (60, N'f7451c90-2897-4863-a20f-2598a7fa2ea0', 12, 1, CAST(N'2020-07-16T02:24:39.3349183' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (61, N'83d34a0c-adbe-400b-b45d-5291bde4b5d9', 27, 1, CAST(N'2020-07-17T19:51:09.7349959' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (62, N'83d34a0c-adbe-400b-b45d-5291bde4b5d9', 13, 3, CAST(N'2020-07-18T03:22:11.6927292' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (72, N'be5799a3-c61a-45b8-875e-29eab09b4410', 40, 1, CAST(N'2020-07-21T05:31:40.3360658' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (77, N'4eee86ed-f771-47ae-b3f7-999cca05f504', 1034, 1, CAST(N'2020-07-22T08:14:04.8169662' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (79, N'795454fb-f169-4e25-880a-2f07e04c0998', 45, 1, CAST(N'2020-07-22T21:05:12.8250927' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (80, N'2ec6c6ea-8a9d-4f8d-bbc4-b76fb6a5554e', 27, 1, CAST(N'2020-07-22T12:08:33.6279082' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (81, N'83d6a16c-32dc-4c7f-a906-17c74205afc5', 45, 1, CAST(N'2020-07-22T16:39:43.8874105' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (82, N'cfe9abef-7578-4784-bb16-ce184ff4c694', 45, 1, CAST(N'2020-07-22T19:20:55.3286549' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (83, N'27e3f155-d57d-4b71-9e54-8653ed8700a6', 45, 1, CAST(N'2020-07-22T19:23:26.7654281' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (84, N'5ad25ada-d8c7-46f8-a60e-0e4c7423be9a', 12, 1, CAST(N'2020-07-22T19:23:37.2160980' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (85, N'f50bec91-112f-48b5-8ec8-1c9769939a8a', 45, 1, CAST(N'2020-07-22T19:24:43.8400832' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (86, N'791da370-d2af-49b1-a953-4cd7da523c9d', 10, 1, CAST(N'2020-07-24T01:56:49.5188113' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (88, N'6a921eb5-4d1f-4ffc-9d2e-bcec1baa320e', 40, 1, CAST(N'2020-08-25T13:05:41.4526153' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (89, N'25a987c0-3107-4d00-a779-9b2babcaa0be', 45, 1, CAST(N'2020-08-27T14:55:49.4563222' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (90, N'38237204-ace8-47c4-8955-2f9e74ebfbdb', 1039, 1, CAST(N'2020-08-27T18:06:14.9382647' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (91, N'9fc725d6-e951-4c00-bc52-a804798948f8', 44, 1, CAST(N'2020-08-27T18:06:23.5849751' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (92, N'06934faf-b234-48cf-8cac-60bbf3705ce0', 13, 1, CAST(N'2020-08-31T15:50:28.7933390' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (93, N'458b8464-0308-4437-a0ac-764ed8bf38c8', 1035, 1, CAST(N'2020-09-02T12:25:26.0420505' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (94, N'3c570a95-c9d7-41a4-95b8-a491f88c5afd', 17, 1, CAST(N'2020-09-04T05:26:45.1717897' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (95, N'091c794d-0fa2-4ba0-8ed1-d326222fea8b', 27, 1, CAST(N'2020-09-08T08:58:54.8944134' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (96, N'f7e797f9-68d6-4edf-8e5c-864c1ab9180b', 45, 1, CAST(N'2020-09-08T12:50:30.5255035' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (97, N'9e25ce74-8080-403c-b87d-6aa966aa55d7', 45, 1, CAST(N'2020-09-08T22:10:23.1292295' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (98, N'59b1dc7b-ce72-497f-a89e-8e249aa54bb6', 13, 1, CAST(N'2020-09-08T22:10:29.9450109' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (99, N'a2df8c85-53ee-44ba-ba85-a8e8fa5a6a1f', 1034, 1, CAST(N'2020-09-08T22:10:39.1640341' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (100, N'13a63c78-4815-4b3c-9a28-07dcd8d2ab9d', 45, 1, CAST(N'2020-09-08T22:10:56.1212097' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (101, N'5bcb4cd0-5e01-4cd4-a9e2-bbd857c0bc27', 7, 1, CAST(N'2020-09-09T19:34:03.0678510' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (102, N'2141e157-bf3a-4796-a3cd-9a16626f44a7', 7, 1, CAST(N'2020-09-21T09:52:09.8688043' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (103, N'eb2a36ff-3161-4d7e-8e44-d88be84722f6', 1034, 1, CAST(N'2020-09-21T09:52:25.4146295' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (104, N'6ffe4f7a-cb42-4d2b-9977-028d52508749', 10, 1, CAST(N'2020-09-21T09:52:45.0759154' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (106, N'41d0a0a1-34c4-4b58-b1f3-bdf49ed672b3', 45, 1, CAST(N'2020-09-21T10:45:14.9606421' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (107, N'd5b9db04-3a80-4861-bf85-53510ef4b4c0', 45, 1, CAST(N'2020-09-21T10:45:14.9689899' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (108, N'a7e350eb-4e91-470e-9e10-cf4dd6f685e3', 45, 1, CAST(N'2020-09-21T10:45:14.9725669' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (109, N'c677e645-0d85-4e3d-85a0-dfbe520cd86b', 45, 1, CAST(N'2020-09-21T10:45:14.9822108' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (110, N'fe3c749f-e5d8-4cb7-bb10-16edb9bbfa4f', 40, 1, CAST(N'2020-09-21T10:45:43.7009137' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (111, N'9a6b5a9f-c8f0-489f-ad37-530d6f9ab2bb', 40, 1, CAST(N'2020-09-21T10:45:43.7075897' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (112, N'914ddb0d-9b86-4edf-ba24-83ade8692e12', 40, 1, CAST(N'2020-09-21T10:45:43.7135306' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (113, N'5a53f60b-6c87-4aa9-93bd-2ca4600d33b4', 40, 1, CAST(N'2020-09-21T10:45:43.7183239' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (114, N'957de4ca-8178-4dac-a1ce-54b4e8d2c142', 13, 1, CAST(N'2020-09-21T10:54:10.7789941' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (115, N'fca26b4d-eb8d-4b1d-8f91-9808b614ed1d', 13, 1, CAST(N'2020-09-21T10:54:10.7905440' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (116, N'0bd1a2f8-32c3-4aca-92f6-4df11a2e953a', 13, 1, CAST(N'2020-09-21T10:54:10.7931781' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (117, N'9b7e9d71-628d-4a1d-8553-4aafd5c02c9b', 13, 1, CAST(N'2020-09-21T10:54:10.7897034' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (118, N'e031805a-96ee-4b3e-8d9e-f108300b1025', 1035, 1, CAST(N'2020-09-21T10:57:57.4829689' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (119, N'68c1990a-7a71-4e87-a864-eac50715370c', 1035, 1, CAST(N'2020-09-21T10:57:57.4833274' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (120, N'935af1b6-1a39-418a-86d3-8d7bc80a6af2', 1035, 1, CAST(N'2020-09-21T10:57:57.4985524' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (121, N'0d3c2a17-77bd-478c-935c-18c0e0e283e6', 1035, 1, CAST(N'2020-09-21T10:57:57.5047604' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (122, N'4736e2b4-dd7a-4cf0-a658-83605fa89303', 27, 1, CAST(N'2020-09-21T10:58:15.5594552' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (123, N'0a852e43-db95-4bd1-bf7e-8fe563e5406c', 27, 1, CAST(N'2020-09-21T10:58:15.5927144' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (124, N'a4ca0fd1-3c77-4a54-afed-252e8ea4aadc', 27, 1, CAST(N'2020-09-21T10:58:15.5983996' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (125, N'3a7b7c69-5011-4475-8b22-27eec8c75757', 27, 1, CAST(N'2020-09-21T10:58:15.5948016' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (126, N'0c9da75f-6fc8-4276-a67d-ff6b746406ce', 33, 1, CAST(N'2020-09-21T10:59:01.0827973' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (127, N'6b8f7fc1-b0cb-496c-90fd-0145c7a7e057', 33, 1, CAST(N'2020-09-21T10:59:01.2609417' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (128, N'e3324925-22b1-44f0-8b87-9d7a2f2321aa', 33, 1, CAST(N'2020-09-21T10:59:01.2782045' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (129, N'ea53a7a9-0934-4f1f-8326-bc4394050555', 33, 1, CAST(N'2020-09-21T10:59:01.2880335' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (130, N'ec333a0a-ccd9-4a13-aa7f-d2e27728ea12', 1034, 1, CAST(N'2020-09-21T10:59:47.4730687' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (131, N'e887753e-ec76-420c-8bee-3fb151d8d6f9', 1034, 1, CAST(N'2020-09-21T10:59:47.4704432' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (132, N'39cac7aa-0ff5-4914-9aa0-bfe51a456795', 1034, 1, CAST(N'2020-09-21T10:59:47.6562509' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (133, N'cf6ab70c-1b2a-498c-92a4-dbf86dc402f8', 1034, 1, CAST(N'2020-09-21T10:59:47.6628477' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (134, N'273e5d20-c7cb-4456-a44f-5b011bbca3a9', 1038, 1, CAST(N'2020-09-21T11:01:31.8695670' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (135, N'da16b63d-898f-45b2-bf20-a30011a3dde2', 1038, 1, CAST(N'2020-09-21T11:01:31.8794033' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (136, N'43127ef4-fed7-42de-b3d8-81944561f406', 1038, 1, CAST(N'2020-09-21T11:01:31.8812817' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (137, N'618219b2-2845-467d-9604-afa5b0d321ac', 1038, 1, CAST(N'2020-09-21T11:01:31.8862025' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (138, N'69d61768-3b91-4d2f-8b9d-c1ef934624ae', 1039, 1, CAST(N'2020-09-21T11:02:13.2971039' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (139, N'0593fa1b-4149-41cc-92c5-08c1d119b7c8', 1039, 1, CAST(N'2020-09-21T11:02:13.2962807' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (140, N'5a565a85-9953-49d7-a347-292e3eb752d3', 1039, 1, CAST(N'2020-09-21T11:02:13.5021386' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (141, N'c9fd6f3c-bd20-423d-839d-d6279fc48552', 1039, 1, CAST(N'2020-09-21T11:02:13.5041629' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (142, N'01f71679-c59a-42ac-9ff6-01a1cdc8ec37', 11, 1, CAST(N'2020-09-21T11:02:53.1225692' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (143, N'462461a4-2ccf-4724-9361-501ade337fdd', 11, 1, CAST(N'2020-09-21T11:02:53.1140079' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (144, N'bb8f3867-7338-41a1-8d35-18cf069aef39', 11, 1, CAST(N'2020-09-21T11:02:53.2998446' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (145, N'9fe9f975-92bd-484c-ba3d-1f7b8d77e0e7', 11, 1, CAST(N'2020-09-21T11:02:53.3084836' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (146, N'824fe642-1272-43f0-9e02-a48d20f3b707', 10, 1, CAST(N'2020-09-21T11:03:33.7278541' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (147, N'd8d2c55d-6b22-423c-91f0-f732992ecc6c', 10, 1, CAST(N'2020-09-21T11:03:33.7329519' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (148, N'39c800c3-ceea-4b19-b78d-587a23c65920', 10, 1, CAST(N'2020-09-21T11:03:33.7381326' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (149, N'd8ca9865-9f3b-4b58-8be8-9cd094b5f225', 10, 1, CAST(N'2020-09-21T11:03:33.7313811' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (150, N'846ae719-78bc-4651-a3e5-d76ec13ab75f', 9, 1, CAST(N'2020-09-21T11:07:51.4225099' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (151, N'f85787f2-1b2e-43e3-85cf-e73f50965983', 9, 1, CAST(N'2020-09-21T11:07:51.4258061' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (152, N'71cbf148-2146-4a4b-b835-8ad5bd89c15e', 9, 1, CAST(N'2020-09-21T11:07:51.4321228' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (153, N'53bd5642-0104-4c6a-896e-c28afbeec5e8', 9, 1, CAST(N'2020-09-21T11:07:51.4261421' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (154, N'60cba443-d9c0-4af1-9fc8-55d199b93d2d', 31, 1, CAST(N'2020-09-21T11:08:30.3130240' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (155, N'75b1a29b-40bc-42ee-b58b-dae161402e0d', 31, 1, CAST(N'2020-09-21T11:08:30.3214475' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (156, N'2d9523d0-5cdb-48a4-8e74-ac29512c7b6f', 31, 1, CAST(N'2020-09-21T11:08:30.3350418' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (157, N'a7fb65cf-e6b2-4a1a-a623-f9bc0e338a29', 31, 1, CAST(N'2020-09-21T11:08:30.3235733' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (158, N'db6c9570-4563-463c-81f4-a322f73fdce4', 28, 1, CAST(N'2020-09-21T11:09:05.4717873' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (159, N'4009eb05-74fa-4bfe-94fd-6d5341d175b0', 28, 1, CAST(N'2020-09-21T11:09:05.4861486' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (160, N'cea8377f-2441-4eec-aa7f-71f018116c41', 28, 1, CAST(N'2020-09-21T11:09:05.4942576' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (161, N'6c2272f2-8055-472c-ba55-bb57f7ad234c', 28, 1, CAST(N'2020-09-21T11:09:05.4954649' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (162, N'7d57868b-b0b4-452f-b7e8-bc886a40c129', 44, 1, CAST(N'2020-09-21T11:09:40.9741440' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (163, N'9bb46e60-4556-43e3-a753-c29882d5de40', 44, 1, CAST(N'2020-09-21T11:09:40.9813563' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (164, N'251e6837-8248-4ad4-b9f7-a7e502680504', 44, 1, CAST(N'2020-09-21T11:09:40.9810289' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (165, N'a1e8a2e8-57e7-436b-81f1-c8abd4228922', 44, 1, CAST(N'2020-09-21T11:09:41.1674131' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (166, N'e60fe049-4d33-4277-ba7e-4255ee39405d', 35, 1, CAST(N'2020-09-21T11:10:15.8118250' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (167, N'902776ec-919d-4ca4-9b4f-d7cc67d97bbb', 35, 1, CAST(N'2020-09-21T11:10:15.8161866' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (168, N'5be17be4-a905-4f3d-8ed6-c18df7466640', 35, 1, CAST(N'2020-09-21T11:10:15.8146965' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (169, N'4915652a-6dc6-47ea-87a8-231c74c49113', 35, 1, CAST(N'2020-09-21T11:10:15.8316947' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (170, N'6d9077c2-b6f7-49ca-9e2a-24fab9975031', 1040, 1, CAST(N'2020-09-21T11:11:31.6736333' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (171, N'42a153db-c807-41ac-beb5-add9fbfba25a', 1040, 1, CAST(N'2020-09-21T11:11:31.6780538' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (172, N'39b1aa5a-8d25-4573-9faa-32addd8fba9e', 1040, 1, CAST(N'2020-09-21T11:11:31.7012419' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (173, N'48950d07-07d8-4eac-8f5a-2fd0b10f05b8', 1040, 1, CAST(N'2020-09-21T11:11:31.6954651' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (174, N'd0247498-59bb-4dba-a3ab-14bc34ad095e', 34, 1, CAST(N'2020-09-21T11:11:37.1964453' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (175, N'97bfda0d-f0a9-4b70-b3e6-546edb10fb09', 34, 1, CAST(N'2020-09-21T11:11:37.1875271' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (176, N'cd037c77-eaee-4e08-9818-692ab258307a', 34, 1, CAST(N'2020-09-21T11:11:37.1952605' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (177, N'44473762-e581-4f3d-88ab-37d09b060981', 34, 1, CAST(N'2020-09-21T11:11:37.2049687' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (178, N'4ee1d966-998b-4c1b-af2a-57769ae75c01', 37, 1, CAST(N'2020-09-21T11:51:01.5802448' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (179, N'c63f7a70-2ce9-4f38-afd8-a3e22097a201', 37, 1, CAST(N'2020-09-21T11:51:01.5788261' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (180, N'feb0f2e3-1692-407a-86e4-0fa105e088aa', 37, 1, CAST(N'2020-09-21T11:51:01.5719546' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (181, N'a67aab8e-5cee-4d8b-b44f-5df231793641', 37, 1, CAST(N'2020-09-21T11:51:01.5972362' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (182, N'975b9b6b-0926-46ce-a9bd-af72809bc0e2', 32, 1, CAST(N'2020-09-21T11:51:08.7155112' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (183, N'd4e733e9-0adb-4755-924f-3a3db1f53abd', 32, 1, CAST(N'2020-09-21T11:51:08.9175457' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (184, N'c10d5c94-6aa9-4cab-ab05-6d2569f45f8d', 32, 1, CAST(N'2020-09-21T11:51:09.1156703' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (185, N'82d06709-36c0-4af8-b195-c99adda4d117', 32, 1, CAST(N'2020-09-21T11:51:09.1477829' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (186, N'4ae3c157-327c-4594-9b1a-ef2bd29229ef', 12, 1, CAST(N'2020-09-21T12:36:22.8831604' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (187, N'c455e635-f8d1-439c-bb5a-25c29b89f179', 12, 1, CAST(N'2020-09-21T12:36:22.9067686' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (188, N'194f7a13-72d5-4ac4-8266-aaad811d5cdb', 12, 1, CAST(N'2020-09-21T12:36:22.8935521' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (189, N'24a53b68-ff91-42fc-9f70-46a86aaa0694', 12, 1, CAST(N'2020-09-21T12:36:22.9091061' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (190, N'8f3a7c1b-f4f5-4773-b196-3478734104d2', 14, 1, CAST(N'2020-09-21T12:36:28.7206637' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (191, N'5b60ec8d-fd3a-4f61-b502-9a6ef875d1ec', 14, 1, CAST(N'2020-09-21T12:36:28.7232269' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (192, N'fa4c94f3-ee39-4219-9572-c3def198fc40', 14, 1, CAST(N'2020-09-21T12:36:28.7221693' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (193, N'f10df955-dc14-4529-9393-845a1892dec1', 14, 1, CAST(N'2020-09-21T12:36:28.7385045' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (194, N'a5f665ec-d6cc-44c3-a7fc-50dcc6530249', 8, 1, CAST(N'2020-09-21T12:36:34.4180988' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (195, N'3cc68b00-00ec-419e-8296-7e5a67575364', 8, 1, CAST(N'2020-09-21T12:36:34.4242227' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (196, N'de6d2d52-dd27-4437-a8eb-51ed90fa480b', 8, 1, CAST(N'2020-09-21T12:36:34.4333068' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (197, N'f5846b71-b951-4443-9032-3e6b82afdfb0', 8, 1, CAST(N'2020-09-21T12:36:34.4440963' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (198, N'0dfc47ba-5575-462a-b1e3-b4f6efe67608', 36, 1, CAST(N'2020-09-21T12:36:40.1249874' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (199, N'7f3c4c84-083c-472f-99ee-3398e8006d20', 36, 1, CAST(N'2020-09-21T12:36:40.1256537' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (200, N'a4960909-6942-4921-8fe4-573814055c6a', 36, 1, CAST(N'2020-09-21T12:36:40.1253661' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (201, N'eeb30ccb-667d-4e6f-b913-ba86b2c6e558', 36, 1, CAST(N'2020-09-21T12:36:40.1341198' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (202, N'3931f877-6208-4622-8c64-a5e398c7d7ff', 38, 1, CAST(N'2020-09-21T12:36:45.8520948' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (203, N'7222aa58-f469-4a5f-8314-43e451722549', 38, 1, CAST(N'2020-09-21T12:36:45.8591774' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (204, N'758d014e-87a1-41be-a510-87db98dba43d', 38, 1, CAST(N'2020-09-21T12:36:45.8588613' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (205, N'd349859c-3153-4b76-8cb1-71aa6bb98daa', 38, 1, CAST(N'2020-09-21T12:36:45.8729436' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (206, N'94a2f89c-f7b5-4fb4-8375-639845740ee5', 39, 1, CAST(N'2020-09-21T12:36:51.5765772' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (207, N'97df7fbc-985f-4f31-a06c-c0010f8d55f0', 39, 1, CAST(N'2020-09-21T12:36:51.5846741' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (208, N'f80dcbf3-97db-44b5-8565-bab97c1e1ed3', 39, 1, CAST(N'2020-09-21T12:36:51.5877703' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (209, N'654820fb-7a74-4967-ab47-ad1858b37d5d', 39, 1, CAST(N'2020-09-21T12:36:51.5975516' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (210, N'f316d33f-b74a-4594-a6ea-123ea9e7b156', 7, 1, CAST(N'2020-09-21T12:36:57.2676073' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (211, N'5ac64cca-c588-4983-9011-1996dd2b54d9', 7, 1, CAST(N'2020-09-21T12:36:57.2703633' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (212, N'ed6b7790-4925-4975-83e3-3f047a2e5fb8', 7, 1, CAST(N'2020-09-21T12:36:57.2734288' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (213, N'8f56298a-3d38-4938-bdd9-54f5a303464a', 7, 1, CAST(N'2020-09-21T12:36:57.2809081' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (214, N'13f0b7b8-2b6d-4103-a398-3b2d8f0a1874', 6, 1, CAST(N'2020-09-21T12:37:03.0165135' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (215, N'7387026b-ca01-4b7d-96fc-f283c276d429', 6, 1, CAST(N'2020-09-21T12:37:03.0185400' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (216, N'16600064-7e63-4981-9f2d-e56d7d4c4d16', 6, 1, CAST(N'2020-09-21T12:37:03.0219273' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (217, N'0142b96d-3997-4db7-b8f8-727568540d9c', 6, 1, CAST(N'2020-09-21T12:37:03.0316743' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (218, N'eb7fa0d0-8ad4-40a1-a3b2-136e57c7f738', 41, 1, CAST(N'2020-09-21T12:37:08.8532734' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (219, N'90b1eda8-a816-46c7-8fee-d8df31a0fbe1', 41, 1, CAST(N'2020-09-21T12:37:08.8527517' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (220, N'6fd104e2-b308-45b1-996c-b71d19ecf72f', 41, 1, CAST(N'2020-09-21T12:37:08.8626569' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (221, N'f00f25b1-4b5a-4602-911c-9bf6cc4cd7aa', 41, 1, CAST(N'2020-09-21T12:37:08.8575460' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (222, N'bb2a43d4-8224-4c57-9d88-400c11e0b032', 42, 1, CAST(N'2020-09-21T12:37:14.6017346' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (223, N'43004f6a-e6b7-4698-a583-64b8dde46af0', 42, 1, CAST(N'2020-09-21T12:37:14.6137506' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (224, N'e3c7bf99-a441-48f3-bc67-8b47b51a2ad3', 42, 1, CAST(N'2020-09-21T12:37:14.6185160' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (225, N'1c5903a8-3f98-4632-b780-001bcd91c63c', 42, 1, CAST(N'2020-09-21T12:37:14.6304728' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (226, N'ab0d0676-1c8b-4b2d-9acc-982363125fde', 43, 1, CAST(N'2020-09-21T12:37:20.3152307' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (227, N'53a036c8-15f2-4d9e-bccb-72a0804050f7', 43, 1, CAST(N'2020-09-21T12:37:20.3199041' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (228, N'0a35c38c-2eaa-42ef-9870-9fb71efff1bf', 43, 1, CAST(N'2020-09-21T12:37:20.3222805' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (229, N'66fd760c-5985-42b7-9bb8-dbdb203c0e6e', 43, 1, CAST(N'2020-09-21T12:37:20.3235030' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (230, N'a280c162-67f1-48c7-a608-cce98a75ea73', 46, 1, CAST(N'2020-09-21T12:37:26.0862811' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (231, N'a6cd0f7d-2dae-42ea-a74e-0bc42d5d6899', 46, 1, CAST(N'2020-09-21T12:37:26.0883344' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (232, N'6cad1a79-e3f4-4027-a9ea-3de90084c22e', 46, 1, CAST(N'2020-09-21T12:37:26.0911139' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (233, N'fc848679-47a9-489e-a655-5cf266807ba0', 46, 1, CAST(N'2020-09-21T12:37:26.0981326' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (234, N'ca40f806-3398-448f-8239-f13108f01e53', 5, 1, CAST(N'2020-09-21T12:37:32.2090193' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (235, N'ae18241b-6f1d-42a1-bf7c-a36e0529c47a', 5, 1, CAST(N'2020-09-21T12:37:32.4138628' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (236, N'f1d32731-d22a-4f97-b339-cb5799922012', 5, 1, CAST(N'2020-09-21T12:37:32.6358390' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (237, N'b9efc686-8db6-4ad7-9202-068995c2b456', 5, 1, CAST(N'2020-09-21T12:37:32.8452985' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (238, N'76a7b73f-1405-4e6f-b9cc-361fbaa3e0a8', 4, 1, CAST(N'2020-09-21T12:37:40.7425670' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (239, N'8c57a9b1-010b-4d90-b299-46e88c2f45bf', 4, 1, CAST(N'2020-09-21T12:37:40.7526802' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (240, N'378ba380-baed-4124-9df7-d2f890907b70', 4, 1, CAST(N'2020-09-21T12:37:40.7637357' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (241, N'47b94e71-101d-42bf-bdf8-6e14dd986237', 4, 1, CAST(N'2020-09-21T12:37:40.7817395' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (242, N'aedfcf6c-4b6c-4175-b2fd-30dfe4afce23', 3, 1, CAST(N'2020-09-21T12:37:46.8931572' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (243, N'44ab6331-359e-45e3-ba1a-d5509622c8a7', 3, 1, CAST(N'2020-09-21T12:37:46.8968762' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (244, N'689f76ab-c65e-40a8-9895-d053727e0a7c', 3, 1, CAST(N'2020-09-21T12:37:46.8936104' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (245, N'567278e9-b520-40b9-819e-0879d5efc346', 3, 1, CAST(N'2020-09-21T12:37:46.8971213' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (246, N'fa24e2d0-b473-49b3-bc5b-06ce59564812', 2, 1, CAST(N'2020-09-21T12:37:53.1112111' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (247, N'1c986701-94bc-4594-b415-79a7a41371f5', 2, 1, CAST(N'2020-09-21T12:37:53.1063461' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (248, N'a34b8fe1-c0ff-43eb-a845-76f29cfd1347', 2, 1, CAST(N'2020-09-21T12:37:53.2977373' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (249, N'69499e3c-c535-45de-b8e0-56f01fb2ea4b', 2, 1, CAST(N'2020-09-21T12:37:53.2981727' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (250, N'ef7cccc4-1f8e-4ee4-b43f-9077760e275e', 17, 1, CAST(N'2020-09-21T12:37:59.1894429' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (251, N'319cec82-c8fc-48e9-8482-5ee82eaee939', 17, 1, CAST(N'2020-09-21T12:37:59.1938926' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (252, N'9b7b4902-5c8e-4d57-9244-138fef48a4ad', 17, 1, CAST(N'2020-09-21T12:37:59.1933827' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (253, N'f829d07b-12f4-4dfd-a12a-40384f0906ac', 17, 1, CAST(N'2020-09-21T12:37:59.1877254' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (254, N'c11dcec0-2486-46b0-98c4-efef11be01c4', 18, 1, CAST(N'2020-09-21T12:38:04.5740809' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (255, N'bbf7a7e4-0557-49db-8f33-7d4177bea5f0', 18, 1, CAST(N'2020-09-21T12:38:04.5760164' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (256, N'33bb1b45-5da2-432f-87bf-22ad7d098025', 18, 1, CAST(N'2020-09-21T12:38:04.5816371' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (257, N'b03b3e34-e78f-4ce9-b568-4b5cd0a81fb3', 18, 1, CAST(N'2020-09-21T12:38:04.5769019' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (258, N'16aa2e92-6380-4a2f-9a8c-7bbc6f384a46', 26, 1, CAST(N'2020-09-21T12:38:10.0193804' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (259, N'b4c14c68-fef2-471a-a1b6-1900f8fe4f68', 26, 1, CAST(N'2020-09-21T12:38:10.0187900' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (260, N'90663d8d-1162-404a-b2f4-c06c9831685b', 26, 1, CAST(N'2020-09-21T12:38:10.0232854' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (261, N'39700177-a27c-402b-8227-1d22d964863c', 26, 1, CAST(N'2020-09-21T12:38:10.0191858' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (262, N'144e562d-18ad-4649-abe7-fee00e8501fa', 29, 1, CAST(N'2020-09-21T12:38:15.4963125' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (263, N'29f7fb6d-bc5f-46a1-849d-462d719b4639', 29, 1, CAST(N'2020-09-21T12:38:15.5002775' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (264, N'8d6b4e63-bbbe-4ac7-8862-6916d118328a', 29, 1, CAST(N'2020-09-21T12:38:15.4985165' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (265, N'719dc55a-e02b-4eba-a6a2-5512cef1b9d9', 29, 1, CAST(N'2020-09-21T12:38:15.5227325' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (266, N'a22a7fd2-3501-423f-8967-866819e7757e', 30, 1, CAST(N'2020-09-21T12:38:21.0717295' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (267, N'06c469e6-6b2e-4281-a253-cd463a6b654f', 30, 1, CAST(N'2020-09-21T12:38:21.0722805' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (268, N'5a5786f8-b46b-4fd5-8d67-5494ab9efa87', 30, 1, CAST(N'2020-09-21T12:38:21.0739676' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (269, N'30ac4112-fca6-4521-b46a-05c305783550', 30, 1, CAST(N'2020-09-21T12:38:21.0725160' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (270, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 45, 1, CAST(N'2020-09-21T13:13:57.5767404' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (271, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 40, 1, CAST(N'2020-09-21T13:13:57.5979770' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (272, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 13, 1, CAST(N'2020-09-21T13:13:58.1617374' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (273, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1035, 1, CAST(N'2020-09-21T13:13:58.4083646' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (274, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 27, 1, CAST(N'2020-09-21T13:13:58.9244423' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (275, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 33, 1, CAST(N'2020-09-21T13:13:59.0488572' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (276, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1034, 1, CAST(N'2020-09-21T13:13:59.5309890' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (277, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1038, 1, CAST(N'2020-09-21T13:13:59.6341458' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (278, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1039, 1, CAST(N'2020-09-21T13:14:00.1158113' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (279, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 11, 1, CAST(N'2020-09-21T13:14:00.2299368' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (280, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 10, 1, CAST(N'2020-09-21T13:14:00.6872406' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (281, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 9, 1, CAST(N'2020-09-21T13:14:00.8128088' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (282, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 31, 1, CAST(N'2020-09-21T13:14:01.2774929' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (283, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 28, 1, CAST(N'2020-09-21T13:14:01.3907311' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (284, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 44, 1, CAST(N'2020-09-21T13:14:01.8480652' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (285, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 35, 1, CAST(N'2020-09-21T13:14:01.9727367' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (286, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1040, 1, CAST(N'2020-09-21T13:14:02.4295959' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (287, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 34, 1, CAST(N'2020-09-21T13:14:02.5633363' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (288, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 37, 1, CAST(N'2020-09-21T13:14:03.0662997' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (289, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 32, 1, CAST(N'2020-09-21T13:14:03.2222278' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (290, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 12, 1, CAST(N'2020-09-21T13:14:09.9953161' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (291, N'111d86fc-c20e-4b25-99c4-974f0470a7ad', 27, 1, CAST(N'2020-09-21T13:14:10.1988179' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (292, N'350853d9-d7d0-4b64-bd37-9137068cf2c2', 27, 1, CAST(N'2020-09-21T13:14:10.2022983' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (293, N'18b2c3da-c742-4f10-b215-9de82cbab79f', 27, 1, CAST(N'2020-09-21T13:14:10.2239103' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (294, N'c74bf379-7392-4557-9c5a-e84950612b51', 27, 1, CAST(N'2020-09-21T13:14:10.2281505' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (295, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 14, 1, CAST(N'2020-09-21T13:14:10.6858091' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (296, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 8, 1, CAST(N'2020-09-21T13:14:11.1850037' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (297, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 36, 1, CAST(N'2020-09-21T13:14:11.5633688' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (298, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 38, 1, CAST(N'2020-09-21T13:14:12.0345224' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (299, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 39, 1, CAST(N'2020-09-21T13:14:12.3984897' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (300, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 7, 1, CAST(N'2020-09-21T13:14:12.8752849' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (301, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 6, 1, CAST(N'2020-09-21T13:14:13.2561163' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (302, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 41, 1, CAST(N'2020-09-21T13:14:13.7198761' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (303, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 42, 1, CAST(N'2020-09-21T13:14:14.0891321' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (304, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 43, 1, CAST(N'2020-09-21T13:14:14.5284056' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (305, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 46, 1, CAST(N'2020-09-21T13:14:14.9075315' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (306, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 5, 1, CAST(N'2020-09-21T13:14:15.4411276' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (307, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 4, 1, CAST(N'2020-09-21T13:14:15.7437762' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (308, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 3, 1, CAST(N'2020-09-21T13:14:16.2353062' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (309, N'8fd65599-22da-4428-afe6-c78e57df4945', 27, 1, CAST(N'2020-09-21T13:14:16.2504305' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (310, N'85621436-46b5-429b-acf0-5f9d86f4e3fa', 27, 1, CAST(N'2020-09-21T13:14:16.2614220' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (311, N'847f7565-7138-46db-83b2-1e3e91d6c93a', 27, 1, CAST(N'2020-09-21T13:14:16.2794909' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (312, N'9ffef576-5424-4346-a1e4-1826bcb6ebb2', 27, 1, CAST(N'2020-09-21T13:14:16.2810006' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (313, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 2, 1, CAST(N'2020-09-21T13:14:16.5466187' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (314, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 17, 1, CAST(N'2020-09-21T13:14:17.0405697' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (315, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 18, 1, CAST(N'2020-09-21T13:14:17.3404917' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (316, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 26, 1, CAST(N'2020-09-21T13:14:17.8132925' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (317, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 29, 1, CAST(N'2020-09-21T13:14:18.1428481' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (318, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 30, 1, CAST(N'2020-09-21T13:14:18.6255621' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (319, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 1, 1, CAST(N'2020-09-21T13:14:20.4358143' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (320, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 16, 1, CAST(N'2020-09-21T13:14:21.0359347' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (321, N'00d28014-9b1f-4053-8bee-0e98473a2d12', 15, 1, CAST(N'2020-09-21T13:14:21.6416536' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (322, N'2323d557-a3b5-4cb4-9f37-386ed0ebab5d', 13, 1, CAST(N'2020-09-21T13:14:36.1078555' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (323, N'cd97212f-8f8b-48cb-9208-52b4b078ef48', 13, 1, CAST(N'2020-09-21T13:14:36.1115685' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (324, N'b79a3148-c75f-4b58-b3a4-72c53d940f57', 13, 1, CAST(N'2020-09-21T13:14:36.1327246' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (325, N'82e51057-d546-419e-8217-23e43dd05bd8', 13, 1, CAST(N'2020-09-21T13:14:36.1320045' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (326, N'f7f25e17-57de-409f-9408-f5b36823eb19', 12, 1, CAST(N'2020-09-21T13:14:44.2400823' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (327, N'208d2485-faa9-44d5-aa8d-02c1c4daa19e', 12, 1, CAST(N'2020-09-21T13:14:44.2436814' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (328, N'9fce2a68-b09c-4a62-aaff-e10d4de89e5d', 12, 1, CAST(N'2020-09-21T13:14:44.2624418' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (329, N'cdd1c8b1-b258-4ec1-808f-faf84765fffd', 12, 1, CAST(N'2020-09-21T13:14:44.4184536' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (330, N'a9740730-5287-4620-aaa5-80352919e03b', 40, 1, CAST(N'2020-09-21T13:14:51.2084024' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (331, N'6dcd7eb1-38ac-4358-a2ba-f5ac4f3cebe2', 40, 1, CAST(N'2020-09-21T13:14:51.2028822' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (332, N'2a680d6e-2047-44e0-ae97-9b9c75628031', 40, 1, CAST(N'2020-09-21T13:14:51.2166905' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (333, N'61a176ec-eda1-4671-89db-69cf6f5e2295', 40, 1, CAST(N'2020-09-21T13:14:51.2193634' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (334, N'2267a3ab-2d7d-4240-a5b8-f2978d94f25c', 14, 1, CAST(N'2020-09-21T13:14:58.3165874' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (335, N'f2e10fdd-f746-422f-9ec6-860a826d2eca', 14, 1, CAST(N'2020-09-21T13:14:58.3183040' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (336, N'3f7e08a9-2ac2-4462-962d-5dd9e614cec2', 14, 1, CAST(N'2020-09-21T13:14:58.3218465' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (337, N'dcb09426-f422-4703-811e-39ba85319054', 14, 1, CAST(N'2020-09-21T13:14:58.3361643' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (338, N'f01e6e8d-7215-4ce2-9162-4004600043a0', 11, 1, CAST(N'2020-09-21T13:15:04.6438354' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (339, N'94d45094-c02a-43a4-9130-f58a4b9e9418', 11, 1, CAST(N'2020-09-21T13:15:04.6495833' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (340, N'882c49cd-ac01-4ed5-91ca-37e41b600f47', 11, 1, CAST(N'2020-09-21T13:15:04.6546190' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (341, N'70a2993f-950d-4cc1-bda2-143f48e7d5cc', 11, 1, CAST(N'2020-09-21T13:15:04.6703003' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (342, N'51aa143d-ee51-4926-90cf-f188c69f640d', 10, 1, CAST(N'2020-09-21T13:15:11.6492893' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (343, N'ad835b86-611f-478a-8214-276207237f7a', 10, 1, CAST(N'2020-09-21T13:15:11.6514904' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (344, N'1fdf5a43-bb92-4789-b04c-90a8f2588e33', 10, 1, CAST(N'2020-09-21T13:15:11.6671652' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (345, N'4c2ecef2-da21-41c2-bf21-767708afecab', 10, 1, CAST(N'2020-09-21T13:15:11.6688160' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (346, N'7d58de36-ffc4-4583-8aca-8406ff7cbcc8', 9, 1, CAST(N'2020-09-21T13:15:18.1245721' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (347, N'07f1fe76-4fd4-430b-a4a9-f030f07e2e7c', 9, 1, CAST(N'2020-09-21T13:15:18.1329535' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (348, N'b003cd38-5829-4c07-8e72-87cb94169f51', 9, 1, CAST(N'2020-09-21T13:15:18.1497840' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (349, N'995b3d2c-21ff-4697-9048-634501f03c71', 9, 1, CAST(N'2020-09-21T13:15:18.1432639' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (350, N'1d7a9d06-0c65-4bea-81f1-f90d64304c26', 8, 1, CAST(N'2020-09-21T13:15:25.1329845' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (351, N'92157f94-f4ef-48c9-9a37-e542105fa967', 8, 1, CAST(N'2020-09-21T13:15:25.3152969' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (352, N'a374f33f-43ad-46d1-99f1-557bd9d3eea4', 8, 1, CAST(N'2020-09-21T13:15:25.5206205' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (353, N'd992b8d2-c55e-4259-a3e8-133789e57369', 8, 1, CAST(N'2020-09-21T13:15:25.5218538' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (354, N'2accee40-c920-45e6-ac73-95960a8d6b2f', 1039, 1, CAST(N'2020-09-21T13:15:33.6644553' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (355, N'2696cac3-5f23-4d3a-819d-8eb25741d2a9', 1039, 1, CAST(N'2020-09-21T13:15:33.8675925' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (356, N'1954caea-319d-477d-baf0-fc60b729f149', 1039, 1, CAST(N'2020-09-21T13:15:33.8691786' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (357, N'54144d9a-c690-47ae-a2dd-73f4b4359f83', 1039, 1, CAST(N'2020-09-21T13:15:33.8853808' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (358, N'53796e63-3d98-4620-a9dd-1f8ceeab7529', 13, 1, CAST(N'2020-09-21T13:15:35.4606276' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (359, N'200ac245-3ed2-4d90-b1a9-0ff78a0aea43', 1035, 1, CAST(N'2020-09-21T13:15:41.3813336' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (360, N'0128bd7f-323e-492e-a59d-b65538bdaf3b', 1035, 1, CAST(N'2020-09-21T13:15:41.3956732' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (361, N'83f77be5-d55d-44f8-9e85-b3c232131685', 1035, 1, CAST(N'2020-09-21T13:15:41.4168767' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (362, N'dc2af259-0565-4e82-83a1-35590852e41f', 1035, 1, CAST(N'2020-09-21T13:15:41.4160552' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (363, N'cf740d0b-5fca-49e3-b3ce-6241b3dd2e0c', 1034, 1, CAST(N'2020-09-21T13:15:48.3944805' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (364, N'5b80dcb3-f992-47b5-884e-10e5b9696c67', 1034, 1, CAST(N'2020-09-21T13:15:48.3982824' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (365, N'ff154880-8421-4343-adb3-a5da6ab6c319', 1034, 1, CAST(N'2020-09-21T13:15:48.4161822' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (366, N'63e9bb24-07fc-48d4-a460-f99a1cd4f1d9', 1034, 1, CAST(N'2020-09-21T13:15:48.4145882' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (367, N'1efb1316-6f79-4620-8c1f-ade87e1079ca', 34, 1, CAST(N'2020-09-21T13:15:54.8756248' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (368, N'150368c5-51b6-45fd-9cbe-18d8dc5f9596', 34, 1, CAST(N'2020-09-21T13:15:54.8801724' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (369, N'7080c00d-ca8c-4d09-8b35-8cbb781e1fcf', 34, 1, CAST(N'2020-09-21T13:15:54.8975956' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (370, N'6b5ad16e-a17c-4acf-9b0b-5bd9411d5e6a', 34, 1, CAST(N'2020-09-21T13:15:54.8932907' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (371, N'3632f39b-e3b9-4acd-8fd9-5b0fea4a1128', 35, 1, CAST(N'2020-09-21T13:16:01.9113148' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (372, N'2387f5eb-f916-4e89-89a3-13dfefddc4d1', 35, 1, CAST(N'2020-09-21T13:16:01.9141130' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (373, N'30db4e18-b768-451c-af45-8e3923965471', 35, 1, CAST(N'2020-09-21T13:16:01.9179276' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (374, N'691391d8-702c-4d64-9a45-659503bb7369', 35, 1, CAST(N'2020-09-21T13:16:01.9322809' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (375, N'838e84b3-726f-4413-9075-7f5e6dd4cd2a', 36, 1, CAST(N'2020-09-21T13:16:07.8754840' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (376, N'9ee98837-39e4-44c2-b922-9c688d8199c5', 36, 1, CAST(N'2020-09-21T13:16:07.8802685' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (377, N'3c6cb3fa-7c66-46e3-af6e-dfb2549215c8', 36, 1, CAST(N'2020-09-21T13:16:07.8957089' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (378, N'95e4ae52-3fa8-4c10-b885-a04f7a2e4b60', 36, 1, CAST(N'2020-09-21T13:16:07.8978258' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (379, N'7987562c-e077-4325-b2cb-79f63c63093e', 37, 1, CAST(N'2020-09-21T13:16:14.3307790' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (380, N'6e467a4b-f565-450d-a6fb-4cc30c90abc6', 37, 1, CAST(N'2020-09-21T13:16:14.3359206' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (381, N'f4be485b-7255-4604-ad3c-29cb594239f9', 37, 1, CAST(N'2020-09-21T13:16:14.3467946' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (382, N'031a046b-271e-4d80-bdf7-f94aa66ee2bf', 37, 1, CAST(N'2020-09-21T13:16:14.3503722' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (383, N'9c7ec34b-dd00-48e5-b004-8305ceab3bfa', 38, 1, CAST(N'2020-09-21T13:16:21.0019528' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (384, N'29cc51a3-e495-442b-a99e-0a9755c6c51a', 38, 1, CAST(N'2020-09-21T13:16:21.0030340' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (385, N'35b904cc-2212-411e-b749-1e548b441637', 38, 1, CAST(N'2020-09-21T13:16:21.0211811' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (386, N'7ec37e1a-cd84-4e0b-b32f-43d8a782ec06', 38, 1, CAST(N'2020-09-21T13:16:21.0227462' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (387, N'065475eb-731c-4d6d-813c-8fa34626029a', 39, 1, CAST(N'2020-09-21T13:16:27.1175139' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (388, N'37657904-d355-4eda-9e30-b9ac64dd89e3', 39, 1, CAST(N'2020-09-21T13:16:27.1216180' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (389, N'8be77647-1fe0-4de4-9630-cbb636ca9cdb', 39, 1, CAST(N'2020-09-21T13:16:27.1411831' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (390, N'a2fbd11d-0780-40f4-8d6d-c4ddff771510', 39, 1, CAST(N'2020-09-21T13:16:27.1422075' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (391, N'cfebe82c-2d07-4d2b-a82a-34d799ef0cec', 7, 1, CAST(N'2020-09-21T13:16:33.3274755' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (392, N'61c3ffd9-dd2c-4421-9c5b-8369a304b694', 7, 1, CAST(N'2020-09-21T13:16:33.3299879' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (393, N'8cd863c0-97d3-4aec-bd81-90d7030adcff', 7, 1, CAST(N'2020-09-21T13:16:33.3480433' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (394, N'13a0e63b-fa08-4dd7-a7c3-1547eaa1ee25', 7, 1, CAST(N'2020-09-21T13:16:33.3441848' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (395, N'74b85844-f13d-430d-aa12-a0bd07637610', 6, 1, CAST(N'2020-09-21T13:16:39.5490423' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (396, N'4e76080e-4047-4e62-a71a-0b00a94702ce', 6, 1, CAST(N'2020-09-21T13:16:39.5523474' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (397, N'743f0d1d-cd81-4773-a8ae-4a85740ee30e', 6, 1, CAST(N'2020-09-21T13:16:39.5707023' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (398, N'7bd5e89d-c012-40e4-9035-35454bfd5a8c', 6, 1, CAST(N'2020-09-21T13:16:39.5666045' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (399, N'6a201042-d4ca-470f-bb72-9e2336a54952', 41, 1, CAST(N'2020-09-21T13:16:45.6699973' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (400, N'1b74e81f-bc41-4eb8-a4bd-8c53785f934a', 41, 1, CAST(N'2020-09-21T13:16:45.6739097' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (401, N'8fa2dd61-9425-4472-ba3b-e758e132191a', 41, 1, CAST(N'2020-09-21T13:16:45.6892754' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (402, N'1bde7bf1-1e71-437e-9188-877bb80007c5', 41, 1, CAST(N'2020-09-21T13:16:45.6864107' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (403, N'4e2866f3-549e-4f1c-8a9b-21940e95d472', 42, 1, CAST(N'2020-09-21T13:16:51.7954085' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (404, N'0327bfc0-12b4-4cd3-b034-02dc7cfa6ef2', 42, 1, CAST(N'2020-09-21T13:16:51.7949208' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (405, N'82d0f7a5-2255-4d78-9910-547a1bd985e3', 42, 1, CAST(N'2020-09-21T13:16:51.8123663' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (406, N'3ff9ffcb-bfdd-46f0-b9fe-da45c3d9e85e', 42, 1, CAST(N'2020-09-21T13:16:51.8162756' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (407, N'a776d528-f6fb-46cc-983a-8f1c365d7572', 43, 1, CAST(N'2020-09-21T13:16:57.8060344' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (408, N'445b47a5-f46f-4b8b-9c96-95e8e8e1b999', 43, 1, CAST(N'2020-09-21T13:16:57.8056765' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (409, N'0988a40f-2a1d-4681-99f2-0e238cfc851b', 43, 1, CAST(N'2020-09-21T13:16:57.8180934' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (410, N'36b0054c-59d0-4a11-af9d-03881d74f338', 43, 1, CAST(N'2020-09-21T13:16:57.8217147' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (411, N'862835e8-1153-4148-acd2-a85acc9aac6a', 44, 1, CAST(N'2020-09-21T13:17:03.7300000' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (412, N'22440b04-f036-485e-a1db-1a7c221f4384', 44, 1, CAST(N'2020-09-21T13:17:03.7328437' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (413, N'e3a5a935-a321-4aab-a928-eacd08ab9b3f', 44, 1, CAST(N'2020-09-21T13:17:03.7494026' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (414, N'2a940dd0-4639-4376-a773-e6dd30b01519', 44, 1, CAST(N'2020-09-21T13:17:03.7511103' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (415, N'f57af73b-dc1a-4a4a-bb18-81f67b33c25a', 45, 1, CAST(N'2020-09-21T13:17:09.8749341' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (416, N'2e034248-a826-47f7-b292-0d1e98dae41e', 45, 1, CAST(N'2020-09-21T13:17:09.8799565' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (417, N'd6474839-04a5-4c44-94d0-b64cc012498b', 45, 1, CAST(N'2020-09-21T13:17:09.8971337' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (418, N'4a479d4e-2cb7-456c-8d14-d3c510af3dd0', 45, 1, CAST(N'2020-09-21T13:17:09.8932988' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (419, N'd9a9069d-a4eb-4de1-967d-48f809d4f64b', 46, 1, CAST(N'2020-09-21T13:17:16.7152884' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (420, N'5f879c6c-1c31-4244-9d38-8f4b6ec6fa7e', 46, 1, CAST(N'2020-09-21T13:17:16.7205723' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (421, N'1db218d4-3740-4950-9e71-68d56731e772', 46, 1, CAST(N'2020-09-21T13:17:16.7325361' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (422, N'606235fd-ac18-49ee-850e-e8e1db8cd84c', 46, 1, CAST(N'2020-09-21T13:17:16.7339621' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (423, N'91070367-c007-450a-afcd-099bf6308858', 5, 1, CAST(N'2020-09-21T13:17:22.6532962' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (424, N'b2c4a1a0-0f70-4cce-a1da-1a2ed59051b5', 5, 1, CAST(N'2020-09-21T13:17:22.6545196' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (425, N'f01820c2-6d8b-4b73-bd94-9c3702f628d8', 5, 1, CAST(N'2020-09-21T13:17:22.6604729' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (426, N'31c5a205-f4c2-47e9-8a77-c5208ff74ec7', 5, 1, CAST(N'2020-09-21T13:17:22.6565624' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (427, N'7792d0f2-b736-4e18-b561-aa1b0b661d38', 4, 1, CAST(N'2020-09-21T13:17:28.6847290' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (428, N'f087647c-5c11-4052-8b49-f309b9f427f4', 4, 1, CAST(N'2020-09-21T13:17:28.6918429' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (429, N'c34dc91c-e228-4ed8-9ff5-e66a308072be', 4, 1, CAST(N'2020-09-21T13:17:28.7028757' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (430, N'e65324de-f3ad-455d-a2cc-8f027580abdf', 4, 1, CAST(N'2020-09-21T13:17:28.6988632' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (431, N'0d8425d3-04e2-473a-93e0-5c34b2b67c9b', 3, 1, CAST(N'2020-09-21T13:17:34.6561926' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (432, N'e8fea04e-6039-4ede-a85e-4a5207435a14', 3, 1, CAST(N'2020-09-21T13:17:34.6611835' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (433, N'd120118f-eb66-460a-91b7-32946cbe8538', 3, 1, CAST(N'2020-09-21T13:17:34.6780530' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (434, N'6df58a6b-e78e-4dfb-924e-5425ef2b889d', 3, 1, CAST(N'2020-09-21T13:17:34.6764165' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (435, N'9eddfc0e-8cea-4339-91e1-b0bead3d71f9', 17, 1, CAST(N'2020-09-21T13:17:40.7161578' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (436, N'02d4ba53-f6a6-40fc-b139-fa25753dc7de', 17, 1, CAST(N'2020-09-21T13:17:40.7171819' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (437, N'641d0b51-6e42-4c73-950e-277ceeea1e6c', 17, 1, CAST(N'2020-09-21T13:17:40.7195735' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (438, N'49ea4c5f-7b37-42fa-bee4-c6cb72d82214', 17, 1, CAST(N'2020-09-21T13:17:40.7402745' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (439, N'f7cbcd08-d99a-40f2-bcb3-942cb10164e4', 18, 1, CAST(N'2020-09-21T13:17:46.6903487' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (440, N'2bce0df6-da0d-4010-b645-6d5596fc16ee', 18, 1, CAST(N'2020-09-21T13:17:46.6957641' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (441, N'4cb85abe-da26-4175-a7a0-949275f4bdd7', 18, 1, CAST(N'2020-09-21T13:17:46.6962402' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (442, N'b9fab1d7-8016-4b77-be09-f7aceef50a79', 18, 1, CAST(N'2020-09-21T13:17:46.7066656' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (443, N'71fef6a8-7f70-48e1-a5a8-2796372dac17', 26, 1, CAST(N'2020-09-21T13:17:52.7216448' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (444, N'00b14fc5-eedc-40b0-ace8-e93239ca80c8', 26, 1, CAST(N'2020-09-21T13:17:52.7228543' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (445, N'9cb65110-3693-4ae4-9e58-d28054edb398', 26, 1, CAST(N'2020-09-21T13:17:52.7246007' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (446, N'65ddcced-eae1-4b09-9c02-83141d27749e', 26, 1, CAST(N'2020-09-21T13:17:52.7314036' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (447, N'b45418f0-a23f-4cd3-b0eb-91e89da5bfee', 1038, 1, CAST(N'2020-09-21T13:17:58.6962904' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (448, N'40266e77-b703-4653-86e5-fe55ab9a3b72', 1038, 1, CAST(N'2020-09-21T13:17:58.7007028' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (449, N'6c36ed71-b197-4723-ae31-24229bd9052a', 1038, 1, CAST(N'2020-09-21T13:17:58.7037278' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (450, N'0c34cb18-a987-4c54-9c6e-4a56d78af005', 1038, 1, CAST(N'2020-09-21T13:17:58.7149700' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (451, N'bb81b331-0a87-4565-a677-6ff11506a6b8', 27, 1, CAST(N'2020-09-21T13:18:04.6462728' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (452, N'45765eb9-8d43-4828-ac05-e378779079f6', 27, 1, CAST(N'2020-09-21T13:18:04.6496384' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (453, N'5f68e8dd-c09c-4769-a00a-8051f030d2ea', 27, 1, CAST(N'2020-09-21T13:18:04.6542495' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (454, N'da2e9408-0ef5-4424-a579-a7cce12786d5', 27, 1, CAST(N'2020-09-21T13:18:04.6641924' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (455, N'1826a4d5-86cc-488a-b245-4ad3a3fd6625', 28, 1, CAST(N'2020-09-21T13:18:10.5618604' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (456, N'df5fb8d4-12e6-4456-8cb3-854b0220fd25', 28, 1, CAST(N'2020-09-21T13:18:10.5690088' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (457, N'c785e267-68c8-4459-9983-ffe631f0afe1', 28, 1, CAST(N'2020-09-21T13:18:10.5707462' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (458, N'57ec42d8-6d0c-4073-9c7f-0745f67ae728', 28, 1, CAST(N'2020-09-21T13:18:10.5857873' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (459, N'7bd2911e-d127-48a1-9e73-2c1d2c099b0b', 29, 1, CAST(N'2020-09-21T13:18:16.7878334' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (460, N'19205b9e-3612-4c12-bd39-e6347f5fea6a', 29, 1, CAST(N'2020-09-21T13:18:16.7916088' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (461, N'477de928-bff0-4885-a25b-fd85721ada5d', 29, 1, CAST(N'2020-09-21T13:18:16.7935150' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (462, N'403265e9-d12e-4e3f-885f-0fe913ff60a8', 29, 1, CAST(N'2020-09-21T13:18:16.8055073' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (463, N'e5c370f7-f2d1-4113-a0c6-e66f0a4b2cf9', 1040, 1, CAST(N'2020-09-21T13:18:22.7630615' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (464, N'b6e85996-bd0d-4479-9712-f7f508505147', 1040, 1, CAST(N'2020-09-21T13:18:22.7620127' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (465, N'36197270-ab51-4cb5-be94-f414a98622fd', 1040, 1, CAST(N'2020-09-21T13:18:22.7678477' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (466, N'8dde25bd-b1c7-42e0-8a99-c2a35ec6e8c9', 1040, 1, CAST(N'2020-09-21T13:18:22.7803894' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (467, N'9d917f73-b888-4617-97d3-b50c6e308ca5', 30, 1, CAST(N'2020-09-21T13:18:28.8214360' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (468, N'335913aa-715f-44a0-aa86-6eca83990c8c', 30, 1, CAST(N'2020-09-21T13:18:28.8260914' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (469, N'7ba8855b-b5c5-427f-81a0-af5e13ed9f97', 30, 1, CAST(N'2020-09-21T13:18:28.8275075' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (470, N'69814e2e-9d7d-4683-b65d-f1e5408727a0', 30, 1, CAST(N'2020-09-21T13:18:28.8420445' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (471, N'c680e611-2c1a-4f58-8e19-0e80ec7aaf48', 31, 1, CAST(N'2020-09-21T13:18:34.8212371' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (472, N'156c1feb-1ea8-4916-b2f5-c7583e81d6d3', 31, 1, CAST(N'2020-09-21T13:18:34.8221560' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (473, N'1284895a-7fad-4ac8-a799-d96134742517', 31, 1, CAST(N'2020-09-21T13:18:34.8261790' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (474, N'824110e2-64e3-4417-ba05-16a56399d1b5', 31, 1, CAST(N'2020-09-21T13:18:34.8397699' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (475, N'22b8daf8-1b35-4893-b399-b2d254cfdb01', 32, 1, CAST(N'2020-09-21T13:18:40.8534934' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (476, N'bac66962-9149-4c71-89bb-7afcfef75604', 32, 1, CAST(N'2020-09-21T13:18:40.8520116' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (477, N'aed9e4a7-a7de-44e2-868f-24fca6adaba7', 32, 1, CAST(N'2020-09-21T13:18:40.8525266' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (478, N'9b268af4-4d06-4fe7-99ab-cd3e59b1c383', 32, 1, CAST(N'2020-09-21T13:18:40.8700322' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (479, N'52da3b75-21b3-4ddd-8bc1-5194b29f7d88', 33, 1, CAST(N'2020-09-21T13:18:46.7633577' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (480, N'dfa8dded-2dad-4981-8429-009564b6558c', 33, 1, CAST(N'2020-09-21T13:18:46.7674579' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (481, N'8dfea31b-ed3b-4f88-8aab-538e00910750', 33, 1, CAST(N'2020-09-21T13:18:46.7687141' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (482, N'10bed6f3-a289-4458-aa23-3fd8951be7c6', 33, 1, CAST(N'2020-09-21T13:18:46.7853534' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (483, N'e15336db-444f-4e8c-8023-2fb661905623', 1, 1, CAST(N'2020-09-21T13:18:52.8565969' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (484, N'1f6657c6-d5e6-451d-a843-44388df5f787', 1, 1, CAST(N'2020-09-21T13:18:52.8683798' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (485, N'f039ea2d-3668-4e54-8b12-0ab43eeb55b4', 1, 1, CAST(N'2020-09-21T13:18:52.8717193' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (486, N'0065b154-289d-4635-9f1b-b95284b7a2b4', 1, 1, CAST(N'2020-09-21T13:18:52.8896236' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (487, N'82a88f66-dfb4-45e7-a3c8-fd86da9bdf8b', 16, 1, CAST(N'2020-09-21T13:18:59.8806244' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (488, N'12154242-904c-4aaf-af49-03c347470e55', 16, 1, CAST(N'2020-09-21T13:18:59.8786741' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (489, N'4cad61c2-6c92-4a78-8c47-d0fb583d181b', 16, 1, CAST(N'2020-09-21T13:18:59.8893874' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (490, N'4d2a3aaf-1b30-4526-96e6-309f5cfcf8d6', 16, 1, CAST(N'2020-09-21T13:18:59.8995297' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (491, N'80f240a0-7bc9-436c-b41c-798f0f836a12', 15, 1, CAST(N'2020-09-21T13:19:06.7866328' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (492, N'6d1998c3-9dc3-411f-b1d5-2819fbd57edb', 15, 1, CAST(N'2020-09-21T13:19:06.7911751' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (493, N'c2052ecb-883f-4cb9-babb-5eab47f955fa', 15, 1, CAST(N'2020-09-21T13:19:06.7927303' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (494, N'e4eebcfc-5d79-4016-9b24-fa5b02a3a071', 15, 1, CAST(N'2020-09-21T13:19:06.8059572' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (495, N'2a653378-f71e-4595-b5f1-6a20a54f7578', 46, 1, CAST(N'2020-09-24T21:15:40.2829316' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (496, N'37f2fa50-98a0-4b77-ac2f-0098f5958739', 1035, 1, CAST(N'2020-09-30T14:41:28.0198186' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (497, N'4b0a2b64-7245-40aa-9682-8d322c7a7d51', 1040, 1, CAST(N'2020-10-04T11:07:28.4349972' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (498, N'9e8dfa15-c8d2-4933-8cd6-17f963a585e1', 45, 1, CAST(N'2020-10-05T02:43:58.3679592' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (499, N'ddee89d8-ed9c-4cf2-a6a2-a680bca542b4', 45, 1, CAST(N'2020-10-07T10:00:23.8281339' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (500, N'c7c934d0-9f64-4903-9041-97855fface3d', 45, 1, CAST(N'2020-10-08T14:44:06.1090565' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (501, N'9107cf0a-2715-47c8-ab20-26bf3691849a', 1034, 1, CAST(N'2020-10-08T14:44:16.6684450' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (502, N'f2b97107-1d50-476b-a80a-8b9aa68714e2', 31, 1, CAST(N'2020-11-24T06:33:07.2024689' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (503, N'1c61f92d-eed7-4420-8028-842afb8fd044', 18, 1, CAST(N'2020-11-24T06:33:21.8069205' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (504, N'c66321a1-34a3-41d3-b281-3866e182eb5b', 12, 1, CAST(N'2020-11-25T19:17:52.3762296' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (505, N'585e9b6e-b43a-46e7-911b-37e68d9e425b', 4, 1, CAST(N'2020-11-25T19:18:00.3259759' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (506, N'8192b758-9b1e-41af-94cd-13a72eb6e34a', 6, 1, CAST(N'2020-12-18T14:40:05.3789605' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (507, N'67bb9647-4284-4d6a-9364-a51f8b8ab107', 11, 1, CAST(N'2020-12-21T16:29:20.5475111' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (508, N'55b13a47-380c-4ac1-b751-8582cdb7a675', 26, 1, CAST(N'2021-01-20T11:09:48.9215481' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (509, N'2daea1f5-e641-46b5-b60d-4082e1efda68', 13, 1, CAST(N'2021-01-25T11:40:24.0495315' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (510, N'fd6748d2-3b51-4473-bd4b-aba3cc97b328', 13, 1, CAST(N'2021-02-01T14:28:52.8644789' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (511, N'b0058e30-812a-4862-817d-9d4b83268f3b', 4, 1, CAST(N'2021-02-03T11:20:41.4575930' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (512, N'9375ac2f-a57f-4f1f-81d7-5f26b9477890', 40, 1, CAST(N'2021-02-04T13:11:10.0915519' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (513, N'612aaa01-ba36-4473-baea-05252cee30ba', 6, 1, CAST(N'2021-02-05T01:46:15.4102526' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (514, N'83221a67-88cf-44d6-bf5f-465c5fdefacc', 40, 1, CAST(N'2021-02-07T21:34:37.3678008' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (515, N'bb1f3432-b042-48b9-aaec-53f7f232cb24', 40, 1, CAST(N'2021-02-09T17:11:59.4800405' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (516, N'd3134e8b-39d2-40b6-a5e1-e4e263622c5d', 45, 1, CAST(N'2021-02-09T21:22:54.6534043' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (517, N'f9efe7e4-a9ab-45fb-8cc8-ff44d3664c44', 2, 1, CAST(N'2021-02-09T21:24:11.1725193' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (518, N'650aea75-e7b2-4712-9730-073407c210cd', 37, 1, CAST(N'2021-02-16T19:58:30.9660258' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (519, N'96283354-dba4-4fe5-9872-7c6a7e29646f', 13, 1, CAST(N'2021-02-16T21:01:33.0126528' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (520, N'df67dd0f-daa2-4bb6-a65f-255bab29cf7c', 13, 1, CAST(N'2021-02-17T11:22:51.4367956' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (521, N'ec9b7e68-57ae-4c4d-82f6-e7951bbbbc6f', 13, 1, CAST(N'2021-02-18T23:03:56.5905953' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (522, N'4e146bab-472e-40e8-b7b9-4abade577bfe', 12, 1, CAST(N'2021-02-18T23:04:39.9775650' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (523, N'3db06681-e661-406a-9cef-55affb29886b', 7, 1, CAST(N'2021-02-18T23:04:50.1428563' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (524, N'463dad10-5584-4db1-b17b-ab24ab626030', 7, 1, CAST(N'2021-02-18T23:05:38.7079140' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (525, N'72491c8d-7dd9-4d38-9c8d-cc6daa39704c', 33, 1, CAST(N'2021-02-19T17:17:24.3452797' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (527, N'511d1dc8-e07e-4292-8fb9-a0a36ca14e50', 45, 1, CAST(N'2021-02-23T09:09:31.9252727' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (528, N'39551c53-7deb-4d76-a480-e36374d5c808', 45, 1, CAST(N'2021-02-23T20:29:09.7557774' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (529, N'2171e116-a0fe-4a3d-8dbc-0e56e247d99c', 40, 1, CAST(N'2021-02-24T23:44:12.5434551' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (530, N'6e807bc8-16df-4326-9542-0916eabb7cb9', 45, 1, CAST(N'2021-03-02T12:45:16.2783334' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (531, N'afbd2a07-503b-46c4-93d0-2122299bc24d', 1039, 1, CAST(N'2021-03-04T11:32:17.4878016' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (532, N'c3934078-e135-4949-8004-955866b1eb53', 1034, 1, CAST(N'2021-03-12T18:23:11.9808751' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (533, N'03331ed3-4aed-48aa-86de-49a735eee377', 4, 1, CAST(N'2021-03-12T18:23:28.6609409' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (534, N'9f4bd3a9-c72e-438e-a5f4-8cfd0cce56c0', 6, 1, CAST(N'2021-03-12T18:23:39.8116979' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (535, N'afa06457-1fb6-4304-b28a-0eb59dbecc96', 1038, 1, CAST(N'2021-03-12T18:24:07.2978046' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (536, N'4e657432-133c-454a-86f6-65ff3aeb9c9d', 1034, 1, CAST(N'2021-03-14T23:20:44.9539792' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (537, N'ab67a339-5524-492f-825e-fb5ecd4cd99e', 45, 1, CAST(N'2021-03-15T10:32:41.8678436' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (538, N'c3352a1b-cf0f-4a17-8ddd-b72cd1f1de5c', 45, 1, CAST(N'2021-03-17T08:21:01.8238312' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (539, N'36908ec6-e215-4a86-8a5f-a1d34e6b5ba6', 13, 1, CAST(N'2021-03-17T08:24:25.9078581' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (540, N'b0158220-773c-4343-ab42-702c7630fbd0', 13, 1, CAST(N'2021-03-18T04:52:15.9204818' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (541, N'bb28b99a-0a5f-4ed4-87e4-0546367948ab', 45, 1, CAST(N'2021-03-18T15:04:47.5809755' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (542, N'3dcd89e8-58f9-431b-930c-d3e8781edb13', 2, 1, CAST(N'2021-03-19T19:22:55.9543560' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (543, N'add710ad-bba8-42d3-84b5-79c280afa813', 10, 1, CAST(N'2021-03-23T01:21:50.2586909' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (544, N'e0312a2a-5ee3-4637-a776-e4f86e518264', 13, 1, CAST(N'2021-03-23T12:40:53.1791101' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (545, N'd68cddab-cac5-4ba7-b664-f0316fd125c1', 40, 1, CAST(N'2021-03-23T12:41:15.2475790' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (546, N'91fcfd7f-9a50-4d76-be14-e0ec33081926', 34, 1, CAST(N'2021-03-23T14:35:24.2114413' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (547, N'80498823-83a6-4bcf-b5b3-df93f8a62b2b', 17, 1, CAST(N'2021-03-23T14:35:43.5902976' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (548, N'9f12b408-df21-4639-a878-c69422bb81c8', 40, 1, CAST(N'2021-03-23T17:47:48.8307270' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (549, N'72e5a3b7-c18c-42f3-9b1d-200b5dc26c4c', 40, 1, CAST(N'2021-03-25T23:42:49.9494868' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (550, N'5e0f7fb0-5f6f-4418-8269-bb245eabd999', 2, 1, CAST(N'2021-03-29T15:55:10.1943845' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (551, N'ee41125e-a609-4940-a021-8da8c473a02a', 27, 1, CAST(N'2021-03-30T18:53:07.0254959' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (552, N'fae56007-f8ce-4043-aa72-74e6d882852e', 1038, 1, CAST(N'2021-03-31T15:49:37.2907335' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (553, N'727814a2-f711-4515-8d0b-ae0e4691a6fd', 33, 1, CAST(N'2021-04-06T20:19:54.9551781' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (554, N'618266d5-6326-4e50-9461-267bd9a13e06', 17, 1, CAST(N'2021-04-06T20:20:16.4027451' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (555, N'059d82cc-0750-47ed-87d3-967edb4e0a77', 45, 1, CAST(N'2021-04-09T20:40:27.6261940' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (556, N'308753a6-82a5-4820-aeef-0fe6257c7a65', 4, 1, CAST(N'2021-04-09T20:40:49.3883175' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (557, N'340220ff-9a52-4fe3-b7a0-40b257a09150', 1038, 1, CAST(N'2021-04-13T22:00:50.8964067' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (558, N'382a983b-337c-43bd-9fed-c052d47b6445', 1035, 1, CAST(N'2021-04-14T20:39:59.6956859' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (559, N'3a004f68-3b8b-4a9f-addd-f1507d172121', 1035, 1, CAST(N'2021-04-14T20:39:59.3395096' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (560, N'9ad7b24f-6280-45c8-83f9-ff402710aa0b', 1035, 1, CAST(N'2021-04-14T20:40:00.8484981' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (561, N'28c6dab0-69d3-4e33-9aae-00e76cc0b7fe', 1039, 1, CAST(N'2021-04-16T05:18:22.2573799' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (562, N'134af264-f76a-4978-918a-be4d49b4c751', 27, 1, CAST(N'2021-04-21T09:42:53.9727659' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (563, N'910651c5-1ca0-4183-96a8-c6eabc2ba1db', 17, 1, CAST(N'2021-04-21T15:04:20.1708973' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (564, N'2afa9e38-bf2b-4464-a7f9-cabe9e336b9f', 37, 1, CAST(N'2021-04-21T15:04:33.6996605' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (565, N'25766380-6187-4337-b4ef-45727fcaf9ce', 40, 1, CAST(N'2021-04-22T03:56:28.2704229' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (566, N'57427516-b6fa-4e3c-8eea-fbd6f8a8d672', 1039, 1, CAST(N'2021-04-27T23:16:23.6470503' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (567, N'962b08eb-1ce2-4077-b15b-5eff1e38832b', 1035, 1, CAST(N'2021-04-27T23:17:12.3574900' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (568, N'275f5ca7-7a96-4349-9555-33e79b766fb4', 2, 1, CAST(N'2021-04-28T04:08:51.3229679' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (569, N'ba66700d-9646-4676-8d94-d6a72be4ca61', 2, 1, CAST(N'2021-04-28T04:08:51.4005215' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (570, N'23cd030e-5f64-42d1-9a9f-e90e76b9fa9e', 13, 1, CAST(N'2021-04-28T12:34:31.5684231' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (571, N'6bfc4767-23ab-484f-a88e-f5de9abb307b', 13, 1, CAST(N'2021-04-28T12:34:42.6877156' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (572, N'd9dacf9d-f4f9-4c20-a994-362f1a993eaa', 27, 1, CAST(N'2021-05-04T15:48:40.7669792' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (573, N'2861db3e-60f3-4a9c-9a59-0554343f9ec4', 1035, 1, CAST(N'2021-05-06T15:10:41.7991480' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (574, N'5d4ca236-8d42-4ccc-9ebc-1515c1006905', 37, 1, CAST(N'2021-05-06T15:10:55.9280001' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (575, N'7575d7f2-68c7-4ea2-8ca7-c157291d4e8e', 45, 1, CAST(N'2021-05-07T02:43:17.5668206' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (576, N'6f1a8c17-3486-4f7c-960b-0bf11afda47e', 40, 1, CAST(N'2021-05-07T18:55:34.7275616' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (577, N'84fe196e-acee-4c46-bde3-09f7168b7512', 45, 1, CAST(N'2021-05-10T11:30:41.0078563' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (578, N'5e2f4c0b-0d47-4f01-b1e0-1e798a57826e', 45, 1, CAST(N'2021-05-10T11:32:31.4928406' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (579, N'37a65951-5cdd-4e03-b034-e4faee359eac', 45, 1, CAST(N'2021-05-12T13:49:02.1065728' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (580, N'dcfa2124-4321-4f16-932b-3956b6ef307e', 40, 1, CAST(N'2021-05-13T07:12:32.3197407' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (581, N'14fb7cf3-470e-4a6d-87c1-edbdbeae0881', 1035, 1, CAST(N'2021-05-24T01:53:19.6706349' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (582, N'34c04152-3b24-4b14-9934-0f413e34706b', 45, 1, CAST(N'2021-05-25T18:24:21.0147653' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (583, N'ba83d666-99d3-4481-90c0-d9a3e85d6dfd', 13, 1, CAST(N'2021-05-26T07:18:27.4707473' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (584, N'b6c6b363-c370-430c-9496-93272f3064f6', 12, 1, CAST(N'2021-05-26T07:18:45.3187144' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (585, N'e84c392b-8b0a-4b01-a30c-3063ba013f49', 1038, 1, CAST(N'2021-05-26T07:19:01.5972725' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (586, N'1d9c9ddd-8dad-4d8a-ad63-a99819507209', 4, 1, CAST(N'2021-05-26T07:19:11.7250911' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (587, N'878705fb-34ac-480c-825d-f0536f6873b8', 17, 1, CAST(N'2021-05-26T07:19:29.9289041' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (588, N'a78d23c4-aea5-469a-8098-cc5c353634bc', 45, 1, CAST(N'2021-05-27T22:09:29.8107058' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (589, N'75f6d4e0-ff12-421b-b860-27d01b687ffb', 45, 1, CAST(N'2021-05-27T22:34:17.8182346' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (590, N'b51e2a28-b5be-4378-bf0e-4a070998f44d', 1034, 1, CAST(N'2021-05-27T23:18:01.3183091' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (591, N'fc29aeae-6487-452e-ac2e-306f7dfe5c00', 13, 1, CAST(N'2021-05-27T23:18:17.7332748' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (592, N'616ec967-bdd4-4dd4-b421-30bcb2cfd482', 44, 1, CAST(N'2021-06-02T03:12:56.4384149' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (593, N'c68e8811-1cb8-49e1-8645-28fe2a33aa4c', 13, 1, CAST(N'2021-06-02T16:10:14.8448588' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (594, N'3bf12495-226b-4ffb-9f12-093bb6bea439', 45, 1, CAST(N'2021-06-04T20:42:11.0671422' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (595, N'0c551d43-304f-4136-8faa-f870ffa75a2c', 12, 1, CAST(N'2021-06-04T20:42:19.0919566' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (596, N'7fb4bcd6-bd41-4684-a632-1bc186559c89', 45, 1, CAST(N'2021-06-08T08:06:30.7017358' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (597, N'97e7cd06-9123-426b-9ca0-a59a029f2ece', 2, 1, CAST(N'2021-06-08T13:18:46.0055221' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (598, N'fbd4aaec-eebb-4e45-a28e-20c8f7ae68a0', 12, 1, CAST(N'2021-06-08T13:18:55.0951696' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (599, N'6d0fcd18-e52b-412b-bd64-8e7afc2a53ab', 13, 1, CAST(N'2021-06-09T03:21:06.1920485' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (600, N'54c198b4-6e75-49f4-bf74-87bb21802d28', 7, 1, CAST(N'2021-06-10T13:24:47.6978067' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (601, N'35d10d8f-5e4c-46d8-b251-aa1cb8f8db43', 40, 1, CAST(N'2021-06-11T09:35:22.0367376' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (602, N'5651a598-8b0a-4024-8091-8b650af57bc9', 39, 1, CAST(N'2021-06-12T03:17:18.0747616' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (603, N'5cbebc2b-e47a-415e-94e4-9ef2ea46dab4', 6, 1, CAST(N'2021-07-09T01:51:43.5418450' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (604, N'9a381902-a38f-4ffe-8899-dfe2b4c7ecfd', 45, 1, CAST(N'2021-07-12T19:46:51.3253421' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (605, N'd4539e4c-9419-4fcf-9c57-d6431e7d2907', 13, 1, CAST(N'2021-07-14T17:29:56.2022922' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (606, N'02ac763d-bb0a-419f-9b83-26abbd483404', 45, 1, CAST(N'2021-07-28T12:16:16.1421292' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (607, N'3ad216c7-48b6-46d3-96b9-4208f557a48c', 45, 1, CAST(N'2021-07-28T12:16:23.8401022' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (608, N'24cbb851-9402-48d7-86bc-ab4bd89faf54', 27, 1, CAST(N'2021-08-11T14:47:16.9298789' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (609, N'8cd65ed7-9121-4655-8758-66c437406456', 45, 1, CAST(N'2021-08-18T15:10:56.8643590' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (611, N'da38d396-fdd6-4666-a88b-51da2f0bd309', 7, 1, CAST(N'2021-08-20T09:45:56.3347063' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (612, N'912a07f7-b545-41c4-909b-1c1f40a6a194', 40, 1, CAST(N'2021-08-25T11:56:00.5495647' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (613, N'e124467d-0df7-42b3-9592-1beb7de70474', 40, 1, CAST(N'2021-08-25T12:00:39.2861886' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (614, N'b3c99582-d88c-4c9d-8289-b7e46cfb3548', 1035, 1, CAST(N'2021-08-25T20:57:59.3760559' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (615, N'7e7939b6-637a-4578-8167-692c5b1aa3cf', 1035, 1, CAST(N'2021-08-25T20:58:09.1725493' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (616, N'48f122d1-e09a-4261-b3ce-0368062035d6', 28, 1, CAST(N'2021-09-05T11:39:53.4139418' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (617, N'a90217d7-0198-44ea-ad2a-4ec6aab7dec4', 12, 1, CAST(N'2021-09-05T11:40:02.2197038' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (618, N'555c4680-5a5e-4952-8b5a-16012d39ac03', 33, 1, CAST(N'2021-09-07T19:51:33.7979531' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (619, N'6db1ca0e-13dc-4323-880a-66c1128c57db', 12, 1, CAST(N'2021-09-10T15:30:59.0363142' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (620, N'2f7cf29b-68af-4dd1-a4ce-e9d482cf10eb', 40, 1, CAST(N'2021-09-13T22:45:13.3253089' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (621, N'0976072c-aff1-4153-803e-8faa881382f3', 17, 1, CAST(N'2021-09-14T05:59:05.7332567' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (622, N'2683e854-b687-456a-a8a1-a7b186ceb10c', 1034, 1, CAST(N'2021-09-14T05:59:18.0602296' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (623, N'01e97b30-f3db-42f8-b0fe-72f60193af2a', 13, 1, CAST(N'2021-09-14T10:43:25.7780600' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (624, N'32c67a98-49dc-4ee6-8146-c1c02228e9eb', 45, 1, CAST(N'2021-09-14T10:43:49.6501383' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (625, N'01d1a22a-106c-4171-a36a-56d787001e0d', 45, 1, CAST(N'2021-09-14T10:47:43.8887758' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (626, N'738e6322-ce38-49fd-8fa9-ae2a0e99c15b', 13, 1, CAST(N'2021-09-14T10:48:06.9810584' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (627, N'a054c28f-6f99-4773-a9d5-de89c2a0e4ab', 13, 1, CAST(N'2021-09-14T10:48:16.7260586' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (628, N'1a8e7c6a-038b-4f97-825d-1547c06d195c', 12, 1, CAST(N'2021-09-14T20:07:15.7417534' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (629, N'0ad3fc37-894f-4fa9-bfd4-988572497734', 1035, 1, CAST(N'2021-09-24T02:06:52.1634345' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (630, N'731c8a66-267a-4c86-8108-2f20d1215355', 45, 1, CAST(N'2021-09-24T02:18:26.0051205' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (631, N'bf180352-cdd2-4362-ae70-8e2c25b539ff', 13, 1, CAST(N'2021-09-24T04:41:28.3591348' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (632, N'f5fffef3-cc6d-4181-8b9a-041735bf5555', 27, 1, CAST(N'2021-09-27T11:53:28.5599215' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (633, N'44db362c-8b51-46e8-a9bd-ca622a7292de', 1035, 1, CAST(N'2021-09-27T13:28:01.9079685' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (634, N'8e8c189c-17f0-47e6-b9c4-d1de7e9c9d0f', 18, 1, CAST(N'2021-09-29T15:35:08.7091596' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (635, N'6df01b11-db8f-4aa3-80fb-570f50c799d9', 1035, 1, CAST(N'2021-09-29T17:54:56.0781261' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (636, N'3df124a2-095c-42af-acbe-24c4b46d1b57', 33, 1, CAST(N'2021-09-30T12:36:14.6858375' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (637, N'6a4f9536-2d42-4d40-ba81-cefd11af99f3', 34, 1, CAST(N'2021-09-30T18:42:57.6380651' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (638, N'8082bc4b-5d04-4672-bbd9-686f0ddd6df0', 12, 1, CAST(N'2021-09-30T18:49:11.4439491' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (639, N'1bdb59d3-508c-4ab0-a052-20c091b5d573', 14, 1, CAST(N'2021-09-30T18:49:12.5971262' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (640, N'6c0ca9c9-1edf-46dd-8b3f-b0e2790990e1', 39, 1, CAST(N'2021-09-30T18:49:29.9991897' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (641, N'b86bdb6f-8f6d-4201-a073-55ddd83bff02', 8, 1, CAST(N'2021-09-30T18:49:34.6503555' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (642, N'2ef82077-943e-47b0-a761-ce0bd54785aa', 26, 1, CAST(N'2021-09-30T18:50:05.6584967' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (643, N'21d72926-230c-4e1d-92ba-eb9acaabac4f', 1034, 1, CAST(N'2021-09-30T18:50:07.0032893' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (644, N'5f1b409d-a495-4d86-aba6-d68420f5cf7c', 29, 1, CAST(N'2021-09-30T18:51:03.3133689' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (645, N'23bff097-55f9-42fa-a19e-917590e02cd9', 4, 1, CAST(N'2021-09-30T18:51:05.6168525' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (646, N'80bcf827-8d43-417b-842d-5e40ca17f05c', 11, 1, CAST(N'2021-09-30T18:51:06.8577081' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (647, N'0a6518e1-a65b-4aac-9606-6789e59e3592', 3, 1, CAST(N'2021-09-30T18:51:28.3003187' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (648, N'0e70c231-e572-4644-8b7d-c3b0649b829d', 13, 1, CAST(N'2021-09-30T18:51:31.3308286' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (649, N'9e7d4a46-46e2-45a6-821c-ac53b7935d05', 41, 1, CAST(N'2021-09-30T19:04:21.1648913' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (650, N'45aecf8e-ce60-49bb-a93a-bc0ae911dad1', 32, 1, CAST(N'2021-09-30T19:05:36.5855603' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (651, N'586466a0-18aa-489d-9708-7c19e1629d92', 1040, 1, CAST(N'2021-09-30T19:06:00.5172123' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (652, N'71844415-a0bf-4e3e-b878-088575f13324', 10, 1, CAST(N'2021-09-30T19:06:03.2427234' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (653, N'713b2b8d-6d23-4af6-82d1-d8acee544051', 43, 1, CAST(N'2021-09-30T19:06:48.4959704' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (654, N'0eef08ad-ab6e-4aa9-9637-bc75a3637d70', 35, 1, CAST(N'2021-09-30T19:06:50.8926722' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (655, N'81c9ed53-326b-49a3-8d11-9db180019ba1', 42, 1, CAST(N'2021-09-30T19:07:13.4540408' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (656, N'35060f64-110e-4c56-8469-be60ee48c4a9', 6, 1, CAST(N'2021-09-30T19:08:05.5178012' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (657, N'a835970d-2c4a-458d-b518-474a0bad47b4', 45, 1, CAST(N'2021-10-05T01:15:47.2626656' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (658, N'f6f7b495-dd03-4bf3-980f-d9a86d3cfadd', 1039, 1, CAST(N'2021-10-06T22:51:07.1005376' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (659, N'0da55baf-acfc-4518-b486-3833b422b0af', 7, 1, CAST(N'2021-10-09T20:23:43.0943898' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (660, N'7899cf55-ea45-4518-8502-a4369daf62a7', 7, 1, CAST(N'2021-10-09T20:46:15.4558113' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (661, N'32184aeb-7c06-4777-9922-6926bd93dcc4', 30, 1, CAST(N'2021-10-10T22:36:41.5756816' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (662, N'd91adde0-2665-40d5-ab54-ca15e64df314', 27, 1, CAST(N'2021-10-11T18:08:29.4195389' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (663, N'0b8fc437-4ecf-4d4e-8238-733bdf72ee77', 40, 1, CAST(N'2021-10-12T08:46:03.7882653' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (664, N'2babfdd9-38fc-40bb-926b-97cada81d8d2', 31, 1, CAST(N'2021-10-12T20:25:56.3022319' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (665, N'd13eebf5-a2cd-4d29-a87f-176cb43a47a8', 1, 1, CAST(N'2021-10-13T03:07:45.8731754' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (666, N'367641d6-de3d-422b-8989-bf9d26ac8c7e', 45, 1, CAST(N'2021-10-13T08:12:36.1588991' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (667, N'558a856f-c750-4028-8f42-080aa9a0f1f0', 45, 1, CAST(N'2021-10-13T08:12:43.9260800' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (668, N'19030b57-87f7-48b9-9c09-9e60b84e2dcf', 28, 1, CAST(N'2021-10-13T08:12:59.7765119' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (669, N'00a058cc-b4ec-43c5-a6fc-773bf7d38814', 11, 1, CAST(N'2021-10-14T04:50:45.7585822' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (670, N'b9233d0d-d327-4811-8e88-ee165fae8420', 38, 1, CAST(N'2021-10-16T22:26:07.1860418' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (671, N'ddd82a6c-35b6-4537-b47b-ba1fd90e2ac9', 1039, 1, CAST(N'2021-10-17T01:12:21.0242194' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (672, N'a634c3de-3a93-4efc-931d-e20c620922db', 5, 1, CAST(N'2021-10-17T03:36:55.6163647' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (673, N'17d317ed-120c-4c43-8e98-0646bf138859', 44, 1, CAST(N'2021-10-17T09:19:46.5849269' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (674, N'9223665d-81b9-47ab-a8c8-8ab1f872da5d', 27, 1, CAST(N'2021-10-18T20:27:27.5615043' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (675, N'e5a4d342-ce02-45d5-a36b-6c8edac55b1a', 5, 1, CAST(N'2021-10-18T20:27:37.9887445' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (676, N'4c2c09b6-35b1-4eff-8f04-4982861e14d5', 31, 1, CAST(N'2021-10-18T20:29:39.8354557' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (677, N'9b734ed9-e52e-47ef-9128-4ce001661e14', 11, 1, CAST(N'2021-10-20T01:58:06.1176552' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (678, N'76094454-ee42-4c88-8e83-a19c64f3a7b9', 14, 1, CAST(N'2021-10-20T06:11:10.4818282' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (679, N'a304daa1-da9e-48f0-8dc9-1e6d01a93861', 1040, 1, CAST(N'2021-10-21T08:43:39.0351981' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (680, N'9135f010-61ea-4b83-be77-f9becfafe463', 45, 1, CAST(N'2021-10-22T01:23:47.7048844' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (681, N'364715fc-4e19-4713-81e8-f1ff4f582819', 33, 1, CAST(N'2021-10-26T15:24:18.7100602' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (682, N'a8968f1e-6d99-4891-bc4b-c6ba09b5559e', 45, 1, CAST(N'2021-10-27T06:40:04.6923011' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (683, N'7c477694-67d5-4bc2-9159-1a6d886160fc', 1039, 1, CAST(N'2021-10-28T13:53:06.3444127' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (684, N'16d6e8ed-ee0c-43b8-97aa-ec1dd62cc27b', 27, 1, CAST(N'2021-10-29T00:07:43.1296448' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (685, N'7208f1c6-6e11-4941-99c1-b8b4d6244ef2', 35, 1, CAST(N'2021-10-30T00:26:27.1419208' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (686, N'8c1be755-6327-45c9-b22c-08ee880af703', 10, 1, CAST(N'2021-11-05T16:16:23.3751761' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (687, N'ad61210c-ab00-409c-bb2d-7757ea440181', 45, 1, CAST(N'2021-11-08T06:24:32.1880020' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (688, N'e41889fb-c581-4549-b5b1-4ecf8c7a0449', 1038, 1, CAST(N'2021-11-09T08:33:16.6671844' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (689, N'a2d98e77-4788-4b90-b8d9-d815960f9dc2', 40, 1, CAST(N'2021-11-10T09:45:04.8458448' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (690, N'37629a64-a5bc-42a0-b1e9-bb2da38b9060', 7, 1, CAST(N'2021-11-10T09:45:22.7019890' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (691, N'7265967f-7096-42e5-933f-1ac4a05bd903', 13, 1, CAST(N'2021-11-10T13:45:00.4203053' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (692, N'e448448a-7aa8-4b37-b9ef-0cee3d53f141', 40, 1, CAST(N'2021-11-10T13:45:14.4857885' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (693, N'b445b6cd-5f10-4f2f-af7e-e7e3162d4589', 12, 1, CAST(N'2021-11-12T10:44:15.3446609' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (694, N'b7b1c54b-1fe6-421f-ae96-4f49f5590a26', 45, 1, CAST(N'2021-11-16T11:08:28.0761688' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (695, N'c42e58de-e417-4b93-9610-a5e09578ca24', 10, 1, CAST(N'2021-11-18T06:23:24.3875112' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (696, N'7b6cf24f-6fb3-4605-8082-897085cd4234', 9, 1, CAST(N'2021-11-18T06:23:54.6986879' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (697, N'c6f6848d-8b1d-47b7-88df-6fa4b117198d', 17, 1, CAST(N'2021-11-22T07:08:26.9913963' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (698, N'10d410fa-6472-489d-b355-ce1a98edded9', 35, 1, CAST(N'2021-11-22T08:11:02.3459313' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (699, N'0054c2fe-a65f-4f87-8e29-e9d95b9073c2', 12, 1, CAST(N'2021-11-24T06:32:43.1117798' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (700, N'5975a1ee-8781-4df9-8cb6-3b80adfe7355', 12, 1, CAST(N'2021-11-24T06:32:52.4353547' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (701, N'5d15f21b-b5e9-4833-a035-7ac1f56ca2d4', 1040, 1, CAST(N'2021-11-24T06:33:10.6786649' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (702, N'209a9cde-8e65-4332-bade-d91c898520c8', 37, 1, CAST(N'2021-11-25T12:05:07.3403875' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (703, N'61f00ea5-17b7-465f-b46e-1f3745fa267a', 13, 1, CAST(N'2021-11-25T14:14:55.8203113' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (704, N'35931009-97df-428d-9985-f0edbd584274', 45, 1, CAST(N'2021-11-25T15:37:00.0233550' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (705, N'a09a68e7-cbad-4a0a-b2f1-3d7ba6f6dc03', 13, 1, CAST(N'2021-11-30T15:35:27.7311093' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (706, N'8fb8b820-4562-4f0c-a228-3f96df16f842', 18, 1, CAST(N'2021-11-30T21:16:21.7712052' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (707, N'775a13b6-3181-4628-ac46-a11bac42fae7', 6, 1, CAST(N'2021-12-01T12:17:32.1571875' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (708, N'63c80f17-a472-4ae7-83f6-695eee63c4c5', 45, 1, CAST(N'2021-12-07T15:35:22.8411484' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (709, N'7ed40b08-1c39-4c04-a8b7-d9b703ac9ba8', 13, 1, CAST(N'2021-12-07T15:36:55.5190428' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (710, N'674ee15f-b331-44f1-9ee5-2fabfa87d61f', 2, 1, CAST(N'2021-12-08T12:19:08.4495946' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (711, N'8eeb8cd4-ab70-424c-845c-75124833e80e', 1035, 1, CAST(N'2021-12-08T12:19:24.4529052' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (712, N'fde3ce83-d954-48f1-b2b2-372ee0934788', 45, 1, CAST(N'2021-12-09T08:30:52.8937033' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (713, N'9fdaf23d-fc87-48ea-9aad-6d0229f5cca0', 12, 1, CAST(N'2021-12-09T09:23:25.9200013' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (714, N'8bcc7ae4-56db-465e-b10e-001839e1db33', 45, 1, CAST(N'2021-12-13T13:36:10.4692426' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (715, N'a1e053f0-89d3-44fc-8cd4-f6932f2298be', 40, 1, CAST(N'2021-12-14T03:11:36.2451732' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (716, N'745e4568-1cd6-4f96-93b9-d7ad4c609112', 13, 1, CAST(N'2021-12-20T16:29:31.5701116' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (717, N'cd8db202-311a-4f31-8c00-d354d8edd005', 12, 1, CAST(N'2021-12-28T10:46:58.0413340' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (718, N'44b2d33a-0c4f-42aa-a187-df58d116b3f7', 40, 1, CAST(N'2021-12-28T12:55:56.4083453' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (719, N'7ac7961b-8e6f-4f01-ac35-e6b8875967d1', 45, 1, CAST(N'2022-01-04T22:00:07.4290058' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (720, N'caf5b51f-bc2f-45ca-acb4-26b921fb90c2', 37, 1, CAST(N'2022-01-09T15:41:18.1002856' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (721, N'a21e2948-b431-4d97-9094-e787df0cf415', 40, 1, CAST(N'2022-01-10T03:33:43.5194820' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (722, N'f7d04f16-29d2-4c78-a7f1-2507ce9daefe', 1034, 1, CAST(N'2022-01-10T03:57:32.5159099' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (723, N'd641fa1d-4581-4978-82f2-f9f07a132268', 40, 1, CAST(N'2022-01-10T18:36:34.7030005' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (724, N'7b80b45d-164f-4b42-89b0-94fd2ea1f85d', 45, 1, CAST(N'2022-01-10T21:12:37.8481998' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (725, N'5296d0fe-81bd-45d8-9819-30efc6bf9f15', 45, 1, CAST(N'2022-01-10T21:12:59.5795198' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (726, N'1df55491-4d6e-4f49-9a7d-0290080add60', 45, 1, CAST(N'2022-01-12T00:50:12.1781575' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (727, N'234b7ea0-731a-483d-89e6-94c1823a362c', 45, 1, CAST(N'2022-01-12T10:09:39.4591280' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (728, N'bb4b93a3-a695-4f54-bc0c-3bc38a865476', 6, 1, CAST(N'2022-01-12T11:58:35.5877634' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (729, N'0b2b7f75-219f-414d-99a9-f38915a9f1f7', 2, 1, CAST(N'2022-01-12T13:34:48.2162149' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (730, N'24daad3e-f048-4656-8374-02b0eb81951a', 1038, 1, CAST(N'2022-01-13T00:53:05.1255890' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (731, N'0f7dbbfe-bfa1-4079-be7e-01312cb5cd02', 34, 1, CAST(N'2022-01-13T03:48:21.5297329' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (732, N'b07b5edb-8b76-4cf7-a45b-3da3f34e0fe1', 1035, 1, CAST(N'2022-01-13T05:10:09.6310214' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (733, N'f1a95dc6-d3c3-429a-814e-5dceb711d626', 40, 1, CAST(N'2022-01-13T13:38:26.4263744' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (734, N'01708f8c-0723-4b5c-8ebf-5db14e056beb', 8, 1, CAST(N'2022-01-13T13:38:33.5830648' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (735, N'a76892fe-179e-4428-8843-2fc93a8ff6fd', 1034, 1, CAST(N'2022-01-13T15:31:26.9914722' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (736, N'ecdd8980-559a-4ef5-b4da-5ae5aebdd58d', 6, 1, CAST(N'2022-01-13T15:31:34.3496574' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (737, N'930fb780-bd6b-465f-b3a4-15a2c23af36d', 9, 1, CAST(N'2022-01-13T20:48:17.0773576' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (738, N'dda7660a-f9e0-4cdd-9941-60a21cc583ae', 1034, 1, CAST(N'2022-01-18T12:23:16.0182971' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (739, N'8ef53570-45c9-4148-9b82-ddb5661cc0da', 11, 1, CAST(N'2022-01-19T11:31:57.2117704' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (740, N'28007ff0-9ce8-487f-bab9-01d5653b43c8', 4, 1, CAST(N'2022-01-19T11:32:05.5924452' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (741, N'8a8ffcf0-8263-476d-9891-64827e374e9a', 4, 1, CAST(N'2022-01-19T11:32:06.9861932' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (742, N'40419585-dd3d-4b28-b065-ddb22b02b217', 45, 1, CAST(N'2022-01-19T15:24:47.3140404' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (743, N'01f4dbf6-67ed-4814-bc51-f73eab8c0d6f', 1034, 1, CAST(N'2022-01-20T10:05:09.8659370' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (744, N'7765bf0a-6013-4918-9b41-3810384a2956', 38, 1, CAST(N'2022-01-20T15:27:50.9390102' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (745, N'ae1cef8d-16dd-4a10-a3a9-d63bde7786d4', 1038, 1, CAST(N'2022-01-21T13:25:02.9498277' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (746, N'c54cfdf6-0c4d-4199-b9da-4506d80a1ea3', 4, 1, CAST(N'2022-01-21T13:25:21.0838193' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (747, N'269d8b07-3c14-409a-a859-d57eb65f7cb2', 2, 1, CAST(N'2022-01-22T08:19:02.9341614' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (748, N'0e62247d-66c1-44bd-87b0-39975d9481e9', 45, 1, CAST(N'2022-01-22T18:53:41.3028400' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (749, N'1e1858b1-8f50-41ea-9eb0-c6740d9fd7f0', 2, 1, CAST(N'2022-01-24T12:16:39.8046023' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (750, N'fff77252-ebe6-41ee-ac37-584fbf25e8f0', 40, 1, CAST(N'2022-01-24T23:11:14.6449910' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (751, N'9eee4eac-c7f3-48f2-bbb5-86063e13abdd', 40, 1, CAST(N'2022-01-24T23:11:26.4270019' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (752, N'9d6aea57-021d-4786-b582-058baf8e32d5', 13, 1, CAST(N'2022-01-26T01:44:39.9268731' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (753, N'97563e3c-ab8d-46e9-a1ea-a0ee21f127aa', 40, 1, CAST(N'2022-01-27T16:22:34.5570087' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (754, N'7d08fc8d-bc2e-4af8-866d-e2f7eb492f11', 1038, 1, CAST(N'2022-01-27T19:15:39.6362813' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (755, N'56d212f6-d3b8-4344-9e3b-020a4e945ac2', 10, 1, CAST(N'2022-01-27T22:15:36.9180343' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (756, N'611c6df2-9f10-4936-bd06-faf1a136035b', 45, 1, CAST(N'2022-01-28T21:50:41.0740979' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (757, N'de1180f7-9112-4232-85a1-542ae8f5b1c5', 1039, 1, CAST(N'2022-02-06T06:51:44.4947446' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (758, N'24730112-9ccd-44dc-8b0b-c125c613d576', 1039, 1, CAST(N'2022-02-07T01:15:53.1609858' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (759, N'7cbaec3d-4405-4bba-832a-abf2ada8ecb5', 11, 1, CAST(N'2022-02-07T18:47:44.7397703' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (760, N'd0f2a29a-b6bf-450a-910b-91267ffe81b8', 11, 1, CAST(N'2022-02-08T04:08:45.8473107' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (761, N'9bb9f8cb-4c50-4727-9e96-c25fcd715452', 45, 1, CAST(N'2022-02-08T20:50:07.3802216' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (762, N'f0bad5bc-18d1-4c3b-bcb5-b12a9f9cf3f3', 1034, 1, CAST(N'2022-02-11T15:50:07.2410750' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (763, N'bbccbc7b-244a-4c12-89a5-c39d3ece51e5', 17, 1, CAST(N'2022-02-12T17:58:47.3239388' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (764, N'9858638e-6ffb-4f6c-855e-d4183284d308', 45, 1, CAST(N'2022-02-14T08:33:56.0097802' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (765, N'c1fe3ced-380b-4699-b8ee-3a69225e346a', 40, 1, CAST(N'2022-02-15T05:03:19.9687078' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (766, N'9cb2f787-5a10-4746-83f3-89eacfc6e56b', 45, 1, CAST(N'2022-02-15T23:00:30.3064341' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (767, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 45, 1, CAST(N'2022-02-16T05:45:37.1208877' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (768, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 40, 1, CAST(N'2022-02-16T05:45:39.3960544' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (769, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 13, 1, CAST(N'2022-02-16T05:45:41.8038377' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (770, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1035, 1, CAST(N'2022-02-16T05:45:44.4417843' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (771, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 27, 1, CAST(N'2022-02-16T05:45:46.5188365' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (772, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 33, 1, CAST(N'2022-02-16T05:45:48.3050507' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (773, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1034, 1, CAST(N'2022-02-16T05:45:49.7132607' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (774, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1038, 1, CAST(N'2022-02-16T05:45:51.3283016' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (775, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1039, 1, CAST(N'2022-02-16T05:45:52.8797921' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (776, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 11, 1, CAST(N'2022-02-16T05:45:55.6692212' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (777, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 10, 1, CAST(N'2022-02-16T05:45:58.4686101' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (778, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 9, 1, CAST(N'2022-02-16T05:46:01.2548025' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (779, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 31, 1, CAST(N'2022-02-16T05:46:03.0733053' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (780, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 28, 1, CAST(N'2022-02-16T05:46:04.5574708' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (781, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 44, 1, CAST(N'2022-02-16T05:46:06.4616580' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (782, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 35, 1, CAST(N'2022-02-16T05:46:07.9814619' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (783, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1040, 1, CAST(N'2022-02-16T05:46:09.6112965' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (784, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 34, 1, CAST(N'2022-02-16T05:46:10.9814648' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (785, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 37, 1, CAST(N'2022-02-16T05:46:13.0252015' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (786, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 32, 1, CAST(N'2022-02-16T05:46:15.9622311' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (787, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 12, 1, CAST(N'2022-02-16T05:46:38.5969206' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (788, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 14, 1, CAST(N'2022-02-16T05:46:40.0514952' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (789, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 8, 1, CAST(N'2022-02-16T05:46:42.4823497' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (790, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 36, 1, CAST(N'2022-02-16T05:46:43.9505092' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (791, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 38, 1, CAST(N'2022-02-16T05:46:46.0411292' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (792, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 39, 1, CAST(N'2022-02-16T05:46:49.2232731' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (793, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 7, 1, CAST(N'2022-02-16T05:46:52.6985550' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (794, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 6, 1, CAST(N'2022-02-16T05:46:54.5159965' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (795, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 41, 1, CAST(N'2022-02-16T05:46:56.6382552' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (796, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 42, 1, CAST(N'2022-02-16T05:46:58.5846878' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (797, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 43, 1, CAST(N'2022-02-16T05:47:00.6082439' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (798, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 46, 1, CAST(N'2022-02-16T05:47:02.6985445' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (799, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 5, 1, CAST(N'2022-02-16T05:47:04.9722226' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (800, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 4, 1, CAST(N'2022-02-16T05:47:07.7160995' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (801, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 3, 1, CAST(N'2022-02-16T05:47:09.9141941' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (802, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 2, 1, CAST(N'2022-02-16T05:47:11.9717992' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (803, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 17, 1, CAST(N'2022-02-16T05:47:15.0984065' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (804, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 18, 1, CAST(N'2022-02-16T05:47:16.6380463' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (805, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 26, 1, CAST(N'2022-02-16T05:47:20.4668133' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (806, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 29, 1, CAST(N'2022-02-16T05:47:22.1736820' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (807, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 30, 1, CAST(N'2022-02-16T05:47:23.6992469' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (808, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 1, 1, CAST(N'2022-02-16T05:47:25.4557117' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (809, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 16, 1, CAST(N'2022-02-16T05:47:27.7942140' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (810, N'c41fa3aa-f640-43b3-8bda-97d7ecc54ba5', 15, 1, CAST(N'2022-02-16T05:47:30.3169597' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (811, N'740d3361-cd86-415d-ad9a-1ac0d18b57ab', 45, 1, CAST(N'2022-02-16T13:21:40.4338374' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (812, N'00f5d41f-224d-4f05-aef3-fbbd8e0eeca2', 45, 1, CAST(N'2022-02-16T22:41:41.2464442' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (813, N'6e4eaef6-36c1-47b7-8e7b-46fbec52eed2', 36, 1, CAST(N'2022-02-19T16:20:21.3476583' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (814, N'ef585863-3aef-4024-91c9-852bde01dcea', 2, 1, CAST(N'2022-02-19T23:21:36.9563738' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (815, N'036b464a-7e6b-4a29-83b9-a4b4adc4ebae', 17, 1, CAST(N'2022-02-20T12:18:24.7009110' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (816, N'dd593f2e-9189-4bc1-8e2c-e48e69bf38ca', 6, 1, CAST(N'2022-02-20T12:22:43.4011111' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (817, N'5510bc1c-f274-45db-8718-3bc7849a4aae', 6, 1, CAST(N'2022-02-20T12:23:03.9362156' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (818, N'6cb94811-daad-4bfd-9fbf-a77aaff66fad', 1034, 1, CAST(N'2022-02-21T00:25:20.4022395' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (819, N'983a05d2-e05e-4f42-9c40-dde587dc45a7', 40, 1, CAST(N'2022-02-21T06:43:03.9489406' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (820, N'd1e305b4-ecd1-46d8-b148-5e43df4fbf5e', 18, 1, CAST(N'2022-02-21T06:43:15.9807475' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (821, N'24449bd0-a5e9-4428-b3f9-628fcb77bf36', 13, 1, CAST(N'2022-02-21T12:37:49.4296371' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (822, N'2b700392-30a3-4a40-9ea4-391c65eecfba', 13, 1, CAST(N'2022-02-23T15:24:37.3074236' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (823, N'0ed33591-2e91-4152-b040-46d6b8d30782', 18, 1, CAST(N'2022-02-23T15:24:46.7983546' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (824, N'06aee8e8-691d-4b3e-aa4c-e5336c80d411', 1034, 1, CAST(N'2022-02-24T15:14:12.1797121' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (825, N'd1f26568-f037-4b68-ad66-6cfc9819d7dc', 45, 1, CAST(N'2022-02-24T15:58:40.3109939' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (826, N'c05868c0-6c2c-4918-9a41-71d5f754e577', 2, 1, CAST(N'2022-02-25T03:47:53.7180456' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (827, N'8ec25796-b1af-48c7-ba16-8db9d58f650d', 45, 1, CAST(N'2022-02-26T18:40:20.4355241' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (828, N'10d108db-7792-48f7-a2d0-3a32ec7cfb73', 17, 1, CAST(N'2022-02-28T17:47:06.5137760' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (829, N'2d683369-ccc0-48a3-929f-a58b6e35771c', 36, 1, CAST(N'2022-03-01T01:18:54.6183897' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (830, N'9b24c1af-b0ca-4757-b2fd-c60fe49be5a1', 40, 1, CAST(N'2022-03-01T21:32:12.3780204' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (831, N'e7fcc9f4-00eb-47c7-967f-75ba32b8898f', 17, 1, CAST(N'2022-03-02T12:07:18.2259379' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (832, N'be9cf527-ec28-47fb-bc79-360cffba75c8', 1038, 1, CAST(N'2022-03-02T17:47:37.5848783' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (833, N'4701b98d-dd2f-4e78-9fb4-1dcd1b6a0b04', 2, 1, CAST(N'2022-03-04T16:14:05.1851488' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (834, N'7a79fa22-e236-452a-98be-4dbfedf8f456', 45, 1, CAST(N'2022-03-04T20:08:41.0074805' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (835, N'3b6f5511-f5ec-4960-af48-56648011228a', 45, 1, CAST(N'2022-03-04T20:08:42.2372720' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (836, N'6a5205ef-2c1b-4b23-adb6-306feea804bb', 36, 1, CAST(N'2022-03-08T01:16:51.9074675' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (837, N'ee0f9939-a71b-491d-8b22-4a675aef4112', 1034, 1, CAST(N'2022-03-08T13:42:13.1923644' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (838, N'37a3a983-3076-4965-a805-500a4c2c611d', 13, 1, CAST(N'2022-03-15T21:27:19.1124709' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (839, N'f0a4555b-9ae9-4fb9-94c0-62cefd1c8b3a', 45, 1, CAST(N'2022-03-17T06:43:40.5046616' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (840, N'6f1cba6c-cd63-408b-a8ac-935ccbbfb0e2', 45, 1, CAST(N'2022-03-23T07:01:25.0532655' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (841, N'77c681b0-64e4-4094-a96f-186d1e5d0791', 13, 1, CAST(N'2022-03-23T07:01:50.6938921' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (842, N'9934d73b-ee06-4d1a-a053-f0b95b8ad6f2', 40, 1, CAST(N'2022-03-23T07:02:02.4152155' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (843, N'80a602c5-9320-4370-9a7a-1d3291cdc8ed', 9, 1, CAST(N'2022-03-23T15:31:40.5074619' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (844, N'111f6cf4-5e78-4ac9-91ef-70d0127cb884', 9, 1, CAST(N'2022-03-23T15:31:41.7304797' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (845, N'c43a2601-094b-4d2c-be86-3df3e19e7530', 9, 1, CAST(N'2022-03-23T15:31:42.3595346' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (846, N'685d5d3c-8303-4be1-a5bd-f6608b5987db', 17, 1, CAST(N'2022-03-30T07:59:01.9703090' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (847, N'1e0b949b-d327-4ec8-a8a1-bd7ee09863f2', 33, 1, CAST(N'2022-03-30T19:45:29.9615008' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (848, N'34271343-8370-4f02-85d8-b78d7d98b7f8', 45, 1, CAST(N'2022-04-03T08:19:09.9419131' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (849, N'9be78895-0ad1-4455-bb91-82e4bf49f306', 4, 1, CAST(N'2022-04-03T20:23:29.5300085' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (850, N'a93c45d6-0631-42ac-bd8c-30c43b038e3f', 13, 1, CAST(N'2022-04-03T20:23:38.7540585' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (851, N'c2344a58-d812-4124-b268-84bfee112cc9', 40, 1, CAST(N'2022-04-04T14:02:05.7414969' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (853, N'61f63d29-fd27-4910-8dc9-24d73db95d9d', 33, 1, CAST(N'2022-04-05T13:05:37.2976263' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (854, N'7107d7d6-0533-4bb6-9cad-88698ee684fb', 2, 1, CAST(N'2022-04-05T21:03:15.3766175' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (855, N'f3f027c9-197f-480d-8095-dac6c341358e', 45, 1, CAST(N'2022-04-08T14:06:07.8049402' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (856, N'56c84ccb-cdd7-4b2e-b1cd-0efee45aff9e', 17, 1, CAST(N'2022-04-12T19:09:09.8389451' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (857, N'77935591-3787-4e2c-8a02-d7c88f8e3db9', 17, 1, CAST(N'2022-04-12T19:09:11.3890407' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (858, N'ece2e761-230f-4fbd-8f01-8884ee74d29a', 12, 1, CAST(N'2022-04-12T19:09:21.8308621' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (859, N'72baf6de-c8d4-4737-8562-13f0cfe06807', 1039, 1, CAST(N'2022-04-14T00:05:54.2271604' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (860, N'b58e14a3-40ac-4376-845f-b047f8dcf5e6', 45, 1, CAST(N'2022-04-18T03:52:26.2071453' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (861, N'a53f6a4b-8d20-4403-9b39-97685a94d033', 40, 1, CAST(N'2022-04-19T16:38:02.6655888' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (862, N'5d4be6ff-a3e5-4577-917d-3f1c37ced74f', 13, 1, CAST(N'2022-04-19T16:38:50.7272828' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (863, N'abfb690a-fd46-445c-97c3-b7999284c9fc', 2, 1, CAST(N'2022-04-20T02:01:57.2094616' AS DateTime2))
+GO
+INSERT [dbo].[CartItems] ([CartItemId], [CartId], [ProductId], [Count], [DateCreated]) VALUES (864, N'7176f8f7-516c-4a86-947b-9ee4ebda47a9', 45, 1, CAST(N'2022-04-21T05:05:57.4478866' AS DateTime2))
+GO
+SET IDENTITY_INSERT [dbo].[CartItems] OFF
+GO
