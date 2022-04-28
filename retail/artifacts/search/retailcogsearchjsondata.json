@@ -3,7 +3,7 @@
   "@odata.etag": "\"0x8DA0B6AFABC9B52\"",
   "name": "retailcogsearchjsondata",
   "description": null,
-  "type": "adlsgen2",
+  "type": "azureblob",
   "subtype": null,
   "credentials": {
     "connectionString": "DefaultEndpointsProtocol=https;AccountName=#STORAGEACCOUNTNAME#;AccountKey=#STORAGEKEY#"
