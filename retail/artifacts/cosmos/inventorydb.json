@@ -1,6 +1,5 @@
 [
   {
-    "ID": 1,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -24,7 +23,6 @@
     "_ts": 1648731326
   },
   {
-    "ID": 2,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -48,7 +46,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 3,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -72,7 +69,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 4,
     "InventoryType": "Men's Clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 140,
@@ -96,7 +92,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 5,
     "InventoryType": "Furniture",
     "Average Daily consuption": 100,
     "Opening Balance": 100,
@@ -120,7 +115,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 6,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -144,7 +138,6 @@
     "_ts": 1648743826
   },
   {
-    "ID": 7,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -168,7 +161,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 8,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -192,7 +184,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 9,
     "InventoryType": "Men's Clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 140,
@@ -216,7 +207,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 10,
     "InventoryType": "Furniture",
     "Average Daily consuption": 100,
     "Opening Balance": 100,
@@ -240,7 +230,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 11,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -264,7 +253,6 @@
     "_ts": 1648743843
   },
   {
-    "ID": 12,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -288,7 +276,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 13,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -312,7 +299,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 14,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -336,7 +322,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 15,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -360,7 +345,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 16,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -384,7 +368,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 17,
     "InventoryType": "Men's Clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 140,
@@ -408,7 +391,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 18,
     "InventoryType": "Furniture",
     "Average Daily consuption": 100,
     "Opening Balance": 40,
@@ -432,7 +414,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 19,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -456,7 +437,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 20,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -480,7 +460,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 21,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -504,7 +483,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 22,
     "InventoryType": "Men's Clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 140,
@@ -528,7 +506,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 23,
     "InventoryType": "Furniture",
     "Average Daily consuption": 100,
     "Opening Balance": 40,
@@ -552,7 +529,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 24,
     "InventoryType": "Entertainment",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
@@ -576,7 +552,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 25,
     "InventoryType": "Barware",
     "Average Daily consuption": 200,
     "Opening Balance": 200,
@@ -600,7 +575,6 @@
     "_ts": 1648674282
   },
   {
-    "ID": 26,
     "InventoryType": "Women�s clothing",
     "Average Daily consuption": 120,
     "Opening Balance": 150,
