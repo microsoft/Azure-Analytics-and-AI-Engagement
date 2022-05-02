@@ -191,6 +191,30 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	| FashionableYou			| number |
 	| Recordedon				| datetime |
 	
+14. **Navigate** to [https://www.videoindexer.ai/](https://www.videoindexer.ai/).
+
+15. **Click** on AAD Account.
+
+	![Click on AAD Account.](media/video-indexer.png)
+
+	> **Note:** You may be prompted to enter the azure credentials.
+
+16. **Click** on Account settings.
+
+17. **Copy** the Account ID in a notepad. This will be needed during template deployment.
+
+	![Copy the AccountID.](media/video-indexer-2.png)
+
+18. **Navigate** to [https://api-portal.videoindexer.ai/](https://api-portal.videoindexer.ai/).
+
+19. **Click** sign in if not already signed in.
+
+20. **Click** on profile.
+
+21. **Copy** the primary key. This will be needed during template deployment.
+
+	![Copy the primary key.](media/video-indexer-3.png)
+	
 
 ### Task 3: Deploy the ARM Template
 
@@ -222,7 +246,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
 	
-	> **NOTE:** The provisioning of your deployment resources will take approximately 30 minutes.
+	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
 	
 12. **Stay** on the same page and wait for the deployment to complete.
     
@@ -900,7 +924,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
 
-	![Open and Click on Azure Cloud Shell.](media/fintax-poc.png)
+	![Open and Click on Azure Cloud Shell.](media/authentication-5.png)
 
 **Execute** the Pause_Resume_script.ps1 script by executing the following command: 
 1. **Run** Command: 
