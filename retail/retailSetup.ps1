@@ -89,14 +89,6 @@ function ReplaceTokensInFile($ht, $filePath)
     return $template;
 }
 
-function GetAccessTokens($context)
-{
-    $global:synapseToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://dev.azuresynapse.net").AccessToken
-    $global:synapseSQLToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://sql.azuresynapse.net").AccessToken
-    $global:managementToken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://management.azure.com").AccessToken
-    $global:powerbitoken = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($context.Account, $context.Environment, $context.Tenant.Id, $null, "Never", $null, "https://analysis.windows.net/powerbi/api").AccessToken
-}
-
 #should auto for this.
 az login
 
@@ -1718,7 +1710,7 @@ Write-Host "------COSMOS data Upload -------------"
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
 $cosmosDbAccountName = $cosmosdb_retail2_name
-$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+$cosmos = Get-ChildItem "./cosmos" | Select BaseName 
 
 foreach($name in $cosmos)
 {
@@ -1731,20 +1723,24 @@ foreach($name in $cosmos)
 	{
 	$cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
 	}
-    $path="./artifacts/cosmos/"+$name.BaseName+".json"
+    $path="./cosmos/"+$name.BaseName+".json"
     $documents=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $documents
 
     foreach($json in $document)
     {
-		$key=$json.TransactionType
         if($name.Basename -eq "retaildb") {
             $partitionKey = "beforefoottraffic" + $((Get-Date -Format MM-dd-yyyy).ToString())
             if(![bool]($json.PSobject.Properties.name -match "beforefoottraffic"))
             {$json | Add-Member -MemberType NoteProperty -Name 'beforefoottraffic' -Value $partitionKey }
             $key=$json.beforefoottraffic
         }
-
+        elseif ($name.Basename -eq "retailcosmos") {
+            $key = $json.TransactionType
+        }
+        elseif ($name.Basename -eq "inventorydb") {
+            $key = $json.InventoryType
+        }
         $body=ConvertTo-Json $json
         $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
     }

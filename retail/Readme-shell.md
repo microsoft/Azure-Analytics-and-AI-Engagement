@@ -518,6 +518,58 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Validate Creds.](media/power-bi-report-8.png)
 	
+16. **Click** on the Acquisition Impact Report.
+
+17. **Expand** Data source credentials.
+
+18. **Click** Edit credentials in fornt of Synapse and a dialogue box will pop up.
+
+	![Data Source Creds.](media/power-bi-report-01.png)
+
+19. Keeping the default values as it is **click** on Sign in, a new window will pop-up.
+
+	![Validate Creds.](media/power-bi-report-02.png)
+
+20. In the new window, **select** the appropriate user.
+
+	![Validate Creds.](media/power-bi-report-03.png)
+		
+21. **Click** on the ADX Thermostat and Occupancy.
+
+22. **Expand** Data source credentials.
+
+23. **Click** Edit credentials in fornt of AzureDataExplorer and a dialogue box will pop up.
+
+	![Data Source Creds.](media/power-bi-report-04.png)
+
+24. Keeping the "Authentication method" as "OAuth2", **select** "Privacy level setting for this data source" from the three dropdown values and **click** on Sign in.
+
+	![Validate Creds.](media/power-bi-report-05.png)
+
+25. In the new window, **select** the appropriate user.
+
+	![Validate Creds.](media/power-bi-report-03.png)
+
+26. **Click** on the Retail HTAP.
+
+27. **Expand** Data source credentials.
+
+28. **Click** Edit credentials in fornt of DocumentDB and a dialogue box will pop up.
+
+	![Data Source Creds.](media/power-bi-report-06.png)
+
+29. Go to the Azure Portal and under resources search for "cosmos" and **click** on the cosmos resource, the resource window opens.
+
+	![Data Source Creds.](media/power-bi-report-07.png)
+
+30. Under the Settings section **select** keys and **copy** the primary key of the cosmos resource.
+
+	![Data Source Creds.](media/power-bi-report-08.png)
+	
+31. In the powerbi tab in step #28, keeping the "Authentication method" as "Key", **paste** "Account key" from step #30 and **click** on Sign in.
+
+	![Validate Creds.](media/power-bi-report-09.png)
+
 Follow these steps to create the Power BI dashboard:
 
 16. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
@@ -729,27 +781,47 @@ This task is optional since we have provided static versions of the reports in t
 
 	![Click Workspace.](media/power-bi-report-43.png)
 
-4. **Click** New to expand menu and then **click** Report.
+4. Search for ADX Dashboard and **Click** on it.
 
-	![Click New and Report.](media/power-bi-report-44.png)
+    ![image.](media/adx-2.jpg)
+    
+    ![image.](media/adx-3.jpg)
+    
+5. **Click** on the chiclets it will take you to the Power BI Report.
 
-5. **Click** Pick a published dataset.
-	
-	![Click Pick a Public Dashboard.](media/power-bi-report-45.png)
+6. In the Power BI report, you can pin down the visual or Chiclets.
 
-6. **Click** on the desired streaming dataset from the given list, here we are selecting “Tax Collection Realtime” and **click** Create Report.
+    ![image.](media/adx-4.jpg)
+    
+7.	**Select** the Chiclet/KPIs/Visuals.
 
-	![Click desired streaming dataset.](media/power-bi-report-46.png)
+8.	It will open the Power BI report. 
 
-7. **Select** the KPI visual or any other required visual from Visualization pane.
+9.	**Select** the Visual/ KPIs/ Chiclet, then **select** on pin visual.
 
-8. **Drag** or **select** the required fields from Fields pane to Visualization pane’s Field tab.
+    ![image.](media/adx-5.jpg)
+    
+10. On the Pop-up screen, **Select** the option “Where would you like to pin to?” And according to that “Select existing dashboard”
 
-	![Select the KPI, Drag or select required fields.](media/power-bi-report-47.png)
+11.	**Click** on the Pin Button.
+  
+    ![image.](media/adx-6.jpg)
+    
+12. On the right corner of the screen notification will come and allow you to “go to the dashboard”.
 
-9. Similarly, **create** other visuals and **save** the Power BI Report. You can also pin the visuals to the dashboard.
+13.	Follow these steps for all the Visuals/KPIs/chiclets for pinning to the dashboard.
+    
+    ![image.](media/adx-7.jpg)
+    
+14.	Chiclets-> In “Dashboard-images” Power BI report-> On-Page “ESG”.
 
-	![Create other visuals and save the Power BI Report.](media/power-bi-report-48.png)
+15.	First Pillar Deep Dive Visuals /KPIs-> In “occupancy Realtime” Power BI report-> on the page “ADX Dashboard”.
+
+16.	Second Pillar KPIs-> In “occupancy Realtime” Power BI report-> on the page “ADX Dashboard”.
+Second Pillar Deep Dive Visuals -> In “thermostat” Power BI report-> On the page “Page 2”.
+    
+17.	Third Pillar KPIs-> In “occupancy Realtime” Power BI report-> on page “ADX Dashboard”.
+Third Pillar Deep Dive Visuals-> In “ADX Thermostat and Occupancy” Power BI report-> On the page “ADX Realtime report”.
 
 ### Updating Dashboard and Report Ids in Web app
 
