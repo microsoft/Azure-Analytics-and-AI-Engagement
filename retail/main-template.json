@@ -914,6 +914,19 @@
             "value":"[parameters('sql_administrator_login_password')]"
          }
       },
+	  {
+         "type":"Microsoft.KeyVault/vaults/secrets",
+         "name":"[concat(variables('key_vault_name'), '/Cosmos-cred')]",
+         "apiVersion":"2018-02-14",
+         "location":"[variables('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+			"[concat('Microsoft.DocumentDB/databaseAccounts/', toLower(variables('cosmosdb_retail2_name')))]"
+         ],
+         "properties":{
+			"value":"[concat('AccountEndpoint=https://', variables('cosmosdb_retail2_name'), '.documents.azure.com:443/;AccountKey=', (listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name').name),providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey),';')]"
+      }
+	  },
       {
          "name":"[variables('iot_hub_name')]",
          "type":"Microsoft.Devices/IotHubs",
@@ -2570,6 +2583,12 @@
             },
             "autoHealEnabled":false,
             "localMySqlEnabled":false,
+			"cors": {
+                    "allowedOrigins": [
+                        "*"
+                    ],
+                    "supportCredentials": false
+                },
             "ipSecurityRestrictions":[
                {
                   "ipAddress":"Any",
@@ -3219,17 +3238,6 @@
             ],
             "properties": {}
         },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-            "apiVersion": "2021-11-01",
-            "name": "[concat(variables('namespaces_adx_thermostat_occupancy_name'), '/thermostat/preview_data_consumer_group')]",
-            "location":"[variables('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
-                "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_adx_thermostat_occupancy_name'))]"
-            ],
-            "properties": {}
-        },
 		   {
             "type": "Microsoft.Devices/IotHubs",
             "apiVersion": "2021-07-02",
@@ -3511,7 +3519,7 @@
        {
           "name":"[variables('sites_product_search_ui_app_name')]",
           "type":"Microsoft.Web/sites",
-          "apiVersion":"2018-11-01",
+          "apiVersion":"2021-03-01",
           "kind":"app",
           "location":"[variables('location')]",
           "dependsOn":[
@@ -3532,15 +3540,113 @@
                 }
              ],
              "serverFarmId":"[resourceId(variables('resource_group_name'),'Microsoft.Web/serverfarms', variables('serverfarm_product_search_ui_app_name'))]",
-             "siteConfig":{
-                "appSettings":[],
-                "use32BitWorkerProcess":true,
-                "alwaysOn":true,
-                "managedPipelineMode":"Integrated"
-             },
-             "httpsOnly":true
+             "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": true,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "A4AE5B4D8DF5A1171AD5FE6A3AC1C147AA8BE402EDA35DC9661253EEB2078009",
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
           }
-       }
+       },
+	    {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2021-03-01",
+            "name": "[concat(parameters('sites_product_search_ui_app_name'), '/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_product_search_ui_app_name'))]"
+            ],
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "phpVersion": "5.6",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "[concat('$',variables('sites_product_search_ui_app_name'))]",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "cors": {
+                    "allowedOrigins": [
+                        "*"
+                    ],
+                    "supportCredentials": false
+                },
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.0",
+                "ftpsState": "AllAllowed",
+                "preWarmedInstanceCount": 0
+            }
+        },
    ],
    "outputs":{
       
