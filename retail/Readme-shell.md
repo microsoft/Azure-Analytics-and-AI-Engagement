@@ -431,6 +431,8 @@ cd ./retail/retail
 14. After successful Ingestion you will see the screen below.
 
 	![Adx.](media/adx-13.png)
+
+15. Repeat the step #11 and this time **enter** Table field ThermostatHistoricalData, and step #12 this time **expand** File Filters, under Folder path enter "thermostat".
 	
 ### Task 7: Azure Purview Setup
 
