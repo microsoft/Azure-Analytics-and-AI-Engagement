@@ -455,10 +455,15 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "videoanalyzer" -
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/videoanalyzer$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/videoanalyzer" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "adx-historical" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adx-historical$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/adx-historical" $destinationUri --recursive
+
 ### Replacing Incident Search Files
 # get search query key
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
+$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName ddib-test -ServiceName incident-srch-retail-wbhlfhbhpwweq-as0205
+$incidentQueryKey = $incidentQueryKey.Key
 
 (Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
     -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
@@ -1581,7 +1586,7 @@ $ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "AD
 $ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
 $ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
 $ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
-#$ht.add("#SPEECH_REGION#", $rglocation)
+$ht.add("#PRODUCT_AI_SEARCH_APP_URL#", $sites_app_product_search)
 
 $filePath = "./retaildemo-app/wwwroot/config-poc.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)

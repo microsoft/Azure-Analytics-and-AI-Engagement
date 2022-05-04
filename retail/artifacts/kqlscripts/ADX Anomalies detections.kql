@@ -1,6 +1,6 @@
 //Occupancy data for 10th Nov between 3PM and 4PM
 
-OccupancyHistoricalDataUpdated
+OccupancyHistoricalData
 | where EnqueuedTimeUTC between (datetime('2021-11-10T15:00:00Z') .. 2h)
 |where BatteryLevel <20
 | where StoreId =='S001'
