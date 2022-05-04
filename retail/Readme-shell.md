@@ -388,7 +388,7 @@ cd ./retail/retail
 	
 	![Adx.](media/adx-3.png)
 	
-4. In the Data Explorer Studio under data section **click** on Ingest new data.
+4. In the Data Explorer Studio under Data section **click** on Ingest new data.
 
 	![Adx.](media/adx-4.png)
 	
@@ -409,6 +409,28 @@ cd ./retail/retail
 	![Adx.](media/adx-8.png)
 	
 9. Repeat above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat".
+
+10. For non-historical data, open Data Explorer Studio and under data section **click** on Ingest new data.
+
+	![Adx.](media/adx-4.png)
+	
+11. In the Ingest new data, under destination tab, select appropriate values in the respective fields, in Cluster **select** your kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. OccupancyHistoricalData and then **click** on Next.
+
+	![Adx.](media/adx-9.png)
+	
+12. Under the source tab, **select** Source type as "From blob container", in Ingestion type **select** Historical data, in "Select source" **check** the Select container radio button, in Storage subscription **select** the appropriate subscription, in Storage account **select** the current storage account, for Container **select** "adx-historical", **expand** File Filters, under Folder path enter "occupancy" and then **click** on Next.
+
+	![Adx.](media/adx-10.png)
+	
+	![Adx.](media/adx-11.png)
+
+13. Wait for some time for Partial data preview to load, and then **click** on Next:Start Ingestion.
+
+	![Adx.](media/adx-12.png)
+
+14. After successful Ingestion you will see the screen below.
+
+	![Adx.](media/adx-13.png)
 	
 ### Task 7: Azure Purview Setup
 
