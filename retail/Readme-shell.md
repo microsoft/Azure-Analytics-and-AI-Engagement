@@ -474,7 +474,7 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-8.png)
 
-9. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage.
+9. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage, AzureSynapse, CosmosDB-Retail and PowerBI-Retail.
 
 	![Select Purview Resource.](media/purview-9.png)
 
@@ -498,8 +498,72 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-14.png)
 	
-15. **Repeat** the steps 11 and 15 by selecting appropriate values for creating connections for all the other collections i.e. Synapse, CosmosDB and PowerBI.
+15. **Repeat** the step #10 for AzureSynapseAnalytics.
 
+16. **Open** synaspse studio, **select** manage tab, under External Connections**select** Azure Purview, **click** on Connect to a Purview account, under Purview account name **select** the current Purview account, and then **click** on Apply.
+
+	![Select Purview Resource.](media/purview-15.png)
+	
+17. Now, under Security **select** Access Control, **click** on Add, under Role **select** Synapse Administrator, under Select user **select** current Purview account and then **click** on Apply.
+
+	![Select Purview Resource.](media/purview-16.png)
+	
+18. Go back to Purview studio, **click** on New Scan, a window appears, here under SQL Database **select** the name of SQL database and then **click** on Continue.
+
+	![Select Purview Resource.](media/purview-17.png)
+
+19. In the new window **click** on continue.
+
+	![Select Purview Resource.](media/purview-18.png)
+	
+20. In the next window, **click** on Save and Run.
+
+	![Select Purview Resource.](media/purview-19.png)
+
+21. **Repeat** the step #10 for CosmosDB.
+
+22. **Click** on New Scan, in the pop-up window **expand** the Credential drop-down and **click** on New.
+
+	![Select Purview Resource.](media/purview-20.png)
+	
+23. Under Name **enter** any desired name then **expand** Key Vault connection and **click** on New.
+
+	![Select Purview Resource.](media/purview-21.png)
+	
+24. In the new window **enter** any desired name, then **expand** Key Vault name and **select** the current key vault name and then **click** on create.
+
+	![Select Purview Resource.](media/purview-22.png)
+	
+25. A pop-up window appears, here **click** on Confirm.
+
+	![Select Purview Resource.](media/purview-23.png)
+	
+26. In the new window **enter** the desired name, **expand** Key Vault connection and **select** the name entered in step #22, **enter** the secret name as Cosmos-cred and then **click** on Create.
+
+	![Select Purview Resource.](media/purview-24.png)
+	
+27. In the new window under Credential from the drop-down **select** the appropriate credential, under the Select a collection **select** the Purview account name and then **click** on Continue.
+	
+	![Select Purview Resource.](media/purview-25.png)
+	
+28. In the new window **click** on Continue.
+
+	![Select Purview Resource.](media/purview-26.png)
+
+29. In the new window **click** on Continue.
+
+	![Select Purview Resource.](media/purview-27.png)
+	
+30. In the new window, **check** the Once radio button and **click** on Continue.
+	
+	![Select Purview Resource.](media/purview-28.png)
+	
+31. In the next window **click** on Save and run.
+
+	![Select Purview Resource.](media/purview-29.png)
+	
+32. **Repeat** the step #10 for PowerBI.
+	
 ### Task 8: Power BI reports and dashboard creation
 
 1. **Open** Power BI and **Select** the Workspace, which is created in [Task 2](#task-2-power-bi-workspace-creation).

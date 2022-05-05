@@ -176,7 +176,6 @@ $forms_retail_name = "retail-form-recognizer-$suffix";
 $bot_qnamaker_retail_name= "botmultilingual-$suffix";
 $accounts_transqna_retail_name = "transqna-retail-$suffix";
 $workflows_LogicApp_retail_name = "logicapp-retail-$suffix"
-$accounts_immersive_reader_retail_name = "immersive-reader-retail-$suffix";
 $accounts_qnamaker_name= "qnamaker-$suffix";
 $search_srch_retail_name = "srch-retail-product-$suffix";
 $search_retail_qna_name = "srch-retail-qna-$suffix";
@@ -239,6 +238,9 @@ $purviewCollectionName1 = "AzureDataLakeStorage"
 $purviewCollectionName2 = "AzureSynapse"
 $purviewCollectionName3 = "CosmosDB-Retail"
 $purviewCollectionName4 = "PowerBI-Retail"
+
+$cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_retail_name
+$translator_key=$cog_translator_key.Key1
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_retail_name
@@ -1185,12 +1187,20 @@ Write-Host  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------AML Workspace -------------"
 RefreshTokens
 
-$filepath="./artifacts/amlnotebooks/Config.py"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_keys.Key1).Replace("#FORM_RECOGNIZER_MODEL_ID#", $modelId)
-$filepath="./artifacts/amlnotebooks/GlobalVariables.py"
-Set-Content -Path $filepath -Value $item
-
+(Get-Content -path ./artifacts/amlnotebooks/Config.py -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
+    -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
+    -replace '#FORM_RECOGNIZER_ENDPOINT#', $forms_cogs_endpoint`
+    -replace '#FORM_RECOGNIZER_API_KEY#', $forms_cogs_keys`
+    -replace '#FORM_RECOGNIZER_MODEL_ID#', $modelId`
+    -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+    -replace '#RESOURCE_GROUP#', $rgName`
+    -replace '#WORKSPACE_NAME#', $amlworkspacename`
+    -replace '#COMPUTE_NAME#', $cpuShell`
+    -replace '#TRANSLATION_API_KEY#', $translator_key`
+    -replace '#LOCATION#', $rglocation`
+} | Set-Content -Path ./artifacts/amlnotebooks/GlobalVariables.py
+    
 #create aml workspace
 az extension add -n azure-cli-ml
 az ml workspace create -w $amlworkspacename -g $rgName
