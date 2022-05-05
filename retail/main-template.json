@@ -924,7 +924,7 @@
 			"[concat('Microsoft.DocumentDB/databaseAccounts/', toLower(variables('cosmosdb_retail2_name')))]"
          ],
          "properties":{
-			"value":"[concat('AccountEndpoint=https://', variables('cosmosdb_retail2_name'), '.documents.azure.com:443/;AccountKey=', (listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name').name),providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey),';')]"
+			"value":"[concat('AccountEndpoint=https://', variables('cosmosdb_retail2_name'), '.documents.azure.com:443/;AccountKey=', (listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosdb_retail2_name')),providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]).primaryMasterKey),';')]"
       }
 	  },
       {
