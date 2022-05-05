@@ -78,8 +78,8 @@
         const pdflink = urlParams.get("pdf");
 
        // let {PDFblobInput, PDFblobOutput}  = window['runConfig']
-       PDFblobInput="https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/202045152/"
-       PDFblobOutput="https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/202045152/"
+       PDFblobInput="https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/incidentreportpdf/"
+       PDFblobOutput="https://#STORAGE_ACCOUNT_NAME#.blob.core.windows.net/incidentreportjson/"
         let pdfembed = '<embed src="'.concat(
           PDFblobInput+pdflink,
           '.pdf" width="500" height="770" type="application/pdf" role="presentation"></embed>'

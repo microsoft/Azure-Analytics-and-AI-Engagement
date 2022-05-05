@@ -467,7 +467,7 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adx-histo
 ### Replacing Incident Search Files
 # get search query key
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName ddib-test -ServiceName incident-srch-retail-wbhlfhbhpwweq-as0205
+$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
 $incidentQueryKey = $incidentQueryKey.Key
 
 (Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
