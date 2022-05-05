@@ -238,21 +238,25 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 9. **Enter** the power BI streaming dataset url for **Livestreaming_video_analytics_Realtime_URL** you copied in step 13 of [Task 2](#task-2-power-bi-workspace-creation).
 
-10. **Click** ‘Review + Create’ button.
+10. In the "Video_indexer_account_id" section **enter** the value of step #17 from [Task 2](#task-2-power-bi-workspace-creation).
+
+11. In the "Video_indexer_api_key" section **enter** the value of step #21 from [Task 2](#task-2-power-bi-workspace-creation).
+
+12. **Click** ‘Review + Create’ button.
 
 	![The Custom deployment form is displayed with example data populated.](media/powerbi-deployment-1.png)
 
-11. **Click** the **Create** button once the template has been validated.
+13. **Click** the **Create** button once the template has been validated.
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
 	
 	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
 	
-12. **Stay** on the same page and wait for the deployment to complete.
+14. **Stay** on the same page and wait for the deployment to complete.
     
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template.png)
     
-13. **Select** the **Go to resource group** button once your deployment is complete.
+15. **Select** the **Go to resource group** button once your deployment is complete.
 
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template-2.png)
 
@@ -340,7 +344,7 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-16.png)
 	
-16. **Click** on the browse button for each of the service apps once, a new window will appear, **close** the window.
+16. **Click** on the browse button for **each one** of the app services once, a new window will appear, **close** the window.
 
 	![Enter Resource Group name.](media/cloud-shell-17.png)
       
@@ -376,15 +380,15 @@ cd ./retail/retail
 
 ### Task 6: Data Explorer Setup
 
-1. In the Azure Portal **search** for synapse and **click** on the synapse resource.
+1. In the Azure Portal **search** for data explorer and **click** on the data explorer resource.
 
 	![Adx.](media/adx-1.png)
 	
-2. In the synpase resource **click** on the Open Synapse Studio.
+2. In the data explorer resource **copy** the URI.
 
 	![Adx.](media/adx-2.png)
 	
-3. In the synapse studio **select** data, under workspace, **expand** Data Explorer Databases, **click** on the three dots infront of the kusto pool name and **click** on Open in Azure Data Explorer.
+3. **Open** a new tab in the browser and **paste** the URI in the search bar, the data explorer studio opens.
 	
 	![Adx.](media/adx-3.png)
 	
@@ -396,11 +400,11 @@ cd ./retail/retail
 
 	![Adx.](media/adx-5.png)
 	
-6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "adx-thermostat-occupancy-...", in Event Hub **enter** "occupancy", in Data connection name **select** "RetailDB-occupancy", in Consumer group **select** default, in compression **select** None and then **click** on Next.
+6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "adx-thermostat-occupancy-...", in Event Hub **enter** "occupancy", in Data connection name **select** "RetailDB-occupancy", in Consumer group **select** $Default, in compression **select** None and then **click** on Next.
 
 	![Adx.](media/adx-6.png)
 	
-7. Wait for some time for data preview to load, and then **click** on Next:Start Ingestion.
+7. Wait for some time for data preview to load, **select** MULTIJSON in the "Data format" section and then **click** on Next:Start Ingestion.
 
 	![Adx.](media/adx-7.png)
 	
@@ -408,7 +412,7 @@ cd ./retail/retail
 
 	![Adx.](media/adx-8.png)
 	
-9. Repeat above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat".
+9. Repeat above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat" and Data connection name as "RetailDB-thermostat".
 
 10. For non-historical data, open Data Explorer Studio and under data section **click** on Ingest new data.
 
