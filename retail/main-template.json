@@ -3646,7 +3646,7 @@
                 "ftpsState": "AllAllowed",
                 "preWarmedInstanceCount": 0
             }
-        },
+        }
    ],
    "outputs":{
       
