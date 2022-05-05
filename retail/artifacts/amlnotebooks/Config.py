@@ -9,11 +9,11 @@ workspace_name= "#WORKSPACE_NAME#"
 COMPUTE_AIML = '#COMPUTE_NAME#'
 
 ### Incident Forms
-STORAGE_ACCOUNT_CONNECTION_STRING_INCIDENT_FORMS='DefaultEndpointsProtocol=https;AccountName=stretaildemodev;AccountKey=bMS5qLiRXdMA4To20LPGs2ySw7lzlT00r8zSH+ZKlD9eTCSBFZMhquPCeCYCvSxQUx8YuJaW+KNvVvsertQXhQ==;EndpointSuffix=core.windows.net'
+STORAGE_ACCOUNT_CONNECTION_STRING_INCIDENT_FORMS='DefaultEndpointsProtocol=https;AccountName=#STORAGE_ACCOUNT_NAME#;AccountKey=#STORAGE_ACCOUNT_KEY#;EndpointSuffix=core.windows.net'
 
 ### Language Translation
-TRANSLATION_API_KEY = "a28b0661e1d841c29e6386adb0547acb"
-TRANSLATION_URL = "https://westus2.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to="
+TRANSLATION_API_KEY = "#TRANSLATION_API_KEY#"
+TRANSLATION_URL = "https://#LOCATION#.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to="
 
 # Customer Churn
 CustomerChurnCONNECTIONSTRING = 'DefaultEndpointsProtocol=https;AccountName=#STORAGE_ACCOUNT_NAME#;AccountKey=#STORAGE_ACCOUNT_KEY#;EndpointSuffix=core.windows.net'
