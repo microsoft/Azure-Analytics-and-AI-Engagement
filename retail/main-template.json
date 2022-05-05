@@ -3568,10 +3568,10 @@
 	    {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2021-03-01",
-            "name": "[concat(parameters('sites_product_search_ui_app_name'), '/web')]",
+            "name": "[concat(variables('sites_product_search_ui_app_name'), '/web')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_product_search_ui_app_name'))]"
+                "[resourceId('Microsoft.Web/sites', variables('sites_product_search_ui_app_name'))]"
             ],
             "properties": {
                 "numberOfWorkers": 1,
