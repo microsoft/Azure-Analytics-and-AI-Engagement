@@ -464,6 +464,10 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "adx-historical" 
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adx-historical$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/adx-historical" $destinationUri --recursive
 
+$destinationSasKey = New-AzStorageContainerSASToken -Container "semanticsearch" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/semanticsearch$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/semanticsearch" $destinationUri --recursive
+
 ### Replacing Incident Search Files
 # get search query key
 Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
@@ -557,7 +561,8 @@ $headers = @{
 'Content-Type' = 'application/json' 
 'Accept' = 'application/json' }
 $url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
-$body = Get-Content -Raw -Path ./artifacts/search/data.json
+$Data= Get-Content -Raw -Path ./artifacts/search/data.json
+$body = $Data.Replace("#STORAGE_ACCOUNT_NAME#",$dataLakeAccountName)
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
 
 #### Incident Search ####
