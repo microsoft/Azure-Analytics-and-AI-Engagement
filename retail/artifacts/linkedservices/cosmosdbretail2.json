@@ -1,0 +1,16 @@
+{
+    "name": "cosmosdbretail2",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": "AccountEndpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;Database=#COSMOS_DATABASE#;",
+            "encryptedCredential": "#COSMOS_ACCOUNT_KEY#"
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

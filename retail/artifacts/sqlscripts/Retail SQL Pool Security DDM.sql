@@ -40,14 +40,14 @@ GRANT SELECT ON CustomerInfo TO DataAnalyst;
 EXECUTE AS USER =N'DataAnalyst';  
 SELECT * FROM CustomerInfo; 
 -- Step:7 Let us remove the data masking using UNMASK permission
---GRANT UNMASK TO DataAnalyst
+GRANT UNMASK TO DataAnalyst
 
-/*EXECUTE AS USER = 'DataAnalyst';  
+EXECUTE AS USER = 'DataAnalyst';  
 SELECT * 
 FROM CustomerInfo; 
 
 revert;
-REVOKE UNMASK TO DataAnalyst;  */
+REVOKE UNMASK TO DataAnalyst;  
 
 ----step:8 Reverting all the changes back to as it was.
 ALTER TABLE CustomerInfo ALTER COLUMN CreditCard DROP MASKED;
