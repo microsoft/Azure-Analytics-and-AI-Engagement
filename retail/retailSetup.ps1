@@ -1278,7 +1278,7 @@ $sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Servic
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Global Occupational Safety Report")
+    if($report.name -eq "Dashboard-Images" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard")
     {
         continue;
     }
@@ -1733,7 +1733,7 @@ Write-Host "------COSMOS data Upload -------------"
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
 $cosmosDbAccountName = $cosmosdb_retail2_name
-$cosmos = Get-ChildItem "./cosmos" | Select BaseName 
+$cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
 
 foreach($name in $cosmos)
 {
@@ -1746,7 +1746,7 @@ foreach($name in $cosmos)
 	{
 	$cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
 	}
-    $path="./cosmos/"+$name.BaseName+".json"
+    $path="./artifacts/cosmos/"+$name.BaseName+".json"
     $documents=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $documents
 
