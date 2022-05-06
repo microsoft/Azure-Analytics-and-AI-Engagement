@@ -7,6 +7,7 @@ DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM 
 Partners can deploy DREAM Demos in their own Azure subscriptions and show live demos to customers. 
 In partnership with Microsoft sellers, partners can deploy the Industry scenario DREAM demos into customer subscriptions. 
 Customers can play,  get hands-on experience navigating through the demo environment in their own subscription and show to their own stakeholders
+
 **Before You Begin**
 
 ## :exclamation:IMPORTANT NOTES:  
@@ -315,19 +316,27 @@ cd ./retail/retail
 
 	![Authentication link and Device Code.](media/cloud-shell-6.png)
      
-10. **Paste** the authentication code.
+10. **Paste** the authentication code and **click** on Next.
 
 	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
 
 11. **Select** the same user that you used for signing in to the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
+	
+12. In the below screen **click** on continue.
 
-12. **Close** the browser tab once you see the message window at right and **go back** to your Azure Cloud Shell execution window.
+	![Authentication done.](media/cloud-shell-20.png)
+
+13. **Close** the browser tab once you see the message window at right and **go back** to your Azure Cloud Shell execution window.
 
 	![Authentication done.](media/cloud-shell-9.png)
+	
+14. You will see the below screen and perform step #9 to step #13 again.
 
-13. Now you will be prompted to select subscription if you have multiple subscription assigned to the user you used for device login.
+	![Authentication done.](media/cloud-shell-21.png)
+
+15. Now you will be prompted to select subscription if you have multiple subscription assigned to the user you used for device login.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -336,23 +345,23 @@ cd ./retail/retail
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-14. You will be asked to confirm for the subscription, **enter** 'Y' and **press** enter key.
+16. You will be asked to confirm for the subscription, **enter** 'Y' and **press** enter key.
 
 	![Commands to run the PowerShell Script.](media/cloud-shell-19.png)
 
-15. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
+17. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 	
-16. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
+18. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
 
 	![Enter Resource Group name.](media/cloud-shell-15.png)
 
-17. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **open** each one of them.
+19. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **pen** each one of them.
 
 	![Enter Resource Group name.](media/cloud-shell-16.png)
 	
-18. **Click** on the browse button for **each one** of the app services once, a new window will appear, **close** the window.
+20. **Click** on the browse button for **each one** of the app services once, a new window will appear, **close** the window.
 
 	![Enter Resource Group name.](media/cloud-shell-17.png)
       
@@ -592,299 +601,299 @@ The image on the below shows the Reports tab in Power BI.  We can create a Power
 
 To give permissions for the Power BI reports to access the data sources:
 
-6. **Click** the ellipses or settings icon on top right-side corner.
+2. **Click** the ellipses or settings icon on top right-side corner.
 
-7. **Click** the settings dropdown.
+3. **Click** the settings dropdown.
 
-8. **Click** on settings.
+4. **Click** on settings.
 
 	![Permission.](media/power-bi-report-5.png)
 
-9. **Click** on ‘Datasets’ tab.
+5. **Click** on ‘Datasets’ tab.
 	
 	![Dataset.](media/power-bi-report-6.png)
 	
-10. **Click** on the CCO Report.
+6. **Click** on the CCO Report.
 
-11. **Expand** Data source credentials.
+7. **Expand** Data source credentials.
 
-12. **Click** Edit credentials and a dialogue box will pop up.
+8. **Click** Edit credentials and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-7.png)
 
 > **Note:** Verify the server name has been updated to your current sql pool name for all the datasets. If not, update the same under parameters section and click apply.
 
-13. **Enter** Username as ‘labsqladmin’.
+9. **Enter** Username as ‘labsqladmin’.
 
-14. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
+10. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
 
-15. **Click** on Sign in.
+11. **Click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-8.png)
 	
-16. **Click** on the Acquisition Impact Report.
+12. **Click** on the Acquisition Impact Report.
 
-17. **Expand** Data source credentials.
+13. **Expand** Data source credentials.
 
-18. **Click** Edit credentials in front of Synapse and a dialogue box will pop up.
+14. **Click** Edit credentials in front of Synapse and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-01.png)
 
-19. Keeping the default values as it is **click** on Sign in, a new window will pop-up.
+15. Keeping the default values as it is **click** on Sign in, a new window will pop-up.
 
 	![Validate Creds.](media/power-bi-report-02.png)
 
-20. In the new window, **select** the appropriate user.
+16. In the new window, **select** the appropriate user.
 
 	![Validate Creds.](media/power-bi-report-03.png)
 		
-21. **Click** on the ADX Thermostat and Occupancy.
+17. **Click** on the ADX Thermostat and Occupancy.
 
-22. **Expand** Data source credentials.
+18. **Expand** Data source credentials.
 
-23. **Click** Edit credentials in front of AzureDataExplorer and a dialogue box will pop up.
+19. **Click** Edit credentials in front of AzureDataExplorer and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-04.png)
 
-24. Keeping the "Authentication method" as "OAuth2" and **click** on Sign in.
+20. Keeping the "Authentication method" as "OAuth2" and **click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-05.png)
 
-25. In the new window, **select** the appropriate user.
+21. In the new window, **select** the appropriate user.
 
 	![Validate Creds.](media/power-bi-report-03.png)
 
-26. **Click** on the Retail HTAP.
+22. **Click** on the Retail HTAP.
 
-27. **Expand** Data source credentials.
+23. **Expand** Data source credentials.
 
-28. **Click** Edit credentials in front of DocumentDB and a dialogue box will pop up.
+24. **Click** Edit credentials in front of DocumentDB and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-06.png)
 
-29. Go to the Azure Portal and under resources search for "cosmos" and **click** on the cosmos resource, the resource window opens.
+25. Go to the Azure Portal and under resources search for "cosmos" and **click** on the cosmos resource, the resource window opens.
 
 	![Data Source Creds.](media/power-bi-report-07.png)
 
-30. Under the Settings section **select** keys and **copy** the primary key of the cosmos resource.
+26. Under the Settings section **select** keys and **copy** the primary key of the cosmos resource.
 
 	![Data Source Creds.](media/power-bi-report-08.png)
 	
-31. In the powerbi tab in step #28, keeping the "Authentication method" as "Key", **paste** "Account key" from step #30 and **click** on Sign in.
+27. In the powerbi tab in step #28, keeping the "Authentication method" as "Key", **paste** "Account key" from step #30 and **click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-09.png)
 	
-32. **Click** on the Global Occupational Safety Report.
+28. **Click** on the Global Occupational Safety Report.
 
-33. **Expand** Data source credentials.
+29. **Expand** Data source credentials.
 
-34. **Click** Edit credentials in front of AzureTable and a dialogue box will pop up.
+30. **Click** Edit credentials in front of AzureTable and a dialogue box will pop up.
 
 	![Validate Creds.](media/power-bi-report-010.png)
 	
-35. Go to Azure portal and **search** for 'stretail' and **click** on the storage account.
+31. Go to Azure portal and **search** for 'stretail' and **click** on the storage account.
 
 	![Validate Creds.](media/power-bi-report-011.png)
 	
-36. In the storage account resource, under the Security + networking section **click** on Access keys, **click** on Show keys and then **copy** the key.
+32. In the storage account resource, under the Security + networking section **click** on Access keys, **click** on Show keys and then **copy** the key.
 
 	![Validate Creds.](media/power-bi-report-012.png)
 	
-37. Paste the key in the pop-up in step #34, under Account key and **click** on Sign in.
+33. Paste the key in the pop-up in step #34, under Account key and **click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-013.png)
 
 Follow these steps to create the Power BI dashboard:
 
-38. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
+34. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workspace.](media/power-bi-report-9.png)
 	
-39. **Click** on ‘+ New’ button on the top-right navigation bar.
+35. **Click** on ‘+ New’ button on the top-right navigation bar.
 
-40. **Click** the ‘Dashboard’ option from the drop-down menu.
+36. **Click** the ‘Dashboard’ option from the drop-down menu.
 
       ![New Dashboard.](media/power-bi-report-10.png)
 
-41. **Name** the dashboard 'CEO Dashboard - May' and **click** 'create'.
+37. **Name** the dashboard 'CEO Dashboard - May' and **click** 'create'.
 
 	![Create Dashboard further steps.](media/power-bi-report-11.png)
 
-42. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
+38. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
 **Follow these steps to pin the report to the Power BI dashboard:**
 
-43. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
+39. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
 
 	![Create Dashboard further steps.](media/power-bi-report-12.png)
 
-44. Inside the report 'CDP Vision Report' **select** 'Pillar 1 May'.
+40. Inside the report 'CDP Vision Report' **select** 'Pillar 1 May'.
 
 	![Select Pillar 1 before.](media/power-bi-report-13.png)
 
-45. **Click** on 'Edit' at the top of the right corner.
+41. **Click** on 'Edit' at the top of the right corner.
 
 	![Select Pillar 1 before.](media/power-bi-report-14.png)	
 
-46. **Hover** over the tile and **click** on the icon to 'Pin to dashboard'.
+42. **Hover** over the tile and **click** on the icon to 'Pin to dashboard'.
 
 	![Select Pin to dashboard.](media/power-bi-report-15.png)
 
-47. 'Pin to dashboard' window will appear.
+43. 'Pin to dashboard' window will appear.
 
-48. **Select** the 'Existing Dashboard' radio button.
+44. **Select** the 'Existing Dashboard' radio button.
 
-49. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin' button.
+45. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin' button.
 
 	![Pin to dashboard further steps.](media/power-bi-report-16.png)
 
-50. Similarly, **pin** the others tiles to the Dashboard
+46. Similarly, **pin** the others tiles to the Dashboard
 
 	![Pin to dashboard further steps.](media/power-bi-report-17.png)
 
-51. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
+47. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
-52. **Open** ‘Dashboard-Images’ report.
+48. **Open** ‘Dashboard-Images’ report.
 
 	![Select Workspace.](media/power-bi-report-19.png)
 	
-53. **Click** on 'REtail 270821' page.
+49. **Click** on 'REtail 270821' page.
 
-54. **Click** on Edit.
+50. **Click** on Edit.
 
 	![Click on edit.](media/power-bi-report-20.png)
 	
-55. **Hover** on Deep Dive chicklet and **click** pin button.
+51. **Hover** on Deep Dive chicklet and **click** pin button.
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-56. Select the ‘CEO Dashboard - May’ from existing dashboard list and **click** on pin.
+52. Select the ‘CEO Dashboard - May’ from existing dashboard list and **click** on pin.
 	
 	![Hover and Click.](media/power-bi-report-22.png)
 
-57. Similarly pin rest of the images of the ‘Dashboard-Images’ report.
+53. Similarly pin rest of the images of the ‘Dashboard-Images’ report.
 	
 	![Select Dashboard and Click Pin.](media/power-bi-report-23.png)
 	
-58. **Go back** to the ‘CEO Dashboard - May’ dashboard.
+54. **Go back** to the ‘CEO Dashboard - May’ dashboard.
 
 	![Go back to Dashboard.](media/power-bi-report-24.png)
 	
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-59. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
+55. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
 
-60. **Click** on ‘Edit details’.
+56. **Click** on ‘Edit details’.
 
 	![Click on Edit Details.](media/power-bi-report-25.png)
 	
-61. **Uncheck** ‘Display title and subtitle’.
+57. **Uncheck** ‘Display title and subtitle’.
 
-62. **Click** on ‘Apply’.
+58. **Click** on ‘Apply’.
 
-63. **Repeat** Step 38 to 43 for all image tiles.
+59. **Repeat** Step 38 to 43 for all image tiles.
 
 	![Click apply and repeat.](media/power-bi-report-26.png)
 	
-64. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
+60. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
 	
 	![Resize and Rearrange.](media/power-bi-report-27.png)
 	
-65. Similarly pin left image tiles from ‘REtail 270821’ of chicklets report to the CEO Dashboard - May dashboard.
+61. Similarly pin left image tiles from ‘REtail 270821’ of chicklets report to the CEO Dashboard - May dashboard.
 
-66. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+62. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange again.](media/power-bi-report-28.png)
 	
-67. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
+63. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
 	
 	![Will see some KPIs.](media/power-bi-report-29.png)
 	
-68. **Hover** over the cards and charts and go to more options (…)
+64. **Hover** over the cards and charts and go to more options (…)
 
-69. **Click** on Edit Details.
+65. **Click** on Edit Details.
 	
 	![Hover and Click on Edit Details.](media/power-bi-report-30.png)
 	
-70. You will see something like this picture where you can add subtitle.
+66. You will see something like this picture where you can add subtitle.
 
 	![Will see.](media/power-bi-report-31.png)
 	
-71. The Dashboard **CEO Dashboard - May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+67. The Dashboard **CEO Dashboard - May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 
 	![Final Look.](media/power-bi-report-32.png)
 	
-72. **Refer** to this table while pinning rest of the tiles to the dashboard.
+68. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-1.png)
 
-73. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
+69. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-33.png)
 
-74. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
+70. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-34.png)
 	
-75. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+71. **Refer** to this table while pinning rest of the tiles to the dashboard.	
 
 	![Table.](media/power-bi-table-2.png)
 
-76. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
+72. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
 	
 	![Final Look.](media/power-bi-report-35.png)
 	
-77. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+73. **Refer** to this table while pinning rest of the tiles to the dashboard.	
 
 	![Table.](media/power-bi-table-3.png)
 
-78. **CEO Dashboard - Nov** Dashboard should look like this. 
+74. **CEO Dashboard - Nov** Dashboard should look like this. 
 
 	![Final Look.](media/power-bi-report-36.png)
 	
-79. **Refer** to this table while pinning rest of the tiles to the dashboard.
+75. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-4.png)
 	
-80. **CEO Dashboard - Dec** Dashboard should look like this.
+76. **CEO Dashboard - Dec** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-37.png)
 	
-81. **Refer** to this table while pinning rest of the tiles to the dashboard.
+77. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-5.png)
 	
-82. **ADX Dashboard** Dashboard should look like this.
+78. **ADX Dashboard** Dashboard should look like this.
 	
 	![Final Look.](media/power-bi-report-38.png)
 
-83. **Refer** to this table while pinning rest of the tiles to the dashboard.
+79. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-6.png)
 
-84. **ESG Dashboard** Dashboard should look like this.
+80. **ESG Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-39.png)
 	
-85. **Refer** to this table while pinning rest of the tiles to the dashboard.
+81. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-7.png)
 	
-86. **Finance Dashboard** Dashboard should look like this.
+82. **Finance Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-40.png)
 
-87. **Refer** to this table while pinning rest of the tiles to the dashboard.
+83. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-8.png)
 	
-88. **VP Customer Experience Dashboard** Dashboard should look like this.
+84. **VP Customer Experience Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-41.png)
 
-89. **Refer** to this table while pinning rest of the tiles to the dashboard.
+85. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-9.png)
 
@@ -1189,4 +1198,14 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
-	![Enter the Resource Group Name.](media/authentication-7.png)
+	![Close the browser tab.](media/select-sub.png)
+	
+	> **Notes:**
+	> - The user with single subscription won't be prompted to select subscription.
+	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
+	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
+
+6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
+
+	![Enter Resource Group name.](media/cloud-shell-14.png)
+
