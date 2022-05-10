@@ -26,19 +26,20 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$cosmos_database_name = "retail-foottraffic";
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$concatString = "$random$init";
 $cosmosdb_retail2_name = "cosmosdb-retail2-$random$init";
 if($cosmosdb_retail2_name.length -gt 43)
 {
 $cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
 }
-
+$cosmos_database_name_retailinventorydb = "retailinventorydb";
+$cosmos_database_name= "retail-foottraffic";
 
 #COSMOS Section
-Write-Host  "-----------------Uploading Cosmos Data --------------"
+Write-Host "------COSMOS data Upload -------------"
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Install-Module -Name PowerShellGet -Force
 Install-Module -Name CosmosDB -Force
@@ -48,24 +49,32 @@ $cosmos = Get-ChildItem "../artifacts/cosmos" | Select BaseName
 foreach($name in $cosmos)
 {
     $collection = $name.BaseName 
-    $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
+    if($name.BaseName -eq "inventorydb")
+	{
+     $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name_retailinventorydb -ResourceGroup $rgName
+	}
+	else 
+	{
+	$cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmos_database_name -ResourceGroup $rgName
+	}
     $path="../artifacts/cosmos/"+$name.BaseName+".json"
     $documents=Get-Content -Raw -Path $path
     $document=ConvertFrom-Json $documents
 
     foreach($json in $document)
     {
-		$key=$json.TransactionType
         if($name.Basename -eq "retaildb") {
-            $id = New-Guid
             $partitionKey = "beforefoottraffic" + $((Get-Date -Format MM-dd-yyyy).ToString())
-            if(![bool]($json.PSobject.Properties.name -match "id"))
-            {$json | Add-Member -MemberType NoteProperty -Name 'id' -Value $id}
             if(![bool]($json.PSobject.Properties.name -match "beforefoottraffic"))
             {$json | Add-Member -MemberType NoteProperty -Name 'beforefoottraffic' -Value $partitionKey }
             $key=$json.beforefoottraffic
         }
-
+        elseif ($name.Basename -eq "retailcosmos") {
+            $key = $json.TransactionType
+        }
+        elseif ($name.Basename -eq "inventorydb") {
+            $key = $json.InventoryType
+        }
         $body=ConvertTo-Json $json
         $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
     }

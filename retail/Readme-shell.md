@@ -221,7 +221,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fretail2.0%2Fretail%2FSynapseSetup.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fretail2.0%2Fretail%2Fmain-template.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
@@ -454,6 +454,8 @@ cd ./retail/retail
 	![Adx.](media/adx-13.png)
 
 15. Repeat the step #11 and this time **enter** Table field ThermostatHistoricalData, and step #12 this time **expand** File Filters, under Folder path enter "thermostat".
+
+16. Repeat the step #11 and this time **enter** Table field OccupancyHistoricalDataUpdated, and step #12 this time **expand** File Filters, under Folder path enter "adx-data".
 	
 ### Task 7: Azure Purview Setup
 
@@ -587,6 +589,8 @@ cd ./retail/retail
 	
 ### Task 8: Power BI reports and dashboard creation
 
+### Steps to authenticate the reports
+
 1. **Open** Power BI and **Select** the Workspace, which is created in [Task 2](#task-2-power-bi-workspace-creation).
 	
 	![Select Workspace.](media/power-bi-report-3.png)
@@ -702,124 +706,328 @@ To give permissions for the Power BI reports to access the data sources:
 33. Paste the key in the pop-up in step #34, under Account key and **click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-013.png)
+	
+### Steps to create realtime reports
 
-Follow these steps to create the Power BI dashboard:
+1.	**Click** on the three dots in front of the “occupancy” and “thermostat” datasets one at a time and **click** on Create report, a new report will be created.
 
-34. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
+	![Validate Creds.](media/power-bi-report-014.png)
+
+**Occupancy Realtime Visualizations:**
+
+*Average Visitors In
+
+2. **Select** the stacked column chart visual from “Visualizations”.
+
+	![Validate Creds.](media/power-bi-report-015.png)
+
+3. **Select** the field from the visual from the field panel.
+
+4. **Drag /Select** the column name into the fields which is below the visualization panel.
+	
+5. For showing the average values **click** on the dropdown arrow in the value section field and select the Average.
+
+	![Validate Creds.](media/power-bi-report-016.png)
+
+	![Validate Creds.](media/power-bi-report-017.png)
+	
+	![Validate Creds.](media/power-bi-report-018.png)
+
+*Average Visitors Out
+
+6. **Select** the Stacked area line chart for the next visual.
+
+	![Validate Creds.](media/power-bi-report-019.png)
+
+7. **Select** the required field column for the visual.
+
+8. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+	![Validate Creds.](media/power-bi-report-020.png)
+	
+	![Validate Creds.](media/power-bi-report-021.png)
+	
+	![Validate Creds.](media/power-bi-report-022.png)
+	
+*Average Number of Visitors (KPI)
+
+9. **Select** the Area chart to show the average number of visitors.
+
+	![Validate Creds.](media/power-bi-report-023.png)
+
+10. **Select** the field from the visual from the field panel.
+
+11. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+12. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-024.png)
+	
+	![Validate Creds.](media/power-bi-report-025.png)
+	
+	![Validate Creds.](media/power-bi-report-026.png)
+
+*Average Number of Visitors (Visual)
+	
+13. **Select** the Clustered column chart for showing the Average number of visitors visually.
+
+	![Validate Creds.](media/power-bi-report-027.png)
+
+14. **Select** the field from the visual from the field panel.
+
+15. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+16. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-028.png)
+	
+	![Validate Creds.](media/power-bi-report-029.png)
+	
+	![Validate Creds.](media/power-bi-report-030.png)
+	
+*Average Checkout Time (Visual)
+
+17. **Select** the Area chart to show the Average Checkout Time.
+
+	![Validate Creds.](media/power-bi-report-031.png)
+
+18. **Select** the field from the visual from the field panel.
+
+19. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+20. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-032.png)
+	
+	![Validate Creds.](media/power-bi-report-033.png)
+	
+	![Validate Creds.](media/power-bi-report-034.png)
+
+*Average Aisle Dwell Time
+	
+21. **Select** the Line chart to show the Average Checkout Time.
+
+	![Validate Creds.](media/power-bi-report-035.png)
+	
+22. **Select** the field from the visual from the field panel.
+
+23. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+24. For showing the average values **click** on the dropdown arrow in the value section field and select the Average.
+
+	![Validate Creds.](media/power-bi-report-036.png)
+	
+	![Validate Creds.](media/power-bi-report-037.png)
+	
+	![Validate Creds.](media/power-bi-report-038.png)
+	
+*Average Checkout Time
+
+25. **Select** the KPI Visual to show the Average Checkout Time.
+
+	![Validate Creds.](media/power-bi-report-039.png)
+	
+26.	**Select** the field from the visual from the field panel.
+
+27.	**Drag /Select** the column name into the fields which is below the visualization panel.
+
+28.	For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-040.png)
+	
+	![Validate Creds.](media/power-bi-report-041.png)
+	
+	![Validate Creds.](media/power-bi-report-042.png)
+	
+*Average Aisle Dwell Time (KPI)
+
+29. **Select** the KPI Visual to show the Average Aisle Dwell Time.
+
+	![Validate Creds.](media/power-bi-report-043.png)
+	
+30. **Select** the field from the visual from the field panel.
+
+31. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+32. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-044.png)
+	
+	![Validate Creds.](media/power-bi-report-045.png)
+	
+	![Validate Creds.](media/power-bi-report-046.png)
+	
+33. After putting visuals **click** on the Save Button.
+
+34. Give the name and **save** it in the same workspace.
+
+	![Validate Creds.](media/power-bi-report-047.png)
+	
+**Thermostat Realtime Visualizations:**
+	
+*Average Temperature (F)
+
+35. **Select** the Line Chart Visual to show the Average Temperature (F).
+
+	![Validate Creds.](media/power-bi-report-048.png)
+
+36. **Select** the field from the visual from the field panel.
+
+37. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+38. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-049.png)
+	
+	![Validate Creds.](media/power-bi-report-050.png)
+	
+	![Validate Creds.](media/power-bi-report-051.png)
+	
+*Temperature beyond a comfortable level
+	
+39. **Select** the Area chart Visual to show the Temperature beyond a comfortable level.
+
+	![Validate Creds.](media/power-bi-report-052.png)
+	
+40. **Select** the field from the visual from the field panel.
+
+41. **Drag /Select** the column name into the fields which is below the visualization panel.
+
+42. For showing the average values **click** on the dropdown arrow in the value section field and **select** the Average.
+
+	![Validate Creds.](media/power-bi-report-053.png)
+	
+	![Validate Creds.](media/power-bi-report-054.png)
+	
+	![Validate Creds.](media/power-bi-report-055.png)
+
+43. After putting visuals **click** on the Save Button.
+
+44. Give the name and **save** it in the same workspace.
+
+	![Validate Creds.](media/power-bi-report-056.png)
+	
+**How to add Video in Dashboard:**
+
+45. In the dashboard, **Select** Edit > Add Tiles 
+
+	![Validate Creds.](media/power-bi-report-057.png)
+	
+	![Validate Creds.](media/power-bi-report-058.png)
+	
+46. From the Add a tile Window, **Select** Web content and Next.
+
+	![Validate Creds.](media/power-bi-report-059.png)
+	
+47. Add information to the Web content tile window.
+
+48. Add Display Title, Subtitle.
+
+49. **Enter** the Embed code and Select Apply. 
+
+50. On the Dashboard resize, move the content as needed.
+
+	![Validate Creds.](media/power-bi-report-060.png)
+	
+	![Validate Creds.](media/power-bi-report-061.png)
+	
+### Follow these steps to create the Power BI dashboard:
+
+1. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
 
 	![Select Workspace.](media/power-bi-report-9.png)
 	
-35. **Click** on ‘+ New’ button on the top-right navigation bar.
+2. **Click** on ‘+ New’ button on the top-right navigation bar.
 
-36. **Click** the ‘Dashboard’ option from the drop-down menu.
+3. **Click** the ‘Dashboard’ option from the drop-down menu.
 
       ![New Dashboard.](media/power-bi-report-10.png)
 
-37. **Name** the dashboard 'CEO Dashboard - May' and **click** 'create'.
+4. **Name** the dashboard 'ADX Dashboard' and **click** 'create'.
 
 	![Create Dashboard further steps.](media/power-bi-report-11.png)
 
-38. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
+5. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
 **Follow these steps to pin the report to the Power BI dashboard:**
 
-39. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
+4. **Search** the report 'Occupancy' and then **click** on the report to open it.
 
 	![Create Dashboard further steps.](media/power-bi-report-12.png)
 
-40. Inside the report 'CDP Vision Report' **select** 'Pillar 1 May'.
+5. Inside the report 'Occupancy' **click** on 'Edit' at the top of the right corner.
 
 	![Select Pillar 1 before.](media/power-bi-report-13.png)
 
-41. **Click** on 'Edit' at the top of the right corner.
+6. **Click** over the tile and **click** on the icon to 'Pin to dashboard'.
 
 	![Select Pillar 1 before.](media/power-bi-report-14.png)	
 
-42. **Hover** over the tile and **click** on the icon to 'Pin to dashboard'.
+7. 'Pin to dashboard' window will appear.
+
+8. **Select** the 'Existing Dashboard' radio button.
+
+9. **Select** the existing dashboard 'ADX Dashboard' and **click** on the 'Pin' button.
 
 	![Select Pin to dashboard.](media/power-bi-report-15.png)
 
-43. 'Pin to dashboard' window will appear.
-
-44. **Select** the 'Existing Dashboard' radio button.
-
-45. **Select** the existing dashboard 'CEO Dashboard - May' and **click** on the 'Pin' button.
+10. Similarly, **pin** the others tiles to the Dashboard
 
 	![Pin to dashboard further steps.](media/power-bi-report-16.png)
 
-46. Similarly, **pin** the others tiles to the Dashboard
-
-	![Pin to dashboard further steps.](media/power-bi-report-17.png)
-
-47. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
+11. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
-48. **Open** ‘Dashboard-Images’ report.
+12. **Open** ‘Dashboard-Images’ report.
 
 	![Select Workspace.](media/power-bi-report-19.png)
 	
-49. **Click** on 'REtail 270821' page.
+13. **Click** on 'REtail 270821' page.
 
-50. **Click** on Edit.
+14. **Click** on Edit.
 
 	![Click on edit.](media/power-bi-report-20.png)
 	
-51. **Hover** on Deep Dive chicklet and **click** pin button.
+15. **Hover** on Deep Dive chicklet and **click** pin button.
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-52. Select the ‘CEO Dashboard - May’ from existing dashboard list and **click** on pin.
+16. Select the ‘ADX Dashboard’ from existing dashboard list and **click** on pin.
 	
 	![Hover and Click.](media/power-bi-report-22.png)
 
-53. Similarly pin rest of the images of the ‘Dashboard-Images’ report.
+17. Similarly pin rest of the images of the ‘Dashboard-Images’ report.
 	
-	![Select Dashboard and Click Pin.](media/power-bi-report-23.png)
-	
-54. **Go back** to the ‘CEO Dashboard - May’ dashboard.
+18. **Go back** to the ‘ADX Dashboard’ dashboard.
 
 	![Go back to Dashboard.](media/power-bi-report-24.png)
 	
 To hide title and subtitle for all the images that you have pined above. Please do the following:
 
-55. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
+19. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
 
-56. **Click** on ‘Edit details’.
+20. **Click** on ‘Edit details’.
 
 	![Click on Edit Details.](media/power-bi-report-25.png)
 	
-57. **Uncheck** ‘Display title and subtitle’.
+21. **Uncheck** ‘Display title and subtitle’.
 
-58. **Click** on ‘Apply’.
+22. **Click** on ‘Apply’.
 
-59. **Repeat** Step 38 to 43 for all image tiles.
+23. **Repeat** Step 4 to 22 for all image tiles.
 
 	![Click apply and repeat.](media/power-bi-report-26.png)
 	
-60. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
+24. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
 	
 	![Resize and Rearrange.](media/power-bi-report-27.png)
 	
-61. Similarly pin left image tiles from ‘REtail 270821’ of chicklets report to the CEO Dashboard - May dashboard.
+25. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the ADX Dashboard dashboard.
 
-62. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+26. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange again.](media/power-bi-report-28.png)
-	
-63. You will see some KPIs or charts like this KPI with title and subtitle. 1. Title, 2. Subtitle.
-	
-	![Will see some KPIs.](media/power-bi-report-29.png)
-	
-64. **Hover** over the cards and charts and go to more options (…)
-
-65. **Click** on Edit Details.
-	
-	![Hover and Click on Edit Details.](media/power-bi-report-30.png)
-	
-66. You will see something like this picture where you can add subtitle.
-
-	![Will see.](media/power-bi-report-31.png)
 	
 67. The Dashboard **CEO Dashboard - May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 
