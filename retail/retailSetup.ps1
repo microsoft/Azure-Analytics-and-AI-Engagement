@@ -389,6 +389,14 @@ $video_logic_callbackurl = $video_logic_callbackurl.value
 				-replace '###vi_location###', $vi_location`		
         } | Set-Content -Path artifacts/templates/logic_app_storage_trigger_def1.json
 
+RefreshTokens
+#logic app definition update
+az extension add -n logic
+az logic workflow update --resource-group $rgName --name $workflows_logic_video_indexer_trigger_name --definition "./artifacts/templates/logic_app_video_trigger_def1.json"
+
+az logic workflow update --resource-group $rgName --name $workflows_logic_storage_trigger_name --definition "./artifacts/templates/logic_app_storage_trigger_def1.json"
+ 
+start-sleep -s 60
 
 #Uploading to storage containers
 Add-Content log.txt "-----------Uploading to storage containers-----------------"
@@ -467,6 +475,10 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adx-histo
 $destinationSasKey = New-AzStorageContainerSASToken -Container "semanticsearch" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/semanticsearch$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/semanticsearch" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "video" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/video$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/video" $destinationUri --recursive
 
 ### Replacing Incident Search Files
 # get search query key
@@ -1268,15 +1280,6 @@ Set-AzStorageFileContent `
 #delete aks compute
 az ml computetarget delete -n $cpuShell -v
 
-RefreshTokens
-#logic app definition update
-az extension add -n logic
-az logic workflow update --resource-group $rgName --name $workflows_logic_video_indexer_trigger_name --definition "./artifacts/templates/logic_app_video_trigger_def1.json"
-
-az logic workflow update --resource-group $rgName --name $workflows_logic_storage_trigger_name --definition "./artifacts/templates/logic_app_storage_trigger_def1.json"
- 
-start-sleep -s 60
-
 ##Establish powerbi reports dataset connections
 Add-Content log.txt "------pbi connections update------"
 Write-Host "--------- PBI connections update---------"	
@@ -1360,7 +1363,7 @@ foreach($report in $reportList)
 								]
 								}"	
 	}
-    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map" -or $report.name -eq "Campaign Analytics" -or $report.name -eq "Retail Predictive Analytics")
+    elseif($report.name -eq "CDP Vision Report" -or $report.name -eq "US Map with header" -or $report.name -eq "ESG Report Final" -or $report.name -eq  "globalmarkets" -or $report.name -eq "Location Analytics" -or $report.name -eq "World Map" -or $report.name -eq "Campaign Analytics" -or $report.name -eq "Retail Predictive Analytics")
     {
       $body = "{
 			`"updateDetails`": [
@@ -1372,6 +1375,25 @@ foreach($report in $reportList)
 									`"name`": `"Database`",
 									`"newValue`": `"$($sqlPoolName)`"
 								}
+								]
+								}"	
+	}
+	elseif($report.name -eq "Retail Group CEO KPI")
+    {
+      $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($sqlPoolName)`"
+								},
+								{
+									`"name`": `"RetailServer`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
 								]
 								}"	
 	}
