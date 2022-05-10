@@ -47,7 +47,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
   - [Task 8: Power BI reports and dashboard creation](#task-8-power-bi-reports-and-dashboard-creation)
   	- [Steps to validate the credentials for reports](#steps-to-validate-the-credentials-for-reports)
-  	- [Steps to create realtime reports](#Steps-to-create-report-realtime-reports)
+  	- [Steps to create realtime reports](#steps-to-create-realtime-reports)
   	- [Follow these steps to create the Power BI dashboard](#follow-these-steps-to-create-the-Power-BI-dashboard)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
   - [Task 9: QnAmaker and LogicApp Configuration](#task-9-qnamaker-and-logicapp-configuration)
