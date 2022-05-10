@@ -46,7 +46,9 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 6: Data Explorer Setup](#task-6-data-explorer-setup)
   - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
   - [Task 8: Power BI reports and dashboard creation](#task-8-power-bi-reports-and-dashboard-creation)
-  	- [Steps to create Real time report](#steps-to-create-real-time-report)
+  	- [Steps to validate the credentials for reports](#steps-to-validate-the-credentials-for-reports)
+  	- [Steps to create realtime reports](#Steps-to-create-report-realtime-reports)
+  	- [Follow these steps to create the Power BI dashboard](#follow-these-steps-to-create-the-Power-BI-dashboard)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
   - [Task 9: QnAmaker and LogicApp Configuration](#task-9-qnamaker-and-logicapp-configuration)
   - [Task 10: Pause or Resume script](#task-10-pause-or-resume-script)
@@ -589,7 +591,7 @@ cd ./retail/retail
 	
 ### Task 8: Power BI reports and dashboard creation
 
-### Steps to authenticate the reports
+### Steps to validate the credentials for reports
 
 1. **Open** Power BI and **Select** the Workspace, which is created in [Task 2](#task-2-power-bi-workspace-creation).
 	
@@ -907,7 +909,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Validate Creds.](media/power-bi-report-056.png)
 		
-### Follow these steps to create the Power BI dashboard:
+### Follow these steps to create the Power BI dashboard
 
 1. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
 
