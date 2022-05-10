@@ -715,7 +715,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 **Occupancy Realtime Visualizations:**
 
-*Average Visitors In
+**Average Visitors In**
 
 2. **Select** the stacked column chart visual from “Visualizations”.
 
@@ -733,7 +733,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-018.png)
 
-*Average Visitors Out
+**Average Visitors Out**
 
 6. **Select** the Stacked area line chart for the next visual.
 
@@ -749,7 +749,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-022.png)
 	
-*Average Number of Visitors (KPI)
+**Average Number of Visitors (KPI)**
 
 9. **Select** the Area chart to show the average number of visitors.
 
@@ -767,7 +767,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-026.png)
 
-*Average Number of Visitors (Visual)
+**Average Number of Visitors (Visual)**
 	
 13. **Select** the Clustered column chart for showing the Average number of visitors visually.
 
@@ -785,7 +785,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-030.png)
 	
-*Average Checkout Time (Visual)
+**Average Checkout Time (Visual)**
 
 17. **Select** the Area chart to show the Average Checkout Time.
 
@@ -803,7 +803,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-034.png)
 
-*Average Aisle Dwell Time
+**Average Aisle Dwell Time**
 	
 21. **Select** the Line chart to show the Average Checkout Time.
 
@@ -821,7 +821,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-038.png)
 	
-*Average Checkout Time
+**Average Checkout Time**
 
 25. **Select** the KPI Visual to show the Average Checkout Time.
 
@@ -839,7 +839,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-042.png)
 	
-*Average Aisle Dwell Time (KPI)
+**Average Aisle Dwell Time (KPI)**
 
 29. **Select** the KPI Visual to show the Average Aisle Dwell Time.
 
@@ -865,7 +865,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 **Thermostat Realtime Visualizations:**
 	
-*Average Temperature (F)
+**Average Temperature (F)**
 
 35. **Select** the Line Chart Visual to show the Average Temperature (F).
 
@@ -883,7 +883,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-051.png)
 	
-*Temperature beyond a comfortable level
+**Temperature beyond a comfortable level**
 	
 39. **Select** the Area chart Visual to show the Temperature beyond a comfortable level.
 
@@ -906,31 +906,7 @@ To give permissions for the Power BI reports to access the data sources:
 44. Give the name and **save** it in the same workspace.
 
 	![Validate Creds.](media/power-bi-report-056.png)
-	
-**How to add Video in Dashboard:**
-
-45. In the dashboard, **Select** Edit > Add Tiles 
-
-	![Validate Creds.](media/power-bi-report-057.png)
-	
-	![Validate Creds.](media/power-bi-report-058.png)
-	
-46. From the Add a tile Window, **Select** Web content and Next.
-
-	![Validate Creds.](media/power-bi-report-059.png)
-	
-47. Add information to the Web content tile window.
-
-48. Add Display Title, Subtitle.
-
-49. **Enter** the Embed code and Select Apply. 
-
-50. On the Dashboard resize, move the content as needed.
-
-	![Validate Creds.](media/power-bi-report-060.png)
-	
-	![Validate Creds.](media/power-bi-report-061.png)
-	
+		
 ### Follow these steps to create the Power BI dashboard:
 
 1. **Select** the workspace created in [Task 2](#task-2-power-bi-workspace-creation).
@@ -1029,140 +1005,111 @@ To hide title and subtitle for all the images that you have pined above. Please 
 
 	![Resize and Rearrange again.](media/power-bi-report-28.png)
 	
-67. The Dashboard **CEO Dashboard - May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+**How to add Video in Dashboard:**
 
-	![Final Look.](media/power-bi-report-32.png)
+27. In the dashboard, **Select** Edit > Add Tiles 
+
+	![Validate Creds.](media/power-bi-report-057.png)
 	
-68. **Refer** to this table while pinning rest of the tiles to the dashboard.
-
-	![Table.](media/power-bi-table-1.png)
-
-69. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
-
-	![Final Look.](media/power-bi-report-33.png)
-
-70. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
-
-	![Final Look.](media/power-bi-report-34.png)
+	![Validate Creds.](media/power-bi-report-058.png)
 	
-71. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+28. From the Add a tile Window, **Select** Web content and Next.
 
-	![Table.](media/power-bi-table-2.png)
-
-72. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
+	![Validate Creds.](media/power-bi-report-059.png)
 	
-	![Final Look.](media/power-bi-report-35.png)
+29. Add information to the Web content tile window.
+
+30. Add Display Title, Subtitle.
+
+31. For the embedded code, **goto** storage account from the portal, go to the 'video' container and **click** on the video 'final_spatial_analysis_video_1.mp4', now **click** on the copy button for copying the video url, and finally replace the url with 'URL' in the below embedded code.
+
+	<video controls loop width="100%" ><source src=URL type="video/mp4">
 	
-73. **Refer** to this table while pinning rest of the tiles to the dashboard.	
-
-	![Table.](media/power-bi-table-3.png)
-
-74. **CEO Dashboard - Nov** Dashboard should look like this. 
-
-	![Final Look.](media/power-bi-report-36.png)
+	![Validate Creds.](media/power-bi-report-061.png)
 	
-75. **Refer** to this table while pinning rest of the tiles to the dashboard.
+32. **Copy** the whole Embed code. 
 
-	![Table.](media/power-bi-table-4.png)
-	
-76. **CEO Dashboard - Dec** Dashboard should look like this.
+33. **Enter** the Embed code and Select Apply. 
 
-	![Final Look.](media/power-bi-report-37.png)
-	
-77. **Refer** to this table while pinning rest of the tiles to the dashboard.
+34. On the Dashboard resize, move the content as needed.
 
-	![Table.](media/power-bi-table-5.png)
-	
-78. **ADX Dashboard** Dashboard should look like this.
+	![Validate Creds.](media/power-bi-report-060.png)
+
+35. The Dashboard **ADX Dashboard** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 	
 	![Final Look.](media/power-bi-report-38.png)
 
-79. **Refer** to this table while pinning rest of the tiles to the dashboard.
+36. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-6.png)
 
-80. **ESG Dashboard** Dashboard should look like this.
+37. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
+
+	![Final Look.](media/power-bi-report-33.png)
+
+38. **CEO Dashboard - May** should look like this. Following are the details of tiles for the same.
+
+	![Final Look.](media/power-bi-report-32.png)
+	
+39. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-1.png)
+
+40. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
+
+	![Final Look.](media/power-bi-report-34.png)
+	
+41. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-2.png)
+
+42. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
+	
+	![Final Look.](media/power-bi-report-35.png)
+	
+43. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+
+	![Table.](media/power-bi-table-3.png)
+
+44. **CEO Dashboard - Nov** Dashboard should look like this. 
+
+	![Final Look.](media/power-bi-report-36.png)
+	
+45. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-4.png)
+	
+46. **CEO Dashboard - Dec** Dashboard should look like this.
+
+	![Final Look.](media/power-bi-report-37.png)
+	
+47. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-5.png)
+	
+48. **ESG Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-39.png)
 	
-81. **Refer** to this table while pinning rest of the tiles to the dashboard.
+49. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-7.png)
 	
-82. **Finance Dashboard** Dashboard should look like this.
+50. **Finance Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-40.png)
 
-83. **Refer** to this table while pinning rest of the tiles to the dashboard.
+51. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-8.png)
 	
-84. **VP Customer Experience Dashboard** Dashboard should look like this.
+52. **VP Customer Experience Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-41.png)
 
-85. **Refer** to this table while pinning rest of the tiles to the dashboard.
+53. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-9.png)
-
-### Steps to create Real time report
-
-This task is optional since we have provided static versions of the reports in the package already.
-
-1. **Open** Power BI in a new tab using the following link:
-	[https://app.powerbi.com/](https://app.powerbi.com/).
-
-2. **Sign into** Power BI using your Power BI Pro account.
-
-	![Sign_in_powerbi.](media/power-bi-report-42.png)
-
-> **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
-	
-3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “DDiB-Retail” workspace.
-
-	![Click Workspace.](media/power-bi-report-43.png)
-
-4. Search for ADX Dashboard and **Click** on it.
-
-    ![image.](media/adx-2.jpg)
-    
-    ![image.](media/adx-3.jpg)
-    
-5. **Click** on the chiclets it will take you to the Power BI Report.
-
-6. In the Power BI report, you can pin down the visual or Chiclets.
-
-    ![image.](media/adx-4.jpg)
-    
-7.	**Select** the Chiclet/KPIs/Visuals.
-
-8.	It will open the Power BI report. 
-
-9.	**Select** the Visual/ KPIs/ Chiclet, then **select** on pin visual.
-
-    ![image.](media/adx-5.jpg)
-    
-10. On the Pop-up screen, **Select** the option “Where would you like to pin to?” And according to that “Select existing dashboard”
-
-11.	**Click** on the Pin Button.
-  
-    ![image.](media/adx-6.jpg)
-    
-12. On the right corner of the screen notification will come and allow you to “go to the dashboard”.
-
-13.	Follow these steps for all the Visuals/KPIs/chiclets for pinning to the dashboard.
-    
-    ![image.](media/adx-7.jpg)
-    
-14.	Chiclets-> In “Dashboard-images” Power BI report-> On-Page “ESG”.
-
-15.	First Pillar Deep Dive Visuals /KPIs-> In “occupancy Realtime” Power BI report-> on the page “ADX Dashboard”.
-
-16.	Second Pillar KPIs-> In “occupancy Realtime” Power BI report-> on the page “ADX Dashboard”.
-Second Pillar Deep Dive Visuals -> In “thermostat” Power BI report-> On the page “Page 2”.
-    
-17.	Third Pillar KPIs-> In “occupancy Realtime” Power BI report-> on page “ADX Dashboard”.
-Third Pillar Deep Dive Visuals-> In “ADX Thermostat and Occupancy” Power BI report-> On the page “ADX Realtime report”.
 
 ### Updating Dashboard and Report Ids in Web app
 
