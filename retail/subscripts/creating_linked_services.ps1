@@ -167,6 +167,15 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/cos
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
+##cosmosdbretail2 linked services for inventory db
+Write-Host "Creating linked Service: cosmosdbretail2"
+$filepath=$templatepath+"cosmosdbretail2.json"
+$itemTemplate = Get-Content -Path $filepath
+$item = $itemTemplate.Replace("#COSMOS_ACCOUNT#", $cosmosdb_retail2_name).Replace("#COSMOS_DATABASE#", $cosmos_database_name_retailinventorydb).Replace("COSMOS_ACCOUNT_KEY#", $cosmos_account_key)
+$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/cosmosdbretail2?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
+Add-Content log.txt $result
+
 ##CDPProd linked services
 Write-Host "Creating linked Service: CDPProd"
 $filepath=$templatepath+"CDPProd.json"

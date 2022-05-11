@@ -20,7 +20,7 @@ $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
 if($subs.GetType().IsArray -and $subs.length -gt 1)
 {
-    $subOptions = [System.Collections.ArrayList]::new()
+   $subOptions = [System.Collections.ArrayList]::new()
     for($subIdx=0; $subIdx -lt $subs.length; $subIdx++)
     {
         $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
@@ -28,9 +28,24 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     }
     $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
     $selectedSubName = $subs[$selectedSubIdx]
-    Write-Host "Selecting the $selectedSubName subscription"
+    Write-Host "Selecting the subscription : $selectedSubName "
+	$title    = 'Subscription selection'
+	$question = 'Are you sure you want to select this subscription for this lab?'
+	$choices  = '&Yes', '&No'
+	$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+	if($decision -eq 0)
+	{
     Select-AzSubscription -SubscriptionName $selectedSubName
     az account set --subscription $selectedSubName
+	}
+	else
+	{
+	$selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
+    $selectedSubName = $subs[$selectedSubIdx]
+    Write-Host "Selecting the subscription : $selectedSubName "
+	Select-AzSubscription -SubscriptionName $selectedSubName
+    az account set --subscription $selectedSubName
+	}
 }
 
 #Getting User Inputs
@@ -97,6 +112,7 @@ foreach ($name in $scripts)
     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmosdb_retail2_name)
     $query = $query.Replace("#LOCATION#", $rglocation)
+    $query = $query.Replace("#SQL_PASSWORD#", $sqlPassword)
 	
     if ($Parameters -ne $null) 
     {

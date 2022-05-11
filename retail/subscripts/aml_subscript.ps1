@@ -35,7 +35,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $concatString = "$init$random"
@@ -58,13 +58,13 @@ $amlworkspacename = "amlws-$suffix"
 $cpuShell = "cpuShell$random"
 $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "incidentpdftraining" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
-$forms_cogs_endpoint = "https://"+$location+".api.cognitive.microsoft.com/"
+$forms_cogs_endpoint = "https://"+$rglocation+".api.cognitive.microsoft.com/"
 
 Write-Host "----Form Recognizer-----"
 #form Recognizer
 #Replace values in create_model.py
 (Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
-                -replace '#LOCATION#', $location`
+                -replace '#LOCATION#', $rglocation`
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
 				-replace '#CONTAINER_NAME#', "incidentpdftraining"`
 				-replace '#SAS_TOKEN#', $sasToken`
