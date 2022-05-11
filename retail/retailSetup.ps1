@@ -1626,7 +1626,7 @@ RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
 $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 $reportList = $reportList.Value
-
+$sites_app_product_search_url = "https://$($sites_app_product_search).azurewebsites.net"
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
 # $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
@@ -1646,7 +1646,7 @@ $ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "AD
 $ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
 $ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
 $ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
-$ht.add("#PRODUCT_AI_SEARCH_APP_URL#", $sites_app_product_search)
+$ht.add("#PRODUCT_AI_SEARCH_APP_URL#", $sites_app_product_search_url)
 
 $filePath = "./retaildemo-app/wwwroot/config-poc.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
@@ -1720,14 +1720,25 @@ $primaryAdminKey = $adminKeyPair.Primary
 
 # Product Seach Function App adn WebApp deployment
 Write-Information "Deploying Product Seach Function App"
+try{
 az functionapp create --resource-group $rgName --consumption-plan-location $rglocation --runtime node --runtime-version 16 --functions-version 4 --name $func_product_search_name --storage-account $dataLakeAccountName
+}
+catch
+{
+az functionapp create --resource-group $rgName --consumption-plan-location $rglocation --runtime node --runtime-version 16 --functions-version 4 --name $func_product_search_name --storage-account $dataLakeAccountName
+}
+Start-Sleep -s 30
 
-az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./artifacts/binaries/product-search-func-app.zip"
-Start-Sleep -s 10
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchApiKey=$primaryAdminKey
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchFacets="category1, category2, category3"
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchIndexName="fabrikam-fashion"
 $config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchServiceName=$search_srch_retail_name
+
+az functionapp cors add -g $rgName -n $func_product_search_name  --allowed-origins "*"
+
+az webapp stop --name $func_product_search_name --resource-group $rgName 
+az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./artifacts/binaries/product-search-func-app.zip"
+az webapp start --name $func_product_search_name --resource-group $rgName 
 
 (Get-Content -path app-product-search/config-prod.js -Raw) | Foreach-Object { $_ `
     -replace '#FUNCTION_PRODUCT_SEARCH#', $func_product_search_name`
