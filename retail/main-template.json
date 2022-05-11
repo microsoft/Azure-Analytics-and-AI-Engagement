@@ -834,7 +834,7 @@
                },
                {
                "name": "databaseName",
-               "value": "videoindexer"
+               "value": "[variables('cosmos_database_video_indexer')]"
                },
                {
                "name": "WEBSITE_RUN_FROM_PACKAGE",

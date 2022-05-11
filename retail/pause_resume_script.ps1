@@ -62,7 +62,7 @@ az webapp stop --name $sites_app_iotfoottraffic_sensor_name --resource-group $rg
 az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 az webapp stop --name $sites_app_product_search --resource-group $rgName
 az webapp stop --name $functionapptranscript --resource-group $rgName
-az webapp stop --name $sites_retail_mediasearch_app_name --resource-group $rgName
+az webapp stop --name $sites_app_multiling_retail_name --resource-group $rgName
 
 write-host "Pause operation successfull"
 }
@@ -86,7 +86,7 @@ az webapp start --name $sites_app_iotfoottraffic_sensor_name --resource-group $r
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 az webapp start --name $sites_app_product_search --resource-group $rgName
 az webapp start --name $functionapptranscript --resource-group $rgName
-az webapp start --name $sites_retail_mediasearch_app_name --resource-group $rgName
+az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
 
 write-host "Resume operation successfull"
 }
