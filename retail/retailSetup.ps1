@@ -1290,7 +1290,7 @@ $sasTokenAcc = New-AzureStorageAccountSASToken -Context $dataLakeContext -Servic
 
 foreach($report in $reportList)
 {
-    if($report.name -eq "Dashboard-Images" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard")
+    if($report.name -eq "Dashboard-Images" -or $report.name -eq "ADX dashboard 8AM" -or $report.name -eq "CEO Dec" -or $report.name -eq "CEO May" -or $report.name -eq "CEO Nov" -or $report.name -eq "CEO Oct" -or $report.name -eq "CEO Sep" -or $report.name -eq "Datbase template PBI" -or $report.name -eq "VP Dashboard" -or $report.name -eq "Twitter Sentiment Analytics")
     {
         continue;
     }
@@ -1402,22 +1402,32 @@ foreach($report in $reportList)
       $body = "{
 			`"updateDetails`": [
 								{
-									`"name`": `"Server`",
+									`"name`": `"CosmosLink`",
 									`"newValue`": `"https://$($cosmosdb_retail2_name).documents.azure.com:443/`"
                                     
 								},
 								{
-									`"name`": `"Database`",
+									`"name`": `"CosmosDb`",
 									`"newValue`": `"$($cosmos_database_name_retailinventorydb)`"
 								}
 								]
 								}"	
 	}
-	 elseif($report.name -eq "Customer Segmentation" -or $report.name -eq "Retail Dynamic Data Masking (Azure Synapse)" )
+	 elseif($report.name -eq "Customer Segmentation")
 	 {	 $body = "{
 			`"updateDetails`": [
 								{
 									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								}
+								]
+								}"	
+	 }
+	  elseif($report.name -eq "Retail Dynamic Data Masking (Azure Synapse)")
+	 {	 $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"ServerNew`",
 									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
 								}
 								]
