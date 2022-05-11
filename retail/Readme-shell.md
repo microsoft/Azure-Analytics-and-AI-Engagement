@@ -42,15 +42,15 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: Lake Database creation and Pipeline execution](#task-5-lake-database-creation-and-pipeline-execution)
-  - [Task 6: Data Explorer Setup](#task-6-data-explorer-setup)
-  - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
-  - [Task 8: Power BI reports and dashboard creation](#task-8-power-bi-reports-and-dashboard-creation)
+  - [Task 5: QnAmaker and LogicApp Configuration](#task-5-qnamaker-and-logicapp-configuration)
+  - [Task 6: Lake Database creation and Pipeline execution](#task-6-lake-database-creation-and-pipeline-execution)
+  - [Task 7: Data Explorer Setup](#task-7-data-explorer-setup)
+  - [Task 8: Azure Purview Setup](#task-8-azure-purview-setup)
+  - [Task 9: Power BI reports and dashboard creation](#task-9-power-bi-reports-and-dashboard-creation)
   	- [Steps to validate the credentials for reports](#steps-to-validate-the-credentials-for-reports)
   	- [Steps to create realtime reports](#steps-to-create-realtime-reports)
   	- [Follow these steps to create the Power BI dashboard](#follow-these-steps-to-create-the-Power-BI-dashboard)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 9: QnAmaker and LogicApp Configuration](#task-9-qnamaker-and-logicapp-configuration)
   - [Task 10: Pause or Resume script](#task-10-pause-or-resume-script)
   - [Task 11: Clean up resources](#task-11-clean-up-resources)
 
@@ -367,7 +367,76 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-17.png)
       
-### Task 5: Lake Database creation and Pipeline execution
+### Task 5: QnAmaker and LogicApp Configuration
+
+1. **Open** the Azure Portal.
+
+2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
+
+	![Open and Click on Azure Cloud Shell.](media/qna_logicapp.png)
+
+	**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
+
+3. **Run** Command: 
+	```
+	cd "retail/retail/subscripts"
+	```
+
+4. Then **run** the PowerShell script: 
+	```
+	./qna_logicapp_subscript.ps1 
+	```
+	![Run the Powershell Script.](media/qna_logicapp-1.png)
+	
+5. You will have to complete the 'az login' and 'device login' authentication by following the steps 7 to 18 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) and may be prompted to select your subscription if you have multiple subscriptions.
+	
+6. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
+
+	![Search QnAmaker.](media/qna_logicapp-2.png)
+	
+7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
+
+	![Switch section.](media/qna_logicapp-3.png)
+
+8. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
+
+	![Select values.](media/qna_logicapp-4.png)
+	
+9. **Click** on the knowledge base name.
+
+	![Knowledge base name.](media/qna_logicapp-5.png)
+	
+10. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
+
+	![Publish.](media/qna_logicapp-6.png)
+	
+11. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
+
+	![Values host and post.](media/qna_logicapp-7.png)
+	
+12. The concatinated value should appear like below.
+
+	![Values.](media/qna_logicapp-8.png)
+	
+13. **Copy** and **Paste** the value of Authorisation as well in a notepad.
+
+	![Authorisation.](media/qna_logicapp-9.png)
+	
+14. **Go** to the the resource group, search for logic app in the search bar and **click** on the logic app which starts with "logicapp-retail-...".
+
+	![Logic App.](media/qna_logicapp-10.png)
+	
+15. Uner the "Development Tools" section **select** "Logic app designer".
+
+	![Logic App.](media/qna_logicapp-11.png)
+	
+16. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
+
+	![Logic App.](media/qna_logicapp-12.png)
+
+> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
+      
+### Task 6: Lake Database creation and Pipeline execution
 
 1. **Click** on the synapse resource and **click** on the open synapse studio in the next window.
 
@@ -397,7 +466,7 @@ cd ./retail/retail
 
 7. Perform the above action with the remaining 2  pipelines in the folder, the desired tables will be created under the newly created Lake database.
 
-### Task 6: Data Explorer Setup
+### Task 7: Data Explorer Setup
 
 1. In the Azure Portal **search** for data explorer and **click** on the data explorer resource.
 
@@ -459,7 +528,7 @@ cd ./retail/retail
 
 16. Repeat the step #11 and this time **enter** Table field OccupancyHistoricalDataUpdated, and step #12 this time **expand** File Filters, under Folder path enter "adx-data".
 	
-### Task 7: Azure Purview Setup
+### Task 8: Azure Purview Setup
 
 > **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewretail..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "stretail...". Once the permission has been granted, proceed with the following steps.
 
@@ -589,7 +658,7 @@ cd ./retail/retail
 	
 33. **Repeat** the step #10 for PowerBI.
 	
-### Task 8: Power BI reports and dashboard creation
+### Task 9: Power BI reports and dashboard creation
 
 ### Steps to validate the credentials for reports
 
@@ -1207,76 +1276,6 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	![Paste select and wait.](media/updating-powerbi-11.png)
 
 > **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
-
-### Task 9: QnAmaker and LogicApp Configuration
-
-1. **Open** the Azure Portal.
-
-2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
-
-	![Open and Click on Azure Cloud Shell.](media/qna_logicapp.png)
-
-	**Execute** qna_logicapp_subscript.ps1 script by executing the following command: 
-
-3. **Run** Command: 
-	```
-	cd "retail/retail/subscripts"
-	```
-
-4. Then **run** the PowerShell script: 
-	```
-	./qna_logicapp_subscript.ps1 
-	```
-	![Run the Powershell Script.](media/qna_logicapp-1.png)
-	
-5. You will have to complete the 'az login' and 'device login' authentication by following the steps 7 to 18 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) and may be prompted to select your subscription if you have multiple subscriptions.
-	
-6. After the subscript is completed, **open** a new tab on your browser and **launch** [qnamaker.ai](https://www.qnamaker.ai/) as below
-
-	![Search QnAmaker.](media/qna_logicapp-2.png)
-	
-7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
-
-	![Switch section.](media/qna_logicapp-3.png)
-
-8. There will be 3 dropdowns namely "Select tenant", "Select subscription" and "Select service". From the dropdown **select** the appropriate values and in the the service dropdown make sure to select the value starting with "qnamaker-"
-
-	![Select values.](media/qna_logicapp-4.png)
-	
-9. **Click** on the knowledge base name.
-
-	![Knowledge base name.](media/qna_logicapp-5.png)
-	
-10. You will be directed to another screen, **switch** to Publish section and **click** on Publish button.
-
-	![Publish.](media/qna_logicapp-6.png)
-	
-11. The output screen will have some values, **copy** the value of post and concatenate it after the value of host in a notepad.
-
-	![Values host and post.](media/qna_logicapp-7.png)
-	
-12. The concatinated value should appear like below.
-
-	![Values.](media/qna_logicapp-8.png)
-	
-13. **Copy** and **Paste** the value of Authorisation as well in a notepad.
-
-	![Authorisation.](media/qna_logicapp-9.png)
-	
-14. **Go** to the the resource group, search for logic app in the search bar and **click** on the logic app which starts with "logicapp-retail-...".
-
-	![Logic App.](media/qna_logicapp-10.png)
-	
-15. Uner the "Development Tools" section **select** "Logic app designer".
-
-	![Logic App.](media/qna_logicapp-11.png)
-	
-16. **Expand** the "KnowledgeBaseAPICall" by clicking on it, **paste** the values for "URI" and "Authentication" from the notepad from step 9 and 10 respectively and finally **click** on "Save".
-
-	![Logic App.](media/qna_logicapp-12.png)
-
-> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
-
 
 ### Task 10: Pause or Resume script
 
