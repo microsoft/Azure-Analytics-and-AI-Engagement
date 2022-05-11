@@ -37,6 +37,7 @@ $functionapplivestreaming = "func-app-livestreaming-$suffix"
 $func_product_search_name = "func-app-product-search-$suffix"
 $sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
 $sites_app_iotfoottraffic_sensor_name =  "iot-foottraffic-sensor-retail-app-$suffix";
+$app_retail_qna_name = "qnamaker-app-$suffix",
 $asa_name_retail = "retailasa-$suffix"
 $title    = 'Choices'
 $question = 'What would you like to do with the environment?'
@@ -63,7 +64,7 @@ az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgNa
 az webapp stop --name $sites_app_product_search --resource-group $rgName
 az webapp stop --name $functionapptranscript --resource-group $rgName
 az webapp stop --name $sites_app_multiling_retail_name --resource-group $rgName
-
+az webapp stop --name $app_retail_qna_name --resource-group $rgName
 write-host "Pause operation successfull"
 }
 
@@ -87,6 +88,6 @@ az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgN
 az webapp start --name $sites_app_product_search --resource-group $rgName
 az webapp start --name $functionapptranscript --resource-group $rgName
 az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
-
+az webapp start --name $app_retail_qna_name --resource-group $rgName
 write-host "Resume operation successfull"
 }
