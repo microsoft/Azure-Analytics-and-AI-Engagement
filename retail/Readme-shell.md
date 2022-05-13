@@ -6,7 +6,7 @@ DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM 
  ## Objective & Intent
 Partners can deploy DREAM Demos in their own Azure subscriptions and show live demos to customers. 
 In partnership with Microsoft sellers, partners can deploy the Industry scenario DREAM demos into customer subscriptions. 
-Customers can play,  get hands-on experience navigating through the demo environment in their own subscription and show to their own stakeholders
+Customers can play,  get hands-on experience navigating through the demo environment in their own subscription and show to their own stakeholders.
 
 **Before You Begin**
 
@@ -42,7 +42,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: QnAmaker and LogicApp Configuration](#task-5-qnamaker-and-logicapp-configuration)
+  - [Task 5: QnA maker and LogicApp Configuration](#task-5-qnamaker-and-logicapp-configuration)
   - [Task 6: Lake Database creation and Pipeline execution](#task-6-lake-database-creation-and-pipeline-execution)
   - [Task 7: Data Explorer Setup](#task-7-data-explorer-setup)
   - [Task 8: Azure Purview Setup](#task-8-azure-purview-setup)
@@ -133,7 +133,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Give the name and description for the new workspace.](media/power-bi-3.png)
 
-	> **Note:** This workspace ID will be used during ARM template deployment.
+	> **Note:** This workspace ID will be used during the ARM template deployment.
 
 7. Go to your Power BI **workspace** and **click** on New button.
 
@@ -204,7 +204,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 16. **Click** on Account settings.
 
-17. **Copy** the Account ID in a notepad. This will be needed during template deployment.
+17. **Copy** the Account ID in a notepad. This will be needed during the template deployment.
 
 	![Copy the AccountID.](media/video-indexer-2.png)
 
@@ -284,19 +284,19 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters.
 
 4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
-Command:
+
 ```
 git clone -b retail2.0 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git retail
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
 	
-> **Note:** If you get File already exist error, please execute following command: rm retail -r -f to delete existing clone.
+> **Note:** If you get File already exist error, please execute the following command: rm retail -r -f to delete existing clone.
 
 > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
 5. **Execute** the SynapseSetup.ps1 script by executing the following command:
-Command:
+
 ```
 cd ./retail/retail
 ```
@@ -308,7 +308,7 @@ cd ./retail/retail
     
 ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
 
-7. You will see the below screen, **enter** 'Y' and **press** enter key.
+7. You will see the below screen, **enter** 'Y' and **press** the enter key.
 
 	![Commands to run the PowerShell Script.](media/cloud-shell-18.png)
       
@@ -347,7 +347,7 @@ cd ./retail/retail
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-16. You will be asked to confirm for the subscription, **enter** 'Y' and **press** enter key.
+16. You will be asked to confirm for the subscription, **enter** 'Y' and **press** the enter key.
 
 	![Commands to run the PowerShell Script.](media/cloud-shell-19.png)
 
@@ -355,11 +355,11 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 	
-18. Now you will be prompted whether you have an unlimited video indexer account, **press** enter key.
+18. Now you will be prompted if you have an unlimited video indexer account, **press** enter key.
 
 	![Enter Resource Group name.](media/cloud-shell-15.png)
 
-19. After the complete script has been executed, you get to see a messages "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **pen** each one of them.
+19. After the complete script has been executed, you get to see the message "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **pen** each one of them.
 
 	![Enter Resource Group name.](media/cloud-shell-16.png)
 	
@@ -367,7 +367,7 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-17.png)
       
-### Task 5: QnAmaker and LogicApp Configuration
+### Task 5: QnA maker and LogicApp Configuration
 
 1. **Open** the Azure Portal.
 
@@ -394,7 +394,7 @@ cd ./retail/retail
 
 	![Search QnAmaker.](media/qna_logicapp-2.png)
 	
-7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** the "My knowledge bases" section.
+7. **Sign In** using the same user credentials which you have used for previous tasks, **go to** "My knowledge bases" section.
 
 	![Switch section.](media/qna_logicapp-3.png)
 
@@ -426,7 +426,7 @@ cd ./retail/retail
 
 	![Logic App.](media/qna_logicapp-10.png)
 	
-15. Uner the "Development Tools" section **select** "Logic app designer".
+15. Under the "Development Tools" section **select** "Logic app designer".
 
 	![Logic App.](media/qna_logicapp-11.png)
 	
@@ -492,15 +492,15 @@ cd ./retail/retail
 
 	![Adx.](media/adx-6.png)
 	
-7. Wait for some time for data preview to load, **select** MULTIJSON in the "Data format" section and then **click** on Next:Start Ingestion.
+7. Wait for some time for data preview to load, **select** MULTIJSON in the "Data format" section and then **click** on Next: Start Ingestion.
 
 	![Adx.](media/adx-7.png)
 	
-8. Once the Continuous ingestion from Event Hub has been established **click** on Close.
+8. Once the Continuous ingestion from Event Hub has been established, **click** on Close.
 
 	![Adx.](media/adx-8.png)
 	
-9. Repeat above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat" and Data connection name as "RetailDB-thermostat".
+9. Repeat the above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat" and Data connection name as "RetailDB-thermostat".
 
 10. For non-historical data, open Data Explorer Studio and under data section **click** on Ingest new data.
 
@@ -516,7 +516,7 @@ cd ./retail/retail
 	
 	![Adx.](media/adx-11.png)
 
-13. Wait for some time for Partial data preview to load, and then **click** on Next:Start Ingestion.
+13. Wait for some time for Partial data preview to load, and then **click** on Next: Start Ingestion.
 
 	![Adx.](media/adx-12.png)
 
@@ -524,9 +524,9 @@ cd ./retail/retail
 
 	![Adx.](media/adx-13.png)
 
-15. Repeat the step #11 and this time **enter** Table field ThermostatHistoricalData, and step #12 this time **expand** File Filters, under Folder path enter "thermostat".
+15. Repeat step #11 and this time **enter** Table field ThermostatHistoricalData, and step #12 this time **expand** File Filters, under Folder path enter "thermostat".
 
-16. Repeat the step #11 and this time **enter** Table field OccupancyHistoricalDataUpdated, and step #12 this time **expand** File Filters, under Folder path enter "adx-data".
+16. Repeat step #11 and this time **enter** Table field OccupancyHistoricalDataUpdated, and step #12 this time **expand** File Filters, under Folder path enter "adx-data".
 	
 ### Task 8: Azure Purview Setup
 
@@ -592,7 +592,7 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-30.png)
 	
-16. **Repeat** the step #10 for AzureSynapseAnalytics.
+16. **Repeat** step #10 for AzureSynapseAnalytics.
 
 17. **Open** synaspse studio, **select** manage tab, under External Connections **select** Azure Purview, **click** on Connect to a Purview account, under Purview account name **select** the current Purview account, and then **click** on Apply.
 
@@ -614,7 +614,7 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-19.png)
 
-22. **Repeat** the step #10 for CosmosDB.
+22. **Repeat** step #10 for CosmosDB.
 
 23. **Click** on New Scan, in the pop-up window **expand** the Credential drop-down and **click** on New.
 
@@ -700,7 +700,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 9. **Enter** Username as ‘labsqladmin’.
 
-10. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5
+10. **Enter** the same SQL Administrator login password that was created for [Task 3](#task-3-deploy-the-arm-template) Step #5.
 
 11. **Click** on Sign in.
 
@@ -714,7 +714,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Data Source Creds.](media/power-bi-report-01.png)
 
-15. Keeping the default values as it is **click** on Sign in, a new window will pop-up.
+15. Keeping the default values as it is, **click** on Sign in, a new window will pop-up.
 
 	![Validate Creds.](media/power-bi-report-02.png)
 
@@ -754,7 +754,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Data Source Creds.](media/power-bi-report-08.png)
 	
-27. In the powerbi tab in step #28, keeping the "Authentication method" as "Key", **paste** "Account key" from step #30 and **click** on Sign in.
+27. In the powerbi tab in step #28, keeping the "Authentication method" as "Key", **paste** the "Account key" from step #30 and **click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-09.png)
 	
@@ -974,7 +974,7 @@ To give permissions for the Power BI reports to access the data sources:
 	
 	![Validate Creds.](media/power-bi-report-055.png)
 
-43. After putting visuals **click** on the Save Button.
+43. After putting visuals, **click** on the Save Button.
 
 44. Give the name and **save** it in the same workspace.
 
@@ -1074,7 +1074,7 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 	
 	![Resize and Rearrange.](media/power-bi-report-27.png)
 	
-26. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the ADX Dashboard dashboard.
+26. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the ADX Dashboard.
 
 27. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
@@ -1186,7 +1186,7 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 ### Updating Dashboard and Report Ids in Web app
 
-By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated in to the main web app if you choose. Here are the steps for it.
+By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated into the main web app if you choose. Here are the steps for it.
 
 1. **Navigate** to your Power BI workspace.
 
@@ -1230,23 +1230,23 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Edit paste and save.](media/updating-powerbi-5.png)
 
-13. **Navigate** to azure portal.
+14. **Navigate** to azure portal.
 
-14. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+15. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
 	![Navigate and Open.](media/updating-powerbi-6.png)
 
-15. **Click** upload/download button.
+16. **Click** upload/download button.
 
-16. **Click** upload.
+17. **Click** upload.
 
-17. **Select** the config-poc.js file you just updated.
+18. **Select** the config-poc.js file you just updated.
 
-18. **Click** open.
+19. **Click** open.
 
 	![Select and Click open.](media/updating-powerbi-7.png)
 
-19. **Execute** following command in cloudshell:  
+20. **Execute** the following command in cloudshell:  
 	
 	```
 	cp config-poc.js ./retail/retail/retaildemo-app/wwwroot
@@ -1254,7 +1254,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	
 	![Execute the command.](media/updating-powerbi-8.png)
 
-20.	Execute  following command in cloudshell: 
+21.	**Execute** the following command in cloudshell: 
 	
 	```
 	cd retail/retail/subscripts 
@@ -1263,17 +1263,17 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	
 	![Execute the command.](media/updating-powerbi-9.png)
 
-21. From the Azure Cloud Shell, **copy** the authentication code. 
+22. From the Azure Cloud Shell, **copy** the authentication code. 
 
-22. **Click** on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+23. **Click** on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
 	![Copy and Click on Link.](media/updating-powerbi-10.png)
 
-23. **Paste** the authentication code.
+24. **Paste** the authentication code.
 
-24. **Select** appropriate username when prompted.
+25. **Select** appropriate username when prompted.
 
-25. Wait for script execution to complete.
+26. Wait for the script execution to complete.
 
 	![Paste select and wait.](media/updating-powerbi-11.png)
 
@@ -1324,7 +1324,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 9. **Enter** your choice when prompted. Enter ‘P’ for **pausing** the environment or ‘R’ for **resuming** a paused environment. 
 
-10. Wait for script to finish execution. 
+10. Wait for the script to finish execution. 
 
 	![Enter your choice.](media/authentication-4.png)
 
