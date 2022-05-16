@@ -434,7 +434,6 @@ cd ./retail/retail
 
 	![Logic App.](media/qna_logicapp-12.png)
 
-> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
       
 ### Task 6: Lake Database creation and Pipeline execution
 
@@ -1278,7 +1277,9 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	![Paste select and wait.](media/updating-powerbi-11.png)
 
 > **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
-
+	
+> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
+	
 ### Task 10: Pause or Resume script
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
