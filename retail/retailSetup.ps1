@@ -1254,7 +1254,7 @@ foreach($notebook in $notebooks)
 		$source="./artifacts/amlnotebooks/"+$notebook.BaseName+".py"
 		$path=$notebook.BaseName+".py"
 	}
-    elseif($notebook.BaseName -eq "prepared_customer_churn_data" -or $notebook.BaseName  -eq "data" -or $notebook.BaseName  -eq "retail_customer_churn_data"   -or $notebook.BaseName  -eq "retail_sales_dataset" -or $notebook.BaseName  -eq "retail_sales_datasetv2")
+    elseif($notebook.BaseName -eq "prepared_customer_churn_data" -or $notebook.BaseName  -eq "data" -or $notebook.BaseName  -eq "retail_customer_churn_data"   -or $notebook.BaseName  -eq "retail_sales_dataset" -or $notebook.BaseName  -eq "retail_sales_datasetv2" -or $notebook.BaseName  -eq "Channel_attribution" -or $notebook.BaseName  -eq "OnlineRetailData" -or $notebook.BaseName  -eq "wait_time_forecasted")
     {
         $source="./artifacts/amlnotebooks/"+$notebook.BaseName+".csv"
 		$path=$notebook.BaseName+".csv"
