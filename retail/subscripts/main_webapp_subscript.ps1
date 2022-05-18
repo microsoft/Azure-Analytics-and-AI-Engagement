@@ -68,6 +68,9 @@ $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $media_search_app_service_name = "app-media-search-$suffix"
+$vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
+$vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
+$vi_location = "trial"
 $bot_qnamaker_retail_name= "botmultilingual-$suffix"
 $app_retaildemo_name = "retaildemo-app-$suffix";
 
@@ -80,6 +83,7 @@ Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
 expand-archive -path "../artifacts/binaries/retaildemo-app.zip" -destinationpath "./retaildemo-app" -force
+expand-archive -path "../artifacts/binaries/app_media_search.zip" -destinationpath "./app_media_search" -force
 
 $spname="Retail Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
@@ -149,7 +153,21 @@ $post = "{
     }";
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
-				
+
+(Get-Content -path app_media_search/appsettings.json -Raw) | Foreach-Object { $_ `
+    -replace '#WORKSPACE_ID#', $wsId`
+    -replace '#APP_ID#', $appId`
+    -replace '#APP_SECRET#', $clientsecpwd`
+    -replace '#TENANT_ID#', $tenantId`				
+} | Set-Content -Path app_media_search/appsettings.json
+
+(Get-Content -path app_media_search/wwwroot/config.js -Raw) | Foreach-Object { $_ `
+    -replace '#VI_ACCOUNT_ID#', $vi_account_id`
+    -replace '#VI_API_KEY#', $vi_account_key`
+    -replace '#STORAGE_ACCOUNT#', $dataLakeAccountName`
+    -replace '#VI_LOCATION#', $vi_location`
+} | Set-Content -Path app_media_search/wwwroot/config.js	
+
 (Get-Content -path retaildemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
 				-replace '#APP_ID#', $appId`
@@ -159,9 +177,9 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 
 $filepath="./retaildemo-app/wwwroot/config-poc.js"
 $itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
+$item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name).Replace("#SPEECH_KEY#", $cog_speech_key.key1).Replace("#LOCATION#", $rglocation)
 Set-Content -Path $filepath -Value $item
-   
+
 #bot qna maker
 $bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
 $bot_key = $bot_detail.properties.properties.sites[0].key
@@ -170,7 +188,7 @@ RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
 $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 $reportList = $reportList.Value
-
+$sites_app_product_search_url = "https://$($sites_app_product_search).azurewebsites.net"
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
 # $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
@@ -190,6 +208,7 @@ $ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "AD
 $ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
 $ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
 $ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
+$ht.add("#PRODUCT_AI_SEARCH_APP_URL#", $sites_app_product_search_url)
 #$ht.add("#SPEECH_REGION#", $rglocation)
 
 $filePath = "./retaildemo-app/wwwroot/config-poc.js";

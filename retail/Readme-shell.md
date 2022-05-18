@@ -1095,13 +1095,17 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 31. Add Display Title, Subtitle.
 
-32. For the embedded code, **goto** storage account from the portal, go to the 'video' container and **click** on the video 'final_spatial_analysis_video_1.mp4', now **click** on the copy button for copying the video url, and finally replace the url with 'URL' in the given embedded code, "<video controls loop width="100%" ><source src=URL type="video/mp4">"
+32. For the embedded code, **goto** storage account from the portal, go to the 'video' container and **click** on the video 'final_spatial_analysis_video_1.mp4', now **click** on the copy button for copying the video url, and finally replace the url with 'URL' in the given embedded code given below.
+	
+	```
+	<video controls loop width="100%" ><source src=URL type="video/mp4">
+	```
 	
 	![Validate Creds.](media/power-bi-report-061.png)
 	
-33. **Copy** the whole Embed code. 
+33. **Copy** the whole Embed code with replaced 'URL' value. 
 
-34. **Enter** the Embed code and Select Apply. 
+34. **Paste** the Embed code and Select Apply. 
 
 35. On the Dashboard resize, move the content as needed.
 
