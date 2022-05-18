@@ -48,8 +48,9 @@ if($dataLakeAccountName.length -gt 24)
 {
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
-
+$bot_qnamaker_retail_name= "botmultilingual-$suffix";
 $app_retaildemo_name = "retaildemo-app-$suffix";
+$sites_app_product_search = "app-product-search-ui-$suffix"
 $iot_hub_name = "iothub-retail-$suffix";
 $sites_app_iotfoottraffic_sensor_name = "iot-foottraffic-sensor-retail-app-$suffix";
 $storageAccountName = $dataLakeAccountName
@@ -155,11 +156,15 @@ $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#APP_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name)
 Set-Content -Path $filepath -Value $item
 
+#bot qna maker
+$bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
+$bot_key = $bot_detail.properties.properties.sites[0].key
+
 RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports";
 $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 $reportList = $reportList.Value
-
+$sites_app_product_search_url = "https://$($sites_app_product_search).azurewebsites.net"
 #update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable   
 $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
@@ -179,6 +184,7 @@ $ht.add("#ADX_Thermostat_and_Occupancy#", $($reportList | where {$_.name -eq "AD
 $ht.add("#Revenue_and_Profiability#", $($reportList | where {$_.name -eq "Revenue and Profiability"}).id)
 $ht.add("#ADX_dashboard_8AM#", $($reportList | where {$_.name -eq "ADX dashboard 8AM"}).id)
 $ht.add("#Retail_HTAP#", $($reportList | where {$_.name -eq "Retail HTAP"}).id)
+$ht.add("#PRODUCT_AI_SEARCH_APP_URL#", $sites_app_product_search_url)
 #$ht.add("#SPEECH_REGION#", $rglocation)
 
 $filePath = "./retaildemo-app/wwwroot/config.js";

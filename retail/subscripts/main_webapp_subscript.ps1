@@ -62,6 +62,7 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
 $bot_qnamaker_retail_name= "botmultilingual-$suffix";
+$sites_app_product_search = "app-product-search-ui-$suffix"
 $app_retaildemo_name = "retaildemo-app-$suffix";
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
@@ -71,7 +72,6 @@ $media_search_app_service_name = "app-media-search-$suffix"
 $vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
 $vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
 $vi_location = "trial"
-$bot_qnamaker_retail_name= "botmultilingual-$suffix"
 $app_retaildemo_name = "retaildemo-app-$suffix";
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
