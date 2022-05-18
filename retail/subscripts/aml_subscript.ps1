@@ -78,11 +78,19 @@ $modelId = $modelId[7]
 Write-Host  "-----------------AML Workspace ---------------"
 RefreshTokens
 
-$filepath="../artifacts/amlnotebooks/Config.py"
-$itemTemplate = Get-Content -Path $filepath
-$item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key).Replace("#FORM_RECOGNIZER_ENDPOINT#", $forms_cogs_endpoint).Replace("#FORM_RECOGNIZER_API_KEY#", $forms_cogs_keys.Key1).Replace("#FORM_RECOGNIZER_MODEL_ID#", $modelId)
-$filepath="../artifacts/amlnotebooks/GlobalVariables.py"
-Set-Content -Path $filepath -Value $item
+(Get-Content -path ../artifacts/amlnotebooks/Config.py -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
+    -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
+    -replace '#FORM_RECOGNIZER_ENDPOINT#', $forms_cogs_endpoint`
+    -replace '#FORM_RECOGNIZER_API_KEY#', $forms_cogs_keys.Key1`
+    -replace '#FORM_RECOGNIZER_MODEL_ID#', $modelId`
+    -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+    -replace '#RESOURCE_GROUP#', $rgName`
+    -replace '#WORKSPACE_NAME#', $amlworkspacename`
+    -replace '#COMPUTE_NAME#', $cpuShell`
+    -replace '#TRANSLATION_API_KEY#', $translator_key`
+    -replace '#LOCATION#', $rglocation`
+} | Set-Content -Path ../artifacts/amlnotebooks/GlobalVariables.py
 
 #AML Workspace
 #create aml workspace
@@ -113,7 +121,7 @@ foreach($notebook in $notebooks)
 		$source="../artifacts/amlnotebooks/"+$notebook.BaseName+".py"
 		$path=$notebook.BaseName+".py"
 	}
-    elseif($notebook.BaseName -eq "prepared_customer_churn_data" -or $notebook.BaseName  -eq "data" -or $notebook.BaseName  -eq "retail_customer_churn_data"   -or $notebook.BaseName  -eq "retail_sales_dataset" -or $notebook.BaseName  -eq "retail_sales_datasetv2" -or $notebook.BaseName  -eq "Channel_attribution" -or $notebook.BaseName  -eq "OnlineRetailData" -or $notebook.BaseName  -eq "wait_time_forecasted")
+    elseif($notebook.BaseName -eq "prepared_customer_churn_data" -or $notebook.BaseName  -eq "data" -or $notebook.BaseName  -eq "retail_customer_churn_data"   -or $notebook.BaseName  -eq "retail_sales_dataset" -or $notebook.BaseName  -eq "retail_sales_datasetv2" -or $notebook.BaseName  -eq "Channel_attribution" -or $notebook.BaseName  -eq "OnlineRetailData" -or $notebook.BaseName  -eq "wait_time_forecasted" -or $notebook.BaseName  -eq "Markov - Output - Conversion values")
     {
         $source="../artifacts/amlnotebooks/"+$notebook.BaseName+".csv"
 		$path=$notebook.BaseName+".csv"
