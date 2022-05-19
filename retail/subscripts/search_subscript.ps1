@@ -37,6 +37,12 @@ $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $search_srch_retail_name = "srch-retail-product-$suffix";
+$concatString = "$init$random"
+$dataLakeAccountName = "stretail$concatString"
+if($dataLakeAccountName.length -gt 24)
+{
+$dataLakeAccountName = $dataLakeAccountName.substring(0,24)
+}
 #Search service 
 Write-Host "-----------------Search service ---------------"
 RefreshTokens
@@ -49,7 +55,7 @@ $primaryAdminKey = $adminKeyPair.Primary
 # Create Index
 Write-Host  "------Index----"
 try {
-Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
+Get-ChildItem "../artifacts/search" -Filter fabrikam-fashion.json |
         ForEach-Object {
             $indexDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -70,5 +76,6 @@ $headers = @{
 'Content-Type' = 'application/json' 
 'Accept' = 'application/json' }
 $url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
-$body = Get-Content -Raw -Path ./artifacts/search/data.json
+$Data= Get-Content -Raw -Path ../artifacts/search/data.json
+$body = $Data.Replace("#STORAGE_ACCOUNT_NAME#",$dataLakeAccountName)
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body

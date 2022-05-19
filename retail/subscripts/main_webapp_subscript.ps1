@@ -69,10 +69,6 @@ $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $media_search_app_service_name = "app-media-search-$suffix"
-$vi_account_key = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerApiKey"]
-$vi_account_id = (Get-AzResourceGroup -Name $rgName).Tags["VideoIndexerAccountId"]
-$vi_location = "trial"
-$app_retaildemo_name = "retaildemo-app-$suffix";
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
@@ -83,7 +79,6 @@ Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
 expand-archive -path "../artifacts/binaries/retaildemo-app.zip" -destinationpath "./retaildemo-app" -force
-expand-archive -path "../artifacts/binaries/app_media_search.zip" -destinationpath "./app_media_search" -force
 
 $spname="Retail Demo $deploymentId"
 $clientsecpwd ="Smoothie@Smoothie@2020"
@@ -152,21 +147,7 @@ $post = "{
     `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
     }";
 
-$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
-
-(Get-Content -path app_media_search/appsettings.json -Raw) | Foreach-Object { $_ `
-    -replace '#WORKSPACE_ID#', $wsId`
-    -replace '#APP_ID#', $appId`
-    -replace '#APP_SECRET#', $clientsecpwd`
-    -replace '#TENANT_ID#', $tenantId`				
-} | Set-Content -Path app_media_search/appsettings.json
-
-(Get-Content -path app_media_search/wwwroot/config.js -Raw) | Foreach-Object { $_ `
-    -replace '#VI_ACCOUNT_ID#', $vi_account_id`
-    -replace '#VI_API_KEY#', $vi_account_key`
-    -replace '#STORAGE_ACCOUNT#', $dataLakeAccountName`
-    -replace '#VI_LOCATION#', $vi_location`
-} | Set-Content -Path app_media_search/wwwroot/config.js	
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;	
 
 (Get-Content -path retaildemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`

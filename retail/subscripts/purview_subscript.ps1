@@ -74,6 +74,10 @@ $cosmosdb_retail2_name = $cosmosdb_retail2_name.substring(0,43)
 }
 $tenantId = (Get-AzContext).Tenant.Id
 
+#Azure Purview
+Write-Host "-----------------Azure Purview---------------"
+RefreshTokens
+
 #create collections
 $body = @{
   parentCollection = @{

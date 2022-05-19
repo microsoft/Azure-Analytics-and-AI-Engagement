@@ -177,6 +177,32 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "video" -Context 
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/video$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/video" $destinationUri --recursive
 
+### Replacing Incident Search Files
+# get search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
+$incidentQueryKey = $incidentQueryKey.Key
+
+(Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/AzSearch.html
+
+(Get-Content -path artifacts/storageassets/incident-search/gistfile1_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/gistfile1.html
+
+(Get-Content -path artifacts/storageassets/incident-search/search_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/search.html
+
+(Get-Content -path artifacts/storageassets/incident-search/detail_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+} | Set-Content -Path artifacts/storageassets/incident-search/detail.html
+
 #storage assests copy
 RefreshTokens
 
