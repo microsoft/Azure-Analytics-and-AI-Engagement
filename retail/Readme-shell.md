@@ -997,105 +997,132 @@ To give permissions for the Power BI reports to access the data sources:
 
 5. This new dashboard will appear in the 'Dashboard' section of the Power BI workspace.
 
+**Follow the below steps to change the dashboard theme:**
+
+6. **Open** the URL in a new browser tab to get JSON code for a custom theme:
+[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/CustomTheme.json)
+
+7. **Right click** anywhere in browser and **click** 'Save as...'.
+
+8. **Save** the file to your desired location on your computer, leaving the name unchanged.
+
+	![Save the File.](media/theme1.png)
+
+9. **Go back** to the Power BI dashboard you just created.
+
+10. **Click** on the “Edit” at the top right-side corner.
+
+11. **Click** on “Dashboard theme”.
+
+	![Click on Dashboard Theme.](media/theme2.png)
+
+12. **Click** ‘Upload the JSON theme’.
+
+13. **Navigate** to the location where you saved the JSON theme file in the steps above and **select** open.
+
+14. **Click** Save.
+
+	![Navigate Select and Click Save.](media/theme3.png)
+
 **Follow these steps to pin the report to the Power BI dashboard:**
 
-4. **Search** the report 'Occupancy' and then **click** on the report to open it.
+15. **Search** the report 'Occupancy' and then **click** on the report to open it.
 
 	![Create Dashboard further steps.](media/power-bi-report-12.png)
 
-5. Inside the report 'Occupancy' **click** on 'Edit' at the top of the right corner.
+16. Inside the report 'Occupancy' **click** on 'Edit' at the top of the right corner.
 
 	![Select Pillar 1 before.](media/power-bi-report-13.png)
 
-6. **Click** over the tile and **click** on the icon to 'Pin to dashboard'.
+17. **Click** over the tile and **click** on the icon to 'Pin to dashboard'.
 
 	![Select Pillar 1 before.](media/power-bi-report-14.png)	
 
-7. 'Pin to dashboard' window will appear.
+18. 'Pin to dashboard' window will appear.
 
-8. **Select** the 'Existing Dashboard' radio button.
+19. **Select** the 'Existing Dashboard' radio button.
 
-9. **Select** the existing dashboard 'ADX Dashboard' and **click** on the 'Pin' button.
+20. **Select** the existing dashboard 'ADX Dashboard' and **click** on the 'Pin' button.
 
 	![Select Pin to dashboard.](media/power-bi-report-15.png)
 
-10. Similarly, **pin** the others tiles to the Dashboard
+21. Similarly, **pin** the others tiles to the Dashboard
 
 	![Pin to dashboard further steps.](media/power-bi-report-16.png)
 	
-11. Similarly, **pin** the tiles for the 'Thermostat' to the Dashboard
+22. Similarly, **pin** the tiles for the 'Thermostat' to the Dashboard
 
-12. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
+23. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
-13. **Open** ‘Dashboard-Images’ report.
+24. **Open** ‘Dashboard-Images’ report.
 
 	![Select Workspace.](media/power-bi-report-19.png)
 	
-14. **Click** on 'REtail 270821' page.
+25. **Click** on 'REtail 270821' page.
 
-15. **Click** on Edit.
+26. **Click** on Edit.
 
 	![Click on edit.](media/power-bi-report-20.png)
 	
-16. **Hover** on Deep Dive chicklet and **click** pin button.
+27. **Hover** on Deep Dive chicklet and **click** pin button.
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-17. Select the ‘ADX Dashboard’ from existing dashboard list and **click** on pin.
+28. Select the ‘ADX Dashboard’ from existing dashboard list and **click** on pin.
 	
 	![Hover and Click.](media/power-bi-report-22.png)
 
-18. Similarly pin rest of the images from different tabs of the ‘Dashboard-Images’ report.
+29. Similarly pin rest of the images from different tabs of the ‘Dashboard-Images’ report.
 	
-19. **Go back** to the ‘ADX Dashboard’ dashboard.
+30. **Go back** to the ‘ADX Dashboard’ dashboard.
 
 	![Go back to Dashboard.](media/power-bi-report-24.png)
 	
 To hide title and subtitle for all the **images** that you have pined above. Please do the following:
 
-20. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
+31. Hover on the chiclet and **Click** on ellipsis ‘More Options’ of the image you selected.
 
-21. **Click** on ‘Edit details’.
+32. **Click** on ‘Edit details’.
 
 	![Click on Edit Details.](media/power-bi-report-25.png)
 	
-22. **Uncheck** ‘Display title and subtitle’.
+33. **Uncheck** ‘Display title and subtitle’.
 
-23. **Click** on ‘Apply’.
+34. **Click** on ‘Apply’.
 
-24. **Repeat** Step 4 to 22 for all image tiles.
+35. **Repeat** Step 4 to 22 for all image tiles.
 
 	![Click apply and repeat.](media/power-bi-report-26.png)
 	
-25. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
+36. After disabling ‘Display title and subtitle’ for all images, **resize** and **rearrange** the top images tiles as shown in the screenshot. 
 	
 	![Resize and Rearrange.](media/power-bi-report-27.png)
 	
-26. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the ADX Dashboard.
+37. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the ADX Dashboard.
 
-27. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
+38. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange again.](media/power-bi-report-28.png)
 	
 **How to add Video in Dashboard:**
 
-28. In the dashboard, **Select** Edit > Add Tiles 
+39. In the dashboard, **Select** Edit > Add Tiles 
 
 	![Validate Creds.](media/power-bi-report-057.png)
 	
 	![Validate Creds.](media/power-bi-report-058.png)
 	
-29. From the Add a tile Window, **Select** Web content and Next.
+40. From the Add a tile Window, **Select** Web content and Next.
 
 	![Validate Creds.](media/power-bi-report-059.png)
 	
-30. Add information to the Web content tile window.
+41. Add information to the Web content tile window.
 
-31. Add Display Title, Subtitle.
+42. Add Display Title, Subtitle.
 
-32. For the embedded code, **goto** storage account from the portal, go to the 'video' container and **click** on the video 'final_spatial_analysis_video_1.mp4', now **click** on the copy button for copying the video url, and finally replace the url with 'URL' in the given embedded code given below.
+43. For the embedded code, **goto** storage account from the portal, go to the 'video' container and **click** on the video 'final_spatial_analysis_video_1.mp4', now **click** on the copy button for copying the video url, and finally replace the url with 'URL' in the given embedded code given below.
 	
 	```
 	<video controls loop width="100%" ><source src=URL type="video/mp4">
@@ -1103,87 +1130,87 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 	
 	![Validate Creds.](media/power-bi-report-061.png)
 	
-33. **Copy** the whole Embed code with replaced 'URL' value. 
+44. **Copy** the whole Embed code with replaced 'URL' value. 
 
-34. **Paste** the Embed code and Select Apply. 
+45. **Paste** the Embed code and Select Apply. 
 
-35. On the Dashboard resize, move the content as needed.
+46. On the Dashboard resize, move the content as needed.
 
 	![Validate Creds.](media/power-bi-report-060.png)
 
-36. The Dashboard **ADX Dashboard** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+47. The Dashboard **ADX Dashboard** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 	
 	![Final Look.](media/power-bi-report-38.png)
 
-37. **Refer** to this table while pinning rest of the tiles to the dashboard.
+48. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-6.png)
 
-38. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
+49. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-33.png)
 
-39. **CEO Dashboard - May** should look like this. Following are the details of tiles for the same.
+50. **CEO Dashboard - May** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-32.png)
 	
-40. **Refer** to this table while pinning rest of the tiles to the dashboard.
+51. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-1.png)
 
-41. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
+52. **CEO Dashboard - Sep** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-34.png)
 	
-42. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+53. **Refer** to this table while pinning rest of the tiles to the dashboard.	
 
 	![Table.](media/power-bi-table-2.png)
 
-43. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
+54. **CEO Dashboard - Oct** should look like this. Following are the details of tiles for the same.
 	
 	![Final Look.](media/power-bi-report-35.png)
 	
-44. **Refer** to this table while pinning rest of the tiles to the dashboard.	
+55. **Refer** to this table while pinning rest of the tiles to the dashboard.	
 
 	![Table.](media/power-bi-table-3.png)
 
-45. **CEO Dashboard - Nov** Dashboard should look like this. 
+56. **CEO Dashboard - Nov** Dashboard should look like this. 
 
 	![Final Look.](media/power-bi-report-36.png)
 	
-46. **Refer** to this table while pinning rest of the tiles to the dashboard.
+57. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-4.png)
 	
-47. **CEO Dashboard - Dec** Dashboard should look like this.
+58. **CEO Dashboard - Dec** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-37.png)
 	
-48. **Refer** to this table while pinning rest of the tiles to the dashboard.
+59. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-5.png)
 	
-49. **ESG Dashboard** Dashboard should look like this.
+60. **ESG Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-39.png)
 	
-50. **Refer** to this table while pinning rest of the tiles to the dashboard.
+61. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-7.png)
 	
-51. **Finance Dashboard** Dashboard should look like this.
+62. **Finance Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-40.png)
 
-52. **Refer** to this table while pinning rest of the tiles to the dashboard.
+63. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-8.png)
 	
-53. **VP Customer Experience Dashboard** Dashboard should look like this.
+64. **VP Customer Experience Dashboard** Dashboard should look like this.
 
 	![Final Look.](media/power-bi-report-41.png)
 
-54. **Refer** to this table while pinning rest of the tiles to the dashboard.
+65. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-9.png)
 
