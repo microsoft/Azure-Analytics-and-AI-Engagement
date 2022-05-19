@@ -407,7 +407,7 @@ $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -Acco
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 
 RefreshTokens
- 
+
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/customcsv" $destinationUri --recursive
@@ -871,7 +871,7 @@ foreach ($name in $scripts)
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
     Add-Content log.txt $result
 }
- 
+
 #uploading Sql Scripts
 Add-Content log.txt "-----------uploading KQL Scripts-----------------"
 Write-Host "----KQL Scripts------"
