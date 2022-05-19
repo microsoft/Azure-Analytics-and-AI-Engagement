@@ -5,6 +5,7 @@ function RefreshTokens()
     $global:synapseToken = ((az account get-access-token --resource https://dev.azuresynapse.net) | ConvertFrom-Json).accessToken
     $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com) | ConvertFrom-Json).accessToken
     $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
+    $global:purviewToken = ((az account get-access-token --resource https://purview.azure.net) | ConvertFrom-Json).accessToken
 }
 
 #should auto for this.
@@ -18,7 +19,7 @@ $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
 
 if($subs.GetType().IsArray -and $subs.length -gt 1)
 {
-    $subOptions = [System.Collections.ArrayList]::new()
+   $subOptions = [System.Collections.ArrayList]::new()
     for($subIdx=0; $subIdx -lt $subs.length; $subIdx++)
     {
         $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
@@ -26,49 +27,41 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
     }
     $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
     $selectedSubName = $subs[$selectedSubIdx]
-    Write-Host "Selecting the $selectedSubName subscription"
+    Write-Host "Selecting the subscription : $selectedSubName "
+	$title    = 'Subscription selection'
+	$question = 'Are you sure you want to select this subscription for this lab?'
+	$choices  = '&Yes', '&No'
+	$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+	if($decision -eq 0)
+	{
     Select-AzSubscription -SubscriptionName $selectedSubName
     az account set --subscription $selectedSubName
+	}
+	else
+	{
+	$selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
+    $selectedSubName = $subs[$selectedSubIdx]
+    Write-Host "Selecting the subscription : $selectedSubName "
+	Select-AzSubscription -SubscriptionName $selectedSubName
+    az account set --subscription $selectedSubName
+	}
 }
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$suffix = "$random-$init"
-$search_srch_retail_name = "srch-retail-product-$suffix";
-#Search service 
-Write-Host "-----------------Search service ---------------"
+$synapseWorkspaceName = "synapseretail$init$random"
+
+#uploading Sql Scripts
+Write-Host "----KQL Scripts------"
 RefreshTokens
+$scripts=Get-ChildItem "../artifacts/kqlscripts" | Select BaseName
 
-Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
-# Get search primary admin key
-$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
-$primaryAdminKey = $adminKeyPair.Primary
-
-# Create Index
-Write-Host  "------Index----"
-try {
-Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
-        ForEach-Object {
-            $indexDefinition = Get-Content $_.FullName -Raw
-            $headers = @{
-                'api-key' = $primaryAdminKey
-                'Content-Type' = 'application/json'
-                'Accept' = 'application/json' }
-
-            $url = "https://$($search_srch_retail_name).search.windows.net/indexes?api-version=2020-06-30"
-            $res = Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
-        }
-    } catch {
-        Write-Host "Resource already Exists !"
+foreach ($name in $scripts) 
+{
+    $ScriptFileName="../artifacts/kqlscripts/"+$name.BaseName+".kql"
+    Write-Host "Uploading Kql Script : $($name.BaseName)"
+    New-AzSynapseKqlScript -WorkspaceName $synapseWorkspaceName -DefinitionFile $ScriptFileName
 }
-Start-Sleep -s 10
-
-$headers = @{
-'api-key' = $primaryAdminKey
-'Content-Type' = 'application/json' 
-'Accept' = 'application/json' }
-$url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
-$body = Get-Content -Raw -Path ./artifacts/search/data.json
-Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body

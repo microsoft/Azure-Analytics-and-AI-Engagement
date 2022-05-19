@@ -104,7 +104,7 @@ $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -Acco
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 
 RefreshTokens
- 
+
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/customcsv" $destinationUri --recursive
@@ -164,6 +164,18 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/thermosta
 $destinationSasKey = New-AzStorageContainerSASToken -Container "videoanalyzer" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/videoanalyzer$($destinationSasKey)"
 & $azCopyCommand copy "https://retail2poc.blob.core.windows.net/videoanalyzer" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "adx-historical" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/adx-historical$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/adx-historical" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "semanticsearch" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/semanticsearch$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/semanticsearch" $destinationUri --recursive
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container "video" -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/video$($destinationSasKey)"
+& $azCopyCommand copy "https://retail2poc.blob.core.windows.net/video" $destinationUri --recursive
 
 #storage assests copy
 RefreshTokens

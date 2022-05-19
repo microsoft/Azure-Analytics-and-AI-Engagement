@@ -68,7 +68,7 @@ Write-Host "----Form Recognizer-----"
 				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
 				-replace '#CONTAINER_NAME#', "incidentpdftraining"`
 				-replace '#SAS_TOKEN#', $sasToken`
-				-replace '#APIM_KEY#',  $forms_cogs_key`
+				-replace '#APIM_KEY#',  $forms_cogs_key.Key1`
 			} | Set-Content -Path ../artifacts/formrecognizer/create_model1.py
 
 $modelUrl = python "../artifacts/formrecognizer/create_model1.py"
