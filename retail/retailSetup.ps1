@@ -1491,10 +1491,13 @@ foreach($report in $reportList)
 Add-Content log.txt "----Bot and multilingual App-----"
 Write-Host "----Bot and multilingual App----"
 
-$app = az ad app create --display-name $sites_app_multiling_retail_name --password "Smoothie@2021@2021" --available-to-other-tenants | ConvertFrom-Json
+$app = az ad app create --display-name $sites_app_multiling_retail_name | ConvertFrom-Json
 $appId = $app.appId
 
-az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$AADAppClientSecret botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$rglocation
+$appCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+$appPassword = $appCredential.password
+
+az deployment group create --resource-group $rgName --template-file "./artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$appPassword botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$rglocation
 
 az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "./artifacts/qnamaker/chatbot.zip"
 az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName 
@@ -1524,10 +1527,13 @@ RefreshTokens
 $device = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device
 
 $spname="Retail Demo $deploymentId"
-$clientsecpwd ="Smoothie@Smoothie@2020"
 
-$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
-          
+$app = az ad app create --display-name $spname | ConvertFrom-Json
+$appId = $app.appId
+
+$mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+$clientsecpwd = $mainAppCredential.password
+
 az ad sp create --id $appId | Out-Null    
 $sp = az ad sp show --id $appId --query "objectId" -o tsv
 start-sleep -s 60
