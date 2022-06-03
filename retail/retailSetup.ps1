@@ -1535,7 +1535,7 @@ $mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
 $clientsecpwd = $mainAppCredential.password
 
 az ad sp create --id $appId | Out-Null    
-$sp = az ad sp show --id $appId --query "objectId" -o tsv
+$sp = az ad sp show --id $appId --query "id" -o tsv
 start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal

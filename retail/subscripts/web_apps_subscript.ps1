@@ -69,19 +69,16 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 Write-Host  "-----------------Deploy web apps ---------------"
 RefreshTokens
 
-$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search")
-foreach($zip in $zips)
-{
-    expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-}
-
 $spname="Retail Demo $deploymentId"
-$clientsecpwd ="Smoothie@Smoothie@2020"
 
-$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
-          
+$app = az ad app create --display-name $spname | ConvertFrom-Json
+$appId = $app.appId
+
+$mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+$clientsecpwd = $mainAppCredential.password
+
 az ad sp create --id $appId | Out-Null    
-$sp = az ad sp show --id $appId --query "objectId" -o tsv
+$sp = az ad sp show --id $appId --query "id" -o tsv
 start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
