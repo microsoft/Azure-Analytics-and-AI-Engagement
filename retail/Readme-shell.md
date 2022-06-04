@@ -359,7 +359,7 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-15.png)
 
-19. After the complete script has been executed, you get to see the message "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **pen** each one of them.
+19. After the complete script has been executed, you get to see the message "--Execution Complete--", now **go to** the Azure Portal and **search** for app services, **click** on each one of the simulator apps.
 
 	![Enter Resource Group name.](media/cloud-shell-16.png)
 	
