@@ -88,12 +88,15 @@ $sqlPassword = $secretValueText
 Write-Host  "-----------------deploy poc web app ---------------"
 RefreshTokens
 $spname="Healthcare Demo $deploymentId"
-$clientsecpwd ="Smoothie@Smoothie@2020"
 
-$appId = az ad app create --password $clientsecpwd --end-date $AADAppClientSecretExpiration --display-name $spname --query "appId" -o tsv
-          
+$app = az ad app create --display-name $spname | ConvertFrom-Json
+$appId = $app.appId
+
+$mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+$clientsecpwd = $mainAppCredential.password
+        
 az ad sp create --id $appId | Out-Null    
-$sp = az ad sp show --id $appId --query "objectId" -o tsv
+$sp = az ad sp show --id $appId --query "id" -o tsv
 start-sleep -s 60
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
