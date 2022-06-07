@@ -81,7 +81,6 @@ RefreshTokens
 expand-archive -path "../artifacts/binaries/retaildemo-app.zip" -destinationpath "./retaildemo-app" -force
 
 $spname="Retail Demo $deploymentId"
-$clientsecpwd ="Smoothie@Smoothie@2020"
 
 $app = az ad app create --display-name $spname | ConvertFrom-Json
 $appId = $app.appId
@@ -164,7 +163,7 @@ $filepath="./retaildemo-app/wwwroot/config-poc.js"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName).Replace("#SERVER_NAME#", $app_retaildemo_name).Replace("#SEARCH_APP_NAME#", $media_search_app_service_name).Replace("#SPEECH_KEY#", $cog_speech_key.key1).Replace("#LOCATION#", $rglocation)
 Set-Content -Path $filepath -Value $item
-
+        
 #bot qna maker
 $bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
 $bot_key = $bot_detail.properties.properties.sites[0].key

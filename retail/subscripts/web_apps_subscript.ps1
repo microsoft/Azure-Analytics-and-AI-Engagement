@@ -36,7 +36,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
@@ -60,14 +60,50 @@ $tenantId = (Get-AzContext).Tenant.Id
 $CurrentTime = Get-Date
 $AADAppClientSecretExpiration = $CurrentTime.AddDays(365)
 $AADAppClientSecret = "Smoothie@2021@2021"
+$iothub_foottraffic = "iothub-foottraffic-$suffix"
+$sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
+$asp_multiling_retail_name = "multiling-retail-asp-$suffix";
+$media_search_app_service_name = "app-media-search-$suffix"
+$namespaces_adx_thermostat_occupancy_name = "adx-thermostat-occupancy-$suffix"
+$thermostat_telemetry_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["thermostat_telemetry_Realtime_URL"]
+$occupancy_data_Realtime_URL =  (Get-AzResourceGroup -Name $rgName).Tags["occupancy_data_Realtime_URL"]
+$sites_adx_thermostat_realtime_name = "app-realtime-kpi-retail-$suffix"
+$sites_app_product_search = "app-product-search-ui-$suffix"
+$search_srch_retail_name = "srch-retail-product-$suffix";
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
+#########################
+
+Add-Content log.txt "----Bot and multilingual App-----"
+Write-Host "----Bot and multilingual App----"
+
+$app = az ad app create --display-name $sites_app_multiling_retail_name | ConvertFrom-Json
+$appId = $app.appId
+
+$appCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+$appPassword = $appCredential.password
+
+az deployment group create --resource-group $rgName --template-file "../artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$appPassword botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$rglocation
+
+az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "../artifacts/qnamaker/chatbot.zip"
+az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName 
+
+#################
+
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search", "app-product-search")
+foreach($zip in $zips)
+{
+    expand-archive -path "../artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+}
+
 #Web app
 Write-Host  "-----------------Deploy web apps ---------------"
 RefreshTokens
+
+$device = Add-AzIotHubDevice -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device
 
 $spname="Retail Demo $deploymentId"
 
@@ -141,6 +177,20 @@ $post = "{
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
 	
+(Get-Content -path app_media_search/appsettings.json -Raw) | Foreach-Object { $_ `
+    -replace '#WORKSPACE_ID#', $wsId`
+    -replace '#APP_ID#', $appId`
+    -replace '#APP_SECRET#', $clientsecpwd`
+    -replace '#TENANT_ID#', $tenantId`				
+} | Set-Content -Path app_media_search/appsettings.json
+
+(Get-Content -path app_media_search/wwwroot/config.js -Raw) | Foreach-Object { $_ `
+    -replace '#VI_ACCOUNT_ID#', $vi_account_id`
+    -replace '#VI_API_KEY#', $vi_account_key`
+    -replace '#STORAGE_ACCOUNT#', $dataLakeAccountName`
+    -replace '#VI_LOCATION#', $vi_location`
+} | Set-Content -Path app_media_search/wwwroot/config.js	
+
 (Get-Content -path retaildemo-app/appsettings.json -Raw) | Foreach-Object { $_ `
     -replace '#WORKSPACE_ID#', $wsId`
     -replace '#APP_ID#', $appId`
@@ -163,8 +213,7 @@ $reportList = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization=
 $reportList = $reportList.Value
 $sites_app_product_search_url = "https://$($sites_app_product_search).azurewebsites.net"
 #update all th report ids in the poc web app...
-$ht = new-object system.collections.hashtable   
-$ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
+$ht = new-object system.collections.hashtable    
 $ht.add("#BOT_QNAMAKER_RETAIL_NAME#", $bot_qnamaker_retail_name)
 $ht.add("#BOT_KEY#", $bot_key)
 $ht.add("#Retail_Group_CEO_KPI#", $($reportList | where {$_.name -eq "Retail Group CEO KPI"}).id)
@@ -204,7 +253,113 @@ az webapp deployment source config-zip --resource-group $rgName --name $media_se
 catch
 {
 }
+
+# IOT FootTraffic
+$device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device).ConnectionString
+$shared_access_key = $device_conn_string.Split(";")[2]
+$device_primary_key= $shared_access_key.Substring($shared_access_key.IndexOf("=")+1)
+
+$iot_hub_config = '"{\"frequency\":1,\"connection\":{\"provisioning_host\":\"global.azure-devices-provisioning.net\",\"symmetric_key\":\"' + $device_primary_key + '\",\"IoTHubConnectionString\":\"' + $device_conn_string + '\"}}"'
+
+(Get-Content -path app-iotfoottraffic-sensor/.env -Raw) | Foreach-Object { $_ `
+     -replace '#DEVICE_PRIMARY_KEY#', $device_primary_key`
+     -replace '#DEVICE_CONN_STRING#', $device_conn_string`
+ } | Set-Content -Path app-iotfoottraffic-sensor/.env
+
+Write-Information "Deploying IOT FootTraffic Retail App"
+cd app-iotfoottraffic-sensor
+az webapp up --resource-group $rgName --name $sites_app_iotfoottraffic_sensor_name
+cd ..
+Start-Sleep -s 10
+
+$config = az webapp config appsettings set -g $rgName -n $sites_app_iotfoottraffic_sensor_name --settings IoTHubConfig=$iot_hub_config
+
+# ADX Thermostat Realtime
+$occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy | ConvertFrom-Json
+$occupancy_endpoint = $occupancy_endpoint.primaryConnectionString
+$thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat | ConvertFrom-Json
+$thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
+
+(Get-Content -path app-adx-thermostat-realtime/dev.env -Raw) | Foreach-Object { $_ `
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
+   -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+   -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+} | Set-Content -Path app-adx-thermostat-realtime/dev.env
+
+$occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$occupancy_endpoint+'\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"'+$occupancy_data_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
+ 	
+$thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$thermostat_endpoint+'\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"'+$thermostat_telemetry_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
+ 
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
+
+Write-Information "Deploying ADX Thermostat Realtime App"
+cd app-adx-thermostat-realtime
+az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
+cd ..
+Start-Sleep -s 10
+
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
+$primaryAdminKey = $adminKeyPair.Primary
+
+# Product Seach Function App adn WebApp deployment
+Write-Information "Deploying Product Seach Function App"
+try{
+az functionapp create --resource-group $rgName --consumption-plan-location $rglocation --runtime node --runtime-version 16 --functions-version 4 --name $func_product_search_name --storage-account $dataLakeAccountName
+}
+catch
+{
+az functionapp create --resource-group $rgName --consumption-plan-location $rglocation --runtime node --runtime-version 16 --functions-version 4 --name $func_product_search_name --storage-account $dataLakeAccountName
+}
+Start-Sleep -s 30
+
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchApiKey=$primaryAdminKey
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchFacets="category1, category2, category3"
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchIndexName="fabrikam-fashion"
+$config = az webapp config appsettings set -g $rgName -n $func_product_search_name --settings SearchServiceName=$search_srch_retail_name
+
+az functionapp cors add -g $rgName -n $func_product_search_name  --allowed-origins "*"
+
+az webapp stop --name $func_product_search_name --resource-group $rgName 
+az functionapp deployment source config-zip -g $rgName -n $func_product_search_name --src "./artifacts/binaries/product-search-func-app.zip"
+az webapp start --name $func_product_search_name --resource-group $rgName 
+
+(Get-Content -path app-product-search/config-prod.js -Raw) | Foreach-Object { $_ `
+    -replace '#FUNCTION_PRODUCT_SEARCH#', $func_product_search_name`
+    -replace '#BOT_NAME#', $bot_qnamaker_retail_name`
+    -replace '#BOT_KEY#', $bot_key`
+} | Set-Content -Path app-product-search/config-prod.js
+
+Write-Information "Deploying Product Seach Web App"
+cd app-product-search
+az webapp up --resource-group $rgName --name $sites_app_product_search --html;
+cd ..
+Start-Sleep -s 10
+
+RefreshTokens
+
+az webapp restart --name $functionapplivestreaming --resource-group $rgName 
+az webapp start --name $func_product_search_name --resource-group $rgName 
+az webapp start  --name $app_retaildemo_name --resource-group $rgName
 az webapp start --name $media_search_app_service_name --resource-group $rgName
+az webapp start  --name $sites_app_iotfoottraffic_sensor_name --resource-group $rgName
+az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+az webapp start --name $sites_app_product_search --resource-group $rgName
 
-az webapp start --name $app_retaildemo_name --resource-group $rgName
+foreach($zip in $zips)
+{
+    if ($zip -eq  "immersive-reader-app"  -or $zip -eq  "retaildemo-app" ) 
+    {
+        remove-item -path "./$($zip).zip" -recurse -force
+    }
+    if ($zip -eq "retaildemo-app" ) 
+    {
+        continue;
+    }
+    remove-item -path "./$($zip)" -recurse -force
+}
 
+#start ASA
+Write-Host "----Starting ASA-----"
+Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_retail -OutputStartMode 'JobStartTime'
