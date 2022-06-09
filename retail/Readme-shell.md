@@ -656,6 +656,8 @@ cd ./retail/retail
 	![Select Purview Resource.](media/purview-29.png)
 	
 33. **Repeat** the step #10 for PowerBI.
+
+> **Note:** Add the Purview's MSI name as a contributor in Power BI workspace. You can also create a security group with the said MSI in it and assign admin permissions to it. You would also be required to enable "enhance admin API responses with detailed metadata" option in your Power BI admin settings.
 	
 ### Task 9: Power BI reports and dashboard creation
 
