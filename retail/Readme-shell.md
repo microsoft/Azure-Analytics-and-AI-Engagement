@@ -371,7 +371,7 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-22.png)
 
-22. **Click** on "Open Studio".
+22. **Click** on "Launch Studio".
 	
 	![Enter Resource Group name.](media/cloud-shell-23.png)
 	
@@ -383,7 +383,7 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-25.png)
 	
-25. Verify the compute and kernel show green and are ready, if not wait for them to turn green, the **click** on the ">>" button at top left in the workspace as shown in the image, let the notebook run successfullly and then **open** the "14 Personality Based Video Recommender.ipynb" notebook and **run** it as well.
+25. Verify the compute and kernel show green and are ready, if not wait for them to turn green, then **click** on the ">>" button at top left in the workspace as shown in the image, let the notebook run successfully and then **open** the "14 Personality Based Video Recommender.ipynb" notebook and **run** it as well.
 
 	![Enter Resource Group name.](media/cloud-shell-26.png)
       
