@@ -239,6 +239,11 @@ $purviewCollectionName2 = "AzureSynapse"
 $purviewCollectionName3 = "CosmosDB-Retail"
 $purviewCollectionName4 = "PowerBI-Retail"
 
+$functionapprecommender="func-app-media-recommendation-$suffix"
+$functionappmodelbuilder="func-app-model-builder-$suffix"
+$functionapprecommender_asp="func-asp-media-recommendation-$suffix"
+$functionappmodelbuilder_asp="func-asp-model-builder-$suffix"
+
 $cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_retail_name
 $translator_key=$cog_translator_key.Key1
 
@@ -1509,7 +1514,7 @@ Add-Content log.txt "-----function apps zip deploy-------"
 Write-Host  "--------------function apps zip deploy---------------"
 RefreshTokens
 
-$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search", "app-product-search")
+$zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search", "app-product-search", "model_builder", "recommender")
 foreach($zip in $zips)
 {
     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
@@ -1674,6 +1679,27 @@ az webapp deployment source config-zip --resource-group $rgName --name $media_se
 catch
 {
 }
+
+Add-Content log.txt "-----python function apps zip deploy-------"
+Write-Host "----python function apps zip deploy------"
+
+cd recommender
+az webapp up --resource-group $rgName --name $functionapprecommender --plan $functionapprecommender_asp --location $rglocation --sku "B1"
+cd ..
+Start-Sleep -s 30
+az functionapp deployment source config-zip --resource-group $rgName --name $functionapprecommender --src "./artifacts/binaries/recommender.zip" --build-remote true
+Start-Sleep -s 30
+az webapp start  --name $functionapprecommender --resource-group $rgName
+
+cd model_builder
+az webapp up --resource-group $rgName --name $functionappmodelbuilder --plan $functionappmodelbuilder_asp --location $rglocation --sku "B1"
+cd ..
+Start-Sleep -s 30
+az functionapp deployment source config-zip --resource-group $rgName --name $functionappmodelbuilder --src "./artifacts/binaries/model_builder.zip" --build-remote true
+Start-Sleep -s 30
+$vi_indexer_url = "https://api.videoindexer.ai/"+$vi_location+"/Accounts/"+$vi_account_id+"/Videos/{}/Index?reTranslate=False&includeStreamingUrls=True"
+Update-AzFunctionAppSetting -Name $functionappmodelbuilder -ResourceGroupName $rgName -AppSetting @{"VIDEO_INDEXER_URL" = "$($vi_indexer_url)"}
+az webapp start  --name $functionappmodelbuilder --resource-group $rgName
 
 # IOT FootTraffic
 $device_conn_string= $(Get-AzIotHubDeviceConnectionString -ResourceGroupName $rgName -IotHubName $iothub_foottraffic -DeviceId retail-foottraffic-device).ConnectionString

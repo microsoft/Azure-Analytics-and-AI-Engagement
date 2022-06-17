@@ -115,6 +115,14 @@
       "logic_app_concatfunc": "[concat('concat(decodeUriComponent(''https%3A%2F%2Fapi.videoindexer.ai%2Ftrial%2FAccounts%2F',parameters('video_indexer_account_id'),'%2FVideos%2F''), triggerOutputs()[''queries''][''id''], decodeUriComponent(''%2FIndex''))')]",
       "event_topic_media_indexer_name":"[concat('event-topic-media-indexer-',variables('unique_suffix'))]",
       "event_topic_storage_trigger_name": "[concat('event-topic-storage-trigger-',variables('unique_suffix'))]",
+      "func_media_recommendation_service_asp_name": "[concat('func-asp-media-recommendation-',variables('unique_suffix'))]",
+      "func_media_recommendation_service_ai_name": "[concat('func-ai-media-recommendation-',variables('unique_suffix'))]",
+      "func_media_recommendation_service_storage_name": "[if(greater(length(concat('strecservice', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('strecservice',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('strecservice',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "func_media_recommendation_service_app_name": "[concat('func-app-media-recommendation-',variables('unique_suffix'))]",
+      "func_model_builder_service_asp_name": "[concat('func-asp-model-builder-',variables('unique_suffix'))]",
+      "func_model_builder_service_ai_name": "[concat('func-ai-model-builder-',variables('unique_suffix'))]",
+      "func_model_builder_service_storage_name": "[if(greater(length(concat('stmodelbuilder', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('stvideorec',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stvideorec',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "func_model_builder_service_app_name": "[concat('func-app-model-builder-',variables('unique_suffix'))]",
       "func_media_transcript_app_name": "[concat('func-app-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_asp_name": "[concat('func-asp-media-transcript-',variables('unique_suffix'))]",
       "func_media_transcript_storage_name": "[if(greater(length(concat('sttranscript', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sttranscript',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stmongodata',parameters('environment_code'),uniqueString(deployment().name)) )]"  ,
@@ -137,7 +145,7 @@
                "UniqueId":"[uniqueString(deployment().name)]",
                "WsId":"[parameters('pbi_workspace_id')]",
                "occupancy_data_Realtime_URL":"[parameters('occupancy_data_Realtime_URL')]",
-			   "thermostat_telemetry_Realtime_URL":"[parameters('thermostat_telemetry_Realtime_URL')]",
+			      "thermostat_telemetry_Realtime_URL":"[parameters('thermostat_telemetry_Realtime_URL')]",
                "VideoIndexerAccountId": "[parameters('video_indexer_account_id')]",
                "VideoIndexerApiKey": "[parameters('video_indexer_api_key')]"
             }
@@ -728,6 +736,408 @@
                }
             }
          }
+      },
+      {
+        "name": "[variables('func_media_recommendation_service_asp_name')]",
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2018-02-01",
+        "location": "[variables('location')]",
+        "sku": {
+          "name": "B1"
+        },
+        "kind": "linux",
+        "properties": {
+          "reserved": true
+        }
+      },
+      {
+        "name": "[variables('func_media_recommendation_service_storage_name')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-04-01",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "location": "[variables('location')]",
+        "properties": {
+  
+        }
+      },
+      {
+        "name": "[variables('func_media_recommendation_service_ai_name')]",
+        "type": "Microsoft.Insights/components",
+        "apiVersion": "2018-05-01-preview",
+        "location": "[variables('location')]",
+        "properties": {
+          "Application_Type": "web",
+          "Flow_Type": "Bluefield",
+          "Request_Source": "rest"
+        }
+      },
+      {
+        "name": "[variables('func_media_recommendation_service_app_name')]",
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2018-11-01",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[concat('Microsoft.Storage/storageAccounts/', variables('func_media_recommendation_service_storage_name'))]",
+          "[concat('Microsoft.Web/serverfarms/', variables('func_media_recommendation_service_asp_name'))]",
+          "[concat('Microsoft.Insights/components/', variables('func_media_recommendation_service_ai_name'))]"
+        ],
+        "kind": "functionapp",
+        "properties": {
+          "enabled": true,
+          "hostNameSslStates": [
+            {
+              "name": "[concat(variables('func_media_recommendation_service_app_name'), '.azurewebsites.net')]",
+              "sslState": "Disabled",
+              "hostType": "Standard"
+            },
+            {
+              "name": "[concat(variables('func_media_recommendation_service_app_name'), '.scm.azurewebsites.net')]",
+              "sslState": "Disabled",
+              "hostType": "Repository"
+            }
+          ],
+          "serverFarmId": "[resourceId(variables('resource_group_name'), 'Microsoft.Web/serverfarms', variables('func_media_recommendation_service_asp_name'))]",
+          "reserved": false,
+          "siteConfig": {
+            "netFrameworkVersion": "v4.0",
+            "appSettings": [
+              {
+                "name": "AzureWebJobsStorage",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('func_media_recommendation_service_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('func_media_recommendation_service_storage_name')), '2019-04-01').keys[0].value)]"
+              },
+              {
+                "name": "CONNECTIONSTRING",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storage_account_name'), ';AccountKey=', listKeys(resourceId(variables('resource_group_name'),'Microsoft.Storage/storageAccounts', variables('storage_account_name')), '2019-04-01').keys[0].value,';EndpointSuffix=core.windows.net')]"
+              },
+              {
+                "name": "CONTAINER_WITH_VIDEO_JSONS",
+                "value": "finalmediademostorage"
+              },
+              {
+                "name": "CONTAINER_WITH_MODELS",
+                "value": "recommendermodel"
+              },
+              {
+                "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                "value": "[reference(resourceId('Microsoft.Insights/components', variables('func_media_recommendation_service_ai_name'))).InstrumentationKey]"
+              },
+              {
+                "name": "FUNCTIONS_WORKER_RUNTIME",
+                "value": "python"
+              },
+              {
+                "name": "FUNCTIONS_EXTENSION_VERSION",
+                "value": "~2"
+              },
+              {
+                "name": "DISABLE_HUGO_BUILD",
+                "value": "true"
+              },
+              {
+                "name": "WEBSITE_RUN_FROM_PACKAGE",
+                "value": "true"
+              }
+            ],
+            "use32BitWorkerProcess": true,
+            "managedPipelineMode": "Integrated",
+            "cors": {
+              "allowedOrigins": [
+                "https://functions.azure.com",
+                "https://functions-staging.azure.com",
+                "https://functions-next.azure.com"
+              ],
+              "supportCredentials": false
+            }
+          },
+          "containerSize": 1536,
+          "httpsOnly": false
+        }
+      },
+        {
+        "type": "Microsoft.Web/sites/config",
+        "apiVersion": "2018-11-01",
+        "name": "[concat(variables('func_media_recommendation_service_app_name'), '/web')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', variables('func_media_recommendation_service_app_name'))]"
+        ],
+        "properties": {
+          "numberOfWorkers": 1,
+          "defaultDocuments": [
+            "Default.htm",
+            "Default.html",
+            "Default.asp",
+            "index.htm",
+            "index.html",
+            "iisstart.htm",
+            "default.aspx",
+            "index.php",
+            "hostingstart.html"
+          ],
+          "netFrameworkVersion": "v4.0",
+          "linuxFxVersion": "PYTHON|3.8",
+          "requestTracingEnabled": false,
+          "remoteDebuggingEnabled": false,
+          "httpLoggingEnabled": false,
+          "logsDirectorySizeLimit": 35,
+          "detailedErrorLoggingEnabled": false,
+          "publishingUsername": "[concat('$', variables('func_media_recommendation_service_app_name'))]",
+          "azureStorageAccounts": {
+  
+          },
+          "scmType": "None",
+          "use32BitWorkerProcess": true,
+          "webSocketsEnabled": false,
+          "alwaysOn": true,
+          "managedPipelineMode": "Integrated",
+          "virtualApplications": [
+            {
+              "virtualPath": "/",
+              "physicalPath": "site\\wwwroot",
+              "preloadEnabled": true
+            }
+          ],
+          "loadBalancing": "LeastRequests",
+          "experiments": {
+            "rampUpRules": [
+  
+            ]
+          },
+          "autoHealEnabled": false,
+          "localMySqlEnabled": false,
+          "ipSecurityRestrictions": [
+            {
+              "ipAddress": "Any",
+              "action": "Allow",
+              "priority": 1,
+              "name": "Allow all",
+              "description": "Allow all access"
+            }
+          ],
+          "scmIpSecurityRestrictions": [
+            {
+              "ipAddress": "Any",
+              "action": "Allow",
+              "priority": 1,
+              "name": "Allow all",
+              "description": "Allow all access"
+            }
+          ],
+          "scmIpSecurityRestrictionsUseMain": false,
+          "http20Enabled": false,
+          "minTlsVersion": "1.2",
+          "ftpsState": "AllAllowed",
+          "reservedInstanceCount": 0
+        }
+      },
+      {
+        "name": "[variables('func_model_builder_service_asp_name')]",
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2018-02-01",
+        "location": "[variables('location')]",
+        "sku": {
+          "name": "B1"
+        },
+        "kind": "linux",
+        "properties": {
+          "reserved": true
+        }
+      },
+      {
+        "name": "[variables('func_model_builder_service_storage_name')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-04-01",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "location": "[variables('location')]",
+        "properties": {
+  
+        }
+      },
+      {
+        "name": "[variables('func_model_builder_service_ai_name')]",
+        "type": "Microsoft.Insights/components",
+        "apiVersion": "2018-05-01-preview",
+        "location": "[variables('location')]",
+        "properties": {
+          "Application_Type": "web",
+          "Flow_Type": "Bluefield",
+          "Request_Source": "rest"
+        }
+      },
+      {
+        "name": "[variables('func_model_builder_service_app_name')]",
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2018-11-01",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[concat('Microsoft.Storage/storageAccounts/', variables('func_model_builder_service_storage_name'))]",
+          "[concat('Microsoft.Web/serverfarms/', variables('func_model_builder_service_asp_name'))]",
+          "[concat('Microsoft.Insights/components/', variables('func_model_builder_service_ai_name'))]"
+        ],
+        "kind": "functionapp",
+        "properties": {
+          "enabled": true,
+          "hostNameSslStates": [
+            {
+              "name": "[concat(variables('func_model_builder_service_app_name'), '.azurewebsites.net')]",
+              "sslState": "Disabled",
+              "hostType": "Standard"
+            },
+            {
+              "name": "[concat(variables('func_model_builder_service_app_name'), '.scm.azurewebsites.net')]",
+              "sslState": "Disabled",
+              "hostType": "Repository"
+            }
+          ],
+          "serverFarmId": "[resourceId(variables('resource_group_name'), 'Microsoft.Web/serverfarms', variables('func_model_builder_service_asp_name'))]",
+          "reserved": false,
+          "siteConfig": {
+            "netFrameworkVersion": "v4.0",
+            "appSettings": [
+              {
+                "name": "AzureWebJobsStorage",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('func_model_builder_service_storage_name'), ';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('func_model_builder_service_storage_name')), '2019-04-01').keys[0].value)]"
+              },
+              {
+                "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                "value": "[reference(resourceId('Microsoft.Insights/components', variables('func_model_builder_service_ai_name'))).InstrumentationKey]"
+              },
+              {
+                "name": "AzureWebJobs.recommender.Disabled",
+                "value": "0"
+              },
+              {
+                "name": "CONNECTIONSTRING",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storage_account_name'), ';AccountKey=', listKeys(resourceId(variables('resource_group_name'),'Microsoft.Storage/storageAccounts', variables('storage_account_name')), '2019-04-01').keys[0].value,';EndpointSuffix=core.windows.net')]"
+              },
+              {
+                "name": "CONTAINER_WITH_VIDEO_JSONS",
+                "value": "finalmediademostorage"
+              },
+              {
+                "name": "CONTAINER_WITH_MODELS",
+                "value": "recommendermodel"
+              },
+              {
+                "name": "VIDEO_INDEXER_URL",
+                "value": "[concat('https://api.videoindexer.ai/trial/Accounts/',parameters('video_indexer_account_id'),'/Videos/{}/Index?reTranslate=False&includeStreamingUrls=True')]"
+              },
+              {
+                "name": "FUNCTIONS_WORKER_RUNTIME",
+                "value": "python"
+              },
+              {
+                "name": "FUNCTIONS_EXTENSION_VERSION",
+                "value": "~2"
+              },
+              {
+                "name": "DISABLE_HUGO_BUILD",
+                "value": "true"
+              },
+              {
+                "name": "WEBSITE_RUN_FROM_PACKAGE",
+                "value": "true"
+              }
+            ],
+            "use32BitWorkerProcess": true,
+            "managedPipelineMode": "Integrated",
+            "cors": {
+              "allowedOrigins": [
+                "https://functions.azure.com",
+                "https://functions-staging.azure.com",
+                "https://functions-next.azure.com"
+              ],
+              "supportCredentials": false
+            }
+          },
+          "containerSize": 1536,
+          "httpsOnly": false
+        }
+      },
+        {
+        "type": "Microsoft.Web/sites/config",
+        "apiVersion": "2018-11-01",
+        "name": "[concat(variables('func_model_builder_service_app_name'), '/web')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', variables('func_model_builder_service_app_name'))]"
+        ],
+        "properties": {
+          "numberOfWorkers": 1,
+          "defaultDocuments": [
+            "Default.htm",
+            "Default.html",
+            "Default.asp",
+            "index.htm",
+            "index.html",
+            "iisstart.htm",
+            "default.aspx",
+            "index.php",
+            "hostingstart.html"
+          ],
+          "netFrameworkVersion": "v4.0",
+          "linuxFxVersion": "PYTHON|3.8",
+          "requestTracingEnabled": false,
+          "remoteDebuggingEnabled": false,
+          "httpLoggingEnabled": false,
+          "logsDirectorySizeLimit": 35,
+          "detailedErrorLoggingEnabled": false,
+          "publishingUsername": "[concat('$', variables('func_model_builder_service_app_name'))]",
+          "azureStorageAccounts": {
+  
+          },
+          "scmType": "None",
+          "use32BitWorkerProcess": true,
+          "webSocketsEnabled": false,
+          "alwaysOn": true,
+          "managedPipelineMode": "Integrated",
+          "virtualApplications": [
+            {
+              "virtualPath": "/",
+              "physicalPath": "site\\wwwroot",
+              "preloadEnabled": true
+            }
+          ],
+          "loadBalancing": "LeastRequests",
+          "experiments": {
+            "rampUpRules": [
+  
+            ]
+          },
+          "autoHealEnabled": false,
+          "localMySqlEnabled": false,
+          "ipSecurityRestrictions": [
+            {
+              "ipAddress": "Any",
+              "action": "Allow",
+              "priority": 1,
+              "name": "Allow all",
+              "description": "Allow all access"
+            }
+          ],
+          "scmIpSecurityRestrictions": [
+            {
+              "ipAddress": "Any",
+              "action": "Allow",
+              "priority": 1,
+              "name": "Allow all",
+              "description": "Allow all access"
+            }
+          ],
+          "scmIpSecurityRestrictionsUseMain": false,
+          "http20Enabled": false,
+          "minTlsVersion": "1.2",
+          "ftpsState": "AllAllowed",
+          "reservedInstanceCount": 0
+        }
       },
       {
          "type": "Microsoft.Search/searchServices",
