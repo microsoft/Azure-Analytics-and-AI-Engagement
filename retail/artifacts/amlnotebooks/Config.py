@@ -2,6 +2,7 @@
 STORAGE_ACCOUNT_CONNECTION_STRING = 'DefaultEndpointsProtocol=https;AccountName=#STORAGE_ACCOUNT_NAME#;AccountKey=#STORAGE_ACCOUNT_KEY#;EndpointSuffix=core.windows.net'
 CONTAINER_NAME = 'retail-notebook-data'
 ACCOUNT_KEY = '#STORAGE_ACCOUNT_KEY#'
+STORAGE_ACCOUNT_NAME = '#STORAGE_ACCOUNT_NAME#'
 
 subscription_id= "#SUBSCRIPTION_ID#"
 resource_group= "#RESOURCE_GROUP#"
