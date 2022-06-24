@@ -12,24 +12,24 @@ $searchKey = $(az search admin-key show --resource-group $rgName --service-name 
 pip install -r ./artifacts/copyCV/requirements.txt
 $key=az cognitiveservices account keys list --name $customVisionName -g $rgName|ConvertFrom-json
 $destinationKey=$key.key1
-$sourceKey="7f743d4b8d6d459fb2bb0e8648dfa38e"  #todo: find a way to get this securely
+$sourceKey=""  #todo: find a way to get this securely
 #hard hat project
-$sourceProjectId="b2e4f4ce-d9f1-4fb7-aa0c-2f50fdc14d1b"
+$sourceProjectId=""
 $destinationregion= "https://$($location).api.cognitive.microsoft.com"
 $sourceregion= "https://westus2.api.cognitive.microsoft.com"
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #welding helmet project
-$sourceProjectId="835b6a7a-1e49-454b-9584-654595b045b6"
+$sourceProjectId=""
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #mask compliance project
-$sourceProjectId="db91f717-fede-4111-98bf-f60f7c9a4afd"
+$sourceProjectId=""
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 #product classification project
-$sourceProjectId="e555e244-ebfd-481b-ae0e-f3213d8e5634"
-$sourceKey="6b980df5f6ae432dac6adbfcadd2187f"
+$sourceProjectId=""
+$sourceKey=""
 python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
 $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"

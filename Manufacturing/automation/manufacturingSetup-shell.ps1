@@ -246,6 +246,14 @@ $result = az synapse spark pool update --name $sparkPoolName --workspace-name $s
 #refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
+RefreshTokens
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+
+$StartTime = Get-Date
+$EndTime = $StartTime.AddDays(6)
+$sasToken = New-AzStorageContainerSASToken -Container "mfg-iot-data" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+
 ###################################################################
 New-Item log.txt
 #Form Recognizer
@@ -716,6 +724,7 @@ foreach ($name in $scripts)
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOS_ACCOUNT#", $cosmos_account_name_mfgdemo)
     $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
+    $query = $query.Replace("#SASTOKEN#", $sasToken)
 	
     if ($Parameters -ne $null) 
     {

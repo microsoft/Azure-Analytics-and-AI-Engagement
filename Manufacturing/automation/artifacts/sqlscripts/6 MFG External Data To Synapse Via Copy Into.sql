@@ -38,11 +38,11 @@ GO
 -- Step 2 Copy data from all PARQUET files in to the table
 
 COPY INTO  [dbo].[iot-lathe-peck-drill_test]
-FROM 'https://manufacturingdemo12.blob.core.windows.net/mfg-iot-data/'
+FROM 'https://#STORAGE_ACCOUNT#.blob.core.windows.net/mfg-iot-data/'
 WITH (
     FILE_TYPE = 'PARQUET',
     CREDENTIAL=(IDENTITY= 'Shared Access Signature', 
-	SECRET='?sv=2019-07-07&sr=c&sig=xTmafJM7nzI5tQIoagk883YR5ZVJ6q4VcNe5IR17obE%3D&st=2020-11-17T00%3A00%3A00Z&se=2021-11-15T00%3A00%3A00Z&sp=rl')
+	SECRET='#SASTOKEN#')
 ) 
 
 --step 3 Lets query table 
