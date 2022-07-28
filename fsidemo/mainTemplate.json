@@ -138,8 +138,11 @@
       "name": "[concat(variables('iot_hub_name'), '/events/asa-cg')]",
       "type": "Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups",
       "apiVersion": "2019-03-22",
-      "dependsOn": [
-        "[concat('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
+      "properties": {
+        "name": "asa-cg"
+      },
+        "dependsOn": [
+        "[resourceId('Microsoft.Devices/IotHubs/', variables('iot_hub_name'))]"
       ]
     },
     {
