@@ -562,7 +562,12 @@ Add-Content log.txt $result
 
 $sqlQuery  = "CREATE DATABASE HealthCareSqlOnDemand"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database master -Username $sqlUser -Password $sqlPassword
+
+try {
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+} catch {
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+}
 Add-Content log.txt $result	
  
 (Get-Content -path "$($SQLScriptsPath)/sqlOnDemandSchema.sql" -Raw) | Foreach-Object { $_ `
@@ -956,16 +961,6 @@ foreach($name in $reports)
        $reportList.Add($temp)
 }
 Start-Sleep -s 60
-
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
-$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-Add-Content log.txt $pbiResult  
-
-foreach($r in $pbiResult.value)
-{
-    $report = $reportList | where {$_.Name -eq $r.name}
-    $report.ReportId = $r.id;
-}
 
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
 

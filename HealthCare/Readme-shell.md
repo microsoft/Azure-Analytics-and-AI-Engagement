@@ -290,7 +290,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	
 	![data-export2.](media/data-export2.png)
 	
-25.	**Enter** eventhub as destination name.
+25.	**Enter** eventhub as export name.
 26.	**Select** Telemetry as Type of data to export.
 27.	**Select** eventhub as Destination from drop down.
 28.	**Click** Save.
