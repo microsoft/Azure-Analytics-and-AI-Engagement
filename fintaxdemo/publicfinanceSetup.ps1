@@ -381,7 +381,11 @@ $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
         } | Set-Content -Path "$($SQLScriptsPath)/sqluser.sql"		
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
 $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+try {
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+} catch {
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+}
 Add-Content log.txt $result
 
 $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sql_user_fintax.sql"
