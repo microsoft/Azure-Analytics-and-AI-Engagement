@@ -174,9 +174,7 @@ $concatString = "$init$random"
 if($concatString.length -gt 16)
 {
 $dataLakeAccountName = "stmedia"+($concatString.substring(0,17))
-}
-else
-{
+}else{
 	$dataLakeAccountName = "stmedia"+ $concatString
 }
 $sqlUser = "labsqladmin"
@@ -680,14 +678,11 @@ $pipelineList = New-Object System.Collections.ArrayList
 foreach($name in $pipelines)
 {
     $FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
+    Write-Host "Creating pipeline : $($name.BaseName)"
     
-    $temp = "" | select-object @{Name = "FileName"; Expression = {$name.BaseName}} , @{Name = "Name"; Expression = {$name.BaseName.ToUpper()}}, @{Name = "PowerBIReportName"; Expression = {""}}
-    $pipelineList.Add($temp)
     $item = Get-Content -Path $FilePath
     $item=$item.Replace("#DATA_LAKE_STORAGE_NAME#",$dataLakeAccountName)
-    #$item=$item.Replace("#BLOB_LINKED_SERVICE#",$blobLinkedService)
     $defaultStorage=$synapseWorkspaceName + "-WorkspaceDefaultStorage"
-    #$item=$item.Replace("#DEFAULT_STORAGE#",$defaultStorage)
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/pipelines/$($name.BaseName)?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
     
@@ -760,17 +755,6 @@ foreach($name in $reports)
        $reportList.Add($temp)
 }
 Start-Sleep -s 60
-
-$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
-$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-Add-Content log.txt $pbiResult  
-
-foreach($r in $pbiResult.value)
-{
-    $report = $reportList | where {$_.Name -eq $r.name}
-    $report.ReportId = $r.id;
-}
-
 
 Add-Content log.txt "------uploading sql data------"
 Write-Host  "-----------------Uploading sql data ---------------"
