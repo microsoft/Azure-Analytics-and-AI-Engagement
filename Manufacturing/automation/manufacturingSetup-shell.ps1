@@ -148,16 +148,11 @@ $result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -Co
 
 #User Inputs
 $rgName = read-host "Enter the resource Group Name";
-#$rgName = "cjg-sanjay-2";
-
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $wsId =  (Get-AzResourceGroup -Name $rgName).Tags["WsId"]
 $deploymentId = $init
-
-#$sqlPassword = Read-Host "Please enter the SQL Password";
-#$sqlPassword = "Smoothie@2020";
 $cpuShell = "cpuShell$init"
 $iot_hub_car = "raceCarIotHub-$suffix"
 $iot_hub_telemetry = "mfgiothubTelemetry-$suffix"
@@ -177,7 +172,7 @@ $mssql_admin_user = "labsqladmin"
 $mfgasaName = "mfgasa-$suffix"
 $carasaName = "race-car-asa-$suffix"
 $concatString = "$random$init"
-$cosmos_account_name_mfgdemo = "cosmosdb-mfgdemo-$random$init" #+($concatString.substring(0,26))
+$cosmos_account_name_mfgdemo = "cosmosdb-mfgdemo-$random$init" 
 $cosmos_database_name_mfgdemo_manufacturing = "manufacturing"
 
 $mfgasaCosmosDBName = "mfgasaCosmosDB-$suffix"
@@ -216,7 +211,6 @@ $userName = ((az ad signed-in-user show --output json) | ConvertFrom-Json).UserP
 $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $forms_cogs_name
 $text_translation_service_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $text_translation_service_name
 $searchKey = $(az search admin-key show --resource-group $rgName --service-name $searchName  --output json | ConvertFrom-Json).primarykey;
-
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
@@ -289,9 +283,7 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
         chmod +x azcopy
         cd ..
         $azCopyCommand += "\azcopy"
-}
-else
-{
+} else {
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
         if (!$azCopyLink)
@@ -357,7 +349,6 @@ $destinationSasKey = New-AzStorageContainerSASToken -Container "azureml-mfg" -Co
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/azureml-mfg$($destinationSasKey)"
 & $azCopyCommand copy "https://dreamdemostrggen2r16gxwb.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
 
-
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
@@ -406,92 +397,92 @@ $key=az cognitiveservices account keys list --name $cognitive_services_name -g $
 $destinationKey=$key.key1
 
 #hard hat project
-$sourceProjectId=""
-$destinationregion= "https://$($location).api.cognitive.microsoft.com"
-$sourceregion= "https://westus2.api.cognitive.microsoft.com"
-python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+    $sourceProjectId=""
+    $destinationregion= "https://$($location).api.cognitive.microsoft.com"
+    $sourceregion= "https://westus2.api.cognitive.microsoft.com"
+    python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
-#welding helmet project
-$sourceProjectId=""
-python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+    #welding helmet project
+    $sourceProjectId=""
+    python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
-#mask compliance project
-$sourceProjectId=""
-python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+    #mask compliance project
+    $sourceProjectId=""
+    python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
-#product classification project
-$sourceProjectId=""
-python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
+    #product classification project
+    $sourceProjectId=""
+    python ./artifacts/copyCV/migrate_project.py -p $sourceProjectId -s $sourceKey -se $sourceregion -d $destinationKey -de $destinationregion
 
-$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"
-$projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+    $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects"
+    $projects = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
 
-(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#SUBSCRIPTION_ID#', $subscriptionId`
-				-replace '#RESOURCE_GROUP#', $rgName`
-				-replace '#WORKSPACE_NAME#', $amlworkspacename`
-				-replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
-				-replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
-				-replace '#LOCATION#', $location`
-				-replace '#APIM_KEY#', $forms_cogs_keys.Key1`
-				-replace '#MODEL_ID#', $modelId`
-				-replace '#TRANSLATOR_NAME#', $text_translation_service_name`
-				-replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
-			
-foreach($project in $projects)
-{
-	$projectId=$project.id
-	$projectName=$project.name
-	if($projectName -eq "1_MFG__Helmet_PPE_Compliance")
-	{
-		(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#HARD_HAT_ID#', $projectId`
-				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
-	}
-	elseif($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
-	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#HELMET_ID#', $projectId`
-				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
-	}
-	elseif($projectName -eq "3_MFG__Mask_PPE_Compliance")
-	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#FACE_MASK_ID#', $projectId`
-				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
-	}
-	elseif($projectName -eq "1_Defective_Product_Classification")
-	{
-				(Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
-                -replace '#QUALITY_CONTROL_ID#', $projectId`
-				-replace '#PREDICTION_KEY#', $destinationKey`
-			} | Set-Content -Path artifacts/amlnotebooks/config.py
-	}
-	
-	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"
-	$tags = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
-	$tagList = New-Object System.Collections.ArrayList
-	foreach($tag in $tags)
-	{
-		$tagList.Add($tag.id)
-	}
-	$body = "{
-      `"selectedTags`": []
-		}"
-	$body=	$body |ConvertFrom-Json
-	$body.selectedTags=$tagList	
-	$body=	$body |ConvertTo-Json
-	$url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($projectId)/train"
-	$Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
-	
-	$url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
-	$iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
-	$iterationId=$iterations[0].id	
-}
+    (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                    -replace '#SUBSCRIPTION_ID#', $subscriptionId`
+                    -replace '#RESOURCE_GROUP#', $rgName`
+                    -replace '#WORKSPACE_NAME#', $amlworkspacename`
+                    -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
+                    -replace '#STORAGE_ACCOUNT_KEY#', $storage_account_key`
+                    -replace '#LOCATION#', $location`
+                    -replace '#APIM_KEY#', $forms_cogs_keys.Key1`
+                    -replace '#MODEL_ID#', $modelId`
+                    -replace '#TRANSLATOR_NAME#', $text_translation_service_name`
+                    -replace '#TRANSLATION_KEY#', $text_translation_service_keys.Key1`
+                } | Set-Content -Path artifacts/amlnotebooks/config.py
+                
+    foreach($project in $projects)
+    {
+        $projectId=$project.id
+        $projectName=$project.name
+        if($projectName -eq "1_MFG__Helmet_PPE_Compliance")
+        {
+            (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                    -replace '#HARD_HAT_ID#', $projectId`
+                    -replace '#PREDICTION_KEY#', $destinationKey`
+                } | Set-Content -Path artifacts/amlnotebooks/config.py
+        }
+        elseif($projectName -eq "2_MFG__Welding_Helmet_PPE_Compliance")
+        {
+                    (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                    -replace '#HELMET_ID#', $projectId`
+                    -replace '#PREDICTION_KEY#', $destinationKey`
+                } | Set-Content -Path artifacts/amlnotebooks/config.py
+        }
+        elseif($projectName -eq "3_MFG__Mask_PPE_Compliance")
+        {
+                    (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                    -replace '#FACE_MASK_ID#', $projectId`
+                    -replace '#PREDICTION_KEY#', $destinationKey`
+                } | Set-Content -Path artifacts/amlnotebooks/config.py
+        }
+        elseif($projectName -eq "1_Defective_Product_Classification")
+        {
+                    (Get-Content -path artifacts/amlnotebooks/config.py -Raw) | Foreach-Object { $_ `
+                    -replace '#QUALITY_CONTROL_ID#', $projectId`
+                    -replace '#PREDICTION_KEY#', $destinationKey`
+                } | Set-Content -Path artifacts/amlnotebooks/config.py
+        }
+        
+        $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($project.id)/tags"
+        $tags = Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+        $tagList = New-Object System.Collections.ArrayList
+        foreach($tag in $tags)
+        {
+            $tagList.Add($tag.id)
+        }
+        $body = "{
+        `"selectedTags`": []
+            }"
+        $body=	$body |ConvertFrom-Json
+        $body.selectedTags=$tagList	
+        $body=	$body |ConvertTo-Json
+        $url = "https://$($location).api.cognitive.microsoft.com/customvision/v3.2/training/projects/$($projectId)/train"
+        $Result = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{"Training-key"="$($destinationKey)"}
+        
+        $url="https://$($location).api.cognitive.microsoft.com/customvision/v3.3/Training/projects/$($projectId)/iterations"
+        $iterations=Invoke-RestMethod -Uri $url -Method GET  -ContentType "application/json" -Headers @{ "Training-key"="$($destinationKey)" };
+        $iterationId=$iterations[0].id	
+    }
 
 
 #######################################################
@@ -1075,18 +1066,6 @@ foreach($name in $reports)
 }
 Start-Sleep -s 60
 
-#$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/reports"
-#$pbiResult = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $powerbitoken" } -ea SilentlyContinue;
-#Add-Content log.txt $pbiResult  
-#
-#foreach($r in $pbiResult.value)
-#{
-#    $report = $reportList | where {$_.Name -eq $r.name}
-#    $report.ReportId = $r.id;
-#}
-
-#$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
-
 Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------deploy poc web app ---------------"
 
@@ -1199,10 +1178,8 @@ $ht.add("#TENANT_ID#", $tenantId)
 $ht.add("#SEARCH_QUERY_KEY#", $searchKey)
 $ht.add("#SEARCH_SERVICE#", $searchName)
 
-
 $filePath = "./mfg-webapp/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
-
 
 Compress-Archive -Path "./mfg-webapp/*" -DestinationPath "./mfg-webapp.zip"
 
@@ -1218,7 +1195,6 @@ foreach($zip in $zips)
     remove-item -path "./$($zip).zip" -recurse -force
 	}
 }
-
 
 Add-Content log.txt "------uploading sql data------"
 Write-Host  "-----------------Uploading sql data ---------------"
@@ -1373,8 +1349,6 @@ foreach ($dataTableLoad in $dataTableList) {
     Write-output "Data for $($dataTableLoad.TABLE_NAME) loaded."
 }
 
-
-
 #Search service 
 Write-Host "-----------------Search service ---------------"
 Add-Content log.txt "-----------------Search service ---------------"
@@ -1467,7 +1441,6 @@ Get-ChildItem "artifacts/search" -Filter search_indexer.json |
             $url = "https://$searchName.search.windows.net/indexers?api-version=2020-06-30"
             Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
         }
-		
 	
 Write-Host  "-----------------AML Workspace ---------------"
 Add-Content log.txt "-----------------AML Workspace ---------------"
@@ -1711,7 +1684,6 @@ foreach($name in $cosmos)
 } 
 
 Write-Host  "-----------------Uploading Cosmos Data Complete--------------"
-
 
 ###############################################
 #Add-Content log.txt "-----------------Cognitive service project publish ---------------"
