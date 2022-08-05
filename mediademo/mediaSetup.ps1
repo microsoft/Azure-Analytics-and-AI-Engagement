@@ -311,9 +311,7 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
         chmod +x azcopy
         cd ..
         $azCopyCommand += "\azcopy"
-}
-else
-{
+} else {
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
         if (!$azCopyLink)
@@ -426,7 +424,7 @@ $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database ma
 Add-Content log.txt $result	
  
 Add-Content log.txt $result	
- 
+
 #uploading Sql Scripts
 Add-Content log.txt "-----------uploading Sql Scripts-----------------"
 Write-Host "----uploading Sql Scripts------"
@@ -449,7 +447,7 @@ foreach ($name in $scripts)
     
     $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
     $query = $query.Replace("#STORAGE_ACCOUNT#", $dataLakeAccountName)
-     $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
+    $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $query = $query.Replace("#COSMOS_ACCOUNT#", $cosmos_account_name)
     $query = $query.Replace("#COSMOS_KEY#", $cosmos_account_key)
 
@@ -521,12 +519,10 @@ Add-Content log.txt $result
 $filepath=$templatepath+"tweetstoblob.json"
 $itemTemplate = Get-Content -Path $filepath
 $name=$dataLakeAccountName+"blob"
-$blobLinkedService=$name
 $item = $itemTemplate.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName).Replace("#STORAGE_ACCOUNT_KEY#", $storage_account_key)
 $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/tweetstoblob?api-version=2019-06-01-preview"
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
- 
 
 ##sap hana linked services
 $filepath=$templatepath+"SapHana.json"
@@ -536,7 +532,7 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Sap
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
  
- ##powerbi linked services
+##powerbi linked services
 $filepath=$templatepath+"powerbi_linked_service.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "MediaDemo").Replace("#WORKSPACE_ID#", $wsId)
@@ -544,7 +540,7 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/pow
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
- ##Teradata linked services
+##Teradata linked services
 $filepath=$templatepath+"Teradata.json"
 $itemTemplate = Get-Content -Path $filepath
 $item = $itemTemplate.Replace("#LINKED_SERVICE_NAME#", "Teradata").Replace("#WORKSPACE_ID#", $wsId)
@@ -552,13 +548,12 @@ $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/Ter
 $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 Add-Content log.txt $result
 
-
-# AutoResolveIntegrationRuntime
-    $FilePathRT="./artifacts/templates/AutoResolveIntegrationRuntime.json" 
-    $itemRT = Get-Content -Path $FilePathRT
-    $uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
-    $result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
- Add-Content log.txt $result
+##AutoResolveIntegrationRuntime
+$FilePathRT="./artifacts/templates/AutoResolveIntegrationRuntime.json" 
+$itemRT = Get-Content -Path $FilePathRT
+$uriRT = "https://management.azure.com/subscriptions/$($subscriptionId)/resourceGroups/$($rgName)/providers/Microsoft.Synapse/workspaces/$($synapseWorkspaceName)/integrationRuntimes/AutoResolveIntegrationRuntime?api-version=2019-06-01-preview"
+$result = Invoke-RestMethod  -Uri $uriRT -Method PUT -Body  $itemRT -Headers @{ Authorization="Bearer $managementToken" } -ContentType "application/json"
+Add-Content log.txt $result
 
 
 #Creating Datasets
@@ -577,7 +572,7 @@ foreach ($dataset in $datasets)
 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
 	Add-Content log.txt $result
 }
- 
+
 #Creating spark notebooks
 Add-Content log.txt "--------------Spark Notebooks---------------"
 Write-Host "Creating Spark notebooks..."
@@ -674,7 +669,6 @@ Add-Content log.txt "------pipelines------"
 Write-Host "-------Creating pipelines-----------"
 RefreshTokens
 $pipelines=Get-ChildItem "./artifacts/pipelines" | Select BaseName
-$pipelineList = New-Object System.Collections.ArrayList
 foreach($name in $pipelines)
 {
     $FilePath="./artifacts/pipelines/"+$name.BaseName+".json"
