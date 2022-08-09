@@ -17,15 +17,6 @@ CREATE TABLE [dbo].[AspNetRoleClaims](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[AspNetRoleClaims]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
-REFERENCES [dbo].[AspNetRoles] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
-GO
-
-
 
 /****** Object:  Table [dbo].[AspNetRoles]    Script Date: 4/22/2022 11:19:57 AM ******/
 SET ANSI_NULLS ON
@@ -46,6 +37,13 @@ CREATE TABLE [dbo].[AspNetRoles](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
+ALTER TABLE [dbo].[AspNetRoleClaims]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
 
 
 /****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 4/22/2022 11:27:12 AM ******/
@@ -65,14 +63,6 @@ CREATE TABLE [dbo].[AspNetUserClaims](
 	[Id] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[AspNetUserClaims]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
 GO
 
 
@@ -96,15 +86,6 @@ CREATE TABLE [dbo].[AspNetUserLogins](
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-
-ALTER TABLE [dbo].[AspNetUserLogins]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
-GO
-
 
 
 /****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 4/22/2022 11:28:02 AM ******/
@@ -132,15 +113,6 @@ GO
 
 ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
 GO
-
-ALTER TABLE [dbo].[AspNetUserRoles]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
-GO
-
 
 
 /****** Object:  Table [dbo].[AspNetUsers]    Script Date: 4/22/2022 11:28:30 AM ******/
@@ -174,6 +146,30 @@ CREATE TABLE [dbo].[AspNetUsers](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+
+
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH NOCHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
 
 
 /****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 4/22/2022 11:28:57 AM ******/
@@ -203,36 +199,6 @@ ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
-GO
-
-
-
-/****** Object:  Table [dbo].[CartItems]    Script Date: 4/22/2022 11:29:20 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[CartItems](
-	[CartItemId] [int] IDENTITY(1,1) NOT NULL,
-	[CartId] [nvarchar](max) NOT NULL,
-	[ProductId] [int] NOT NULL,
-	[Count] [int] NOT NULL,
-	[DateCreated] [datetime2](7) NOT NULL,
- CONSTRAINT [PK_CartItems] PRIMARY KEY CLUSTERED 
-(
-	[CartItemId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[CartItems]  WITH NOCHECK ADD  CONSTRAINT [FK_CartItems_Products_ProductId] FOREIGN KEY([ProductId])
-REFERENCES [dbo].[Products] ([ProductId])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[CartItems] CHECK CONSTRAINT [FK_CartItems_Products_ProductId]
 GO
 
 
@@ -303,22 +269,6 @@ CREATE TABLE [dbo].[OrderDetails](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[OrderDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderDetails_Orders_OrderId] FOREIGN KEY([OrderId])
-REFERENCES [dbo].[Orders] ([OrderId])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_Orders_OrderId]
-GO
-
-ALTER TABLE [dbo].[OrderDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderDetails_Products_ProductId] FOREIGN KEY([ProductId])
-REFERENCES [dbo].[Products] ([ProductId])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_Products_ProductId]
-GO
-
 
 
 /****** Object:  Table [dbo].[Orders]    Script Date: 4/22/2022 11:31:00 AM ******/
@@ -347,6 +297,14 @@ CREATE TABLE [dbo].[Orders](
 	[OrderId] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[OrderDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderDetails_Orders_OrderId] FOREIGN KEY([OrderId])
+REFERENCES [dbo].[Orders] ([OrderId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_Orders_OrderId]
 GO
 
 
@@ -379,12 +337,50 @@ CREATE TABLE [dbo].[Products](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
+
+/****** Object:  Table [dbo].[CartItems]    Script Date: 4/22/2022 11:29:20 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CartItems](
+	[CartItemId] [int] IDENTITY(1,1) NOT NULL,
+	[CartId] [nvarchar](max) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[Count] [int] NOT NULL,
+	[DateCreated] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_CartItems] PRIMARY KEY CLUSTERED 
+(
+	[CartItemId] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
 ALTER TABLE [dbo].[Products]  WITH NOCHECK ADD  CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY([CategoryId])
 REFERENCES [dbo].[Categories] ([CategoryId])
 ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Categories_CategoryId]
+GO
+
+ALTER TABLE [dbo].[CartItems]  WITH NOCHECK ADD  CONSTRAINT [FK_CartItems_Products_ProductId] FOREIGN KEY([ProductId])
+REFERENCES [dbo].[Products] ([ProductId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[CartItems] CHECK CONSTRAINT [FK_CartItems_Products_ProductId]
+GO
+
+ALTER TABLE [dbo].[OrderDetails]  WITH NOCHECK ADD  CONSTRAINT [FK_OrderDetails_Products_ProductId] FOREIGN KEY([ProductId])
+REFERENCES [dbo].[Products] ([ProductId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[OrderDetails] CHECK CONSTRAINT [FK_OrderDetails_Products_ProductId]
 GO
 
 
@@ -418,14 +414,6 @@ GO
 ALTER TABLE [dbo].[RainChecks] CHECK CONSTRAINT [FK_RainChecks_Products_ProductId]
 GO
 
-ALTER TABLE [dbo].[RainChecks]  WITH NOCHECK ADD  CONSTRAINT [FK_RainChecks_Stores_StoreId] FOREIGN KEY([StoreId])
-REFERENCES [dbo].[Stores] ([StoreId])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[RainChecks] CHECK CONSTRAINT [FK_RainChecks_Stores_StoreId]
-GO
-
 
 
 /****** Object:  Table [dbo].[Stores]    Script Date: 4/22/2022 11:32:16 AM ******/
@@ -443,6 +431,14 @@ CREATE TABLE [dbo].[Stores](
 	[StoreId] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[RainChecks]  WITH NOCHECK ADD  CONSTRAINT [FK_RainChecks_Stores_StoreId] FOREIGN KEY([StoreId])
+REFERENCES [dbo].[Stores] ([StoreId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[RainChecks] CHECK CONSTRAINT [FK_RainChecks_Stores_StoreId]
 GO
 
 

@@ -1608,22 +1608,12 @@ $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
 
-$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/CartItems.txt"
-$sqlEndpoint="$($mssql_server_name).database.windows.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
-Add-Content log.txt $result
-
 $sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Categories.txt"
 $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
 
 $sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/dms_truncation_safeguard.txt"
-$sqlEndpoint="$($mssql_server_name).database.windows.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
-Add-Content log.txt $result
-
-$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/OrderDetails.txt"
 $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
@@ -1638,12 +1628,22 @@ $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
 
-$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/RainChecks.txt"
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/OrderDetails.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/CartItems.txt"
 $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
 
 $sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/Stores.txt"
+$sqlEndpoint="$($mssql_server_name).database.windows.net"
+$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
+Add-Content log.txt $result
+
+$sqlQuery = Get-Content -Raw -Path "$($MSSQLScriptsPath)/RainChecks.txt"
 $sqlEndpoint="$($mssql_server_name).database.windows.net"
 $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_db_name -Username $mssql_admin_user -Password $sqlPassword
 Add-Content log.txt $result
