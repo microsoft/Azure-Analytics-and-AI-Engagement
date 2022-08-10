@@ -526,12 +526,10 @@
         "destination": {
           "properties": {
             "maxEventsPerBatch": 1,
-            "preferredBatchSizeInKilobytes": 64
-          },
-          "endpointType": "WebHook",
-          "properties": {
+            "preferredBatchSizeInKilobytes": 64,
             "endpointUrl": "[listCallbackURL(variables('logic_app_storage_trigger_url'), '2019-05-01').value]"
-          }
+          },
+          "endpointType": "WebHook"
         },
         "filter": {
           "subjectBeginsWith": "/blobServices/default/containers/source-files/blobs/",
@@ -561,12 +559,10 @@
         "destination": {
           "properties": {
             "maxEventsPerBatch": 1,
-            "preferredBatchSizeInKilobytes": 64
-          },
-          "endpointType": "WebHook",
-          "properties": {
+            "preferredBatchSizeInKilobytes": 64,
             "endpointUrl": "[listCallbackURL(variables('logic_app_indexer_trigger_url'), '2019-05-01').value]"
-          }
+          },
+          "endpointType": "WebHook"
         },
         "filter": {
           "includedEventTypes": [
