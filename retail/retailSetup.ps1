@@ -829,7 +829,12 @@ Add-Content log.txt $result
 
 $sqlQuery  = "CREATE DATABASE RetailSqlOnDemand"
 $sqlEndpoint = "$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net"
-$result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+
+try{
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+} catch {
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database 'master' -Username $sqlUser -Password $sqlPassword
+}
 Add-Content log.txt $result	
  
 #uploading Sql Scripts
