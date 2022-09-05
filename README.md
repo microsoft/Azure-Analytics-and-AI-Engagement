@@ -1,6 +1,6 @@
 <h1 align="center">
   <br/>
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="" alt="Dream Demo in a Box" width="200" /></a>
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DREAM%20Demo%20Badge.png" alt="Dream Demo in a Box" width="200" /></a>
   <br/>
   Microsoft Dream Demo in a Box
   <br/>
