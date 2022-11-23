@@ -11,7 +11,7 @@ Customers can play,  get hands-on experience navigating through the demo environ
 
 ## :exclamation:IMPORTANT NOTES:  
 
-  1. **Please read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
+  1. **Please read the [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/sustainability/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
   3. Please note that **Azure hosting costs** are involved when DREAM Demos in a Box are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DDiB hosting costs for partners or customers.
   4. Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
@@ -69,7 +69,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 * Please ensure that you select the correct resource group name. We have given a sample name which may need to be changed should any resource group with the same name already exist in your subscription.
 * The audience for this document is CSAs and GBBs.
 * Please log in to Azure and Power BI using the same credentials.
-* Once the resources have been setup, please ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “stsustainability”. You need to contact AD admin to get this done.
+* Once the resources have been setup, please ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “stsustain”. You need to contact AD admin to get this done.
 * Please review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
 ## Before starting
@@ -180,7 +180,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/main-template.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fsustainability%2Fsustainability%2Fmain-template.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
@@ -237,7 +237,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 Command:
 ```
-git clone -b sustainability https://daidemos@dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox sustainability
+git clone -b sustainability --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git sustainability
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-04.png)
@@ -251,7 +251,7 @@ rm sustainability -r -f
 5. **Execute** the sustainabilitySetup.ps1 script by executing the following command:
 
 ```
-cd ./sustainability/
+cd ./sustainability/sustainability
 ```
 
 6. Then **run** the PowerShell: 
@@ -740,7 +740,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 8. **Enter** the following path:  
 	
 	```
-	sustainability/app-sustainabilitydemo/wwwroot/config-poc.js
+	sustainability/sustainability/app-sustainabilitydemo/wwwroot/config-poc.js
 	```
 
 9. **Click** Download button.
@@ -791,7 +791,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 21. **Execute** the following command in cloudshell:  
 	
 	```
-	cp config-poc.js ./sustainability/app-sustainabilitydemo/wwwroot/
+	cp config-poc.js ./sustainability/sustainability/app-sustainabilitydemo/wwwroot/
 	```
 	
 	![Execute the command.](media/updating-powerbi-8.png)
@@ -799,7 +799,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 22.	**Execute** the following command in cloudshell: 
 	
 	```
-	cd ./sustainability/subscripts 
+	cd ./sustainability/sustainability/subscripts
 	./updateWebAppSubScript.ps1
 	```
 	
@@ -836,7 +836,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 **Execute** the Pause_Resume_script.ps1 script by executing the following command: 
 1. **Run** command: 
 	```
-	cd "./sustainability"
+	cd "./sustainability/sustainability"
 	```
 
 2. Then **run** the PowerShell script: 
@@ -886,7 +886,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 2. **Run** Command: 
 	```
-	cd "./sustainability"
+	cd "./sustainability/sustainability/"
 	```
 
 3. Then **run** the PowerShell script: 
