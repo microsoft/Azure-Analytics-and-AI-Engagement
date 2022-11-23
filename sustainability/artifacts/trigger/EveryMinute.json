@@ -1,0 +1,24 @@
+{
+    "name": "EveryMinute",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "Runbillionrowsdemo",
+                    "type": "PipelineReference"
+                }
+            }
+        ],
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 1,
+                "startTime": "2022-08-09T19:59:00Z",
+                "timeZone": "UTC"
+            }
+        }
+    }
+}

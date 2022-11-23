@@ -1,0 +1,17 @@
+{
+    "name": "OracleOperationalData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Oracle",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "OracleTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Transportationdata"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

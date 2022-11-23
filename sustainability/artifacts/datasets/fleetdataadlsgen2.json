@@ -1,0 +1,48 @@
+{
+    "name": "fleetdataadlsgen2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "fleetdata.csv",
+                "fileSystem": "fleetmanagement"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            },
+            {
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

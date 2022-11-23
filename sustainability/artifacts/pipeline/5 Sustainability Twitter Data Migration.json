@@ -1,0 +1,147 @@
+{
+    "name": "5 Sustainability Twitter Data Migration",
+    "properties": {
+        "activities": [
+            {
+                "name": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink",
+                        "writeBehavior": "Insert",
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DestinationDataset_ghi",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Archive Tweets data in ADLS Gen2",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Load Tweets Data from ADLS Gen2 stage to ADW",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "TweetsJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ArchiveJsonParquet",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Clean up Tweets data from stage in ADLS Gen2",
+                "type": "Delete",
+                "dependsOn": [
+                    {
+                        "activity": "Archive Tweets data in ADLS Gen2",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "DeleteTweeterFiles",
+                        "type": "DatasetReference"
+                    },
+                    "logStorageSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    "enableLogging": true,
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "recursive": true,
+                        "enablePartitionDiscovery": false
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-07T19:06:39Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

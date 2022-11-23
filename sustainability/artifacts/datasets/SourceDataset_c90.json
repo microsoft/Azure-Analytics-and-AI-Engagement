@@ -1,0 +1,22 @@
+{
+    "name": "SourceDataset_c90",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "LsSustainSQLOnDemand",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "C1",
+                "type": "varchar"
+            },
+            {
+                "name": "C2",
+                "type": "varchar"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

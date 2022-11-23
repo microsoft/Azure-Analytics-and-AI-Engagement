@@ -1,0 +1,191 @@
+{
+    "name": "1 Sustainability_Ingest_data_from_SAPHANA_to_Azure_Synapse",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "SAPHanaADLSDataset",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DatafromSAPHANA"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "SourceDataset_yrs",
+                        "type": "DatasetReference"
+                    },
+                    "name": "SustainabilitySynapse",
+                    "rejectedDataLinkedService": {
+                        "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+                        "type": "LinkedServiceReference"
+                    }
+                },
+                {
+                    "dataset": {
+                        "referenceName": "SourceDataset_yrs",
+                        "type": "DatasetReference"
+                    },
+                    "name": "AggregatedExpenseAPHANA"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "Last5YearsData"
+                },
+                {
+                    "name": "DerivedColumn"
+                },
+                {
+                    "name": "Selectcolumns"
+                },
+                {
+                    "name": "SelectRequiredColumns"
+                },
+                {
+                    "name": "TotalExpenseByYearMonthDay"
+                }
+            ],
+            "scriptLines": [
+                "source(output(",
+                "          VehicleKey as string,",
+                "          PurchaseDateKey as string,",
+                "          DueDateKey as string,",
+                "          ShipDateKey as string,",
+                "          VehicleID as string,",
+                "          Fueltype as string,",
+                "          Mileage as string,",
+                "          Date as string,",
+                "          Distance as string,",
+                "          {CO2Emission(kg)} as string,",
+                "          FuelConsumption as string,",
+                "          {Vehicle Type} as string,",
+                "          Year as string,",
+                "          Months as string,",
+                "          FuelCost as string,",
+                "          TranFuelBudget as string,",
+                "          CostOverrun as string,",
+                "          FleetFlueCost as string,",
+                "          FleetServicingCost as string,",
+                "          TransortationFuelCost as string,",
+                "          TransortationServicingCost as string,",
+                "          NoOfStops as string,",
+                "          NoOfVehicleserviceMonth as string,",
+                "          TargetNoOfVehicleserviceMonth as string,",
+                "          VehicleservicedYear as string,",
+                "          TargetVehicleservicedYear as string,",
+                "          {%VehicleserviceMonth} as string,",
+                "          {%GoalVehicleserviceMonth} as string,",
+                "          {%VehicleserviceYear} as string,",
+                "          {%GoalVehicleserviceYear} as string,",
+                "          AvgRouteAdherance as string,",
+                "          TargetAvgRouteAdherance as string,",
+                "          WaitTimeBusStopsinMin as string,",
+                "          GOALWaitTimeBusStopsinMin as string,",
+                "          VehicleBreakdown as string,",
+                "          VehicleMaintenanceCost as string,",
+                "          {Service Cost} as string,",
+                "          BudgetServiceCost as string",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     ignoreNoFilesFound: false) ~> DatafromSAPHANA",
+                "DatafromSAPHANA alterRow(upsertIf(PurchaseDateKey==PurchaseDateKey)) ~> Last5YearsData",
+                "Last5YearsData derive(OrderYear = year(toDate(Date)),",
+                "          OrderMonth = month(toDate(Date)),",
+                "          OrderDay = dayOfYear(toDate(Date)),",
+                "          ProductStandardCost = round(toInteger(FuelCost),2),",
+                "          UnitPrice = round(toInteger(FleetServicingCost),4),",
+                "          ExtendedAmount = round(toInteger(TransortationFuelCost),4)) ~> DerivedColumn",
+                "DerivedColumn select(mapColumn(",
+                "          VehicleKey,",
+                "          PurchaseDateKey,",
+                "          DueDateKey,",
+                "          ShipDateKey,",
+                "          VehicleID,",
+                "          Fueltype,",
+                "          Mileage,",
+                "          Date,",
+                "          Distance,",
+                "          FuelConsumption,",
+                "          FuelCost,",
+                "          TranFuelBudget,",
+                "          CostOverrun,",
+                "          FleetFlueCost,",
+                "          FleetServicingCost,",
+                "          TransortationFuelCost,",
+                "          TransortationServicingCost,",
+                "          NoOfStops,",
+                "          NoOfVehicleserviceMonth,",
+                "          TargetNoOfVehicleserviceMonth,",
+                "          VehicleservicedYear,",
+                "          TargetVehicleservicedYear,",
+                "          AvgRouteAdherance,",
+                "          TargetAvgRouteAdherance,",
+                "          WaitTimeBusStopsinMin,",
+                "          GOALWaitTimeBusStopsinMin,",
+                "          VehicleBreakdown,",
+                "          BudgetServiceCost,",
+                "          OrderYear,",
+                "          OrderMonth,",
+                "          OrderDay,",
+                "          ProductStandardCost,",
+                "          UnitPrice,",
+                "          ExtendedAmount",
+                "     ),",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> Selectcolumns",
+                "DerivedColumn select(mapColumn(",
+                "          VehicleKey,",
+                "          CostOverrun,",
+                "          OrderYear,",
+                "          OrderMonth,",
+                "          OrderDay",
+                "     ),",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> SelectRequiredColumns",
+                "SelectRequiredColumns aggregate(groupBy(VehicleKey,",
+                "          OrderYear,",
+                "          OrderMonth,",
+                "          OrderDay),",
+                "     TotalSales = round(sum(toInteger(CostOverrun)),2),",
+                "          AvgSaleAmount = round(avg(toInteger(CostOverrun)),2)) ~> TotalExpenseByYearMonthDay",
+                "Selectcolumns sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     input(",
+                "          ID as integer,",
+                "          TwitterData as string",
+                "     ),",
+                "     deletable:false,",
+                "     insertable:true,",
+                "     updateable:false,",
+                "     upsertable:false,",
+                "     format: 'table',",
+                "     staged: true,",
+                "     allowCopyCommand: true,",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true,",
+                "     errorHandlingOption: 'stopOnFirstError') ~> SustainabilitySynapse",
+                "TotalExpenseByYearMonthDay sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     input(",
+                "          ID as integer,",
+                "          TwitterData as string",
+                "     ),",
+                "     deletable:false,",
+                "     insertable:true,",
+                "     updateable:false,",
+                "     upsertable:false,",
+                "     format: 'table',",
+                "     staged: true,",
+                "     allowCopyCommand: true,",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true,",
+                "     errorHandlingOption: 'stopOnFirstError') ~> AggregatedExpenseAPHANA"
+            ]
+        }
+    }
+}

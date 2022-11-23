@@ -1,0 +1,50 @@
+{
+    "name": "SustainabilityDevSynapse",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "SustainSyn1",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Designation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PayerName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Region",
+                "type": "nvarchar"
+            },
+            {
+                "name": "State",
+                "type": "nvarchar"
+            },
+            {
+                "name": "City",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RevenueTarget",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Finance-FactSales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

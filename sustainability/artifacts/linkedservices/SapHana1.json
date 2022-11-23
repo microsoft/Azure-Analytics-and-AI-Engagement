@@ -1,0 +1,16 @@
+{
+    "name": "SapHana1",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "servernode=52.184.162.251:31015;uid=DemoUser",
+            "encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1OGIwYmUxNS0wM2I2LTRjZTgtOTJkNi1iM2JhMDU3MGQ0YWMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

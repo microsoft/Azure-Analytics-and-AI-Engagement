@@ -1,0 +1,87 @@
+{
+    "name": "CopyPipeline_c90",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy_c90",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [
+                    {
+                        "name": "Source",
+                        "value": "."
+                    },
+                    {
+                        "name": "Destination",
+                        "value": ".TweeterRawData"
+                    }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "SELECT\r\n    TOP 100 *\r\nFROM\r\n    OPENROWSET(\r\n        BULK 'https://stsustainabilitysynprod.dfs.core.windows.net/twitter-data/twitterdata/8 Sustain Twitter Data JSON Extractor.csv',\r\n        FORMAT = 'CSV',\r\n        PARSER_VERSION = '2.0',\r\n        FirstRow=1\r\n    ) AS [result]\r\n",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink",
+                        "writeBehavior": "Insert",
+                        "tableOption": "autoCreate"
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "C1",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "ID"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "C2",
+                                    "type": "String",
+                                    "physicalType": "varchar"
+                                },
+                                "sink": {
+                                    "name": "TweeterRawData"
+                                }
+                            }
+                        ],
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SourceDataset_c90",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DestinationDataset_c90",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-22T16:23:25Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

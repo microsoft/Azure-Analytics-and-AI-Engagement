@@ -1,0 +1,15 @@
+resources:
+- repo: self
+  clean: true
+
+pool:
+  vmImage: windows-latest
+  
+trigger:
+  batch: true
+  branches:
+    include: 
+    - master 
+
+steps:
+  - task: ComponentGovernanceComponentDetection@0

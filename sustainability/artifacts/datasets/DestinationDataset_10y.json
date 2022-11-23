@@ -1,0 +1,16 @@
+{
+    "name": "DestinationDataset_10y",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [],
+        "typeProperties": {
+            "table": "KPIsandValues"
+        },
+        "sqlPool": {
+            "referenceName": "SustainabilityDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,178 @@
+{
+    "name": "SAPHanaADLSDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "FleetmanagementData.csv",
+                "folderPath": "dataset",
+                "fileSystem": "saphana"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "VehicleKey",
+                "type": "String"
+            },
+            {
+                "name": "PurchaseDateKey",
+                "type": "String"
+            },
+            {
+                "name": "DueDateKey",
+                "type": "String"
+            },
+            {
+                "name": "ShipDateKey",
+                "type": "String"
+            },
+            {
+                "name": "VehicleID",
+                "type": "String"
+            },
+            {
+                "name": "Fueltype",
+                "type": "String"
+            },
+            {
+                "name": "Mileage",
+                "type": "String"
+            },
+            {
+                "name": "Date",
+                "type": "String"
+            },
+            {
+                "name": "Distance",
+                "type": "String"
+            },
+            {
+                "name": "CO2Emission(kg)",
+                "type": "String"
+            },
+            {
+                "name": "FuelConsumption",
+                "type": "String"
+            },
+            {
+                "name": "Vehicle Type",
+                "type": "String"
+            },
+            {
+                "name": "Year",
+                "type": "String"
+            },
+            {
+                "name": "Months",
+                "type": "String"
+            },
+            {
+                "name": "FuelCost",
+                "type": "String"
+            },
+            {
+                "name": "TranFuelBudget",
+                "type": "String"
+            },
+            {
+                "name": "CostOverrun",
+                "type": "String"
+            },
+            {
+                "name": "FleetFlueCost",
+                "type": "String"
+            },
+            {
+                "name": "FleetServicingCost",
+                "type": "String"
+            },
+            {
+                "name": "TransortationFuelCost",
+                "type": "String"
+            },
+            {
+                "name": "TransortationServicingCost",
+                "type": "String"
+            },
+            {
+                "name": "NoOfStops",
+                "type": "String"
+            },
+            {
+                "name": "NoOfVehicleserviceMonth",
+                "type": "String"
+            },
+            {
+                "name": "TargetNoOfVehicleserviceMonth",
+                "type": "String"
+            },
+            {
+                "name": "VehicleservicedYear",
+                "type": "String"
+            },
+            {
+                "name": "TargetVehicleservicedYear",
+                "type": "String"
+            },
+            {
+                "name": "%VehicleserviceMonth",
+                "type": "String"
+            },
+            {
+                "name": "%GoalVehicleserviceMonth",
+                "type": "String"
+            },
+            {
+                "name": "%VehicleserviceYear",
+                "type": "String"
+            },
+            {
+                "name": "%GoalVehicleserviceYear",
+                "type": "String"
+            },
+            {
+                "name": "AvgRouteAdherance",
+                "type": "String"
+            },
+            {
+                "name": "TargetAvgRouteAdherance",
+                "type": "String"
+            },
+            {
+                "name": "WaitTimeBusStopsinMin",
+                "type": "String"
+            },
+            {
+                "name": "GOALWaitTimeBusStopsinMin",
+                "type": "String"
+            },
+            {
+                "name": "VehicleBreakdown",
+                "type": "String"
+            },
+            {
+                "name": "VehicleMaintenanceCost",
+                "type": "String"
+            },
+            {
+                "name": "Service Cost",
+                "type": "String"
+            },
+            {
+                "name": "BudgetServiceCost",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

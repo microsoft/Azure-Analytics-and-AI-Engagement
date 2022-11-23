@@ -1,0 +1,27 @@
+{
+    "name": "SourceDataset_yrs",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "retailsynapse",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "TwitterData",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "FactSales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

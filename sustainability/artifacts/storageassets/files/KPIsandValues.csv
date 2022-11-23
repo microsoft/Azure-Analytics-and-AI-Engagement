@@ -1,0 +1,577 @@
+CityID,Month,KPIName,Values,Goal
+"B1",2020-01-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-02-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-03-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-04-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-05-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-06-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-07-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-08-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-09-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-10-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-11-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-12-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-01-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-02-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-03-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-04-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-05-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-06-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-07-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-08-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-09-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-10-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-11-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2021-12-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-01-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-02-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-03-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-04-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-05-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-06-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-07-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-08-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-09-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-10-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-11-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2020-12-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-01-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-02-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-03-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-04-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-05-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-06-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-07-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-08-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-09-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-10-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-11-01 00:00:00.0000000,"# of Stops",2606,
+"C1",2021-12-01 00:00:00.0000000,"# of Stops",2606,
+"B1",2020-01-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-02-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-03-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-04-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-05-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-06-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-07-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-08-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-09-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-10-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-11-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2020-12-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",12,10
+"B1",2021-01-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-02-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-03-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-04-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-05-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-06-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-07-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-08-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-09-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-10-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-11-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2021-12-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-01-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-02-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-03-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-04-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-05-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-06-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-07-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-08-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-09-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-10-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-11-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2020-12-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-01-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-02-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-03-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-04-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-05-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-06-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-07-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-08-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-09-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-10-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-11-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"C1",2021-12-01 00:00:00.0000000,"Wait Time at Bus Stops in Min",8,10
+"B1",2020-01-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-02-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-03-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-04-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-05-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-06-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-07-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-08-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-09-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-10-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-11-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2020-12-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"B1",2021-01-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-02-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-03-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-04-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-05-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-06-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-07-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-08-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-09-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-10-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-11-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2021-12-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2020-01-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-02-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-03-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-04-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-05-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-06-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-07-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-08-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-09-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-10-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-11-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2020-12-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.77,0.9
+"C1",2021-01-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-02-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-03-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-04-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-05-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-06-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-07-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-08-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-09-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-10-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-11-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"C1",2021-12-01 00:00:00.0000000,"Avg Route Adherance by Driver",0.923,0.9
+"B1",2020-01-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-02-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-03-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-04-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-05-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-06-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-07-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-08-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-09-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-10-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-11-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-12-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-01-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-02-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-03-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-04-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-05-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-06-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-07-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-08-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-09-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-10-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-11-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2021-12-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-01-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-02-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-03-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-04-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-05-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-06-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-07-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-08-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-09-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-10-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-11-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2020-12-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-01-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-02-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-03-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-04-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-05-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-06-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-07-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-08-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-09-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-10-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-11-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"C1",2021-12-01 00:00:00.0000000,"Sentiment Vehicle Maintenance Trend",0.32,0.5
+"B1",2020-01-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-02-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-03-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-04-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-05-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-06-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-07-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-08-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-09-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-10-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-11-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-12-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-01-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-02-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-03-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-04-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-05-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-06-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-07-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-08-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-09-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-10-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-11-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2021-12-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-01-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-02-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-03-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-04-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-05-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-06-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-07-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-08-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-09-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-10-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-11-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2020-12-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-01-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-02-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-03-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-04-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-05-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-06-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-07-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-08-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-09-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-10-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-11-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"C1",2021-12-01 00:00:00.0000000,"Sentiment about Public Transport",0.33,0.55
+"B1",2020-01-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-02-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-03-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-04-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-05-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-06-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-07-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-08-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-09-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-10-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-11-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-12-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-01-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-02-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-03-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-04-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-05-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-06-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-07-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-08-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-09-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-10-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-11-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2021-12-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-01-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-02-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-03-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-04-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-05-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-06-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-07-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-08-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-09-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-10-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-11-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2020-12-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-01-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-02-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-03-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-04-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-05-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-06-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-07-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-08-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-09-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-10-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-11-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"C1",2021-12-01 00:00:00.0000000,"Sentiment about Air Quality Index",0.36,0.6
+"B1",2020-01-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-02-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-03-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-04-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-05-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-06-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-07-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-08-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-09-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-10-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-11-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2020-12-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"B1",2021-01-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-02-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-03-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-04-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-05-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-06-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-07-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-08-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-09-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-10-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-11-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2021-12-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2020-01-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-02-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-03-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-04-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-05-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-06-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-07-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-08-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-09-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-10-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-11-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2020-12-01 00:00:00.0000000,"# Articles Published (Positive)",19,
+"C1",2021-01-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-02-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-03-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-04-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-05-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-06-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-07-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-08-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-09-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-10-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-11-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"C1",2021-12-01 00:00:00.0000000,"# Articles Published (Positive)",30,
+"B1",2020-01-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-02-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-03-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-04-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-05-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-06-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-07-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-08-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-09-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-10-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-11-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2020-12-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"B1",2021-01-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-02-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-03-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-04-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-05-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-06-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-07-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-08-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-09-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-10-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-11-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2021-12-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2020-01-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-02-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-03-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-04-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-05-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-06-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-07-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-08-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-09-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-10-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-11-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2020-12-01 00:00:00.0000000,"# Articles Published (Negative)",32,
+"C1",2021-01-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-02-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-03-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-04-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-05-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-06-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-07-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-08-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-09-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-10-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-11-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"C1",2021-12-01 00:00:00.0000000,"# Articles Published (Negative)",7,
+"B1",2020-01-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-02-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-03-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-04-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-05-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-06-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-07-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-08-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-09-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-10-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-11-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2020-12-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"B1",2021-01-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-02-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-03-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-04-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-05-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-06-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-07-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-08-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-09-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-10-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-11-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2021-12-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2020-01-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-02-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-03-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-04-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-05-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-06-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-07-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-08-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-09-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-10-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-11-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2020-12-01 00:00:00.0000000,"# Vehicles Serviced This Month",126,144
+"C1",2021-01-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-02-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-03-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-04-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-05-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-06-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-07-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-08-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-09-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-10-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-11-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"C1",2021-12-01 00:00:00.0000000,"# Vehicles Serviced This Month",160,149
+"B1",2020-01-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-02-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-03-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-04-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-05-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-06-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-07-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-08-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-09-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-10-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-11-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2020-12-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"B1",2021-01-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-02-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-03-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-04-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-05-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-06-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-07-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-08-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-09-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-10-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-11-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2021-12-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2020-01-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-02-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-03-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-04-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-05-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-06-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-07-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-08-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-09-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-10-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-11-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2020-12-01 00:00:00.0000000,"# Vehicles Serviced This Year",686,780
+"C1",2021-01-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-02-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-03-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-04-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-05-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-06-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-07-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-08-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-09-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-10-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-11-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"C1",2021-12-01 00:00:00.0000000,"# Vehicles Serviced This Year",901,897
+"B1",2020-01-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-02-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-03-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-04-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-05-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-06-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-07-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-08-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-09-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-10-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-11-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2020-12-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"B1",2021-01-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-02-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-03-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-04-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-05-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-06-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-07-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-08-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-09-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-10-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-11-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2021-12-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2020-01-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-02-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-03-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-04-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-05-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-06-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-07-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-08-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-09-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-10-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-11-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2020-12-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.875,0.9
+"C1",2021-01-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-02-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-03-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-04-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-05-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-06-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-07-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-08-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-09-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-10-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-11-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"C1",2021-12-01 00:00:00.0000000,"% Vehicles Serviced This Month",0.925,0.9
+"B1",2020-01-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-02-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-03-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-04-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-05-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-06-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-07-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-08-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-09-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-10-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-11-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2020-12-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"B1",2021-01-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-02-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-03-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-04-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-05-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-06-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-07-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-08-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-09-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-10-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-11-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"B1",2021-12-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2020-01-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-02-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-03-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-04-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-05-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-06-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-07-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-08-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-09-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-10-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-11-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2020-12-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.879,0.9
+"C1",2021-01-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-02-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-03-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-04-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-05-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-06-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-07-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-08-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-09-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-10-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-11-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95
+"C1",2021-12-01 00:00:00.0000000,"% Vehicles Serviced This Year",0.99,0.95

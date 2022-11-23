@@ -1,0 +1,16 @@
+{
+    "name": "cosmosdbsustainabilityprod",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": "AccountEndpoint=https://#COSMOS_ACCOUNT#.documents.azure.com:443/;Database=sustainbusridershipdb;",
+            "encryptedCredential": "#COSMOS_ACCOUNT_KEY#"
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

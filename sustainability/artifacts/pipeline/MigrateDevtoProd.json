@@ -1,0 +1,156 @@
+{
+    "name": "MigrateDevtoProd",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "sqlReaderQuery": "SELECT * FROM [Finance-FactSales]",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink",
+                        "writeBehavior": "Insert",
+                        "sqlWriterUseTableLock": false,
+                        "tableOption": "autoCreate"
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Designation",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "Designation",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "PayerName",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "PayerName",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "CampaignName",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "CampaignName",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Region",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "Region",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "State",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "State",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "City",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "City",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Revenue",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "Revenue",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "RevenueTarget",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                },
+                                "sink": {
+                                    "name": "RevenueTarget",
+                                    "type": "String",
+                                    "physicalType": "nvarchar"
+                                }
+                            }
+                        ],
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SustainabilityDevSynapse",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DestinationDataset_cb6",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-08-23T23:09:57Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

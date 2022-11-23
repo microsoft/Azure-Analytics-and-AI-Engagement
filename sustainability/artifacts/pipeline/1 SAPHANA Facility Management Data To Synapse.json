@@ -1,0 +1,99 @@
+{
+    "name": "1 SAPHANA Facility Management Data To Synapse",
+    "properties": {
+        "activities": [
+            {
+                "name": "SAPHANA TO ADLS",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SapHanaSource",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SapHanaDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "sourcetransportation",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Facility_Ingest_data_from_SAPHANA_to_Azure_Synapse",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [
+                    {
+                        "activity": "SAPHANA TO ADLS",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataflow": {
+                        "referenceName": "1 Sustainability_Ingest_data_from_SAPHANA_to_Azure_Synapse",
+                        "type": "DataFlowReference"
+                    },
+                    "staging": {
+                        "linkedService": {
+                            "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+                            "type": "LinkedServiceReference"
+                        },
+                        "folderPath": "synsustainabilitysynprod"
+                    },
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-26T08:15:31Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

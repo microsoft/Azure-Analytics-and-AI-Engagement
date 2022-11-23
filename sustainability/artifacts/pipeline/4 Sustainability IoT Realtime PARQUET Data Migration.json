@@ -1,0 +1,55 @@
+{
+    "name": "4 Sustainability IoT Realtime PARQUET Data Migration",
+    "properties": {
+        "activities": [
+            {
+                "name": "IoT PARQUET Data Migration",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlPoolSource",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink",
+                        "writeBehavior": "Insert",
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "DestinationDataset_10y",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DestinationDataset_ghi",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-07T19:07:47Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

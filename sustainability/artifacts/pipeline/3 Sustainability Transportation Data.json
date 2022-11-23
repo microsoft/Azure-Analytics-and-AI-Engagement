@@ -1,0 +1,87 @@
+{
+    "name": "3 Sustainability Transportation Data",
+    "properties": {
+        "activities": [
+            {
+                "name": "Check if Oracle Transportation DB exist",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "OracleOperationalData",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Load data to Azure Synapse",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Oracle Transportation DB exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "SqlPoolSink",
+                        "writeBehavior": "Insert",
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "OracleOperationalData",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DestinationDataset_ghi",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-07T18:47:20Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

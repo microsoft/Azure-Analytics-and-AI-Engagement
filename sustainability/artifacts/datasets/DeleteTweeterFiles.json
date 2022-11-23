@@ -1,0 +1,19 @@
+{
+    "name": "DeleteTweeterFiles",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synsustainabilityprod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "0_0bba4c67e7c141e79212dfc86490107a_1.json",
+                "fileSystem": "twitter-data"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

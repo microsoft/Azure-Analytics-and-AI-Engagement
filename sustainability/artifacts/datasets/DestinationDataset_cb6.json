@@ -1,0 +1,50 @@
+{
+    "name": "DestinationDataset_cb6",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [
+            {
+                "name": "Designation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PayerName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CampaignName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Region",
+                "type": "nvarchar"
+            },
+            {
+                "name": "State",
+                "type": "nvarchar"
+            },
+            {
+                "name": "City",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Revenue",
+                "type": "nvarchar"
+            },
+            {
+                "name": "RevenueTarget",
+                "type": "nvarchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Facility-FactSales"
+        },
+        "sqlPool": {
+            "referenceName": "SustainabilityDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

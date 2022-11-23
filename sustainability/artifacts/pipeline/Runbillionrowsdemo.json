@@ -1,0 +1,34 @@
+{
+    "name": "Runbillionrowsdemo",
+    "properties": {
+        "activities": [
+            {
+                "name": "Runbillionrowsdemo",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlPoolSource",
+                        "sqlReaderQuery": "SELECT FORMAT(COUNT_BIG (1), '#,0') FROM dbo.Fact_Airqualitydetails with(nolock)\n\n\n\nDECLARE @TimeInterval AS INT\nSET @TimeInterval= 60\nSELECT Top 100\nDATEADD(mi,DATEPART(hh,[readingDateTimeLocal])*60+\n(DATEPART(mi,[readingDateTimeLocal])/@TimeInterval) * @TimeInterval, CONVERT(Datetime, CONVERT(varchar,[readingDateTimeLocal],102))) [Time],\n[latitude] as Latitude, [longitude] as Longitude,\n(SELECT top 1 aqi FROM [Fact_Airqualitydetails] WHERE [readingDateTimeLocal] = MIN(t.[readingDateTimeLocal])) [Open],\nMAX(aqi) [High],\nMIN(aqi) [Low],\n(SELECT top 1 aqi FROM [Fact_Airqualitydetails] WHERE [readingDateTimeLocal] = MAX(t.[readingDateTimeLocal])) [Close]\nFROM\n[Fact_Airqualitydetails] t\n\nwhere \nyear([readingDateTimeLocal])=2020 \nAND Month([readingDateTimeLocal])=12 \nand DAY([readingDateTimeLocal])=31\nand msrDeviceNbr in (2129,2087)\nGROUP BY\n[latitude], [longitude],\nDATEADD(mi,DATEPART(hh,[readingDateTimeLocal])*60+\n(DATEPART(mi,[readingDateTimeLocal])/@TimeInterval) * @TimeInterval, CONVERT(Datetime, CONVERT(varchar,[readingDateTimeLocal],102)))",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "DestinationDataset_cb6",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-09-01T00:26:00Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

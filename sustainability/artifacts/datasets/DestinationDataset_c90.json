@@ -1,0 +1,16 @@
+{
+    "name": "DestinationDataset_c90",
+    "properties": {
+        "annotations": [],
+        "type": "SqlPoolTable",
+        "schema": [],
+        "typeProperties": {
+            "table": "TweeterRawData"
+        },
+        "sqlPool": {
+            "referenceName": "SustainabilityDW",
+            "type": "SqlPoolReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
