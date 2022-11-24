@@ -652,7 +652,7 @@ To hide title and subtitle for all the **images** that you have pined above, Ple
 
 	![Table.](media/power-bi-table-1.png)
 
-40. Here is the list of Dashboards you have to create for Sustainability and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/Dashboard%20Mapping2.xlsx) file for pinning the tiles to the dashboard.
+40. Here is the list of Dashboards you have to create for Sustainability and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/sustainability/sustainability/Dashboard%20Mapping2.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-59.png)
 
