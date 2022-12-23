@@ -118,8 +118,7 @@ if($dataLakeAccountName.length -gt 24)
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 
-Write-Host "Creating $rgName resource group in $location ..."
-New-AzResourceGroup -Name $rgName -Location $location | Out-Null
+Write-Host "Deploying Storage Account Resources in $rgName resource group..."
 
 New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -TemplateFile "storage_account_template.json" `
