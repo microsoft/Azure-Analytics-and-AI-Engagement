@@ -47,7 +47,7 @@
       "location":{
          "type":"String",
          "metadata":{
-            "description":"PowerBi workspace Id."
+            "description":""
          }
       }
    },
