@@ -44,6 +44,12 @@
            "description": ""
          }
        },
+       "app_retail_qna_name": {
+         "type": "String",
+         "metadata": {
+           "description": ""
+         }
+       },
        "location": {
          "type": "String",
          "metadata": {

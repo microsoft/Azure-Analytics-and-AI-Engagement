@@ -70,6 +70,7 @@ $accounts_transqna_retail_name = "transqna-retail-$suffix";
 $forms_retail_name = "retail-form-recognizer-$suffix";
 $accounts_qnamaker_name= "qnamaker-$suffix";
 $search_retail_qna_name = "srch-retail-qna-$suffix";
+$app_retail_qna_name = "retaildemo-qna-$suffix";
 
 Write-Host "Creating Cognitive Services resource in $rgName resource group..."
 
@@ -83,6 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -accounts_qnamaker_name $accounts_qnamaker_name `
   -search_retail_qna_name $search_retail_qna_name `
   -search_srch_retail_name $search_srch_retail_name `
+  -app_retail_qna_name $app_retail_qna_name `
   -location $location `
   -Force
 
@@ -111,7 +113,7 @@ Write-Host "----Form Recognizer-----"
 				-replace '#APIM_KEY#',  $forms_cogs_keys.Key1`
 			} | Set-Content -Path artifacts/formrecognizer/create_model1.py
 			
-$modelUrl = python "./artifacts/formrecognizer/create_model1.py"
+$modelUrl = python "../artifacts/formrecognizer/create_model1.py"
 $modelId = $modelUrl.split("/")
 $modelId = $modelId[7]
 
@@ -129,7 +131,7 @@ $primaryAdminKey = $adminKeyPair.Primary
 # Create Index
 Write-Host  "------Index----"
 try {
-Get-ChildItem "./artifacts/search" -Filter fabrikam-fashion.json |
+Get-ChildItem "../artifacts/search" -Filter fabrikam-fashion.json |
         ForEach-Object {
             $indexDefinition = Get-Content $_.FullName -Raw
             $headers = @{
@@ -150,7 +152,7 @@ $headers = @{
 'Content-Type' = 'application/json' 
 'Accept' = 'application/json' }
 $url = "https://$search_srch_retail_name.search.windows.net/indexes/fabrikam-fashion/docs/index?api-version=2021-04-30-Preview"
-$Data= Get-Content -Raw -Path ./artifacts/search/data.json
+$Data= Get-Content -Raw -Path ../artifacts/search/data.json
 $body = $Data.Replace("#STORAGE_ACCOUNT_NAME#",$dataLakeAccountName)
 Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body
 
