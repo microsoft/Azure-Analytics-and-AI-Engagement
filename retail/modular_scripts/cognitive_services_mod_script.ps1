@@ -101,6 +101,45 @@ $forms_cogs_keys = Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName 
 
 #########################
 
+### Replacing Incident Search Files
+# get search query key
+Install-Module -Name Az.Search -RequiredVersion 0.7.4 -f
+$incidentQueryKey = Get-AzSearchQueryKey -ResourceGroupName $rgName -ServiceName $incident_search_retail_name
+$incidentQueryKey = $incidentQueryKey.Key
+
+(Get-Content -path artifacts/storageassets/incident-search/AzSearch_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/AzSearch.html
+
+(Get-Content -path artifacts/storageassets/incident-search/gistfile1_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/gistfile1.html
+
+(Get-Content -path artifacts/storageassets/incident-search/search_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+    -replace '#INCIDENT_QUERY_KEY#', $incidentQueryKey`
+    -replace '#INCIDENT_SEARCH_SERVICE#', $incident_search_retail_name`
+} | Set-Content -Path artifacts/storageassets/incident-search/search.html
+
+(Get-Content -path artifacts/storageassets/incident-search/detail_withoutreplacement.html -Raw) | Foreach-Object { $_ `
+    -replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
+} | Set-Content -Path artifacts/storageassets/incident-search/detail.html
+
+#incident-search assests copy
+RefreshTokens
+
+$storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
+$dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
+$container = "incident-search"
+
+$destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
+& $azCopyCommand copy "../artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
+
+#########################
+
 Add-Content log.txt "----Form Recognizer-----"
 Write-Host "----Form Recognizer-----"
 #form Recognizer
