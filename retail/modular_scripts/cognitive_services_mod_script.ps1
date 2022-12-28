@@ -66,11 +66,12 @@ $incident_search_retail_name = "incident-srch-retail-$suffix";
 $cog_retail_name = "cogretail-$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $cog_speech_name = "retailspeechapp-$suffix"
-$accounts_transqna_retail_name = "transqna-retail-$suffix";
-$forms_retail_name = "retail-form-recognizer-$suffix";
-$accounts_qnamaker_name= "qnamaker-$suffix";
-$search_retail_qna_name = "srch-retail-qna-$suffix";
-$app_retail_qna_name = "retaildemo-qna-$suffix";
+$accounts_transqna_retail_name = "transqna-retail-$suffix"
+$forms_retail_name = "retail-form-recognizer-$suffix"
+$accounts_qnamaker_name= "qnamaker-$suffix"
+$search_retail_qna_name = "srch-retail-qna-$suffix"
+$app_retail_qna_name = "qnamaker-app-$suffix"
+$asp_retail_qna_name = "asp-qnamaker-$suffix"
 
 Write-Host "Creating Cognitive Services resource in $rgName resource group..."
 
@@ -85,6 +86,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -search_retail_qna_name $search_retail_qna_name `
   -search_srch_retail_name $search_srch_retail_name `
   -app_retail_qna_name $app_retail_qna_name `
+  -serverfarms_app_retail_qna_name $asp_retail_qna_name `
   -location $location `
   -Force
 

@@ -47,8 +47,6 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 	}
 }
 
-[string]$random =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
-
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
 $complexPassword = 0
@@ -102,10 +100,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -workspace_name_synapseretail $synapseWorkspaceName `
   -storage_account_name $dataLakeAccountName `
   -sql_administrator_login_password $SqlPassword `
-  -key_vault_name $keyVaultName
+  -key_vault_name $keyVaultName `
   -location $location `
   -Force
 
+RefreshTokens
+Write-Host "-----Enable Transparent Data Encryption----------"
+$result = New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile "../artifacts/templates/transparentDataEncryption.json" -workspace_name_synapse $synapseWorkspaceName -sql_compute_name $sqlPoolName -ErrorAction SilentlyContinue
+$result = az synapse spark pool update --name $sparkPoolName --workspace-name $synapseWorkspaceName --resource-group $rgName --library-requirements "../artifacts/templates/environment.yml"
 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
