@@ -74,5 +74,3 @@ $logic_callback_details = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName $r
 $logic_callback_url = $logic_callback_details.Value
 
 $config = az webapp config appsettings set -g $rgName -n $sites_app_multiling_retail_name --settings LogiAppURL=$logic_callback_url
-
-
