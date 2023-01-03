@@ -387,7 +387,10 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-26.png)
       
-### Task 5: QnA maker and LogicApp Configuration
+### Task 5: (Under Maintenance. Move to Task 6)QnA maker and LogicApp Configuration
+
+	> **Note:**
+	> - QnAmaker service is being upgraded to Question Answering. Please Move to the next task.
 
 1. **Open** the Azure Portal.
 
