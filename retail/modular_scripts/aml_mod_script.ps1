@@ -38,9 +38,9 @@ $rgName = read-host "Enter the resource Group Name";
 $rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$subscriptionId = (Get-AzContext).Subscription.Id
 $concatString = "$init$random"
 $suffix = "$random-$init"
+$subscriptionId = (Get-AzContext).Subscription.Id
 $dataLakeAccountName = "stretail$concatString"
 if($dataLakeAccountName.length -gt 24)
 {
@@ -64,17 +64,6 @@ $forms_cogs_endpoint = "https://"+$rglocation+".api.cognitive.microsoft.com/"
 $accounts_transqna_retail_name = "transqna-retail-$suffix";
 $cog_translator_key =  Get-AzCognitiveServicesAccountKey -ResourceGroupName $rgName -name $accounts_transqna_retail_name
 $translator_key=$cog_translator_key.Key1
-
-Write-Host "----Form Recognizer-----"
-#form Recognizer
-#Replace values in create_model.py
-(Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
-                -replace '#LOCATION#', $rglocation`
-				-replace '#STORAGE_ACCOUNT_NAME#', $storageAccountName`
-				-replace '#CONTAINER_NAME#', "incidentpdftraining"`
-				-replace '#SAS_TOKEN#', $sasToken`
-				-replace '#APIM_KEY#',  $forms_cogs_key.Key1`
-			} | Set-Content -Path ../artifacts/formrecognizer/create_model1.py
 
 $modelUrl = python "../artifacts/formrecognizer/create_model1.py"
 $modelId = $modelUrl.split("/")

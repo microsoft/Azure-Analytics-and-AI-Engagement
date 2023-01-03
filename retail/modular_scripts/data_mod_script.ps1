@@ -49,28 +49,14 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 #Getting User Inputs
 $rgName = read-host "Enter the resource Group Name";
-$location = (Get-AzResourceGroup -Name $rgName).Location
+$rglocation = (Get-AzResourceGroup -Name $rgName).Location
 $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
 $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
-$suffix = "$random-$init"
-$sites_app_multiling_retail_name = "multiling-retail-app-$suffix";
-$bot_qnamaker_retail_name= "botmultilingual-$suffix";
-$asp_multiling_retail_name = "multiling-retail-asp-$suffix";
+$synapseWorkspaceName = "synapseretail$init$random"
+$kustoPoolName = "retailkustopool$init"
+$kustoDatabaseName = "RetailDB"
 
-Write-Host "----Bot and multilingual App----"
+Write-Host "----Data Explorer Creation-----"
+New-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName -Location $rglocation -SkuName "Compute optimized" -SkuSize Small
 
-$app = az ad app create --display-name $sites_app_multiling_retail_name | ConvertFrom-Json
-$appId = $app.appId
-
-$appCredential = az ad app credential reset --id $appId | ConvertFrom-Json
-$appPassword = $appCredential.password
-
-az deployment group create --resource-group $rgName --template-file "../artifacts/qnamaker/bot-multiling-template.json" --parameters appId=$appId appSecret=$appPassword botId=$bot_qnamaker_retail_name newWebAppName=$sites_app_multiling_retail_name newAppServicePlanName=$asp_multiling_retail_name appServicePlanLocation=$rglocation
-
-az webapp deployment source config-zip --resource-group $rgName --name $sites_app_multiling_retail_name --src "../artifacts/qnamaker/chatbot.zip"
-az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName 
-
-$bot_detail = az bot webchat show --name $bot_qnamaker_retail_name --resource-group $rgName --with-secrets true | ConvertFrom-Json
-$bot_key = $bot_detail.properties.properties.sites[0].key
-
-$bot_key
+New-AzSynapseKustoPoolDatabase -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -KustoPoolName $kustoPoolName -DatabaseName $kustoDatabaseName -Kind "ReadWrite" -Location $rglocation

@@ -1,0 +1,42 @@
+{
+   "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "accounts_purview_retail_name":{
+         "type":"String",
+         "metadata":{
+            "description":""
+         }
+      },
+      "location":{
+         "type":"String",
+         "metadata":{
+            "description":""
+         }
+      }
+   },
+   "variables":{},
+   "resources":[
+      {
+         "type":"Microsoft.Purview/accounts",
+         "apiVersion":"2021-07-01",
+         "name":"[parameters('accounts_purview_retail_name')]",
+         "location":"[parameters('location')]",
+         "sku":{
+            "name":"Standard",
+            "capacity":1
+         },
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "cloudConnectors":{},
+            "publicNetworkAccess":"Enabled",
+            "managedResourceGroupName":"[concat('managed-rg-', parameters('accounts_purview_retail_name'))]"
+         }
+      }
+   ],
+   "outputs":{
+      
+   }
+}
