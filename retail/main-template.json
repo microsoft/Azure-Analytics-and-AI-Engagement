@@ -3039,26 +3039,6 @@
          }
       },
       {
-         "type":"Microsoft.CognitiveServices/accounts",
-         "apiVersion":"2021-04-30",
-         "name":"[variables('accounts_qnamaker_name')]",
-         "location":"westus",
-         "dependsOn":[
-            "[resourceId('Microsoft.Web/Sites', variables('app_retail_qna_name'))]",
-            "[resourceId('Microsoft.Search/searchServices', variables('search_retail_qna_name'))]"
-         ],
-         "sku":{
-            "name":"S0"
-         },
-         "kind":"QnAMaker",
-         "properties":{
-            "apiProperties":{
-               "qnaRuntimeEndpoint":"[concat('https://',reference(resourceId('Microsoft.Web/sites', variables('app_retail_qna_name'))).hostNames[0])]"
-            },
-            "customSubDomainName":"[variables('accounts_qnamaker_name')]"
-         }
-      },
-      {
          "type":"Microsoft.Search/searchServices",
          "apiVersion":"2015-08-19",
          "name":"[variables('search_retail_qna_name')]",
