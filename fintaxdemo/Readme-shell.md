@@ -693,7 +693,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 > **Note:** You may be prompted to select your subscription if you have multiple subscriptions.
 
-### Task 6: QnAmaker and LogicApp Configuration
+### Task 6: (Under Maintenance. Move to Task 7)QnAmaker and LogicApp Configuration
 
 1. **Open** the Azure Portal 
 
