@@ -56,6 +56,18 @@
            "description": ""
          }
        },
+       "accounts_RetailMedia_name": {
+         "type": "String",
+         "metadata": {
+           "description": ""
+         }
+       },
+       "mediaservices_name": {
+         "type": "String",
+         "metadata": {
+           "description": ""
+         }
+       },
        "resource_group_name": {
          "type": "String",
          "metadata": {
@@ -153,6 +165,23 @@
          }
       },
       {
+         "type":"Microsoft.VideoIndexer/accounts",
+         "apiVersion":"2021-11-10-preview",
+         "name":"[parameters('accounts_RetailMedia_name')]",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Media/mediaservices', parameters('mediaservices_name'))]"
+         ],
+         "identity":{
+            "type":"SystemAssigned"
+         },
+         "properties":{
+            "mediaServices":{
+               "resourceId":"[resourceId('Microsoft.Media/mediaservices', parameters('mediaservices_name'))]"
+            }
+         }
+      },
+      {
          "type":"Microsoft.CognitiveServices/accounts",
          "apiVersion":"2021-04-30",
          "name":"[parameters('accounts_qnamaker_name')]",
@@ -218,6 +247,64 @@
                
             ],
             "semanticSearch":"free"
+         }
+      },
+      {
+         "type":"Microsoft.Web/sites",
+         "apiVersion":"2016-08-01",
+         "name":"[parameters('app_retail_qna_name')]",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_app_retail_qna_name'))]"
+         ],
+         "properties":{
+            "enabled":true,
+            "siteConfig":{
+               "cors":{
+                  "allowedOrigins":[
+                     "*"
+                  ]
+               }
+            },
+            "name":"[parameters('app_retail_qna_name')]",
+            "serverFarmId":"[resourceId(parameters('resource_group_name'),'Microsoft.Web/serverfarms', parameters('serverfarms_app_retail_qna_name'))]",
+            "hostingEnvironment":""
+         },
+         "resources":[
+            {
+               "type":"config",
+               "apiVersion":"2015-08-01",
+               "name":"appsettings",
+               "dependsOn":[
+                  "[resourceId('Microsoft.Web/Sites', parameters('app_retail_qna_name'))]",
+                  "[resourceId('Microsoft.Search/searchServices/', parameters('search_retail_qna_name'))]"
+               ],
+               "properties":{
+                  "AzureSearchName":"[parameters('search_retail_qna_name')]",
+                  "AzureSearchAdminKey":"[listAdminKeys(resourceId('Microsoft.Search/searchServices/', parameters('search_retail_qna_name')), '2015-08-19').primaryKey]",
+                  "PrimaryEndpointKey":"[concat(parameters('app_retail_qna_name'), '-PrimaryEndpointKey')]",
+                  "SecondaryEndpointKey":"[concat(parameters('app_retail_qna_name'), '-SecondaryEndpointKey')]",
+                  "DefaultAnswer":"No good match found in KB.",
+                  "QNAMAKER_EXTENSION_VERSION":"latest"
+               }
+            }
+         ]
+      },
+      {
+         "type":"Microsoft.Web/serverfarms",
+         "apiVersion":"2016-09-01",
+         "name":"[parameters('serverfarms_app_retail_qna_name')]",
+         "location":"[parameters('location')]",
+         "sku":{
+            "Tier":"Standard",
+            "Name":"S1"
+         },
+         "properties":{
+            "name":"[parameters('serverfarms_app_retail_qna_name')]",
+            "workerSizeId":"0",
+            "reserved":false,
+            "numberOfWorkers":"1",
+            "hostingEnvironment":""
          }
       },
       {

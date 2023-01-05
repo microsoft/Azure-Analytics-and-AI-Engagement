@@ -72,6 +72,8 @@ $accounts_qnamaker_name= "qnamaker-$suffix"
 $search_retail_qna_name = "srch-retail-qna-$suffix"
 $app_retail_qna_name = "qnamaker-app-$suffix"
 $asp_retail_qna_name = "asp-qnamaker-$suffix"
+$accounts_RetailMedia_name = "retailmedia-$suffix"
+$mediaservices_name = "mediasvc$random"
 
 Write-Host "Creating Cognitive Services resource in $rgName resource group..."
 
@@ -87,6 +89,8 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -search_srch_retail_name $search_srch_retail_name `
   -app_retail_qna_name $app_retail_qna_name `
   -serverfarms_app_retail_qna_name $asp_retail_qna_name `
+  -accounts_RetailMedia_name $accounts_RetailMedia_name `
+  -mediaservices_name $mediaservices_name `
   -location $location `
   -Force
 
