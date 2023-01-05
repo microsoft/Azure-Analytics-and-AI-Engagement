@@ -305,8 +305,8 @@ Set-Executionpolicy unrestricted
 
 ![Select the Workspace 'Engagement Accelerators – Manufacturing'.](media/select-workspace.png)
 
-Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the reports tab of Power BI, real-time datasets in dataset tab.
-The image below shows the 'Reports' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
+Assuming [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources) got completed successfully and the template has been deployed, you will be able to see a set of reports in the "Content" tab of Power BI.
+The image below shows the 'Content' tab in Power BI. We can then create a Power BI dashboard by pinning visuals from these reports.
 
 > **Note:** A Dashboard is a collection of tiles/visualization which are pinned from different reports to a single page.
 
@@ -314,13 +314,13 @@ The image below shows the 'Reports' tab in Power BI. We can then create a Power 
 
 **To give permissions for the Power BI reports to access the datasources:**
 
-4. **Click** the 'Settings' icon on top right-side corner.
+4. **Click** the 'Datasets + dataflows' tab.
 
-5. **Click** 'Settings' from the expanded list.
+5. **Click** on the ellipse icon infront of any report in the report list.
 
 ![Authenticate Power BI Reports.](media/Authenticate-PowerBI.png)
 
-6. **Click** 'Datasets' tab.
+6. **Click** on Settings.
 
 ![Go to Datasets.](media/Goto-DataSets.png)
 
