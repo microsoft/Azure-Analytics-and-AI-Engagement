@@ -87,7 +87,7 @@ Set-Content -Path $filepath -Value $item
 #AML Workspace
 #create aml workspace
 az extension add -n azure-cli-ml
-# az ml workspace create -w $amlworkspacename -g $rgName
+# az ml workspace create -n $amlworkspacename -g $rgName
 
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName -e aml
