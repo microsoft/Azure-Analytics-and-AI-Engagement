@@ -920,7 +920,7 @@ RefreshTokens
 #create aml workspace
 az extension add -n azure-cli-ml
 
-az ml workspace create -w $amlworkspacename -g $rgName
+az ml workspace create -n $amlworkspacename -g $rgName
 
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName -e aml
@@ -1174,11 +1174,11 @@ $ht.add("#WORKSPACE_ID#", $wsId)
 $ht.add("#APP_ID#", $appId)
 $ht.add("#APP_SECRET#", $sqlPassword)
 $ht.add("#TENANT_ID#", $tenantId)
-$ht.add("#MEDIA_KEYWORD_REPORT#", $($reportList | where {$_.Name -eq "Audience Analytics"}).ReportId)
-$ht.add("#MEDIA_BRAND_REPORT#", $($reportList | where {$_.Name -eq "Finance Report"}).ReportId)
-$ht.add("#TWITTER_REPORT#", $($reportList | where {$_.Name -eq "Realtime Twitter Analytics"}).ReportId)
-$ht.add("#REVENUE_REPORT#", $($reportList | where {$_.Name -eq "Video Revenue Analytics"}).ReportId)
-$ht.add("#REALTIME_ANALYTICS_REPORT#", $($reportList | where {$_.Name -eq "Realtime Operational Analytics Static"}).ReportId)
+$ht.add("#MEDIA_KEYWORD_REPORT#", $($reportList | where {$_.name -eq "Audience Analytics"}).id)
+$ht.add("#MEDIA_BRAND_REPORT#", $($reportList | where {$_.name -eq "Finance Report"}).id)
+$ht.add("#TWITTER_REPORT#", $($reportList | where {$_.name -eq "Realtime Twitter Analytics"}).id)
+$ht.add("#REVENUE_REPORT#", $($reportList | where {$_.name -eq "Video Revenue Analytics"}).id)
+$ht.add("#REALTIME_ANALYTICS_REPORT#", $($reportList | where {$_.name -eq "Realtime Operational Analytics Static"}).id)
 
 
 $filePath = "./demomedia_web_app/wwwroot/config.js";
