@@ -295,7 +295,7 @@ git clone -b retail2.0 --depth 1 --single-branch https://github.com/microsoft/Az
 
 > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
-5. **Execute** the SynapseSetup.ps1 script by executing the following command:
+5. **Execute** the retailSetup.ps1 script by executing the following command:
 
 ```
 cd ./retail/retail

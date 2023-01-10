@@ -1515,8 +1515,8 @@ az webapp start --name $sites_app_multiling_retail_name --resource-group $rgName
 #################
 
 #function apps
-Add-Content log.txt "-----function apps zip deploy-------"
-Write-Host  "--------------function apps zip deploy---------------"
+Add-Content log.txt "-----Unzipping function and webapps-------"
+Write-Host  "--------------Unzipping function and webapps---------------"
 RefreshTokens
 
 $zips = @("retaildemo-app", "app-iotfoottraffic-sensor", "app-adx-thermostat-realtime", "app_media_search", "func-product-search", "app-product-search", "model_builder", "recommender")
