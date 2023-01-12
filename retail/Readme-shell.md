@@ -42,7 +42,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: QnA maker and LogicApp Configuration](#task-5-qna-maker-and-logicapp-configuration)
+  - [Task 5: (Under Maintenance. Move to Task 6)QnA maker and LogicApp Configuration](#task-5-qna-maker-and-logicapp-configuration)
   - [Task 6: Lake Database creation and Pipeline execution](#task-6-lake-database-creation-and-pipeline-execution)
   - [Task 7: Data Explorer Setup](#task-7-data-explorer-setup)
   - [Task 8: Azure Purview Setup](#task-8-azure-purview-setup)
@@ -383,13 +383,13 @@ cd ./retail/retail
 
 	![Enter Resource Group name.](media/cloud-shell-25.png)
 	
-25. Verify the compute and kernel show green and are ready, if not wait for them to turn green, then **click** on the ">>" button at top left in the workspace as shown in the image, let the notebook run successfully and then **open** the "14 Personality Based Video Recommender.ipynb" notebook and **run** it as well.
+25. Verify the compute and kernel show green and are ready, if not wait for them to turn green, then **click** on the "..." button at top left in the workspace as shown in the image and **click** on Restart kernel and run all cells option. Let the notebook run successfully and then **open** the "14 Personality Based Video Recommender.ipynb" notebook and **run** it as well.
 
 	![Enter Resource Group name.](media/cloud-shell-26.png)
       
 ### Task 5: (Under Maintenance. Move to Task 6)QnA maker and LogicApp Configuration
 
-	> **Note:**
+> **Note:**
 	> - QnAmaker service is being upgraded to Question Answering. Please Move to the next task.
 
 1. **Open** the Azure Portal.
@@ -502,19 +502,19 @@ cd ./retail/retail
 	
 	![Adx.](media/adx-3.png)
 	
-4. In the Data Explorer Studio under Data section **click** on Ingest new data.
+4. In the Data Explorer Studio under Data section **click** on Ingest data.
 
 	![Adx.](media/adx-4.png)
 	
-5. In the Ingest new data, under destination tab, select appropriate values in the respective fields, in Cluster **select** the kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. Occupancy and then **click** on Next.
+5. In the Ingest data, under destination tab, select appropriate values in the respective fields, in Cluster **select** the kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. Occupancy and then **click** on Next.
 
 	![Adx.](media/adx-5.png)
 	
-6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "adx-thermostat-occupancy-...", in Event Hub **enter** "occupancy", in Data connection name **select** "RetailDB-occupancy", in Consumer group **select** $Default, in compression **select** None and then **click** on Next.
+6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "adx-thermostat-occupancy-...", in Event Hub **enter** "occupancy", in Data connection name **select** "RetailDB-occupancy", in Consumer group **select** $Default. **Expand** More Parameters section and in compression **select** None and then **click** on Next.
 
 	![Adx.](media/adx-6.png)
 	
-7. Wait for some time for data preview to load, **select** MULTIJSON in the "Data format" section and then **click** on Next: Start Ingestion.
+7. Wait for some time for data preview to load, **select** JSON in the "Data format" section and then **click** on Next: Start Ingestion.
 
 	![Adx.](media/adx-7.png)
 	
@@ -524,11 +524,11 @@ cd ./retail/retail
 	
 9. Repeat the above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "Thermostat", in step 6 **enter** Event Hub as "thermostat" and Data connection name as "RetailDB-thermostat".
 
-10. For non-historical data, open Data Explorer Studio and under data section **click** on Ingest new data.
+10. For non-historical data, open Data Explorer Studio and under data section **click** on Ingest data.
 
 	![Adx.](media/adx-4.png)
 	
-11. In the Ingest new data, under destination tab, select appropriate values in the respective fields, in Cluster **select** your kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. OccupancyHistoricalData and then **click** on Next.
+11. In the Ingest data, under destination tab, select appropriate values in the respective fields, in Cluster **select** your kusto pool name, in the Database select "RetailDB" database, in the Table field **enter** the table name i.e. OccupancyHistoricalData and then **click** on Next.
 
 	![Adx.](media/adx-9.png)
 	
@@ -562,123 +562,103 @@ cd ./retail/retail
 
 	![Select Purview Resource.](media/purview-2.png)
 	
-3. **Click** on Manage Glossary in the Azure Purview Studio, the Glossary Terms window will open.
-
-	![Select Purview Resource.](media/purview-3.png)
-	
-4. **Click** on Import Terms in the Glossary Terms window.
-
-	![Select Purview Resource.](media/purview-4.png)
-
-5. A pop-up appears, **click** on Continue.
-
-	![Select Purview Resource.](media/purview-5.png)
-	
-6. **Click** on the hyperlink, [Glossary Terms](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/artifacts/templates/glossary-terms.csv) , copy the raw contents of the file into an excel sheet, save it with the name 'glossary-terms.csv', then go back to the purview studio, **click** browse and **select** appropriate file and **click** open.
-
-	![Select Purview Resource.](media/purview-6.png)
-	
-7. **Click** on OK.
-	
-	![Select Purview Resource.](media/purview-7.png)
-	
-8. In the Azure Purview Studio **click** on Data map **goto** source and **select** Map view. Now expand the parent collection by **clicking** on the "+" sign.
+3. In the Azure Purview Studio **click** on Data map **goto** source and **select** Map view. Now expand the parent collection by **clicking** on the "+" sign.
 
 	![Select Purview Resource.](media/purview-8.png)
 
-9. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage, AzureSynapse, CosmosDB-Retail and PowerBI-Retail.
+4. All the sub collections will be visible, **click** on the "+" sign under AzureDataLakeStorage, AzureSynapse, CosmosDB-Retail and PowerBI-Retail.
 
 	![Select Purview Resource.](media/purview-9.png)
 
-10. Under the datasource AzureDataLakeStorage **click** on View Details.
+5. Under the datasource AzureDataLakeStorage **click** on View Details.
 
 	![Select Purview Resource.](media/purview-10.png)
 
-11. **Click** on New Scan, a window appears, here verify the default values in the different fields, **select** your collection name and finally **click** on Continue.
+6. **Click** on New Scan, a window appears, here verify the default values in the different fields, **select** your collection name and finally **click** on Continue.
 
 	![Select Purview Resource.](media/purview-11.png)
 	
-12. In the new window verify that the check box is **checked** for all the required containers, and then **click** on continue.
+7. In the new window verify that the check box is **checked** for all the required containers, and then **click** on continue.
 
 	![Select Purview Resource.](media/purview-12.png)
 	
-13. Again **click** on continue.
+8. Again **click** on continue.
 
 	![Select Purview Resource.](media/purview-13.png)
 	
-14. In the new window **check** the Once radio button and **click** on continue.
+9. In the new window **check** the Once radio button and **click** on continue.
 
 	![Select Purview Resource.](media/purview-14.png)
 	
-15. In the new window **click** on Save and run.
+10. In the new window **click** on Save and run.
 
 	![Select Purview Resource.](media/purview-30.png)
 	
-16. **Repeat** step #10 for AzureSynapseAnalytics.
+11. **Repeat** step #10 for AzureSynapseAnalytics.
 
-17. **Open** synaspse studio, **select** manage tab, under External Connections **select** Azure Purview, **click** on Connect to a Purview account, under Purview account name **select** the current Purview account, and then **click** on Apply.
+12. **Open** synaspse studio, **select** manage tab, under External Connections **select** Azure Purview, **click** on Connect to a Purview account, under Purview account name **select** the current Purview account, and then **click** on Apply.
 
 	![Select Purview Resource.](media/purview-15.png)
 	
-18. Now, under Security **select** Access Control, **click** on Add, under Role **select** Synapse Administrator, under Select user **select** current Purview account and then **click** on Apply.
+13. Now, under Security **select** Access Control, **click** on Add, under Role **select** Synapse Administrator, under Select user **select** current Purview account and then **click** on Apply.
 
 	![Select Purview Resource.](media/purview-16.png)
 	
-19. Go back to Purview studio, **click** on New Scan, a window appears, here under SQL Database **select** the name of SQL database and then **click** on Continue.
+14. Go back to Purview studio, **click** on New Scan, a window appears, here under SQL Database **select** the name of SQL database and then **click** on Continue.
 
 	![Select Purview Resource.](media/purview-17.png)
 
-20. In the new window **click** on continue.
+15. In the new window **click** on continue.
 
 	![Select Purview Resource.](media/purview-18.png)
 	
-21. In the next window, **click** on Save and Run.
+16. In the next window, **click** on Save and Run.
 
 	![Select Purview Resource.](media/purview-19.png)
 
-22. **Repeat** step #10 for CosmosDB.
+17. **Repeat** step #10 for CosmosDB.
 
-23. **Click** on New Scan, in the pop-up window **expand** the Credential drop-down and **click** on New.
+18. **Click** on New Scan, in the pop-up window **expand** the Credential drop-down and **click** on New.
 
 	![Select Purview Resource.](media/purview-20.png)
 	
-24. Under Name **enter** any desired name then **expand** Key Vault connection and **click** on New.
+19. Under Name **enter** any desired name then **expand** Key Vault connection and **click** on New.
 
 	![Select Purview Resource.](media/purview-21.png)
 	
-25. In the new window **enter** any desired name, then **expand** Key Vault name and **select** the current key vault name and then **click** on create.
+20. In the new window **enter** any desired name, then **expand** Key Vault name and **select** the current key vault name and then **click** on create.
 
 	![Select Purview Resource.](media/purview-22.png)
 	
-26. A pop-up window appears, here **click** on Confirm.
+21. A pop-up window appears, here **click** on Confirm.
 
 	![Select Purview Resource.](media/purview-23.png)
 	
-27. In the new window **enter** the desired name, **expand** Key Vault connection and **select** the name entered in step #22, **enter** the secret name as Cosmos-cred and then **click** on Create.
+22. In the new window **enter** the desired name, **expand** Key Vault connection and **select** the name entered in step #22, **enter** the secret name as Cosmos-cred and then **click** on Create.
 
 	![Select Purview Resource.](media/purview-24.png)
 	
-28. In the new window under Credential from the drop-down **select** the appropriate credential, under the Select a collection **select** the Purview account name and then **click** on Continue.
+23. In the new window under Credential from the drop-down **select** the appropriate credential, under the Select a collection **select** the Purview account name and then **click** on Continue.
 	
 	![Select Purview Resource.](media/purview-25.png)
 	
-29. In the new window **click** on Continue.
+24. In the new window **click** on Continue.
 
 	![Select Purview Resource.](media/purview-26.png)
 
-30. In the new window **click** on Continue.
+25. In the new window **click** on Continue.
 
 	![Select Purview Resource.](media/purview-27.png)
 	
-31. In the new window, **check** the Once radio button and **click** on Continue.
+26. In the new window, **check** the Once radio button and **click** on Continue.
 	
 	![Select Purview Resource.](media/purview-28.png)
 	
-32. In the next window **click** on Save and run.
+27. In the next window **click** on Save and run.
 
 	![Select Purview Resource.](media/purview-29.png)
 	
-33. **Repeat** the step #10 for PowerBI.
+28. **Repeat** the step #10 for PowerBI.
 
 > **Note:** Add the Purview's MSI name as a contributor in Power BI workspace. You can also create a security group with the said MSI in it and assign admin permissions to it. You would also be required to enable "enhance admin API responses with detailed metadata" option in your Power BI admin settings.
 	
@@ -1423,4 +1403,3 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
-
