@@ -1739,12 +1739,14 @@ $thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
    -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
 } | Set-Content -Path app-adx-thermostat-realtime/dev.env
 
-$occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$occupancy_endpoint+'\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"'+$occupancy_data_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
- 	
-$thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$thermostat_endpoint+'\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"'+$thermostat_telemetry_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
- 
-$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
-$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
+(Get-Content -path adx-config-appsetting.json -Raw) | Foreach-Object { $_ `
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
+   -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+   -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+} | Set-Content -Path adx-config-appsetting-with-replacement.json
+
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
 
 Write-Information "Deploying ADX Thermostat Realtime App"
 cd app-adx-thermostat-realtime

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "occupancyDataConfig",
+    "value": "{\"main_data_frequency_seconds\":3,\"urlStringEventhub\":\"#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"#OCCUPANCYDATA_URL#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":30}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":3,\"maxValue\":13}}]}",
+    "slotSetting": false
+  },
+  {
+    "name": "thermostatTelemetryConfig",
+    "value": "{\"main_data_frequency_seconds\":3,\"urlStringEventhub\":\"#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"#THERMOSTATTELEMETRY_URL#\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}",
+    "slotSetting": false
+  }
+]
