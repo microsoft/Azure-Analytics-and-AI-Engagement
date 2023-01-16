@@ -32,7 +32,7 @@
            "description":""
         }
      },
-     "cosmos_database_container_name_Transcript":{
+     "storage_account_name":{
         "type":"String",
         "metadata":{
            "description":""
@@ -64,9 +64,6 @@
          "apiVersion": "2016-06-01",
          "location": "[parameters('location')]",
          "kind": "V1",
-         "dependsOn": [
-         "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
-         ],
          "properties": {
          "displayName": "azureblob",
          "parameterValues": {
@@ -282,9 +279,6 @@
          "type": "Microsoft.Logic/workflows",
          "apiVersion": "2017-07-01",
          "location": "[parameters('location')]",
-         "dependsOn": [
-         "[resourceId('Microsoft.Web/connections', variables('connections_cosmosdb_name'))]"
-         ],
          "properties": {
          "state": "Enabled",
          "definition": {
@@ -292,9 +286,7 @@
             "contentVersion": "1.0.0.0",
             "parameters": {
                "$connections": {
-               "defaultValue": {
-
-               },
+               "defaultValue": {},
                "type": "Object"
                }
             },
@@ -321,7 +313,7 @@
                      "body": "@body('Get_Video_Insights')",
                      "host": {
                         "connection": {
-                           "name": "[concat('@parameters(''$connections'')','[''',variables('connections_cosmosdb_name'),'''][''connectionId'']')]"
+                           "name": "[concat('@parameters(''$connections'')','[''',parameters('connections_cosmosdb_name'),'''][''connectionId'']')]"
                         }
                      },
                      "method": "post",
@@ -360,9 +352,7 @@
                      }
                   }
                },
-               "runAfter": {
-
-               },
+               "runAfter": {},
                "expression": {
                   "and": [
                      {
@@ -376,17 +366,15 @@
                "type": "If"
                }
             },
-            "outputs": {
-
-            }
+            "outputs": {}
          },
          "parameters": {
             "$connections": {
                "value": {
-               "[variables('connections_cosmosdb_name')]": {
-                  "connectionId": "[resourceId('Microsoft.Web/connections', variables('connections_cosmosdb_name'))]",
-                  "connectionName": "[variables('connections_cosmosdb_name')]",
-                  "id": "[concat('/subscriptions/',variables('subscriptionId'),'/providers/Microsoft.Web/locations/',variables('location'),'/managedApis/documentdb')]"
+                  "[parameters('connections_cosmosdb_name')]": {
+                  "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_cosmosdb_name'))]",
+                  "connectionName": "[parameters('connections_cosmosdb_name')]",
+                  "id": "[concat('/subscriptions/',variables('subscriptionId'),'/providers/Microsoft.Web/locations/',parameters('location'),'/managedApis/documentdb')]"
                }
                }
             }
@@ -394,7 +382,5 @@
          }
       }
    ],
-   "outputs":{
-      
-   }
+   "outputs":{}
 }
