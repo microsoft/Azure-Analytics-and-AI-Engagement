@@ -585,12 +585,12 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 ![Avg of ActiveSensors.](media/avg_active_sensors.png)
 
-21. **Change** the 'Display units' to 'None'.
+21. Navigate to the Visual tab of the Format Visual section and **Change** the 'Display units' to 'None' by expanding Callout value section.
 
 ![Change display units to none.](media/display-units-none-image.png)
 
-22. With Card visual selected, **select** the format tab.
-23. **Turn on** the 'Title'.
+22. With Card visual selected, **select** the format visual tab and navigate to General section.
+23. **Turn on** the 'Title' and expand Title. 
 24. **Enter** 'Active Sensors' as the title for the card.
 
 ![Card Visual selected.](media/active_sensors.png)
@@ -601,7 +601,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 26. **Turn on** Background and change the background color of the card.
 
-27. Similarly, the color of the KPI value and title value can be changed from the Data label and Title sections respectively. You can use the Hex code #00222F to achieve the background color of the visual.
+27. Similarly, the color of the KPI value and title value can be changed by going to the format visual tab. After navigating to the format visual tab, **Click** on General section and **Expand** effects and **Expand** Background to set the color. You can use the Hex code #00222F to achieve the background color of the visual.
 
 ![Turn on background.](media/Background-Dark.png)
 
@@ -677,13 +677,13 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 ![Average RPM.](media/average-rpm2.png)
 
-52. With the tachometer visual selected, **click** on the format tab.
+52. With the tachometer visual selected, **click** on the format visual tab and go to General section.
 53. **Turn on** 'Title'.
 54. **Change** 'Title text’ to 'Average Engine Speed’.
 
 ![Average RPM.](media/average-rpm3.png)
 
-55. **Expand** 'Range 1'.
+55. **Expand** 'Range 1' in the visual section of the Format visual tab.
 56. **Change** color for range one to hex code #E3B80F.
 57. Similarly, the color of the 'Range 2' and 'Range 3' can be changed from the 'Range 2' and 'Range 3' respectively.
 
@@ -903,7 +903,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 **Update the dataset with this new data:**
  
-53. **Navigate** to 'Orchestrate' hub from the left navigation in the 'Synapse Analytics' workspace.
+53. **Navigate** to 'Integrate' hub from the left navigation in the 'Synapse Analytics' workspace.
 54. **Expand** 'Pipelines' node.
 55. **Click** on '1 Master Pipeline'.
 56. **Click** 'Add trigger'.
