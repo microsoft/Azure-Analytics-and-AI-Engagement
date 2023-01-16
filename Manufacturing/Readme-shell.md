@@ -375,7 +375,7 @@ The image below shows the 'Content' tab in Power BI. We can then create a Power 
 
 ![Edit data set credentials.](media/edit-credentials2.png)
 
-25. **Enter** the same cosmos key that was noted down in Step 33 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
+25. **Enter** the same cosmos key that was noted down in Step 29 of [Task 4](#task-4-run-the-cloud-shell-to-provision-the-demo-resources).
 26. **Click** 'Sign in'.
 
 ![Enter cosmos account key.](media/enter-cosmos-key.png)
@@ -386,7 +386,7 @@ The image below shows the 'Content' tab in Power BI. We can then create a Power 
 
 ![Select Power BI workspace.](media/Selecting-PowerBI-Workspace.png)
 
-28. **Click** on '+Create' button on the top navigation bar.
+28. **Click** on '+New' button on the top navigation bar.
 
 29. **Click** the 'Dashboard' option from the drop-down menu.
 
@@ -410,115 +410,113 @@ The image below shows the 'Content' tab in Power BI. We can then create a Power 
 
 35. **Go back** to the Power BI Dashboard you just created.
 
-36. **Click** on ellipses at the top right-side corner.
-
-37. **Click** on Dashboard theme.
+36. **Click** on edit option and **Click** on Dashboard theme option.
 
 ![Click on dashboard theme.](media/change-theme-portal.png)
 
-38. **Click** Upload the JSON theme.
+37. **Click** Upload the JSON theme.
 
-39. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
+38. **Navigate** to the location where you have saved the JSON theme file in Step #21 above and **Select** open.
 
-40. Click **Save**.
+39. Click **Save**.
 
 ![Upload JSON.](media/upload-json.png)
 
 **Do the following to pin visuals to the dashboard you just created:**
 
-41. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+40. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-42. **Click** on the 'Reports' section/tab.
+41. **Click** on the 'Reports' section/tab.
 
 ![Check the reports tab.](media/Reports-Tab1.png)
 
-43. In the 'Reports' section, there will be a list of all the published reports.
+42. In the 'Reports' section, there will be a list of all the published reports.
 
-44. **Click** on 'Campaign - Option C' report.
+43. **Click** on 'Campaign - Option C' report.
 
 ![Browse the reports created.](media/Campaign-Reports.png)
 
-45. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
+44. On the 'Campaign – Option C' report page, **click** the 'Revenue Vs Target' visual and **click** the pin icon.
 
 ![Pin visualization on the dashboard.](media/Pin-Visualization.png)
 
-46. **Select** 'Existing dashboard' radio button.
+45. **Select** 'Existing dashboard' radio button.
 
-47. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
+46. **From** 'Select existing dashboard' dropdown, **select** 'Engagement Accelerators Dashboard'.
 
-48. **Click** 'Pin'.
+47. **Click** 'Pin'.
 
 ![Further steps to pin visualization on the dashboard.](media/Pin-To-Dashboard.png)
 
-49. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
+48. Similarly, **pin** 'Profit card' and 'Investment, Incremental Revenue and ROI Campaign Scatter Chart' from the report.
 
 ![Pin visuals to the dashboard.](media/pin-profit-card.png)
 
 **Some of the visuals are pinned from hidden pages. To pin such visuals, follow the below steps.**
 
-50. **Click** on Edit report.
+49. **Click** on Edit.
 
 ![Edit the report.](media/edit-report.png)
 
-51. **Click** 'Sales and Campaign' report page.
+50. **Click** 'Sales and Campaign' report page.
 
 ![Edit the report.](media/hidden-report-page.png)
 
-52. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
+51. **Pin** 'Total Campaign', 'Cost of Goods Sold' card visuals to 'Engagement Accelerators Dashboard'.
 
-53. **Pin** 'Revenue by country' map visual.
+52. **Pin** 'Revenue by country' map visual.
 
 ![Sales and Campaign report.](media/sales-and-campaign.png)
 
 > **Note:** Please refer to steps 45-48 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
 
-54. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
+53. **Select** the workspace 'Engagement Accelerators - Manufacturing'.
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-55. **Open** 'Dashboard Images' report.
+54. **Open** 'Dashboard Images' report.
 
 ![Open dashboard images](media/dashboard-images1.png)	
 
-56. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
+55. **Pin** all images from above report to the 'Engagement Accelerators Dashboard'.
 
 > **Note:** Please refer to steps 45-48 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) for the complete procedure of pinning a desired visual to a dashboard.
 
-57. **Go back** to the 'Engagement Accelerators Dashboard'.
+56. **Go back** to the 'Engagement Accelerators Dashboard'.
 
 ![Go back to the dashboard.](media/go-back-to-dashboard.png)
 
 **To hide title and subtitle for all the images that you have pined above. Please do the following:**
 
-58. **Click** on ellipsis 'More Options' of the image you selected.
+57. **Click** on ellipsis 'More Options' of the image you selected.
 
-59. **Click** 'Edit details'.
+58. **Click** 'Edit details'.
 
 ![Edit details.](media/edit-details.png)
 
-60. **Uncheck** 'Display title and subtitle'.
+59. **Uncheck** 'Display title and subtitle'.
 
-61. **Click** 'Apply'.
+60. **Click** 'Apply'.
 
 ![Display title and subtitle.](media/display-title-subtitle.png)
 
-62. **Repeat** Step 58-61 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) to disable  title and subtitle for each image tiles.
+61. **Repeat** Step 58-61 of [Task 5](#task-5-create-power-bi-reports-and-dashboard) to disable  title and subtitle for each image tiles.
 
-63. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
+62. After disabling 'Display title and subtitle' for all images, **resize** and **re-arrange** top images tiles or chicklets as shown in the screenshot. **Resize** the 'Wide World Importers' logo to 1x1 size. **Resize** other vertical tiles to 2x1 size.  
 
 ![All images.](media/all-images.png)
 
-64. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
+63. **Resize** and **rearrange** left images tiles or chicklets as shown in the screenshot. **Resize** 'KPI' tile to 1x2 size. **Resize** 'Deep Dive' tile to 1x4 size.
 
 ![Resize and rearrange.](media/resize-rearrange.png)
 
-65. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
+64. **Refer** the screenshot of the sample dashboard below and pin the visuals to replicate the following look and feel.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard1.png)
 
-66. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
+65. **Pin** the 'Predictive maintenance and Safety Analytics' pillar tiles to the dashboard using the 'anomaly detection with images' report. To do this, **follow** the same procedure as above.
 
 ![Further steps to pin visualization on the dashboard.](media/Dashboard2.png)
 
@@ -538,7 +536,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 **Pin visuals from the static report:**
 
 1. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
-2. **Click** on Reports tab.
+2. **Click** on Content tab and sort type as Report.
 3. **Search** 'Real Time Analytics Static Report’.
 4. **Click** 'Real Time Analytics Static Report’.
 
@@ -566,14 +564,17 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-12. **Click** on '+Create' button present on the top navigation bar.
+12. **Click** on '+New' button present on the top navigation bar.
 13. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
 
-14. **Enter** 'Racing' in the search bar.
-15. **Select** the 'Racing Cars' dataset.
-16. **Click** 'Create'.
+14. **Click** on Pick a published dataset option.
+
+![Click on Pick a published dataset option.](media/racing-report-creation.png)
+
+15. **Enter** 'Racing' in the search bar and **Select** the 'Racing Cars' dataset.
+16. **Click** on 'Create a blank report'.
 
 !['Racing Cars' dataset in the workspace created.](media/racing-cars-dataset-create.png)
 
@@ -594,7 +595,7 @@ In this section of the document we will create the 'Realtime Operational Analyti
 
 ![Card Visual selected.](media/active_sensors.png)
 
-25. **Change** the 'Data label' color to 'White’.
+25. **Change** the 'Title' color to 'White’.
 
 ![Change data label to white.](media/data-label-white.png)
 
@@ -623,7 +624,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 **Pin visuals from the static report:**
 
 30. **Click** Workspace 'Engagement Accelerators - Manufacturing’.
-31. **Click** on Reports tab.
+31. **Click** on Contents tab and sort by Report type.
 32. **Search** 'Real Time Analytics Static Report’.
 33. **Click** 'Real Time Analytics Static Report’.
 
@@ -649,7 +650,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-39. **Click** on '+Create' button present on the top navigation bar.
+39. **Click** on '+New' button present on the top navigation bar.
 40. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
@@ -707,7 +708,7 @@ In this section of the document we will create the 'Realtime Field and Sentiment
 
 ![Select Power BI workspace.](media/select-workspace.png)
 
-62. **Click** on '+Create' button present on the top navigation bar.
+62. **Click** on '+New' button present on the top navigation bar.
 63. **Select** 'Report' option from the drop-down menu.
 
 !['Report' option from the drop-down menu.](media/report_option.png)
