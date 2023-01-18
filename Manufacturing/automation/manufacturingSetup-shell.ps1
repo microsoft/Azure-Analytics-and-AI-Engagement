@@ -696,6 +696,7 @@ $cosmos_account_key=$cosmos_account_key.primarymasterkey
 Add-Content log.txt "-----------uploading Sql Scripts-----------------"
 Write-Host "----uploading Sql Scripts------"
 
+RefreshTokens
 $scripts=Get-ChildItem "./artifacts/sqlscripts" | Select BaseName
 $TemplatesPath="./artifacts/templates";	
 
@@ -1149,28 +1150,29 @@ $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json
 				-replace '#APP_SECRET#', $clientsecpwd`
 				-replace '#TENANT_ID#', $tenantId`				
         } | Set-Content -Path mfg-webapp/appsettings.json
+
 (Get-Content -path mfg-webapp/wwwroot/config.js -Raw) | Foreach-Object { $_ `
                 -replace '#STORAGE_ACCOUNT#', $dataLakeAccountName`
 				-replace '#SERVER_NAME#', $manufacturing_poc_app_service_name`
 				-replace '#WWI_SITE_NAME#', $wideworldimporters_app_service_name`				
         } | Set-Content -Path mfg-webapp/wwwroot/config.js	
 
-        #update all th report ids in the poc web app...
+#update all th report ids in the poc web app...
 $ht = new-object system.collections.hashtable
-$ht.add("#REPORT_SQL_DASHBOARD_BEFORE_ID#", $($reportList | where {$_.name -eq "1_Billion rows demo"}).id)
-$ht.add("#REPORT_SQL_DASHBOARD_DURING_ID#", $($reportList | where {$_.name -eq "3_MFG Dynamic Data Masking (Azure Synapse)"}).id)
-$ht.add("#REPORT_SQL_DASHBOARD_AFTER_ID#", $($reportList | where {$_.name -eq "4_MFG Column Level Security (Azure Synapse)"}).id)
-$ht.add("#REPORT_DASHBOARD_AFTER_ID#", $($reportList | where {$_.name -eq "5_MFG Row Level Security (Azure Synapse)"}).id)
-$ht.add("#REPORT_ANOMALY_ID#", $($reportList | where {$_.name -eq "anomaly detection with images"}).id)
-$ht.add("#REPORT_CAMPAIGN_ID#", $($reportList | where {$_.name -eq "Campaign - Option C"}).id)
-$ht.add("#REPORT_FACTORY_ID#", $($reportList | where {$_.name -eq "Factory-Overview - Option A"}).id)
-$ht.add("#REPORT_FINANCE_ID#", $($reportList | where {$_.name -eq "1_Billion rows demo"}).id)
-$ht.add("#REPORT_GLOBALBING_ID#", $($reportList | where {$_.name -eq "VP-Global-Overview"}).id)
-$ht.add("#REPORT_SAFETY_ID#", $($reportList | where {$_.name -eq "Factory-Overview - Option A"}).id)
-$ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.name -eq "Equipment View Report"}).id)
-$ht.add("#REPORT_MACHINE_ANOMOLY_ID#", $($reportList | where {$_.name -eq "anomaly detection with images"}).id)
-$ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.name -eq "6_Production Quality- HTAP Synapse Link"}).id)
-$ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.name -eq "Campaign Sales Operations"}).id)
+$ht.add("#REPORT_SQL_DASHBOARD_BEFORE_ID#", $($reportList | where {$_.Name -eq "1_Billion rows demo"}).ReportId)
+$ht.add("#REPORT_SQL_DASHBOARD_DURING_ID#", $($reportList | where {$_.Name -eq "3_MFG Dynamic Data Masking (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_SQL_DASHBOARD_AFTER_ID#", $($reportList | where {$_.Name -eq "4_MFG Column Level Security (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_DASHBOARD_AFTER_ID#", $($reportList | where {$_.Name -eq "5_MFG Row Level Security (Azure Synapse)"}).ReportId)
+$ht.add("#REPORT_ANOMALY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
+$ht.add("#REPORT_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign - Option C"}).ReportId)
+$ht.add("#REPORT_FACTORY_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_FINANCE_ID#", $($reportList | where {$_.Name -eq "1_Billion rows demo"}).ReportId)
+$ht.add("#REPORT_GLOBALBING_ID#", $($reportList | where {$_.Name -eq "VP-Global-Overview"}).ReportId)
+$ht.add("#REPORT_SAFETY_ID#", $($reportList | where {$_.Name -eq "Factory-Overview - Option A"}).ReportId)
+$ht.add("#REPORT_MACHINE_ID#", $($reportList | where {$_.Name -eq "Equipment View Report"}).ReportId)
+$ht.add("#REPORT_MACHINE_ANOMOLY_ID#", $($reportList | where {$_.Name -eq "anomaly detection with images"}).ReportId)
+$ht.add("#REPORT_HTAP_ID#", $($reportList | where {$_.Name -eq "6_Production Quality- HTAP Synapse Link"}).ReportId)
+$ht.add("#REPORT_SALES_CAMPAIGN_ID#", $($reportList | where {$_.Name -eq "Campaign Sales Operations"}).ReportId)
 $ht.add("#WWI_SITE_NAME#", $wideworldimporters_app_service_name)
 $ht.add("#STORAGE_ACCOUNT#", $dataLakeAccountName)
 $ht.add("#WORKSPACE_ID#", $wsId)
@@ -1594,6 +1596,7 @@ foreach($report in $reportList)
 
 Write-Host  "-----------------MSSQL server --------------"
 
+RefreshTokens
 #creating sql schema
 Write-Host "Create tables in SQL DB"
 $MSSQLScriptsPath="./artifacts/mssql"
