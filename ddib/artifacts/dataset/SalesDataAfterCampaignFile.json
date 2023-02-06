@@ -1,0 +1,25 @@
+{
+    "name": "SalesDataAfterCampaignFile",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "syn-analyticssolutionsdev-01-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "SalesDataAfterCampaign.csv",
+                "folderPath": "Store Transactions Data",
+                "fileSystem": "data-source"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

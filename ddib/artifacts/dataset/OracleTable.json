@@ -1,0 +1,17 @@
+{
+    "name": "OracleTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "OracleDB",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "OracleTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

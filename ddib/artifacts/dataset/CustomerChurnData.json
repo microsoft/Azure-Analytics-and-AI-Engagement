@@ -1,0 +1,98 @@
+{
+    "name": "CustomerChurnData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "syn-analyticssolutionsdev-01-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "CustomerChurnData.csv",
+                "folderPath": "Customer Churn Data",
+                "fileSystem": "data-source"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "CustomerID",
+                "type": "String"
+            },
+            {
+                "name": "Gender",
+                "type": "String"
+            },
+            {
+                "name": "SeniorCitizen",
+                "type": "String"
+            },
+            {
+                "name": "Partner",
+                "type": "String"
+            },
+            {
+                "name": "Dependents",
+                "type": "String"
+            },
+            {
+                "name": "tenure(month)",
+                "type": "String"
+            },
+            {
+                "name": "Discount",
+                "type": "String"
+            },
+            {
+                "name": "OutletSize",
+                "type": "String"
+            },
+            {
+                "name": "OnlineDelivery",
+                "type": "String"
+            },
+            {
+                "name": "OrderStatus",
+                "type": "String"
+            },
+            {
+                "name": "CustomerSupport",
+                "type": "String"
+            },
+            {
+                "name": "Brand",
+                "type": "String"
+            },
+            {
+                "name": "StoreContract",
+                "type": "String"
+            },
+            {
+                "name": "PaperlessBilling",
+                "type": "String"
+            },
+            {
+                "name": "PaymentMethod",
+                "type": "String"
+            },
+            {
+                "name": "UnitPrice",
+                "type": "String"
+            },
+            {
+                "name": "TotalAmount",
+                "type": "String"
+            },
+            {
+                "name": "Churn",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

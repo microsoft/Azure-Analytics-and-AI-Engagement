@@ -1,0 +1,150 @@
+{
+    "name": "SnowflakeTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Snowflake",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "SnowflakeTable",
+        "schema": [
+            {
+                "name": "REGION",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "COUNTRY",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "PRODUCTCATEGORY",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "CAMPAIGN_ID",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "CAMPAIGN_NAME",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "QUALIFICATION",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "QUALIFICATION_NUMBER",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "RESPONSE_STATUS",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "RESPONSES",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "COST",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "REVENUE",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "ROI",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "LEAD_GENERATION",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "REVENUE_TARGET",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "CAMPAIGN_TACTIC",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "CUSTOMER_SEGMENT",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "STATUS",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "PROFIT",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "MARKETING_COST",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "CAMPAIGNID",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "DATE",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            },
+            {
+                "name": "SORTED_ID",
+                "type": "VARCHAR",
+                "precision": 0,
+                "scale": 0
+            }
+        ],
+        "typeProperties": {
+            "schema": "PUBLIC",
+            "table": "CAMPAIGNANALYTICLATEST"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

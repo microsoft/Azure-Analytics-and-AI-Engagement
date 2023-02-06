@@ -1,0 +1,34 @@
+{
+    "name": "EveryFiveMints",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "Twitter Data In Data Lake",
+                    "type": "PipelineReference"
+                },
+                "parameters": {
+                    "parDirectorySource": "TwitterDataJson",
+                    "parDirectoryDestination": "TwitterDataJsonSource",
+                    "parFileNameWildcard": "*.json",
+                    "parStartwith": "part-",
+                    "parRangeMin": "0",
+                    "parRangeMax": "20",
+                    "parSubString": "10",
+                    "parGeneratorCount": "10"
+                }
+            }
+        ],
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 5,
+                "startTime": "2022-10-03T12:46:00Z",
+                "timeZone": "UTC"
+            }
+        }
+    }
+}

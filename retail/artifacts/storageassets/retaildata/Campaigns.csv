@@ -1,8 +1,0 @@
-Campaigns_ID,CampaignID,CampaignName,SubCampaignID,FullAd_FileName,HalfAd_FileName,Logo_FileName,SoundFile_FileName,FullAd,HalfAd,Logo,SoundFile
-1,EnjoyTheMoment,Enjoy The Moment,EnjoyTheMoment,https://campaignsstore.blob.core.windows.net/campaigns-full/outdoorfull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/outdoorhalf.jpg,,,NULL,NULL,NULL,NULL
-2,LetsRun,Let's Run,LetsRun,https://campaignsstore.blob.core.windows.net/campaigns-full/uniquefull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/uniquehalf.jpg,,,NULL,NULL,NULL,NULL
-3,SustainableFashion  ,Sustainable Fashion  ,SustainableFashion  ,https://campaignsstore.blob.core.windows.net/campaigns-full/uniqueperson.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/uniquepersonhalf.jpg,,,NULL,NULL,NULL,NULL
-4,BeUnique,Be Unique,BeUnique,https://campaignsstore.blob.core.windows.net/campaigns-full/outdoorfamilyfull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/outdoorfamilyhalf.jpg,,,NULL,NULL,NULL,NULL
-5,GoEco,Go Eco,Go Eco,,,,,NULL,NULL,NULL,NULL
-6,FallintoWinter,Fall into Winter,FallintoWinter,,,,,NULL,NULL,NULL,NULL
-7,LetsGoSurf,Let's Surf,LetsGoSurf,,,,,NULL,NULL,NULL,NULL
