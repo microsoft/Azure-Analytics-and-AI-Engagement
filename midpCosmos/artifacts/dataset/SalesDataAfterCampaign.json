@@ -1,0 +1,17 @@
+{
+    "name": "SalesDataAfterCampaign",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "SalesDB",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesDataAfterCampaign"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

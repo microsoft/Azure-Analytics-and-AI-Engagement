@@ -1,0 +1,30 @@
+// ∗∗∗∗∗∗∗∗∗ Important – Do not use in production, for demonstration purposes only – please review the legal notices before continuing ∗∗∗∗∗ */
+
+//What is the average temperature every 1 min?
+thermostat
+| where EnqueuedTimeUTC > ago(7d)
+| where DeviceId == 'TH005'
+| summarize avg(Temp) by bin(EnqueuedTimeUTC,1m)
+| render timechart 
+
+//What will be the temperature for next 15 Minutes?
+thermostat
+| where EnqueuedTimeUTC > ago(2d)
+| where DeviceId == 'TH005'
+| make-series AvgTemp=avg(Temp) default=real(null) on EnqueuedTimeUTC from ago(2d) to now()+15m step 1m   
+| extend NoGapsTemp=series_fill_linear(AvgTemp)
+| project EnqueuedTimeUTC, NoGapsTemp
+| extend forecast = series_decompose_forecast(NoGapsTemp, 15)
+| render timechart with(title='Forecasting the next 15min by Time Series Decmposition')
+
+
+
+//Are there any anomalies for this device?
+thermostat 
+| where RecordedonUTC > ago(12h)
+| where DeviceId == 'TH005'
+| make-series AvgTemp=avg(Temp) default=real(null) on RecordedonUTC from ago(12h) to now() step 1m   
+| extend NoGapsTemp=series_fill_linear(AvgTemp)
+| project RecordedonUTC, NoGapsTemp
+| extend anomalies = series_decompose_anomalies(NoGapsTemp,1) 
+| render anomalychart with(anomalycolumns=anomalies)

@@ -1,0 +1,27 @@
+{
+    "name": "SalesTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "SalesDB",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "Id",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ModelMetadata",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "Sales"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

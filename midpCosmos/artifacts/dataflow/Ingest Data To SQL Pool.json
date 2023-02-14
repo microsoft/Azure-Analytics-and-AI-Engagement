@@ -1,0 +1,138 @@
+{
+    "name": "Ingest Data To SQL Pool",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "CosmosDbInventory",
+                        "type": "DatasetReference"
+                    },
+                    "name": "CosmosDBSource1"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "SalesTable",
+                        "type": "DatasetReference"
+                    },
+                    "name": "AzureSQLDBSource2"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "CosmosDb",
+                        "type": "DatasetReference"
+                    },
+                    "name": "CosmosDBSource3",
+                    "description": "Import data from CosmosDbControllersCollection"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "AzureSynapseAnalytics",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sink"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "JoinSalesAndInventory"
+                },
+                {
+                    "name": "JoinInventoryAndControllersData"
+                },
+                {
+                    "name": "select1"
+                }
+            ],
+            "scriptLines": [
+                "source(output(",
+                "          ModelId as string,",
+                "          Region as string,",
+                "          AvailableInventory as integer,",
+                "          BillingId as integer,",
+                "          LastUpdate as string,",
+                "          EventProcessedUtcTime as string,",
+                "          PartitionId as integer,",
+                "          EventEnqueuedUtcTime as string",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     format: 'document') ~> CosmosDBSource1",
+                "source(output(",
+                "          Id as integer,",
+                "          ModelMetadata as string",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     isolationLevel: 'READ_UNCOMMITTED',",
+                "     format: 'table') ~> AzureSQLDBSource2",
+                "source(output(",
+                "          ControllerId as string,",
+                "          ModelId as string,",
+                "          Region as string,",
+                "          Country as string,",
+                "          Lat as double,",
+                "          Long as double,",
+                "          LastUpdate as string,",
+                "          AcPower as double,",
+                "          DcPower as double,",
+                "          Temperature as double,",
+                "          UpForService as boolean",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     format: 'document') ~> CosmosDBSource3",
+                "CosmosDBSource1, AzureSQLDBSource2 join(ModelId == ModelMetadata,",
+                "     joinType:'outer',",
+                "     matchType:'exact',",
+                "     ignoreSpaces: false,",
+                "     broadcast: 'auto')~> JoinSalesAndInventory",
+                "CosmosDBSource3, JoinSalesAndInventory join(CosmosDBSource3@ModelId == CosmosDBSource1@ModelId,",
+                "     joinType:'outer',",
+                "     matchType:'exact',",
+                "     ignoreSpaces: false,",
+                "     broadcast: 'auto')~> JoinInventoryAndControllersData",
+                "JoinInventoryAndControllersData select(mapColumn(",
+                "          ControllerId,",
+                "          ModelId = CosmosDBSource3@ModelId,",
+                "          Region = CosmosDBSource3@Region,",
+                "          Country,",
+                "          Lat,",
+                "          Long,",
+                "          LastUpdate = CosmosDBSource3@LastUpdate,",
+                "          AcPower,",
+                "          DcPower,",
+                "          Temperature,",
+                "          UpForService,",
+                "          ModelId = CosmosDBSource1@ModelId,",
+                "          Region = CosmosDBSource1@Region,",
+                "          AvailableInventory,",
+                "          BillingId,",
+                "          LastUpdate = CosmosDBSource1@LastUpdate,",
+                "          EventProcessedUtcTime,",
+                "          PartitionId,",
+                "          EventEnqueuedUtcTime,",
+                "          Id,",
+                "          ModelMetadata",
+                "     ),",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> select1",
+                "select1 sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     deletable:false,",
+                "     insertable:true,",
+                "     updateable:false,",
+                "     upsertable:false,",
+                "     format: 'table',",
+                "     staged: true,",
+                "     allowCopyCommand: true,",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true,",
+                "     errorHandlingOption: 'stopOnFirstError') ~> sink"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "DestinationDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synnrfdemodev-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "SalesTransData.csv",
+                "folderPath": "Store Transactions Data",
+                "fileSystem": "data-source"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

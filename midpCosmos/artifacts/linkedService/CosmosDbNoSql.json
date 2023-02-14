@@ -1,0 +1,15 @@
+{
+    "name": "CosmosDbNoSql",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": "AccountEndpoint=https://#COSMOSDB_NAME#.documents.azure.com:443/;AccountKey=#COSMOS_ACCOUNT_KEY#;Database=Telemetry;"
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

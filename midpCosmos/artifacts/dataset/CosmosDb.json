@@ -1,0 +1,53 @@
+{
+    "name": "CosmosDb",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "CosmosDbNoSql",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "ControllerId": {
+                    "type": "string"
+                },
+                "ModelId": {
+                    "type": "string"
+                },
+                "Region": {
+                    "type": "string"
+                },
+                "Country": {
+                    "type": "string"
+                },
+                "Lat": {
+                    "type": "number"
+                },
+                "Long": {
+                    "type": "number"
+                },
+                "LastUpdate": {
+                    "type": "string"
+                },
+                "AcPower": {
+                    "type": "number"
+                },
+                "DcPower": {
+                    "type": "number"
+                },
+                "Temperature": {
+                    "type": "number"
+                },
+                "UpForService": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "typeProperties": {
+            "collectionName": "Controllers"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
