@@ -37,16 +37,8 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 - [Requirements](#requirements)
 - [Before Starting](#before-starting)
-  - [Task 1: Create a resource group in Azure](#task-1-create-a-resource-group-in-azure)
-  - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
-  - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
-  - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: Power BI reports and dashboard creation](#task-5-power-bi-reports-and-dashboard-creation)
-  	- [Steps to create Real time report](#steps-to-create-real-time-report)
-  	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 6: QnAmaker and LogicApp Configuration](#task-6-qnamaker-and-logicapp-configuration)
-  - [Task 7: Pause or Resume script](#task-7-pause-or-resume-script)
-  - [Task 8: Clean up resources](#task-8-clean-up-resources)
+  - [Task 1: Power BI Workspace creation](#task-1-power-bi-workspace-creation)
+  - [Task 2: Run the Cloud Shell to provision the demo resources](#task-2-run-the-cloud-shell-to-provision-the-demo-resources)
 
 <!-- /TOC -->
 
