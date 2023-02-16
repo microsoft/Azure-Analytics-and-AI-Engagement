@@ -1040,10 +1040,10 @@ else {
 
     RefreshTokens
     foreach ($report in $reportList) {
-        if ($report.name -eq "ADX dashboard 8AM (NRF Demo)" -or $report.name -eq "Dashboard-Images (NRF)" -or $report.name -eq "Global overview tiles (NRF Demo)") {
+        if ($report.name -eq "ADX dashboard 8AM" -or $report.name -eq "Dashboard-Images" -or $report.name -eq "Global overview tiles") {
             continue;
         }
-        elseif ($report.name -eq "6 ADX Website Bounce Rate Analysis (NRF)") {
+        elseif ($report.name -eq "6 ADX Website Bounce Rate Analysis") {
             $body = "{
 			`"updateDetails`": [
 								{
@@ -1065,7 +1065,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "7 Product Recommendation DataBricks (NRF)" -or $report.name -eq "Product Recommendation") {
+        elseif ($report.name -eq "7 Product Recommendation DataBricks" -or $report.name -eq "Product Recommendation") {
             $body = "{
 			`"updateDetails`": [
 								{
@@ -1079,7 +1079,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "ADX Thermostat and Occupancy (NRF)") {
+        elseif ($report.name -eq "ADX Thermostat and Occupancy") {
             $body = "{
 			`"updateDetails`": [
 								{
@@ -1107,7 +1107,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "CDP Vision Report (NRF)" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts(NRF)" -or $report.name -eq "Location Analytics (NRF)" -or $report.name -eq "Retail Group CEO KPI (NRF)" -or $report.name -eq "Retail Predictive Analytics (NRF)" -or $report.name -eq "World Map(NRF Demo)" -or $report.name -eq "WideWorldImporters") {
+        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters") {
             $body = "{
 			`"updateDetails`": [
 								{
@@ -1121,7 +1121,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "Revenue and Profitability NRF") {
+        elseif ($report.name -eq "Revenue and Profitability") {
             $body = "{
 			`"updateDetails`": [
 								{
@@ -1250,13 +1250,13 @@ else {
     #update all th report ids in the poc web app...
     $ht = new-object system.collections.hashtable   
     # $ht.add("#Bing_Map_Key#", "AhBNZSn-fKVSNUE5xYFbW_qajVAZwWYc8OoSHlH8nmchGuDI6ykzYjrtbwuNSrR8")
-    $ht.add("#Retail Group CEO KPI (NRF)#", $($reportList | where { $_.name -eq "Retail Group CEO KPI (NRF)" }).id)
-    $ht.add("#ADX dashboard 8AM (NRF Demo)#", $($reportList | where { $_.name -eq "ADX dashboard 8AM (NRF Demo)" }).id)
-    $ht.add("#World Map(NRF Demo)#", $($reportList | where { $_.name -eq "World Map(NRF Demo)" }).id)
-    $ht.add("#Revenue and Profitability NRF#", $($reportList | where { $_.name -eq "Revenue and Profitability NRF" }).id)
-    $ht.add("#Location Analytics (NRF)#", $($reportList | where { $_.name -eq "Location Analytics (NRF)" }).id)
-    $ht.add("#ADX Thermostat and Occupancy (NRF)#", $($reportList | where { $_.name -eq "ADX Thermostat and Occupancy (NRF)" }).id)
-    $ht.add("#Global overview tiles (NRF Demo)#", $($reportList | where { $_.name -eq "Global overview tiles (NRF Demo)" }).id)
+    $ht.add("#Retail Group CEO KPI#", $($reportList | where { $_.name -eq "Retail Group CEO KPI" }).id)
+    $ht.add("#ADX dashboard 8AM#", $($reportList | where { $_.name -eq "ADX dashboard 8AM" }).id)
+    $ht.add("#World Map#", $($reportList | where { $_.name -eq "World Map" }).id)
+    $ht.add("#Revenue and Profitability#", $($reportList | where { $_.name -eq "Revenue and Profitability" }).id)
+    $ht.add("#Location Analytics#", $($reportList | where { $_.name -eq "Location Analytics" }).id)
+    $ht.add("#ADX Thermostat and Occupancy#", $($reportList | where { $_.name -eq "ADX Thermostat and Occupancy" }).id)
+    $ht.add("#Global overview tiles#", $($reportList | where { $_.name -eq "Global overview tiles" }).id)
     $ht.add("#WideWorldImporters#", $($reportList | where { $_.name -eq "WideWorldImporters" }).id)
     $ht.add("#Product Recommendation#", $($reportList | where { $_.name -eq "Product Recommendation" }).id)
 
