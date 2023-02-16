@@ -303,7 +303,7 @@ git clone -b midp-with-cosmos --depth 1 --single-branch https://github.com/micro
 5. **Execute** the midpComosSetup.ps1 script by executing the following command:
 
 ```
-cd ./midpCosmos/
+cd ./midpCosmos/midpCosmos
 ```
 
 6. Then **run** the PowerShell: 
