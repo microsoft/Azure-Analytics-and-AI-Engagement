@@ -1259,7 +1259,8 @@ else {
     $ht.add("#Global overview tiles#", $($reportList | where { $_.name -eq "Global overview tiles" }).id)
     $ht.add("#WideWorldImporters#", $($reportList | where { $_.name -eq "WideWorldImporters" }).id)
     $ht.add("#Product Recommendation#", $($reportList | where { $_.name -eq "Product Recommendation" }).id)
-
+    $ht.add("#Realtime In Store Analytics#", $($reportList | where { $_.name -eq "Realtime In Store Analytics" }).id)
+    
     $filePath = "./midpcosmos-demo-app/wwwroot/config-poc.js";
     Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
 
