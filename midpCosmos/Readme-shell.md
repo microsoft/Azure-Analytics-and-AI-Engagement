@@ -1,4 +1,4 @@
-# Analytics in MIDP DREAM Demo including Azure Synapse Link for Azure Cosmos DB Script DREAM Demo in a Box Setup Guide
+# Analytics in Microsoft Intelligent Data Platform (MIDP) DREAM Demo DREAM Demo in a Box Setup Guide
 
 ## What is it?
 DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
@@ -149,7 +149,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Switch Historical data analysis on.](media/power-bi-6.png)
 	
-11. **Enter** ‘ADX Miami and San’ as dataset name and **enter** the column names in “values from stream” option from list below  and **click** on create button: 
+11. **Enter** ‘Real-time ADX Miami and San Diego’ as dataset name and **enter** the column names in “values from stream” option from list below  and **click** on create button: 
 
 	| Field Name                        	| Type     |
 	|---------------------------------------|----------|
@@ -178,7 +178,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 	
 	![Create new streaming dataset.](media/power-bi-7.png)
 
-12. **Copy** the push url of dataset ‘ADX Miami and San’ and **paste** it in a notepad for later use.
+12. **Copy** the push url of dataset ‘Real-time ADX Miami and San Diego’ and **paste** it in a notepad for later use.
 
 	![Provide the Push Url.](media/power-bi-8.png)
 	
@@ -582,7 +582,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Validate Creds.](media/power-bi-report-022.1.png)
 
-12. Similarly one can create the required KPIs and Graphs for the report.
+12. Similarly one can create the required KPIs and Graphs for both the realtime reports.
 		
 ### Follow these steps to create the Power BI dashboard
 
@@ -605,7 +605,7 @@ To give permissions for the Power BI reports to access the data sources:
 **Follow the below steps to change the dashboard theme:**
 
 6. **Open** the URL in a new browser tab to get JSON code for a custom theme:
-[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/CustomTheme.json)
+[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/CustomTheme.json)
 
 7. **Right click** anywhere in browser and **click** 'Save as...'.
 
@@ -675,7 +675,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-28. Select the ‘CEO Dashboard Dec’ from existing dashboard list and **click** on pin.
+28. Select the ‘CEO Dashboard May’ from existing dashboard list and **click** on pin.
 	
 	![Hover and Click.](media/power-bi-report-22.png)
 
@@ -719,7 +719,7 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 	![Table.](media/power-bi-table-6.png)
 
-41. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/KPIS%20Dashboards%20mapping%20Retail%202.0.xlsx) file for pinning the tiles to the dashboard.
+41. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Dashboard%20Mapping.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-33.png)
 
@@ -758,7 +758,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 8. **Enter** the following path:  
 	
 	```
-	midp/midp/midpdemo-app/wwwroot/config-poc.js
+	midpCosmos/midpCosmos/midpcosmos-demo-app/wwwroot/config-poc.js
 	```
 
 9. **Click** Download button.
@@ -773,54 +773,62 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 12. **Paste** the dashboard id you copied earlier between the double quotes of key ‘CEO Dashboard - May’.
 
-13. **Save** the changes to the file.
+13. Similarly repeat step #12 according to the following mapping:
+
+	| Field Name                        	| Type     |
+	|---------------------------------------|----------|
+	| CEODashboardMayDashboardID 			| CEO Dashboard May |
+	| CEODashboardAfterDashboardID				| CEO Dashboard Dec |
+	| RealTimeInStoreAnalyticsReportID				| Realtime In Store Analytics |
+
+14. **Save** the changes to the file.
 
 	![Edit paste and save.](media/updating-powerbi-5.png)
 
-14. **Navigate** to azure portal.
+15. **Navigate** to azure portal.
 
-15. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
+16. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
 	![Navigate and Open.](media/updating-powerbi-6.png)
 
-16. **Click** upload/download button.
+17. **Click** upload/download button.
 
-17. **Click** upload.
+18. **Click** upload.
 
-18. **Select** the config-poc.js file you just updated.
+19. **Select** the config-poc.js file you just updated.
 
-19. **Click** open.
+20. **Click** open.
 
 	![Select and Click open.](media/updating-powerbi-7.png)
 
-20. **Execute** the following command in cloudshell:  
+21. **Execute** the following command in cloudshell:  
 	
 	```
-	cp config-poc.js ./midp/midp/midpdemo-app/wwwroot
+	cp config-poc.js ./midpcosmos/midpcosmos/midpcosmos-demo-app/wwwroot
 	```
 	
 	![Execute the command.](media/updating-powerbi-8.png)
 
-21.	**Execute** the following command in cloudshell: 
+22.	**Execute** the following command in cloudshell: 
 	
 	```
-	cd midp/midp/subscripts 
+	cd midpcosmos/midpcosmos/subscripts 
 	./updateWebAppSubScript.ps1
 	```
 	
 	![Execute the command.](media/updating-powerbi-9.png)
 
-22. From the Azure Cloud Shell, **copy** the authentication code. 
+23. From the Azure Cloud Shell, **copy** the authentication code. 
 
-23. **Click** on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+24. **Click** on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
 	![Copy and Click on Link.](media/updating-powerbi-10.png)
 
-24. **Paste** the authentication code.
+25. **Paste** the authentication code.
 
-25. **Select** appropriate username when prompted.
+26. **Select** appropriate username when prompted.
 
-26. Wait for the script execution to complete.
+27. Wait for the script execution to complete.
 
 	![Paste select and wait.](media/updating-powerbi-11.png)
 
@@ -839,41 +847,41 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	![Open and Click on Azure Cloud Shell.](media/authentication-5.png)
 
 **Execute** the Pause_Resume_script.ps1 script by executing the following command: 
-1. **Run** Command: 
+3. **Run** Command: 
 	```
-	cd "midp\midp"
+	cd "midpCosmos\midpCosmos"
 	```
 
-2. Then **run** the PowerShell script: 
+4. Then **run** the PowerShell script: 
 	```
 	./pause_resume_script.ps1 
 	```
 	
 	![Run the Powershell Script.](media/powershell.png)
 	
-3. From the Azure Cloud Shell, **copy** the authentication code
+5. From the Azure Cloud Shell, **copy** the authentication code
 	
 	![Copy the Authentication Code.](media/powershell-2.png)
 	
-4. Click on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+6. Click on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 	
-5. **Paste** the authentication code.
+7. **Paste** the authentication code.
 	
 	![Paste the authentication code.](media/authentication.png)
 	
-6. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
+8. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
-7. **Close** this window after it displays successful authentication message.
+9. **Close** this window after it displays successful authentication message.
 
 	![Select the same user and Close.](media/authentication-2.png)
 
-8. When prompted, **enter** the resource group name to be paused/resumed in the Azure Cloud Shell. Type the same resource group name that you created. 
+10. When prompted, **enter** the resource group name to be paused/resumed in the Azure Cloud Shell. Type the same resource group name that you created. 
 	
 	![Enter the Resource Group Name.](media/authentication-3.png)
 
-9. **Enter** your choice when prompted. Enter ‘P’ for **pausing** the environment or ‘R’ for **resuming** a paused environment. 
+11. **Enter** your choice when prompted. Enter ‘P’ for **pausing** the environment or ‘R’ for **resuming** a paused environment. 
 
-10. Wait for the script to finish execution. 
+11. Wait for the script to finish execution. 
 
 	![Enter your choice.](media/authentication-4.png)
 
@@ -891,7 +899,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 2. **Run** Command: 
 	```
-	cd "midp\midp"
+	cd "midpCosmos\midpCosmos"
 	```
 
 3. Then **run** the PowerShell script: 
@@ -901,7 +909,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Run the Powershell Script.](media/authentication-6.png)
 
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDib-Retail-Lab'.
+4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDiB-Lab'.
 
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
@@ -912,6 +920,6 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Retail-Lab'.
+6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
