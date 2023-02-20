@@ -20,7 +20,7 @@ Customers can play,  get hands-on experience navigating through the demo environ
   
    > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
    
-# Copyright
+# Copyright - 2023
 
 © 2021 Microsoft Corporation. All rights reserved.   
 
@@ -412,7 +412,7 @@ cd ./midpCosmos/midpCosmos
 
 > **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewmidp..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "stmidp...". Once the permission has been granted, proceed with the following steps.
 
-1. From Azure Portal, **search** for azure purview resource in the resource group and **click** on the resource.
+1. From Azure Portal, **search** for Azure purview resource in the resource group and **click** on the resource.
 
 	![Select Purview Resource.](media/purview-1.png)
 	
@@ -745,7 +745,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	
 	![Copy the dashboard id.](media/updating-powerbi-2.png)
 
-4. **Navigate** to azure portal.
+4. **Navigate** to Azure Portal.
 
 5. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
@@ -785,7 +785,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Edit paste and save.](media/updating-powerbi-5.png)
 
-15. **Navigate** to azure portal.
+15. **Navigate** to Azure Portal.
 
 16. **Open** the Azure Cloud Shell by selecting its icon from the top toolbar.
 
