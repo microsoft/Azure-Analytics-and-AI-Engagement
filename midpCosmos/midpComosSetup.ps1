@@ -1107,7 +1107,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters") {
+        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters" -or $report.name -eq "Realtime In Store Analytics") {
             $body = "{
 			`"updateDetails`": [
 								{

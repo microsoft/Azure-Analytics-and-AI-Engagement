@@ -42,15 +42,15 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: Data Explorer Setup](#task-7-data-explorer-setup)
-  - [Task 6: Azure Purview Setup](#task-8-azure-purview-setup)
-  - [Task 7: Power BI reports and dashboard creation](#task-9-power-bi-reports-and-dashboard-creation)
+  - [Task 5: Data Explorer Setup](#task-5-data-explorer-setup)
+  - [Task 6: Azure Purview Setup](#task-6-azure-purview-setup)
+  - [Task 7: Power BI reports and dashboard creation](#task-7-power-bi-reports-and-dashboard-creation)
   	- [Steps to validate the credentials for reports](#steps-to-validate-the-credentials-for-reports)
   	- [Steps to create realtime reports](#steps-to-create-realtime-reports)
   	- [Follow these steps to create the Power BI dashboard](#follow-these-steps-to-create-the-power-bi-dashboard)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 8: Pause or Resume script](#task-10-pause-or-resume-script)
-  - [Task 9: Clean up resources](#task-11-clean-up-resources)
+  - [Task 8: Pause or Resume script](#task-8-pause-or-resume-script)
+  - [Task 9: Clean up resources](#task-9-clean-up-resources)
 
 <!-- /TOC -->
 
