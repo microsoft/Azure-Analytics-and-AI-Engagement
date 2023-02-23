@@ -15,7 +15,8 @@
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/Readme-shell.md">Retail</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare/HealthCare/Readme-shell.md">Healthcare</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/Readme-shell.md">Manufacturing</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a>
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a> •
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a>
 </div>
 <br/><br/>
 
