@@ -62,6 +62,7 @@ $random =  (Get-AzResourceGroup -Name $rgName).Tags["UniqueId"]
 $suffix = "$random-$init"
 $cognitive_service = "wwi-cog-$suffix"
 $app_midp_3_name = "app-midp-3-$suffix"
+$app_midp_3_cbc_name = "app-midp-3-cbc-$suffix"
 
 #get list of keys - cognitiveservices
 $key = az cognitiveservices account keys list --name $cognitive_service -g $rgName|ConvertFrom-json
@@ -94,8 +95,15 @@ try {
 }
 catch {
 }
+az webapp stop --name $app_midp_3_cbc_name --resource-group $rgName
+try {
+    az webapp deployment source config-zip --resource-group $rgName --name $app_midp_3_cbc_name --src "./artifacts/binaries/midp-act3-cbc.zip"
+}
+catch {
+}
 
 az webapp start --name $app_midp_3_name --resource-group $rgName
+az webapp start --name $app_midp_3_cbc_name --resource-group $rgName
 
 $endtime = get-date
 $executiontime = $endtime - $starttime
