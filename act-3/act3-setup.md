@@ -103,7 +103,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmidp-with-cosmos%2FmidpCosmos%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmidp-act2-3%2Fact-3%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
@@ -219,14 +219,4 @@ cd ./midp/act-3/
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
-18. After the complete script has been executed, you get to see the message "--Execution Complete--", now **go to** the Azure Portal and **search** for "app service" and **click** on the simulator app by the name "app-realtime-kpi-midp-.....".
-
-	![Enter Resource Group name.](media/cloud-shell-16.png)
-	
-19. **Click** on the browse button of the app service.
-
-	![Enter Resource Group name.](media/cloud-shell-17.png)
-
-20. A new window will appear as shown in the below screenshot. Wait for the page to load and **close** the tab.
-
-	![Enter Resource Group name.](media/cloud-shell-17.1.png)
+18. After the complete script has been executed, you get to see the message "--Execution Complete--".

@@ -42,8 +42,6 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 2: Power BI Workspace creation](#task-2-power-bi-workspace-creation)
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
-  - [Task 5: Pause or Resume script](#task-5-pause-or-resume-script)
-  - [Task 6: Clean up resources](#task-6-clean-up-resources)
 
 <!-- /TOC -->
 
@@ -132,7 +130,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 1. **Open** this link in a new tab of the same browser that you are currently in: 
 	
-	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmidp-with-cosmos%2FmidpCosmos%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
+	<a href='https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzure-Analytics-and-AI-Engagement%2Fmidp-act2-3%2Fact-3%2FmainTemplate.json' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
@@ -252,102 +250,5 @@ cd ./midp/act-2/
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
-18. After the complete script has been executed, you get to see the message "--Execution Complete--", now **go to** the Azure Portal and **search** for "app service" and **click** on the simulator app by the name "app-realtime-kpi-midp-.....".
-
-	![Enter Resource Group name.](media/cloud-shell-16.png)
+18. After the complete script has been executed, you get to see the message "--Execution Complete--".
 	
-19. **Click** on the browse button of the app service.
-
-	![Enter Resource Group name.](media/cloud-shell-17.png)
-
-20. A new window will appear as shown in the below screenshot. Wait for the page to load and **close** the tab.
-
-	![Enter Resource Group name.](media/cloud-shell-17.1.png)
-	
-### Task 5: Pause or Resume script
-
-> **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
- 
-1. **Open** the Azure Portal 
-
-2. **Click** on the Azure Cloud Shell icon from the top toolbar. 
-
-	![Open and Click on Azure Cloud Shell.](media/authentication-5.png)
-
-**Execute** the Pause_Resume_script.ps1 script by executing the following command: 
-3. **Run** Command: 
-	```
-	cd "midpCosmos\midpCosmos"
-	```
-
-4. Then **run** the PowerShell script: 
-	```
-	./pause_resume_script.ps1 
-	```
-	
-	![Run the Powershell Script.](media/powershell.png)
-	
-5. From the Azure Cloud Shell, **copy** the authentication code
-	
-	![Copy the Authentication Code.](media/powershell-2.png)
-	
-6. Click on the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
-	
-7. **Paste** the authentication code.
-	
-	![Paste the authentication code.](media/authentication.png)
-	
-8. **Select** the same user that you used for signing into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
-
-9. **Close** this window after it displays successful authentication message.
-
-	![Select the same user and Close.](media/authentication-2.png)
-
-10. When prompted, **enter** the resource group name to be paused/resumed in the Azure Cloud Shell. Type the same resource group name that you created. 
-	
-	![Enter the Resource Group Name.](media/authentication-3.png)
-
-11. **Enter** your choice when prompted. Enter ‘P’ for **pausing** the environment or ‘R’ for **resuming** a paused environment. 
-
-11. Wait for the script to finish execution. 
-
-	![Enter your choice.](media/authentication-4.png)
-
-### Task 6: Clean up resources
-
-> **Note: Perform these steps after your demo is done and you do not need the resources anymore**
-
-**Open** the Azure Portal.
-
-1. Open the Azure Cloud Shell by **clicking** its icon from the top toolbar.
-
-	![Open the Azure Portal.](media/authentication-5.png)
-
-**Execute** the resourceCleanup.ps1 script by executing the following:
-
-2. **Run** Command: 
-	```
-	cd "midpCosmos\midpCosmos"
-	```
-
-3. Then **run** the PowerShell script: 
-	```
-	./resource_cleanup.ps1
-	```
-
-	![Run the Powershell Script.](media/authentication-6.png)
-
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDiB-Lab'.
-
-5. You may be prompted to select a subscription in case your account has multiple subscriptions.
-
-	![Close the browser tab.](media/select-sub.png)
-	
-	> **Notes:**
-	> - The user with single subscription won't be prompted to select subscription.
-	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
-	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
-
-6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Lab'.
-
-	![Enter Resource Group name.](media/cloud-shell-14.png)

@@ -569,115 +569,6 @@ else {
     }
     Start-Sleep -s 60
 
-    ##Establish powerbi reports dataset connections
-    Add-Content log.txt "------pbi connections update------"
-    Write-Host "---------PBI connections update---------"	
-
-    RefreshTokens
-    foreach ($report in $reportList) {
-        if ($report.name -eq "ADX dashboard 8AM" -or $report.name -eq "Dashboard-Images" -or $report.name -eq "Global overview tiles" -or $report.name -eq "Realtime In Store Analytics") {
-            continue;
-        }
-        elseif ($report.name -eq "6 ADX Website Bounce Rate Analysis") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"KustoServer`",
-									`"newValue`": `"https://$($kustoPoolName).$($synapseWorkspaceName).kusto.azuresynapse.net`"
-								},
-								{
-									`"name`": `"KustoDB`",
-									`"newValue`": `"$($kustoDatabaseName)`"
-								},
-								{
-									`"name`": `"Server`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-        }
-        elseif ($report.name -eq "7 Product Recommendation DataBricks" -or $report.name -eq "Product Recommendation") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"ServerName`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-        }
-        elseif ($report.name -eq "ADX Thermostat and Occupancy") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"ADX Server`",
-									`"newValue`": `"https://$($kustoPoolName).$($synapseWorkspaceName).kusto.azuresynapse.net`"
-								},
-								{
-									`"name`": `"ADX Database`",
-									`"newValue`": `"$($kustoDatabaseName)`"
-								}
-								]
-								}"	
-        }
-        elseif ($report.name -eq "Campaign Analytics") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"SQL_Server`",
-									`"newValue`": `"$($synapseWorkspaceName)-ondemand.sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"SQLServerlessPool`"
-								}
-								]
-								}"	
-        }
-        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"Database`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-        }
-        elseif ($report.name -eq "Revenue and Profitability") {
-            $body = "{
-			`"updateDetails`": [
-								{
-									`"name`": `"Server_Name`",
-									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
-								},
-								{
-									`"name`": `"DB_Name`",
-									`"newValue`": `"$($sqlPoolName)`"
-								}
-								]
-								}"	
-        }
-	
-        Write-Host "PBI connections updating for report : $($report.name)"	
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$($wsId)/datasets/$($report.PowerBIDataSetId)/Default.UpdateParameters"
-        $pbiResult = Invoke-RestMethod -Uri $url -Method POST -Body $body -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ErrorAction SilentlyContinue;
-		
-        start-sleep -s 5
-    }
-
     #########################
 
     #Web App Section
@@ -838,27 +729,27 @@ else {
     Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $asa_name_midpcosmos -OutputStartMode 'JobStartTime'
     
     #####################################################
-    Write-Host "------COSMOS data Upload -------------"
+    # Write-Host "------COSMOS data Upload -------------"
 
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Install-Module -Name PowerShellGet -Force
-    Install-Module -Name CosmosDB -Force
-    $cosmosDbAccountName = $cosmos_midpcosmos_name
-    $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
+    # [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    # Install-Module -Name PowerShellGet -Force
+    # Install-Module -Name CosmosDB -Force
+    # $cosmosDbAccountName = $cosmos_midpcosmos_name
+    # $cosmos = Get-ChildItem "./artifacts/cosmos" | Select BaseName 
 
-    foreach ($name in $cosmos) {
-        $collection = $name.BaseName 
-        $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmosDatabaseName -ResourceGroup $rgName
-        $path = "./artifacts/cosmos/" + $name.BaseName + ".json"
-        $document = Get-Content -Raw -Path $path
-        $document = ConvertFrom-Json $document
+    # foreach ($name in $cosmos) {
+    #     $collection = $name.BaseName 
+    #     $cosmosDbContext = New-CosmosDbContext -Account $cosmosDbAccountName -Database $cosmosDatabaseName -ResourceGroup $rgName
+    #     $path = "./artifacts/cosmos/" + $name.BaseName + ".json"
+    #     $document = Get-Content -Raw -Path $path
+    #     $document = ConvertFrom-Json $document
 
-        foreach ($json in $document) {
-            $key = $json.id
-            $body = ConvertTo-Json $json
-            $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
-        }
-    } 
+    #     foreach ($json in $document) {
+    #         $key = $json.id
+    #         $body = ConvertTo-Json $json
+    #         $res = New-CosmosDbDocument -Context $cosmosDbContext -CollectionId $collection -DocumentBody $body -PartitionKey $key
+    #     }
+    # } 
 
     $endtime = get-date
     $executiontime = $endtime - $starttime
