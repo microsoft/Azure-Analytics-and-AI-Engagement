@@ -1,0 +1,330 @@
+{
+    "name": "Twitter Data In Data Lake",
+    "properties": {
+        "activities": [
+            {
+                "name": "GetFileNames",
+                "type": "GetMetadata",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "TwitterData_Json",
+                        "type": "DatasetReference"
+                    },
+                    "fieldList": [
+                        "childItems"
+                    ],
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "recursive": true,
+                        "enablePartitionDiscovery": false
+                    },
+                    "formatSettings": {
+                        "type": "JsonReadSettings"
+                    }
+                }
+            },
+            {
+                "name": "SelectOriginalFiles",
+                "type": "Filter",
+                "dependsOn": [
+                    {
+                        "activity": "GetFileNames",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('GetFileNames').output.childItems",
+                        "type": "Expression"
+                    },
+                    "condition": {
+                        "value": "@startswith(item().name,pipeline().parameters.parStartwith)",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "FileNamePattern",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "SelectOriginalFiles",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "varFileNamePattern",
+                    "value": {
+                        "value": "@substring(activity('SelectOriginalFiles').output.Value[1].Name,int(pipeline().parameters.parSubString),sub(length(activity('SelectOriginalFiles').output.Value[1].Name), int(pipeline().parameters.parSubString) ) )",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "UntilReachCount",
+                "type": "Until",
+                "dependsOn": [
+                    {
+                        "activity": "FileNamePattern",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@activity('GetFileNames').outputactivity('GenerateRandomTwitterData').outputequals(int(variables('varGeneratorIncr')),int(pipeline().parameters.parGeneratorCount))",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "GetRandomNumber",
+                            "type": "SetVariable",
+                            "dependsOn": [],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varRandomNumber",
+                                "value": {
+                                    "value": "@string(rand(int(pipeline().parameters.parRangeMin),int(pipeline().parameters.parRangeMax)))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "GetRandomNumberfmt",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "GetRandomNumber",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varRandomNumber",
+                                "value": {
+                                    "value": "@string(rand(int(pipeline().parameters.parRangeMin),int(pipeline().parameters.parRangeMax)))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "CreateRandomNumber",
+                            "type": "SetVariable",
+                            "dependsOn": [],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varCreateRandomNumber",
+                                "value": {
+                                    "value": "@string(rand(int(pipeline().parameters.parRangeMax),9500))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "CreateRandomNumberfmt",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "CreateRandomNumber",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varCreateRandomNumberfmt",
+                                "value": {
+                                    "value": "@concat(substring('00000',1, sub(5,length(variables('varCreateRandomNumber')))),string(variables('varCreateRandomNumber')))\n",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "GenerateRandomTwitterData",
+                            "type": "Copy",
+                            "dependsOn": [
+                                {
+                                    "activity": "GetRandomNumberfmt",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                },
+                                {
+                                    "activity": "CreateRandomNumberfmt",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "JsonSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSReadSettings",
+                                        "recursive": true,
+                                        "wildcardFileName": "*.json",
+                                        "enablePartitionDiscovery": false
+                                    },
+                                    "formatSettings": {
+                                        "type": "JsonReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "JsonSink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSWriteSettings"
+                                    },
+                                    "formatSettings": {
+                                        "type": "JsonWriteSettings"
+                                    }
+                                },
+                                "enableStaging": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "TwitterData_Json",
+                                    "type": "DatasetReference"
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "TwitterData_Json",
+                                    "type": "DatasetReference"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "SetTempIncremental",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "GenerateRandomTwitterData",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varGeneratorIncrTemp",
+                                "value": {
+                                    "value": "@string(add(int(variables('varGeneratorIncr')),1))",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "SetIncremental",
+                            "type": "SetVariable",
+                            "dependsOn": [
+                                {
+                                    "activity": "SetTempIncremental",
+                                    "dependencyConditions": [
+                                        "Succeeded"
+                                    ]
+                                }
+                            ],
+                            "userProperties": [],
+                            "typeProperties": {
+                                "variableName": "varGeneratorIncr",
+                                "value": {
+                                    "value": "@variables('varGeneratorIncrTemp')",
+                                    "type": "Expression"
+                                }
+                            }
+                        }
+                    ],
+                    "timeout": "0.12:00:00"
+                }
+            }
+        ],
+        "parameters": {
+            "parDirectorySource": {
+                "type": "string",
+                "defaultValue": "TwitterDataJson"
+            },
+            "parDirectoryDestination": {
+                "type": "string",
+                "defaultValue": "TwitterDataJsonSource"
+            },
+            "parFileNameWildcard": {
+                "type": "string",
+                "defaultValue": "*.json"
+            },
+            "parStartwith": {
+                "type": "string",
+                "defaultValue": "part-"
+            },
+            "parRangeMin": {
+                "type": "string",
+                "defaultValue": "0"
+            },
+            "parRangeMax": {
+                "type": "string",
+                "defaultValue": "20"
+            },
+            "parSubString": {
+                "type": "string",
+                "defaultValue": "10"
+            },
+            "parGeneratorCount": {
+                "type": "string",
+                "defaultValue": "10"
+            }
+        },
+        "variables": {
+            "varFileNamePattern": {
+                "type": "String"
+            },
+            "varRandomNumber": {
+                "type": "String"
+            },
+            "varCreateRandomNumber": {
+                "type": "String"
+            },
+            "varCreateRandomNumberfmt": {
+                "type": "String"
+            },
+            "varGeneratorIncrTemp": {
+                "type": "String"
+            },
+            "varGeneratorIncr": {
+                "type": "String"
+            }
+        },
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Analytical Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-01-09T17:52:02Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

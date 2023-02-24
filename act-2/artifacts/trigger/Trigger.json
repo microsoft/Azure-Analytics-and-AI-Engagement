@@ -1,0 +1,24 @@
+{
+    "name": "Trigger",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "Sales Data LookUp",
+                    "type": "PipelineReference"
+                }
+            }
+        ],
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 10,
+                "startTime": "2023-01-06T14:44:00Z",
+                "timeZone": "UTC"
+            }
+        }
+    }
+}

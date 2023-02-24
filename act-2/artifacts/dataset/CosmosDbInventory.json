@@ -1,0 +1,44 @@
+{
+    "name": "CosmosDbInventory",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "CosmosDbNoSql",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "CosmosDbSqlApiCollection",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "ModelId": {
+                    "type": "string"
+                },
+                "Region": {
+                    "type": "string"
+                },
+                "AvailableInventory": {
+                    "type": "integer"
+                },
+                "BillingId": {
+                    "type": "integer"
+                },
+                "LastUpdate": {
+                    "type": "string"
+                },
+                "EventProcessedUtcTime": {
+                    "type": "string"
+                },
+                "PartitionId": {
+                    "type": "integer"
+                },
+                "EventEnqueuedUtcTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "typeProperties": {
+            "collectionName": "Inventory"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

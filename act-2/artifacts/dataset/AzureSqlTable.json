@@ -1,0 +1,58 @@
+{
+    "name": "AzureSqlTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureSqlDatabase",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WeekStarting",
+                "type": "date"
+            },
+            {
+                "name": "Store",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Brand",
+                "type": "varchar"
+            },
+            {
+                "name": "Quantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Advert",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Price",
+                "type": "decimal",
+                "precision": 30,
+                "scale": 6
+            },
+            {
+                "name": "Revenue",
+                "type": "decimal",
+                "precision": 30,
+                "scale": 6
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "SalesTransData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

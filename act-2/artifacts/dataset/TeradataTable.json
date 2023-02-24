@@ -1,0 +1,17 @@
+{
+    "name": "TeradataTable",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Teradata",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "TeradataTable",
+        "schema": [],
+        "typeProperties": {
+            "database": "dbo",
+            "table": "CustomerChurnData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

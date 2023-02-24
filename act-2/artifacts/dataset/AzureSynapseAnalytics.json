@@ -1,0 +1,20 @@
+{
+    "name": "AzureSynapseAnalytics",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synnrfdemodev-WorkspaceDefaultSqlServer",
+            "type": "LinkedServiceReference",
+            "parameters": {
+                "DBName": "NRFDWDev"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "PredictiveInventory"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,29 +1,3 @@
-<h1 align="center">
-  <br/>
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DREAM%20Demo%20Badge.png" alt="Dream Demo in a Box" width="200" /></a>
-  <br/>
-  Microsoft Dream Demo in a Box
-  <br/>
-</h1>
-
-
-
-<div align="center">
-  <a href="#D">All</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Readme-shell.md">FSI</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Readme-shell.md">Fintax</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/Readme-shell.md">Retail</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare/HealthCare/Readme-shell.md">Healthcare</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/Readme-shell.md">Manufacturing</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a>
-</div>
-<br/><br/>
-
-<h2>
-  Dream Demo in a Box
-</h2>
-
 # Setting the scene
 
 ## What is it?

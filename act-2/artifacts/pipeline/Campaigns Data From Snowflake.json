@@ -1,0 +1,98 @@
+{
+    "name": "Campaigns Data From Snowflake",
+    "properties": {
+        "activities": [
+            {
+                "name": "Check if Snowflake Table exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SnowflakeSource",
+                        "exportSettings": {
+                            "type": "SnowflakeExportCopyCommand"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "SnowflakeTable",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Campaign Data To Data Lake",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Snowflake Table exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SnowflakeSource",
+                        "exportSettings": {
+                            "type": "SnowflakeExportCopyCommand"
+                        }
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "AzureBlob",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "data"
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SnowflakeTable",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SnowflakeCampaignsData",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Analytical Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-01-05T12:54:20Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}
