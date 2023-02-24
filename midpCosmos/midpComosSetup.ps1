@@ -1040,7 +1040,7 @@ else {
 
     RefreshTokens
     foreach ($report in $reportList) {
-        if ($report.name -eq "ADX dashboard 8AM" -or $report.name -eq "Dashboard-Images" -or $report.name -eq "Global overview tiles") {
+        if ($report.name -eq "ADX dashboard 8AM" -or $report.name -eq "Dashboard-Images" -or $report.name -eq "Global overview tiles" -or $report.name -eq "Realtime In Store Analytics") {
             continue;
         }
         elseif ($report.name -eq "6 ADX Website Bounce Rate Analysis") {
@@ -1107,7 +1107,7 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters" -or $report.name -eq "Realtime In Store Analytics") {
+        elseif ($report.name -eq "CDP Vision Report" -or $report.name -eq "Customer Segmentation" -or $report.name -eq "Dwell Time Kpis and Charts" -or $report.name -eq "Location Analytics" -or $report.name -eq "Retail Group CEO KPI" -or $report.name -eq "Retail Predictive Analytics" -or $report.name -eq "World Map" -or $report.name -eq "WideWorldImporters") {
             $body = "{
 			`"updateDetails`": [
 								{
