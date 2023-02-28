@@ -181,7 +181,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 4. In the Azure Cloud Shell window, ensure the PowerShell environment is selected and **enter** the following command to clone the repository files.
 
 ```
-git clone -b midp-act2 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git midp
+git clone -b midp-act2 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git midp_act2
 ```
 
 ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
@@ -190,10 +190,10 @@ git clone -b midp-act2 --depth 1 --single-branch https://github.com/microsoft/Az
 
 > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
-5. **Execute** the midpComosSetup.ps1 script by executing the following command:
+5. **Execute** the midpSetup.ps1 script by executing the following command:
 
 ```
-cd ./midp/act-2/
+cd ./midp_act2/act-2/
 ```
 
 6. Then **run** the PowerShell: 
