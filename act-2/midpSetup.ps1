@@ -278,6 +278,7 @@ else {
         $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
         $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
         $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmos_midpcosmos_name)
+        $query = $query.Replace("#COSMOSDB_ACCOUNT_KEY#", $cosmos_account_key)
         $query = $query.Replace("#SAS_TOKEN#", $sasTokenAcc)
 	
         if ($Parameters -ne $null) {
