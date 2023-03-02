@@ -486,6 +486,7 @@ else {
         $query = Get-Content -Raw -Path $ScriptFileName -Encoding utf8
         $query = $query.Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
         $query = $query.Replace("#COSMOSDB_ACCOUNT_NAME#", $cosmos_midpcosmos_name)
+        $query = $query.Replace("#COSMOSDB_ACCOUNT_KEY#", $cosmos_account_key)
         $query = $query.Replace("#SAS_TOKEN#", $sasTokenAcc)
 	
         if ($Parameters -ne $null) {
@@ -791,62 +792,6 @@ else {
         Add-Content log.txt $result
     }
  
-    # #Creating spark notebooks
-    # Add-Content log.txt "--------------Spark Notebooks---------------"
-    # Write-Host "--------Spark notebooks--------"
-    # RefreshTokens
-    # $notebooks=Get-ChildItem "./artifacts/notebooks" | Select BaseName 
-
-    # $cellParams = [ordered]@{
-    #     "#SQL_POOL_NAME#"       = $sqlPoolName
-    #     "#SUBSCRIPTION_ID#"     = $subscriptionId
-    #     "#RESOURCE_GROUP_NAME#" = $rgName
-    #     "#WORKSPACE_NAME#"  = $synapseWorkspaceName
-    #     "#DATA_LAKE_NAME#" = $dataLakeAccountName
-    #     "#SPARK_POOL_NAME#" = $sparkPoolName
-    #     "#STORAGE_ACCOUNT_KEY#" = $storage_account_key
-    #     "#STORAGE_ACCOUNT_NAME#" = $dataLakeAccountName
-    #     "#LOCATION#"=$Region
-    #     "#ML_WORKSPACE_NAME#"=$amlworkspacename
-    # }
-
-    # foreach($name in $notebooks)
-    # {
-    # 	$template=Get-Content -Raw -Path "./artifacts/templates/spark_notebook.json"
-    # 	foreach ($paramName in $cellParams.Keys) 
-    #     {
-    # 		$template = $template.Replace($paramName, $cellParams[$paramName])
-    # 	}
-    # 	$template=$template.Replace("#NOTEBOOK_NAME#",$name.BaseName)
-    #     $jsonItem = ConvertFrom-Json $template
-    # 	$path="./artifacts/notebooks/"+$name.BaseName+".ipynb"
-    # 	$notebook=Get-Content -Raw -Path $path
-    # 	$jsonNotebook = ConvertFrom-Json $notebook
-    # 	$jsonItem.properties.cells = $jsonNotebook.cells
-	
-    #     if ($CellParams) 
-    #     {
-    #         foreach ($cellParamName in $cellParams.Keys) 
-    #         {
-    #             foreach ($cell in $jsonItem.properties.cells) 
-    #             {
-    #                 for ($i = 0; $i -lt $cell.source.Count; $i++) 
-    #                 {
-    #                     $cell.source[$i] = $cell.source[$i].Replace($cellParamName, $CellParams[$cellParamName])
-    #                 }
-    #             }
-    #         }
-    #     }
-
-    #     Write-Host "Creating notebook : $($name.BaseName)"
-    # 	$item = ConvertTo-Json $jsonItem -Depth 100
-    # 	$uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/notebooks/$($name.BaseName)?api-version=2019-06-01-preview"
-    # 	$result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization="Bearer $synapseToken" } -ContentType "application/json"
-    # 	#waiting for operation completion
-    # 	Start-Sleep -Seconds 10
-    # 	Add-Content log.txt $result
-    # }
-
     #creating Dataflows
     Add-Content log.txt "------Dataflows-----"
     Write-Host "--------Dataflows--------"
