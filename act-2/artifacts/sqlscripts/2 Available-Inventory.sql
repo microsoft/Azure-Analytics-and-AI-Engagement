@@ -8,7 +8,7 @@ IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = '#COSMOSDB_ACCOUNT_NAM
 GO
 
 SELECT Top 100 [Region],[lastupdate],[Modelid],[Availableinventory]
-FROM OPENROWSET(​PROVIDER = 'CosmosDB',
+FROM OPENROWSET(PROVIDER = 'CosmosDB',
                 CONNECTION = 'Account=#COSMOSDB_ACCOUNT_NAME#;Database=Telemetry',
                 OBJECT = 'Inventory',
                 SERVER_CREDENTIAL = '#COSMOSDB_ACCOUNT_NAME#'
