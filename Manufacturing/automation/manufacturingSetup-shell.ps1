@@ -323,7 +323,7 @@ RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
-& $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/publicassets/telemetryp.csv" $destinationUri --recursive
+& $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/mfgdemodata/telemetryp.csv" $destinationUri --recursive
 
 #$destinationSasKey = New-AzStorageContainerSASToken -Container "incidentreport" -Context $dataLakeContext -Permission rwdl
 #$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/incidentreport$($destinationSasKey)"
