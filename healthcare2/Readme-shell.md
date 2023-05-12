@@ -309,7 +309,7 @@ cd ./healthcare2/healthcare2
 	
 ### Task 6: Azure Purview Setup
 
-> **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewmidp..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "stmidp...". Once the permission has been granted, proceed with the following steps.
+> **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewhc2..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "sthealthcare2...". Once the permission has been granted, proceed with the following steps.
 
 1. From Azure Portal, **search** for "purview" in the resource group and **click** on the resource.
 
