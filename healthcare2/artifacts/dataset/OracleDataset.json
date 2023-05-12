@@ -1,0 +1,17 @@
+{
+    "name": "OracleDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "OracleDB",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "OracleTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "BedOccupancy"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

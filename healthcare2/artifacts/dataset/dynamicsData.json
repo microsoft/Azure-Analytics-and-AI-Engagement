@@ -1,0 +1,16 @@
+{
+    "name": "dynamicsData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "DynamicsHealthCare",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DynamicsEntity",
+        "schema": [],
+        "typeProperties": {
+            "entityName": "DynamicsData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

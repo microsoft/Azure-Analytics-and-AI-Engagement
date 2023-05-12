@@ -1,0 +1,23 @@
+{
+    "name": "synhealthcare2prod-WorkspaceDefaultSqlServer",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "parameters": {
+            "DBName": {
+                "type": "String"
+            }
+        },
+        "type": "AzureSqlDW",
+        "typeProperties": {
+            "connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=#WORKSPACE_NAME#.sql.azuresynapse.net;initial catalog=#DATABASE_NAME#;user id=#SQL_USERNAME#",
+            "password": {
+                "type": "SecureString",
+                "value":"#SQL_PASSWORD#"
+            }
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

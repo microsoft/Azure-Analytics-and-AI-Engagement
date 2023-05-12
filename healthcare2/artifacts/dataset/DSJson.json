@@ -1,0 +1,66 @@
+{
+    "name": "DSJson",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "FHIRData",
+                "fileSystem": "data-source"
+            }
+        },
+        "schema": {
+            "type": "object",
+            "properties": {
+                "hashtag": {
+                    "type": "string"
+                },
+                "tweet": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "retweetcount": {
+                    "type": "integer"
+                },
+                "favouritecount": {
+                    "type": "integer"
+                },
+                "sentiment": {
+                    "type": "string"
+                },
+                "sentimentscore": {
+                    "type": "integer"
+                },
+                "hourofday": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "IsDeleted": {
+                    "type": "boolean"
+                },
+                "IsSanitized": {
+                    "type": "boolean"
+                },
+                "SentimentData": {
+                    "type": "null"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

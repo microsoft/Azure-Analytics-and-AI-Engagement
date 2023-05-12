@@ -1,0 +1,2380 @@
+{
+   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      "environment_code": {
+         "type": "String",
+         "metadata": {
+            "description": "Suffix added to all resource name to make them unique. Should consist of only lower case alphabet and numbers. Total length should be less than 6 characters."
+         }
+      },
+      "sql_administrator_login_password": {
+         "type": "SecureString",
+         "metadata": {
+            "description": "Password for SQL Admin. Should have atleast one capital, one small alphapbet with one digit and one special character.Password should be at least 8 characters long."
+         }
+      },
+      "pbi_workspace_id": {
+         "type": "String",
+         "metadata": {
+            "description": "PowerBi workspace Id."
+         }
+      }
+   },
+   "variables": {
+      "resource_group_name": "[resourceGroup().name]",
+      "subscriptionid": "[subscription().subscriptionId]",
+      "unique_suffix": "[concat(uniqueString(deployment().name), '-', parameters('environment_code'))]",
+      "location": "[resourceGroup().location]",
+      "tenantId": "[subscription().tenantId]",
+      "key_vault_name": "[if(greater(length(concat('kv-hc2-', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('kv-hc2-',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('kv-hc2-',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "storage_account_name": "[if(greater(length(concat('sthealthcare2', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('sthealthcare2',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('sthealthcare2',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "synapse_workspace_name": "[concat('synhealthcare2',parameters('environment_code'),uniqueString(deployment().name))]",
+      "sql_compute_name": "HealthcareDW",
+      "sql_server_sku": "DW100c",
+      "default_data_lake_storage_file_system_name": "sthealthcare2",
+      "default_data_lake_storage_account_url": "[concat('https://', variables('storage_account_name'), '.dfs.core.windows.net')]",
+      "sql_administrator_login_id": "labsqladmin",
+      "forms_healthcare2_name": "[concat('form-healthcare2-',variables('unique_suffix'))]",
+      "asa_streamingjobs_deltadata_query_name": "WITH [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b] AS ( SELECT TRY_CAST([patient-in].[DeviceId] AS nvarchar(max)) AS [DeviceId], TRY_CAST([patient-in].[City] AS nvarchar(max)) AS [City], TRY_CAST([patient-in].[StoreID] AS nvarchar(max)) AS [StoreID], TRY_CAST([patient-in].[EnqueuedTimeUTC] AS nvarchar(max)) AS [EnqueuedTimeUTC], TRY_CAST([patient-in].[bodyTemperature] AS bigint) AS [bodyTemperature], TRY_CAST([patient-in].[heartRate] AS bigint) AS [heartRate], TRY_CAST([patient-in].[breathingRate] AS bigint) AS [breathingRate], TRY_CAST([patient-in].[spo2] AS bigint) AS [spo2], TRY_CAST([patient-in].[systolicPressure] AS bigint) AS [systolicPressure], TRY_CAST([patient-in].[EventProcessedUtcTime] AS datetime) AS [EventProcessedUtcTime], TRY_CAST([patient-in].[PartitionId] AS bigint) AS [PartitionId], TRY_CAST([patient-in].[EventEnqueuedUtcTime] AS datetime) AS [EventEnqueuedUtcTime] FROM [patient-in] ) \n SELECT [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[DeviceId], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[City], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[StoreID], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[EnqueuedTimeUTC], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[bodyTemperature], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[heartRate], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[breathingRate], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[spo2], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[systolicPressure], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[EventProcessedUtcTime], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[PartitionId], [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b].[EventEnqueuedUtcTime] INTO [adls-out] FROM [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b] \n SELECT * into [payor-realtime-out] FROM [payor-realtime] \n SELECT * into [provider-operational] FROM [operational-provider] \n SELECT * INTO [patient] FROM [1669b476-a0a4-1ef7-5ed4-6fbcaac9be7b]",
+      "cosmos_healthcare2_name": "[if(greater(length(concat('cosmos-healthcare2-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('cosmos-healthcare2-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('cosmos-healthcare2-', uniqueString(deployment().name),parameters('environment_code')) )]",
+      "asa_deltadata_name": "[concat('asa-hc2-deltadata-',variables('unique_suffix'))]",
+      "search_healthcare2_demo_name": "[concat('srch-healthcare2-',variables('unique_suffix'))]",
+      "workspaces_healthfhir_name": "[if(greater(length(concat('fhirworkspacehc2', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('fhirworkspacehc2',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('fhirworkspacehc2',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "healthfhirservice_name": "[if(greater(length(concat('fhirservicehc2', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('fhirservicehc2',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('fhirservicehc2',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "databricks_workspace_name": "[concat('databricks-hc2-',variables('unique_suffix'))]",
+      "databricks_managed_resource_group_name": "[concat('databricks-rg-hc2-',variables('unique_suffix'))]",
+      "accounts_purviewhealthcare2_name": "[concat('purviewhc2',variables('unique_suffix'))]",
+      "accounts_cog_healthcare2_name": "[concat('cog-healthcare2-',variables('unique_suffix'))]",
+      "namespaces_evh_patient_monitoring_name": "[concat('evh-patient-monitoring-hc2-',variables('unique_suffix'))]",
+      "serverfarms_func_cosmos_generator": "[concat('asp-func-payor-generator-hc2-',variables('unique_suffix'))]",
+      "func_cosmos_generator_storage_name": "[if(greater(length(concat('stfuncgeneratorhc2', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('stfuncgeneratorhc2',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stfuncgeneratorhc2',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "func_cosmos_generator_name": "[concat('func-payor-generator-hc2-',variables('unique_suffix'))]",
+      "sites_patient_data_simulator_name": "[concat('app-patient-data-simulator-',variables('unique_suffix'))]",
+      "serverfarm_patient_data_simulator_name": "[concat('asp-patient-data-simulator-',variables('unique_suffix'))]",
+      "sites_doc_search_name": "[concat('app-health-search-',variables('unique_suffix'))]",
+      "serverfarms_doc_search_name": "[concat('asp-health-search-',variables('unique_suffix'))]",
+      "accounts_open_ai_name": "[if(greater(length(concat('openAIservicehc2', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('openAIservicehc2',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('openAIservicehc2',parameters('environment_code'),uniqueString(deployment().name)) )]",
+      "app_clinical_notes_name": "[concat('app-clinical-notes-',variables('unique_suffix'))]",
+      "serverfarm_asp_clinical_notes_name": "[concat('asp-clinical-notes-',variables('unique_suffix'))]",
+      "serverfarm_asp_openai_name": "[concat('asp-open-ai-',variables('unique_suffix'))]",
+      "app_openai_name": "[concat('app-open-ai-',variables('unique_suffix'))]",
+      "serverfarm_asp_healthcare2_name": "[concat('asp-healthcare2-',variables('unique_suffix'))]",
+      "app_healthcare2_name": "[concat('app-healthcare2-',variables('unique_suffix'))]"
+   },
+   "resources": [
+      {
+         "name": "default",
+         "type": "Microsoft.Resources/tags",
+         "apiVersion": "2019-10-01",
+         "properties": {
+            "tags": {
+               "DeploymentId": "[parameters('environment_code')]",
+               "UniqueId": "[uniqueString(deployment().name)]",
+               "WsId": "[parameters('pbi_workspace_id')]"
+            }
+         }
+      },
+      {
+         "type": "Microsoft.CognitiveServices/accounts",
+         "apiVersion": "2022-12-01",
+         "name": "[variables('accounts_open_ai_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S0"
+         },
+         "kind": "OpenAI",
+         "properties": {
+            "customSubDomainName": "[variables('accounts_open_ai_name')]",
+            "publicNetworkAccess": "Enabled"
+         }
+      },
+      {
+         "type": "Microsoft.CognitiveServices/accounts",
+         "apiVersion": "2022-12-01",
+         "name": "[variables('accounts_cog_healthcare2_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S0"
+         },
+         "kind": "CognitiveServices",
+         "properties": {
+            "apiProperties": {
+               "statisticsEnabled": false
+            },
+            "customSubDomainName": "[variables('accounts_cog_healthcare2_name')]",
+            "publicNetworkAccess": "Enabled"
+         }
+      },
+      {
+         "type": "Microsoft.CognitiveServices/accounts",
+         "apiVersion": "2022-12-01",
+         "name": "[variables('forms_healthcare2_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S0"
+         },
+         "kind": "FormRecognizer",
+         "identity": {
+            "type": "SystemAssigned"
+         },
+         "properties": {
+            "customSubDomainName": "[variables('forms_healthcare2_name')]",
+            "networkAcls": {
+               "defaultAction": "Allow",
+               "virtualNetworkRules": [],
+               "ipRules": []
+            },
+            "publicNetworkAccess": "Enabled"
+         }
+      },
+      {
+         "name": "[variables('databricks_workspace_name')]",
+         "type": "Microsoft.Databricks/workspaces",
+         "apiVersion": "2023-02-01",
+         "location": "[variables('location')]",
+         "properties": {
+            "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', variables('databricks_managed_resource_group_name'))]"
+         },
+         "sku": {
+            "name": "premium"
+         }
+      },
+      {
+         "type": "Microsoft.DocumentDB/databaseAccounts",
+         "apiVersion": "2022-11-15",
+         "name": "[variables('cosmos_healthcare2_name')]",
+         "location": "[variables('location')]",
+         "kind": "GlobalDocumentDB",
+         "identity": {
+            "type": "None"
+         },
+         "properties": {
+            "publicNetworkAccess": "Enabled",
+            "enableAutomaticFailover": false,
+            "enableMultipleWriteLocations": false,
+            "isVirtualNetworkFilterEnabled": false,
+            "virtualNetworkRules": [],
+            "disableKeyBasedMetadataWriteAccess": false,
+            "enableFreeTier": false,
+            "enableAnalyticalStorage": true,
+            "analyticalStorageConfiguration": {
+               "schemaType": "WellDefined"
+            },
+            "databaseAccountOfferType": "Standard",
+            "defaultIdentity": "FirstPartyIdentity",
+            "networkAclBypass": "None",
+            "disableLocalAuth": false,
+            "enablePartitionMerge": false,
+            "minimalTlsVersion": "Tls",
+            "consistencyPolicy": {
+               "defaultConsistencyLevel": "Session",
+               "maxIntervalInSeconds": 5,
+               "maxStalenessPrefix": 100
+            },
+            "locations": [
+               {
+                  "locationName": "[variables('location')]",
+                  "provisioningState": "Succeeded",
+                  "failoverPriority": 0,
+                  "isZoneRedundant": false
+               }
+            ],
+            "cors": [],
+            "capabilities": [],
+            "ipRules": [],
+            "backupPolicy": {
+               "type": "Periodic",
+               "periodicModeProperties": {
+                  "backupIntervalInMinutes": 240,
+                  "backupRetentionIntervalInHours": 8,
+                  "backupStorageRedundancy": "Geo"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+         "apiVersion": "2022-11-15",
+         "name": "[concat(variables('cosmos_healthcare2_name'), '/healthcare')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+         ],
+         "properties": {
+            "resource": {
+               "id": "healthcare"
+            }
+         }
+      },
+      {
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+         "apiVersion": "2022-11-15",
+         "name": "[concat(variables('cosmos_healthcare2_name'), '/00000000-0000-0000-0000-000000000001')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+         ],
+         "properties": {
+            "roleName": "Cosmos DB Built-in Data Reader",
+            "type": "BuiltInRole",
+            "assignableScopes": [
+               "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+            ],
+            "permissions": [
+               {
+                  "dataActions": [
+                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
+                  ],
+                  "notDataActions": []
+               }
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+         "apiVersion": "2022-11-15",
+         "name": "[concat(variables('cosmos_healthcare2_name'), '/00000000-0000-0000-0000-000000000002')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+         ],
+         "properties": {
+            "roleName": "Cosmos DB Built-in Data Contributor",
+            "type": "BuiltInRole",
+            "assignableScopes": [
+               "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+            ],
+            "permissions": [
+               {
+                  "dataActions": [
+                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
+                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
+                  ],
+                  "notDataActions": []
+               }
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+         "apiVersion": "2022-11-15",
+         "name": "[concat(variables('cosmos_healthcare2_name'), '/healthcare/SynapseLinkLabData')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmos_healthcare2_name'), 'healthcare')]",
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmos_healthcare2_name'))]"
+         ],
+         "properties": {
+            "resource": {
+               "id": "SynapseLinkLabData",
+               "indexingPolicy": {
+                  "indexingMode": "consistent",
+                  "automatic": true,
+                  "includedPaths": [
+                     {
+                        "path": "/*"
+                     }
+                  ],
+                  "excludedPaths": [
+                     {
+                        "path": "/\"_etag\"/?"
+                     }
+                  ]
+               },
+               "partitionKey": {
+                  "paths": [
+                     "/SyntheticPartitionKey"
+                  ],
+                  "kind": "Hash"
+               },
+               "uniqueKeyPolicy": {
+                  "uniqueKeys": []
+               },
+               "conflictResolutionPolicy": {
+                  "mode": "LastWriterWins",
+                  "conflictResolutionPath": "/_ts"
+               },
+               "analyticalStorageTtl": -1
+            },
+            "options": {
+               "autoscaleSettings": {
+                  "maxThroughput": "4000"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[variables('namespaces_evh_patient_monitoring_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "Standard",
+            "tier": "Standard",
+            "capacity": 1
+         },
+         "properties": {
+            "minimumTlsVersion": "1.2",
+            "publicNetworkAccess": "Enabled",
+            "disableLocalAuth": false,
+            "zoneRedundant": true,
+            "isAutoInflateEnabled": false,
+            "maximumThroughputUnits": 0,
+            "kafkaEnabled": true
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/authorizationrules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/RootManageSharedAccessKey')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Listen",
+               "Manage",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "retentionDescription": {
+               "cleanupPolicy": "Delete",
+               "retentionTimeInHours": 24
+            },
+            "messageRetentionInDays": 1,
+            "partitionCount": 1,
+            "status": "Active"
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "retentionDescription": {
+               "cleanupPolicy": "Delete",
+               "retentionTimeInHours": 24
+            },
+            "messageRetentionInDays": 1,
+            "partitionCount": 1,
+            "status": "Active"
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "retentionDescription": {
+               "cleanupPolicy": "Delete",
+               "retentionTimeInHours": 24
+            },
+            "messageRetentionInDays": 1,
+            "partitionCount": 1,
+            "status": "Active"
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/default')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "publicNetworkAccess": "Enabled",
+            "defaultAction": "Allow",
+            "virtualNetworkRules": [],
+            "ipRules": []
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics/deltadata-asa_operational-provider_policy')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Listen"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data/deltadata-asa_payor-realtime_policy')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Listen"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device/device')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Manage",
+               "Listen",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics/operational')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Manage",
+               "Listen",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device/patien-data_evh_policy')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Listen"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data/realtime')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {
+            "rights": [
+               "Manage",
+               "Listen",
+               "Send"
+            ]
+         }
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device/$Default')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics/$Default')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data/$Default')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics/deltadata-asa_operational-provider_consumer_group')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data/deltadata-asa_payor-realtime_cg')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/payor-realtime-data/deltadata-asa_payor-realtime_consumer_group')]",
+         "location": "eastus2",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device/deltadata-asa-cg')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/monitoring-device/healthcare')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+         "apiVersion": "2022-10-01-preview",
+         "name": "[concat(variables('namespaces_evh_patient_monitoring_name'), '/operational-analytics/opr')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics')]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "properties": {}
+      },
+      {
+         "type": "Microsoft.HealthcareApis/workspaces",
+         "apiVersion": "2023-02-28",
+         "name": "[variables('workspaces_healthfhir_name')]",
+         "location": "[variables('location')]",
+         "properties": {
+            "publicNetworkAccess": "Enabled"
+         }
+      },
+      {
+         "type": "Microsoft.HealthcareApis/workspaces/fhirservices",
+         "apiVersion": "2023-02-28",
+         "name": "[concat(variables('workspaces_healthfhir_name'), '/', variables('healthfhirservice_name'))]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.HealthcareApis/workspaces', variables('workspaces_healthfhir_name'))]"
+         ],
+         "kind": "fhir-R4",
+         "identity": {
+            "type": "SystemAssigned"
+         },
+         "properties": {
+            "accessPolicies": [],
+            "acrConfiguration": {
+               "loginServers": []
+            },
+            "authenticationConfiguration": {
+               "authority": "[concat('https://login.microsoftonline.com/', variables('tenantId'))]",
+               "audience": "[concat('https://', variables('workspaces_healthfhir_name'), '-', variables('healthfhirservice_name'), '.fhir.azurehealthcareapis.com')]",
+               "smartProxyEnabled": false
+            },
+            "corsConfiguration": {
+               "origins": [],
+               "headers": [],
+               "methods": [],
+               "allowCredentials": false
+            },
+            "exportConfiguration": {
+               "storageAccountName": "[variables('storage_account_name')]"
+            },
+            "importConfiguration": {
+               "enabled": false,
+               "initialImportMode": false
+            },
+            "resourceVersionPolicyConfiguration": {
+               "default": "versioned",
+               "resourceTypeOverrides": {}
+            },
+            "implementationGuidesConfiguration": {
+               "usCoreMissingData": false
+            },
+            "eventState": "Disabled",
+            "publicNetworkAccess": "Enabled"
+         }
+      },
+      {
+         "type": "Microsoft.Search/searchServices",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('search_healthcare2_demo_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "basic"
+         },
+         "properties": {
+            "replicaCount": 1,
+            "partitionCount": 1,
+            "hostingMode": "Default",
+            "publicNetworkAccess": "Enabled",
+            "networkRuleSet": {
+               "ipRules": [
+
+               ]
+            }
+         }
+      },
+      {
+         "type": "Microsoft.Purview/accounts",
+         "apiVersion": "2021-07-01",
+         "name": "[variables('accounts_purviewhealthcare2_name')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "Standard",
+            "capacity": 1
+         },
+         "identity": {
+            "type": "SystemAssigned"
+         },
+         "properties": {
+            "cloudConnectors": {
+
+            },
+            "publicNetworkAccess": "Enabled",
+            "managedResourceGroupName": "[concat('managed-rg-', variables('accounts_purviewhealthcare2_name'))]"
+         }
+      },
+      {
+         "name": "[variables('storage_account_name')]",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "Standard_RAGRS",
+            "tier": "Standard"
+         },
+         "kind": "StorageV2",
+         "properties": {
+            "dnsEndpointType": "Standard",
+            "defaultToOAuthAuthentication": false,
+            "publicNetworkAccess": "Enabled",
+            "allowCrossTenantReplication": false,
+            "isSftpEnabled": false,
+            "isHnsEnabled": "true",
+            "minimumTlsVersion": "TLS1_2",
+            "allowBlobPublicAccess": true,
+            "allowSharedKeyAccess": true,
+            "networkAcls": {
+               "bypass": "AzureServices",
+               "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+               "requireInfrastructureEncryption": false,
+               "services": {
+                  "file": {
+                     "keyType": "Account",
+                     "enabled": true
+                  },
+                  "blob": {
+                     "keyType": "Account",
+                     "enabled": true
+                  }
+               },
+               "keySource": "Microsoft.Storage"
+            },
+            "accessTier": "Hot"
+         },
+         "resources": [
+            {
+               "type": "blobServices/containers",
+               "apiVersion": "2018-07-01",
+               "name": "[concat('default/', variables('default_data_lake_storage_file_system_name'))]",
+               "dependsOn": [
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+               ]
+            }
+         ]
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "sku": {
+            "name": "Standard_RAGRS",
+            "tier": "Standard"
+         },
+         "properties": {
+            "cors": {
+               "corsRules": [
+                  {
+                     "allowedOrigins": [
+                        "*"
+                     ],
+                     "allowedMethods": [
+                        "DELETE",
+                        "GET",
+                        "HEAD",
+                        "MERGE",
+                        "OPTIONS",
+                        "PATCH",
+                        "POST",
+                        "PUT"
+                     ],
+                     "maxAgeInSeconds": 120,
+                     "exposedHeaders": [
+                        "*"
+                     ],
+                     "allowedHeaders": [
+                        "*"
+                     ]
+                  }
+               ]
+            },
+            "deleteRetentionPolicy": {
+               "allowPermanentDelete": false,
+               "enabled": true,
+               "days": 7
+            },
+            "containerDeleteRetentionPolicy": {
+               "enabled": true,
+               "days": 7
+            }
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default')]",
+         "type": "Microsoft.Storage/storageAccounts/queueServices",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "cors": {
+               "corsRules": []
+            }
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default')]",
+         "type": "Microsoft.Storage/storageAccounts/tableServices",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "cors": {
+               "corsRules": []
+            }
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/customcsv')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/data-source')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/delta-files')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/fhirdata')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/formrecogoutput')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/hospitalincidentkdm')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/hospitalincidentsearch-skillset-image-projection')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/patientintakeform')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/predictiveanalytics')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/twitter')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/webappassets')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/healthcare-reports')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "name": "[concat(variables('storage_account_name'), '/default/consolidated-report')]",
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2022-09-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  variables('storage_account_name'), 'default')]",
+            "[resourceId('Microsoft.Storage/storageAccounts',  variables('storage_account_name'))]"
+         ],
+         "properties": {
+            "defaultEncryptionScope": "$account-encryption-key",
+            "denyEncryptionScopeOverride": false,
+            "publicAccess": "Container"
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[variables('asa_deltadata_name')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
+            "[resourceId('Microsoft.EventHub/namespaces', variables('namespaces_evh_patient_monitoring_name'))]"
+         ],
+         "location": "[variables('location')]",
+         "identity": {
+            "type": "SystemAssigned"
+         },
+         "properties": {
+            "sku": {
+               "name": "Standard"
+            },
+            "eventsOutOfOrderPolicy": "Adjust",
+            "outputErrorPolicy": "Stop",
+            "eventsOutOfOrderMaxDelayInSeconds": 0,
+            "eventsLateArrivalMaxDelayInSeconds": 5,
+            "dataLocale": "en-US",
+            "compatibilityLevel": "1.2",
+            "contentStoragePolicy": "SystemAccount",
+            "jobType": "Cloud"
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/patient-in')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "type": "Stream",
+            "datasource": {
+               "type": "Microsoft.EventHub/EventHub",
+               "properties": {
+                  "consumerGroupName": "healthcare",
+                  "eventHubName": "monitoring-device",
+                  "serviceBusNamespace": "[variables('namespaces_evh_patient_monitoring_name')]",
+                  "sharedAccessPolicyName": "device",
+                  "sharedAccessPolicyKey": "[listKeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('namespaces_evh_patient_monitoring_name'), 'monitoring-device', 'device' ), '2022-01-01-preview').primaryKey]",
+                  "authenticationMode": "ConnectionString"
+               }
+            },
+            "compression": {
+               "type": "None"
+            },
+            "serialization": {
+               "type": "Json",
+               "properties": {
+                  "encoding": "UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/operational-provider')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "type": "Stream",
+            "datasource": {
+               "type": "Microsoft.EventHub/EventHub",
+               "properties": {
+                  "consumerGroupName": "deltadata-asa_operational-provider_consumer_group",
+                  "eventHubName": "operational-analytics",
+                  "serviceBusNamespace": "[variables('namespaces_evh_patient_monitoring_name')]",
+                  "sharedAccessPolicyName": "deltadata-asa_operational-provider_policy",
+                  "sharedAccessPolicyKey": "[listKeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('namespaces_evh_patient_monitoring_name'), 'operational-analytics', 'deltadata-asa_operational-provider_policy'), '2022-01-01-preview').primaryKey]",
+                  "authenticationMode": "ConnectionString"
+               }
+            },
+            "compression": {
+               "type": "None"
+            },
+            "serialization": {
+               "type": "Json",
+               "properties": {
+                  "encoding": "UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/inputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/payor-realtime')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "type": "Stream",
+            "datasource": {
+               "type": "Microsoft.EventHub/EventHub",
+               "properties": {
+                  "consumerGroupName": "deltadata-asa_payor-realtime_consumer_group",
+                  "eventHubName": "payor-realtime-data",
+                  "serviceBusNamespace": "[variables('namespaces_evh_patient_monitoring_name')]",
+                  "sharedAccessPolicyName": "deltadata-asa_payor-realtime_policy",
+                  "sharedAccessPolicyKey": "[listKeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('namespaces_evh_patient_monitoring_name'), 'payor-realtime-data', 'deltadata-asa_payor-realtime_policy'), '2022-01-01-preview').primaryKey]",
+                  "authenticationMode": "ConnectionString"
+               }
+            },
+            "compression": {
+               "type": "None"
+            },
+            "serialization": {
+               "type": "Json",
+               "properties": {
+                  "encoding": "UTF8"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/adls-out')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_account_name'))]",
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "datasource": {
+               "type": "Microsoft.Storage/Blob",
+               "properties": {
+                  "storageAccounts": [
+                     {
+                        "accountName": "[variables('storage_account_name')]",
+                        "accountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('storage_account_name')),'2022-09-01').keys[0].value]"
+                     }
+                  ],
+                  "container": "delta",
+                  "authenticationMode": "ConnectionString"
+               }
+            },
+            "timeWindow": "00:01:00",
+            "sizeWindow": 2000,
+            "serialization": {
+               "type": "Delta",
+               "properties": {
+                  "deltaTablePath": "deltadata"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/patient')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "datasource": {
+               "type": "PowerBI",
+               "properties": {
+                  "dataset": "patientdata",
+                  "table": "patientdata",
+                  "groupId": "[parameters('pbi_workspace_id')]",
+                  "authenticationMode": "Msi"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/payor-realtime-out')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "datasource": {
+               "type": "PowerBI",
+               "properties": {
+                  "dataset": "payor-realtime",
+                  "table": "payor-realtime",
+                  "groupId": "[parameters('pbi_workspace_id')]",
+                  "authenticationMode": "Msi"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/provider-operational')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "datasource": {
+               "type": "PowerBI",
+               "properties": {
+                  "dataset": "operational-analytics-provider",
+                  "table": "operational-analytics-provider",
+                  "groupId": "[parameters('pbi_workspace_id')]",
+                  "authenticationMode": "Msi"
+               }
+            }
+         }
+      },
+      {
+         "type": "Microsoft.StreamAnalytics/streamingjobs/transformations",
+         "apiVersion": "2021-10-01-preview",
+         "name": "[concat(variables('asa_deltadata_name'), '/query')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.StreamAnalytics/streamingjobs', variables('asa_deltadata_name'))]"
+         ],
+         "properties": {
+            "streamingUnits": 6,
+            "query": "[variables('asa_streamingjobs_deltadata_query_name')]"
+         }
+      },
+      {
+         "name": "[variables('synapse_workspace_name')]",
+         "type": "Microsoft.Synapse/workspaces",
+         "apiVersion": "2021-05-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[concat('Microsoft.Storage/storageAccounts/', variables('storage_account_name'), '/blobServices/default/containers/', variables('default_data_lake_storage_file_system_name'))]"
+         ],
+         "identity": {
+            "type": "SystemAssigned"
+         },
+         "properties": {
+            "defaultDataLakeStorage": {
+               "accountUrl": "[variables('default_data_lake_storage_account_url')]",
+               "filesystem": "[variables('default_data_lake_storage_file_system_name')]"
+            },
+            "sqlAdministratorLogin": "[variables('sql_administrator_login_id')]",
+            "sqlAdministratorLoginPassword": "[parameters('sql_administrator_login_password')]"
+         },
+         "resources": [
+            {
+               "type": "firewallrules",
+               "apiVersion": "2021-05-01",
+               "name": "allowAll",
+               "location": "[variables('location')]",
+               "dependsOn": [
+                  "[concat('Microsoft.Synapse/workspaces/', variables('synapse_workspace_name'))]"
+               ],
+               "properties": {
+                  "startIpAddress": "0.0.0.0",
+                  "endIpAddress": "255.255.255.255"
+               }
+            }
+         ]
+      },
+      {
+         "name": "[concat(variables('synapse_workspace_name'), '/', variables('sql_compute_name'))]",
+         "type": "Microsoft.Synapse/workspaces/sqlPools",
+         "apiVersion": "2021-05-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[concat('Microsoft.Synapse/workspaces/', variables('synapse_workspace_name'))]"
+         ],
+         "sku": {
+            "name": "[variables('sql_server_sku')]"
+         },
+         "properties": {
+            "createMode": "Default",
+            "collation": "SQL_Latin1_General_CP1_CI_AS"
+         }
+      },
+      {
+         "type": "Microsoft.KeyVault/vaults",
+         "name": "[variables('key_vault_name')]",
+         "apiVersion": "2023-02-01",
+         "location": "[variables('location')]",
+         "properties": {
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "tenantId": "[subscription().tenantId]",
+            "accessPolicies": [
+
+            ],
+            "sku": {
+               "name": "Standard",
+               "family": "A"
+            },
+            "networkAcls": {
+               "defaultAction": "Allow",
+               "bypass": "AzureServices"
+            }
+         }
+      },
+      {
+         "type": "Microsoft.KeyVault/vaults/secrets",
+         "name": "[concat(variables('key_vault_name'), '/SqlPassword')]",
+         "apiVersion": "2023-02-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]"
+         ],
+         "properties": {
+            "value": "[parameters('sql_administrator_login_password')]"
+         }
+      },
+      {
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('serverfarms_func_cosmos_generator')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "Y1",
+            "tier": "Dynamic",
+            "size": "Y1",
+            "family": "Y",
+            "capacity": 0
+         },
+         "kind": "functionapp",
+         "properties": {
+            "perSiteScaling": false,
+            "elasticScaleEnabled": false,
+            "maximumElasticWorkerCount": 1,
+            "isSpot": false,
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "targetWorkerCount": 0,
+            "targetWorkerSizeId": 0,
+            "zoneRedundant": false
+         }
+      },
+      {
+         "name": "[variables('func_cosmos_generator_storage_name')]",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2022-09-01",
+         "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+         },
+         "kind": "Storage",
+         "location": "[variables('location')]",
+         "properties": {
+
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('func_cosmos_generator_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_func_cosmos_generator'))]",
+            "[concat('Microsoft.Storage/storageAccounts/', variables('func_cosmos_generator_storage_name'))]"
+         ],
+         "kind": "functionapp",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('func_cosmos_generator_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('func_cosmos_generator_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_func_cosmos_generator'))]",
+            "reserved": false,
+            "appSettings": [
+            ],
+            "isXenon": false,
+            "hyperV": false,
+            "vnetRouteAllEnabled": false,
+            "vnetImagePullEnabled": false,
+            "vnetContentShareEnabled": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": false,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 200,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": false,
+            "clientCertEnabled": false,
+            "clientCertMode": "Required",
+            "hostNamesDisabled": false,
+            "containerSize": 1536,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": true,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('func_cosmos_generator_name'), '/ftp')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('func_cosmos_generator_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('func_cosmos_generator_name'), '/scm')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('func_cosmos_generator_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('func_cosmos_generator_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('func_cosmos_generator_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php"
+            ],
+            "netFrameworkVersion": "v6.0",
+            "powerShellVersion": "7.2",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('func_cosmos_generator_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "publicNetworkAccess": "Enabled",
+            "cors": {
+               "allowedOrigins": [
+                  "https://portal.azure.com"
+               ],
+               "supportCredentials": false
+            },
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly",
+            "preWarmedInstanceCount": 0,
+            "functionAppScaleLimit": 200,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 0,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('func_cosmos_generator_name'), '/', variables('func_cosmos_generator_name'), '.azurewebsites.net')]",
+         "location": "East US",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('func_cosmos_generator_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('func_cosmos_generator_name')]",
+            "hostNameType": "Verified"
+         }
+      },
+      {
+         "name": "[variables('serverfarm_patient_data_simulator_name')]",
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 1
+         },
+         "kind": "linux",
+         "properties": {
+            "reserved": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('sites_patient_data_simulator_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_patient_data_simulator_name'))]"
+         ],
+         "kind": "app,linux",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('sites_patient_data_simulator_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('sites_patient_data_simulator_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_patient_data_simulator_name'))]",
+            "reserved": true,
+            "isXenon": false,
+            "hyperV": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "linuxFxVersion": "PYTHON|3.10",
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": false,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 0,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": false,
+            "clientCertEnabled": false,
+            "clientCertMode": "Required",
+            "hostNamesDisabled": false,
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": false,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_patient_data_simulator_name'), '/ftp')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_patient_data_simulator_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_patient_data_simulator_name'), '/scm')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_patient_data_simulator_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_patient_data_simulator_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_patient_data_simulator_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion": "v4.0",
+            "linuxFxVersion": "PYTHON|3.10",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "remoteDebuggingVersion": "VS2019",
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('sites_patient_data_simulator_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 1,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 1,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "AllAllowed",
+            "preWarmedInstanceCount": 0,
+            "functionAppScaleLimit": 0,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 1,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_patient_data_simulator_name'), '/', variables('sites_patient_data_simulator_name'), '.azurewebsites.net')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_patient_data_simulator_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('sites_patient_data_simulator_name')]",
+            "hostNameType": "Verified"
+         }
+      },
+      {
+         "name": "[variables('serverfarms_doc_search_name')]",
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 1
+         },
+         "kind": "app",
+         "properties": {
+            "reserved": false
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('sites_doc_search_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_doc_search_name'))]"
+         ],
+         "kind": "app",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('sites_doc_search_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('sites_doc_search_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_doc_search_name'))]",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": false,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 0,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": true,
+            "clientCertEnabled": false,
+            "clientCertMode": "Required",
+            "hostNamesDisabled": false,
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": false,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_doc_search_name'), '/ftp')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_doc_search_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_doc_search_name'), '/scm')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_doc_search_name'))]"
+         ],
+         "properties": {
+            "allow": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_doc_search_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_doc_search_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion": "v4.0",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "remoteDebuggingVersion": "VS2019",
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('sites_doc_search_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly",
+            "preWarmedInstanceCount": 0,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 0,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('sites_doc_search_name'), '/', variables('sites_doc_search_name'), '.azurewebsites.net')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('sites_doc_search_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('sites_doc_search_name')]",
+            "hostNameType": "Verified"
+         }
+      },
+      {
+         "name": "[variables('serverfarm_asp_clinical_notes_name')]",
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 1
+         },
+         "kind": "linux",
+         "properties": {
+            "reserved": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('app_clinical_notes_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_clinical_notes_name'))]"
+         ],
+         "kind": "app,linux",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('app_clinical_notes_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('app_clinical_notes_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_clinical_notes_name'))]",
+            "reserved": true,
+            "isXenon": false,
+            "hyperV": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "linuxFxVersion": "DOTNETCORE|6.0",
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": true,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 0,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": true,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": false,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_clinical_notes_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_clinical_notes_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion": "v4.0",
+            "linuxFxVersion": "DOTNETCORE|6.0",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('app_clinical_notes_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "publicNetworkAccess": "Enabled",
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "AllAllowed",
+            "preWarmedInstanceCount": 0,
+            "functionAppScaleLimit": 0,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 1,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_clinical_notes_name'), '/', variables('app_clinical_notes_name'), '.azurewebsites.net')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_clinical_notes_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('app_clinical_notes_name')]",
+            "hostNameType": "Verified"
+         }
+      },
+      {
+         "name": "[variables('serverfarm_asp_openai_name')]",
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 1
+         },
+         "kind": "linux",
+         "properties": {
+            "reserved": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('app_openai_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_openai_name'))]"
+         ],
+         "kind": "app,linux",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('app_openai_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('app_openai_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_openai_name'))]",
+            "reserved": true,
+            "isXenon": false,
+            "hyperV": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "linuxFxVersion": "DOTNETCORE|6.0",
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": true,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 0,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": true,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": false,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_openai_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_openai_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion": "v4.0",
+            "linuxFxVersion": "DOTNETCORE|6.0",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('app_openai_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "publicNetworkAccess": "Enabled",
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 2147483647,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "AllAllowed",
+            "preWarmedInstanceCount": 0,
+            "functionAppScaleLimit": 0,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 1,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_openai_name'), '/', variables('app_openai_name'), '.azurewebsites.net')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_openai_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('app_openai_name')]",
+            "hostNameType": "Verified"
+         }
+      },
+      {
+         "name": "[variables('serverfarm_asp_healthcare2_name')]",
+         "type": "Microsoft.Web/serverfarms",
+         "apiVersion": "2022-09-01",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 1
+         },
+         "kind": "linux",
+         "properties": {
+            "reserved": true
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites",
+         "apiVersion": "2022-09-01",
+         "name": "[variables('app_healthcare2_name')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_healthcare2_name'))]"
+         ],
+         "kind": "app,linux",
+         "properties": {
+            "enabled": true,
+            "hostNameSslStates": [
+               {
+                  "name": "[concat(variables('app_healthcare2_name'), '.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Standard"
+               },
+               {
+                  "name": "[concat(variables('app_healthcare2_name'), '.scm.azurewebsites.net')]",
+                  "sslState": "Disabled",
+                  "hostType": "Repository"
+               }
+            ],
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_asp_healthcare2_name'))]",
+            "reserved": true,
+            "isXenon": false,
+            "hyperV": false,
+            "siteConfig": {
+               "numberOfWorkers": 1,
+               "linuxFxVersion": "DOTNETCORE|6.0",
+               "acrUseManagedIdentityCreds": false,
+               "alwaysOn": true,
+               "http20Enabled": false,
+               "functionAppScaleLimit": 0,
+               "minimumElasticInstanceCount": 0
+            },
+            "scmSiteAlsoStopped": false,
+            "clientAffinityEnabled": true,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "httpsOnly": false,
+            "redundancyMode": "None",
+            "storageAccountRequired": false,
+            "keyVaultReferenceIdentity": "SystemAssigned"
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/config",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_healthcare2_name'), '/web')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_healthcare2_name'))]"
+         ],
+         "properties": {
+            "numberOfWorkers": 1,
+            "defaultDocuments": [
+               "Default.htm",
+               "Default.html",
+               "Default.asp",
+               "index.htm",
+               "index.html",
+               "iisstart.htm",
+               "default.aspx",
+               "index.php",
+               "hostingstart.html"
+            ],
+            "netFrameworkVersion": "v4.0",
+            "linuxFxVersion": "DOTNETCORE|6.0",
+            "requestTracingEnabled": false,
+            "remoteDebuggingEnabled": false,
+            "remoteDebuggingVersion": "VS2019",
+            "httpLoggingEnabled": false,
+            "acrUseManagedIdentityCreds": false,
+            "logsDirectorySizeLimit": 35,
+            "detailedErrorLoggingEnabled": false,
+            "publishingUsername": "[concat('$', variables('app_healthcare2_name'))]",
+            "scmType": "None",
+            "use32BitWorkerProcess": true,
+            "webSocketsEnabled": false,
+            "alwaysOn": false,
+            "managedPipelineMode": "Integrated",
+            "virtualApplications": [
+               {
+                  "virtualPath": "/",
+                  "physicalPath": "site\\wwwroot",
+                  "preloadEnabled": false
+               }
+            ],
+            "loadBalancing": "LeastRequests",
+            "experiments": {
+               "rampUpRules": []
+            },
+            "autoHealEnabled": false,
+            "vnetRouteAllEnabled": false,
+            "vnetPrivatePortsCount": 0,
+            "localMySqlEnabled": false,
+            "ipSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 1,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictions": [
+               {
+                  "ipAddress": "Any",
+                  "action": "Allow",
+                  "priority": 1,
+                  "name": "Allow all",
+                  "description": "Allow all access"
+               }
+            ],
+            "scmIpSecurityRestrictionsUseMain": false,
+            "http20Enabled": false,
+            "minTlsVersion": "1.2",
+            "scmMinTlsVersion": "1.2",
+            "ftpsState": "AllAllowed",
+            "preWarmedInstanceCount": 0,
+            "functionAppScaleLimit": 0,
+            "functionsRuntimeScaleMonitoringEnabled": false,
+            "minimumElasticInstanceCount": 1,
+            "azureStorageAccounts": {}
+         }
+      },
+      {
+         "type": "Microsoft.Web/sites/hostNameBindings",
+         "apiVersion": "2022-09-01",
+         "name": "[concat(variables('app_healthcare2_name'), '/', variables('app_healthcare2_name'), '.azurewebsites.net')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('app_healthcare2_name'))]"
+         ],
+         "properties": {
+            "siteName": "[variables('app_healthcare2_name')]",
+            "hostNameType": "Verified"
+         }
+      }
+   ],
+   "outputs": {
+
+   }
+}

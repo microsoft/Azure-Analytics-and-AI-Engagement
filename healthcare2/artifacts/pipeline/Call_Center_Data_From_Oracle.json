@@ -1,0 +1,98 @@
+{
+    "name": "Call_Center_Data_From_Oracle",
+    "properties": {
+        "activities": [
+            {
+                "name": "Call Center to ADLS",
+                "description": "Copying Call Center from Oracle DB",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if Oracle DB exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "OracleTable",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "CallCenter",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Check if Oracle DB exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "OracleSource",
+                        "partitionOption": "None",
+                        "queryTimeout": "02:00:00"
+                    },
+                    "dataset": {
+                        "referenceName": "OracleTable",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Operational Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-04-04T15:43:56Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

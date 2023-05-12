@@ -1,0 +1,19 @@
+{
+    "name": "FHIRJson",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileSystem": "fhirdata"
+            }
+        },
+        "schema": {}
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

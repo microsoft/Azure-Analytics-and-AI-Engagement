@@ -1,0 +1,92 @@
+{
+    "name": "ImmunizationData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "ImmunizationData.ndjson",
+                "folderPath": "Profisee-Data",
+                "fileSystem": "data-source"
+            }
+        },
+        "schema": {
+            "type": "object",
+            "properties": {
+                "resourceType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "versionId": {
+                            "type": "string"
+                        },
+                        "lastUpdated": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string"
+                },
+                "vaccineCode": {
+                    "type": "object",
+                    "properties": {
+                        "coding": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "system": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "display": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "text": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "patient": {
+                    "type": "object",
+                    "properties": {
+                        "reference": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "encounter": {
+                    "type": "object",
+                    "properties": {
+                        "reference": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "occurrenceDateTime": {
+                    "type": "string"
+                },
+                "primarySource": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

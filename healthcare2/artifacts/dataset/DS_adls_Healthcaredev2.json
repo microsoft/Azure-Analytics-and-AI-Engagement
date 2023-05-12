@@ -1,0 +1,38 @@
+{
+    "name": "DS_adls_Healthcaredev2",
+    "properties": {
+        "description": "Dataset to sthealthcare2 container",
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "bedoccupancyv4.csv",
+                "fileSystem": "sthealthcare2"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "total_patients",
+                "type": "String"
+            },
+            {
+                "name": "Date",
+                "type": "String"
+            },
+            {
+                "name": "hospital_id",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,27 @@
+{
+    "name": "dynamicsDatasink",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "patient.xlsx",
+                "container": "sthealthcare2"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

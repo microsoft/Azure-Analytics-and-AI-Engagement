@@ -1,0 +1,7 @@
+{
+    "name": "IR-SAPHANA",
+    "properties": {
+        "type": "SelfHosted",
+        "description": "IR for the SAPHANA DB"
+    }
+}

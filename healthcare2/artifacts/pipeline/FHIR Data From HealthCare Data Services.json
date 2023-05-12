@@ -1,0 +1,100 @@
+{
+    "name": "FHIR Data From HealthCare Data Services",
+    "properties": {
+        "activities": [
+            {
+                "name": "Check if FHIR Data exist",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "wildcardFileName": "*.ndjson",
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "FHIRJson",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "FHIR Data",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if FHIR Data exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "wildcardFileName": "*.ndjson",
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "FHIRJson",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DSJson",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Operational Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-04-04T15:44:20Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

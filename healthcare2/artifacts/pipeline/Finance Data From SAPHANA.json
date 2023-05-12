@@ -1,0 +1,97 @@
+{
+    "name": "Finance Data From SAPHANA",
+    "properties": {
+        "description": "Finance data from SAPHANA DB",
+        "activities": [
+            {
+                "name": "CP_Financedata",
+                "description": "SAPHANA TO ADLS",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check If SAP Finance Data Exist",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SapHanaSource",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "DS_financeTB",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DS_adls_Container",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Check If SAP Finance Data Exist",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SapHanaSource",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_financeTB",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Analytical Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-04-04T15:44:26Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

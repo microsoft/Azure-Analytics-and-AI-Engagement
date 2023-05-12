@@ -1,0 +1,17 @@
+{
+    "name": "LS_SapHana",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "description": "Linked service to SAPHANA DB",
+        "annotations": [],
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "servernode=52.183.47.112:35015;uid=dreamdemouser",
+            "encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0MDNkZTdlOC02NmFmLTQzZjItOWZkYi0yNGM5NTJhMDk5YTUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+        },
+        "connectVia": {
+            "referenceName": "IR-SAPHANA",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

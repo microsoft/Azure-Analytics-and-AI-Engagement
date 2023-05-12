@@ -1,0 +1,87 @@
+{
+    "name": "MC4H data for healthcare",
+    "properties": {
+        "description": "Data coming from d365 connector.",
+        "activities": [
+            {
+                "name": "MC4H Data to adls",
+                "description": "",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Check if D365 data exists",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DynamicsSource"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "dynamicsData",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "dynamicsDatasink",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Check if D365 data exists",
+                "description": "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job.",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DynamicsSource"
+                    },
+                    "dataset": {
+                        "referenceName": "dynamicsData",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Analytical Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-04-04T15:44:40Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

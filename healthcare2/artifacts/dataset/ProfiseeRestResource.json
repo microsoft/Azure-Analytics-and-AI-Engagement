@@ -1,0 +1,13 @@
+{
+    "name": "ProfiseeRestResource",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ProfiseeRestService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "RestResource",
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

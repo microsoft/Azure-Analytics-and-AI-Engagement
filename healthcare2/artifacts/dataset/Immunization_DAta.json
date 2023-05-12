@@ -1,0 +1,20 @@
+{
+    "name": "Immunization_DAta",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultSqlServer",
+            "type": "LinkedServiceReference",
+            "parameters": {
+                "DBName": "HealthcareDW"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "ImmunizationData"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

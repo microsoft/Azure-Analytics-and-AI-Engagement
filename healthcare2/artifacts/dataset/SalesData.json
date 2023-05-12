@@ -1,0 +1,24 @@
+{
+    "name": "SalesData",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "synhealthcare2prod-WorkspaceDefaultStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "Sales Data/9BD32CAD-C91F-4B04-B59E-064DEC49BF02/folder1",
+                "fileSystem": "data-source"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

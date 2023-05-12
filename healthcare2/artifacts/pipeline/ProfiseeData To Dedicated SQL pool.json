@@ -1,0 +1,86 @@
+{
+    "name": "ProfiseeData To Dedicated SQL pool",
+    "properties": {
+        "activities": [
+            {
+                "name": "Profisee Data To Data Lake",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "RestSource",
+                        "httpRequestTimeout": "00:01:40",
+                        "requestInterval": "00.00:00:00.010",
+                        "requestMethod": "GET",
+                        "paginationRules": {
+                            "supportRFC5988": "true"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "ProfiseeRestResource",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ImmunizationData",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Ingest Data To Dedicated pool",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [
+                    {
+                        "activity": "Profisee Data To Data Lake",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            }
+        ],
+        "folder": {
+            "name": "1 Enterprise Data Sources In The Lake/Landing Analytical Store Data"
+        },
+        "annotations": [],
+        "lastPublishTime": "2023-04-11T05:11:39Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

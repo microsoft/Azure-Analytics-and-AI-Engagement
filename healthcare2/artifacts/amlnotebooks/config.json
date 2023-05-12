@@ -1,0 +1,7 @@
+{
+    "COMPLETIONS_MODEL_DV": "text-davinci-003",
+    "OPENAI_ENGINE_DV": "text-davinci-003",
+    "OPENAI_API_BASE": "#OPENAI_API_ENDPOINT#",
+    "OPENAI_API_VERSION": "2022-12-01",
+    "OPENAI_API_KEY": "#OPENAI_API_KEY#"
+}

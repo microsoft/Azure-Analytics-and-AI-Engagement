@@ -1,0 +1,25 @@
+//Average ER Waittime
+operationalanalytics
+| where EnqueuedTimeUTC > ago(5h)
+| summarize avg(currentERWaitingTime) by bin(EnqueuedTimeUTC,1h)
+| render timechart
+
+//Forecasting ER Waittime in next 15min
+operationalanalytics
+| where EnqueuedTimeUTC > ago(3h)
+| make-series AvgWait=avg(currentERWaitingTime) default=real(null) on EnqueuedTimeUTC from ago(3h) to now()+15m step 1m   
+| extend NoGapsWait=series_fill_linear(AvgWait)
+| project EnqueuedTimeUTC, NoGapsWait
+| extend forecast = series_decompose_forecast(NoGapsWait, 15)
+| render timechart with(title='Forecasting the next 15min by Time Series Decmposition')
+
+
+//Are there any anomalies for this?
+operationalanalytics 
+| where EnqueuedTimeUTC > ago(3h)
+|where DeviceId == 'TH005'
+| make-series AvgWait=avg(currentERWaitingTime) default=real(null) on EnqueuedTimeUTC from ago(3h) to now() step 1m   
+| extend NoGapsWait=series_fill_linear(AvgWait)
+| project EnqueuedTimeUTC, NoGapsWait
+| extend anomalies = series_decompose_anomalies(NoGapsWait,1) 
+| render anomalychart with(anomalycolumns=anomalies)

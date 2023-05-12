@@ -1,0 +1,19 @@
+{
+    "name": "DynamicsHealthCare",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "Dynamics",
+        "typeProperties": {
+            "deploymentType": "Online",
+            "serviceUri": "https://healthcareapp.crm.dynamics.com/",
+            "authenticationType": "Office365",
+            "username": " ",
+            "encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VAMzhFMEI2NEMtN0Q2Ri00QjZCLUI3QjMtRTBDNzA3OEM3N0RCXzA0MTkzNjA5LTRhNDQtNGEzNC05M2Y4LWI3NGY0YTZjNTU0NCINCn0="
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

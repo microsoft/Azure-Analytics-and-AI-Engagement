@@ -1,0 +1,68 @@
+{
+    "name": "Ingest_ProfiseeData_SQLPool",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "ImmunizationData",
+                        "type": "DatasetReference"
+                    },
+                    "name": "ImmunizationData"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "Immunization_DAta",
+                        "type": "DatasetReference"
+                    },
+                    "name": "LoadDataInSQLpool"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "select1"
+                }
+            ],
+            "scriptLines": [
+                "source(output(",
+                "          resourceType as string,",
+                "          id as string,",
+                "          meta as (versionId as string, lastUpdated as string),",
+                "          status as string,",
+                "          vaccineCode as (coding as (system as string, code as string, display as string)[], text as string),",
+                "          patient as (reference as string),",
+                "          encounter as (reference as string),",
+                "          occurrenceDateTime as string,",
+                "          primarySource as boolean",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     ignoreNoFilesFound: false,",
+                "     documentForm: 'documentPerLine') ~> ImmunizationData",
+                "ImmunizationData select(mapColumn(",
+                "          ResourceType = resourceType,",
+                "          Id = id,",
+                "          Status = status,",
+                "          OccurrenceDateTime = occurrenceDateTime",
+                "     ),",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> select1",
+                "select1 sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     deletable:false,",
+                "     insertable:true,",
+                "     updateable:false,",
+                "     upsertable:false,",
+                "     format: 'table',",
+                "     staged: true,",
+                "     allowCopyCommand: true,",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true,",
+                "     errorHandlingOption: 'stopOnFirstError') ~> LoadDataInSQLpool"
+            ]
+        }
+    }
+}
