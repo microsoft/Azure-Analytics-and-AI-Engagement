@@ -133,104 +133,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Give the name and description for the new workspace.](media/power-bi-3.png)
 
-	> **Note:** This workspace ID will be used during the ARM template deployment.
-
-7. Go to your Power BI **workspace** and **click** on New button.
-
-8. Then **click** on **Streaming Dataset** option from the dropdown. 
-
-	![Select new and then steaming dataset.](media/power-bi-4.png)
-
-9. **Select API** from the list of options and **click** next. 
-
-10. **Enable** the ‘Historic data analysis’ 
-
-	![Select API then next.](media/power-bi-5.png)
-
-	![Switch Historical data analysis on.](media/power-bi-6.png)
-	
-11. **Enter** ‘Real-time ADX Miami and San Diego’ as dataset name and **enter** the column names in “values from stream” option from list below  and **click** on create button: 
-
-	| Field Name                        	| Type     |
-	|---------------------------------------|----------|
-	| City 				| text |
-	| target_avg_dur_in_store				| number |
-	| target_checkout_time				| number |
-	| target_dwell_time				| number |
-	| aisle_dwell_time_may			| number |
-	| aisle_dwell_time_sep			| number |
-	| aisle_dwell_time_oct				| number |
-	| aisle_dwell_time_nov				| number |
-	| aisle_dwell_time_dec					| number |
-	| avg_checkout_time_may			| number |
-	| avg_checkout_time_sep				| number |
-	| avg_checkout_time_oct				| number |
-	| avg_checkout_time_nov			| number |
-	| avg_checkout_time_dec			| number |
-	| avg_dur_in_store_may				| number |
-	| avg_dur_in_store_sep				| number |
-	| avg_dur_in_store_oct					| number |
-	| avg_dur_in_store_nov			| number |
-	| avg_dur_in_store_dec				| number |
-	| EnqueuedTimeUTC			| datetime |
-	| RecordedonUTC				| datetime |
-
-	
-	![Create new streaming dataset.](media/power-bi-7.png)
-
-12. **Copy** the push url of dataset ‘Real-time ADX Miami and San Diego’ and **paste** it in a notepad for later use.
-
-	![Provide the Push Url.](media/power-bi-8.png)
-	
-13. Similarly add one more dataset, "CCO Realtime", copy the push url and **paste** it in a notepad.
-
-	| Field Name                        	| Type     |
-	|---------------------------------------|----------|
-	| NPS 			| number |
-	| TargetNPS				| number |
-	| AccountOpeningTime				| number |
-	| TargetAccountOpeningTime				| number |
-	| RequestsWithinSLA					| number |
-	| TargetRequestsWithinSLA					| number |
-	| SocialSentiment				| text |
-	| RecordedOn 				| datetime |
-	| SocialSentimentAfter			| text |
-	| TargetRequestsWithinSLAAfter				| number |
-	| RequestsWithinSLAAfter			| number |
-	| TargetAccountOpeningTimeAfter			| number |
-	| AccountOpeningTimeAfter				| number |
-	| TargetNPSAfter 			| number |
-	| NPSAfter				| number |
-	| ChurnBeforeTarget				| number |
-	| ChurnMid				| number |
-	| ChurnMidTarget					| number |
-	| ChurnAfter					| number |
-	| ChurnAfterTarget				| number |
-	| ChurnNov 				| number |
-	| ChurnNovTarget			| number |
-	| LoyalCustomerBefore				| number |
-	| LoyalCustomerMid			| number |
-	| LoyalCustomerAfter			| number |
-	| NumberofVisitorsBefore				| number |
-	| NumberofVisitorsMid					| number |
-	| NumberofVisitorsAfter					| number |
-	| NumberofVisitorsTarget				| number |
-	| LoyalCustomerTargetBefore 				| number |
-	| LoyalCustomerTargetMid			| number |
-	| LoyalCustomerTargetAfter				| number |
-	| ChurnBefore			| number |
-	| Sensor_Per_Store_Sep			| number |
-	| Sensor_Per_Store_Oct				| number |
-	| Sensor_Per_Store_Nov			| number |
-	| Sensor_Per_Store_Dec				| number |
-	| Sensor_Per_Store_Bef_Tar			| number |
-	| Sensor_Per_Store_Sep_Tar			| number |
-	| Sensor_Per_Store_Oct_Tar				| number |
-	| Sensor_Per_Store_Nov_Tar			| number |
-	| Sensor_Per_Store_Dec_Tar			| number |
-	| Sensor_Per_Store_Bef				| number |
-
-	
+	> **Note:** This workspace ID will be used during the ARM template deployment.	
 
 ### Task 3: Deploy the ARM Template
 
@@ -248,25 +151,21 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 6. **Enter** the Power BI workspace ID copied in step 6 of [Task 2](#task-2-power-bi-workspace-creation).
 
-7. **Enter** the power BI streaming dataset url for **CCO Realtime** you copied in step 13 of [Task 2](#task-2-power-bi-workspace-creation).
-
-8. **Enter** the power BI streaming dataset url for **Store Telemetry Realtime** you copied in step 12 of [Task 2](#task-2-power-bi-workspace-creation).
-
-9. **Click** ‘Review + Create’ button.
+7. **Click** ‘Review + Create’ button.
 
 	![The Custom deployment form is displayed with example data populated.](media/powerbi-deployment-1.png)
 
-10. **Click** the **Create** button once the template has been validated.
+8. **Click** the **Create** button once the template has been validated.
 
 	![Creating the template after validation.](media/powerbi-deployment-3.png)
 	
 	> **NOTE:** The provisioning of your deployment resources will take approximately 10 minutes.
 	
-11. **Stay** on the same page and wait for the deployment to complete.
+9. **Stay** on the same page and wait for the deployment to complete.
     
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template.png)
     
-12. **Select** the **Go to resource group** button once your deployment is complete.
+10. **Select** the **Go to resource group** button once your deployment is complete.
 
 	![A portion of the Azure Portal to confirm that the deployment is in progress.](media/microsoft-template-2.png)
 

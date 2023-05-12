@@ -319,6 +319,10 @@ else {
     $destinationSasKey = New-AzStorageContainerSASToken -Container "consolidated-report" -Context $dataLakeContext -Permission rwdl
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/consolidated-report$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/consolidated-report" $destinationUri --recursive
+  
+    $destinationSasKey = New-AzStorageContainerSASToken -Container "sthealthcare2" -Context $dataLakeContext -Permission rwdl
+    $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/sthealthcare2$($destinationSasKey)"
+    & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/sthealthcare2" $destinationUri --recursive
 
     #databricks
     Add-Content log.txt "------databricks------"
