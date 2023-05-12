@@ -431,7 +431,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 21. **Select** Authentication method as "OAuth2" and Privacy level as "Organisational" and **Click** on Sign in, a new window will pop-up.
 
-	![Validate Creds.](media/power-bi-report-8.png)
+	![Validate Creds.](media/power-bi-report-05.png)
 	
 22. In the new window, **select** the appropriate user.
 
@@ -503,7 +503,7 @@ To give permissions for the Power BI reports to access the data sources:
 
       ![New Dashboard.](media/power-bi-report-10.png)
 
-4. **Name** the dashboard 'CEO Dashboard May' and **click** 'create'.
+4. **Name** the dashboard 'Payor Executive Dashboard Before' and **click** 'create'.
 
 	![Create Dashboard further steps.](media/power-bi-report-11.png)
 
@@ -512,7 +512,7 @@ To give permissions for the Power BI reports to access the data sources:
 **Follow the below steps to change the dashboard theme:**
 
 6. **Open** the URL in a new browser tab to get JSON code for a custom theme:
-[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/CustomTheme.json)
+[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/CustomTheme.json)
 
 7. **Right click** anywhere in browser and **click** 'Save as...'.
 
@@ -626,7 +626,7 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 	![Table.](media/power-bi-table-6.png)
 
-41. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Dashboard%20Mapping.xlsx) file for pinning the tiles to the dashboard.
+41. Here is the list of Dashboards you have to create for Retail and the report to migrate to prod environment. You will see the necessary details for the same below. You must refer to the [Excel](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/Dashboard%20Mapping.xlsx) file for pinning the tiles to the dashboard.
 
 	![Final Look.](media/power-bi-report-33.png)
 
@@ -637,13 +637,14 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 43. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-1.png)
+
 ### Updating Dashboard and Report Ids in Web app
 
 By default, the web app will be provisioned with Gif placeholders for web app screens with dashboards. Once you have completed the steps listed above in this section, you can update the dashboard id’s generated into the main web app if you choose. Here are the steps for it.
 
 1. **Navigate** to your Power BI workspace.
 
-2. **Click** on one of the dashboards you created. Eg. CEO Dashboard May.
+2. **Click** on one of the dashboards you created. Eg. Payor Executive Dashboard Before.
 
 	![Navigate and Click.](media/power-bi-report-24.png)
 
@@ -664,7 +665,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 8. **Enter** the following path:  
 	
 	```
-	midpCosmos/midpCosmos/midpcosmos-demo-app/wwwroot/config-poc.js
+	healthcare2/healthcare2/healthcare2-demo-app/wwwroot/config-poc.js
 	```
 
 9. **Click** Download button.
@@ -677,15 +678,16 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 11. **Edit** the downloaded file in notepad.
 
-12. **Paste** the dashboard id you copied earlier between the double quotes of key ‘CEO Dashboard - May’.
+12. **Paste** the dashboard id you copied earlier between the double quotes of key ‘PayorExecutiveDashboardID’.
 
 13. Similarly repeat step #12 according to the following mapping:
 
 	| Field Name                        	| Type     |
 	|---------------------------------------|----------|
-	| CEODashboardMayDashboardID 			| CEO Dashboard May |
-	| CEODashboardAfterDashboardID				| CEO Dashboard Dec |
-	| RealTimeInStoreAnalyticsReportID				| Realtime In Store Analytics |
+	| HospitalInsightsDashboardID 			| HealthCare 2.0 Dashboard (Before) |
+	| PSAfterDashBoard_ID					| HealthCare 2.0 Dashboard (After) |
+	| PayorExecutiveDashboardID				| Payor Executive Dashboard Before |
+	| PayorExecutiveDashboardAfterID		| Payor Executive Dashboard After |
 
 14. **Save** the changes to the file.
 
@@ -710,7 +712,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 21. **Execute** the following command in cloudshell:  
 	
 	```
-	cp config-poc.js ./midpcosmos/midpcosmos/midpcosmos-demo-app/wwwroot
+	cp config-poc.js ./healthcare2/healthcare2/healthcare2-demo-app/wwwroot
 	```
 	
 	![Execute the command.](media/updating-powerbi-8.png)
@@ -718,7 +720,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 22.	**Execute** the following command in cloudshell: 
 	
 	```
-	cd midpcosmos/midpcosmos/subscripts 
+	cd healthcare2/healthcare2/subscripts 
 	./updateWebAppSubScript.ps1
 	```
 	
@@ -755,7 +757,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 **Execute** the Pause_Resume_script.ps1 script by executing the following command: 
 3. **Run** Command: 
 	```
-	cd "midpCosmos\midpCosmos"
+	cd "healthcare2\healthcare2"
 	```
 
 4. Then **run** the PowerShell script: 
@@ -805,7 +807,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 2. **Run** Command: 
 	```
-	cd "midpCosmos\midpCosmos"
+	cd "healthcare2\healthcare2"
 	```
 
 3. Then **run** the PowerShell script: 
