@@ -61,11 +61,6 @@ install-module Az.Synapse -f
 #stop SQL
 az synapse sql pool pause --name $sqlPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
 write-host "Stopping Kusto Pool"
-#stop kustoPool
-Stop-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName
-# stop ASA
-Stop-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $streamingjobs_deltadata_asa_name 
-write-host "Stopping Web apps"
 #stop web apps
 az webapp stop --name $app_healthcare2_name --resource-group $rgName
 az webapp stop --name $func_payor_generator_name --resource-group $rgName 
@@ -73,6 +68,11 @@ az webapp stop --name $sites_patient_data_simulator_name --resource-group $rgNam
 az webapp stop --name $sites_clinical_notes_name --resource-group $rgName
 az webapp stop --name $sites_doc_search_name --resource-group $rgName
 az webapp stop --name $sites_open_ai_name --resource-group $rgName
+#stop kustoPool
+Stop-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName
+# stop ASA
+Stop-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $streamingjobs_deltadata_asa_name 
+write-host "Stopping Web apps"
 write-host "Pause operation successfull"
 }
 
@@ -82,11 +82,6 @@ else
 #Resume SQL
 write-host "Starting Sql Pool"
 az synapse sql pool resume --name $sqlPoolName --resource-group $rgName --workspace-name $synapseWorkspaceName
-write-host "Starting Kusto Pool"
-# start kustoPool
-Start-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName
-# start ASA
-Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $streamingjobs_deltadata_asa_name -OutputStartMode 'JobStartTime'
 #start web apps
 write-host "Starting web apps"
 az webapp start --name $app_healthcare2_name --resource-group $rgName
@@ -95,6 +90,11 @@ az webapp start --name $sites_patient_data_simulator_name --resource-group $rgNa
 az webapp start --name $sites_clinical_notes_name --resource-group $rgName
 az webapp start --name $sites_doc_search_name --resource-group $rgName
 az webapp start --name $sites_open_ai_name --resource-group $rgName
+write-host "Starting Kusto Pool"
+# start kustoPool
+Start-AzSynapseKustoPool -ResourceGroupName $rgName -WorkspaceName $synapseWorkspaceName -Name $kustoPoolName
+# start ASA
+Start-AzStreamAnalyticsJob -ResourceGroupName $rgName -Name $streamingjobs_deltadata_asa_name -OutputStartMode 'JobStartTime'
 write-host "Resume operation successfull"
 }
 

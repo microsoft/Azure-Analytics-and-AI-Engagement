@@ -306,7 +306,7 @@ cd ./healthcare2/healthcare2
 	![Adx.](media/adx-8.png)
 	
 9. Repeat the above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "operational-analytics", in step 6 **enter** Event Hub as "operational-analytics" and Data connection name as "HC2KustoDB...-operational-analytics".
-	
+
 ### Task 6: Azure Purview Setup
 
 > **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewhc2..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "sthealthcare2...". Once the permission has been granted, proceed with the following steps.

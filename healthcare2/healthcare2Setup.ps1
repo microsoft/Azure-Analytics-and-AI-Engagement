@@ -569,18 +569,18 @@ else {
     $result = Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Add-Content log.txt $result
 
-    Write-Host "Create OpenAI table in $($sqlPoolName)"
+    Write-Host "Create configurable table in $($sqlPoolName)"
     $SQLScriptsPath = "./artifacts/sqlscripts"
-    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/chatBot.sql"
+    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/configurableTableQuery.sql"
     $openAIAppEndpoint = "https://" + $sites_open_ai_name + ".azurewebsites.net/"
-    $query = $sqlQuery.Replace("#OPEN_AI_ENDPOINT#", $openAIAppEndpoint)
+    $query = $sqlQuery.Replace("#OPEN_AI_APP_ENDPOINT#", $openAIAppEndpoint).Replace("#STORAGE_ACCOUNT_NAME#", $dataLakeAccountName)
     $sqlEndpoint = "$($synapseWorkspaceName).sql.azuresynapse.net"
     $result = Invoke-SqlCmd -Query $query -ServerInstance $sqlEndpoint -Database $sqlPoolName -Username $sqlUser -Password $sqlPassword
     Add-Content log.txt $result
 
     $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
     (Get-Content -path "$($SQLScriptsPath)/sqluser.sql" -Raw) | Foreach-Object { $_ `
-                    -replace '#SQL_PASSWORD#', $sqlPassword`		
+                    -replace '#SQL_PASSWORD#', $sqlPassword`
             } | Set-Content -Path "$($SQLScriptsPath)/sqluser.sql"		
     $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/sqluser.sql"
     $sqlEndpoint="$($synapseWorkspaceName).sql.azuresynapse.net"
@@ -740,7 +740,7 @@ else {
     $sasTokenAcc = New-AzStorageAccountSASToken -Context $dataLakeContext -Service Blob -ResourceType Service -Permission rwdl
 
     foreach ($name in $scripts) {
-        if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "storedProcedure" -or $name.BaseName -eq "viewDedicatedPool") {
+        if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "storedProcedure" -or $name.BaseName -eq "viewDedicatedPool" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sql_user_hc2" -or $name.BaseName -eq "configurableTableQuery") {
             continue;
         }
         $item = Get-Content -Raw -Path "$($TemplatesPath)/sql_script.json"
