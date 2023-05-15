@@ -95,7 +95,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/resource-group-2.png)
 	
-5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'DDiB-Lab'. 
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'DDiB-Healthcare2'. 
 
 6. **Select** your desired region.
 
@@ -143,7 +143,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
-3. **Select** the resource group name **DDiB-Lab** which you created in [Task 1](#task-1-create-a-resource-group-in-azure).
+3. **Select** the resource group name **DDiB-Healthcare2** which you created in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 4. **Provide/Type** an environment code which is unique to your environment. This code is a suffix to your environment and should not have any special characters or uppercase letters and should not be more than 6 characters. 
 
@@ -255,7 +255,7 @@ cd ./healthcare2/healthcare2
 
 	![Commands to run the PowerShell Script.](media/cloud-shell-19.png)
 
-17. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Lab'.
+17. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. **Type** the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Healthcare2'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
@@ -817,7 +817,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Run the Powershell Script.](media/authentication-6.png)
 
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDiB-Lab'.
+4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDiB-Healthcare2'.
 
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
@@ -828,6 +828,6 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Lab'.
+6. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Healthcare2'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
