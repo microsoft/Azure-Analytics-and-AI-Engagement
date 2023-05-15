@@ -18,3 +18,8 @@ CREATE LOGIN [CareManagerLosAngeles]
 GO
     CREATE USER [CareManagerLosAngeles] FOR LOGIN [CareManagerLosAngeles] WITH DEFAULT_SCHEMA=[dbo];
 	
+CREATE LOGIN [ChiefOperatingManager]  
+    WITH PASSWORD = '#SQL_PASSWORD#'
+GO
+    CREATE USER [ChiefOperatingManager] FOR LOGIN [ChiefOperatingManager] WITH DEFAULT_SCHEMA=[dbo];
+	
