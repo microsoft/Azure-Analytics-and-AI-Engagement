@@ -1420,6 +1420,14 @@ else {
 								{
 									`"name`": `"Blob Location`",
 									`"newValue`": `"https://$($dataLakeAccountName).dfs.core.windows.net/healthcare-reports/`"
+								},
+								{
+									`"name`": `"Server`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"Database`",
+									`"newValue`": `"$($sqlPoolName)`"
 								}
 								]
 								}"	
