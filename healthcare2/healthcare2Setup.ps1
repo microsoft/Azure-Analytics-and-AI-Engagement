@@ -1346,7 +1346,21 @@ else {
 								]
 								}"	
         }
-        elseif ($report.name -eq "Healthcare - Call Center Power BI Before" -or $report.name -eq "Healthcare - Call Center Power BI-After" -or $report.name -eq "Healthcare FHIR") {
+        elseif ($report.name -eq "Healthcare FHIR") {
+            $body = "{
+			`"updateDetails`": [
+								{
+									`"name`": `"Server_Name`",
+									`"newValue`": `"$($synapseWorkspaceName).sql.azuresynapse.net`"
+								},
+								{
+									`"name`": `"DB_Name`",
+									`"newValue`": `"$($sqlPoolName)`"
+								}
+								]
+								}"	
+        }
+        elseif ($report.name -eq "Healthcare - Call Center Power BI Before" -or $report.name -eq "Healthcare - Call Center Power BI-After") {
             $body = "{
 			`"updateDetails`": [
 								{
