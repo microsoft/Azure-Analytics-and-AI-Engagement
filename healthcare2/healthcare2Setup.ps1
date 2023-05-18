@@ -152,7 +152,6 @@ else {
     $sites_doc_search_name = "app-health-search-$suffix"
     $sites_open_ai_name = "app-open-ai-$suffix"
     $app_healthcare2_name = "app-healthcare2-$suffix"
-    $asp_healthcare2_name = "asp-healthcare2-$suffix"
     $streamingjobs_deltadata_asa_name = "asa-hc2-deltadata-$suffix"
     $cosmos_healthcare2_name = "cosmos-healthcare2-$random$init"
     if ($cosmos_healthcare2_name.length -gt 43) {

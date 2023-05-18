@@ -439,57 +439,11 @@ To give permissions for the Power BI reports to access the data sources:
 	
 ### Steps to create realtime reports
 
-1.	**Click** on the three dots in front of the “CCO Realtime” dataset and **click** on Create report, a new report will be created.
+1.	There is a Static Realtime Report namely "Static Realtime Healthcare analytics.pbix" at location [Static Realtime Healthcare analytics](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/healthcare2/healthcare2/artifacts/reports)
 
-	![Validate Creds.](media/power-bi-report-014.png)
-
-**CCO Realtime Visualizations:**
-
-**Available Inventory**
-
-2. **Select** the stacked KPI visual from “Visualizations”.
-
-	![Validate Creds.](media/power-bi-report-015.png)
-
-3. **Select** the field from the visual from the field panel.
-
-4. **Drag /Select** the column name into the fields which is below the visualization panel.
-	
-5. **Select** Visual level or Page Level Filter in Filter pane as per the requirement.
-
-6. **Drag** the “RecordedOn”, column to “Filters on this visual” in filter pane and **Select** filter Type as “Relative Time”.
-
-7. In “Show items when the value” options, select “Is in the last”, “1” & “minute” **Select** Apply Filter.
-
-	![Validate Creds.](media/power-bi-report-016.png)
-	
-	![Validate Creds.](media/power-bi-report-062.png)
-
-	![Validate Creds.](media/power-bi-report-017.png)
-	
-	![Validate Creds.](media/power-bi-report-018.png)
-
-**Total Visitors and Loyal Customers by RecordedOn**
-
-8. **Select** the Stacked area line chart for the next visual.
-
-	![Validate Creds.](media/power-bi-report-019.png)
-
-9. **Select** the required field column for the visual.
-
-10. **Drag /Select** the column name into the fields which is below the visualization panel.
-
-	![Validate Creds.](media/power-bi-report-020.png)
-	
-	![Validate Creds.](media/power-bi-report-021.png)
-	
-	![Validate Creds.](media/power-bi-report-022.png)
-
-11. After creating all the required visuals **click** on “Save” button and save the report in workspace.
+2. You can refer this report to create required KPIs and Graphs for creating realtime reports according to your need.
 
 	![Validate Creds.](media/power-bi-report-022.1.png)
-
-12. Similarly one can create the required KPIs and Graphs for both the realtime reports.
 		
 ### Follow these steps to create the Power BI dashboard
 
@@ -512,7 +466,7 @@ To give permissions for the Power BI reports to access the data sources:
 **Follow the below steps to change the dashboard theme:**
 
 6. **Open** the URL in a new browser tab to get JSON code for a custom theme:
-[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/retail/retail/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/CustomTheme.json)
+[https://raw.githubusercontent.com/microsoft/Azure-Analytics-and-AI-Engagement/healthcare2/healthcare2/CustomTheme.json](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/CustomTheme.json)
 
 7. **Right click** anywhere in browser and **click** 'Save as...'.
 
@@ -538,11 +492,11 @@ To give permissions for the Power BI reports to access the data sources:
 
 **Follow these steps to pin the report to the Power BI dashboard:**
 
-15. **Search** the report 'CDP Vision Report' and then **click** on the report to open it.
+15. **Search** the report 'Payor Dashboard report' and then **click** on the report to open it.
 
 	![Create Dashboard further steps.](media/power-bi-report-12.png)
 
-16. Inside the report 'CDP Vision Report' **click** on 'Edit' at the top of the right corner.
+16. Inside the report 'Payor Dashboard report' **goto** "Financial Analytics - Before" tab and **click** on 'Edit' at the top of the right corner.
 
 	![Select Pillar 1 before.](media/power-bi-report-13.png)
 
@@ -554,7 +508,7 @@ To give permissions for the Power BI reports to access the data sources:
 
 19. **Select** the 'Existing Dashboard' radio button.
 
-20. **Select** the existing dashboard 'CEO Dashboard May' and **click** on the 'Pin' button.
+20. **Select** the existing dashboard 'Payor Executive Dashboard Before' and **click** on the 'Pin' button.
 
 	![Select Pin to dashboard.](media/power-bi-report-15.png)
 
@@ -562,33 +516,33 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Pin to dashboard further steps.](media/power-bi-report-16.png)
 	
-22. Similarly, **pin** the tiles for the 'CEO Dashboard May' to the Dashboard
+22. Similarly, **pin** the other tiles from different tabs of 'Payor Dashboard report' to the Dashboard.
 
 23. **Select** workpace created in [Task 2](#task-2-power-bi-workspace-creation) in the left pane.
 
 	![Select Workspace.](media/power-bi-report-18.png)
 	
-24. **Open** ‘Dashboard-Images’ report.
+24. **Open** ‘Healthcare Dashbaord Images-Final’ report.
 
 	![Select Workspace.](media/power-bi-report-19.png)
 	
-25. **Click** on 'Page 3' page.
-
-26. **Click** on Edit.
+25. **Click** on Edit.
 
 	![Click on edit.](media/power-bi-report-20.png)
+
+26. **Click** on 'image' page.
 	
 27. **Hover** on Deep Dive chicklet and **click** pin button.
 
 	![Hover and Click.](media/power-bi-report-21.png)
 	
-28. Select the ‘CEO Dashboard May’ from existing dashboard list and **click** on pin.
+28. Select the ‘Payor Executive Dashboard Before’ from existing dashboard list and **click** on pin.
 	
 	![Hover and Click.](media/power-bi-report-22.png)
 
-29. Similarly pin rest of the images from different tabs of the ‘Dashboard-Images’ report.
+29. Similarly pin rest of the images from different tabs of the ‘Healthcare Dashbaord Images-Final’ report.
 	
-30. **Go back** to the ‘CEO Dashboard May’ dashboard.
+30. **Go back** to the ‘Payor Executive Dashboard Before’ dashboard.
 
 	![Go back to Dashboard.](media/power-bi-report-24.png)
 	
@@ -612,13 +566,13 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 	
 	![Resize and Rearrange.](media/power-bi-report-27.png)
 	
-37. Similarly pin left image tiles from ‘Dashboard-Images’ of chicklets report to the "CEO Dashboard May" Dashboard.
+37. Similarly pin left image tiles from ‘Healthcare Dashbaord Images-Final’ of chicklets report to the "Payor Executive Dashboard Before" Dashboard.
 
 38. **Resize** and **rearrange** the left images tiles as shown in the screenshot. Resize the KPI tile to 1x2. Resize the Deep Dive to 1x4. Resize the logo to 1x1 size; resize other vertical tiles to 2x1 size.  
 
 	![Resize and Rearrange again.](media/power-bi-report-28.png)
 
-39. The Dashboard **CEO Dashboard May** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
+39. The Dashboard **Payor Executive Dashboard Before** should finally look like this. Table in following row indicates which KPI’s need to be pinned from which report to achieve this final look.
 	
 	![Final Look.](media/power-bi-report-38.png)
 
@@ -630,13 +584,30 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 	![Final Look.](media/power-bi-report-33.png)
 
-42. **CEO Dashboard - Dec** should look like this. Following are the details of tiles for the same.
+42. **Payor Executive Dashboard After** should look like this. Following are the details of tiles for the same.
 
 	![Final Look.](media/power-bi-report-32.png)
 	
 43. **Refer** to this table while pinning rest of the tiles to the dashboard.
 
 	![Table.](media/power-bi-table-1.png)
+	
+44. **Provider Dashboard (Before)** should look like this. Following are the details of tiles for the same.
+
+	![Final Look.](media/power-bi-report-34.png)
+	
+45. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-2.png)
+	
+46. **Provider Dashboard (After)** should look like this. Following are the details of tiles for the same.
+
+	![Final Look.](media/power-bi-report-35.png)
+	
+47. **Refer** to this table while pinning rest of the tiles to the dashboard.
+
+	![Table.](media/power-bi-table-3.png)
+
 
 ### Updating Dashboard and Report Ids in Web app
 
