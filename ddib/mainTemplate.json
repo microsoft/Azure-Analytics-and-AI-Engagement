@@ -357,6 +357,20 @@
       }
     },
     {
+      "name": "[concat(parameters('storage_account_name'), '/default/thermostat')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
       "name": "[concat(parameters('storage_account_name'), '/default/campaign-data')]",
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2020-08-01-preview",
@@ -772,7 +786,7 @@
         "acrUseManagedIdentityCreds": false,
         "logsDirectorySizeLimit": 35,
         "detailedErrorLoggingEnabled": false,
-        "publishingUsername": "$adx-thermostat-realtime",
+        "publishingUsername": "[concat('$', parameters('sites_adx_thermostat_realtime_name'))]",
         "scmType": "None",
         "use32BitWorkerProcess": true,
         "webSocketsEnabled": false,
