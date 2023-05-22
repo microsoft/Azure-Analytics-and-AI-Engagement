@@ -58,7 +58,7 @@
     "asa_name_midpcosmos": "[concat('asa-',variables('unique_suffix'))]",
     "cosmos_midpcosmos_name": "[if(greater(length(concat('azure-cosmos-', uniqueString(deployment().name),parameters('environment_code'))), 43), substring(concat('azure-cosmos-', uniqueString(deployment().name),parameters('environment_code')),0,43) , concat('azure-cosmos-', uniqueString(deployment().name),parameters('environment_code')) )]",
     "serverfarms_func_cosmos_generator": "[concat('asp-func-cosmos-',variables('unique_suffix'))]",
-    "func_cosmos_generator_storage_name": "stfuncgenerator",
+    "func_cosmos_generator_storage_name": "[if(greater(length(concat('stfuncgenerator', parameters('environment_code'),uniqueString(deployment().name))), 24), substring(concat('stfuncgenerator',parameters('environment_code'),uniqueString(deployment().name)),0,24) , concat('stfuncgenerator',parameters('environment_code'),uniqueString(deployment().name)) )]",
     "func_cosmos_generator_ai_name": "[concat('ai-func-cosmos-',variables('unique_suffix'))]",
     "func_cosmos_generator_name": "[concat('func-cosmos-',variables('unique_suffix'))]",
     "default_data_lake_storage_account_url": "[concat('https://', variables('storage_account_name'), '.dfs.core.windows.net')]",
