@@ -519,7 +519,7 @@ $app = az ad app create --display-name "midp" | ConvertFrom-Json
 $clientId = $app.appId
 $appCredential = az ad app credential reset --id $clientId | ConvertFrom-Json
 $clientsecpwd = $appCredential.password
-$appid=az ad app show --id $clientid|ConvertFrom-Json
+$appid=az ad app show --id $clientid | ConvertFrom-Json
 $appid=$appid.appid
 az ad sp create --id $clientId | Out-Null
 $principalId = az ad sp show --id $clientId --query "id" -o tsv
