@@ -114,7 +114,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1)
 
 $response=az ad signed-in-user show | ConvertFrom-Json
 $date=get-date
-$demoType="Retail 2.0"
+$demoType="Analytics-in-MIDP"
 $body= '{"demoType":"#demoType#","userPrincipalName":"#userPrincipalName#","displayName":"#displayName#","companyName":"#companyName#","mail":"#mail#","date":"#date#"}'
 $body = $body.Replace("#userPrincipalName#", $response.userPrincipalName)
 $body = $body.Replace("#displayName#", $response.displayName)
