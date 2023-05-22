@@ -212,7 +212,7 @@ $subscriptionId = (Get-AzContext).Subscription.Id
     } | Set-Content -Path "../artifacts/databricks/Initial setup.ipynb"
     
     $files = Get-ChildItem -path "../artifacts/databricks" -File -Recurse  #all files uploaded in one folder change config paths in python jobs
-    Set-Location ../../artifacts/databricks
+    Set-Location ../artifacts/databricks
     foreach ($name in $files.name) {
         if ($name -eq "PatientParm_dlt.ipynb" -or $name -eq "PatientPredictive_dlt.ipynb" -or $name -eq "Sales_dlt.ipynb" -or $name -eq "PbiPatientPredictive_dlt.ipynb" -or $name -eq "Predctive_dlt.ipynb") {
             $fileContent = get-content -raw $name
@@ -263,4 +263,4 @@ $subscriptionId = (Get-AzContext).Subscription.Id
                 -Body $body
         } 
     }
-    Set-Location ../../
+    Set-Location ../../subscripts

@@ -558,7 +558,7 @@ To hide title and subtitle for all the **images** that you have pined above. Ple
 
 34. **Click** on ‘Apply’.
 
-35. **Repeat** Step 4 to 22 for all image tiles.
+35. **Repeat** Step 25 to 34 for all image tiles.
 
 	![Click apply and repeat.](media/power-bi-report-26.png)
 	
