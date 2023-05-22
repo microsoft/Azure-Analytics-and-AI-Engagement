@@ -248,6 +248,7 @@ Start-Sleep -s 60
 Write-Host "Creating $rgName resource group in $Region ..."
 New-AzResourceGroup -Name $rgName -Location $Region | Out-Null
 
+Write-Host "Creating resources in $rgName..."
 New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -TemplateFile "mainTemplate.json" `
   -Mode Complete `
@@ -441,7 +442,7 @@ $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $token")
 $headers.Add("X-Databricks-Azure-SP-Management-Token", "$azToken")
 $headers.Add("X-Databricks-Azure-Workspace-Resource-Id", "$dbswsId")
-$pat_token = Invoke-RestMethod -Uri $uri -Method Post -Body $body -H $headers 
+$pat_token = Invoke-RestMethod -Uri $uri -Method Post -Body $body -Header $headers 
 $pat_token = $pat_token.token_value
 #Create a dir in dbfs & workspace to store the scipt files and init file
 $requestHeaders = @{
