@@ -904,27 +904,16 @@
       "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/thermostat')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
       ],
       "properties": {
+        "retentionDescription": {
+            "cleanupPolicy": "Delete",
+            "retentionTimeInHours": 24
+        },
         "messageRetentionInDays": 1,
-        "partitionCount": 2,
-        "status": "Active",
-        "captureDescription": {
-          "enabled": true,
-          "encoding": "Avro",
-          "destination": {
-            "name": "EventHubArchive.AzureBlockBlob",
-            "properties": {
-              "storageAccountResourceId": "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]",
-              "blobContainer": "thermostat",
-              "archiveNameFormat": "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
-            }
-          },
-          "intervalInSeconds": 300,
-          "sizeLimitInBytes": 314572800
-        }
+        "partitionCount": 1,
+        "status": "Active"
       }
     },
     {
