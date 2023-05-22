@@ -164,7 +164,11 @@ else {
     $cosmosDatabaseName = "Telemetry"
     $keyVaultName = "kv-$suffix";
     $serverfarms_func_cosmos_generator = "asp-func-cosmos-$suffix"
-    $func_cosmos_generator_storage_name = "stfuncgenerator"
+    $func_cosmos_generator_storage_name = "stfuncgenerator$concatString"
+    if($func_cosmos_generator_storage_name.length -gt 24)
+    {
+    $func_cosmos_generator_storage_name = $func_cosmos_generator_storage_name.substring(0,24)
+    }
     $func_cosmos_generator_ai_name = "ai-func-comos-$suffix"
     $func_cosmos_generator_name = "func-cosmos-$suffix"
     $subscriptionId = (Get-AzContext).Subscription.Id
