@@ -1097,7 +1097,7 @@ else {
     #Web App Section
     Add-Content log.txt "------unzipping poc web app------"
     Write-Host  "--------------Unzipping web app---------------"
-    $zips = @("app-adx-thermostat-realtime", "midpcosmos-demo-app", "func-cosmos-generator")
+    $zips = @("midpcosmos-demo-app", "func-cosmos-generator")
     foreach ($zip in $zips) {
         expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
     }
@@ -1259,11 +1259,13 @@ else {
 
     $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
 
-    Write-Information "Deploying ADX Thermostat Realtime App"
-    cd app-adx-thermostat-realtime
-    az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-    cd ..
-    Start-Sleep -s 10
+    Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+
+    # Write-Information "Deploying ADX Thermostat Realtime App"
+    # cd app-adx-thermostat-realtime
+    # az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
+    # cd ..
+    # Start-Sleep -s 10
 
     # Function App Cosmos
     $inventoryPrimaryKey = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name inventory --name inventory | ConvertFrom-Json
