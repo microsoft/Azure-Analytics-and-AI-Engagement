@@ -1732,13 +1732,6 @@ $occupancy_endpoint = $occupancy_endpoint.primaryConnectionString
 $thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat | ConvertFrom-Json
 $thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
 
-(Get-Content -path app-adx-thermostat-realtime/dev.env -Raw) | Foreach-Object { $_ `
-    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
-    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
-   -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
-   -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
-} | Set-Content -Path app-adx-thermostat-realtime/dev.env
-
 (Get-Content -path adx-config-appsetting.json -Raw) | Foreach-Object { $_ `
     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
     -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
@@ -1748,11 +1741,13 @@ $thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
 
 $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
 
-Write-Information "Deploying ADX Thermostat Realtime App"
-cd app-adx-thermostat-realtime
-az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
-cd ..
-Start-Sleep -s 10
+Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+
+# Write-Information "Deploying ADX Thermostat Realtime App"
+# cd app-adx-thermostat-realtime
+# az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name
+# cd ..
+# Start-Sleep -s 10
 
 $adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_srch_retail_name
 $primaryAdminKey = $adminKeyPair.Primary
