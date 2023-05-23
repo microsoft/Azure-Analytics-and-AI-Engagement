@@ -1076,56 +1076,56 @@ Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
-$zips = @("app-adx-thermostat-realtime", "app-midp")
-foreach($zip in $zips)
-{
-    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-}
+# $zips = @("app-midp")
+# foreach($zip in $zips)
+# {
+#     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+# }
 
-RefreshTokens
+# RefreshTokens
 
-$spname="Midp Demo $deploymentId"
+# $spname="Midp Demo $deploymentId"
 
-$app = az ad app create --display-name $spname | ConvertFrom-Json
-$appId = $app.appId
+# $app = az ad app create --display-name $spname | ConvertFrom-Json
+# $appId = $app.appId
 
-$mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
-$clientsecpwd = $mainAppCredential.password
+# $mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+# $clientsecpwd = $mainAppCredential.password
 
-az ad sp create --id $appId | Out-Null    
-$sp = az ad sp show --id $appId --query "id" -o tsv
-start-sleep -s 60
+# az ad sp create --id $appId | Out-Null    
+# $sp = az ad sp show --id $appId --query "id" -o tsv
+# start-sleep -s 60
 
-(Get-Content -path app-midp/appsettings.json -Raw) | Foreach-Object { $_ `
-    -replace '#WORKSPACE_ID#', $wsId`
-    -replace '#APP_ID#', $appId`
-    -replace '#APP_SECRET#', $clientsecpwd`
-    -replace '#TENANT_ID#', $tenantId`
-} | Set-Content -Path app-midp/appsettings.json
+# (Get-Content -path app-midp/appsettings.json -Raw) | Foreach-Object { $_ `
+#     -replace '#WORKSPACE_ID#', $wsId`
+#     -replace '#APP_ID#', $appId`
+#     -replace '#APP_SECRET#', $clientsecpwd`
+#     -replace '#TENANT_ID#', $tenantId`
+# } | Set-Content -Path app-midp/appsettings.json
 
-Compress-Archive -Path "./app-midp/*" -DestinationPath "./app-midp.zip"
+# Compress-Archive -Path "./app-midp/*" -DestinationPath "./app-midp.zip"
 
-az webapp stop --name $app_midpdemo_name --resource-group $rgName
-try{
-az webapp deployment source config-zip --resource-group $rgName --name $app_midpdemo_name --src "./app-midp.zip"
-}
-catch
-{
-}
-az webapp start  --name $app_midpdemo_name --resource-group $rgName
+# az webapp stop --name $app_midpdemo_name --resource-group $rgName
+# try{
+# az webapp deployment source config-zip --resource-group $rgName --name $app_midpdemo_name --src "./app-midp.zip"
+# }
+# catch
+# {
+# }
+# az webapp start  --name $app_midpdemo_name --resource-group $rgName
 
-foreach($zip in $zips)
-{
-    if ($zip -eq  "app-midp" ) 
-    {
-        remove-item -path "./$($zip).zip" -recurse -force
-    }
-    if ($zip -eq "app-midp" ) 
-    {
-        continue;
-    }
-    remove-item -path "./$($zip)" -recurse -force
-}
+# foreach($zip in $zips)
+# {
+#     if ($zip -eq  "app-midp" ) 
+#     {
+#         remove-item -path "./$($zip).zip" -recurse -force
+#     }
+#     if ($zip -eq "app-midp" ) 
+#     {
+#         continue;
+#     }
+#     remove-item -path "./$($zip)" -recurse -force
+# }
 
 # ADX Thermostat Realtime
 $occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy | ConvertFrom-Json
@@ -1133,18 +1133,22 @@ $occupancy_endpoint = $occupancy_endpoint.primaryConnectionString
 $thermostat_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name thermostat --name thermostat | ConvertFrom-Json
 $thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
 
-$occupancyDataConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$occupancy_endpoint+'\",\"EventhubName\":\"occupancy\",\"urlPowerBI\":\"'+$occupancy_data_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"visitors_cnt\":{\"minValue\":20,\"maxValue\":50}},{\"visitors_in\":{\"minValue\":0,\"maxValue\":10}},{\"visitors_out\":{\"minValue\":0,\"maxValue\":10}},{\"avg_aisle_time_spent\":{\"minValue\":20,\"maxValue\":30}},{\"avg_dwell_time\":{\"minValue\":5,\"maxValue\":15}}]}'
- 	
-$thermostatTelemetryConfig = '{\"main_data_frequency_seconds\":5,\"urlStringEventhub\":\"'+$thermostat_endpoint+'\",\"EventhubName\":\"thermostat\",\"urlPowerBI\":\"'+$thermostat_telemetry_Realtime_URL+'\",\"data\":[{\"BatteryLevel\":{\"minValue\":0,\"maxValue\":100}},{\"Temp\":{\"minValue\":60.0,\"maxValue\":74.0}},{\"Temp_UoM\":{\"minValue\":\"F\",\"maxValue\":\"F\"}}]}'
- 
-$config = az webapp config appsettings set -g $rgName  -n $sites_adx_thermostat_realtime_name --settings occupancyDataConfig=$occupancyDataConfig
-$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings thermostatTelemetryConfig=$thermostatTelemetryConfig
+(Get-Content -path adx-config-appsetting.json -Raw) | Foreach-Object { $_ `
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
+    -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
+   -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+   -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+} | Set-Content -Path adx-config-appsetting-with-replacement.json
 
-Write-Information "Deploying ADX Thermostat Realtime App"
-cd app-adx-thermostat-realtime
-az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-cd ..
-Start-Sleep -s 10
+$config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
+
+Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+
+# Write-Information "Deploying ADX Thermostat Realtime App"
+# cd app-adx-thermostat-realtime
+# az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
+# cd ..
+# Start-Sleep -s 10
 
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 $endtime=get-date
