@@ -53,8 +53,6 @@ $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $subscriptionId = (Get-AzContext).Subscription.Id
 
-
-
 #databricks
     Add-Content log.txt "------databricks------"
     Write-Host "--------- Databricks---------"
@@ -134,7 +132,7 @@ $subscriptionId = (Get-AzContext).Subscription.Id
 
     $tenant = get-aztenant
     $tenantid = $tenant.id
-    $appdatabricks = az ad app create --display-name "healthcare2" | ConvertFrom-Json
+    $appdatabricks = az ad app create --display-name "healthcare2 $init" | ConvertFrom-Json
     $clientId = $appdatabricks.appId
     $appCredential = az ad app credential reset --id $clientId | ConvertFrom-Json
     $clientsecpwddatabricks = $appCredential.password

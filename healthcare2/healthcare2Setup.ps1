@@ -141,6 +141,8 @@ else {
     $amlworkspacename = "aml-hc2-$suffix"
     $databricks_workspace_name = "databricks-hc2-$suffix"
     $sqlUser = "labsqladmin"
+    $mssql_server_name = "mssqlhc2-$suffix"
+    $sqlDatabaseName = "InventoryDB"
     $accounts_purviewhealthcare2_name = "purviewhc2$suffix"
     $purviewCollectionName1 = "ADLS"
     $purviewCollectionName2 = "AzureSynapseAnalytics"
@@ -858,7 +860,7 @@ else {
     Write-Host "Creating linked Service: AzureSqlDatabase"
     $filepath = $templatepath + "AzureSqlDatabase.json"
     $itemTemplate = Get-Content -Path $filepath
-    $item = $itemTemplate   # .Replace("#SERVER_NAME#", $mssql_server_name).Replace("#DATABASE_NAME#", $sqlDatabaseName).Replace("#USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+    $item = $itemTemplate.Replace("#SERVER_NAME#", $mssql_server_name).Replace("#DATABASE_NAME#", $sqlDatabaseName).Replace("#USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureSqlDatabase?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization = "Bearer $synapseToken" } -ContentType "application/json"
     Add-Content log.txt $result

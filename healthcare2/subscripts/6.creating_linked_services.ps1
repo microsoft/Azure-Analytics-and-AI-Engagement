@@ -53,6 +53,8 @@ if($dataLakeAccountName.length -gt 24)
 $dataLakeAccountName = $dataLakeAccountName.substring(0,24)
 }
 $sqlUser = "labsqladmin"
+$mssql_server_name = "mssqlhc2-$suffix"
+$sqlDatabaseName = "InventoryDB"
 $cosmos_healthcare2_name = "cosmos-healthcare2-$random$init"
 if ($cosmos_healthcare2_name.length -gt 43) {
     $cosmos_healthcare2_name = $cosmos_healthcare2_name.substring(0, 43)
@@ -169,7 +171,7 @@ $cosmos_account_key = $cosmos_account_key.primarymasterkey
     Write-Host "Creating linked Service: AzureSqlDatabase"
     $filepath = $templatepath + "AzureSqlDatabase.json"
     $itemTemplate = Get-Content -Path $filepath
-    $item = $itemTemplate   # .Replace("#SERVER_NAME#", $mssql_server_name).Replace("#DATABASE_NAME#", $sqlDatabaseName).Replace("#USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
+    $item = $itemTemplate.Replace("#SERVER_NAME#", $mssql_server_name).Replace("#DATABASE_NAME#", $sqlDatabaseName).Replace("#USERNAME#", $sqlUser).Replace("#SQL_PASSWORD#", $sqlPassword)
     $uri = "https://$($synapseWorkspaceName).dev.azuresynapse.net/linkedservices/AzureSqlDatabase?api-version=2019-06-01-preview"
     $result = Invoke-RestMethod  -Uri $uri -Method PUT -Body $item -Headers @{ Authorization = "Bearer $synapseToken" } -ContentType "application/json"
     Add-Content log.txt $result
