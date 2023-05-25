@@ -88,6 +88,15 @@ if ($subs.GetType().IsArray -and $subs.length -gt 1) {
     $cosmos_account_key = az cosmosdb keys list -n $cosmos_healthcare2_name -g $rgName | ConvertFrom-Json
     $cosmos_account_key = $cosmos_account_key.primarymasterkey
     
+    #mssql data upload
+    Add-Content log.txt "-----Ms Sql-----"
+    Write-Host "----Ms Sql----"
+    $SQLScriptsPath = "../artifacts/sqlscripts"
+    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/SalesDataAfterCampaign.sql"
+    $sqlEndpoint = "$($mssql_server_name).database.windows.net"
+    $result = Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlDatabaseName -Username $sqlUser -Password $sqlPassword
+    Add-Content log.txt $result
+
     # SQL schema section
     Add-Content log.txt "------sql schema-----"
     Write-Host "----Sql Schema------"
