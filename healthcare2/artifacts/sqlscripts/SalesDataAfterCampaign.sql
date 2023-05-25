@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[SalesDataAfterCampaign](
     [Quantity]	INT,
     [Advert]	VARCHAR(512),
-    [Price]	DOUBLE,
+    [Price]	FLOAT,
     [Brand]	VARCHAR(512)
 );
 
