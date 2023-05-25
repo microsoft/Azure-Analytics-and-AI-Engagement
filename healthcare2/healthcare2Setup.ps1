@@ -538,7 +538,7 @@ else {
     Add-Content log.txt "-----Ms Sql-----"
     Write-Host "----Ms Sql----"
     $SQLScriptsPath = "./artifacts/sqlscripts"
-    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/SalesDataAfterCampaign.sql"
+    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/mssql_tables.sql"
     $sqlEndpoint = "$($mssql_server_name).database.windows.net"
     $result = Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $sqlDatabaseName -Username $sqlUser -Password $sqlPassword
     Add-Content log.txt $result
