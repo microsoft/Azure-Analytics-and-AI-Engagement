@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Data Source=tcp:#SERVER_NAME#.database.windows.net,1433;Initial Catalog=#DATABASE_NAME#;User ID=#USERNAME#@#SERVER_NAME#;Password=#PASSWORD#;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            "connectionString": "Data Source=tcp:#SERVER_NAME#.database.windows.net,1433;Initial Catalog=#DATABASE_NAME#;User ID=#USERNAME#;Password=#PASSWORD#;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
