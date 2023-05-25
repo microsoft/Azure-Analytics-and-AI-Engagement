@@ -32,6 +32,9 @@
       "synapse_workspace_name": "[concat('synhealthcare2',parameters('environment_code'),uniqueString(deployment().name))]",
       "sql_compute_name": "HealthcareDW",
       "sql_server_sku": "DW100c",
+      "mssql_server_name": "[concat('mssqlhc2-',variables('unique_suffix'))]",
+      "mssql_administrator_login": "labsqladmin",
+      "mssql_database_name": "InventoryDB",
       "default_data_lake_storage_file_system_name": "sthealthcare2",
       "default_data_lake_storage_account_url": "[concat('https://', variables('storage_account_name'), '.dfs.core.windows.net')]",
       "sql_administrator_login_id": "labsqladmin",
@@ -677,6 +680,51 @@
 
                ]
             }
+         }
+      },
+      {
+         "name": "[variables('mssql_server_name')]",
+         "type": "Microsoft.Sql/servers",
+         "apiVersion": "2022-05-01-preview",
+         "location": "[variables('location')]",
+         "kind": "v12.0",
+         "properties": {
+         "administratorLogin": "[variables('mssql_administrator_login')]",
+         "administratorLoginPassword": "[parameters('sql_administrator_login_password')]",
+         "version": "12.0"
+         }
+      },
+      {
+         "name": "[concat(variables('mssql_server_name'), '/', variables('mssql_database_name'))]",
+         "type": "Microsoft.Sql/servers/databases",
+         "apiVersion": "2022-05-01-preview",
+         "location": "[variables('location')]",
+         "dependsOn": [
+         "[resourceId('Microsoft.Sql/servers', variables('mssql_server_name'))]"
+         ],
+         "sku": {
+         "name": "GP_S_Gen5",
+         "tier": "GeneralPurpose",
+         "family": "Gen5",
+         "capacity": 1
+         },
+         "kind": "v12.0,user,vcore,serverless",
+         "properties": {
+         "collation": "SQL_Latin1_General_CP1_CI_AS",
+         "catalogCollation": "SQL_Latin1_General_CP1_CI_AS"
+         }
+      },
+      {
+         "name": "[concat(variables('mssql_server_name'), '/AllowAzureIPs')]",
+         "type": "Microsoft.Sql/servers/firewallRules",
+         "apiVersion": "2022-05-01-preview",
+         "dependsOn": [
+         "[concat('Microsoft.Sql/servers/', variables('mssql_server_name'))]",
+         "[concat('Microsoft.Sql/servers/', variables('mssql_server_name'),'/databases/' , variables('mssql_database_name'))]"
+         ],
+         "properties": {
+         "startIpAddress": "0.0.0.0",
+         "endIpAddress": "255.255.255.255"
          }
       },
       {
