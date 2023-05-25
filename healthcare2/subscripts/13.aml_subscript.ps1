@@ -84,14 +84,14 @@ $endingTime = $startingTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "patientintakeform" -Context $dataLakeContext -Permission rwdl -StartTime $startingTime -ExpiryTime $endingTime
 
 #Replace values in create_model.py
-(Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
+(Get-Content -path ../artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
                 -replace '#LOCATION#', $Region`
                 -replace '#FORM_RECOGNIZER_NAME#', $forms_healthcare2_name`
                 -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName`
                 -replace '#CONTAINER_NAME#', "patientintakeform"`
                 -replace '#SAS_TOKEN#', $sasToken`
                 -replace '#APIM_KEY#',  $forms_hc2_keys.Key1`
-            } | Set-Content -Path artifacts/formrecognizer/create_model1.py
+            } | Set-Content -Path ../artifacts/formrecognizer/create_model1.py
             
 $modelUrl = python "../artifacts/formrecognizer/create_model1.py"
 $modelId = $modelUrl.split("/")
