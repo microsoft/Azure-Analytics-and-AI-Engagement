@@ -1661,7 +1661,7 @@ else {
 
     $config = az webapp config appsettings set -g $rgName -n $sites_patient_data_simulator_name --settings @adx-config-appsetting-with-replacement.json
 
-    Write-Information "Deploying ADX Thermostat Realtime App"
+    Write-Information "Deploying Patient Data Simulator App"
 #     cd app-adx-thermostat-realtime
 #     az webapp up --resource-group $rgName --name $sites_patient_data_simulator_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
 #     cd ..

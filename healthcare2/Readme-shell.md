@@ -43,14 +43,15 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
   - [Task 3: Deploy the ARM Template](#task-3-deploy-the-arm-template)
   - [Task 4: Run the Cloud Shell to provision the demo resources](#task-4-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 5: Data Explorer Setup](#task-5-data-explorer-setup)
-  - [Task 6: Azure Purview Setup](#task-6-azure-purview-setup)
-  - [Task 7: Power BI reports and dashboard creation](#task-7-power-bi-reports-and-dashboard-creation)
+  - [Task 6: Azure Databricks Setup](#task-6-azure-databricks-setup)
+  - [Task 7: Azure Purview Setup](#task-7-azure-purview-setup)
+  - [Task 8: Power BI reports and dashboard creation](#task-8-power-bi-reports-and-dashboard-creation)
   	- [Steps to validate the credentials for reports](#steps-to-validate-the-credentials-for-reports)
   	- [Steps to create realtime reports](#steps-to-create-realtime-reports)
   	- [Follow these steps to create the Power BI dashboard](#follow-these-steps-to-create-the-power-bi-dashboard)
   	- [Updating Dashboard and Report Ids in Web app](#updating-dashboard-and-report-ids-in-web-app)
-  - [Task 8: Pause or Resume script](#task-8-pause-or-resume-script)
-  - [Task 9: Clean up resources](#task-9-clean-up-resources)
+  - [Task 9: Pause or Resume script](#task-9-pause-or-resume-script)
+  - [Task 10: Clean up resources](#task-10-clean-up-resources)
 
 <!-- /TOC -->
 
@@ -289,11 +290,11 @@ cd ./healthcare2/healthcare2
 
 	![Adx.](media/adx-4.png)
 	
-5. In the Ingest data, under destination tab, **select** appropriate values in the respective fields, in Cluster **select** the kusto pool name as "hc2kustopool...", in the Database select "HC2KustoDB..." database, in the Table field **enter** the table name i.e. monitoring-device and then **click** on Next.
+5. In the Ingest data, under destination tab, **select** appropriate values in the respective fields, in Cluster **select** the kusto pool name as "hc2kustopool...", in the Database select "HC2KustoDB..." database, in the Table field **enter** the table name i.e. "operationalanalytics" and then **click** on Next.
 
 	![Adx.](media/adx-5.png)
 	
-6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "evh-patient-monitoring-hc2-...", in Event Hub **enter** "monitoring-device", in Data connection name **select** "HC2KustoDB...-monitoring-device", in Consumer group **select** $Default and then **click** on Next.
+6. Under the source tab, **select** Source type as "Event Hub", in subscription **select** your subscription, in Event Hub Namespace **select** you eventhub namespace i.e. "evh-patient-monitoring-hc2-...", in Event Hub **enter** "operational-analytics", in Data connection name **select** "HC2KustoDB...-operational-analytics", in Consumer group **select** $Default and then **click** on Next.
 
 	![Adx.](media/adx-6.png)
 	
@@ -305,9 +306,83 @@ cd ./healthcare2/healthcare2
 
 	![Adx.](media/adx-8.png)
 	
-9. Repeat the above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "operational-analytics", in step 6 **enter** Event Hub as "operational-analytics" and Data connection name as "HC2KustoDB...-operational-analytics".
+9. Repeat the above step from 4 to 8, replacing few values, i.e. in step 5, this time **enter** the table name as "monitoringdevice", in step 6 **enter** Event Hub as "monitoring-device" and Data connection name as "HC2KustoDB...-monitoring-device".
 
-### Task 6: Azure Purview Setup
+### Task 6: Azure Databricks Setup
+
+In this task, you will create a Delta Live Table pipeline.
+
+*Delta Live Tables (DLT) allow you to build and manage reliable data pipelines that deliver high-quality data on Delta Lake. DLT helps data engineering teams simplify ETL development and management with declarative pipeline development, automatic data testing, and deep visibility for monitoring and recovery.*
+
+1. In the Azure Portal **search** for databricks and **click** on the databricks resource.
+
+	![Databricks.](media/databricks-1.png)
+
+2. In the databricks resource **click** on workspace.
+
+	![Databricks.](media/databricks-2.png)
+
+3. On the left navigation pane, **select** the Workflows icon.
+
+	![Select Workflows](media/databricks-3.png)
+
+4.	**Select** the Delta Live Tables tab and **click** Create Pipeline.
+
+	![Select Workflows](media/databricks-4.png)
+
+5.	In the Create pipeline window, in the Pipeline name box, **enter** a name like **DLT Pipeline**.
+
+	![create pipeline](media/databricks-5.png)
+
+7.	In the Source Code field **select** the notebook icon.
+
+	![Notebook libraries](media/databricks-6.png)
+
+8.	In the Select source code window, **select** the "Patient Profile dlt.ipynb" notebook and **click** on Select.
+
+	![Select Notebook](media/databricks-7.png)
+
+9.	**Click** on Add Source Code button.
+
+	![Select Notebook](media/databricks-8.png)
+
+10.	In the Source Code field **select** the notebook icon again.
+
+	![Notebook libraries](media/databricks-9.png)
+
+11.	In the Select source code window, **select** the "PatientExperience_dlt.ipynb" notebook and **click** on Select.
+
+	![Select Notebook](media/databricks-10.png)
+      
+9.	In the Storage location box, **enter**: /mnt/delta-files/lakedb/
+
+10.	In the **Target schema** box, enter: **lakedb**
+
+11. Select **Create**.
+
+![Select Create](https://github.com/CloudLabsAI-Azure/Ignite-lab/raw/main/media/storagelocation,target.png?raw=true)
+
+
+*Once you select **Create**, it will create the Delta Live Table pipeline with all the notebook libraries added to the pipeline.*
+
+![Do not select Start](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/img239.png?raw=true)
+
+> **Note: DO NOT** click **Start**.
+
+*If you click on **Start**, Databricks will start executing the pipeline which will take approximately 10 minutes.*
+
+![Wating for the job to complete](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/image2317.png?raw=true)
+
+> **Note:** The following instructions are for informational purposes only. Due to time constraints, we will not start the pipeline in the lab session.
+
+*The lab instructor will share the pipeline lineage with you. Please follow the lab instructor to understand the pipeline lineage in detail.*
+
+12. After approx 10 mins, this is the view you would have seen. **Observe** the data lineage of bronze, silver and gold tables.
+
+![Medallion Architecture](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/image2318.png?raw=true)
+
+
+### Task 7: Azure Purview Setup
 
 > **Note:** Firstly you should assign Reader permission to the Azure Purview account starting with name "purviewhc2..." for Cosmos Account, Synapse Workspace and Storage Account starting with name "sthealthcare2...". Once the permission has been granted, proceed with the following steps.
 
@@ -353,7 +428,7 @@ cd ./healthcare2/healthcare2
 	
 11. **Run** the scans for AzureSynapseAnalytics, AzureSqlDatabase and PowerBI as well. 
 	
-### Task 7: Power BI reports and dashboard creation
+### Task 8: Power BI reports and dashboard creation
 
 ### Steps to validate the credentials for reports
 
@@ -371,11 +446,9 @@ The image on the below shows the Reports tab in Power BI.  We can create a Power
 
 To give permissions for the Power BI reports to access the data sources:
 
-2. **Click** the ellipses or settings icon on top right-side corner.
+3. **Click** on settings and a dropdown will appear.
 
-3. **Click** the settings dropdown.
-
-4. **Click** on settings.
+4. **Click** on Power BI Settings.
 
 	![Permission.](media/power-bi-report-5.png)
 
@@ -421,21 +494,29 @@ To give permissions for the Power BI reports to access the data sources:
 
 	![Validate Creds.](media/power-bi-report-03.png)
 		
-18. **Click** on the dataset "Healthcare - Call Center Power BI Before".
+18. **Click** on the dataset "Static Realtime Healthcare analytics".
 
 19. **Expand** Data source credentials.
 
-20. **Click** Edit credentials in front of AIFunctions and a dialogue box will pop up.
+20. **Click** Edit credentials and a dialogue box will pop up.
 
 	![Data Source Creds.](media/power-bi-report-04.png)
 
-21. **Select** Authentication method as "OAuth2" and Privacy level as "Organisational" and **Click** on Sign in, a new window will pop-up.
+21. **Navigate** back to the resource group and **search** for "sthealthcare2" and **click** on the storage account resource.
+
+	![Validate Creds.](media/power-bi-report-05.1.png)
+
+22. **Scroll** down in the left tab, **click** on Access Key and **click** on "Show" in the key field.
+
+	![Validate Creds.](media/power-bi-report-05.2.png)
+
+23. **Copy** the key by clicking on the copy buttin and navigate back to the PowerBI Workspace.
+
+	![Validate Creds.](media/power-bi-report-05.3.png)
+
+24. **Select** Authentication method as "Key", in the "Account key" field **paste** the copied value and **Click** on Sign in.
 
 	![Validate Creds.](media/power-bi-report-05.png)
-	
-22. In the new window, **select** the appropriate user.
-
-	![Validate Creds.](media/power-bi-report-03.png)
 	
 ### Steps to create realtime reports
 
@@ -715,7 +796,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 	
 > **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
 	
-### Task 8: Pause or Resume script
+### Task 9: Pause or Resume script
 
 > **Note:** Please perform these steps after your demo is done and you do not need the environment anymore. Also ensure you Resume the environment before demo if you paused it once. 
  
@@ -764,7 +845,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Enter your choice.](media/authentication-4.png)
 
-### Task 9: Clean up resources
+### Task 10: Clean up resources
 
 > **Note: Perform these steps after your demo is done and you do not need the resources anymore**
 
