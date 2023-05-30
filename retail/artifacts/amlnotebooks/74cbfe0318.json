@@ -1,0 +1,22 @@
+{
+    "privacyMode": "Public",
+    "state": "Processed",
+    "accountId": "c1928055-b882-4ec3-916c-eebcd801ac98",
+    "video_id": "74cbfe0318",
+    "transcript":"Through the experience of HoloLens, you can escape the world of your dreams and immerse yourself in mixed reality.So get ready, put on your sunglasses and witness endurance sports in real life or in a mixed reality with the help of AI.",
+    "name": "Endurance sports with Holo Lens",
+    "userName": "dreamdemoretail2.0 dreamdemoretail2.0",
+    "created": "2022-02-24T02:41:35.4692254+00:00",
+    "durationInSeconds": 15,
+    "data": {
+        "name": "Endurance sports with Holo Lens",
+        "id": "74cbfe0318",
+        "privacyMode": "Public",
+        "duration": {
+            "time": "0:00:15.019",
+            "seconds": 15
+        },
+        "thumbnailVideoId": "74cbfe0318",
+        "thumbnailId": "047f5bc9-c3d2-48bc-b72b-3c93802b532f"
+    }
+}

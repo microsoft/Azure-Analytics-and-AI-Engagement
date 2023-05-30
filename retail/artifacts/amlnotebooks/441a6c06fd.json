@@ -1,0 +1,413 @@
+{
+    "partition": null,
+    "description": null,
+    "privacyMode": "Public",
+    "state": "Processed",
+    "accountId": "2fb00b84-440b-4fd2-a8b4-db99387c4cfe",
+    "id": "441a6c06fd",
+    "name": "final_ryanv1",
+    "userName": " ",
+    "created": "2022-07-18T14:23:56.594772+00:00",
+    "isOwned": false,
+    "isEditable": false,
+    "isBase": true,
+    "durationInSeconds": 5,
+    "summarizedInsights": {
+        "name": "final_ryanv1",
+        "id": "441a6c06fd",
+        "privacyMode": "Public",
+        "duration": {
+            "time": "0:00:05.666667",
+            "seconds": 5.7
+        },
+        "thumbnailVideoId": "441a6c06fd",
+        "thumbnailId": "ce96c2d6-8366-45d5-8d7e-452fed2bb3b8",
+        "faces": [
+            {
+                "videoId": "441a6c06fd",
+                "confidence": 0,
+                "description": null,
+                "title": null,
+                "thumbnailId": "522ec9bb-8982-4a54-80e1-3cdd7bce156a",
+                "seenDuration": 1.7,
+                "seenDurationRatio": 0.3,
+                "id": 1002,
+                "name": "Unknown #1",
+                "appearances": [
+                    {
+                        "startTime": "0:00:04",
+                        "endTime": "0:00:05.6666666",
+                        "startSeconds": 4,
+                        "endSeconds": 5.7
+                    }
+                ]
+            }
+        ],
+        "keywords": [],
+        "sentiments": [],
+        "emotions": [],
+        "audioEffects": [],
+        "labels": [
+            {
+                "id": 1,
+                "name": "person",
+                "appearances": [
+                    {
+                        "confidence": 0.9941,
+                        "startTime": "0:00:00",
+                        "endTime": "0:00:05.0333333",
+                        "startSeconds": 0,
+                        "endSeconds": 5
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "human face",
+                "appearances": [
+                    {
+                        "confidence": 0.9899,
+                        "startTime": "0:00:00",
+                        "endTime": "0:00:05.0333333",
+                        "startSeconds": 0,
+                        "endSeconds": 5
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "indoor",
+                "appearances": [
+                    {
+                        "confidence": 0.9635,
+                        "startTime": "0:00:01",
+                        "endTime": "0:00:01.0333333",
+                        "startSeconds": 1,
+                        "endSeconds": 1
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "man",
+                "appearances": [
+                    {
+                        "confidence": 0.9759,
+                        "startTime": "0:00:02",
+                        "endTime": "0:00:02.0333333",
+                        "startSeconds": 2,
+                        "endSeconds": 2
+                    }
+                ]
+            }
+        ],
+        "framePatterns": [],
+        "brands": [],
+        "namedLocations": [],
+        "namedPeople": [],
+        "statistics": {
+            "correspondenceCount": 0,
+            "speakerTalkToListenRatio": {
+                "1": 1
+            },
+            "speakerLongestMonolog": {
+                "1": 6
+            },
+            "speakerNumberOfFragments": {
+                "1": 1
+            },
+            "speakerWordCount": {
+                "1": 19
+            }
+        },
+        "topics": []
+    },
+    "videos": [
+        {
+            "accountId": "2fb00b84-440b-4fd2-a8b4-db99387c4cfe",
+            "id": "441a6c06fd",
+            "state": "Processed",
+            "moderationState": "OK",
+            "reviewState": "None",
+            "privacyMode": "Public",
+            "processingProgress": "100%",
+            "failureCode": "None",
+            "failureMessage": "",
+            "externalId": null,
+            "externalUrl": null,
+            "metadata": null,
+            "insights": {
+                "version": "1.0.0.0",
+                "duration": "0:00:05.666667",
+                "sourceLanguage": "en-US",
+                "sourceLanguages": [
+                    "en-US"
+                ],
+                "language": "en-US",
+                "languages": [
+                    "en-US"
+                ],
+                "transcript": [
+                    {
+                        "id": 1,
+                        "text": "Through the experience of HoloLens, you can escape the world of your dreams and immerse yourself in mixed reality.",
+                        "confidence": 0.9067,
+                        "speakerId": 1,
+                        "language": "en-US",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00.15",
+                                "adjustedEnd": "0:00:05.666667",
+                                "start": "0:00:00.15",
+                                "end": "0:00:05.666667"
+                            }
+                        ]
+                    }
+                ],
+                "faces": [
+                    {
+                        "id": 1002,
+                        "name": "Unknown #1",
+                        "confidence": 0,
+                        "description": null,
+                        "thumbnailId": "522ec9bb-8982-4a54-80e1-3cdd7bce156a",
+                        "title": null,
+                        "imageUrl": null,
+                        "thumbnails": [
+                            {
+                                "id": "7fd0f269-1df7-41ee-8959-f374336f5ab8",
+                                "fileName": "FaceInstanceThumbnail_7fd0f269-1df7-41ee-8959-f374336f5ab8.jpg",
+                                "instances": [
+                                    {
+                                        "adjustedStart": "0:00:04.1455",
+                                        "adjustedEnd": "0:00:04.1788333",
+                                        "start": "0:00:04.1455",
+                                        "end": "0:00:04.1788333"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "522ec9bb-8982-4a54-80e1-3cdd7bce156a",
+                                "fileName": "FaceInstanceThumbnail_522ec9bb-8982-4a54-80e1-3cdd7bce156a.jpg",
+                                "instances": [
+                                    {
+                                        "adjustedStart": "0:00:05.1455",
+                                        "adjustedEnd": "0:00:05.1788333",
+                                        "start": "0:00:05.1455",
+                                        "end": "0:00:05.1788333"
+                                    }
+                                ]
+                            }
+                        ],
+                        "instances": [
+                            {
+                                "thumbnailsIds": [
+                                    "522ec9bb-8982-4a54-80e1-3cdd7bce156a",
+                                    "7fd0f269-1df7-41ee-8959-f374336f5ab8"
+                                ],
+                                "adjustedStart": "0:00:04",
+                                "adjustedEnd": "0:00:05.6666666",
+                                "start": "0:00:04",
+                                "end": "0:00:05.6666666"
+                            }
+                        ]
+                    }
+                ],
+                "labels": [
+                    {
+                        "id": 1,
+                        "name": "person",
+                        "referenceId": "person",
+                        "language": "en-US",
+                        "instances": [
+                            {
+                                "confidence": 0.9941,
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:05.0333333",
+                                "start": "0:00:00",
+                                "end": "0:00:05.0333333"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "name": "human face",
+                        "language": "en-US",
+                        "instances": [
+                            {
+                                "confidence": 0.9632,
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:02.0333333",
+                                "start": "0:00:00",
+                                "end": "0:00:02.0333333"
+                            },
+                            {
+                                "confidence": 0.9899,
+                                "adjustedStart": "0:00:04",
+                                "adjustedEnd": "0:00:05.0333333",
+                                "start": "0:00:04",
+                                "end": "0:00:05.0333333"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "name": "indoor",
+                        "language": "en-US",
+                        "instances": [
+                            {
+                                "confidence": 0.9635,
+                                "adjustedStart": "0:00:01",
+                                "adjustedEnd": "0:00:01.0333333",
+                                "start": "0:00:01",
+                                "end": "0:00:01.0333333"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "name": "man",
+                        "referenceId": "person/man",
+                        "language": "en-US",
+                        "instances": [
+                            {
+                                "confidence": 0.9759,
+                                "adjustedStart": "0:00:02",
+                                "adjustedEnd": "0:00:02.0333333",
+                                "start": "0:00:02",
+                                "end": "0:00:02.0333333"
+                            }
+                        ]
+                    }
+                ],
+                "scenes": [
+                    {
+                        "id": 1,
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:05.6333333",
+                                "start": "0:00:00",
+                                "end": "0:00:05.6333333"
+                            }
+                        ]
+                    }
+                ],
+                "shots": [
+                    {
+                        "id": 1,
+                        "keyFrames": [
+                            {
+                                "id": 1,
+                                "instances": [
+                                    {
+                                        "thumbnailId": "ef5c9eb1-fa13-4440-b793-b2470fed4ac3",
+                                        "adjustedStart": "0:00:00.1666666",
+                                        "adjustedEnd": "0:00:00.2",
+                                        "start": "0:00:00.1666666",
+                                        "end": "0:00:00.2"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "instances": [
+                                    {
+                                        "thumbnailId": "63cccb69-fc3f-4baa-8f30-3583592ecfb0",
+                                        "adjustedStart": "0:00:00.2",
+                                        "adjustedEnd": "0:00:00.2333333",
+                                        "start": "0:00:00.2",
+                                        "end": "0:00:00.2333333"
+                                    }
+                                ]
+                            }
+                        ],
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:05.6333333",
+                                "start": "0:00:00",
+                                "end": "0:00:05.6333333"
+                            }
+                        ]
+                    }
+                ],
+                "blocks": [
+                    {
+                        "id": 0,
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00",
+                                "adjustedEnd": "0:00:05.666667",
+                                "start": "0:00:00",
+                                "end": "0:00:05.666667"
+                            }
+                        ]
+                    }
+                ],
+                "speakers": [
+                    {
+                        "id": 1,
+                        "name": "Speaker #1",
+                        "instances": [
+                            {
+                                "adjustedStart": "0:00:00.15",
+                                "adjustedEnd": "0:00:05.666667",
+                                "start": "0:00:00.15",
+                                "end": "0:00:05.666667"
+                            }
+                        ]
+                    }
+                ],
+                "textualContentModeration": {
+                    "id": 0,
+                    "bannedWordsCount": 0,
+                    "bannedWordsRatio": 0,
+                    "instances": []
+                },
+                "statistics": {
+                    "correspondenceCount": 0,
+                    "speakerTalkToListenRatio": {
+                        "1": 1
+                    },
+                    "speakerLongestMonolog": {
+                        "1": 6
+                    },
+                    "speakerNumberOfFragments": {
+                        "1": 1
+                    },
+                    "speakerWordCount": {
+                        "1": 19
+                    }
+                }
+            },
+            "thumbnailId": "ce96c2d6-8366-45d5-8d7e-452fed2bb3b8",
+            "detectSourceLanguage": false,
+            "languageAutoDetectMode": "None",
+            "sourceLanguage": "en-US",
+            "sourceLanguages": [
+                "en-US"
+            ],
+            "language": "en-US",
+            "languages": [
+                "en-US"
+            ],
+            "indexingPreset": "Default",
+            "linguisticModelId": "00000000-0000-0000-0000-000000000000",
+            "personModelId": "9f9ba707-5296-48dd-9bfe-23778eb68d0f",
+            "isAdult": false,
+            "publishedUrl": "https://retailmedia-usea.streaming.media.azure.net/df87b6f5-29b7-4e65-bfb1-21a67c093a86/hololens.ism/manifest(encryption=cbc)",
+            "publishedProxyUrl": null,
+            "viewToken": "Bearer=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cm46bWljcm9zb2Z0OmF6dXJlOm1lZGlhc2VydmljZXM6Y29udGVudGtleWlkZW50aWZpZXIiOiJlNTMzNWExNS1iMzRiLTRiNjYtOGYwNi05YzlkMjY5NzRkM2MiLCJuYmYiOjE2NTgxNTc5ODksImV4cCI6MTY1ODIwMTI0OSwiaXNzIjoiaHR0cHM6Ly9icmVha2Rvd24ubWUiLCJhdWQiOiJCcmVha2Rvd25Vc2VyIn0.XFX_q95y5BcJnu62m7wjVPoInFbCnq6Tcgpw0Jm0888"
+        }
+    ],
+    "videosRanges": [
+        {
+            "videoId": "441a6c06fd",
+            "range": {
+                "start": "0:00:00",
+                "end": "0:00:05.666667"
+            }
+        }
+    ]
+}

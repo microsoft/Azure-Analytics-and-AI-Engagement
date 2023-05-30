@@ -1,0 +1,22 @@
+{
+    "privacyMode": "Public",
+    "state": "Processed",
+    "accountId": "c1928055-b882-4ec3-916c-eebcd801ac98",
+    "video_id": "168bac451a",
+    "transcript": "Many brands in the fashion business have taken initiative to empower women with their new and inclusive designs, oftentimes made by women for women.",
+    "name": "Women in Fashion",
+    "userName": "dreamdemoretail2.0 dreamdemoretail2.0",
+    "created": "2022-02-24T02:44:17.2085032+00:00",
+    "durationInSeconds": 20,
+    "data": {
+        "name": "Women in Fashion",
+        "id": "168bac451a",
+        "privacyMode": "Public",
+        "duration": {
+            "time": "0:00:20.02",
+            "seconds": 20
+        },
+        "thumbnailVideoId": "168bac451a",
+        "thumbnailId": "0aea36ea-b8bd-4f9b-9a53-9bf98d8ead5f"
+    }
+}
