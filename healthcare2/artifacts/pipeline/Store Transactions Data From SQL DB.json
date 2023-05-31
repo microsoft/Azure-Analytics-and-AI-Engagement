@@ -32,9 +32,9 @@
                 "type": "Copy",
                 "dependsOn": [
                     {
-                        "activity": "Transactional Data To Data Lake",
+                        "activity": "Check if SQL DB exist",
                         "dependencyConditions": [
-                            "Succeeded"
+                            "Completed"
                         ]
                     }
                 ],
@@ -143,7 +143,7 @@
             "name": "1 Enterprise Data Sources In The Lake/Landing Operational Store Data"
         },
         "annotations": [],
-        "lastPublishTime": "2023-04-04T15:45:09Z"
+        "lastPublishTime": "2023-05-29T07:10:10Z"
     },
     "type": "Microsoft.Synapse/workspaces/pipelines"
 }

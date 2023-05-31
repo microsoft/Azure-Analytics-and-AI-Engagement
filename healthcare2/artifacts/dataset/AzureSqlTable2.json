@@ -51,7 +51,7 @@
         ],
         "typeProperties": {
             "schema": "dbo",
-            "table": "SalesDataAfterCampaign"
+            "table": "pbiPatientPredictiveSetv4"
         }
     },
     "type": "Microsoft.Synapse/workspaces/datasets"

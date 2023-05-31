@@ -51,7 +51,7 @@
                 },
                 "inputs": [
                     {
-                        "referenceName": "AzureSqlTable",
+                        "referenceName": "AzureSqlTable2",
                         "type": "DatasetReference"
                     }
                 ],
@@ -82,7 +82,7 @@
                         "partitionOption": "None"
                     },
                     "dataset": {
-                        "referenceName": "AzureSqlTable",
+                        "referenceName": "AzureSqlTable2",
                         "type": "DatasetReference"
                     }
                 }
@@ -92,7 +92,7 @@
             "name": "1 Enterprise Data Sources In The Lake/Landing Operational Store Data"
         },
         "annotations": [],
-        "lastPublishTime": "2023-04-04T15:44:50Z"
+        "lastPublishTime": "2023-05-29T07:09:43Z"
     },
     "type": "Microsoft.Synapse/workspaces/pipelines"
 }

@@ -404,7 +404,7 @@ else {
 
     $tenant = get-aztenant
     $tenantid = $tenant.id
-    $appdatabricks = az ad app create --display-name "healthcare2" | ConvertFrom-Json
+    $appdatabricks = az ad app create --display-name "healthcare2 $init" | ConvertFrom-Json
     $clientId = $appdatabricks.appId
     $appCredential = az ad app credential reset --id $clientId | ConvertFrom-Json
     $clientsecpwddatabricks = $appCredential.password
@@ -415,137 +415,120 @@ else {
     New-AzRoleAssignment -Objectid $principalId -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 (Get-Content -path "artifacts/databricks/BedOccupancy_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/BedOccupancy_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/BedOccupancySupplierAQI_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/BedOccupancySupplierAQI_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/CallCenter_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/CallCenter_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/Campaigns_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Campaigns_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/Consolidated_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Consolidated_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/HospitalInfo_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/HospitalInfo_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/Misc_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Misc_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/Patient Profile dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Patient Profile dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/PatientExperience_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/PatientExperience_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/PatientParm_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/PatientParm_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/PatientPredictive_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/PatientPredictive_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/PbiPatientPredictive_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/PbiPatientPredictive_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/Predctive_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Predctive_dlt.ipynb"
             
 (Get-Content -path "artifacts/databricks/Sales_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Sales_dlt.ipynb"
 
 (Get-Content -path "artifacts/databricks/TotalBed_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/TotalBed_dlt.ipynb"
     
 (Get-Content -path "artifacts/databricks/USMap_dlt.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/USMap_dlt.ipynb"
       
 (Get-Content -path "artifacts/databricks/Initial setup.ipynb" -Raw) | Foreach-Object { $_ `
             -replace '#STORAGE_ACCOUNT_NAME#', $dataLakeAccountName `
-            -replace '#SERVICE_PRINCIPAL_NAME#', "healthcare2" `
             -replace '#TENANT_ID#', $tenantid `
-            -replace '#SP_ID#', $appid `
+            -replace '#APP_ID#', $appid `
             -replace '#SECRET_KEY#', $clientsecpwddatabricks `
     } | Set-Content -Path "artifacts/databricks/Initial setup.ipynb"
     
@@ -602,6 +585,8 @@ else {
         } 
     }
     Set-Location ../../
+
+    ##############################
 
     Add-Content log.txt "-----Ms Sql-----"
     Write-Host "----Ms Sql----"
