@@ -322,64 +322,95 @@ In this task, you will create a Delta Live Table pipeline.
 
 	![Databricks.](media/databricks-2.png)
 
-3. On the left navigation pane, **select** the Workflows icon.
+3. On the left navigation pane, **select** Workspace and **click** on Initial setup.ipynb notebook.
+
+	![Select Workflows](media/databricks-2.1.png)
+
+4. **Click** on Run all, a new window will pop-up.
+
+	![Select Workflows](media/databricks-2.2.png)
+
+5. **Click** on Attach and run, the notebook will start executing.
+
+	![Select Workflows](media/databricks-2.3.png)
+
+6. On the left navigation pane, **select** the Workflows icon.
 
 	![Select Workflows](media/databricks-3.png)
 
-4.	**Select** the Delta Live Tables tab and **click** Create Pipeline.
+7.	**Select** the Delta Live Tables tab and **click** Create Pipeline.
 
 	![Select Workflows](media/databricks-4.png)
 
-5.	In the Create pipeline window, in the Pipeline name box, **enter** a name like **DLT Pipeline**.
+8.	In the Create pipeline window, in the Pipeline name box, **enter** DLT Pipeline.
 
 	![create pipeline](media/databricks-5.png)
 
-7.	In the Source Code field **select** the notebook icon.
+9.	In the Source Code field **select** the notebook icon.
 
 	![Notebook libraries](media/databricks-6.png)
 
-8.	In the Select source code window, **select** the "Patient Profile dlt.ipynb" notebook and **click** on Select.
+10.	In the Select source code window, **select** the "Patient Profile dlt.ipynb" notebook and **click** on Select.
 
 	![Select Notebook](media/databricks-7.png)
 
-9.	**Click** on Add Source Code button.
+11.	**Click** on Add Source Code button.
 
 	![Select Notebook](media/databricks-8.png)
 
-10.	In the Source Code field **select** the notebook icon again.
+12.	In the Source Code field **select** the notebook icon again.
 
 	![Notebook libraries](media/databricks-9.png)
 
-11.	In the Select source code window, **select** the "PatientExperience_dlt.ipynb" notebook and **click** on Select.
+13.	In the Select source code window, **select** the "PatientExperience_dlt.ipynb" notebook and **click** on Select.
 
 	![Select Notebook](media/databricks-10.png)
       
-9.	In the Storage location box, **enter**: /mnt/delta-files/lakedb/
+14.	Under the Destination section, in the Storage location box, **enter**: /mnt/delta-files and **click** on Create.
 
-10.	In the **Target schema** box, enter: **lakedb**
-
-11. Select **Create**.
-
-![Select Create](https://github.com/CloudLabsAI-Azure/Ignite-lab/raw/main/media/storagelocation,target.png?raw=true)
-
+	![Select Notebook](media/databricks-11.png)
 
 *Once you select **Create**, it will create the Delta Live Table pipeline with all the notebook libraries added to the pipeline.*
 
-![Do not select Start](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/img239.png?raw=true)
+15. **Click** on Start.
 
-> **Note: DO NOT** click **Start**.
+	![Select Notebook](media/databricks-12.png)
 
-*If you click on **Start**, Databricks will start executing the pipeline which will take approximately 10 minutes.*
+*Databricks will start executing the pipeline which will take approximately 5-10 minutes*
 
-![Wating for the job to complete](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/image2317.png?raw=true)
+16. This is the view you would have seen. Observe the data lineage of bronze, silver and gold tables.
 
-> **Note:** The following instructions are for informational purposes only. Due to time constraints, we will not start the pipeline in the lab session.
+	![Select Notebook](media/databricks-13.png)
 
-*The lab instructor will share the pipeline lineage with you. Please follow the lab instructor to understand the pipeline lineage in detail.*
+17. **Select** the Delta Live Tables tab and **click** Create Pipeline.
 
-12. After approx 10 mins, this is the view you would have seen. **Observe** the data lineage of bronze, silver and gold tables.
+	![Select Workflows](media/databricks-4.png)
 
-![Medallion Architecture](https://github.com/SD-14/Ignite-Demo/blob/main/media/images/image2318.png?raw=true)
+18.	In the Create pipeline window, in the Pipeline name box, **enter** OccupancySuppliersAQI_DLT.
+
+	![create pipeline](media/databricks-14.png)
+
+19.	In the Source Code field **select** the notebook icon.
+
+	![Notebook libraries](media/databricks-6.png)
+
+20.	In the Select source code window, **select** the "BedOccupancySupplierAQI_dlt.ipynb" notebook and **click** on Select.
+
+	![Select Notebook](media/databricks-15.png)
+      
+21.	Under the Destination section, in the Storage location box, **enter**: /mnt/delta-files , in Target schema **enter** model and **click** on Create.
+
+	![Select Notebook](media/databricks-16.png)
+
+22. **Click** on Start.
+
+	![Select Notebook](media/databricks-17.png)
+
+*Databricks will start executing the pipeline which will take approximately 5-10 minutes*
+
+16. This is the view you would have seen. Observe the data lineage of bronze, silver and gold tables.
+
+	![Select Notebook](media/databricks-18.png)
 
 
 ### Task 7: Azure Purview Setup
