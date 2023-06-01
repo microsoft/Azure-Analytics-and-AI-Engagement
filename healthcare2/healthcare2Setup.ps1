@@ -150,6 +150,7 @@ else {
     $purviewCollectionName4 = "PowerBI"
     $namespaces_evh_patient_monitoring_name = "evh-patient-monitoring-hc2-$suffix"
     $sites_patient_data_simulator_name = "app-patient-data-simulator-$suffix"
+    $serverfarm_patient_data_simulator_name = "asp-patient-data-simulator-$suffix"
     $sites_clinical_notes_name = "app-clinical-notes-$suffix"
     $sites_doc_search_name = "app-health-search-$suffix"
     $sites_open_ai_name = "app-open-ai-$suffix"
@@ -1715,11 +1716,11 @@ else {
     $config = az webapp config appsettings set -g $rgName -n $sites_patient_data_simulator_name --settings @adx-config-appsetting-with-replacement.json
 
     Write-Information "Deploying Patient Data Simulator App"
-#     cd app-adx-thermostat-realtime
-#     az webapp up --resource-group $rgName --name $sites_patient_data_simulator_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-#     cd ..
-#     Start-Sleep -s 10
-    Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_patient_data_simulator_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+    cd app-adx-thermostat-realtime
+    az webapp up --resource-group $rgName --name $sites_patient_data_simulator_name --plan $serverfarm_patient_data_simulator_name --location $Region
+    cd ..
+    Start-Sleep -s 10
+    # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_patient_data_simulator_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
     az webapp start --name $sites_patient_data_simulator_name --resource-group $rgName
 
