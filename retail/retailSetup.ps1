@@ -1269,11 +1269,6 @@ foreach($notebook in $notebooks)
         $source="./artifacts/amlnotebooks/"+$notebook.BaseName+".csv"
 		$path=$notebook.BaseName+".csv"
 	}
-    elseif($notebook.BaseName -eq "88a3d79c82" -or $notebook.BaseName -eq "bcc23802ee" -or $notebook.BaseName -eq "26bf115c66" -or $notebook.BaseName -eq "74cbfe0318" -or $notebook.BaseName -eq "88e47bb7d4" -or $notebook.BaseName -eq "168bac451a" -or $notebook.BaseName -eq "441a6c06fd" -or $notebook.BaseName -eq "09427df377" -or $notebook.BaseName -eq "e376c3dc1c" -or $notebook.BaseName -eq "07c796c0ba")
-    {
-        $source="./artifacts/amlnotebooks/"+$notebook.BaseName+".json"
-		$path=$notebook.BaseName+".json"
-	}
     elseif($notebook.BaseName -eq "Config")
 	{
      continue;
