@@ -1,8 +1,8 @@
 <h1 align="center">
   <br/>
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DREAM%20Demo%20Badge.png" alt="Dream Demo in a Box" width="200" /></a>
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DDiB_Cover.png" alt="Dream Demo in a Box" width="1200" /></a>
   <br/>
-  Microsoft Dream Demo in a Box
+  POC Accelerator
   <br/>
 </h1>
 
@@ -20,9 +20,7 @@
 </div>
 <br/><br/>
 
-<h2>
-  Dream Demo in a Box
-</h2>
+
 
 # Setting the scene
 
