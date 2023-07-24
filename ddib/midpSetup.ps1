@@ -1069,11 +1069,11 @@ Add-Content log.txt "------deploy poc web app------"
 Write-Host  "-----------------Deploy web app ---------------"
 RefreshTokens
 
-# $zips = @("app-adx-thermostat-realtime")
-# foreach($zip in $zips)
-# {
-#     expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-# }
+$zips = @("app-adx-thermostat-realtime")
+foreach($zip in $zips)
+{
+    expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+}
 
 # ADX Thermostat Realtime
 $occupancy_endpoint = az eventhubs eventhub authorization-rule keys list --resource-group $rgName --namespace-name $namespaces_adx_thermostat_occupancy_name --eventhub-name occupancy --name occupancy | ConvertFrom-Json
@@ -1090,13 +1090,13 @@ $thermostat_endpoint = $thermostat_endpoint.primaryConnectionString
 
 $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
 
-Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+# Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
-# Write-Information "Deploying ADX Thermostat Realtime App"
-# cd app-adx-thermostat-realtime
-# az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-# cd ..
-# Start-Sleep -s 10
+Write-Information "Deploying ADX Thermostat Realtime App"
+cd app-adx-thermostat-realtime
+az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
+cd ..
+Start-Sleep -s 10
 
 az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 $endtime=get-date
