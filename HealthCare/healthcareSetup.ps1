@@ -302,9 +302,7 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
         chmod +x azcopy
         cd ..
         $azCopyCommand += "\azcopy"
-}
-else
-{
+}   else  {
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
         if (!$azCopyLink)
