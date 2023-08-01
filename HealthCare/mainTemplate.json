@@ -2930,7 +2930,7 @@
     {
       "name": "[variables('virtual_machine_name')]",
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2019-07-01",
+      "apiVersion": "2023-03-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('virtual_machine_nic_name'))]",
@@ -2949,11 +2949,14 @@
           "imageReference": {
             "publisher": "MicrosoftWindowsServer",
             "offer": "WindowsServer",
-            "sku": "2016-Datacenter",
+            "sku": "2019-Datacenter",
             "version": "latest"
           },
           "osDisk": {
-            "createOption": "FromImage"
+            "osType": "Windows",
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "diskSizeGB": 300
           }
         },
         "networkProfile": {
@@ -2976,7 +2979,7 @@
     {
       "name": "[concat(variables('virtual_machine_name'),'/ManagedIdentityExtensionForWindows')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "apiVersion": "2018-06-01",
+      "apiVersion": "2023-03-01",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('virtual_machine_name'))]"
