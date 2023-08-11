@@ -1,7 +1,7 @@
-# Public Finance DREAM Demo in a Box Setup Guide
+# Public Finance DREAM PoC Accelerator Setup Guide
 
 ## What is it?
-DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
+DREAM PoC Accelerators (DPoC) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DPoC.
 
  ## Objective & Intent
 Partners can deploy DREAM Demos in their own Azure subscriptions and show live demos to customers. 
@@ -13,8 +13,8 @@ Customers can play,  get hands-on experience navigating through the demo environ
 
   1. **Please read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
-  3. Please note that **Azure hosting costs** are involved when DREAM Demos in a Box are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DDiB hosting costs for partners or customers.
-  4. Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
+  3. Please note that **Azure hosting costs** are involved when DREAM PoC Accelerators are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DPoC hosting costs for partners or customers.
+  4. Since this is a DPoC, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
   5.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
    > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
@@ -89,7 +89,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/resource-group-2.png)
 	
-5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'DDiB-Fintax-Lab'. 
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'DPoC-Fintax-Lab'. 
 
 6. **Select** your desired region.
 
@@ -119,7 +119,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Create Power BI Workspace.](media/power-bi-2.png)
 
-	> **Note:** Please create a Workspace by the name "DDiB-Fintax".
+	> **Note:** Please create a Workspace by the name "DPoC-Fintax".
 
 5. **Copy** the Workspace GUID or ID. You can get this by browsing to [https://app.powerbi.com/](https://app.powerbi.com/), selecting the workspace, and then copying the GUID 	from the address URL.
 
@@ -183,7 +183,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 2. On the Custom deployment form, **select** your desired Subscription.
 
-3. **Select** the resource group name **DDiB-Fintax-Lab** which you created in [Task 1](#task-1-create-a-resource-group-in-azure).
+3. **Select** the resource group name **DPoC-Fintax-Lab** which you created in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 4. **Provide/Type** an environment code which is unique to your environment. This code is a suffix to your environment and should not have any special characters or uppercase letters and should not be more than 6 characters. 
 
@@ -310,7 +310,7 @@ cd ./fintax/fintaxdemo
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-20. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DDiB-Fintax-Lab'.
+20. You will now be prompted to **enter** the resource group name in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure). – 'DPoC-Fintax-Lab'.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
@@ -576,7 +576,7 @@ This task is optional since we have provided static versions of the reports in t
 
 > **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
 	
-3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “DDiB-Fintax” workspace.
+3. After signing in, **click** the workspaces button from the hamburger menu and **select** the “DPoC-Fintax” workspace.
 
 	![Click Workspace.](media/power-bi-report-47.png)
 
@@ -760,7 +760,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Logic App.](media/qna_logicapp-12.png)
 
-> **Note:** The setup for your Dream Demo in a Box is done here and now you can follow the demo script for testing/demoing your environment.
+> **Note:** The setup for your Dream PoC Accelerator is done here and now you can follow the demo script for testing/demoing your environment.
 
 ### Task 7: Pause or Resume script
 
@@ -835,7 +835,7 @@ By default, the web app will be provisioned with Gif placeholders for web app sc
 
 	![Run the Powershell Script.](media/authentication-6.png)
 
-4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DDib-Fintax'.
+4. You will now be prompted to **enter** the resource group name to be deleted in the Azure Cloud Shell. Type the same resource group name that you created in [Task 1](#task-1-create-a-resource-group-in-azure) - 'DPoC-Fintax'.
 
 5. You may be prompted to select a subscription in case your account has multiple subscriptions.
 
