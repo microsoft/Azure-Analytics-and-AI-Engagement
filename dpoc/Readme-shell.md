@@ -1,9 +1,9 @@
-# Analytics in MIDP DREAM Demo in a Box Setup Guide
+# Analytics in MIDP DREAM PoC Accelerator Setup Guide
 
 ## What is it?
-DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
+DREAM PoC Accelerators (DPoC) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DPoC.
 
- ## Objective & Intent
+## Objective & Intent
 Partners can deploy DREAM Demos in their own Azure subscriptions and show live demos to customers. 
 In partnership with Microsoft sellers, partners can deploy the Industry scenario DREAM demos into customer subscriptions. 
 Customers can play,  get hands-on experience navigating through the demo environment in their own subscription and show to their own stakeholders
@@ -13,8 +13,8 @@ Customers can play,  get hands-on experience navigating through the demo environ
 
   1. **Please read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
-  3. Please note that **Azure hosting costs** are involved when DREAM Demos in a Box are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DDiB hosting costs for partners or customers.
-  4. Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
+  3. Please note that **Azure hosting costs** are involved when DREAM PoC Accelerators are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DPoC hosting costs for partners or customers.
+  4. Since this is a DPoC, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
   5.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
    > **Note**: Set up your demo environment at least two hours before your scheduled demo to make sure everything is working.
@@ -86,7 +86,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![Create Power BI Workspace.](media/power-bi-2.png)
 
-	> **Note:** Please create a Workspace by the name "MIDP-ddib".
+	> **Note:** Please create a Workspace by the name "MIDP-dpoc".
 
 5. **Copy** the Workspace GUID or ID. You can get this by browsing to [https://app.powerbi.com/](https://app.powerbi.com/), selecting the workspace, and then copying the GUID 	from the address URL.
 
@@ -132,7 +132,7 @@ git clone -b analytics-in-midp --depth 1 --single-branch https://github.com/micr
 5. **Execute** the Powershell script by executing the following command:
 Command:
 ```
-cd ./midp/ddib
+cd ./midp/dpoc
 ```
 
 6. Then **run** the PowerShell: 
