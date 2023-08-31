@@ -7,7 +7,6 @@
 </h1>
 
 
-
 <div align="center">
   <a href="#D">All</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Readme-shell.md">FSI</a> •
@@ -20,6 +19,15 @@
 </div>
 <br/><br/>
 
+
+Important Links:
+  <br>
+  • <a href="https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/">Data & AI Industry DREAM Demos & DREAM PoC Accelerator</a>
+  <br>
+  • <a href="https://azure-data-ai-demomap.azurewebsites.net/">Mega Map</a>
+  <br> 
+  • <a href="https://azure-data-ai-demomap.azurewebsites.net/azure-openai-demo">Azure OpenAI Service DREAM Demo 1.0</a>
+<br/>
 
 
 # Setting the scene
