@@ -1,9 +1,6 @@
 <h1 align="center">
   <br/>
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DDiB_Cover.png" alt="Dream PoC Accelerator" width="1200" /></a>
-  <br/>
-  POC Accelerators
-  <br/>
 </h1>
 
 
