@@ -17,18 +17,20 @@
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a>
 </div>
-<br/><br/>
 
+<br>
 
-Important Links:
+<div align="center">
+<b>Important Links:</b>
   <br>
   • <a href="https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/">Data & AI Industry DREAM Demos & DREAM PoC Accelerator</a>
   <br>
   • <a href="https://azure-data-ai-demomap.azurewebsites.net/">Mega Map</a>
   <br> 
   • <a href="https://azure-data-ai-demomap.azurewebsites.net/azure-openai-demo">Azure OpenAI Service DREAM Demo 1.0</a>
-<br/>
+</div>
 
+<br/>
 
 # Setting the scene
 
