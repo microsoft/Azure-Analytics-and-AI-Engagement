@@ -1,9 +1,0 @@
-name: stats2
-channels:
-  - defaults
-dependencies:
-  - numpy
-  - pip:
-    - plotly
-    - chart-studio
-    - cufflinks
