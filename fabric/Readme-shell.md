@@ -148,7 +148,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
 
-1. **Open** Azure Portal by clicking [HERE](https://app.powerbi.com/)
+1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/)
 
 2. In the Resource group section, **select** the Terminal icon to open Azure Cloud Shell.
 
