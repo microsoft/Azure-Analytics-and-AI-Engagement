@@ -692,21 +692,7 @@ step 28 finally **click** on the 'Next' button.
 	|	05 Sales Forecasting for Store items in Gold Layer	|	lakehouseSilver	|
 	|||
 
->**Note:** Please complete Task 6 and then execute notebook '05 Sales Forecasting for Store items in Gold Layer'.
 
-> Please comeback to continue with the below given steps after completing Task 6
-
-19. In PowerBI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
-
-	![Close the browser.](media/demo-4.png)
-
-20. **Filter** 'Notebook' and then **click** on the notebook '03 Silver to Gold layer_ Medallion Architecture'
-
-	![Close the browser.](media/notebook-16.png)
-
-21. **Click** on the 'Run all' button.
-
-	![Close the browser.](media/notebook-17.png)
 
 ### Task 6 : Creating Internal Shortcut
 
@@ -746,7 +732,23 @@ step 28 finally **click** on the 'Next' button.
 	|	fact_campaigndata|	lakehouseSilver	|
 	|||
 
+>**Note:** Please complete Task 6 and then execute notebooks below.
 
+
+
+8. In PowerBI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
+
+	![Close the browser.](media/demo-4.png)
+
+9. **Filter** 'Notebook' and then **click** on the notebook '03 Silver to Gold layer_ Medallion Architecture'
+
+	![Close the browser.](media/notebook-16.png)
+
+10. **Click** on the 'Run all' button.
+
+	![Close the browser.](media/notebook-17.png)
+	
+	
 ### Task 7: KQL DB and QuerySet creation
 
 1. In Power BI service click 'Workspaces' and **click** current working workspace. 
