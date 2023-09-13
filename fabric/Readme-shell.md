@@ -51,6 +51,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 - [Appendix](#appendix)
   - [Setting up the Lakehouse](#setting-up-the-lakehouse)
   - [Creating Pipelines and Dataflows](#creating-pipelines-and-dataflows)
+  - [Creating a Resource Group](#creating-a-resource-group)
 
 <!-- /TOC -->
 
@@ -58,7 +59,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 * An Azure Account with the ability to create Fabric Workspace.
 * A Power BI with Fabric License to host Power BI reports.
-* Make sure you are the Power BI administrator for your account and service principal access is enabled on your Power BI tenant.
+* Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
 * Make sure to register the following resource providers with your Azure Subscription:
    - Microsoft.Fabric
    - Microsoft.Databricks
@@ -70,16 +71,15 @@ Customers can play, get hands-on experience navigating through the demo environm
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability. (Consider the region availability for Synapse workspace, Iot Central and cognitive services while choosing a location)
 * In this Accelerator, we have converted real-time reports into static reports for the users' ease but have covered the entire process to configure real-time dataset. Using those real-time dataset, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
-* Once the resources have been setup, ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “storage”. You need to contact AD administrator to get this done.
+* Once the resources have been setup, ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “storage”.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
-
 
 
 ### Task 1: Power BI Workspace and Lakehouse creation
 
 1. **Open** Power BI in a new tab by clicking [HERE](https://app.powerbi.com/)
 
-2. **Sign in** to Power BI using your Power BI with Fabric License account.
+2. **Sign in** to Power BI.
 
 	![Sign in to Power BI.](media/power-bi.png)
 
@@ -164,36 +164,26 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 5. **Select** your 'Subscription', 'Cloud Shell region' and 'Resource Group'.
 
+>**Note:** If you do not have an existing resource group please follow the steps mentioned [HERE](#creating-a-resource-group) to create one. Complete the task and then continue with the below steps.
+
 6. **Enter** the 'Storage account', 'File share' name and then **click** on 'Create storage'.
 
 	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png)
 
-	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters.
+	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters. The whole name should be in small case and not more than 24 characters.
 
 7. In the Azure Cloud Shell window, ensure that the PowerShell environment is selected.
 
-8. **Navigate** to the [Azure DevOps Repo](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/Readme-shell.md) to which you have access.
+	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png)	
 
-9. **Click** on 'Clone' button.
-
-	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.1.png)
-
-10. **Click** on 'Generate Git Credentials'.
-
-	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.2.png)
-
-11. Click **Copy** icon to copy the 'Username' & 'Password'.
-
-	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.3.png)
-
-12. **Substitute** the previously copied items into the command below and then **paste** the resulting command to clone the repository files in cloudshell.
+8. **Enter** the following command to clone the repository files in cloudshell.
 
 Command:
 ```
-git clone -b Fabric-DPoC --depth 1 --single-branch https://Username:Password@dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox fabric
+git clone -b microsoftfabric --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fabric
 ```
 
-   ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.png)
+   ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
 	
    > **Note:** If you get File already exist error, please execute the following command to delete existing clone:
 ```
@@ -201,70 +191,70 @@ git clone -b Fabric-DPoC --depth 1 --single-branch https://Username:Password@dev
 ```
    > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
-13. **Execute** the Powershell script with the following command:
+9. **Execute** the Powershell script with the following command:
 ```
-cd ./fabric/
+cd ./fabric/fabric/
 ```
 
 ```
 ./fabricSetup.ps1
 ```
     
-   ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
+   ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
       
-14. From the Azure Cloud Shell, **copy** the authentication code
+10. From the Azure Cloud Shell, **copy** the authentication code
 
-15. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
 	![Authentication link and Device Code.](media/cloud-shell-6.png)
      
-16. **Paste** the authentication code.
+12. **Paste** the authentication code.
 
 	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
 
-17. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+13. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
 
-18. **Click** on 'Continue' button.
+14. **Click** on 'Continue' button.
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png)
 
-19. **Close** the browser tab once you see the message box.
+15. **Close** the browser tab once you see the message box.
 
-20. **Navigate back** to your Azure Cloud Shell execution window.
+16. **Navigate back** to your Azure Cloud Shell execution window.
 
 	![Authentication done.](media/cloud-shell-9.png)
 	
-21. **Select** the resource group tab.
+17. **Select** the resource group tab.
 
-22. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
+18. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
 
-23. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+19. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
 	![Authentication link and Device code.](media/cloud-shell-10.png)
 
-24. A new browser window will launch.
+20. A new browser window will launch.
 
-25. **Paste** the authentication code you copied from the shell above.
+21. **Paste** the authentication code you copied from the shell above.
 
 	![Enter the Resource Group name.](media/cloud-shell-11.png)
 
-26. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+22. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.png)
 
-27. **Click** on 'Continue'.
+23. **Click** on 'Continue'.
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
 
-28. **Close** the browser tab once you see the message box.
+24. **Close** the browser tab once you see the message box.
 
-29. **Go back** to Azure Cloud Shell execution window.
+25. **Go back** to Azure Cloud Shell execution window.
 
 	![Close the browser tab.](media/cloud-shell-13.png)
 
-30. **Select** your subscription from the prompt.
+26. **Select** your subscription from the prompt.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -273,67 +263,67 @@ cd ./fabric/
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-31. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
+27. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-32. **Enter** desired SQL Password.
+28. **Enter** desired SQL Password.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
 >**Note:** Copy the password in Notepad for further reference.
 
-33. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
+29. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
 
 	![Enter Resource Group name.](media/cloud-shell-14.1.png)
 
-34. **Enter** all the lakehouses name one by one.
+30. **Enter** all the lakehouses name one by one.
 
 	![Enter Resource Group name.](media/cloud-shell-14.2.png)
 
-35. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+31. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 
 	> **Note:** You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In that case, follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/fintax/fintaxdemo/artifacts/reports). 
 
-36. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+32. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
     ![Click the link.](media/cloud-shell-16.png)
       
-37. In the new browser tab, **paste** the code that you copied from the shell in step 34 and **click** on 'Next'.
+33. In the new browser tab, **paste** the code that you copied from the shell in step 34 and **click** on 'Next'.
 
 	![Paste the code.](media/cloud-shell-17.png)
 
 	> Note: Make sure to provide the device code before it expires and let the script run till completion.
 
-38. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
+34. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
 	![Select the same user.](media/cloud-shell-18.png)
 
-39. **Click** on 'Continue'.
+35. **Click** on 'Continue'.
 
 	![Select the same user.](media/cloud-shell-18.1.png)
 
-40. **Close** the browser tab once you see the message box.
+36. **Close** the browser tab once you see the message box.
 
-41. **Navigate back** to your Azure Cloud Shell execution window.
+37. **Navigate back** to your Azure Cloud Shell execution window.
 
 	![Close the browser.](media/cloud-shell-19.png)
 
 	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-42. After the script execution is complete, the user is prompted "--Execution Complete--"
+38. After the script execution is complete, the user is prompted "--Execution Complete--"
 	
-43. **Go to** the resource group which you created.
+39. **Go to** the resource group which you created.
 
-44. In the search pane **type** "app-realtime-kpi-analytics..." and **select** the resource.
+40. In the search pane **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
 	![Close the browser.](media/demo-1.png)
 
-45. **Click** "Browse" and a new tab will open.
+41. **Click** "Browse" and a new tab will open.
 
 	![Close the browser.](media/demo-2.png)
 
-46. **Wait** for the tab to load till you get the following screen.
+42. **Wait** for the tab to load till you get the following screen.
 
 	![Close the browser.](media/demo-3.png)
 
@@ -360,7 +350,7 @@ cd ./fabric/
 
 	![Lakehouse.](media/demo-9.png)
 
-8. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
+8. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources) while script execution with name 'fabric-dpoc-...'.
 
 9. **Search** for 'storage account', **click** the storage account resource.
 
@@ -379,7 +369,7 @@ cd ./fabric/
 
 15. **Scroll down** in the left pane.
 16. **Select** 'Endpoints' from 'Settings' section.
-17. **copy** the 'Primary endpoint' under 'Data Lake Storage' section.
+17. **Scroll down** and **copy** the 'Primary endpoint' under 'Data Lake Storage' section.
 18. **Save** it in a notepad for further use.
 
 	![Lakehouse.](media/demo-12.1.png)
@@ -476,135 +466,142 @@ cd ./fabric/
 
 	![Datawarehouse.](media/warehouse-10.png)
 
-	![Datawarehouse.](media/warehouse-11.png)
+25. **Select** Authentication kind as 'Basic', **enter** Username as 'labsqladmin' and Password you copied in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources)
+step 28 finally **click** on the 'Next' button.
 
-25. Next, in 'Connect to data source' **select** 'Existing tables' then **select** 'Select all' and then **click** 'Next' button.
+![Datawarehouse.](media/warehouse-11.png)
+
+26. Next, in 'Connect to data source' **select** 'Existing tables' then **select** 'Select all' and then **click** 'Next' button.
 
 	![Datawarehouse.](media/warehouse-12.png)
 
-26. In 'Choose data destination' **select** the Data Warehouse and **click** 'Next' button.
+27. In 'Choose data destination' **select** the Data Warehouse and **click** 'Next' button.
 
 	![Datawarehouse.](media/warehouse-13.png)
 
-27. In 'Choose data destination' **select** 'Load to new table', **click** on 'Source' checkbox and then **click** 'Next' button.
+28. In 'Choose data destination' **select** 'Load to new table', **click** on 'Source' checkbox and then **click** 'Next' button.
 
 	![Datawarehouse.](media/warehouse-14.png)
 
-28. In 'Settings' section keep it default and **click** 'Next' button.
+29. In 'Settings' section keep it default and **click** 'Next' button.
 
 	![Datawarehouse.](media/warehouse-15.png)
 
-29. In 'Review + save' section **review** the copy summary and **scrolldown** tick mark the option of 'Start data transfer immediately' then **click** 'Save + Run' button.
+30. In 'Review + save' section **review** the copy summary and **scrolldown** tick mark the option of 'Start data transfer immediately' then **click** 'Save + Run' button.
 
 	![Datawarehouse.](media/warehouse-16.png)	
 
-30. Check the notification or pipeline output screen for the progress of copy database.
+>**Note:** As you click on 'Save + Run' the pipeline gets automatically triggered.
+
+31. **Check** the notification or pipeline output screen for the progress of copy database.
 
 	![Datawarehouse.](media/warehouse-17.png)
 
-31. In progress section of pipeline check the status of running pipeline.
+32. In progress section of pipeline **check** the status of running pipeline.
 
 	![Datawarehouse.](media/warehouse-18.png)
 
-32. **Wait** for the status of pipeline to be 'Succeeded'.
+33. **Wait** for the status of pipeline to be 'Succeeded' and **go back** the the Data Warehouse from the workspace.
 
-33. **Open** the Data Warehouse and **click** 'New SQL query'.
+34. **Open** the Data Warehouse and **click** 'New SQL query'.
 
 	![Datawarehouse.](media/warehouse-18.1.png)
 
-34. **Click** on [Warehouse Scripts](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/warehousescripts) link to open the scripts.
+35. **Click** on [Warehouse Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/warehousescripts) link to open the scripts.
 
-35. **Click** the first script.
+36. **Click** the first script to open it.
 
 	![Datawarehouse.](media/warehouse-19.png)
 
-36. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
+37. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
 
-37. **Search** for the 'Storage account' **copy** the 'Storage account' and **paste** it in a notepad for further use.
+38. **Search** for the 'Storage account' **copy** the 'Storage account' and **paste** it in a notepad for further use.
 
 	![Datawarehouse.](media/warehouse-22.png)
 
-38. **Click** on searched 'Storage account', **scrolldown** left pane and **click** to select 'Shared access signature'.
+39. **Click** on searched 'Storage account', **scrolldown** left pane and **click** to select 'Shared access signature'.
 
 	![Datawarehouse.](media/warehouse-23.png)
 
-39. **Select** 'Container' in 'Allowed resource type'. **select** 'Read','Write', 'List' in 'Allowed permissions' keep  rest all uncheck. In 'Start and expiry date/time' **select** date & time and then **scrolldown** to **click** 'Generate SAS and connection string' button.
+40. **Select** 'Container' in 'Allowed resource type'. **select** 'Read','Write', 'List' in 'Allowed permissions' keep  rest all uncheck. In 'Start and expiry date/time' **select** date & time and then **scrolldown** to **click** 'Generate SAS and connection string' button.
 
 	![Datawarehouse.](media/warehouse-24.png)
 
 	![Datawarehouse.](media/warehouse-25.png)
 
-40. Below the 'Generate SAS and connection string' button, we can see the generated SAS token. **Copy** and paste it into notepad for further use.
+41. Below the 'Generate SAS and connection string' button, we can see the generated SAS token. **Copy** and paste it into notepad for further use.
 
 	![Datawarehouse.](media/warehouse-26.png)
 
-41. **Click** '00 Ingest Data In DW Using COPY INTO Command.sql' file and **copy** the script and **replace** '#STORAGE_ACCOUNT_NAME#' and '#STORAGE_ACCOUNT_SAS_TOKEN#' with the appropriate values copied in earlier steps.
+42. **Click** '00 Ingest Data In DW Using COPY INTO Command.sql' file and **copy** the script and **replace** '#STORAGE_ACCOUNT_NAME#' and '#STORAGE_ACCOUNT_SAS_TOKEN#' with the appropriate values copied in earlier steps.
 
-42. **Copy** the script.
+43. **Copy** the script.
 
 	![Datawarehouse.](media/warehouse-19.1.png)
 
-43. **Navigate back** to 'salesDW' warehouse explorer to execute SQL scripts and **click** 'New SQL query'. In dropdown, **click** 'New SQL query' again.
+44. **Navigate back** to 'salesDW' warehouse explorer to execute SQL scripts and **click** 'New SQL query'. In dropdown, **click** 'New SQL query' again.
 
 	![Datawarehouse.](media/warehouse-21.png)
 
-44. Once the SQL editor opens, **paste** the script which we have modified in step 42. **Right click** on 'SQL query 1' and **click** 'Rename'.
+45. Once the SQL editor opens, **paste** the script which we have modified in step 43. **Right click** on 'SQL query 1' and **click** 'Rename'.
 
 	![Datawarehouse.](media/warehouse-27.png)
 
-45. **Enter** the name as '00 Ingest Data In DW Using COPY INTO Command.sql' and **click** 'Rename' button.
+46. **Enter** the name as '00 Ingest Data In DW Using COPY INTO Command.sql' and **click** 'Rename' button.
 
 	![Datawarehouse.](media/warehouse-28.png)
 
-46. **Click** the 'three dots (Ellipsis)' in front of the name of the scripts and **select** 'Move to Shared queries'.
+47. **Click** the 'three dots (Ellipsis)' in front of the name of the scripts and **select** 'Move to Shared queries'.
 
 	![Datawarehouse.](media/warehouse-29.png)
 
 >**Note:** We are going to create 2 more scripts following the above steps for querying the Warehouse data.
 
-47. **Repeat** the steps (34-46) for the two scripts. Get the scripts [HERE](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/warehousescripts)
+48. **Repeat** the steps (35-47) for the other two scripts in the repository. Get the scripts [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/warehousescripts)
 
-48. **Click** 'New visual query'.
+>**Note:** There might be no replacements in all of the scripts. If there is no replacements needed you can skip the steps in between.
+
+49. **Click** 'New visual query'.
 
 	![Datawarehouse.](media/warehouse-30.png)
 
-49. **Click** and **drag** the table 'DimProduct' to the canvas.
+50. **Click** and **drag** the table 'DimProduct' to the canvas.
 
 	![Datawarehouse.](media/warehouse-31.png)
 
-50. **Click** and **drag** the table 'FactSales' to the canvas.
+51. **Click** and **drag** the table 'FactSales' to the canvas.
 
 	![Datawarehouse.](media/warehouse-40.png)
 
-51. **Click** 'Combine' and **select** 'Merge queries as new'.
+52. **Click** 'Combine' and **select** 'Merge queries as new'.
 
 	![Datawarehouse.](media/warehouse-32.png)
 
-52. In the 'Left table for merge' **select** 'DimProduct' from the dropdown and **click** on column 'ProductKey' of the table.
+53. In the 'Left table for merge' **select** 'DimProduct' from the dropdown and **click** on column 'ProductKey' of the table.
 
 	![Datawarehouse.](media/warehouse-33.png)
 
-53. **Scroll down** in the 'Right table for merge' **select** 'FactSales' from the dropdown and **click** on column 'ProductKey' of the table.
+54. **Scroll down** in the 'Right table for merge' **select** 'FactSales' from the dropdown and **click** on column 'ProductKey' of the table.
 
 	![Datawarehouse.](media/warehouse-34.png)
 
-54. **Scroll down** to Join kind section and **click** on 'Inner' radio button and click on 'OK' button.
+55. **Scroll down** to Join kind section and **click** on 'Inner' radio button and click on 'OK' button.
 
 	![Datawarehouse.](media/warehouse-35.png)
 
-55. You would see the following result.
+56. You would see the following result.
 
 	![Datawarehouse.](media/warehouse-36.png)
 
-56. **Right click** on 'Visual query 1' and **select** 'Rename'.
+57. **Right click** on 'Visual query 1' and **select** 'Rename'.
 
 	![Datawarehouse.](media/warehouse-37.png)
 
-57. **Enter** the name as "Visual query- Total Sales By Product" and **click** on 'Rename' button.
+58. **Enter** the name as "Visual query- Total Sales By Product" and **click** on 'Rename' button.
 
 	![Datawarehouse.](media/warehouse-38.png)
 
-58. **Click** on the 'three dots' infront of the visual query name and **click** one 'Moved to Shared queries'
+59. **Click** on the 'three dots' infront of the visual query name and **click** one 'Moved to Shared queries'
 
 	![Datawarehouse.](media/warehouse-39.png)
 
@@ -778,6 +775,10 @@ cd ./fabric/
 
 7. In the Source tab **select** the source type as 'Event Hub' and **select** 'create new connection'
 
+	![Close the browser.](media/demo-36.1.png)
+
+	>**Note:** For the rest of the details we will get the data from the resource group.
+
 8. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
 
 9. **Search** for 'Event Hub namespace' and **copy** the name of Event Hub namespace and **paste** it in a notepad for further use.
@@ -825,7 +826,7 @@ cd ./fabric/
 
 	![Close the browser.](media/demo-45.png)
 
-20. It will open the KQL queryset editor. **Click** link [KQL Queryset Scripts](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/kqlscripts). **Copy** and **paste** the script in the editor and **click** 'Run' button.
+20. It will open the KQL queryset editor. **Click** link [KQL Queryset Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/kqlscripts). **Copy** and **paste** the script in the editor and **click** 'Run' button.
 
 	![Close the browser.](media/demo-46.png)
 
@@ -1020,6 +1021,36 @@ cd ./fabric/
 24. **Click** the 'green tick' on the Lookup and drag it to Copy data as shown in the screenshot.
 
 	![Pipeline.](media/pipeline-23.png)
+
+### Creating a Resource Group
+
+1. **Log into** the [Azure Portal](https://portal.azure.com) using your Azure credentials.
+
+2. On the Azure Portal home screen, **select** the '+ Create a resource' tile.
+
+	![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/create-a-resource.png)
+
+3. In the Search the Marketplace text box, **type** "Resource Group" and **press** the Enter key.
+
+	![On the new resource screen Resource group is entered as a search term.](media/resource-group.png)
+
+4. **Select** the 'Create' button on the 'Resource Group' overview page.
+
+	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/resource-group-2.png)
+	
+5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'cloudshell-dpoc'. 
+
+6. **Select** your desired region.
+
+	> **Note:** Some services behave differently in different regions and may break some part of the setup. Choosing one of the following regions is preferable: 		westus2, eastus2, northcentralus, northeurope, southeastasia, australliaeast, centralindia, uksouth, japaneast.
+
+7. **Click** the 'Review + Create' button.
+
+	![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resource-group-3.png)
+
+8. **Click** the 'Create' button once all entries have been validated.
+
+	![Create Resource Group with the final validation passed.](media/resource-group-4.png)
 
 
 # Copyright
