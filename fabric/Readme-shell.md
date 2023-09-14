@@ -626,7 +626,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-7.png)
 
-2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
+2. **Enter** the path as "fabric/fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
 	![Datawarehouse.](media/notebook-8.png)
 
