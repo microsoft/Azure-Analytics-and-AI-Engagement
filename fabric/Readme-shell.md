@@ -117,6 +117,8 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	![Give the name and description for the new workspace.](media/power-bi-7.png)
 
+>**Note:** All workspaces used in this demo use 'Trial' Liscence type. 
+
 10. **Scroll down** and **click** on 'Apply'.
 
 	![Give the name and description for the new workspace.](media/power-bi-8.png)
@@ -143,7 +145,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 17. **Repeat** step number 3 to 14 to **create** a new workspace with the name 'contosoFinance' and then **create** a lakehouse in it and name it 'lakehouseFinance'.
 
->**Note:** Make sure to add this workspace in the fabric capacity as well and note the names of the workspace and lakehouse as these will be used during the script execution(Task 2)
+>**Note:** Make sure to add this workspace has fabric Trial liscence as well and note the names of the workspaces and lakehouses as these will be used during the script execution(Task 2)
 
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
@@ -166,15 +168,21 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 >**Note:** If you do not have an existing resource group please follow the steps mentioned [HERE](#creating-a-resource-group) to create one. Complete the task and then continue with the below steps.
 
+>Cloud Shell region need not be specific, you may select any region which works best for your experience.
+
 6. **Enter** the 'Storage account', 'File share' name and then **click** on 'Create storage'.
 
 	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png)
 
 	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters. The whole name should be in small case and not more than 24 characters.
 
+	> It is not mandatory for storage account and file share name to be same.
+
 7. In the Azure Cloud Shell window, ensure that the PowerShell environment is selected.
 
-	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png)	
+	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png)
+
+	>**Note:** All the cmdlets used in the script works best in Powershell.	
 
 8. **Enter** the following command to clone the repository files in cloudshell.
 
@@ -212,7 +220,7 @@ cd ./fabric/fabric/
 
 	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
 
-13. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+13. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
 
@@ -222,39 +230,37 @@ cd ./fabric/fabric/
 
 15. **Close** the browser tab once you see the message box.
 
+	![Authentication done.](media/cloud-shell-9.png)  
+
 16. **Navigate back** to your Azure Cloud Shell execution window.
 
-	![Authentication done.](media/cloud-shell-9.png)
-	
-17. **Select** the resource group tab.
+17. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
 
-18. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
-
-19. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+18. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
 	![Authentication link and Device code.](media/cloud-shell-10.png)
 
-20. A new browser window will launch.
+19. A new browser window will launch.
 
-21. **Paste** the authentication code you copied from the shell above.
+20. **Paste** the authentication code you copied from the shell above.
 
 	![Enter the Resource Group name.](media/cloud-shell-11.png)
 
-22. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.png)
 
-23. **Click** on 'Continue'.
+22. **Click** on 'Continue'.
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
 
-24. **Close** the browser tab once you see the message box.
-
-25. **Go back** to Azure Cloud Shell execution window.
+23. **Close** the browser tab once you see the message box.
 
 	![Close the browser tab.](media/cloud-shell-13.png)
 
-26. **Select** your subscription from the prompt.
+24. **Go back** to Azure Cloud Shell execution window.
+
+25. **Select** your subscription from the prompt.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -263,67 +269,71 @@ cd ./fabric/fabric/
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
 
-27. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
+26. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-28. **Enter** a SQL Password. Copy it to a notepad for later use.
+27. **Enter** desired SQL Password.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
 >**Note:** Copy the password in Notepad for further reference.
 
-29. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
+28. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
 
 	![Enter Resource Group name.](media/cloud-shell-14.1.png)
 
-30. **Enter** all the lakehouses name one by one.
+29. **Enter** all the lakehouses name one by one.
 
 	![Enter Resource Group name.](media/cloud-shell-14.2.png)
 
-31. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
+30. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 
 	> **Note:** You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In that case, follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/fintax/fintaxdemo/artifacts/reports). 
 
-32. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+31. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
     ![Click the link.](media/cloud-shell-16.png)
       
-33. In the new browser tab, **paste** the code that you copied from the shell in step 34 and **click** on 'Next'.
+32. In the new browser tab, **paste** the code that you copied from the shell in step 34 and **click** on 'Next'.
 
 	![Paste the code.](media/cloud-shell-17.png)
 
 	> Note: Make sure to provide the device code before it expires and let the script run till completion.
 
-34. **Select** the user that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
+33. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
 	![Select the same user.](media/cloud-shell-18.png)
 
-35. **Click** on 'Continue'.
+34. **Click** on 'Continue'.
 
 	![Select the same user.](media/cloud-shell-18.1.png)
 
-36. **Close** the browser tab once you see the message box.
-
-37. **Navigate back** to your Azure Cloud Shell execution window.
+35. **Close** the browser tab once you see the message box.
 
 	![Close the browser.](media/cloud-shell-19.png)
 
-	> **Note:** The deployment will take approximately 50-55 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
+	>**Note:** During script execution you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
 
-38. After the script execution is complete, the user is prompted "--Execution Complete--"
+36. **Navigate back** to your Azure Cloud Shell execution window.
+
+	> **Note:** The deployment will take approximately 20-30 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
+
+37. After the script execution is complete, the user is prompted "--Execution Complete--"
 	
-39. **Go to** the resource group which you created.
+38. **Go to** the resource group which was created by the script.
 
-40. In the search pane **type** "app-realtime-kpi-analytics..." and **select** the resource.
+	>**Note:** The resource group name starts with 'fabric-dpoc-' with some unique suffix in the end.
+
+39. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
 	![Close the browser.](media/demo-1.png)
 
-41. **Click** "Browse" and a new tab will open.
+40. **Click** "Browse" and a new tab will open.
 
 	![Close the browser.](media/demo-2.png)
 
-42. **Wait** for the tab to load till you get the following screen.
+41. **Wait** for the tab to load till you get the following screen.
 
 	![Close the browser.](media/demo-3.png)
 
@@ -341,6 +351,9 @@ cd ./fabric/fabric/
     ![Lakehouse.](media/lakehouse-1.png)
 
 4. In the lakehouse window **click** on the 'collapse' icon in front of Files if it is expanded.
+
+>**Note:** When the collapse icon is expanded, the three dots icon is note visible.
+
 5. **Click** on the three dots in front of Files.
 6. **Click** on 'New shortcut'.
 
@@ -356,7 +369,7 @@ cd ./fabric/fabric/
 
 	![Lakehouse.](media/demo-10.png)
 
-10. In the resource window **scroll down** the left pane.
+10. In the resource window **goto** the left pane and **scroll down**.
 11. In 'Security + networking' section, **click** 'Access keys'.
 12. **Click** 'Show' button under key1.
 
@@ -369,12 +382,14 @@ cd ./fabric/fabric/
 
 15. **Scroll down** in the left pane.
 16. **Select** 'Endpoints' from 'Settings' section.
-17. **Scroll down** and **copy** the 'Primary endpoint' under 'Data Lake Storage' section.
+17. **Scroll down** and **copy** the 'Data Lake Storage' endpoint under 'Data Lake Storage' section.
 18. **Save** it in a notepad for further use.
 
 	![Lakehouse.](media/demo-12.1.png)
 
-19. **Navigate back** to Power BI workspace.
+>**Note:** You may see different endpoints as well in the above screen. Make sure to select only the Data Lake Storage endpoint.
+
+19. **Navigate back** to Power BI workspace i.e. the powerbi tab which we working earlier.
 20. **Paste** the endpoint copied under the 'URL' field.
 
 21. In the 'Authentiation kind' dropdown, **select** 'Account Key'.
@@ -387,7 +402,7 @@ cd ./fabric/fabric/
 
 24. Under Shortcut Name **type** 'sales-transaction-litware'.
 
-25. Verify the URL.
+25. **Verify** the URL is same as the one you copied in step 17.
 
 26. Under Sub Path **type** '/bronzeshortcutdata'.
 
@@ -398,7 +413,7 @@ cd ./fabric/fabric/
 
 ### Task 4: Setting up the Warehouse
 
-1. In the left corner **click** 'Power BI'.
+1. In the bottom-left corner of the PowerBI tab **click** on 'Power BI'.
 
 2. **Select** 'Data Warehouse'.
 
@@ -611,7 +626,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-7.png)
 
-2. **Enter** the path as "fabric/fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
+2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
 	![Datawarehouse.](media/notebook-8.png)
 
@@ -692,7 +707,21 @@ step 28 finally **click** on the 'Next' button.
 	|	05 Sales Forecasting for Store items in Gold Layer	|	lakehouseSilver	|
 	|||
 
+>**Note:** Please complete Task 6 and then execute notebook '05 Sales Forecasting for Store items in Gold Layer'.
 
+> Please comeback to continue with the below given steps after completing Task 6
+
+19. In PowerBI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
+
+	![Close the browser.](media/demo-4.png)
+
+20. **Filter** 'Notebook' and then **click** on the notebook '03 Silver to Gold layer_ Medallion Architecture'
+
+	![Close the browser.](media/notebook-16.png)
+
+21. **Click** on the 'Run all' button.
+
+	![Close the browser.](media/notebook-17.png)
 
 ### Task 6 : Creating Internal Shortcut
 
@@ -732,23 +761,7 @@ step 28 finally **click** on the 'Next' button.
 	|	fact_campaigndata|	lakehouseSilver	|
 	|||
 
->**Note:** Please complete Task 6 and then execute notebooks below.
 
-
-
-8. In PowerBI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
-
-	![Close the browser.](media/demo-4.png)
-
-9. **Filter** 'Notebook' and then **click** on the notebook '03 Silver to Gold layer_ Medallion Architecture'
-
-	![Close the browser.](media/notebook-16.png)
-
-10. **Click** on the 'Run all' button.
-
-	![Close the browser.](media/notebook-17.png)
-	
-	
 ### Task 7: KQL DB and QuerySet creation
 
 1. In Power BI service click 'Workspaces' and **click** current working workspace. 
@@ -796,15 +809,15 @@ step 28 finally **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-54.png)
 
-12. **Navigate back** to the PowerBI tab with connection details we opened previously.
+12. **Navigate back** to the PowerBI tab.
 
-13. **Select** 'Authentication kind' as 'Shared Access Key' and then in the connection setting **paste** the value copied in step 9,10,11 and **click** 'Save' button.
+13. Make sure you are in the 'Create new connection' section. **Select** 'Authentication kind' as 'Shared Access Key' and then in the connection setting **paste** the value copied in step 9,10,11 and **click** 'Save' button.
 
     ![Close the browser.](media/demo-37.png)
     ![Close the browser.](media/demo-38.png)
     ![Close the browser.](media/demo-39.png)
 
-14. After clicking 'Save', the below disabled fields 'Data connection name' & 'Consumer group' will be enabled. Keep its value as default and **click** 'Next: Schema' button.
+14. Upon clicking on 'Save', the below disabled fields 'Data connection name' & 'Consumer group' will be enabled. Keeping its value as default, **click** 'Next: Schema' button.
 
     ![Close the browser.](media/demo-40.png)
 
@@ -853,9 +866,7 @@ step 28 finally **click** on the 'Next' button.
 	![Close the browser.](media/demo-50.png)
 
 ### Appendix
-	
-	This section showcases using some commonly used connections like Snowflake and Dataverse and creating pipelines with them if you have your own accounts. This is optional. 
-	
+
 ### Setting up the Lakehouse
 
 1. To **Open** Power BI in a new tab, click [HERE](https://app.powerbi.com/)
