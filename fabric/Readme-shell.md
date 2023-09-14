@@ -1,4 +1,4 @@
-![Showcase Image](media/showcase.png)
+![Showcase Image](media/showcase.png =500x)
 
 # Fabric DREAM PoC Accelerator Setup Guide
 
@@ -81,7 +81,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 2. **Sign in** to Power BI.
 
-	![Sign in to Power BI.](media/power-bi.png)
+	![Sign in to Power BI.](media/power-bi.png =500x)
 
 	> **Note:** Use your Azure Active Directory credentials to login to Power BI.
 
@@ -89,7 +89,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 4. **Click** '+ New workspace' button.
 
-	![Create Power BI Workspace.](media/power-bi-2.png)
+	![Create Power BI Workspace.](media/power-bi-2.png =500x)
 
 5. **Enter** the name as 'contosoSales' and **click** 'Apply'.
 
@@ -99,47 +99,47 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 >Workspace name in 'camel case' is necessary for powershell deployment script execution as it is mandatory for the name to start with a small letter and camel case also provides better readability.
 
-   ![Create Power BI Workspace.](media/power-bi-4.png)
+   ![Create Power BI Workspace.](media/power-bi-4.png =500x)
 
 6. **Copy** the Workspace GUID or ID from the address URL.
 
 7. **Save** the GUID in a notepad for future reference.
 
-	![Give the name and description for the new workspace.](media/power-bi-3.png)
+	![Give the name and description for the new workspace.](media/power-bi-3.png =500x)
 
 	> **Note:** This workspace ID will be used during powershell script execution.
 
 8. In the workspace **click** the three dots(Ellipsis) and **select** 'Workspace settings'.
 
-	![Give the name and description for the new workspace.](media/power-bi-6.png)
+	![Give the name and description for the new workspace.](media/power-bi-6.png =500x)
 
 9. In the left pane of the side bar **click** 'Premium', scroll down and **check** the 'Trial' radio box.
 
-	![Give the name and description for the new workspace.](media/power-bi-7.png)
+	![Give the name and description for the new workspace.](media/power-bi-7.png =500x)
 
 >**Note:** All workspaces used in this demo use 'Trial' Liscence type. 
 
 10. **Scroll down** and **click** on 'Apply'.
 
-	![Give the name and description for the new workspace.](media/power-bi-8.png)
+	![Give the name and description for the new workspace.](media/power-bi-8.png =500x)
 
 11. In Power BI service **Click** '+ New' and then **select** 'Show all'.
 
-    ![Close the browser.](media/demo-5.png)
+    ![Close the browser.](media/demo-5.png =500x)
 
 12. In the new window **click** 'Lakehouse(Preview)'.
 
-    ![Close the browser.](media/demo-6.png)
+    ![Close the browser.](media/demo-6.png =500x)
 
 13. **Enter** the name as 'lakehouseBronze'.
 
 14. **Click** 'Create' button.
 
-    ![Close the browser.](media/demo-7.png)
+    ![Close the browser.](media/demo-7.png =500x)
 
 15. **Click** 'Workspaces' and **select** 'contosoSales'.
 
-	![Give the name and description for the new workspace.](media/power-bi-5.png)
+	![Give the name and description for the new workspace.](media/power-bi-5.png =500x)
 
 16. **Repeat** step number 11 to 15 to create two more lakehouses with names 'lakehouseSilver' and 'lakehouseGold' respectively.
 
@@ -154,13 +154,13 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 2. In the Resource group section, **select** the Terminal icon to open Azure Cloud Shell.
 
-	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/cloud-shell.png)
+	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/cloud-shell.png =500x)
 
 3. **Click** on the 'PowerShell'.
 
 4. **Click** 'Show advanced settings'.
 
-	![Mount a Storage for running the Cloud Shell.](media/cloud-shell-2.png)
+	![Mount a Storage for running the Cloud Shell.](media/cloud-shell-2.png =500x)
 
 	> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 2 and 3.
 
@@ -172,7 +172,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 6. **Enter** the 'Storage account', 'File share' name and then **click** on 'Create storage'.
 
-	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png)
+	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png =500x)
 
 	> **Note:** If you are creating a new storage account, give it a unique name with no special characters or uppercase letters. The whole name should be in small case and not more than 24 characters.
 
@@ -180,7 +180,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 7. In the Azure Cloud Shell window, ensure that the PowerShell environment is selected.
 
-	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png)
+	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png =500x)
 
 	>**Note:** All the cmdlets used in the script works best in Powershell.	
 
@@ -191,7 +191,7 @@ Command:
 git clone -b microsoftfabric --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fabric
 ```
 
-   ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
+   ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png =500x)
 	
    > **Note:** If you get File already exist error, please execute the following command to delete existing clone:
 ```
@@ -208,29 +208,29 @@ cd ./fabric/fabric/
 ./fabricSetup.ps1
 ```
     
-   ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
+   ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png =500x)
       
 10. From the Azure Cloud Shell, **copy** the authentication code
 
 11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
-	![Authentication link and Device Code.](media/cloud-shell-6.png)
+	![Authentication link and Device Code.](media/cloud-shell-6.png =500x)
      
 12. **Paste** the authentication code.
 
-	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
+	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png =500x)
 
 13. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
+	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png =500x)
 
 14. **Click** on 'Continue' button.
 
-	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png)
+	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png =500x)
 
 15. **Close** the browser tab once you see the message box.
 
-	![Authentication done.](media/cloud-shell-9.png)  
+	![Authentication done.](media/cloud-shell-9.png =500x)  
 
 16. **Navigate back** to your Azure Cloud Shell execution window.
 
@@ -238,31 +238,31 @@ cd ./fabric/fabric/
 
 18. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
-	![Authentication link and Device code.](media/cloud-shell-10.png)
+	![Authentication link and Device code.](media/cloud-shell-10.png =500x)
 
 19. A new browser window will launch.
 
 20. **Paste** the authentication code you copied from the shell above.
 
-	![Enter the Resource Group name.](media/cloud-shell-11.png)
+	![Enter the Resource Group name.](media/cloud-shell-11.png =500x)
 
 21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-	![Select Same User to Authenticate.](media/cloud-shell-12.png)
+	![Select Same User to Authenticate.](media/cloud-shell-12.png =500x)
 
 22. **Click** on 'Continue'.
 
-	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
+	![Select Same User to Authenticate.](media/cloud-shell-12.1.png =500x)
 
 23. **Close** the browser tab once you see the message box.
 
-	![Close the browser tab.](media/cloud-shell-13.png)
+	![Close the browser tab.](media/cloud-shell-13.png =500x)
 
 24. **Go back** to Azure Cloud Shell execution window.
 
 25. **Copy** your subscription name from the screen and **paste** it in the prompt.
 
-    ![Close the browser tab.](media/select-sub.png)
+    ![Close the browser tab.](media/select-sub.png =500x)
 	
 	> **Notes:**
 	> - The user with single subscription won't be prompted to select subscription.
@@ -271,21 +271,21 @@ cd ./fabric/fabric/
 
 26. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
-	![Enter Resource Group name.](media/cloudshell-region.png)
+	![Enter Resource Group name.](media/cloudshell-region.png =500x)
 
 27. **Enter** desired SQL Password.
 
-	![Enter Resource Group name.](media/cloud-shell-14.png)
+	![Enter Resource Group name.](media/cloud-shell-14.png =500x)
 
 >**Note:** Copy the password in Notepad for further reference.
 
 28. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
 
-	![Enter Resource Group name.](media/cloud-shell-14.1.png)
+	![Enter Resource Group name.](media/cloud-shell-14.1.png =500x)
 
 29. **Enter** all the lakehouses name one by one.
 
-	![Enter Resource Group name.](media/cloud-shell-14.2.png)
+	![Enter Resource Group name.](media/cloud-shell-14.2.png =500x)
 
 30. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 
@@ -293,25 +293,25 @@ cd ./fabric/fabric/
 
 31. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
-    ![Click the link.](media/cloud-shell-16.png)
+    ![Click the link.](media/cloud-shell-16.png =500x)
       
 32. In the new browser tab, **paste** the code that you copied from the shell in step 34 and **click** on 'Next'.
 
-	![Paste the code.](media/cloud-shell-17.png)
+	![Paste the code.](media/cloud-shell-17.png =500x)
 
 	> Note: Make sure to provide the device code before it expires and let the script run till completion.
 
 33. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
-	![Select the same user.](media/cloud-shell-18.png)
+	![Select the same user.](media/cloud-shell-18.png =500x)
 
 34. **Click** on 'Continue'.
 
-	![Select the same user.](media/cloud-shell-18.1.png)
+	![Select the same user.](media/cloud-shell-18.1.png =500x)
 
 35. **Close** the browser tab once you see the message box.
 
-	![Close the browser.](media/cloud-shell-19.png)
+	![Close the browser.](media/cloud-shell-19.png =500x)
 
 	>**Note:** During script execution you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
 
@@ -323,21 +323,21 @@ cd ./fabric/fabric/
 	
 38. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
 
-	![Close the browser.](media/demo-1.1.png)
+	![Close the browser.](media/demo-1.1.png =500x)
 
 	>**Note:** The resource group name starts with 'fabric-dpoc-' with some random unique suffix in the end.
 
 39. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
-	![Close the browser.](media/demo-1.png)
+	![Close the browser.](media/demo-1.png =500x)
 
 40. **Click** "Browse" and a new tab will open.
 
-	![Close the browser.](media/demo-2.png)
+	![Close the browser.](media/demo-2.png =500x)
 
 41. **Wait** for the tab to load till you get the following screen.
 
-	![Close the browser.](media/demo-3.png)
+	![Close the browser.](media/demo-3.png =500x)
 
 
 ### Task 3: Creating a Shortcut in Lakehouse
@@ -346,11 +346,11 @@ cd ./fabric/fabric/
 
 2. In PowerBI, **click** 'Workspaces' and **select** 'contosoSales'
 
-    ![Lakehouse.](media/demo-4.png)
+    ![Lakehouse.](media/demo-4.png =500x)
 
 3. In 'contosoSales' workspace, **click** on 'lakehouseBronze' lakehouse.
 
-    ![Lakehouse.](media/lakehouse-1.png)
+    ![Lakehouse.](media/lakehouse-1.png =500x)
 
 4. In the lakehouse window **click** on the 'collapse' icon in front of Files if it is expanded.
 
@@ -359,35 +359,35 @@ cd ./fabric/fabric/
 5. **Click** on the three dots in front of Files.
 6. **Click** on 'New shortcut'.
 
-	![Lakehouse.](media/lakehouse-2.png)
+	![Lakehouse.](media/lakehouse-2.png =500x)
 
 7. In the pop-up window, under External sources **select** 'Azure Data Lake Storage Gen2'
 
-	![Lakehouse.](media/demo-9.png)
+	![Lakehouse.](media/demo-9.png =500x)
 
 8. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources) while script execution with name 'fabric-dpoc-...'.
 
 9. **Search** for 'storage account', **click** the storage account resource.
 
-	![Lakehouse.](media/demo-10.png)
+	![Lakehouse.](media/demo-10.png =500x)
 
 10. In the resource window **goto** the left pane and **scroll down**.
 11. In 'Security + networking' section, **click** 'Access keys'.
 12. **Click** 'Show' button under key1.
 
-	![Lakehouse.](media/demo-11.png)
+	![Lakehouse.](media/demo-11.png =500x)
 
 13. **Click** 'Copy to clickboard' button.
 14. **Save** it in a notepad for further use.
 
-	![Lakehouse.](media/demo-12.png)
+	![Lakehouse.](media/demo-12.png =500x)
 
 15. **Scroll down** in the left pane.
 16. **Select** 'Endpoints' from 'Settings' section.
 17. **Scroll down** and **copy** the 'Data Lake Storage' endpoint under 'Data Lake Storage' section.
 18. **Save** it in a notepad for further use.
 
-	![Lakehouse.](media/demo-12.1.png)
+	![Lakehouse.](media/demo-12.1.png =500x)
 
 >**Note:** You may see different endpoints as well in the above screen. Make sure to select only the Data Lake Storage endpoint.
 
@@ -400,7 +400,7 @@ cd ./fabric/fabric/
 
 23. **Click** on 'Next'.
 
-	![Lakehouse.](media/demo-12.2.png)
+	![Lakehouse.](media/demo-12.2.png =500x)
 
 24. Under Shortcut Name **type** 'sales-transaction-litware'.
 
@@ -410,7 +410,7 @@ cd ./fabric/fabric/
 
 27. **Click** the **Create** button.
 
-	![Lakehouse.](media/lakehouse-3.png)
+	![Lakehouse.](media/lakehouse-3.png =500x)
 
 
 ### Task 4: Setting up the Warehouse
@@ -419,23 +419,23 @@ cd ./fabric/fabric/
 
 2. **Select** 'Data Warehouse'.
 
-	![Datawarehouse.](media/warehouse-1.png)
+	![Datawarehouse.](media/warehouse-1.png =500x)
 
 3. **Click** 'Data Warehouse'.
 
-	![Datawarehouse.](media/warehouse-2.png)
+	![Datawarehouse.](media/warehouse-2.png =500x)
 
 4. In the 'New Warehouse' pop-up, **enter** name as 'salesDW'.
 
 5. **Click** 'Create'.
 
-	![Datawarehouse.](media/warehouse-3.png)
+	![Datawarehouse.](media/warehouse-3.png =500x)
 
 6. **Click** 'Get data'.
 
 7. **Select** 'New data pipeline'.
 
-	![Datawarehouse.](media/warehouse-4.png)
+	![Datawarehouse.](media/warehouse-4.png =500x)
 
 >**Note:** It would take some time for the page to load, please wait for the
 
@@ -445,7 +445,7 @@ cd ./fabric/fabric/
 
 10. **Wait** for a new pop-up.
 
-	![Datawarehouse.](media/warehouse-5.png)
+	![Datawarehouse.](media/warehouse-5.png =500x)
 
 11. In the pop-up **scroll down**.
 
@@ -453,7 +453,7 @@ cd ./fabric/fabric/
 
 13. **Click** 'Next' button.
 
-	![Datawarehouse.](media/warehouse-6.png)
+	![Datawarehouse.](media/warehouse-6.png =500x)
 
 14. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
 
@@ -461,7 +461,7 @@ cd ./fabric/fabric/
 
 16. **Click** on the SQL server resource.
 
-	![Datawarehouse.](media/warehouse-7.png)
+	![Datawarehouse.](media/warehouse-7.png =500x)
 
 17. In the resource window **copy** the 'Server admin'.
 
@@ -473,52 +473,52 @@ cd ./fabric/fabric/
 
 21. **Click** 'SQL databases' under the Settings in the left pane.
 
-	![Datawarehouse.](media/warehouse-8.png)
+	![Datawarehouse.](media/warehouse-8.png =500x)
 
 22. **Copy** the name of database and **paste** it in a notepad for further use.
 
-	![Datawarehouse.](media/warehouse-9.png)
+	![Datawarehouse.](media/warehouse-9.png =500x)
 
 23. **Go back** to the PowerBI tab.
 
 24. **Select** 'Create new connection' radio button, in the 'Server;' and 'Database' field **paste** the value copied in step number 19 and 22.
 
-	![Datawarehouse.](media/warehouse-10.png)
+	![Datawarehouse.](media/warehouse-10.png =500x)
 
 25. **Select** Authentication kind as 'Basic', **enter** Username as 'labsqladmin' and Password you copied in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources)
 step 28 finally **click** on the 'Next' button.
 
-![Datawarehouse.](media/warehouse-11.png)
+![Datawarehouse.](media/warehouse-11.png =500x)
 
 26. Next, in 'Connect to data source' **select** 'Existing tables' then **select** 'Select all' and then **click** 'Next' button.
 
-	![Datawarehouse.](media/warehouse-12.png)
+	![Datawarehouse.](media/warehouse-12.png =500x)
 
 27. In 'Choose data destination' **select** the Data Warehouse and **click** 'Next' button.
 
-	![Datawarehouse.](media/warehouse-13.png)
+	![Datawarehouse.](media/warehouse-13.png =500x)
 
 28. In 'Choose data destination' **select** 'Load to new table', **click** on 'Source' checkbox and then **click** 'Next' button.
 
-	![Datawarehouse.](media/warehouse-14.png)
+	![Datawarehouse.](media/warehouse-14.png =500x)
 
 29. In 'Settings' section keep it default and **click** 'Next' button.
 
-	![Datawarehouse.](media/warehouse-15.png)
+	![Datawarehouse.](media/warehouse-15.png =500x)
 
 30. In 'Review + save' section **review** the copy summary and **scrolldown** tick mark the option of 'Start data transfer immediately' then **click** 'Save + Run' button.
 
-	![Datawarehouse.](media/warehouse-16.png)	
+	![Datawarehouse.](media/warehouse-16.png =500x)	
 
 >**Note:** As you click on 'Save + Run' the pipeline gets automatically triggered.
 
 31. **Check** the notification or pipeline output screen for the progress of copy database.
 
-	![Datawarehouse.](media/warehouse-17.png)
+	![Datawarehouse.](media/warehouse-17.png =500x)
 
 32. In progress section of pipeline **check** the status of running pipeline.
 
-	![Datawarehouse.](media/warehouse-18.png)
+	![Datawarehouse.](media/warehouse-18.png =500x)
 
 >**Note:** Please wait for the resultant data to load.
 
@@ -526,55 +526,55 @@ step 28 finally **click** on the 'Next' button.
 
 34. **Open** the Data Warehouse and **click** 'New SQL query'.
 
-	![Datawarehouse.](media/warehouse-18.1.png)
+	![Datawarehouse.](media/warehouse-18.1.png =500x)
 
 35. **Click** on [Warehouse Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/warehousescripts) link to open the scripts.
 
 36. **Click** the first script to open it.
 
-	![Datawarehouse.](media/warehouse-19.png)
+	![Datawarehouse.](media/warehouse-19.png =500x)
 
 37. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
 
 38. **Search** for the 'Storage account' **copy** the 'Storage account' and **paste** it in a notepad for further use.
 
-	![Datawarehouse.](media/warehouse-22.png)
+	![Datawarehouse.](media/warehouse-22.png =500x)
 
 39. **Click** on searched 'Storage account', **scrolldown** left pane and **click** to select 'Shared access signature'.
 
-	![Datawarehouse.](media/warehouse-23.png)
+	![Datawarehouse.](media/warehouse-23.png =500x)
 
 40. **Select** 'Container' in 'Allowed resource type'. **select** 'Read','Write', 'List' in 'Allowed permissions' keep  rest all uncheck. In 'Start and expiry date/time' **select** date & time and then **scrolldown** to **click** 'Generate SAS and connection string' button.
 
-	![Datawarehouse.](media/warehouse-24.png)
+	![Datawarehouse.](media/warehouse-24.png =500x)
 
-	![Datawarehouse.](media/warehouse-25.png)
+	![Datawarehouse.](media/warehouse-25.png =500x)
 
 41. Below the 'Generate SAS and connection string' button, we can see the generated SAS token. **Copy** and paste it into notepad for further use.
 
-	![Datawarehouse.](media/warehouse-26.png)
+	![Datawarehouse.](media/warehouse-26.png =500x)
 
 42. **Click** '00 Ingest Data In DW Using COPY INTO Command.sql' file and **copy** the script and **replace** '#STORAGE_ACCOUNT_NAME#' and '#STORAGE_ACCOUNT_SAS_TOKEN#' with the appropriate values copied in earlier steps.
 
 43. **Copy** the script.
 
-	![Datawarehouse.](media/warehouse-19.1.png)
+	![Datawarehouse.](media/warehouse-19.1.png =500x)
 
 44. **Navigate back** to 'salesDW' warehouse explorer to execute SQL scripts and **click** 'New SQL query'. In dropdown, **click** 'New SQL query' again.
 
-	![Datawarehouse.](media/warehouse-21.png)
+	![Datawarehouse.](media/warehouse-21.png =500x)
 
 45. Once the SQL editor opens, **paste** the script which we have modified in step 43. **Right click** on 'SQL query 1' and **click** 'Rename'.
 
-	![Datawarehouse.](media/warehouse-27.png)
+	![Datawarehouse.](media/warehouse-27.png =500x)
 
 46. **Enter** the name as '00 Ingest Data In DW Using COPY INTO Command.sql' and **click** 'Rename' button.
 
-	![Datawarehouse.](media/warehouse-28.png)
+	![Datawarehouse.](media/warehouse-28.png =500x)
 
 47. **Click** the 'three dots (Ellipsis)' in front of the name of the scripts and **select** 'Move to Shared queries'.
 
-	![Datawarehouse.](media/warehouse-29.png)
+	![Datawarehouse.](media/warehouse-29.png =500x)
 
 >**Note:** We are going to create 2 more scripts following the above steps for querying the Warehouse data.
 
@@ -584,65 +584,65 @@ step 28 finally **click** on the 'Next' button.
 
 49. **Click** 'New visual query'.
 
-	![Datawarehouse.](media/warehouse-30.png)
+	![Datawarehouse.](media/warehouse-30.png =500x)
 
 50. **Click** and **drag** the table 'DimProduct' to the canvas.
 
-	![Datawarehouse.](media/warehouse-31.png)
+	![Datawarehouse.](media/warehouse-31.png =500x)
 
 51. **Click** and **drag** the table 'FactSales' to the canvas.
 
-	![Datawarehouse.](media/warehouse-40.png)
+	![Datawarehouse.](media/warehouse-40.png =500x)
 
 52. **Click** 'Combine' and **select** 'Merge queries as new'.
 
-	![Datawarehouse.](media/warehouse-32.png)
+	![Datawarehouse.](media/warehouse-32.png =500x)
 
 53. In the 'Left table for merge' **select** 'DimProduct' from the dropdown and **click** on column 'ProductKey' of the table.
 
-	![Datawarehouse.](media/warehouse-33.png)
+	![Datawarehouse.](media/warehouse-33.png =500x)
 
 54. **Scroll down** in the 'Right table for merge' **select** 'FactSales' from the dropdown and **click** on column 'ProductKey' of the table.
 
-	![Datawarehouse.](media/warehouse-34.png)
+	![Datawarehouse.](media/warehouse-34.png =500x)
 
 55. **Scroll down** to Join kind section and **click** on 'Inner' radio button and click on 'OK' button.
 
-	![Datawarehouse.](media/warehouse-35.png)
+	![Datawarehouse.](media/warehouse-35.png =500x)
 
 56. You would see the following result.
 
-	![Datawarehouse.](media/warehouse-36.png)
+	![Datawarehouse.](media/warehouse-36.png =500x)
 
 57. **Right click** on 'Visual query 1' and **select** 'Rename'.
 
-	![Datawarehouse.](media/warehouse-37.png)
+	![Datawarehouse.](media/warehouse-37.png =500x)
 
 58. **Enter** the name as "Visual query- Total Sales By Product" and **click** on 'Rename' button.
 
-	![Datawarehouse.](media/warehouse-38.png)
+	![Datawarehouse.](media/warehouse-38.png =500x)
 
 59. **Click** on the 'three dots' infront of the visual query name and **click** one 'Moved to Shared queries'
 
-	![Datawarehouse.](media/warehouse-39.png)
+	![Datawarehouse.](media/warehouse-39.png =500x)
 
 ### Task 5: Importing Notebooks
 
 1. In the Cloudshell window **click** on the 'Upload/Download files' button and **select** 'Download'.
 
-	![Datawarehouse.](media/notebook-7.png)
+	![Datawarehouse.](media/notebook-7.png =500x)
 
 2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
-	![Datawarehouse.](media/notebook-8.png)
+	![Datawarehouse.](media/notebook-8.png =500x)
 
 3. In the right bottom corner of the screen **click** on the highlighted link as shown in the screenshot.
 
-	![Datawarehouse.](media/notebook-9.png)
+	![Datawarehouse.](media/notebook-9.png =500x)
 
 4. **Verify** the file name and **click** on 'Save' button.
 
-	![Datawarehouse.](media/notebook-10.png)
+	![Datawarehouse.](media/notebook-10.png =500x)
 
 5. Perform step number 1 to step number 4 for all the 5 notebooks replacing the names of the individual notebooks in the path "fabric/artifacts/fabricnotebooks/#notebook_name#"
 
@@ -659,47 +659,47 @@ step 28 finally **click** on the 'Next' button.
 
 6. **Open** Fabric workspace in a new tab using the following link:  [https://app.powerbi.com/](https://app.powerbi.com/) at the bottom left corner **click** 'Power BI' and **select** 'Data Science'.
 
-	![Datawarehouse.](media/notebook-1.png)
+	![Datawarehouse.](media/notebook-1.png =500x)
 
 7. **Click** 'Import notebook'.
 
-	![Datawarehouse.](media/notebook-2.png)
+	![Datawarehouse.](media/notebook-2.png =500x)
 	
 8. In the Import Status, **click** 'Upload' button.
 
-	![Datawarehouse.](media/notebook-3.png)
+	![Datawarehouse.](media/notebook-3.png =500x)
 	
 9. **Browse** to the downloaded notebooks from your local system **select** all the notebooks and **click** the 'Open' button.
 
-	![Datawarehouse.](media/notebook-4.png)
+	![Datawarehouse.](media/notebook-4.png =500x)
 
 10. **Click** the 'notification' icon to check the status of upload. Once upload is done, it will show the notification as 'Imported succussfully'. Now **click**'Go to Workspace' and verify.
 
-	![Datawarehouse.](media/notebook-5.png)
+	![Datawarehouse.](media/notebook-5.png =500x)
 
 11. In the workspace **click** on the "02 Bronze to Silver layer_ Medallion Architecture" notebook.
 
-	![Datawarehouse.](media/notebook-6.png)
+	![Datawarehouse.](media/notebook-6.png =500x)
 
 12. In the left pane **click** on 'Missing Lakehouse' and **select** 'Remove all Lakehouses'.
 
-	![Datawarehouse.](media/notebook-11.png)
+	![Datawarehouse.](media/notebook-11.png =500x)
 
 13. **Click** on 'Continue' in the pop-up window.
 
-	![Datawarehouse.](media/notebook-12.png)
+	![Datawarehouse.](media/notebook-12.png =500x)
 
 14. In the left pane **click** on the 'Add' button.
 
-	![Datawarehouse.](media/notebook-13.png)
+	![Datawarehouse.](media/notebook-13.png =500x)
 
 15. In the pop-up **select** 'Existing Lakehouse' radio button and then **click** on 'Add' button.
 
-	![Datawarehouse.](media/notebook-14.png)
+	![Datawarehouse.](media/notebook-14.png =500x)
 
 16. **Click** on 'lakehouseSilver' checkbox and **click** on 'Add'.
 
-	![Datawarehouse.](media/notebook-15.png)
+	![Datawarehouse.](media/notebook-15.png =500x)
 
 17. Similarly **perform** step number 11 to step number 16 for the other notebooks as well.
 
@@ -721,15 +721,15 @@ step 28 finally **click** on the 'Next' button.
 
 19. In PowerBI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
 
-	![Close the browser.](media/demo-4.png)
+	![Close the browser.](media/demo-4.png =500x)
 
 20. **Filter** 'Notebook' and then **click** on the notebook '03 Silver to Gold layer_ Medallion Architecture'
 
-	![Close the browser.](media/notebook-16.png)
+	![Close the browser.](media/notebook-16.png =500x)
 
 21. **Click** on the 'Run all' button.
 
-	![Close the browser.](media/notebook-17.png)
+	![Close the browser.](media/notebook-17.png =500x)
 
 ### Task 6 : Creating Internal Shortcut
 
@@ -737,27 +737,27 @@ step 28 finally **click** on the 'Next' button.
 
 1. In Power BI workspace **click** on 'Workspaces' and **select** 'contosoSales'.
 
-	![Close the browser.](media/demo-4.png)
+	![Close the browser.](media/demo-4.png =500x)
 
 2. **Filter** 'Lakehouse' and then **select** 'lakehouseGold'.
     
-	![Close the browser.](media/FilterLakehouseGold.png)
+	![Close the browser.](media/FilterLakehouseGold.png =500x)
 	
 3. **Click** on the 'three dots' infont of Tables and then **select** 'New Shortcut'.
 
-	![Close the browser.](media/LakehouseGoldShortcut1.png)
+	![Close the browser.](media/LakehouseGoldShortcut1.png =500x)
 
 4. In the 'Internal Sources' section **select** 'Microsoft OneLake'.
 
-	![Close the browser.](media/LakehouseGoldShortcut2.png)
+	![Close the browser.](media/LakehouseGoldShortcut2.png =500x)
 
 5. **Search** for 'lakehouseSilver' in the search box, **click** on 'lakehouseSilver' and then **click** on 'Next'.
 
-	![Close the browser.](media/LakehouseGoldShortcut3.png)
+	![Close the browser.](media/LakehouseGoldShortcut3.png =500x)
 
 6. **Click** on Tables, **select** 'dimension_date' and then **click** on 'Create'.
 
-	![Close the browser.](media/LakehouseGoldShortcut4.png)
+	![Close the browser.](media/LakehouseGoldShortcut4.png =500x)
 
 7. **Repeat** step number 2 to step number 6 for the other tables in the below tables.
 
@@ -776,31 +776,31 @@ step 28 finally **click** on the 'Next' button.
 
 1. In Power BI service click 'Workspaces' and **click** current working workspace. 
 
-	![Close the browser.](media/power-bi-5.png)
+	![Close the browser.](media/power-bi-5.png =500x)
 
 2. **Click** '+ New' and then **click** 'Show all'.
 
-	![Close the browser.](media/demo-5.png)
+	![Close the browser.](media/demo-5.png =500x)
 
 3. In the new window **scroll down** to 'Real-Time Analytics' section and **click** 'KQL Database (Preview)'.
 
-	![Close the browser.](media/demo-33.png)
+	![Close the browser.](media/demo-33.png =500x)
 
 4. **Enter** the name as 'Contoso-KQL-DB', **click** 'Create' button and **wait** for the database to get created.
 
-	![Close the browser.](media/demo-34.png)
+	![Close the browser.](media/demo-34.png =500x)
 
 5. Once database is created in overview page, **click** 'Get data' and then **click** 'Event Hubs'.
 
-    ![Close the browser.](media/demo-35.png)
+    ![Close the browser.](media/demo-35.png =500x)
 
 6. In Destination tab **select** 'New table' and provide the name as 'thermostat'and then **click** 'Next:Source' button.
 
-    ![Close the browser.](media/demo-36.png)
+    ![Close the browser.](media/demo-36.png =500x)
 
 7. In the Source tab **select** the source type as 'Event Hub' and **select** 'create new connection'
 
-	![Close the browser.](media/demo-36.1.png)
+	![Close the browser.](media/demo-36.1.png =500x)
 
 	>**Note:** For the rest of the details we will get the data from the resource group.
 
@@ -808,72 +808,72 @@ step 28 finally **click** on the 'Next' button.
 
 9. **Search** for 'Event Hub namespace' and **copy** the name of Event Hub namespace and **paste** it in a notepad for further use.
 
-	  ![Close the browser.](media/demo-52.png)
+	  ![Close the browser.](media/demo-52.png =500x)
 
 10. **Click** the 'Event Hubs Namespace' under overview **scrolldown** at bottom and **copy** the name of Event Hub and **paste** it in a notepad for further use.
 
-	 ![Close the browser.](media/demo-53.png)	
+	 ![Close the browser.](media/demo-53.png =500x)	
 
 11. To get the shared access key & shared access key name,**click** Event Hubs Instance 'thermostat'. Then **click** 'Shared access policies' in the left pane. **Click** on shared access key name 'thermostat' to open the shared access key tab in right pane. 
 **Copy** the primary key and **paste** it in a notepad for further use. 
 
-	![Close the browser.](media/demo-54.png)
+	![Close the browser.](media/demo-54.png =500x)
 
 12. **Navigate back** to the PowerBI tab.
 
 13. Make sure you are in the 'Create new connection' section. **Select** 'Authentication kind' as 'Shared Access Key' and then in the connection setting **paste** the value copied in step 9,10,11 and **click** 'Save' button.
 
-    ![Close the browser.](media/demo-37.png)
-    ![Close the browser.](media/demo-38.png)
-    ![Close the browser.](media/demo-39.png)
+    ![Close the browser.](media/demo-37.png =500x)
+    ![Close the browser.](media/demo-38.png =500x)
+    ![Close the browser.](media/demo-39.png =500x)
 
 14. Upon clicking on 'Save', the below disabled fields 'Data connection name' & 'Consumer group' will be enabled. Keeping its value as default, **click** 'Next: Schema' button.
 
-    ![Close the browser.](media/demo-40.png)
+    ![Close the browser.](media/demo-40.png =500x)
 
 15. On Schema tab, **select** the Data format as JSON and **click** Next:Summary button.
 
-    ![Close the browser.](media/demo-41.png)
+    ![Close the browser.](media/demo-41.png =500x)
 
 16. Once **click** Summary button, it will show the message as 'Continuous ingestion from Event Hubs established'. **Click** 'Close' button.
 
-    ![Close the browser.](media/demo-42.png)
+    ![Close the browser.](media/demo-42.png =500x)
 
 17. To verify the data tree expand the thermostat table, check the size and the table details.
 
-    ![Close the browser.](media/demo-43.png)
+    ![Close the browser.](media/demo-43.png =500x)
 
 18. **Click** 'Contoso-KQL-DB' and  **wait** for sometime to load the data. **Check** the table size.
 
-	![Close the browser.](media/demo-44.png)
+	![Close the browser.](media/demo-44.png =500x)
 
 19. Once you see the table size is increased then, **click** 'Check your data' button. 
 
-	![Close the browser.](media/demo-45.png)
+	![Close the browser.](media/demo-45.png =500x)
 
 20. It will open the KQL queryset editor. **Click** link [KQL Queryset Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/kqlscripts). **Copy** and **paste** the script in the editor and **click** 'Run' button.
 
-	![Close the browser.](media/demo-46.png)
+	![Close the browser.](media/demo-46.png =500x)
 
 21. To create a Query Set **go to** current Workspace, **click** '+ New' and **click** 'Show all' button.
 
-	![Close the browser.](media/demo-5.png)
+	![Close the browser.](media/demo-5.png =500x)
 
 22. In the new window, **scroll down** to 'Real-Time Analytics' section and **click** 'KQL Queryset (Preview)'.
 
-	![Close the browser.](media/demo-47.png)
+	![Close the browser.](media/demo-47.png =500x)
 
 23. **Enter** the name as "01 Query Thermostat Data in Near 'Real-Time' using KQL Script", **click** 'Create' button and **wait** for the Queryset to get created.
 
-	![Close the browser.](media/demo-48.png)
+	![Close the browser.](media/demo-48.png =500x)
 
 24. **Select** the database 'Contoso-KQL-DB' and **click** 'Select' button.
 
-	![Close the browser.](media/demo-49.png)
+	![Close the browser.](media/demo-49.png =500x)
 
 22. Now this will open the Queryset editor. **Copy** the queries from step 20 and **paste** it to queryset editor. **Select** the query and **click** 'Run' button.
 
-	![Close the browser.](media/demo-50.png)
+	![Close the browser.](media/demo-50.png =500x)
 
 ### Appendix
 
@@ -883,33 +883,33 @@ step 28 finally **click** on the 'Next' button.
 
 2. **Sign in**, to Power BI using your Power BI with Fabric License account.
 
-	![Sign in to Power BI.](media/power-bi.png)
+	![Sign in to Power BI.](media/power-bi.png =500x)
 
 	> **Note:** Use the same credentials for Power BI which you will be using for the Azure account.
 
 3. In Power BI service **Click** 'Workspaces' and **select** 'contosoSales'
 
-    ![Close the browser.](media/demo-4.png)
+    ![Close the browser.](media/demo-4.png =500x)
 
 4. **Click** '+ New' and then **select** 'Show all'.
 
-    ![Close the browser.](media/demo-5.png)
+    ![Close the browser.](media/demo-5.png =500x)
 
 5. In the new window **click** 'Lakehouse(Preview)'.
 
-    ![Close the browser.](media/demo-6.png)
+    ![Close the browser.](media/demo-6.png =500x)
 
 6. **Enter** the name as 'lakehouseBronze' and **click** 'Create' button.
 
-    ![Close the browser.](media/demo-7.png)
+    ![Close the browser.](media/demo-7.png =500x)
 
 7. **Wait** for the lakehouse to create, **click** the three dots(Ellipsis) in front of the 'Files' and **select** 'New shortcut'
 
-    ![Close the browser.](media/demo-8.png)
+    ![Close the browser.](media/demo-8.png =500x)
 
 8. In the pop-up window, under External sources **select** 'Azure Data Lake Storage Gen2'
 
-	![Close the browser.](media/demo-9.png)
+	![Close the browser.](media/demo-9.png =500x)
 
 >**Note:** To fill in the required fields in the pop-up screen you need to fetch it from the storage account resource. Follow the below steps to get those data.
 
@@ -917,19 +917,19 @@ step 28 finally **click** on the 'Next' button.
 
 10. **Search** for 'storage account', **click** the storage account resource.
 
-	![Close the browser.](media/demo-10.png)
+	![Close the browser.](media/demo-10.png =500x)
 
 11. In the Storage account window **scroll down** the left pane, in the 'Security + networking' section, **click** 'Access keys' and **click** 'Show' button under key1.
 
-	![Close the browser.](media/demo-11.png)
+	![Close the browser.](media/demo-11.png =500x)
 
 12. **Click** 'Copy to clickboard' button and **paste** it in notepad for further use.
 
-	![Close the browser.](media/demo-12.png)
+	![Close the browser.](media/demo-12.png =500x)
 
 13. Again **scroll down** in the left pane, **select** Settings >> 'Endpoints' section. **Copy** the 'Primary endpoint' under 'Data Lake Storage' section, and **paste** it in notepad for further use.
 
-	![Close the browser.](media/demo-12.1.png)
+	![Close the browser.](media/demo-12.1.png =500x)
 
 14. **Go back** the powerbi workspace, under 'URL' **paste** the endpoint copied in step number 13.
 
@@ -939,7 +939,7 @@ step 28 finally **click** on the 'Next' button.
 
 17. **Click** 'Next'.
 
-	![Close the browser.](media/demo-12.2.png)
+	![Close the browser.](media/demo-12.2.png =500x)
 
 18. Under Shortcut Name **type** 'BlobToLakehouse'.
 
@@ -949,105 +949,105 @@ step 28 finally **click** on the 'Next' button.
 
 21. **Click** the **Create** button.
 
-	![Close the browser.](media/demo-12.3.png)
+	![Close the browser.](media/demo-12.3.png =500x)
 
 ### Creating Pipelines and Dataflows
 
 1. While you are in the 'contosoSales' workspace **click** '+ New' button and **select** 'Show all'.
 
-	![Pipeline.](media/pipeline-1.png)
+	![Pipeline.](media/pipeline-1.png =500x)
 
 2. Under Data Factory section, **select** 'Dataflow Gen2 (Preview).
 
-	![Pipeline.](media/pipeline-2.png)
+	![Pipeline.](media/pipeline-2.png =500x)
 
 3. In the dataflow window, **click** the default dataflow name 'Dataflow 1' and in the Name field **type** '04 Customer Insights Data from Dataverse' finally **click** somewhere outside the rename box to update the dataflow name.
 
-	![Pipeline.](media/pipeline-3.png)
+	![Pipeline.](media/pipeline-3.png =500x)
 
 4. **Click** 'Get data' and **click** 'More...'.
 
-	![Pipeline.](media/pipeline-4.png)
+	![Pipeline.](media/pipeline-4.png =500x)
 
 5. **Click** 'Dataverse'.
 
-	![Pipeline.](media/pipeline-5.png)
+	![Pipeline.](media/pipeline-5.png =500x)
 
 6. **Enter** the Dynamics 365 credentials if available and then **click** 'Next' button.
 
-	![Pipeline.](media/pipeline-6.png)
+	![Pipeline.](media/pipeline-6.png =500x)
 
 7. **Go back** to the workspace, **click** '+ New' and **click** 'Show all'.
 
-	![Pipeline.](media/pipeline-1.png)
+	![Pipeline.](media/pipeline-1.png =500x)
 
 8. Under Data Factory section, **select** 'Data pipeline (Preview).
 
-	![Pipeline.](media/pipeline-7.png)
+	![Pipeline.](media/pipeline-7.png =500x)
 
 9. **Type** the name as '03 Customer Insights Dataflow trigger from Data' and **click** 'Create'.
 
-	![Pipeline.](media/pipeline-8.png)
+	![Pipeline.](media/pipeline-8.png =500x)
 
 10. Wait for the pipeline to create, **click** 'Add pipeline activity' and **click** 'Dataflow'.
 
-	![Pipeline.](media/pipeline-9.png)
+	![Pipeline.](media/pipeline-9.png =500x)
 
 11. **Click** the new dataflow activity, in General tab **type** the name as 'Customer Insights Data to Lakehouse'.
 
-	![Pipeline.](media/pipeline-10.png)
+	![Pipeline.](media/pipeline-10.png =500x)
 
 12. In the Settings tab **attach** it to the dataflow created in the earlier steps.
 
-	![Pipeline.](media/pipeline-11.png)
+	![Pipeline.](media/pipeline-11.png =500x)
 
 13. Similarly **create** another pipeline with the name "01 Campaigns data from Snowflake to Lakehouse - Low Code Experience"
 
 14. Once the pipeline is created **click** on 'Lookup'. 
 
-	![Pipeline.](media/pipeline-12.png)
+	![Pipeline.](media/pipeline-12.png =500x)
 
 15. In 'General' tab of the Lookup activity **enter** 'Name' as "Check if Snowflake Campaign Data exist" and 'Description' as "GetMetadata activity is used to ensure the source dataset is ready for downstream consumption, before triggering the copy and analytics job."
 
-	![Pipeline.](media/pipeline-13.png)
+	![Pipeline.](media/pipeline-13.png =500x)
 
 16. In the 'Settings' tab **select** the External radio button, and **click** 'New'.
 
-	![Pipeline.](media/pipeline-14.png)
+	![Pipeline.](media/pipeline-14.png =500x)
 
 17. In the 'New connection' pop-up window, **scroll down** to **select** 'Snowflake' and **click** 'Continue'.
 
-	![Pipeline.](media/pipeline-15.png)
+	![Pipeline.](media/pipeline-15.png =500x)
 
 18. **Enter** your Server, Warehouse, Username, and Password for Snowflake if available.
 
-	![Pipeline.](media/pipeline-16.png)	
+	![Pipeline.](media/pipeline-16.png =500x)	
 
-	![Pipeline.](media/pipeline-17.png)	
+	![Pipeline.](media/pipeline-17.png =500x)	
 
 19. Once your connection setup is done, **enter** the details as shown.
 
-	![Pipeline.](media/pipeline-18.png)	
+	![Pipeline.](media/pipeline-18.png =500x)	
 
 20. **Click** 'Copy data activity' and **select** 'Add to canvas'.
 
-	![Pipeline.](media/pipeline-19.png)	
+	![Pipeline.](media/pipeline-19.png =500x)	
 
 21. In the 'General' tab **enter** 'Name' as 'SnowflakeDB To Lakehouse'.
 
-	![Pipeline.](media/pipeline-20.png)	
+	![Pipeline.](media/pipeline-20.png =500x)	
 
 22. **Enter** the values in the 'Source' tab.
 
-	![Pipeline.](media/pipeline-21.png)	
+	![Pipeline.](media/pipeline-21.png =500x)	
 
 23. **Enter** the values in the 'Destination' tab.
 
-	![Pipeline.](media/pipeline-22.png)	
+	![Pipeline.](media/pipeline-22.png =500x)	
 
 24. **Click** the 'green tick' on the Lookup and drag it to Copy data as shown in the screenshot.
 
-	![Pipeline.](media/pipeline-23.png)
+	![Pipeline.](media/pipeline-23.png =500x)
 
 ### Creating a Resource Group
 
@@ -1055,15 +1055,15 @@ step 28 finally **click** on the 'Next' button.
 
 2. On the Azure Portal home screen, **select** the '+ Create a resource' tile.
 
-	![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/create-a-resource.png)
+	![A portion of the Azure Portal home screen is displayed with the + Create a resource tile highlighted.](media/create-a-resource.png =500x)
 
 3. In the Search the Marketplace text box, **type** "Resource Group" and **press** the Enter key.
 
-	![On the new resource screen Resource group is entered as a search term.](media/resource-group.png)
+	![On the new resource screen Resource group is entered as a search term.](media/resource-group.png =500x)
 
 4. **Select** the 'Create' button on the 'Resource Group' overview page.
 
-	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/resource-group-2.png)
+	![A portion of the Azure Portal home screen is displayed with Create Resource Group tile](media/resource-group-2.png =500x)
 	
 5. On the 'Create a resource group' screen, **select** your desired Subscription. For Resource group, **type** 'cloudshell-dpoc'. 
 
@@ -1073,11 +1073,11 @@ step 28 finally **click** on the 'Next' button.
 
 7. **Click** the 'Review + Create' button.
 
-	![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resource-group-3.png)
+	![The Create a resource group form is displayed populated with Synapse-MCW as the resource group name.](media/resource-group-3.png =500x)
 
 8. **Click** the 'Create' button once all entries have been validated.
 
-	![Create Resource Group with the final validation passed.](media/resource-group-4.png)
+	![Create Resource Group with the final validation passed.](media/resource-group-4.png =500x)
 
 
 # Copyright
