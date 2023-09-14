@@ -260,7 +260,7 @@ cd ./fabric/fabric/
 
 24. **Go back** to Azure Cloud Shell execution window.
 
-25. **Select** your subscription from the prompt.
+25. **Copy** your subscription name from the screen and **paste** it in the prompt.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -321,9 +321,11 @@ cd ./fabric/fabric/
 
 37. After the script execution is complete, the user is prompted "--Execution Complete--"
 	
-38. **Go to** the resource group which was created by the script.
+38. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
 
-	>**Note:** The resource group name starts with 'fabric-dpoc-' with some unique suffix in the end.
+	![Close the browser.](media/demo-1.1.png)
+
+	>**Note:** The resource group name starts with 'fabric-dpoc-' with some random unique suffix in the end.
 
 39. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
@@ -435,6 +437,8 @@ cd ./fabric/fabric/
 
 	![Datawarehouse.](media/warehouse-4.png)
 
+>**Note:** It would take some time for the page to load, please wait for the
+
 8. In the pop-up **enter** the name as '02 Sales data from Azure SQL DB to Data Warehouse - Low Code Experience'.
 
 9. **Click** Create.
@@ -477,7 +481,7 @@ cd ./fabric/fabric/
 
 23. **Go back** to the PowerBI tab.
 
-24. **Select** 'Create new connection' radio button, in the 'Database' field **paste** the value copied in step number 19 and 22.
+24. **Select** 'Create new connection' radio button, in the 'Server;' and 'Database' field **paste** the value copied in step number 19 and 22.
 
 	![Datawarehouse.](media/warehouse-10.png)
 
@@ -515,6 +519,8 @@ step 28 finally **click** on the 'Next' button.
 32. In progress section of pipeline **check** the status of running pipeline.
 
 	![Datawarehouse.](media/warehouse-18.png)
+
+>**Note:** Please wait for the resultant data to load.
 
 33. **Wait** for the status of pipeline to be 'Succeeded' and **go back** the the Data Warehouse from the workspace.
 
@@ -626,7 +632,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-7.png)
 
-2. **Enter** the path as "fabric/fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
+2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
 	![Datawarehouse.](media/notebook-8.png)
 
@@ -695,7 +701,9 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-15.png)
 
-17. Similarly perform 11 to step number 16 for the other notebooks.
+17. Similarly **perform** step number 11 to step number 16 for the other notebooks as well.
+
+>**Note:** To perform the above steps you need to attach the notebooks to respective lakehouses before runnig the notebooks. Follow the below instruction for the same.
 
 18. Refer the below table to attach notebooks with the respective lakehouses
 
@@ -760,6 +768,8 @@ step 28 finally **click** on the 'Next' button.
 	|	fact_sales|	lakehouseSilver	|
 	|	fact_campaigndata|	lakehouseSilver	|
 	|||
+
+>**Note:** Once you are done with Task 6 please go back to Task 5 and follow the steps from the point where you had stopped.
 
 
 ### Task 7: KQL DB and QuerySet creation
@@ -901,7 +911,9 @@ step 28 finally **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-9.png)
 
-9. In a new tab,**open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
+>**Note:** To fill in the required fields in the pop-up screen you need to fetch it from the storage account resource. Follow the below steps to get those data.
+
+9. In a new tab,**open** the resource group created in Task 2, which you noted while script execution with name starting with 'fabric-dpoc-'.
 
 10. **Search** for 'storage account', **click** the storage account resource.
 
