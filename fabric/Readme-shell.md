@@ -267,7 +267,7 @@ cd ./fabric/fabric/
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-28. **Enter** desired SQL Password.
+28. **Enter** a SQL Password. Copy it to a notepad for later use.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
@@ -611,7 +611,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-7.png)
 
-2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
+2. **Enter** the path as "fabric/fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
 	![Datawarehouse.](media/notebook-8.png)
 
@@ -796,15 +796,15 @@ step 28 finally **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-54.png)
 
-12. **Navigate back** to the PowerBI tab.
+12. **Navigate back** to the PowerBI tab with connection details we opened previously.
 
-13. Make sure you are in the 'Create new connection' section. **Select** 'Authentication kind' as 'Shared Access Key' and then in the connection setting **paste** the value copied in step 9,10,11 and **click** 'Save' button.
+13. **Select** 'Authentication kind' as 'Shared Access Key' and then in the connection setting **paste** the value copied in step 9,10,11 and **click** 'Save' button.
 
     ![Close the browser.](media/demo-37.png)
     ![Close the browser.](media/demo-38.png)
     ![Close the browser.](media/demo-39.png)
 
-14. Upon clicking on 'Save', the below disabled fields 'Data connection name' & 'Consumer group' will be enabled. Keeping its value as default, **click** 'Next: Schema' button.
+14. After clicking 'Save', the below disabled fields 'Data connection name' & 'Consumer group' will be enabled. Keep its value as default and **click** 'Next: Schema' button.
 
     ![Close the browser.](media/demo-40.png)
 
@@ -853,7 +853,9 @@ step 28 finally **click** on the 'Next' button.
 	![Close the browser.](media/demo-50.png)
 
 ### Appendix
-
+	
+	This section showcases using some commonly used connections like Snowflake and Dataverse and creating pipelines with them if you have your own accounts. This is optional. 
+	
 ### Setting up the Lakehouse
 
 1. To **Open** Power BI in a new tab, click [HERE](https://app.powerbi.com/)
