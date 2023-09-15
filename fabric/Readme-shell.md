@@ -632,7 +632,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-7.png)
 
-2. **Enter** the path as "fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
+2. **Enter** the path as "fabric/fabric/artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" in the download tab and **click** on 'Download' button.
 
 	![Datawarehouse.](media/notebook-8.png)
 
@@ -681,9 +681,11 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-6.png)
 
-12. In the left pane **click** on 'Missing Lakehouse' and **select** 'Remove all Lakehouses'.
+12. In the left pane **click** on 'Missing Lakehouse' button and **select** 'Remove all Lakehouses'.
 
 	![Datawarehouse.](media/notebook-11.png)
+
+>**Note:** In case you do not see Missing lakehouse, you would see 'lakehouse{Name}', click on the same to get the 'Remove all Lakehosues' option.
 
 13. **Click** on 'Continue' in the pop-up window.
 
