@@ -117,7 +117,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	![Give the name and description for the new workspace.](media/power-bi-7.png)
 
->**Note:** All workspaces used in this demo use 'Trial' Liscence type. 
+>**Note:** All workspaces used in this demo use 'Trial' License type. 
 
 10. **Scroll down** and **click** on 'Apply'.
 
@@ -145,7 +145,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 17. **Repeat** step number 3 to 14 to **create** a new workspace with the name 'contosoFinance' and then **create** a lakehouse in it and name it 'lakehouseFinance'.
 
->**Note:** Make sure to add this workspace has fabric Trial liscence as well and note the names of the workspaces and lakehouses as these will be used during the script execution(Task 2)
+>**Note:** Make sure to add this workspace has fabric Trial License as well and note the names of the workspaces and lakehouses as these will be used during the script execution(Task 2)
 
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
@@ -162,7 +162,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	![Mount a Storage for running the Cloud Shell.](media/cloud-shell-2.png)
 
-	> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 2 and 3.
+	> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 5 and 6.
 
 5. **Select** your 'Subscription', 'Cloud Shell region' and 'Resource Group'.
 
