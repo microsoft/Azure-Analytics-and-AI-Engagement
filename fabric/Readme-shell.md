@@ -15,23 +15,10 @@ Customers can play, get hands-on experience navigating through the demo environm
   1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information aregarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
   3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
-  4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture,, **leverage Azure Security Centre.** 
+  4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
   5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
-   
-
-## Tasks in the Accelerator
-
-|	Automation Tasks	|	Manual Tasks	|
-| --------------------- | ----------------- |
-|	Provisioning contosoSales PowerBI workspace and lakehouses		|	Creating PowerBI workspace and lakehouses	|
-|	Loading tables to SQL Database	|	Running powershell script in the Cloud Shell to provision the resources	|
-|	Creating Simulator app and publishing the code	|	Setting up data warehouse and Visual Query 	|
-|	Creating Event Hub	|	Creating data pipeline	|
-|	Fetching required blobs to Storage Account	|	Importing Notebooks and SQL scripts	|
-|	Configuring the Fabric Notebooks	|	Creating KQL DB and QuerySet	|
-|	Creating main webapp and publishing the code	|	Creating Shortcut	|
-|		|		|
+ 
 
 
 ## Contents
@@ -67,7 +54,7 @@ Customers can play, get hands-on experience navigating through the demo environm
    - Microsoft.SQLSever
    - Microsoft.StorageAccount
    - Microsoft.AppService
-* You are limited to executing a single deployment at a time and must await its conclusion. Running multiple deployments simultaneously is discouraged, as it can lead to deployment failures.
+* You must only execute one deployment at a time and wait for its completion.Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability. (Consider the region availability for Synapse workspace, Iot Central and cognitive services while choosing a location)
 * In this Accelerator, we have converted real-time reports into static reports for the users' ease but have covered the entire process to configure real-time dataset. Using those real-time dataset, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
@@ -193,7 +180,7 @@ git clone -b microsoftfabric --depth 1 --single-branch https://github.com/micros
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
 	
-   > **Note:** If you get File already exist error, please execute the following command to delete existing clone:
+   > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then reclone:
 ```
  rm fabric -r -f 
 ```
@@ -210,7 +197,7 @@ cd ./fabric/fabric/
     
    ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
       
-10. From the Azure Cloud Shell, **copy** the authentication code
+10. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter this code in next step.
 
 11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
@@ -267,7 +254,7 @@ cd ./fabric/fabric/
 	> **Notes:**
 	> - The user with single subscription won't be prompted to select subscription.
 	> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
-	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading content in the Azure Synapse Analytics SQL Pool tables.
+	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading the data.
 
 26. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
@@ -289,7 +276,7 @@ cd ./fabric/fabric/
 
 30. You will get another code to authenticate the Azure PowerShell script for creating reports in Power BI. **Copy** the code.
 
-	> **Note:** You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In that case, follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/reports). 
+	> **Note:** You may see errors in script execution if you  do not have necessary permissions for cloudshell to manipulate your Power BI workspace. In that case, follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/fintax/fintaxdemo/artifacts/reports). 
 
 31. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
