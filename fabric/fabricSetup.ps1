@@ -476,9 +476,9 @@ $ht.add("#HR_Analytics_Report_Lakehouse#", $($reportList | where { $_.name -eq "
 $ht.add("#IT_Report#", $($reportList | where { $_.name -eq "IT Report" }).id)
 $ht.add("#Marketing_Report#", $($reportList | where { $_.name -eq "Marketing Report" }).id)
 $ht.add("#Operations_Report#", $($reportList | where { $_.name -eq "Operations Report" }).id)
-$ht.add("#Retail_Group_CEO_KPI_(Trident)#", $($reportList | where { $_.name -eq "Retail Group CEO KPI (Trident)" }).id)
+$ht.add("#Retail_Group_CEO_KPI_(Trident)#", $($reportList | where { $_.name -eq "Retail Group CEO KPI" }).id)
 $ht.add("#Score_Cards_Report#", $($reportList | where { $_.name -eq "Score Cards Report" }).id)
-$ht.add("#World_Map_(Trident)#", $($reportList | where { $_.name -eq "World Map (Trident)" }).id)
+$ht.add("#World_Map_(Trident)#", $($reportList | where { $_.name -eq "World Map" }).id)
 
 $filePath = "./app-fabric/wwwroot/config.js";
 Set-Content $filePath $(ReplaceTokensInFile $ht $filePath)
