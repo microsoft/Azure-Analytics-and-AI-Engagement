@@ -3,7 +3,7 @@
 # Fabric DREAM PoC Accelerator Setup Guide
 
 ## What is DPoC?
-DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks etc.) that can be deployed in a customer’s environment using the CAPE tool in a matter of hours.
+DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks etc.) that can be deployed in a customer’s environment.
 
 ## Objective & Intent
 Partners can deploy DREAM Demos in their own Azure subscriptions and demonstrate them live to their customers. 
@@ -84,7 +84,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 >If name 'contosoSales' is already taken, add some suffix to the end of the name for eg. 'contosoSalesTest'.
 
->Workspace name in 'camel case' is necessary for powershell deployment script execution as it is mandatory for the name to start with a small letter and camel case also provides better readability.
+>Workspace name should not have any spaces.
 
    ![Create Power BI Workspace.](media/power-bi-4.png)
 
@@ -865,6 +865,8 @@ step 28 finally **click** on the 'Next' button.
 	![Close the browser.](media/demo-50.png)
 
 ### Appendix
+
+This section is optional and created to showcase other data ingestion options. Use it as a refrence if you have your own Dataverse and Snowflake connections.
 
 ### Setting up the Lakehouse
 
