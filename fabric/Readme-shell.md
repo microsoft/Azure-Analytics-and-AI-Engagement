@@ -567,7 +567,7 @@ step 28 finally **click** on the 'Next' button.
 
 48. **Repeat** the steps (35-47) for the other two scripts in the repository. Get the scripts [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric/fabric/artifacts/warehousescripts)
 
->**Note:** There might be no replacements in all of the scripts. If there is no replacements needed you can skip the steps in between.
+>**Note:** If there are no replacements necessary in the scripts, you can skip the steps in between.
 
 49. **Click** 'New visual query'.
 
@@ -631,7 +631,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Datawarehouse.](media/notebook-10.png)
 
-5. Perform step number 1 to step number 4 for all the 5 notebooks replacing the names of the individual notebooks in the path "fabric/artifacts/fabricnotebooks/#notebook_name#"
+5. Perform steps 1 through 4 for all five notebooks, replacing the names of the individual notebooks in the path "fabric/fabric/artifacts/fabricnotebooks/#notebook_name#"
 
 	Names of the other notebooks are as follows:
 	```
@@ -806,7 +806,7 @@ step 28 finally **click** on the 'Next' button.
 11. To get the shared access key & shared access key name,**click** Event Hubs Instance 'thermostat'. Then **click** 'Shared access policies' in the left pane. **Click** on shared access key name 'thermostat' to open the shared access key tab in right pane. 
 **Copy** the primary key and **paste** it in a notepad for further use. 
 
-	![Close the browser.](media/demo-54.png)
+   ![Close the browser.](media/demo-54.png)
 
 12. **Navigate back** to the PowerBI tab.
 
@@ -828,7 +828,7 @@ step 28 finally **click** on the 'Next' button.
 
     ![Close the browser.](media/demo-42.png)
 
-17. To verify the data tree expand the thermostat table, check the size and the table details.
+17. To verify the data tree **expand** the thermostat table, check the size and the table details.
 
     ![Close the browser.](media/demo-43.png)
 
