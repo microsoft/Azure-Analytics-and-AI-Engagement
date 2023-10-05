@@ -6,6 +6,7 @@
 
 <div align="center">
   <a href="#D">All</a> •
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/microsoftfabric/fabric/Readme-shell.md">Microsoft Fabric</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Readme-shell.md">FSI</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Readme-shell.md">Public Finance</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/Readme-shell.md">Retail</a> •
@@ -21,10 +22,6 @@
 <b>Important Links:</b>
   <br>
   • <a href="https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/">Data & AI Industry DREAM Demos & DREAM PoC Accelerator</a>
-  <br>
-  • <a href="https://azure-data-ai-demomap.azurewebsites.net/">Mega Map</a>
-  <br> 
-  • <a href="https://azure-data-ai-demomap.azurewebsites.net/azure-openai-demo">Azure OpenAI Service DREAM Demo 1.0</a>
 </div>
 
 <br/>
