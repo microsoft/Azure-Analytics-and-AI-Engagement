@@ -19,10 +19,10 @@ thermostat
 
 //Are there any anomalies for this device?
 thermostat 
-| where RecordedonUTC > ago(12h)
+| where EnqueuedTimeUTC > ago(12h)
 | where DeviceId == 'TH005'
-| make-series AvgTemp=avg(Temp) default=real(null) on RecordedonUTC from ago(12h) to now() step 1m   
+| make-series AvgTemp=avg(Temp) default=real(null) on EnqueuedTimeUTC from ago(12h) to now() step 1m   
 | extend NoGapsTemp=series_fill_linear(AvgTemp)
-| project RecordedonUTC, NoGapsTemp
+| project EnqueuedTimeUTC, NoGapsTemp
 | extend anomalies = series_decompose_anomalies(NoGapsTemp,1) 
 | render anomalychart with(anomalycolumns=anomalies)
