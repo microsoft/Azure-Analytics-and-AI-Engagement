@@ -42,7 +42,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 ## Before you begin
 
-1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/)
+1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/).
 
 2. In the Resource group section, **select** the Terminal icon to open Azure Cloud Shell.
 
@@ -106,7 +106,7 @@ cd ./ignite/ignite/
 
 11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
-	![Authentication link and Device Code.](media/cloud-shell-6.png)
+	![Authentication link and Device Code.](media/)
      
 12. **Paste** the authentication code.
 
@@ -266,15 +266,32 @@ Here are the Microsoft Fabric workloads showcased in this solution along with Az
 
 **1. Synapse Data Engineering**
 
+Combines the best of the data lake and warehouse, removing the friction of ingesting, transforming, and sharing organizational data, all in an open format. Users can choose from various ways of bringing data into the Lakehouse including dataflow & pipelines, and they can even use shortcuts to create virtual folders and tables without any data movement between the storage accounts. The goal is to simplify the process of working with organizational data. Rather than spending time on integrating various products, managing infrastructure, and stitching together a spectrum of data sources, Microsoft aims to empower data engineers to focus on their core responsibilities and tasks.
+
+
 **2. Data Factory**
+
+Data Factory empowers users with a modern data integration experience to ingest, prepare and transform data with intelligent transformations, and leverage a rich set of activities. Data Factory primarily implements dataflows and pipelines.	Dataflows provide a low-code interface for ingesting data from hundreds of data sources, with 300+ data transformations. Data pipelines enable powerful workflow capabilities to build complex ETL and data factory workflows that can perform many different tasks at scale, refresh dataflow, move PB-size data, and define sophisticated control flow pipelines.	With its fast copy (data movement) capabilities in both dataflows and data pipelines, it enables users to move data between stores blazing fast.
+
 
 **3. Synapse Data Science**
 
+Microsoft Fabric offers Data Science experiences, empowering users to complete a wide range of activities across the entire data science process. All the way from data exploration, preparation and cleansing to experimentation, modeling, model scoring and serving of predictive insights to BI reports. Synapse Data Science in Microsoft Fabric allows data science practitioners to work seamlessly on top of the same secured and governed data that has been prepared by data engineering teams. This eliminates the need to copy data. The open Delta Lake support allows data science users to version datasets to create reproducible machine learning code.
+
+
 **4. Synapse Data Warehouse**
+
+Microsoft Fabric introduces a lake centric data warehouse built on an enterprise grade distributed processing engine that enables industry leading performance at scale while eliminating the need for configuration and management. The Warehouse is built for any skill level - from the citizen developer through to the professional developer, DBA or data engineer. The rich set of experiences built into Microsoft Fabric workspace enables customers to reduce their time to insights by having an easily consumable, always connected dataset that is integrated with Power BI in Direct Lake mode.
+
 
 **5. Power BI**
 
+Power BI is standardizing open data formats by adopting Delta Lake and Parquet as its native storage format to avoid vendor lock-in and reduce data duplication and management. Direct Lake mode unlocks incredible performance directly against OneLake, with no data movement. Power BI datasets in Direct Lake mode enjoy query performance on par with import mode, with the real-time nature of DirectQuery. And the data never leaves the lake.
+
+
 **6. Synapse Real-time Analytics**
+
+Real-time Analytics is fully integrated with the entire suite of Microsoft Fabric products, for both data loading, data transformation, and advanced visualization scenarios. Quick access to data insights is achieved through automatic data streaming, automatic indexing and data partitioning of any data source or format, and by using the on-demand query generation and visualizations. The main items available in Real-time Analytics include: Eventstream for capturing, transforming, and routing real-time events to various destinations with a no-code experience.	A KQL database for data storage and management. Data loaded into a KQL database can be accessed in OneLake and is exposed to other Microsoft Fabric experiences. A KQL queryset to run queries, view, and customize query results on data. The KQL queryset allows you to save queries for future use, export, and share queries with others. It includes the option to generate a Power BI report.
 
 ---
 
@@ -574,65 +591,85 @@ Litware has curated marketing data and sales data processed by Azure Databricks 
 
 As Data Engineer, another option for ingesting the data. This time Eva prefers using the code-first experience. Go back to your existing workspace contosoSales.
 
-1. While you are in the **Power BI workspace**, click on **Power BI** in the bottom left corner and select **Data Science**.
+*Before executing the steps we download the required fabric notebooks*
+
+1. **Goto** the notebooks location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab/ignite/artifacts/fabricnotebooks).
+
+2. **Click** on the '01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb' notebook.
+
+	![Datawarehouse.](media/task-1.3-notebook-new1.png)
+
+3. **Click** on the 'Download' button.
+
+	![Datawarehouse.](media/task-1.3-notebook-new2.png)
+
+4. **Click** on the 'fabricnotebooks' path.
+
+	![Datawarehouse.](media/task-1.3-notebook-new3.png)
+
+5. **Click** on the '02 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb' notebook.
+
+	![Datawarehouse.](media/task-1.3-notebook-new4.png)
+
+6. Navigate back to the **Power BI workspace**, click on **Power BI** in the bottom left corner and select **Data Science**.
 
 	![Datawarehouse.](media/task-1.3-notebook-5.png)
 
-2. Click on **Import notebook**.
+7. Click on **Import notebook**.
 
 	![Datawarehouse.](media/task-1.3-notebook-6.png)
 	
-3. In the **Import Status**, click on the **Upload** button.
+8. In the **Import Status**, click on the **Upload** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-7.png)
 	
-4. Browse to the notebooks from your local system through the path **C:\Ignite Assets\IgniteDreamLab2023\artifacts\fabricnotebooks**, select all of the notebooks and click on the **Open** button.
+9. **Browse** to the location from your local system where you downloaded the notebooks, select both the notebooks and click on the **Open** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-8.png)
 
-5. Click on the **notification** icon to check the upload status. 
+10. Click on the **notification** icon to check the upload status. 
 
 	![Datawarehouse.](media/task-1.3-notebook-17.png)
 
-6. Once the upload is complete, the notification will display **Imported succussfully**. Click on **Go to Workspace**.
+11. Once the upload is complete, the notification will display **Imported succussfully**. Click on **Go to Workspace**.
 
 	![Datawarehouse.](media/task-1.3-notebook-9.png)
 
-7. In the workspace, click on the **01 Marketing Data to Lakehouse (Bronze) - Code-First Experience** notebook.
+12. In the workspace, click on the **01 Marketing Data to Lakehouse (Bronze) - Code-First Experience** notebook.
 
 	![Datawarehouse.](media/task-1.3-notebook-10.png)
 
-8. In the left pane, click on the **Missing Lakehouse** button and select **Remove all Lakehouses**.
+13. In the left pane, click on the **Missing Lakehouse** button and select **Remove all Lakehouses**.
 
 ![Datawarehouse.](media/task-1.3-notebook-11.png)
 
 >**Note:** If you do not see Missing lakehouse, you may see **lakehouse{Name}**, click on it to get the **Remove all Lakehouses** option.
 
-9. Click on **Continue** in the pop-up window.
+14. Click on **Continue** in the pop-up window.
 
 	![Datawarehouse.](media/task-1.3-notebook-12.png)
 
-10. In the left navigation pane, click on the **Add** button.
+15. In the left navigation pane, click on the **Add** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-13.png)
 
-11. In the pop-up, select the **Existing Lakehouse** radio button and then click on the **Add** button.
+16. In the pop-up, select the **Existing Lakehouse** radio button and then click on the **Add** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-14.png)
 
-12. Click on the **lakehouseBronze** checkbox and then click on **Add**.
+17. Click on the **lakehouseBronze** checkbox and then click on **Add**.
 
 	![Datawarehouse.](media/task-1.3-notebook-15.png)
 
 *This notebook is used to get the data to the Bronze Lakehouse.*
 
-13. Go to the cell with name **Shortcut Folder Path**, replace **#WORKSPACE_NAME#** with the Fabric Workspace name you are working on and also verify the lakehouse name which should be the Bronze Lakehouse you created.
+18. Go to the cell with name **Shortcut Folder Path**, replace **#WORKSPACE_NAME#** with the Fabric Workspace name you are working on and also verify the lakehouse name which should be the Bronze Lakehouse you created.
 
 >**Note:** Make sure you delete the "#" too in above step
 
    ![Close the browser.](media/task-1.3-notebook-18.png)
 
-14. Click on **Run all**.
+19. Click on **Run all**.
 
 	![Close the browser.](media/task-1.3-notebook-16.png)
 
@@ -901,21 +938,35 @@ Next, as Wendy, the business analyst let us see how we can leverage the Power BI
 
 4. You can **drag and drop visual** from visualization pane.
 
-5. In Power BI service, click on **Workspaces** and click on **contosoSales**. 
+5. **Goto** the reports location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab/ignite/artifacts/reports).
 
-![Close the browser.](media/task-3.1.10.png)
+6. **Click** on the 'Campaign Analytics Report with Lakehouse.pbix' report.
 
-6. Click on **Upload** and select **Browse**.
+	![Close the browser.](media/task-3.1.10.new3.png)
+
+7. **Click** on the 'Download' button.
+
+	![Close the browser.](media/task-3.1.10.new4.png)
+
+8. Similarly download the other two reports as well.
+
+	![Close the browser.](media/task-3.1.10.new5.png)
+
+9. **Go back** to Power BI service, click on **Workspaces** and click on **contosoSales**. 
+
+	![Close the browser.](media/task-3.1.10.png)
+
+10. Click on **Upload** and select **Browse**.
 
 	![Task 6](media/task-6.1.10.png)
 
-7. Browse to the reports from your local system through the path **C:\Ignite Assets\IgniteDreamLab2023\artifacts\reports**, select the **Campaign Analytics Report with Lakehouse.pbix** report and click on the **Open** button.
+11. **Browse** to the location from your local system where you downloaded the reports, select the **Campaign Analytics Report with Lakehouse.pbix** report and click on the **Open** button.
 
 	![Task 6](media/task-6.1.11.png)
 
 >**Note:** Wait for the report to upload.
 
-8. **Open** the report by clicking on it.
+12. **Open** the report by clicking on it.
 
 	![Task 6](media/task-6.1.12.png)
 
@@ -923,7 +974,7 @@ Next, as Wendy, the business analyst let us see how we can leverage the Power BI
 
    ![Task 6](media/task-6.1.20.png)
 
-9. Close the pop-up.
+13. Close the pop-up.
 
 	![Task 6](media/task-6.1.20new.png)
 
@@ -1080,7 +1131,6 @@ Now let's see how Contoso was able to easily create Data Warehouses for its vari
 
 	![Datawarehouse.](media/task-4.1.warehouse-19.png)
 
-**Optional Task 5.3**
 
 ### Task 5.3: Create virtual Data Warehouses
 
@@ -1282,7 +1332,7 @@ The third query is executed to keep an eye on the temperature and detect any ano
 
 	![Task 6](media/task-6.1.10.png)
 
-7. Browse to the reports from your local system through the path **C:\Ignite Assets\IgniteDreamLab2023\artifacts\reports**, select the **Real-Time and Historical in-store analytics with KQLDB.pbix** report and click on the **Open** button.
+7. **Browse** to the location from your local system where you downloaded the reports, select the **Real-Time and Historical in-store analytics with KQLDB.pbix** report and click on the **Open** button.
 
 	![Task 6](media/task-5.4.7.png)
 
