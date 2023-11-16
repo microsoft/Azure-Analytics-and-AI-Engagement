@@ -20,8 +20,6 @@ The technology/functionality described in this demo/lab is provided by Microsoft
 COPYING OR REPRODUCTION OF THE DEMO/LAB (OR ANY PORTION OF IT) TO ANY OTHER SERVER OR LOCATION FOR FURTHER REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PROHIBITED.
 
 THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTIONALITY, INCLUDING POTENTIAL NEW FEATURES AND CONCEPTS, IN A SIMULATED ENVIRONMENT WITHOUT COMPLEX SET-UP OR INSTALLATION FOR THE PURPOSE DESCRIBED ABOVE. THE TECHNOLOGY/CONCEPTS REPRESENTED IN THIS DEMO/LAB MAY NOT REPRESENT FULL FEATURE FUNCTIONALITY AND MAY NOT WORK THE WAY A FINAL VERSION MAY WORK. WE ALSO MAY NOT RELEASE A FINAL VERSION OF SUCH FEATURES OR CONCEPTS. YOUR EXPERIENCE WITH USING SUCH FEATURES AND FUNCITONALITY IN A PHYSICAL ENVIRONMENT MAY ALSO BE DIFFERENT.
-T
-
 
 ## Requirements
 
@@ -82,24 +80,24 @@ T
 
 Command:
 ```
-git clone -b microsoftfabric --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fabric
+git clone -b ignite-lab --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git ignite
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
 	
 > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then reclone:
 ```
- rm fabric -r -f 
+ rm ignite -r -f 
 ```
    > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
 9. **Execute** the Powershell script with the following command:
 ```
-cd ./fabric/fabric/
+cd ./ignite/ignite/
 ```
 
 ```
-./fabricSetup.ps1
+./igniteSetup.ps1
 ```
     
    ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
