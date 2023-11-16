@@ -1,0 +1,624 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "databricks_workspace_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "databricks_managed_resource_group_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "sites_adx_thermostat_realtime_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "serverfarm_adx_thermostat_realtime_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "namespaces_adx_thermostat_occupancy_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "storage_account_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "mssql_server_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "mssql_database_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "mssql_administrator_login": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "sql_administrator_login_password": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('databricks_workspace_name')]",
+      "type": "Microsoft.Databricks/workspaces",
+      "apiVersion": "2023-02-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('databricks_managed_resource_group_name'))]"
+      },
+      "sku": {
+        "name": "premium"
+      }
+    },
+    {
+      "name": "[parameters('mssql_server_name')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2022-05-01-preview",
+      "location": "[parameters('location')]",
+      "kind": "v12.0",
+      "properties": {
+        "administratorLogin": "[parameters('mssql_administrator_login')]",
+        "administratorLoginPassword": "[parameters('sql_administrator_login_password')]",
+        "version": "12.0"
+      }
+    },
+    {
+      "name": "[concat(parameters('mssql_server_name'), '/', parameters('mssql_database_name'))]",
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2022-05-01-preview",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('mssql_server_name'))]"
+      ],
+      "sku": {
+        "name": "GP_S_Gen5",
+        "tier": "GeneralPurpose",
+        "family": "Gen5",
+        "capacity": 1
+      },
+      "kind": "v12.0,user,vcore,serverless",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "catalogCollation": "SQL_Latin1_General_CP1_CI_AS"
+      }
+    },
+    {
+      "name": "[concat(parameters('mssql_server_name'), '/AllowAzureIPs')]",
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2022-05-01-preview",
+      "dependsOn": [
+        "[concat('Microsoft.Sql/servers/', parameters('mssql_server_name'))]",
+        "[concat('Microsoft.Sql/servers/', parameters('mssql_server_name'),'/databases/' , parameters('mssql_database_name'))]"
+      ],
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "255.255.255.255"
+      }
+    },
+    {
+      "name": "[parameters('serverfarm_adx_thermostat_realtime_name')]",
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "S1"
+      },
+      "kind": "linux",
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2021-02-01",
+      "name": "[parameters('sites_adx_thermostat_realtime_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_adx_thermostat_realtime_name'))]"
+      ],
+      "kind": "app,linux",
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_adx_thermostat_realtime_name'))]",
+        "reserved": true,
+        "isXenon": false,
+        "hyperV": false,
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "linuxFxVersion": "PYTHON|3.9",
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": false,
+          "http20Enabled": false,
+          "functionAppScaleLimit": 0,
+          "minimumElasticInstanceCount": 1
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": false,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": false,
+        "redundancyMode": "None",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2021-02-01",
+      "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '/ftp')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_adx_thermostat_realtime_name'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2021-02-01",
+      "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '/scm')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_adx_thermostat_realtime_name'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2021-02-01",
+      "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '/web')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_adx_thermostat_realtime_name'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php",
+          "hostingstart.html"
+        ],
+        "netFrameworkVersion": "v4.0",
+        "linuxFxVersion": "PYTHON|3.9",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "remoteDebuggingVersion": "VS2019",
+        "httpLoggingEnabled": false,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "[concat('$', parameters('sites_adx_thermostat_realtime_name'))]",
+        "scmType": "None",
+        "use32BitWorkerProcess": true,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "localMySqlEnabled": false,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 1,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 1,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.0",
+        "ftpsState": "AllAllowed",
+        "preWarmedInstanceCount": 0,
+        "functionAppScaleLimit": 0,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 1,
+        "azureStorageAccounts": {}
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "apiVersion": "2021-02-01",
+      "name": "[concat(parameters('sites_adx_thermostat_realtime_name'), '/', parameters('sites_adx_thermostat_realtime_name'), '.azurewebsites.net')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_adx_thermostat_realtime_name'))]"
+      ],
+      "properties": {
+        "siteName": "[parameters('sites_adx_thermostat_realtime_name')]",
+        "hostNameType": "Verified"
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2021-11-01",
+      "name": "[parameters('namespaces_adx_thermostat_occupancy_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "disableLocalAuth": false,
+        "zoneRedundant": false,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/RootManageSharedAccessKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/occupancy')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "messageRetentionInDays": 1,
+        "partitionCount": 1,
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/thermostat')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "messageRetentionInDays": 1,
+        "partitionCount": 2,
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/default')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "defaultAction": "Allow",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/occupancy/occupancy')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_adx_thermostat_occupancy_name'), 'occupancy')]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/thermostat/thermostat')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/occupancy/$Default')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_adx_thermostat_occupancy_name'), 'occupancy')]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-11-01",
+      "name": "[concat(parameters('namespaces_adx_thermostat_occupancy_name'), '/thermostat/$Default')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_adx_thermostat_occupancy_name'), 'thermostat')]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_adx_thermostat_occupancy_name'))]"
+      ],
+      "properties": {}
+    },
+    {
+      "name": "[parameters('storage_account_name')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2020-08-01-preview",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "isHnsEnabled": "true",
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "cors": {
+          "corsRules": [
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "GET"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "POST"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "DELETE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "MERGE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/bronzeshortcutdata')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/data-source')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/adlsfabricshortcut')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    }
+  ]
+}
