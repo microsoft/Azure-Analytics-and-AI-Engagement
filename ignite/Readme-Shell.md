@@ -106,7 +106,7 @@ cd ./ignite/ignite/
 
 11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
-	![Authentication link and Device Code.](media/)
+	![Authentication link and Device Code.](media/cloud-shell-6.png)
      
 12. **Paste** the authentication code.
 
