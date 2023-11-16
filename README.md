@@ -13,7 +13,8 @@
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/Readme-shell.md">Healthcare</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/Readme-shell.md">Manufacturing</a> •
   <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a>
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a> •
+  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/ignite-lab/ignite/Readme-Shell.md">Ignite Lab</a>
 </div>
 
 <br>
