@@ -48,21 +48,19 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/cloud-shell.png)
 
-3. **Click** on the 'PowerShell'.
-
-4. **Click** 'Show advanced settings'.
+3. **Click** 'Show advanced settings'.
 
 	![Mount a Storage for running the Cloud Shell.](media/cloud-shell-2.png)
 
-> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 5 and 6.
+> **Note:** If you already have a storage mounted for Cloud Shell, you will not get this prompt. In that case, skip step 4 and 5.
 
-5. **Select** your 'Subscription', 'Cloud Shell region' and 'Resource Group'.
+4. **Select** your 'Subscription', 'Cloud Shell region' and 'Resource Group'.
 
 >**Note:** If you do not have an existing resource group please follow the steps mentioned [HERE](#creating-a-resource-group) to create one. Complete the task and then continue with the below steps.
 
 >Cloud Shell region need not be specific, you may select any region which works best for your experience.
 
-6. **Enter** the 'Storage account', 'File share' name and then **click** on 'Create storage'.
+5. **Enter** the 'Storage account', 'File share' name and then **click** on 'Create storage'.
 
 	![Mount a storage for running the Cloud Shell and Enter the Details.](media/cloud-shell-3.png)
 
@@ -70,13 +68,13 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 > It is not mandatory for storage account and file share name to be same.
 
-7. In the Azure Cloud Shell window, ensure that the PowerShell environment is selected.
+6. In the Azure Cloud Shell window, ensure that the PowerShell environment is selected.
 
 	![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-3.1.png)
 
 >**Note:** All the cmdlets used in the script works best in Powershell.	
 
-8. **Enter** the following command to clone the repository files in cloudshell.
+7. **Enter** the following command to clone the repository files in cloudshell.
 
 Command:
 ```
@@ -91,7 +89,7 @@ git clone -b ignite-lab --depth 1 --single-branch https://github.com/microsoft/A
 ```
    > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
-9. **Execute** the Powershell script with the following command:
+8. **Execute** the Powershell script with the following command:
 ```
 cd ./ignite/ignite/
 ```
@@ -102,57 +100,57 @@ cd ./ignite/ignite/
     
    ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
       
-10. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter this code in next step.
+9. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter this code in next step.
 
-11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+10. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
 	![Authentication link and Device Code.](media/cloud-shell-6.png)
      
-12. **Paste** the authentication code.
+11. **Paste** the authentication code.
 
 	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
 
-13. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+12. **Select** the user account that is used for logging into the Azure Portal.
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
 
-14. **Click** on 'Continue' button.
+13. **Click** on 'Continue' button.
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png)
 
-15. **Close** the browser tab once you see the message box.
+14. **Close** the browser tab once you see the message box.
 
 	![Authentication done.](media/cloud-shell-9.png)  
 
-16. **Navigate back** to your Azure Cloud Shell execution window.
+15. **Navigate back** to your Azure Cloud Shell execution window.
 
-17. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
+16. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
 
-18. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+17. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
 	![Authentication link and Device code.](media/cloud-shell-10.png)
 
-19. A new browser window will launch.
+18. A new browser window will launch.
 
-20. **Paste** the authentication code you copied from the shell above.
+19. **Paste** the authentication code you copied from the shell above.
 
 	![Enter the Resource Group name.](media/cloud-shell-11.png)
 
-21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+20. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.png)
 
-22. **Click** on 'Continue'.
+21. **Click** on 'Continue'.
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
 
-23. **Close** the browser tab once you see the message box.
+22. **Close** the browser tab once you see the message box.
 
 	![Close the browser tab.](media/cloud-shell-13.png)
 
-24. **Go back** to Azure Cloud Shell execution window.
+23. **Go back** to Azure Cloud Shell execution window.
 
-25. **Copy** your subscription name from the screen and **paste** it in the prompt.
+24. **Copy** your subscription name from the screen and **paste** it in the prompt.
 
     ![Close the browser tab.](media/select-sub.png)
 	
@@ -161,11 +159,11 @@ cd ./ignite/ignite/
 > - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
 > - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading the data.
 
-26. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
+25. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-27. **Enter** desired SQL Password.
+26. **Enter** desired SQL Password.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
@@ -175,23 +173,23 @@ cd ./ignite/ignite/
 
 >**Note:** The deployment will take approximately 15-20 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-37. After the script execution is complete, the user is prompted "--Execution Complete--"
+27. After the script execution is complete, the user is prompted "--Execution Complete--"
 	
-38. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
+28. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
 
 	![Close the browser.](media/demo-1.1.png)
 
 	>**Note:** The resource group name starts with 'fabric-dpoc-' with some random unique suffix in the end.
 
-39. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
+29. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
 	![Close the browser.](media/demo-1.png)
 
-40. **Click** "Browse" and a new tab will open.
+30. **Click** "Browse" and a new tab will open.
 
 	![Close the browser.](media/demo-2.png)
 
-41. **Wait** for the tab to load till you get the following screen.
+31. **Wait** for the tab to load till you get the following screen.
 
 	![Close the browser.](media/demo-3.png)
 
@@ -200,48 +198,48 @@ cd ./ignite/ignite/
 
 ## Table of contents
 
-### Exercise 1: Data Engineering experience, Including Data ingestion from a spectrum of analytical data sources into OneLake
+- [Exercise 1: Data Engineering experience, Including Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience-including-data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake)
 
-- Task 1.1: Create a Microsoft Fabric enabled workspace
+	- [Task 1.1: Create a Microsoft Fabric enabled workspace](#task-11-create-a-microsoft-fabric-enabled-workspace)
 
-- Task 1.2: Create/Build a Lakehouse
+	- [Task 1.2: Create/Build a Lakehouse](#task-12-createbuild-a-lakehouse)
 
-- Task 1.3: Data ingestion
-    -   Using Data Pipelines/Data Flow ‘No Code-Low Code experience’
-	-   Using the ‘New Shortcut’ option from external data sources
-    -   Using Spark Notebook ‘Code-first experience’
+	- [Task 1.3: Data ingestion](#task-13-data-ingestion)
+		-   [Using Data Pipelines/Data Flow ‘No Code-Low Code experience’](#option-1-using-data-pipelinesdata-flow-no-code-low-code-experience)
+		-   [Using the ‘New Shortcut’ option from external data sources](#option-2-using-the-onelake-shortcuts-option-from-external-data-sources)
+		-   [Using Spark Notebook ‘Code-first experience’](#option-3-using-spark-notebook-code-first-experience)
 
-### Exercise 2: Explore an analytics pipeline using open Delta format and Azure Databricks Delta Live Tables. Stitch data (landed earlier) to create a combined data product to build a simple Lakehouse and integrate with OneLake
+- [Exercise 2: Explore an analytics pipeline using open Delta format and Azure Databricks Delta Live Tables. Stitch data (landed earlier) to create a combined data product to build a simple Lakehouse and integrate with OneLake](#exercise-2-explore-an-analytics-pipeline-using-open-delta-format-and-azure-databricks-delta-live-tables-stitch-data-landed-earlier-to-create-a-combined-data-product-to-build-a-simple-lakehouse-and-integrate-with-onelake)
 
-- Task 2.1: Set up an Azure Databricks environment
+	- [Task 2.1: Set up an Azure Databricks environment](#task-21-set-up-an-azure-databricks-environment)
 
-- Task 2.2: Create a Delta Live Table pipeline
+	- [Task 2.2: Create a Delta Live Table pipeline](#task-22-create-a-delta-live-table-pipeline)
 
-- Task 2.3: Explore SQL Analytics with Lakehouse SQL-endpoint
+	- [Task 2.3: Explore SQL Analytics with Lakehouse SQL-endpoint](#task-23-explore-sql-analytics-with-lakehouse-sql-endpoint)
 
-### Exercise 3: Data Science experience including Machine Learning scenarios
+- [Exercise 3: Data Science experience including Machine Learning scenarios](#exercise-3-data-science-experience-including-machine-learning-scenarios)
 
-- Task 3.1: Build ML models, experiments and a Log ML model in the built-in model registry using MLflow and batch scoring
+	- [Task 3.1: Build ML models, experiments and a Log ML model in the built-in model registry using MLflow and batch scoring](#task-31-build-ml-models-experiments-log-ml-model-in-the-built-in-model-registry-using-mlflow-and-batch-scoring)
 
-### Exercise 4: Power BI reports using Direct Lake Mode
+- [Exercise 4: Power BI reports using Direct Lake Mode](#exercise-4-power-bi-reports-with-direct-lake)
 
-- Task 4.1: Leverage Power BI to derive actionable insights from data in Lakehouse using Direct Lake mode
+	- [Task 4.1: Leverage Power BI to derive actionable insights from data in Lakehouse using Direct Lake mode](#task-41-leverage-power-bi-to-derive-actionable-insights-from-data-in-lakehouse-using-direct-lake-mode)
 
-### Exercise 5: Data Warehouse experience
+- [Exercise 5: Data Warehouse experience, explore SQL Analytics with Data Warehouse](#exercise-5-data-warehouse-experience-explore-sql-analytics-with-data-warehouse)
 
-- Task 5.1: Create a Data Warehouse
-- Task 5.2: Load data in the warehouse
-- Task 5.3: Create virtual Data Warehouses
+	- [Task 5.1: Create a Data Warehouse](#task-51-create-a-data-warehouse)
+	- [Task 5.2: Load data in the warehouse](#task-52-load-data-in-the-warehouse)
+	- [Task 5.3: Create virtual Data Warehouses](#task-53-create-virtual-data-warehouses)
 
-### Exercise 6: Real-time Analytics experience to explore Streaming data using KQL DB
+- [Exercise 6: Real-time Analytics experience to explore Streaming data using KQL DB](#exercise-6-real-time-analytics-experience-to-explore-streaming-data-using-kql-db)
 
-- Task 6.1: Create a KQL Database
+	- [Task 6.1: Create a KQL Database](#task-61-create-a-kql-database)
 
-- Task 6.2: Ingest real-time/historical data into KQL DB
+	- [Task 6.2: Ingest real-time/historical data into KQL DB](#task-62-ingest-real-timehistorical-data-into-kql-db)
 
-- Task 6.3: Analyze/discover patterns, identify anomalies and outliers using Kusto Query Language (KQL)
+	- [Task 6.3: Analyze/discover patterns, identify anomalies and outliers using Kusto Query Language (KQL)](#task-63-analyzediscover-patterns-identify-anomalies-and-outliers-using-kusto-query-language)
 
-- Task 6.4: Create a Real-time Power BI report using KQL DB/KQL Query
+	- [Task 6.4: Create a Real-time Power BI report using KQL DB/KQL Query](#task-64-create-a-real-time-power-bi-report-using-kql-dbkql-query)
 
 
 ## Overview
@@ -1411,6 +1409,8 @@ Fifth, we explored Streaming data using KQL DB for a Real-time Analytics experie
 
 Finally, we leveraged Power BI to derive actionable insights from data in the Lakehouse using Direct Lake mode.
 
+
+## Appendix
 
 ### Creating a Resource Group
 
