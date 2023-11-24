@@ -938,11 +938,11 @@ Next, as Wendy, the business analyst let us see how we can leverage the Power BI
 
 	![Close the browser.](media/task-3.1.10.new1.png)
 
-3. Click on **Create a report** and **Start from scratch**.
+3. Click on the **dropdown icon** beside 'Explore this data' and select **Auto-create a report**.
 
-	![Close the browser.](media/task-3.1.10.new2.png)
+	![Close the browser.](media/task-3.1.10.new7.png)
 
-4. You can **drag and drop visual** from visualization pane.
+4. You can **edit** the auto-generated report according to your choice. **Drag and drop visual** from visualization pane.
 
 5. **Goto** the reports location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab/ignite/artifacts/reports).
 
