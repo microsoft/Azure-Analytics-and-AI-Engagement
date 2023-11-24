@@ -99,71 +99,79 @@ cd ./ignite/ignite/
 ```
     
    ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
-      
-9. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter this code in next step.
 
-10. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
+9. **Enter** 'Y' to confirm for the agreement.
+
+	![Commands to run the PowerShell Script.](media/cloud-shell-5.1new1.png)
+      
+10. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter this code in next step.
+
+11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
 
 	![Authentication link and Device Code.](media/cloud-shell-6.png)
      
-11. **Paste** the authentication code.
+12. **Paste** the authentication code.
 
 	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
 
-12. **Select** the user account that is used for logging into the Azure Portal.
+13. **Select** the user account that is used for logging into the Azure Portal.
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
 
-13. **Click** on 'Continue' button.
+14. **Click** on 'Continue' button.
 
 	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png)
 
-14. **Close** the browser tab once you see the message box.
+15. **Close** the browser tab once you see the message box.
 
 	![Authentication done.](media/cloud-shell-9.png)  
 
-15. **Navigate back** to your Azure Cloud Shell execution window.
+16. **Navigate back** to your Azure Cloud Shell execution window.
 
-16. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
+17. **Copy** the code on screen to authenticate Azure PowerShell script for creating reports in Power BI.
 
-17. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+18. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
 
 	![Authentication link and Device code.](media/cloud-shell-10.png)
 
-18. A new browser window will launch.
+19. A new browser window will launch.
 
-19. **Paste** the authentication code you copied from the shell above.
+20. **Paste** the authentication code you copied from the shell above.
 
 	![Enter the Resource Group name.](media/cloud-shell-11.png)
 
-20. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
+21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.png)
 
-21. **Click** on 'Continue'.
+22. **Click** on 'Continue'.
 
 	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
 
-22. **Close** the browser tab once you see the message box.
+23. **Close** the browser tab once you see the message box.
 
 	![Close the browser tab.](media/cloud-shell-13.png)
 
-23. **Go back** to Azure Cloud Shell execution window.
+24. **Go back** to Azure Cloud Shell execution window.
 
-24. **Copy** your subscription name from the screen and **paste** it in the prompt.
+25. **Copy** your subscription name from the screen and **paste** it in the prompt.
 
     ![Close the browser tab.](media/select-sub.png)
+
+26. **Enter** 'Y' to confirm for the selected subscription.
+
+	![Prompt](media/select-sub-new1.png)
 	
 > **Notes:**
 > - The user with single subscription won't be prompted to select subscription.
-> - The subscription highlighted in yellow will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
+> - The subscription highlighted in yellow will be selected by default if you do not enter any desired subscription. Please select the subscription carefully, as it may break the execution further.
 > - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading the data.
 
-25. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
+27. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, westus2 etc)
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-26. **Enter** desired SQL Password.
+28. **Enter** desired SQL Password.
 
 	![Enter Resource Group name.](media/cloud-shell-14.png)
 
@@ -173,23 +181,23 @@ cd ./ignite/ignite/
 
 >**Note:** The deployment will take approximately 15-20 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-27. After the script execution is complete, the user is prompted "--Execution Complete--"
+29. After the script execution is complete, the user is prompted "--Execution Complete--"
 	
-28. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
+30. **Go to** Azure Portal and **search** for 'fabric-dpoc' and **click** on the resource group name which was created by the script.
 
 	![Close the browser.](media/demo-1.1.png)
 
 	>**Note:** The resource group name starts with 'fabric-dpoc-' with some random unique suffix in the end.
 
-29. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
+31. In the search pane of the resource group **type** "app-realtime-kpi-analytics..." and **select** the resource.
 
 	![Close the browser.](media/demo-1.png)
 
-30. **Click** "Browse" and a new tab will open.
+32. **Click** "Browse" and a new tab will open.
 
 	![Close the browser.](media/demo-2.png)
 
-31. **Wait** for the tab to load till you get the following screen.
+33. **Wait** for the tab to load till you get the following screen.
 
 	![Close the browser.](media/demo-3.png)
 
@@ -494,57 +502,53 @@ This is something exciting! You will see how easy it is to create shortcuts with
 
 	![Lakehouse.](media/task-1.3-ext-shortcut5.png)
 
-9. In the resource window, click on the **Hamburger icon**.
+9. In the resource window, scroll down in the left navigation pane to the **Security + networking** section.
 
-	![Lakehouse.](media/task-1.3-ext-shortcut5.1.png)
-
-10. Scroll down to the **Security + networking** section.
-
-11. Click on **Access keys**.
+10. Click on **Access keys**.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut5.2.png)
 
-12. Scroll down and click on the **Show** button under **key1**.
+11. Scroll down and click on the **Show** button under **key1**.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut6.png)
 
-13. Click on the **Copy to clickboard** button.
+12. Click on the **Copy to clickboard** button.
 
-14. Save this information in a notepad for further use.
+13. Save this information in a notepad for further use.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut7.png)
 
-15. Scroll down in the left pane.
+14. Scroll down in the left pane.
 
-16. Select **Endpoints** from the **Settings** section.
+15. Select **Endpoints** from the **Settings** section.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut7.1.png)
 
-17. Scroll down and copy the **Data Lake Storage** endpoint in the **Data Lake Storage** section.
+16. Scroll down and copy the **Data Lake Storage** endpoint in the **Data Lake Storage** section.
 
-18. Save the information in a notepad for further use.
+17. Save the information in a notepad for further use.
 
 >**Note:** You may see different endpoints in addtion to the ones shown in the screen below. Make sure to select **only** the **Data Lake Storage** endpoint.
 
 ![Lakehouse.](media/task-1.3-ext-shortcut8.png)
 
-19. Navigate back to the **Power BI** workspace (i.e. the Power BI tab in which we working earlier).
+18. Navigate back to the **Power BI** workspace (i.e. the Power BI tab in which we working earlier).
 
-20. Paste the endpoint copied in **step 18** under the **URL** field.
+19. Paste the endpoint copied in **step 18** under the **URL** field.
 
-21. In the **Authentiation kind** dropdown, select **Account Key**.
+20. In the **Authentiation kind** dropdown, select **Account Key**.
 
-22. Paste the **account key** copied in **step number 13**.
+21. Paste the **account key** copied in **step number 13**.
 
-23. Click on **Next**.
+22. Click on **Next**.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut9.png)
 
-24. Under **Shortcut Name**, type **data**.
+23. Under **Shortcut Name**, type **data**.
 
-25. Under **Sub Path**, type **/adlsfabricshortcut**.
+24. Under **Sub Path**, type **/adlsfabricshortcut**.
 
-26. Click on the **Create** button.
+25. Click on the **Create** button.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut10.png)
 
@@ -552,35 +556,35 @@ Litware has curated marketing data and sales data processed by Azure Databricks 
 
 *We will now create another shortcut for Litware Inc. data.*
 
-27. Click on the **three dots** to the right of **Files**.
+26. Click on the **three dots** to the right of **Files**.
 
-28. Click on **New shortcut**.
+27. Click on **New shortcut**.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut3.png)
 
-29. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
+28. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut4.png)
 
 >**Note:** Wait for the screen to load.
 
-30. Paste the endpoint copied in **step 18** under the **URL** field.
+29. Paste the endpoint copied in **step 18** under the **URL** field.
 
 >**Note:** The details entered earlier will be auto fetched. If not, follow **steps 31 and 32** below.
 
-31. In the **Authentiation kind** dropdown, select **Account Key**.
+30. In the **Authentiation kind** dropdown, select **Account Key**.
 
-32. Paste the **account key** copied in **step number 13**.
+31. Paste the **account key** copied in **step number 13**.
 
-33. Click on **Next**.
+32. Click on **Next**.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut9.png)
 
-34. Under **Shortcut Name**, type **sales-transaction-litware**.
+33. Under **Shortcut Name**, type **sales-transaction-litware**.
 
-35. Under **Sub Path**, type **/bronzeshortcutdata**.
+34. Under **Sub Path**, type **/bronzeshortcutdata**.
 
-36. Click on the **Create** button.
+35. Click on the **Create** button.
 
 	![Lakehouse.](media/task-1.3-ext-shortcut13.png)
 
@@ -609,65 +613,69 @@ As Data Engineer, another option for ingesting the data. This time Eva prefers u
 
 	![Datawarehouse.](media/task-1.3-notebook-new4.png)
 
-6. Navigate back to the **Power BI workspace**, click on **Power BI** in the bottom left corner and select **Data Science**.
+6. **Click** on the 'Download' button.
+
+	![Datawarehouse.](media/task-1.3-notebook-new5.png)
+
+7. Navigate back to the **Power BI workspace**, click on **Power BI** in the bottom left corner and select **Data Science**.
 
 	![Datawarehouse.](media/task-1.3-notebook-5.png)
 
-7. Click on **Import notebook**.
+8. Click on **Import notebook**.
 
 	![Datawarehouse.](media/task-1.3-notebook-6.png)
 	
-8. In the **Import Status**, click on the **Upload** button.
+9. In the **Import Status**, click on the **Upload** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-7.png)
 	
-9. **Browse** to the location from your local system where you downloaded the notebooks, select both the notebooks and click on the **Open** button.
+10. **Browse** to the location from your local system where you downloaded the notebooks, select both the notebooks and click on the **Open** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-8.png)
 
-10. Click on the **notification** icon to check the upload status. 
+11. Click on the **notification** icon to check the upload status. 
 
 	![Datawarehouse.](media/task-1.3-notebook-17.png)
 
-11. Once the upload is complete, the notification will display **Imported succussfully**. Click on **Go to Workspace**.
+12. Once the upload is complete, the notification will display **Imported succussfully**. Click on **Go to Workspace**.
 
 	![Datawarehouse.](media/task-1.3-notebook-9.png)
 
-12. In the workspace, click on the **01 Marketing Data to Lakehouse (Bronze) - Code-First Experience** notebook.
+13. In the workspace, click on the **01 Marketing Data to Lakehouse (Bronze) - Code-First Experience** notebook.
 
 	![Datawarehouse.](media/task-1.3-notebook-10.png)
 
-13. In the left pane, click on the **Missing Lakehouse** button and select **Remove all Lakehouses**.
+14. In the left pane, click on the **Missing Lakehouse** button and select **Remove all Lakehouses**.
 
 ![Datawarehouse.](media/task-1.3-notebook-11.png)
 
 >**Note:** If you do not see Missing lakehouse, you may see **lakehouse{Name}**, click on it to get the **Remove all Lakehouses** option.
 
-14. Click on **Continue** in the pop-up window.
+15. Click on **Continue** in the pop-up window.
 
 	![Datawarehouse.](media/task-1.3-notebook-12.png)
 
-15. In the left navigation pane, click on the **Add** button.
+16. In the left navigation pane, click on the **Add** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-13.png)
 
-16. In the pop-up, select the **Existing Lakehouse** radio button and then click on the **Add** button.
+17. In the pop-up, select the **Existing Lakehouse** radio button and then click on the **Add** button.
 
 	![Datawarehouse.](media/task-1.3-notebook-14.png)
 
-17. Click on the **lakehouseBronze** checkbox and then click on **Add**.
+18. Click on the **lakehouseBronze** checkbox and then click on **Add**.
 
 	![Datawarehouse.](media/task-1.3-notebook-15.png)
 
 *This notebook is used to get the data to the Bronze Lakehouse.*
 
-18. Go to the cell with name **Shortcut Folder Path**, replace **#WORKSPACE_NAME#** with the Fabric Workspace name you are working on and also verify the lakehouse name which should be the Bronze Lakehouse you created.
+19. Go to the cell with name **Shortcut Folder Path**, replace **#WORKSPACE_NAME#** with the Fabric Workspace name you are working on and also verify the lakehouse name which should be the Bronze Lakehouse you created.
 
 >**Note:** Make sure you delete the "#" too in above step
 
    ![Close the browser.](media/task-1.3-notebook-18.png)
 
-19. Click on **Run all**.
+20. Click on **Run all**.
 
 	![Close the browser.](media/task-1.3-notebook-16.png)
 
