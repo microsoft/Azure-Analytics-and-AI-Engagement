@@ -698,6 +698,7 @@ step 28 finally **click** on the 'Next' button.
 
 	|	Notebook	|	Lakehouse	|
 	| -----------	| ------------- |
+	|	01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb	|	lakehouseBronze	|
 	|	02 Bronze to Silver layer_ Medallion Architecture.ipynb	|	lakehouseSilver	|
 	|	03 Silver to Gold layer_ Medallion Architecture.ipynb	|	lakehouseGold	|
 	|	04 Churn Prediction Using MLFlow From Silver To Gold Layer	|	lakehouseSilver	|
