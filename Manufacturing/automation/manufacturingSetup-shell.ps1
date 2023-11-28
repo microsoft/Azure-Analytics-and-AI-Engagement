@@ -315,6 +315,7 @@ $containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
 foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+    $destinationSasKey = "?$destinationSasKey"
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
     & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
@@ -322,6 +323,7 @@ foreach($container in $containers)
 RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "mfgdemodata" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemodata/$($destinationSasKey)"
 & $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/mfgdemodata/telemetryp.csv" $destinationUri --recursive
 
@@ -334,22 +336,27 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/mfgdemoda
 #& $azCopyCommand copy "https://stcognitivesearch001.blob.core.windows.net/formrecogoutput" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "anomalydetection" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/anomalydetection$($destinationSasKey)"
 & $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/anomalydetection" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "ppecompliancedetection" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/ppecompliancedetection$($destinationSasKey)"
 & $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/ppecompliancedetection" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "qualitycontrol" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/qualitycontrol$($destinationSasKey)"
 & $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/qualitycontrol" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "azureml-mfg" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/azureml-mfg$($destinationSasKey)"
 & $azCopyCommand copy "https://manufacturingpoc.blob.core.windows.net/azureml-mfg" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $dataLakeStorageBlobUrl = "https://$($dataLakeAccountName).blob.core.windows.net/"
 
 $dataDirectories = @{
