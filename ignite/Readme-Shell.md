@@ -40,6 +40,51 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 * Once the resources have been setup, ensure that your AD user and synapse workspace have “Storage Blob Data Owner” role assigned on storage account name starting with “storage”.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
+## Table of contents
+
+- [Exercise 1: Data Engineering experience, Including Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience-including-data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake)
+
+	- [Task 1.1: Create a Microsoft Fabric enabled workspace](#task-11-create-a-microsoft-fabric-enabled-workspace)
+
+	- [Task 1.2: Create/Build a Lakehouse](#task-12-createbuild-a-lakehouse)
+
+	- [Task 1.3: Data ingestion](#task-13-data-ingestion)
+		-   [Using Data Pipelines/Data Flow ‘No Code-Low Code experience’](#option-1-using-data-pipelinesdata-flow-no-code-low-code-experience)
+		-   [Using the ‘New Shortcut’ option from external data sources](#option-2-using-the-onelake-shortcuts-option-from-external-data-sources)
+		-   [Using Spark Notebook ‘Code-first experience’](#option-3-using-spark-notebook-code-first-experience)
+
+- [Exercise 2: Explore an analytics pipeline using open Delta format and Azure Databricks Delta Live Tables. Stitch data (landed earlier) to create a combined data product to build a simple Lakehouse and integrate with OneLake](#exercise-2-explore-an-analytics-pipeline-using-open-delta-format-and-azure-databricks-delta-live-tables-stitch-data-landed-earlier-to-create-a-combined-data-product-to-build-a-simple-lakehouse-and-integrate-with-onelake)
+
+	- [Task 2.1: Set up an Azure Databricks environment](#task-21-set-up-an-azure-databricks-environment)
+
+	- [Task 2.2: Create a Delta Live Table pipeline](#task-22-create-a-delta-live-table-pipeline)
+
+	- [Task 2.3: Explore SQL Analytics with Lakehouse SQL-endpoint](#task-23-explore-sql-analytics-with-lakehouse-sql-endpoint)
+
+- [Exercise 3: Data Science experience including Machine Learning scenarios](#exercise-3-data-science-experience-including-machine-learning-scenarios)
+
+	- [Task 3.1: Build ML models, experiments and a Log ML model in the built-in model registry using MLflow and batch scoring](#task-31-build-ml-models-experiments-log-ml-model-in-the-built-in-model-registry-using-mlflow-and-batch-scoring)
+
+- [Exercise 4: Power BI reports using Direct Lake Mode](#exercise-4-power-bi-reports-with-direct-lake)
+
+	- [Task 4.1: Leverage Power BI to derive actionable insights from data in Lakehouse using Direct Lake mode](#task-41-leverage-power-bi-to-derive-actionable-insights-from-data-in-lakehouse-using-direct-lake-mode)
+
+- [Exercise 5: Data Warehouse experience, explore SQL Analytics with Data Warehouse](#exercise-5-data-warehouse-experience-explore-sql-analytics-with-data-warehouse)
+
+	- [Task 5.1: Create a Data Warehouse](#task-51-create-a-data-warehouse)
+	- [Task 5.2: Load data in the warehouse](#task-52-load-data-in-the-warehouse)
+	- [Task 5.3: Create virtual Data Warehouses](#task-53-create-virtual-data-warehouses)
+
+- [Exercise 6: Real-time Analytics experience to explore Streaming data using KQL DB](#exercise-6-real-time-analytics-experience-to-explore-streaming-data-using-kql-db)
+
+	- [Task 6.1: Create a KQL Database](#task-61-create-a-kql-database)
+
+	- [Task 6.2: Ingest real-time/historical data into KQL DB](#task-62-ingest-real-timehistorical-data-into-kql-db)
+
+	- [Task 6.3: Analyze/discover patterns, identify anomalies and outliers using Kusto Query Language (KQL)](#task-63-analyzediscover-patterns-identify-anomalies-and-outliers-using-kusto-query-language)
+
+	- [Task 6.4: Create a Real-time Power BI report using KQL DB/KQL Query](#task-64-create-a-real-time-power-bi-report-using-kql-dbkql-query)
+
 ## Before you begin
 
 1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/).
@@ -203,51 +248,6 @@ cd ./ignite/ignite/
 
 
 **The estimated time to complete this lab is 45-60 minutes.**
-
-## Table of contents
-
-- [Exercise 1: Data Engineering experience, Including Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience-including-data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake)
-
-	- [Task 1.1: Create a Microsoft Fabric enabled workspace](#task-11-create-a-microsoft-fabric-enabled-workspace)
-
-	- [Task 1.2: Create/Build a Lakehouse](#task-12-createbuild-a-lakehouse)
-
-	- [Task 1.3: Data ingestion](#task-13-data-ingestion)
-		-   [Using Data Pipelines/Data Flow ‘No Code-Low Code experience’](#option-1-using-data-pipelinesdata-flow-no-code-low-code-experience)
-		-   [Using the ‘New Shortcut’ option from external data sources](#option-2-using-the-onelake-shortcuts-option-from-external-data-sources)
-		-   [Using Spark Notebook ‘Code-first experience’](#option-3-using-spark-notebook-code-first-experience)
-
-- [Exercise 2: Explore an analytics pipeline using open Delta format and Azure Databricks Delta Live Tables. Stitch data (landed earlier) to create a combined data product to build a simple Lakehouse and integrate with OneLake](#exercise-2-explore-an-analytics-pipeline-using-open-delta-format-and-azure-databricks-delta-live-tables-stitch-data-landed-earlier-to-create-a-combined-data-product-to-build-a-simple-lakehouse-and-integrate-with-onelake)
-
-	- [Task 2.1: Set up an Azure Databricks environment](#task-21-set-up-an-azure-databricks-environment)
-
-	- [Task 2.2: Create a Delta Live Table pipeline](#task-22-create-a-delta-live-table-pipeline)
-
-	- [Task 2.3: Explore SQL Analytics with Lakehouse SQL-endpoint](#task-23-explore-sql-analytics-with-lakehouse-sql-endpoint)
-
-- [Exercise 3: Data Science experience including Machine Learning scenarios](#exercise-3-data-science-experience-including-machine-learning-scenarios)
-
-	- [Task 3.1: Build ML models, experiments and a Log ML model in the built-in model registry using MLflow and batch scoring](#task-31-build-ml-models-experiments-log-ml-model-in-the-built-in-model-registry-using-mlflow-and-batch-scoring)
-
-- [Exercise 4: Power BI reports using Direct Lake Mode](#exercise-4-power-bi-reports-with-direct-lake)
-
-	- [Task 4.1: Leverage Power BI to derive actionable insights from data in Lakehouse using Direct Lake mode](#task-41-leverage-power-bi-to-derive-actionable-insights-from-data-in-lakehouse-using-direct-lake-mode)
-
-- [Exercise 5: Data Warehouse experience, explore SQL Analytics with Data Warehouse](#exercise-5-data-warehouse-experience-explore-sql-analytics-with-data-warehouse)
-
-	- [Task 5.1: Create a Data Warehouse](#task-51-create-a-data-warehouse)
-	- [Task 5.2: Load data in the warehouse](#task-52-load-data-in-the-warehouse)
-	- [Task 5.3: Create virtual Data Warehouses](#task-53-create-virtual-data-warehouses)
-
-- [Exercise 6: Real-time Analytics experience to explore Streaming data using KQL DB](#exercise-6-real-time-analytics-experience-to-explore-streaming-data-using-kql-db)
-
-	- [Task 6.1: Create a KQL Database](#task-61-create-a-kql-database)
-
-	- [Task 6.2: Ingest real-time/historical data into KQL DB](#task-62-ingest-real-timehistorical-data-into-kql-db)
-
-	- [Task 6.3: Analyze/discover patterns, identify anomalies and outliers using Kusto Query Language (KQL)](#task-63-analyzediscover-patterns-identify-anomalies-and-outliers-using-kusto-query-language)
-
-	- [Task 6.4: Create a Real-time Power BI report using KQL DB/KQL Query](#task-64-create-a-real-time-power-bi-report-using-kql-dbkql-query)
 
 
 ## Overview
