@@ -271,58 +271,72 @@ else {
     RefreshTokens
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+    $destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/customcsv" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/data-source$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/data-source" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "delta-files" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/delta-files$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/delta-files" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "fhirdata" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/fhirdata$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/fhirdata" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "formrecogoutput" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/formrecogoutput$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/formrecogoutput" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "hospitalincidentkdm" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/hospitalincidentkdm$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/hospitalincidentkdm" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "hospitalincidentsearch-skillset-image-projection" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/hospitalincidentsearch-skillset-image-projection$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/hospitalincidentsearch-skillset-image-projection" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "patientintakeform" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/patientintakeform$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/patientintakeform" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "predictiveanalytics" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/predictiveanalytics$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/predictiveanalytics" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "twitter" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/twitter$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/twitter" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/webappassets$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/webappassets" $destinationUri --recursive
   
     $destinationSasKey = New-AzStorageContainerSASToken -Container "healthcare-reports" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/healthcare-reports$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/healthcare-reports" $destinationUri --recursive
   
     $destinationSasKey = New-AzStorageContainerSASToken -Container "consolidated-report" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/consolidated-report$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/consolidated-report" $destinationUri --recursive
   
     $destinationSasKey = New-AzStorageContainerSASToken -Container "sthealthcare2" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
     $destinationUri = "https://$($dataLakeAccountName).blob.core.windows.net/sthealthcare2$($destinationSasKey)"
     & $azCopyCommand copy "https://pochealthcare2.blob.core.windows.net/sthealthcare2" $destinationUri --recursive
 
@@ -793,6 +807,7 @@ else {
     
     $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
     $sasTokenAcc = New-AzStorageAccountSASToken -Context $dataLakeContext -Service Blob -ResourceType Service -Permission rwdl
+    $sasTokenAcc = "?$sasTokenAcc"
 
     foreach ($name in $scripts) {
         if ($name.BaseName -eq "tableschema" -or $name.BaseName -eq "storedProcedure" -or $name.BaseName -eq "viewDedicatedPool" -or $name.BaseName -eq "sqluser" -or $name.BaseName -eq "sql_user_hc2" -or $name.BaseName -eq "configurableTableQuery") {
@@ -1262,6 +1277,7 @@ else {
     $startingTime = Get-Date
     $endingTime = $startingTime.AddDays(6)
     $sasToken = New-AzStorageContainerSASToken -Container "patientintakeform" -Context $dataLakeContext -Permission rwdl -StartTime $startingTime -ExpiryTime $endingTime
+    $sasToken = "?$sasToken"
 
     #Replace values in create_model.py
     (Get-Content -path artifacts/formrecognizer/create_model.py -Raw) | Foreach-Object { $_ `
