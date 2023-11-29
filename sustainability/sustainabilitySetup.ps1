@@ -290,10 +290,12 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 RefreshTokens
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://sustainabilitypoc.blob.core.windows.net/customcsv" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets$($destinationSasKey)"
 & $azCopyCommand copy "https://sustainabilitypoc.blob.core.windows.net/webappassets" $destinationUri --recursive
 
@@ -307,6 +309,7 @@ $containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
 foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+    $destinationSasKey = "?$destinationSasKey"
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
     & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
