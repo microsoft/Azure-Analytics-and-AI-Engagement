@@ -262,7 +262,8 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 $StartTime = Get-Date
 $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
-$sasToken = "?$sasToken"
+# Check if $destinationSasKey contains ? Mark
+if (-not $sasToken.StartsWith('?')) { $sasToken = "?$sasToken"}
 
 #download azcopy command
 if ([System.Environment]::OSVersion.Platform -eq "Unix")
@@ -287,9 +288,7 @@ if ([System.Environment]::OSVersion.Platform -eq "Unix")
         chmod +x azcopy
         cd ..
         $azCopyCommand += "\azcopy"
-}
-else
-{
+} else {
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
 
         if (!$azCopyLink)
@@ -320,17 +319,17 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://fsipoc.blob.core.windows.net/customcsv" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets$($destinationSasKey)"
 & $azCopyCommand copy "https://fsipoc.blob.core.windows.net/webappassets" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "risk" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/risk$($destinationSasKey)"
 & $azCopyCommand copy "https://fsipoc.blob.core.windows.net/risk" $destinationUri --recursive
 
@@ -340,11 +339,11 @@ RefreshTokens
 $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $dataLakeAccountName)[0].Value
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 $containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
-
+ 
 foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
     & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
