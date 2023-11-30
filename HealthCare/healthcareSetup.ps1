@@ -279,6 +279,7 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 $StartTime = Get-Date
 $EndTime = $StartTime.AddDays(6)
 $sasToken = New-AzStorageContainerSASToken -Container "form-datasets" -Context $dataLakeContext -Permission rwdl -StartTime $StartTime -ExpiryTime $EndTime
+$sasToken = "?$sasToken"
 #download azcopy command
 if ([System.Environment]::OSVersion.Platform -eq "Unix")
 {
@@ -334,6 +335,7 @@ $containers=Get-ChildItem "./artifacts/storageassets" | Select BaseName
 foreach($container in $containers)
 {
     $destinationSasKey = New-AzStorageContainerSASToken -Container $container.BaseName -Context $dataLakeContext -Permission rwdl
+    $destinationSasKey = "?$destinationSasKey"
     $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/$($container.BaseName)/$($destinationSasKey)"
     & $azCopyCommand copy "./artifacts/storageassets/$($container.BaseName)/*" $destinationUri --recursive
 }
@@ -341,26 +343,32 @@ foreach($container in $containers)
 RefreshTokens
  
 $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/webappassets/$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/webappassets" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "customcsv" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customcsv$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/customcsv" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "predictiveanalytics" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/predictiveanalytics$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/predictiveanalytics" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "marketingdata" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/marketingdata$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/marketingdata" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "saphana-finance-data" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/saphana-finance-data$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/saphana-finance-data" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "healthcare-assets" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/healthcare-assets$($destinationSasKey)"
 & $azCopyCommand copy "https://pochealthcare.blob.core.windows.net/healthcare-assets" $destinationUri --recursive
 
