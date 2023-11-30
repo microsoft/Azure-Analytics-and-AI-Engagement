@@ -335,6 +335,7 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 RefreshTokens
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "assets" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/assets$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/assets" $destinationUri --recursive
 
@@ -351,18 +352,22 @@ $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/assets$($
 # & $azCopyCommand copy "https://midp.blob.core.windows.net/customer-sales" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "data" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/data$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/data" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/data-source$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/data-source" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "delta-files" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/delta-files$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/delta-files" $destinationUri --recursive
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "deltatable" -Context $dataLakeContext -Permission rwdl
+$destinationSasKey = "?$destinationSasKey"
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/deltatable$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/deltatable" $destinationUri --recursive
 
@@ -642,6 +647,7 @@ Add-Content log.txt $result
 ## Running a sql script in Sql serverless Pool
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 $sasTokenAcc = New-AzStorageAccountSASToken -Context $dataLakeContext -Service Blob -ResourceType Service -Permission rwdl
+$sasTokenAcc = "?$sasTokenAcc"
 
 $name = "2 Create External Table In Serverless Pool"
 $ScriptFileName="./artifacts/sqlscripts/"+$name+".sql"
