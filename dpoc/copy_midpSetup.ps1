@@ -338,78 +338,31 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 RefreshTokens
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "assets" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+# Check if $destinationSasKey contains ? Mark
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/assets$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/assets" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "campaign-data" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/campaign-data$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/campaign-data" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "customer-data" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customer-data$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/customer-data" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "customer-sales" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/customer-sales$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/customer-sales" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "data" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/data$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/data" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/data-source$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/data-source" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "delta-files" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/delta-files$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/delta-files" $destinationUri --recursive
-
+ 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "deltatable" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
+if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
 $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/deltatable$($destinationSasKey)"
 & $azCopyCommand copy "https://midp.blob.core.windows.net/deltatable" $destinationUri --recursive
-
-$destinationSasKey = New-AzStorageContainerSASToken -Container "analyticsdemo" -Context $dataLakeContext -Permission rwdl
-$destinationSasKey = "?$destinationSasKey"
-$destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/analyticsdemo$($destinationSasKey)"
-& $azCopyCommand copy "https://midp.blob.core.windows.net/analyticsdemo" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "presentation" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/presentation$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/presentation" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "sales-data" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/sales-data$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/sales-data" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "salestransactiondata" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/salestransactiondata$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/salestransactiondata" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "staging" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/staging$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/staging" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "syndatamigrate" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/syndatamigrate$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/syndatamigrate" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "synlogging" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/synlogging$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/synlogging" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "twitter-data-historical" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/twitter-data-historical$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/twitter-data-historical" $destinationUri --recursive
-
-# $destinationSasKey = New-AzStorageContainerSASToken -Container "twitter-gold-staging" -Context $dataLakeContext -Permission rwdl
-# $destinationUri="https://$($dataLakeAccountName).blob.core.windows.net/twitter-gold-staging$($destinationSasKey)"
-# & $azCopyCommand copy "https://midp.blob.core.windows.net/twitter-gold-staging" $destinationUri --recursive
+ 
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspaceName).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $usercred -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
@@ -655,7 +608,7 @@ Add-Content log.txt $result
 ## Running a sql script in Sql serverless Pool
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $storage_account_key
 $sasTokenAcc = New-AzStorageAccountSASToken -Context $dataLakeContext -Service Blob -ResourceType Service -Permission rwdl
-$sasTokenAcc = "?$sasTokenAcc"
+if (-not $sasTokenAcc.StartsWith('?')) { $sasTokenAcc = "?$sasTokenAcc"}
 
 $name = "2 Create External Table In Serverless Pool"
 $ScriptFileName="./artifacts/sqlscripts/"+$name+".sql"
