@@ -353,17 +353,17 @@ else {
     $dataLakeContext = New-AzStorageContext -StorageAccountName $storage_account_name -StorageAccountKey $storage_account_key
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "adlsfabricshortcut" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
     $destinationUri = "https://$($storage_account_name).blob.core.windows.net/adlsfabricshortcut$($destinationSasKey)"
     & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/adlsfabricshortcut/" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "bronzeshortcutdata" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
     $destinationUri = "https://$($storage_account_name).blob.core.windows.net/bronzeshortcutdata$($destinationSasKey)"
     & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/bronzeshortcutdata/" $destinationUri --recursive
 
     $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
     $destinationUri = "https://$($storage_account_name).blob.core.windows.net/data-source$($destinationSasKey)"
     & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/data-source/" $destinationUri --recursive
 
