@@ -308,7 +308,7 @@ cd ./midpCosmos/midpCosmos
 
 6. Then **run** the PowerShell: 
 ```
-./midpComosSetup.ps1
+./midpCosmosSetup.ps1
 ```
     
 ![Commands to run the PowerShell Script.](media/cloud-shell-5.png)
