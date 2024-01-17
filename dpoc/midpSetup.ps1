@@ -190,60 +190,71 @@ RefreshTokens
 
 Add-Content log.txt "------powerbi reports upload------"
 Write-Host "------------Powerbi Reports Upload ------------"
-#Connect-PowerBIServiceAccount
-$reportList = New-Object System.Collections.ArrayList
-$reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
-foreach($name in $reports)
-{
-        $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
-        #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
-        
-        write-host "Uploading PowerBI Report : $($name.BaseName)";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
-		$fullyQualifiedPath=Resolve-Path -path $FilePath
-        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
-        $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
-        $boundary = [System.Guid]::NewGuid().ToString();
-        $LF = "`r`n";
-        $bodyLines = (
-            "--$boundary",
-            "Content-Disposition: form-data",
-            "",
-            $fileEnc,
-            "--$boundary--$LF"
-        ) -join $LF
 
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
-		Start-Sleep -s 5 
-		
-        Add-Content log.txt $result
-        $reportId = $result.id;
+$spname = "Analytics Demo $suffix"
 
-        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-		@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-        @{Name = "PowerBIDataSetId"; Expression = {""}},
-        @{Name = "ReportId"; Expression = {""}},
-        @{Name = "SourceServer"; Expression = {""}}, 
-        @{Name = "SourceDatabase"; Expression = {""}}
-		                        
-        # get dataset                         
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
-        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-		
-        Add-Content log.txt $dataSets
-        
-        $temp.ReportId = $reportId;
+    $app = az ad app create --display-name $spname | ConvertFrom-Json
+    $appId = $app.appId
 
-        foreach($res in $dataSets.value)
-        {
-            if($res.name -eq $name.BaseName)
-            {
-                $temp.PowerBIDataSetId = $res.id;
-            }
-       }
-                
-      $list = $reportList.Add($temp)
-}
+    $mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+    $clientsecpwdapp = $mainAppCredential.password
+
+    az ad sp create --id $appId | Out-Null    
+    $sp = az ad sp show --id $appId --query "id" -o tsv
+    start-sleep -s 15
+
+    #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+    #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+    #add PowerBI App to workspace as an admin to group
+    RefreshTokens
+    $url = "https://api.powerbi.com/v1.0/myorg/groups";
+    $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+    $homeCluster = $result.Headers["home-cluster-uri"]
+    #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
+
+    RefreshTokens
+    $url = "$homeCluster/metadata/tenantsettings"
+    $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Authorization", "Bearer $powerbiToken")
+    $headers.Add("X-PowerBI-User-Admin", "true")
+    #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+    #add PowerBI App to workspace as an admin to group
+    RefreshTokens
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/users";
+    $post = "{
+    `"identifier`":`"$($sp)`",
+    `"groupUserAccessRight`":`"Admin`",
+    `"principalType`":`"App`"
+    }";
+
+    $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+
+    #get the power bi app...
+    $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
+    $powerBiAppId = $powerBIApp.Id;
+
+
+    $credential = New-Object PSCredential($appId, (ConvertTo-SecureString $clientsecpwdapp -AsPlainText -Force))
+
+   # Connect to Power BI using the service principal
+   Connect-PowerBIServiceAccount -ServicePrincipal -Credential $credential -TenantId $tenantId
+
+   $PowerBIFiles = Get-ChildItem "./artifacts/reports" -Recurse -Filter *.pbix
+
+   foreach ($Pbix in $PowerBIFiles) {
+    Write-Output "Uploading report: $($Pbix.FullName)"
+  
+    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsId
+
+    if ($report -ne $null) {
+        Write-Output "Report uploaded successfully: $($report.Name)"
+    } else {
+        Write-Output "Failed to upload report: $($Pbix.FullName)"
+    }
+    }
+
 Start-Sleep -s 60
 Write-Host "Creating $rgName resource group in $Region ..."
 New-AzResourceGroup -Name $rgName -Location $Region | Out-Null
