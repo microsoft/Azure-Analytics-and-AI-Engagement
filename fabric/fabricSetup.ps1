@@ -211,199 +211,6 @@ else {
     RefreshTokens
     Add-Content log.txt "------uploading powerbi reports------"
     Write-Host "------------Uploading Powerbi Reports------------"
-    #Connect-PowerBIServiceAccount
-    $reportList = New-Object System.Collections.ArrayList
-    $reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
-    foreach($name in $reports)
-    {
-            $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
-            #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
-            
-            write-host "Uploading PowerBI Report : $($name.BaseName)";
-            $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
-            $fullyQualifiedPath=Resolve-Path -path $FilePath
-            $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
-            $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
-            $boundary = [System.Guid]::NewGuid().ToString();
-            $LF = "`r`n";
-            $bodyLines = (
-                "--$boundary",
-                "Content-Disposition: form-data",
-                "",
-                $fileEnc,
-                "--$boundary--$LF"
-            ) -join $LF
-
-            $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
-            Start-Sleep -s 5 
-            
-            Add-Content log.txt $result
-            $reportId = $result.id;
-
-            $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-            @{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-            @{Name = "PowerBIDataSetId"; Expression = {""}},
-            @{Name = "ReportId"; Expression = {""}},
-            @{Name = "SourceServer"; Expression = {""}}, 
-            @{Name = "SourceDatabase"; Expression = {""}}
-                                    
-            # get dataset                         
-            $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales/datasets";
-            $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-            
-            Add-Content log.txt $dataSets
-            
-            $temp.ReportId = $reportId;
-
-            foreach($res in $dataSets.value)
-            {
-                if($res.name -eq $name.BaseName)
-                {
-                    $temp.PowerBIDataSetId = $res.id;
-                }
-        }
-                    
-        $list = $reportList.Add($temp)
-    }
-    Start-Sleep -s 10
-
-    Write-Host "Creating $rgName resource group in $Region ..."
-    New-AzResourceGroup -Name $rgName -Location $Region | Out-Null
-    Write-Host "Resource group $rgName creation COMPLETE"
-
-    Write-Host "Creating resources in $rgName..."
-    New-AzResourceGroupDeployment -ResourceGroupName $rgName `
-    -TemplateFile "mainTemplate.json" `
-    -Mode Complete `
-    -location $Region `
-    -sites_adx_thermostat_realtime_name $sites_adx_thermostat_realtime_name `
-    -serverfarm_adx_thermostat_realtime_name $serverfarm_adx_thermostat_realtime_name `
-    -namespaces_adx_thermostat_occupancy_name $namespaces_adx_thermostat_occupancy_name `
-    -storage_account_name $storage_account_name `
-    -mssql_server_name $mssql_server_name `
-    -mssql_database_name $mssql_database_name `
-    -mssql_administrator_login $mssql_administrator_login `
-    -sql_administrator_login_password $sql_administrator_login_password `
-    -serverfarm_asp_fabric_name $serverfarm_asp_fabric_name `
-    -app_fabric_name $app_fabric_name `
-    -Force
-
-    Write-Host "Resource creation $rgName COMPLETE"
-
-    $thermostat_telemetry_Realtime_URL =  ""
-    $occupancy_data_Realtime_URL =  ""
-
-    #download azcopy command
-    if ([System.Environment]::OSVersion.Platform -eq "Unix") {
-        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"
-
-        if (!$azCopyLink) {
-            $azCopyLink = "https://azcopyvnext.azureedge.net/release20200709/azcopy_linux_amd64_10.5.0.tar.gz"
-        }
-
-        Invoke-WebRequest $azCopyLink -OutFile "azCopy.tar.gz"
-        tar -xf "azCopy.tar.gz"
-        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy).Directory.FullName
-
-        if ($azCopyCommand.count -gt 1) {
-            $azCopyCommand = $azCopyCommand[0];
-        }
-
-        cd $azCopyCommand
-        chmod +x azcopy
-        cd ..
-        $azCopyCommand += "\azcopy"
-    } else {
-        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
-
-        if (!$azCopyLink) {
-            $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
-        }
-
-        Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
-        Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
-        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
-
-        if ($azCopyCommand.count -gt 1) {
-            $azCopyCommand = $azCopyCommand[0];
-        }
-
-        $azCopyCommand += "\azcopy"
-    }
-
-    ## storage AZ Copy
-    $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $storage_account_name)[0].Value
-    $dataLakeContext = New-AzStorageContext -StorageAccountName $storage_account_name -StorageAccountKey $storage_account_key
-
-    $destinationSasKey = New-AzStorageContainerSASToken -Container "bronzeshortcutdata" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
-    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/bronzeshortcutdata$($destinationSasKey)"
-    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/bronzeshortcutdata/" $destinationUri --recursive
-
-    $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
-    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/data-source$($destinationSasKey)"
-    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/data-source/" $destinationUri --recursive
-
-    $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
-    $destinationSasKey = "?$destinationSasKey"
-    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/webappassets$($destinationSasKey)"
-    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/webappassets/" $destinationUri --recursive
-
-    ## mssql
-    Add-Content log.txt "-----Ms Sql-----"
-    Write-Host "----Ms Sql----"
-    $SQLScriptsPath="./artifacts/sqlscripts"
-    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/salesSqlDbScript.sql"
-    $sqlEndpoint="$($mssql_server_name).database.windows.net"
-    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_database_name -Username $mssql_administrator_login -Password $sql_administrator_login_password
-    Add-Content log.txt $result
-
-    ## notebooks
-    Add-Content log.txt "-----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses-----"
-    Write-Host "----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses----"
-
-    (Get-Content -path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
-        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
-    } | Set-Content -Path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
-        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-    } | Set-Content -Path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-        -replace '_LAKEHOUSE_GOLD_', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb"
-
-    Add-Content log.txt "-----Fabric Notebook Configuration COMPLETE-----"
-    Write-Host "----Fabric Notebook Configuration COMPLETE----"
-
-
-    #Web app
-    Add-Content log.txt "------deploy poc web app------"
-    Write-Host  "-----------------Deploy web app---------------"
-    RefreshTokens
-
-    $zips = @("app-adx-thermostat-realtime", "app-fabric")
-    foreach($zip in $zips)
-    {
-        expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
-    }
-
     $spname = "Fabric Demo $suffix"
 
     $app = az ad app create --display-name $spname | ConvertFrom-Json
@@ -475,6 +282,187 @@ else {
     }";
 
     $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
+    
+    $credential = New-Object PSCredential($appId, (ConvertTo-SecureString $clientsecpwdapp -AsPlainText -Force))
+
+   # Connect to Power BI using the service principal
+    Connect-PowerBIServiceAccount -ServicePrincipal -Credential $credential -TenantId $tenantId
+
+    $PowerBIFiles = Get-ChildItem "./artifacts/reports" -Recurse -Filter *.pbix
+    $reportList = @()
+
+    foreach ($Pbix in $PowerBIFiles) {
+    Write-Output "Uploading report: $($Pbix.FullName)"
+  
+    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsIdContosoSales
+
+    if ($report -ne $null) {
+        Write-Output "Report uploaded successfully: $($report.Name)"
+
+        $temp = [PSCustomObject]@{
+            FileName        = $Pbix.FullName
+            Name            = $Pbix.BaseName  # Using BaseName to get the file name without the extension
+            PowerBIDataSetId = $null
+            ReportId        = $report.Id
+            SourceServer    = $null
+            SourceDatabase  = $null
+        }
+
+        # Get dataset
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales/datasets"
+        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" }
+
+        foreach ($res in $dataSets.value) {
+            if ($res.name -eq $temp.Name) {
+                $temp.PowerBIDataSetId = $res.id
+                break  # Exit the loop once a match is found
+            }
+        }
+
+        $reportList += $temp
+    } else {
+        Write-Output "Failed to upload report: $($Pbix.FullName)"
+    }
+    }
+
+    Start-Sleep -s 10
+
+    Write-Host "Creating $rgName resource group in $Region ..."
+    New-AzResourceGroup -Name $rgName -Location $Region | Out-Null
+    Write-Host "Resource group $rgName creation COMPLETE"
+
+    Write-Host "Creating resources in $rgName..."
+    New-AzResourceGroupDeployment -ResourceGroupName $rgName `
+    -TemplateFile "mainTemplate.json" `
+    -Mode Complete `
+    -location $Region `
+    -sites_adx_thermostat_realtime_name $sites_adx_thermostat_realtime_name `
+    -serverfarm_adx_thermostat_realtime_name $serverfarm_adx_thermostat_realtime_name `
+    -namespaces_adx_thermostat_occupancy_name $namespaces_adx_thermostat_occupancy_name `
+    -storage_account_name $storage_account_name `
+    -mssql_server_name $mssql_server_name `
+    -mssql_database_name $mssql_database_name `
+    -mssql_administrator_login $mssql_administrator_login `
+    -sql_administrator_login_password $sql_administrator_login_password `
+    -serverfarm_asp_fabric_name $serverfarm_asp_fabric_name `
+    -app_fabric_name $app_fabric_name `
+    -Force
+
+    Write-Host "Resource creation $rgName COMPLETE"
+
+    $thermostat_telemetry_Realtime_URL =  ""
+    $occupancy_data_Realtime_URL =  ""
+
+    #download azcopy command
+    if ([System.Environment]::OSVersion.Platform -eq "Unix") {
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"
+
+        if (!$azCopyLink) {
+            $azCopyLink = "https://azcopyvnext.azureedge.net/release20200709/azcopy_linux_amd64_10.5.0.tar.gz"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.tar.gz"
+        tar -xf "azCopy.tar.gz"
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1) {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        cd $azCopyCommand
+        chmod +x azcopy
+        cd ..
+        $azCopyCommand += "\azcopy"
+    } else {
+        $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-windows"
+
+        if (!$azCopyLink) {
+            $azCopyLink = "https://azcopyvnext.azureedge.net/release20200501/azcopy_windows_amd64_10.4.3.zip"
+        }
+
+        Invoke-WebRequest $azCopyLink -OutFile "azCopy.zip"
+        Expand-Archive "azCopy.zip" -DestinationPath ".\" -Force
+        $azCopyCommand = (Get-ChildItem -Path ".\" -Recurse azcopy.exe).Directory.FullName
+
+        if ($azCopyCommand.count -gt 1) {
+            $azCopyCommand = $azCopyCommand[0];
+        }
+
+        $azCopyCommand += "\azcopy"
+    }
+
+    ## storage AZ Copy
+    $storage_account_key = (Get-AzStorageAccountKey -ResourceGroupName $rgName -AccountName $storage_account_name)[0].Value
+    $dataLakeContext = New-AzStorageContext -StorageAccountName $storage_account_name -StorageAccountKey $storage_account_key
+
+    $destinationSasKey = New-AzStorageContainerSASToken -Container "bronzeshortcutdata" -Context $dataLakeContext -Permission rwdl
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
+    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/bronzeshortcutdata$($destinationSasKey)"
+    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/bronzeshortcutdata/" $destinationUri --recursive
+
+    $destinationSasKey = New-AzStorageContainerSASToken -Container "data-source" -Context $dataLakeContext -Permission rwdl
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
+    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/data-source$($destinationSasKey)"
+    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/data-source/" $destinationUri --recursive
+
+    $destinationSasKey = New-AzStorageContainerSASToken -Container "webappassets" -Context $dataLakeContext -Permission rwdl
+    if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinationSasKey"}
+    $destinationUri = "https://$($storage_account_name).blob.core.windows.net/webappassets$($destinationSasKey)"
+    & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/webappassets/" $destinationUri --recursive
+
+    ## mssql
+    Add-Content log.txt "-----Ms Sql-----"
+    Write-Host "----Ms Sql----"
+    $SQLScriptsPath="./artifacts/sqlscripts"
+    $sqlQuery = Get-Content -Raw -Path "$($SQLScriptsPath)/salesSqlDbScript.sql"
+    $sqlEndpoint="$($mssql_server_name).database.windows.net"
+    $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_database_name -Username $mssql_administrator_login -Password $sql_administrator_login_password
+    Add-Content log.txt $result
+
+    ## notebooks
+    Add-Content log.txt "-----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses-----"
+    Write-Host "----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses----"
+
+    (Get-Content -path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
+        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
+    } | Set-Content -Path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
+        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+    } | Set-Content -Path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+        -replace '_LAKEHOUSE_GOLD_', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb"
+
+    Add-Content log.txt "-----Fabric Notebook Configuration COMPLETE-----"
+    Write-Host "----Fabric Notebook Configuration COMPLETE----"
+
+
+    #Web app
+    Add-Content log.txt "------deploy poc web app------"
+    Write-Host  "-----------------Deploy web app---------------"
+    RefreshTokens
+
+    $zips = @("app-adx-thermostat-realtime", "app-fabric")
+    foreach($zip in $zips)
+    {
+        expand-archive -path "./artifacts/binaries/$($zip).zip" -destinationpath "./$($zip)" -force
+    }
 
     (Get-Content -path app-fabric/appsettings.json -Raw) | Foreach-Object { $_ `
             -replace '#WORKSPACE_ID#', $wsIdContosoSales`
