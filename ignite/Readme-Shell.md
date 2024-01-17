@@ -1,4 +1,4 @@
-# Modern Analytics with Microsoft Fabric and Azure Databricks DREAM Lab
+# Modern Analytics with Microsoft Fabric and Azure Databricks DREAM PoC Accelerator
 
 ## DISCLAIMER
 This presentation, demonstration, and demonstration model are for informational purposes only and (1) are not subject to SOC 1 and SOC 2 compliance audits, and (2) are not designed, intended or made available as a medical device(s) or as a substitute for professional medical advice, diagnosis, treatment or judgment. Microsoft makes no warranties, express or implied, in this presentation, demonstration, and demonstration model. Nothing in this presentation, demonstration, or demonstration model modifies any of the terms and conditions of Microsoft’s written and signed agreements. This is not an offer and applicable terms and the information provided are subject to revision and may be changed at any time by Microsoft.
