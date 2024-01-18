@@ -923,7 +923,7 @@ $clientsecpwd = $mainAppCredential.password
         
 az ad sp create --id $appId | Out-Null    
 $sp = az ad sp show --id $appId --query "id" -o tsv
-start-sleep -s 60
+start-sleep -s 30
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -1027,7 +1027,7 @@ foreach ($Pbix in $PowerBIFiles) {
         Write-Output "Failed to upload report: $($Pbix.FullName)"
     }
 }
-Start-Sleep -s 60
+Start-Sleep -s 30
 
 #$cogSvcForms = Get-AzCongnitiveServicesAccount -resourcegroupname $rgName -Name $form_cogs_name;
 
