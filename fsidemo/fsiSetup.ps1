@@ -709,7 +709,7 @@ $clientsecpwd = $mainAppCredential.password
 
 az ad sp create --id $appId | Out-Null    
 $sp = az ad sp show --id $appId --query "id" -o tsv
-start-sleep -s 60
+start-sleep -s 30
 
 #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
 #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
@@ -1203,14 +1203,14 @@ Set-Content -Path $filepath -Value $item
 #create aml workspace
 az extension add -n azure-cli-ml
 az ml workspace create -n $amlworkspacename -g $rgName
-start-sleep -s 30
+start-sleep -s 15
 #attach a folder to set resource group and workspace name (to skip passing ws and rg in calls after this line)
 az ml folder attach -w $amlworkspacename -g $rgName -e aml
-start-sleep -s 30
+start-sleep -s 15
 
 #create and delete a compute instance to get the code folder created in default store
 az ml computetarget create computeinstance -n $cpuShell -s "STANDARD_DS2_V2" -v
-start-sleep -s 60
+start-sleep -s 30
 #get default data store
 $defaultdatastore = az ml datastore show-default --resource-group $rgName --workspace-name $amlworkspacename --output json | ConvertFrom-Json
 $defaultdatastoreaccname = $defaultdatastore.account_name
@@ -1219,7 +1219,7 @@ $defaultdatastoreaccname = $defaultdatastore.account_name
 $storageAcct = Get-AzStorageAccount -ResourceGroupName $rgName -Name $defaultdatastoreaccname
 $share = Get-AzStorageShare -Prefix 'code' -Context $storageAcct.Context 
 $shareName = $share[0].Name
-start-sleep -s 60
+start-sleep -s 30
 #create Users folder ( it wont be there unless we launch the workspace in UI)
 New-AzStorageDirectory -Context $storageAcct.Context -ShareName $shareName -Path "Users"
 $notebooks=Get-ChildItem "./artifacts/amlnotebooks" | Select BaseName
