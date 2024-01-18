@@ -1216,56 +1216,120 @@ if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinati
     Write-Host "------------Powerbi Reports Upload------------"
     #Connect-PowerBIServiceAccount
     RefreshTokens
-    $reportList = New-Object System.Collections.ArrayList
-    $reports = Get-ChildItem "./artifacts/reports" | Select BaseName 
-    foreach ($name in $reports) {
-        $FilePath = "./artifacts/reports/$($name.BaseName)" + ".pbix"
-        #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
-        
-        write-host "Uploading PowerBI Report : $($name.BaseName)";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
-        $fullyQualifiedPath = Resolve-Path -path $FilePath
-        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
-        $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
-        $boundary = [System.Guid]::NewGuid().ToString();
-        $LF = "`r`n";
-        $bodyLines = (
-            "--$boundary",
-            "Content-Disposition: form-data",
-            "",
-            $fileEnc,
-            "--$boundary--$LF"
-        ) -join $LF
+    $spname = "Healthcare2 Demo $init"
 
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization = "Bearer $powerbitoken" }
-        Start-Sleep -s 5 
-		
-        Add-Content log.txt $result
-        $reportId = $result.id;
+    $app = az ad app create --display-name $spname | ConvertFrom-Json
+    $appId = $app.appId
 
-        $temp = "" | select-object @{Name = "FileName"; Expression = { "$($name.BaseName)" } }, 
-        @{Name = "Name"; Expression = { "$($name.BaseName)" } }, 
-        @{Name = "PowerBIDataSetId"; Expression = { "" } },
-        @{Name = "ReportId"; Expression = { "" } },
-        @{Name = "SourceServer"; Expression = { "" } }, 
-        @{Name = "SourceDatabase"; Expression = { "" } }
-		                        
-        # get dataset                         
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
-        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization = "Bearer $powerbitoken" };
-		
-        Add-Content log.txt $dataSets
-        
-        $temp.ReportId = $reportId;
+    $mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
+    $clientsecpwd = $mainAppCredential.password
+
+    az ad sp create --id $appId | Out-Null    
+    $sp = az ad sp show --id $appId --query "id" -o tsv
+    start-sleep -s 20
+
+    #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+    #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+    #add PowerBI App to workspace as an admin to group
+    RefreshTokens
+    $url = "https://api.powerbi.com/v1.0/myorg/groups";
+    $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+    $homeCluster = $result.Headers["home-cluster-uri"]
+    #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
+
+    RefreshTokens
+    $url = "$homeCluster/metadata/tenantsettings"
+    $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Authorization", "Bearer $powerbiToken")
+    $headers.Add("X-PowerBI-User-Admin", "true")
+    #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+    #add PowerBI App to workspace as an admin to group
+    RefreshTokens
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
+    $post = "{
+    `"identifier`":`"$($sp)`",
+    `"groupUserAccessRight`":`"Admin`",
+    `"principalType`":`"App`"
+    }";
+
+    $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+
+    #get the power bi app...
+    $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
+    $powerBiAppId = $powerBIApp.Id;
+
+    #setup powerBI app...
+    RefreshTokens
+    $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+    $post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+    $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
+
+    #setup powerBI app...
+    RefreshTokens
+    $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+    $post = "{
+    `"clientId`":`"$appId`",
+    `"consentType`":`"AllPrincipals`",
+    `"resourceId`":`"$powerBiAppId`",
+    `"scope`":`"User.Read Directory.AccessAsUser.All`",
+    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    }";
+
+    $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
+    
+    $credential = New-Object PSCredential($appId, (ConvertTo-SecureString $clientsecpwd -AsPlainText -Force))
+
+   # Connect to Power BI using the service principal
+    Connect-PowerBIServiceAccount -ServicePrincipal -Credential $credential -TenantId $tenantId
+
+    $PowerBIFiles = Get-ChildItem "./artifacts/reports" -Recurse -Filter *.pbix
+    $reportList = @()
+
+    foreach ($Pbix in $PowerBIFiles) {
+    Write-Output "Uploading report: $($Pbix.FullName)"
+  
+    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsId
+
+    if ($report -ne $null) {
+        Write-Output "Report uploaded successfully: $($report.Name)"
+
+        $temp = [PSCustomObject]@{
+            FileName        = $Pbix.FullName
+            Name            = $Pbix.BaseName  # Using BaseName to get the file name without the extension
+            PowerBIDataSetId = $null
+            ReportId        = $report.Id
+            SourceServer    = $null
+            SourceDatabase  = $null
+        }
+
+        # Get dataset
+        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets"
+        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" }
 
         foreach ($res in $dataSets.value) {
-            if ($res.name -eq $name.BaseName) {
-                $temp.PowerBIDataSetId = $res.id;
+            if ($res.name -eq $temp.Name) {
+                $temp.PowerBIDataSetId = $res.id
+                break  # Exit the loop once a match is found
             }
         }
-                
-        $list = $reportList.Add($temp)
+
+        $reportList += $temp
+    } else {
+        Write-Output "Failed to upload report: $($Pbix.FullName)"
     }
+    }
+
     Start-Sleep -s 30
 
     #Form Recognizer
@@ -1374,7 +1438,21 @@ if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinati
 
     ##Establish powerbi reports dataset connections
     Add-Content log.txt "------pbi connections update------"
-    Write-Host "---------PBI connections update---------"	
+    Write-Host "---------PBI connections update---------"
+    
+    # TakingOver Datasets.
+    foreach ($report in $reportList) {
+    $datasetId = $report.PowerBIDataSetId
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$datasetId/Default.TakeOver"
+
+    try {
+        $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{ Authorization = "Bearer $powerbitoken" }
+        Write-Host "TakeOver action completed successfully for dataset ID: $datasetId"
+    }
+    catch {
+        Write-Host "Error occurred while performing TakeOver action for dataset ID: $datasetId - $_"
+    }
+    }
 
     RefreshTokens
     foreach ($report in $reportList) {
@@ -1583,78 +1661,6 @@ if (-not $destinationSasKey.StartsWith('?')) { $destinationSasKey = "?$destinati
     Add-Content log.txt "------deploy poc web app------"
     Write-Host  "-----------------Deploy web app---------------"
     RefreshTokens
-
-    $spname = "Healthcare2 Demo $init"
-
-    $app = az ad app create --display-name $spname | ConvertFrom-Json
-    $appId = $app.appId
-
-    $mainAppCredential = az ad app credential reset --id $appId | ConvertFrom-Json
-    $clientsecpwd = $mainAppCredential.password
-
-    az ad sp create --id $appId | Out-Null    
-    $sp = az ad sp show --id $appId --query "id" -o tsv
-    start-sleep -s 30
-
-    #https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
-    #Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
-    #add PowerBI App to workspace as an admin to group
-    RefreshTokens
-    $url = "https://api.powerbi.com/v1.0/myorg/groups";
-    $result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
-    $homeCluster = $result.Headers["home-cluster-uri"]
-    #$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
-
-    RefreshTokens
-    $url = "$homeCluster/metadata/tenantsettings"
-    $post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
-    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $headers.Add("Authorization", "Bearer $powerbiToken")
-    $headers.Add("X-PowerBI-User-Admin", "true")
-    #$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
-
-    #add PowerBI App to workspace as an admin to group
-    RefreshTokens
-    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsid/users";
-    $post = "{
-    `"identifier`":`"$($sp)`",
-    `"groupUserAccessRight`":`"Admin`",
-    `"principalType`":`"App`"
-    }";
-
-    $result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
-
-    #get the power bi app...
-    $powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
-    $powerBiAppId = $powerBIApp.Id;
-
-    #setup powerBI app...
-    RefreshTokens
-    $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
-    $post = "{
-    `"clientId`":`"$appId`",
-    `"consentType`":`"AllPrincipals`",
-    `"resourceId`":`"$powerBiAppId`",
-    `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
-    }";
-
-    $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
-
-    #setup powerBI app...
-    RefreshTokens
-    $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
-    $post = "{
-    `"clientId`":`"$appId`",
-    `"consentType`":`"AllPrincipals`",
-    `"resourceId`":`"$powerBiAppId`",
-    `"scope`":`"User.Read Directory.AccessAsUser.All`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
-    }";
-
-    $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
 
     #retrieving cognitive service endpoint
     $cognitiveEndpoint = az cognitiveservices account show -n $cognitive_service_name -g $rgName | jq -r .properties.endpoint
