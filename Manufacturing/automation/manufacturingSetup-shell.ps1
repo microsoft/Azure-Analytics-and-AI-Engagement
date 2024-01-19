@@ -1012,66 +1012,6 @@ RefreshTokens
 
 Add-Content log.txt "------powerbi reports upload------"
 Write-Host "-----------------powerbi reports upload ---------------"
-Write-Host "Uploading power BI reports"
-#Connect-PowerBIServiceAccount
-$reportList = New-Object System.Collections.ArrayList
-$reports=Get-ChildItem "./artifacts/reports" | Select BaseName 
-
-foreach($name in $reports)
-{
-        $FilePath="./artifacts/reports/$($name.BaseName)"+".pbix"
-        #New-PowerBIReport -Path $FilePath -Name $name -WorkspaceId $wsId
-        
-        #write-host "Uploading PowerBI Report $name";
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/imports?datasetDisplayName=$($name.BaseName)&nameConflict=CreateOrOverwrite";
-		$fullyQualifiedPath=Resolve-Path -path $FilePath
-        $fileBytes = [System.IO.File]::ReadAllBytes($fullyQualifiedPath);
-        $fileEnc = [system.text.encoding]::GetEncoding("ISO-8859-1").GetString($fileBytes);
-        $boundary = [System.Guid]::NewGuid().ToString();
-        $LF = "`r`n";
-        $bodyLines = (
-            "--$boundary",
-            "Content-Disposition: form-data",
-            "",
-            $fileEnc,
-            "--$boundary--$LF"
-        ) -join $LF
-
-        $result = Invoke-RestMethod -Uri $url -Method POST -Body $bodyLines -ContentType "multipart/form-data; boundary=`"--$boundary`"" -Headers @{ Authorization="Bearer $powerbitoken" }
-		Start-Sleep -s 5 
-		
-        Add-Content log.txt $result
-        $reportId = $result.id;
-
-        $temp = "" | select-object @{Name = "FileName"; Expression = {"$($name.BaseName)"}}, 
-		@{Name = "Name"; Expression = {"$($name.BaseName)"}}, 
-        @{Name = "PowerBIDataSetId"; Expression = {""}},
-        @{Name = "ReportId"; Expression = {""}},
-        @{Name = "SourceServer"; Expression = {"manufacturingdemo.sql.azuresynapse.net"}}, 
-        @{Name = "SourceDatabase"; Expression = {"ManufacturingDW"}}
-		                        
-        # get dataset                         
-        $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets";
-        $dataSets = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
-		
-        Add-Content log.txt $dataSets
-        
-        $temp.ReportId = $reportId;
-
-        foreach($res in $dataSets.value)
-        {
-            if($res.name -eq $name.BaseName)
-            {
-                $temp.PowerBIDataSetId = $res.id;
-            }
-       }
-                
-       $reportList.Add($temp)
-}
-Start-Sleep -s 60
-
-Add-Content log.txt "------deploy poc web app------"
-Write-Host  "-----------------deploy poc web app ---------------"
 
 $spname="Manufacturing Demo $deploymentId"
 
@@ -1144,6 +1084,34 @@ $post = "{
     }";
 
 $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization="Bearer $graphtoken" } -ea SilentlyContinue;
+
+$credential = New-Object PSCredential($appId, (ConvertTo-SecureString $clientsecpwd -AsPlainText -Force))
+
+# Connect to Power BI using the service principal
+Connect-PowerBIServiceAccount -ServicePrincipal -Credential $credential -TenantId $tenantId
+
+Add-Content log.txt "------Uploading PowerBI Reports to the Workspace------"
+Write-Host  "--------------Uploading PowerBI Reports to the Workspace---------------"
+
+# Uploading Reports to PowerBI Workspace
+$PowerBIFiles = Get-ChildItem "./artifacts/reports" -Recurse -Filter *.pbix
+
+foreach ($Pbix in $PowerBIFiles) {
+    Write-Output "Uploading report: $($Pbix.BaseName)"
+  
+    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsId
+
+    if ($report -ne $null) {
+        Write-Output "Report uploaded successfully: $($report.Name)"
+    } else {
+        Write-Output "Failed to upload report: $($Pbix.BaseName)"
+    }
+}
+Start-Sleep -s 30
+
+#Web App Section
+Add-Content log.txt "------deploy poc web app------"
+Write-Host  "-----------------deploy poc web app ---------------"
 
 (Get-Content -path mfg-webapp/appsettings.json -Raw) | Foreach-Object { $_ `
                 -replace '#WORKSPACE_ID#', $wsId`
@@ -1515,6 +1483,20 @@ $powerBIDataSetConnectionTemplate = Get-Content -Path "./artifacts/templates/pow
 $powerBIDataSetConnectionUpdateRequest = $powerBIDataSetConnectionTemplate.Replace("#TARGET_SERVER#", "$($synapseWorkspaceName).sql.azuresynapse.net").Replace("#TARGET_DATABASE#", $sqlPoolName) |Out-String
 
 $sourceServers = @("manufacturingdemor16gxwbbra4mtbmu.sql.azuresynapse.net", "manufacturingdemo.sql.azuresynapse.net", "dreamdemosynapse.sql.azuresynapse.net","manufacturingdemocjgnpnq4eqzbflgi.sql.azuresynapse.net", "manufacturingdemodemocwbennanrpo5s.sql.azuresynapse.net", "HelloWorld.sql.azuresynapse.net","manufacturingdemosep5n2tdtctkwpyjc.sql.azuresynapse.net")
+
+# TakingOver Datasets.
+foreach ($report in $reportList) {
+    $datasetId = $report.PowerBIDataSetId
+    $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsId/datasets/$datasetId/Default.TakeOver"
+
+try {
+        $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{ Authorization = "Bearer $powerbitoken" }
+        Write-Host "TakeOver action completed successfully for dataset ID: $datasetId"
+    }
+    catch {
+        Write-Host "Error occurred while performing TakeOver action for dataset ID: $datasetId - $_"
+    }
+}
 
 foreach($report in $reportList)
 {
