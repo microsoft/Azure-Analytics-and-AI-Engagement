@@ -6,11 +6,11 @@
 
 Users can also have Power BI Premium, with P1 or higher which costs around $5,000 USD and the functionality of the Microsoft Fabric will be limited to Power BI, if we opt Power BI Premium there will be some limitations.
 
-![media](mediaCopilot/picture1.png)
+![media](mediaCopilot/Picture1.png)
 
 2.	User should have Power BI Pro license to use Power BI Copilot. Which is around $10 USD per month.
 
-    ![media](mediaCopilot/picture2.png)
+    ![media](mediaCopilot/Picture2.png)
 
 ##  Enable the COPILOT feature in the Tenant:
 
@@ -18,8 +18,8 @@ After meeting with the requirements of the pre-requisite, the admin of the Tenan
 
 1.	**Click** on the “Admin Portal” under “Setting Icon”.
     
-    ![media](mediaCopilot/picture3.png)
+    ![media](mediaCopilot/Picture3.png)
 
 2.	Under the “Tenant settings” **scroll down** to the bottom, in the 'Copilot and Azure OpenAI Service (Preview)' section enable 'Users can use a preview of Copilot and other feature powered by Azure OpenAI' for the entire Organization based on the need.
     
-    ![media](mediaCopilot/picture4.png)
+    ![media](mediaCopilot/Picture4.png)
