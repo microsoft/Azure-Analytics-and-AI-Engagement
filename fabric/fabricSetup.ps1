@@ -187,10 +187,111 @@ else {
     $contosoFinanceWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
     $contosoFinanceWsName = $contosoFinanceWsName.name
 
-    $lakehouseBronze =  Read-Host "Enter your Bronze Lakehouse name "
-    $lakehouseSilver =  Read-Host "Enter your Silver Lakehouse name "
-    $lakehouseGold =  Read-Host "Enter your Gold Lakehouse name "
-    $lakehouseFinance= Read-Host "Enter your Finance Lakehouse name "
+    $lakehouseBronze =  "lakehouseBronze_$suffix"
+    $lakehouseSilver =  "lakehouseSilver_$suffix"
+    $lakehouseGold =  "lakehouseGold_$suffix"
+    $lakehouseFinance = "lakehouseFinance_$suffix"
+
+    Add-Content log.txt "------Creating Lakehouses------"
+    $lakehouseNames = @($lakehouseBronze, $lakehouseSilver, $lakehouseGold)
+    # Set the token and request headers
+    $pat_token = $fabric
+    $requestHeaders = @{
+    Authorization  = "Bearer" + " " + $pat_token
+    "Content-Type" = "application/json"
+    }
+
+    # Iterate through each Lakehouse name and create it
+    foreach ($lakehouseName in $lakehouseNames) {
+    # Create the body for the Lakehouse creation
+    $body = @{
+        displayName = $lakehouseName
+        type        = "Lakehouse"
+    } | ConvertTo-Json
+    
+    # Set the API endpoint
+    $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
+
+    # Invoke the REST method to create a new Lakehouse
+    try {
+        $Lakehouse = Invoke-RestMethod $endPoint `
+            -Method POST `
+            -Headers $requestHeaders `
+            -Body $body
+
+        Write-Host "Lakehouse '$lakehouseName' created successfully."
+    } catch {
+        Write-Host "Error creating Lakehouse '$lakehouseName': $_"
+        if ($_.Exception.Response -ne $null) {
+            $stream = $_.Exception.Response.GetResponseStream()
+            $reader = New-Object System.IO.StreamReader($stream)
+            $reader.ReadToEnd()
+        }
+    }
+    }
+
+    Add-Content log.txt "------Creating a Lakehouse in $contosoFinanceWsName------"
+    $pat_token = $fabric
+    $requestHeaders = @{
+        Authorization  = "Bearer" + " " + $pat_token
+        "Content-Type" = "application/json"
+    }
+
+    $body =  @{
+        displayName = $lakehouseFinance
+        type        = "Lakehouse"
+    } | ConvertTo-Json
+
+    try{
+    $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoFinance/items/"
+    $Lakehouse = Invoke-RestMethod $endPoint `
+        -Method POST `
+        -Headers $requestHeaders `
+        -Body $body
+         Write-Host "Lakehouse '$lakehouseFinance' created successfully."
+    } catch {
+        Write-Host "Error creating Lakehouse '$lakehouseFinance'"
+    }
+
+    RefreshTokens
+
+    Add-Content log.txt "------Creating a Warehouse------"
+    $warehousename = "salesDW_$suffix"
+    $body = @{
+        displayName = $warehousename
+        type        = "Warehouse"
+    } | ConvertTo-Json
+    
+    try{
+    $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
+    $Warehouse = Invoke-RestMethod $endPoint `
+        -Method POST `
+        -Headers $requestHeaders `
+        -Body $body
+        Write-Host "Warehouse '$warehousename' created successfully."
+    }catch{
+        Write-Host "Error creating Warehouse '$warehousename'"
+    }
+
+    Add-Content log.txt "------Creating KQL-DB------"
+    $KQLDB = "Contoso-KQL-DB"
+    $body = @{
+            displayName = $KQLDB 
+            type        = "KQLDatabase"
+        } | ConvertTo-Json
+     
+    try{
+    $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
+    $KQLDBAPI = Invoke-RestMethod $endPoint `
+            -Method POST `
+            -Headers $requestHeaders `
+            -Body $body
+            Write-Host "KQL-DB '$KQLDB' created successfully."
+    }catch{
+        Write-Host "Error creating KQL-DB '$KQLDB'"
+    }
+    Start-Sleep -s 10 
+
     Add-Content log.txt "------Uploading assets to Lakehouses------"
     Write-Host "------------Uploading assets to Lakehouses------------"
     $tenantId = (Get-AzContext).Tenant.Id
@@ -208,6 +309,111 @@ else {
     Write-Host "------------Uploading assets to Lakehouses COMPLETE------------"
 
     # & $azCopyCommand copy "https://fabricddib.blob.core.windows.net/bronzelakehousefiles/*" "https://onelake.blob.fabric.microsoft.com/$contosoSalesWsName/$lakehouseBronze.Lakehouse/Files/" --overwrite=prompt --from-to=BlobBlob --s2s-preserve-access-tier=false --check-length=true --include-directory-stub=false --s2s-preserve-blob-tags=false --recursive --trusted-microsoft-suffixes=onelake.blob.fabric.microsoft.com --log-level=INFO;
+
+    ## notebooks
+    Add-Content log.txt "-----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses-----"
+    Write-Host "----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses----"
+
+    (Get-Content -path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
+        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
+    } | Set-Content -Path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
+        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+    } | Set-Content -Path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+        -replace '_LAKEHOUSE_GOLD_', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb"
+
+    (Get-Content -path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
+    } | Set-Content -Path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb"
+
+    Add-Content log.txt "-----Fabric Notebook Configuration COMPLETE-----"
+    Write-Host "----Fabric Notebook Configuration COMPLETE----"
+
+    Add-Content log.txt "-----Uploading Notebooks -----"
+    Write-Host "-----Uploading Notebooks -----"
+    RefreshTokens
+    $requestHeaders = @{
+        Authorization  = "Bearer " + $fabric
+        "Content-Type" = "application/json"
+        "Scope"        = "Notebook.ReadWrite.All"
+    }
+
+    $files = Get-ChildItem -Path "./artifacts/fabricnotebooks" -File -Recurse
+    Set-Location ./artifacts/fabricnotebooks
+
+    foreach ($name in $files.name) {
+    if ($name -eq "01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" -or
+        $name -eq "02 Bronze to Silver layer_ Medallion Architecture.ipynb" -or
+        $name -eq "03 Silver to Gold layer_ Medallion Architecture.ipynb") {
+        
+        $fileContent = Get-Content -Raw $name
+        $fileContentBytes = [System.Text.Encoding]::UTF8.GetBytes($fileContent)
+        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+
+        $body = '{
+            "displayName": "' + $name + '",
+            "type": "Notebook",
+            "definition": {
+                "format": "ipynb",
+                "parts": [
+                    {
+                        "path": "artifact.content.ipynb",
+                        "payload": "' + $fileContentEncoded + '",
+                        "payloadType": "InlineBase64"
+                    }
+                ]
+            }
+        }'
+
+        $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
+        $Lakehouse = Invoke-RestMethod $endPoint -Method POST -Headers $requestHeaders -Body $body
+
+        Write-Host "Notebook uploaded: $name"
+    } elseif ($name -eq "04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb" -or
+            $name -eq "05 Sales Forecasting for Store items in Gold Layer.ipynb") {
+        
+        $fileContent = Get-Content -Raw $name
+        $fileContentBytes = [System.Text.Encoding]::UTF8.GetBytes($fileContent)
+        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+
+        $body = '{
+            "displayName": "' + $name + '",
+            "type": "Notebook",
+            "definition": {
+                "format": "ipynb",
+                "parts": [
+                    {
+                        "path": "artifact.content.ipynb",
+                        "payload": "' + $fileContentEncoded + '",
+                        "payloadType": "InlineBase64"
+                    }
+                ]
+            }
+        }'
+
+        $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
+        $Lakehouse = Invoke-RestMethod $endPoint -Method POST -Headers $requestHeaders -Body $body
+
+        Write-Host "Notebook uploaded: $name"
+        }
+    }
+
+    cd..
+    cd..
 
     RefreshTokens
     Add-Content log.txt "------uploading powerbi reports------"
@@ -323,7 +529,7 @@ else {
         $reportList += $temp
     } else {
         Write-Output "Failed to upload report: $($Pbix.FullName)"
-    }
+        }
     }
 
     Start-Sleep -s 10
@@ -420,40 +626,6 @@ else {
     $result=Invoke-SqlCmd -Query $sqlQuery -ServerInstance $sqlEndpoint -Database $mssql_database_name -Username $mssql_administrator_login -Password $sql_administrator_login_password
     Add-Content log.txt $result
 
-    ## notebooks
-    Add-Content log.txt "-----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses-----"
-    Write-Host "----Configuring Fabric Notebooks w.r.t. current workspace and lakehouses----"
-
-    (Get-Content -path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
-        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
-    } | Set-Content -Path "artifacts/fabricnotebooks/01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#SALES_WORKSPACE_NAME#', $contosoSalesWsName `
-        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-    } | Set-Content -Path "artifacts/fabricnotebooks/02 Bronze to Silver layer_ Medallion Architecture.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-        -replace '_LAKEHOUSE_GOLD_', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/03 Silver to Gold layer_ Medallion Architecture.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/04 Churn Prediction Using MLFlow From Silver To Gold Layer.ipynb"
-
-    (Get-Content -path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb" -Raw) | Foreach-Object { $_ `
-        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
-        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
-    } | Set-Content -Path "artifacts/fabricnotebooks/05 Sales Forecasting for Store items in Gold Layer.ipynb"
-
-    Add-Content log.txt "-----Fabric Notebook Configuration COMPLETE-----"
-    Write-Host "----Fabric Notebook Configuration COMPLETE----"
-
-
     #Web app
     Add-Content log.txt "------deploy poc web app------"
     Write-Host  "-----------------Deploy web app---------------"
@@ -519,8 +691,8 @@ else {
     (Get-Content -path adx-config-appsetting.json -Raw) | Foreach-Object { $_ `
         -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_THERMOSTAT_ENDPOINT#', $thermostat_endpoint`
         -replace '#NAMESPACES_ADX_THERMOSTAT_OCCUPANCY_OCCUPANCY_ENDPOINT#', $occupancy_endpoint`
-    -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
-    -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
+        -replace '#THERMOSTATTELEMETRY_URL#', $thermostat_telemetry_Realtime_URL`
+        -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
     } | Set-Content -Path adx-config-appsetting-with-replacement.json
 
     $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
