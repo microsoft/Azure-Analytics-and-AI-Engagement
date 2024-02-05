@@ -504,7 +504,7 @@ else {
     $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsIdContosoSales
 
     if ($report -ne $null) {
-        Write-Output "Report uploaded successfully: $($report.Name)"
+        Write-Output "Report uploaded successfully: $($report.BaseName)"
 
         $temp = [PSCustomObject]@{
             FileName        = $Pbix.FullName
