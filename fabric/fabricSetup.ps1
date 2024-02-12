@@ -16,6 +16,7 @@ else {
         $global:graphToken = ((az account get-access-token --resource https://graph.microsoft.com) | ConvertFrom-Json).accessToken
         $global:managementToken = ((az account get-access-token --resource https://management.azure.com) | ConvertFrom-Json).accessToken
         $global:purviewToken = ((az account get-access-token --resource https://purview.azure.net) | ConvertFrom-Json).accessToken
+        $global:fabric = ((az account get-access-token --resource https://api.fabric.microsoft.com) | ConvertFrom-Json).accessToken
     }
 
     function Check-HttpRedirect($uri) {
@@ -177,6 +178,7 @@ else {
         }
     }
 
+    az config set clients.show_secrets_warning=False
     $wsIdContosoSales =  Read-Host "Enter your 'contosoSales' PowerBI workspace Id "
     $wsIdContosoFinance =  Read-Host "Enter your 'contosoFinance' PowerBI workspace Id "
     RefreshTokens

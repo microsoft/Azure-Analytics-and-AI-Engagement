@@ -27,7 +27,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 - [Requirements](#requirements)
 - [Before Starting](#before-starting)
-  - [Task 1: Power BI Workspace and Lakehouse creation](#task-1-power-bi-workspace-and-lakehouse-creation)
+  - [Task 1: Power BI Workspace creation](#task-1-power-bi-workspace-creation)
   - [Task 2: Run the Cloud Shell to provision the demo resources](#task-2-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 3: Creating a Shortcut in Lakehouse](#task-3-creating-a-shortcut-in-lakehouse)
   - [Task 4: Setting up the Warehouse](#task-4-setting-up-the-warehouse)
@@ -62,7 +62,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
 
-### Task 1: Power BI Workspace and Lakehouse creation
+### Task 1: Power BI Workspace creation
 
 1. **Open** Power BI in a new tab by clicking [HERE](https://app.powerbi.com/)
 
@@ -451,7 +451,7 @@ step 28 finally **click** on the 'Next' button.
 
 ![Datawarehouse.](media/warehouse-11.png)
 
-24. Next, in 'Connect to data source' **select** 'Existing tables' then **select** 'Select all' and then **click** 'Next' button.
+24. Next, in 'Connect to data source' **select** 'tables' then **select** 'Select all' and then **click** 'Next' button.
 
 	![Datawarehouse.](media/warehouse-12.png)
 
@@ -499,7 +499,7 @@ step 28 finally **click** on the 'Next' button.
 
 35. In a new tab **open** the resource group created in [Task 2](#task-2-run-the-cloud-shell-to-provision-the-demo-resources).
 
-36. **Search** for the 'Storage account' **copy** the 'Storage account' and **paste** it in a notepad for further use.
+36. **Search** for the 'Storage account', **copy** the 'Storage account' name and **paste** it in a notepad for further use.
 
 	![Datawarehouse.](media/warehouse-22.png)
 
@@ -680,8 +680,8 @@ step 28 finally **click** on the 'Next' button.
 
 	|	Table Name	|	Create Shortcut From Lakehouse	|
 	| -----------	| ------------- |
-	|	dimesion_product|	lakehouseSilver	|
-	|	dimesion_customer|	lakehouseSilver	|
+	|	dimension_product|	lakehouseSilver	|
+	|	dimension_customer|	lakehouseSilver	|
 	|	fact_sales|	lakehouseSilver	|
 	|	fact_campaigndata|	lakehouseSilver	|
 	|||
@@ -695,7 +695,7 @@ step 28 finally **click** on the 'Next' button.
 
 	![Close the browser.](media/power-bi-5.png)
 
-2. **Filter** for the **KQL Database** and Open 'Contoso-KQL-DB.'.
+2. **Filter** for the **KQL Database** and Open 'Contoso-KQL-DB'.
 
 	![Close the browser.](media/demo-34a.png)
 
@@ -764,11 +764,11 @@ step 28 finally **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-46.png)
 
-19. To create a Query Set **go to** current Workspace, **click** '+ New' and **click** 'Show all' button.
+19. To create a Query Set **go to** current Workspace, **click** '+ New' and **click** 'More options' button.
 
 	![Close the browser.](media/demo-5.png)
 
-20. In the new window, **scroll down** to 'Real-Time Analytics' section and **click** 'KQL Queryset (Preview)'.
+20. In the new window, **scroll down** to 'Real-Time Analytics' section and **click** 'KQL Queryset'.
 
 	![Close the browser.](media/demo-47.png)
 
@@ -802,11 +802,11 @@ This section is optional and created to showcase other data ingestion options. U
 
     ![Close the browser.](media/demo-4.png)
 
-4. **Click** '+ New' and then **select** 'Show all'.
+4. **Click** '+ New' and then **select** 'More options'.
 
     ![Close the browser.](media/demo-5.png)
 
-5. In the new window **click** 'Lakehouse(Preview)'.
+5. In the new window **click** 'Lakehouse'.
 
     ![Close the browser.](media/demo-6.png)
 
@@ -864,11 +864,11 @@ This section is optional and created to showcase other data ingestion options. U
 
 ### Creating Pipelines and Dataflows
 
-1. While you are in the 'contosoSales' workspace **click** '+ New' button and **select** 'Show all'.
+1. While you are in the 'contosoSales' workspace **click** '+ New' button and **select** 'More options'.
 
-	![Pipeline.](media/pipeline-1.png)
+	![Pipeline.](media/demo-5.png)
 
-2. Under Data Factory section, **select** 'Dataflow Gen2 (Preview).
+2. Under Data Factory section, **select** 'Dataflow Gen2'.
 
 	![Pipeline.](media/pipeline-2.png)
 
@@ -888,11 +888,11 @@ This section is optional and created to showcase other data ingestion options. U
 
 	![Pipeline.](media/pipeline-6.png)
 
-7. **Go back** to the workspace, **click** '+ New' and **click** 'Show all'.
+7. **Go back** to the workspace, **click** '+ New' and **click** 'More options'.
 
-	![Pipeline.](media/pipeline-1.png)
+	![Pipeline.](media/demo-5.png)
 
-8. Under Data Factory section, **select** 'Data pipeline (Preview).
+8. Under Data Factory section, **select** 'Data pipeline'.
 
 	![Pipeline.](media/pipeline-7.png)
 
