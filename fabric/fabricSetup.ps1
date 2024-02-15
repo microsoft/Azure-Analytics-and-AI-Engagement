@@ -503,7 +503,7 @@ else {
     foreach ($Pbix in $PowerBIFiles) {
     Write-Output "Uploading report: $($Pbix.FullName)"
   
-    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsIdContosoSales
+    $report = New-PowerBIReport -Path $Pbix.FullName -WorkspaceId $wsIdContosoSales -ConflictAction CreateOrOverwrite
 
     if ($report -ne $null) {
         Write-Output "Report uploaded successfully: $($report.BaseName)"

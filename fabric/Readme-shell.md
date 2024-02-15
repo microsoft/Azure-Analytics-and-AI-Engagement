@@ -662,7 +662,7 @@ step 28 finally **click** on the 'Next' button.
 	
 3. **Click** on the 'three dots' infont of Tables and then **select** 'New Shortcut'.
 
-	![Close the browser.](media/LakehouseGoldShortcut1.png)
+	![Close the browser.](media/LakehouseGoldShortcutupdated.png)
 
 4. In the 'Internal Sources' section **select** 'Microsoft OneLake'.
 
