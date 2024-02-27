@@ -1,1 +1,0 @@
-Select * from [iot-foottraffic-data] Order by RecordedOn desc

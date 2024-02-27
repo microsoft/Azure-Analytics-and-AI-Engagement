@@ -1,0 +1,30 @@
+//***********************************************************************************************************
+//**********************Analyze Consumers E-commerce Website Purchasing Behaviour****************************
+
+//  Let's look at random sequence with a purchase event 
+
+Behaviour
+| where event_type == " purchase" 
+| summarize Price=round(sum(price), 2) by category_code 
+| extend category_code=replace_string(category_code, '.', ' ') 
+| top 10 by Price desc  | render columnchart  
+
+
+// Search items in userscart not in shopping list
+OnlineBehaviour 
+| join kind=leftouter ShoppingCheckoutList on product_id
+|where isnull(product_id1) and category_code!=(' ') and user_id=='539920214'
+| count(category_code)
+
+
+Select SC.category_code,count(SC.category_code) from OnlineBehaviour OB join
+ShoppingCheckoutList SC on SC.product_id=OB.product_id
+group by SC.category_code
+
+
+OnlineBehaviour
+| join kind=leftouter (
+    ShoppingCheckoutList
+) on product_id
+|where isnull(product_id1) and category_code!=(' ') and user_id=='539920214'
+| summarize count = count() by category_code

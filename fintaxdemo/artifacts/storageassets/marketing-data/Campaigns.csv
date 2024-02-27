@@ -1,8 +1,0 @@
-Campaigns_ID,CampaignID,CampaignName,SubCampaignID,FullAd_FileName,HalfAd_FileName,Logo_FileName,SoundFile_FileName,FullAd,HalfAd,Logo,SoundFile
-50,GetSporty,Get Sporty,EnjoyTheMoment,https://campaignsstore.blob.core.windows.net/campaigns-full/outdoorfull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/outdoorhalf.jpg,,,,,,
-11,WheelsofSteel,Wheels of Steel,LetsRun,https://campaignsstore.blob.core.windows.net/campaigns-full/uniquefull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/uniquehalf.jpg,,,,,,
-34,FunwithColors,Fun with Colors,SustainableFashion  ,https://campaignsstore.blob.core.windows.net/campaigns-full/uniqueperson.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/uniquepersonhalf.jpg,,,,,,
-105,Hitthetrack,Hit the track,BeUnique,https://campaignsstore.blob.core.windows.net/campaigns-full/outdoorfamilyfull.jpg,https://campaignsstore.blob.core.windows.net/campaigns-half/outdoorfamilyhalf.jpg,,,,,,
-21,WheelsThatMatter,Wheels That Matter,Go Eco,,,,,,,,
-25,RacerClub,Racer Club,FallintoWinter,,,,,,,,
-45,BeyondWheels,Beyond Wheels,LetsGoSurf,,,,,,,,
