@@ -68,6 +68,20 @@ function ReplaceTokensInFile($ht, $filePath) {
     return $template;
 }
 
+Write-Host "------------Prerequisites------------"
+Write-Host "-An Azure Account with the ability to create Fabric Workspace."
+Write-Host "-A Power BI with Fabric License to host Power BI reports."
+Write-Host "-Make sure your Power BI administrator can provide service principal access on your Power BI tenant."
+Write-Host "-Make sure to register the following resource providers with your Azure Subscription:"
+Write-Host "-Microsoft.Fabric"
+Write-Host "-Microsoft.EventHub"
+Write-Host "-Microsoft.SQLSever"
+Write-Host "-Microsoft.StorageAccount"
+Write-Host "-Microsoft.AppService"
+Write-Host "-Make sure you use the same valid credentials to log into Azure and Power BI."
+
+Start-Sleep -s 60
+
 az login
 
 #for powershell...
