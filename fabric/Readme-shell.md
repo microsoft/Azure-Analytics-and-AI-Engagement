@@ -123,7 +123,9 @@ Customers can play, get hands-on experience navigating through the demo environm
 ### Task 2: Run the Cloud Shell to provision the demo resources
 
 >**Note:** For this Demo we have assets in an Azure resource group as well as Fabric Workspaces
+
 >**Note:** In this task we will execute a powershell script on Cloudshell to create those assets
+
 >**Note:** List of the resources are as follows:
 
 **Azure resources:**
@@ -219,13 +221,13 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	>**Note:** All the cmdlets used in the script work best in Powershell.	
 
-	>**Note:** Please use 'Ctrl+C' to copy is and 'Shift+Insert' to paste, as 'Ctrl+V' is NOT supported by CLoudshell.
+	>**Note:** Please use 'Ctrl+C' to copy is and 'Shift+Insert' to paste, as 'Ctrl+V' is NOT supported by Cloudshell.
 
 8. Enter the following command to clone the repository files in cloudshell.
 
 Command:
 ```
-git clone -b fabric2.0 --depth 1 --single-branch https://daidemos@dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox fabric
+git clone -b microsoftfabric2.0 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fabric
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
