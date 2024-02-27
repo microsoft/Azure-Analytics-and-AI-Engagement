@@ -570,7 +570,7 @@ step 28, and **click** on the 'Next' button.
 
 	![Datawarehouse.](media/warehouse-18.1.png)
 
-33. **Click** on [Warehouse Scripts](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/warehousescripts&version=GBfabric2.0&_a=contents) link to open the scripts.
+33. **Click** on [Warehouse Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric2.0/fabric/artifacts/warehousescripts) link to open the scripts.
 
 34. **Click** on the first script to open it.
 
@@ -620,7 +620,7 @@ step 28, and **click** on the 'Next' button.
 
 >**Note:** We are going to create 6 more scripts following the above steps for querying the Warehouse data.
 
-46. **Repeat** the steps (33-45) for the other six scripts in the repository. Get the scripts [HERE](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/warehousescripts&version=GBfabric2.0&_a=contents)
+46. **Repeat** the steps (33-45) for the other six scripts in the repository. Get the scripts [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric2.0/fabric/artifacts/warehousescripts)
 
 >**Note:** If there are no replacements necessary in the scripts, you can skip the steps in between.
 
@@ -859,7 +859,7 @@ step 28, and **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-45.png)
 
-18. It will open the KQL queryset editor. **Click** link [KQL Queryset Scripts](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/kqlscripts&version=GBfabric2.0&_a=contents). **Copy** and **paste** the script in the editor and **click** 'Run' button.
+18. It will open the KQL queryset editor. **Click** link [KQL Queryset Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric2.0/fabric/artifacts/kqlscripts). **Copy** and **paste** the script in the editor and **click** 'Run' button.
 
 	![Close the browser.](media/demo-46.png)
 
@@ -974,7 +974,7 @@ step 28, and **click** on the 'Next' button.
 
 	![Close the browser.](media/demo-49.png)
 
-47. **Click** link [KQL Queryset Scripts](https://dev.azure.com/daidemos/Microsoft%20Data%20and%20AI%20DREAM%20Demos%20and%20DDiB/_git/DreamDemoInABox?path=/artifacts/kqlscripts&version=GBfabric2.0&_a=contents). **Copy** kql script '02_Analyze_Consumers_E-commerce_Website_Purchasing_Behaviour' and **paste** the script in the editor and **click** 'Run' button.
+47. **Click** link [KQL Queryset Scripts](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/microsoftfabric2.0/fabric/artifacts/kqlscripts). **Copy** kql script '02_Analyze_Consumers_E-commerce_Website_Purchasing_Behaviour' and **paste** the script in the editor and **click** 'Run' button.
 
      ![Close the browser.](media/kql-db-6.png)
 
