@@ -240,7 +240,7 @@ git clone -b microsoftfabric2.0 --depth 1 --single-branch https://github.com/mic
 
 9. **Execute** the Powershell script with the following command:
 ```
-cd ./fabric/
+cd ./fabric/fabric
 ```
 
 ```

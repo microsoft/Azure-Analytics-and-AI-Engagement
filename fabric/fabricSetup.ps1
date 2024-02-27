@@ -71,6 +71,7 @@ function ReplaceTokensInFile($ht, $filePath) {
 Write-Host "------------Prerequisites------------"
 Write-Host "-An Azure Account with the ability to create Fabric Workspace."
 Write-Host "-A Power BI with Fabric License to host Power BI reports."
+Write-Host "-Make sure the user deploying the script has atleast a 'Contributor' level of access on the 'Subscription' on which it is being deployed."
 Write-Host "-Make sure your Power BI administrator can provide service principal access on your Power BI tenant."
 Write-Host "-Make sure to register the following resource providers with your Azure Subscription:"
 Write-Host "-Microsoft.Fabric"
@@ -80,7 +81,13 @@ Write-Host "-Microsoft.StorageAccount"
 Write-Host "-Microsoft.AppService"
 Write-Host "-Make sure you use the same valid credentials to log into Azure and Power BI."
 
-Start-Sleep -s 60
+Write-Host "    -----------------   "
+Write-Host "    -----------------   "
+Write-Host "If you fulfill the above requirements pleaseprocess otherwise press 'Ctrl+C' to end script execution."
+Write-Host "    -----------------   "
+Write-Host "    -----------------   "
+
+Start-Sleep -s 30
 
 az login
 
@@ -168,7 +175,6 @@ while ($complexPassword -ne 1)
     }
 }
 
-az config set clients.show_secrets_warning=False
 $wsIdContosoSales =  Read-Host "Enter your 'contosoSales' PowerBI workspace Id "
 $wsIdContosoFinance =  Read-Host "Enter your 'contosoFinance' PowerBI workspace Id "
 
