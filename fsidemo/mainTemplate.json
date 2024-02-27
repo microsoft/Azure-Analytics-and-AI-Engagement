@@ -81,7 +81,7 @@
     "app_realtime_kpi_simulator_app_service_name": "[concat('app-fsi-realtime-kpi-simulator-',variables('unique_suffix'))]",
     "cogs_forms_name": "[concat('forms-',variables('unique_suffix'))]",
     "search_fsi_demo_name": "[concat('srch-fsi-',variables('unique_suffix'))]",
-    "key_vault_name": "[concat('kv-',variables('unique_suffix'))]",
+    "key_vault_name": "[substring(concat('kv-',variables('unique_suffix')),0,24)]",
     "databricks_workspace_name": "[concat('fsi-dbrs-',variables('unique_suffix'))]",
     "databricks_managed_resource_group_name": "[concat('rg-', variables('databricks_workspace_name'))]",
     "cog_speech_name": "[concat('speech-service-',variables('unique_suffix'))]",
