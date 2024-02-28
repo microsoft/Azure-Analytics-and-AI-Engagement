@@ -1,7 +1,5 @@
 ![Showcase Image](media/showcase.png)
 
-# Fabric DREAM Demo 2.0 PoC Accelerator Setup Guide
-
 ## What is DPoC?
 DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
 
@@ -191,7 +189,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 <a href='https://portal.azure.com/' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
-2. In the Resource group section, select the **Terminal icon** to open Azure Cloud Shell.
+2. In the Azure portal, select the **Terminal icon** to open Azure Cloud Shell.
 
 	![A portion of the Azure Portal taskbar is displayed with the Azure Cloud Shell icon highlighted.](media/cloud-shell.png)
 
