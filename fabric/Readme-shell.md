@@ -187,7 +187,9 @@ Customers can play, get hands-on experience navigating through the demo environm
 |Contoso-KQL-DB                                        |                  KQLDatabase|
 |  |  |
 
-1. **Open** the Azure Portal by clicking [HERE](https://portal.azure.com/)
+1. **Open** the Azure Portal by clicking on the button below.
+
+<a href='https://portal.azure.com/' target='_blank'><img src='http://azuredeploy.net/deploybutton.png' /></a>
 
 2. In the Resource group section, select the **Terminal icon** to open Azure Cloud Shell.
 
