@@ -1,0 +1,43 @@
+name: github-clone-stats
+
+on:
+  schedule:
+    # Run this once per day, towards the end of the day for keeping the most
+    # recent data point most meaningful (hours are interpreted in UTC).
+    - cron: "0 23 * * *"
+  workflow_dispatch: # Allow for running this manually.
+
+jobs:
+  j1:
+    name: github-clone-stats
+    runs-on: windows-latest
+    steps:
+        - uses: actions/checkout@v2
+          with:
+            ref: "main"
+    
+        - name: run-ghrs
+        # Use latest release.
+          uses: jgehrcke/github-clone-stats@RELEASE
+          with:
+            ghtoken: ${{ secrets.ghrs_github_api_token }}
+
+        # Calculates traffic and clones and stores in CSV file
+        - name: GitHub traffic 
+          uses: sangonzal/repository-traffic-action@v0.1.2
+          env:
+            ghtoken: ${{ secrets.ghrs_github_api_token }} 
+    
+        # Commits files to repository
+        - name: Commit changes
+          uses: EndBug/add-and-commit@v4
+          with:
+            author_name: Adnan Sharique
+            message: "GitHub traffic"
+            add: "./traffic/"
+            ref: "main"  # commits to branch "traffic"
+
+
+        
+
+
