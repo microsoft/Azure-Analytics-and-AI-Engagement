@@ -1,35 +1,19 @@
-# This is a basic workflow to help you get started with Actions
-
-name: github-clone-stats
+name: github-repo-stats
 
 on:
   schedule:
     # Run this once per day, towards the end of the day for keeping the most
+    # recent data point most meaningful (hours are interpreted in UTC).
     - cron: "0 23 * * *"
   workflow_dispatch: # Allow for running this manually.
 
 jobs:
   j1:
+    name: github-repo-stats
     runs-on: ubuntu-latest
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        ref: "main"
-      
-    # Calculates traffic and clones and stores in CSV file
-    - name: GitHub traffic 
-      uses: sangonzal/repository-traffic-action@v0.1.2
-      env:
-        TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
-    
-    # Commits files to repository
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v4
-      with:
-        author_name: Adnan Sharique
-        message: "GitHub traffic"
-        add: "./trafficLatest/"
-        ref: "main"  # commits to branch "traffic"
+      - name: run-ghrs
+        # Use latest release.
+        uses: jgehrcke/github-repo-stats@RELEASE
+        with:
+          ghtoken: ${{ secrets.ghrs_github_api_token }}
