@@ -23,7 +23,7 @@ jobs:
     - name: GitHub traffic 
       uses: sangonzal/repository-traffic-action@v0.1.2
       env:
-        ghrs_github_api_token: ${{ secrets.ghrs_github_api_token }} 
+        TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
     
     # Commits files to repository
     - name: Commit changes
@@ -31,10 +31,5 @@ jobs:
       with:
         author_name: Adnan Sharique
         message: "GitHub traffic"
-        add: "./traffic/"
+        add: "./trafficLatest/"
         ref: "main"  # commits to branch "traffic"
-
-
-        
-
-
