@@ -17,3 +17,12 @@ jobs:
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
           ghtoken: ${{ secrets.ghrs_github_api_token }}
+
+          # Commits files to repository
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Adnan Sharique
+          message: "GitHub traffic"
+          add: "./trafficLatest/"
+          ref: "main"  # commits to branch "traffic"
