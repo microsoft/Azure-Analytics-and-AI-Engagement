@@ -562,6 +562,14 @@ else {
     $thermostat_telemetry_Realtime_URL =  ""
     $occupancy_data_Realtime_URL =  ""
 
+    #Adding tags
+    $tags = @{
+        "wsIdContosoSales" = $wsIdContosoSales
+        "wsIdContosoFinance" = $wsIdContosoFinance
+        "suffix" = $suffix
+    }
+    Set-AzResourceGroup -ResourceGroupName $rgName -Tag $tags
+
     #download azcopy command
     if ([System.Environment]::OSVersion.Platform -eq "Unix") {
         $azCopyLink = Check-HttpRedirect "https://aka.ms/downloadazcopy-v10-linux"

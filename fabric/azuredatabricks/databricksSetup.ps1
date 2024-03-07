@@ -54,6 +54,21 @@ $databricks_name="databricks$suffix"
 $databricks_rgname="databricks-rg$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 
+$rgName = Read-Host "Enter your resource group name"
+$wsIdContosoSales = (az group show --name $rgName --query 'tags.wsIdContosoSale' --output tsv)
+$suffix = (az group show --name $rgName --query 'tags.suffix' --output tsv)
+
+$lakehouseBronze =  "lakehouseBronze_$suffix"
+$lakehouseSilver =  "lakehouseSilver_$suffix"
+$lakehouseGold =  "lakehouseGold_$suffix"
+
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales";
+$contosoSalesWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+$contosoSalesWsName = $contosoSalesWsName.name
+# $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoFinance"
+# $contosoFinanceWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
+# $contosoFinanceWsName = $contosoFinanceWsName.name
+
 Write-Host "Creating databricks resources in $rgName..."
 New-AzResourceGroupDeployment -ResourceGroupName $rgName `
 -TemplateFile "databricksTemplate.json" `
@@ -150,6 +165,10 @@ New-AzRoleAssignment -Objectid $principalId -RoleDefinitionName "Contributor" -S
         -replace '#TENANT_ID#', $tenantid `
         -replace '#SECRET_KEY#', $clientsecpwd `
         -replace '#APP_ID#', $appid `
+        -replace '#WORKSPACE_NAME#', $contosoSalesWsName `
+        -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
+        -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
+        -replace '#LAKEHOUSE_GOLD#', $lakehouseGold `
 } | Set-Content -Path "databricks/01_Setup-Onelake_Integration_with_Databrick.ipynb"
 
 (Get-Content -path "databricks/03_ML_Solutions_in_a_Box.ipynb" -Raw) | Foreach-Object { $_ `
