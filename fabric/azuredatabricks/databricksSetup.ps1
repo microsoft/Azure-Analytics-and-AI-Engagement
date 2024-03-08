@@ -54,14 +54,14 @@ $databricks_name="databricks$suffix"
 $databricks_rgname="databricks-rg$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 
-$rgName = Read-Host "Enter your resource group name"
-$wsIdContosoSales = (az group show --name $rgName --query 'tags.wsIdContosoSale' --output tsv)
-$suffix = (az group show --name $rgName --query 'tags.suffix' --output tsv)
+$wsIdContosoSales = az group show --name $rgName --query 'tags.wsIdContosoSales' --output tsv
+$suffix = az group show --name $rgName --query 'tags.suffix' --output tsv
 
 $lakehouseBronze =  "lakehouseBronze_$suffix"
 $lakehouseSilver =  "lakehouseSilver_$suffix"
 $lakehouseGold =  "lakehouseGold_$suffix"
 
+RefreshTokens
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales";
 $contosoSalesWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
 $contosoSalesWsName = $contosoSalesWsName.name
@@ -155,16 +155,13 @@ $app = az ad app create --display-name "fabric databricks $suffix" | ConvertFrom
 $clientId = $app.appId
 $appCredential = az ad app credential reset --id $clientId | ConvertFrom-Json
 $clientsecpwd = $appCredential.password
-$appid = az ad app show --id $clientid | ConvertFrom-Json
-$appid = $appid.appid
-az ad sp create --id $clientId | Out-Null
 $principalId = az ad sp show --id $clientId --query "id" -o tsv
 New-AzRoleAssignment -Objectid $principalId -RoleDefinitionName "Contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Databricks/workspaces/$databricks_name" -ErrorAction SilentlyContinue;
 
 (Get-Content -path "databricks/01_Setup-Onelake_Integration_with_Databrick.ipynb" -Raw) | Foreach-Object { $_ `
         -replace '#TENANT_ID#', $tenantid `
         -replace '#SECRET_KEY#', $clientsecpwd `
-        -replace '#APP_ID#', $appid `
+        -replace '#APP_ID#', $clientId `
         -replace '#WORKSPACE_NAME#', $contosoSalesWsName `
         -replace '#LAKEHOUSE_BRONZE#', $lakehouseBronze `
         -replace '#LAKEHOUSE_SILVER#', $lakehouseSilver `
