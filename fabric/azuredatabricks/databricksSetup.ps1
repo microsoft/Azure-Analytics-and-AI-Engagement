@@ -46,7 +46,6 @@ $subOptions = [System.Collections.ArrayList]::new()
     }
 }
 
-[string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
 $rgName = read-host "Enter the resource group name for deployment"
 $Region = Get-AzResourceGroup -Name $rgName
 $Region = $Region.Location
