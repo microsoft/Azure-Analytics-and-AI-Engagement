@@ -49,12 +49,12 @@ $subOptions = [System.Collections.ArrayList]::new()
 $rgName = read-host "Enter the resource group name for deployment"
 $Region = Get-AzResourceGroup -Name $rgName
 $Region = $Region.Location
+$suffix = az group show --name $rgName --query 'tags.suffix' --output tsv
 $databricks_name="databricks$suffix"
 $databricks_rgname="databricks-rg$suffix"
 $subscriptionId = (Get-AzContext).Subscription.Id
 
 $wsIdContosoSales = az group show --name $rgName --query 'tags.wsIdContosoSales' --output tsv
-$suffix = az group show --name $rgName --query 'tags.suffix' --output tsv
 
 $lakehouseBronze =  "lakehouseBronze_$suffix"
 $lakehouseSilver =  "lakehouseSilver_$suffix"
@@ -118,8 +118,8 @@ $requestHeaders = @{
 # to create a new cluster
 $body =  '{
     "autoscale": {
-        "min_workers": 2,
-        "max_workers": 4
+        "min_workers": 1,
+        "max_workers": 1
     },
     "cluster_name": "MFCluster",
     "spark_version": "13.1.x-cpu-ml-scala2.12",
@@ -150,12 +150,75 @@ $clusterId_1 = $clusterId_1.cluster_id
 
 $tenant = get-aztenant
 $tenantid = $tenant.id
-$app = az ad app create --display-name "fabric databricks $suffix" | ConvertFrom-Json
+$servicePrincipalName = "fabric w databricks $suffix"
+$app = az ad app create --display-name $servicePrincipalName | ConvertFrom-Json
 $clientId = $app.appId
 $appCredential = az ad app credential reset --id $clientId | ConvertFrom-Json
 $clientsecpwd = $appCredential.password
+az ad sp create --id $clientId | Out-Null 
 $principalId = az ad sp show --id $clientId --query "id" -o tsv
 New-AzRoleAssignment -Objectid $principalId -RoleDefinitionName "Contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Databricks/workspaces/$databricks_name" -ErrorAction SilentlyContinue;
+
+#https://docs.microsoft.com/en-us/power-bi/developer/embedded/embed-service-principal
+#Allow service principals to user PowerBI APIS must be enabled - https://app.powerbi.com/admin-portal/tenantSettings?language=en-U
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups";
+$result = Invoke-WebRequest -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+$homeCluster = $result.Headers["home-cluster-uri"]
+#$homeCluser = "https://wabi-west-us-redirect.analysis.windows.net";
+
+RefreshTokens
+$url = "$homeCluster/metadata/tenantsettings"
+$post = "{`"featureSwitches`":[{`"switchId`":306,`"switchName`":`"ServicePrincipalAccess`",`"isEnabled`":true,`"isGranular`":true,`"allowedSecurityGroups`":[],`"deniedSecurityGroups`":[]}],`"properties`":[{`"tenantSettingName`":`"ServicePrincipalAccess`",`"properties`":{`"HideServicePrincipalsNotification`":`"false`"}}]}"
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer $powerbiToken")
+$headers.Add("X-PowerBI-User-Admin", "true")
+#$result = Invoke-RestMethod -Uri $url -Method PUT -body $post -ContentType "application/json" -Headers $headers -ea SilentlyContinue;
+
+#add PowerBI App to workspace as an admin to group
+RefreshTokens
+$url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales/users";
+$post = "{
+`"identifier`":`"$($principalId)`",
+`"groupUserAccessRight`":`"Admin`",
+`"principalType`":`"App`"
+}";
+
+$result = Invoke-RestMethod -Uri $url -Method POST -body $post -ContentType "application/json" -Headers @{ Authorization = "Bearer $powerbitoken" } -ea SilentlyContinue;
+
+#get the power bi app...
+$powerBIApp = Get-AzADServicePrincipal -DisplayNameBeginsWith "Power BI Service"
+$powerBiAppId = $powerBIApp.Id;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+`"clientId`":`"$clientId`",
+`"consentType`":`"AllPrincipals`",
+`"resourceId`":`"$powerBiAppId`",
+`"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
+`"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+`"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+}";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
+
+#setup powerBI app...
+RefreshTokens
+$url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
+$post = "{
+`"clientId`":`"$clientId`",
+`"consentType`":`"AllPrincipals`",
+`"resourceId`":`"$powerBiAppId`",
+`"scope`":`"User.Read Directory.AccessAsUser.All`",
+`"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
+`"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+}";
+
+$result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
+
 
 (Get-Content -path "databricks/01_Setup-Onelake_Integration_with_Databrick.ipynb" -Raw) | Foreach-Object { $_ `
         -replace '#TENANT_ID#', $tenantid `
