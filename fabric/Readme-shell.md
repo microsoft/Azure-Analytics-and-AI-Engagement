@@ -10,12 +10,11 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 **Here are some important guidelines before you begin** 
 
-  1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
-  2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information regarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
-  3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
-  4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
-  5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
-  
+1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
+2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information regarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
+3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
+4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
+5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
 
 
 ## Contents
@@ -257,19 +256,19 @@ cd ./fabric/fabric
      
 12. **Paste** the authentication code.
 
-	![New Browser Window to provide the Authentication Code.](media/cloud-shell-7.png)
+	<img src="media/cloud-shell-7.png" alt="drawing" width="400"/>
 
 13. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
-	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.png)
+	<img src="media/cloud-shell-8.png" alt="drawing" width="400"/>
 
 14. **Click** on **Continue** button.
 
-	![Select the User Account which you want to Authenticate.](media/cloud-shell-8.1.png)
+	<img src="media/cloud-shell-8.1.png" alt="drawing" width="400"/>
 
 15. **Close** the browser tab when you see the message box.
 
-	![Authentication done.](media/cloud-shell-9.png)  
+	![box](media/cloud-shell-9.png)   
 
 16. **Navigate back** to your **Azure Cloud Shell** execution window.
 
@@ -283,7 +282,7 @@ cd ./fabric/fabric
 
 20. **Paste** the authentication code you copied from the shell above.
 
-	![Enter the Resource Group name.](media/cloud-shell-11.png)
+	<img src="media/cloud-shell-11.png" alt="drawing" width="400"/>
 
 21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure).
 
@@ -291,11 +290,11 @@ cd ./fabric/fabric
 
 22. **Click** on 'Continue'.
 
-	![Select Same User to Authenticate.](media/cloud-shell-12.1.png)
+	<img src="media/cloud-shell-12.1.png" alt="drawing" width="400"/>
 
 23. **Close** the browser tab once you see the message box.
 
-	![Close the browser tab.](media/cloud-shell-13.png)
+	<img src="media/cloud-shell-13.png" alt="drawing" width="400"/>
 
 24. **Go back** to Azure Cloud Shell execution window.
 
@@ -332,7 +331,7 @@ cd ./fabric/fabric
       
 31. In the new browser tab, **paste** the code you copied from the shell in step 30 and **click** on **Next**.
 
-	![Paste the code.](media/cloud-shell-17.png)
+	<img src="media/cloud-shell-17.png" alt="drawing" width="400"/>
 
 	> **Note:** Be sure to provide the device code before it expires and let the script run until completion.
 
@@ -342,11 +341,11 @@ cd ./fabric/fabric
 
 33. **Click** on **Continue**.
 
-	![Select the same user.](media/cloud-shell-18.1.png)
+	<img src="media/cloud-shell-18.1.png" alt="drawing" width="400"/>
 
 34. **Close** the browser tab when you see the message box.
 
-	![Close the browser.](media/cloud-shell-19.png)
+	![box](media/cloud-shell-9.png)
 
 	>**Note:** During script execution you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
 
@@ -1314,7 +1313,7 @@ cd ./fabric/
 
 10. **Close** the browser tab when you see the message box.
 
-	![Authentication done.](media/cloud-shell-9.png)  
+	![box](media/cloud-shell-9.png)   
 
 11. **Navigate back** to your **Azure Cloud Shell** execution window.
 
