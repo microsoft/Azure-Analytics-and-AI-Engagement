@@ -314,7 +314,7 @@ else {
     $KQLDB = "Contoso-KQL-DB"
     $body = @{
             displayName = $KQLDB 
-            type        = "KQLDatabase"
+            type        = "Eventhouse"
         } | ConvertTo-Json
         
     try{
