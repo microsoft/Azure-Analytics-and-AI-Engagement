@@ -777,8 +777,6 @@ else {
         -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
     } | Set-Content -Path adx-config-appsetting-with-replacement.json
 
-    $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
-
     # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
     Write-Information "Deploying ADX Thermostat Realtime App"
@@ -788,6 +786,10 @@ else {
     Start-Sleep -s 10
 
     az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+
+    #Setting the config before the webapp has been created with webapp up has caused conflicts. Going to reset the config after deployment. That forces a reset of the container anyway.
+
+    $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
 
     Add-Content log.txt "------Deploying Web Apps COMPLETED------"
     Write-Host  "----------------Deploying Web Apps COMPLETED---------------"
