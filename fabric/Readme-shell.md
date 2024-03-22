@@ -116,6 +116,56 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 >**Note:** Make sure to add this workspace as a Fabric Trial License as well and note the names of the workspaces and lakehouses. These will be used during script execution (Task 2).
 
+### Task 1.1 (Optional): Create Streaming Datasets
+
+1. Navigate to the **contosoSales** Workspace
+
+2. Using the **+ New** Dropdown, create a new **Streaming Dataset**
+
+	![Create a new Streaming Dataset.](media/streamingds-new.jpg)
+
+3. Pick the **API** option and click next
+
+	![Configure the Streaming Method.](media/streamingds-api.jpg)
+
+4. Name the Dataset **ThermostatData** and make sure to switch **Historical Data Analysis** on
+
+	![Configure the Values.](media/streamingds-thermostat.jpg)
+
+5. Add following values and click **Create**
+
+|NAME	|TYPE|
+|-----|-----|
+|DeviceId	|Text|
+|City		|Text|
+|StoreID	|Text|
+|EnqueuedTimeUTC	|DateTime|
+|BatteryLevel	|Number|
+|Temp	|Number|
+|Temp_UoM	|Text|
+| | |
+
+6. Once created, copy the **Push Url** from the confirmation screen and keep it for later.
+
+	![Copy Push Url.](media/streamingds-thermostat-url.png)
+
+7. Repeat Steps 1-6 for a new Streaming Dataset called **OccupancyData** with following values
+
+|NAME	|TYPE|
+|-----|-----|
+|DeviceId	|Text|
+|City		|Text|
+|StoreID	|Text|
+|EnqueuedTimeUTC	|DateTime|
+|BatteryLevel	|Number|
+|visitors_cnt	|Number|
+|visitors_in	|Number|
+|visitors_out	|Number|
+|avg_aisle_time_spent	|Number|
+|avg_dwell_time	|Number|
+| | |
+
+![Configure the Values.](media/streamingds-occupancy.png)
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
 
@@ -1346,3 +1396,4 @@ The technology/functionality described in this demo/lab is provided by Microsoft
 COPYING OR REPRODUCTION OF THE DEMO/LAB (OR ANY PORTION OF IT) TO ANY OTHER SERVER OR LOCATION FOR FURTHER REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PROHIBITED. 
 
 THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTIONALITY, INCLUDING POTENTIAL NEW FEATURES AND CONCEPTS, IN A SIMULATED ENVIRONMENT WITHOUT COMPLEX SET-UP OR INSTALLATION FOR THE PURPOSE DESCRIBED ABOVE. THE TECHNOLOGY/CONCEPTS REPRESENTED IN THIS DEMO/LAB MAY NOT REPRESENT FULL FEATURE FUNCTIONALITY AND MAY NOT WORK THE WAY A FINAL VERSION MAY WORK. WE ALSO MAY NOT RELEASE A FINAL VERSION OF SUCH FEATURES OR CONCEPTS.  YOUR EXPERIENCE WITH USING SUCH FEATURES AND FUNCITONALITY IN A PHYSICAL ENVIRONMENT MAY ALSO BE DIFFERENT.
+

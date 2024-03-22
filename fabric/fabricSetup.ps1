@@ -4,6 +4,7 @@ $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
 $title = "Agreement"
 $message = "By typing [Y], I hereby confirm that I have read the license ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/license.md ) and disclaimers ( available at https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/README.md ) and hereby accept the terms of the license and agree that the terms and conditions set forth therein govern my use of the code made available hereunder. (Type [Y] for Yes or [N] for No and press enter)"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
+
 if ($result -eq 1) {
     write-host "Thank you. Please ensure you delete the resources created with template to avoid further cost implications."
 }
@@ -202,6 +203,9 @@ else {
     $wsIdContosoSales =  Read-Host "Enter your 'contosoSales' PowerBI workspace Id "
     $wsIdContosoFinance =  Read-Host "Enter your 'contosoFinance' PowerBI workspace Id "
 
+    $thermostat_telemetry_Realtime_URL =   Read-Host "Optional: Paste the Push URL for the Thermostat Streaming Dataset, starting with https://api.powerbi.com/ here. `nOr press Enter if you wish to skip this component `n"
+    $occupancy_data_Realtime_URL =  Read-Host "Optional: Paste the Push URL for the Occupancy Streaming Dataset, starting with https://api.powerbi.com/ here. `nOr press Enter if you wish to skip this component `n"
+
     RefreshTokens
     $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales";
     $contosoSalesWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
@@ -215,7 +219,7 @@ else {
     $lakehouseGold =  "lakehouseGold_$suffix"
     $lakehouseFinance = "lakehouseFinance_$suffix"
     $lakehouseSales = "Sales_Lakehouse1"
-
+  
     Add-Content log.txt "------FABRIC assets deployment STARTS HERE------"
     Write-Host "------------FABRIC assets deployment STARTS HERE------------"
 
@@ -314,7 +318,7 @@ else {
     $KQLDB = "Contoso-KQL-DB"
     $body = @{
             displayName = $KQLDB 
-            type        = "KQLDatabase"
+            type        = "Eventhouse"
         } | ConvertTo-Json
         
     try{
@@ -605,8 +609,7 @@ else {
 
     Write-Host "Resource creation in $rgName resource group COMPLETE"
 
-    $thermostat_telemetry_Realtime_URL =  ""
-    $occupancy_data_Realtime_URL =  ""
+
 
     #Adding tags
     $tags = @{
@@ -775,17 +778,19 @@ else {
         -replace '#OCCUPANCYDATA_URL#', $occupancy_data_Realtime_URL`
     } | Set-Content -Path adx-config-appsetting-with-replacement.json
 
-    $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
-
     # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
-    Write-Information "Deploying ADX Thermostat Realtime App"
-    cd app-adx-thermostat-realtime
-    az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-    cd ..
+    Write-Host "Deploying ADX Thermostat Realtime App"
+    #using zip deployment instead if webapp up, as webapp up was causing consisten deployment errors. as there are no changes to the actual code, and all is managed via the config, no need to unpack the realtime data generator. 
+    az webapp deployment source config-zip --resource-group $rgName --name $sites_adx_thermostat_realtime_name --src "./artifacts/binaries/app-adx-thermostat-realtime.zip"
+
+    $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_realtime_name --settings @adx-config-appsetting-with-replacement.json
+
     Start-Sleep -s 10
 
     az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+
+
 
     Add-Content log.txt "------Deploying Web Apps COMPLETED------"
     Write-Host  "----------------Deploying Web Apps COMPLETED---------------"

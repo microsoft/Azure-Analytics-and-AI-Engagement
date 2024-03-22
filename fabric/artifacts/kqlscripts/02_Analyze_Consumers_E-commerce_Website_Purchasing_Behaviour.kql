@@ -11,17 +11,6 @@ Behaviour
 
 
 // Search items in userscart not in shopping list
-OnlineBehaviour 
-| join kind=leftouter ShoppingCheckoutList on product_id
-|where isnull(product_id1) and category_code!=(' ') and user_id=='539920214'
-| count(category_code)
-
-
-Select SC.category_code,count(SC.category_code) from OnlineBehaviour OB join
-ShoppingCheckoutList SC on SC.product_id=OB.product_id
-group by SC.category_code
-
-
 OnlineBehaviour
 | join kind=leftouter (
     ShoppingCheckoutList
