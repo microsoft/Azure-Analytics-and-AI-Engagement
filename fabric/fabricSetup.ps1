@@ -202,6 +202,9 @@ else {
     $wsIdContosoSales =  Read-Host "Enter your 'contosoSales' PowerBI workspace Id "
     $wsIdContosoFinance =  Read-Host "Enter your 'contosoFinance' PowerBI workspace Id "
 
+    $thermostat_telemetry_Realtime_URL =   Read-Host "Optional: Paste the Push URL for the Thermostat Streaming Dataset, starting with https://api.powerbi.com/ here. Or press Enter if you wish to skip this component "
+    $occupancy_data_Realtime_URL =  Read-Host "Optional: Paste the Push URL for the Occupancy Streaming Dataset, starting with https://api.powerbi.com/ here. Or press Enter if you wish to skip this component "
+
     RefreshTokens
     $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales";
     $contosoSalesWsName = Invoke-RestMethod -Uri $url -Method GET -Headers @{ Authorization="Bearer $powerbitoken" };
@@ -605,8 +608,7 @@ else {
 
     Write-Host "Resource creation in $rgName resource group COMPLETE"
 
-    $thermostat_telemetry_Realtime_URL =  ""
-    $occupancy_data_Realtime_URL =  ""
+
 
     #Adding tags
     $tags = @{
