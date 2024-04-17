@@ -123,7 +123,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 Command:
 ```
-git clone -b ignite-lab --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git ignite
+git clone -b ignite-lab-2023 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git ignite
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
@@ -595,7 +595,7 @@ As Data Engineer, another option for ingesting the data. This time Eva prefers u
 
 *Before executing the steps we download the required fabric notebooks*
 
-1. **Goto** the notebooks location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab/ignite/artifacts/fabricnotebooks).
+1. **Goto** the notebooks location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab-2023/ignite/artifacts/fabricnotebooks).
 
 2. **Click** on the '01 Marketing Data to Lakehouse (Bronze) - Code-First Experience.ipynb' notebook.
 
@@ -944,7 +944,7 @@ Next, as Wendy, the business analyst let us see how we can leverage the Power BI
 
 4. You can **edit** the auto-generated report according to your choice. **Drag and drop visual** from visualization pane.
 
-5. **Goto** the reports location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab/ignite/artifacts/reports).
+5. **Goto** the reports location in the Github repository by clicking [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/tree/ignite-lab-2023/ignite/artifacts/reports).
 
 6. **Click** on the 'Campaign Analytics Report with Lakehouse.pbix' report.
 
