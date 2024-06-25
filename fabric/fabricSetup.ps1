@@ -466,14 +466,18 @@ else {
 
     #setup powerBI app...
     RefreshTokens
+    
+    $tokenStart = get-date -AsUTC -Format "O"
+    $tokenExpiry = (get-date).AddYears(1).ToUniversalTime().ToString("O")
+    
     $url = "https://graph.microsoft.com/beta/OAuth2PermissionGrants";
     $post = "{
     `"clientId`":`"$appId`",
     `"consentType`":`"AllPrincipals`",
     `"resourceId`":`"$powerBiAppId`",
     `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    `"expiryTime`":`"$tokenStart`",
+    `"startTime`":`"$tokenExpiry`"
     }";
 
     $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
@@ -486,8 +490,8 @@ else {
     `"consentType`":`"AllPrincipals`",
     `"resourceId`":`"$powerBiAppId`",
     `"scope`":`"User.Read Directory.AccessAsUser.All`",
-    `"expiryTime`":`"2021-03-29T14:35:32.4943409+03:00`",
-    `"startTime`":`"2020-03-29T14:35:32.4933413+03:00`"
+    `"expiryTime`":`"$tokenStart`",
+    `"startTime`":`"$tokenExpiry`"
     }";
 
     $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
