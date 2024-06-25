@@ -476,8 +476,8 @@ else {
     `"consentType`":`"AllPrincipals`",
     `"resourceId`":`"$powerBiAppId`",
     `"scope`":`"Dataset.ReadWrite.All Dashboard.Read.All Report.Read.All Group.Read Group.Read.All Content.Create Metadata.View_Any Dataset.Read.All Data.Alter_Any`",
-    `"expiryTime`":`"$tokenStart`",
-    `"startTime`":`"$tokenExpiry`"
+    `"expiryTime`":`"$tokenExpiry`",
+    `"startTime`":`"$tokenStart`"
     }";
 
     $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
@@ -490,8 +490,8 @@ else {
     `"consentType`":`"AllPrincipals`",
     `"resourceId`":`"$powerBiAppId`",
     `"scope`":`"User.Read Directory.AccessAsUser.All`",
-    `"expiryTime`":`"$tokenStart`",
-    `"startTime`":`"$tokenExpiry`"
+    `"expiryTime`":`"$tokenExpiry`",
+    `"startTime`":`"$tokenStart`"
     }";
 
     $result = Invoke-RestMethod -Uri $url -Method GET -ContentType "application/json" -Headers @{ Authorization = "Bearer $graphtoken" } -ea SilentlyContinue;
