@@ -498,7 +498,10 @@ else {
     
     $credential = New-Object PSCredential($appId, (ConvertTo-SecureString $clientsecpwdapp -AsPlainText -Force))
 
-   # Connect to Power BI using the service principal
+    Write-Host "... waiting some 5 minutes for permissions to propagate"
+    start-sleep -s 300
+
+    # Connect to Power BI using the service principal
     Connect-PowerBIServiceAccount -ServicePrincipal -Credential $credential -TenantId $tenantId
 
     $PowerBIFiles = Get-ChildItem "./artifacts/reports" -Recurse -Filter *.pbix
