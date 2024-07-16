@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "aoai_fabric_adb": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    }
+  },
+  "variables": {
+    "tenantId": "[subscription().tenantId]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2023-10-01-preview",
+      "name": "[parameters('aoai_fabric_adb')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "S0"
+      },
+      "kind": "OpenAI",
+      "properties": {
+        "customSubDomainName": "[parameters('aoai_fabric_adb')]",
+        "networkAcls": {
+          "defaultAction": "Allow"
+        },
+        "publicNetworkAccess": "Enabled"
+      }
+    }
+  ]
+}
