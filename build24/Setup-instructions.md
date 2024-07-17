@@ -10,12 +10,14 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 **Here are some important guidelines before you begin** 
 
-1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
-2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information aregarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
-3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
-4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
-5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
+  1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
+  2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information aregarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
+  3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
+  4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
+  5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
   
+ 
+
 
 ## Contents
 
@@ -131,8 +133,8 @@ SalesDb | Microsoft.Sql/servers/databases
 **Optional Azure resources:**
 |NAME	|TYPE|
 |-----|-----|
-| openAIResource{suffix} | Microsoft.CognitiveServices/accounts |
-| text-embedding-ada-002 | OpenAI model |
+openAIResource{suffix} | Microsoft.CognitiveServices/accounts
+text-embedding-ada-002 | OpenAI model
 
 **Fabric resources:**
 | DisplayName | Type |
@@ -182,7 +184,7 @@ SalesDb | Microsoft.Sql/servers/databases
 
 Command:
 ```
-git clone -b build-lab-2024 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git build24
+git clone https://github.com/dreamdemos-ms/dreamdemos-Build2024.git build24
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
@@ -361,8 +363,6 @@ cd ./build24/build24/
 
 	![Close the browser.](media/ragchatbot2.png)
 
->**Note:** Once you are done with the above setup instructions please follow the [Readme-shell.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/build-lab-2024/build24/Readme-Shell.md) file to perform the lab exercises.
-
 
 ## Appendix
 ### Enable copilot on your tenant
@@ -370,33 +370,32 @@ cd ./build24/build24/
 To get the copilot enabled, Global admin should follow the below steps.
 
 1. Microsoft F64 capacity is required.
-
-2. User should have Global admin and Fabric Administrator Privilege.
+1. User should have Global admin and Fabric Administrator Privilege.
 
 	![Close the browser.](media/fabric1.png)
 
-3. Go to the https://app.powerbi.com/ and **click** on settings icon and select 'Admin Portal'.
+1. Go to the https://app.powerbi.com/ and **click** on settings icon and select 'Admin Portal'.
 
 	![Close the browser.](media/fabric2.png)
 
-4. Administrator with Global admin privilege need to enable two features for organization
+1. Administrator with Global admin privilege need to enable two features for organization
 "Users can use a preview of Copilot..." and "Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance".
 
 	![Close the browser.](media/fabric4.png)
 
-5. enable as shown in below in the scrennshot.
+1. enable as shown in below in the scrennshot.
 
 	![Close the browser.](media/fabric3.png)
 
-6. Select apply to 'the entire organization' and **click** on 'Apply' button.
+1. Select apply to 'the entire organization' and **click** on 'Apply' button.
 
 	![Close the browser.](media/fabric5.png)
 
-7. Click on 'Capacity settings' and Expand 'contributor permissions'. 
+1. Click on 'Capacity settings' and Expand 'contributor permissions'. 
 
 	![Close the browser.](media/fabric7.png)
 
-8. Enable contributor permission for the entire organization  and **click** on 'Apply'.
+1. Enable contributor permission for the entire organization  and **click** on 'Apply'.
 
 	![Close the browser.](media/fabric8.png)
 

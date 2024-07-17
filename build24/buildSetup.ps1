@@ -111,6 +111,7 @@ $signedinusername = az ad signed-in-user show | ConvertFrom-Json
 $signedinusername = $signedinusername.userPrincipalName
 
 # Check if the user has Owner role on the subscription
+Add-Content log.txt "Check if the user has Owner role on the subscription..."
 Write-Host "Check if the user has Owner role on the subscription..."
 
 $roleAssignments = az role assignment list --assignee $signedinusername --subscription $subscriptionId | ConvertFrom-Json
@@ -130,7 +131,9 @@ if ($null -ne $hasOwnerRole) {
     }
 }
 
+
 ## Checking Requirements
+Add-Content log.txt "----------------Checking pre-requisites------------------"
 Write-host "----------------Checking pre-requisites------------------"
 Write-Host "Registering resource providers..."
 # List of resource providers to check and register if not registered
@@ -162,7 +165,6 @@ foreach ($provider in $resourceProviders) {
 }
 
 
-
 [string]$suffix = -join ((48..57) + (97..122) | Get-Random -Count 7 | % { [char]$_ })
 $rgName = "rg-fabric-adb-$suffix"
 $Region = read-host "Enter the region for deployment"
@@ -188,7 +190,8 @@ $useOpenAI = Read-Host "Do you want to use the Azure OpenAI endpoint for text em
 if ($useOpenAI -eq "yes"){$OpenAIregion = Read-Host "Enter the region for OpenAI resource"} else {$OpenAIregion = ""}
 
 Write-Host "----FABRIC----"
-Write-Host "Deploying resources on Microsoft Fabric Started... "
+Add-Content log.txt "Deploying resources on Microsoft Fabric Started..."
+Write-Host "Deploying resources on Microsoft Fabric Started..."
 RefreshTokens
 
 $url = "https://api.powerbi.com/v1.0/myorg/groups/$wsIdContosoSales";
@@ -237,10 +240,12 @@ try {
     }
     }
 
+Add-Content log.txt "-----Creation of Lakehouses in '$contosoSalesWsName' workspace COMPLETED------"
 Write-Host "-----Creation of Lakehouses in '$contosoSalesWsName' workspace COMPLETED------"
 
 RefreshTokens
 
+Add-Content log.txt "------Creating Eventhouse------"
 Write-Host "------Creating Eventhouse------"
     $KQLDB = "Contoso-Eventhouse"
     $body = @{
@@ -378,7 +383,6 @@ $config = az webapp config appsettings set -g $rgName -n $sites_adx_thermostat_r
 
 Write-Information "Deploying Realtime Simulator App"
 cd app-adx-thermostat-realtime
-
 
 # number of retries
 $maxRetries = 2
@@ -554,7 +558,7 @@ $MLclusterstatus = if($MLcluster.cluster_id -ne $Null) {"ML cluster has been cre
 write-host $MLclusterstatus
 $MLcluster = $MLcluster.cluster_id
 
-Write-Host "----CLUSTERS creation COMPLETE----"
+Write-Host "----Cluster creation COMPLETE----"
 
 ## creating Metastore
 Write-Host "----Creating Metastore----"
@@ -1117,20 +1121,6 @@ if ($i -eq $maxRetries) {
 }
 
 
-# #Running job3
-# Write-Host "Running job3"
-
-# $body = '{"job_id": "'+$job3id+'"}'
-
-# $endPoint = $baseURL + "/api/2.1/jobs/run-now"
-#     $run3= Invoke-RestMethod $endPoint `
-#         -Method Post `
-#         -Headers $requestHeaders `
-#         -Body $body
-
-# Start-Sleep -Seconds 120
-
-
 ## Creating Endpoint
 Write-Host "creating Endpoint..."
 $body = '{
@@ -1255,6 +1245,7 @@ $endPoint = $baseURL + "/api/2.1/jobs/run-now"
         -Headers $requestHeaders `
         -Body $body
 
+Write-Host "Please wait while the job is ready..."
 Start-Sleep -Seconds 400
 
 ## creating Vector index
@@ -1285,6 +1276,7 @@ $endPoint = $baseURL + "/api/2.0/vector-search/indexes"
         -Body $body
 
 $Vectorindex = if($Vectorindex -ne $null){"Vector Index have been created successfully."} else {"Failed to create vector index."}
+
 Write-Host $Vectorindex 
 
 } elseif ($useOpenAI -eq "no") {
@@ -1300,6 +1292,7 @@ $endPoint = $baseURL + "/api/2.1/jobs/run-now"
         -Headers $requestHeaders `
         -Body $body
 
+Write-Host "Please wait while the job is ready..."
 Start-Sleep -Seconds 400
 
 ## creating Vector index
@@ -1330,6 +1323,7 @@ $endPoint = $baseURL + "/api/2.0/vector-search/indexes"
         -Body $body
 
 $Vectorindex = if($Vectorindex -ne $null){"Vector Index have been created successfully."} else {"Failed to create vector index."}
+
 Write-Host $Vectorindex
 
 }
@@ -1337,7 +1331,9 @@ else {
     Write-Host "Invalid input. Please enter 'yes' or 'no'."
 }
 
-Start-Sleep -Seconds 400
+Write-Host "It takes around 10 minutes for Vector Index after being created to change its status to Online..."
+Write-Host "Please wait..."
+Start-Sleep -Seconds 600
 
 # # Function to fetch updated status of runs
 function FetchUpdatedStatus {
@@ -1397,8 +1393,6 @@ $endPoint = $baseURL + "/api/2.1/jobs/run-now"
         -Headers $requestHeaders `
         -Body $body
 
-Start-Sleep -Seconds 60
-
 Write-Host "Deploying Resources on Azure Databricks Completed... "
 
 
@@ -1411,6 +1405,7 @@ $deployed_resources = Get-AzResource -resourcegroup $rgName
 $deployed_resources = $deployed_resources | Select-Object Name, Type | Format-Table -AutoSize
 Write-Output $deployed_resources
 
+RefreshTokens
 Write-Host "List of resources deployed in $contosoSalesWsName workspace"
 $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items"
 $fabric_items = Invoke-RestMethod $endPoint `
