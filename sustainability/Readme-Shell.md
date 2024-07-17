@@ -192,7 +192,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 Command:
 ```
-git clone -b SustainabilityDeliverable --depth 1 --single-branch https://github.com/dreamdemos-ms/MS-Build.git sustainability
+git clone -b sustainability2.0 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git sustainability
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
