@@ -33,22 +33,22 @@ Customers can play, get hands-on experience navigating through the demo environm
 ## Requirements
 
 * Owner Permission on subscription for creating resources and role assignments.
-* Global Admin permission to assign Azure Databrick Account Admin permission to yourself, optionally you can get the Account admin permission assigned by a global admin once the ARM template is deployed.
-* An Azure Account with the ability to create Fabric Workspace.
+* Global Admin permission to assign Azure Databricks Account Admin permission to yourself, optionally you can get the Account admin permission assigned by a global admin once the ARM template is deployed.
+* An Azure account with the ability to create Fabric Workspace.
 * A Power BI license to host Power BI reports.
 * Microsoft Fabric F64 capacity for exploring Copilot scenarios included in this DPoC. 
 * Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
 * You must only execute one deployment at a time and wait for its completion.Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability. (Consider the region availability for App services, Eventhub and Azure Databricks while choosing a location)
-* In this Accelerator, we have used the following features of Azure databricks:
+* In this Accelerator, we have used the following features of Azure Databricks:
      - Serverless SQL warehouses
 	 - Serverless DLT pipelines
-	 - Model Serving
+	 - Model serving
 	 - Vector search
 
 > **Note:** There are some features that are supported only in a subset of regions.
 - To check supported regions [click here](https://learn.microsoft.com/en-us/azure/databricks/resources/supported-regions). 
-- Choose the subscription where all the features listed above are available. As of 04-06-2024 eastus, eastus2, westus are having all the required features.
+- Choose the subscription where all the features listed above are available. As of 17-07-2024 eastus, eastus2, westus are having all the required features.
 
 * Make sure you use the same valid credentials to log into Azure and Power BI.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
@@ -56,15 +56,15 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 ### Task 1: Power BI Workspace creation
 
-1. **Open** Power BI in a new tab by clicking [HERE](https://app.powerbi.com/)
+1. **Open** Power BI in a new tab by clicking [HERE](https://app.powerbi.com/).
 
-2. **Sign in** to Power BI.
+2. **Sign** into Power BI.
 
 	![Sign in to Power BI.](media/power-bi.png)
 
 	> **Note:** Use your Azure Active Directory credentials to login to Power BI.
 
-3. In Power BI service **click** 'Workspaces'.
+3. In Power BI service, **click** 'Workspaces'.
 
 4. **Click** '+ New workspace' button.
 
@@ -88,11 +88,11 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	> **Note:** This workspace ID will be used during powershell script execution.
 
-8. In the workspace **click** the three dots(Ellipsis) and **select** 'Workspace settings'.
+8. In the workspace, **click** the three dots(Ellipsis) and **select** 'Workspace settings'.
 
 	![Give the name and description for the new workspace.](media/power-bi-6.png)
 
-9. In the left pane of the side bar **click** 'License info', scroll down and **check** the 'Fabric Capacity' radio box.
+9. In the left pane of the side bar, **click** 'License info', scroll down and **check** the 'Fabric Capacity' radio box.
 
 	![Give the name and description for the new workspace.](media/power-bi-7.png)
 
@@ -101,14 +101,14 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 	![Give the name and description for the new workspace.](media/power-bi-8.png)
 
->**Note:** Make sure that this workspace has fabric F64  License and note the name of the workspace as this will be used during the script execution(Task 2)
+>**Note:** Make sure that this workspace has fabric F64  License and note the name of the workspace as this will be used during the script execution(Task 2).
 
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
 
->**Note:** For this Demo we have assets in an Azure resource group as well as Fabric Workspaces
+>**Note:** For this Demo we have assets in an Azure resource group as well as Fabric Workspaces.
 
->**Note:** In this task we will execute a powershell script on 'Cloudshell' to create those assets
+>**Note:** In this task, we will execute a powershell script on 'Cloudshell' to create those assets.
 
 >**Note:** List of the resources are as follows:
 
@@ -144,7 +144,7 @@ SalesDb | Microsoft.Sql/servers/databases
 | Contoso-Eventhouse |                                           KQL Database|
 
 
-1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/)
+1. **Open** Azure Portal by clicking [HERE](https://portal.azure.com/).
 
 2. In the Resource group section, **select** the Terminal icon to open Azure Cloud Shell.
 
@@ -160,7 +160,7 @@ SalesDb | Microsoft.Sql/servers/databases
 
 5. **Select** your 'Subscription', 'Cloud Shell region' and 'Resource Group'.
 
->**Note:** If you do not have an existing resource group please follow the steps mentioned [HERE](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) to create one. Complete the task and then continue with the below steps.
+>**Note:** If you do not have an existing resource group, please follow the steps mentioned [HERE](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) to create one. Complete the task and then continue with the below steps.
 
 >Cloud Shell region need not be specific, you may select any region which works best for your experience.
 
@@ -228,13 +228,13 @@ cd ./build24/build24/
 
 16. **Navigate back** to your Azure Cloud Shell execution window.
 
-17. **Enter** the number apearing infort of subscription to select it.
+17. **Enter** the number apearing infront of subscription to select it.
 
     ![Select subscription.](media/slectsub.png)
 
 > **Notes:**
-	> - The subscription marked with an '*' will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
-	> - While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading the data.
+- The subscription marked with an '*' will be selected by default if you do not enter any disired subscription. Please select the subscription carefully, as it may break the execution further.
+- While you are waiting for processes to get completed in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing installation of various Azure Services and preloading the data.
 
 18. **Copy** the code on screen to authenticate Azure PowerShell.
 
@@ -282,11 +282,11 @@ cd ./build24/build24/
 
 	![Select the same user.](media/cloud-shell-18.1.png)
 
-34. **Close** the browser tab once you see the message box.
+34. **Close** the browser, tab once you see the message box.
 
 	![Close the browser.](media/cloud-shell-19.png)
 
-	>**Note:** During script execution you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
+	>**Note:** During script execution, you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
 
 35. **Navigate back** to your Azure Cloud Shell execution window.
 
@@ -294,7 +294,7 @@ cd ./build24/build24/
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-30. In this accelerator, you have the option to choose a model for creating text embeddings in Azure Databricks. By default, the azure databricks ```databricks-bge-large-en``` model will be used for text embedding, but you can also use the Azure OpenAI ```text-embedding-ada-002``` model. Enter 'Yes' to use the OpenAI model.
+30. In this accelerator, you have the option to choose a model for creating text embeddings in Azure Databricks. By default, the Azure Databricks ```databricks-bge-large-en``` model will be used for text embedding, but you can also use the Azure OpenAI ```text-embedding-ada-002``` model. Enter 'Yes' to use the OpenAI model.
 
 	![Enter Resource Group name.](media/openai1.png)
 
@@ -306,19 +306,19 @@ cd ./build24/build24/
 
 	![Enter Resource Group name.](media/cloud-shell-14.1.png)
 
-36. After the Arm Template is deployed you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
+36. After the Arm Template is deployed, you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
 
     ![databrick](media/db0.png)
 
-37. Navigate to https://accounts.azuredatabricks.net/ and click on sign in with Microsoft Entra ID.
+37. Navigate to https://accounts.azuredatabricks.net/ and click on Sign in with Microsoft Entra ID.
 
     ![databrick](media/db1.png)
 
-38. In the Account console click on 'user & groups'
+38. In the Account console click on 'Users & groups'
 
     ![databrick](media/db2.png)
 
-> Note : you should have Global admin on azure tenant to assign youself as account admin. if you are not able to access Account console get the permssion assigned by your organization's global admin.
+> Note : you should have Global admin on Azure tenant to assign youself as Account Admin. If you are not able to access Account console get the permssion assigned by your organization's Global Admin.
 
 39. Search your username in the seacrh bar and select it.
 
@@ -328,16 +328,16 @@ cd ./build24/build24/
 
     ![databrick](media/db4.png)
 
-41. Go back to the Script execution and enter 'Yes' to confirm.
+41. Go back to the script execution and enter 'Yes' to confirm.
 
     ![databrick](media/db5.png)
 
 42. After the script execution is complete, the user is prompted "--Execution Complete--"
 
-	> **Note:** The deployment will take approximately 30-40 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
+	> **Note:** The deployment will take approximately 40-50 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
 
-### Task 3: Check Serving endpoint deployment for rag chatbot
+### Task 3: Check Serving endpoint deployment for RAG Chatbot
 
 1. **Go to** Azure Portal and **search** for 'rg-fabric-adb' and **click** on the resource group name which was created by the script.
 
@@ -345,7 +345,7 @@ cd ./build24/build24/
 
 	>**Note:** The resource group name starts with 'rg-fabric-adb-' with some random unique suffix in the end.
 
-2. In the search pane of the resource group **type** "Databricks" and **select** the resource.
+2. In the search pane of the resource group, **type** "Databricks" and **select** the resource.
 
 	![Close the browser.](media/db7.png)
 
@@ -357,21 +357,21 @@ cd ./build24/build24/
 
 	![Close the browser.](media/ragchatbot1.png)
 
-5. Check if the Serving endpoint state is ready. After the deployment is completed, the Serving endpoint might take another 30 minutes to be fully ready.
+5. Check if the Serving endpoint state is ready. After the deployment is completed, the Serving endpoint might take another 10-15 minutes to be fully ready.
 
 	![Close the browser.](media/ragchatbot2.png)
 
->**Note:** Once you are done with the above setup instructions please follow the [Readme-shell.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/build-lab-2024/build24/Readme-Shell.md) file to perform the lab exercises.
+>**Note:** Once you are done with the above setup instructions, please follow the [Readme-shell.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/build-lab-2024/build24/Readme-Shell.md) file to perform the lab exercises.
 
 
 ## Appendix
-### Enable copilot on your tenant
+### Enable Copilot on your tenant
 
-To get the copilot enabled, Global admin should follow the below steps.
+To get the Copilot enabled, Global Admin should follow the below steps:
 
 1. Microsoft F64 capacity is required.
 
-2. User should have Global admin and Fabric Administrator Privilege.
+2. User should have Global Admin and Fabric Administrator Privilege.
 
 	![Close the browser.](media/fabric1.png)
 
@@ -379,12 +379,12 @@ To get the copilot enabled, Global admin should follow the below steps.
 
 	![Close the browser.](media/fabric2.png)
 
-4. Administrator with Global admin privilege need to enable two features for organization
+4. Administrator with Global Admin privilege need to enable two features for organization
 "Users can use a preview of Copilot..." and "Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance".
 
 	![Close the browser.](media/fabric4.png)
 
-5. enable as shown in below in the scrennshot.
+5. Enable as shown in the following screenshot.
 
 	![Close the browser.](media/fabric3.png)
 
@@ -392,11 +392,11 @@ To get the copilot enabled, Global admin should follow the below steps.
 
 	![Close the browser.](media/fabric5.png)
 
-7. Click on 'Capacity settings' and Expand 'contributor permissions'. 
+7. Click on 'Capacity settings' and Expand 'Contributor permissions'. 
 
 	![Close the browser.](media/fabric7.png)
 
-8. Enable contributor permission for the entire organization  and **click** on 'Apply'.
+8. Enable Contributor permissions for the entire organization  and **click** on 'Apply'.
 
 	![Close the browser.](media/fabric8.png)
 

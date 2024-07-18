@@ -144,13 +144,13 @@ In this exercise, you will act as the Data Engineer and transfer Contoso's data 
 
 ![Pipeline.](mediaNew/task-1.3.4.png)
 
-7. In the pop-up, click on **+New** tab and scroll down through the resources, click on **Azure SQL Database**.
+8. In the pop-up, click on **+New** tab and scroll down through the resources, click on **Azure SQL Database**.
 
 >**Note** You may not see the **Azure SQL Database** in the same location as shown in the screenshot.
 
 ![pip3.png](mediaNew/pip3.png)
 
-8. Select the **Create new connection** radio button.
+9. Select the **Create new connection** radio button.
 
 ![task-1.3.6.png](mediaNew/task-1.3.6.png)
 
@@ -178,9 +178,6 @@ In this exercise, you will act as the Data Engineer and transfer Contoso's data 
 
 ![Datawarehouse.](mediaNew/task-1.3.16.png)
 
->**Note:** Close any pop-up that you see throughout the lab.
-   
-![Datawarehouse.](mediaNew/task-1.3.16.1.png)
 
 >**Note:** Wait for the connection to be created.
 
@@ -188,35 +185,31 @@ In this exercise, you will act as the Data Engineer and transfer Contoso's data 
 
 ![Datawarehouse.](mediaNew/task-1.3.17.png)
 
-16. Scroll down and click on **Lakehouse**, then click on the **Next** button.
+16. Select **OneLake Data Hub**, then select the lakehouse with the concatenated suffix.
 
 ![Datawarehouse.](mediaNew/task-1.3.18.png)
 
-17. Click on the **Existing Lakehouse** radio button, click on the **dropdown**, select **lakehouse...** and then click on the **Next** button.
-
-![Datawarehouse.](mediaNew/task-1.3.19.png)
-
-18. Select the **Load to new table** radio button, click on the **checkbox** beside **Source** and then click on **Next**.
+17. Select the **Load to new table** radio button, click on the **checkbox** beside **Source** and then click on **Next**.
 
 ![Datawarehouse.](mediaNew/task-1.3.20.png)
 
-19. Click on **Save + Run**.
+18. Click on **Save + Run**.
 
 ![Datawarehouse.](mediaNew/task-1.3.21.png)
 
-20. Click on the **OK** button in the Pipeline run window.
+19. Click on the **OK** button in the Pipeline run window.
 
 ![Datawarehouse.](mediaNew/task-1.3.21.0.png)
 
 >**Note:** Wait for the pipeline to execute.
 
-21. Click on the bell icon at the top right of the screen to verify the **Running status** of the pipeline.
+20. Click on the bell icon at the top right of the screen to verify the **Running status** of the pipeline.
 
 ![Datawarehouse.](mediaNew/task-1.3.22.png)
 
-22. Your data has been transfered from Azure SQL Database to Lakehouse.
+21. Your data has been transfered from Azure SQL Database to Lakehouse.
 
-23. Similarly, you can get data into the Lakehouses using pipelines from various other sources like Snowflake, Dataverse, etc.
+22. Similarly, you can get data into the Lakehouses using pipelines from various other sources like Snowflake, Dataverse, etc.
 
 ---
 
@@ -236,7 +229,7 @@ In this exercise, you will experience how easy it is to use Copilot to transform
 
 ![getdataSs.png](mediaNew/getdataSs.png)
 
-4. In the pop-up window, scroll down to **OneLake data hub** and click on **lakehouse**.
+4. In the pop-up window, scroll down in **OneLake data hub** and click on **lakehouse**.
 
 ![task-1.2.04.S1.png](mediaNew/task-1.2.04.S1.png)
 
@@ -305,7 +298,7 @@ Now this is something exciting! This section shows how easy it is to create shor
 
 2. Click on the **lakehouse...**.
 
->**Note:** There are 3 options for lakehouseBronze, namely Lakehouse, Dataset (default) and SQL endpoint. Make sure you select the **Lakehouse** option.
+>**Note:** There are 3 options for lakehouse{SUFFIX}, namely Lakehouse, Dataset (default) and SQL endpoint. Make sure you select the **Lakehouse** option.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut2.png)
 
@@ -401,7 +394,7 @@ Now this is something exciting! This section shows how easy it is to create shor
 
 6. Click on **Analytics with ADB**.
 
-7. Click on the **03 DLT Notebook**.
+7. Click on the **01 DLT Notebook**.
 
 8. Click on the **Select** button.
 
@@ -411,7 +404,7 @@ Now this is something exciting! This section shows how easy it is to create shor
 
 10. In the Catalog box select **litware_unity_catalog** from dropdown.
 
-11. In the Target schema, select **default** from the dropdown.
+11. In the Target schema, select **rag** from the dropdown.
 
 12. Click on the **Create** button.
 
@@ -437,68 +430,72 @@ With the acquisition of Litware Inc., Contoso had a lot of data integration and 
 
 3.	Expand the **rag** schema and click on **tables**.
 
-4.	Click on **silver_customer_churn** table.
+4.	Click on **documents_embeddings** table.
 
-![Databricks.](mediaNew/task-2.1new.png)
+>**Note**: If you have used OpenAI for text embeddings during the deployment, then select **documents_embedding_openai** table.
+
+![Databricks.](mediaNew/ragbottable.png)
 
 5.	Click on **Accept** in 'AI Suggested Comment' box and Click on **AI Generate**.
 
 ![Databricks.](mediaNew/task-2.1.1new.png)
 	
-We can see that AI in Azure Databricks has autogenerated the description for the table and its columns. Users can choose to accept the descriptions or edit them further. This improves the ease of governance on this new data for Contoso. No need to read through tons of documents for the Contoso data engineers to learn about Litware's data. How cool is that? Next, let's see how easy it is to query this data.
+We can see that AI in Azure Databricks has autogenerated the description for the table and its columns. Users can choose to accept the descriptions or edit them further. This improves the ease of governance on this new data for Contoso. No need to read through tons of documents for the Contoso data engineers to learn about Litware's data. How cool is that? Next, let's see how easy it is to query the data.
 
-![Databricks.](mediaNew/task-2.2new.png)
+![Databricks.](mediaNew/ragbottable1.png)
+
+6. From the left hand-side pane, select **silver_customerchurn_data** table.
+
+![Databricks.](mediaNew/ragbottable3.png)
 	
-6.	Select the dropdown on **Create**.
+7.	Select the dropdown on **Create**.
 
-7.	Click on **Query**.
+8.	Click on **Query**.
 
 ![Databricks.](mediaNew/task-2.3new.png)
 	
-8.	Select the **Assistant** tab.
+9.	Select the **Assistant** tab.
 
-9.	Click on the query area and click on send button.
+10.	Click on the query area and type ```Retrive the average total amount of transactions for each store contract. Additionally, calculate the average total amount for customers who have churned and for those who have not churned. Ensure all average values are rounded to the nearest whole number.``` then click on send button.
 	
 ![Databricks.](mediaNew/task-2.4new.png)
 	
 By simply using a natural language query, and leveraging the AI generated table and field descriptions mentioned earlier, Azure Databricks generates an equivalet SQL query. No need to be skilled in SQL queries and so business friendly right?
 	
-10. Click on the **Arrow** to replace the current code.
+11. Click on the **Arrow** to replace the current code.
 
 ![Databricks.](mediaNew/task-2.4.1new.png)
 
-11.	Click on **Run**.
+12.	Click on **Run**.
 
-12.	Check the output.
+13.	Check the output.
 
 
 ![Databricks.](mediaNew/task-2.5new.png)
 
 Users also have the capability to fix errors in queries with the AI assistant. Let us intentionally introduce an error by misspelling a table name and see the AI's response.
 	
-13.	In the query, click on **churnstatus** to misspell it.
+14. In the query, click on **churnstatus** to misspell it.
 
-14.	Click on **Run** to see the error.
+15. Click on **Run** to see the error.
 
-15.	Click on **Diagnose error** to fix the query issue. And see how easily the error is fixed! It is like have a virtual assistant available 24 hours!
+16. Click on **Diagnose error** to fix the query issue. And see how easily the error is fixed! It is like have a virtual assistant available 24 hours!
 
 ![Databricks.](mediaNew/task-2.6new.png)
 
-16. Click on the **Arrow** to replace the current code.
+17. Click on the **Arrow** to replace the current code.
 
 ![Databricks.](mediaNew/task-2.4.1new.png)
 	
 Data discovery is also made simple within Azure Databricks. Users can simply search for table names or the information they are looking for in the global search and all the relevant items are returned, again leveraging the table and field descriptions created by AI and data intelligence mentioned earlier.
 	
-17.	Click on **Search*.
+18. Click on **Search*.
 
-18.	Click on **Open search in a full page**.
-
-![Databricks.](mediaNew/task-2.7new.png)
-
-19. Click to search for **campaigns** and click on show all results. Now, the next big challenge for Contoso was to get visibility of their Market Sentiment KPI. Remember, the Market Sentiment before the acquisition was at an all time low. News articles and analyst reviews were being continuously published. All this unstructured data had to be efficiently assimilated so that the Market Sentiment could be tracked. That brings us to the next task. Let us see!
+19. Click on **Open search in a full page**.
 
 ![Databricks.](mediaNew/task-2.7new.png)
+
+20. Click to search for **campaigns** and click on show all results. Now, the next big challenge for Contoso was to get visibility of their Market Sentiment KPI. Remember, the Market Sentiment before the acquisition was at an all time low. News articles and analyst reviews were being continuously published. All this unstructured data had to be efficiently assimilated so that the Market Sentiment could be tracked. That brings us to the next task. Let us see!
 
 ---
 
@@ -539,6 +536,8 @@ This notebook is used to convert the ingested document into delta tables. Lets l
 Next we convert the PDF documents bytes to text, extract chunks from their content, and create a vector search index for retreival.
 
 9.	Go to table: **documents_embedding**.
+
+>**Note**: If you have used OpenAI for text embeddings during the deployment, then select **documents_embedding_openai** table.
 
 10.	Click **Sample Data**.
 
@@ -598,35 +597,6 @@ Let's ask another question.
 
 Because the question isn't related to Contoso or Market Sentiment, the model was unable to provide an answer. 
 
-22. **Click** the close icon.
-
-	![Close the browser.](mediaNew/ragchatbot6.png)
-
-Now, let's navigate to this models Inference table.
-
-23. Under Inference table, click ```litware_unity_catalog.rag.inference_payload```.
-
-	![Close the browser.](mediaNew/ragchatbot7.png)
-
-24. Click on **Sample Data**.
-
-	![Close the browser.](mediaNew/ragchatbot8.png)
-
-Here we can see the recently asked questions with information such as date and timestamp.
-
-25. Drag the horizontal scrollbar to the right.
-
-	![Close the browser.](mediaNew/ragchatbot9.png)
-
-26. Click the top request.
-
-	![Close the browser.](mediaNew/ragchatbot10.png)
-
-27. Click on the response.
-
-	![Close the browser.](mediaNew/ragchatbot11.png)
-
-
 ---
 
 ### Exercise 3: Power BI Experience
@@ -670,7 +640,7 @@ Let us dive deep into the experience of the Business analyst, Wendy. Based on al
 
 5. Enter the name **website_bounce_rate_model**. 
 
-6. Select **website_bounce_rate** table. 
+6. Search for 'website_bounce_rate' and select **website_bounce_rate** table. 
 
 7. Click on the **Confirm** button and the new semantic model will be created. 
 
@@ -704,7 +674,7 @@ Create a report Bounce Rate analysis, to show the correlation between customer s
 
 ![query01.png](mediaNew/query01.png)
 	
->**Note:** If you see the error message saying, 'Something went wrong.', try refreshing the page and restart the task. Being in a shared environment, the service may be busy at times.
+>**Note:** If you see the error message saying, 'Something went wrong.', try refreshing the page and restart the task.
 - If Copilot needs additional context to understand your query, consider rephrasing the prompt to include more details
 
 >**Note:** The responses from Copilot may not match the ones in the screenshot but will provide a similar response.
@@ -963,7 +933,7 @@ Now that we've ingested and processed our customer data, we want to understand w
 
 Ultimately, we would like to understand our customers' sentiment so we can create targeted campaigns to improve our sales.
 
-3. Navigate to **cmd 10**.
+3. Navigate to **cmd 9**.
 
 With the data prepared, we can begin exploring the patterns it contains. 
 
@@ -971,15 +941,15 @@ Let's start by examining the customer churn outcome based on factors like a cust
 
 ![Close the browser.](mediaNew/task-3.1.4.png)
 
-4. Navigate to **cmd 20**.
+4. Navigate to **cmd 19**.
 
-5. Navigate to **cmd 21**. 
+5. Navigate to **cmd 20**. 
 
 ![Close the browser.](mediaNew/task-3.1.5.png)
 
 By registering this model in Model Registry, we can easily reference the model from anywhere within Databricks.    
 
-6. Review the **cmd 29** cell.
+6. Review the **cmd 27** cell.
 
 Let’s look at the comparison of multiple runs in the UI.
 
@@ -989,19 +959,19 @@ The best ML model for Customer Churn is selected and registered with Databricks 
 
 ![Close the browser.](mediaNew/task-3.1.6.png)
 
-7. Navigate to **cmd 38**.
+7. Navigate to **cmd 37**.
 
 For low-latency use cases, you can use MLflow to deploy the model for online serving. The serving system loads the Production model version from the Model Registry. 
 
 ![Close the browser.](mediaNew/task-3.1.7.png)
 
-8. Navigate to **cmd 40**.
+8. Navigate to **cmd 39**.
 
 It is then used to predict the probability of Customer Churn using the deployed model and this model endpoint is ready for production.
 
 ![Close the browser.](mediaNew/task-3.1.8.png)
 
-9. Navigate to **cmd 41**. 
+9. Navigate to **cmd 40**. 
 
 Once we have the predicted data, it is stored back in delta tables in the gold layer back in OneLake.
 
