@@ -38,7 +38,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 * A Power BI license to host Power BI reports.
 * Microsoft Fabric F64 capacity for exploring Copilot scenarios included in this DPoC. 
 * Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
-* You must only execute one deployment at a time and wait for its completion.Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
+* You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability. (Consider the region availability for App services, Eventhub and Azure Databricks while choosing a location)
 * In this Accelerator, we have used the following features of Azure Databricks:
      - Serverless SQL warehouses
@@ -53,6 +53,31 @@ Customers can play, get hands-on experience navigating through the demo environm
 * Make sure you use the same valid credentials to log into Azure and Power BI.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
+## Important Note:
+
+The following is the sequence for script deployment. If any step fails, the subsequent steps will also fail.
+
+1. Microsoft Fabric resources creation
+2. ARM template deployment
+3. Azure SQL DB data push
+4. Simulator webapp trigger
+5. Metastore creation
+6. Clusters creation
+7. Assign metastore to Azure Databricks workspace
+8. Storage credentials
+9. External location creation
+10. Unity catalog creation
+11. Schema 
+12. Volume
+13. Upload notebooks
+14. Upload data to volume
+15. Create job runs for all the notebooks
+16. First notebook run
+17. Second notebook run(if Azure OpenAI embedding model is selected, Azure OpenAI template and model will be created and the third notebook will run)
+18. Create endpoint
+19. Create secret scope
+20. Create vector index
+21. Fourth notebook run
 
 ### Task 1: Power BI Workspace creation
 

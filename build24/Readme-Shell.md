@@ -1,4 +1,4 @@
-# Modern Analytics with Microsoft Fabric, Copilot and Azure Databricks DREAM Lab (Lab332)
+# Modern Analytics with Microsoft Fabric, Copilot and Azure Databricks DREAM Lab
  
 **The estimated time to complete this lab is 45-60 minutes.**
  
@@ -6,7 +6,7 @@
  
 ## [Exercise 1: Data Engineering experience - Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience---data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake-1)
  
- - [Task 1.1: Use the Data Pipelines/Data Flow for a ‘No Code, Low Code experience’](#task-11-use-the-data-pipelinesdata-flow-for-a-no-code-low-code-experience)
+ - [Task 1.1: Use the Data Pipelines/Dataflow for a ‘No Code, Low Code experience’](#task-11-use-the-data-pipelinesdataflow-for-a-no-code-low-code-experience)
 
  - [Task 1.2: Transform data using Dataflow Gen2 using a ‘No Code, Low Code experience’ Copilot](#task-12-transform-data-using-dataflow-gen2-using-a-no-code-low-code-experience-copilot)
 
@@ -27,7 +27,7 @@
 - [Task 3.1: Create a Semantic model and generate insights using Copilot for Power BI in Microsoft Fabric](#task-31-create-a-semantic-model-and-generate-insights-using-copilot-for-power-bi-in-microsoft-fabric)
 
 
-## [Exercise 4: Real-time Intelligence experience - Explore Streaming data using Copilot for KQL DB (optional)](#exercise-4-real-time-intelligence-experience-explore-streaming-data-using-copilot-for-kql-db)
+## [Exercise 4: Real-time Intelligence experience - Explore Streaming data using Copilot for KQL DB](#exercise-4-real-time-intelligence-experience-explore-streaming-data-using-copilot-for-kql-db)
  
 - [Task 4.1: Ingest real-time/historical data into KQL DB using Eventstream](#task-41-ingest-real-timehistorical-data-into-kql-db-using-eventstream)
  
@@ -52,17 +52,17 @@ In the following exercises, you will see how the Contoso team leveraged the powe
 
 The lab scenario starts on January 30th. The company's new CEO, April, noticed negative trends in their KPIs, including:
 
-High customer churn
+- High customer churn
 
-Declining sales revenue
+- Declining sales revenue
 
-High bounce rate on their website
+- High bounce rate on their website
 
-High operating expense
+- High operating expense
 
-Poor customer experience
+- Poor customer experience
 
-And most importantly, a low market sentiment
+- And most importantly, a low market sentiment
 
 To address the high customer churn, April and the Contoso team decided to acquire Litware Inc., which carries products popular with millennials. April asks Rupesh, the Chief Data Officer, how they could create a data driven organization and reverse these adverse KPI trends. Rupesh talks to his technical team, including Eva, the data engineer, Miguel, the data scientist and Wendy, the business analyst. Rupesh tasks them with designing and implementing a solution pattern to realize this dream of a data driven organization. They recognize that the existence of data silos within Contoso's various departments presents a significant integration challenge. This challenge is worsened by the need to combine its subsidiary data and data from Litware Inc.
 
@@ -74,15 +74,9 @@ During this lab you will execute some of these steps as a part of this team to r
 
 1. Open a Microsoft Edge browser in **InPrivate** mode. 
 
-2. Navigate to the Azure Portal at [https://portal.azure.com/]
+2. Navigate to the Azure Portal at (https://portal.azure.com/)[https://portal.azure.com/]
 
-3. Log into the VM with the password provided in the **Resources** tab located on the right side of the screen.
-
-4. Use these credentials to log into the Azure Portal.
-
->**Note:** Close the Save password pop-up box.
-
-![Simulator.](mediaNew/task-1.1-new7.png)
+3. Log into the Azure Portal.
 
 5. If prompted to stay signed in, select **Yes**.
 
@@ -114,7 +108,7 @@ During this lab you will execute some of these steps as a part of this team to r
 
 ---
 
-### Task 1.1: Use the Data Pipelines/Data Flow for a ‘No Code, Low Code experience’
+### Task 1.1: Use the Data Pipelines/Dataflow for a ‘No Code, Low Code experience’
 
 In this exercise, you will act as the Data Engineer and transfer Contoso's data from from Azure SQL Database into the Lakehouse. 
 
@@ -177,7 +171,6 @@ In this exercise, you will act as the Data Engineer and transfer Contoso's data 
 14. Scroll down and select **Basic** for Authentication kind, enter **labsqladmin** as the Username, **Smoothie@2024** as the Password and click on the **Next** button.
 
 ![Datawarehouse.](mediaNew/task-1.3.16.png)
-
 
 >**Note:** Wait for the connection to be created.
 
@@ -426,17 +419,17 @@ We saw how Contoso was able to utilize DLT pipelines to create a medallion archi
  
 With the acquisition of Litware Inc., Contoso had a lot of data integration and interoperability challenges. Contoso wanted to make sure that the transition was smooth and data engineers and scientists from Contoso could easily assimilate the data processed by Databricks. Thankfully, they had the help from a wide selection of Gen AI features right within Azure Databricks to understand and derieve insights from this data. Let's see how!
 
-2. Expand **litware_unity_catalog db**.
+1. Expand **litware_unity_catalog db**.
 
-3.	Expand the **rag** schema and click on **tables**.
+2.	Expand the **rag** schema and click on **tables**.
 
-4.	Click on **documents_embeddings** table.
+3.	Click on **documents_embeddings** table.
 
 >**Note**: If you have used OpenAI for text embeddings during the deployment, then select **documents_embedding_openai** table.
 
 ![Databricks.](mediaNew/ragbottable.png)
 
-5.	Click on **Accept** in 'AI Suggested Comment' box and Click on **AI Generate**.
+4.	Click on **Accept** in 'AI Suggested Comment' box and Click on **AI Generate**.
 
 ![Databricks.](mediaNew/task-2.1.1new.png)
 	
@@ -444,62 +437,61 @@ We can see that AI in Azure Databricks has autogenerated the description for the
 
 ![Databricks.](mediaNew/ragbottable1.png)
 
-6. From the left hand-side pane, select **silver_customerchurn_data** table.
+5. From the left hand-side pane, select **silver_customerchurn_data** table.
 
 ![Databricks.](mediaNew/ragbottable3.png)
 	
-7.	Select the dropdown on **Create**.
+6.	Select the dropdown on **Create**.
 
-8.	Click on **Query**.
+7.	Click on **Query**.
 
 ![Databricks.](mediaNew/task-2.3new.png)
 	
-9.	Select the **Assistant** tab.
+8.	Select the **Assistant** tab.
 
-10.	Click on the query area and type ```Retrive the average total amount of transactions for each store contract. Additionally, calculate the average total amount for customers who have churned and for those who have not churned. Ensure all average values are rounded to the nearest whole number.``` then click on send button.
+9.	Click on the query area and type ```Retrive the average total amount of transactions for each store contract. Additionally, calculate the average total amount for customers who have churned and for those who have not churned. Ensure all average values are rounded to the nearest whole number.``` then click on send button.
 	
 ![Databricks.](mediaNew/task-2.4new.png)
 	
 By simply using a natural language query, and leveraging the AI generated table and field descriptions mentioned earlier, Azure Databricks generates an equivalet SQL query. No need to be skilled in SQL queries and so business friendly right?
 	
-11. Click on the **Arrow** to replace the current code.
+10. Click on the **Arrow** to replace the current code.
 
 ![Databricks.](mediaNew/task-2.4.1new.png)
 
-12.	Click on **Run**.
+11.	Click on **Run**.
 
-13.	Check the output.
-
+12.	Check the output.
 
 ![Databricks.](mediaNew/task-2.5new.png)
 
 Users also have the capability to fix errors in queries with the AI assistant. Let us intentionally introduce an error by misspelling a table name and see the AI's response.
 	
-14. In the query, click on **churnstatus** to misspell it.
+13. In the query, click on **churnstatus** to misspell it.
 
-15. Click on **Run** to see the error.
+14. Click on **Run** to see the error.
 
-16. Click on **Diagnose error** to fix the query issue. And see how easily the error is fixed! It is like have a virtual assistant available 24 hours!
+15. Click on **Diagnose error** to fix the query issue. And see how easily the error is fixed! It is like have a virtual assistant available 24 hours!
 
 ![Databricks.](mediaNew/task-2.6new.png)
 
-17. Click on the **Arrow** to replace the current code.
+16. Click on the **Arrow** to replace the current code.
 
 ![Databricks.](mediaNew/task-2.4.1new.png)
 	
 Data discovery is also made simple within Azure Databricks. Users can simply search for table names or the information they are looking for in the global search and all the relevant items are returned, again leveraging the table and field descriptions created by AI and data intelligence mentioned earlier.
 	
-18. Click on **Search*.
+17. Click on **Search*.
 
-19. Click on **Open search in a full page**.
+18. Click on **Open search in a full page**.
 
 ![Databricks.](mediaNew/task-2.7new.png)
 
-20. Click to search for **campaigns** and click on show all results. Now, the next big challenge for Contoso was to get visibility of their Market Sentiment KPI. Remember, the Market Sentiment before the acquisition was at an all time low. News articles and analyst reviews were being continuously published. All this unstructured data had to be efficiently assimilated so that the Market Sentiment could be tracked. That brings us to the next task. Let us see!
+19. Click to search for **campaigns** and click on show all results. Now, the next big challenge for Contoso was to get visibility of their Market Sentiment KPI. Remember, the Market Sentiment before the acquisition was at an all time low. News articles and analyst reviews were being continuously published. All this unstructured data had to be efficiently assimilated so that the Market Sentiment could be tracked. That brings us to the next task. Let us see!
 
 ---
 
-### Task 2.3 (OPTIONAL)Deploy LLM Chatbots With the Data Intelligence Platform 
+### Task 2.3 Deploy LLM Chatbots With the Data Intelligence Platform 
 
 Contoso also wanted to improve their efficientcy with analyzing hundreds of documents about their big merger and their company policies. Azure Databricks provides just the solution with its Delta Lake architecture supporting unstructured data, like PDF documents, with Lang chain models leveraging Databricks Foundation Model for creating custom chatbots. Let's see how this was done.
 
@@ -736,37 +728,23 @@ Imagine it is 6 am on the day of Contoso's big Thanksgiving sale. Customers are 
 
 ![donotsave.png](mediaNew/donotsave.png) 
 
-2. On the Real-Time Intelligence experience screen, click on **Eventhouse**.
-
-![eventhouse1.png](mediaNew/eventhouse1.png)
-
-3. Enter the name  as ```Contoso-Eventhouse```
-
-4. Click on the **Create** button and wait for the database to be created.
-
-![eventhouse2.png](mediaNew/eventhouse2.png)
-
-5. Click on **Real-Time Intelligence** at the bottom left corner of the screen and select **Real-Time Intelligence**.
-
-![eventhouse3.png](mediaNew/eventhouse3.png)
-
-6. Select **Eventstream**.
+2. Select **Eventstream**.
 
 ![eventhouse4.png](mediaNew/eventhouse4.png)
 
-7. Enter the name as ```RealtimeDataTo-KQL-DB``` and tick a checkbox 'Enhanced Capabilities(preview)' then click on **Create** button.
+3. Enter the name as ```RealtimeDataTo-KQL-DB``` and tick a checkbox 'Enhanced Capabilities(preview)' then click on **Create** button.
 
 ![Eventst-name1.png](mediaNew/Eventst-name1.png)
 
-8. Click on the **Add external source** button.
+4. Click on the **Add external source** button.
 
 ![eventhouse12.png](mediaNew/eventhouse12.png)
 
-9. Click on the **Azure Event Hub** button.
+5. Click on the **Azure Event Hub** button.
 
 ![task-5.2.1new1.0.4.png](mediaNew/task-5.2.1new1.0.4.png)
 
-10. Under the Connection field, click on **New connection**.
+6. Under the Connection field, click on **New connection**.
 
 ![eventhouse13.png](mediaNew/eventhouse13.png)
 
@@ -819,6 +797,7 @@ Imagine it is 6 am on the day of Contoso's big Thanksgiving sale. Customers are 
 15. In the Eventstream canvas, click on the **Add destination** dropdown and select **KQL Database**.
 
 ![sel-kql-db.png](mediaNew/sel-kql-db.png)
+
 16. Select the **Event processing before ingestion** radio button, enter **RealTimeData** as the Destination name.
 
 17. Select **contosoSales...** and **Contoso-KQL-DB** from the respective 'Workspace' and 'KQL Database' dropdowns.
