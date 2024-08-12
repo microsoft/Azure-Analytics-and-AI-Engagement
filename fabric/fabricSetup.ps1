@@ -225,8 +225,8 @@ else {
     # Set the token and request headers
     $pat_token = $fabric
     $requestHeaders = @{
-    Authorization  = "Bearer" + " " + $pat_token
-    "Content-Type" = "application/json"
+        Authorization  = "Bearer" + " " + $pat_token
+        "Content-Type" = "application/json"
     }
 
     # Iterate through each Lakehouse name and create it
@@ -263,10 +263,6 @@ else {
     Add-Content log.txt "------Creating Lakehouse in '$contosoFinanceWsName' workspace------"
     Write-Host "-----Creating Lakehouse in '$contosoFinanceWsName' workspace------"
     $pat_token = $fabric
-    $requestHeaders = @{
-        Authorization  = "Bearer" + " " + $pat_token
-        "Content-Type" = "application/json"
-    }
 
     $body =  @{
         displayName = $lakehouseFinance
@@ -309,27 +305,25 @@ else {
     Add-Content log.txt "------------Creation of Warehouse COMPLETED------------"
     Write-Host "-----------Creation of Warehouse COMPLETED------------"
 
-    Add-Content log.txt "------Creating KQL Database------"
-    Write-Host "------Creating KQL Database------"
-    $KQLDB = "Contoso-KQL-DB"
-    $body = @{
-            displayName = $KQLDB 
-            type        = "KQLDatabase"
-        } | ConvertTo-Json
-        
+    Add-Content log.txt "------Creating Eventhouse------"
+    Write-Host "------Creating Eventhouse------"
+        $KQLDB = "Contoso-Eventhouse"
+        $body = @{
+                displayName = $KQLDB 
+            } | ConvertTo-Json
+            
     try{
-    $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items/"
-    $KQLDBAPI = Invoke-RestMethod $endPoint `
-            -Method POST `
-            -Headers $requestHeaders `
-            -Body $body
-            Write-Host "KQL-DB '$KQLDB' created successfully."
-    }catch{
-        Write-Host "Error creating KQL-DB '$KQLDB'"
-    }
+        $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/eventhouses"
+        $KQLDBAPI = Invoke-RestMethod $endPoint `
+                -Method POST `
+                -Headers $requestHeaders `
+                -Body $body
+                Write-Host "Eventhouse '$KQLDB' created successfully."
+        }catch{
+            Write-Host "Error creating Eventhouse '$KQLDB'"
+        }
     Start-Sleep -s 10 
-    Add-Content log.txt "------------Creation of KQL Database COMPLETED------------"
-    Write-Host "-----------Creation of KQL Database COMPLETED------------"
+    Write-Host "-----------Creation of Eventhouse COMPLETED------------"
 
     Add-Content log.txt "------Uploading assets to Lakehouses------"
     Write-Host "------------Uploading assets to Lakehouses------------"
@@ -755,7 +749,8 @@ else {
 
     az webapp stop --name $app_fabric_name --resource-group $rgName
     try {
-        az webapp deployment source config-zip --resource-group $rgName --name $app_fabric_name --src "./app-fabric-2.zip"
+        # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_therm -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+        Publish-AzWebApp -ResourceGroupName $rgName -Name $app_fabric_name -ArchivePath ./app-fabric-2.zip -Force
     }
     catch {
     }
@@ -779,10 +774,14 @@ else {
 
     # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
+    az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgName
+
     Write-Information "Deploying ADX Thermostat Realtime App"
-    cd app-adx-thermostat-realtime
-    az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
-    cd ..
+    Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+
+    # cd app-adx-thermostat-realtime
+    # az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
+    # cd ..
     Start-Sleep -s 10
 
     az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
