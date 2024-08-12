@@ -777,7 +777,31 @@ else {
     az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 
     Write-Information "Deploying ADX Thermostat Realtime App"
-    Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+
+    # number of retries
+    $maxRetries = 2
+    # delay 
+    $retryDelay = 10
+    # Retry counter
+    $count = 0
+    
+    while ($count -lt $maxRetries) {
+        Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+    
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "Simulator web app build deployed successfully."
+            break
+        } else {
+            Write-Host "Failed to deploy simulator web app build. Retrying in $retryDelay seconds..."
+            $count++
+            Start-Sleep -Seconds $retryDelay
+        }
+    }
+    
+    if ($count -eq $maxRetries) {
+        Write-Host "Failed to deploy the simulator web app build after $maxRetries attempts."
+        exit 1
+    }
 
     # cd app-adx-thermostat-realtime
     # az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region

@@ -793,7 +793,11 @@ step 28, and **click** on the 'Next' button.
 
 	![Close the browser.](media/power-bi-5.png)
 
-2. **Filter** for the **KQL Database** and Open 'Contoso-KQL-DB'.
+2. **Filter** for the **Eventhouse** and 
+
+	![Close the browser.](media/demo-34ab.png)
+
+3. Click on **Contoso-KQL-DB**.
 
 	![Close the browser.](media/demo-34a.png)
 
