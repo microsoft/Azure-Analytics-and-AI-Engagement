@@ -93,7 +93,7 @@ else {
 
     Write-Host "    -----------------   "
     Write-Host "    -----------------   "
-    Write-Host "If you fulfill the above requirements pleaseprocess otherwise press 'Ctrl+C' to end script execution."
+    Write-Host "If you fulfill the above requirements please proceed otherwise press 'Ctrl+C' to end script execution."
     Write-Host "    -----------------   "
     Write-Host "    -----------------   "
 
@@ -101,41 +101,12 @@ else {
 
     az login
 
+    $subscriptionId = (az account show --query 'id' -o tsv)
+ 
     #for powershell...
-    Connect-AzAccount -DeviceCode
+    Connect-AzAccount -DeviceCode -SubscriptionId $subscriptionId
 
     $starttime=get-date
-
-    $subs = Get-AzSubscription | Select-Object -ExpandProperty Name
-    if($subs.GetType().IsArray -and $subs.length -gt 1)
-    {
-    $subOptions = [System.Collections.ArrayList]::new()
-        for($subIdx=0; $subIdx -lt $subs.length; $subIdx++)
-        {
-            $opt = New-Object System.Management.Automation.Host.ChoiceDescription "$($subs[$subIdx])", "Selects the $($subs[$subIdx]) subscription."   
-            $subOptions.Add($opt)
-        }
-        $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
-        $selectedSubName = $subs[$selectedSubIdx]
-        Write-Host "Selecting the subscription : $selectedSubName "
-        $title    = 'Subscription selection'
-        $question = 'Are you sure you want to select this subscription for this lab?'
-        $choices  = '&Yes', '&No'
-        $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-        if($decision -eq 0)
-        {
-        Select-AzSubscription -SubscriptionName $selectedSubName
-        az account set --subscription $selectedSubName
-        }
-        else
-        {
-        $selectedSubIdx = $host.ui.PromptForChoice('Enter the desired Azure Subscription for this lab','Copy and paste the name of the subscription to make your choice.', $subOptions.ToArray(),0)
-        $selectedSubName = $subs[$selectedSubIdx]
-        Write-Host "Selecting the subscription : $selectedSubName "
-        Select-AzSubscription -SubscriptionName $selectedSubName
-        az account set --subscription $selectedSubName
-        }
-    }
 
     $response = az ad signed-in-user show | ConvertFrom-Json
     $date = get-date
@@ -747,10 +718,13 @@ else {
 
     Compress-Archive -Path "./app-fabric-2/*" -DestinationPath "./app-fabric-2.zip" -Update
 
+    # fetching authentication token
+    $TOKEN = az account get-access-token --query accessToken | tr -d '"'
+
     az webapp stop --name $app_fabric_name --resource-group $rgName
     try {
         # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_therm -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
-        Publish-AzWebApp -ResourceGroupName $rgName -Name $app_fabric_name -ArchivePath ./app-fabric-2.zip -Force
+        $deployment = curl -X POST -H "Authorization: Bearer $TOKEN" -T "./app-fabric-2.zip" "https://$app_fabric_name.scm.azurewebsites.net/api/publish?type=zip"
     }
     catch {
     }
@@ -778,34 +752,39 @@ else {
 
     Write-Information "Deploying ADX Thermostat Realtime App"
 
-    # number of retries
-    $maxRetries = 2
-    # delay 
-    $retryDelay = 10
-    # Retry counter
-    $count = 0
+    # # number of retries
+    # $maxRetries = 2
+    # # delay 
+    # $retryDelay = 10
+    # # Retry counter
+    # $count = 0
     
-    while ($count -lt $maxRetries) {
-        Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
+    # while ($count -lt $maxRetries) {
+    #     Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
     
-        if ($LASTEXITCODE -eq 0) {
-            Write-Host "Simulator web app build deployed successfully."
-            break
-        } else {
-            Write-Host "Failed to deploy simulator web app build. Retrying in $retryDelay seconds..."
-            $count++
-            Start-Sleep -Seconds $retryDelay
-        }
-    }
+    #     if ($LASTEXITCODE -eq 0) {
+    #         Write-Host "Simulator web app build deployed successfully."
+    #         break
+    #     } else {
+    #         Write-Host "Failed to deploy simulator web app build. Retrying in $retryDelay seconds..."
+    #         $count++
+    #         Start-Sleep -Seconds $retryDelay
+    #     }
+    # }
     
-    if ($count -eq $maxRetries) {
-        Write-Host "Failed to deploy the simulator web app build after $maxRetries attempts."
-        exit 1
-    }
+    # if ($count -eq $maxRetries) {
+    #     Write-Host "Failed to deploy the simulator web app build after $maxRetries attempts."
+    #     exit 1
+    # }
 
     # cd app-adx-thermostat-realtime
     # az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
     # cd ..
+    
+    $TOKEN_2 = az account get-access-token --query accessToken | tr -d '"'
+
+    $deployment2 = curl -X POST -H "Authorization: Bearer $TOKEN_2" -T "./artifacts/binaries/app-adx-thermostat-realtime.zip" "https://$sites_adx_thermostat_realtime_name.scm.azurewebsites.net/api/publish?type=zip" 
+    
     Start-Sleep -s 10
 
     az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
