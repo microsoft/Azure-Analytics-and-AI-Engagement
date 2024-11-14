@@ -207,24 +207,24 @@ SalesDb | Microsoft.Sql/servers/databases
 
 Command:
 ```
-git clone -b build-lab-2024 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git build24
+git clone -b ignite-lab-2024 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git lab24
 ```
 
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
 	
    > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then reclone:
 ```
- rm build24 -r -f 
+ rm lab24 -r -f 
 ```
    > **Note**: When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt. 
 
 9. **Execute** the Powershell script with the following command:
 ```
-cd ./build24/build24/
+cd ./lab24/lab24/
 ```
 
 ```
-./buildSetup.ps1
+./labSetup.ps1
 ```
     
    ![Commands to run the PowerShell Script.](media/cloud-shell-5.1.png)
@@ -386,7 +386,7 @@ cd ./build24/build24/
 
 	![Close the browser.](media/ragchatbot2.png)
 
->**Note:** Once you are done with the above setup instructions, please follow the [Readme-shell.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/build-lab-2024/build24/Readme-Shell.md) file to perform the lab exercises.
+>**Note:** Once you are done with the above setup instructions, please follow the [Readme-shell.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/ignite-lab-2024/lab24/Readme-Shell.md) file to perform the lab exercises.
 
 
 ## Appendix
