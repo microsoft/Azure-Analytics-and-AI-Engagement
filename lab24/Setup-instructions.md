@@ -1,4 +1,4 @@
-# Modern Analytics with Microsoft Fabric, Copilot and Azure Databricks DREAM PoC Accelerator Setup Guide
+# Elevate your data workflow with Microsoft Fabric, Copilot, and Azure Databricks DREAM PoC Accelerator Setup Guide
 
 ## What is DPoC?
 DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks etc.) that can be deployed in a customer’s environment.
@@ -319,6 +319,10 @@ cd ./lab24/lab24/
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
+30. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
+
+	![Enter Resource Group name.](media/cloud-shell-14.1.png)
+
 30. In this accelerator, you have the option to choose a model for creating text embeddings in Azure Databricks. By default, the Azure Databricks ```databricks-bge-large-en``` model will be used for text embedding, but you can also use the Azure OpenAI ```text-embedding-ada-002``` model. Enter 'Yes' to use the OpenAI model.
 
 	![Enter Resource Group name.](media/openai1.png)
@@ -327,11 +331,9 @@ cd ./lab24/lab24/
 
 	![Enter Resource Group name.](media/openai2.png)
 
-30. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
+>**Note:** Please be patient while the script executes, it takes approximately 40-50 minutes for completion. During this time please be on the CloudShell screen, since you will be asked for some inputs in between the script execution.
 
-	![Enter Resource Group name.](media/cloud-shell-14.1.png)
-
-36. After the Arm Template is deployed, you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
+36. After the ARM Template is deployed, you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
 
     ![databrick](media/db0.png)
 
@@ -343,9 +345,9 @@ cd ./lab24/lab24/
 
     ![databrick](media/db2.png)
 
-> Note : you should have Global admin on Azure tenant to assign youself as Account Admin. If you are not able to access Account console get the permssion assigned by your organization's Global Admin.
+>**Note:** You should have Global admin on Azure tenant to assign youself as Account Admin. If you are not able to access Account console get the permssion assigned by your organization's Global Admin.
 
-39. Search your username in the seacrh bar and select it.
+39. Search your username in the search bar and select it.
 
     ![databrick](media/db3.png)
 
@@ -374,7 +376,7 @@ cd ./lab24/lab24/
 
 	![Close the browser.](media/db7.png)
 
-3. **Click** on Luanch workspace.
+3. **Click** on Launch workspace.
 
 	![Close the browser.](media/db8.png)
 

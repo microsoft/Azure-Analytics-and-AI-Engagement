@@ -1,4 +1,4 @@
-# Modern Analytics with Microsoft Fabric, Copilot and Azure Databricks DREAM Lab
+# Elevate your data workflow with Microsoft Fabric, Copilot, and Azure Databricks
  
 **The estimated time to complete this lab is 45-60 minutes.**
  
@@ -42,7 +42,7 @@
 ## OVERVIEW
 
 ---
- ![Simulator.](mediaNew/buildarch.png)
+ ![Simulator.](mediaNew/ignite_arch.png)
 
 This lab showcases Modern Analytics with Microsoft Fabric and Azure Databricks, featuring a cost-effective, performance-optimized, and cloud-native Analytics solution pattern. This architecture unifies our customers' data estate to accelerate data value creation.
 
