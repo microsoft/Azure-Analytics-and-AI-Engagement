@@ -4,41 +4,44 @@
  
 ## Table of Contents
  
-## [Exercise 1: Data Engineering experience - Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience---data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake-1)
+## [Exercise 1: Data Engineering/Data Factory experience - Data ingestion from a spectrum of analytical data sources into OneLake](#exercise-1-data-engineering-experience---data-ingestion-from-a-spectrum-of-analytical-data-sources-into-onelake-1)
  
- - [Task 1.1: Use the Data Pipelines/Dataflow for a ‘No Code, Low Code experience’](#task-11-use-the-data-pipelinesdataflow-for-a-no-code-low-code-experience)
+- [Task 1.1: Create a Microsoft Fabric enabled workspace](#task-11-create-a-microsoft-fabric-enabled-workspace) 
 
- - [Task 1.2: Transform data using Dataflow Gen2 using a ‘No Code, Low Code experience’ Copilot](#task-12-transform-data-using-dataflow-gen2-using-a-no-code-low-code-experience-copilot)
+- [Task 1.2: Use the ‘New Shortcut’ option from external data sources](#task-12-use-the-new-shortcut-option-from-external-data-sources) 
 
- - [Task 1.3: Use the ‘New Shortcut’ option from external data sources](#task-13-use-the-new-shortcut-option-from-external-data-sources) 
+- [Task 1.3: Create Delta tables using Spark Notebook](#task-13-create-delta-tables-using-spark-notebook)
 
+- [Task 1.4: Leverage Dataflow Gen2 and Data pipelines for a "No Code-Low Code" experience to quickly ingest data with Fast Copy and transform it using Copilot](#task-14-leverage-dataflow-gen2-and-data-pipelines-for-a-no-code-low-code-experience-to-quickly-ingest-data-with-fast-copy-and-transform-it-using-copilot) 
 
-## [Exercise 2: DLT Pipelines, Unity Catalog (Data governance), Metastore experience, Retrieval Augmented Generation (RAG) and Machine Learning (ML)](#exercise-2-dlt-pipelines-unity-catalog-data-governance-metastore-experience-retrieval-augmented-generation-rag-and-machine-learning-ml-1)
- 
- - [Task 2.1: Explore Delta Live Table pipeline (Data Transformation)](#task-21-delta-live-table-pipeline-interactive)
- 
- - [Task 2.2: Explore the data in the Azure Databricks environment with Unity Catalog (unified governance solution for data and AI)](#task-22-explore-the-data-in-azure-databricks-environment-with-unity-catalog-unified-governance-solution-for-data-and-ai)
-	
- - [Task 2.3 Deploy LLM Chatbots With the Data Intelligence Platform](#task-23-optionaldeploy-llm-chatbots-with-the-data-intelligence-platform) 
+- [Task 1.5: Explore Task Flows in Microsoft Fabric](#task-15-explore-task-flows-in-microsoft-fabric)
 
- 
-## [Exercise 3: Power BI Experience](#exercise-3-power-bi-experience-1)
- 
-- [Task 3.1: Create a Semantic model and generate insights using Copilot for Power BI in Microsoft Fabric](#task-31-create-a-semantic-model-and-generate-insights-using-copilot-for-power-bi-in-microsoft-fabric)
+## [Exercise 2: Azure Databricks integration with Fabric: DLT Pipelines, Unity Catalog (Data governance), Mirrored Azure Databricks Catalog](#exercise-2-azure-databricks-integration-with-fabric-dlt-pipelines-unity-catalog-data-governance-mirrored-azure-databricks-catalog)
 
+- [Task 2.1: Create Delta Live Table pipeline for Data Transformation](#task-21-create-delta-live-table-pipeline-for-data-transformation)
+- [Task 2.2: Explore the data in the Azure Databricks environment with Unity Catalog (unified governance solution for data and AI)](#task-22-explore-the-data-in-the-azure-databricks-environment-with-unity-catalog-unified-governance-solution-for-data-and-ai)
+- [Task 2.3: Create a Mirrored Azure Databricks Catalog in Fabric and analyze data using T-SQL](#task-23-create-a-mirrored-azure-databricks-catalog-in-fabric-and-analyze-data-using-t-sql)
 
-## [Exercise 4: Real-time Intelligence experience - Explore Streaming data using Copilot for KQL DB](#exercise-4-real-time-intelligence-experience-explore-streaming-data-using-copilot-for-kql-db)
- 
-- [Task 4.1: Ingest real-time/historical data into KQL DB using Eventstream](#task-41-ingest-real-timehistorical-data-into-kql-db-using-eventstream)
- 
+## [Exercise 3: Power BI Experience in Fabric](#exercise-3-power-bi-experience-in-fabric)
+
+- [Task 3.1: Create a Semantic model and generate insights using Copilot for Power BI](#task-31-create-a-semantic-model-and-generate-insights-using-copilot-for-power-bi)
+
+## [Exercise 4: Real-Time Intelligence experience - Explore Streaming data using Copilot for KQL DB](#exercise-4-real-time-intelligence-experience---explore-streaming-data-using-copilot-for-kql-db)
+
+- [Task 4.1: Ingest real-time/historical data into Eventhouse using Eventstream](#task-41-ingest-real-timehistorical-data-into-eventhouse-using-eventstream)
 - [Task 4.2: Analyze/discover patterns, identify anomalies and outliers using Copilot](#task-42-analyzediscover-patterns-identify-anomalies-and-outliers-using-copilot)
 
+## [Exercise 5: Explorer Data Science experience in Microsoft Fabric (Optional)](#exercise-5-explorer-data-science-experience-in-microsoft-fabric-optional)
 
-## [Exercise 5: Data Science experience - Explore Machine Learning and Business Intelligence scenarios in ADB (read only)](#exercise-5-data-science-experience---explore-machine-learning-and-business-intelligence-scenarios-in-adb-read-only)
- 
-- [Task 5.1: Build ML models, experiments, and log ML model in the built-in model registry using MLflow and batch scoring](#exercise-5-data-science-experience-explore-machine-learning-and-business-intelligence-scenarios-in-adb-read-only)
+- [Task 5.1: Build ML models and experiments using Copilot in Fabric](#task-51-build-ml-models-and-experiments-using-copilot-in-fabric)
+- [Task 5.2: Leverage AI skills for Q&A](#task-52-leverage-ai-skills-for-qa)
 
+## [Exercise 6: Data Warehouse experience (Optional)](#exercise-6-data-warehouse-experience-optional)
 
+- [Task 6.1: Create Mirrored Azure SQL DB in Fabric](#task-61-create-mirrored-azure-sql-db-in-fabric)
+- [Task 6.2: Analyze the Mirrored Azure SQL Database data using T-SQL](#task-62-analyze-the-mirrored-azure-sql-database-data-using-t-sql)
+
+---
 ## OVERVIEW
 
 ---
@@ -74,7 +77,7 @@ During this lab you will execute some of these steps as a part of this team to r
 
 1. Open a Microsoft Edge browser in **InPrivate** mode. 
 
-2. Navigate to the Azure Portal at (https://portal.azure.com/)[https://portal.azure.com/]
+2. Navigate to the Azure Portal at [https://portal.azure.com/](https://portal.azure.com/)
 
 3. Log into the Azure Portal.
 
@@ -107,265 +110,394 @@ During this lab you will execute some of these steps as a part of this team to r
 ![Simulator.](mediaNew/task-1.3.png)
 
 ---
+### Task 1.1: Create a Microsoft Fabric enabled workspace
 
-### Task 1.1: Use the Data Pipelines/Dataflow for a ‘No Code, Low Code experience’
+In this exercise, you will act as the Data Engineer, Eva, to transfer Contoso's data from Azure SQL Database into the Lakehouse and initiate data preparation for the upcoming merger between Contoso and Litware Inc.
 
-In this exercise, you will act as the Data Engineer and transfer Contoso's data from from Azure SQL Database into the Lakehouse. 
+1. **Open** Power BI in a new tab by clicking [HERE](https://app.powerbi.com/)
 
-1. Open a new tab on your browser and navigate to Microsoft Fabric at [https://app.fabric.microsoft.com].
+2. Enter the username and click on **Submit**.
 
-2. On the Microsoft Fabric landing page, click on the **Data Factory** experience.
+![submit.png](media/submit.png)
 
-![Pipeline.](mediaNew/task-1.3.01.png)
+3. Enter the password and click on **Sign in**.
 
-3. Click on **Workspaces** and select the **contosoSales...** workspace.
+![unamepass.png](media/unamepass.png)
 
-![Pipeline.](mediaNew/task-1.3.02.png)
+4. If prompted to stay signed in, select **Yes**.
 
-4. Click the **Data Factory** icon in the bottom left corner of the screen to select **Data Factory**.
+![staysignin.png](media/staysignin.png)
 
-![Pipeline.](mediaNew/task-1.3.1.png)
+>**Note:** Close any pop-up that appears on the screen.
 
-5. Click on **Data pipeline**.
+![rpop-up.png](media/rpop-up.png)
 
-![Pipeline.](mediaNew/task-1.3.2.png)
+>**Note:** If you see the following screen, continue with the steps below or directly move to step number 8.
 
-6. In the pop-up, type the pipeline name **Azure SQL DB Pipeline** and click on the **Create** button.
+5. Click on the **Continue** button.
 
-![Pipeline.](mediaNew/task-1.3.3.png)
+![signup1.png](media/signup1.png)
 
-7. In the Data pipeline window, click on **Copy data assistant**.
+6. Click on the **Business phone number box** and paste the 10-digit number  ```1230000849``` in the box. 
 
-![Pipeline.](mediaNew/task-1.3.4.png)
+![signup2.png](media/signup2.png)
 
-8. In the pop-up, click on **+New** tab and scroll down through the resources, click on **Azure SQL Database**.
+7. Again, click on the **Get Started** button.
 
->**Note** You may not see the **Azure SQL Database** in the same location as shown in the screenshot.
+	![signup3.png](media/signup3.png)
 
-![pip3.png](mediaNew/pip3.png)
+> **Note:** Wait for the Power BI workspace to load and *close* the top bar for a better view.
 
-9. Select the **Create new connection** radio button.
+<!-- *Close* the top bar for a better view. -->
 
-![task-1.3.6.png](mediaNew/task-1.3.6.png)
+8. From the left navigation pane, click on **Workspaces** and then the **+ New workspace** button.
 
->**Note:** To fill in the details for required fileds, we need to fetch the data from the SQL Database resource deployed in the Azure Portal.
+	![task-1.1.2.png](media/task-1.1.2.png)
 
-![Pipeline.](mediaNew/task-1.3.6.png)
+9. Type the name **ContosoSales**, **validate** the available name and click **Apply**.
 
-10. Navigate to the **Azure Portal**, in the resource group **rg-fabric...**, search for **sql server** in the resource group window and click on the **mssql...** resource.
+>**Note:** Only use the workspace name provided above.
 
-![Pipeline.](mediaNew/task-1.3.12.png)
+>**NOTE:** If the name **ContosoSales** is already taken, refresh the page and check again. A workspace with that name may already be created. If so, add a different suffix until the name is available.
 
-11. Copy the **Server name**.
+![works-apply.png](media/works-apply.png)
 
-![Pipeline.](mediaNew/task-1.3.13.png)
+>**Note:** Close any pop-up that appears on the screen.
 
-12. Navigate back to the **Fabric** tab on your browser.
+![gotit-popup.png](media/gotit-popup.png)
 
-<todo  Do we need screenshot here to show Fabric Tab>
+![gotit-popup.png](media/gotit-popup.1.png)
 
-13. In the **Server** field, paste the value you copied in step number **11* and type **SalesDb** in the **Database** field.
+>**Note:** Wait for the Power BI Workspace to load.
 
-![Datawarehouse.](mediaNew/task-1.3.15.png)
+![task-1.1.0-new520.png](media/task-1.1.0-new520.png)
 
-14. Scroll down and select **Basic** for Authentication kind, enter **labsqladmin** as the Username, **Smoothie@2024** as the Password and click on the **Next** button.
 
-![Datawarehouse.](mediaNew/task-1.3.16.png)
+### Create/Build a Lakehouse
 
->**Note:** Wait for the connection to be created.
+Now, let's see how each department can easily create a Lakehouse in the Contoso workspace without any provision. They simply provide a name, given the proper access rights of course!
 
-15. Click on the **checkbox** for **Select all** and then click on the **Next** button.
+1. Click on the **experience** button at the **bottom left** corner of the screen (In this screenshot, **Power BI** is selected as an "Experience") and then select **Data Engineering**.
 
-![Datawarehouse.](mediaNew/task-1.3.17.png)
+![task-wb1.png](media/task-wb1.png)
 
-16. Select **OneLake Data Hub**, then select the lakehouse with the concatenated suffix.
+2. In the new window, under Data Engineering, click **Lakehouse**.
 
-![Datawarehouse.](mediaNew/task-1.3.18.png)
+![task-wb2.png](media/task-wb2.png)
 
-17. Select the **Load to new table** radio button, click on the **checkbox** beside **Source** and then click on **Next**.
+**Note:** Screenshots in the exercises may sometimes differ from the actual lab. Please adjust your screen resolution to locate items and select them as needed.
 
-![Datawarehouse.](mediaNew/task-1.3.20.png)
+3. Enter the name as **lakehouse**.
 
-18. Click on **Save + Run**.
+4. Click on the **checkbox** and then click on the **Create** button.
 
-![Datawarehouse.](mediaNew/task-1.3.21.png)
+   ![task-1.2.3.png](media/task-1.2.3.png)
 
-19. Click on the **OK** button in the Pipeline run window.
+**Note:** Expand the Lakehouse Explorer if it is collapsed.
 
-![Datawarehouse.](mediaNew/task-1.3.21.0.png)
+   ![task-1.2.3.png](media/task-1.2.3.1.png)
 
->**Note:** Wait for the pipeline to execute.
-
-20. Click on the bell icon at the top right of the screen to verify the **Running status** of the pipeline.
-
-![Datawarehouse.](mediaNew/task-1.3.22.png)
-
-21. Your data has been transfered from Azure SQL Database to Lakehouse.
-
-22. Similarly, you can get data into the Lakehouses using pipelines from various other sources like Snowflake, Dataverse, etc.
+In just a few seconds, the Lakehouse is ready. With the right access, you, as a Data Engineer, can effortlessly create a new Lakehouse. There is no need to set up any storage accounts or worry about network, infrastructure, key vault, Azure subscriptions, etc.
 
 ---
 
-### Task 1.2: Transform data using Dataflow Gen2 using a ‘No Code, Low Code experience’ Copilot
+### Task 1.2: Use the ‘New Shortcut’ option from external data sources
+Now, this is something exciting! This section shows how easy it is to create Shortcuts without moving data. That is the power of OneLake! In this exercise, you will ingest the curated bounce rate data for Litware from ADLS Gen2 using the New Shortcut option. Let’s see how!
 
-In this exercise, you will experience how easy it is to use Copilot to transform Litware's sales data into the lakehouse. 
+1. Click on the **three dots (ellipses)** on the right side of Files.
 
-1. Click on the **Data Factory** icon on the bottom left corner of the screen and select **Data Factory**.
+2. Click on **New shortcut**.
 
-![task-1.3.1.png](mediaNew/task-1.3.1.png)
+>**Note:** Make sure you create a shortcut under **files** and not under **tables** in the lakehouse explorer pane.
 
-2. Click on **Dataflow Gen2**.
+![task-wb5.png](media/task-wb5.png)
 
-![task-1.2.02.png](mediaNew/task-1.2.02.png)
+3. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
 
-3. Click on the top part of the **Get data** icon (**not on the dropdown arrow at the bottom of the icon**).
-
-![getdataSs.png](mediaNew/getdataSs.png)
-
-4. In the pop-up window, scroll down in **OneLake data hub** and click on **lakehouse**.
-
-![task-1.2.04.S1.png](mediaNew/task-1.2.04.S1.png)
-
-5. If you see a screen similar to the one shown below, click on the **Next** button.
-
-![task-1.2.05.1.png](mediaNew/task-1.2.05.1.png)
-
-6. Expand **Lakehouse** and select **Files**. 
-
-7. Select the **sales_data.csv** checkbox, then **click** on the **Create** button.
-
-![task-wb9.S.png](mediaNew/task-1.2.06.png)
-
-8. Collapse the **Queries** pane and take a look at the sales dataset (**note that the first row of this dataset is not a header**).
-
-![DFData.png](mediaNew/DFData.png)
-
->> **Let's use Copilot to perform data cleansing.**
-
-9. Click on the **Copilot** button, paste the **prompt** provided below in the text box and click on the **send** icon.
-
-![df1a2.png](mediaNew/df1a2.png)
-
-```
-In the table sales_data csv, apply first row as headers.
-```
-
-
-
->**Note:** If Copilot needs additional context to understand your query, consider rephrasing the prompt to include more details.
-
-10. Scroll to the right hand side and observe the **GrossRevenue** and **NetRevenue** columns (**there are some empty rows with null values**).
-
-![DFData12.png](mediaNew/DFData12.png)
-
->> **Let's use Copilot to remove empty rows.**
-
-11. Similarly, paste the prompt below in Copilot and click on the **send** icon.
-
-```
-Remove empty rows from GrossRevenue and NetRevenue columns.
-```
-
-12. Scroll to the right hand side and observe the **GrossRevenue** and **NetRevenue** columns (**there are no empty rows with null values**).
-
-![DFData13.png](mediaNew/DFData13.png)
-
->**Note:** If necessary, scroll up to show the close icon.
-
-12. Click on the **close** icon at top right of the **Dataflow** window.
-
-![task-1.2.08.png](mediaNew/task-1.2.08.png)
-
-13. Click on **Yes**.
-
-![task-1.2.09.png](mediaNew/task-1.2.09.png)
----
-
-### Task 1.3: Use the ‘New Shortcut’ option from external data sources
-
-Now this is something exciting! This section shows how easy it is to create shortcuts without actually moving data. That is the power of OneLake! In this exercise, you will ingest the curated marketing and product reviews data from ADLS Gen2. 
-
-1. In the contosoSales... workspace, click on **Filter** and select **Lakehouse**.
-
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut1.png)	
-
-2. Click on the **lakehouse...**.
-
->**Note:** There are 3 options for lakehouse{SUFFIX}, namely Lakehouse, Dataset (default) and SQL endpoint. Make sure you select the **Lakehouse** option.
-
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut2.png)
-
-3. Click on the **three dots (Elipse)** on the right side of Files.
-
-4. Click on **New shortcut**.
-
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut3.png)
-
-5. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
-
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut4.png)
+![task-1.3-ext-shortcut4.png](media/task-1.3-ext-shortcut4.png)
 
 >**Note:** Wait for the screen to load.
 
-6. In the screen below, we need to enter the connection details for the ADLS Gen2 shortcut. For this, we need to get the details from the Storage Account resource.
+4. Select **Create new Connection**.
 
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut11.png)
+5. In the screen below, we need to enter the connection details for the ADLS Gen2 shortcut.
 
-7. Navigate to the **Azure Portal**, in the **rg-fabric...** resource group search for **storage account** and click on the storage account resource.
+![task-1.3-ext-shortcut11.png](media/task-1.3-ext-shortcut11.png)
+
+6. Navigate to the **Azure Portal**, in the **rg-fabric...** resource group search for **storage account** and click on the storage account resource.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut5.png)
 
-8. Expand the **Security + networking** section and click on **Access keys**.
+7. Expand the **Security + networking** section and click on **Access keys**.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut5.2.png)
 
-9. Click on the **Show** button under **key1**.
+8. Click on the **Show** button under **key1**.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut6.png)
 
-10. Click on the **Copy to clickboard** button.
+9. Click on the **Copy to clickboard** button.
 
-11. Save this information in a notepad for further use.
+10. Save this information in a notepad for further use.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut7.png)
 
-12. In the left pane, expand the **Settings** section and click on **Endpoints**.
+11. In the left pane, expand the **Settings** section and click on **Endpoints**.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut7.1.png)
 
-13. Scroll down to copy the **Data Lake Storage** endpoint in the **Data Lake Storage** section.
+12. Scroll down to copy the **Data Lake Storage** endpoint in the **Data Lake Storage** section.
 
-14. Save the information in a notepad for further use.
+13. Save the information in a notepad for further use.
 
 >**Note:** You may see different endpoints in addtion to the ones shown in the following screen. Make sure to select **only** the **Data Lake Storage** endpoint.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut8.png)
 
-15. Navigate back to the **Fabric** tab.
+14. Navigate back to the **Fabric** tab.
 
-16. Paste the endpoint copied in **step 13** under the **URL** field.
+15. Paste the endpoint copied in **step 13** under the **URL** field.
 
-17. In the **Authentiation kind** dropdown, select **Account Key**.
+16. In the **Authentiation kind** dropdown, select **Account Key**.
 
-18. Paste the **account key** copied in **step number 10**.
+17. Paste the **account key** copied in **step number 10**.
 
-19. Click on **Next**.
+18. Click on **Next**.
 
 ![Lakehouse.](mediaNew/task-1.3-ext-shortcut9.png)
 
-20. Select the **data** checkbox and click on the **Next** button.
+19. Select the **data** and **litwaredata** checkbox and then click on the **Next** button.
 
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut9.1.png)
+![task-wb6.png](media/task-wb6.png)
 
-21. Click on the **Create** button.
+20. Click on the **Create** button.
 
-![Lakehouse.](mediaNew/task-1.3-ext-shortcut10.png)
+![task-1.3-ext-shortcut10.png](media/task-1.3-ext-shortcut10.png)
+
+21. And there you go! Your shortcut is now ready! Click (do not expand) on the newly created shortcut named **litwaredata**.
+
+![task-wb7.png](media/64.1.png)
+
+Prior to Microsoft Fabric, departments in Contoso had to move the data they needed from other departments via time-consuming ETL processes. But look, now they have created shortcuts. No need to move any of this data. That is the power of OneLake!
+
+### Task 1.3: Create Delta tables using Spark Notebook
+Now, let’s see how Data Engineer, Eva, got the remaining data into OneLake by creating Delta tables using Spark Notebook. By using a Spark Notebook to create Delta tables, Eva can ensure more reliable, scalable, and efficient data management, which is essential for handling big data workflows.
+
+1. Click on **Workspace** and select **New item**.
+
+![task-wb8S.png](media/64.2.png)
+
+2. In the **New Item** tab, select **Notebook**.
+
+![task-wb8S.png](media/64.3.png)
+
+>**Note:**  If the Pop-up appears click on **Skip tour**
+
+![task-wb8S.png](media/64.4.png)
+
+3. Click on the **+ Data Sources** button and then select **Lakehouses**
+
+![task-wb8S.png](media/64.5.png)
+
+4. Select **Existing Lakehouse with Schema** and then click on ***Add***.
+![task-wb8S.png](media/64.6.1.png)
+
+5. Select the **lakehouse** and then click on **Add**
+
+![task-wb8S.png](media/64.7.png)
+
+6. Once the notebook is created, paste the **below code** in the cell and **run** the cell.
+
+```
+import os
+import pandas as pd
+ 
+# List all CSV files in the 'litwaredata' folder
+file_path = '/lakehouse/default/Files/litwaredata/'
+csv_files = [file for file in os.listdir(file_path) if file.endswith('.csv')]
+ 
+# Load each CSV file into a table
+for file in csv_files:
+    table_name = file.split('.')[0]
+    df = pd.read_csv(file_path + file)
+    spark.createDataFrame(df).write.mode("ignore").format("delta").saveAsTable(table_name)
+```
+
+![task-wb8S.png](media/64.8.png)
+
+7. Once the execution is successful, **stop the Spark session** and click on **Lakehouse**.
+
+![task-wb8S.png](media/64.9.png)
+
+8. Expand **tables**, expand **dbo**, click on the **three dots**, and then click on **Refresh**. 
+
+![task-wb8S.png](media/64.10.1.png)
+
+9. View the successfully **loaded tables**.
+
+![task-wb8S.png](media/64.10.png)
+
+10. Click on **website_bounce_rate** delta table and view the website bounce rate data.
+
+![StloadtableNew.png](media/64.11.png)
+
+11. You now have all the tables in **OneLake** for Contoso to leverage. Next, we proceed with data transformation using Dataflow Gen2 to transform the sales data ingested from Litware. 
+
+
+### Task 1.4: Leverage Dataflow Gen2 and Data pipelines for a "No Code-Low Code" experience to quickly ingest data with Fast Copy and transform it using Copilot
+
+Using another great feature in Fabric’s Data Factory, called Fast Copy, Contoso’s Data Engineer, Eva, quickly ingests terabytes of data with dataflows, thanks to the scalable Copy Activity in the pipeline. With so much data from Litware, there is bound to be a lot of clean up needed. Let’s step into Eva’s shoes to explore how she used fast copy to ingest data and Copilot to transform it, just in time to derive meaningful customer insights before their big Thanksgiving Sale!
+
+You will experience how easy it is to use Fast Copy to transform 100M rows of Litware's sales data into the Lakehouse.
+
+
+1. Click on the **experience** button at the **bottom left** corner of the screen (In this screenshot, **Data Engineering** is selected as an "Experience") and then select **Data Factory**.
+
+![task-1.3.1.png](media/task-1.3.1.png)
+
+2. Click on **Dataflow Gen2**.
+
+![task-1.2.02.png](media/task-1.2.02.png)
+
+3. Click on the top part of the **Get data** icon (**not on the dropdown arrow at the bottom of the icon**).
+
+![getdataSs.png](media/getdataSs.png)
+
+4. In the pop-up window, scroll down to **OneLake data hub** and click on **lakehouse**.
+
+![task-1.2.04.S1.png](media/task-1.2.04.S1.png)
+
+5. If you see a screen similar to the one shown below, click on the **Next** button otherwise move to the next step.
+
+![task-1.2.05.1.png](media/task-1.2.05.1.png)
+
+6. Expand **Files** and then expand **data**.
+
+![task-wb9.S.png](media/datafolder.png)
+
+7. Scroll down and select the **sales_data.csv** checkbox, then **click** on the **Create** button.
+
+![task-wb9.S.png](media/task-wb9.S.1.png)
+
+8. Collapse the **Queries** pane and take a look at the sales dataset (**note that the first row of this dataset is not a header**).
+
+![DFData.png](media/DFData.png)
+
+> **Let's use Copilot to perform data cleansing.**
+
+9. Click on the **Copilot** button, paste the **prompt** provided below in the following text box and click on the **send** icon.
+
+```In the table sales_data csv, apply first row as headers.```
+
+![df1a2.png](media/df1a2.png)
+
+>**Note:** If Copilot needs additional context to understand your query, consider rephrasing the prompt to include more details.
+
+10. Scroll to the right-hand side and observe the **GrossRevenue** and **NetRevenue** columns. You'll notice the there are some empty rows with null values.
+
+![DFData12.png](media/DFData12.png)
+
+> **Let's use Copilot to remove empty rows.**
+
+11. Similarly, paste the prompt below in Copilot and click on the **send** icon.
+
+```Remove empty rows from GrossRevenue and NetRevenue columns.```
+
+![DFData13.png](media/secondprompt2.png)
+
+12. Scroll to the right-hand side and observe the **GrossRevenue** and **NetRevenue** columns (**there are no empty rows with null values**).
+
+![DFData13.png](media/DFData13.png)
+
+>**Note:** Due to time constraints, we will not publish and run the Dataflow from the Pipeline.
+
+>**Note:** Expand the queries pane collapsed earlier.
+
+13. Right click on the **query** and then select **Require fast copy**.
+
+<img src="media/55.png" width="800"/>  
+
+14. Click on **Options**, scroll down to select **Scale** and tick **Allow use of fast copy connectors** checkbox then click on **OK**.
+
+**Note:** If **Allow use of fast copy connectors** checkbox is already checked click on **OK**.
+
+<img src="media/56.png" width="800"/> 
+
+15. Click on **Add data destination**, select **Lakehouse**.
+
+<img src="media/57.png" width="800"/> 
+
+16. Click on **Next** button.
+
+  <img src="media/58.png" width="800"/> 
+
+17. Expand the workspace **ContosoSales*, and select **lakehouse**.
+
+18. Enter the table name as **sales_data_updated** and then click on the **Next** button.
+
+   <img src="media/59.png"/> 
+
+18. Click on the **Save settings** button.
+
+<img src="media/60.png" width="800"/> 
+
+19. Click on the **Publish** button.
+
+<img src="media/61.png" width="800"/>
+
+Congrats on completing this data transformation exercise! Looking at that, it took just 10 minutes to copy 100 million records. 
+
+### Task 1.5: Explore Task Flows in Microsoft Fabric
+
+To streamline collaboration and project management for the entire team, IT admin Chou set up a task flow within the Microsoft Fabric workspace. Fabric task flow is a workspace feature that enables you to build a visualization of the workflow in the workspace. It helps you understand how items are related and work together, making it easier to navigate your workspace, even as it becomes more complex over time. 
+In this exercise, you’ll step into the shoes of each of the IT admins to see how easy it is to set up a task flow in Microsoft Fabric.
+
+1. Click on workspace **ContosoSales@lab.LabInstance.Id** and drag the **bar down** to view Taskflow feature tab.
+  
+  <img src="media/41.png" width="800"/>
+  
+2. Click on the **Select a predesigned task flow** , 
+
+  <img src="media/42.png" width="800"/>
+
+3. Select **Medallion**, and then click on the **Select** button.
+
+  <img src="media/43.png" width="800"/>
+
+4. The empty Task Flow is created successfully.
+
+  <img src="media/44.png" width="800"/>
+
+5. Click on the **attach** icon on the Bronze data tile.
+
+   ![databrickssignin.png](media/task15.2.png)
+
+6. Select the lakehouse **checkbox** and then click on the **Select** button.
+
+   ![databrickssignin.png](media/task15.1.png)
+
+7. Click on the **attach** icon on the Initial process tile.
+
+   ![databrickssignin.png](media/task15.3.png)
+
+8. Select the lakehouse **checkbox** and then click on the **Select** button.
+
+   ![databrickssignin.png](media/task15.4.png)
+
+**Note:** Similarly, you can attach other fabric items for any taskflow activities.   
+
+As you know, Litware was primarily using Azure Databricks with their data stored in ADLS Gen2 before the acquisition. Post merger, as one unified company – Contoso – they decided to leverage Azure Databricks to build and manage reliable data pipelines via Delta Live Tables (DLT). Now, you will see the amazing power of Unity Catalog that Contoso’s data architects used to quickly learn all about Litware's data without having to go through tons of documents. And all by simply leveraging AI and data intelligence.
 
 ---
 
-## Exercise 2: DLT Pipelines, Unity Catalog (Data governance), Metastore experience, Retrieval Augmented Generation (RAG) and Machine Learning (ML)
+### Exercise 2: Azure Databricks integration with Fabric: DLT Pipelines, Unity Catalog (Data governance), Mirrored Azure Databricks Catalog
 
-### Task 2.1: Delta Live Table pipeline (Interactive)
+This exercise shows how Microsoft Fabric with Databricks enabled Contoso to solve their integration challenges. The acquired company, Litware Inc., was already using Databricks heavily and they stored their churn and sales data in ADLS Gen2. We’ll see how Unity Catalog benefited Contoso’s data architects so they could quickly get up to speed on all Litware Inc.’s data.
+
+#### Task 2.1: Create Delta Live Table pipeline for Data Transformation
+
+Delta Live Tables (DLT) allow you to build and manage reliable data pipelines that deliver high-quality data in Lakehouse. DLT helps data engineering teams simplify ETL development and management with declarative pipeline development, automatic data testing, and deep visibility for monitoring and recovery.
+
 
 1. Navigate to the **Azure Portal**, in the **rg-fabric...** resource group, search for **databricks** and click on the databricks resource with the name **adb-fabric...**.
 
@@ -413,7 +545,7 @@ Now this is something exciting! This section shows how easy it is to create shor
 
 ---
 
-### Task 2.2: Explore the data in Azure Databricks environment with Unity Catalog (unified governance solution for data and AI).
+#### Task 2.2: Explore the data in the Azure Databricks environment with Unity Catalog (unified governance solution for data and AI)
 	
 We saw how Contoso was able to utilize DLT pipelines to create a medallion architecture on their data. Now let us take a look at how data governance was managed on this curated data across the organization and how it was made easy with Unity catalog.
  
@@ -449,7 +581,11 @@ We can see that AI in Azure Databricks has autogenerated the description for the
 	
 8.	Select the **Assistant** tab.
 
-9.	Click on the query area and type ```Retrive the average total amount of transactions for each store contract. Additionally, calculate the average total amount for customers who have churned and for those who have not churned. Ensure all average values are rounded to the nearest whole number.``` then click on send button.
+9.	Click on the **query area** and type the below **text** and then click on **send** icon.
+```
+Retrive the average total amount of transactions for each store contract. Additionally, calculate the average total amount for customers who have churned and for those who have not churned. Ensure all average values are rounded to the nearest whole number.
+``` 
+
 	
 ![Databricks.](mediaNew/task-2.4new.png)
 	
@@ -491,109 +627,70 @@ Data discovery is also made simple within Azure Databricks. Users can simply sea
 
 ---
 
-### Task 2.3 Deploy LLM Chatbots With the Data Intelligence Platform 
+#### Task 2.3: Create a Mirrored Azure Databricks Catalog in Fabric and analyze data using T-SQL
 
-Contoso also wanted to improve their efficientcy with analyzing hundreds of documents about their big merger and their company policies. Azure Databricks provides just the solution with its Delta Lake architecture supporting unstructured data, like PDF documents, with Lang chain models leveraging Databricks Foundation Model for creating custom chatbots. Let's see how this was done.
+Mirroring the Azure Databricks Catalog structure in Fabric allows seamless access to the underlying catalog data through shortcuts. This means that any changes made to the data are instantly reflected in Fabric, without the need for data movement or replication. Let’s step into Data Engineer, Eva’s shoes to create a Mirrored Azure Databricks Catalog and analyze the data using T-SQL. 
 
-![Databricks.](mediaNew/task-2.3.1.png)
+1. Navigate back to the Microsoft Fabric tab on your browser (https://app.fabric.microsoft.com).
 
-First, let's ingest our PDFs as a Delta Lake table with path URLs and content in binary format.
+2. Click on the **ContosoSales   ** and select **New item** from menu bar.
 
-1.	Go to **Unity Catalog Volumes**.
+![Task-2.3_1.png](media/Task-2.3_1.png)
 
-2.	Click on **documents_store**.
+3. In the **New item** window, scroll down and click on **Microsoft Azure Databricks catalog (preview)**.
 
-3.	Click on **pdf_documents**.
+![Task-2.3_2.png](media/Task-2.3_2.png)
 
-4.	Review the Knowledge Base (pdfs).
+4. When the **New source** window pops up, click on the **Create new connection** radio button.
 
-![Databricks.](mediaNew/task-2.3.2.png)
+![Task-2.3_3.png](media/Task-2.3_3.png)
 
-We'll use Databricks Autoloader to incrementally ingeset new files, making it easy to incrementally consume large volume of files from the data lake in various data formats. Autoloader easily ingests our unstructured PDF data in binary format.
+5. Navigate to the **Azure Portal**, in the **rg-fabric...** resource group search for **Azure Databricks Service** and click on the Azure Databricks Service resource.
 
-5. Click on **Workspaces* and open the notebook from the path shown in the screenshot below.
+![Lakehouse.](media/datatabricksurl1.png)
 
-![Databricks.](mediaNew/task-2.3.3.png)
+6. **Copy** the **URL** of Azure Databricks Service resource.
 
-This notebook is used to convert the ingested document into delta tables. Lets look at the output tables.
+![databricks.](media/datatabricksurl2.png)
 
-6. Click on **Catalog** and under **rag** database, click on the **documents_raw** table.
+7. Navigate back to the **Fabric** tab.
 
-7.	Click on **Sample Data**.
+8. In the URL field paste the Azure Databricks Service URL.
 
-8.	Review the delta table.
+9. Now, select **Organizational account** from 'Authentication kind' dropdown box..
 
-![Databricks.](mediaNew/task-2.3.4.png)
+10. CLick on **Sign in**
 
-Next we convert the PDF documents bytes to text, extract chunks from their content, and create a vector search index for retreival.
+![organizationalsign.png](media/organizationalsign.png)
 
-9.	Go to table: **documents_embedding**.
+11. click on the **Connect** button.
 
->**Note**: If you have used OpenAI for text embeddings during the deployment, then select **documents_embedding_openai** table.
+![Task-2.3_7.png](media/2.3_7.png)
 
-10.	Click **Sample Data**.
+12. Click on **Next** button.
 
-11.	Review the Delta Table.
+![Task-2.3_7.1.png](media/Task-2.3_7.1.png)
 
-![Databricks.](mediaNew/task-2.3.5.png)
+13. In the **Choose data** screen, select the Catalog name as **litware_unity_catalog** from the dropdown box, and select the **rag** schema if not selected, then select the checkbox **Automatically sync future catalog changes for the selected schema** (to mirror future tables) if not ticked and click on **Next** button.
 
-12.	In the upper-right corner, click on the dropdown for **Create**.
+![Task-2.3_8.png](media/Task-2.3_8.png)
 
-13.	Select **Vector search index**. Click on **Cancel** after reviewing the fields.
+14. Enter the **Artifact name** for your mirrored Databricks Catalog and click on the **Create** button.
 
-![Databricks.](mediaNew/task-2.3.6.png)
+![Task-2.3_9.png](media/Task-2.3_9.png)
 
-We've just seen how Databricks Lakehouse AI makes it easy to ingest and prepare your documents and deploy a Self-Managed Vector Search index on top of it with just a few lines of code and configuration.
+15. Click on the **Monitor catalog** button to track the mirroring status and then close it.
 
-14. Click on **Workspace**.
+![Task-2.3_10.1.png](media/Task-2.3_10.1.png)
 
-15. Click on **Shared**.
+16. Click on the **View SQL endpoint** button. You can also select the tables to preview data.
 
-16. Click on **RetrievalAugmentedGeneration**.
-
-17. Click on notebook **3. Register and Deploy RAG model as Endpoint**.
-
-![Databricks.](mediaNew/task-2.3.7.png)
-
-With this model, we will be able to serve and accept questions based on the documents uploaded.
-Everytime we send a question to the chatbot, the following steps occur:
-
-•	The model receives the question
-
-•	The retriever automatically fetches related chunks from our documents
-
-•	A prompt is crafted with the chunks and the question
-
-•	The prompt is sent to the Databricks Foundation Model and Llama 2 serves an accurate answer based on the chunk information!
-
-18. From the left hand-side pane, **select** Servings and **click** on 'rag-chatbot-model-endpoint'.  
-
-	![Close the browser.](mediaNew/ragchatbot1.png)
-
-
-19. Click **Query endpoint**.
-
-	![Close the browser.](mediaNew/ragchatbot3.png)
-
-20. A predefined request was automatically entered for us. We simply just need to select Send request to test it. Click **Send request**.
-
-	![Close the browser.](mediaNew/ragchatbot4.png)
-
-In less than 10 seconds, we're provided with a response from the model we created. We can see the current Market Sentiment for Contoso is at 70%. 
-
-Let's ask another question.
-
-21. Click the question in the request field and **type** What is the meaning of life? then click on **Send request**.
-
-	![Close the browser.](mediaNew/ragchatbot5.png)
-
-Because the question isn't related to Contoso or Market Sentiment, the model was unable to provide an answer. 
+![Task-2.3_10.png](media/Task-2.3_10.png)
 
 ---
 
-### Exercise 3: Power BI Experience
- 
-### Task 3.1: Create a Semantic model and generate insights using Copilot for Power BI in Microsoft Fabric
+### Exercise 3: Power BI Experience in Fabric 
+#### Task 3.1: Create a Semantic model and generate insights using Copilot for Power BI
 
 Let us dive deep into the experience of the Business analyst, Wendy. Based on all the gathered data Wendy is expected to create Power BI reports for other data citizens and stakeholders. Let us see the power of Power BI copilot in conjuction with the Direct Lake Mode.
 
@@ -603,7 +700,7 @@ Let us dive deep into the experience of the Business analyst, Wendy. Based on al
 
 2. In the **contosoSales...** workspace, click on **Filter** and select **Lakehouse**.
 
-   ![Lakehouse.](mediaNew/task-1.3-ext-shortcut1.png)	
+   ![Lakehouse.](media/filterlakehouse.png)	
 
 3. Click on the **lakehouse...**.
 
@@ -714,11 +811,11 @@ The summary could also be generated in another language if specified. Additional
 
 ---
 
-### Exercise 4: Real-time Intelligence experience, explore Streaming data using Copilot for KQL DB
+### Exercise 4: Real-Time Intelligence experience - Explore Streaming data using Copilot for KQL DB
 
 Imagine it is 6 am on the day of Contoso's big Thanksgiving sale. Customers are flocking to their stores in large numbers. We are about to witness the very culmination of Contoso's phenomenal transformation with Microsoft Fabric and Azure Databricks. Specifically, we will see how near real-time data is used to make decisions for the next moment in Contoso's stores to ensure optimal temperatures are maintained for their customers while they shop at the big sale!
 
-### Task 4.1: Ingest real-time/historical data into KQL DB using Eventstream
+#### Task 4.1: Ingest real-time/historical data into Eventhouse using Eventstream
 
 1.	Click on the **experience** button on the **bottom left** corner of the screen and then select **Real-Time Intelligence**.
 
@@ -832,7 +929,7 @@ Real-time data from the event hub has been ingested successfully into the KQL Da
 
 ---
 
-### Task 4.2: Analyze/discover patterns, identify anomalies and outliers using Copilot
+#### Task 4.2: Analyze/discover patterns, identify anomalies and outliers using Copilot
 
 Kusto Query Language is a powerful tool. In this scenario KQL is used to explore Contoso’s data, discover patterns, identify anomalies and outliers, create statistical modeling, and more.
 
@@ -889,158 +986,383 @@ So, imagine if one of the aisles had a sudden rise in temperature. Customers sta
 ---
 
 
-## Exercise 5: Data Science experience, explore Machine Learning and Business Intelligence scenarios in ADB (read only)
- 
+### Exercise 5: Explorer Data Science experience in Microsoft Fabric (Optional) 
 So, we saw how Contoso combined historical gold layer data from ADLS Gen2 with all OneLake data via shortcuts. Additionally, we saw how all that data could be easily accessed in Azure Databricks (thanks to the standard delta parquet format). Delta live tables were created in Azure Databricks for further curation of data. Contoso can now leverage the power of machine learning models in ADB on that data to gain meaningful insights and predict customer churn. Let's explore the Data Science Experience in Azure Databricks as Data Scientists!
 
-### Task 5.1: Build ML models, experiments, and log ML model in the built-in model registry using MLflow and batch scoring
+#### Task 5.1: Build ML models and experiments using Copilot in Fabric
+
+   ![task-3.1.1.png](media/exercise5_1.1.png)
+
+To understand the cause behind Contoso’s declining revenue, the team needed to dive deeper into their customers’ spending pattern.
+
+Copilot responds to queries in natural language or generates customized code snippets for tasks like creating charts, filtering data, applying transformations, and building machine learning models.
+
+Let’s see how Copilot for Notebook helps you, as a Data Engineer, quickly create Data Science Notebooks.
 
 
-The architecture diagram shown here illustrates the end-to-end MLOps pipeline using the Azure Databricks managed MLflow.
+1. Switch to the **Data Science** experience using the experience switcher icon in the left corner.
 
-After multiple iterations with various hyperparameters, the best performing model is registered in the Databricks MLflow model registry. Then it is set up as the model serving in the Azure Databricks Workspace for low latency requests.
-	
-![Close the browser.](mediaNew/task-3.1.1.png)
+   ![task-3.1.1.png](media/exercise5_1.2.png)
 
-1. Navigate back to the **Databricks workspace** we started for the previous exercise.
+2. Click on Import notebook.
 
-2. In the left navigation pane, select **Workspace** and click **Workspace** again. Select **Shared**, click on **Analytics with ADB** and finally click on the **03 ML Solutions in a Box.ipynb** notebook.
+   ![task-3.1.2.png](media/exercise5_1.3.png)
 
-![Close the browser.](mediaNew/task-3.1.2.png)
+3. Click on the **Upload** button.
 
-Now that we've ingested and processed our customer data, we want to understand what makes one customer more likely to churn than another, so we want to see if we can produce a machine learning model that can accurately predict if a particular customer will churn.
+   ![task-3.1.2.png](media/exercise5_1.3.1.png)
 
-Ultimately, we would like to understand our customers' sentiment so we can create targeted campaigns to improve our sales.
+4. Browse to the fabricnotebooks folder in your VM  by following the path lab24\artifacts\fabricnotebooks, and then select **Build ML models and experiments using Copilot for Data Science in Fabric** notebook.
 
-3. Navigate to **cmd 9**.
+5. Click on the **Open** button.
 
-With the data prepared, we can begin exploring the patterns it contains. 
+   ![task-3.1.2.png](media/exercise5_1.3.2.png)
 
-Let's start by examining the customer churn outcome based on factors like a customer's tenure in months and their total amount spent at Contoso. As a result, we can see a high churn rate is seen if the customer's tenure is low, and they have a lower spend amount.
+6. Wait for the notebook to **upload**.
 
-![Close the browser.](mediaNew/task-3.1.4.png)
+   ![task-3.1.2.png](media/exercise5_1.3.3.png)
 
-4. Navigate to **cmd 19**.
+7. Click on the **ContosoSales** workspace from the left navigation pane.
 
-5. Navigate to **cmd 20**. 
+   ![task-3.1.2.png](media/exercise5_1.3.4.png)
 
-![Close the browser.](mediaNew/task-3.1.5.png)
+8. Click on **Filter**, expand **Type** and select **Notebook**.
 
-By registering this model in Model Registry, we can easily reference the model from anywhere within Databricks.    
+   ![task-3.1.2.png](media/exercise5_1.3.5.png)
 
-6. Review the **cmd 27** cell.
+9. Click on the **Build ML models and experiments using Copilot for Data Science in Fabric** notebook.
 
-Let’s look at the comparison of multiple runs in the UI.
+   ![task-3.1.2.png](media/exercise5_1.3.6.png)
 
-You can visualize the different runs using a parallel coordinates plot, which shows the impact of different parameter values on a metric.
+10. Click on **Lakehouses** in the Explorer pane.
 
-The best ML model for Customer Churn is selected and registered with Databricks model registry.
+   ![task-3.1.2.png](media/exercise5_1.3.7.png)
 
-![Close the browser.](mediaNew/task-3.1.6.png)
+11. Click on **Missing Lakehouses** and then click on **Remove all Lakehouse**.
 
-7. Navigate to **cmd 37**.
+   ![task-3.1.2.png](media/exercise5_1.3.8.png)
 
-For low-latency use cases, you can use MLflow to deploy the model for online serving. The serving system loads the Production model version from the Model Registry. 
+12. Click on the **Continue** button.
 
-![Close the browser.](mediaNew/task-3.1.7.png)
+   ![task-3.1.2.png](media/exercise5_1.3.9.png)  
 
-8. Navigate to **cmd 39**.
+13. Click on the **+ Lakehouse** button.
 
-It is then used to predict the probability of Customer Churn using the deployed model and this model endpoint is ready for production.
+   ![task-3.1.2.png](media/exercise5_1.3.10.png) 
 
-![Close the browser.](mediaNew/task-3.1.8.png)
+14. Make sure that **Existing Lakehouse** radio button is selected and then click on the **Add** button.
 
-9. Navigate to **cmd 40**. 
+   ![task-3.1.2.png](media/exercise5_1.3.11.png)
 
-Once we have the predicted data, it is stored back in delta tables in the gold layer back in OneLake.
+15. Select the **lakehouse** checkbox.
 
-![Close the browser.](mediaNew/task-3.1.9.png)	
+   ![task-3.1.2.png](media/exercise5_1.3.12.png)
+
+16. Click on the **Add** button.
+
+   ![task-3.1.2.png](media/exercise5_1.3.13.png)
+
+17. Click on the **Copilot** button and then click on the **Get Started** button.
+
+   ![task-3.1.2.png](media/exercise5_1.6.png)
+
+18. Run the **first cell** of the notebook to install the copilot packages.
+
+>**Note:** This may take a while to execute, please wait till this loads completely.
+
+   ![task-3.1.2.png](media/exercise5_1.7.png)
+
+19. Copy and paste the **below prompt** in the textbox.
+
+```
+Please load "customerchurndata" table from the Lakehouse into a Spark DataFrame. Then convert that into pandas dataframe as df. in the Copilot chatbox.
+```
+
+20. Click on the **send** button.
+
+   ![task-3.1.2.png](media/exercise5_1.8.png)
+
+21. Click on the **Copy code** icon.
+
+>**Note:** The new cell will be created right above the cell.
+
+   ![task-3.1.2.png](media/exercise5_1.8.2.png)
+
+22. Click on a **+ Code** above the first cell of the notebook.
+
+   ![task-3.1.2.png](media/exercise5_1.8.1.png)
+
+23. Paste the **copied query** and run the new **cell**.
+
+   ![task-3.1.2.png](media/exercise5_1.9.png)
+
+**Note:** Copilot may not respond as expected,please copy and paste the following code to obtain the result:
+
+```
+# Load the table into a Spark DataFrame
+spark_df = spark.table('lakehouse.customerchurndata')
+ 
+# Convert the Spark DataFrame to a pandas DataFrame
+df = spark_df.toPandas()
+```
+
+24. Paste the following at the **end of your browser URL** and press the **Enter** key. 
+
+```
+&debug.enableCopilot=1&debug.enableChatWidget=1&debug.enableQuickAssist=1
+```
+
+   ![task-3.1.2.png](media/exercise5_1.10.png)
+
+25. Click on a **+ Code** above the cell, place your **cursor** in the cell and then click on the **Copilot** button.
+
+   ![task-3.1.2.png](media/exercise5_1.10.1.png)
+
+26. Enter the below prompt in the Copilot textbox: 
+
+```
+Create a pivot table of average with min and max totalamount by storecontract and churn. Then show output of the pivot table.
+```
+
+27. Click on the **Send** icon.
+
+   ![task-3.1.2.png](media/exercise5_1.11.png)
+
+28.	Click on the **Accept** button.
+
+   ![task-3.1.2.png](media/exercise5_1.12.png)
+
+29. Run the cell and observe the output.
+
+   ![task-3.1.2.png](media/exercise5_1.12.1.png)
+
+30.	Introduce an error in a previous cell by **removing a character** in the code.
+
+31.	Run the **code cell** with the error.
+
+![task-3.1.2.png](media/exercise5_1.14.1.error.png)
+
+32.	Ask Copilot to **fix it**.
+
+   ![task-3.1.2.png](media/exercise5_1.14.1.png)
+
+33. Click on **Accept** button and then Run the cell.
+
+   ![task-3.1.2.png](media/exercise5_1.14.1.fixit.png)
+
+
+34. Add a **new code cell** to the notebook, paste following **query** to the cell and then run the **cell**.
+
+```
+%%chat 
+Create a seaborn scatterplot with Tenure Total Amount and Churn
+```
+
+   ![task-3.1.2.png](media/exercise5_1.13.png)
+
+
+With the data prepared with the help of Copilot, Data Scientists like you can explore the data to understand the patterns it contains.
+
+The rest of the notebook has similar PySpark queries to explore customer churn prediction.
+
+
+#### Task 5.2: Leverage AI skills for Q&A
+
+AI Skill, a new capability in Fabric, allows Data Analysts like Serena to create their own generative AI experiences. Serena believes that generative AI offers a transformative way to interact with data, significantly boosting data-driven decision-making in organizations worldwide. 
+
+In this exercise, you’ll step into Data Analyst, Serena’s shoes and leverage AI Skill to create conversational question-and-answer (Q&A) systems. 
+
+
+1. From the left navigation pane select **Data Science** experience.
+
+![task-5.2](media/AIskill1.png)
+
+2. Click on **>** Forward Arrow and select **AI Skill**.
+
+![task-5.2](media/AIskill2.png)
+
+3. Enter Name as **Contoso-Assistance** 
+
+![task-5.2](media/AIskill3.png)
+
+4. Click on **lakehouse** and then click on the **Confirm** button.
+
+![task-5.2](media/AIskill4.png)
+
+5. Click on **refresh** and Expand **Tables** then select the following tables.
+
+- dimcustomer
+- dimdate
+- dimproduct
+- dimreseller
+- factinternetsales
+- factresellersales
+
+![task-5.2](media/AIskill5.png)
+
+6. Click on **Get Started**.
+
+![task-5.2](media/AIskill6.png)
+
+7. Type **What is the most sold product?** in the chatbox and click on the **Send** button.
+
+![task-5.2](media/AIskill7.png)
+
+8. AI Skill answered the question fairly well based on the selected tables.
+
+However, the SQL query needs some improvement, it orders the products by order quantity, when total sales revenue associated with the product is the most important consideration, as shown in the above screenshot.
+
+To improve the query generation, let's provide some instructions, as shown in these examples:
+
+```
+Whenever I ask about "the most sold" products or items, the metric of interest is total sales revenue and not order quantity.
+
+The primary table to use is FactInternetSales. Only use FactResellerSales if explicitly asked about resales or when asked about total sales.
+```
+
+9. Copy the above notes and paste it in **Notes for model** box. Type **What is the most sold product ?** in the chatbox and then click on the **Send** button.  
+
+Asking the question again returns a different answer, **Mountain-200 Black, 46**, as shown in the below screenshot:
+
+![task-5.2](media/AIskill8.png)
+
+In addition to instructions, examples serve as another effective way to guide the AI. If you have questions that your AI skill often receives, or questions that require complex joins.
+
+10. In the example SQL queries click on **edit** icon.
+
+![task-5.2](media/AIskill9.png)
+
+11. Click on **+ Add example** and enter the following question and their respective SQL queries.
+
+|Question| SQL query|
+|--------|----------|
+|who are the top 5 customers by total sales amount?|SELECT TOP 5 CONCAT(dc.FirstName, ' ', dc.LastName) AS CustomerName, SUM(fis.SalesAmount) AS TotalSpent FROM factinternetsales fis JOIN dimcustomer dc ON fis.CustomerKey = dc.CustomerKey GROUP BY CONCAT(dc.FirstName, ' ', dc.LastName) ORDER BY TotalSpent DESC;|
+|what is the total sales amount by year?|SELECT dd.CalendarYear, SUM(fis.SalesAmount) AS TotalSales FROM factinternetsales fis JOIN dimdate dd ON fis.OrderDateKey = dd.DateKey GROUP BY dd.CalendarYear ORDER BY dd.CalendarYear;|
+
+![task-5.2](media/AIskill10.png)
+
+12. Click on **close(X)** button.
+
+![task-5.2](media/AIskill11.png)
+
+13. Type **who are the top 5 customers by total sales amount?** in the chatbox and click on **Send** button.
+
+![task-5.2](media/AIskill12.png)
+
+14. Click on **Publish**.
+
+![task-5.2](media/AIskill13.png)
+
+15. In the pop-up screen click on **Publish**.
+
+![task-5.2](media/AIskill14.png)
+
+16. Notice that AI skill is published successfully.
+
+![task-5.2](media/AIskill15.png)
+
+### Exercise 6: Data Warehouse experience (Optional)
+
+#### Task 6.1: Create Mirrored Azure SQL DB in Fabric
+
+Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure SQL Database estate with the rest of your data in Microsoft Fabric.
+
+Litware had a lot of their marketing data in the Azure SQL DB, so Contoso used Database Mirroring to help further reduce their data movement and dependency on different systems. 
+
+1. Navigate to the Microsoft Fabric tab on your browser (https://app.fabric.microsoft.com).
+
+2. Click on your workspace, and select **New item** from menu bar.
+
+![Task-6.1_1.png](media/Task-6.1_1.png)
+
+3. In the **New item** window, search for **SQL** in the saecrh bar then select **Mirrored Azure SQL Database...**.
+
+![Task-6.1_2.png](media/Task-6.1_2.png)
+
+4. When prompted to **Choose a database connection to get started**, look for **New sources** and select **Azure SQL database**.
+
+![Task-6.1_3.png](media/Task-6.1_3.png)
+
+5. Navigate to the **Azure Portal**, in the **rg-fabric...** resource group search for **SQL server** and click on the SQL server resource.
+
+![sql.](media/sql.png)
+
+6. **Copy** the **Server name** of SQL server resource.
+
+![sql1.](media/sql1.png)
+
+7. Navigate back to the **Fabric** tab.
+
+8. In the **Server** field, paste **Server name** which you copied from Azure portal, In **Database** field paste ```SalesDb```.
+
+![task-1.3.16.png](media/task-6.2.6.png)
+
+6.  Scroll down and select **Basic** for Authentication kind, enter ```labsqladmin``` as the Username, ```Smoothie@2024``` as the Password and click on the **Next** button.
+
+![task-1.3.16.png](media/task-1.3.16.png)
+
+>**Note:** Close any pop-up that you see throughout the lab.
+
+7. In the **Choose data** screen, you can select the tables to be mirrored into Fabric, then select the checkbox **Automatically mirror future tables** and click on **Connect** button.
+
+![Task-6.1_9.png](media/Task-6.1_9.png)
+
+8. Enter the name for your mirrored db as **Mirrored_SalesDb1** and click on **Create mirrored database** button.
+
+![Task-6.1_9.1.png](media/Task-6.1_9.1.png)
+
+9. Click on **Monitor replication** button to track the replication status.
+
+![Task-6.1_10.png](media/Task-6.1_10.png)
+
+10. Wait until the **Rows replicated** statistics are displayed. If not refresh the **Monitor replication** tab as shown in the below screen. Now, Azure SQL DB has been successfully mirrored.
+
+![Task-6.1_11.png](media/Task-6.1_11.png)
+
+11. Close the **Monitor replication** window.
 
 ---
 
+#### Task 6.2: Analyze the Mirrored Azure SQL Database data using T-SQL
+
+Each mirrored Azure SQL database has an autogenerated SQL analytics endpoint that provides a rich analytical experience on top of the tables created by the mirroring process.
+
+This means Contoso’s marketing data from SQL database is accessed seamlessly in Fabric with zero ETL, and it is always kept In Sync automatically in Fabric. Once the mirroring was up and running, Data Engineer, Eva, was able to access the tables in SQL Database and integrate the data in minutes. Let’s step into her shoes and see how it’s done!
+
+1. Continuing from the priously created Mirrored SQL DB window, select **SQL analytics endpoint** from top right dropdown box.
+
+![Task-6.2_1.png](media/Task-6.2_1.png)
+
+2. Expand the **Schemas** and You can select the mirrored tables to see data preview. and then click on **New SQL query** button from the menu bar.
+
+![Task-6.2_2.png](media/Task-7.2_2.png)
+
+3. Copy below **SQL query** in query editor to explore mirrored data and perform your analysis. 
+
+```
+Select distinct [ProductName] 
+from [Mirrored_SalesDb1].[dbo].[dbo_FactSales] as fct
+left join [Mirrored_SalesDb1].[dbo].[dbo_DimProduct] as prd
+on fct.[ProductKey]=prd.[ProductKey]
+where [SalesAmount] > 6000
+```
+
+4. Click on **Run**. 
+
+![Task-6.2_3.png](media/Task-6.2_3.png)
+
+
+
+---
+
+
+
+
 ## APPENDIX
 
-### Task 6: Create a Microsoft Fabric enabled workspace
 
-1. Open **PowerBI** in a new tab by going to [https://app.powerbi.com].
 
-*Click on the **Continue** button.*
-
-   ![Sign in to Power BI.](mediaNew/task-1.1.0-new1.png)
-
-*Type in a 10 digit number in the box.*
-
-   ![Sign in to Power BI.](mediaNew/task-1.1.0-new2.png)
-
-*Click on the **Get Started** button.*
-
-   ![Sign in to Power BI.](mediaNew/task-1.1.0-new3.png)
-
-*Again click on the **Get Started** button.*
-
-   ![Sign in to Power BI.](mediaNew/task-1.1.0-new4.png)
-
-*Wait for the PowerBI Workspace to load*
-
-![Sign in to Power BI.](mediaNew/task-1.1.0-new5.png)
-
-*Close* the top bar for a better view.
-
-   ![Create Power BI Workspace.](mediaNew/task-1.1-new1.png)
-
-2. In Power BI service, click on **Workspaces**.
-
-3. Click the **+ New workspace** button.
-
-	![Create Power BI Workspace.](mediaNew/task-1.1.2.png)
-
-4. Type the name **contosoSales**, and append the **6 character suffix** at the end of your resource group and click **Apply**.
-
->**Note:** Do not include spaces in the workspace name.
-
-   ![Create Power BI Workspace.](mediaNew/task-1.1.3.png)
-
-*Click on the **Try free** button.*
-
-   ![Create Power BI Workspace.](mediaNew/task-1.1-new2.png)
-
-*Click on the **Got it** button to continue.*
-
-   ![Create Power BI Workspace.](mediaNew/task-1.1-new3.png)
-
-5. Click on **Workspaces** to verify if the workspace with the given name was created, if not perform the steps above again.
-
-**NOTE:** If the workspace you created is not visible, perform **steps 3 to 5** again.
-
-   ![Create Power BI Workspace.](mediaNew/task-1.1-new4.png)
-
-### Task 7: Create/Build a Lakehouse
-
-1. In Power BI service, click **+ New** and then select **More options**.
-
-   ![Close the browser.](mediaNew/task-1.2.1.png)
-
-2. In the new window, under the Data Engineering section, click on **Lakehouse**.
-
-    ![Close the browser.](mediaNew/task-1.2.2.png)
-
-3. **Wait** for the Microsoft Fabric capacity to upgrade and then click on **OK**.
-
-   ![Create Power BI Workspace.](mediaNew/task-1.2-new5.png)
-
-*Wait for the New lakehouse pop-up box to appear*
-
-4. Enter the name **lakehouse**.
-
-5. Click the **Create** button.
-
-    ![Close the browser.](mediaNew/task-1.2.3.png)
-
-6. Click on **Workspaces** in the left navigation pane and select **contosoSales...**.
-
-	![Give the name and description for the new workspace.](mediaNew/task-1.2.4.png)
-
-### Task 8: Create a KQL Database
+### Task 7: Create a KQL Database
 
 1. While you are in the Fabric workspace homepage, click on **+ New** and then click on **More options**.
 
