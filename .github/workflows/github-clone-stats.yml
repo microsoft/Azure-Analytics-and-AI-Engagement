@@ -10,7 +10,7 @@ on:
 jobs:
   j1:
     name: github-repo-stats
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: run-ghrs
         # Use latest release.
