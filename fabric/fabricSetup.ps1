@@ -748,9 +748,7 @@ else {
 
     # Publish-AzWebApp -ResourceGroupName $rgName -Name $sites_adx_thermostat_realtime_name -ArchivePath ./artifacts/binaries/app-adx-thermostat-realtime.zip -Force
 
-    az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgName
-
-    Write-Information "Deploying ADX Thermostat Realtime App"
+    # az webapp stop --name $sites_adx_thermostat_realtime_name --resource-group $rgName
 
     # # number of retries
     # $maxRetries = 2
@@ -781,16 +779,34 @@ else {
     # az webapp up --resource-group $rgName --name $sites_adx_thermostat_realtime_name --plan $serverfarm_adx_thermostat_realtime_name --location $Region
     # cd ..
     
+    Write-Information "Deploying ADX Thermostat Realtime App"
     $TOKEN_2 = az account get-access-token --query accessToken | tr -d '"'
-
-    $deployment2 = curl -X POST -H "Authorization: Bearer $TOKEN_2" -T "./artifacts/binaries/app-adx-thermostat-realtime.zip" "https://$sites_adx_thermostat_realtime_name.scm.azurewebsites.net/api/publish?type=zip" 
-    
-    Start-Sleep -s 10
-
-    az webapp start --name $sites_adx_thermostat_realtime_name --resource-group $rgName
-
+    $maxRetries = 3
+    $retryCount = 0
+    $success = $false
+    while (-not $success -and $retryCount -lt $maxRetries) {
+        try {
+            $retryCount++
+            Write-Host "Deployment attempt $retryCount..."
+            $deployment = Invoke-RestMethod -Uri "https://$sites_adx_thermostat_realtime_name.scm.azurewebsites.net/api/publish?type=zip" `
+                                            -Method Post `
+                                            -Headers @{Authorization = "Bearer $TOKEN_2"} `
+                                            -InFile "./artifacts/binaries/app-adx-thermostat-realtime.zip" `
+                                            -ContentType "application/zip"
+            $success = $true
+            Write-Host "Deployment succeeded."
+        }
+        catch {
+            Write-Warning "Attempt $retryCount failed. Retrying..."
+            Start-Sleep -Seconds 10
+            $TOKEN_2 = (az account get-access-token --query accessToken -o tsv) -replace '"', ''
+        }
+    }
+    if (-not $success) { Write-Error "Deployment failed after $maxRetries attempts." }
+  
     Add-Content log.txt "------Deploying Web Apps COMPLETED------"
     Write-Host  "----------------Deploying Web Apps COMPLETED---------------"
+
 
     Add-Content log.txt "------AZURE assets deployment DONE------"
     Write-Host "------------AZURE assets deployment DONE------------"
