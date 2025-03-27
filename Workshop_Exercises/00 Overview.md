@@ -1,10 +1,6 @@
 ![](https://raw.githubusercontent.com/microsoft/sqlworkshops/master/graphics/microsoftlogo.png)
 ## SQL database in Microsoft Fabric DREAM workshop
 
-
- 
-><strong>Important Note:</strong> Before starting the workshop, use only the **Workshop_Exercises**  folder and avoid other folders meant for Internal Development. Use the provided hyperlinks to access the exercises.
-
 <img src="../media/Architecture-diagram.png" alt="Alt Text" width="1000">
 
 
