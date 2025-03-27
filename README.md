@@ -109,36 +109,36 @@ Do you already have an external database and want to leverage Fabric's integrati
 ><strong>Important Note :</strong> Before we begin the execution of this workshop, please make sure to use the credentials provided to you to login to Fabric and Azure when prompted.You will be executing the following modules as part of this workshop:
 
 
-### 1. [Exercise 1: Loading Data into SQL Database](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/01%20-%20Loading%20Data%20into%20SQL%20Database.md)
+### 1. [Exercise 1: Loading Data into SQL Database](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/01%20-%20Loading%20Data%20into%20SQL%20Database.md)
 
 This module covers the basics of getting started with SQL database in Fabric. You will learn how to create workspaces, create a SQL Database in Microsoft Fabric, and seed the Database with initial data that will be used in later modules.
 
-### 2. [Exercise 2: Introduction to Copilot for SQL Database](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/02%20-%20Introduction%20to%20Copilot%20for%20SQL%20Database.md)
+### 2. [Exercise 2: Introduction to Copilot for SQL Database](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/02%20-%20Introduction%20to%20Copilot%20for%20SQL%20Database.md)
 
 In this exercise, we will use Copilot to assist with T-SQL queries, including auto-suggestions, fixing error, and natural language query.
 
-### 3. [Exercise 3: Data Enrichment and Transformation](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/03%20-%20Data%20Enrichment.md)
+### 3. [Exercise 3: Data Enrichment and Transformation](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/03%20-%20Data%20Enrichment.md)
 
 This exercise focuses on data enrichment using Dataflow Gen2 and Notebooks. The transformed data will then be stored in SQL database in Fabric.
 
-### 4. [Exercise 4: Data Serving](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/04%20-%20Data%20Serving.md)
+### 4. [Exercise 4: Data Serving](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/04%20-%20Data%20Serving.md)
 
 In this exercise, we will create a semantic model from the data previously loaded into the SQL database in Fabric. We will then use Copilot to gain insights and generate a report, enhancing data-driven decision-making.
 
-### 5. [Exercise 5: Exploring GraphQL API Endpoints in Microsoft Fabric](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/05%20-%20Exploring%20GraphQL%20API%20Endpoints%20in%20Microsoft%20Fabric.md)
+### 5. [Exercise 5: Exploring GraphQL API Endpoints in Microsoft Fabric](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/05%20-%20Exploring%20GraphQL%20API%20Endpoints%20in%20Microsoft%20Fabric.md)
 
 In this exercise, we will build a GraphQL API in Microsoft Fabric and integrate its endpoint into an application.
 
-### 6. [Exercise 6: RAG Implementation with Azure OpenAI](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/06-%20RAG%20Implementation%20with%20Azure%20OpenAI.md)
+### 6. [Exercise 6: RAG Implementation with Azure OpenAI](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/06-%20RAG%20Implementation%20with%20Azure%20OpenAI.md)
 
 In this exercise, we will implement a Retrieval-Augmented Generation (RAG) system in Microsoft Fabric. We will use a Fabric SQL database as the vector store, Azure OpenAI for text embeddings, and the GPT-4 model to enhance natural language queries and responses.
 
-### 7. [Exercise 7: Data Security and Compliance](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/07%20-%20Data%20Security%20and%20Compliance.md)
+### 7. [Exercise 7: Data Security and Compliance](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/07%20-%20Data%20Security%20and%20Compliance.md)
 
 In this exercise, we will explore Microsoft Fabric workspace roles and SQL native access controls to effectively manage user permissions.
 
 
-### 8. [Exercise 8: Managing Production Workloads](https://github.com/dreamdemos-ms/Fabcon_Workshop/blob/main/Workshop_Exercises/08%20-%20Managing%20Production%20Workloads.md)
+### 8. [Exercise 8: Managing Production Workloads](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/08%20-%20Managing%20Production%20Workloads.md)
 
 In this exercise, we will explore various SQL database performance metrics available in Microsoft Fabric and enable version control to efficiently track database changes.
 
