@@ -27,7 +27,19 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 ![alt text](../media/image-1.png)
 
-4. If prompted to stay signed in, click on **Yes**.
+4. Enter your **current password**, then enter and confirm your **new password**, and click **Sign in** to proceed.
+
+![alt text](../media/h12.png)
+
+5. If you see a message stating, "More information required," click **Next** to proceed.
+
+![alt text](../media/h13.png)
+
+6. The system will prompt you to set up Microsoft Authenticator, click **Skip setup** skip this step.
+
+![alt text](../media/h14.png)
+
+7. If prompted to stay signed in, click on **Yes**.
 
 ![alt text](../media/image-2.png)
 
@@ -37,32 +49,35 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 > **Note:** If you see the following screen, continue with the following steps or directly move to step number **8**.
 
-5. Click on the **Continue** button.
+8. Click on the **Continue** button.
 
 ![alt text](../media/image-4.png)
 
-6. Click on the **Business phone number** textbox and type a 10-digit number ```1230000849```. Click on the **Get Started** button.
+9. Click on the **Business phone number** textbox and type a 10-digit number ```1230000849```. Click on the **Get Started** button.
 
 ![alt text](../media/image-5.png)
 
-7. Again, click on the **Get Started** button.
+10. Again, click on the **Get Started** button.
 
 ![alt text](../media/image-6.png)
 
 > **Note:** Wait for the Power BI workspace to load and close the top bar for a better view.
 
-8. From the left navigation pane, click on **Workspaces** and then the **+ New workspace** button.
+11. From the left navigation pane, click on **Workspaces** and then the **+ New workspace** button.
 
 ![alt text](../media/image-7.png)
 
-9. In the **Name** field, enter ``Fabcon``,followed by a unique suffix (e.g., FabconJD23 using your initials). Validate the availability of the name, then click **Apply**.
+12. In the **Name** field, enter ``Fabcon``,followed by a unique suffix (e.g., FabconJD23 using your initials). Validate the availability of the name, then expand **Advanced Settings**.
 
 > **Note:** It is very Important to use the workspace name provided above in the lab for a seamless experience.
 
 > **Note:** If the name is already taken, refresh the page and check again. A workspace with that name may already be created. If so, add a different suffix until the name is available.
 
-<img src="../media/f46.png" width="300" height="300">
+![](../media/h15.png)
 
+13. Enable **Fabric capacity**, select the **Capacity** from the dropdown, and click **Apply** to proceed.
+
+![](../media/h16.png)
 
 > **Note:** Wait for the Power BI Workspace to load.
 <!--
@@ -98,7 +113,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 <img src="../media/h4.png" width="650" height="300">
 
-3. Click on **Create** button.
+3. If prompted, click the **Create** button otherwise, proceed to the next step.
 
 ![](../media/dfgen2.2.png)
 
@@ -135,7 +150,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 <img src="../media/dim_products1u.png" width="700" height="300">
 
-
+<!--
 10. Click on the ``Suppliers`` table, select the **Add data destination** option from the ribbon, then select **SQL Database** from the list.
 
 <img src="../media/dim_products2u.png" width="700" height="300">
@@ -156,14 +171,15 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 14. For ``Website_Bounce_rate`` and ``inventory`` tables perform steps **8-11** to select the destination.
 
 >**Note:** Please ensure to select the destination for all the tables before publishing the dataflow.
+-->
 
-15. Click on the **Publish** button.
+10. Click on the **Publish** button.
 
 ![alt text](../media/f21.png)
 
 >**Note:** Wait for the Dataflow to complete, it will take 2-3 minutes.
 
-16. Click on the **Bell** icon at the top right of the screen to verify the status of the Dataflow Gen2.
+11. Click on the **Bell** icon at the top right of the screen to verify the status of the Dataflow Gen2.
 
 ![alt text](../media/h1.png)
 
@@ -242,7 +258,7 @@ For this workshop, the **On-Premises Data Gateway** is already provisioned for y
 1. Select the **Load to new table** radio button and and wait for the **column mapping** to appear.
 2. Click on the **Next** button.
 
-![](../media/datapipeline13.png)
+![](../media/h18.png)
 
 3. Under Options, ensure that **Start data transfer immediately** remains **enabled** (default setting).
 

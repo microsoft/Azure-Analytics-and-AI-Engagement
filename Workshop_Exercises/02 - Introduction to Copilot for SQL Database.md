@@ -14,7 +14,7 @@ In this exercise, you will use **Copilot** to assist with T-SQL queries, includi
 
 ![](../media/database2.png)
 
-3. Click on the **New Query** icon.
+3. Click on the **Refresh** button then click on the **New Query** icon.
 
 ![](../media/database3.png)
 

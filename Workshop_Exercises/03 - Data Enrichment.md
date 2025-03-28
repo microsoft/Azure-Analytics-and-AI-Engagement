@@ -89,7 +89,7 @@ Now, this is something exciting! This section shows how easy it is to create Sho
 
 11. Click the **data** directory checkbox and click on the **Next** button.
 
-![task-wb6.png](../media/f4.png)
+![task-wb6.png](../media/h17.png)
 
 12. Click on the **Create** button.
 
@@ -254,6 +254,24 @@ Let's schedule the pipeline to reduce manual effort and ensure data is always up
  3. Click on **Connection strings**, go to **JDBC** tab, copy the **JDBC URL** and save it separately to use later.
  
  ![](../media/task_3.2.0.2.png)
+
+#### Activity: Adding the requried Service Principal to the workspace.
+ 
+1. Navigate back to workspace and click on **Manage Access** in the top right corner of the workspace.
+ 
+   ![](../media/new6u.png)
+ 
+2. Click on **+ Add People or Groups**.
+ 
+   ![](../media/image8u.png)
+ 
+3. In the **Add People** window, enter ``sp-fabcon-lab``, select **Admin access**, and click **Add** button.
+   
+   ```
+   sp-fabcon-lab
+   ```
+ 
+   ![](../media/image9u.png)
 
 #### Activity: Create a Notebook in the Microsoft Fabric workspace and process data
 
