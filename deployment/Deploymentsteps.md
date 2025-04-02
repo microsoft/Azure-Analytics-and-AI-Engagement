@@ -239,9 +239,6 @@ cd ./Fabric-SQL-Workshop/deployment
 
 ![](../media/g5.png)
 
-Now that the deployment is complete, you can begin the workshop by navigating to the exercises.
-[Click here to navigate](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/00%20Overview.md).
-
 # Task 4: Create an Entra ID App Registration
 
 1. Go to the Azure Portal: https://portal.azure.com
@@ -295,3 +292,6 @@ Now that the deployment is complete, you can begin the workshop by navigating to
 ![](../media/adds8.png)
 
 > **Note** : If you do not have permission to **Grant Admin Consent** for API permissions, contact your Azure AD (Entra ID) Administrator and request **admin consent** for the required permissions.
+
+Now that the deployment is complete, you can begin the workshop by navigating to the exercises.
+[Click here to navigate](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/Fabric-SQL-Workshop/Workshop_Exercises/00%20Overview.md).
