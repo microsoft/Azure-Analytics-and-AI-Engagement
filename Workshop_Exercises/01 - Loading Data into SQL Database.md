@@ -3,13 +3,6 @@
 This module covers the basics of getting started with **SQL Database in Microsoft Fabric**. You will learn how to **create workspaces**, create a **SQL Database in Microsoft Fabric**, and **seed the database** with initial data that will be used in later modules. You will see how simple it is to create the databases by providing a name. And even more exciting, loading the initial data into SQL Database can be achieved without any code! This reduces maintenance effort while delighting developers!
 
 ---
->**!Note:** Follow the steps provided in the task below. The Click-by-Click is available as a **backup option** in case of any technical issues preventing you from performing the lab in the actual environment.
-Before starting this exercise, open a backup Click-by-Click using the following hyperlink in a new tab, then return to the browser.
-[Click-by-Click](https://regale.cloud/Microsoft/play/4463/01-loading-data-into-sql-database#/0/0)
----
-
-
-
 
 ### Task 1.1: Load Data from Azure SQL Database
 
@@ -31,15 +24,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 ![alt text](../media/h12.png)
 
-5. If you see a message stating, "More information required," click **Next** to proceed.
-
-![alt text](../media/h13.png)
-
-6. The system will prompt you to set up Microsoft Authenticator, click **Skip setup** skip this step.
-
-![alt text](../media/h14.png)
-
-7. If prompted to stay signed in, click on **Yes**.
+5. If prompted to stay signed in, click on **Yes**.
 
 ![alt text](../media/image-2.png)
 
@@ -49,25 +34,25 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 > **Note:** If you see the following screen, continue with the following steps or directly move to step number **8**.
 
-8. Click on the **Continue** button.
+6. Click on the **Continue** button.
 
 ![alt text](../media/image-4.png)
 
-9. Click on the **Business phone number** textbox and type a 10-digit number ```1230000849```. Click on the **Get Started** button.
+7. Click on the **Business phone number** textbox and type your 10-digit number like```1230000849```. Click on the **Get Started** button.
 
 ![alt text](../media/image-5.png)
 
-10. Again, click on the **Get Started** button.
+8. Again, click on the **Get Started** button.
 
 ![alt text](../media/image-6.png)
 
 > **Note:** Wait for the Power BI workspace to load and close the top bar for a better view.
 
-11. From the left navigation pane, click on **Workspaces** and then the **+ New workspace** button.
+9. From the left navigation pane, click on **Workspaces** and then the **+ New workspace** button.
 
 ![alt text](../media/image-7.png)
 
-12. In the **Name** field, enter ``Fabcon``,followed by a unique suffix (e.g., FabconJD23 using your initials). Validate the availability of the name, then expand **Advanced Settings**.
+10. In the **Name** field, enter ``Fabcon``,followed by a unique suffix (e.g., FabconJD23 using your initials). Validate the availability of the name, then expand **Advanced Settings**.
 
 > **Note:** It is very Important to use the workspace name provided above in the lab for a seamless experience.
 
@@ -75,7 +60,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 ![](../media/h15.png)
 
-13. Enable **Fabric capacity**, select the **Capacity** from the dropdown, and click **Apply** to proceed.
+11. Enable **Fabric capacity**, select the **Capacity** from the dropdown, and click **Apply** to proceed.
 
 ![](../media/h16.png)
 
@@ -88,7 +73,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 1. Click on **+ New item** and type **SQL** in the search bar, then select **SQL Database (preview)**.
 
-<img src="../media/database1.png" width="600" height="300">
+![](../media/database1.png)"
 
 2. In the **Name** field, enter ```Fabcon_database``` and click on the **Create** button. Database creation should take less than a minute.
 
@@ -130,23 +115,25 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 <img src="../media/g10.png" width="650" height="500">
 
-5. Navigate to the URL: [https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt](https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt), copy the **SQL Server Endpoint** value, and copy it to your notepad.
+5. Navigate to the [Azure Portal]('https://portal.azure.com/'), in the resource group **rg-fabcon...**, search for **sql** in the resource group window and click on the **SalesDb...** resource.
 
-![](../media/h7.png)
+![](../media/g11.png)
 
-6. On the **Connection settings** pane, in the **Server** field, paste the value you copied in step number **5**, and in the **Database** field, paste ```SalesDb```.
+6. Copy the **Server** name.
+
+<img src="../media/g12.png" width="650" height="250">
+
+7. Navigate back to the **Microsoft Fabric** tab on your browser.
+
+8. On the **Connection settings** pane, in the **Server** field, paste the value you copied in step number **6**, and in the **Database** field, paste ```SalesDb```.
 
 <img src="../media/dfgen2.5.png" width="650" height="350">
 
-7. Navigate to the URL: [https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt](https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt), copy the **SQL Server password** value, and copy it to your notepad.
-
-![](../media/h8.png)
-
-8.  Scroll down and select **Basic** in the **Authentication kind** dropdown. Enter ``labsqladmin`` as the **Username**, paste the value you copied in step number **7** in the **Password** field, then click on the **Next** button.
+9.  Scroll down and select **Basic** in the **Authentication kind** dropdown. Enter ``labsqladmin`` as the **Username**, ``Smoothie@2025`` as the **Password** and click on the **Next** button.
 
 <img src="../media/dfgen2.6.png" width="650" height="350">
 
-9. Select ``Suppliers``, ``Website_Bounce_rate`` and ``inventory`` tables, then click on the **Create** button.
+10. Select ``Suppliers``, ``Website_Bounce_rate`` and ``inventory`` tables, then click on the **Create** button.
 
 <img src="../media/dim_products1u.png" width="700" height="300">
 
@@ -187,15 +174,15 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 1. Click on **Workspaces** and select the **Fabcon** workspace.
 
-<img src="../media/datapipeline1.png" width="400" height="400">
+![](../media/datapipeline1.png)
 
 **Note:** You'll have a suffix concatenated with your workspace name.
 
 2. Search for **database** and select the **Fabcon_database**.
 
-<img src="../media/database2.png" width="600" height="350">
+![](../media/database2.png)
 
-3. Click on the **New Query** icon.
+3. Click on **Refresh** then click on the **New Query** icon.
 
 ![](../media/database3.png)
 
@@ -237,18 +224,20 @@ For this workshop, the **On-Premises Data Gateway** is already provisioned for y
 
 ![](../media/datapipeline3.png)
 
-6. In the **Connection settings** pane, in the **Server** field paste **FabconVM358akxs** , and paste **FabconDatabase** in the **Database** field. It automatically selects the **Connection**. Click on the **Next** button.
- 
+6. Navigate back to the Azure portal and click on **rg-fabcon-suffix**, copy **virtual machine name** and save it on your notpad.
 
->**Note:** For this workshop, the **On-Premises Data Gateway** is already provisioned for you and no setup is required by the workshop user, the **gateway connection** can be accessed in your Microsoft Fabric workspace while setting up the data pipeline. The connection is displayed automatically when database credentials passed on in the pipeline.
+![](../media/g2.png)
+
+7. In the **Connection settings** pane, in the **Server** field paste **virtual machine name** coiped earlier in **step 6** , and paste **FabconDatabase** in the **Database** field. It automatically selects the **Connection**. Click on the **Next** button.
+
 
 ![](../media/f51.png)
 
-7. Now, under the **FabconDatabase** database, click **Select all** and then click on the **Next** button.
+8. Now, under the **FabconDatabase** database, click **Select all** and then click on the **Next** button.
 
 ![](../media/f52.png)
 
-8. Click on **OneLake** and select existing **SQL Database**.
+9. Click on **OneLake** and select existing **SQL Database**.
 
 ![](../media/f53.png)
 

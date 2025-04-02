@@ -116,11 +116,6 @@ Generate performance optimization suggestions.
 
 ### Task 8.2: Deploy and Version-Control Workloads(Click By Click)
 
-This exercise will be a Click-by-Click. Use the following link to perform the exercise. Once you complete the exercise using the [Click-by-Click](https://regale.cloud/Microsoft/play/4476/08-managing-production-workloads#/0/8), navigate back to the browser.
-
->**Note:** Please follow the **green beacons** for this exercise. Press the **A** key on your keyboard if you do not see the annotations.
-
-<!--
 #### Activity: Integrate with Git repositories for version control
 
 1. Sign in to your organization (https://dev.azure.com/{Your_Organization}) 
@@ -259,31 +254,31 @@ Similarly, we can enable version control using GitHub. Let's enable it in the ne
 
 4. Click on the **Profile** Icon.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image4.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image4.png)
 
 5. Scroll down the page and click on **Developer settings**.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image5.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image5.png)
 
 6. Click on **Personal access tokens** dropdown and select **Tokens (Classic)**.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image6.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image6.png)
 
 7. In the **Confirm Access** window, provide the password and click on the **Confirm** button.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image7.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image7.png)
 
 8. Add a note in the **Note** textbox, select the expiration days from the **Expiration** dropdown, and select **repo** checkbox.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image08.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image08.png)
 
 9. Click on the **Generate token** button.
 
-   ![Simulator.](../setupAssets/ARMSetupImages/Image9.png)
+   ![Simulator.](../deployment/ARMSetupImages/Image9.png)
 
 10. Click on copy token from "clipboard" and save it for future reference.
 
-    ![Simulator.](../setupAssets/ARMSetupImages/Image10.png)
+    ![Simulator.](../deployment/ARMSetupImages/Image10.png)
 
 
 11. Navigate to the **Fabric Workspace** and click on the **Workspace settings**.
@@ -310,85 +305,7 @@ Similarly, we can enable version control using GitHub. Let's enable it in the ne
 
     ![](../media/g24.png)
 
-#### Activity: Automate deployment of database schema and data.
 
-1. Navigate back to the GitHub and click on the **main** branch dropdown, in the search bar, type **dev** and click on **Create branch dev from main** to create a new branch.
-
-    ![](../media/g25.png)
-
-2. Once switch to the **dev** branch, open **Fabcon_database.SQLDatabase** folder.
-
-    ![](../media/g26.png)
-
-3. Click on the **Security** folder.
-
-    ![](../media/g27.png)
-
-4. Under **Add file** dropdown, click on **+ create new file**.
-
-    ![](../media/g28.png)
-
-5. In the file name field, enter **sales.sql**, provide the below sql query and click on **Commit changes**. 
-
-The following query will create a new schema, Sales, and a view in it called vw_TotalSalesByYear.
-
-```sql
-    CREATE SCHEMA Sales
-    GO
-    CREATE VIEW Sales.vw_TotalSalesByYear AS
-    SELECT
-        d.CalendarYear,
-        SUM(f.SalesAmount) AS TotalSalesAmount
-    FROM
-        dbo.factinternetsales f
-    JOIN
-        dbo.dimdate d ON f.OrderDateKey = d.DateKey
-    GROUP BY
-        d.CalendarYear;
-```
-
-![](../media/g29.png)
-
-6. Click on the **Commit changes** button.
-
-![](../media/g30.png)
-
-7. The message "This branch is 1 commit ahead of main" indicates that the **dev** branch has changes that are not yet merged into the **main** branch. Click on **commit ahead** to view the commit details.
-
-![](../media/g31.png)
-
-8. Click on **create pull request**.
-
-![](../media/g32.png)
-
-9. Up on the **Open a pull request** page verify the pull request is creating between **dev** and **main**. Click on the **Create pull request** button.
-
-![](../media/g33.png)
-
-10. Once the pull request is created, share the pull request to the person who needs to approve it or approve it by yourself.
-
-11. Click on the **Merge pull request** button.
-
-![](../media/g34.png)
-
-12. Click on the **Confirm merge** button.
-
-![](../media/g35.png)
-
-13. Go back to the Microsoft Fabric Workspace, and do a hard refresh with the Ctrl + shift + R.
-
-14. Click on the **Source control** and click on **Update all** and under the **updates** click on **Commit** to keep it in sync.
-
-    ![](../media/g36.png)
-
-15. Once the update is completed, click on the **SQL Database**
-
-    ![](../media/f93.png)
-
-16. Verify that the **sales** schema appears in the SQL Database under Explorer and that a **view** has been created.
-
-    ![](../media/f86.png)
--->
 In this exercise, you have learned how to monitor and optimize database performance using the Performance Dashboard in Microsoft Fabric SQL Database. You have gained practical experience in:
  
 - Viewing database performance metrics to assess system health and efficiency.

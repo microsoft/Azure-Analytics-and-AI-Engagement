@@ -288,19 +288,6 @@ dotnet run
 
 ![](../media/f45.png)
 
-Now, let's explore how a GraphQL endpoint can be utilized in a live web application.
-
-1. Navigate to the web application (https://fabricgraphql.azurewebsites.net/). 
-
-2. In the **Enter your Microsoft Fabric Username (Email)** field, enter ``fabricgraphql@cloudlabsai.ms``.
-
-3. In the **Enter your Password** field, enter ``Tafa800099`` and press **Enter**.
-
-![](../media/h5.png)
-
-4. Select any company name from **Select a Company Name** dropdown.
-
-![](../media/h6.png)
 
 Congratulations! You have successfully worked with GraphQL API endpoints to enhance data access and retrieval.
 

@@ -9,13 +9,21 @@ Contoso developers have been tasked with creating an online shopping copilot for
 
 ### Activity: Get model URLS
 
-1. Navigate to the URL: [https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt](https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt), copy the **OpenAI endpointurl** and **OpenAI endpointkey** values, and then save them to your notepad.
+1. Open a new tab and go to **https://portal.azure.com/**, search for **Azure OpenAI** in the search bar, then select the result.
 
-![](../media/h11.png)
+![](../media/task_6.0.1.png)
 
-3. Use **OpenAI endpointurl** value wherever {endpointurl} appears in following exercise.
+2. Click on the **OpenAI** resource.
 
-4. Use **OpenAI endpointkey** wherever {endpointkey} appears in following exercise.
+> **Note**: You will have suffix added to the resource name. Example: OpenAI6782.
+
+![](../media/task_6.0.2.1.png)
+
+3. Expand **Resource Management**, go to **Keys and Endpoint**, click on **Copy icon** next to Endpoint. Store the value and replace it wherever {endpointurl} appears in following exercise.
+
+4. Click on **Copy icon** next to 'KEY 1'. Store the value and replace it wherever {endpointkey} appears in following exercise.
+
+![](../media/task_6.0.3.png)
 
 
 ### Task 6.1: AI-Powered Recommendations with Vector Search

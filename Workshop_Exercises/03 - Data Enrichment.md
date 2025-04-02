@@ -51,29 +51,42 @@ Now, this is something exciting! This section shows how easy it is to create Sho
 
 ![task-wb5.png](../media/task-wb5.png)
 
-3. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
+2. In the pop-up window, under **External sources**, select the **Azure Data Lake Storage Gen2** source.
 
 ![task-1.3-ext-shortcut4.png](../media/task-1.3-ext-shortcut4.png)
 
 >**Note:** Wait for the screen to load.
 
-4. Select the **Create new Connection** radio button.
+3. Select the **Create new Connection** radio button.
 
-5. In the screen below, we need to enter the connection details for the ADLS Gen2 shortcut.
+4. In the screen below, we need to enter the connection details for the ADLS Gen2 shortcut.
 
 ![task-1.3-ext-shortcut11.png](../media/lakehouse4.png)
 
-6. Navigate to the URL: [https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt](https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt), copy the **Data Lake Storage endpoint** and **Data Lake Storage Account Key** values then save it to your notepad.
+5. Navigate to the Azure Portal, in the **rg-fabcon...** resource group search for **storage** and click on the storage account resource.
 
-![task-1.3-ext-shortcut11.png](../media/h9.png)
+![](../media/g6.png)
 
-7. Paste the **Data Lake Storage endpoint** copied in **step 6** under the URL field.
+6. Expand the **Security + networking** section and click on **Access keys**. Click on the **Show** button under **key1**. Click on the **Copy to clickboard** button and Save this information in a notepad for further use.
 
-8.  In the **Authentication kind** dropdown, select **Account Key**.
+![](../media/g7.png)
 
-9. Paste the **Data Lake Storage Account Key** copied in **Step 6**.
+7. In the left pane, expand the **Settings** section and click on **Endpoints**. Scroll down to copy the **Data Lake Storage endpoint** in the **Data Lake Storage** section.
 
-10. Click on the **Next** button.
+8. Save the information in a notepad for further use.
+
+![](../media/g8.png)
+
+9. Navigate back to the Fabric tab.
+
+10. Paste the **endpoint** copied in **step 8** under the URL field.
+
+11.  In the **Authentication kind** dropdown, select **Account Key**.
+
+12. Paste the **account key** copied in step **number 6**.
+
+13. Click on the **Next** button.
+
 
 <!--
 6. In the **URL** field, type the endpoint: ```https://stfabcon[suffix].dfs.core.windows.net/```.
@@ -87,17 +100,17 @@ Now, this is something exciting! This section shows how easy it is to create Sho
 
 ![task-1.3-ext-shortcut9.png](../media/g9.png)
 
-11. Click the **data** directory checkbox and click on the **Next** button.
+14. Click the **data** directory checkbox and click on the **Next** button.
 
 ![task-wb6.png](../media/h17.png)
 
-12. Click on the **Create** button.
+15. Click on the **Create** button.
 
 ![task-1.3-ext-shortcut10.png](../media/f5.png)
 
 And there you go! Your shortcut is now ready! 
 
-13. Click on (do not expand) the newly created shortcut named **data**.
+16. Click on (do not expand) the newly created shortcut named **data**.
 
 ![task-wb7.png](../media/f6.png)
 
@@ -265,13 +278,13 @@ Let's schedule the pipeline to reduce manual effort and ensure data is always up
  
    ![](../media/image8u.png)
  
-3. In the **Add People** window, enter ``sp-fabcon-lab``, select **Admin access**, and click **Add** button.
+3. In the **Add People** window, enter ``sp-fabcon``, select **Admin access**, and click **Add** button.
    
    ```
-   sp-fabcon-lab
+   sp-fabcon
    ```
  
-   ![](../media/image9u.png)
+   ![](../media/h22.png)
 
 #### Activity: Create a Notebook in the Microsoft Fabric workspace and process data
 
@@ -309,15 +322,18 @@ Let's schedule the pipeline to reduce manual effort and ensure data is always up
 
 ![](../media/task_3.2.1.7.png)
 
-8. Navigate to the URL: [https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt](https://stfabcon.blob.core.windows.net/injectkeys/injectkeys.txt), copy the **Application (client) ID**, **Directory (tenant) ID**, and **jdbc_pswd** values, then save them to your notepad.
 
-![](../media/h10.png)
-
-9. Copy and paste the following code in the notebook cell.
-
-> **Note**: Replace jdbc_properties values with the values copied earlier in **step 8**.
+8. Copy and paste the following code in the notebook cell.
 
 > **Note**: Replace **jdbc_url** with the copied value from the **Get JDBC URL** activity.
+
+> **Note**: Replace the following placeholders with the actual values obtained during the **deployment steps**:
+
+  - **Application (client) ID** → Replace with the App ID copied from Entra ID.
+
+  - **Directory (tenant) ID** → Replace with the Tenant ID copied from Entra ID.
+
+- **jdbc_pswd** → Replace with the **Client Secret** created earlier and saved in your notepad.
 
 ``` 
 # Define JDBC connection parameters
@@ -375,21 +391,21 @@ sales_metrics.write.jdbc(url=jdbc_url, table="SalesMetricsTable", mode="overwrit
 
 ![](../media/task_3.2.1.7_1.png)
 
-10. Scroll to the end of **jdbc_url** and change the value for **authentication** as **ActiveDirectoryServicePrincipal**.
+9. Scroll to the end of **jdbc_url** and change the value for **authentication** as **ActiveDirectoryServicePrincipal**.
 
 ![](../media/task_3.2.1.7_2.png)
 
-11. Click on the **Run** icon.
+10. Click on the **Run** icon.
 
 This code connects to a Microsoft Fabric SQL Database using JDBC, retrieves the top 1000 rows from the SalesMetricsTable, loads them into a Spark DataFrame, and displays the results in a Microsoft Fabric Notebook.
 
 ![](../media/task_3.2.1.8.png)
 
-12. Wait for the code to run successfully.
+11. Wait for the code to run successfully.
 
 ![](../media/task_3.2.1.9.png)
 
-13. Hover below the current cell to click on **Add code cell**, then paste the following code in the cell, and click on the **Run** icon to display the results.
+12. Hover below the current cell to click on **Add code cell**, then paste the following code in the cell, and click on the **Run** icon to display the results.
 
 >**Note:** If the **+ Code** button is not visible, hover over the cell below to click and add a **new code cell**.
 
@@ -412,15 +428,15 @@ display(df)
 
 ![](../media/task_3.2.1.10.png)
 
-14. Click on the **Fabcon** workspace in the left menu.
+13. Click on the **Fabcon** workspace in the left menu.
 
 ![](../media/task_3.2.1.11.png)
 
-15. Click on **Filter**, select **SQL Database**, and then click on **Fabcon_database**.
+14. Click on **Filter**, select **SQL Database**, and then click on **Fabcon_database**.
 
 ![](../media/task_3.2.1.12.png)
 
-16. Once in the **SQL Database** under the **Explorer**, expand *Fabcon_database*, then expand the **dbo schema** and the **Tables** section. Scroll down to locate the **SalesMetricsTable**.
+15. Once in the **SQL Database** under the **Explorer**, expand *Fabcon_database*, then expand the **dbo schema** and the **Tables** section. Scroll down to locate the **SalesMetricsTable**.
 
     ![](../media/fabcondatabase.png)
 
@@ -428,7 +444,7 @@ display(df)
 
     ![](../media/refresh1.png)
  
-17. Click on **SalesMetricsTable** to see the results.
+16. Click on **SalesMetricsTable** to see the results.
 
     ![](../media/task_3.2.1.13.png)
 
