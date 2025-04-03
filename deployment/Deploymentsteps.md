@@ -22,7 +22,6 @@ Customers can play, get hands-on experience navigating through the demo environm
 <!-- TOC -->
 
 - [Requirements](#requirements)
-- [Before Starting](#before-starting)
   - [Task 1: Deploying ARM Template using Cloud Shell](#task-1-deploying-arm-template-using-cloud-shell)
   - [Task 2: Download and install a standard gateway](#task-2-download-and-install-a-standard-gateway)
   - [Task 3: Set up a gateway connection to access on-premises data sources](#task-3-set-up-a-gateway-connection-to-access-on-premises-data-sources)
@@ -53,7 +52,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 ## Task 1: Deploying ARM Template using Cloud Shell
 
->Note: For this we will deploy resources in an Azure resource group
+>Note: For this accelerator we will deploy resources in Azure resource group
 
 >Note: In this task we will execute a powershell script on Cloudshell to create those resources. List of the resources are as follows:
 
@@ -90,7 +89,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 git clone -b Fabric-SQL-Workshop --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git Fabric-SQL-Workshop
 ```
 
-![Simulator.](./ARMSetupImages/f1.png)
+![Simulator.](../media/h23.png)
 
 > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then reclone:
 ```
@@ -107,7 +106,7 @@ cd ./Fabric-SQL-Workshop/deployment
 ./Setup.ps1
 ```
 
-![Simulator.](./ARMSetupImages/f4.png)
+![Simulator.](../media/h25.png)
 
 10. Browse the **URL** in another tab of your browser and copy the **code**.
 
@@ -161,35 +160,51 @@ cd ./Fabric-SQL-Workshop/deployment
 
 ## Task 2: Download and install a standard gateway
 
-1. Navigate to Azure Portal and open a resource group and connect with your virtual machine using [Remote Desktop](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp).
+1. Navigate to Azure Portal and open a resource group and connect with your virtual machine. click on **Connect** and then click on **Connect**.
 
-    ![Simulator.](../media/f60.png)
+    ![Simulator.](../media/rdpconnection1.png)
 
-2. Open a new tab in your virtual machine browser and paste the follwing URL, it will download gateway application.
+2. Click on **Download RDP file** and then click on **Open file** fropm the downloads.
+
+    ![Simulator.](../media/rdpconnection2.png)
+
+3. Click on **Connect**.
+
+    ![Simulator.](../media/rdpconnection3.png)
+
+4. Paste ```Fabcon@2025``` in the Password field.
+
+    ![Simulator.](../media/rdpconnection4.png)
+
+5. Click on **Yes**.
+
+    ![Simulator.](../media/rdpconnection5.png)
+
+6. Open a new tab in your virtual machine browser and paste the follwing URL, it will download gateway application.
 
 [Download the standard gateway](https://go.microsoft.com/fwlink/?LinkId=2116849&clcid=0x409)
 
-3. In the gateway installer, keep the default installation path, accept the **terms of use**, and then select **Install**.
+7. In the gateway installer, keep the default installation path, accept the **terms of use**, and then select **Install**.
 
 ![](../media/13.png)
 
-4. In **email address to use with this gateway** field, enter your Entra ID Username used for the deployment and then select **Sign in**.
+8. In **email address to use with this gateway** field, enter your Entra ID Username used for the deployment and then select **Sign in**.
 
 ![](../media/14.png)
 
-5.  Enter your Entra ID Password used for the deployment and click on **Sign in**.
+9.  Enter your Entra ID Password used for the deployment and click on **Sign in**.
 
 ![alt text](../media/image-1.png)
 
-6. Select **Register a new gateway on this computer** and click on **Next**.
+10. Select **Register a new gateway on this computer** and click on **Next**.
 
 ![](../media/15.png)
 
-7. Enter a name for the gateway as **Datagateway** and in **Recovery Key** field enter key and enter the same value in **Confirm recory key** field and click on **Configure**.
+11. Enter a name for the gateway as **Datagateway** and in **Recovery Key** field enter key and enter the same value in **Confirm recory key** field and click on **Configure**.
 
 ![](../media/16.png)
 
-8. Review the information in the final window. Note that the gateway is available for Microsoft Fabric. Select **Close**.
+12. Review the information in the final window. Note that the gateway is available for Microsoft Fabric. Select **Close**.
 
 ![](../media/17.png)
 

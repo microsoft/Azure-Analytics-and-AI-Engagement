@@ -155,7 +155,7 @@ Generate performance optimization suggestions.
 
 1. Go to the Azure DevOps and click on the **Repos** and click on the **Fabric Git Integration** folder and click on the Branch dropdown and **+ New branch** to create new "dev" branch.
 
-    ![](../media/1.7.png)
+    ![](../media/h26.png)
 
 2. Up on the popup "Create a branch" provide the Name as **dev** and Based on **main** and click on **Create**.
 
@@ -167,11 +167,11 @@ Generate performance optimization suggestions.
 
 4. Once switch to the **dev** branch.
     - Click on the *Fabric Git Integration*
-    - click on the dropdown *Contoso_databse.SQLDatabase*
+    - click on the dropdown *Fabcon_databse.SQLDatabase*
     - Click on the (three dots) ellipse of the security folder.
     - click on the **+ New** and click on **File**.
 
-    ![](../media/1.10.png)
+    ![](../media/h27.png)
 
 5. In the *New file* Popup page provide New file name as **sales.sql** and click on **Create**.
 
@@ -220,13 +220,13 @@ Generate performance optimization suggestions.
 
 13. once the merge is completed go back to the main branch and under security verify the **sales.sql** file.
 
-    ![](../media/1.19.png)
+    ![](../media/h28.png)
 
 14. Go back to the Microsoft Fabric Workspace, and do a hard refresh with the Ctrl + shift + R.
 
 15. Click on the **Source control** and click on **Update all** and under the **updates** click on **Commit** to keep it in sync.
 
-    ![](../media/1.20.png)
+    ![](../media/h29.png)
 
 16. Once the update is completed, click on the **SQL Database**
 
