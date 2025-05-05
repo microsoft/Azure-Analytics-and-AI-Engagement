@@ -254,7 +254,7 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 Command:
 ```
-git clone https://daidemos@dev.azure.com/daidemos/DREAMDemos/_git/DREAMPoC -b fsi2dpoc
+git clone -b fsi2.0 --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fsi2dpoc
 
 ```
 
@@ -268,7 +268,7 @@ git clone https://daidemos@dev.azure.com/daidemos/DREAMDemos/_git/DREAMPoC -b fs
 
 7. Execute the **PowerShell** script with the following commands:
 ```
-cd DREAMPoC/fsi2dpoc
+cd fsi2dpoc/fsi2dpoc
 ```
 
 ```
