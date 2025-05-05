@@ -628,25 +628,25 @@ In this exercise, you will act as the Data Engineer and transfer Woodgrove's dat
 
 1. In the workspace **Filter** for **Notebook** and then click on the "00 Copilot Notebook in Data Science & Data Engineering.ipynb" notebook.
 
-	![Notebooks.](media/notebook.1.1.png)
+![Notebooks.](media/notebook.1.1.png)
 
 2. In the left pane, click on the **three dots(ellipse)** and then select **Remove all sources**.
 
-	![Datawarehouse.](media\o6aiskill1.png)
+![Datawarehouse.](media/o6aiskill1.png)
 
 <!-- >**Note:** In case you do not see Missing lakehouse, you would see 'lakehouse{Name}', click on the same to get the 'Remove all Lakehosues' option. -->
 
 3. click on **Continue** in the pop-up window.
 
-	![Datawarehouse.](media\06aiskill2.png)
+![Datawarehouse.](media/06aiskill2.png)
 
 4. In the left pane, click on the **Add data items** button and then click on **Existing data sources**.
 
-	![Datawarehouse.](media\o6aiskill3.png)
+![Datawarehouse.](media/o6aiskill3.png)
 
 5. click on **FSI_lakehouse_Silver_..** checkbox and click on **Connect**.
 
-	![Datawarehouse.](media\notebook01.png)
+![Datawarehouse.](media/notebook01.png)
 
 6. Similarly, perform **step number 1 to step number 5** for the other notebooks as well.
 
