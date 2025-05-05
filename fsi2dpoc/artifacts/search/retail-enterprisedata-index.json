@@ -1,0 +1,76 @@
+{
+  "name": "retail-enterprisedata-index",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "key": true,
+      "retrievable": true,
+       
+      "searchable": false,
+      "filterable": false,
+      "sortable": false,
+      "facetable": false,
+      "synonymMaps": []
+    },
+    {
+      "name": "content",
+      "type": "Edm.String",
+      "key": false,
+      "retrievable": true,
+       
+      "searchable": true,
+      "filterable": false,
+      "sortable": false,
+      "facetable": false,
+      "analyzer": "en.microsoft",
+      "synonymMaps": []
+    },
+    {
+      "name": "category",
+      "type": "Edm.String",
+      "key": false,
+      "retrievable": true,
+       
+      "searchable": false,
+      "filterable": true,
+      "sortable": false,
+      "facetable": true,
+      "synonymMaps": []
+    },
+    {
+      "name": "sourcepage",
+      "type": "Edm.String",
+      "key": false,
+      "retrievable": true,
+       
+      "searchable": false,
+      "filterable": true,
+      "sortable": false,
+      "facetable": true,
+      "synonymMaps": []
+    },
+    {
+      "name": "sourcefile",
+      "type": "Edm.String",
+      "key": false,
+      "retrievable": true,
+       
+      "searchable": false,
+      "filterable": true,
+      "sortable": false,
+      "facetable": true,
+      "synonymMaps": []
+    }
+  ],
+  "scoringProfiles": [],
+  "suggesters": [],
+  "analyzers": [],
+  "tokenizers": [],
+  "tokenFilters": [],
+  "charFilters": [],
+  "similarity": {
+    "@odata.type": "#Microsoft.Azure.Search.BM25Similarity"
+  },
+  "@odata.etag": "\"0x8DCDD5098107C10\""
+}

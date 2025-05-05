@@ -1,0 +1,10 @@
+{
+  "name": "insurance-enterprise-chatbot",
+  "type": "azureblob",
+  "credentials": {
+    "connectionString": "#STORAGE_CONNECTION#"
+  },
+  "container": {
+    "name": "insurance-knowledgebase"
+  }
+}

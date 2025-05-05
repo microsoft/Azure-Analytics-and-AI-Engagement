@@ -1,0 +1,75 @@
+// what will be the Foot Traffic for next 15 minutes?
+
+['foot-traffic']
+| where todatetime(RecordedOn) >= ago(1d)
+| make-series avgFootTraffic = avg(['after-foottraffic']) default=real(null) on todatetime(RecordedOn) step 15m
+| extend NoGapsFootTraffic = series_fill_linear(avgFootTraffic)
+| project RecordedOn, NoGapsFootTraffic
+| extend forecast = series_decompose_forecast(NoGapsFootTraffic, 15)
+| render timechart with (title='Forecasting the Next 15 Minutes of Foot Traffic using Time Series Decomposition')
+
+// Find average foot traffic every EventProcessedUtcTime minute and render in timechart from foot-traffic table
+// Calculate the Average Foot Traffic Before and After Events in foot-traffic table
+['foot-traffic']
+| where EventProcessedUtcTime >= ago(1d)
+| extend footTrafficDifference = ['after-foottraffic'] - ['before-foottraffic']
+| summarize avgFootTrafficDifference=avg(footTrafficDifference) by bin(EventProcessedUtcTime, 1m)
+| render timechart
+
+// followers by city
+twitter_data
+| summarize followersCount=sum(todouble(UserFollowersCount)) by City
+| order by followersCount desc
+
+//Twitter
+twitter_data
+|take 1000
+
+//List Events with Significant Traffic Increases
+
+datatable(RecordedOn: datetime, before_foottraffic: int, after_foottraffic: int)
+[
+    datetime(2024-03-26T08:14:35.842359Z), 21, 37,
+    datetime(2024-03-26T08:15:35.842359Z), 30, 50,
+    datetime(2024-03-26T08:16:35.842359Z), 25, 45
+]
+| extend traffic_diff = after_foottraffic - before_foottraffic
+| where traffic_diff > 10
+| project RecordedOn, traffic_diff
+| render barchart
+
+//Calculate the Average Foot Traffic Before and After Events
+
+// Calculate the Average Foot Traffic Before and After Events
+
+datatable(RecordedOn: datetime, before_foottraffic: int, after_foottraffic: int)
+[
+    datetime(2024-03-26T08:14:35.842359Z), 21, 37,
+    datetime(2024-03-26T08:15:35.842359Z), 30, 50,
+    datetime(2024-03-26T08:16:35.842359Z), 25, 45,
+    datetime(2024-03-26T08:17:35.842359Z), 22, 30,
+    datetime(2024-03-26T08:18:35.842359Z), 28, 40
+]
+| extend Time = RecordedOn
+| summarize avg_before_traffic = avg(before_foottraffic), avg_after_traffic = avg(after_foottraffic) by bin(Time, 1h)
+| project Time, avg_before_traffic, avg_after_traffic
+| render barchart 
+
+//Prompt1: create a query to Identify Peak Foot Traffic Periods.
+//Prompt2: create a query to Calculate the Difference in Foot Traffic Before and After an Event
+
+
+
+// Find average foot traffic every EventProcessedUtcTime minute and render in timechart from foot-traffic table
+//
+['foot-traffic']
+| summarize avgFootTraffic=avg(['before-foottraffic']) by bin(EventProcessedUtcTime, 1m)
+| render timechart
+
+
+
+
+// Calculate the Average Foot Traffic Before and After Events in foot-traffic table
+//
+['foot-traffic']
+| summarize avgBeforeFootTraffic=avg(['before-foottraffic']), avgAfterFootTraffic=avg(['after-foottraffic'])

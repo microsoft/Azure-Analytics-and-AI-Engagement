@@ -1,0 +1,13 @@
+{
+  "name": "insurance-enterprisedata-indexer",
+  "description": null,
+  "dataSourceName": "insurance-enterprise-chatbot",
+  "skillsetName": null,
+  "targetIndexName": "insurance-enterprisedata-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": null,
+  "fieldMappings": [],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}

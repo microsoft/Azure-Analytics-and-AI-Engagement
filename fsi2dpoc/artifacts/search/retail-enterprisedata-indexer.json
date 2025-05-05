@@ -1,0 +1,13 @@
+{
+  "name": "retail-enterprisedata-indexer",
+  "description": null,
+  "dataSourceName": "retailbanking-enterprise-chatbot",
+  "skillsetName": null,
+  "targetIndexName": "retail-enterprisedata-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": null,
+  "fieldMappings": [],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}

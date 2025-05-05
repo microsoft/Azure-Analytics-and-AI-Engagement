@@ -1,0 +1,10 @@
+{
+  "name": "retailbanking-enterprise-chatbot",
+  "type": "azureblob",
+  "credentials": {
+    "connectionString": ""
+  },
+  "container": {
+    "name": "retail-knowledgebase"
+  }
+}
