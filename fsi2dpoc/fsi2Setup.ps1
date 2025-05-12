@@ -1030,11 +1030,10 @@ $headers = @{
     "Content-Type" = "application/json"
 }
 $response1 = Invoke-RestMethod -Method Post -Uri $uri -Headers $headers
-
-Connect-AzureAD
-
-$app = Get-AzureADServicePrincipal -Filter "DisplayName eq '$mssql_server_name'"
  
+Connect-AzureAD -TenantId $tenantId
+ 
+$app = Get-AzureADServicePrincipal -Filter "DisplayName eq '$mssql_server_name'"
  
 $body = @{
     principal = @{
