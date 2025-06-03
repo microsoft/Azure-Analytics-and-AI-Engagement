@@ -222,8 +222,6 @@ For this Demo, we have assets in an Azure resource group as well as Fabric Works
 6. Enter the following command to clone the repository files in cloudShell.
 
 ```
-git clone https://daidemos@dev.azure.com/daidemos/DREAMDemos/_git/DREAMPoC -b telcodpoc
-
 git clone -b "Telco-Analytics-POC-Accelerator" --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git "Telco-Analytics-POC-Accelerator"
 
 ```
