@@ -1,4 +1,4 @@
-![telco](media/telcostart.png)
+![telco](media/telcoarch.png)
 
 ## What is DPoC?
 
@@ -226,7 +226,7 @@ git clone -b "Telco-Analytics-POC-Accelerator" --depth 1 --single-branch https:/
 
 ```
 
-![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
+![Git Clone Command to Pull Down the demo Repository.](media/git%20clone.png)
 
 > **Note:** If you get **File already exist.** error, please execute the following command to delete existing clone and then reclone:
 
@@ -239,14 +239,16 @@ git clone -b "Telco-Analytics-POC-Accelerator" --depth 1 --single-branch https:/
 7. Execute the **PowerShell** script with the following commands:
 
 ```
-cd Telco-Analytics-POC-Accelerator/Telco-Analytics-POC-Accelerator
+cd Telco-Analytics-POC-Accelerator/telcodpoc/
 ```
+
+![Commands to run the PowerShell Script](media/cd.png)
 
 ```
 ./telcoSetup.ps1
 ```
 
-![Commands to run the PowerShell Script](media/fsiscript.png)
+![Commands to run the PowerShell Script](media/setupps1.png)
 
 8. Enter **Y** and then click on Enter.
 
@@ -520,21 +522,21 @@ cd Telco-Analytics-POC-Accelerator/Telco-Analytics-POC-Accelerator
 
 2. In the left pane, click on the **three dots(ellipsis)** and then select **Remove all sources**.
 
-   ![Datawarehouse.](media\o6aiskill1.png)
+   ![Datawarehouse.](media/o6aiskill1.png)
 
 <!-- >**Note:** In case you do not see Missing lakehouse, you would see 'lakehouse{Name}', click on the same to get the 'Remove all Lakehosues' option. -->
 
 3. Click on **Continue** in the pop-up window.
 
-   ![Datawarehouse.](media\06aiskill2.png)
+   ![Datawarehouse.](media/06aiskill2.png)
 
 4. In the left pane, click on the **Add data items** button and then click on **Existing data sources**.
 
-   ![Datawarehouse.](media\o6aiskill3.png)
+   ![Datawarehouse.](media/o6aiskill3.png)
 
 5. Click on **lakehouse*Bronze*..** checkbox and click on **Connect**.
 
-   ![Datawarehouse.](media\notebook01.png)
+   ![Datawarehouse.](media/notebook01.png)
 
 6. Similarly, perform **step number 1 to step number 5** for the other notebooks as well.
 
