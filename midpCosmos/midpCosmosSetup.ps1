@@ -108,20 +108,6 @@ else {
         }
     }
 
-    $response = az ad signed-in-user show | ConvertFrom-Json
-    $date = get-date
-    $demoType = "MIDP_Cosmos"
-    $body = '{"demoType":"#demoType#","userPrincipalName":"#userPrincipalName#","displayName":"#displayName#","companyName":"#companyName#","mail":"#mail#","date":"#date#"}'
-    $body = $body.Replace("#userPrincipalName#", $response.userPrincipalName)
-    $body = $body.Replace("#displayName#", $response.displayName)
-    $body = $body.Replace("#companyName#", $response.companyName)
-    $body = $body.Replace("#mail#", $response.mail)
-    $body = $body.Replace("#date#", $date)
-    $body = $body.Replace("#demoType#", $demoType)
-
-    $uri = "https://registerddibuser.azurewebsites.net/api/registeruser?code=pTrmFDqp25iVSxrJ/ykJ5l0xeTOg5nxio9MjZedaXwiEH8oh3NeqMg=="
-    $result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -ContentType "application/json"
-
     $rgName = read-host "Enter the resource Group Name";
     $Region = (Get-AzResourceGroup -Name $rgName).Location
     $init =  (Get-AzResourceGroup -Name $rgName).Tags["DeploymentId"]
