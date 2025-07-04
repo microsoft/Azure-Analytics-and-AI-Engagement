@@ -167,7 +167,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2024-05-01",
             "name": "[parameters('networkSecurityGroupname')]",
-            "location": "eastus",
+            "location": "[parameters('location')]",
             "properties": {
                 "securityRules": [
                     {
