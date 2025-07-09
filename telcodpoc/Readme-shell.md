@@ -48,6 +48,10 @@ THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTION
 
 - [Task 8: Creating Data Agent](#task-8-creating-data-agent)
 
+
+- [Appendix](#appendix)
+  - [Import Wireless Database template from Synapse to Fabric](#import-wireless-database-template-from-synapse-to-fabric)
+
 <!-- /TOC -->
 
 ## Pre-requisites
@@ -815,3 +819,198 @@ This model integrates customer, campaign, call center, and financial data to gen
 ```
 
 ![task-1.3.02.png](media/Dataagent6.png)
+
+---
+
+### Appendix
+
+### Import Wireless Database template from Synapse to Fabric
+
+> **Note:** To perform the following steps, you need to have an Azure Synapse Analytics workspace deployed. You can follow the reference document below to create a new Synapse workspace:  
+> [Create an Azure Synapse Analytics workspace](https://learn.microsoft.com/en-us/azure/synapse-analytics/get-started-create-workspace) 
+
+
+1. Go to the [Azure portal](https://portal.azure.com/#home/) and sign in with your credentials.
+
+2. In the search bar, type **Azure Synapse Analytics** and select the **Azure Synapse Analytics** workspace from the results.
+
+![](media/telco-1.png)
+
+3. Click on **Open Synapse Studio**.
+
+![](media/telco-2.png)
+
+4. Click on the **Data** icon as shown in the screenshot.
+
+![](media/telco-3.png)
+
+5. Click on **+ icon** and add a new **Lake database**. 
+
+![](media/telco-4.png)
+
+6. In the **Name** field enter **Telcodemo**.
+
+![](media/telco-5.png)
+
+7. Click on the **table** dropdown and select **From template**. 
+
+![](media/telco-6.png)
+
+8. Scroll down the template and click on the **Wireless** feature and click **Continue**.
+
+![](media/telco-7.png)
+
+9. Under **Customer** entity, select **Customer** Table.
+
+![](media/telco-8.png)
+
+10. Under **Financial Product** entity, select **FinancialProduct** table.
+
+![](media/telco-9.png)
+
+![](media/telco-10.png)
+
+11. Search for Issue in the bar and add **Issue** and **IssueActivity** table.
+
+![](media/telco-11.png)
+
+12.	Show the tables in the canvas.
+13.	Click on **Issue** table and show the relationship with **IssueActivity** table.
+    
+	![](media/telco-12.png)
+
+14.	Click on **Add**.
+
+![](media/telco-13.png)
+
+15.	Click on **Publish all** changes and then click on **Publish**.
+
+![](media/telco-14.png)
+
+![](media/telco-15.png)
+
+16.	You can follow the same process (steps 11 to 15) for any other tables you want to include, depending on your requirements.
+
+17.	Click on **ellipses** beside Lake database and **Refresh**.
+18.	Expand the **Tables** and show the tables added under **Telcodemo** database.
+
+![](media/telco-16.png)
+
+19.	Show the Table **Issue** and the columns.
+
+![](media/telco-17.png)
+
+20. Click on **Develop** section in the left navigation bar.
+21. Click on the ellipses beside **Notebooks** and click on **New Notebook**.
+
+![](media/telco17-1.png)
+
+22. Add the code below to the notebook cell.
+
+```
+# Load the LakeDB table schema
+df = spark.table("Lakedatabase.TableName")
+
+# Clean CREATE TABLE generator
+table_name = "TableName" #table name to be created in Fabric
+schema = df.schema
+sql_fields = []
+
+for field in schema.fields:
+    name = field.name
+    dtype = field.dataType.simpleString()
+
+    # Map Spark types to T-SQL types
+    if "int" in dtype:
+        sql_type = "int"
+    elif "bigint" in dtype:
+        sql_type = "bigint"
+    elif "double" in dtype:
+        sql_type = "float"
+    elif "float" in dtype:
+        sql_type = "real"
+    elif "string" in dtype:
+        sql_type = "varchar(5000)"  # or adjust size
+    elif "boolean" in dtype:
+        sql_type = "bit"
+    elif "timestamp" in dtype:
+        sql_type = "TIMESTAMP_LTZ"
+    elif "date" in dtype:
+        sql_type = "date"
+    else:
+        sql_type = "varchar(5000)"  # default fallback
+
+    sql_fields.append(f"{name} {sql_type}")
+
+# Combine all fields into CREATE TABLE script
+create_stmt = f"CREATE TABLE dbo.{table_name} (\n    " + ",\n    ".join(sql_fields) + "\n);"
+print(create_stmt)
+```
+
+23. Select the Spark pool from the dropdown.
+
+![](media/telco17-1a.png)
+
+24.	In the notebook cell update the table Names. 
+•	Follow the syntax **“Lakedatabase Name. TableName”** at step-1.
+•	Follow the syntax **“TableName”** (table name to be created in Fabric) at step-2.
+25.	Eg: For Table **Issue** from Lakedatabase
+At step-1 the tableName is **”Telcodemo.Issue”**
+At step-2, the tableName would be **“Telcodemo_Issue”**.
+
+![](media/telco17-2.png)
+
+26.	After updating the table names, run the notebook.
+27.	Copy the output to the **clipboard**.
+
+![](media/telco17-3.png)
+
+28. Open the [Fabric portal.](https://app.fabric.microsoft.com/)
+
+29. Sign in using your **Azure Credentials**.
+
+![](media/telco-18.png)
+
+30. Click on **Workspaces**.
+31. Click on **Telco-Demo**.
+
+>**Note:** If the **Telco-Demo** is not visible, please press **Ctrl+Shift+R** for Windows and **Command+Shift+R** for Mac. 
+
+![](media/telco19.png)
+
+32. Click on the **New item**.
+
+![](media/telco20.png)
+
+33. Click on the **Notebook** to create a new notebook.
+
+![](media/telco21.png)
+
+34. In the **Explorer** pane, add **Data items**.
+35. Choose **Existing data sources**.
+
+![](media/telco22.png)
+
+36.	Select the **Lakehouse_Bronze_..** and click on **Connect**.
+
+![](media/telco23.png)
+
+37.	Paste the output executed from the Synapse to the notebook cell from step-27.	
+
+![](media/telco24.png)
+
+38.	Select the language **Spark SQL** from the dropdown.
+
+![](media/telco25.png)
+
+39.	Run the cell 1.
+
+![](media/telco26.png)
+
+40.	In the **Explorer** pane, refresh the tables and check the new table created.
+
+![](media/telco27.png)
+
+![](media/telco28.png)
+
+41.	Repeat the steps 20-41 to import different tables from the Synapse database template to Microsoft Fabric.
