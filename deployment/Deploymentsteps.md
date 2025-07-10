@@ -156,6 +156,17 @@ cd ./Fabric-SQL-Workshop/deployment
 
     ![Simulator.](../media/f59.png)
 
+22. **Enter** your desired Virtual Machine Password.
+
+>**Note:** Copy the password in Notepad for further reference.
+
+23. **Enter** your desired SQL Password.
+
+<img width="738" height="325" alt="image" src="https://github.com/user-attachments/assets/e5f65669-c67f-40d3-8d3e-4e2cac287633" />
+
+>**Note:** Copy the password in Notepad for further reference.
+
+
 >**Note:** It takes approximately 10-15 minutes for the deployment
 
 ## Task 2: Download and install a standard gateway
@@ -172,7 +183,7 @@ cd ./Fabric-SQL-Workshop/deployment
 
     ![Simulator.](../media/rdpconnection3.png)
 
-4. Paste ```Fabcon@2025``` in the Password field.
+4. In the Password field provide the password you created for the Virtual Machine in **Step 22**.
 
     ![Simulator.](../media/rdpconnection4.png)
 
@@ -245,7 +256,7 @@ cd ./Fabric-SQL-Workshop/deployment
 
 - In the **Authentication method** dropdown, select **Windows**.
 - In the **Username** field, enter the virtual machine name you copied in **Step 2** and append ``\azureuser`` to it. It should look like ``FabconVMxyz\azureuser``.
-- In the **Password** field, enter ``Fabcon@2025``.
+- In the **Password** field, provide the password you created for the Virtual Machine in **Step 22**.
 - In the **Privacy level** dropdown, select **None** and click on the **Create** button.
 
 ![](../media/g4.png)
