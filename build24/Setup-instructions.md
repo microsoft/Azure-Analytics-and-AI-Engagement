@@ -299,65 +299,71 @@ cd ./build24/build24/
 
 	> Note: Make sure to provide the device code before it expires and let the script run till completion.
 		
-32. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
+29. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-create-a-resource-group-in-azure). 
 
 	![Select the same user.](media/cloud-shell-18.png)
 
-33. **Click** on 'Continue'.
+30. **Click** on 'Continue'.
 
 	![Select the same user.](media/cloud-shell-18.1.png)
 
-34. **Close** the browser, tab once you see the message box.
+31. **Close** the browser, tab once you see the message box.
 
 	![Close the browser.](media/cloud-shell-19.png)
 
 	>**Note:** During script execution, you need to note the resource group which gets created, since a resource group with unique suffix is created each time the script is executed.
 
-35. **Navigate back** to your Azure Cloud Shell execution window.
+32. **Navigate back** to your Azure Cloud Shell execution window.
 
-29. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, centralus etc)
+33. **Enter** the Region for deployment with necessary resources available, preferably "eastus". (ex. eastus, eastus2, westus, centralus etc)
 
 	![Enter Resource Group name.](media/cloudshell-region.png)
 
-30. In this accelerator, you have the option to choose a model for creating text embeddings in Azure Databricks. By default, the Azure Databricks ```databricks-bge-large-en``` model will be used for text embedding, but you can also use the Azure OpenAI ```text-embedding-ada-002``` model. Enter 'Yes' to use the OpenAI model.
+34. **Enter** your desired SQL Password.
+
+	![image](https://github.com/user-attachments/assets/d49f88bb-e551-40bd-8d6a-478c64df61e5)
+
+>**Note:** Copy the password in Notepad for further reference.
+
+35. In this accelerator, you have the option to choose a model for creating text embeddings in Azure Databricks. By default, the Azure Databricks ```databricks-bge-large-en``` model will be used for text embedding, but you can also use the Azure OpenAI ```text-embedding-ada-002``` model. Enter 'Yes' to use the OpenAI model.
 
 	![Enter Resource Group name.](media/openai1.png)
 
-31. If you have selected the Azure OpenAI model for embeddings, you'll be prompted to enter the region for OpenAI. Please ensure that you enter a region where you have a quota available for the text-embedding-ada-002 model.
+36. If you have selected the Azure OpenAI model for embeddings, you'll be prompted to enter the region for OpenAI. Please ensure that you enter a region where you have a quota available for the text-embedding-ada-002 model.
 
 	![Enter Resource Group name.](media/openai2.png)
 
-30. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
+37. **Enter** the workspace id which you copied in Step 6 of [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation).
 
 	![Enter Resource Group name.](media/cloud-shell-14.1.png)
 
-36. After the Arm Template is deployed, you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
+38. After the Arm Template is deployed, you'll be prompted to confirm role assignment as Account Admininstor on Azure Databricks, follow the steps below and then confirm.
 
     ![databrick](media/db0.png)
 
-37. Navigate to https://accounts.azuredatabricks.net/ and click on Sign in with Microsoft Entra ID.
+39. Navigate to https://accounts.azuredatabricks.net/ and click on Sign in with Microsoft Entra ID.
 
     ![databrick](media/db1.png)
 
-38. In the Account console click on 'Users & groups'
+40. In the Account console click on 'Users & groups'
 
     ![databrick](media/db2.png)
 
 > Note : you should have Global admin on Azure tenant to assign youself as Account Admin. If you are not able to access Account console get the permssion assigned by your organization's Global Admin.
 
-39. Search your username in the seacrh bar and select it.
+41. Search your username in the seacrh bar and select it.
 
     ![databrick](media/db3.png)
 
-40. Click on **Roles** and toggle on the 'Account Admin' button.
+42. Click on **Roles** and toggle on the 'Account Admin' button.
 
     ![databrick](media/db4.png)
 
-41. Go back to the script execution and enter 'Yes' to confirm.
+43. Go back to the script execution and enter 'Yes' to confirm.
 
     ![databrick](media/db5.png)
 
-42. After the script execution is complete, the user is prompted "--Execution Complete--"
+44. After the script execution is complete, the user is prompted "--Execution Complete--"
 
 	> **Note:** The deployment will take approximately 40-50 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
