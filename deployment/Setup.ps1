@@ -108,12 +108,55 @@ $openAI_location = read-host "Enter the region for OpenAI GPT-4 and text-embeddi
 $tenantId = (Get-AzContext).Tenant.Id
 $subscriptionId = (Get-AzContext).Subscription.Id
 $adminUsername = "azureuser"
-$adminPassword = ConvertTo-SecureString "Fabcon@2025" -AsPlainText -Force
+$adminPassword=""
+    while ($complexPassword -ne 1)
+    {
+        $adminPassword = Read-Host "Enter a password for the virtual machine.
+        `The password must meet complexity requirements:
+        ` - Minimum 8 characters. 
+        ` - At least one upper case English letter [A-Z]
+        ` - At least one lower case English letter [a-z]
+        ` - At least one digit [0-9]
+        ` - At least one special character (!,@,#,%,^,&,$)
+        ` "
+
+        if(($adminPassword -cmatch '[a-z]') -and ($adminPassword -cmatch '[A-Z]') -and ($adminPassword -match '\d') -and ($adminPassword.length -ge 8) -and ($adminPassword -match '!|@|#|%|^|&|$'))
+        {
+            $complexPassword = 1
+        Write-Output "Password $adminPassword accepted. Make sure you remember this!"
+        }
+        else
+        {
+            Write-Output "$adminPassword does not meet the complexity requirements."
+        }
+    }
+$adminPassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force
 $dataLakeAccountName = "stfabcon$suffix"
 $mssql_server_name = "mssql$suffix"
 $mssql_database_name = "SalesDb"
 $mssql_administrator_login = "labsqladmin"
-$sql_administrator_login_password = "Smoothie@2025"
+$sql_administrator_login_password=""
+    while ($complexPassword -ne 1)
+    {
+        $sql_administrator_login_password = Read-Host "Enter a password to use for the $mssql_administrator_login login.
+        `The password must meet complexity requirements:
+        ` - Minimum 8 characters. 
+        ` - At least one upper case English letter [A-Z]
+        ` - At least one lower case English letter [a-z]
+        ` - At least one digit [0-9]
+        ` - At least one special character (!,@,#,%,^,&,$)
+        ` "
+
+        if(($sql_administrator_login_password -cmatch '[a-z]') -and ($sql_administrator_login_password -cmatch '[A-Z]') -and ($sql_administrator_login_password -match '\d') -and ($sql_administrator_login_password.length -ge 8) -and ($sql_administrator_login_password -match '!|@|#|%|^|&|$'))
+        {
+            $complexPassword = 1
+        Write-Output "Password $sql_administrator_login_password accepted. Make sure you remember this!"
+        }
+        else
+        {
+            Write-Output "$sql_administrator_login_password does not meet the complexity requirements."
+        }
+    }
 $azure_open_ai = "OpenAI$suffix"
 $networkInterfaceName = "NIC$suffix"
 $publicIpAddressName = "pip$suffix"
