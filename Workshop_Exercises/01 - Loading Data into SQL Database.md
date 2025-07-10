@@ -129,7 +129,7 @@ In this task, you will use **Dataflow Gen2** to ingest data and efficiently copy
 
 <img src="../media/dfgen2.5.png" width="650" height="350">
 
-9.  Scroll down and select **Basic** in the **Authentication kind** dropdown. Enter ``labsqladmin`` as the **Username**, ``Smoothie@2025`` as the **Password** and click on the **Next** button.
+9.  Scroll down and select **Basic** in the **Authentication kind** dropdown. Enter ``labsqladmin`` as the **Username**, in the **Password** field, provide the **SQL password** you specified in **Step 23** during the deployment process. and click on the **Next** button.
 
 <img src="../media/dfgen2.6.png" width="650" height="350">
 
