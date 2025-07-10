@@ -183,7 +183,29 @@ $tenantId = (Get-AzContext).Tenant.Id
 $mssql_server_name = "mssql$suffix"
 $mssql_database_name = "SalesDb"
 $mssql_administrator_login = "labsqladmin"
-$sql_administrator_login_password = "Smoothie@2024"
+$sql_administrator_login_password=""
+    while ($complexPassword -ne 1)
+    {
+        $sql_administrator_login_password = Read-Host "Enter a password to use for the $mssql_administrator_login login.
+        `The password must meet complexity requirements:
+        ` - Minimum 8 characters. 
+        ` - At least one upper case English letter [A-Z]
+        ` - At least one lower case English letter [a-z]
+        ` - At least one digit [0-9]
+        ` - At least one special character (!,@,#,%,^,&,$)
+        ` "
+
+        if(($sql_administrator_login_password -cmatch '[a-z]') -and ($sql_administrator_login_password -cmatch '[A-Z]') -and ($sql_administrator_login_password -match '\d') -and ($sql_administrator_login_password.length -ge 8) -and ($sql_administrator_login_password -match '!|@|#|%|^|&|$'))
+        {
+            $complexPassword = 1
+        Write-Output "Password $sql_administrator_login_password accepted. Make sure you remember this!"
+        }
+        else
+        {
+            Write-Output "$sql_administrator_login_password does not meet the compexity requirements."
+        }
+    }
+    
 $wsIdContosoSales =  Read-Host "Enter your PowerBI workspace Id "
 $openAIResource = "openAIResource$suffix"
 $useOpenAI = Read-Host "Do you want to use the Azure OpenAI endpoint for text embeddings? (yes/no)"
