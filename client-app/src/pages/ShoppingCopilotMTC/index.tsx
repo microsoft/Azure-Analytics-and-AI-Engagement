@@ -90,9 +90,13 @@ const categories = [
 const { BlobBaseUrl, SPEECH_REGION, SPEECH_KEY } = window.config;
 // const COPILOT_API = "https://func-retail-fsi.azurewebsites.net/api/chat";
 const COPILOT_API =""
-const SESSIONS_API =""
-const IMAGE_UPLOAD_API =""
-const VIDEO_UPLOAD_API =""
+  
+const SESSIONS_API =
+  ""
+const IMAGE_UPLOAD_API =
+  ""
+const VIDEO_UPLOAD_API =
+ ""
 
 const SUGGESTED_ACTIONS: Action[] = [
   // {
@@ -230,26 +234,28 @@ export const ShoppingCopilotMTC = () => {
   });
   const [showCartUI, setShowCartUI] = useState(false);
 
-  const paints = [
+ const paints = [
     {
       id: "OM-401",
       title: "Whispering Blue",
-      price: 14.5,
+      price: 47.99,
       rating: 4.5,
       reviews: 635,
       description:
         "Imagine a gentle breeze carrying the soft hues of a whispering blue, reminiscent of a tranquil sky at dawn.",
-      image: frostedBlue,
+      image:
+        "https://dreamdemoassets.blob.core.windows.net/herodemos/furniturehardwoodflooragainstbluewallV1.png",
     },
     {
       id: "OM-402",
-      title: "Frosted Blue",
-      price: 18.5,
+      title: "Vibrant Sunshine Yellow",
+      price: 15.99,
       rating: 4.3,
       reviews: 529,
       description:
-        "Imagine a frosted blue hue that wraps around you like a cool breeze, reminiscent of a serene winter morning.",
-      image: whisperingBlue,
+        "Imagine a sunshine yellow hue that wraps around you like a warm summer, reminiscent of a serene summer morning.",
+      image:
+        "https://dreamdemoassets.blob.core.windows.net/herodemos/closeupspraybottle_v1.png",
     },
   ];
   const AUTHORS: User[] = [
@@ -275,7 +281,7 @@ export const ShoppingCopilotMTC = () => {
     },
   ];
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
   const [messages, setMessages] = useState<any[]>(INITIAL_MESSAGE);
   const [checkTime, setCheckTime] = useState(new Date());
   const [cardImage, setCardImage] = useState(
@@ -385,7 +391,7 @@ export const ShoppingCopilotMTC = () => {
         "Speech service configuration is missing. Please check your SPEECH_KEY and SPEECH_REGION."
       );
       return;
-    }
+}
     axios
       .post(
         `https://${SPEECH_REGION}.api.cognitive.microsoft.com/sts/v1.0/issueToken`,
@@ -398,7 +404,7 @@ export const ShoppingCopilotMTC = () => {
         }
       )
       .then((res) => setIssueToken(res.data))
-      .catch((err) => {
+    .catch((err) => {
         console.log(
           "Failed to get speech token. Please check your Azure Speech credentials."
         );
@@ -636,57 +642,58 @@ export const ShoppingCopilotMTC = () => {
         image: hasUploadedImage,
       })
       .then(({ data }) => {
+      
         // data.products && data.products.length > 0
-        //         data.answer = `{
-        //     "products": {},
-        //     "answer": "I can suggest some paint colors\u2014would you be able to tell me a bit about the room or show me a picture?",
-        //     "thinking": "The customer wants to paint their room and is looking for both shade suggestions and paint sprayer options. Given the size, a 4 to 5 gallon quantity is recommended. To enhance their experience, presenting stylish color options alongside helpful tools like sprayers supports ease and inspiration.",
-        //     "suggestions": []
-        // }`
-        //         data.answer = `
-        // <h5><b>Room Overview</b></h5>
+//         data.answer = `{
+//     "products": {},
+//     "answer": "I can suggest some paint colors\u2014would you be able to tell me a bit about the room or show me a picture?",
+//     "thinking": "The customer wants to paint their room and is looking for both shade suggestions and paint sprayer options. Given the size, a 4 to 5 gallon quantity is recommended. To enhance their experience, presenting stylish color options alongside helpful tools like sprayers supports ease and inspiration.",
+//     "suggestions": []
+// }`
+//         data.answer = `
+// <h5><b>Room Overview</b></h5>
 
-        // <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
-        // <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
-        // <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
+// <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
+// <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
+// <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
 
-        // <h5><b>Lighting</b></h5>
-        // <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
-        // <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
-        // <p><b>Curtains:</b> Light gray, semi-sheer</p>
+// <h5><b>Lighting</b></h5>
+// <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
+// <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
+// <p><b>Curtains:</b> Light gray, semi-sheer</p>
 
-        // <h5><b>Walls & Ceiling</b></h5>
-        // <p><b>Wall Color</b>: Off-white (considering a change)</p>
-        // <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
-        // <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
+// <h5><b>Walls & Ceiling</b></h5>
+// <p><b>Wall Color</b>: Off-white (considering a change)</p>
+// <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
+// <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
 
-        // <h5><b>Flooring</b></h5>
-        // <p><b>Material</b>: Warm brown wood</p>
-        // <p><b>Rug</b>: Patterned rug under the coffee table</p>
+// <h5><b>Flooring</b></h5>
+// <p><b>Material</b>: Warm brown wood</p>
+// <p><b>Rug</b>: Patterned rug under the coffee table</p>
+  
+// <h5><b>Furniture
+// </b>
+// </h5>
+// <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
+// <p><b>Other Furniture</b>: Small desk by the window</p>
+// <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
 
-        // <h5><b>Furniture
-        // </b>
-        // </h5>
-        // <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
-        // <p><b>Other Furniture</b>: Small desk by the window</p>
-        // <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
+// <h5><b>Plants & Decor</b></h5>
+// <p><b>Plants</b>: Several, including hanging plants near the window</p>
+// <p><b>Bookshelf</b>: Filled with books and decorative items</p>
 
-        // <h5><b>Plants & Decor</b></h5>
-        // <p><b>Plants</b>: Several, including hanging plants near the window</p>
-        // <p><b>Bookshelf</b>: Filled with books and decorative items</p>
+// <h5><b>Color Preferences</b></h5>
+// <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
+// <p><b>Dislikes</b>: Overly bold or dark shades</p>
+// <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
 
-        // <h5><b>Color Preferences</b></h5>
-        // <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
-        // <p><b>Dislikes</b>: Overly bold or dark shades</p>
-        // <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
-
-        // <h5><b>Practical Considerations</b></h5>
-        // <p><b>Occupants</b>: No pets or kids</p>
-        // <p><b>Maintenance</b>: Not a major concern</p>
+// <h5><b>Practical Considerations</b></h5>
+// <p><b>Occupants</b>: No pets or kids</p>
+// <p><b>Maintenance</b>: Not a major concern</p>
 
         // `;
-
-        data.answer = `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining. 
+        
+        data.answer =  `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining. 
           It has a cozy style that blends modern and natural textures, aiming for a vibrant yet calming
            mood with earthy tones. 💡 Natural light is abundant in the morning thanks to an east-facing window 🌅,
             while a floor lamp provides illumination in the evening 🛋️. Light gray, semi-sheer curtains 🪟
@@ -699,7 +706,7 @@ export const ShoppingCopilotMTC = () => {
                 and decorative items 📚 enhances the decor. 🎨 Preferred colors include earthy tones like sage and terracotta
                  🌱🧡, avoiding overly bold or dark shades, and the palette is designed to coordinate with a nearby kitchen
                   featuring white cabinets and green tiles 🍽️. 🧹 There are no pets or children in the space,
-                  and maintenance is not a major concern 🧽.`;
+                  and maintenance is not a major concern 🧽.`
 
         if (data.products) {
           if (Object.keys(data.products).length > 0) {
@@ -783,7 +790,7 @@ export const ShoppingCopilotMTC = () => {
       })
       .catch((e) => {
         console.log(e);
-
+        
         // Fallback data when API fails
         const fallbackData = {
           answer: `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining. 
@@ -799,53 +806,53 @@ export const ShoppingCopilotMTC = () => {
                 and decorative items 📚 enhances the decor. 🎨 Preferred colors include earthy tones like sage and terracotta
                  🌱🧡, avoiding overly bold or dark shades, and the palette is designed to coordinate with a nearby kitchen
                   featuring white cabinets and green tiles 🍽️. 🧹 There are no pets or children in the space,
-                  and maintenance is not a major concern 🧽.`,
-          //           answer: `
-          // <h5><b>Room Overview</b></h5>
+                  and maintenance is not a major concern 🧽.`
+//           answer: `
+// <h5><b>Room Overview</b></h5>
 
-          // <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
-          // <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
-          // <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
+// <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
+// <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
+// <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
 
-          // <h5><b>Lighting</b></h5>
-          // <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
-          // <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
-          // <p><b>Curtains:</b> Light gray, semi-sheer</p>
+// <h5><b>Lighting</b></h5>
+// <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
+// <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
+// <p><b>Curtains:</b> Light gray, semi-sheer</p>
 
-          // <h5><b>Walls & Ceiling</b></h5>
-          // <p><b>Wall Color</b>: Off-white (considering a change)</p>
-          // <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
-          // <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
+// <h5><b>Walls & Ceiling</b></h5>
+// <p><b>Wall Color</b>: Off-white (considering a change)</p>
+// <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
+// <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
 
-          // <h5><b>Flooring</b></h5>
-          // <p><b>Material</b>: Warm brown wood</p>
-          // <p><b>Rug</b>: Patterned rug under the coffee table</p>
+// <h5><b>Flooring</b></h5>
+// <p><b>Material</b>: Warm brown wood</p>
+// <p><b>Rug</b>: Patterned rug under the coffee table</p>
+  
+// <h5><b>Furniture
+// </b>
+// </h5>
+// <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
+// <p><b>Other Furniture</b>: Small desk by the window</p>
+// <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
 
-          // <h5><b>Furniture
-          // </b>
-          // </h5>
-          // <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
-          // <p><b>Other Furniture</b>: Small desk by the window</p>
-          // <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
+// <h5><b>Plants & Decor</b></h5>
+// <p><b>Plants</b>: Several, including hanging plants near the window</p>
+// <p><b>Bookshelf</b>: Filled with books and decorative items</p>
 
-          // <h5><b>Plants & Decor</b></h5>
-          // <p><b>Plants</b>: Several, including hanging plants near the window</p>
-          // <p><b>Bookshelf</b>: Filled with books and decorative items</p>
+// <h5><b>Color Preferences</b></h5>
+// <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
+// <p><b>Dislikes</b>: Overly bold or dark shades</p>
+// <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
 
-          // <h5><b>Color Preferences</b></h5>
-          // <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
-          // <p><b>Dislikes</b>: Overly bold or dark shades</p>
-          // <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
-
-          // <h5><b>Practical Considerations</b></h5>
-          // <p><b>Occupants</b>: No pets or kids</p>
-          // <p><b>Maintenance</b>: Not a major concern</p>
+// <h5><b>Practical Considerations</b></h5>
+// <p><b>Occupants</b>: No pets or kids</p>
+// <p><b>Maintenance</b>: Not a major concern</p>
 
           // `,
-          thinking:
-            "The API failed, showing fallback room analysis data to maintain user experience.",
+          ,
+          thinking: "The API failed, showing fallback room analysis data to maintain user experience.",
           products: {},
-          suggestions: [],
+          suggestions: []
         };
 
         // Generate audio for fallback answer
@@ -1260,6 +1267,7 @@ export const ShoppingCopilotMTC = () => {
     });
   };
 
+
   function calculateRemainingTime(heldAt: any, cardType: any) {
     const heldTime = new Date(heldAt).getTime();
     const now = new Date().getTime();
@@ -1324,6 +1332,7 @@ export const ShoppingCopilotMTC = () => {
       setShowCartUI(false);
     }
   }, [coraResponse]);
+
 
   return (
     <div className={styles.container}>
@@ -1921,79 +1930,79 @@ export const ShoppingCopilotMTC = () => {
             <div className={styles.CreditCardContainer}>
               {/* ADDED NEW UI HERE*/}
               {customerSelectionDetails.name == "Liam Williams" && (
-                <div className={styles.familyCreditCardContainer}>
-                  <div>
-                    <h2 className={styles.header}>
-                      Splash into Summer Savings!
-                    </h2>
-                    <h3 className={styles.subHeader}>
-                      <span>Summer Savings!</span>
-                      <span></span>
-                      <span></span>
-                    </h3>
-
-                    <div className={styles.categoriesGrid}>
-                      {categories.map((item) => (
-                        <div key={item.label} className={styles.categoryCard}>
-                          <img
-                            src={item.img}
-                            alt={item.label}
-                            className={styles.categoryImage}
-                          />
-                          <p className={styles.categoryLabel}>{item.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
                 // <div className={styles.familyCreditCardContainer}>
-                //   <div className={styles.interiorPaint}>
-                //     <div className={styles.breadcrumb}>
-                //       Home / Color paints / <span>Interior paints</span>
-                //     </div>
-                //     <div className={styles.banner}>
-                //       <img
-                //         src={bannerContainder}
-                //         alt="Banner"
-                //         className={styles.bannerImage}
-                //       />
-                //     </div>
-                //     <div className={styles.cardContainer}>
-                //       {paints.map((paint) => (
-                //         <div key={paint.id} className={styles.card}>
+                //   <div>
+                //     <h2 className={styles.header}>
+                //       Splash into Summer Savings!
+                //     </h2>
+                //     <h3 className={styles.subHeader}>
+                //       <span>Summer Savings!</span>
+                //       <span></span>
+                //       <span></span>
+                //     </h3>
+
+                //     <div className={styles.categoriesGrid}>
+                //       {categories.map((item) => (
+                //         <div key={item.label} className={styles.categoryCard}>
                 //           <img
-                //             src={paint.image}
-                //             alt={paint.title}
-                //             className={styles.paintImage}
+                //             src={item.img}
+                //             alt={item.label}
+                //             className={styles.categoryImage}
                 //           />
-                //           <div className={styles.info}>
-                //             <div className={styles.infotitle}>
-                //               <h3>{paint.title}</h3>
-                //               <p className={styles.price}>${paint.price}</p>
-                //             </div>
-                //             <p className={styles.code}>{paint.id}</p>
-                //             <p className={styles.description}>
-                //               {paint.description}
-                //             </p>
-                //             <div className={styles.priceReview}>
-                //               <span className={styles.rating}>
-                //                 ⭐⭐⭐⭐ {paint.rating} ({paint.reviews})
-                //               </span>
-                //             </div>
-                //             <div className={styles.actions}>
-                //               <button className={styles.addToCart}>
-                //                 Add to Cart
-                //               </button>
-                //               <button className={styles.requestHold}>
-                //                 Request a Hold
-                //               </button>
-                //             </div>
-                //           </div>
+                //           <p className={styles.categoryLabel}>{item.label}</p>
                 //         </div>
                 //       ))}
                 //     </div>
                 //   </div>
                 // </div>
+                <div className={styles.familyCreditCardContainer}>
+                  <div className={styles.interiorPaint}>
+                    <div className={styles.breadcrumb}>
+                      Home / Color paints / <span>Interior paints</span>
+                    </div>
+                    <div className={styles.banner}>
+                      <img
+                        src={bannerContainder}
+                        alt="Banner"
+                        className={styles.bannerImage}
+                      />
+                    </div>
+                    <div className={styles.cardContainer}>
+                      {paints.map((paint) => (
+                        <div key={paint.id} className={styles.card}>
+                          <img
+                            src={paint.image}
+                            alt={paint.title}
+                            className={styles.paintImage}
+                          />
+                          <div className={styles.info}>
+                            <div className={styles.infotitle}>
+                              <h3>{paint.title}</h3>
+                              <p className={styles.price}>${paint.price}</p>
+                            </div>
+                            <p className={styles.code}>{paint.id}</p>
+                            <p className={styles.description}>
+                              {paint.description}
+                            </p>
+                            <div className={styles.priceReview}>
+                              <span className={styles.rating}>
+                                ⭐⭐⭐⭐ {paint.rating} ({paint.reviews})
+                              </span>
+                            </div>
+                            <div className={styles.actions}>
+                              <button className={styles.addToCart}>
+                                Add to Cart
+                              </button>
+                              <button className={styles.requestHold}>
+                                Request a Hold
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </div>
