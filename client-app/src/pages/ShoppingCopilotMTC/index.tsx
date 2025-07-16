@@ -90,13 +90,9 @@ const categories = [
 const { BlobBaseUrl, SPEECH_REGION, SPEECH_KEY } = window.config;
 // const COPILOT_API = "https://func-retail-fsi.azurewebsites.net/api/chat";
 const COPILOT_API =""
-  
-const SESSIONS_API =
-  ""
-const IMAGE_UPLOAD_API =
-  ""
-const VIDEO_UPLOAD_API =
- ""
+const SESSIONS_API =""
+const IMAGE_UPLOAD_API =""
+const VIDEO_UPLOAD_API =""
 
 const SUGGESTED_ACTIONS: Action[] = [
   // {
@@ -234,7 +230,7 @@ export const ShoppingCopilotMTC = () => {
   });
   const [showCartUI, setShowCartUI] = useState(false);
 
- const paints = [
+  const paints = [
     {
       id: "OM-401",
       title: "Whispering Blue",
@@ -391,7 +387,7 @@ export const ShoppingCopilotMTC = () => {
         "Speech service configuration is missing. Please check your SPEECH_KEY and SPEECH_REGION."
       );
       return;
-}
+    }
     axios
       .post(
         `https://${SPEECH_REGION}.api.cognitive.microsoft.com/sts/v1.0/issueToken`,
@@ -404,7 +400,7 @@ export const ShoppingCopilotMTC = () => {
         }
       )
       .then((res) => setIssueToken(res.data))
-    .catch((err) => {
+      .catch((err) => {
         console.log(
           "Failed to get speech token. Please check your Azure Speech credentials."
         );
@@ -642,71 +638,29 @@ export const ShoppingCopilotMTC = () => {
         image: hasUploadedImage,
       })
       .then(({ data }) => {
-      
         // data.products && data.products.length > 0
-//         data.answer = `{
-//     "products": {},
-//     "answer": "I can suggest some paint colors\u2014would you be able to tell me a bit about the room or show me a picture?",
-//     "thinking": "The customer wants to paint their room and is looking for both shade suggestions and paint sprayer options. Given the size, a 4 to 5 gallon quantity is recommended. To enhance their experience, presenting stylish color options alongside helpful tools like sprayers supports ease and inspiration.",
-//     "suggestions": []
-// }`
-//         data.answer = `
-// <h5><b>Room Overview</b></h5>
+        //         data.answer = `{
+        //     "products": {},
+        //     "answer": "I can suggest some paint colors\u2014would you be able to tell me a bit about the room or show me a picture?",
+        //     "thinking": "The customer wants to paint their room and is looking for both shade suggestions and paint sprayer options. Given the size, a 4 to 5 gallon quantity is recommended. To enhance their experience, presenting stylish color options alongside helpful tools like sprayers supports ease and inspiration.",
+        //     "suggestions": []
+        // }`
+        data.answer = `<h5><b>🏡 Room Overview</b></h5><p><b>Primary Use</b>: 🛋️ Relaxing, reading, occasional entertaining</p><p><b>Style</b>: Cozy with a mix of modern and natural textures</p><p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p><h5><b>💡 Lighting</b></h5><p><b>Natural Light:</b>🌅 Abundant in the morning (east-facing window) </p><p><b>Artificial Light:</b> Floor lamp used in the evening</p><p><b>Curtains:</b>🪟 Light gray, semi-sheer </p><h5><b>🧱 Walls & Ceiling</b></h5><p><b>Wall Color</b>:🎨 Off-white (considering a change) </p><p><b>Decor</b>:🖼️ Abstract painting (blues and greens) above the couch </p><p><b>Ceiling</b>:🌀 Flat, white, with a ceiling fan </p><h5><b>🪵 Flooring</b></h5><p><b>Material</b>: Warm brown wood</p><p><b>Rug</b>:🧶 Patterned rug under the coffee table </p><h5><b>🪑 Furniture</b></h5><p><b>Main Seating</b>:🛋️ Beige couch with colorful cushions </p><p><b>Other Furniture</b>:🧑‍💻 Small desk by the window </p><p><b>Style</b>: Mix of wood, fabric, and some metal</p><h5><b>🪴 Plants & Decor</b></h5><p><b>Plants</b>:🌿 Several, including hanging plants near the window </p><p><b>Bookshelf</b>:📚 Filled with books and decorative items </p><h5><b>🎨 Color Preferences</b></h5><p><b>Likes</b>:🌱🧡 Earthy tones (e.g., sage, terracotta), calming colors </p><p><b>Dislikes</b>: Overly bold or dark shades</p><p><b>Transition</b>:🍽️ Should coordinate with nearby kitchen (white cabinets, green tiles) </p><h5><b>🏡 Practical Considerations</b></h5><p><b>Occupants</b>:🧹 No pets or kids </p><p><b>Maintenance</b>:🧽 Not a major concern </p>`;
 
-// <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
-// <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
-// <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
-
-// <h5><b>Lighting</b></h5>
-// <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
-// <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
-// <p><b>Curtains:</b> Light gray, semi-sheer</p>
-
-// <h5><b>Walls & Ceiling</b></h5>
-// <p><b>Wall Color</b>: Off-white (considering a change)</p>
-// <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
-// <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
-
-// <h5><b>Flooring</b></h5>
-// <p><b>Material</b>: Warm brown wood</p>
-// <p><b>Rug</b>: Patterned rug under the coffee table</p>
-  
-// <h5><b>Furniture
-// </b>
-// </h5>
-// <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
-// <p><b>Other Furniture</b>: Small desk by the window</p>
-// <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
-
-// <h5><b>Plants & Decor</b></h5>
-// <p><b>Plants</b>: Several, including hanging plants near the window</p>
-// <p><b>Bookshelf</b>: Filled with books and decorative items</p>
-
-// <h5><b>Color Preferences</b></h5>
-// <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
-// <p><b>Dislikes</b>: Overly bold or dark shades</p>
-// <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
-
-// <h5><b>Practical Considerations</b></h5>
-// <p><b>Occupants</b>: No pets or kids</p>
-// <p><b>Maintenance</b>: Not a major concern</p>
-
-        // `;
-        
-        data.answer =  `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining. 
-          It has a cozy style that blends modern and natural textures, aiming for a vibrant yet calming
-           mood with earthy tones. 💡 Natural light is abundant in the morning thanks to an east-facing window 🌅,
-            while a floor lamp provides illumination in the evening 🛋️. Light gray, semi-sheer curtains 🪟
-            soften the space. 🎨 The walls are currently off-white (with a possible color change in mind),
-            and an abstract painting in blues and greens hangs above the couch 🖼️. The ceiling is flat, white,
-             and features a ceiling fan 🌀. 🪵 The flooring is warm brown wood, complemented by a patterned
-             rug under the coffee table 🧶. 🪑 Furniture includes a beige couch with colorful cushions,
-              a small desk by the window 🧑‍💻, and a mix of wood, fabric, and metal elements. 🪴 Several plants,
-               including hanging ones near the window 🌿, add freshness, while a bookshelf filled with books
-                and decorative items 📚 enhances the decor. 🎨 Preferred colors include earthy tones like sage and terracotta
-                 🌱🧡, avoiding overly bold or dark shades, and the palette is designed to coordinate with a nearby kitchen
-                  featuring white cabinets and green tiles 🍽️. 🧹 There are no pets or children in the space,
-                  and maintenance is not a major concern 🧽.`
+        // data.answer =  `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining.
+        //   It has a cozy style that blends modern and natural textures, aiming for a vibrant yet calming
+        //    mood with earthy tones. 💡 Natural light is abundant in the morning thanks to an east-facing window 🌅,
+        //     while a floor lamp provides illumination in the evening 🛋️. Light gray, semi-sheer curtains 🪟
+        //     soften the space. 🎨 The walls are currently off-white (with a possible color change in mind),
+        //     and an abstract painting in blues and greens hangs above the couch 🖼️. The ceiling is flat, white,
+        //      and features a ceiling fan 🌀. 🪵 The flooring is warm brown wood, complemented by a patterned
+        //      rug under the coffee table 🧶. 🪑 Furniture includes a beige couch with colorful cushions,
+        //       a small desk by the window 🧑‍💻, and a mix of wood, fabric, and metal elements. 🪴 Several plants,
+        //        including hanging ones near the window 🌿, add freshness, while a bookshelf filled with books
+        //         and decorative items 📚 enhances the decor. 🎨 Preferred colors include earthy tones like sage and terracotta
+        //          🌱🧡, avoiding overly bold or dark shades, and the palette is designed to coordinate with a nearby kitchen
+        //           featuring white cabinets and green tiles 🍽️. 🧹 There are no pets or children in the space,
+        //           and maintenance is not a major concern 🧽.`
 
         if (data.products) {
           if (Object.keys(data.products).length > 0) {
@@ -728,7 +682,7 @@ export const ShoppingCopilotMTC = () => {
               },
               {
                 author: AUTHORS[0],
-                text: JSON.stringify(data.answer, null, 2),
+                text: data.answer,
                 timestamp: new Date(),
                 // data_points: data.data_points,
                 thoughts: data.thinking,
@@ -789,70 +743,55 @@ export const ShoppingCopilotMTC = () => {
         // setCartProducts(formattedProducts ?? []);
       })
       .catch((e) => {
-        console.log(e);
-        
-        // Fallback data when API fails
+        console.log(e); // Fallback data when API fails
         const fallbackData = {
-          answer: `:🛋️ The room is primarily used for relaxing, reading, and occasional entertaining. 
-          It has a cozy style that blends modern and natural textures, aiming for a vibrant yet calming
-           mood with earthy tones. 💡 Natural light is abundant in the morning thanks to an east-facing window 🌅,
-            while a floor lamp provides illumination in the evening 🛋️. Light gray, semi-sheer curtains 🪟
-            soften the space. 🎨 The walls are currently off-white (with a possible color change in mind),
-            and an abstract painting in blues and greens hangs above the couch 🖼️. The ceiling is flat, white,
-             and features a ceiling fan 🌀. 🪵 The flooring is warm brown wood, complemented by a patterned
-             rug under the coffee table 🧶. 🪑 Furniture includes a beige couch with colorful cushions,
-              a small desk by the window 🧑‍💻, and a mix of wood, fabric, and metal elements. 🪴 Several plants,
-               including hanging ones near the window 🌿, add freshness, while a bookshelf filled with books
-                and decorative items 📚 enhances the decor. 🎨 Preferred colors include earthy tones like sage and terracotta
-                 🌱🧡, avoiding overly bold or dark shades, and the palette is designed to coordinate with a nearby kitchen
-                  featuring white cabinets and green tiles 🍽️. 🧹 There are no pets or children in the space,
-                  and maintenance is not a major concern 🧽.`
-//           answer: `
-// <h5><b>Room Overview</b></h5>
+          answer: `<h5><b>🏡 Room Overview</b></h5><p><b>Primary Use</b>: 🛋️ Relaxing, reading, occasional entertaining</p><p><b>Style</b>: Cozy with a mix of modern and natural textures</p><p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p><h5><b>💡 Lighting</b></h5><p><b>Natural Light:</b>🌅 Abundant in the morning (east-facing window) </p><p><b>Artificial Light:</b> Floor lamp used in the evening</p><p><b>Curtains:</b>🪟 Light gray, semi-sheer </p><h5><b>🧱 Walls & Ceiling</b></h5><p><b>Wall Color</b>:🎨 Off-white (considering a change) </p><p><b>Decor</b>:🖼️ Abstract painting (blues and greens) above the couch </p><p><b>Ceiling</b>:🌀 Flat, white, with a ceiling fan </p><h5><b>🪵 Flooring</b></h5><p><b>Material</b>: Warm brown wood</p><p><b>Rug</b>:🧶 Patterned rug under the coffee table </p><h5><b>🪑 Furniture</b></h5><p><b>Main Seating</b>:🛋️ Beige couch with colorful cushions </p><p><b>Other Furniture</b>:🧑‍💻 Small desk by the window </p><p><b>Style</b>: Mix of wood, fabric, and some metal</p><h5><b>🪴 Plants & Decor</b></h5><p><b>Plants</b>:🌿 Several, including hanging plants near the window </p><p><b>Bookshelf</b>:📚 Filled with books and decorative items </p><h5><b>🎨 Color Preferences</b></h5><p><b>Likes</b>:🌱🧡 Earthy tones (e.g., sage, terracotta), calming colors </p><p><b>Dislikes</b>: Overly bold or dark shades</p><p><b>Transition</b>:🍽️ Should coordinate with nearby kitchen (white cabinets, green tiles) </p><h5><b>🏡 Practical Considerations</b></h5><p><b>Occupants</b>:🧹 No pets or kids </p><p><b>Maintenance</b>:🧽 Not a major concern </p>`,
+          //           answer: `
+          // <h5><b>Room Overview</b></h5>
 
-// <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
-// <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
-// <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
+          // <p><b>Primary Use</b>: Relaxing, reading, occasional entertaining</p>
+          // <p><b>Style</b>: Cozy with a mix of modern and natural textures</p>
+          // <p><b>Mood Desired</b>: Vibrant but not too bold; earthy or calming tones preferred</p>
 
-// <h5><b>Lighting</b></h5>
-// <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
-// <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
-// <p><b>Curtains:</b> Light gray, semi-sheer</p>
+          // <h5><b>Lighting</b></h5>
+          // <p><b>Natural Light:</b> Abundant in the morning (east-facing window)</p>
+          // <p><b>Artificial Light:</b> Floor lamp used in the evening</p>
+          // <p><b>Curtains:</b> Light gray, semi-sheer</p>
 
-// <h5><b>Walls & Ceiling</b></h5>
-// <p><b>Wall Color</b>: Off-white (considering a change)</p>
-// <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
-// <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
+          // <h5><b>Walls & Ceiling</b></h5>
+          // <p><b>Wall Color</b>: Off-white (considering a change)</p>
+          // <p><b>Decor</b>: Abstract painting (blues and greens) above the couch</p>
+          // <p><b>Ceiling</b>: Flat, white, with a ceiling fan</p>
 
-// <h5><b>Flooring</b></h5>
-// <p><b>Material</b>: Warm brown wood</p>
-// <p><b>Rug</b>: Patterned rug under the coffee table</p>
-  
-// <h5><b>Furniture
-// </b>
-// </h5>
-// <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
-// <p><b>Other Furniture</b>: Small desk by the window</p>
-// <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
+          // <h5><b>Flooring</b></h5>
+          // <p><b>Material</b>: Warm brown wood</p>
+          // <p><b>Rug</b>: Patterned rug under the coffee table</p>
 
-// <h5><b>Plants & Decor</b></h5>
-// <p><b>Plants</b>: Several, including hanging plants near the window</p>
-// <p><b>Bookshelf</b>: Filled with books and decorative items</p>
+          // <h5><b>Furniture
+          // </b>
+          // </h5>
+          // <p><b>Main Seating</b>: Beige couch with colorful cushions</p>
+          // <p><b>Other Furniture</b>: Small desk by the window</p>
+          // <p><b>Style</b>: Mix of wood, fabric, and some metal</p>
 
-// <h5><b>Color Preferences</b></h5>
-// <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
-// <p><b>Dislikes</b>: Overly bold or dark shades</p>
-// <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
+          // <h5><b>Plants & Decor</b></h5>
+          // <p><b>Plants</b>: Several, including hanging plants near the window</p>
+          // <p><b>Bookshelf</b>: Filled with books and decorative items</p>
 
-// <h5><b>Practical Considerations</b></h5>
-// <p><b>Occupants</b>: No pets or kids</p>
-// <p><b>Maintenance</b>: Not a major concern</p>
+          // <h5><b>Color Preferences</b></h5>
+          // <p><b>Likes</b>: Earthy tones (e.g., sage, terracotta), calming colors</p>
+          // <p><b>Dislikes</b>: Overly bold or dark shades</p>
+          // <p><b>Transition</b>: Should coordinate with nearby kitchen (white cabinets, green tiles)</p>
+
+          // <h5><b>Practical Considerations</b></h5>
+          // <p><b>Occupants</b>: No pets or kids</p>
+          // <p><b>Maintenance</b>: Not a major concern</p>
 
           // `,
-          ,
-          thinking: "The API failed, showing fallback room analysis data to maintain user experience.",
+          thinking:
+            "The API failed, showing fallback room analysis data to maintain user experience.",
           products: {},
-          suggestions: []
+          suggestions: [],
         };
 
         // Generate audio for fallback answer
@@ -1267,7 +1206,6 @@ export const ShoppingCopilotMTC = () => {
     });
   };
 
-
   function calculateRemainingTime(heldAt: any, cardType: any) {
     const heldTime = new Date(heldAt).getTime();
     const now = new Date().getTime();
@@ -1332,7 +1270,6 @@ export const ShoppingCopilotMTC = () => {
       setShowCartUI(false);
     }
   }, [coraResponse]);
-
 
   return (
     <div className={styles.container}>
