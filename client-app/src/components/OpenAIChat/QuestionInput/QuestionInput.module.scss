@@ -1,0 +1,111 @@
+.questionInputContainer {
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
+  // height: 95px;
+  width: 100%;
+  padding: 10px;
+  background: white;
+}
+
+.upload {
+  :global(.k-dropzone) {
+    padding: 0;
+    & > :global(div.k-button) {
+      padding: 0;
+      background-color: transparent;
+      border: unset;
+    }
+  }
+  :global(.k-dropzone-hint) {
+    display: none;
+  }
+}
+
+.questionInputTextArea {
+  width: 100%;
+  line-height: 32px;
+  // margin-top: 17px;
+  font-size: 12px;
+
+  .ms-TextField-wrapper{
+
+    .fieldGroup-100{
+      min-height: 0px !important;
+    }
+
+  }
+}
+
+.questionInputButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+  // margin-top: 17px;
+}
+
+.questionInputSendButton {
+  cursor: pointer;
+}
+
+.questionInputSendButtonDisabled {
+  opacity: 0.4;
+}
+
+.spinner {
+  & > div {
+    border-color: var(--primary-color) rgb(213, 213, 213) rgb(213, 213, 213);
+    width: 32px;
+    height: 32px;
+    margin-top: -2px;
+    margin-left: -2px;
+  }
+}
+
+.popup-content {
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+  border: 3px solid var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  padding: 16px;
+  /* background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.05); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  overflow-y: auto;
+  :global(.k-dialog-content > div) {
+    background-color: black;
+  }
+}
+
+.btn {
+  color: white;
+  background-color: var(--secondary-color);
+  & > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+    background-color: var(--secondary-color);
+  }
+}
+
+.mic {
+  cursor: pointer;
+  &:active {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,292 @@
+.oneshotContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oneshotTopSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.uploadFeature {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.btnContainer {
+  // position: absolute;
+  // right: 10px;
+  // bottom: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnContainerInChat {
+  // right: 15px;
+  // bottom: 35px;
+}
+
+.btnContainerInChat > .removeBtn {
+  color: red;
+}
+
+.btnContainerInChat > .previewBtn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+
+  :global(.k-dialog) {
+    border-radius: 8px;
+
+    :global(.k-dialog-titlebar) {
+      background-image: unset;
+      background-color: unset;
+
+      :global(.k-dialog-title) {
+        color: black;
+        font-style: normal;
+      }
+    }
+
+    :global(.k-dialog-actions) {
+      :global(.k-button) {
+        :global(.k-i-x) {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.popupContainer {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  border-radius: 8px !important;
+}
+
+.popup > :global(.k-window.k-dialog > .k-window-titlebar) {
+  border-radius: 8px !important;
+}
+
+.popupContainer > :global(.k-dialog) {
+  border-radius: 8px;
+}
+
+.removeBtn {
+  cursor: pointer;
+}
+
+.previewBtn {
+  background-color: white;
+  border: 1px solid #605e5c;
+  padding: 5px 10px;
+}
+
+.oneshotBottomSection {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
+.spinner div {
+  color: white;
+}
+.oneshotTitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 10px;
+  color: white;
+}
+
+.externalDropZone {
+}
+
+// .uploadDuringChatSelectHidden > :global(.k-dropzone) {
+//   background-color: transparent;
+
+//   // :global(.k-upload-status) {
+//   //   color: white;
+//   // }
+
+//   // :global(.k-button) {
+//   //   cursor: pointer;
+//   //   background-color: transparent;
+//   //   color: white;
+//   //   border: 1px solid white;
+//   // }
+// }
+
+.disableSelectFileBtn {
+  :global(.k-dropzone) {
+    :global(.k-button) {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// .showFileSelect > :global(.k-dropzone) {
+//   display: unset !important;
+// }
+
+// .externalDropZone > :global(.k-dropzone-inner) {
+//   width: 93%;
+//   background-color: transparent;
+//   border: 2px dashed white;
+//   height: 210px;
+//   color: white;
+//   border-radius: 8px;
+// }
+
+.uploadArea {
+  width: -webkit-fill-available;
+  border-radius: 8px;
+
+  // :global(.k-actions) {
+  //   :global(.k-upload-selected) {
+  //     background-color: var(--primary-color);
+  //     border-color: var(--primary-color);
+  //   }
+  // }
+}
+
+.uploadDuringChatSelectHidden {
+  // :global(.k-dropzone) {
+  //   :global(.k-dropzone-hint) {
+  //     color: white;
+  //   }
+  // }
+  // :global(.k-actions) {
+  //   :global(.k-clear-selected) {
+  //     background-color: transparent;
+  //     border: 1px solid white;
+  //     color: white;
+  //   }
+  // }
+}
+
+// .uploadArea > :global(.k-dropzone) {
+//   border-radius: 8px;
+// }
+
+// .uploadArea > :global(.k-upload-files .k-file-validation-message) {
+//   display: none;
+// }
+
+// .uploadArea
+//   > :global(.k-upload-files .k-file-success .k-file-validation-message) {
+//   display: block;
+//   color: #37b400;
+// }
+
+// .uploadArea > :global(.k-reset .k-file-invalid) {
+//   display: none;
+// }
+
+.externalDropZone > :global(.k-dropzone-inner .k-dropzone-hint) {
+  font-size: 16px;
+  white-space: break-spaces;
+  text-align: center;
+  font-weight: 500;
+}
+
+// .externalDropZone > :global(.k-dropzone-inner .k-dropzone-note) {
+//   display: none;
+// }
+
+@media only screen and (max-width: 800px) {
+  .oneshotTitle {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0;
+  }
+}
+
+.oneshotQuestionInput {
+  max-width: 800px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.oneshotAnswerContainer {
+  max-width: 800px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.oneshotAnalysisPanel {
+  width: 600px;
+  margin-left: 20px;
+}
+
+.oneshotSettingsSeparator {
+  margin-top: 15px;
+}
+
+.settingsButton {
+  align-self: flex-end;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.Desclaimer {
+  padding: 20px;
+  color: white;
+  border: solid 1px white;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.toggleButton {
+  padding-bottom: 15px;
+  color: white;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid black;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

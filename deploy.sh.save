@@ -1,0 +1,9 @@
+#!/bin/bash
+#sudo dotnet build "server/server.csproj" -c Release -o ./app/build
+sudo dotnet publish "server/server.csproj" -c Release -o ./publish
+echo "Server Published"
+cd client-app/
+yarn build
+echo "Client App Published"
+mv ./build ./wwwroot
+mv ./wwwroot ../publish

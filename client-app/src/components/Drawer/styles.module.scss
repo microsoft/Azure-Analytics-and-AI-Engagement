@@ -1,0 +1,125 @@
+.container {
+  width: 100%;
+  height: calc(96vh - 49px);
+  position: relative;
+}
+
+.toolbar {
+  width: max-content;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  height: 40px;
+}
+
+.drawer {
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  :global(.k-drawer-wrapper) {
+    margin-top: 34px;
+    overflow-y: auto;
+    height: calc(100vh - 82px);
+  }
+
+  :global(.k-level-0) {
+    :global(.k-item-text) {
+      margin-top: 2px;
+      text-wrap: wrap;
+    }
+  }
+
+  :global(.k-drawer-item) {
+    font-size: 14px;
+    gap: 8px;
+
+    :global(.k-item-text) {
+      text-wrap: wrap;
+    }
+  }
+
+  // :global(.k-drawer-item):nth-child(3) {
+  //   :global(.k-svg-icon) {
+  //     border: 2px solid red;
+  //     // display: none;
+  //   }
+  // }
+  // :global(.k-drawer-item):nth-child(9) {
+  //   :global(.k-svg-icon) {
+  //     border: 2px solid red;
+  //     // display: none;
+  //   }
+  // }
+  :global(.k-svg-icon) {
+    color: var(--kendo-color-on-base);
+  }
+
+  :global(.k-drawer-item::before) {
+    border-inline-start-width: 4px !important;
+  }
+
+  :global(.k-level-1) {
+    padding-left: 45px;
+  }
+  :global(.k-drawer-item.k-selected.k-level-1) {
+    &::before {
+      border-radius: var(--border-radius-full, 9999px);
+      opacity: 1;
+      margin-left: 35px;
+      height: 80%;
+      vertical-align: middle;
+      margin-top: 4px;
+    }
+  }
+  :global(.k-level-2) {
+    padding-left: 55px;
+  }
+  :global(.k-drawer-item.k-selected.k-level-2) {
+    &::before {
+      border-radius: var(--border-radius-full, 9999px);
+      opacity: 1;
+      margin-left: 45px;
+      height: 80%;
+      vertical-align: middle;
+      margin-top: 4px;
+    }
+  }
+}
+
+.collapsedDrawer {
+  :global(.k-drawer-item) {
+    height: 40px;
+  }
+}
+
+.content {
+  width: calc(100vw - 220px);
+  height: calc(100vh - 48px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  position: relative;
+}
+
+.notExpanded {
+  width: calc(100vw - 50px);
+}
+
+.toggleBtn {
+  outline: none !important;
+  border: unset !important;
+  box-shadow: none !important;
+
+  &:focus,
+  &:active,
+  &:hover {
+    box-shadow: none !important;
+    outline: none !important;
+    border: unset !important;
+  }
+}

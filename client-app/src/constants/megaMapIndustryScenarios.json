@@ -1,0 +1,306 @@
+{
+  "titles": [
+    {
+      "title": "Data analytics",
+      "imageUrl": "Data Analytics Title Tile.png"
+    },
+
+    {
+      "title": "Streaming Analytic",
+      "imageUrl": "Streaming Analytics Title Tile.png"
+    },
+    {
+      "title": "Data Orchestration",
+      "imageUrl": "Data Orchestration Title Tile.png"
+    },
+    {
+      "title": "Azure synapse Link",
+      "imageUrl": "Azure Synapse Link Title Tile.png"
+    },
+    {
+      "title": "Power BI differentiators",
+      "imageUrl": "Power BI Differentiators Title Tile.png"
+    },
+    {
+      "title": "Data security",
+      "imageUrl": "Data Security Title Tile.png"
+    }
+  ],
+  "content": [
+    {
+      "title": "Retail 2.0",
+      "imageUrl": "Retail 2.0 Title Tile.png",
+      "isTitle": true
+    },
+    {
+      "list": [
+        {
+          "title": "Analytics of campaign data using low code experience",
+          "link": "/campaign-analytics"
+        },
+        {
+          "title": "Workload Importance and Isolation",
+          "link": "https://web.azuresynapse.net/en/authoring/analyze?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2Frg-midpwithazurecosmos-prod%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fsynapsemidp"
+        }
+      ],
+      "imageUrl": "Retail_Data Analytics.png"
+    },
+    {
+      "list": [
+        {
+          "title": "Real time location analytics",
+          "link": "https://app-retaildemo-prod.azurewebsites.net/#/ceo-dashboard-dec"
+        },
+        {
+          "title": "Corelation analytics with ADX",
+          "link": "https://app-powerbi-differentiators.azurewebsites.net/#/adx-directquery1"
+        }
+      ],
+      "imageUrl": "Retail_Streaming Analytics.png"
+    },
+    {
+      "list": [
+        {
+          "title": "Communication Analytics using MGDC",
+          "link": "/communication-analytics"
+        },
+        {
+          "title": "Employee Twitter data",
+          "link": "https://web.azuresynapse.net/en/authoring/orchestrate/pipeline/TwitterDataAnalysis?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2Frg-mgdcdemo%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fsynmgdcdemo-prod"
+        },
+        {
+          "title": "Employee sentiment analytics",
+          "link": "https://web.azuresynapse.net/en/authoring/orchestrate/pipeline/ConversationLineage?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2Frg-mgdcdemo%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fsynmgdcdemo-prod"
+        }
+      ],
+      "imageUrl": "Retail_Data Orchestration.png"
+    },
+    {
+      "imageUrl": "Blank Tile Dark Blue.png"
+    },
+    {
+      "list": [
+        {
+          "title": "Performance monitoring & ML based auto-aggregations",
+          "link": "/end-to-end-performance"
+        },
+        {
+          "title": "Datamart in Power BI",
+          "link": "/low-code-datamart-in-power-bi"
+        },
+        {
+          "title": "Integrating Power BI with Serverless pools",
+          "link": "/power-bi-with-azure-synapse-analytics-serverless-sql-pool"
+        },
+        {
+          "title": "MPIP label inheritance from Synapse",
+          "link": "/data-security"
+        },
+        {
+          "title": "Deployment Pipelines",
+          "link": "/deployment-pipeline"
+        },
+        {
+          "title": "Synapse Link for azure SQL DB",
+          "link": "https://web.azuresynapse.net/en/authoring/orchestrate/linkconnections/linkconnection?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2Frg-differentiators-demo%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fsynapseretaildiff"
+        }
+      ],
+      "imageUrl": "Retail_Power BI Differentiators.png"
+    },
+    {
+      "list": [
+        {
+          "title": "RLS in SQL pools",
+          "link": "/row-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "CLS in SQL pools",
+          "link": "/column-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "DDM in dedicated SQL pools",
+          "link": "/dynamic-data-masking-in-dedicated-sql-pools"
+        }
+      ],
+      "imageUrl": "Retail_Data Security.png"
+    },
+    {
+      "title": "FSI",
+      "imageUrl": "FSI Title Tile.png",
+      "isTitle": true
+    },
+    {
+      "list": [
+        {
+          "title": "Geospatial report for fraud detection",
+          "link": "https://app-fsidemo-prod.azurewebsites.net/#/hof-before-dashboard/spencer"
+        },
+        {
+          "title": "ESG dashboard of disparate sources",
+          "link": ""
+        },
+        {
+          "title": "Azure SQL Geospatial Services",
+          "link": "/azure-geo-spatial-fsi"
+        }
+      ],
+      "imageUrl": "FSI_Data Analytics.png"
+    },
+    {
+      "list": [
+        {
+          "title": "Real time location analytics",
+          "link": "https://app-retaildemo-prod.azurewebsites.net/#/ceo-dashboard-dec"
+        }
+      ],
+      "imageUrl": "FSI_Streaming Analytics.png"
+    },
+    {
+      "imageUrl": "Blank_1_( Teal Blue ).png"
+    },
+    {
+      "list": [
+        {
+          "title": "Azure Synapse link with and without HTAP",
+          "link": "/hof-htab-report"
+        }
+      ],
+      "imageUrl": "FSI_Azure Synapse Link.png"
+    },
+    {
+      "imageUrl": "Empty_Purple.png"
+    },
+    {
+      "list": [
+        {
+          "title": "RLS and DDM security on AAD Users",
+          "link": ""
+        },
+        {
+          "title": "RLS in dedicated SQL pools",
+          "link": "/row-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "CLS in dedicated SQL pools",
+          "link": "/column-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "DDM in dedicated SQL pools",
+          "link": "/dynamic-data-masking-in-dedicated-sql-pools"
+        }
+      ],
+      "imageUrl": "FSI_Data Security.png"
+    },
+    {
+      "title": "Healthcare",
+      "imageUrl": "Healthcare Title Tile.png",
+      "isTitle": true
+    },
+    {
+      "imageUrl": "Empty_Blue.png"
+    },
+    {
+      "list": [
+        {
+          "title": "High-throughput data ingestion into Azure Synapse Analytics for a Healthcare Scenario",
+          "link": "https://web.azuresynapse.net/en/authoring/analyze/sqlscripts/3%20Streaming%20ingestion%20to%20HealthCare%20SQL%20Pool?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2FHealthcare-Demo%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fhealthcareworkspace"
+        },
+        {
+          "title": "Real time location analytics",
+          "link": "https://app-retaildemo-prod.azurewebsites.net/#/ceo-dashboard-dec"
+        }
+      ],
+      "imageUrl": "Healthcare_Streaming Analytics.png"
+    },
+    {
+      "imageUrl": "Blank_1_( Teal Blue ).png"
+    },
+    {
+      "imageUrl": "Blank Tile Dark Blue.png"
+    },
+    {
+      "imageUrl": "Empty_Purple.png"
+    },
+    {
+      "imageUrl": "Blank Tile Green.png"
+    },
+    {
+      "title": "Manufacturing",
+      "imageUrl": "Manufacturing Title Tile.png",
+      "isTitle": true
+    },
+    {
+      "list": [
+        {
+          "title": "Azure Database for PostgreSQL Hyperscale",
+          "link": "https://app-manufacturingdemo-prod.azurewebsites.net/#/postgreSqlDashboardDuring"
+        }
+      ],
+      "imageUrl": "Manufacturing_Data Analytics.png"
+    },
+    {
+      "imageUrl": "Blank_1_( Orange ).png"
+    },
+    {
+      "list": [
+        {
+          "title": "Campaign and sales analytics",
+          "link": "/campaign-and-sales-data"
+        }
+      ],
+      "imageUrl": "Manufacturing_Data Orchestration.png"
+    },
+    {
+      "list": [
+        {
+          "title": "Azure Synapse Link using Azure Cosmos DB",
+          "link": "https://web.azuresynapse.net/en/authoring/explore/linked/sqlscripts/7%20MFG%20COSMOS%20Synapse%20Link%20SQL%20Query?workspace=%2Fsubscriptions%2F506e86fc-853c-4557-a6e5-ad72114efd2b%2FresourceGroups%2FManufacturing-Demo%2Fproviders%2FMicrosoft.Synapse%2Fworkspaces%2Fsynmanufacturingprod"
+        }
+      ],
+      "imageUrl": "Manufacturing_Azure Synapse Link.png"
+    },
+    {
+      "imageUrl": "Empty_Purple.png"
+    },
+    {
+      "imageUrl": "Blank Tile Green.png"
+    },
+    {
+      "title": "Public Finance",
+      "imageUrl": "Public Finance Title Tile.png",
+      "isTitle": true
+    },
+    {
+      "imageUrl": "Empty_Blue.png"
+    },
+    {
+      "imageUrl": "Blank_1_( Orange ).png"
+    },
+    {
+      "imageUrl": "Blank_1_( Teal Blue ).png"
+    },
+    {
+      "imageUrl": "Blank Tile Dark Blue.png"
+    },
+    {
+      "imageUrl": "Empty_Purple.png"
+    },
+    {
+      "list": [
+        {
+          "title": "RLS in dedicated SQL pools",
+          "link": "/row-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "CLS in dedicated SQL pools",
+          "link": "/column-level-security-in-dedicated-sql-pools"
+        },
+        {
+          "title": "DDM in dedicated SQL pools",
+          "link": "/dynamic-data-masking-in-dedicated-sql-pools"
+        }
+      ],
+      "imageUrl": "Public Finance_Data Security.png"
+    }
+  ]
+}

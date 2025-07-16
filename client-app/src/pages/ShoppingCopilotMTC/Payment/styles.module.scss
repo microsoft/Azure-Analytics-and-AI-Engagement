@@ -1,0 +1,258 @@
+.container {
+  // margin-top: 50px;
+  height: 100%;
+  position: relative;
+  background-color: #ececec;
+  padding: 24px;
+  padding-top: 60px;
+  // justify-content: center;
+  gap: 24px;
+  overflow: auto;
+}
+
+.topContainer {
+  font-size: 14px !important;
+
+  :global(.k-label) {
+    font-weight: 400;
+    font-size: 14px;
+    color: gray;
+  }
+
+  :global(.k-input) {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.userAndCardDetailContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.userDetailContainer {
+  border-radius: 12px;
+  background-color: white;
+  padding: 20px;
+}
+
+.cardDetailContainer {
+  border-radius: 12px;
+  background-color: white;
+  padding: 20px;
+}
+
+hr {
+  opacity: 0.5;
+}
+
+.orderSummaryContainer {
+  display: grid;
+  grid-template-columns: 75% 23.5%;
+  column-gap: 20px;
+  width: 100%;
+  margin: 15px 0;
+  margin-bottom: 70px;
+
+  .orderDetailContainer {
+    border-radius: 12px;
+    background-color: white;
+    padding: 10px 20px;
+  }
+}
+
+.cardsContainer {
+  padding: 5px 15px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    :global(.k-radio-label) {
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
+
+.paymentButton {
+  background-color: #005d90;
+  color: white;
+  width: 100%;
+  border-radius: 12px;
+  &:hover {
+    background-color: #005d90;
+    color: white;
+  }
+}
+
+.amountContainer {
+  border-radius: 12px;
+  background-color: white;
+  padding: 20px;
+  row-gap: 10px;
+  height: 172px;
+}
+
+.subTotalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  height: 30px;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 12px 0;
+  color: #000000;
+}
+
+.productContainer {
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.productDetail {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+  }
+}
+
+.lineBreak {
+  border-bottom: 1px solid #b6b6b6;
+  margin: 16px 0;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.quantity,
+.remove {
+  margin-top: 36px !important;
+  color: #2c8ee7;
+}
+
+.remove {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.orderDetail {
+  font-weight: bold;
+}
+
+.paymentTitle {
+  font-weight: bold;
+  padding: 12px;
+  font-size: 20px;
+  padding-top: 0;
+}
+
+.checkoutPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 50px));
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+
+  h2 {
+    color: #2eb464;
+  }
+
+  p {
+    font-weight: bold;
+    padding: 0 12px;
+  }
+}
+
+.backButton {
+  background-color: #2eb464;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #2eb464;
+    color: white;
+  }
+}
+
+.emptyCart {
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: #878888;
+}
+
+.popupContainer {
+  // margin-top: 50px;
+  height: 100%;
+  position: relative;
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/appspluscosmos/chat_bg_icon_white_overlay.png);
+  background-size: cover;
+  padding: 24px;
+  display: flex;
+  z-index: 999;
+  // justify-content: center;
+  gap: 24px;
+}
+
+.orderItemContainer {
+  display: inline-block;
+  width: 172px;
+  margin-right: 20px;
+  text-align: center;
+
+  .orderItemImageContainer {
+    width: 172px;
+    height: 172px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+}

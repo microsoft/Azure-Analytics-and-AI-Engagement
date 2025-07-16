@@ -1,0 +1,58 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: Yarn@3
+  inputs:
+    projectDirectory: 'client-app/'
+    arguments: ' --frozen-lockfile'
+
+- task: Yarn@3
+  inputs:
+    projectDirectory: 'client-app/'
+    arguments: 'build'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'client-app/build'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/webapp'
+    OverWrite: true
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'deployment'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/deployment'
+    OverWrite: true
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker - Spektra'
+    repository: 'manufacturing-demo-api'
+    command: 'buildAndPush'
+    Dockerfile: '**/server/Dockerfile'
+    tags: latest
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/webapp'
+    ArtifactName: 'webapp'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/deployment'
+    ArtifactName: 'deployment'
+    publishLocation: 'Container'

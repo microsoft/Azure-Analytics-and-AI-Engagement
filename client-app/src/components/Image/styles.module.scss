@@ -1,0 +1,247 @@
+.container {
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+  background-size: cover;
+  padding: 4% 1% 1% 1%;
+
+  .landingPageImage {
+    padding: 0px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+}
+.container,
+.image {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.chatIcon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  cursor: pointer;
+  z-index: 999;
+  height: 46px;
+}
+
+.imageTitle {
+  // position: absolute;
+  // top: 2.3%;
+  // left: 5%;
+  // // transform: translate(-50%, 2%);
+  // color: #013056;
+  // font-size: 1.4rem;
+  // font-weight: bold;
+  position: absolute;
+  top: 2.3%;
+  left: 11%;
+  // transform: translate(-50%, 2%);
+  color: #013056;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.subContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  border-radius: 0.5rem;
+
+  padding: 2rem;
+  display: flex !important;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  // background-image: url("https://dreamdemoassets.blob.core.windows.net/nrf/Landing_Page_BG.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  gap: 30px;
+}
+.subLongContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  display: flex !important;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.subLongContainer1 {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  display: flex !important;
+
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  position: relative;
+  overflow-y: hidden;
+  padding: 0.75rem;
+
+  // background-image: url("https://dreamdemoassets.blob.core.windows.net/nrf/onlyFilter.png");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // overflow: scroll;
+}
+.divForImages {
+  // position: absolute;
+  width: 100%;
+  height: max-content;
+
+  position: relative;
+  img {
+    height: max-content;
+    width: 100%;
+  }
+}
+.divForImagesSlide {
+  top: 21%;
+  right: 0%;
+  height: 70%;
+  width: 84%;
+  position: absolute;
+  overflow-y: scroll;
+  img {
+    height: max-content;
+    width: 100%;
+    object-fit: fill;
+  }
+}
+.title {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, 2%);
+  color: #013056;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.subContainer1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  //background-image: url("https://dreamdemoassets.blob.core.windows.net/herodemos/landingPageV4.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  //padding: 2rem;
+  display: flex !important;
+
+  flex-direction: row;
+  //align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+
+  gap: 30px;
+  //margin: 40px 0px;
+}
+
+.image {
+  // height: calc(100% - 10px);
+  object-fit: contain;
+  // padding: 0 55px;
+  // padding-top: 12px;
+}
+.tileWrapper {
+  display: inline-flex;
+}
+.chatBotLandingPageContainer {
+  width: 30%;
+  position: relative;
+  height: 100%;
+}
+// .image {
+//   height: calc(100% - 142px);
+//   padding: 0 12px;
+//   padding-top: 12px;
+// }
+.tileContainer {
+  display: flex;
+  height: 100%;
+  width: 70%;
+  // align-self: flex-end;
+  justify-self: center;
+  // position: absolute;
+  border-radius: 20px;
+  padding: 30px 40px;
+  background-color: rgba(0, 0, 0, 0.459);
+  box-shadow: 0px 4px 4px 0px #ffffff40;
+  z-index: 999;
+  gap: 10px;
+  border: 1px solid white;
+  flex: 1;
+}
+// .tileContainer {
+//   display: flex;
+//   flex-direction: row;
+//   /* margin-bottom: 80px; */
+//   padding: 30px 40px;
+//   border-radius: 20px;
+//   background-color: rgba(0, 0, 0, 0.4588235294);
+//   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+//   max-width: 800px;
+//   z-index: 999;
+//   // position: absolute;
+//   // bottom: 3%;
+//   // left: 42%;
+//   transform: translate(-50%, -10%);
+// }
+
+.tileWrapper1 {
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  // max-width: 600px; /* Adjust this width as needed */
+  // margin: 0 auto;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+.tileWrapper2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+.tileWrapperEnd {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 20px;
+  padding-bottom: 20px;
+  column-gap: 30px;
+  // width: 100%;
+  // max-width: 600px; /* Adjust this width as needed */
+  // margin: 0 auto;
+  width: 100%;
+  place-items: center;
+}
+
+@media screen and (max-width: 1500px) {
+  .subContainer {
+    padding: 2rem 5px;
+  }
+  .tileContainer {
+    .tileWrapper1 {
+      .container {
+      }
+    }
+  }
+
+  .chatBotLandingPageContainer {
+    :global(.chatBot) {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .title {
+    height: 35px !important;
+  }
+}

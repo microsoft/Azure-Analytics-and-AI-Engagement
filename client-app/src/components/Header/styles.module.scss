@@ -1,0 +1,45 @@
+.appBar {
+  padding: 0;
+  position: sticky;
+  z-index: 100;
+  gap: 0;
+  background-size: cover;
+  background-color: var(--kendo-color-primary);
+  color: var(--kendo-color-base);
+  height: 48px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+  img {
+    height: 36px !important;
+    width: auto;
+    margin-left: 12px;
+  }
+}
+.avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-basis: 2.25rem;
+  background-color: unset;
+  border-color: unset;
+  margin-left: 1.5rem;
+
+  :global(.k-avatar-image) > img {
+    width: 100% !important;
+    height: 100% !important;
+    margin-left: unset !important;
+    object-fit: cover;
+    vertical-align: top;
+    background-color: #fff;
+  }
+}
+
+.selectedComponentsText {
+  background-color: #4676bc;
+  width: 280px;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,194 @@
+// OpenAI Chat Demo Styles
+
+.retail-demo {
+  background-image: url("assets/OpenAIChat/retail/bg.png");
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.manufacturing-demo {
+  background-image: url("assets/OpenAIChat/GM_background.png");
+  /* background-repeat: repeat; */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+// .ms-Pivot-link.is-selected::before {
+//   background-color: white !important;
+// }
+
+// .k-dropzone-inner .k-icon {
+//   color: white !important;
+// }
+
+// .k-switch-on .k-switch-track {
+//   border-color: #e9883a;
+//   color: white;
+//   background-color: #e9883a;
+// }
+
+// .k-switch-off .k-switch-thumb,
+// .k-switch-off .k-switch-track {
+//   border-color: #e9883a;
+//   border-width: 2px;
+// }
+
+// .k-i-upload::before {
+//   margin-top: 5px;
+//   content: url("assets/OpenAIChat/Upload_Icon.png") !important;
+// }
+
+// .k-file-size {
+//   color: white !important;
+// }
+
+// .k-upload .k-upload-files .k-file-size {
+//   color: #666666 !important;
+// }
+
+// General Styles
+
+iframe {
+  background: black;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// For navbar menu
+.k-animation-container {
+  border-radius: 0;
+  border-color: #000;
+
+  // For Dropdown
+  .k-list {
+    border-color: var(--dropdown-secondary-color);
+    color: var(--dropdown-text-color);
+    background-color: var(--dropdown-secondary-color);
+
+    .k-selected {
+      background-color: var(--dropdown-primary-color) !important;
+    }
+
+    .k-list-item {
+      border-color: var(--dropdown-secondary-color);
+      color: var(--dropdown-text-color);
+      background-color: var(--dropdown-secondary-color);
+
+      &:hover {
+        background-color: var(--dropdown-primary-color);
+      }
+
+      .k-list-item-text {
+        color: var(--dropdown-text-color);
+      }
+    }
+  }
+
+  .k-menu-popup {
+    border-radius: 0 !important;
+
+    .k-menu-group {
+      background-color: #000;
+    }
+  }
+}
+
+.image-tile {
+  position: relative;
+  .text-over-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-size: 14px;
+    line-height: 15px;
+    padding: 8px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// .archButton {
+//   color: white;
+//   background-color: #092952;
+//   border: unset;
+//   border-radius: 50px;
+//   padding: 8px 24px;
+//   font-size: 16px;
+//   font-weight: 600;
+//   border: 1px solid white;
+
+//   & > span {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 4px;
+
+//     & > svg {
+//       position: absolute;
+//       right: 12px;
+//     }
+//   }
+
+//   &:hover,
+//   &:active,
+//   &:focus {
+//     border: 1px solid white !important;
+//     color: white;
+//     background-color: #092952;
+//     border: unset;
+//   }
+// }
+
+.k-widget.k-window.k-dialog {
+  z-index: 99999;
+}
+
+.k-window-content {
+  // background-image: url("https://dreamdemoassets.blob.core.windows.net/daidemo/bg_gm_call_center.png");
+  // background-size: cover;
+  padding: 0;
+
+  &:last-child {
+    padding: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c4c4c4;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-dots li button:before,
+.slick-dots li.slick-active button:before {
+  color: white;
+}

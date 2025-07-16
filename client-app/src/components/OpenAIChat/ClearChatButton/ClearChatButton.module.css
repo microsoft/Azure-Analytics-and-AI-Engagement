@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  width: 103px;
+}
+
+.disabled {
+  opacity: 0.4;
+}
+
+.container span {
+  color: #ffffff;
+}
