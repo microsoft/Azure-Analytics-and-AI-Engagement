@@ -124,14 +124,14 @@ namespace server.Controllers
             authentication = AadService.GetAccessToken(appSettings);
             return authentication.AccessToken;
 
-            //string pBiUser = "odl_user_210171@cloudlabsaioutlook.onmicrosoft.com";
-            //string pBiPwd = "kiag74CCB*Uy";
-            ////string pBiClientId = "981823e1-8d78-4d5d-b205-0f28cd77afa8";
-            ////string pBiSecret = ".3qlK030ROcs4G3-Z5Xi.46okMJslrXAB~";
-            //string pBiClientId = "03807b50-7e27-475e-b18d-0a2ce56fc56b";
-            //string pBiSecret = "l1MapZ-JGN8eEF_tD2U44.msnR.N2ycI2k";
+            //string pBiUser = "";
+            //string pBiPwd = "";
+            ////string pBiClientId = "";
+            ////string pBiSecret = "";
+            //string pBiClientId = "";
+            //string pBiSecret = "";
 
-            //string tokenEndpointUri = "https://login.microsoftonline.com/f94768c8-8714-4abe-8e2d-37a64b18216a/oauth2/token";
+            //string tokenEndpointUri = "https://login.microsoftonline.com//oauth2/token";
 
             //var content = new FormUrlEncodedContent(new[] {
             //    new KeyValuePair<string, string>("grant_type", "password"),
