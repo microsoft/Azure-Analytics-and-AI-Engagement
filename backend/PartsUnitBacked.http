@@ -1,0 +1,6 @@
+@PartsUnitBacked_HostAddress = http://localhost:5188
+
+GET {{PartsUnitBacked_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

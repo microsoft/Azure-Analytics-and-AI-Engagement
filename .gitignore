@@ -1,0 +1,51 @@
+# .NET build outputs
+backend/bin/
+backend/obj/
+
+# User-specific files
+backend/*.user
+backend/*.suo
+backend/*.userosscache
+backend/*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+backend/appsettings.Development.json
+backend/appsettings.Local.json
+backend/.env
+frontend/.env
+
+# Node modules and build outputs
+frontend/node_modules/
+frontend/dist/
+
+# Dependency directories
+**/node_modules/
+
+# Build artifacts
+frontend/build/
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage
+coverage/
+
+# Others
+*.swp
+*.swo 

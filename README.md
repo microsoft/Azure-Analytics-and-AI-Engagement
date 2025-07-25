@@ -1,91 +1,92 @@
-<h1 align="center">
-  <br/>
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/"><img src="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/media/DPoC_Cover.png" alt="Dream PoC Accelerator" width="1200" /></a>
-</h1>
+# AzureHeroDemos - Motor Parts Unlimited
 
+## Project Overview
+Motor Parts Unlimited is a full-stack web application featuring a .NET backend (PartsUnitBacked) and a modern React frontend. The project demonstrates best practices for building scalable, maintainable, and cloud-ready applications.
 
-<div align="center">
-  <a href="#D">All</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/microsoftfabric2.0/fabric/Readme-shell.md">Microsoft Fabric</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Readme-shell.md">FSI</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fintax/fintaxdemo/Readme-shell.md">Public Finance</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/retail2.0/retail/Readme-shell.md">Retail</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/healthcare2/healthcare2/Readme-shell.md">Healthcare</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/Manufacturing/Readme-shell.md">Manufacturing</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/media/mediademo/Readme-shell.md">Media</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/midp-with-cosmos/midpCosmos/Readme-shell.md">MIDP</a> •
-  <a href="https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/ignite-lab/ignite/Readme-Shell.md">Ignite Lab</a>
-</div>
+## Features
+- Product catalog with categories
+- Shopping cart functionality
+- Product search and filtering
+- Responsive UI
+- RESTful API backend
+- PostgreSQL database integration
 
-<br>
+## Tech Stack
+- **Backend:** .NET 9 (ASP.NET Core), Entity Framework Core, PostgreSQL
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS
 
-<div align="center">
-<b>Important Links:</b>
-  <br>
-  • <a href="https://partner.microsoft.com/en-us/asset/collection/industry-dream-demos-and-dream-demo-in-a-box#/">Data & AI Industry DREAM Demos & DREAM PoC Accelerator</a>
-</div>
+## Project Structure
+```
+AzureHeroDemos/
+  backend/      # .NET backend (API, data, services)
+  frontend/     # React frontend (UI, assets, state)
+```
 
-<br/>
+## Getting Started
 
-# Getting Started
+### Prerequisites
+- [.NET 9 SDK](https://dotnet.microsoft.com/download)
+- [Node.js (v18+)](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
+### Backend Setup
+1. Navigate to the backend directory:
+   ```sh
+   cd backend
+   ```
+2. Restore dependencies:
+   ```sh
+   dotnet restore
+   ```
+3. Update `appsettings.Development.json` with your PostgreSQL connection string.
+4. Apply database migrations:
+   ```sh
+   dotnet ef database update
+   ```
+5. Run the backend:
+   ```sh
+   dotnet run
+   ```
+   The API will be available at `https://localhost:5001` (or as configured).
 
-DREAM PoC Accelerators (DPoC) are packaged Industry Scenario DREAM Demos with ARM templates (Containing a demo web application, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool within a matter of few hours. Partners can also deploy DREAM Demos in their own subscriptions using DPoC.
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```sh
+   cd frontend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file if needed (see Environment Variables section).
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173` (or as configured).
 
- ## Objective & Intent
-With the DPoC solution, partners can also deploy DREAM Demos within their own subscriptions. 
-Partnering with Microsoft sellers, partners can deploy the Iindustry scenario DREAM demos into customer subscriptions. Customers can play, get hands-on experience navigating through the demo environment in their own subscription and demonstrate demo to their own stakeholders.
+## Environment Variables
 
- ## :exclamation:IMPORTANT NOTES:  
+### Backend
+- `appsettings.Development.json` should contain your database connection string and other secrets.
 
-  1. Prior to proceeding, **lease read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md), as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
-  2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. 
-  For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
-  3. •	It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerators are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** the costs of DPoC hosting.
-  4. •	As a DPoC, certain resources are available to the public.**Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
-  5.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
+### Frontend
+- `.env` (optional):
+  - `VITE_API_URL` — URL of the backend API (e.g., `https://localhost:5001`)
 
-# Disclaimer 
+## Useful Scripts
 
-This presentation, demonstration, and demonstration model are for informational purposes only and (1) are not subject to SOC 1 and SOC 2 compliance audits, and (2) are not designed, intended or made available as a medical device(s) or as a substitute for professional medical advice, diagnosis, treatment or judgment. Microsoft makes no warranties, express or implied, in this presentation, demonstration, and demonstration model. Nothing in this presentation, demonstration, or demonstration model modifies any of the terms and conditions of Microsoft’s written and signed agreements. This is not an offer and applicable terms and the information provided are subject to revision and may be changed at any time by Microsoft. 
+### Backend
+- `dotnet run` — Start the backend server
+- `dotnet ef database update` — Apply EF Core migrations
 
-This presentation, demonstration, and demonstration model do not give you or your organization any license to any patents, trademarks, copyrights, or other intellectual property covering the subject matter in this presentation, demonstration, and demonstration model. 
+### Frontend
+- `npm run dev` — Start the frontend dev server
+- `npm run build` — Build the frontend for production
+- `npm run preview` — Preview the production build
 
-The information contained in this presentation, demonstration and demonstration model represents the current view of Microsoft on the issues discussed as of the date of presentation and/or demonstration, for the duration of your access to the demonstration model. Because Microsoft must respond to changing market conditions, it should not be interpreted to be a commitment on the part of Microsoft, and Microsoft cannot guarantee the accuracy of any information presented after the date of presentation and/or demonstration and for the duration of your access to the demonstration model.  
+## License
+This project is licensed under the MIT License.
 
-No Microsoft technology, nor any of its component technologies, including the demonstration model, is intended or made available as a substitute for the professional advice, opinion, or judgment of (1) a certified financial services professional, or (2) a certified medical professional. Partners or customers are responsible for ensuring the regulatory compliance of any solution they build using Microsoft technologies. 
-
-# Copyright
-
-© 2023 Microsoft Corporation. All rights reserved.   
-
-By using this demo/lab, you agree to the following terms: 
-
-The technology/functionality described in this demo/lab is provided by Microsoft Corporation for purposes of obtaining your feedback and to provide you with a learning experience. You may only use the demo/lab to evaluate such technology features and functionality and provide feedback to Microsoft.  You may not use it for any other purpose. You may not modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell this demo/lab or any portion thereof. 
-
-COPYING OR REPRODUCTION OF THE DEMO/LAB (OR ANY PORTION OF IT) TO ANY OTHER SERVER OR LOCATION FOR FURTHER REPRODUCTION OR REDISTRIBUTION IS EXPRESSLY PROHIBITED. 
-
-THIS DEMO/LAB PROVIDES CERTAIN SOFTWARE TECHNOLOGY/PRODUCT FEATURES AND FUNCTIONALITY, INCLUDING POTENTIAL NEW FEATURES AND CONCEPTS, IN A SIMULATED ENVIRONMENT WITHOUT COMPLEX SET-UP OR INSTALLATION FOR THE PURPOSE DESCRIBED ABOVE. THE TECHNOLOGY/CONCEPTS REPRESENTED IN THIS DEMO/LAB MAY NOT REPRESENT FULL FEATURE FUNCTIONALITY AND MAY NOT WORK THE WAY A FINAL VERSION MAY WORK. WE ALSO MAY NOT RELEASE A FINAL VERSION OF SUCH FEATURES OR CONCEPTS.  YOUR EXPERIENCE WITH USING SUCH FEATURES AND FUNCITONALITY IN A PHYSICAL ENVIRONMENT MAY ALSO BE DIFFERENT.  
-
-FEEDBACK.  
-
-If you give feedback about the technology features, functionality and/or concepts described in this demo/lab to Microsoft, you give to Microsoft, without charge, the right to use, share and commercialize your feedback in any way and for any purpose. You also give to third parties, without charge, any patent rights needed for their products, technologies and services to use or interface with any specific parts of a Microsoft software or service that includes the feedback. You may not give feedback that is subject to a license that requires Microsoft to license its software or documentation to third parties because we include your feedback in them. These rights survive this agreement. 
-
-MICROSOFT CORPORATION HEREBY DISCLAIMS ALL WARRANTIES AND CONDITIONS WITH REGARD TO THE DEMO/LAB, INCLUDING ALL WARRANTIES AND CONDITIONS OF MERCHANTABILITY, WHETHER EXPRESS, IMPLIED OR STATUTORY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT.  MICROSOFT DOES NOT MAKE ANY ASSURANCES OR REPRESENTATIONS WITH REGARD TO THE ACCURACY OF THE RESULTS, OUTPUT THAT DERIVES FROM USE OF DEMO/ LAB, OR SUITABILITY OF THE INFORMATION CONTAINED IN THE DEMO/LAB FOR ANY PURPOSE. 
-
- 
-# Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-
+## Contact
+For questions or support, please contact the project maintainer. 
