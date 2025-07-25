@@ -1,0 +1,8 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
+    "features": {
+      "ghcr.io/devcontainers/features/azure-cli:latest": {
+        "extensions": "containerapp rdbms-connect serviceconnector-passwordless"
+      }
+    }
+  }

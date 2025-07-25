@@ -1,0 +1,129 @@
+diff --git a/rabbitmq-custom-formula-source/pom.xml b/rabbitmq-custom-formula-source/pom.xml
+index 69e071a..f3fab15 100644
+--- a/rabbitmq-custom-formula-source/pom.xml
++++ b/rabbitmq-custom-formula-source/pom.xml
+@@ -16,25 +16,10 @@
+ 	<properties>
+ 		<java.version>17</java.version>
+ 	</properties>
+-	<dependencyManagement>
+-		<dependencies>
+-			<dependency>
+-				<groupId>com.azure.spring</groupId>
+-				<artifactId>spring-cloud-azure-dependencies</artifactId>
+-				<version>5.22.0</version>
+-				<type>pom</type>
+-				<scope>import</scope>
+-			</dependency>
+-		</dependencies>
+-	</dependencyManagement>
+ 	<dependencies>
+ 		<dependency>
+-			<groupId>com.azure.spring</groupId>
+-			<artifactId>spring-cloud-azure-starter</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>com.azure.spring</groupId>
+-			<artifactId>spring-messaging-azure-servicebus</artifactId>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-amqp</artifactId>
+ 		</dependency>
+ 
+ 		<dependency>
+diff --git a/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/MessagingRabbitmqApplication.java b/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/MessagingRabbitmqApplication.java
+index c2568a3..44e610a 100644
+--- a/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/MessagingRabbitmqApplication.java
++++ b/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/MessagingRabbitmqApplication.java
+@@ -1,15 +1,10 @@
+ package com.example.messagingrabbitmq;
+ 
+-import com.azure.core.credential.TokenCredential;
+-import com.azure.core.exception.ResourceNotFoundException;
+-import com.azure.messaging.servicebus.administration.ServiceBusAdministrationClient;
+-import com.azure.messaging.servicebus.administration.ServiceBusAdministrationClientBuilder;
+-import com.azure.messaging.servicebus.administration.models.QueueProperties;
+-import com.azure.spring.cloud.autoconfigure.implementation.servicebus.properties.AzureServiceBusProperties;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.context.ConfigurableApplicationContext;
+ import org.springframework.context.annotation.Bean;
++import org.springframework.amqp.core.Queue;
+ 
+ @SpringBootApplication
+ public class MessagingRabbitmqApplication {
+@@ -23,21 +18,8 @@ public class MessagingRabbitmqApplication {
+     }
+ 
+     @Bean
+-    ServiceBusAdministrationClient serviceBusAdministrationClient(
+-        AzureServiceBusProperties properties,
+-        TokenCredential credential) {
+-        return new ServiceBusAdministrationClientBuilder()
+-            .credential(properties.getFullyQualifiedNamespace(), credential)
+-            .buildClient();
+-    }
+-
+-    @Bean
+-    QueueProperties queue(ServiceBusAdministrationClient adminClient) {
+-        try {
+-            return adminClient.getQueue(queueName);
+-        } catch (ResourceNotFoundException e) {
+-            return adminClient.createQueue(queueName);
+-        }
++    public Queue queue() {
++        return new Queue(queueName, true);
+     }
+ 
+ }
+diff --git a/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/Producer.java b/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/Producer.java
+index ce09812..db743c7 100644
+--- a/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/Producer.java
++++ b/rabbitmq-custom-formula-source/src/main/java/com/example/messagingrabbitmq/Producer.java
+@@ -1,26 +1,25 @@
+ package com.example.messagingrabbitmq;
+ 
+-import org.springframework.messaging.Message;
++import org.springframework.amqp.core.Message;
+ import org.springframework.stereotype.Component;
+-import com.azure.spring.messaging.servicebus.core.ServiceBusTemplate;
+-import org.springframework.messaging.support.MessageBuilder;
++import org.springframework.amqp.rabbit.core.RabbitTemplate;
+ import org.springframework.beans.factory.annotation.Autowired;
+ 
+ @Component
+ public class Producer {
+ 
+     @Autowired
+-    private final ServiceBusTemplate serviceBusTemplate;
++    private final RabbitTemplate rabbitTemplate;
+ 
+-    public Producer(ServiceBusTemplate serviceBusTemplate) {
+-        this.serviceBusTemplate = serviceBusTemplate;
++    public Producer(RabbitTemplate rabbitTemplate) {
++        this.rabbitTemplate = rabbitTemplate;
+     }
+ 
+     public void run()  {
+         for (int i = 0; i < 10; i++) {
+             System.out.println("Sending message..." + i);
+             String responseString = "test " + i;
+-            serviceBusTemplate.send(MessagingRabbitmqApplication.queueName, MessageBuilder.withPayload(responseString).build());
++            rabbitTemplate.convertAndSend(MessagingRabbitmqApplication.queueName, new Message(responseString.getBytes()));
+         }
+     }
+ }
+\ No newline at end of file
+diff --git a/rabbitmq-custom-formula-source/src/main/resources/application.properties b/rabbitmq-custom-formula-source/src/main/resources/application.properties
+index d9f0baf..93541af 100644
+--- a/rabbitmq-custom-formula-source/src/main/resources/application.properties
++++ b/rabbitmq-custom-formula-source/src/main/resources/application.properties
+@@ -1,4 +1,4 @@
+-spring.cloud.azure.servicebus.entity-type=queue
+-spring.cloud.azure.servicebus.namespace=
+-spring.cloud.azure.credential.managed-identity-enabled= true
+-spring.cloud.azure.credential.client-id=
+\ No newline at end of file
++spring.rabbitmq.password=secret
++spring.rabbitmq.username=myuser
++spring.rabbitmq.host=localhost
++spring.rabbitmq.port=5671
