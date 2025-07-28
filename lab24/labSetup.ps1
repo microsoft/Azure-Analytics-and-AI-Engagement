@@ -1406,6 +1406,11 @@ $deployed_resources = $deployed_resources | Select-Object Name, Type | Format-Ta
 Write-Output $deployed_resources
 
 RefreshTokens
+$pat_token = $fabric
+$requestHeaders = @{
+Authorization  = "Bearer" + " " + $pat_token
+    "Content-Type" = "application/json"
+    }
 Write-Host "List of resources deployed in $contosoSalesWsName workspace"
 $endPoint = "https://api.fabric.microsoft.com/v1/workspaces/$wsIdContosoSales/items"
 $fabric_items = Invoke-RestMethod $endPoint `
