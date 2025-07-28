@@ -1140,7 +1140,7 @@ Write-Host $endpoint_vector
 
 write-host "creating Keyvault backed secret scope..."
 
-pip install databricks-cli 
+pip install databricks-cli --user
 
 # Set environment variables for Databricks CLI
 $databricksHost = 'https://' + $workspaceUrl 
