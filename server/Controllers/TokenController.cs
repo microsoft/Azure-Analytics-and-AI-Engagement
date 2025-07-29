@@ -123,38 +123,6 @@ namespace server.Controllers
 
             authentication = AadService.GetAccessToken(appSettings);
             return authentication.AccessToken;
-
-            //string pBiUser = "";
-            //string pBiPwd = "";
-            ////string pBiClientId = "";
-            ////string pBiSecret = "";
-            //string pBiClientId = "";
-            //string pBiSecret = "";
-
-            //string tokenEndpointUri = "https://login.microsoftonline.com//oauth2/token";
-
-            //var content = new FormUrlEncodedContent(new[] {
-            //    new KeyValuePair<string, string>("grant_type", "password"),
-            //    new KeyValuePair<string, string>("username", pBiUser),
-            //    new KeyValuePair<string, string>("password", pBiPwd),
-            //    new KeyValuePair<string, string>("client_id", pBiClientId),
-            //    new KeyValuePair<string, string>("client_secret", pBiSecret),
-            //    new KeyValuePair<string, string>("resource", "https://analysis.windows.net/powerbi/api")
-            //});
-
-            //using (var client = new HttpClient())
-            //{
-            //    HttpResponseMessage res = client.PostAsync(tokenEndpointUri, content).Result;
-            //    string json = await res.Content.ReadAsStringAsync();
-            //    AzureAdTokenResponse tokenRes = JsonConvert.DeserializeObject<AzureAdTokenResponse>(json);
-            //    if (tokenRes == null || string.IsNullOrEmpty(tokenRes.access_token))
-            //    {
-            //        throw new Exception("invalid access token response");
-            //    }
-
-            //    aadToken = tokenRes;
-            //    return tokenRes.access_token;
-            //}
         }
     }
 
