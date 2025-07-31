@@ -35,7 +35,6 @@ import {
 import Slider from "react-slick";
 import { useMsal } from "@azure/msal-react";
 import { INITIAL_PRODUCTS, WARDROBE_PRODUCTS } from "./Constants";
-import { ArchitectureWithTags } from "pages/ArchitectureWithTags";
 import { PageType } from "types";
 import {
   TabStrip,
@@ -88,7 +87,6 @@ const categories = [
 ];
 
 const { BlobBaseUrl, SPEECH_REGION, SPEECH_KEY } = window.config;
-// const COPILOT_API = "https://func-retail-fsi.azurewebsites.net/api/chat";
 const COPILOT_API =""
   
 const SESSIONS_API =

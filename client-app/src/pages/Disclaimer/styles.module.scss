@@ -1,0 +1,103 @@
+.legalNoticeContainer {
+  padding: 0 3.5% !important;
+  color: #605e5c;
+  background-color: white;
+  position: relative;
+  overflow: auto;
+  color: var(--kendo-color-subtle, #605e5c);
+  /* Base Text/XS/Extra Small */
+  font-family: var(--family-font, "Segoe UI");
+  font-size: var(--size-xs, 10px);
+  font-style: normal;
+  font-weight: 400;
+  height: 80%;
+  margin-bottom: 30px;
+  max-height: 64vh;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+
+.btn {
+  border-radius: var(--border-radius-md, 2px);
+  border: 1px solid var(--kendo-color-primary);
+  background: var(--kendo-color-primary);
+  color: var(--kendo-color-on-primary);
+  padding: 10px 43px;
+  width: 16px !important;
+  margin: 0 auto;
+  font-weight: 500;
+  border: unset;
+  outline: none;
+  justify-self: center;
+  display: flex;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    border-radius: var(--border-radius-md, 2px);
+    border: 1px solid var(--kendo-color-primary);
+    background: var(--kendo-color-primary);
+    color: white;
+    border: unset;
+    justify-self: center;
+    display: flex;
+
+    outline: none;
+  }
+}
+
+.stickyFooter {
+  position: sticky;
+  bottom: 0;
+  left: 48%;
+  background-color: white;
+}
+
+.legalNoticeContainer > p {
+  font-size: 18px;
+  padding: 10px 0 0 0;
+}
+
+@media screen and (max-width: 1600px) {
+  .legalNoticeContainer {
+    padding: 0 15%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .legalNoticeContainer {
+    padding: 0 15%;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .legalNoticeContainer > p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 18px;
+  }
+  .legalNoticeContainer > p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .legalNoticeContainer {
+    padding: 0 10%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .legalNoticeContainer {
+    padding: 0 7.5%;
+  }
+}

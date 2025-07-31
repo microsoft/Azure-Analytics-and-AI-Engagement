@@ -58,9 +58,9 @@ export const Header: FC<Props> = ({ expanded, setExpanded }) => {
   };
   return (
     <>
-      {/* <Helmet> */}
+      <Helmet>
         <title>Azure Hero DREAM Demos- {pageTitle}</title>
-      {/* </Helmet> */}
+      </Helmet>
       <AppBar className={styles.appBar} style={{}}>
         <AppBarSection>
           <div
@@ -114,18 +114,18 @@ export const Header: FC<Props> = ({ expanded, setExpanded }) => {
             </button>
           </AppBarSection>
         )} */}
-        {/* <AppBarSection>
+        <AppBarSection>
           <NavLink
             to="/logout"
             className="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base"
           >
             Sign Out
-            <img
+            {/* <img
               src={`${BlobBaseUrl}header_icon_logout.png`}
               alt="header_icon_logout"
-            />
+            /> */}
           </NavLink>
-        </AppBarSection> */}
+        </AppBarSection>
       </AppBar>
     </>
   );

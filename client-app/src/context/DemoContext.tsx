@@ -24,8 +24,8 @@ export const DemoContextProvider: FC<Props> = ({ children }) => {
   const { currentDemo } = useContext(SettingsContext);
   useEffect(() => {
     if (location.pathname !== "/settings")
-      (document.body.style as any).backgroundImage = `url(${config?.background})`;
-    (document.body.style as any).backgroundSize = "cover";
+      document.body.style.backgroundImage = `url(${config?.background})`;
+    document.body.style.backgroundSize = "cover";
 
     switch (currentDemo?.name) {
       case "Retail":
@@ -47,7 +47,7 @@ export const DemoContextProvider: FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (location.pathname === "/settings")
-      (document.body.style as any).backgroundImage = "";
+      document.body.style.backgroundImage = "";
   }, [location]);
 
   useEffect(() => {

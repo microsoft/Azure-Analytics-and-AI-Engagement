@@ -388,7 +388,7 @@ export const LandingPage = ({
 
         {/* Hero Demos */}
         <div className={styles.column}>
-          <h3>Hero Demos dadadasdasdsadsdsff</h3>
+          <h3>Hero Demos</h3>
           {solution?.heroDemos.map((d) => (
             <div
              
@@ -405,7 +405,7 @@ export const LandingPage = ({
 
         {/* Levels */}
         <div className={styles.column}>
-          <h3>Levels sfsdfdsgf/fasfsdg/sdgfdg..fasfsdf</h3>
+          <h3>Levels</h3>
           {demo?.levels.map((level) => {
             if (level.id === "level2") {
               return (
@@ -455,7 +455,7 @@ export const LandingPage = ({
                     }
                   }}
                 >
-                  {level.label} 
+                  {level.label} dasfwefewggvgvfdg
                 </div>
               );
             }

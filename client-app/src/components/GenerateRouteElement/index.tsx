@@ -1,19 +1,23 @@
 import {
+  Dashboard,
+  DashboardWithReport,
   GenericPopup,
+  IFrame,
+  Report,
   
+  Image,
   LandingPage,
 } from "components";
-import { Image } from "components/Image";
+import EndToEnd from "components/EndToEnd";
 import { log } from "console";
 import { SettingsContext } from "context";
 import { useAppDispatch } from "hooks";
 import {
- 
-  ArchitectureWithTags,
+  ChatBot,
+  ChatBot2,
 } from "pages";
-// import { ChatBot2 } from "pages/ChatBot2";
+import { IncomingCall } from "pages/IncomingCall";
 import { ShoppingCopilotMTC } from "pages/ShoppingCopilotMTC";
-//import { NewReimagined } from "pages/NewReimagined";
 import React, { FC, useContext, useEffect } from "react";
 import { setPersona, setTimeline } from "store";
 import { PageType } from "types";
@@ -53,9 +57,92 @@ if (Array.isArray(data.componentParameters)) {
 
 
   switch (data.componentName.toLowerCase()) {
-    
-        
- 
+    case "power bi report":
+      const powerBIData = getPowerBIData(url);
+      return data.componentParameters.isPopup ? (
+        <GenericPopup data={data}>
+          <Report
+            // apiUrl={data.componentParameters.api}
+            id={powerBIData?.id}
+            title={data?.title}
+            pageTitle={data?.name}
+            pageType={data?.name}
+            name={powerBIData?.section}
+            url={url}
+            background={data?.componentParameters?.background}
+          />
+        </GenericPopup>
+      ) : (
+        <Report
+          // apiUrl={data.componentParameters.api}
+          id={powerBIData?.id}
+          pageTitle={data?.name}
+          title={data?.title}
+          pageType={data?.name}
+          name={powerBIData?.section}
+          url={url}
+          background={data?.componentParameters?.background}
+        />
+      );
+
+   
+
+    case "power bi dashboard":
+      const powerBIDashboardData = getPowerBIData(data.componentParameters.url);
+      const powerBIReportData: any = data.componentParameters?.reportUrl
+        ? getPowerBIData(data.componentParameters.reportUrl)
+        : {};
+
+      return data.componentParameters?.reportUrl ? (
+        data.componentParameters.isPopup ? (
+          <GenericPopup data={data}>
+            <DashboardWithReport
+              // apiUrl={data.componentParameters.api}
+              dashboardId={powerBIDashboardData?.id}
+              dashboardImage={data.componentParameters.image}
+              topReportId={powerBIReportData?.id}
+              topReportName={powerBIReportData?.section}
+              pageTitle={data.name}
+              pageType={data.name}
+              url={data.componentParameters.url}
+              reportUrl={data.componentParameters.reportUrl}
+            />
+          </GenericPopup>
+        ) : (
+          <DashboardWithReport
+            // apiUrl={data.componentParameters.api}
+            dashboardId={powerBIDashboardData?.id}
+            dashboardImage={data.componentParameters.image}
+            topReportId={powerBIReportData?.id}
+            topReportName={powerBIReportData?.section}
+            pageTitle={data.name}
+            pageType={data.name}
+            url={data.componentParameters.url}
+            reportUrl={data.componentParameters.reportUrl}
+          />
+        )
+      ) : data.componentParameters.isPopup ? (
+        <GenericPopup data={data}>
+          <Dashboard
+            // apiUrl={data.componentParameters.api}
+            id={powerBIDashboardData?.id}
+            dashboardImage={data.componentParameters.image}
+            pageTitle={data.name}
+            pageType={data.name}
+            url={data.componentParameters.url}
+          />
+        </GenericPopup>
+      ) : (
+        <Dashboard
+          // apiUrl={data.componentParameters.api}
+          id={powerBIDashboardData?.id}
+          dashboardImage={data.componentParameters.image}
+          pageTitle={data.name}
+          url={data.componentParameters.url}
+          pageType={data.name}
+        />
+      );
+   
     case "image":
       return data.componentParameters?.isPopup ? (
         <GenericPopup data={data}>
@@ -83,6 +170,25 @@ if (Array.isArray(data.componentParameters)) {
         />
       );
 
+    
+     
+    case "iframe":
+      return data.componentParameters?.isPopup ? (
+        <GenericPopup data={data}>
+          <IFrame
+            url={data.componentParameters.url}
+            pageTitle={data.name}
+            pageType={data.name}
+          />
+        </GenericPopup>
+      ) : (
+        <IFrame
+          url={data.componentParameters.url}
+          pageTitle={data.name}
+          pageType={data.name}
+        />
+      );
+
     case "landing page":
       return (
         <LandingPage
@@ -91,17 +197,30 @@ if (Array.isArray(data.componentParameters)) {
           src={landingPageImage}
         />
       );
-    case "shopping copilot":
-      return <ShoppingCopilotMTC />
-    case "architecture with tags":
+
+    case "beach view":
+   
+
+    // case "ArchImage":
+    //   return <ArchImage />;
+
+    case "chat bot":
       return (
-        <ArchitectureWithTags
-          pageTitle={data.name}
-          pageType={data.name}
-          videoURL={data.componentParameters.url}
-          tags={data.componentParameters?.tags}
+        <ChatBot2
+          key={data?.componentParameters}
+          componentParameters={data?.componentParameters}
         />
       );
+   
+   
+    case "incoming call":
+      return <IncomingCall />;
+    
+    
+    case "shopping copilot":
+      return <ShoppingCopilotMTC />;
+    case "endtoend":
+      return <EndToEnd />;
     case "custom landing page":
       return (
         <LandingPage

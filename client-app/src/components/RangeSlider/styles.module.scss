@@ -1,0 +1,8 @@
+.rangeSlider {
+  :global(.k-slider-track-wrap) {
+    :global(.k-slider-track) {
+      background-image: url("https://dreamdemoassets.blob.core.windows.net/nrf/fab_sce_3_range_bar.png");
+      background-size: cover;
+    }
+  }
+}

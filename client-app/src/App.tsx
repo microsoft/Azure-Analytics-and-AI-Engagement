@@ -6,7 +6,9 @@ import {
   GenerateRouteElement,
   Layout,
   RequireAuth,
+  RotateBanner,
 } from "./components";
+import { Login, Logout, OrgChart } from "./pages";
 import "./app.scss";
 import { InteractionType } from "@azure/msal-browser";
 import {
@@ -84,42 +86,42 @@ function App() {
   }, [location, tooltips]);
 
   useEffect(() => {
-    // document.body.style.setProperty(
-    //   "--primary-color",
-    //   `${primaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--secondary-color",
-    //   `${secondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--tab-text-color",
-    //   `${tabTextColor ?? "rgba(255, 255, 255, 1)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--navBar-primary-color",
-    //   `${navBarPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--navBar-secondary-color",
-    //   `${navBarSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--tab-primary-color",
-    //   `${tabPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--tab-secondary-color",
-    //   `${tabSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--dropdown-primary-color",
-    //   `${dropdownPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
-    // document.body.style.setProperty(
-    //   "--dropdown-secondary-color",
-    //   `${dropdownSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
-    // );
+    document.body.style.setProperty(
+      "--primary-color",
+      `${primaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--secondary-color",
+      `${secondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--tab-text-color",
+      `${tabTextColor ?? "rgba(255, 255, 255, 1)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--navBar-primary-color",
+      `${navBarPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--navBar-secondary-color",
+      `${navBarSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--tab-primary-color",
+      `${tabPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--tab-secondary-color",
+      `${tabSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--dropdown-primary-color",
+      `${dropdownPrimaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
+    document.body.style.setProperty(
+      "--dropdown-secondary-color",
+      `${dropdownSecondaryColor ?? "rgba(0,0,0,.2)"}` ?? ""
+    );
     document.body.style.setProperty(
       "--tab-text-color",
       tabTextColor || "rgba(255,255,255,1)"
@@ -182,7 +184,10 @@ function App() {
   return (
     <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
       <Routes>
-      
+        {/* <Route path="settings" element={<Settings />} /> */}
+        <Route path="logout" element={<Logout />} />
+        {/* <Route path="" element={<Home />} /> */}
+        <Route path="login" element={<Login />} />
 
         <Route
           element={
@@ -191,12 +196,13 @@ function App() {
             </RequireAuth>
           }
         >
-          {/* <Route path="org-chart-2" element={<OrgChart />} /> */}
+          <Route path="org-chart-2" element={<OrgChart />} />
 
           {routes}
         </Route>
         <Route path="*" element={<Navigate to={`/landing-page`} />} />
       </Routes>
+      <RotateBanner />
     </MsalAuthenticationTemplate>
   );
 }

@@ -1,0 +1,75 @@
+.feedbackBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  background-color: #000;
+  z-index: 1;
+
+  &:hover {
+    background-color: #000;
+    color: white;
+  }
+}
+
+.popup {
+  margin-right: 20px;
+  position: absolute;
+  right: -115px;
+  bottom: 0px;
+  width: max-content;
+  background-color: #000;
+  color: white;
+
+  & :global(.k-i-close) {
+    font-size: 32px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+}
+
+.form {
+  padding: 20px;
+
+  h6 {
+    padding: 2px 0px;
+  }
+
+  & :global(.k-rating-container) {
+    margin: 0;
+  }
+
+  & :global(.k-rating-item) {
+    color: white;
+  }
+
+  & :global(.k-form-error),
+  :global(.k-text-error) {
+    color: yellow;
+  }
+
+  & :global(.k-input-solid.k-invalid) {
+    border-color: yellow;
+  }
+}
+
+.feedbackCategory {
+  gap: 10px;
+
+  & :global(.k-button) {
+    border-radius: 0.375rem !important;
+  }
+}
+
+.sendBtn {
+  width: 100%;
+  background-color: white;
+  color: #000;
+
+  &:hover {
+    background-color: #000;
+    color: white;
+  }
+}
