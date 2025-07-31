@@ -1,12 +1,11 @@
 import { CSSProperties, FC, useContext, useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Drawer, Header,  Popup } from "components";
+import { Drawer, Header, NavBar, Popup, RenderArrows } from "components";
 import styles from "./styles.module.scss";
 import { SettingsContext } from "context";
 import { useAppDispatch, useArrows } from "hooks";
 import { arrowConfig, routeDefinitions } from "common";
-import { ArchitectureWithTags } from "pages/ArchitectureWithTags";
 import { PageType } from "types/pageType";
 import { Architecture } from "assets/Architecture";
 import { useAppSelector } from "../../hooks/useAppSelector";
@@ -128,21 +127,22 @@ export const Layout: FC = () => {
             )}{" "} */}
           </div>
         )}
+
+        {!demoMenus?.length ? (
+          <RenderArrows
+            arrowConfig={arrowConfig}
+            routeDefinitions={routeDefinitions}
+          />
+        ) : (
+          dynamicArrows && (
+            <RenderArrows
+              arrowConfig={dynamicArrows.arrowConfig}
+              routeDefinitions={dynamicArrows.routeDefinitions}
+            />
+          )
+        )}
       </Drawer>
-      <Popup
-        showPopup={showArchPopup}
-        title={popupTitle}
-        onClose={() => setShowArchPopup(false)}
-        dialogWidth={1400}
-        dialogHeight={960}
-      >
-        <ArchitectureWithTags
-          pageTitle={"Architecture diagram"}
-          pageType={PageType.Architecture}
-          imageUrl={imageUrl}
-          tags={[]}
-        />
-      </Popup>
+      
       ;
     </div>
   );

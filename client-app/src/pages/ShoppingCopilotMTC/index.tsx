@@ -35,7 +35,6 @@ import {
 import Slider from "react-slick";
 import { useMsal } from "@azure/msal-react";
 import { INITIAL_PRODUCTS, WARDROBE_PRODUCTS } from "./Constants";
-import { ArchitectureWithTags } from "pages/ArchitectureWithTags";
 import { PageType } from "types";
 import {
   TabStrip,

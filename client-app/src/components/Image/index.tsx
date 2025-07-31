@@ -80,7 +80,8 @@ export const Image: FC<Props> = ({
         <>
           <div className={styles.subContainer1}>
             {/* <img
-              src="https://dreamdemoassets.blob.core.windows.net/dataandaidemo/landing_page_center.png"
+                //src="https://dreamdemoassets.blob.core.windows.net/dataandaidemo/landing_page_center.png"
+                src=""
               alt=""
             /> */}
                <img

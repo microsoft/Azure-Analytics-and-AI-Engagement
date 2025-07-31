@@ -78,43 +78,43 @@ export const getMenu = ({
           // },
         ],
       },
-      // {
-      //   id: 7,
-      //   menuIcon: "icon2.png",
-      //   menuName: "With Microsoft Fabric",
-      //   menuItems: [
-      //     {
-      //       id: 11,
-      //       title: "Introduction to Microsoft Fabric",
-      //       icon: "icon12.png",
-      //       href: `/${demoId}/introduction-to-microsoft-fabric`,
-      //     },
-      //     {
-      //       id: 12,
-      //       title: "Microsoft Fabric Dream Demo Architecture",
-      //       icon: "icon12.png",
-      //       href: `/${demoId}/future-state-architecture`,
-      //     },
-      //     {
-      //       id: 13,
-      //       title: "Lakehouse Creation Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/${demoId}/lake-house`,
-      //     },
-      //     {
-      //       id: 28,
-      //       title: "OneLake Explorer Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/${demoId}/onelake-explorer`,
-      //     },
-      //     {
-      //       id: 14,
-      //       title: "Data Warehouse Creation Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/${demoId}/dataware-house`,
-      //     },
-      //   ],
-      // },
+      {
+        id: 7,
+        menuIcon: "icon2.png",
+        menuName: "With Microsoft Fabric",
+        menuItems: [
+          {
+            id: 11,
+            title: "Introduction to Microsoft Fabric",
+            icon: "icon12.png",
+            href: `/${demoId}/introduction-to-microsoft-fabric`,
+          },
+          {
+            id: 12,
+            title: "Microsoft Fabric Dream Demo Architecture",
+            icon: "icon12.png",
+            href: `/${demoId}/future-state-architecture`,
+          },
+          {
+            id: 13,
+            title: "Lakehouse Creation Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/${demoId}/lake-house`,
+          },
+          {
+            id: 28,
+            title: "OneLake Explorer Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/${demoId}/onelake-explorer`,
+          },
+          {
+            id: 14,
+            title: "Data Warehouse Creation Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/${demoId}/dataware-house`,
+          },
+        ],
+      },
       {
         id: 7,
         menuIcon: "icon2.png",
@@ -275,43 +275,43 @@ export const getMenu = ({
           // },
         ],
       },
-      // {
-      //   id: 7,
-      //   menuIcon: "icon2.png",
-      //   menuName: "With Microsoft Fabric",
-      //   menuItems: [
-      //     {
-      //       id: 11,
-      //       title: "Introduction to Microsoft Fabric",
-      //       icon: "icon12.png",
-      //       href: `/introduction-to-microsoft-fabric`,
-      //     },
-      //     {
-      //       id: 12,
-      //       title: "Microsoft Fabric Dream Demo Architecture",
-      //       icon: "icon12.png",
-      //       href: `/future-state-architecture`,
-      //     },
-      //     {
-      //       id: 13,
-      //       title: "Lakehouse Creation Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/lake-house`,
-      //     },
-      //     {
-      //       id: 28,
-      //       title: "OneLake Explorer Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/onelake-explorer`,
-      //     },
-      //     {
-      //       id: 14,
-      //       title: "Data Warehouse Creation Demo (Click-by-Click)",
-      //       icon: "icon11_1.png",
-      //       href: `/dataware-house`,
-      //     },
-      //   ],
-      // },
+      {
+        id: 7,
+        menuIcon: "icon2.png",
+        menuName: "With Microsoft Fabric",
+        menuItems: [
+          {
+            id: 11,
+            title: "Introduction to Microsoft Fabric",
+            icon: "icon12.png",
+            href: `/introduction-to-microsoft-fabric`,
+          },
+          {
+            id: 12,
+            title: "Microsoft Fabric Dream Demo Architecture",
+            icon: "icon12.png",
+            href: `/future-state-architecture`,
+          },
+          {
+            id: 13,
+            title: "Lakehouse Creation Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/lake-house`,
+          },
+          {
+            id: 28,
+            title: "OneLake Explorer Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/onelake-explorer`,
+          },
+          {
+            id: 14,
+            title: "Data Warehouse Creation Demo (Click-by-Click)",
+            icon: "icon11_1.png",
+            href: `/dataware-house`,
+          },
+        ],
+      },
       {
         id: 7,
         menuIcon: "icon2.png",

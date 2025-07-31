@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  height: 100%;
+
+  :global(.k-orgchart-card) {
+    width: 175px;
+
+    .card {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        padding: 20px;
+      }
+    }
+
+    // :global(.k-card-body) {
+    //   :global(.k-card-title-wrap) {
+    //     margin: 0;
+    //   }
+    // }
+  }
+}
