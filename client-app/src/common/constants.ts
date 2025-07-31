@@ -1,4 +1,4 @@
-
+import styles from "components/RenderArrow/styles.module.scss";
 
 export type ArrowConfigArrays = {
   landing_page: ArrowConfig[];
@@ -227,7 +227,7 @@ export const arrowConfig: ArrowConfigArrays = {
     {
       openInNewTab: true,
       a: "Arrow-A.png",
-     
+      c: styles.externalArrowA,
       t: "default",
       l: "https://app.powerbi.com/home?experience=fabric",
       tooltip: "Microsoft Fabric Backend",

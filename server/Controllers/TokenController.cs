@@ -123,6 +123,7 @@ namespace server.Controllers
 
             authentication = AadService.GetAccessToken(appSettings);
             return authentication.AccessToken;
+
         }
     }
 

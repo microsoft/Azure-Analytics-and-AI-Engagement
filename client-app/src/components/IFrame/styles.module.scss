@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  text-align: center;
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+  background-size: cover;
+  padding: 4% 1% 1% 1%;
+  .videoTitle {
+    position: absolute;
+    top: 2.3%;
+    left: 11%;
+    // transform: translate(-50%, 2%);
+    color: #013056;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+}
+
+.iframe {
+  width: 100%;
+  height: calc(100% - 10px);
+  // padding: 0 12px;
+  // padding-top: 12px;
+  border: unset;
+  background-color: unset;
+}
+.subContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow: auto;
+}
+
+.iframeForDashboard {
+  width: 100%;
+  height: 100%;
+  border: unset;
+  background-color: unset;
+}
+
+.backArrow {
+  background-color: black;
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    width: max-content;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

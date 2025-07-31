@@ -37,8 +37,8 @@ import { Tooltip } from "@progress/kendo-react-tooltip";
 import { setSelectedQuestion } from "store";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { ArchitectureWithTags } from "pages";
 import { PageType } from "types";
+import { Icons } from "components/Icons";
 import { Button } from "@progress/kendo-react-buttons";
 import { SidebarToggleIcon } from "assets";
 import { PivotItem } from "@fluentui/react";
@@ -798,78 +798,6 @@ export const Chat = (props: any) => {
           imageUrl={popupImage}
           tags={[]}
         /> */}
-        <TabStrip selected={selectedTap} onSelect={handleSelect}>
-          <TabStripTab title="Architecture Diagram: GPT-4o">
-            <ArchitectureWithTags
-              pageTitle={"Architecture diagram"}
-              pageType={PageType.Architecture}
-              imageUrl={
-                "https://dreamdemoassets.blob.core.windows.net/nrf/Retail_Strategy_Gpt4.png"
-              }
-              tags={[
-                {
-                  tagName: "Enter your question",
-                  tagDescription: "Enter your question",
-                },
-                {
-                  tagName: "Extract Keywords",
-                  tagDescription: "Extract Keywords",
-                },
-                {
-                  tagName: "Search",
-                  tagDescription: "Search",
-                },
-                {
-                  tagName: "Search Results",
-                  tagDescription: "Search Results",
-                },
-                {
-                  tagName: "Query and Search Results",
-                  tagDescription: "Query and Search Results",
-                },
-                {
-                  tagName: "Response",
-                  tagDescription: "Response",
-                },
-              ]}
-            />
-          </TabStripTab>
-          <TabStripTab title="Architecture Diagram: o1-preview">
-            <ArchitectureWithTags
-              pageTitle={"Architecture diagram"}
-              pageType={PageType.Architecture}
-              imageUrl={
-                "https://dreamdemoassets.blob.core.windows.net/nrf/Retail_Strategy_O1P.png"
-              }
-              tags={[
-                {
-                  tagName: "Enter your question",
-                  tagDescription: "Enter your question",
-                },
-                {
-                  tagName: "Extract Keywords",
-                  tagDescription: "Extract Keywords",
-                },
-                {
-                  tagName: "Search",
-                  tagDescription: "Search",
-                },
-                {
-                  tagName: "Search Results",
-                  tagDescription: "Search Results",
-                },
-                {
-                  tagName: "Query and Search Results",
-                  tagDescription: "Query and Search Results",
-                },
-                {
-                  tagName: "Response",
-                  tagDescription: "Response",
-                },
-              ]}
-            />
-          </TabStripTab>
-        </TabStrip>
       </Popup>
     </div>
   );

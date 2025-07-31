@@ -1,0 +1,143 @@
+.loginWrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropDown {
+  height: 40px;
+}
+.checkboxContainer {
+  margin-block-end: var(
+    --kendo-form-label-margin-bottom,
+    var(--kendo-spacing-2, 0.5rem)
+  );
+}
+.loginFormContainer {
+  border-radius: 8px;
+  border-radius: 8px;
+  width: 460px;
+  height: 360px;
+  background: var(--kendo-color-app-surface);
+  box-shadow: 0px 0.3px 0.9px 0px rgba(0, 0, 0, 0.1),
+    0px 1.6px 3.6px 0px rgba(0, 0, 0, 0.13);
+  position: relative;
+  & > form {
+    // background: var(--login-text-box-img);
+    background-size: contain;
+    background-repeat: round;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 56px;
+
+    width: 450px;
+    :global(.k-input) {
+      border-radius: 4px;
+      width: 350px;
+      border-radius: var(--border-radius-md, 2px) var(--border-radius-md, 2px)
+        var(--border-radius-null, 0px) var(--border-radius-null, 0px);
+      border-top: 1px solid var(--Transparent, rgba(255, 255, 255, 0.01));
+      border-left: 1px solid var(--Transparent, rgba(255, 255, 255, 0.01));
+      border-right: 1px solid var(--Transparent, rgba(255, 255, 255, 0.01));
+      display: flex;
+      align-items: center;
+      gap: var(--kendo-spacing-0, 0px);
+    }
+
+    :global(.k-label) {
+      font-weight: 500;
+    }
+  }
+}
+.logoContainer {
+  display: flex;
+  /* align-content: center; */
+  gap: 5px;
+  width: 100%;
+  align-items: center;
+  /* text-align: center; */
+  /* text-align-last: center; */
+  justify-content: center;
+  padding: 20px;
+}
+.logoText {
+  color: var(--kendo-color-primary);
+  text-align: center;
+  font-family: "Segoe UI";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.loginLabel {
+  color: var(--kendo-color-on-app-surface);
+  font-family: var(--family-font, "Segoe UI");
+  font-size: var(--size-md, 14px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 142%; /* 19.88px */
+  letter-spacing: var(--letter-spacing-normal, 0px);
+}
+.passwordLabel {
+  color: var(--kendo-color-on-app-surface);
+  font-family: var(--family-font, "Segoe UI");
+  font-size: var(--size-md, 14px);
+  font-style: normal;
+  font-weight: 400;
+}
+.loginBtn {
+  border-radius: var(--border-radius-md, 2px);
+  border: 1px solid var(--kendo-color-primary);
+  background: var(--kendo-color-primary);
+  padding: 10px 43px;
+  margin: 0 auto;
+  font-weight: 500;
+  border: unset;
+  outline: none;
+  color: var(--kendo-color-on-primary, #ffffff);
+  /* Web/Body 1 Strong */
+  font-family: "Segoe UI";
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+
+  &:hover,
+  &:focus {
+    border-radius: var(--border-radius-md, 2px);
+    border: 1px solid var(--kendo-color-primary);
+    background: var(--kendo-color-primary);
+    color: var(--kendo-color-on-primary, #ffffff);
+    /* Web/Body 1 Strong */
+  }
+  &:disabled {
+    background: var(--kendo-button-disabled-bg);
+    color: var(--Neutral-Foreground-Disabled-Rest, #bdbdbd);
+  }
+}
+
+.checkBox {
+  margin-block-end: var(--kendo-form-label-margin-bottom, 0.5rem);
+
+  :global(.k-checkbox:checked) {
+    background-color: var(--kendo-color-primary);
+    border-color: var(--kendo-color-primary);
+  }
+}
+
+.tnc {
+  color: var(--kendo-color-primary);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

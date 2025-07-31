@@ -13,7 +13,6 @@ import { SvgIcon } from "@progress/kendo-react-common";
 import { DemoMenu } from "types";
 import styles from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from "hooks";
-// import { customers } from "pages";
 import {
   setCustomerDetails,
   setSideBarCurrentItemMenu,
@@ -54,10 +53,6 @@ export const Drawer = (props: any) => {
     (state) => state.config
   );
   let { demoMenus } = useAppSelector((state: any) => state.config);
-
-  // React.useEffect(() => {
-  //   dispatch(setCustomerDetails(customers[0]));
-  // }, []);
 
   const processMenuData = React.useCallback(
     (currentPath: string) => {

@@ -1,0 +1,95 @@
+.outerDiv {
+  max-width: 500px !important;
+  background-color: white;
+  border-radius: var(--border-radius-xl, 8px);
+  border: 1px solid
+    var(--kendo-color-base-opacity-disabled-2, rgba(50, 49, 48, 0.28));
+
+  hr {
+    margin-bottom: 0;
+  }
+
+  overflow: auto;
+}
+.content {
+  background-color: #ebebeb;
+  padding: 12px;
+  margin: 12px;
+  display: flex;
+  gap: 8px;
+}
+.wrapper {
+  display: flex;
+  overflow-y: auto;
+  height: 100%;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.textAreaContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea {
+  width: 500px;
+  height: 50px;
+  padding: 10px;
+  font-size: 14px;
+  position: relative;
+  top: 10px;
+  border-radius: 5px;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  top: 10px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+    border: none;
+  }
+}
+
+.cancelButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-color: var(--kendo-color-primary);
+  color: var(--kendo-color-primary);
+  background-color: transparent;
+  border-radius: 5px;
+  position: relative;
+  top: 10px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: var(--kendo-color-primary);
+    color: var(--kendo-color-primary);
+    background-color: transparent;
+    outline: none;
+  }
+}
+
+.disableBtn {
+  border-radius: 4px;
+  background: var(
+    --kendo-color-base-opacity-disabled-2,
+    rgba(50, 49, 48, 0.28)
+  );
+}
