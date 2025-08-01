@@ -532,7 +532,7 @@ Write-Host "Creating ML CLUSTER in Azure Databricks..."
 
     $body = '{
     "cluster_name": "ML Cluster",
-    "spark_version": "15.2.x-cpu-ml-scala2.12",
+    "spark_version": "15.4.x-cpu-ml-scala2.12",
     "azure_attributes": {
         "first_on_demand": 1,
         "availability": "ON_DEMAND_AZURE",
