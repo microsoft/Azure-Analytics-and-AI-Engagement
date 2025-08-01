@@ -38,7 +38,7 @@ Partnering with Microsoft sellers, partners can deploy the Iindustry scenario DR
 
  ## :exclamation:IMPORTANT NOTES:  
 
-  1. Prior to proceeding, **lease read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md), as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
+  1. Prior to proceeding, **please read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md), as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. 
   For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
   3. •	It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerators are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** the costs of DPoC hosting.
