@@ -126,7 +126,7 @@ In this exercise you will build on the examples from the previous exercise to **
 ### 8. [ALM - Github Source Control](/sqldev/08%20-%20ALM%20-%20Github%20Source%20Control/08%20-%20ALM%20-%20Github%20Source%20Control.md)
 In this module, you will learn about managing the lifecycle of your application using source control. You will also learn how to monitor and maintain your SQL database in Fabric, including setting up Git integration, linking GitHub repositories to Azure DevOps, and synchronizing your workspace with the Git branch.
 
-### 9. [Security - Access Management](/sqldev/09%20-%20Security%20-%20Access%20Management/Data%20Security%20and%20Access%20Management.md)
+### 9. [Security - Access Management](/sqldev/09%20-%20Security%20-%20Access%20Management/9%20-%20Data%20Security%20and%20Access%20Management.md)
 
 In this exercise, you will explore **Microsoft Fabric workspace roles** and **SQL native access controls** to effectively manage user permissions to drive down compliance alerts.
 
