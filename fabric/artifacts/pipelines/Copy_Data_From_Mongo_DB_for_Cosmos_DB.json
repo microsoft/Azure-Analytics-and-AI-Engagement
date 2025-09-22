@@ -1,0 +1,78 @@
+{
+    "name": "Ingest cosmos mongo DB data using pipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "CosmosDbMongoDbApiSource",
+                        "batchSize": 100,
+                        "datasetSettings": {
+                            "annotations": [],
+                            "type": "CosmosDbMongoDbApiCollection",
+                            "schema": [],
+                            "typeProperties": {
+                                "collection": "products",
+                                "database": "herodemo_db"
+                            },
+                            "version": "1.1",
+                            "externalReferences": {
+                                "connection": "#mongoconnectionid#"
+                            }
+                        }
+                    },
+                    "sink": {
+                        "type": "LakehouseTableSink",
+                        "tableActionOption": "Append",
+                        "partitionOption": "None",
+                        "datasetSettings": {
+                            "annotations": [],
+                            "linkedService": {
+                                "name": "#Lakehouse_Silver#",
+                                "properties": {
+                                    "annotations": [],
+                                    "type": "Lakehouse",
+                                    "typeProperties": {
+                                        "workspaceId": "#wsid#",
+                                        "artifactId": "#lakehouse_silverid#",
+                                        "rootFolder": "Tables"
+                                    }
+                                }
+                            },
+                            "type": "LakehouseTable",
+                            "schema": [],
+                            "typeProperties": {
+                                "schema": "dbo",
+                                "table": "products"
+                            }
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        },
+                        "columnFlattenSettings": {
+                            "treatArrayAsString": false,
+                            "treatStructAsString": false,
+                            "flattenColumnDelimiter": "."
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

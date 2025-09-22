@@ -1,0 +1,1675 @@
+{
+    "name": "Ingest Azure SQL DB data using pipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForEach_alx",
+                "type": "ForEach",
+                "dependsOn": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@pipeline().parameters.cw_items_alx",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy_alx",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "partitionOption": "None",
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "type": "AzureSqlTable",
+                                        "schema": [],
+                                        "typeProperties": {
+                                            "schema": {
+                                                "value": "@item().source.schema",
+                                                "type": "Expression"
+                                            },
+                                            "table": {
+                                                "value": "@item().source.table",
+                                                "type": "Expression"
+                                            },
+                                            "database": "sql-azurehero-demo"
+                                        },
+                                        "externalReferences": {
+                                            "connection": "#salessqldbconnectionid#"
+                                        }
+                                    }
+                                },
+                                "sink": {
+                                    "type": "FabricSqlDatabaseSink",
+                                    "tableOption": "autoCreate",
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "connectionSettings": {
+                                            "name": "SQL_DB",
+                                            "properties": {
+                                                "annotations": [],
+                                                "type": "FabricSqlDatabase",
+                                                "typeProperties": {
+                                                    "workspaceId": "#wsid#",
+                                                    "artifactId": "#fabricsqldatabaseid#"
+                                                },
+                                                "externalReferences": {
+                                                    "connection": "SQL_DB"
+                                                }
+                                            }
+                                        },
+                                        "type": "FabricSqlDatabaseTable",
+                                        "schema": [],
+                                        "typeProperties": {
+                                            "schema": {
+                                                "value": "@item().destination.schema",
+                                                "type": "Expression"
+                                            },
+                                            "table": {
+                                                "value": "@item().destination.table",
+                                                "type": "Expression"
+                                            }
+                                        }
+                                    }
+                                },
+                                "enableStaging": false,
+                                "translator": {
+                                    "value": "@item().copyActivity.translator",
+                                    "type": "Expression"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "parameters": {
+            "cw_items_alx": {
+                "type": "Array",
+                "defaultValue": [
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "CustomerDimension"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "CustomerDimension"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "CustomerID",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerID",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "City",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "City",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Age",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "Age",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CustomerKey",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerKey",
+                                            "physicalType": "smallint"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "Dim_Product"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "Dim_Product"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "ProductKey",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "ProductKey",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductAlternateKey",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ProductAlternateKey",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductSubcategoryKey",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "ProductSubcategoryKey",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "WeightUnitMeasureCode",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "WeightUnitMeasureCode",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SizeUnitMeasureCode",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "SizeUnitMeasureCode",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EnglishProductName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "EnglishProductName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SpanishProductName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "SpanishProductName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FrenchProductName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "FrenchProductName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "StandardCost",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "StandardCost",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FinishedGoodsFlag",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "FinishedGoodsFlag",
+                                            "physicalType": "bit"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Color",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Color",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SafetyStockLevel",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "SafetyStockLevel",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReorderPoint",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "ReorderPoint",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ListPrice",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "ListPrice",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Size",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Size",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SizeRange",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "SizeRange",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Weight",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Weight",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DaysToManufacture",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "DaysToManufacture",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductLine",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ProductLine",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DealerPrice",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "DealerPrice",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Class",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Class",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Style",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Style",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ModelName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ModelName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EnglishDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        },
+                                        "sink": {
+                                            "name": "EnglishDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "FrenchDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "300"
+                                        },
+                                        "sink": {
+                                            "name": "FrenchDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "300"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ChineseDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "100"
+                                        },
+                                        "sink": {
+                                            "name": "ChineseDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "100"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ArabicDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "300"
+                                        },
+                                        "sink": {
+                                            "name": "ArabicDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "300"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "HebrewDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        },
+                                        "sink": {
+                                            "name": "HebrewDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ThaiDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "200"
+                                        },
+                                        "sink": {
+                                            "name": "ThaiDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "200"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GermanDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "350"
+                                        },
+                                        "sink": {
+                                            "name": "GermanDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "350"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "JapaneseDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "150"
+                                        },
+                                        "sink": {
+                                            "name": "JapaneseDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "150"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TurkishDescription",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        },
+                                        "sink": {
+                                            "name": "TurkishDescription",
+                                            "physicalType": "nvarchar",
+                                            "length": "250"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "StartDate",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "StartDate",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EndDate",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "EndDate",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Status",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Status",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "factinternetsales"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "factinternetsales"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "ProductKey",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "ProductKey",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OrderDateKey",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "OrderDateKey",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DueDateKey",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "DueDateKey",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ShipDateKey",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ShipDateKey",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CustomerKey",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerKey",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PromotionKey",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "PromotionKey",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CurrencyKey",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "CurrencyKey",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SalesTerritoryKey",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "SalesTerritoryKey",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SalesOrderNumber",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "SalesOrderNumber",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SalesOrderLineNumber",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "SalesOrderLineNumber",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RevisionNumber",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "RevisionNumber",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OrderQuantity",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "OrderQuantity",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "UnitPrice",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "UnitPrice",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ExtendedAmount",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ExtendedAmount",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "UnitPriceDiscountPct",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "UnitPriceDiscountPct",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DiscountAmount",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "DiscountAmount",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductStandardCost",
+                                            "type": "Double",
+                                            "physicalType": "float"
+                                        },
+                                        "sink": {
+                                            "name": "ProductStandardCost",
+                                            "physicalType": "float"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TotalProductCost",
+                                            "type": "Double",
+                                            "physicalType": "float"
+                                        },
+                                        "sink": {
+                                            "name": "TotalProductCost",
+                                            "physicalType": "float"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SalesAmount",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "SalesAmount",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TaxAmt",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "TaxAmt",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Freight",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Freight",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CarrierTrackingNumber",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CarrierTrackingNumber",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CustomerPONumber",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerPONumber",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OrderDate",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "OrderDate",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DueDate",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "DueDate",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ShipDate",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ShipDate",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "ProductDimension"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "ProductDimension"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "StockCode",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "StockCode",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Description",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Description",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductID",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "ProductID",
+                                            "physicalType": "smallint"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "retail_transactions"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "retail_transactions"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "transaction_id",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "transaction_id",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "customer_id",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "customer_id",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "product_id",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "product_id",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "product_name",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "product_name",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "category",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "category",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "quantity",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "quantity",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "unit_price",
+                                            "type": "Double",
+                                            "physicalType": "float"
+                                        },
+                                        "sink": {
+                                            "name": "unit_price",
+                                            "physicalType": "float"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "total_price",
+                                            "type": "Double",
+                                            "physicalType": "float"
+                                        },
+                                        "sink": {
+                                            "name": "total_price",
+                                            "physicalType": "float"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "payment_method",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "payment_method",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "location",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "location",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "transaction_date",
+                                            "type": "DateTime",
+                                            "physicalType": "date"
+                                        },
+                                        "sink": {
+                                            "name": "transaction_date",
+                                            "physicalType": "date"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "TimeDimension"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "TimeDimension"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "InvoiceDateAndTime",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime2",
+                                            "precision": 7
+                                        },
+                                        "sink": {
+                                            "name": "InvoiceDateAndTime",
+                                            "physicalType": "datetime2",
+                                            "precision": 6
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TimeKey",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "TimeKey",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "DateTime",
+                                            "physicalType": "date"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "physicalType": "date"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Year",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "physicalType": "smallint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Day",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "Day",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Hour",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "Hour",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Minute",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "Minute",
+                                            "physicalType": "tinyint"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "dbo",
+                            "table": "transactional_data"
+                        },
+                        "destination": {
+                            "schema": "dbo",
+                            "table": "transactional_data"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "TransactionID",
+                                            "type": "String",
+                                            "physicalType": "varchar",
+                                            "length": "9"
+                                        },
+                                        "sink": {
+                                            "name": "TransactionID",
+                                            "physicalType": "varchar",
+                                            "length": "9"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "TransactionDateTime",
+                                            "type": "String",
+                                            "physicalType": "varchar",
+                                            "length": "16"
+                                        },
+                                        "sink": {
+                                            "name": "TransactionDateTime",
+                                            "physicalType": "varchar",
+                                            "length": "16"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CustomerID",
+                                            "type": "String",
+                                            "physicalType": "varchar",
+                                            "length": "7"
+                                        },
+                                        "sink": {
+                                            "name": "CustomerID",
+                                            "physicalType": "varchar",
+                                            "length": "7"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductID",
+                                            "type": "String",
+                                            "physicalType": "varchar",
+                                            "length": "8"
+                                        },
+                                        "sink": {
+                                            "name": "ProductID",
+                                            "physicalType": "varchar",
+                                            "length": "8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "StoreLocation",
+                                            "type": "String",
+                                            "physicalType": "varchar",
+                                            "length": "13"
+                                        },
+                                        "sink": {
+                                            "name": "StoreLocation",
+                                            "physicalType": "varchar",
+                                            "length": "13"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Price",
+                                            "type": "Decimal",
+                                            "physicalType": "numeric",
+                                            "scale": 2,
+                                            "precision": 6
+                                        },
+                                        "sink": {
+                                            "name": "Price",
+                                            "physicalType": "numeric",
+                                            "scale": 2,
+                                            "precision": 6
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Quantity",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "Quantity",
+                                            "physicalType": "int"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "product",
+                            "table": "CampaignData"
+                        },
+                        "destination": {
+                            "schema": "product",
+                            "table": "CampaignData"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "CampaignName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CampaignName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductID",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ProductID",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CampaignType",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CampaignType",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Location",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Location",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "No_Subcampaigns",
+                                            "type": "Byte",
+                                            "physicalType": "tinyint"
+                                        },
+                                        "sink": {
+                                            "name": "No_Subcampaigns",
+                                            "physicalType": "tinyint"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Conducted_Via",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Conducted_Via",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "How_It_Went",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "How_It_Went",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total_Attendees",
+                                            "type": "Int16",
+                                            "physicalType": "smallint"
+                                        },
+                                        "sink": {
+                                            "name": "Total_Attendees",
+                                            "physicalType": "smallint"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source": {
+                            "schema": "product",
+                            "table": "ProductCampaigndata"
+                        },
+                        "destination": {
+                            "schema": "product",
+                            "table": "ProductCampaigndata"
+                        },
+                        "copyActivity": {
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "CampaignName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CampaignName",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ProductID",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "ProductID",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CampaignType",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "CampaignType",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Location",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Location",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "No_Subcampaigns",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "No_Subcampaigns",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Conducted_Via",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Conducted_Via",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "How_It_Went",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "How_It_Went",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Total_Attendees",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        },
+                                        "sink": {
+                                            "name": "Total_Attendees",
+                                            "physicalType": "nvarchar",
+                                            "length": "50"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "column9",
+                                            "type": "String",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        },
+                                        "sink": {
+                                            "name": "column9",
+                                            "physicalType": "nvarchar",
+                                            "length": "MAX"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,150 @@
+{
+    "name": "Ingest_Datawarehouse_data",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForEach1",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "Get Metadata1",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('Get Metadata1').output.childItems",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy data1",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "typeProperties": {
+                                "source": {
+                                    "type": "DelimitedTextSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobStorageReadSettings",
+                                        "recursive": true,
+                                        "enablePartitionDiscovery": false
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextReadSettings"
+                                    },
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "type": "DelimitedText",
+                                        "typeProperties": {
+                                            "location": {
+                                                "type": "AzureBlobStorageLocation",
+                                                "fileName": {
+                                                    "value": "@item().Name",
+                                                    "type": "Expression"
+                                                },
+                                                "folderPath": "Datawarehousedata",
+                                                "container": "datawarehouse"
+                                            },
+                                            "columnDelimiter": ",",
+                                            "escapeChar": "\\",
+                                            "firstRowAsHeader": true,
+                                            "quoteChar": "\""
+                                        },
+                                        "schema": [],
+                                        "externalReferences": {
+                                            "connection": "#adlsgen2connectionid#"
+                                        }
+                                    }
+                                },
+                                "sink": {
+                                    "type": "DataWarehouseSink",
+                                    "allowCopyCommand": true,
+                                    "tableOption": "autoCreate",
+                                    "datasetSettings": {
+                                        "annotations": [],
+                                        "linkedService": {
+                                            "name": "#warehouseName#",
+                                            "properties": {
+                                                "annotations": [],
+                                                "type": "DataWarehouse",
+                                                "typeProperties": {
+                                                    "endpoint": "#connectionstring#",
+                                                    "artifactId": "#warehouseid#",
+                                                    "workspaceId": "#wsid#"
+                                                }
+                                            }
+                                        },
+                                        "type": "DataWarehouseTable",
+                                        "schema": [],
+                                        "typeProperties": {
+                                            "table": {
+                                                "value": "@replace(item().name, '.csv', '')",
+                                                "type": "Expression"
+                                            }
+                                        }
+                                    }
+                                },
+                                "enableStaging": false
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Get Metadata1",
+                "type": "GetMetadata",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "fieldList": [
+                        "childItems"
+                    ],
+                    "datasetSettings": {
+                        "annotations": [],
+                        "type": "DelimitedText",
+                        "typeProperties": {
+                            "location": {
+                                "type": "AzureBlobStorageLocation",
+                                "folderPath": "Datawarehousedata",
+                                "container": "datawarehouse"
+                            },
+                            "columnDelimiter": ",",
+                            "escapeChar": "\\",
+                            "firstRowAsHeader": true,
+                            "quoteChar": "\""
+                        },
+                        "schema": [],
+                        "externalReferences": {
+                            "connection": "#adlsgen2connectionid#"
+                        }
+                    },
+                    "storeSettings": {
+                        "type": "AzureBlobStorageReadSettings",
+                        "recursive": true,
+                        "enablePartitionDiscovery": false
+                    },
+                    "formatSettings": {
+                        "type": "DelimitedTextReadSettings"
+                    }
+                }
+            }
+        ],
+        "lastModifiedByObjectId": "18687425-3127-47fe-9c3b-f8f7e1a5ae62",
+        "lastPublishTime": "2025-08-25T12:33:02Z"
+    }
+}
