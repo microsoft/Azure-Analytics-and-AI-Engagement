@@ -1,0 +1,287 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    
+    "location": {
+        "type": "string"
+    },
+    "databricks_workspace_name": {
+      "type": "string"
+    },
+    "databricks_managed_resource_group_name": {
+      "type": "string"
+    },
+    "userAssignedIdentities_ami_databricks_build" : {
+      "type": "string"
+    },
+    "vaults_kv_databricks_prod_name" :{
+      "type": "string"
+    },
+    "datalake_account_name" :{
+      "type": "string"
+    },
+    
+    "aiServicesName": {
+      "type": "String"
+    },
+    "azure_open_ai": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "openAI_location_1": {
+      "type": "string"
+ 
+  }   
+
+},
+    "variables": {
+    "tenantId": "[subscription().tenantId]"
+    },
+    "resources": [
+     {
+        "name": "[parameters('databricks_workspace_name')]",
+        "type": "Microsoft.Databricks/workspaces",
+        "apiVersion": "2022-04-01-preview",
+        "location": "[parameters('location')]",
+        "properties": {
+            "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('databricks_managed_resource_group_name'))]"
+        },
+        "sku": {
+            "name": "premium"
+        }
+        },
+
+  {
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-07-31-preview",
+      "name": "[parameters('userAssignedIdentities_ami_databricks_build')]",
+      "location": "[parameters('location')]"
+  },
+  {
+    "name": "[parameters('datalake_account_name')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2020-08-01-preview",
+    "location": "[parameters('location')]",
+    "sku": {
+      "name": "Standard_LRS",
+      "tier": "Standard"
+    },
+    "kind": "StorageV2",
+    "properties": {
+      "isHnsEnabled": "true",
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": true,
+      "networkAcls": {
+        "bypass": "AzureServices",
+        "defaultAction": "Allow"
+      },
+      "supportsHttpsTrafficOnly": true,
+      "encryption": {
+        "services": {
+          "file": {
+            "keyType": "Account",
+            "enabled": true
+          },
+          "blob": {
+            "keyType": "Account",
+            "enabled": true
+          }
+        },
+        "keySource": "Microsoft.Storage"
+      },
+      "accessTier": "Hot"
+    }
+  },
+  {
+    "name": "[concat(parameters('datalake_account_name'), '/default')]",
+    "type": "Microsoft.Storage/storageAccounts/blobServices",
+    "apiVersion": "2020-08-01-preview",
+    "dependsOn": [
+      "[resourceId('Microsoft.Storage/storageAccounts', parameters('datalake_account_name'))]"
+    ],
+    "sku": {
+      "name": "Standard_LRS",
+      "tier": "Standard"
+    },
+    "properties": {
+      "cors": {
+        "corsRules": [
+          {
+            "allowedOrigins": [
+              "*"
+            ],
+            "allowedMethods": [
+              "GET"
+            ],
+            "maxAgeInSeconds": 1000,
+            "exposedHeaders": [
+              "*"
+            ],
+            "allowedHeaders": [
+              "*"
+            ]
+          },
+          {
+            "allowedOrigins": [
+              "*"
+            ],
+            "allowedMethods": [
+              "POST"
+            ],
+            "maxAgeInSeconds": 1000,
+            "exposedHeaders": [
+              "*"
+            ],
+            "allowedHeaders": [
+              "*"
+            ]
+          },
+          {
+            "allowedOrigins": [
+              "*"
+            ],
+            "allowedMethods": [
+              "DELETE"
+            ],
+            "maxAgeInSeconds": 1000,
+            "exposedHeaders": [
+              "*"
+            ],
+            "allowedHeaders": [
+              "*"
+            ]
+          },
+          {
+            "allowedOrigins": [
+              "*"
+            ],
+            "allowedMethods": [
+              "MERGE"
+            ],
+            "maxAgeInSeconds": 1000,
+            "exposedHeaders": [
+              "*"
+            ],
+            "allowedHeaders": [
+              "*"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "[concat(parameters('datalake_account_name'), '/default')]",
+    "type": "Microsoft.Storage/storageAccounts/queueServices",
+    "apiVersion": "2020-08-01-preview",
+    "dependsOn": [
+      "[resourceId('Microsoft.Storage/storageAccounts', parameters('datalake_account_name'))]"
+    ],
+    "properties": {
+      "cors": {
+        "corsRules": []
+      }
+    }
+  },
+  {
+    "name": "[concat(parameters('datalake_account_name'), '/default')]",
+    "type": "Microsoft.Storage/storageAccounts/tableServices",
+    "apiVersion": "2020-08-01-preview",
+    "dependsOn": [
+      "[resourceId('Microsoft.Storage/storageAccounts', parameters('datalake_account_name'))]"
+    ],
+    "properties": {
+      "cors": {
+        "corsRules": []
+      }
+    }
+  },
+  {
+    "name": "[concat(parameters('datalake_account_name'), '/default/data')]",
+    "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    "apiVersion": "2020-08-01-preview",
+    "dependsOn": [
+      "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('datalake_account_name'), 'default')]",
+      "[resourceId('Microsoft.Storage/storageAccounts',  parameters('datalake_account_name'))]"
+    ],
+    "properties": {
+      "defaultEncryptionScope": "$account-encryption-key",
+      "denyEncryptionScopeOverride": false,
+      "publicAccess": "Container"
+    }
+  },
+  {
+    "name": "[concat(parameters('datalake_account_name'), '/default/containerdatabricksmetastore')]",
+    "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    "apiVersion": "2020-08-01-preview",
+    "dependsOn": [
+      "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('datalake_account_name'), 'default')]",
+      "[resourceId('Microsoft.Storage/storageAccounts',  parameters('datalake_account_name'))]"
+    ],
+    "properties": {
+      "defaultEncryptionScope": "$account-encryption-key",
+      "denyEncryptionScopeOverride": false,
+      "publicAccess": "Container"
+    }
+  },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2023-07-01",
+      "name": "[parameters('vaults_kv_databricks_prod_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "Standard"
+        },
+        "accessPolicies": [],
+        "tenantId": "[variables('tenantId')]",
+        "enableSoftDelete": true,
+        "softDeleteRetentionInDays": 90,
+        "enableRbacAuthorization": false,
+        "vaultUri": "[concat('https://', parameters('vaults_kv_databricks_prod_name'), '.vault.azure.net/')]",
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+{
+  "type": "Microsoft.CognitiveServices/accounts",
+  "apiVersion": "2021-10-01",
+  "name": "[parameters('aiServicesName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "S0"
+  },
+  "kind": "AIServices",
+  "properties": {
+    "publicNetworkAccess": "Enabled",
+    "networkAcls": {
+      "defaultAction": "Allow"
+    }
+  }
+},
+
+	    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2023-10-01-preview",
+      "name": "[parameters('azure_open_ai')]",
+      "location": "[parameters('openAI_location_1')]",
+      "sku": {
+        "name": "S0"
+      },
+      "kind": "OpenAI",
+      "properties": {
+        "customSubDomainName": "[parameters('azure_open_ai')]",
+        "networkAcls": {
+          "defaultAction": "Allow"
+        },
+        "publicNetworkAccess": "Enabled"
+      }
+    }  
+
+   
+   ]
+}
