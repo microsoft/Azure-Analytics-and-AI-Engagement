@@ -65,7 +65,7 @@ git clone -b ignite-lab-2025 --depth 1 --single-branch https://github.com/micros
 ```
 
 
-   ![Git Clone Command to Pull Down the demo Repository.](./ignite25-LAB335/Lab/media/cloud-shell-4.5.png)
+   ![Git Clone Command to Pull Down the demo Repository.](./ignite25-LAB335/Lab/media/clone1.png)
     
    > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then re-clone:
 
@@ -84,7 +84,7 @@ cd ./DREAMPoC/ignite25-LAB335/Lab/
 ./databricks.ps1
 ```
     
-   ![Commands to run the PowerShell Script.](./ignite25-LAB335/Lab/media/cloud-shell-5.1.png)
+   ![Commands to run the PowerShell Script.](./ignite25-LAB335/Lab/media/clone2.png)
 
 <!-- 8. **Press** **Y** and click on the **Enter** button.
       
@@ -173,4 +173,4 @@ cd ./DREAMPoC/ignite25-LAB335/Lab/
 
     ![box](./ignite25-LAB335/Lab/media/cloudshell-region-openai.png) 
 
-25. From here, continue by following the instructions in **ignite25-LAB335/Lab/Labinstructions.md**.
+25. From here, continue by following the instructions in [ignite25-LAB335/Lab/Labinstructions.md](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/ignite-lab-2025/ignite25-LAB335/Lab/Labinstructions.md).
