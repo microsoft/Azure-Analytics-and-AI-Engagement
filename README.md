@@ -1,4 +1,4 @@
-![Lab535 Archi.png](./ignite25-LAB335/Lab/media/Lab535Archi.png)
+![Lab535 Archi.png](./ignite25-LAB335/Lab/media/Arch.png)
 
 ## What is a DPoC?
 DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
