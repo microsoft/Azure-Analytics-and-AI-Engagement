@@ -198,11 +198,11 @@ Customers can play, get hands-on experience navigating through the demo environm
 Command:
 
 ```
-git clone -b Microsoft-Fabric-scenario-based-demos --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement fabric
+git clone -b unifydataplatform-withoutAI --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement fabric
 ```
 
 
-   ![Git Clone Command to Pull Down the demo Repository.](media/clone.png)
+   ![Git Clone Command to Pull Down the demo Repository.](media/clone1.png)
     
    > **Note:** If you get File already exist error, please execute the following command to delete existing clone and then re-clone:
 ```
