@@ -1,0 +1,157 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": { "type": "string" },
+    "storage_account_name": { "type": "String", "metadata": { "description": "" } },
+    "cosmosdb_account": { "type": "string", "defaultValue": "" }
+  },
+  "variables": {
+      "tenantId": "[subscription().tenantId]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('storage_account_name')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2020-08-01-preview",
+      "location": "[parameters('location')]",
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "kind": "StorageV2",
+      "properties": {
+        "isHnsEnabled": "true",
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": { "keyType": "Account", "enabled": true },
+            "blob": { "keyType": "Account", "enabled": true }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": {
+          "corsRules": [
+            { "allowedOrigins": ["*"], "allowedMethods": ["GET"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["POST"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["DELETE"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["MERGE"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": { "cors": { "corsRules": [] } }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": { "cors": { "corsRules": [] } }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/snowflake-iceburg')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/sales-transaction-data-adlsgen2')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/datawarehouse')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/operations-data-s3')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2023-11-15",
+      "name": "[parameters('cosmosdb_account')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "identity": { "type": "SystemAssigned" },
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "enableAnalyticalStorage": true,
+        "analyticalStorageConfiguration": { "schemaType": "WellDefined" },
+        "databaseAccountOfferType": "Standard",
+        "defaultIdentity": "FirstPartyIdentity",
+        "minimalTlsVersion": "Tls12",
+        "consistencyPolicy": { "defaultConsistencyLevel": "Strong", "maxIntervalInSeconds": 5, "maxStalenessPrefix": 100 },
+        "locations": [
+          { "locationName": "[parameters('location')]", "provisioningState": "Succeeded", "failoverPriority": 0, "isZoneRedundant": false }
+        ],
+        "backupPolicy": { "type": "Continuous", "continuousModeProperties": { "tier": "Continuous7Days" } }
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "apiVersion": "2023-11-15",
+      "name": "[concat(parameters('cosmosdb_account'), '/Inventory_Customersentiment')]",
+      "dependsOn": ["[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdb_account'))]"],
+      "properties": { "resource": { "id": "Inventory_Customersentiment" } }
+    } 
+  ]
+}

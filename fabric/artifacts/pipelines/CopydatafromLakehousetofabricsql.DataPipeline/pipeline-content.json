@@ -1,0 +1,197 @@
+{
+    "name": "CopydatafromLakehousetofabricsql",
+    "properties": {
+        "description": "Imported from fab",
+        "activities": [
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "LakehouseTableSource",
+                        "datasetSettings": {
+                            "annotations": [],
+                            "connectionSettings": {
+                                "name": "#lakehouseBronze#",
+                                "properties": {
+                                    "annotations": [],
+                                    "type": "Lakehouse",
+                                    "typeProperties": {
+                                        "workspaceId": "#wsid#",
+                                        "artifactId": "#lakehouseBronzeid#",
+                                        "rootFolder": "Tables"
+                                    },
+                                    "externalReferences": {
+                                        "connection": "#lakehouseBronze#"
+                                    }
+                                }
+                            },
+                            "type": "LakehouseTable",
+                            "schema": [],
+                            "typeProperties": {
+                                "schema": "dbo",
+                                "table": "Campaigns"
+                            }
+                        }
+                    },
+                    "sink": {
+                        "type": "FabricSqlDatabaseSink",
+                        "writeBehavior": "insert",
+                        "sqlWriterUseTableLock": false,
+                        "tableOption": "autoCreate",
+                        "datasetSettings": {
+                            "annotations": [],
+                            "connectionSettings": {
+                                "name": "SQL_DB",
+                                "properties": {
+                                    "annotations": [],
+                                    "type": "FabricSqlDatabase",
+                                    "typeProperties": {
+                                        "workspaceId": "#wsid#",
+                                        "artifactId": "#fabricsqlid#"
+                                    },
+                                    "externalReferences": {
+                                        "connection": "#createFabricSql#"
+                                    }
+                                }
+                            },
+                            "type": "FabricSqlDatabaseTable",
+                            "schema": [],
+                            "typeProperties": {
+                                "table": "Campaigns"
+                            }
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "CampaignID",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "CampaignID",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "ProductID",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "ProductID",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "ProductName",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "ProductName",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Type",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "Type",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "StoreLocation",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "StoreLocation",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "StartDate",
+                                    "type": "Date",
+                                    "physicalType": "date"
+                                },
+                                "sink": {
+                                    "name": "StartDate",
+                                    "physicalType": "date"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "EndDate",
+                                    "type": "Date",
+                                    "physicalType": "date"
+                                },
+                                "sink": {
+                                    "name": "EndDate",
+                                    "physicalType": "date"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Budget",
+                                    "type": "Decimal",
+                                    "physicalType": "decimal",
+                                    "scale": 2,
+                                    "precision": 10
+                                },
+                                "sink": {
+                                    "name": "Budget",
+                                    "physicalType": "decimal",
+                                    "scale": 2,
+                                    "precision": 10
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Channel",
+                                    "type": "String",
+                                    "physicalType": "string"
+                                },
+                                "sink": {
+                                    "name": "Channel",
+                                    "physicalType": "nvarchar",
+                                    "length": "MAX"
+                                }
+                            }
+                        ],
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
