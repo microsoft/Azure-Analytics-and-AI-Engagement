@@ -55,6 +55,7 @@ Customers can play, get hands-on experience navigating through the demo environm
    - Microsoft.SQLSever
    - Microsoft.StorageAccount
    - Microsoft.AppService
+* Make sure you have a dedicated Microsoft **Fabric Capacity** deployed in Azure with SKU F8 or higher.
 * You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability (consider the region availability for Synapse workspace, IoT Central and cognitive services while choosing a location).
 * In this Accelerator, we have converted real-time reports into static reports for the user's ease but have covered the entire process to configure real-time datasets. Using those real-time datasets, you can create real-time reports.
@@ -102,22 +103,23 @@ Customers can play, get hands-on experience navigating through the demo environm
 
    ![Give the name and description for the new workspace.](media/powerbi1.png)
 
-9. In the left side bar, click on **License info** and then click on **Edit**.
+9. In the left side bar, click on **Workspace type** and then click on **Edit**.
 
-   ![Give the name and description for the new workspace.](media/workspacesettings.png)
+   ![Give the name and description for the new workspace.](media\licensetype.png)
 
-10. Click on **Primary** in the Workspace settings pane and check the **Trial** radio box.
+10. In the Workspace type pane, check the **Fabric** radio box.
 
-![](media/power-bi-7.png)
+![](media/selectfabricsku.png)
 
-> **Note:** If your workspace has **Fabric capacity**, select it. Otherwise, use the **Trial** License type.
-> **Note:** Use of the Fabric Capacity is recommended for a better experience.
+> **Note:** If your workspace has **Fabric capacity**, select it. Otherwise, deploy a new capacity in your Azure subscription.
 
-11. **Scroll down** and click on **Select license**.
+> **Note:** Use Fabric F8 or higher capacity SKU.
+
+11. **Scroll down** and select your Fabric capacity then click on **Select license**.
 
     ![Give the name and description for the new workspace.](media/workspacesettings2.png)
 
-> **Note:** Make sure to add this workspace as a Fabric Trial/Fabric capacity License and note down the names of the **Workspace** and **Lakehouses**. These will be used during script execution (Task 2).
+> **Note:** Note down the names of the **Workspace** and **Lakehouses**. These will be used during script execution (Task 2).
 
 
 ### Task 2: Run the Cloud Shell to provision the demo resources
