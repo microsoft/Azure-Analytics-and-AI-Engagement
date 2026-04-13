@@ -105,7 +105,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 9. In the left side bar, click on **Workspace type** and then click on **Edit**.
 
-   ![Give the name and description for the new workspace.](media\licensetype.png)
+   ![Give the name and description for the new workspace.](media/licensetype.png)
 
 10. In the Workspace type pane, check the **Fabric** radio box.
 
