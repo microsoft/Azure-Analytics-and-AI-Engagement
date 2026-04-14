@@ -47,7 +47,9 @@ Customers can play, get hands-on experience navigating through the demo environm
 
 * An Azure Account with the ability to create a Fabric Workspace.
 * A Power BI with Fabric License to host Power BI reports.
-* Make sure the user deploying the script has at least a 'Contributor' level of access on the 'Subscription' on which it is being deployed.
+* Make sure the user deploying the script has at least an **Owner** level of access on the Subscription on which it is being deployed.
+* Make sure the **Fabric Administrator** role is assigned to your ID by the **Global Administrator** in the Azure Portal.
+* After creating the workspace and attaching it to the Fabric capacity, enable **Digital Twin Builder** in the **Fabric Admin Portal**.
 * Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
 * Make sure to register the following resource providers with your Azure Subscription:
    - Microsoft.Fabric
