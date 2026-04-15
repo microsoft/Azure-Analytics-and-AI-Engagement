@@ -1027,6 +1027,7 @@ Instructions
 |-----------|--------|
 
 ```Generate a campaign with high discounts and short duration to drive quick purchases for impulse shoppers.```
+
 ```
 SELECT CampaignName, DiscountPercent, Duration, OfferType
 FROM [dbo].[dim_campaign]
@@ -1036,14 +1037,14 @@ OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY
 ```
 
 ```Create a campaign with extended duration to maintain engagement with occasional shoppers.```
+
 ```
 SELECT CampaignName, DiscountPercent, Duration, OfferType
 FROM [dbo].[dim_campaign]
 WHERE Segment LIKE '%Occasional Shopper%'
-
 ```
 
-![task-1.3.02.png](media/Dataagent8.png)
+![task-1.3.02.png](media/dataagent8.png)
 
 30. Click on **Publish**.
 
@@ -1130,16 +1131,20 @@ Always ensure the decision benefits both the customer and store.
 Transparency:
 
 Provide a brief, plain-language reason behind your recommendation.
+
 ```
 
 
-![task-1.3.02.png](media/dataagent6.png)
+![task-1.3.02.png](media/Dataagent6.png)
+
 
 41. Click on **Publish**.
 
 ![task-1.3.02.png](media/Dataagent9.png)
 
-![task-1.3.02.png](media/Dataagent9.1.png)
+
+![task-1.3.02.png](media/dataagent9.1.png)
+
 
 ### Adding Data Agent- Data_agent_customer_insights to the Copilot studio
 
@@ -1253,7 +1258,6 @@ You are an email campaign generator. Your task is to create, engaging, and perso
 
 ![DTB](media/dtb2.png) -->
 
- -->
 
 ### Task 8: Create Fabric CosmosDB Databse
 
@@ -1378,7 +1382,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 2. Click on **New item** from the menu bar, In the **New item** window, search for **Mirrored** in the search bar, then select **Mirrored database**.
 
-![Task-1.1_1.png](media/openmirror.png) -->
+![Task-1.1_1.png](media/openmirror.png) 
 
 3. Paste the name as **MirroredDatabase_historical_sales_data** and then clikc on **Create**. 
 
