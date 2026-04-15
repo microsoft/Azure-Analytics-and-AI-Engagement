@@ -965,7 +965,8 @@ WHERE SegmentName = 'Occasional Shoppers';
 
 ```
 
-![task-1.3.02.png](media/Dataagent8.png)
+
+![task-1.3.02.png](media/dataagent8.png)
 
 18. Click on **Publish**.
 
@@ -1131,7 +1132,8 @@ Transparency:
 Provide a brief, plain-language reason behind your recommendation.
 ```
 
-![task-1.3.02.png](media/Dataagent6.png)
+
+![task-1.3.02.png](media/dataagent6.png)
 
 41. Click on **Publish**.
 

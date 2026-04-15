@@ -968,6 +968,52 @@ fab set "$notebookPath5" -q lakehouse -i $jsonInput5 -f
 
 fab job run "$salesworkspacePath/GenerateFactSalesData.ipynb.Notebook"
 
+fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
+ 
+$notebookPath6 = "$salesworkspacePath/Simulate Aisle-Level Foot Traffic Data.ipynb.Notebook"
+ 
+# Build the JSON input string
+$jsonInput6 = @{
+known_lakehouses = @(@{ id = $LakehouseBronzeid })
+default_lakehouse = $LakehouseBronzeid
+default_lakehouse_name = $lakehouseBronze
+default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
+} | ConvertTo-Json -Compress
+ 
+# Run the fab set command
+fab set "$notebookPath6" -q lakehouse -i $jsonInput6 -f
+ 
+fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
+ 
+$notebookPath9 = "$salesworkspacePath/Generate realtime thermostat data.ipynb.Notebook"
+ 
+# Build the JSON input string
+$jsonInput9 = @{
+known_lakehouses = @(@{ id = $LakehouseBronzeid })
+default_lakehouse = $LakehouseBronzeid
+default_lakehouse_name = $lakehouseBronze
+default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
+} | ConvertTo-Json -Compress
+ 
+# Run the fab set command
+fab set "$notebookPath9" -q lakehouse -i $jsonInput9 -f
+ 
+ 
+fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
+ 
+$notebookPath8 = "$salesworkspacePath/real-time paint accessory inventory data.ipynb.Notebook"
+ 
+# Build the JSON input string
+$jsonInput8 = @{
+known_lakehouses = @(@{ id = $LakehouseBronzeid })
+default_lakehouse = $LakehouseBronzeid
+default_lakehouse_name = $lakehouseBronze
+default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
+} | ConvertTo-Json -Compress
+ 
+# Run the fab set command
+fab set "$notebookPath8" -q lakehouse -i $jsonInput8 -f
+
 RefreshTokens
 $pat_token = $fabric
 $requestHeaders = @{
