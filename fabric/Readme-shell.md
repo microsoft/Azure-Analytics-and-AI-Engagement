@@ -59,6 +59,7 @@ Customers can play, get hands-on experience navigating through the demo environm
    - Microsoft.AppService
 * Make sure you have a dedicated Microsoft **Fabric Capacity** deployed in Azure with SKU F8 or higher.
 * You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
+* A Power Platform admin needs to enable **Dataverse** in the **Copilot Studio environment** and set up the billing plan in the Power Platform Admin Center.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability (consider the region availability for Synapse workspace, IoT Central and cognitive services while choosing a location).
 * In this Accelerator, we have converted real-time reports into static reports for the user's ease but have covered the entire process to configure real-time datasets. Using those real-time datasets, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
@@ -1148,7 +1149,7 @@ Provide a brief, plain-language reason behind your recommendation.
 
 ### Adding Data Agent- Data_agent_customer_insights to the Copilot studio
 
->**Note**: To add Data Agent to the copilot studio, you need to have **basic user env maker** access on copilot studio.
+>**Note**: To add Data Agent to the copilot studio, you need to have **Power Platform admin** access on copilot studio.
 
 1. Navigate to **https://copilotstudio.preview.microsoft.com/**.
 
@@ -1474,7 +1475,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![](media/datawarehouse1.png)
 
->**Note:** In your tenant, please create **DemoUser1 and DemoUser2**, and replace **DemoUser1@CloudLabsAIoutlook.onmicrosoft.com and DemoUser2@CloudLabsAIoutlook.onmicrosoft.com** with your own user IDs before proceeding with the steps below.
+>**Note:** In your tenant, please create **DemoUser1 and DemoUser2**, and replace **DemoUser1@CloudLabsAIoutlook.onmicrosoft.com and DemoUser2@CloudLabsAIoutlook.onmicrosoft.com** with your own user IDs before proceeding with the steps below. You need Global admin or relevent permission to create users in Entra ID.
 
 
 13. Click on **New SQL query**, paste the following query into the editor and run the query.
