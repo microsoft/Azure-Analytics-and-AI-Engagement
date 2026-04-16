@@ -49,7 +49,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 * A Power BI with Fabric License to host Power BI reports.
 * Make sure the user deploying the script has at least an **Owner** level of access on the Subscription on which it is being deployed.
 * Make sure the **Fabric Administrator** role is assigned to your ID by the **Global Administrator** in the Azure Portal.
-* After creating the workspace and attaching it to the Fabric capacity, enable **Digital Twin Builder** in the **Fabric Admin Portal**.
+* After creating the workspace and attaching it to the Fabric capacity, enable **Digital Twin Builder** , **Copilot and Azure OpenAI Service** in the **Fabric Admin Portal**.
 * Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
 * Make sure to register the following resource providers with your Azure Subscription:
    - Microsoft.Fabric
@@ -337,7 +337,7 @@ cd ./fabric/fabric
 
 
 
-### Manually Run "1-ML Solution-Financial Forecasting-AutoML, 2-Customer 360 Insights – Segmentation" Notebooks.
+### Manually Run "1-ML Solution-Financial Forecasting-AutoML, 2-Customer 360 Insights – Segmentation and Campaign Optimization" Notebooks.
 
 1. In the Power BI service, click on **Workspaces** and select the current working workspace.
 
@@ -973,17 +973,15 @@ WHERE SegmentName = 'Occasional Shoppers';
 
 ![task-1.3.02.png](media/Dataagent9.png)
 
-19. Repeat **Steps from 9-18** to create two additional  **Data Agents**.
+19. Repeat **Steps from 9-18** again for creating one more Data Agent.
 
-20. Repeat **Steps from 9-18** again for creating one more Data Agent.
+20. In **step 11**, Paste `Dataagent_campaign_generation` in the name field.
 
-21. In **step 11**, Paste `Dataagent_campaign_generation` in the name field.
-
-22. In **step 14**, Expand **LakehouseAI..**, expand **dbo** and then select **customer_segmentation**, **dim_campaign**.
+21. In **step 14**, Expand **LakehouseAI..**, expand **dbo** and then select **customer_segmentation**, **dim_campaign**.
 
 ![task-1.3.02.png](media/Dataagent5.2.png)
 
-23. **In Step 15**, paste the following **AI Instructions**.
+22. **In Step 15**, paste the following **AI Instructions**.
 
 ```
 You are personalize campaign generation.
@@ -1020,9 +1018,9 @@ Instructions
 8) Do not mention any segment name in greeting.
 
 ```
-24. Click on **Setup**, expand **LakehouseAI...**, then click on **Example Queries**.
+23. Click on **Setup**, expand **LakehouseAI...**, then click on **Example Queries**.
 
-25. Click on **+ Add**, and paste each of the following query questions one by one into the Example Queries section.
+24. Click on **+ Add**, and paste each of the following query questions one by one into the Example Queries section.
 
 | Question | Query |
 |-----------|--------|
@@ -1047,47 +1045,47 @@ WHERE Segment LIKE '%Occasional Shopper%'
 
 ![task-1.3.02.png](media/dataagent8.png)
 
-30. Click on **Publish**.
+25. Click on **Publish**.
 
 ![task-1.3.02.png](media/Dataagent9.png)
 
-31. Click on **Workspaces** in the left navigation pane and select **Unify_Dataplatform_2**.
+26. Click on **Workspaces** in the left navigation pane and select **Unify_Dataplatform_2**.
 
 ![task-1.3.02.png](media/power-bi-5.png)
 
-32. Click on **+ New item**, search for `Data agent` and click on **Data agent**.
+27. Click on **+ New item**, search for `Data agent` and click on **Data agent**.
 
 ![task-1.3.02.png](media/Dataagent1.png)
 
-33. Paste `RetrunIQ` in the name field and click on **Create**.
+28. Paste `RetrunIQ` in the name field and click on **Create**.
 
 ![task-1.3.02.png](media/Dataagent2.2.png)
 
-34. Click on **+ Data source**.
+29. Click on **+ Data source**.
 
 ![task-1.3.02.png](media/Dataagent3.png)
 
-35. Click on the **lakehouseSilver..** checkbox and click on **Add**.
+30. Click on the **lakehouseSilver..** checkbox and click on **Add**.
 
 ![task-1.3.02.png](media/Dataagent4.png)
 
-36. Click on **+ Data source**.
+31. Click on **+ Data source**.
 
 ![task-1.3.02.png](media/Dataagent3.png)
 
-37. Click on the **Eventhouse..** checkbox and click on **Add**.
+32. Click on the **Eventhouse..** checkbox and click on **Add**.
 
 ![task-1.3.02.png](media/dataagent10.png)
 
-38. Expand **Eventhouse** and then select **Inventory**, **foottraffic**, **AisleFootTrafficData** tables.
+33. Expand **Eventhouse** and then select **Inventory**, **foottraffic**, **AisleFootTrafficData** tables.
 
 ![task-1.3.02.png](media/Dataagent5.1.2.png)
 
-39. Expand **LakehouseSilver..**, expand **AWS** and then select **dim_product**, expand **dbo** and then select **dimreturnpolicy**, expand **snowflake** and then select **factsales**.
+34. Expand **LakehouseSilver..**, expand **AWS** and then select **dim_product**, expand **dbo** and then select **dimreturnpolicy**, expand **snowflake** and then select **factsales**.
 
 ![task-1.3.02.png](media/Dataagent5.1.3.png)
 
-40. Click on **Agent instructions** and then paste following instructions in it.
+35. Click on **Agent instructions** and then paste following instructions in it.
 
 ```
 ### You use data from:
@@ -1139,7 +1137,7 @@ Provide a brief, plain-language reason behind your recommendation.
 ![task-1.3.02.png](media/Dataagent6.png)
 
 
-41. Click on **Publish**.
+36. Click on **Publish**.
 
 ![task-1.3.02.png](media/Dataagent9.png)
 
@@ -1153,13 +1151,13 @@ Provide a brief, plain-language reason behind your recommendation.
 
 1. Navigate to **https://copilotstudio.preview.microsoft.com/**.
 
-2. Click on **Agents** and then click on **+ New agent**
+2. Click on **Agents** and then click on **+ Create blank agent**
 
 ![](media/copilotstudio1.png)
 
-3. Click on **Configure**, replace the Agent name as **Customer_Intelligence_Agent**.
+3. Click on **Edit**, replace the Agent name as **Customer_Intelligence_Agent**.
 
-4. Paste below Instructions in the **Instructions** Tab and then click on **Create**.
+4. Click on **Edit** and paste below Instructions in the **Instructions** Tab. and then click on **Save**.
 
 ```
 Answer only based on added agent data.
@@ -1172,11 +1170,13 @@ Do not use Churn count word.
 
 ![](media/copilotstudio2.png)
 
+![](media/copilotstudio2.1.png)
+
 5. Click on **Agents** and then click on **+ Add**.
 
 ![](media/copilotstudio3.png)
 
-6. Click on **Microsoft Fabric**.
+6. Click on **Connect to an external agent** and then select **Microsoft Fabric**.
 
 ![](media/copilotstudio4.png)
 
@@ -1192,7 +1192,7 @@ Do not use Churn count word.
 
 ![](media/copilotstudio8.png)
 
-10. Click on **Add Agent**.
+10. Click on **Add and configure**.
 
 ![](media/copilotstudio9.png)
 
@@ -1260,7 +1260,7 @@ You are an email campaign generator. Your task is to create, engaging, and perso
 ![DTB](media/dtb2.png) -->
 
 
-### Task 8: Create Fabric CosmosDB Databse
+### Task 8: Create Fabric CosmosDB Database
 
 1. Click on **Unify_Dataplatform_2** workspace in the left navigation pane and select **New item** from the menu bar.
 
@@ -1327,7 +1327,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 > **Note:** To fill in the details for required fields, we need to fetch the data from the Cosmosdb resource deployed in the Azure Portal.
 
 5. Navigate to the **Azure Portal**.
-   - In the resource group **herodemos-dpoc-...**, click on the **cosmosdb** resource.
+   - In the resource group **rg-unifydataplatform-...**, click on the **cosmosdb** resource.
 
 ![Pipeline.](media/selcosmosdb.png)
 
@@ -1343,11 +1343,11 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![cosmosdb](media/cosmosdb2.png) -->
 
-9. Navigate back to the **Fabric** tab on your browser.
+7. Navigate back to the **Fabric** tab on your browser.
 
-10. In the **Cosmos DB Endpoint** field, paste the URI you copied in **step 6**. This will automatically fetch the pre-created connection.
+8. In the **Cosmos DB Endpoint** field, paste the URI you copied in **step 6**. This will automatically fetch the pre-created connection.
 
-11. Click on **Create**.
+9. Click on **Create**.
 
 ![cosmosdb](media/cosmosdb3.png)
 
@@ -1355,20 +1355,20 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![Task-1.1_4.png.png](media/Task-1.1_4.png) -->
 
-12. Click on the dropdown for Database, then select **Inventory_CustomerSentimentdata** and click on the **Connect** button.
+10. Click on the dropdown for Database, then select **Inventory_CustomerSentimentdata** and click on the **Connect** button.
 
 ![Task-1.1_5.png.png](media/cosmosdb4.png)
 
-13. Click on the **Connect** button.
+11. Click on the **Connect** button.
 
 ![Task-1.1_6.png.png](media/cosmosdb5.png)
 
-14. In the Name field, paste `Mirror_cosmos_CustomerSentiment`.
+12. In the Name field, paste `Mirror_cosmos_CustomerSentiment`.
    -  Click on the **Create mirrored database** button.
 
 ![Task-1.1_7.png.png](media/cosmosdb6.png)
 
-15. Show **Monitor replication** Status to track the replication status.
+13. Show **Monitor replication** Status to track the replication status.
 
 ![Task-1.1_8.png.png](media/cosmosdb7.png)
 
@@ -1654,7 +1654,7 @@ GRANT SELECT ON dbo.CustomerPIIData TO MaskedUsers;
 9. Click on **Browse all**, Click on **OneLake Catalog** in the left navigation pane, search for **Lakehouse** and the click on **LakehouseBronze_...**.
 
 10. Make sure new connection is created.
-  - Click on the **Tales** radio button.
+  - Click on the **Tables** radio button.
   - From the dropdown of **Table** select **dbo.Campaigns**.
 
 ![](media/datapipeline16.png)
@@ -1712,15 +1712,15 @@ GRANT SELECT ON dbo.CustomerPIIData TO MaskedUsers;
 
 ![](media/dashboard15.png)
 
-8. Click on **Datasource** and click on **delete** icon to delete the existing Datssources.
+8. Click on **Datasource** and click on **three dots** of Eventhouse on right hand side and then click on **Remove** to delete the existing Datssources.
 
 ![](media/dashboard16.png)
 
->**Note:** If Prompted, click on **Delete** button.
+>**Note:** If Prompted, click on **Remove** button.
 
 ![](media/dashboard17.png)
 
-9. Click on **Add +** and then click on **Eventhouse / KQL Databse**
+9. Click on **+** and then click on **KQL Databse**.
 
 ![](media/dashboard18.png)
 
@@ -1728,31 +1728,31 @@ GRANT SELECT ON dbo.CustomerPIIData TO MaskedUsers;
 
 ![](media/dashboard19.png)
 
-11. Click on **Add** button and then click on **Close** button.
+<!-- 11. Click on **Close** button.
 
-![](media/dashboard20.png)
+![](media/dashboard20.png) -->
 
-12. Click on **Edit** of the tile.
+11. Click on **Edit** of the tile.
 
 ![](media/dashboard21.png)
 
-13. In the **Explorer** tab, click on **N/A** and then click on **Eventhouse**.
+12. In the **Explorer** tab, click on **N/A** and then click on **Eventhouse**.
 
 ![](media/dashboard22.png)
 
-14. Click on **Run** and then click on **Apply changes**
+13. Click on **Run** and then click on **Apply changes**
  
  ![](media/dashboard23.png)
 
-15. Repeat **steps 12-14** for **Each and Every** tile in the Dashboard.
+14. Repeat **steps 12-14** for **Each and Every** tile in the Dashboard.
 
 ![](media/dashboard24.png)
 
-16. Click on **Save** button.
+15. Click on **Save** button.
 
 ![](media/dashboard13.png)
 
-17. Repeat **Steps 2-16** for creating **Product Performance** Dashboard.
+16. Repeat **Steps 2-16** for creating **Product Performance** Dashboard.
     - In step 3, paste **Product Performance**.
     - In step 4, [Download json](https://stunifydpoc.z20.web.core.windows.net/dashboard-Product-Performance.json)
 
