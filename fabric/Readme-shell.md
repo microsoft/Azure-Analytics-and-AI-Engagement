@@ -285,11 +285,10 @@ cd ./fabric/fabric
 
 22. **Go back** to the Azure Cloud Shell execution window.
 
-23. **Enter** the Region for deployment with the necessary resources available, preferably "eastus" and  **Enter** the Region for **OpenAI** with the necessary resources available
- (Ex.: eastus, eastus2, westus, westus2, etc)
+23. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".(Ex.: eastus, eastus2, westus, westus2, etc)
+<!-- and  **Enter** the Region for **OpenAI** with the necessary resources available --> 
 
     ![box](media/cloudshell-region.png) 
-
 
 25. **Enter** the Workspace ID that you copied in [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation) consecutively.
 
@@ -1067,7 +1066,7 @@ WHERE Segment LIKE '%Occasional Shopper%'
 
 30. Click on the **lakehouseSilver..** checkbox and click on **Add**.
 
-![task-1.3.02.png](media/Dataagent4.png)
+![task-1.3.02.png](media/Dataagent4.1.png)
 
 31. Click on **+ Data source**.
 
@@ -1290,6 +1289,10 @@ You are an email campaign generator. Your task is to create, engaging, and perso
 
 [Download Sales.json](https://stunifydpoc.z20.web.core.windows.net/Sales.json)
 
+>**Note**:  If you're unable to download it automatically, please download it manually from the repository located at fabric\artifacts\fabricCosmos/Sales.json.
+
+![](media/fabriccosmosdb5.1.png)
+
 8. Click on **File** icon, click on **Sales** json file from the Downloads and then click on **Upload**.
 
 ![](media/fabriccosmosdb6.png)
@@ -1302,8 +1305,10 @@ You are an email campaign generator. Your task is to create, engaging, and perso
     - At step 7, Click on pencil icon, re-name the name of the table to **Return_sales**, click on tick mark and then click on **Create** button.
 
 ![](media/fabriccosmosdb7.png)
+
 ![](media/fabriccosmosdb8.png)
-![](media/fabriccosmosdb9.png)
+
+![](media/fabriccosmosdb9.1.png)
 
 
 ### Task 9: Creating a Cosmos DB Mirror
@@ -1441,7 +1446,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 <!-- [Download dacpac file](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/raw/fsi2.0-with-Azure-Databricks/fsi2.0-with-Azure-Databricks/artifacts/reports/01%20World%20Map.pbix) -->
 
->**Note**:  If you're unable to download it automatically, please download it manually from the repository located at fabric\artifacts\SynapseDACPAC\*.
+>**Note**:  If you're unable to download it automatically, please download it manually from the repository located at fabric\artifacts\SynapseDACPAC\ *.
 
 ![](media/dacpacdownload.png)
 

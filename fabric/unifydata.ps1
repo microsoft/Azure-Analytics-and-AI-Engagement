@@ -914,7 +914,7 @@ default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
 # Run the fab set command
 fab set "$notebookPath2" -q lakehouse -i $jsonInput2 -f
 
-fab job run "$salesworkspacePath/2-Customer 360 Insights – Segmentation.ipynb.Notebook"
+# fab job run "$salesworkspacePath/2-Customer 360 Insights – Segmentation.ipynb.Notebook"
 
 fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
 
@@ -931,7 +931,7 @@ default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
 # Run the fab set command
 fab set "$notebookPath3" -q lakehouse -i $jsonInput3 -f
 
-fab job run "$salesworkspacePath/1-ML Solution-Financial Forecasting-AutoML.ipynb.Notebook"
+# fab job run "$salesworkspacePath/1-ML Solution-Financial Forecasting-AutoML.ipynb.Notebook"
 
 fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
 
@@ -948,7 +948,7 @@ default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
 # Run the fab set command
 fab set "$notebookPath7" -q lakehouse -i $jsonInput7 -f
 
-fab job run "$salesworkspacePath/Campaign Optimization.ipynb.Notebook"
+# fab job run "$salesworkspacePath/Campaign Optimization.ipynb.Notebook"
 
 
 fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
