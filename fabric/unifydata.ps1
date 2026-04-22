@@ -998,7 +998,6 @@ default_lakehouse_workspace_id = $wsIdUnify_Dataplatform_2
 # Run the fab set command
 fab set "$notebookPath9" -q lakehouse -i $jsonInput9 -f
  
- 
 fab auth login --username $appId --password $clientsecpwdapp --tenant $tenantId
  
 $notebookPath8 = "$salesworkspacePath/real-time paint accessory inventory data.ipynb.Notebook"

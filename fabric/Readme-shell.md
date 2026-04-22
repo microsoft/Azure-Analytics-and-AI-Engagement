@@ -14,9 +14,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information regarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
 3. It is important to note that **Azure hosting costs** are involved when a DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
 4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Center.** 
-5.  In case of questions or comments, email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
-6. **Environment Maker** access is required to build and manage copilots, including creating Agent, connecting data, and publishing Agent.
-
+5. In case of questions or comments, email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
 
 
 ## Contents
@@ -49,14 +47,13 @@ Customers can play, get hands-on experience navigating through the demo environm
 * A Power BI with Fabric License to host Power BI reports.
 * Make sure the user deploying the script has at least an **Owner** level of access on the Subscription on which it is being deployed.
 * Make sure the **Fabric Administrator** role is assigned to your ID by the **Global Administrator** in the Azure Portal.
-* After creating the workspace and attaching it to the Fabric capacity, enable **Digital Twin Builder** , **Copilot and Azure OpenAI Service** in the **Fabric Admin Portal**.
-* Make sure your Power BI administrator can provide service principal access on your Power BI tenant.
+* After creating the workspace and attaching it to the Fabric capacity, enable **Digital Twin Builder** , **Copilot and Azure OpenAI Service** and **Data Agent** in the **Fabric Admin Portal**.
 * Make sure to register the following resource providers with your Azure Subscription:
    - Microsoft.Fabric
    - Microsoft.EventHub
-   - Microsoft.SQLSever
-   - Microsoft.StorageAccount
-   - Microsoft.AppService
+   - Microsoft.SQL
+   - Microsoft.Storage
+   - Microsoft.App
 * Make sure you have a dedicated Microsoft **Fabric Capacity** deployed in Azure with SKU F8 or higher.
 * You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * A Power Platform admin needs to enable **Dataverse** in the **Copilot Studio environment** and set up the billing plan in the Power Platform Admin Center.
@@ -64,6 +61,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 * In this Accelerator, we have converted real-time reports into static reports for the user's ease but have covered the entire process to configure real-time datasets. Using those real-time datasets, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
 * Once the resources have been set up, ensure that your AD user and synapse workspace have the “Storage Blob Data Owner” role assigned on the storage account name starting with “storage”.
+* **System Administrator** access is required in **Copilot Studio** to build and manage copilots, including creating agents, connecting data, and publishing them. Additionally, a separate environment should be created in Copilot Studio. For new tenants, ensure that billing is properly configured in Copilot Studio before proceeding with creating and publishing agents.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
 >**Note:** This demo contains Power BI Copilot, pre-requisites of which can be found [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/microsoftfabric/fabric/PowerBI%20Copilot/PowerBI%20Copilot%20Pre-requisites.md).
@@ -286,7 +284,6 @@ cd ./fabric/fabric
 22. **Go back** to the Azure Cloud Shell execution window.
 
 23. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".(Ex.: eastus, eastus2, westus, westus2, etc)
-<!-- and  **Enter** the Region for **OpenAI** with the necessary resources available --> 
 
     ![box](media/cloudshell-region.png) 
 
@@ -684,6 +681,8 @@ ProductInventory
 ### Task 7: Creating a data agent, Adding Data Agent to the Copilot studio
 
 > This task only works if you selected the Fabric Capacity License in Task 1.
+
+> Note: To add Data Agent to the copilot studio, you need to have Power Platform admin access on copilot studio. 
 
 1. Open the **Microsoft Fabric** tab in your browser.
 
@@ -1146,7 +1145,7 @@ Provide a brief, plain-language reason behind your recommendation.
 
 ### Adding Data Agent- Data_agent_customer_insights to the Copilot studio
 
->**Note**: To add Data Agent to the copilot studio, you need to have **Power Platform admin** access on copilot studio.
+>**Note**: A separate environment needs to be created in Copilot Studio. If you are working in a new tenant, ensure that billing is properly set up in Copilot Studio before proceeding with creating and publishing agents.
 
 1. Navigate to **https://copilotstudio.preview.microsoft.com/**.
 
@@ -1377,7 +1376,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![Task-1.1_8.png.png](media/cosmosdb7.png)
 
->**Note:**Wait until the Rows replicated statistics are displayed. If not displayed, refresh the **Monitor replication** tab as shown in the screen below. Now, Azure Cosmos DB has been successfully mirrored.
+> Note: Wait until the Rows replicated statistics are displayed. If not displayed, refresh the **Monitor replication** tab as shown in the screen below. Now, Azure Cosmos DB has been successfully mirrored.
 
 
 ### Task 10: Uploading csv's to an Open DB Mirror
@@ -1428,13 +1427,13 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![task-1.3.02.png](media/power-bi-5.png)
 
-2. Click on **Migrate**, then click on **Analytics T-SQL Warehouse or database**.
+2. Click on **Migrate**, then click on **Azure Synaspe Analytics dedicated SQL pool**.
 
-![](media/dacpac1.png)
+![](media/dacpac1.1.png)
 
-3. Click on **Next**.
+3. Click on **Upload a file with the source metadata** and then Click on **Next**.
 
-![](media/dacpac2.png)
+![](media/dacpac2.1.png)
 
 4. Clcik on **Choose file**.
 
@@ -1462,7 +1461,7 @@ Mirroring in Fabric provides an easy experience to avoid complex ETL (Extract Tr
 
 ![](media/dacpac6.png)
 
-9. Click on **MIgrate** button.
+9. Click on **Migrate** button.
 
 ![](media/dacpac7.png)
 
