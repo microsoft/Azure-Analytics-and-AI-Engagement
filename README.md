@@ -57,7 +57,7 @@ No Microsoft technology, nor any of its component technologies, including the de
 
 # Copyright
 
-© 2023 Microsoft Corporation. All rights reserved.   
+© 2026 Microsoft Corporation. All rights reserved.   
 
 By using this demo/lab, you agree to the following terms: 
 
