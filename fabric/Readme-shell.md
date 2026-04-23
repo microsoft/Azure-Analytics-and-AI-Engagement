@@ -216,7 +216,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 Command:
 
 ```
-git clone -b unifydataplatform-2 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement fabric
+git clone -b unifydataplatform-ai-2 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement fabric
 ```
 
 
