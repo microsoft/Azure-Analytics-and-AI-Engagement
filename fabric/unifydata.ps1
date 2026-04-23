@@ -173,9 +173,19 @@ $rgName = "rg-unifydataplatform-$suffix"
 $Region = read-host "Enter the region for deployment"
 $subscriptionId = (Get-AzContext).Subscription.Id
 $tenantId = (Get-AzContext).Tenant.Id
+$location_1 = read-host "Enter the location for OpenAI with gpt-4 "
 $wsIdUnify_Dataplatform_2 =  Read-Host "Enter your 'Unify_Dataplatform_2' PowerBI workspace Id "
+$openAIResource = "openAIResource$suffix"
+$workspaces_prj_name = "proj-unify-dataplatform"
+$workspaces_prj_name_aiServicesName = "AIhub-project-$suffix"
+$aiServicesName = "foundry-resource-$suffix"
+$aiHubName = "hub-$suffix"
 $storage_account_name = "storage$suffix"
 $cosmosdb_account       = "cosmosdb-$suffix"
+$search_service = "srch-$suffix"
+$func_scrm = "funcapp$suffix"
+$serverfarm_asp_func_app_name = "asp$suffix"
+$funstorageAccountName = "stfunc$suffix"
 
 
 Write-Host "Deploying Resources on Microsoft Azure Started ..."
@@ -188,8 +198,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
     -TemplateFile "mainTemplate.json" `
     -Mode Complete `
     -location $Region `
+    -azure_open_ai $openAIResource `
+    -openAI_location_1 $location_1 `
     -storage_account_name $storage_account_name `
     -cosmosdb_account $cosmosdb_account `
+    -search_service $search_service `
+    -func_scrm $func_scrm `
+    -serverfarm_asp_func_app_name $serverfarm_asp_func_app_name `
+    -funstorageAccountName $funstorageAccountName `
     -Force
     
 $templatedeployment = Get-AzResourceGroupDeployment -Name "mainTemplate" -ResourceGroupName $rgName
@@ -1524,6 +1540,175 @@ $azurecosmosdbconnectionid = $response.id
 Write-Output "Connection ID: $azurecosmosdbconnectionid"
 
 
+#Search service 
+Write-Host "-----------------Search service ---------------"
+Add-Content log.txt "-----------------Search service ---------------"
+RefreshTokens
+Install-Module -Name Az.Search -f
+# Get search primary admin key
+$adminKeyPair = Get-AzSearchAdminKeyPair -ResourceGroupName $rgName -ServiceName $search_service
+$primaryAdminKey = $adminKeyPair.Primary
+
+#retirieving cosmos DB key
+$cosmos_account_key = az cosmosdb keys list -n $cosmosdb_account -g $rgName | ConvertFrom-Json
+$cosmos_account_key = $cosmos_account_key.primarymasterkey
+
+$cosmosendpoint = "https://$cosmosdb_account.documents.azure.com:443/"
+
+$cosmosconnectionstring = "AccountEndpoint=$cosmosendpoint;AccountKey=$cosmos_account_key;"
+# Create Datasource endpoint
+Write-Host "Creating Data source in Azure search service..."
+Get-ChildItem "artifacts/search" -Filter product-datasource.json |
+        ForEach-Object {
+            $datasourceDefinition = (Get-Content $_.FullName -Raw).replace("#SEARCHSERVICE#", $search_service).Replace("#COSMOSDBSTRING#", $cosmosconnectionstring)
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+
+             $url = "https://$search_service.search.windows.net/datasources?api-version=2023-11-01"
+             Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+# Create Index
+Write-Host "Creating Index in Azure search service..."
+Get-ChildItem "artifacts/search" -Filter products-catalog-index.json |
+        ForEach-Object {
+            $indexDefinition = (Get-Content $_.FullName -Raw)
+            $headers = @{
+                'api-key' = $primaryAdminKey
+                'Content-Type' = 'application/json'
+                'Accept' = 'application/json' }
+            # $url = "https://$search_service.search.windows.net/indexes?api-version=2024-07-01-preview"
+            $url = "https://$search_service.search.windows.net/indexes?api-version=2023-11-01"
+            Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexDefinition | ConvertTo-Json
+        }
+Start-Sleep -s 10
+
+Get-ChildItem "artifacts/search" -Filter products-catalog-indexer.json |
+    ForEach-Object {
+        $indexerDefinition = (Get-Content $_.FullName -Raw).Replace("#SEARCHSERVICE#", $search_service)
+        $headers = @{
+            'api-key' = $primaryAdminKey
+            'Content-Type' = 'application/json'
+            'Accept' = 'application/json'
+        }
+
+        $url = "https://$search_service.search.windows.net/indexers?api-version=2023-11-01"
+        Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $indexerDefinition | ConvertTo-Json
+    }
+
+## creating AI Foundry projects
+
+$aifoundary = az cognitiveservices account create --name $aiServicesName --resource-group $rgName --kind AIServices --sku S0 --location $location_1 --allow-project-management
+$aifoundarydomain = az cognitiveservices account update --name $aiServicesName --resource-group $rgName --custom-domain $aiServicesName
+$aifoundaryproject = az cognitiveservices account project create --name $aiServicesName --resource-group $rgName --project-name $workspaces_prj_name --location $location_1
+$aifoundarymodel1 = az cognitiveservices account deployment create --name $aiServicesName --resource-group $rgName --deployment-name gpt-4o --model-name gpt-4o --model-version 2024-11-20 --model-format OpenAI --sku-name GlobalStandard --sku-capacity 10
+$aifoundarymodel2 = az cognitiveservices account deployment create --name $aiServicesName --resource-group $rgName --deployment-name phi-4 --model-name phi-4 --model-version 7 --model-format OpenAI --sku-name GlobalStandard --sku-capacity 10
+
+# Get AI Services Keys and Endpoints
+$PROJECT_ENDPOINT = "https://$($aiServicesName).services.ai.azure.com/api/projects/$($workspaces_prj_name)"
+$ENDPOINT_URL = "https://$($aiServicesName).openai.azure.com/openai/v1/"
+
+# az functionapp identity assign --name $func_scrm --resource-group $rgName
+# $principalId = az functionapp identity show --name $func_scrm --resource-group $rgName --query principalId -o tsv
+
+# az role assignment create --assignee-object-id $principalId --assignee-principal-type ServicePrincipal --role "Cognitive Services OpenAI User" --scope /subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.CognitiveServices/accounts/$aiServicesName
+# az role assignment create --assignee-object-id $principalId --assignee-principal-type ServicePrincipal --role "Azure AI User" --scope /subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.CognitiveServices/accounts/$aiServicesName
+
+
+## Fecthing Keys and Endpoints
+# Deploying GPT-4o in Azure OpenAI
+$openAIModel1 = az cognitiveservices account deployment create -g $rgName -n $openAIResource --deployment-name "gpt-4o" --model-name "gpt-4o" --model-version "2024-11-20" --model-format OpenAI --sku-capacity 10 --sku-name "Standard" 
+Write-Host "Fecthing Keys and Endpoints"
+#retirieving primary key
+$openAIPrimaryKey = az cognitiveservices account keys list -n $openAIResource -g $rgName | jq -r .key1
+$AIfoundaryPrimaryKey = az cognitiveservices account keys list -n $aiServicesName -g $rgName | jq -r .key1
+
+$openAIResourceendpoint ="https://$openAIResource.openai.azure.com/"
+$aiagentendpoint ="https://$aiServicesName.openai.azure.com/api/projects/proj-unify-dataplatform"
+$searchserviceendpoint="https://$search_service.search.windows.net/"
+$aiServicesEndpoint="https://$aiServicesName.services.ai.azure.com/openai/v1/"
+
+Read-Host "Follow the markdown instructions to phi-4 model in Foundry project, once you are done, press Enter to continue"
+
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings EUS_AZURE_OPENAI_ENDPOINT=$openAIResourceendpoint
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings EUS_AZURE_OPENAI_DEPLOYMENT=gpt-4o
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings EUS_AZURE_OPENAI_KEY=$openAIPrimaryKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings AZURE_AI_AGENT_ENDPOINT=$PROJECT_ENDPOINT
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings AZURE_TENANT_ID=$tenantId
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings AZURE_CLIENT_ID=$appId
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings AZURE_CLIENT_SECRET=$clientsecpwdapp
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings cluster=$queryUri
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings database3=$KQLDB
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings tablename=Inventory
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings SEARCH_ENDPOINT=$searchserviceendpoint
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings SEARCH_KEY=$primaryAdminKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings phi_4_endpoint=$aiServicesEndpoint
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings phi_4_deployment=Phi-4
+
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings phi_4_api_key=$AIfoundaryPrimaryKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings inventory_agent=$AIfoundaryPrimaryKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings customer_loyalty=$AIfoundaryPrimaryKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings interior_designer=$AIfoundaryPrimaryKey
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings INDEX_NAME=products-catalog-index
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings gpt4o_deployment=gpt-4o
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings gpt4o_endpoint=$openAIResourceendpoint
+$configPI = az functionapp config appsettings set --name $func_scrm --resource-group $rgName --settings gpt4o_subscription_key=$openAIPrimaryKey
+
+
+Write-Host "Uploading function app build, it may take upto 5 min..."
+Write-Host "Deploying Function App via ZIP..."
+
+for ($i=1; $i -le 5; $i++) {
+    try {
+        Publish-AzWebApp -ResourceGroupName $rgName -Name $func_scrm `
+            -ArchivePath "./artifacts/binaries/func-supplychain-risk-mitigation.zip" `
+            -Force -Verbose -ErrorAction Stop
+        Write-Host "Deployment succeeded on attempt $i"
+        break
+    } catch {
+        Write-Warning "Attempt $i failed: $($_.Exception.Message)"
+        Start-Sleep -Seconds 10
+    }
+}
+
+# az functionapp deployment source config-zip --resource-group $rgName --name $func_scrm --src "./artifacts/binaries/func-supplychain-risk-mitigation.zip"
+# az functionapp deployment source config-zip --resource-group $rgName --name $func_scrm --src "./func-supplychain-risk-mitigation.zip"
+
+# $webprofile = az webapp deployment list-publishing-profiles --name $func_scrm --resource-group $rgName | ConvertFrom-Json
+
+# $zipProfile = $webprofile | Where-Object { $_.publishMethod -eq "ZipDeploy" }
+
+# $pair = "$($zipProfile.userName):$($zipProfile.userPWD)"
+# $encoded = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($pair))
+
+# Invoke-RestMethod -Uri "https://$func_scrm.scm.azurewebsites.net/api/zipdeploy?isAsync=true" `
+#   -Headers @{Authorization = "Basic $encoded"} `
+#   -Method POST `
+#   -InFile "./artifacts/binaries/func-supplychain-risk-mitigation.zip" `
+#   -ContentType "application/zip"
+
+Write-Host "Function app Deployment completed"
+# Publish-AzWebApp -ResourceGroupName $rgName -Name $func_scrm -ArchivePath "./artifacts/binaries/func-supplychain-risk-mitigation.zip" -Force -Verbose
+# Write-Host "-----------------Function app build deployment compeleted ---------------"
+Add-Content log.txt "-----------------Function app build deployment compeleted  ---------------"
+# expand-archive -path "./artifacts/binaries/build.zip" -destinationpath "./build" -force
+
+
+# #webapp
+# Write-Host "Uploading  webapp build, ..."
+# (Get-Content -path build/wwwroot/config.js -Raw) | Foreach-Object { $_ `
+#     -replace '#functionName#', $func_scrm `
+# } | Set-Content -Path build/wwwroot/config.js
+
+# compress-archive -path "./build/*" "./build.zip"
+
+# Publish-AzWebApp -ResourceGroupName $rgName -Name $app_fabric_name -ArchivePath "./build.zip" -Force -Verbose
+
+# Write-Host "----------------- webapp build deployment compeleted ---------------"
+
 $endtime=get-date
 $executiontime=$endtime-$starttime
 Write-Host "Execution Time - "$executiontime.TotalMinutes
@@ -1532,6 +1717,34 @@ Write-Host "List of resources deployed in $rgName resource group"
 $deployed_resources = Get-AzResource -resourcegroup $rgName
 $deployed_resources = $deployed_resources | Select-Object Name, Type | Format-Table -AutoSize
 Write-Output $deployed_resources
+
+
+Write-Host "Copy all the values here and use these values for creating the agent using agent.zip"
+
+
+Write-Host "EUS_AZURE_OPENAI_ENDPOINT=$openAIResourceendpoint"
+Write-Host "EUS_AZURE_OPENAI_KEY=$openAIPrimaryKey"
+Write-Host "EUS_AZURE_OPENAI_DEPLOYMENT=gpt-4o"
+ 
+Write-Host "AZURE_AI_AGENT_ENDPOINT=$PROJECT_ENDPOINT"
+Write-Host "AZURE_AI_AGENT_API_VERSION=2024-11-20"
+ 
+# Azure AD credentials
+Write-Host "AZURE_TENANT_ID=$tenantId"
+Write-Host "AZURE_CLIENT_ID=$appId"
+Write-Host "AZURE_CLIENT_SECRET=$clientsecpwdapp"
+ 
+ 
+# Real Time Inventory DB info
+Write-Host "cluster =$queryUri"
+Write-Host "database3 =$KQLDB"
+Write-Host "tablename=Inventory"
+
+ 
+#AI Search credentials
+Write-Host "SEARCH_ENDPOINT=$searchserviceendpoint"
+Write-Host "SEARCH_KEY=$primaryAdminKey"
+Write-Host "INDEX_NAME=products-catalog-index"
 
 
 }

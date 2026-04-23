@@ -2,14 +2,64 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "search_service": { "type": "String" },
+    "azure_open_ai": { "type": "String", "metadata": { "description": "" } },
+    "openAI_location_1": { "type": "string" },
     "location": { "type": "string" },
     "storage_account_name": { "type": "String", "metadata": { "description": "" } },
-    "cosmosdb_account": { "type": "string", "defaultValue": "" }
+    "cosmosdb_account": { "type": "string", "defaultValue": "" },
+    "func_scrm": {
+      "type": "String"
+    },
+        "serverfarm_asp_func_app_name": {
+      "type": "String"
+    },
+        "funstorageAccountName": {
+      "type": "String"
+    },
+        "sku": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [ "Basic", "Standard", "Premium" ],
+      "metadata": { "description": "SKU for ACR" }
+    }
   },
   "variables": {
+     "webSiteResourceType": "Microsoft.Web/sites",
+    "serverFarmResourceType": "Microsoft.Web/serverfarms",
       "tenantId": "[subscription().tenantId]"
   },
   "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2023-10-01-preview",
+      "name": "[parameters('azure_open_ai')]",
+      "location": "[parameters('openAI_location_1')]",
+      "sku": { "name": "S0" },
+      "kind": "OpenAI",
+      "properties": {
+        "customSubDomainName": "[parameters('azure_open_ai')]",
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Search/searchServices",
+      "apiVersion": "2021-06-06-Preview",
+      "name": "[parameters('search_service')]",
+      "location": "[parameters('location')]",
+      "sku": { "name": "standard" },
+      "properties": {
+        "replicaCount": 1,
+        "partitionCount": 1,
+        "hostingMode": "Default",
+        "publicNetworkAccess": "Enabled",
+        "encryptionWithCmk": { "enforcement": "Unspecified" },
+        "disableLocalAuth": false,
+        "authOptions": { "apiKeyOnly": {} },
+        "disabledDataExfiltrationOptions": [],
+        "semanticSearch": "free"
+      }
+    },
     {
       "name": "[parameters('storage_account_name')]",
       "type": "Microsoft.Storage/storageAccounts",
@@ -152,6 +202,112 @@
       "name": "[concat(parameters('cosmosdb_account'), '/Inventory_Customersentiment')]",
       "dependsOn": ["[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdb_account'))]"],
       "properties": { "resource": { "id": "Inventory_Customersentiment" } }
-    } 
+    },
+{
+  "type": "Microsoft.Web/serverfarms",
+  "apiVersion": "2022-03-01",
+  "name": "[parameters('serverfarm_asp_func_app_name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "tier": "FlexConsumption",
+    "name": "FC1"
+  },
+  "kind": "linux",
+  "properties": {
+    "reserved": true
+  }
+},
+{
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('funstorageAccountName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_LRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "allowBlobPublicAccess": false,
+    "allowSharedKeyAccess": true,
+    "defaultToOAuthAuthentication": false
+  }
+},
+{
+  "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+  "apiVersion": "2022-05-01",
+  "name": "[concat(parameters('funstorageAccountName'), '/default/azure-functions-deployment')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName'))]"
+  ],
+  "properties": {
+    "publicAccess": "None"
+  }
+},
+{
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2023-12-01",
+  "name": "[parameters('func_scrm')]",
+  "location": "[parameters('location')]",
+  "kind": "functionapp,linux",
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name'))]",
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName'))]"
+  ],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name'))]",
+
+    "functionAppConfig": {
+      "runtime": {
+        "name": "python",
+        "version": "3.11"
+      },
+      "deployment": {
+        "storage": {
+          "type": "blobContainer",
+          "value": "[concat('https://', parameters('funstorageAccountName'), '.blob.core.windows.net/azure-functions-deployment')]",
+          "authentication": {
+            "type": "storageAccountConnectionString",
+            "storageAccountConnectionStringName": "DEPLOYMENT_STORAGE_CONNECTION_STRING"
+          }
+        }
+      },
+      "scaleAndConcurrency": {
+        "maximumInstanceCount": 100,
+        "instanceMemoryMB": 2048
+      }
+    },
+
+    "siteConfig": {
+      "appSettings": [
+        {
+          "name": "FUNCTIONS_EXTENSION_VERSION",
+          "value": "~4"
+        },
+        {
+          "name": "AzureWebJobsStorage",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName')), '2022-05-01').keys[0].value, ';EndpointSuffix=core.windows.net')]"
+        },
+        {
+          "name": "DEPLOYMENT_STORAGE_CONNECTION_STRING",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName')), '2022-05-01').keys[0].value, ';EndpointSuffix=core.windows.net')]"
+        }
+      ],
+      "ftpsState": "FtpsOnly",
+      "cors": {
+        "allowedOrigins": ["*"]
+      }
+    },
+
+    "httpsOnly": true,
+    "publicNetworkAccess": "Enabled"
+  }
+}
+
+ 
   ]
 }

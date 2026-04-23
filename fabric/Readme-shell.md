@@ -37,6 +37,10 @@ Customers can play, get hands-on experience navigating through the demo environm
   - [Task 11: Migrate Azure Synapse Dedicated pool  to Fabric Data warehouse](#task-11-migrate-azure-synapse-dedicated-pool-to-fabric-data-warehouse)
   - [Task 12: Setting up and Running Data Pipelines](#task-12-setting-up-and-running-data-pipelines)
   - [Task 13: Creating Real-Time Dashboards](#task-13-creating-real-time-dashboards)
+  - [Task 14: Creating Campaign Generation Agent](#task-14-creating-campaign-generation-agent)
+  - [Task 15: Creating Agents For Scenario7- Supply Chain Risk Management](#task-15-creating-agents-for-scenario7-supply-chain-risk-management)
+- [Appendix](#appendix)
+  - [Setting up the Mirrored Snowflake](#setting-up-the-mirrored-snowflake)
 
 
 <!-- /TOC -->
@@ -53,7 +57,7 @@ Customers can play, get hands-on experience navigating through the demo environm
    - Microsoft.EventHub
    - Microsoft.SQL
    - Microsoft.Storage
-   - Microsoft.App
+   - Microsoft.Web
 * Make sure you have a dedicated Microsoft **Fabric Capacity** deployed in Azure with SKU F8 or higher.
 * You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
 * A Power Platform admin needs to enable **Dataverse** in the **Copilot Studio environment** and set up the billing plan in the Power Platform Admin Center.
@@ -62,7 +66,9 @@ Customers can play, get hands-on experience navigating through the demo environm
 * Make sure you use the same valid credentials to log into Azure and Power BI.
 * Once the resources have been set up, ensure that your AD user and synapse workspace have the “Storage Blob Data Owner” role assigned on the storage account name starting with “storage”.
 * **System Administrator** access is required in **Copilot Studio** to build and manage copilots, including creating agents, connecting data, and publishing them. Additionally, a separate environment should be created in Copilot Studio. For new tenants, ensure that billing is properly configured in Copilot Studio before proceeding with creating and publishing agents.
+* The ARM template deploys a Function App and AI resources. Ensure that all resources are deployed in a region where all required SKUs are available; otherwise, deployment may fail.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
+
 
 >**Note:** This demo contains Power BI Copilot, pre-requisites of which can be found [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/microsoftfabric/fabric/PowerBI%20Copilot/PowerBI%20Copilot%20Pre-requisites.md).
 
@@ -135,8 +141,17 @@ Customers can play, get hands-on experience navigating through the demo environm
 | NAME                                      | TYPE                                   |
 |-------------------------------------------|----------------------------------------|
 | rg-unifydataplatform-$suffix               | Resource Group                         |
+| AIhub-$suffix                              | Azure AI Services (Cognitive Services) |
+| hub-$suffix                                | Azure Machine Learning Hub Workspace   |
+| proj-unify-dataplatform                    | Azure Machine Learning Project         |
+| openAIResource$suffix                     | Azure OpenAI                           |
+| srch-$suffix                              | Azure Cognitive Search                 |
 | storage$suffix                            | Azure Storage Account (ADLS Gen2)      |
 | cosmosdb-$suffix                          | Azure Cosmos DB                        |
+| app-supplychain-risk-mitigation-$suffix   | Azure App Service (Linux Web App)      |
+| asp$suffix                                | App Service Plan (Function App)        |
+| stfunc$suffix                             | Storage Account (Function App)         |
+| funcapp$suffix                            | Azure Function App (Python, Linux)     |
 
 
 
@@ -283,9 +298,10 @@ cd ./fabric/fabric
 
 22. **Go back** to the Azure Cloud Shell execution window.
 
-23. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".(Ex.: eastus, eastus2, westus, westus2, etc)
+23. *Enter** the Region for deployment with the necessary resources available, preferably "eastus" and  **Enter** the Region for **OpenAI** with the necessary resources available
+ (Ex.: eastus, eastus2, westus, westus2, etc)
 
-    ![box](media/cloudshell-region.png) 
+    ![box](media/cloudshell-region.1.png) 
 
 25. **Enter** the Workspace ID that you copied in [Task 1](#task-1-power-bi-workspace-and-lakehouse-creation) consecutively.
 
@@ -325,9 +341,43 @@ cd ./fabric/fabric
 
 ![](media/externalshortcut.png)
 
+34. Navigate to the Resource group created in Task 2, search for **proj-unify-dataplatform** and then click on **proj-unify-dataplatform-....**.
+
+![](media/aifoundaryda1.png)
+
+35. Click on Go to **Azure AI Foundary portal**.
+
+![](media/aifoundaryda2.png)
+
+> Note: If it re-directs to new foundry enabled page, try to disable it.
+
+![](media/aifoundaryda1.2.png)
+
+36. Scroll down and click on **Models + endpoints**.
+
+![](media/scenario7.1.png)
+
+37. Click on **Deploy model** and then click on **Deploy base model**.
+
+![](media/scenario7.2.png)
+
+38. Search for **phi-4**, click on **Phi-4** and then click on **Confirm**.
+
+![](media/scenario7.3.png)
+
+39. Click on **Agree and Proceed**.
+
+![](media/scenario7.4.png)
+
+40. Click on **Deploy**.
+
+![](media/scenario7.5.png)
+
 > **Note:** Deployment will take approximately 70-80 minutes to complete. Keep checking the progress with messages printed in the console to avoid timeout.
 
-34. After  script execution is complete, the "--Execution Complete--" prompt appears.
+
+
+41. After  script execution is complete, the "--Execution Complete--" prompt appears.
 
 
 
@@ -715,6 +765,10 @@ ProductInventory
 ![task-1.3.02.png](media/Dataagent9.png)
 
 ![](media/dataagent9.1.png)
+
+>>> Note: Copy the WorkspaceID, artifactID to use in Task 14: Creating Campaign Generation Agent.
+
+![](media/dataagentids.png)
 
 9. Click on **Workspaces** in the left navigation pane and select **Unify_Dataplatform_2**.
 
@@ -1761,3 +1815,109 @@ GRANT SELECT ON dbo.CustomerPIIData TO MaskedUsers;
     - In step 4, [Download json](https://stunifydpoc.z20.web.core.windows.net/dashboard-Product-Performance.json)
 
 >**Note**:  If you're unable to download it automatically, please download it manually from the repository located at fabric\artifacts\dashboard\dashboard-Product-Performance.json.
+
+
+### Task 14: Creating Campaign Generation Agent
+
+1. Navigate to the Resource group created in Task 2, search for **proj-unify-dataplatform** and then click on **proj-unify-dataplatform-....**.
+
+![](media/aifoundaryda1.png)
+
+2. Click on **Go to Azure AI Foundary portal**.
+
+![](media/aifoundaryda2.png)
+
+> Note: If it re-directs to new foundry enabled page, try to disable it.
+
+![](media/aifoundaryda1.2.png)
+
+3. Click on **Agents** in the left navigation pane, then click on **+ New agent**. Enter **Campaign Generation Agent** in the Agent name field, select **gpt-4o** in the Deployment field, and paste the following instructions into the Instructions field.**
+
+
+```
+You are an email campaign generator. Your task is to create, engaging, and personalized campaign emails tailored based on the provided knowledge only. Do not create by your own. Use the data from the given knowledge to format the final response. Do not create any dummy campaign by your own.
+ 
+ 
+A catchy and personalized subject line.
+Warm and appreciative language that addresses valued customers.
+A short poem that emphasizes how flexible segmentation helps customers plan and achieve their goals while staying connected.
+Appropriate emojis throughout the email to make it more engaging.
+Relevant hashtags at the end.
+A body with at least 40 words.
+A proper closing greeting after the poem.
+Always keep the email in markdown format, as it is best suited for campaign emails.
+Do not add any extra questions and other things expect email in the response
+
+```
+![](media/campaignagent1.png)
+
+4. Click on **+ Add** for Knowledge field. 
+
+![](media/campaignagent2.png)
+
+5. Click on **Microsoft Fabric**.
+
+![](media/campaignagent3.png)
+
+6. Click on **Create connection**.
+
+![](media/campaignagent4.png)
+
+7. paste the WorkspaceID, artifactID copied in after step 8 Task 7: Creating a data agent, Adding Data Agent to the Copilot studio.
+
+8. paste ```ConnectingFabricDataAgent``` in the **Connection name** field and then click on **Connect**.
+
+![](media/campaignagent5.png)
+
+
+### Task 15: Creating Agents For Scenario7- Supply Chain Risk Management
+
+1. Click on below link to download **Agents.zip**.
+
+    [Download Agents.zip](https://stunifydpoc.z20.web.core.windows.net/Agents.zip)
+
+>**Note**:  If you're unable to download the file automatically, please download it manually from the repository located at fabric\artifacts\binaries\Agents.zip.
+
+>**Note**: To run the commands below, you need to install Python 3.11.9 on your local system.
+>**Note**: From the next steps onward, perform all actions locally.
+
+2. In Task 2, run the Cloud Shell to provision the demo resources. At the end of the script, copy the output values displayed in the Cloud Shell.
+
+![](media/scenario7.11.png)
+
+3. Extract the downloaded agents.zip file. Open the extracted agents folder in Visual Studio Code, and replace the parameters.env file with the values displayed in the Cloud Shell during Task 2.
+
+4. Launch the terminal and execute the following commands:
+
+- az login
+- pip install -r ./requirements.txt
+- python .\agents\dynamicsOffersAgent.py
+- python .\agents\inventoryAgent_initializer.py
+- python .\agents\productRecommendationAgent.py
+
+![](media/scenario7.6.png)
+
+5. Once the above commands have run successfully, copy the Agent ID values displayed in the console.
+ 
+![](media/scenario7.7.png)
+
+6. Navigate to the Resource group created in Task 2
+
+7. Search for **Function** and clik on **funcapp...**.
+
+![](media/scenario7.8.png)
+
+8. Click on **Settings**, then select **Environment variables**, and click on **Advanced edit** Environment Variables.
+
+![](media/scenario7.9.png)
+
+9. Scroll down and update the following environment variables with the corresponding output values:
+
+- interior_designer – Output from running:
+python .\agents\productRecommendationAgent.py
+- customer_loyalty – Output from running:
+python .\agents\dynamicsOffersAgent.py
+- inventory_agent – Output from running:
+python .\agents\inventoryAgent_initializer.py
+
+![](media/scenario7.10.png)

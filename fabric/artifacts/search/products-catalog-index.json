@@ -1,0 +1,58 @@
+{
+  "name": "products-catalog-index",
+  "fields": [
+    {
+      "name": "ProductID",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true,
+      "analyzer": "standard.lucene"
+    },
+    {
+      "name": "ProductName",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true,
+      "analyzer": "standard.lucene"
+    },
+    {
+      "name": "ProductCategory",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true,
+      "analyzer": "standard.lucene"
+    },
+    {
+      "name": "Price",
+      "type": "Edm.Double",
+      "retrievable": true
+    },
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "retrievable": true
+    },
+    {
+      "name": "rid",
+      "type": "Edm.String",
+      "key": true,
+      "retrievable": true
+    }
+  ],
+  "similarity": {
+    "@odata.type": "#Microsoft.Azure.Search.BM25Similarity"
+  },
+  "semantic": {
+    "configurations": [
+      {
+        "name": "product-catalog-index-semantic-configuration",
+        "prioritizedFields": {
+          "prioritizedContentFields": [
+            { "fieldName": "ProductName" },
+            { "fieldName": "ProductCategory" }
+          ]
+        }
+      }
+    ]
+  }
+}

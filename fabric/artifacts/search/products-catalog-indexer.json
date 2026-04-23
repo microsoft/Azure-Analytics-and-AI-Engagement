@@ -1,0 +1,14 @@
+{
+  "name": "products-catalog-indexer",
+  "dataSourceName": "product-datasources",
+  "targetIndexName": "products-catalog-index",
+  "schedule": {
+    "interval": "PT1H"
+  },
+  "parameters": {
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0
+  },
+  "fieldMappings": [],
+  "outputFieldMappings": []
+}

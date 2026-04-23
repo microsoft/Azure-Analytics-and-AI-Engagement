@@ -1,0 +1,21 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8DE1AD5CE719507\"",
+  "name": "product-datasources",
+  "description": null,
+  "type": "cosmosdb",
+  "subtype": null,
+  "credentials": {
+    "connectionString": "#COSMOSDBSTRING#Database=Inventory_Customersentiment"
+  },
+  "container": {
+    "name": "ProductsCatalog",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": {
+    "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
+    "highWaterMarkColumnName": "_ts"
+  },
+  "dataDeletionDetectionPolicy": null,
+  "encryptionKey": null
+}
