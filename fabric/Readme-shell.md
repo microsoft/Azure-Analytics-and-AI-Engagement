@@ -1,11 +1,11 @@
 ![Showcase Image](media/showcase.png)
 
 ## What is a DPoC?
-DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
+DREAM PoC Accelerators (DPoC) are packaged Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
 
 ## Objective & Intent
-Partners can deploy DREAM Demos in their own Azure subscriptions and demonstrate them live to their customers. 
-By Partnering with Microsoft sellers, partners can deploy Industry Scenario DREAM Demos into customer subscriptions. 
+Partners can deploy Demos in their own Azure subscriptions and demonstrate them live to their customers. 
+By Partnering with Microsoft sellers, partners can deploy Industry Scenario Demos into customer subscriptions. 
 Customers can play, get hands-on experience navigating through the demo environment in their own subscription, and show it to their own stakeholders.
 
 **Here are some important guidelines before you begin** 
