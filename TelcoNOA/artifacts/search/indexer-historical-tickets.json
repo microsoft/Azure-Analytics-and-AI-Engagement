@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DDA7FCD67E7E3D\"",
+  "name": "indexer-historical-tickets",
+  "description": "",
+  "dataSourceName": "cosmosdb-noa-datasource",
+  "skillsetName": null,
+  "targetIndexName": "index-historical-tickets",
+  "schedule": null,
+  "parameters": {
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "configuration": {}
+  },
+  "fieldMappings": [],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}

@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8DE587D8C3D73CB\"",
+  "name": "cosmosdb-noa-datasource",
+  "description": null,
+  "type": "cosmosdb",
+  "subtype": null,
+  "credentials": {
+    "connectionString": "#COSMOSDBSTRING#Database=TelcoNOADB"
+  },
+  "container": {
+    "name": "HistoricalTickets",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": null,
+  "dataDeletionDetectionPolicy": null,
+  "encryptionKey": null
+}

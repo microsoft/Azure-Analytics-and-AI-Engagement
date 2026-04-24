@@ -1,0 +1,128 @@
+{
+  "name": "index-historical-tickets",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "key": true,
+      "searchable": true,
+      "retrievable": true
+    },
+    {
+      "name": "RecordId",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true
+    },
+    {
+      "name": "contentVector",
+      "type": "Collection(Edm.Single)",
+      "searchable": true,
+      "dimensions": 1536,
+      "vectorSearchProfile": "vector-profile"
+    },
+    {
+      "name": "RootCauseFailureReason",
+      "type": "Edm.ComplexType",
+      "fields": [
+        { "name": "DeviceName", "type": "Edm.String", "searchable": true },
+        { "name": "Port", "type": "Edm.String", "searchable": true },
+        { "name": "StartDevice", "type": "Edm.String", "searchable": true },
+        { "name": "StartPort", "type": "Edm.String", "searchable": true },
+        { "name": "EndDevice", "type": "Edm.String", "searchable": true },
+        { "name": "EndPort", "type": "Edm.String", "searchable": true },
+        { "name": "FaultMessage", "type": "Edm.String", "searchable": true },
+        { "name": "RepairAction", "type": "Edm.String", "searchable": true },
+        { "name": "Component", "type": "Edm.String", "searchable": true },
+        { "name": "Severity", "type": "Edm.Int64" },
+        { "name": "HealthState", "type": "Edm.String", "searchable": true },
+        { "name": "DataPlaneImpacting", "type": "Edm.String", "searchable": true },
+        { "name": "MessageId", "type": "Edm.String", "searchable": true },
+        { "name": "EventSourceName", "type": "Edm.String", "searchable": true },
+        { "name": "keywords", "type": "Edm.String", "searchable": true },
+        { "name": "EventTimestamp", "type": "Edm.String", "searchable": true },
+        { "name": "SentByAsaTime", "type": "Edm.String", "searchable": true },
+        { "name": "Link", "type": "Edm.String", "searchable": true },
+        { "name": "BandwidthInGbps", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceDeviceName", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceStatus", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceOSVersion", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceOSVersionType", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceHardwareSku", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceNgsDeviceType", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceAzureDeviceType", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceFunction", "type": "Edm.String", "searchable": true },
+        { "name": "StartDeviceRole", "type": "Edm.String", "searchable": true },
+        { "name": "EndDeviceStatus", "type": "Edm.String", "searchable": true },
+        { "name": "EndDeviceOSVersion", "type": "Edm.String", "searchable": true },
+        { "name": "EndDeviceHardwareSku", "type": "Edm.String", "searchable": true },
+        { "name": "EndDeviceFunction", "type": "Edm.String", "searchable": true },
+        { "name": "ComponentId", "type": "Edm.String", "searchable": true }
+      ]
+    },
+    {
+      "name": "rid",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true
+    }
+  ],
+  "scoringProfiles": [],
+  "suggesters": [],
+  "analyzers": [],
+  "tokenizers": [],
+  "tokenFilters": [],
+  "charFilters": [],
+  "similarity": {
+    "@odata.type": "#Microsoft.Azure.Search.BM25Similarity"
+  },
+  "semantic": {
+    "configurations": [
+      {
+        "name": "semantic-config",
+        "prioritizedFields": {
+          "titleField": { "fieldName": "RootCauseFailureReason/RepairAction" },
+          "prioritizedContentFields": [
+            { "fieldName": "RootCauseFailureReason/FaultMessage" }
+          ],
+          "prioritizedKeywordsFields": [
+            { "fieldName": "RootCauseFailureReason/Component" }
+          ]
+        }
+      }
+    ]
+  },
+  "vectorSearch": {
+    "algorithms": [
+      {
+        "name": "hnsw-config",
+        "kind": "hnsw",
+        "hnswParameters": {
+          "metric": "cosine",
+          "m": 4,
+          "efConstruction": 400,
+          "efSearch": 500
+        }
+      }
+    ],
+    "profiles": [
+      {
+        "name": "vector-profile",
+        "algorithm": "hnsw-config",
+        "vectorizer": "openai-vectorizer"
+      }
+    ],
+    "vectorizers": [
+      {
+        "name": "openai-vectorizer",
+        "kind": "azureOpenAI",
+        "azureOpenAIParameters": {
+          "resourceUri": "https://#openairesource#.openai.azure.com",
+          "deploymentId": "text-embedding-ada-002",
+          "modelName": "text-embedding-ada-002",
+          "apiKey": "#openairesourcekey#"
+        }
+      }
+    ]
+  }
+}

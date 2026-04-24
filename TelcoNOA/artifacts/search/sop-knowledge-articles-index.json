@@ -1,0 +1,98 @@
+{
+  "name": "sop-knowledge-articles-index",
+  "fields": [
+    {
+      "name": "uid",
+      "type": "Edm.String",
+      "key": true,
+      "searchable": true,
+      "sortable": true,
+      "analyzer": "keyword"
+    },
+    {
+      "name": "snippet_parent_id",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "blob_url",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "snippet",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true
+    },
+    {
+      "name": "image_snippet_parent_id",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "snippet_vector",
+      "type": "Collection(Edm.Single)",
+      "searchable": true,
+      "dimensions": 1536,
+      "vectorSearchProfile": "sop-knowledge-articles-vector-search-profile"
+    }
+  ],
+  "semantic": {
+    "configurations": [
+      {
+        "name": "sop-knowledge-articles-semantic-configuration",
+        "prioritizedFields": {
+          "prioritizedContentFields": [
+            { "fieldName": "snippet" }
+          ]
+        }
+      }
+    ]
+  },
+  "vectorSearch": {
+    "algorithms": [
+      {
+        "name": "sop-knowledge-articles-vector-search-algorithm",
+        "kind": "hnsw",
+        "hnswParameters": {
+          "metric": "cosine",
+          "m": 4,
+          "efConstruction": 400,
+          "efSearch": 500
+        }
+      }
+    ],
+    "profiles": [
+      {
+        "name": "sop-knowledge-articles-vector-search-profile",
+        "algorithm": "sop-knowledge-articles-vector-search-algorithm",
+        "vectorizer": "sop-knowledge-articles-vectorizer",
+        "compression": "sop-knowledge-articles-vector-search-scalar-quantization"
+      }
+    ],
+    "vectorizers": [
+      {
+        "name": "sop-knowledge-articles-vectorizer",
+        "kind": "azureOpenAI",
+        "azureOpenAIParameters": {
+          "resourceUri": "https://Prj-TelcoNOA.openai.azure.com",
+          "deploymentId": "text-embedding-3-small",
+          "modelName": "text-embedding-3-small"
+        }
+      }
+    ],
+    "compressions": [
+      {
+        "name": "sop-knowledge-articles-vector-search-scalar-quantization",
+        "kind": "scalarQuantization",
+        "scalarQuantizationParameters": {
+          "quantizedDataType": "int8"
+        }
+      }
+    ]
+  }
+}

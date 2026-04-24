@@ -1,0 +1,98 @@
+{
+  "name": "troubleshooting-guides-index",
+  "fields": [
+    {
+      "name": "uid",
+      "type": "Edm.String",
+      "key": true,
+      "searchable": true,
+      "sortable": true,
+      "analyzer": "keyword"
+    },
+    {
+      "name": "snippet_parent_id",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "blob_url",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "snippet",
+      "type": "Edm.String",
+      "searchable": true,
+      "retrievable": true
+    },
+    {
+      "name": "image_snippet_parent_id",
+      "type": "Edm.String",
+      "filterable": true,
+      "retrievable": true
+    },
+    {
+      "name": "snippet_vector",
+      "type": "Collection(Edm.Single)",
+      "searchable": true,
+      "dimensions": 1536,
+      "vectorSearchProfile": "troubleshooting-guides-vector-search-profile"
+    }
+  ],
+  "semantic": {
+    "configurations": [
+      {
+        "name": "troubleshooting-guides-semantic-configuration",
+        "prioritizedFields": {
+          "prioritizedContentFields": [
+            { "fieldName": "snippet" }
+          ]
+        }
+      }
+    ]
+  },
+  "vectorSearch": {
+    "algorithms": [
+      {
+        "name": "troubleshooting-guides-vector-search-algorithm",
+        "kind": "hnsw",
+        "hnswParameters": {
+          "metric": "cosine",
+          "m": 4,
+          "efConstruction": 400,
+          "efSearch": 500
+        }
+      }
+    ],
+    "profiles": [
+      {
+        "name": "troubleshooting-guides-vector-search-profile",
+        "algorithm": "troubleshooting-guides-vector-search-algorithm",
+        "vectorizer": "troubleshooting-guides-vectorizer",
+        "compression": "troubleshooting-guides-vector-search-scalar-quantization"
+      }
+    ],
+    "vectorizers": [
+      {
+        "name": "troubleshooting-guides-vectorizer",
+        "kind": "azureOpenAI",
+        "azureOpenAIParameters": {
+          "resourceUri": "https://prj-telco-noa-resource.openai.azure.com",
+          "deploymentId": "text-embedding-3-small",
+          "modelName": "text-embedding-3-small"
+        }
+      }
+    ],
+    "compressions": [
+      {
+        "name": "troubleshooting-guides-vector-search-scalar-quantization",
+        "kind": "scalarQuantization",
+        "scalarQuantizationParameters": {
+          "quantizedDataType": "int8"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8DE587D8C41B4C4\"",
+  "name": "network-security-guides-datasource",
+  "description": "Data source for knowledge source 'network-security-guides'",
+  "type": "azureblob",
+  "subtype": null,
+  "credentials": {
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=#storage_account_name#;AccountKey=#storage_account_key#"
+  },
+  "container": {
+    "name": "network-security",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": null,
+  "dataDeletionDetectionPolicy": null,
+  "encryptionKey": null
+}

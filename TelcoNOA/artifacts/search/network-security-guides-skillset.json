@@ -1,0 +1,149 @@
+{
+  "name": "network-security-guides-skillset",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+      "name": "SplitSkill",
+      "description": "Split document content into chunks",
+      "context": "/document",
+      "defaultLanguageCode": "en",
+      "textSplitMode": "pages",
+      "maximumPageLength": 2000,
+      "pageOverlapLength": 200,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
+      "name": "AzureOpenAIEmbeddingSkill",
+      "description": "Generate embeddings",
+      "context": "/document/pages/*",
+      "resourceUri": "https://Prj-TelcoNOA.openai.azure.com",
+      "apiKey": "<redacted>",
+      "deploymentId": "text-embedding-3-small",
+      "dimensions": 1536,
+      "modelName": "text-embedding-3-small",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/pages/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "embedding",
+          "targetName": "text_vector"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.ChatCompletionSkill",
+      "name": "GenAISkill",
+      "description": "Generate chat responses for image verbalization",
+      "context": "/document/normalized_images/*",
+      "uri": "https://Prj-TelcoNOA.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-10-21",
+      "httpMethod": "POST",
+      "timeout": "PT1M",
+      "batchSize": 1,
+      "apiKey": "<redacted>",
+      "inputs": [
+        {
+          "name": "systemMessage",
+          "source": "='You are tasked with generating concise, accurate descriptions of images, figures, diagrams, or charts in documents.'"
+        },
+        {
+          "name": "userMessage",
+          "source": "='Please describe this image.'"
+        },
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*/data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "targetName": "verbalizedImage"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
+      "name": "VerbalizedImageAzureOpenAIEmbeddingSkill",
+      "description": "Generate embeddings",
+      "context": "/document/normalized_images/*",
+      "resourceUri": "https://Prj-TelcoNOA.openai.azure.com",
+      "apiKey": "<redacted>",
+      "deploymentId": "text-embedding-3-small",
+      "dimensions": 1536,
+      "modelName": "text-embedding-3-small",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/normalized_images/*/verbalizedImage"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "embedding",
+          "targetName": "verbalizedImage_vector"
+        }
+      ]
+    }
+  ],
+  "indexProjections": {
+    "selectors": [
+      {
+        "targetIndexName": "network-security-guides-index",
+        "parentKeyFieldName": "snippet_parent_id",
+        "sourceContext": "/document/pages/*",
+        "mappings": [
+          {
+            "name": "snippet_vector",
+            "source": "/document/pages/*/text_vector"
+          },
+          {
+            "name": "snippet",
+            "source": "/document/pages/*"
+          },
+          {
+            "name": "blob_url",
+            "source": "/document/blob_url"
+          }
+        ]
+      },
+      {
+        "targetIndexName": "network-security-guides-index",
+        "parentKeyFieldName": "image_snippet_parent_id",
+        "sourceContext": "/document/normalized_images/*",
+        "mappings": [
+          {
+            "name": "snippet_vector",
+            "source": "/document/normalized_images/*/verbalizedImage_vector"
+          },
+          {
+            "name": "snippet",
+            "source": "/document/normalized_images/*/verbalizedImage"
+          },
+          {
+            "name": "blob_url",
+            "source": "/document/blob_url"
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "projectionMode": "skipIndexingParentDocuments"
+    }
+  }
+}

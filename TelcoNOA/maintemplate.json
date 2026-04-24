@@ -1,0 +1,640 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "search_service": { "type": "String" },
+    "location": { "type": "string" },
+    "storage_account_name": { "type": "String", "metadata": { "description": "" } },
+    "cosmosdb_account": { "type": "string", "defaultValue": "" },
+    "appServicePlanName": { "type": "string", "metadata": { "description": "App Service Plan name" } },
+    "sku": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [ "Basic", "Standard", "Premium" ],
+      "metadata": { "description": "SKU for ACR" }
+    },
+    "appServiceSku": {
+      "type": "object",
+      "defaultValue": { "name": "P1v2", "tier": "PremiumV2", "capacity": 1 },
+      "metadata": { "description": "SKU for the App Service Plan" }
+    },
+      "func_scrm": {
+      "type": "String"
+    },
+      "serverfarm_asp_func_app_name": {
+      "type": "String"
+    },
+      "funstorageAccountName": {
+      "type": "String"
+    },
+      "func_scrm1": {
+      "type": "String"
+    },
+      "serverfarm_asp_func_app_name1": {
+      "type": "String"
+    },
+      "funstorageAccountName1": {
+      "type": "String"
+    },
+    "app_fabric_name": {
+      "type": "string",
+      "metadata": { "description": "App Fabric name" }
+    },
+      "accounts_cog_telconoa_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    }
+  },
+  "variables": {
+     "webSiteResourceType": "Microsoft.Web/sites",
+    "serverFarmResourceType": "Microsoft.Web/serverfarms",
+      "tenantId": "[subscription().tenantId]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Search/searchServices",
+      "apiVersion": "2021-06-06-Preview",
+      "name": "[parameters('search_service')]",
+      "location": "[parameters('location')]",
+      "sku": { "name": "standard" },
+      "properties": {
+        "replicaCount": 1,
+        "partitionCount": 1,
+        "hostingMode": "Default",
+        "publicNetworkAccess": "Enabled",
+        "encryptionWithCmk": { "enforcement": "Unspecified" },
+        "disableLocalAuth": false,
+        "authOptions": { "apiKeyOnly": {} },
+        "disabledDataExfiltrationOptions": [],
+        "semanticSearch": "free"
+      }
+    },
+    {
+      "name": "[parameters('storage_account_name')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2020-08-01-preview",
+      "location": "[parameters('location')]",
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "kind": "StorageV2",
+      "properties": {
+        "isHnsEnabled": "true",
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": { "keyType": "Account", "enabled": true },
+            "blob": { "keyType": "Account", "enabled": true }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "sku": { "name": "Standard_LRS", "tier": "Standard" },
+      "properties": {
+        "cors": {
+          "corsRules": [
+            { "allowedOrigins": ["*"], "allowedMethods": ["GET"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["POST"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["DELETE"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] },
+            { "allowedOrigins": ["*"], "allowedMethods": ["MERGE"], "maxAgeInSeconds": 1000, "exposedHeaders": ["*"], "allowedHeaders": ["*"] }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": { "cors": { "corsRules": [] } }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": { "cors": { "corsRules": [] } }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/telemetry')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/sop-knowledge-articles')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/troubleshooting-guides')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+        {
+      "name": "[concat(parameters('storage_account_name'), '/default/webappassets')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/network-security')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2020-08-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+        {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2023-11-15",
+      "name": "[parameters('cosmosdb_account')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "identity": { "type": "SystemAssigned" },
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "enableAnalyticalStorage": true,
+        "analyticalStorageConfiguration": { "schemaType": "WellDefined" },
+        "databaseAccountOfferType": "Standard",
+        "defaultIdentity": "FirstPartyIdentity",
+        "minimalTlsVersion": "Tls12",
+        "consistencyPolicy": { "defaultConsistencyLevel": "Strong", "maxIntervalInSeconds": 5, "maxStalenessPrefix": 100 },
+        "locations": [
+          { "locationName": "[parameters('location')]", "provisioningState": "Succeeded", "failoverPriority": 0, "isZoneRedundant": false }
+        ],
+        "backupPolicy": { "type": "Continuous", "continuousModeProperties": { "tier": "Continuous7Days" } }
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "apiVersion": "2023-11-15",
+      "name": "[concat(parameters('cosmosdb_account'), '/TelcoNOADB')]",
+      "dependsOn": ["[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdb_account'))]"],
+      "properties": { "resource": { "id": "TelcoNOADB" } }
+    },
+ {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "apiVersion": "2023-11-15",
+      "name": "[concat(parameters('cosmosdb_account'), '/tmf-operational-db')]",
+      "dependsOn": ["[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosdb_account'))]"],
+      "properties": { "resource": { "id": "tmf-operational-db" } }
+    },
+        {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('serverfarm_asp_func_app_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "tier": "Standard",
+        "name": "S1"
+      },
+      "kind": "linux",
+      "properties": {
+        "numberOfWorkers": 1,
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('serverfarm_asp_func_app_name1')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "tier": "Standard",
+        "name": "S1"
+      },
+      "kind": "linux",
+      "properties": {
+        "numberOfWorkers": 1,
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-05-01",
+      "name": "[parameters('funstorageAccountName1')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "minimumTlsVersion": "TLS1_2",
+        "defaultToOAuthAuthentication": true
+      }
+    },
+        {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-05-01",
+      "name": "[parameters('funstorageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "minimumTlsVersion": "TLS1_2",
+        "defaultToOAuthAuthentication": true
+      }
+    },
+{
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2022-03-01",
+  "name": "[parameters('func_scrm')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name'))]",
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName'))]"
+  ],
+  "kind": "functionapp,linux",
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name'))]",
+    "siteConfig": {
+      "appSettings": [
+        {
+          "name": "FUNCTIONS_EXTENSION_VERSION",
+          "value": "~4"
+        },
+        {
+          "name": "FUNCTIONS_WORKER_RUNTIME",
+          "value": "python"
+        },
+        {
+          "name": "AzureWebJobsStorage",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName')), '2019-06-01').keys[0].value, ';EndpointSuffix=core.windows.net')]"
+        },
+        {
+          "name": "DEPLOYMENT_STORAGE_CONNECTION_STRING",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName')), '2019-06-01').keys[0].value, ';EndpointSuffix=core.windows.net')]",
+          "slotSetting": false
+        }
+      ],
+      "ftpsState": "FtpsOnly",
+      "linuxFxVersion": "Python|3.11",
+      "use32BitWorkerProcess": false,
+      "cors": {
+        "allowedOrigins": [
+          "https://portal.azure.com"
+        ]
+      }
+    },
+    "httpsOnly": true,
+    "clientAffinityEnabled": false,
+    "publicNetworkAccess": "Enabled"
+  }
+},
+
+{
+  "type": "Microsoft.Web/sites/config",
+  "apiVersion": "2023-12-01",
+  "name": "[concat(parameters('func_scrm'), '/web')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/sites', parameters('func_scrm'))]"
+  ],
+  "properties": {
+    "alwaysOn": true,
+    "minTlsVersion": "1.2",
+    "scmMinTlsVersion": "1.2",
+    "ftpsState": "FtpsOnly",
+    "publicNetworkAccess": "Enabled",
+    "linuxFxVersion": "Python|3.11",
+    "cors": {
+      "allowedOrigins": ["*"],
+      "supportCredentials": false
+    },
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "Any",
+        "action": "Allow",
+        "priority": 2147483647,
+        "name": "Allow all",
+        "description": "Allow all access"
+      }
+    ],
+    "scmIpSecurityRestrictions": [
+      {
+        "ipAddress": "Any",
+        "action": "Allow",
+        "priority": 2147483647,
+        "name": "Allow all",
+        "description": "Allow all access"
+      }
+      ]
+    }
+},
+
+{
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2022-03-01",
+  "name": "[parameters('func_scrm1')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name1'))]",
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName1'))]"
+  ],
+  "kind": "functionapp,linux",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_asp_func_app_name1'))]",
+    "siteConfig": {
+      "appSettings": [
+        {
+          "name": "FUNCTIONS_EXTENSION_VERSION",
+          "value": "~4"
+        },
+        {
+          "name": "FUNCTIONS_WORKER_RUNTIME",
+          "value": "python"
+        },
+        {
+          "name": "AzureWebJobsStorage",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName1'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName1')), '2019-06-01').keys[0].value, ';EndpointSuffix=core.windows.net')]"
+        },
+        {
+          "name": "DEPLOYMENT_STORAGE_CONNECTION_STRING",
+          "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('funstorageAccountName1'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('funstorageAccountName1')), '2019-06-01').keys[0].value, ';EndpointSuffix=core.windows.net')]",
+          "slotSetting": false
+        }
+      ],
+      "ftpsState": "FtpsOnly",
+      "linuxFxVersion": "Python|3.11",
+      "use32BitWorkerProcess": false,
+      "cors": {
+        "allowedOrigins": [
+          "https://portal.azure.com"
+        ]
+      }
+    },
+    "httpsOnly": true,
+    "clientAffinityEnabled": false,
+    "publicNetworkAccess": "Enabled"
+  }
+},
+
+{
+  "type": "Microsoft.Web/sites/config",
+  "apiVersion": "2023-12-01",
+  "name": "[concat(parameters('func_scrm1'), '/web')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/sites', parameters('func_scrm1'))]"
+  ],
+  "properties": {
+    "alwaysOn": true,
+    "minTlsVersion": "1.2",
+    "scmMinTlsVersion": "1.2",
+    "ftpsState": "FtpsOnly",
+    "publicNetworkAccess": "Enabled",
+    "linuxFxVersion": "Python|3.11",
+    "cors": {
+      "allowedOrigins": ["*"],
+      "supportCredentials": false
+    },
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "Any",
+        "action": "Allow",
+        "priority": 2147483647,
+        "name": "Allow all",
+        "description": "Allow all access"
+      }
+    ],
+    "scmIpSecurityRestrictions": [
+      {
+        "ipAddress": "Any",
+        "action": "Allow",
+        "priority": 2147483647,
+        "name": "Allow all",
+        "description": "Allow all access"
+      }
+      ]
+    }
+},
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2021-02-01",
+      "name": "[parameters('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "sku": "[parameters('appServiceSku')]",
+      "properties": { "reserved": true }
+    },
+    {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2024-11-01",
+        "name": "[parameters('app_fabric_name')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+        ],
+        "kind": "app,linux",
+        "properties": {
+          "enabled": true,
+          "hostNameSslStates": [
+              {
+                "name": "[concat(parameters('app_fabric_name'), '.azurewebsites.net')]",
+                "sslState": "Disabled",
+                "hostType": "Standard"
+              },
+              {
+                "name": "[concat(parameters('app_fabric_name'), '.scm.azurewebsites.net')]",
+                "sslState": "Disabled",
+                "hostType": "Repository"
+              }
+          ],
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+          "reserved": true,
+          "isXenon": false,
+          "hyperV": false,
+          "siteConfig": {
+              "numberOfWorkers": 1,
+              "linuxFxVersion": "DOTNETCORE|8.0",
+              "acrUseManagedIdentityCreds": false,
+              "alwaysOn": true,
+              "http20Enabled": false,
+              "functionAppScaleLimit": 0,
+              "minimumElasticInstanceCount": 1
+          },
+          "scmSiteAlsoStopped": false,
+          "clientAffinityEnabled": true,
+          "clientCertEnabled": false,
+          "hostNamesDisabled": false,
+          "containerSize": 0,
+          "dailyMemoryTimeQuota": 0,
+          "httpsOnly": false,
+          "redundancyMode": "None",
+          "storageAccountRequired": false,
+          "keyVaultReferenceIdentity": "SystemAssigned"
+        }
+    },
+    {
+        "type": "Microsoft.Web/sites/config",
+        "apiVersion": "2024-11-01",
+        "name": "[concat(parameters('app_fabric_name'), '/web')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', parameters('app_fabric_name'))]"
+        ],
+        "properties": {
+          "numberOfWorkers": 1,
+          "defaultDocuments": [
+              "Default.htm",
+              "Default.html",
+              "Default.asp",
+              "index.htm",
+              "index.html",
+              "iisstart.htm",
+              "default.aspx",
+              "index.php",
+              "hostingstart.html"
+          ],
+          "netFrameworkVersion": "v4.0",
+          "linuxFxVersion": "DOTNETCORE|8.0",
+          "requestTracingEnabled": false,
+          "remoteDebuggingEnabled": false,
+          "httpLoggingEnabled": false,
+          "acrUseManagedIdentityCreds": false,
+          "logsDirectorySizeLimit": 35,
+          "detailedErrorLoggingEnabled": false,
+          "publishingUsername": "[concat('$', parameters('app_fabric_name'))]",
+          "scmType": "None",
+          "use32BitWorkerProcess": true,
+          "webSocketsEnabled": false,
+          "alwaysOn": false,
+          "managedPipelineMode": "Integrated",
+          "virtualApplications": [
+              {
+                "virtualPath": "/",
+                "physicalPath": "site\\wwwroot",
+                "preloadEnabled": false
+              }
+          ],
+          "loadBalancing": "LeastRequests",
+          "experiments": {
+              "rampUpRules": []
+          },
+          "autoHealEnabled": false,
+          "vnetRouteAllEnabled": false,
+          "vnetPrivatePortsCount": 0,
+          "localMySqlEnabled": false,
+          "ipSecurityRestrictions": [
+              {
+                "ipAddress": "Any",
+                "action": "Allow",
+                "priority": 1,
+                "name": "Allow all",
+                "description": "Allow all access"
+              }
+          ],
+          "scmIpSecurityRestrictions": [
+              {
+                "ipAddress": "Any",
+                "action": "Allow",
+                "priority": 1,
+                "name": "Allow all",
+                "description": "Allow all access"
+              }
+          ],
+          "scmIpSecurityRestrictionsUseMain": false,
+          "http20Enabled": false,
+          "minTlsVersion": "1.2",
+          "scmMinTlsVersion": "1.2",
+          "ftpsState": "AllAllowed",
+          "preWarmedInstanceCount": 0,
+          "functionAppScaleLimit": 0,
+          "functionsRuntimeScaleMonitoringEnabled": false,
+          "minimumElasticInstanceCount": 1,
+          "azureStorageAccounts": {}
+        }
+    },
+    {
+        "type": "Microsoft.Web/sites/hostNameBindings",
+        "apiVersion": "2024-11-01",
+        "name": "[concat(parameters('app_fabric_name'), '/', parameters('app_fabric_name'), '.azurewebsites.net')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', parameters('app_fabric_name'))]"
+        ],
+        "properties": {
+          "siteName": "[parameters('app_fabric_name')]",
+          "hostNameType": "Verified"
+        }
+    },
+        {
+        "type": "Microsoft.CognitiveServices/accounts",
+        "apiVersion": "2022-12-01",
+        "name": "[parameters('accounts_cog_telconoa_name')]",
+        "location": "[parameters('location')]",
+        "sku": {
+            "name": "S0"
+        },
+        "kind": "CognitiveServices",
+        "properties": {
+            "apiProperties": {
+                "statisticsEnabled": false
+            },
+            "customSubDomainName": "[parameters('accounts_cog_telconoa_name')]",
+            "publicNetworkAccess": "Enabled"
+        }
+        }
+
+ ]
+}

@@ -1,0 +1,146 @@
+[
+    {
+        "chat_history": [
+            {
+                "sender": "Planner Agent",
+                "text": "PFC watchdog reports a sustained storm on a lossless queue; QoS traffic may be dropping. I suggest clearing the stuck MMU register and re-enabling PFC watchdog mitigation. Shall I schedule the fix? [AlertID: 4b2d9e80-5e3f-4d4c-b37a-0fcb2e7d89f1 | DeviceID: SW-TOR-05]"
+            },
+            {
+                "sender": "Albert (NOC Manager)",
+                "text": "Yes, involve the Troubleshooting Agent."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Alert 4b2d9e80 (SW-TOR-05): PFC storm. NOC Manager Albert requests your involvement for mitigation. Primary plan: Clear stuck MMU, re-enable PFC watchdog."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Alert 4b2d9e80 (SW-TOR-05): PFC storm. Standby for device interaction if needed by Troubleshooting Agent. What is the device type and OS for SW-TOR-05 based on inventory?"
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Task delegated to the Troubleshooting Agent. I will coordinate with the SONiC Agent for device interactions."
+            },
+            {
+                "sender": "Troubleshooting Agent",
+                "text": "Acknowledged for Alert 4b2d9e80. Will follow PFC storm playbook. Need show version and show pfcwd stats from SW-TOR-05 to confirm details."
+            },
+            {
+                "sender": "SONiC Agent",
+                "text": "SW-TOR-05 is an Arista-7050-QX-32S running SONiC.20230531.26. This is a Broadcom TD2 platform. Ready for command execution."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "The SONiC Agent confirms SW-TOR-05 is an Arista-7050-QX-32S (Broadcom TD2 platform) running SONiC.20230531.26. The Troubleshooting Agent requires show version and show pfcwd stats to proceed. May I instruct the SONiC Agent to retrieve this information?"
+            },
+            {
+                "sender": "Albert (NOC Manager)",
+                "text": "Yes, please proceed with retrieving the device information."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Execute show version and show pfcwd stats on SW-TOR-05. Report output."
+            },
+            {
+                "sender": "SONiC Agent",
+                "text": "Output from SW-TOR-05:\n\nshow version:\nSONiC Software Version: SONiC.20230531.26\nDistribution: Debian 11.7\nKernel: 5.10.0-21-2-amd64\nPlatform: x86_64-arista_7050_qx32s\n\nshow pfcwd stats:\nPort | Tx Pkts | Rx Pkts | Drop Events | Storm Status\n----- | -------- | ------- | ----------- | -------------\net1 | 1259212 | 1294720 | 1453 | stormed\net2 | 1228192 | 1251217 | 0 | clean\net3 | 1199341 | 1212900 | 0 | clean\net4 | 1283412 | 1302291 | 32 | clean\net5 | 1259011 | 1284120 | 0 | clean"
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "SW-TOR-05 output received.\n- OS: SONiC.20230531.26\n- Platform: x86_64-arista_7050_qx32s\n- PFCWD Stats: et1 is stormed with 1453 drop events.\nProceed with mitigation."
+            },
+            {
+                "sender": "Troubleshooting Agent",
+                "text": "Mitigation plan: clear stuck MMU counter and restart pfcwd service.\nPlease instruct SONiC Agent to run:\n1. bcmcmd 'clear counters'\n2. systemctl restart pfcwd"
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Troubleshooting Agent has recommended running 'bcmcmd clear counters' and restarting pfcwd. May I proceed?"
+            },
+            {
+                "sender": "Albert (NOC Manager)",
+                "text": "Yes, proceed with the mitigation."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Execute the following on SW-TOR-05:\n1. bcmcmd 'clear counters'\n2. systemctl restart pfcwd"
+            },
+            {
+                "sender": "SONiC Agent",
+                "text": "Commands executed successfully on SW-TOR-05.\n- MMU counters cleared.\n- PFCWD service restarted.\nReady for verification."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "Mitigation actions executed on SW-TOR-05. Please verify resolution."
+            },
+            {
+                "sender": "Troubleshooting Agent",
+                "text": "Rerun show pfcwd stats on SW-TOR-05 for verification."
+            },
+            {
+                "sender": "SONiC Agent",
+                "text": "Updated show pfcwd stats:\nPort | Tx Pkts | Rx Pkts | Drop Events | Storm Status\n----- | ------- | ------- | ----------- | -------------\net1 | 1300211 | 1332411 | 0 | clean\net2 | 1260912 | 1291017 | 0 | clean\net3 | 1234141 | 1269900 | 0 | clean\net4 | 1331121 | 1369910 | 0 | clean\net5 | 1302311 | 1334821 | 0 | clean"
+            },
+            {
+                "sender": "Troubleshooting Agent",
+                "text": "Verification successful. All ports on SW-TOR-05 are clean.\nPFCWD storm on et1 is resolved."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "PFCWD storm resolved on SW-TOR-05.\nIssue closed. Good job team!"
+            },
+            {
+                "sender": "Albert (NOC Manager)",
+                "text": "Document the steps in the runbook."
+            }
+        ],
+        "id": "a50e6ec7-483f-4180-8297-80b08a583af5",
+        "_rid": "89MLAP7JS4sYAAAAAAAAAA==",
+        "_self": "dbs/89MLAA==/colls/89MLAP7JS4s=/docs/89MLAP7JS4sYAAAAAAAAAA==/",
+        "_etag": "\"0200da48-0000-0700-0000-684802190000\"",
+        "_attachments": "attachments/",
+        "_ts": 1749549593
+    },
+    {
+        "chat_history": [
+            {
+                "sender": "Planner Agent",
+                "text": "CPU utilization on `BORDER-LEAF-07` has breached the 90% threshold. Services may be affected. Suggest immediate investigation. [AlertID: 7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2e | DeviceID: D-BORDER-LEAF-07]"
+            },
+            {
+                "sender": "NOC Engineer",
+                "text": "Yes, what's causing it?"
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "D-BORDER-LEAF-07 is a Nokia-7250-IXR-e running SONiC.20231101.45. The output from `show processes cpu` is as follows:\n\nPID | %CPU | COMMAND\n----|------|--------\n8888| 82.3 | python /usr/local/bin/lldp_syncd.py\n...\n\nThe `lldp_syncd.py` process is the issue. This is unusual. It could be in a loop. I will now check the LLDP neighbor status by running `show lldp table`."
+            },
+            {
+                "sender": "NOC Engineer",
+                "text": "Ok. Show me the LLDP table."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "The output for `show lldp table` is empty. No neighbors are being detected, yet the CPU is high. This suggests the LLDP service is in a bad state. I recommend restarting the LLDP service. Shall I execute `systemctl restart lldp`?"
+            },
+            {
+                "sender": "NOC Engineer",
+                "text": "Yes, restart it."
+            },
+            {
+                "sender": "Planner Agent",
+                "text": "The LLDP service has been restarted. Checking the CPU again with `show processes cpu`. The updated output is:\n\nPID | %CPU | COMMAND\n----|------|--------\n9999|  1.2 | python /usr/local/bin/lldp_syncd.py\n\nThe CPU for `lldp_syncd.py` is back to normal. The issue is resolved."
+            },
+            {
+                "sender": "NOC Engineer",
+                "text": "Document the steps in the runbook."
+            }
+        ],
+        "id": "0748b996-4ddc-4dd9-8f16-c8c14189c1b6",
+        "_rid": "89MLAP7JS4sZAAAAAAAAAA==",
+        "_self": "dbs/89MLAA==/colls/89MLAP7JS4s=/docs/89MLAP7JS4sZAAAAAAAAAA==/",
+        "_etag": "\"0000bb6e-0000-0700-0000-684804c30000\"",
+        "_attachments": "attachments/",
+        "_ts": 1749550275
+    }
+]

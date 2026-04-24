@@ -1,0 +1,32 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DE396101804083\"",
+  "name": "network-security-guides-indexer",
+    "dataSourceName": "network-security-guides-datasource",
+    "skillsetName": "network-security-guides-skillset",
+    "targetIndexName": "network-security-guides-index",
+    "disabled": false,
+    "schedule": {
+      "interval": "P1D",
+      "startTime": "2025-12-12T09:29:32.438Z"
+    },
+    "parameters": {
+      "batchSize": null,
+      "maxFailedItems": -1,
+      "maxFailedItemsPerBatch": -1,
+      "configuration": {
+        "dataToExtract": "contentAndMetadata",
+        "parsingMode": "default",
+        "allowSkillsetToReadFileData": true,
+        "imageAction": "generateNormalizedImages"
+      }
+    },
+    "fieldMappings": [
+      {
+        "sourceFieldName": "metadata_storage_path",
+        "targetFieldName": "blob_url"
+      }
+    ],
+    "outputFieldMappings": [],
+    "encryptionKey": null
+}

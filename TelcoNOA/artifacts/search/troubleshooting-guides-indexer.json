@@ -1,0 +1,32 @@
+{
+  "@odata.context": "https://srch-telco-noa-agentic.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DE39619C2E8CDF\"",
+  "name": "troubleshooting-guides-indexer",
+  "dataSourceName": "troubleshooting-guides-datasource",
+  "skillsetName": "troubleshooting-guides-skillset",
+  "targetIndexName": "troubleshooting-guides-index",
+  "disabled": false,
+  "schedule": {
+    "interval": "P1D",
+    "startTime": "2025-12-12T09:33:47.118Z"
+  },
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": -1,
+    "maxFailedItemsPerBatch": -1,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "allowSkillsetToReadFileData": true,
+      "imageAction": "generateNormalizedImages"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "blob_url"
+    }
+  ],
+  "outputFieldMappings": [],
+  "encryptionKey": null
+}

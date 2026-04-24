@@ -1,0 +1,58 @@
+[
+    {
+        "id": "TT-a3ccf535",
+        "href": "/troubleTicket/TT-a3ccf535",
+        "description": "Customer reports internet service SRV-INT-001 has been down since this morning (2026-01-06). Immediate investigation required. Contact customer CUST-101 for details and escalate to network operations.",
+        "severity": "critical",
+        "priority": "critical",
+        "ticketType": "service",
+        "status": "inProgress",
+        "creationDate": "2026-01-06T17:34:50.270000Z",
+        "lastUpdate": "2026-01-06T18:12:46.544275Z",
+        "relatedParty": [
+            {
+                "id": "CUST-101",
+                "role": "customer"
+            }
+        ],
+        "relatedService": [
+            {
+                "id": "SRV-INT-001",
+                "role": "affected"
+            }
+        ],
+        "_rid": "o3QyALWWC68BAAAAAAAAAA==",
+        "_self": "dbs/o3QyAA==/colls/o3QyALWWC68=/docs/o3QyALWWC68BAAAAAAAAAA==/",
+        "_etag": "\"0000b90b-0000-0800-0000-695d509f0000\"",
+        "_attachments": "attachments/",
+        "_ts": 1767723167
+    },
+    {
+        "id": "TT-716a7a44",
+        "href": "/troubleTicket/TT-716a7a44",
+        "description": "Customer CUST-103 reports that the internet service SRV-INT-003 has been down since this morning.",
+        "severity": "critical",
+        "priority": "critical",
+        "ticketType": "service",
+        "status": "acknowledged",
+        "creationDate": "2026-01-08T06:42:57.276354Z",
+        "lastUpdate": "2026-01-08T06:42:57.276354Z",
+        "relatedParty": [
+            {
+                "id": "CUST-103",
+                "role": "customer"
+            }
+        ],
+        "relatedService": [
+            {
+                "id": "SRV-INT-003",
+                "role": "affected"
+            }
+        ],
+        "_rid": "o3QyALWWC68HAAAAAAAAAA==",
+        "_self": "dbs/o3QyAA==/colls/o3QyALWWC68=/docs/o3QyALWWC68HAAAAAAAAAA==/",
+        "_etag": "\"0000d729-0000-0800-0000-695f51f10000\"",
+        "_attachments": "attachments/",
+        "_ts": 1767854577
+    }
+]

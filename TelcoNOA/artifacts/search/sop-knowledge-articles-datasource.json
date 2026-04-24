@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://#SEARCHSERVICE#.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8DE587D8C45F5B9\"",
+  "name": "sop-knowledge-articles-datasource",
+  "description": "Data source for knowledge source 'sop-knowledge-articles'",
+  "type": "azureblob",
+  "subtype": null,
+  "credentials": {
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=#storage_account_name#;AccountKey=#storage_account_key#"
+  },
+  "container": {
+    "name": "sop-knowledge-articles",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": null,
+  "dataDeletionDetectionPolicy": null,
+  "encryptionKey": null
+}
