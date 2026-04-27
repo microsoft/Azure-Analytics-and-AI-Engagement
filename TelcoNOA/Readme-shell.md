@@ -29,8 +29,9 @@ Customers can play, get hands-on experience navigating through the demo environm
   - [Task 2: Run the Cloud Shell to provision the demo resources](#task-2-run-the-cloud-shell-to-provision-the-demo-resources)
   - [Task 3: Get data in to eventhouse](#task-3-get-data-into-eventhouse)
   - [Task 4: Creating a data agent](#task-4-creating-a-data-agent)
-  - [Task 5: Creating Knowledgebase and Agents in Microsoft Foundry](#task-5-creating-knowledgebase-and-agents-in-microsoft-Foundry)
+  - [Task 5: Creating a Knowledge base and deploying Models in Microsoft Foundry](#task-5-creating-a-knowledge-base-and-deploying-models-in-microsoft-Foundry)
   - [Task 6: Creating Workflow in Microsoft Foundry](#task-6-creating-workflow-in-microsoft-Foundry)
+  - [Task 6: Running Python script to create agents Microsoft Foundry](#task-6-running-python-script-to-create-agents-microsoft-foundry)
 
 ## Requirements
 
@@ -184,7 +185,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 Command:
 
 ```
-git clone -b TelcoNOADPoC --single-branch https://daidemos@dev.azure.com/daidemos/DREAMDemos/_git/DREAMPoC
+git clone -b TelcoNOA --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement TelcoNOA
 ```
    ![Git Clone Command to Pull Down the demo Repository.](media/cloud-shell-4.5.png)
     
@@ -196,7 +197,7 @@ git clone -b TelcoNOADPoC --single-branch https://daidemos@dev.azure.com/daidemo
 
 7. **Execute** the PowerShell script with the following command:
 ```
-cd ./DREAMPoC/TelcoNOADPoC
+cd ./TelcoNOA/TelcoNOA
 ```
 
 ```
@@ -500,7 +501,7 @@ Constraints & Guidelines
 
 
 
-### Task 5: Creating a Project and Agents in Microsoft Foundry
+### Task 5: Creating a Knowledge base and deploying Models in Microsoft Foundry
 
 1. Navigate to the Resource group created in Task 2, Search for **prj-telconoa** then click on **prj-telconoa-....(prj-telconoa-...-resource/prj-telconoa...)**.
 
@@ -635,11 +636,14 @@ Constraints & Guidelines
 
 ![](media/aifoundary27.png)
 
-26. Click on **Agents**.
+26. Repeat steps from **Step22 to Step 25** to deploy gpt-40.
+    - In Step 24, search for gpt-4o and click on it.
 
-![](media/aifoundary28.png)
+26. Click on **Tools**.
 
-27. Click on **Create agent**.
+![](media/aifoundrynew1.png)
+
+<!-- 27. Click on **Create agent**.
 
 ![](media/aifoundary29.png)
 
@@ -956,21 +960,21 @@ Output
 Your response should be from the Connected Fabric Data Agent tool only. 
 ```
 
-![](media/aifoundary39.png)
+![](media/aifoundary39.png) -->
 
-52. Click on **Add** for Tools section, click on **Browse all tools**.
+27. Click on **Tools** for Tools section, click on **Connect a tool**.
 
-![](media/aifoundrynew40.png)
+![](media/aifoundrynew2.png)
 
-53. Click on **Fabric Data Agent** and then click on **Add toool**.
+28. Click on **Fabric Data Agent** and then click on **Add toool**.
 
 ![](media/aifoundrynew41.png)
 
-54. Paste the **Workspace ID**, **Artifact ID** which was copied in **Task 4: Creating a data agent - Step 10** and then click on **Connect**.
+29. Paste the **Workspace ID**, **Artifact ID** which was copied in **Task 4: Creating a data agent - Step 10** and then click on **Connect**.
 
 ![](media/aifoundary41.png)
 
-55. Click on **Save** and then click on **⬅** after it was saved.
+<!-- 55. Click on **Save** and then click on **⬅** after it was saved.
 
 ![](media/aifoundary42.png)
 
@@ -980,9 +984,9 @@ Your response should be from the Connected Fabric Data Agent tool only.
 
 57. Paste **Ticketing-Agent** as **Agent name** and then click on **Create**.
 
-![](media/aifoundary40.1.png)
+![](media/aifoundary40.1.png) -->
 
-58. Select *gpt-4.1** from the drop down and paste below the following instructions in the **Instructions** section and click on **Add** for **Tools** section and then click on **Browse all tools**.
+<!-- 58. Select *gpt-4.1** from the drop down and paste below the following instructions in the **Instructions** section and click on **Add** for **Tools** section and then click on **Browse all tools**.
 
 ```
 For every user question, you must forward the user’s question verbatim to the connected MCP Tool and generate the response only from the MCP tool output.
@@ -1031,21 +1035,25 @@ The definition of the schema is
 When asked to list tickets, extract only the values explicitly mentioned in the input. For example, if the input contains only 'status', then take only the status value as input exclude other key and value.
 ```
 
-![](media/aifoundary43.png)
+![](media/aifoundary43.png) -->
 
-59. Click on **Custom**, click on **Model Context Protocol(MCP)** and then click on **Create**.
+30. In the left menu bar click on **Tools** and then Click on **Tools** for Tools section, click on **Connect a tool**.
+
+![](media/aifoundrynew3.png)
+
+31. Click on **Custom**, click on **Model Context Protocol(MCP)** and then click on **Create**.
 
 ![](media/aifoundary44.png)
 
-60. Navigate to the Azure portal, re-direct to Resource group created. and Search for **function**. and Click on **funcapp..**.
+32. Navigate to the Azure portal, re-direct to Resource group created. and Search for **function**. and Click on **funcapp..**.
 
 ![eventhub](media/aifoundary45.png)
 
-61. Copy the **Function App** name, expand **Functions**, click on **App keys**, and then copy the value of **mcp_extension** under the **System keys** section.
+33. Copy the **Function App** name, expand **Functions**, click on **App keys**, and then copy the value of **mcp_extension** under the **System keys** section.
 
 ![eventhub](media/aifoundary46.png)
 
-62. Follow these steps:
+34. Follow these steps:
 
 - Paste `mcp-server` in the **Name** field.
 - Replace the Function App name in the URL below and paste it into the **Remote MCP Server endpoint** field:  
@@ -1059,7 +1067,7 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 ![](media/aifoundary47.png)
 
-63. Paste the below question in the agent playground and click on send icon and look at the response.
+<!-- 63. Paste the below question in the agent playground and click on send icon and look at the response.
 
 ```List the tickets whose status is in progress and priority is critical```
 
@@ -1079,7 +1087,7 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 67. Select **gpt-4o** from the drop down, click on **Save** and then click on **⬅** after it was saved.
 
-![](media/aifoundary42.2.png)
+![](media/aifoundary42.2.png) -->
 
 ### Task 6: Creating Workflow in Microsoft Foundry
 
@@ -1241,3 +1249,31 @@ description: ""
 ![](media/rg1.png)
 
 ![](media/rg1.png)
+
+
+
+## Task 6: Running Python script to create agents Microsoft Foundry
+
+1. [Download the agents.zip file](https://sttelconoadpoc.blob.core.windows.net/$web/agents.zip)
+
+>>Note: If you are not able to download the Agents.zip by link, download it from the TelcoNOA/artifacts/binaries/agents.zip.
+
+2. Extract the downloaded `agents.zip` and open the entire folder in **VS Code**.  
+
+3. To retrive the required values and replace them in the `parameters.env` file, Navigate to the **Foundry project**, click on your **profile** in the top-right corner, and then select **Project Details**.  
+
+![](media/aifoundrynew7.png)
+
+4. Copy **Endpoint**, **Knowledge Base - Name, Target**, **mcp-server - Name, Target** and **Fabric Datagaent - Name**.
+
+![](media/aifoundrynew4.png)
+
+4. Click on "..." on the explorer pane, click on **Terminal and then click on *8New Terminal**.
+
+![](media/aifoundrynew5.png)
+
+5. Navigate to the extracted agent folder, run the below commands one by one to complete the creation of agent.
+
+![](media/aifoundrynew6.png)
+
+
