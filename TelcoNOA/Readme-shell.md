@@ -30,8 +30,8 @@ Customers can play, get hands-on experience navigating through the demo environm
   - [Task 3: Get data in to eventhouse](#task-3-get-data-into-eventhouse)
   - [Task 4: Creating a data agent](#task-4-creating-a-data-agent)
   - [Task 5: Creating a Knowledge base and deploying Models in Microsoft Foundry](#task-5-creating-a-knowledge-base-and-deploying-models-in-microsoft-Foundry)
-  - [Task 6: Creating Workflow in Microsoft Foundry](#task-6-creating-workflow-in-microsoft-Foundry)
   - [Task 6: Running Python script to create agents Microsoft Foundry](#task-6-running-python-script-to-create-agents-microsoft-foundry)
+  - [Task 7: Creating Workflow in Microsoft Foundry](#task-7-creating-workflow-in-microsoft-Foundry)
 
 ## Requirements
 
@@ -532,13 +532,13 @@ Constraints & Guidelines
   * `agents/*/action`
   * `agents/*/delete`
 
-6. Click on **Build**.
+3. Click on **Build**.
 
 >>**Note:** If navigated to the old UI of Microsoft Foundry, click on the New Foundry toggle button and then navigate to the Build section.
 
 ![](media/aifoundary7.png)
 
-7. Click on **Knowledge**.
+4. Click on **Knowledge**.
 
 ![](media/aifoundary8.png)
 
@@ -546,55 +546,55 @@ Constraints & Guidelines
 
 ![](media/aifoundary9.png) -->
 
-8. Click on drop down of **Azure AI Search** field and select the **srch-...** Search resource created at Task 2 and click on **Connect**.
+5. Click on drop down of **Azure AI Search** field and select the **srch-...** Search resource created at Task 2 and click on **Connect**.
 
 ![](media/aifoundary9.png)
 
-9. Click on **Create a knowledge base**.
+6. Click on **Create a knowledge base**.
 
 ![](media/aifoundary11.png)
 
-10. Click on **Azure Blob Storage** and click on **Connect**.
+7. Click on **Azure Blob Storage** and click on **Connect**.
 
 ![](media/aifoundary12.png)
 
-11. Paste **network-security-guides** in the **Name** field, From the drop down, select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **network-security** for the **Container name** field and scroll down.
+8. Paste **network-security-guides** in the **Name** field, From the drop down, select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **network-security** for the **Container name** field and scroll down.
 
 ![](media/aifoundary13.png)
 
-12. For the **Embedding model** filed, click on **Select model** and click on **Browse more models**.
+9. For the **Embedding model** filed, click on **Select model** and click on **Browse more models**.
 
 ![](media/aifoundary13.1.png)
 
-13. Click on **text-embedding-3-small** and click on **Deploy**.
+10. Click on **text-embedding-3-small** and click on **Deploy**.
 
 ![](media/aifoundary13.2.png)
 
-14. Click on **Select model** for the **Chat completions model** field and click on **Browse more models**.
+11. Click on **Select model** for the **Chat completions model** field and click on **Browse more models**.
 
 ![](media/aifoundary13.3.1.png)
 
-15. Search for **gpt-4.1** , click on **gpt-4.1** and then click on **Deploy**.
+12. Search for **gpt-4.1** , click on **gpt-4.1** and then click on **Deploy**.
 
 ![](media/aifoundary13.4.1.png)
 
-16. Select **text-embedding-3-small** for **Embedding model** field, select **gpt-4.1** for **Chat completions model** and then click on **Create**.
+13. Select **text-embedding-3-small** for **Embedding model** field, select **gpt-4.1** for **Chat completions model** and then click on **Create**.
 
 ![](media/aifoundary14.png)
 
-17. In the same **Create a new Knowledge base** page, at **Knowledge source** section, click on **Create new** and then click on **Azure Blob Storage**.
+14. In the same **Create a new Knowledge base** page, at **Knowledge source** section, click on **Create new** and then click on **Azure Blob Storage**.
 
 ![](media/aifoundary15.png)
 
-18. Paste **sop-knowledge-articles** in the **Name** field. From the drop down select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **sop-knowledge-articles** for **Container name** field, scroll down and Select **text-embedding-3-small** for **Embedding model** field, then select **gpt-4.1** for **Chat completions model** and then click on **Create**.
+15. Paste **sop-knowledge-articles** in the **Name** field. From the drop down select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **sop-knowledge-articles** for **Container name** field, scroll down and Select **text-embedding-3-small** for **Embedding model** field, then select **gpt-4.1** for **Chat completions model** and then click on **Create**.
 
 ![](media/aifoundary16.png)
 
-19. In the same **Create a new Knowledge base** page, at **Knowledge source** section, click on **Create new** and then click on **Azure Blob Storage**.
+16. In the same **Create a new Knowledge base** page, at **Knowledge source** section, click on **Create new** and then click on **Azure Blob Storage**.
 
 ![](media/aifoundary15.png)
 
-20. Paste **troubleshooting-guides** in the **Name** field, From the drop down select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **troubleshooting-guides** for **Container name** field, scroll down and Select **text-embedding-3-small** for **Embedding model** field, select **gpt-4.1** for **Chat completions model** and then click on **Create**.
+17. Paste **troubleshooting-guides** in the **Name** field, From the drop down select the storage account **storage...** created in **Task 2** for **Storage account** field, then select **troubleshooting-guides** for **Container name** field, scroll down and Select **text-embedding-3-small** for **Embedding model** field, select **gpt-4.1** for **Chat completions model** and then click on **Create**.
 
 ![](media/aifoundary17.png)
 
@@ -614,32 +614,32 @@ Constraints & Guidelines
 
 ![](media/aifoundary21.png) -->
 
-21. For **Basic configuration** section, for the **Chat completion model** field, click on drop down and select the **gpt-4.1**. For **Output mode** filed, select **answerSynthesis** and then click on **Save knowledge base**.
+18. For **Basic configuration** section, for the **Chat completion model** field, click on drop down and select the **gpt-4.1**. For **Output mode** filed, select **answerSynthesis** and then click on **Save knowledge base**.
 
 ![](media/aifoundary22.png)
 
 ![](media/aifoundary23.png)
 
-22. Click on **Models**.
+19. Click on **Models**.
 
 ![](media/aifoundary24.png)
 
-23. Click on **Deploy a base model**.
+20. Click on **Deploy a base model**.
 
 ![](media/aifoundary25.png)
 
-24. Search for **model-router** and double click on it.
+21. Search for **model-router** and double click on it.
 
 ![](media/aifoundary26.png)
 
-25. Click on **Deploy** and then click on **Default settings**.
+22. Click on **Deploy** and then click on **Default settings**.
 
 ![](media/aifoundary27.png)
 
-26. Repeat steps from **Step22 to Step 25** to deploy gpt-40.
+23. Repeat steps from **Step22 to Step 25** to deploy gpt-4o.
     - In Step 24, search for gpt-4o and click on it.
 
-26. Click on **Tools**.
+24. Click on **Tools**.
 
 ![](media/aifoundrynew1.png)
 
@@ -748,7 +748,7 @@ Return the command in the response with explanation:
 
 ![](media/aifoundary36.png)
 
-36. Select **gpt-40** from the drop down and paste below following instructions in the **Instructions** section and then click on **Knowledge**, click on **Add** for **Knowledge** section.
+36. Select **gpt-4o** from the drop down and paste below following instructions in the **Instructions** section and then click on **Knowledge**, click on **Add** for **Knowledge** section.
 
 ```
 You are the Network Troubleshooting Agent.
@@ -962,15 +962,15 @@ Your response should be from the Connected Fabric Data Agent tool only.
 
 ![](media/aifoundary39.png) -->
 
-27. Click on **Tools** for Tools section, click on **Connect a tool**.
+25. Click on **Tools** for Tools section, click on **Connect a tool**.
 
 ![](media/aifoundrynew2.png)
 
-28. Click on **Fabric Data Agent** and then click on **Add toool**.
+26. Click on **Fabric Data Agent** and then click on **Add toool**.
 
 ![](media/aifoundrynew41.png)
 
-29. Paste the **Workspace ID**, **Artifact ID** which was copied in **Task 4: Creating a data agent - Step 10** and then click on **Connect**.
+27. Paste the **Workspace ID**, **Artifact ID** which was copied in **Task 4: Creating a data agent - Step 10** and then click on **Connect**.
 
 ![](media/aifoundary41.png)
 
@@ -1037,23 +1037,23 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 ![](media/aifoundary43.png) -->
 
-30. In the left menu bar click on **Tools** and then Click on **Tools** for Tools section, click on **Connect a tool**.
+28. In the left menu bar click on **Tools** and then Click on **Tools** for Tools section, click on **Connect a tool**.
 
 ![](media/aifoundrynew3.png)
 
-31. Click on **Custom**, click on **Model Context Protocol(MCP)** and then click on **Create**.
+29. Click on **Custom**, click on **Model Context Protocol(MCP)** and then click on **Create**.
 
 ![](media/aifoundary44.png)
 
-32. Navigate to the Azure portal, re-direct to Resource group created. and Search for **function**. and Click on **funcapp..**.
+30. Navigate to the Azure portal, re-direct to Resource group created. and Search for **function**. and Click on **funcapp..**.
 
 ![eventhub](media/aifoundary45.png)
 
-33. Copy the **Function App** name, expand **Functions**, click on **App keys**, and then copy the value of **mcp_extension** under the **System keys** section.
+31. Copy the **Function App** name, expand **Functions**, click on **App keys**, and then copy the value of **mcp_extension** under the **System keys** section.
 
 ![eventhub](media/aifoundary46.png)
 
-34. Follow these steps:
+32. Follow these steps:
 
 - Paste `mcp-server` in the **Name** field.
 - Replace the Function App name in the URL below and paste it into the **Remote MCP Server endpoint** field:  
@@ -1089,7 +1089,39 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 ![](media/aifoundary42.2.png) -->
 
-### Task 6: Creating Workflow in Microsoft Foundry
+
+## Task 6: Running Python script to create agents Microsoft Foundry
+
+1. [Download the agents.zip file](https://sttelconoadpoc.blob.core.windows.net/$web/agents.zip)
+
+>>Note: If you are not able to download the Agents.zip by link, download it from the TelcoNOA/artifacts/binaries/agents.zip.
+
+2. Extract the downloaded `agents.zip` and open the entire folder in **VS Code**.  
+
+3. To retrive the required values and replace them in the `parameters.env` file, Navigate to the **Foundry project**, click on your **profile** in the top-right corner, and then select **Project Details**.  
+
+![](media/aifoundrynew7.png)
+
+4. Copy **Endpoint**, **Knowledge Base - Name, Target**, **mcp-server - Name, Target** and **Fabric Datagaent - Name**.
+
+![](media/aifoundrynew4.png)
+
+5. Click on "..." on the explorer pane, click on **Terminal and then click on *8New Terminal**.
+
+![](media/aifoundrynew5.png)
+
+6. Navigate to the extracted agent folder, run the below commands one by one to complete the creation of agent.
+
+![](media/aifoundrynew6.png)
+
+
+>>**Note**: **“To access the web app, navigate to the resource group created in Task 2, click on the web app, and then click on *Browse*.”**
+
+![](media/rg1.png)
+
+![](media/rg1.png)
+
+### Task 7: Creating Workflow in Microsoft Foundry
 
 1. Click on **Agents** from the left navigation pane, then select **Workflows**. From the Create Workflow dropdown, choose Blank Workflow.
 
@@ -1242,38 +1274,3 @@ description: ""
 13. Click on **Close**.
 
 ![](media/workflow15.png)
-
-
->>**Note**: **“To access the web app, navigate to the resource group created in Task 2, click on the web app, and then click on *Browse*.”**
-
-![](media/rg1.png)
-
-![](media/rg1.png)
-
-
-
-## Task 6: Running Python script to create agents Microsoft Foundry
-
-1. [Download the agents.zip file](https://sttelconoadpoc.blob.core.windows.net/$web/agents.zip)
-
->>Note: If you are not able to download the Agents.zip by link, download it from the TelcoNOA/artifacts/binaries/agents.zip.
-
-2. Extract the downloaded `agents.zip` and open the entire folder in **VS Code**.  
-
-3. To retrive the required values and replace them in the `parameters.env` file, Navigate to the **Foundry project**, click on your **profile** in the top-right corner, and then select **Project Details**.  
-
-![](media/aifoundrynew7.png)
-
-4. Copy **Endpoint**, **Knowledge Base - Name, Target**, **mcp-server - Name, Target** and **Fabric Datagaent - Name**.
-
-![](media/aifoundrynew4.png)
-
-4. Click on "..." on the explorer pane, click on **Terminal and then click on *8New Terminal**.
-
-![](media/aifoundrynew5.png)
-
-5. Navigate to the extracted agent folder, run the below commands one by one to complete the creation of agent.
-
-![](media/aifoundrynew6.png)
-
-
