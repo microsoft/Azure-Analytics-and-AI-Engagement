@@ -48,6 +48,9 @@ Customers can play, get hands-on experience navigating through the demo environm
    - Microsoft.BotService
 * * After creating the workspace and attaching it to the Fabric capacity, enable **Data Agent** in the **Fabric Admin Portal**.
 * You must only execute one deployment at a time and wait for its completion. Running multiple deployments simultaneously is highly discouraged, as it can lead to deployment failures.
+* You must execute only one deployment at a time and wait for its completion. Running multiple deployments simultaneously is discouraged, as it can lead to failures.
+* If a deployment fails due to an internet issue or Azure CLI timeouts, reset the user settings in Azure CLI and start from a fresh environment.
+* To run the commands mentioned in Task 6, you need to install Python 3.11.9 on your local system.
 * Select a region where the desired Azure Services are available. If certain services are not available, deployment may fail. See [Azure Services Global Availability](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all) for understanding target service availability (consider the region availability for Synapse workspace, IoT Central and cognitive services while choosing a location).
 * In this Accelerator, we have converted real-time reports into static reports for the user's ease but have covered the entire process to configure real-time datasets. Using those real-time datasets, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
@@ -636,8 +639,9 @@ Constraints & Guidelines
 
 ![](media/aifoundary27.png)
 
-23. Repeat steps from **Step22 to Step 25** to deploy gpt-4o.
-    - In Step 24, search for gpt-4o and click on it.
+23. Repeat steps from **Step21 to Step 22** to deploy **gpt-4o**.
+    - In Step 21, search for **gpt-4o** and double click on it.
+    - Click on **Deploy** and then click on **Default settings**.
 
 24. Click on **Tools**.
 
@@ -962,7 +966,7 @@ Your response should be from the Connected Fabric Data Agent tool only.
 
 ![](media/aifoundary39.png) -->
 
-25. Click on **Tools** for Tools section, click on **Connect a tool**.
+25. Click on **Tools**, then click on **Connect a tool**.
 
 ![](media/aifoundrynew2.png)
 
@@ -1037,7 +1041,7 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 ![](media/aifoundary43.png) -->
 
-28. In the left menu bar click on **Tools** and then Click on **Tools** for Tools section, click on **Connect a tool**.
+28. In the left menu bar click on **Tools** and then Click on **Tools**, then click on **Connect a tool**.
 
 ![](media/aifoundrynew3.png)
 
@@ -1064,7 +1068,6 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 - Paste the **App key** copied in Step 58 into the **Value** field.
 - Click **Connect**.
 
-
 ![](media/aifoundary47.png)
 
 <!-- 63. Paste the below question in the agent playground and click on send icon and look at the response.
@@ -1076,18 +1079,27 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 64. Click on **Save** and then click on **⬅** after it was saved.
 
 ![](media/aifoundary42.1.png)
+-->
 
-65. Click on **Create agent**.
+33. Click on **Create agent**.
 
 ![](media/aifoundary35.png)
 
-66. Paste **Field-Ops-Agent** as **Agent name** and then click on **Create**.
+34. Paste **Field-Ops-Agent** as **Agent name** and then click on **Create**.
 
 ![](media/aifoundary40.2.png)
 
-67. Select **gpt-4o** from the drop down, click on **Save** and then click on **⬅** after it was saved.
+35. Click on **Knowledge**, click on **Add** for **Knowledge** section and then click on **Connect Foundry IQ**.
 
-![](media/aifoundary42.2.png) -->
+![](media/aifoundrynew8.png)
+
+36. Select the **search connection** and the **knowledge base** created in earlier steps, then click **Connect**.
+
+![](media/aifoundrynew9.png)
+
+35. Select *gpt-4o** from the drop down, click on **Save** and then click on **⬅** after it was saved.
+
+![](media/aifoundary42.2.png) 
 
 
 ## Task 6: Running Python script to create agents Microsoft Foundry
@@ -1095,6 +1107,8 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 1. [Download the agents.zip file](https://sttelconoadpoc.blob.core.windows.net/$web/agents.zip)
 
 >>Note: If you are not able to download the Agents.zip by link, download it from the TelcoNOA/artifacts/binaries/agents.zip.
+>>Note: To run the commands below, you need to install Python 3.11.9 on your local system. 
+>>Note: From the next steps onward, perform all actions locally.
 
 2. Extract the downloaded `agents.zip` and open the entire folder in **VS Code**.  
 
@@ -1102,28 +1116,29 @@ When asked to list tickets, extract only the values explicitly mentioned in the 
 
 ![](media/aifoundrynew7.png)
 
-4. Copy **Endpoint**, **Knowledge Base - Name, Target**, **mcp-server - Name, Target** and **Fabric Datagaent - Name**.
+4. Click on **Connected resources** and copy **Endpoint**, **Knowledge Base - Name, Target**, **mcp-server - Name, Target** and **Fabric Datagaent - Name**.
 
 ![](media/aifoundrynew4.png)
 
-5. Click on "..." on the explorer pane, click on **Terminal and then click on *8New Terminal**.
+5. Click on "..." on the explorer pane, click on **Terminal and then click on **New Terminal**.
 
 ![](media/aifoundrynew5.png)
 
 6. Navigate to the extracted agent folder, run the below commands one by one to complete the creation of agent.
 
+```az login```
+
+```pip install -r ./requirement.txt```
+
+```python .\agents.py```
+
 ![](media/aifoundrynew6.png)
 
 
->>**Note**: **“To access the web app, navigate to the resource group created in Task 2, click on the web app, and then click on *Browse*.”**
-
-![](media/rg1.png)
-
-![](media/rg1.png)
 
 ### Task 7: Creating Workflow in Microsoft Foundry
 
-1. Click on **Agents** from the left navigation pane, then select **Workflows**. From the Create Workflow dropdown, choose Blank Workflow.
+1. Click on **Agents** from the left navigation pane, then select **Workflows**. From the Create Workflow dropdown, choose **Blank Workflow**.
 
 ![](media/workflownew1.png)
 
@@ -1240,7 +1255,6 @@ description: ""
 
 ![](media/workflow8.png)
 
-
 8. Click on drop down of **Azure Bot Services**, click on **Create Bot Service**.
 
 ![](media/workflow9.png)
@@ -1274,3 +1288,10 @@ description: ""
 13. Click on **Close**.
 
 ![](media/workflow15.png)
+
+
+>>**Note**: **“To access the web app, navigate to the resource group created in Task 2, click on the web app, and then click on *Browse*.”**
+
+![](media/rg1.png)
+
+![](media/rg1.png)
