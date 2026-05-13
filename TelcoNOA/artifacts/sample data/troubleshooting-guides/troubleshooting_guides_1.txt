@@ -1,0 +1,77 @@
+
+# Troubleshooting Steps
+
+### TSG sources consulted:
+0. [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md)
+1. [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+2. [SONiC - Critical Process Checker - StoppedCriticalServiceOrProcessDetected](sonic-critical-process-checker-stopped-critical-process.md)
+3. [SONiC - Critical Process Checker - UnhealthyCriticalProcessDetected](sonic-critical-process-checker-unhealthy-critical-service-or-process.md)
+4. [SONiC - Critical Process Checker - CriticalProcessHealthChecker failed](sonic-critical-process-health-checker-failed.md)
+
+### Possible causes
+
+1. **syncd Process Crash**
+   - The JSON payload indicates that the `syncd` process exited unexpectedly with an exit status of 2. This is consistent with a process crash.
+   - The syslog entries in the source documents show similar patterns of `syncd` crashing due to assertion failures.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+2. **Assertion Failure in sbusdma.c**
+   - The syslog entries in the source documents indicate that an assertion failure in `sbusdma.c` is a common cause for `syncd` crashes.
+   - The error message in the syslog (`ERROR: Assertion failed: ((ch >= 0) && (ch < soc->max_sbusdma_channels))`) matches the pattern described in the source documents.
+   - Relevant source: [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+### Possible mitigation steps
+
+1. **Check if syncd Process is Running**
+   - Use the following command to check if the `syncd` process is running:
+     ```bash
+     pgrep -fx "/usr/bin/dsserve /usr/bin/syncd --diag -u -p /etc/sai.d/sai.profile"
+     ```
+   - If the command ends without a number following it, then the process `syncd` is not running.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+2. **Check Syslog for Cause of Failure**
+   - Examine the syslog files (`/var/log/syslog` or `/var/log/syslog.1`) for lines indicating the cause of the crash:
+     ```bash
+     grep "syncd" /var/log/syslog*
+     ```
+   - Look for lines containing `ERROR: Assertion failed`.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+3. **Isolate the Device from the Network**
+   - Follow the isolation steps to prevent further impact on the network:
+     - For TOR devices: [TOR Isolation](https://phynet.trafficmanager.net/UnifiedDeviceAccess/Isolate/Tor)
+     - For other devices: [SONiC Isolate, Unisolate Device](~/wiki/tsg/sonic-tsg/sonic-isolate-unisolate-device.md)
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+4. **Restart the SwSS Service**
+   - Restart the SwSS service and wait for 1 minute:
+     ```bash
+     sudo systemctl restart swss
+     ```
+   - Warning: Restarting the SwSS service will impact the state of the device.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+5. **Restart the DHCP Relay Service (if applicable)**
+   - If the device is a T0 device running 20180330.XXX firmware, restart the DHCP relay service:
+     ```bash
+     sudo systemctl restart dhcp_relay
+     ```
+   - Warning: Restarting the DHCP relay service will impact the state of the device.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+6. **Unisolate the Device from the Network**
+   - Follow the unisolation steps to bring the device back into the network:
+     - [SONiC Isolate, Unisolate Device](~/wiki/tsg/sonic-tsg/sonic-isolate-unisolate-device.md)
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+7. **Verify Device Health**
+   - Check the device health using the following TSGs:
+     - [SONiC Check for Packet Loss](~/wiki/tsg/sonic-tsg/sonic-check-for-packet-loss.md)
+     - [SONiC Check BGP Health](~/wiki/tsg/sonic-tsg/sonic-bgp-check-bgp-health.md)
+     - [SONiC Check LAG Health](~/wiki/tsg/sonic-tsg/sonic-check-lag-health.md)
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)
+
+8. **Contact SONiC Team**
+   - Since this issue is actively tracked by the SONiC team, send an email to **sonicdev@microsoft.com** including the ticket link.
+   - Relevant source: [SONiC syncd Assertion Failed](sonic-syncd-assertion-failed.md), [SONiC syncd crash due to sbusdma assertion failure](sonic-syncd-crash-due-to-sbusdma-assertion-failure.md)

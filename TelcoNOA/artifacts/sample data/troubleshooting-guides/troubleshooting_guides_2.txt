@@ -1,0 +1,77 @@
+
+# Troubleshooting Steps
+
+### TSG sources consulted:
+0. [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+1. [SONiC PFC Watchdog (PFC_WD) Status Check](sonic-pfc-watchdog-pfc_wd-status-check.md)
+2. [Arista 75xx device stuck in PFC Storm causing egress loss on queue3 or queue4 traffic](arista-75xx-device-stuck-in-pfc-storm-causing-egress-loss-on-queue3-or-queue4-traffic.md)
+3. [SONiC - Check for Packet Loss](sonic-check-for-packet-loss.md)
+4. [SONiC - Check headroom pool overflow](sonic-check-headroom-pool-overflow.md)
+
+### Possible causes
+
+1. **PFC Storm Detected on Ethernet32**
+   - The fault message indicates that the PFC Watchdog detected a PFC storm on port Ethernet32, affecting queue indices 3 and 4. This is consistent with the symptoms described in the JSON payload.
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+2. **Broadcom MMU Register Issue**
+   - The Broadcom MMU register might be stuck in a PFC state, causing the storm. This can be confirmed using the Broadcom CLI command `bcmcmd 'g chg XPORT_TO_MMU_BKP'`.
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+3. **PFC Watchdog Configuration**
+   - The PFC Watchdog might not be properly configured or enabled on the device, leading to ineffective storm detection and mitigation.
+   - Relevant source: [SONiC PFC Watchdog (PFC_WD) Status Check](sonic-pfc-watchdog-pfc_wd-status-check.md)
+
+### Possible mitigation steps
+
+1. **Confirm Device and OS Version**
+   - Verify that the device is a Broadcom TD2 platform running the appropriate SONiC image using the `show version` command.
+   - Example command:
+     ```bash
+     show version
+     ```
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+2. **Check PFC Watchdog Stats**
+   - Use the `show pfcwd stats` command to check the PFC watchdog stats for the affected ports.
+   - Example command:
+     ```bash
+     show pfcwd stats
+     ```
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+3. **Check Syslog for PFC Watchdog Trigger**
+   - Use the `sudo grep -i "PFC watchdog" /var/log/syslog` command to check the syslog messages for PFC watchdog triggers.
+   - Example command:
+     ```bash
+     sudo grep -i "PFC watchdog" /var/log/syslog
+     ```
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+4. **Reset Broadcom Port Register**
+   - If the Broadcom MMU register is stuck, reset it using the `bcmcmd 's XPORT_TO_MMU_BKP.XE3 0x0'` and `bcmcmd 's XPORT_TO_MMU_BKP.XE4 0x0'` commands.
+   - Example commands:
+     ```bash
+     bcmcmd 's XPORT_TO_MMU_BKP.XE3 0x0'
+     bcmcmd 's XPORT_TO_MMU_BKP.XE4 0x0'
+     ```
+   - Warning: Executing these commands will reset the port register and may impact the device state.
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+5. **Verify PFC Counters**
+   - After mitigation, use the `show pfc counters` command to verify the PFC Tx and Rx counters.
+   - Example command:
+     ```bash
+     show pfc counters
+     ```
+   - Relevant source: [SONiC Broadcom TD2 PFC watchdog for two lossless queues](sonic-broadcom-td2-pfc-watchdog.md)
+
+6. **Enable PFC Watchdog**
+   - If PFC Watchdog is not enabled, start it using the `sudo pfcwd start_default` command.
+   - Example command:
+     ```bash
+     sudo pfcwd start_default
+     ```
+   - Relevant source: [SONiC PFC Watchdog (PFC_WD) Status Check](sonic-pfc-watchdog-pfc_wd-status-check.md)
+
+By following these steps, you can identify and mitigate the PFC storm issue on port Ethernet32, ensuring the stability and performance of the network infrastructure.

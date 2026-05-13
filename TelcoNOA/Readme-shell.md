@@ -55,6 +55,7 @@ Customers can play, get hands-on experience navigating through the demo environm
 * In this Accelerator, we have converted real-time reports into static reports for the user's ease but have covered the entire process to configure real-time datasets. Using those real-time datasets, you can create real-time reports.
 * Make sure you use the same valid credentials to log into Azure and Power BI.
 * Once the resources have been set up, ensure that your AD user and synapse workspace have the “Storage Blob Data Owner” role assigned on the storage account name beginning with “storage”.
+* Required ServiceNow Developer ID to host the backend ticketing system for the Ticketing Agent.
 * Review the [License Agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) before proceeding.
 
 >**Note:** This demo contains Power BI Copilot, pre-requisites of which can be found [HERE](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/microsoftfabric/fabric/PowerBI%20Copilot/PowerBI%20Copilot%20Pre-requisites.md).
@@ -1295,3 +1296,116 @@ description: ""
 ![](media/rg1.png)
 
 ![](media/rg1.png)
+
+### Appendix
+
+# ServiceNow Integration & Deployment Guide
+
+This section provides a complete workflow for setting up a ServiceNow developer environment, configuring it as a ticketing backend for the Telco Network Operations platform, and redeploying the associated Azure Function App.
+
+---
+
+## 1. ServiceNow Developer Program Setup
+
+The ServiceNow Developer ID is your gateway to the ecosystem, providing access to documentation, training, and a private sandbox.
+
+### Registration and Instance Request
+1.  **Visit the Developer Portal:** Navigate to [developer.servicenow.com](https://developer.servicenow.com).
+2.  **Sign Up:** Click **"Sign Up"** and provide your credentials. Using a professional email is recommended for tracking certifications.
+3.  **Verify Email:** Activate your account via the link sent to your inbox.
+4.  **Request a PDI:** Once logged in, click **"Request Instance"** on the dashboard.
+5.  **Select a Release:** Choose the latest stable release (e.g., Washington or Vancouver). 
+6.  **Secure Credentials:** Once provisioned, you will receive an **Instance URL**, **Admin Username**, and **Temporary Password**. Change the password immediately.
+
+### Maintaining Your PDI
+* **Activity Requirement:** You must perform "developer activity" (creating tables, scripts, or system changes) at least once every **10 days**.
+* **Hibernation:** Inactive instances enter hibernation to save resources. Waking them typically takes 3–5 minutes.
+* **Reclamation:** If inactive for more than 10 days, the instance is reclaimed, and all data is deleted.
+* **Backups:** Regularly save your work to a **GitHub repository** or export it via **Update Sets** to ensure you don't lose progress if your instance is reclaimed.
+
+---
+
+## 2. Custom Table Configuration
+
+To support the Ticketing Agent, you must create a custom table in your ServiceNow instance that matches the expected API schema.
+
+1.  **Navigate to Tables:** In your PDI Filter Navigator, type `Tables` and select **System Definition > Tables**.
+2.  **Create New Table:**
+    * **Label:** `Ticket`
+    * **Name:** `u_ticket` (ensure this matches the `SN_TABLE_URL` in the configuration).
+3.  **Define Columns:** Add the following fields to the table:
+    * `id` (String)
+    * `description` (String)
+    * `status` (Choice: acknowledged, inProgress, resolved, closed)
+    * `priority` (Choice: low, medium, high)
+    * `severity` (Choice: minor, major, critical)
+
+---
+
+## 3. Ticketing Backend Integration (Cosmos DB vs. ServiceNow)
+
+The platform supports a dual-path configuration. You can use the default Cosmos DB setup or switch to ServiceNow for enterprise-grade ticketing simulation.
+
+### Code Configuration
+To switch backends, locate the ticketing logic in your Python script and toggle the comments as shown:
+
+* By default the function app has cosmos db enabled.
+* To use service now instead, comment out Option 1 (Cosmos DB section)
+* Uncomment Option 2 (Service Now section)
+* Update the following variables with your ServiceNow instance details:
+  **SERVICENOW_INSTANCE**: Your full instance URL (e.g., https://dev12345.service-now.com)
+  **SERVICENOW_USER**: Your administrator username
+  **SERVICENOW_PASS**: Your administrator password
+
+```python
+# ---------------------------------------------------------
+# Option 1: If you don’t have ServiceNow credentials, use the Cosmos DB configuration.
+# ---------------------------------------------------------
+# COSMOS_ENDPOINT = os.getenv("COSMOS_ENDPOINT")
+# COSMOS_KEY = os.getenv("COSMOS_KEY")
+# DATABASE_NAME = os.getenv("DATABASE_NAME")
+# CONTAINER_NAME = os.getenv("CONTAINER_NAME")
+# 
+# client = CosmosClient(COSMOS_ENDPOINT, COSMOS_KEY)
+# logging.info(f"Connected to Cosmos DB: {COSMOS_ENDPOINT}")
+# database = client.get_database_client(DATABASE_NAME)
+# container = database.get_container_client(CONTAINER_NAME)
+
+# ---------------------------------------------------------
+# Option 2: If you have a ServiceNow instance, uncomment the ServiceNow configuration section and comment out the Cosmos DB configuration.
+# ---------------------------------------------------------
+SERVICENOW_INSTANCE = "Enter your full instance URL (e.g., https://dev12345.service-now.com)"
+SERVICENOW_USER = "Enter your administrator username"
+SERVICENOW_PASS = "Enter your administrator password"
+
+
+SN_TABLE_URL = f"{SERVICENOW_INSTANCE}/api/now/table/u_ticket"
+
+SN_HEADERS = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+}
+```
+
+## Redeploying the Function App via VS Code
+
+After updating the code and environment variables, you must redeploy the Function App to apply the changes to your environment.
+
+### Prerequisites
+* **VS Code** with the **Azure Functions Extension** installed.
+* Successfully logged in via `az login` in the terminal.
+
+### Redeployment Steps
+1.  **Open Project:** Open the extracted agent code folder in **Visual Studio Code**.
+2.  **Azure Login:** Open the terminal in VS Code and run `az login` to authenticate.
+3.  **Access Azure Extension:** Click the **Azure icon** in the VS Code Activity Bar.
+4.  **Initiate Deployment:**
+    * Locate your **Function App** (e.g., `funcapp...`) under the **Resources** tab.
+    * Click the **Deploy to Function App** button (blue cloud icon with an upward arrow).
+    * Select the current workspace folder when prompted.
+    * Select your target subscription and the specific Function App.
+5.  **Overwrite Confirmation:** When a warning appears stating that deployment will overwrite previous versions, click **Deploy**.
+6.  **Verify Status:** Monitor the **Output** window. Once the deployment is complete, the Ticketing Agent will now route requests to your ServiceNow instance.
+
+---
+*Disclaimer: The ServiceNow Developer Program is intended for personal learning and is not for production use or commercial hosting.*
