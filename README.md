@@ -1,20 +1,20 @@
 # Setting the scene
 
 ## What is it?
-DREAM Demos in a Box (DDiB) are packaged Industry Scenario DREAM Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy DREAM Demos in their own subscriptions using DDiB.
+Deployable Demos in a Box (DDiB) are packaged Industry Scenario Deployable Demos with ARM templates (with a demo web app, Power BI reports, Synapse resources, AML Notebooks etc.) that can be deployed in a customer’s subscription using the CAPE tool in a few hours.  Partners can also deploy Deployable Demos in their own subscriptions using DDiB.
 
  ## Objective & Intent
-Partners can deploy DREAM Demos in their own Azure subscriptions and show live demos to customers. 
-In partnership with Microsoft sellers, partners can deploy the Industry scenario DREAM demos into customer subscriptions. 
+Partners can deploy Deployable Demos in their own Azure subscriptions and show live demos to customers. 
+In partnership with Microsoft sellers, partners can deploy the Industry scenario Deployable demos into customer subscriptions. 
 Customers can play,  get hands-on experience navigating through the demo environment in their own subscription and show to their own stakeholders
 
  ## :exclamation:IMPORTANT NOTES:  
 
   1. **Please read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
   2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) may only be made through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible by Microsoft employees. For more information about the CAPE process, please connect with your local Data & AI specialist or CSA/GBB.
-  3. Please note that **Azure hosting costs** are involved when DREAM Demos in a Box are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DDiB hosting costs for partners or customers.
+  3. Please note that **Azure hosting costs** are involved when Deployable Demos in a Box are implemented in customer or partner Azure subscriptions. **Microsoft will not cover** DDiB hosting costs for partners or customers.
   4. Since this is a DDiB, there are certain resources open to the public. **Please ensure proper security practices are followed before you add any sensitive data into the environment.** To strengthen the security posture of the environment, **leverage Azure Security Centre.** 
-  5.  For any questions or comments please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
+  5.  For any questions or comments please email **[mdxazuredemos@microsoft.com](mailto:mdxazuredemos@microsoft.com).**
 
 # Disclaimer 
 
