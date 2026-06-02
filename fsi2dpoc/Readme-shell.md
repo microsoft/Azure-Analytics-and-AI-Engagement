@@ -1,20 +1,18 @@
-![fsi](media/fsi2start.png)
-
 ## What is DPoC?
-DREAM PoC Accelerators (DPoC) are packaged DREAM Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
+Deployable PoC Accelerators (DPoC) are packaged Deployable Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources, ML Notebooks, etc.) that can be deployed in a customer’s environment.
 
 ## Purpose & Vision
-Partners can deploy DREAM Demos in their own Azure subscriptions and demonstrate them live to their customers. 
-Partnering with Microsoft sellers, partners can deploy the Industry scenario DREAM demos into customer subscriptions. 
+Partners can deploy Deployable Demos in their own Azure subscriptions and demonstrate them live to their customers. 
+Partnering with Microsoft sellers, partners can deploy the Industry scenario Deployable demos into customer subscriptions. 
 Customers can play, get hands-on experience navigating through the demo environment in their own subscription, and show it to their own stakeholders.
 
 ## :exclamation:IMPORTANT NOTES:
 
 1. **Read the [license agreement](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) and [disclaimer](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/disclaimer.md) before proceeding, as your access to and use of the code made available hereunder is subject to the terms and conditions made available therein.**
 2. Without limiting the terms of the [license](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/main/CDP-Retail/license.md) , any Partner distribution of the Software (whether directly or indirectly) must be conducted through Microsoft’s Customer Acceleration Portal for Engagements (“CAPE”). CAPE is accessible to Microsoft employees. For more information regarding the CAPE process, contact your local Data & AI specialist or CSA/GBB.
-3. It is important to note that **Azure hosting costs** are involved when DREAM PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
+3. It is important to note that **Azure hosting costs** are involved when Deployable PoC Accelerator is implemented in customer or partner Azure subscriptions. DPoC hosting costs are not covered by Microsoft for partners or customers.
 4. Since this is a DPoC, there are certain resources available to the public. **Please ensure that proper security practices are followed before adding any sensitive data to the environment.** To strengthen the environment's security posture, **leverage Azure Security Centre.** 
-5.  In case of questions or comments; please email **[dreamdemos@microsoft.com](mailto:dreamdemos@microsoft.com).**
+5.  In case of questions or comments; please email **[mdxazuredemos@microsoft.com](mailto:mdxazuredemos@microsoft.com).**
 
 
 ## Contents
