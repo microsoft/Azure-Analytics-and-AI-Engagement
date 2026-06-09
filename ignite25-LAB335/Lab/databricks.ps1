@@ -115,9 +115,6 @@ Connect-AzAccount -DeviceCode -SubscriptionId $subscriptionId
 # $body = $body.Replace("#date#", $date)
 # $body = $body.Replace("#demoType#", $demoType)
 
-# $uri = "https://registerddibuser.azurewebsites.net/api/registeruser?code=pTrmFDqp25iVSxrJ/ykJ5l0xeTOg5nxio9MjZedaXwiEH8oh3NeqMg=="
-# $result = Invoke-RestMethod  -Uri $uri -Method POST -Body $body -Headers @{} -ContentType "application/json"
-
 $starttime = get-date
 
 #download azcopy command
