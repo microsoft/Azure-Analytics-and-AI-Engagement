@@ -168,7 +168,9 @@ In this exercise, you will act as the Data Engineer and transfer Contoso's data 
 
 ![Datawarehouse.](mediaNew/task-1.3.15.png)
 
-14. Scroll down and select **Basic** for Authentication kind, enter **labsqladmin** as the Username, **Smoothie@2024** as the Password and click on the **Next** button.
+14. Scroll down and select **Basic** for the Authentication kind. Copy the SQL credentials from the provided **Blob URL**, paste them into the Username and Password fields, and then click **Next**.
+
+- Blob URL: [https://stignite25.blob.core.windows.net/creds/SQL credentails.txt](https://stignite25.blob.core.windows.net/creds/creds)
 
 ![Datawarehouse.](mediaNew/task-1.3.16.png)
 
