@@ -5,8 +5,8 @@
         "annotations": [],
         "type": "SapHana",
         "typeProperties": {
-            "connectionString": "servernode=52.184.162.251:31015;uid=DEMOUSER",
-            "encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyYTRhMzFhMi04ODc3LTRkMTEtOTkwOS04MTIyNjE5OWI2ZjciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+            "connectionString": "servernode=<SERVER_NODE>;uid=<USER_ID>;pwd=<PASSWORD>",
+            "encryptedCredential": "<ENCRYPTED_CREDENTIAL>"
         },
         "connectVia": {
             "referenceName": "AutoResolveIntegrationRuntime",
