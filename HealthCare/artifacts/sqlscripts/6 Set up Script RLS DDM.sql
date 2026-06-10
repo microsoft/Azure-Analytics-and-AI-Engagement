@@ -13,22 +13,22 @@ select  * from [dbo].[HospitalEmpPIIData]
 -- 2. Setting up Row Level Security on State
 --Create User and Grant Select Permissions
 
-If Not Exists (SELECT Name as [User] FROM sys.sysusers WHERE name='demo-healthcare-user@cloudlabsai.ms') 
-CREATE USER [demo-healthcare-user@cloudlabsai.ms] FROM EXTERNAL PROVIDER
-GRANT SELECT ON dbo.HospitalEmpPIIData TO [demo-healthcare-user@cloudlabsai.ms] 
-EXEC sp_addrolemember 'db_datareader', 'demo-healthcare-user@cloudlabsai.ms'
+If Not Exists (SELECT Name as [User] FROM sys.sysusers WHERE name='demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>') 
+CREATE USER [demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>] FROM EXTERNAL PROVIDER
+GRANT SELECT ON dbo.HospitalEmpPIIData TO [demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>] 
+EXEC sp_addrolemember 'db_datareader', 'demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>'
 
-If Not Exists (SELECT Name as [User] FROM sys.sysusers WHERE name='demo-healthcare-user-02@cloudlabsai.ms') 
-CREATE USER [demo-healthcare-user-02@cloudlabsai.ms] FROM EXTERNAL PROVIDER
-GRANT SELECT ON dbo.HospitalEmpPIIData TO [demo-healthcare-user-02@cloudlabsai.ms] 
-EXEC sp_addrolemember 'db_datareader', 'demo-healthcare-user-02@cloudlabsai.ms'
+If Not Exists (SELECT Name as [User] FROM sys.sysusers WHERE name='demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>') 
+CREATE USER [demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>] FROM EXTERNAL PROVIDER
+GRANT SELECT ON dbo.HospitalEmpPIIData TO [demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>] 
+EXEC sp_addrolemember 'db_datareader', 'demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>'
 
 
 --Grant Impersonate permissions for AAD login 
-GRANT IMPERSONATE ON USER::[demo-healthcare-user-02@cloudlabsai.ms] TO [demo-healthcare-user@cloudlabsai.ms];
-GRANT IMPERSONATE ON USER::[demo-healthcare-user@cloudlabsai.ms] TO [demo-healthcare-user-02@cloudlabsai.ms];
+GRANT IMPERSONATE ON USER::[demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>] TO [demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>];
+GRANT IMPERSONATE ON USER::[demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>] TO [demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>];
 
---REVOKE CONTROL ON USER::[demo-healthcare-user@cloudlabsai.ms] FROM HospitalEmpPIIData;
+--REVOKE CONTROL ON USER::[demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>] FROM HospitalEmpPIIData;
 --Create roles as values present in column 
 --CREATE ROLE [DE]; --This role already exists for SQL login
 
@@ -55,10 +55,10 @@ CREATE ROLE [NY];
     
 
 -- Add AAD users to roles      
-EXEC sp_addrolemember 'NY', 'demo-healthcare-user@cloudlabsai.ms';
-EXEC sp_addrolemember 'PA', 'demo-healthcare-user@cloudlabsai.ms';
-EXEC sp_addrolemember 'CA', 'demo-healthcare-user@cloudlabsai.ms';
-EXEC sp_addrolemember 'CA', 'demo-healthcare-user-02@cloudlabsai.ms';
+EXEC sp_addrolemember 'NY', 'demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>';
+EXEC sp_addrolemember 'PA', 'demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>';
+EXEC sp_addrolemember 'CA', 'demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>';
+EXEC sp_addrolemember 'CA', 'demo-healthcare-user-02@<yourorg>.<Replace with org alias like .com/.org etc>';
 
 CREATE FUNCTION dbo.fn_securitypredicate_rolemember(@State AS sysname)  
 RETURNS TABLE  WITH SCHEMABINDING  
@@ -100,19 +100,19 @@ DROP SCHEMA Security;
 
 
 --If your database does not already have a database master key, create one by executing the following statement providing your password else alter key
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'eT!ePieU*RV@' --master key password
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'entermasterkeypassword' --master key password
 --ALTER MASTER KEY REGENERATE WITH ENCRYPTION BY PASSWORD = 'eT!ePieU*RV@' --alter master key password
 
 --Verify Master Key is created
 SELECT * FROM sys.symmetric_keys
 
 --Grant control permisisons on database and create certificate permissions to user
-grant control on database::HealthCareDW to [demo-healthcare-user@cloudlabsai.ms]
-grant create certificate to [demo-healthcare-user@cloudlabsai.ms]
+grant control on database::HealthCareDW to [demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>]
+grant create certificate to [demo-healthcare-user@<yourorg>.<Replace with org alias like .com/.org etc>]
 
 --Create a new certificate with date options
 CREATE CERTIFICATE Cert1 
-	encryption by password = 'm9p!T!zJN9#N' --cert password
+	encryption by password = 'entercertpassword' --cert password
 	WITH SUBJECT = 'CLE Cert',--cert subject
 	START_DATE = '20200512', 
 	EXPIRY_DATE = '20400512'
@@ -122,7 +122,7 @@ SELECT * FROM sys.certificates
 --Create a new asymmetric key
 CREATE ASYMMETRIC KEY Akey1
 	WITH ALGORITHM = RSA_3072
-	ENCRYPTION BY PASSWORD = '$T62uDCKP$iq' --asymmetric key password
+	ENCRYPTION BY PASSWORD = 'enterasymmetrickeypassword' --asymmetric key password
 --Verify asymmetric key creation
 SELECT * FROM sys.asymmetric_keys
 
@@ -132,7 +132,7 @@ CREATE SYMMETRIC KEY Key1
 	KEY_SOURCE = 'key source',
 	IDENTITY_VALUE = 'identity value',
 	ALGORITHM = AES_192
-	ENCRYPTION BY certificate Cert1, asymmetric key Akey1, password = 'Vhqiv4SyW$j7' --symmetric key password
+	ENCRYPTION BY certificate Cert1, asymmetric key Akey1, password = 'entersymmetrickeypassword' --symmetric key password
 
 
 
@@ -144,7 +144,7 @@ CREATE SYMMETRIC KEY Key1
 ALTER TABLE [dbo].[HospitalEmpPIIData] ADD SSN_encrypted varbinary(128)
 
 --Open the symmetric key as a first step to encrypting the column
-OPEN SYMMETRIC KEY Key1 DECRYPTION by CERTIFICATE Cert1 WITH password = 'm9p!T!zJN9#N' --cert password
+OPEN SYMMETRIC KEY Key1 DECRYPTION by CERTIFICATE Cert1 WITH password = 'entercertpassword' --cert password
 
 --Verify the key is open
 --Select * from sys.openkeys
@@ -156,7 +156,7 @@ Select * from [dbo].[HospitalEmpPIIData] where Id<50
 
 
 -- To validate encryption and decryption
-OPEN SYMMETRIC KEY Key1 DECRYPTION by CERTIFICATE Cert1 WITH password = 'm9p!T!zJN9#N' --cert password
+OPEN SYMMETRIC KEY Key1 DECRYPTION by CERTIFICATE Cert1 WITH password = 'entercertpassword' --cert password
 --Decrypt the column data
 SELECT SSN_encrypted, CONVERT(NVARCHAR, DECRYPTBYKEY(SSN_Encrypted)) AS [SSN_decrypted] FROM [wwi].[HospitalEmpPIIData]
 --Close the symmetric key
