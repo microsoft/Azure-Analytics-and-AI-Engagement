@@ -18,7 +18,7 @@ WITH (FORMAT_TYPE = DELIMITEDTEXT,
 )
 
 ---Create Master Key
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'L9835edf@12@$'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '#MasterKeyPassword#';
 -- Use 'SQLServerlessPool' Serverless SQL Database
 Use SQLServerlessPool
 
