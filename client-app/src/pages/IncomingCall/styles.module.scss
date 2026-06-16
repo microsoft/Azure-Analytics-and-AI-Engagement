@@ -1,0 +1,206 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: var(--backgroundImageURL);
+  background-size: cover;
+  padding: 4% 1% 1% 1%;
+}
+
+.subContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  border-radius: 0.5rem;
+  // overflow: auto;
+  padding: 0.75rem;
+
+  padding: 1% 6.5%;
+}
+
+.callPopup {
+  :global(.k-dialog) {
+    width: 900px;
+    height: 475px;
+
+    :global(.k-dialog-content) {
+      background-image: unset;
+
+      & > div {
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 48px;
+      }
+    }
+  }
+}
+
+.leftContainer {
+  flex: 0.4;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructions {
+  margin-top: 8px;
+  border-radius: 16px;
+  color: white;
+  font-size: 28px;
+  line-height: 40px;
+}
+
+.title {
+  font-size: 72px;
+  line-height: 100px;
+  color: white;
+  padding: 20px 96px;
+  text-align: center;
+  text-shadow: 0px 4px 6px rgba(9, 61, 109, 0.5);
+}
+.subTitle {
+  font-size: 36px;
+  padding: 24px 40px;
+  color: white;
+  text-align: center;
+  text-shadow: 0px 4px 6px rgba(9, 61, 109, 0.5);
+}
+.rightContainer {
+  flex: 0.6;
+  // background: rgba(4, 83, 128, 0.5);
+  // backdrop-filter: blur(15px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    width: 280px;
+  }
+}
+
+.callOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  margin-top: 36px;
+
+  img {
+    width: 75px;
+  }
+}
+
+.hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+  color: white;
+}
+
+@media screen and (max-width: 1550px) {
+  .callPopup {
+    :global(.k-dialog) {
+      width: 900px;
+      height: 450px;
+
+      :global(.k-dialog-content) {
+        background-image: unset;
+
+        & > div {
+          justify-content: flex-start;
+          align-items: flex-start;
+          padding: 32px;
+
+          img {
+            // width: 200px;
+          }
+
+          .instructions {
+            font-size: 24px;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+  }
+  .title {
+    font-size: 56px;
+    line-height: 48px;
+  }
+  .subTitle {
+    padding: 12px 40px;
+  }
+  .rightContainer {
+    img {
+      width: 325px;
+    }
+  }
+  .hint {
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  .callOptions {
+    gap: 48px;
+    margin-top: 20px;
+
+    & > div {
+      width: 150px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .callPopup {
+    :global(.k-dialog) {
+      width: 600px;
+      height: 300px;
+
+      :global(.k-dialog-content) {
+        background-image: unset;
+
+        & > div {
+          justify-content: flex-start;
+          align-items: flex-start;
+          padding: 16px;
+
+          img {
+            width: 200px;
+          }
+
+          .instructions {
+            font-size: 16px;
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+  .title {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .rightContainer {
+    img {
+      width: 275px;
+    }
+  }
+  .hint {
+    font-size: 14px;
+    margin-top: 24px;
+  }
+  .callOptions {
+    gap: 32px;
+    margin-top: 24px;
+
+    & > div {
+      width: 100px !important;
+    }
+  }
+}

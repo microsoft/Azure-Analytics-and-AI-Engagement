@@ -1,0 +1,368 @@
+.ceoArrow2 {
+  position: absolute;
+  top: 70px;
+  transform: scale(0.7);
+  right: 260px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  z-index: 99;
+}
+
+.externalArrow {
+  color: white;
+  background-color: var(--kendo-color-primary);
+  text-align: center;
+  border-radius: 5px;
+  padding: 7px 20px;
+  font-size: 16px;
+  // font-weight: 600;
+  width: unset;
+  height: 36.5px;
+  position: absolute;
+  right: 100px;
+  top: 2.2%;
+  align-items: center;
+  text-align: center;
+  width: max-content;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.externalArrowBackend {
+  color: white;
+  background-color: var(--kendo-color-primary);
+  text-align: center;
+  border-radius: 5px;
+  padding: 7px 20px;
+  font-size: 16px;
+  // font-weight: 600;
+  width: unset;
+  height: 36.5px;
+  position: absolute;
+  right: 320px;
+  top: 2.2%;
+  align-items: center;
+  text-align: center;
+  width: max-content;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.externalArrowUpdated{
+  color: white;
+  background-color: var(--kendo-color-primary);
+  text-align: center;
+  border-radius: 5px;
+  padding: 7px 20px;
+  font-size: 16px;
+  // font-weight: 600;
+  width: unset;
+  height: 36.5px;
+  position: absolute;
+  right: 500px;
+  top: 2.2%;
+  align-items: center;
+  text-align: center;
+  width: max-content;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.Arrows1 {
+  height: 35px;
+  width: 36px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  svg {
+    height: 33px;
+    width: 33px;
+  }
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+.archButton {
+  width: 35px;
+  height: 35px;
+}
+.Arrows {
+  height: 35px;
+  width: 36px;
+  background-color: white;
+  top: 2%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.newArrow {
+  position: absolute;
+  transform: scale(0.8);
+  right: 4%;
+  top: 2%;
+  cursor: pointer;
+  z-index: 999;
+  border-radius: 50%;
+}
+.backEndBtn {
+  position: absolute;
+  transform: scale(0.8);
+  right: 4%;
+  top: 2%;
+  cursor: pointer;
+  z-index: 999;
+}
+.newArrow1 {
+  position: absolute;
+  transform: scale(0.8);
+  right: 4%;
+  top: 0.5%;
+  cursor: pointer;
+  z-index: 999;
+  background-color: var(--kendo-color-primary);
+  // border-radius: 50%;
+}
+.externalArrowA {
+  position: absolute;
+  top: 70px;
+  transform: scale(0.7);
+  right: 100px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  z-index: 99;
+}
+.backendArrowCont {
+  display: flex;
+  gap: 8px;
+}
+.backendArrow {
+  background-color: #0078d4;
+  color: white;
+  padding: 8px 10px 4px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  margin-top: 6%;
+  font-size: 18px;
+  font-weight: 700;
+}
+.arrowSkip {
+  position: absolute;
+  top: 70px;
+  transform: scale(0.85);
+  right: 30px;
+  cursor: pointer;
+  z-index: 99;
+}
+.toggleButtonsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.ButtonNew {
+  // background-color: #ffffff66;
+  background-color: #a588cf;
+
+  border-radius: 15px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: none;
+  // color: #0078d7;
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+.Button2New {
+  margin: 0;
+  // background-color: #007BFF;
+  // color: #0078d7;
+  // background-color: #ffffff;
+  color: #ffffff;
+  background-color: #a588cf;
+
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  height: 35px;
+  font-size: medium;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.Button2New:hover {
+  // background-color: #0078d7; /* Darker blue on hover */
+  background-color: #f0f0f0;
+  // color: #ffffff;
+  color: #0078d7;
+}
+.ButtonNew:hover {
+  background-color: #f0f0f0;
+  color: #0078d7;
+}
+
+.activeButton {
+  // background-color: #e6f2ff;
+  border: 1px solid #0078d7;
+  height: 35px;
+  color: #0078d4;
+  background-color: #ffffff;
+}
+
+.radioIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.labelText {
+  font-size: 16px;
+}
+.arrowTopRight {
+  position: absolute;
+  //top: 70px;
+  bottom: 10px;
+  transform: scale(0.7);
+  right: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.archDia {
+  display: flex;
+}
+
+.tooltip {
+  background-color: #2d3748;
+  border-radius: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: 500;
+
+  & :global(.k-callout) {
+    display: none;
+  }
+}
+
+.ceoBottomArrowA {
+  position: absolute;
+  top: 70px;
+  transform: scale(0.7);
+  right: 120px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  z-index: 200;
+}
+.radioBtn {
+  position: absolute;
+  top: 2%;
+  right: 10%;
+
+  display: flex;
+  gap: 12px;
+  letter-spacing: 1.5px;
+
+  :global(.k-radio) {
+    border: #fff;
+  }
+  :global(.k-checked) {
+    border: #fff;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .backendArrow {
+    margin-top: 5%;
+    padding: 5px 20px 3px 20px;
+  }
+  .newArrow {
+    top: 1%;
+  }
+}
+@media screen and (max-width: 1550px) {
+  .newArrow {
+    top: 0.5%;
+    height: 30px;
+  }
+  .radioBtn {
+    top: 1%;
+    right: 5%;
+  }
+  .externalArrowBackend {
+    top: 1%;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .backendArrow {
+    margin-top: 2%;
+    padding: 5px 20px 2px 20px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .backendArrow {
+    margin-top: 0%;
+    padding: 5px 20px 2px 20px;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .backendArrow {
+    margin-top: 0%;
+    padding: 5px 20px 1px 20px;
+  }
+  .radioBtn {
+    top: 0.5%;
+    right: 5%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .arrowTopRight {
+    top: 50px;
+    right: 0px;
+    transform: scale(0.5);
+    border: 2px solid red;
+  }
+  .ceoArrow2 {
+    top: 50px;
+    transform: scale(0.5);
+    right: 50px;
+    z-index: 99;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .arrowTopRight {
+    top: 40px;
+    transform: scale(0.4);
+  }
+  .ceoArrow2 {
+    top: 40px;
+    right: 40px;
+    transform: scale(0.4);
+  }
+}

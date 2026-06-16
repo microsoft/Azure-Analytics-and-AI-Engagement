@@ -1,0 +1,111 @@
+.container {
+  width: 60%;
+  font-weight: normal;
+  padding-left: 26px;
+
+  table {
+    border-collapse: collapse;
+    padding-bottom: 10px;
+  }
+
+  th {
+    color: #005aba;
+  }
+
+  tr {
+    font-size: 13px;
+  }
+
+  td {
+    font-weight: 600;
+  }
+
+  hr {
+    opacity: 0.7;
+  }
+
+  .orderIdColumn {
+    width: 42%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .statusColumn {
+    width: 16%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .orderDateColumn {
+    width: 18%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .orderTotalColumn {
+    width: 20%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .userImage {
+    height: 75px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+
+    & > img {
+      height: 100%;
+    }
+  }
+
+  .productIdColumn {
+    width: 39%;
+  }
+
+  .productNameColumn {
+    width: 35%;
+  }
+
+  .quantityColumn {
+    width: 12%;
+  }
+
+  .amountColumn {
+    width: 17%;
+  }
+
+  p {
+    height: 15px;
+    padding: 0px !important;
+    margin: 6px;
+    font-size: 14px;
+  }
+
+  .header {
+    color: #005aba;
+    font-weight: 600;
+  }
+
+  .lineItemContainer {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
+
+  .itemContainer {
+    height: 65vh;
+    overflow: auto;
+  }
+
+  .text {
+    font-weight: 600;
+    color: #2f2f2f;
+  }
+
+  .headerRow {
+    height: 20px !important;
+    border: none !important;
+  }
+}

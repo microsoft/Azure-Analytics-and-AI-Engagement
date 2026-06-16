@@ -1,0 +1,26 @@
+.container {
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.rotateCard {
+  background-color: black;
+  display: none;
+  color: white;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (orientation: portrait) {
+  .rotateCard,
+  .container {
+    display: flex;
+  }
+}

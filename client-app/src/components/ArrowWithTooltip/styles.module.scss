@@ -1,0 +1,21 @@
+.tooltip {
+  background-color: #2d3748;
+  border-radius: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: 500;
+
+  & :global(.k-callout) {
+    display: none;
+  }
+}
+
+.arrowTopRight {
+  position: absolute;
+  transform: scale(0.7);
+  right: 70px;
+  top: 10px;
+  //bottom: 10px;
+  cursor: pointer;
+  z-index: 99;
+}

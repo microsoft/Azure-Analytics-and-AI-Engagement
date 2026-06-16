@@ -1,0 +1,63 @@
+.tabContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+
+  .tabImg {
+    flex: 0.4;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .tabText {
+    flex: 0.6;
+    background-color: #001b2e;
+    padding: 20px;
+    display: flex;
+    text-align: left;
+
+    .textWrapper {
+      flex: 1;
+      overflow: auto;
+
+      & > h3 {
+        color: #00959f;
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+
+      & > pre {
+        color: white;
+        white-space: break-spaces;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .tabContainer {
+    .tabImg {
+      flex: 0.6;
+    }
+
+    .tabText {
+      flex: 0.4;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .tabContainer {
+    .tabImg {
+      flex: 0.7;
+    }
+
+    .tabText {
+      flex: 0.3;
+    }
+  }
+}

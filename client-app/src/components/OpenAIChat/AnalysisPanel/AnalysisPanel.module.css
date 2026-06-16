@@ -1,0 +1,29 @@
+.thoughtProcess {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  word-wrap: break-word;
+  padding: 12px;
+  background: var(--kendo-color-secondary-secondary-subtle, #faf9f8);
+  color: black;
+  margin-top: 12px;
+  border-radius: 8px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.tabStrip {
+  :global(.k-tabstrip-items) {
+    :global(.k-link) {
+      padding: 6px;
+    }
+  }
+  :global(.k-tabstrip-content) {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    :global(.k-animation-container) {
+      width: 100%;
+    }
+  }
+}

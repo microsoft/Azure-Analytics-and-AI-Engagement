@@ -1,0 +1,117 @@
+.container {
+  width: 60%;
+  font-weight: normal;
+  padding-left: 32px;
+
+  .userDetailContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    p {
+      height: 15px;
+      padding: 0px !important;
+      margin: 6px;
+      font-size: 14px;
+    }
+
+    .header {
+      color: #707070;
+      font-weight: 400;
+    }
+
+    .text {
+      font-weight: 600;
+      color: #2f2f2f;
+    }
+  }
+
+  .horizontalLine {
+    margin-top: 24px;
+    border-bottom: 1px solid black;
+  }
+
+  .addressContainer {
+    p {
+      height: 15px;
+      padding: 0px !important;
+      margin: 6px;
+      font-size: 14px;
+    }
+    .header {
+      color: #707070;
+      font-weight: 400;
+    }
+    .text {
+      font-weight: 600;
+      color: #2f2f2f;
+    }
+  }
+
+  .topContainer {
+    display: grid;
+    grid-template-columns: 120px auto;
+
+    .userImage {
+      height: 93px;
+      width: 93px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+
+      & > img {
+        border-radius: 8px;
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    padding-right: 10px;
+  }
+
+  th {
+    opacity: 1;
+    color: #005aba;
+  }
+
+  tr {
+    height: 46px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .orderIdColumn {
+    width: 47%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .statusColumn {
+    width: 15%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .orderDateColumn {
+    width: 16%;
+    text-align: left;
+    font-size: small;
+  }
+
+  .orderTotalColumn {
+    width: 47%;
+    text-align: left;
+    font-size: small;
+  }
+}
+
+.tableContainer {
+  height: 56vh;
+  overflow-y: auto;
+}
+
+Table thead {
+  top: 0px;
+  margin: 0 0 0 0;
+  height: 40px;
+}

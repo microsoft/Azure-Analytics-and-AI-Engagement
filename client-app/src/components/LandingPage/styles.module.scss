@@ -1,0 +1,515 @@
+.container {
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+  background-size: cover;
+  padding: 4% 1% 1% 1%;
+
+  .landingPageImage {
+    padding: 0px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+}
+.chatBotLandingPageContainer {
+  width: 25%;
+  position: relative;
+  height: 100%;
+}
+.container,
+.image {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: scroll;
+}
+
+.chatIcon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  cursor: pointer;
+  z-index: 999;
+  height: 46px;
+}
+
+.subContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 254, 250, 0.2);
+  border-radius: 0.5rem;
+
+  padding: 2rem;
+  display: flex !important;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  // background-image: url("https://dreamdemoassets.blob.core.windows.net/nrf/Landing_Page_BG.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  gap: 30px;
+}
+.title {
+  position: absolute;
+  top: 2.5%;
+  left: 50%;
+  height: 50px;
+  transform: translate(-50%, 2%);
+  color: #08487f;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+}
+.subContainer1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+
+  // padding: 2rem;
+  // display: flex !important;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  gap: 30px;
+}
+.solutionPlays {
+  font-size: 20px !important;
+  position: absolute;
+  top: 0.5%;
+  left: 5%;
+  color: #235881;
+  font-weight: 600;
+}
+.demoFlows {
+  position: absolute;
+  top: 0.5%;
+  left: 360px;
+  color: #235881;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+.experience {
+  position: absolute;
+  top: 0.5%;
+  left: 670px;
+  color: #235881;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+.chapters {
+  position: absolute;
+  top: 0.5%;
+  left: 1100px;
+  color: #235881;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+.image {
+  height: calc(100% - 10px);
+  object-fit: contain;
+  // padding: 0 55px;
+  // padding-top: 12px;
+}
+.tileWrapper {
+  display: inline-flex;
+}
+.chatBotLandingPageContainer {
+  width: 90%;
+  position: relative;
+  height: 100%;
+  margin: auto;
+  top: -6%;
+}
+.titleContainer {
+  width: 75%;
+}
+.logo {
+  width: 100%;
+  padding-right: 30px;
+  padding-top: 50px;
+
+  margin-top: 30%;
+}
+.titleImage {
+  // width: 70% !important;
+  width: 100%;
+  object-fit: cover;
+  height: 45px !important;
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 45px !important;
+  }
+}
+.switch {
+  position: absolute;
+  color: #013056;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
+  letter-spacing: 1.2px;
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+}
+.Button1New,
+.Button2New {
+  margin: 0;
+  // background-color: #007BFF;
+  // color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  height: 35px;
+  width: 70px;
+  font-size: medium;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  letter-spacing: 1.1px;
+}
+
+.Button1:focus,
+.Button2:focus {
+  outline: none;
+}
+// .image {
+//   height: calc(100% - 142px);
+//   padding: 0 12px;
+//   padding-top: 12px;
+// }
+.tileContainer {
+  display: flex;
+  height: 100%;
+
+  // flex-basis: 75%;
+  width: 100%;
+  padding-top: 45px;
+  // align-self: flex-end;
+  justify-self: center;
+  // position: absolute;
+  border-radius: 20px;
+  // background-color: rgba(0, 0, 0, 0.459);
+  box-shadow: 0px 4px 4px 0px #ffffff40;
+  z-index: 999;
+  gap: 10px;
+  border: 1px solid white;
+
+  flex: 1;
+  position: relative;
+  flex-direction: row;
+  // padding-top: 4rem;
+}
+.reactFlowContainer {
+  width: 100%;
+}
+.chatBotDetails {
+  width: 25%;
+  // display: none;
+}
+// .tileContainer {
+//   display: flex;
+//   flex-direction: row;
+//   /* margin-bottom: 80px; */
+//   padding: 30px 40px;
+//   border-radius: 20px;
+//   background-color: rgba(0, 0, 0, 0.4588235294);
+//   box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+//   max-width: 800px;
+//   z-index: 999;
+//   // position: absolute;
+//   // bottom: 3%;
+//   // left: 42%;
+//   transform: translate(-50%, -10%);
+// }
+
+.tileWrapper1 {
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  // max-width: 600px; /* Adjust this width as needed */
+  // margin: 0 auto;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+.tileWrapper2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+.tileWrapperEnd {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 20px;
+  padding-bottom: 20px;
+  column-gap: 30px;
+  // width: 100%;
+  // max-width: 600px; /* Adjust this width as needed */
+  // margin: 0 auto;
+  width: 100%;
+  place-items: center;
+}
+
+:global(.react-flow__minimap.right) {
+  left: 5%;
+  width: 200px;
+  height: auto;
+}
+@media screen and (max-width: 1920px) {
+  .demoFlows {
+    left: 420px;
+  }
+  .experience {
+    left: 720px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .subContainer {
+    padding: 2rem 5px;
+  }
+  .demoFlows {
+    left: 390px;
+  }
+  .experience {
+    left: 700px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  //   .demoFlows {
+  //     right: 33%;
+  //   }
+  .title {
+    height: 38px;
+    top: 1%;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  // .demoFlows {
+  //   right: 30%;
+  // }
+}
+
+// .container {
+//   display: flex;
+//   gap: 20px;
+//   padding: 20px;
+//   background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+//   background-size: cover;
+//   padding: 4% 1% 1% 1%;
+
+//   .column {
+//     flex: 1;
+//     padding: 15px;
+//     border: 1px solid #1976d2;
+//     border-radius: 8px;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+//     h3 {
+//       margin-top: 0;
+//       padding-bottom: 10px;
+//       /* border-bottom: 2px solid #e0e0e0; */
+//       color: #242424;
+//       font-family: "Segoe UI";
+//       font-size: 14px;
+//       font-style: normal;
+//       font-weight: 600;
+//       line-height: 13.303px; /* 95.021% */
+//       text-align: start;
+//     }
+
+//     > div {
+//       padding: 10px;
+//       margin: 5px 0;
+//       cursor: pointer;
+//       border-radius: 4px;
+//       transition: all 0.2s ease;
+
+//       &:hover {
+//         background-color: #f5f5f5;
+//         color: #0078d4;
+//       }
+//     }
+//   }
+// }
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping for responsiveness */
+  gap: 4px;
+  padding: 4% 1% 1% 1%;
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+  background-size: cover;
+
+  .column {
+    flex: 1 1 22%; /* allow flexible shrinking/growing with a min width */
+    min-width: 250px; /* ensures a good breakpoint */
+    padding: 10px;
+
+    border: 1px solid #0078d4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #f5f5f5;
+
+    h3 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      color: #0c5492;
+      font-family: "Segoe UI";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 13.303px;
+      text-align: start;
+    }
+
+    > div {
+      padding: 19px 0px 19px 10px;
+      margin: 7px 0;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      // &:hover {
+      //   // background-color: #f5f5f5;
+      //   // color: #0078d4;
+      // }
+    }
+  }
+}
+
+.active {
+  background-color: #0078d4;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.inactive {
+  background-color: #fff;
+  color: #3c3c3c;
+  border: 1px solid #25a0ff;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+}
+.liItem {
+  background-color: #fff;
+  color: #3c3c3c;
+  border: 1px solid #25a0ff;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  height: 40px;
+  padding: 10px;
+  padding-left: 42px;
+}
+
+.wrapper {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  //margin-top: 20px;
+}
+
+.dropdown {
+  // margin-top: 10px;
+  padding: 11px 0px 11px 6px;
+  border-radius: 4px;
+  // font-size: 14px;
+
+  background-color: #fff;
+  color: #3c3c3c;
+  border: 1px solid #25a0ff;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.chapterList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapterItem {
+  padding: 10px 15px 10px 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-top: 1px solid #eee;
+  padding-left: 50px;
+}
+
+.chapterItem:hover {
+  background-color: #e9e9e9;
+  padding-left: 30px;
+}
+
+.customPanelBar .k-panelbar .k-item > .k-link {
+  background-color: #fff;
+  color: #3c3c3c;
+  border: 1px solid #25a0ff;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Override for selected panel header */
+.customPanelBar .k-panelbar .k-item > .k-link.k-state-selected,
+.customPanelBar .k-panelbar .k-item > .k-link.k-selected {
+  background-color: #e0f0ff !important;
+  color: #3c3c3c !important;
+  border: 1px solid #25a0ff !important;
+  box-shadow: 0 0 0 2px rgba(37, 160, 255, 0.3);
+}
+
+/* Hover state */
+.customPanelBar .k-panelbar .k-item > .k-link:hover {
+  background-color: #f0f0f0;
+  border-color: #25a0ff;
+}
+
+/* Focus state */
+.customPanelBar .k-panelbar .k-item > .k-link:focus {
+  box-shadow: 0 0 0 2px rgba(37, 160, 255, 0.3);
+  outline: none;
+}
