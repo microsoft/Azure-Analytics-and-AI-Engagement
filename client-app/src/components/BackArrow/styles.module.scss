@@ -1,0 +1,16 @@
+.backArrow {
+  background-color: black;
+  height: 24px;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    width: max-content;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

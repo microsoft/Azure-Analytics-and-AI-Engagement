@@ -1,0 +1,69 @@
+.popupContainer {
+  :global(.k-dialog) {
+    width: 75%;
+    min-height: 85%;
+    max-height: 95%;
+    border-radius: 8px;
+  }
+
+  :global(.k-dialog-titlebar) {
+    background-size: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    align-items: center;
+    display: flex;
+    /* flex-direction: column; */
+    height: 60px;
+  }
+
+  :global(.k-dialog-title) {
+    display: flex;
+    padding: 16px, 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--kendo-spacing-0, 0px);
+    align-self: stretch;
+    padding: 0 3.5%;
+    color: var(--kendo-color-on-app-surface, #323130);
+    /* Heading/Heading 4 - Semibold */
+    font-family: "Segoe UI";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 28px */
+    letter-spacing: 0px;
+  }
+
+  :global(.k-i-x) {
+    color: rgb(1, 1, 1);
+  }
+
+  :global(.k-dialog-content) {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: unset !important;
+    height: calc(100% - 60px);
+  }
+
+  :global(.extraStyleParent) {
+    .k-window-content {
+      overflow: unset !important;
+    }
+  }
+}
+
+.childContainer {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--kendo-spacing-0, 0px);
+  align-self: stretch;
+  height: 100%;
+  overflow-y: auto;
+}
+
+:global(.extraStyle) {
+  display: block !important;
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/azsearch.js@0.0.21/dist/AzSearch.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <title>Incident Search</title>
+    <style>
+    
+        body{
+            font-family: Lato;
+            background: #001b2d;
+        }
+
+        .searchResults__result h4 {
+            margin-top: 0px;
+            text-transform: uppercase;
+        }
+
+        .searchResults__result .resultDescription {
+            margin: 0.5em 0 0 0;
+        }
+        .searchResults__result h4{
+            color: white;
+            text-transform: capitalize;
+        }
+        .searchResults__result .resultDescription{
+            color: white;
+        }
+        .navbar-fixed-top{
+            height: 130px;
+        }
+        .navbar{
+            max-height:130px;
+            background: #001b2d;
+            background-repeat: no-repeat;
+            background-position: right;
+
+        }
+        .navbar-header{
+            padding-top:20px;
+
+        }
+        .pagelabel{
+            color:white;
+            font-size:16px;
+            text-transform: uppercase;
+            font-family:Lato
+        }
+        .small-search{
+            color:rgba(255,255,255,0.3);
+            text-transform: lowercase;
+            font-size6px;
+            margin-left: 6px;
+        }
+        .searchBox__input-container{
+            margin-left: 15px;
+        }
+        #searchBox > div > div.searchBox__input-container.input-group > input{
+            height: 51px;
+            border-radius:5px;
+            width:800px;
+        }
+        #searchBox > div > div.searchBox__input-container.input-group > span > button{
+            margin-left:-30px;
+            height: 40px;
+            background: #181818;
+            border:none;
+            border-radius:5px;
+            position:absolute;
+            z-index:10000;
+            top:5px;
+            left:-17px;
+        }
+        #searchBox > div > div.searchBox__input-container.input-group > span > button > span{
+            color:white;
+            text-shadow:none;
+        }
+        .searchBox__suggestions-container{
+            margin-left:20px;
+        }
+        .topper{
+            margin-top:80px;
+        }
+        .nav-sidebar{
+            margin-top:60px;
+        }
+        .results_section{
+            padding:40px;
+        }
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+            background: #001b2d;
+            border: #001b2d;
+        }
+        .two img{
+            width:30px !important;
+
+        }
+        .searchResults__result{
+            padding-top:25px;
+            border-top:1px solid rgba(255,255,255,0.2);
+            margin-bottom: 5px;
+        }
+        .searchResults__result img{
+            width:50px;
+            float:left;
+            margin-right: 20px;
+        }
+        .sidebar{
+            background: #001b2d;
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            border-color: rgba(255,255,255, 0.2)
+        }
+        .results_section{
+            background: #001b2d;
+        }
+        .panel-title{
+            color:white;
+        }
+        .glyphicon{
+            font-size:10px;
+        }
+        
+        .resultDescription{
+            display:grid;
+        }
+        .resultDescription small{
+            color:#ff9635 !important;
+        }
+        .list-group-item{
+            text-transform:capitalize;
+        }
+        .results__blurb{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#facetPanel" aria-expanded="false"
+                        aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="row">
+                        <div class="col-md-12 pagelabel">
+                            Search<span class="small-search">search incidents</span>
+                        </div>
+                        <div id="searchBox" class="col-mid-8 col-sm-8 col-xs-6"></div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid topper">
+            <div class="row">
+                <div id="facetPanel" class="col-sm-3 col-md-3 sidebar collapse">
+                    <div id="clearFilters"></div>
+                    <ul class="nav nav-sidebar">
+                        <div className="panel panel-primary behclick-panel">
+                            
+                            <li>
+                                <div id="eventFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="employerFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="locationFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="natureFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="part_of_bodyFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="sourceFacet">
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 results_section">
+                    <div id="results" class="row placeholders">
+                    </div>
+                    <div id="pager" class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</body>
+<!-- Dependencies -->
+<script src="https://cdn.jsdelivr.net/react/15.5.0/react.min.js"></script>
+<script src="https://cdn.jsdelivr.net/react/15.5.0/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/arrive/2.4.1/arrive.js"></script>
+<!-- Main -->
+<script src="https://cdn.jsdelivr.net/npm/azsearch.js@0.0.21/dist/AzSearch.bundle.js"></script>
+<script>
+    
+    // WARNING
+    // For demonstration purposes only, do not use in a production environment. For simplicity, this is a single HTML page that has the query key to the search service.
+    // CORS (*) must be enabled in the index before using the demo app.
+
+    // Initialize and connect to your search service
+    // let {searchIndex, searchQueryKey, searchService} = window['runConfig']
+    var automagic = new AzSearch.Automagic({ index: "hospitalincidentsearch-index-prod", queryKey: "89EB991379D4138DB9D8248E79188BAC", service: "srch-healthcaredemo-prod" });
+
+    // const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9"><h4>{{source}}</h4></div>`;
+    const resultTemplate = `<div class="col-xs-12 col-sm-9 col-md-9">
+
+        <img class="thumbnail img-responsive two" src="https://image.flaticon.com/icons/svg/80/80942.svg" width=30px>
+        <a href="javascript: void(0)"
+            onclick="window.open('/detail.html?pdf={{CaseId}}','_blank','width=700,height=700');">
+            <h4>Case#{{CaseId}} &nbsp; | &nbsp; {{NatureTitle}} &nbsp; | &nbsp; {{PartofBodyTitle}} </h4>
+        </a>
+        <div class="resultDescription">{{{FinalNarrative}}}
+            
+        <p><small>{{EventDate}} &nbsp; | &nbsp; Location: {{Location}}</small></p>
+        </div>
+        
+    </div>`;
+
+    // add a results view using the template defined above
+    automagic.addResults("results", { count: true, top:10, queryType: 'full', searchMode: 'all',}, resultTemplate);
+    
+
+    var resultsProcessor = function(results) {
+        return results.map(function(result){
+            // result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            // var summary = result.description;
+            var startDate = new Date(result.event_date);
+            result.event_date = startDate.toDateString()
+            // result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
+            return result;
+        });
+    };
+    automagic.store.setResultsProcessor(resultsProcessor);
+
+    // Adds a pager control << 1 2 3 ... >>
+    automagic.addPager("pager");
+    
+    // Set some processors to format results for display
+    // Set some processors to format results for display
+    var suggestionsProcessor = function (results) {
+        return results.map(function (result) {
+            result.searchText = result["@search.text"];
+            return result;
+        });
+    };
+
+    automagic.store.setSuggestionsProcessor(suggestionsProcessor);
+
+    var suggestionsTemplate = `<p> CaseId: {{CaseId}}</p><p> EventDate: {{{event_date}}} </p> {{{searchText}}}`;
+
+    // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
+    automagic.addSearchBox("searchBox",
+        {
+            highlightPreTag: "<b>",
+            highlightPostTag: "</b>",
+        },
+        "",
+        suggestionsTemplate);
+    
+    automagic.addCheckboxFacet("locationFacet", "Location", "string");
+    automagic.addCheckboxFacet("natureFacet", "NatureTitle", "string");
+    automagic.addCheckboxFacet("sourceFacet", "SourceTitle", "string");
+
+
+    // Adds a button to clear any applied filters
+    automagic.addClearFiltersButton("clearFilters");
+</script>
+<script>
+    // A $( document ).ready() block.
+    $(document).ready(function () {
+        $('.searchBox__button').click()
+
+        $("#locationFacet").arrive(".searchResults__facetHeader-link", function () {
+            $(this).html($(this).html().replace('Location', 'Factory Location'));
+        });
+
+        $("#natureFacet").arrive(".searchResults__facetHeader-link", function () {
+            $(this).html($(this).html().replace('NatureTitle', 'Type of Injury'));
+        });
+
+        $("#part_of_bodyFacet").arrive(".searchResults__facetHeader-link", function () {
+            $(this).html($(this).html().replace('PartofBodyTitle', 'Injured Body Part'));
+        });
+
+        $("#sourceFacet").arrive(".searchResults__facetHeader-link", function () {
+            $(this).html($(this).html().replace('SourceTitle', 'Source of Injury'));
+        });
+
+        $('.searchBox__input').on("input", function (e) {
+            let v = $(".searchBox__input").val();
+
+            // if (e.originalEvent.inputType != 'deleteContentBackward'){
+            //     $(".searchBox__input").val(v.replace("~",""))
+            //     $(".searchBox__input").val($(".searchBox__input").val()+"~")
+            // }
+
+
+        });
+
+    });
+</script>
+<style>
+</style>
+</html>

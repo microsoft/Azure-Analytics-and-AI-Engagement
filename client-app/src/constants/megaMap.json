@@ -1,0 +1,201 @@
+{
+  "titles": [
+    {
+      "title": "Cognitive Services + OpenAI",
+      "imageUrl": "Blue Title BG.png"
+    },
+    {
+      "title": "Data and AI Scenarios",
+      "imageUrl": "Orange Title BG.png"
+    },
+    {
+      "title": "Industry Scenarios",
+      "imageUrl": "Green Title BG.png"
+    }
+  ],
+  "content": [
+    {
+      "title": "Search and Summarization",
+      "imageUrl": "Blue Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Customer Churn Prediction",
+      "imageUrl": "Orange Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Healthcare & Life Sciences",
+      "imageUrl": "Green Empty BG.png",
+      "link": "",
+      "list": [
+        {
+          "title": "Contact Center Analytics & Insights",
+          "link": "/health-care-contact-center"
+        },
+        {
+          "title": "Azure Form Recognizer for Medical Documents",
+          "link": "/health-care-form-recognizer"
+        },
+        {
+          "title": "Hospital Incident Insights",
+          "link": "/health-care-hospital-incident-insights"
+        },
+        {
+          "title": "Clinical Notes",
+          "link": "/health-care-clinical-notes"
+        },
+        {
+          "title": "Virtual Agent",
+          "link": ""
+        },
+        {
+          "title": "Patient Cohort Analysis with QnA Capability",
+          "link": "/health-care-cohort-analysis"
+        }
+      ]
+    },
+    {
+      "title": "Azure Form Recognizer for Documents",
+      "imageUrl": "Blue Empty BG.png",
+      "link": "/open-ai-form-recognizer"
+    },
+    {
+      "title": "Product Recommendations",
+      "imageUrl": "Orange Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Retail",
+      "imageUrl": "Green Empty BG.png",
+      "link": "",
+      "list": [
+        {
+          "title": "Contact Center Analytics & Insights",
+          "link": "/retail-contact-center"
+        },
+        {
+          "title": "Intelligent Cohort Analytics",
+          "link": "/retail-cohort-analysis"
+        },
+        {
+          "title": "Form Recognizer",
+          "link": "/retail-form-recognizer"
+        },
+        {
+          "title": "Incident Insights",
+          "link": "/retail-incident-insights"
+        },
+        {
+          "title": "Business Process Automation",
+          "link": ""
+        },
+        {
+          "title": "Analyze Trends and Queries to Generate Personalized Content",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "title": "Contact Center Analytics",
+      "imageUrl": "Blue Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Sentiment Analytics on Social Media Data",
+      "imageUrl": "Orange Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Financial Services",
+      "imageUrl": "Green Empty BG.png",
+      "link": "",
+      "list": [
+        {
+          "title": "Contact Center Analytics & Insights",
+          "link": ""
+        },
+        {
+          "title": "Azure Form Recognizer for Financial Documents",
+          "link": ""
+        },
+        {
+          "title": "Intelligent Loan / Mortgage Application Assistant",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "title": "Text Analytics",
+      "imageUrl": "Blue Empty BG.png",
+      "link": "/open-ai-text-analytics"
+    },
+    {
+      "title": "Customer Service agents interaction",
+      "imageUrl": "Orange Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Manufacturing & Mobility",
+      "imageUrl": "Green Empty BG.png",
+      "link": "",
+      "list": [
+        {
+          "title": "Contact Center Analytics & Insights",
+          "link": ""
+        },
+        {
+          "title": "Automated Quality Inspection",
+          "link": ""
+        },
+        {
+          "title": "Equipment Reporting / Remote Asset Monitoring",
+          "link": ""
+        },
+        {
+          "title": "Enhanced Demand Forecasting / Intelligent Business Planning",
+          "link": ""
+        },
+        {
+          "title": "Predictive Maintenance",
+          "link": ""
+        },
+        {
+          "title": "Incident Reporting and Insights / Automate Incident Workflow",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "imageUrl": "Blue Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Cohort Analysis Q&A",
+      "imageUrl": "Orange Empty BG.png",
+      "link": "/open-ai-cohort-analysis"
+    },
+    {
+      "title": "Public Sector",
+      "imageUrl": "Green Empty BG.png",
+      "link": "",
+      "list": []
+    },
+    {
+      "title": "",
+      "imageUrl": "Blue Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "Fraud/Anomaly detection",
+      "imageUrl": "Orange Empty BG.png",
+      "link": ""
+    },
+    {
+      "title": "",
+      "imageUrl": "Green Empty BG.png",
+      "link": ""
+    }
+  ]
+}

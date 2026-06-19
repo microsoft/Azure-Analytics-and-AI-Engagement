@@ -1,0 +1,22 @@
+.panel {
+  &:global(.ms-panel-header) {
+    padding-right: 0;
+    font-size: 9px;
+  }
+}
+
+.resetButton {
+  left: 100px;
+}
+
+.saveButton {
+  position: absolute;
+  bottom: 16px;
+  z-index: 10;
+  background-color: rgb(0, 120, 212);
+  color: white;
+}
+
+.chatSettingsSeparator {
+  margin-top: 15px;
+}
