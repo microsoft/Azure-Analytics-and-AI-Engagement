@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://dreamdemoassets.blob.core.windows.net/daidemo/aoai_2_login_background.png);
+  background-size: cover;
+}
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+
+  & > iframe {
+    width: 100%;
+    height: 100%;
+    border: unset;
+  }
+}
+
+.gifContainer {
+  overflow-y: auto;
+
+  img {
+    height: auto;
+  }
+}

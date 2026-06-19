@@ -1,0 +1,88 @@
+.singleCard {
+  border-radius: 8px;
+  padding: 12px 24px;
+  width: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 22px;
+}
+
+.titleContainer {
+  font-size: 18px;
+  font-weight: 600;
+  font-size: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageGroup {
+  display: flex;
+  gap: 16px;
+
+  .image {
+    position: relative;
+
+    .individualCheckbox {
+      position: absolute;
+      top: -4px;
+      right: 4px;
+    }
+  }
+}
+
+.glow {
+  /* set the initial box-shadow to none */
+  box-shadow: none; /* add the animation property with a 2-second duration and infinite loop */
+  animation: flash-shadow 2s infinite;
+} /* define the animation to flash the box-shadow */
+@keyframes flash-shadow {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0px 0px 13px 7px #46d5e9;
+  }
+  25% {
+    box-shadow: 0px 0px 13px 7px #46d5e9;
+  }
+}
+
+.selectedSingleCard {
+  border-radius: 8px;
+  padding: 12px 24px;
+  width: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 20px;
+  background: #680f7063;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 22px;
+}
+
+.shoppingCardContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
+}
+.imagesGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.cardButton {
+  padding: 8px 24px;
+  width: 6rem;
+  font-size: 16px;
+  border-radius: 50px;
+  background: #07659e;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

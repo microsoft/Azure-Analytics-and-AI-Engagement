@@ -1,0 +1,80 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.legendContainer {
+  display: flex;
+  // width: 70%;
+  padding: 0 5%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.legends {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: black;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 12px;
+  // width: 80%;
+  // line-height: 1;
+  // color: white;
+  // display: flex;
+  // gap: 16px;
+  // align-items: center;
+  // flex-wrap: wrap;
+  // position: absolute;
+  // margin-top: 8px;
+}
+.tooltiContainer {
+  position: relative;
+  display: inline-block;
+}
+.tooltiContainer:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  bottom: 100%;
+  left: 50%;
+  /* transform: translateX(-50%); */
+  width: 300px;
+}
+.legend {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info {
+  color: #ffc100;
+  cursor: pointer;
+}
+
+.infoIcon {
+  background-color: #ffc100;
+  border-radius: 50px;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

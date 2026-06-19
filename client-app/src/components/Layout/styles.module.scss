@@ -1,0 +1,55 @@
+.container {
+  margin-left: 50px;
+  width: calc(100vw - 50px);
+  height: calc(100vh - 48px);
+  overflow: hidden;
+  // background-position: center center;
+  // background-image: url(https://dreamdemoassets.blob.core.windows.net/retail20/AIDemo/background_img.png);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.actionButtonsContainer {
+  position: absolute;
+  right: 6%;
+  position: absolute;
+  right: 6%;
+  top: 2%;
+}
+
+.architectureIcon {
+  cursor: pointer;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.speakerIcon {
+  cursor: pointer;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .actionButtonsContainer {
+    top: 1%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    margin-left: 0;
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
+}
+
+.footer {
+  width: 100%;
+}

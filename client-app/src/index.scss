@@ -1,0 +1,409 @@
+@import "./themes/kendo-theme-custom.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/seguiemj.ttf") format("truetype");
+}
+
+area {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+hr {
+  margin: 0.5rem 0;
+}
+.buttonsContainerLeft {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+}
+.buttonsContainerRight {
+  position: absolute;
+  // top: 50%;
+  top: 2%;
+  left: 1%;
+}
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  position: absolute;
+  bottom: 12px;
+  right: 6%;
+}
+
+.buttonsContainerOld {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0px;
+}
+.homeButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  position: absolute;
+  top: 2%;
+  left: 4%;
+  border-radius: 2px;
+  height: 35px;
+
+  button {
+    width: 20px !important;
+    height: 23px !important;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+.arcButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  position: absolute;
+  top: 2.1%;
+  left: 6.5%;
+  border-radius: 2px;
+  margin-left: 10px;
+  :hover {
+    cursor: pointer;
+  }
+
+  button {
+    width: 20px !important;
+    height: 23px !important;
+  }
+}
+.secondaryButton {
+  color: white;
+  background-color: var(--kendo-color-primary);
+  border: unset;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  width: unset;
+  height: 42px;
+
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background-color: var(--kendo-color-primary);
+    border: unset;
+  }
+}
+.secondaryButton1 {
+  color: white;
+  background-color: var(--kendo-color-primary);
+  border: unset;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  width: unset;
+  height: 30px;
+
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background-color: var(--kendo-color-primary);
+    border: unset;
+  }
+}
+.primaryButton {
+  color: white;
+  background-color: var(--kendo-color-primary);
+  border: unset;
+  //border-radius: 8px;
+  //padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 180px;
+  //padding-right: 40px;
+  height: 42px;
+  z-index: 999;
+
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    // & > svg {
+    //   position: absolute;
+    //   right: 12px;
+    // }
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background-color: var(--kendo-color-primary);
+    border: unset;
+  }
+}
+
+.endButton {
+  padding-right: 0;
+
+  & > span {
+    & > svg {
+      position: absolute;
+      left: 12px !important;
+      top: 9px !important;
+      right: unset !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .primaryButton,
+  .archButton,
+  .playPauseBtn,
+  .endButton,
+  .playPauseBtnInText {
+    font-size: 16px;
+    // padding: 10px 20px;
+    // width: 120px;
+  }
+  .homeButtonsContainer {
+    top: 1%;
+  }
+  .arcButtonsContainer {
+    top: 1%;
+  }
+  .endButton {
+    span {
+      margin-left: 24px !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  .archButton {
+    width: unset;
+  }
+
+  // .primaryButton {
+  //   span {
+  //     margin-right: 16px;
+  //   }
+  // }
+
+  .buttonsContainer {
+    //bottom: 16px;
+
+    right: 6%;
+    gap: 12px;
+    align-items: end;
+  }
+  .buttonsContainerLeft {
+    top: 1%;
+    right: 1%;
+  }
+  .buttonsContainerRight {
+    // top: 50%;
+    top: 1%;
+    left: 1%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .primaryButton,
+  .archButton,
+  .playPauseBtn,
+  .endButton,
+  .playPauseBtnInText {
+    font-size: 16px;
+    // padding: 8px 16px;
+    // width: 125px;
+  }
+  .homeButtonsContainer {
+    top: 0%;
+  }
+  .arcButtonsContainer {
+    top: 0%;
+  }
+  .endButton {
+    span {
+      margin-left: 24px !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  .archButton {
+    width: unset;
+  }
+
+  // .primaryButton {
+  //   span {
+  //     margin-right: 12px;
+  //   }
+  // }
+
+  .buttonsContainer {
+    //bottom: 16px;
+    right: 6%;
+    gap: 8px;
+    align-items: end;
+  }
+
+  .buttonsContainerLeft {
+    top: 0.5%;
+    right: 1%;
+  }
+  .buttonsContainerRight {
+    // top: 50%;
+    top: 0.5%;
+    left: 1%;
+  }
+}
+
+.k-animation-container {
+  z-index: 200 !important;
+}
+
+.k-tabstrip-content {
+  background: transparent;
+  width: 100% !important;
+  padding-left: 0;
+  padding-right: 0;
+  overflow-y: hidden;
+
+  .k-animation-container {
+    width: 100%;
+    height: 100%;
+
+    .k-child-animation-container {
+      width: 100%;
+      height: 100%;
+
+      & > div {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+.azuremediaplayer {
+  background: transparent;
+}
+.react-flow__edge-path {
+  stroke: var(--xy-edge-stroke-default);
+  stroke: #725697 !important;
+  stroke-width: var(--xy-edge-stroke-width-default);
+  stroke-width: var(
+    --xy-edge-stroke-width,
+    var(--xy-edge-stroke-width-default)
+  );
+  fill: none;
+}
+.k-switch-off .k-switch-track {
+  --INTERNAL--kendo-switch-on-track-text: var(
+    --kendo-switch-on-track-text,
+    var(--kendo-color-app-surface, #ffffff)
+  ) !important;
+  --INTERNAL--kendo-switch-on-track-bg: var(
+    --kendo-switch-on-track-bg,
+    var(--kendo-color-primary, #0078d4)
+  ) !important;
+  --INTERNAL--kendo-switch-on-track-border: var(
+    --kendo-switch-on-track-border,
+    var(--kendo-color-primary, #0078d4)
+  ) !important;
+  border-color: var(
+    --INTERNAL--kendo-switch-on-track-border,
+    inherit
+  ) !important;
+  color: var(--INTERNAL--kendo-switch-on-track-text, inherit) !important;
+  background-color: var(
+    --INTERNAL--kendo-switch-on-track-bg,
+    transparent
+  ) !important;
+}
+.k-switch-off .k-switch-thumb {
+  --INTERNAL--kendo-switch-on-thumb-text: var(
+    --kendo-switch-on-thumb-text,
+    inherit
+  ) !important;
+  --INTERNAL--kendo-switch-on-thumb-bg: var(
+    --kendo-switch-on-thumb-bg,
+    var(--kendo-color-app-surface, #ffffff)
+  ) !important;
+  --INTERNAL--kendo-switch-on-thumb-border: var(
+    --kendo-switch-on-thumb-border,
+    inherit
+  ) !important;
+  border-color: var(
+    --INTERNAL--kendo-switch-on-thumb-border,
+    inherit
+  ) !important;
+  color: var(--INTERNAL--kendo-switch-on-thumb-text, inherit) !important;
+  background-color: var(
+    --INTERNAL--kendo-switch-on-thumb-bg,
+    transparent
+  ) !important;
+}
+span.k-link.k-selected {
+  background-color: #fff !important;
+  color: #3c3c3c !important;
+  border: 1px solid #25a0ff !important;
+  border-radius: 6px !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 19px 0px 19px 10px !important;
+  margin: 7px 0 !important;
+}
+span.k-link {
+  background-color: #fff !important;
+  color: #3c3c3c !important;
+  border: 1px solid #25a0ff !important;
+  border-radius: 6px !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 19px 0px 19px 10px !important;
+  margin: 7px 0 !important;
+}
+.k-panelbar {
+  background-color: #ffffff00 !important;
+  border: none !important;
+}

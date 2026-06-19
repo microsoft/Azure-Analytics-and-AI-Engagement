@@ -1,0 +1,38 @@
+﻿apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+    name: manufacturingdemo-deployment
+    labels:
+        app: manufacturingdemo
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: manufacturingdemo
+    template: 
+        metadata:
+            labels:
+                app: manufacturingdemo
+        spec:
+            containers:
+            - name: manufacturing-demo
+              image: manufacturingdemo.azurecr.io/manufacturing-demo-api:latest
+              ports:
+              - containerPort: 80
+            imagePullSecrets:
+            - name: manufacturing-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: manufacturingdemo
+    labels:
+        app: manufacturingdemo
+spec:
+    ports:
+        - name: http-port
+          port: 80
+          targetPort: 80
+    selector: 
+        app: manufacturingdemo
+    type: LoadBalancer

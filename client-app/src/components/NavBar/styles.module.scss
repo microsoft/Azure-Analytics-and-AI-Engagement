@@ -1,0 +1,150 @@
+.navBarContainer {
+  left: 0;
+  position: fixed;
+  background-size: cover;
+}
+
+.navImg {
+  height: 3rem;
+  width: 50px;
+  min-width: 50px;
+  margin: 1px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBarMenu {
+  display: inline-block;
+  width: 50px;
+  height: calc(100vh - 60px);
+
+  :global(.k-menu-item) {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  :global(.k-item[aria-expanded="true"]) {
+    background-color: #004b76ff;
+
+    &:first-child {
+      background-color: #004b76ff;
+    }
+  }
+
+  :global(.k-menu-expand-arrow) {
+    display: none;
+  }
+
+  :global(.k-menu-vertical) {
+    background-color: transparent;
+    align-items: center;
+    padding: 0 !important;
+
+    & > :global(.k-menu-item) {
+      padding: 7.5px 0 !important;
+      width: 100%;
+
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: none;
+        background-color: #004b76ff;
+      }
+
+      & > :global(.k-menu-link) {
+        padding: 0.25rem 0.75rem;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.activeMenuItem {
+  background-color: #004b76ff !important;
+  opacity: 1;
+  color: var(--navBar-text-color);
+  filter: unset;
+
+  &:global(.k-menu-item) {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #004b76ff !important;
+    }
+  }
+}
+
+.navItemWrapper {
+  background-color: #00a1cbff;
+  // border-color: #3d6032 !important;
+  color: var(--navBar-text-color);
+
+  &:global(.k-disabled) {
+    opacity: 1;
+  }
+
+  :global(.k-link) {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  &:first-child {
+    padding: 10px;
+    height: 60px;
+    background-color: #004b76ff;
+  }
+}
+
+.singleNavItemWrapper {
+  background-color: #004b76ff;
+  border-color: #004b76ff !important;
+  color: white;
+
+  &:global(.k-disabled) {
+    opacity: 1;
+  }
+
+  :global(.k-link) {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    &:active,
+    &:hover {
+      background-color: unset !important;
+      color: unset !important;
+      box-shadow: unset !important;
+    }
+  }
+
+  &:first-child {
+    padding: 10px;
+    height: 47px;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--navBar-text-color);
+  width: 100%;
+  height: 100%;
+  padding: 0 30px 0 5px;
+
+  &:hover {
+    background-color: #004b76ff !important;
+    color: white !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .navBarContainer {
+    display: none;
+  }
+}

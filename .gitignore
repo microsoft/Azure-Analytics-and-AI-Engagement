@@ -1,0 +1,9 @@
+/clinical-notes-app
+/agolo-search-app
+/OpenAI
+.vs
+.vscode
+output
+output.zip
+
+publish*.ps1
