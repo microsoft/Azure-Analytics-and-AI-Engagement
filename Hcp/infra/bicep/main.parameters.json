@@ -1,0 +1,120 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "environmentName": {
+      "value": "dev"
+    },
+    "postgreSqlLocation": {
+      "value": "centralus"
+    },
+    "cosmosLocation": {
+      "value": "centralus"
+    },
+    "postgreSqlStorageSizeGB": {
+      "value": 128
+    },
+    "postgreSqlBackupRetentionDays": {
+      "value": 7
+    },
+    "postgreSqlEnableGeoRedundantBackup": {
+      "value": false
+    },
+    "postgreSqlHighAvailabilityMode": {
+      "value": "Disabled"
+    },
+    "postgreSqlPublicNetworkAccess": {
+      "value": "Enabled"
+    },
+    "postgreSqlAllowAzureServicesFirewall": {
+      "value": true
+    },
+    "postgreSqlEntraAuthenticationEnabled": {
+      "value": true
+    },
+    "postgreSqlPasswordAuthenticationEnabled": {
+      "value": true
+    },
+    "postgreSqlEntraAdministratorPrincipalName": {
+      "value": ""
+    },
+    "postgreSqlEntraAdministratorPrincipalType": {
+      "value": "ServicePrincipal"
+    },
+    "cosmosPublicNetworkAccess": {
+      "value": "Enabled"
+    },
+    "cosmosNetworkAclBypass": {
+      "value": "AzureServices"
+    },
+    "cosmosDisableLocalAuth": {
+      "value": false
+    },
+    "cosmosEnableAutomaticFailover": {
+      "value": false
+    },
+    "cosmosEnableFreeTier": {
+      "value": false
+    },
+    "cosmosConsistencyLevel": {
+      "value": "Session"
+    },
+    "cosmosBoundedStalenessMaxIntervalInSeconds": {
+      "value": 300
+    },
+    "cosmosBoundedStalenessMaxStalenessPrefix": {
+      "value": 100000
+    },
+    "cosmosIpRules": {
+      "value": []
+    },
+    "cosmosAdditionalWriteRegions": {
+      "value": []
+    },
+    "cosmosSqlRolePrincipalId": {
+      "value": ""
+    },
+    "acrLoginServer": {
+      "value": "${AZURE_CONTAINER_REGISTRY}"
+    },
+    "acrUsername": {
+      "value": "${AZURE_REGISTRY_USERNAME}"
+    },
+    "acrPassword": {
+      "value": "${AZURE_REGISTRY_PASSWORD}"
+    },
+    "apimPublisherEmail": {
+      "value": "admin@caldova.com"
+    },
+    "apimPublisherName": {
+      "value": "Caldova"
+    },
+    "sqlAdminLogin": {
+      "value": "hcpadmin"
+    },
+    "sqlAdminPassword": {
+      "value": "${SQL_ADMIN_PASSWORD}"
+    },
+    "postgreSqlAdminLogin": {
+      "value": "hcpadmin"
+    },
+    "postgreSqlAdminPassword": {
+      "value": "${POSTGRES_ADMIN_PASSWORD}"
+    },
+    "postgreSqlDatabaseName": {
+      "value": "hcpclinical"
+    },
+    "postgreSqlSkuName": {
+      "value": "Standard_D2ds_v4"
+    },
+    "cosmosDatabaseName": {
+      "value": "hcp-ai-memory"
+    },
+    "cosmosDatabaseThroughput": {
+      "value": 400
+    }
+  }
+}

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: worker-config
+  namespace: hcp-portal-worker
+data:
+  DOTNET_ENVIRONMENT: "Production"

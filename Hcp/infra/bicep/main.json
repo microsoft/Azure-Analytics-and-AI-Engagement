@@ -1,0 +1,2184 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.44.1.10279",
+      "templateHash": "6725351296904156540"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "environmentName": {
+      "type": "string",
+      "defaultValue": "dev"
+    },
+    "deploymentSuffix": {
+      "type": "string",
+      "defaultValue": "[utcNow('yyMMddHHmmss')]"
+    },
+    "deployContainerApp": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "deployApim": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "deployPostgreSql": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "deployPurview": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "purviewEnableManagedEventHub": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "deployCosmos": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "deployRedis": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "deployAks": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "aksName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "aksClusterExists": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "sandboxGroupName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "sandboxGroupResourceGroup": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "postgreSqlLocation": {
+      "type": "string",
+      "defaultValue": "centralus"
+    },
+    "cosmosLocation": {
+      "type": "string",
+      "defaultValue": "centralus"
+    },
+    "redisLocation": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "cosmosPublicNetworkAccess": {
+      "type": "string",
+      "defaultValue": "Enabled"
+    },
+    "cosmosNetworkAclBypass": {
+      "type": "string",
+      "defaultValue": "AzureServices"
+    },
+    "cosmosDisableLocalAuth": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "cosmosEnableAutomaticFailover": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "cosmosEnableFreeTier": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "cosmosConsistencyLevel": {
+      "type": "string",
+      "defaultValue": "Session"
+    },
+    "cosmosBoundedStalenessMaxIntervalInSeconds": {
+      "type": "int",
+      "defaultValue": 300
+    },
+    "cosmosBoundedStalenessMaxStalenessPrefix": {
+      "type": "int",
+      "defaultValue": 100000
+    },
+    "cosmosIpRules": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "cosmosAdditionalWriteRegions": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "cosmosSqlRolePrincipalId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "acrLoginServer": {
+      "type": "string"
+    },
+    "acrUsername": {
+      "type": "string"
+    },
+    "acrPassword": {
+      "type": "securestring"
+    },
+    "apimPublisherEmail": {
+      "type": "string"
+    },
+    "apimPublisherName": {
+      "type": "string"
+    },
+    "sqlAdminLogin": {
+      "type": "string",
+      "defaultValue": "hcpadmin"
+    },
+    "sqlAdminPassword": {
+      "type": "securestring"
+    },
+    "postgreSqlAdminLogin": {
+      "type": "string",
+      "defaultValue": "hcpadmin"
+    },
+    "postgreSqlAdminPassword": {
+      "type": "securestring"
+    },
+    "postgreSqlDatabaseName": {
+      "type": "string",
+      "defaultValue": "hcpclinical"
+    },
+    "postgreSqlClusterExists": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "postgreSqlClusterName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "purviewAccountName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "cosmosDatabaseName": {
+      "type": "string",
+      "defaultValue": "hcp-ai-memory"
+    },
+    "cosmosDatabaseThroughput": {
+      "type": "int",
+      "defaultValue": 400
+    },
+    "enableSqlServerDiagnostics": {
+      "type": "bool",
+      "defaultValue": false
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('sqlDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "sqlAdminLogin": {
+            "value": "[parameters('sqlAdminLogin')]"
+          },
+          "sqlAdminPassword": {
+            "value": "[parameters('sqlAdminPassword')]"
+          },
+          "enableSqlServerDiagnostics": {
+            "value": "[parameters('enableSqlServerDiagnostics')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "11489253812836050153"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "sqlServerName": {
+              "type": "string",
+              "defaultValue": "[format('hcp-sql-{0}', uniqueString(resourceGroup().id))]"
+            },
+            "sqlDatabaseName": {
+              "type": "string",
+              "defaultValue": "hcp-enrollments"
+            },
+            "sqlAdminLogin": {
+              "type": "string",
+              "defaultValue": "hcpadmin"
+            },
+            "sqlAdminPassword": {
+              "type": "securestring"
+            },
+            "enableSqlServerDiagnostics": {
+              "type": "bool",
+              "defaultValue": false
+            }
+          },
+          "resources": [
+            {
+              "condition": "[parameters('enableSqlServerDiagnostics')]",
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "apiVersion": "2022-10-01",
+              "name": "hcp-sql-log-analytics",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": {
+                  "name": "PerGB2018"
+                },
+                "retentionInDays": 30
+              }
+            },
+            {
+              "type": "Microsoft.Sql/servers",
+              "apiVersion": "2023-05-01-preview",
+              "name": "[parameters('sqlServerName')]",
+              "location": "[parameters('location')]",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "properties": {
+                "administratorLogin": "[parameters('sqlAdminLogin')]",
+                "administratorLoginPassword": "[parameters('sqlAdminPassword')]",
+                "version": "12.0",
+                "minimalTlsVersion": "1.2",
+                "publicNetworkAccess": "Enabled"
+              }
+            },
+            {
+              "type": "Microsoft.Sql/servers/firewallRules",
+              "apiVersion": "2023-05-01-preview",
+              "name": "[format('{0}/{1}', parameters('sqlServerName'), 'AllowAzureServices')]",
+              "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.Sql/servers/databases",
+              "apiVersion": "2023-05-01-preview",
+              "name": "[format('{0}/{1}', parameters('sqlServerName'), parameters('sqlDatabaseName'))]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "GP_S_Gen5_2",
+                "tier": "GeneralPurpose",
+                "family": "Gen5",
+                "capacity": 2
+              },
+              "properties": {
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": 34359738368,
+                "autoPauseDelay": 60,
+                "minCapacity": "[json('0.5')]",
+                "zoneRedundant": false,
+                "readScale": "Disabled",
+                "requestedBackupStorageRedundancy": "Local"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
+              ]
+            },
+            {
+              "condition": "[parameters('enableSqlServerDiagnostics')]",
+              "type": "Microsoft.Insights/diagnosticSettings",
+              "apiVersion": "2021-05-01-preview",
+              "scope": "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]",
+              "name": "[format('{0}-audit-to-log-analytics', parameters('sqlServerName'))]",
+              "properties": {
+                "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', 'hcp-sql-log-analytics')]",
+                "metrics": [
+                  {
+                    "category": "AllMetrics",
+                    "enabled": true
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', 'hcp-sql-log-analytics')]",
+                "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "sqlServerFqdn": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Sql/servers', parameters('sqlServerName')), '2023-05-01-preview').fullyQualifiedDomainName]"
+            },
+            "sqlDatabaseName": {
+              "type": "string",
+              "value": "[parameters('sqlDatabaseName')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployPostgreSql')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('postgreSqlLocation')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          },
+          "administratorLogin": {
+            "value": "[parameters('postgreSqlAdminLogin')]"
+          },
+          "administratorPassword": {
+            "value": "[parameters('postgreSqlAdminPassword')]"
+          },
+          "databaseName": {
+            "value": "[parameters('postgreSqlDatabaseName')]"
+          },
+          "clusterExists": {
+            "value": "[parameters('postgreSqlClusterExists')]"
+          },
+          "clusterName": {
+            "value": "[parameters('postgreSqlClusterName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "7855671101621672865"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "administratorLogin": {
+              "type": "string",
+              "defaultValue": "hcpadmin"
+            },
+            "administratorPassword": {
+              "type": "securestring"
+            },
+            "databaseName": {
+              "type": "string",
+              "defaultValue": "hcpclinical"
+            },
+            "serverVersion": {
+              "type": "string",
+              "defaultValue": "17"
+            },
+            "clusterExists": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "clusterName": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "variables": {
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "generatedClusterName": "[format('azhdb{0}', variables('resourceToken'))]",
+            "effectiveClusterName": "[if(empty(parameters('clusterName')), variables('generatedClusterName'), parameters('clusterName'))]"
+          },
+          "resources": [
+            {
+              "condition": "[not(parameters('clusterExists'))]",
+              "type": "Microsoft.HorizonDb/clusters",
+              "apiVersion": "2026-01-20-preview",
+              "name": "[variables('effectiveClusterName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorPassword')]",
+                "network": {},
+                "replicaCount": 1,
+                "vCores": 2,
+                "version": "[parameters('serverVersion')]"
+              }
+            }
+          ],
+          "outputs": {
+            "serverName": {
+              "type": "string",
+              "value": "[if(parameters('clusterExists'), variables('effectiveClusterName'), variables('effectiveClusterName'))]"
+            },
+            "fqdn": {
+              "type": "string",
+              "value": "[if(parameters('clusterExists'), reference(resourceId('Microsoft.HorizonDb/clusters', variables('effectiveClusterName')), '2026-01-20-preview').fullyQualifiedDomainName, reference(resourceId('Microsoft.HorizonDb/clusters', variables('effectiveClusterName')), '2026-01-20-preview').fullyQualifiedDomainName)]"
+            },
+            "databaseName": {
+              "type": "string",
+              "value": "[parameters('databaseName')]"
+            },
+            "administratorLogin": {
+              "type": "string",
+              "value": "[parameters('administratorLogin')]"
+            },
+            "publicNetworkAccess": {
+              "type": "string",
+              "value": ""
+            },
+            "readOnlyEndpoint": {
+              "type": "string",
+              "value": "[if(parameters('clusterExists'), reference(resourceId('Microsoft.HorizonDb/clusters', variables('effectiveClusterName')), '2026-01-20-preview').readonlyEndpoint, reference(resourceId('Microsoft.HorizonDb/clusters', variables('effectiveClusterName')), '2026-01-20-preview').readonlyEndpoint)]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployCosmos')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('cosmosDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('cosmosLocation')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          },
+          "databaseName": {
+            "value": "[parameters('cosmosDatabaseName')]"
+          },
+          "databaseThroughput": {
+            "value": "[parameters('cosmosDatabaseThroughput')]"
+          },
+          "publicNetworkAccess": {
+            "value": "[parameters('cosmosPublicNetworkAccess')]"
+          },
+          "networkAclBypass": {
+            "value": "[parameters('cosmosNetworkAclBypass')]"
+          },
+          "disableLocalAuth": {
+            "value": "[parameters('cosmosDisableLocalAuth')]"
+          },
+          "enableAutomaticFailover": {
+            "value": "[parameters('cosmosEnableAutomaticFailover')]"
+          },
+          "enableFreeTier": {
+            "value": "[parameters('cosmosEnableFreeTier')]"
+          },
+          "consistencyLevel": {
+            "value": "[parameters('cosmosConsistencyLevel')]"
+          },
+          "boundedStalenessMaxIntervalInSeconds": {
+            "value": "[parameters('cosmosBoundedStalenessMaxIntervalInSeconds')]"
+          },
+          "boundedStalenessMaxStalenessPrefix": {
+            "value": "[parameters('cosmosBoundedStalenessMaxStalenessPrefix')]"
+          },
+          "ipRules": {
+            "value": "[parameters('cosmosIpRules')]"
+          },
+          "additionalWriteRegions": {
+            "value": "[parameters('cosmosAdditionalWriteRegions')]"
+          },
+          "sqlRolePrincipalId": {
+            "value": "[parameters('cosmosSqlRolePrincipalId')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "8738466734142151442"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "accountName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "databaseName": {
+              "type": "string",
+              "defaultValue": "hcp-ai-memory"
+            },
+            "databaseThroughput": {
+              "type": "int",
+              "defaultValue": 400
+            },
+            "publicNetworkAccess": {
+              "type": "string",
+              "defaultValue": "Enabled"
+            },
+            "networkAclBypass": {
+              "type": "string",
+              "defaultValue": "AzureServices"
+            },
+            "disableLocalAuth": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "enableAutomaticFailover": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "enableFreeTier": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "consistencyLevel": {
+              "type": "string",
+              "defaultValue": "Session"
+            },
+            "boundedStalenessMaxIntervalInSeconds": {
+              "type": "int",
+              "defaultValue": 300
+            },
+            "boundedStalenessMaxStalenessPrefix": {
+              "type": "int",
+              "defaultValue": 100000
+            },
+            "ipRules": {
+              "type": "array",
+              "defaultValue": []
+            },
+            "additionalWriteRegions": {
+              "type": "array",
+              "defaultValue": []
+            },
+            "sqlRolePrincipalId": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "variables": {
+            "copy": [
+              {
+                "name": "secondaryCosmosLocations",
+                "count": "[length(parameters('additionalWriteRegions'))]",
+                "input": {
+                  "locationName": "[parameters('additionalWriteRegions')[copyIndex('secondaryCosmosLocations')].name]",
+                  "failoverPriority": "[parameters('additionalWriteRegions')[copyIndex('secondaryCosmosLocations')].failoverPriority]",
+                  "isZoneRedundant": "[coalesce(tryGet(parameters('additionalWriteRegions')[copyIndex('secondaryCosmosLocations')], 'isZoneRedundant'), false())]"
+                }
+              }
+            ],
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "cosmosAccountName": "[if(empty(parameters('accountName')), format('azcos{0}', variables('resourceToken')), parameters('accountName'))]",
+            "cosmosLocations": "[concat(createArray(createObject('locationName', parameters('location'), 'failoverPriority', 0, 'isZoneRedundant', false())), variables('secondaryCosmosLocations'))]",
+            "defaultSqlDataContributorRoleDefinitionId": "[format('{0}/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002', resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountName')))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts",
+              "apiVersion": "2024-05-15",
+              "name": "[variables('cosmosAccountName')]",
+              "location": "[parameters('location')]",
+              "kind": "GlobalDocumentDB",
+              "properties": {
+                "copy": [
+                  {
+                    "name": "ipRules",
+                    "count": "[length(parameters('ipRules'))]",
+                    "input": {
+                      "ipAddressOrRange": "[parameters('ipRules')[copyIndex('ipRules')]]"
+                    }
+                  }
+                ],
+                "databaseAccountOfferType": "Standard",
+                "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+                "networkAclBypass": "[parameters('networkAclBypass')]",
+                "disableKeyBasedMetadataWriteAccess": "[parameters('disableLocalAuth')]",
+                "disableLocalAuth": "[parameters('disableLocalAuth')]",
+                "isVirtualNetworkFilterEnabled": "[greater(length(parameters('ipRules')), 0)]",
+                "minimalTlsVersion": "Tls12",
+                "locations": "[variables('cosmosLocations')]",
+                "consistencyPolicy": "[if(equals(parameters('consistencyLevel'), 'BoundedStaleness'), createObject('defaultConsistencyLevel', parameters('consistencyLevel'), 'maxIntervalInSeconds', parameters('boundedStalenessMaxIntervalInSeconds'), 'maxStalenessPrefix', parameters('boundedStalenessMaxStalenessPrefix')), createObject('defaultConsistencyLevel', parameters('consistencyLevel')))]",
+                "enableAutomaticFailover": "[parameters('enableAutomaticFailover')]",
+                "enableFreeTier": "[parameters('enableFreeTier')]"
+              }
+            },
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}', variables('cosmosAccountName'), parameters('databaseName'))]",
+              "properties": {
+                "resource": {
+                  "id": "[parameters('databaseName')]"
+                },
+                "options": {
+                  "throughput": "[parameters('databaseThroughput')]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}/{2}', variables('cosmosAccountName'), parameters('databaseName'), 'conversationSessions')]",
+              "properties": {
+                "resource": {
+                  "id": "conversationSessions",
+                  "partitionKey": {
+                    "paths": [
+                      "/tenantId"
+                    ],
+                    "kind": "Hash",
+                    "version": 2
+                  },
+                  "indexingPolicy": {
+                    "indexingMode": "consistent",
+                    "automatic": true,
+                    "includedPaths": [
+                      {
+                        "path": "/*"
+                      }
+                    ],
+                    "excludedPaths": [
+                      {
+                        "path": "/\"_etag\"/?"
+                      }
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosAccountName'), parameters('databaseName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}/{2}', variables('cosmosAccountName'), parameters('databaseName'), 'conversationMessages')]",
+              "properties": {
+                "resource": {
+                  "id": "conversationMessages",
+                  "partitionKey": {
+                    "paths": [
+                      "/conversationKey"
+                    ],
+                    "kind": "Hash",
+                    "version": 2
+                  },
+                  "defaultTtl": 7776000,
+                  "indexingPolicy": {
+                    "indexingMode": "consistent",
+                    "automatic": true,
+                    "includedPaths": [
+                      {
+                        "path": "/*"
+                      }
+                    ],
+                    "excludedPaths": [
+                      {
+                        "path": "/\"_etag\"/?"
+                      }
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosAccountName'), parameters('databaseName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}/{2}', variables('cosmosAccountName'), parameters('databaseName'), 'agentMemories')]",
+              "properties": {
+                "resource": {
+                  "id": "agentMemories",
+                  "partitionKey": {
+                    "paths": [
+                      "/memoryKey"
+                    ],
+                    "kind": "Hash",
+                    "version": 2
+                  },
+                  "indexingPolicy": {
+                    "indexingMode": "consistent",
+                    "automatic": true,
+                    "includedPaths": [
+                      {
+                        "path": "/*"
+                      }
+                    ],
+                    "excludedPaths": [
+                      {
+                        "path": "/\"_etag\"/?"
+                      }
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosAccountName'), parameters('databaseName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}/{2}', variables('cosmosAccountName'), parameters('databaseName'), 'clinicianProfiles')]",
+              "properties": {
+                "resource": {
+                  "id": "clinicianProfiles",
+                  "partitionKey": {
+                    "paths": [
+                      "/profileKey"
+                    ],
+                    "kind": "Hash",
+                    "version": 2
+                  },
+                  "indexingPolicy": {
+                    "indexingMode": "consistent",
+                    "automatic": true,
+                    "includedPaths": [
+                      {
+                        "path": "/*"
+                      }
+                    ],
+                    "excludedPaths": [
+                      {
+                        "path": "/\"_etag\"/?"
+                      }
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('cosmosAccountName'), parameters('databaseName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('sqlRolePrincipalId')))]",
+              "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
+              "apiVersion": "2024-05-15",
+              "name": "[format('{0}/{1}', variables('cosmosAccountName'), guid(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountName')), parameters('sqlRolePrincipalId'), 'SqlDataContributor'))]",
+              "properties": {
+                "principalId": "[parameters('sqlRolePrincipalId')]",
+                "roleDefinitionId": "[variables('defaultSqlDataContributorRoleDefinitionId')]",
+                "scope": "/"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "accountName": {
+              "type": "string",
+              "value": "[variables('cosmosAccountName')]"
+            },
+            "endpoint": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('cosmosAccountName')), '2024-05-15').documentEndpoint]"
+            },
+            "databaseName": {
+              "type": "string",
+              "value": "[parameters('databaseName')]"
+            },
+            "publicNetworkAccess": {
+              "type": "string",
+              "value": "[parameters('publicNetworkAccess')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployAks')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('aksDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          },
+          "aksName": {
+            "value": "[parameters('aksName')]"
+          },
+          "clusterExists": {
+            "value": "[parameters('aksClusterExists')]"
+          },
+          "acrName": {
+            "value": "[split(parameters('acrLoginServer'), '.')[0]]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "10032027898209170067"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "aksName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "clusterExists": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "acrName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "kubernetesVersion": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "variables": {
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "name": "[if(empty(parameters('aksName')), format('hcp-aks-{0}', take(variables('resourceToken'), 6)), parameters('aksName'))]",
+            "aksResourceId": "[resourceId('Microsoft.ContainerService/managedClusters', variables('name'))]"
+          },
+          "resources": [
+            {
+              "condition": "[not(parameters('clusterExists'))]",
+              "type": "Microsoft.ContainerService/managedClusters",
+              "apiVersion": "2024-09-01",
+              "name": "[variables('name')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Automatic",
+                "tier": "Standard"
+              },
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "properties": {
+                "dnsPrefix": "[variables('name')]",
+                "kubernetesVersion": "[if(empty(parameters('kubernetesVersion')), null(), parameters('kubernetesVersion'))]",
+                "disableLocalAccounts": true,
+                "aadProfile": {
+                  "managed": true,
+                  "enableAzureRBAC": true
+                },
+                "agentPoolProfiles": [
+                  {
+                    "name": "systempool",
+                    "mode": "System",
+                    "count": 3,
+                    "vmSize": "Standard_D4pds_v5",
+                    "osType": "Linux",
+                    "osSKU": "AzureLinux"
+                  }
+                ],
+                "autoUpgradeProfile": {
+                  "upgradeChannel": "stable",
+                  "nodeOSUpgradeChannel": "NodeImage"
+                }
+              }
+            },
+            {
+              "condition": "[not(empty(parameters('acrName')))]",
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "scope": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]",
+              "name": "[guid(variables('aksResourceId'), 'AcrPull', parameters('acrName'))]",
+              "properties": {
+                "principalId": "[reference(variables('aksResourceId'), '2024-09-01').identityProfile.kubeletidentity.objectId]",
+                "principalType": "ServicePrincipal",
+                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]"
+              }
+            }
+          ],
+          "outputs": {
+            "aksName": {
+              "type": "string",
+              "value": "[variables('name')]"
+            },
+            "aksId": {
+              "type": "string",
+              "value": "[variables('aksResourceId')]"
+            },
+            "aksFqdn": {
+              "type": "string",
+              "value": "[reference(variables('aksResourceId'), '2024-09-01').fqdn]"
+            },
+            "kubeletIdentityObjectId": {
+              "type": "string",
+              "value": "[reference(variables('aksResourceId'), '2024-09-01').identityProfile.kubeletidentity.objectId]"
+            },
+            "kubeletIdentityClientId": {
+              "type": "string",
+              "value": "[reference(variables('aksResourceId'), '2024-09-01').identityProfile.kubeletidentity.clientId]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployPurview')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('purviewDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          },
+          "purviewAccountName": {
+            "value": "[parameters('purviewAccountName')]"
+          },
+          "enableManagedEventHub": {
+            "value": "[parameters('purviewEnableManagedEventHub')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "7203609395581559215"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "purviewAccountName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "enableManagedEventHub": {
+              "type": "bool",
+              "defaultValue": false
+            }
+          },
+          "variables": {
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "accountName": "[if(empty(parameters('purviewAccountName')), format('hcppv{0}', variables('resourceToken')), parameters('purviewAccountName'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Purview/accounts",
+              "apiVersion": "2024-04-01-preview",
+              "name": "[variables('accountName')]",
+              "location": "[parameters('location')]",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "Standard",
+                "capacity": 1
+              },
+              "properties": {
+                "publicNetworkAccess": "Enabled",
+                "managedEventHubState": "[if(parameters('enableManagedEventHub'), 'Enabled', 'Disabled')]",
+                "managedResourcesPublicNetworkAccess": "Enabled",
+                "tenantEndpointState": "Enabled"
+              }
+            }
+          ],
+          "outputs": {
+            "purviewAccountName": {
+              "type": "string",
+              "value": "[variables('accountName')]"
+            },
+            "purviewAccountId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Purview/accounts', variables('accountName'))]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[or(parameters('deployPostgreSql'), parameters('deployCosmos'))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          },
+          "sqlServerFqdn": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', format('sqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sqlServerFqdn.value]"
+          },
+          "sqlDatabaseName": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', format('sqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sqlDatabaseName.value]"
+          },
+          "sqlAdministratorLogin": {
+            "value": "[parameters('sqlAdminLogin')]"
+          },
+          "sqlAdministratorPassword": {
+            "value": "[parameters('sqlAdminPassword')]"
+          },
+          "postgreSqlHost": "[if(parameters('deployPostgreSql'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.fqdn.value), createObject('value', ''))]",
+          "postgreSqlDatabaseName": "[if(parameters('deployPostgreSql'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.databaseName.value), createObject('value', ''))]",
+          "postgreSqlAdministratorLogin": "[if(parameters('deployPostgreSql'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.administratorLogin.value), createObject('value', ''))]",
+          "postgreSqlAdministratorPassword": "[if(and(parameters('deployPostgreSql'), not(parameters('postgreSqlClusterExists'))), createObject('value', parameters('postgreSqlAdminPassword')), createObject('value', ''))]",
+          "cosmosAccountName": "[if(parameters('deployCosmos'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.accountName.value), createObject('value', ''))]",
+          "redisResourceName": "[if(parameters('deployRedis'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('redisDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.redisName.value), createObject('value', ''))]",
+          "aksKubeletIdentityObjectId": "[if(parameters('deployAks'), createObject('value', reference(resourceId('Microsoft.Resources/deployments', format('aksDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.kubeletIdentityObjectId.value), createObject('value', ''))]"
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "12163185168624126562"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "sqlServerFqdn": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "sqlDatabaseName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "sqlAdministratorLogin": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "sqlAdministratorPassword": {
+              "type": "securestring",
+              "defaultValue": ""
+            },
+            "serviceBusNamespace": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "postgreSqlHost": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "postgreSqlDatabaseName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "postgreSqlAdministratorLogin": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "postgreSqlAdministratorPassword": {
+              "type": "securestring",
+              "defaultValue": ""
+            },
+            "cosmosAccountName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "redisResourceName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "keyVaultName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "postgreSqlSecretName": {
+              "type": "string",
+              "defaultValue": "postgres-connection-string"
+            },
+            "cosmosSecretName": {
+              "type": "string",
+              "defaultValue": "cosmos-connection-string"
+            },
+            "sqlSecretName": {
+              "type": "string",
+              "defaultValue": "sql-connection-string"
+            },
+            "redisSecretName": {
+              "type": "string",
+              "defaultValue": "redis-connection-string"
+            },
+            "serviceBusNamespaceSecretName": {
+              "type": "string",
+              "defaultValue": "servicebus-namespace"
+            },
+            "aksKubeletIdentityObjectId": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "variables": {
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "vaultName": "[if(empty(parameters('keyVaultName')), format('azkv{0}', variables('resourceToken')), parameters('keyVaultName'))]",
+            "identityName": "[format('azid{0}', variables('resourceToken'))]",
+            "sqlConnectionString": "[if(and(and(and(not(empty(parameters('sqlServerFqdn'))), not(empty(parameters('sqlDatabaseName')))), not(empty(parameters('sqlAdministratorLogin')))), not(empty(parameters('sqlAdministratorPassword')))), format('Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;', parameters('sqlServerFqdn'), parameters('sqlDatabaseName'), parameters('sqlAdministratorLogin'), parameters('sqlAdministratorPassword')), '')]",
+            "postgreSqlConnectionString": "[if(and(and(and(not(empty(parameters('postgreSqlHost'))), not(empty(parameters('postgreSqlDatabaseName')))), not(empty(parameters('postgreSqlAdministratorLogin')))), not(empty(parameters('postgreSqlAdministratorPassword')))), format('Host={0};Port=5432;Database={1};Username={2};Password={3};Ssl Mode=Require;Trust Server Certificate=false', parameters('postgreSqlHost'), parameters('postgreSqlDatabaseName'), parameters('postgreSqlAdministratorLogin'), parameters('postgreSqlAdministratorPassword')), '')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+              "apiVersion": "2023-01-31",
+              "name": "[variables('identityName')]",
+              "location": "[parameters('location')]"
+            },
+            {
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2023-07-01",
+              "name": "[variables('vaultName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "tenantId": "[tenant().tenantId]",
+                "sku": {
+                  "family": "A",
+                  "name": "standard"
+                },
+                "enableRbacAuthorization": true,
+                "publicNetworkAccess": "Enabled",
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": false,
+                "softDeleteRetentionInDays": 90,
+                "enablePurgeProtection": true
+              }
+            },
+            {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "scope": "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+              "name": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer')]",
+              "properties": {
+                "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2023-01-31').principalId]",
+                "principalType": "ServicePrincipal",
+                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('aksKubeletIdentityObjectId')))]",
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "scope": "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+              "name": "[guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), parameters('aksKubeletIdentityObjectId'), 'KeyVaultSecretsUser')]",
+              "properties": {
+                "principalId": "[parameters('aksKubeletIdentityObjectId')]",
+                "principalType": "ServicePrincipal",
+                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(variables('sqlConnectionString')))]",
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/{1}', variables('vaultName'), parameters('sqlSecretName'))]",
+              "properties": {
+                "value": "[variables('sqlConnectionString')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), 'Microsoft.Authorization/roleAssignments', guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('serviceBusNamespace')))]",
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/{1}', variables('vaultName'), parameters('serviceBusNamespaceSecretName'))]",
+              "properties": {
+                "value": "[parameters('serviceBusNamespace')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), 'Microsoft.Authorization/roleAssignments', guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(variables('postgreSqlConnectionString')))]",
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/{1}', variables('vaultName'), parameters('postgreSqlSecretName'))]",
+              "properties": {
+                "value": "[variables('postgreSqlConnectionString')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), 'Microsoft.Authorization/roleAssignments', guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('cosmosAccountName')))]",
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/{1}', variables('vaultName'), parameters('cosmosSecretName'))]",
+              "properties": {
+                "value": "[if(not(empty(parameters('cosmosAccountName'))), listConnectionStrings(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosAccountName')), '2024-05-15').connectionStrings[0].connectionString, '')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), 'Microsoft.Authorization/roleAssignments', guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('redisResourceName')))]",
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/{1}', variables('vaultName'), parameters('redisSecretName'))]",
+              "properties": {
+                "value": "[if(not(empty(parameters('redisResourceName'))), format('{0}:{1},password={2},ssl=True,abortConnect=False', reference(resourceId('Microsoft.Cache/Redis', parameters('redisResourceName')), '2024-03-01').hostName, reference(resourceId('Microsoft.Cache/Redis', parameters('redisResourceName')), '2024-03-01').sslPort, listKeys(resourceId('Microsoft.Cache/Redis', parameters('redisResourceName')), '2024-03-01').primaryKey), '')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('vaultName'))]",
+                "[extensionResourceId(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), 'Microsoft.Authorization/roleAssignments', guid(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), variables('identityName'), 'KeyVaultSecretsOfficer'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "keyVaultName": {
+              "type": "string",
+              "value": "[variables('vaultName')]"
+            },
+            "keyVaultUri": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.KeyVault/vaults', variables('vaultName')), '2023-07-01').vaultUri]"
+            },
+            "secretsOfficerClientId": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2023-01-31').clientId]"
+            },
+            "aksKeyVaultSecretsUserRoleAssigned": {
+              "type": "bool",
+              "value": "[not(empty(parameters('aksKubeletIdentityObjectId')))]"
+            },
+            "sqlSecretName": {
+              "type": "string",
+              "value": "[parameters('sqlSecretName')]"
+            },
+            "postgreSqlSecretName": {
+              "type": "string",
+              "value": "[parameters('postgreSqlSecretName')]"
+            },
+            "cosmosSecretName": {
+              "type": "string",
+              "value": "[parameters('cosmosSecretName')]"
+            },
+            "redisSecretName": {
+              "type": "string",
+              "value": "[parameters('redisSecretName')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', format('aksDeployment-{0}', parameters('deploymentSuffix')))]",
+        "[resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix')))]",
+        "[resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix')))]",
+        "[resourceId('Microsoft.Resources/deployments', format('redisDeployment-{0}', parameters('deploymentSuffix')))]",
+        "[resourceId('Microsoft.Resources/deployments', format('sqlDeployment-{0}', parameters('deploymentSuffix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('serviceBusDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "9242136074412170661"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "serviceBusNamespace": {
+              "type": "string",
+              "defaultValue": "[format('hcp-{0}', uniqueString(resourceGroup().id))]"
+            },
+            "queueName": {
+              "type": "string",
+              "defaultValue": "enrollment-events"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ServiceBus/namespaces",
+              "apiVersion": "2021-11-01",
+              "name": "[parameters('serviceBusNamespace')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+              },
+              "properties": {
+                "zoneRedundant": false
+              }
+            },
+            {
+              "type": "Microsoft.ServiceBus/namespaces/queues",
+              "apiVersion": "2021-11-01",
+              "name": "[format('{0}/{1}', parameters('serviceBusNamespace'), parameters('queueName'))]",
+              "properties": {
+                "lockDuration": "PT5M",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "deadLetteringOnMessageExpiration": true,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "maxDeliveryCount": 10,
+                "enableBatchedOperations": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('serviceBusNamespace'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+              "apiVersion": "2021-11-01",
+              "name": "[format('{0}/{1}', parameters('serviceBusNamespace'), 'Manage')]",
+              "properties": {
+                "rights": [
+                  "Listen",
+                  "Manage",
+                  "Send"
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('serviceBusNamespace'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+              "apiVersion": "2021-11-01",
+              "name": "[format('{0}/{1}', parameters('serviceBusNamespace'), 'Listen')]",
+              "properties": {
+                "rights": [
+                  "Listen"
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('serviceBusNamespace'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "serviceBusNamespaceName": {
+              "type": "string",
+              "value": "[parameters('serviceBusNamespace')]"
+            },
+            "queueName": {
+              "type": "string",
+              "value": "[parameters('queueName')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployRedis')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('redisDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": "[if(empty(parameters('redisLocation')), createObject('value', parameters('location')), createObject('value', parameters('redisLocation')))]",
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "4354912290642498368"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string"
+            },
+            "environmentName": {
+              "type": "string",
+              "defaultValue": "dev"
+            },
+            "redisName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "skuName": {
+              "type": "string",
+              "defaultValue": "Basic"
+            },
+            "skuFamily": {
+              "type": "string",
+              "defaultValue": "C"
+            },
+            "skuCapacity": {
+              "type": "int",
+              "defaultValue": 0
+            }
+          },
+          "variables": {
+            "resourceToken": "[uniqueString(subscription().id, resourceGroup().id, parameters('location'), parameters('environmentName'))]",
+            "name": "[if(empty(parameters('redisName')), format('azredis{0}', variables('resourceToken')), parameters('redisName'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Cache/redis",
+              "apiVersion": "2024-03-01",
+              "name": "[variables('name')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": {
+                  "name": "[parameters('skuName')]",
+                  "family": "[parameters('skuFamily')]",
+                  "capacity": "[parameters('skuCapacity')]"
+                },
+                "enableNonSslPort": false,
+                "minimumTlsVersion": "1.2",
+                "publicNetworkAccess": "Enabled",
+                "redisConfiguration": {
+                  "maxmemory-policy": "allkeys-lru"
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "redisName": {
+              "type": "string",
+              "value": "[variables('name')]"
+            },
+            "redisHostName": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Cache/redis', variables('name')), '2024-03-01').hostName]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[not(empty(parameters('sandboxGroupName')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('sandboxGroupDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "sandboxGroupName": {
+            "value": "[parameters('sandboxGroupName')]"
+          },
+          "sandboxGroupResourceGroup": "[if(empty(parameters('sandboxGroupResourceGroup')), createObject('value', resourceGroup().name), createObject('value', parameters('sandboxGroupResourceGroup')))]"
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "236027069501913557"
+            }
+          },
+          "parameters": {
+            "sandboxGroupName": {
+              "type": "string"
+            },
+            "sandboxGroupResourceGroup": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().name]"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "sandboxGroupName": {
+              "type": "string",
+              "value": "[parameters('sandboxGroupName')]"
+            },
+            "sandboxGroupId": {
+              "type": "string",
+              "value": "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('sandboxGroupResourceGroup')), 'Microsoft.App/sandboxGroups', parameters('sandboxGroupName'))]"
+            },
+            "managementEndpoint": {
+              "type": "string",
+              "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('sandboxGroupResourceGroup')), 'Microsoft.App/sandboxGroups', parameters('sandboxGroupName')), '2026-02-01-preview').managementEndpoint]"
+            },
+            "allowedLocations": {
+              "type": "array",
+              "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('sandboxGroupResourceGroup')), 'Microsoft.App/sandboxGroups', parameters('sandboxGroupName')), '2026-02-01-preview').allowedLocations]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployContainerApp')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('containerAppDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "acrLoginServer": {
+            "value": "[parameters('acrLoginServer')]"
+          },
+          "acrUsername": {
+            "value": "[parameters('acrUsername')]"
+          },
+          "acrPassword": {
+            "value": "[parameters('acrPassword')]"
+          },
+          "serviceBusFullyQualifiedNamespace": {
+            "value": "[format('{0}.servicebus.windows.net', reference(resourceId('Microsoft.Resources/deployments', format('serviceBusDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.serviceBusNamespaceName.value)]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "12368365666650123915"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "containerAppName": {
+              "type": "string",
+              "defaultValue": "hcp-enrollment-worker"
+            },
+            "containerAppEnvironmentName": {
+              "type": "string",
+              "defaultValue": "hcp-env"
+            },
+            "acrLoginServer": {
+              "type": "string"
+            },
+            "acrUsername": {
+              "type": "string"
+            },
+            "acrPassword": {
+              "type": "securestring"
+            },
+            "serviceBusFullyQualifiedNamespace": {
+              "type": "string"
+            },
+            "serviceBusQueueName": {
+              "type": "string",
+              "defaultValue": "enrollment-events"
+            },
+            "imageName": {
+              "type": "string",
+              "defaultValue": "[format('{0}/hcp-enrollment-worker:latest', parameters('acrLoginServer'))]"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "apiVersion": "2022-10-01",
+              "name": "hcp-log-analytics",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": {
+                  "name": "PerGB2018"
+                },
+                "retentionInDays": 30
+              }
+            },
+            {
+              "type": "Microsoft.App/managedEnvironments",
+              "apiVersion": "2025-02-02-preview",
+              "name": "[parameters('containerAppEnvironmentName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "appLogsConfiguration": {
+                  "destination": "log-analytics",
+                  "logAnalyticsConfiguration": {
+                    "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', 'hcp-log-analytics'), '2022-10-01').customerId]",
+                    "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', 'hcp-log-analytics'), '2022-10-01').primarySharedKey]"
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', 'hcp-log-analytics')]"
+              ]
+            },
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2025-02-02-preview",
+              "name": "[parameters('containerAppName')]",
+              "location": "[parameters('location')]",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "properties": {
+                "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppEnvironmentName'))]",
+                "configuration": {
+                  "ingress": null,
+                  "registries": [
+                    {
+                      "server": "[parameters('acrLoginServer')]",
+                      "username": "[parameters('acrUsername')]",
+                      "passwordSecretRef": "acr-password"
+                    }
+                  ],
+                  "secrets": [
+                    {
+                      "name": "acr-password",
+                      "value": "[parameters('acrPassword')]"
+                    }
+                  ]
+                },
+                "template": {
+                  "containers": [
+                    {
+                      "image": "[parameters('imageName')]",
+                      "name": "hcp-enrollment-worker",
+                      "env": [
+                        {
+                          "name": "ServiceBus__FullyQualifiedNamespace",
+                          "value": "[parameters('serviceBusFullyQualifiedNamespace')]"
+                        },
+                        {
+                          "name": "ServiceBus__QueueName",
+                          "value": "[parameters('serviceBusQueueName')]"
+                        },
+                        {
+                          "name": "DOTNET_ENVIRONMENT",
+                          "value": "Production"
+                        }
+                      ],
+                      "resources": {
+                        "cpu": "[json('0.5')]",
+                        "memory": "1Gi"
+                      }
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 0,
+                    "maxReplicas": 10,
+                    "rules": [
+                      {
+                        "name": "queue-depth",
+                        "custom": {
+                          "type": "azure-servicebus",
+                          "metadata": {
+                            "queueName": "[parameters('serviceBusQueueName')]",
+                            "namespace": "[split(parameters('serviceBusFullyQualifiedNamespace'), '.')[0]]",
+                            "messageCount": "30"
+                          },
+                          "identity": "system"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppEnvironmentName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "containerAppId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.App/containerApps', parameters('containerAppName'))]"
+            },
+            "containerAppFqdn": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.App/containerApps', parameters('containerAppName')), '2025-02-02-preview').configuration.ingress.fqdn]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', format('serviceBusDeployment-{0}', parameters('deploymentSuffix')))]"
+      ]
+    },
+    {
+      "condition": "[parameters('deployApim')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "[format('apimDeployment-{0}', parameters('deploymentSuffix'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "apimPublisherEmail": {
+            "value": "[parameters('apimPublisherEmail')]"
+          },
+          "apimPublisherName": {
+            "value": "[parameters('apimPublisherName')]"
+          },
+          "apiBackendUrl": {
+            "value": "https://hcp-api.example.com"
+          },
+          "openApiSpecUrl": {
+            "value": "https://hcp-api.example.com/swagger/v1/swagger.json"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "11843443391198115616"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "apimName": {
+              "type": "string",
+              "defaultValue": "[format('hcp-api-{0}', uniqueString(resourceGroup().id))]"
+            },
+            "apimPublisherEmail": {
+              "type": "string"
+            },
+            "apimPublisherName": {
+              "type": "string"
+            },
+            "apiBackendUrl": {
+              "type": "string",
+              "defaultValue": "http://hcp-portal-api.hcp-portal.svc.cluster.local"
+            },
+            "importOpenApi": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "openApiSpecUrl": {
+              "type": "string",
+              "defaultValue": "[format('{0}/swagger/v1/swagger.json', parameters('apiBackendUrl'))]"
+            },
+            "enableOperationPolicy": {
+              "type": "bool",
+              "defaultValue": false
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ApiManagement/service",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[parameters('apimName')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Developer",
+                "capacity": 1
+              },
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "properties": {
+                "publisherEmail": "[parameters('apimPublisherEmail')]",
+                "publisherName": "[parameters('apimPublisherName')]",
+                "virtualNetworkType": "None",
+                "notificationSenderEmail": "[parameters('apimPublisherEmail')]"
+              }
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/backends",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/{1}', parameters('apimName'), 'hcp-api-backend')]",
+              "properties": {
+                "url": "[parameters('apiBackendUrl')]",
+                "protocol": "http",
+                "circuitBreaker": {
+                  "rules": [
+                    {
+                      "name": "apiCircuitBreakerRule",
+                      "failureCondition": {
+                        "count": 3,
+                        "interval": "PT20S",
+                        "statusCodeRanges": [
+                          {
+                            "min": 429,
+                            "max": 429
+                          },
+                          {
+                            "min": 500,
+                            "max": 599
+                          }
+                        ]
+                      },
+                      "tripDuration": "PT1M"
+                    }
+                  ]
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "condition": "[not(parameters('importOpenApi'))]",
+              "type": "Microsoft.ApiManagement/service/apis",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/{1}', parameters('apimName'), 'hcp-enrollment-api')]",
+              "properties": {
+                "displayName": "HCP Enrollment API",
+                "description": "Caldova HCP Portal — physician enrollment, onboarding events, and status tracking.",
+                "path": "enrollment",
+                "protocols": [
+                  "https"
+                ],
+                "serviceUrl": "[parameters('apiBackendUrl')]",
+                "subscriptionRequired": false
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "condition": "[parameters('importOpenApi')]",
+              "type": "Microsoft.ApiManagement/service/apis",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/{1}', parameters('apimName'), 'hcp-enrollment-api')]",
+              "properties": {
+                "displayName": "HCP Enrollment API",
+                "description": "Caldova HCP Portal — physician enrollment, onboarding events, and status tracking.",
+                "path": "enrollment",
+                "protocols": [
+                  "https"
+                ],
+                "serviceUrl": "[parameters('apiBackendUrl')]",
+                "format": "openapi-link",
+                "value": "[parameters('openApiSpecUrl')]",
+                "subscriptionRequired": false
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/apis/policies",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/hcp-enrollment-api/policy', parameters('apimName'))]",
+              "properties": {
+                "format": "rawxml",
+                "value": "<policies>\r\n  <inbound>\r\n    <rate-limit calls=\"100\" renewal-period=\"60\" />\r\n    <cors allow-credentials=\"false\">\r\n      <allowed-origins>\r\n        <origin>*</origin>\r\n      </allowed-origins>\r\n      <allowed-methods>\r\n        <method>GET</method>\r\n        <method>POST</method>\r\n        <method>PUT</method>\r\n        <method>DELETE</method>\r\n      </allowed-methods>\r\n      <allowed-headers>\r\n        <header>*</header>\r\n      </allowed-headers>\r\n    </cors>\r\n  </inbound>\r\n  <backend>\r\n    <forward-request />\r\n  </backend>\r\n  <outbound>\r\n    <set-header name=\"X-Correlation-ID\" exists-action=\"override\">\r\n      <value>@(context.RequestId.ToString())</value>\r\n    </set-header>\r\n  </outbound>\r\n  <on-error>\r\n    <set-status code=\"500\" reason=\"Internal Server Error\" />\r\n  </on-error>\r\n</policies>\r\n    "
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "condition": "[parameters('enableOperationPolicy')]",
+              "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/hcp-enrollment-api/enrollments/policy', parameters('apimName'))]",
+              "properties": {
+                "format": "rawxml",
+                "value": "<policies>\r\n  <inbound>\r\n    <rate-limit-by-key calls=\"10\" renewal-period=\"60\" counter-key=\"@(context.Request.Headers.GetValueOrDefault(\"X-Tenant-ID\",\"default\"))\" />\r\n  </inbound>\r\n</policies>\r\n    "
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/products",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/{1}', parameters('apimName'), 'hcp-developer-portal')]",
+              "properties": {
+                "displayName": "HCP Developer Portal",
+                "description": "API access for HCP Prescriber Portal partners and internal teams",
+                "subscriptionRequired": true,
+                "approvalRequired": false,
+                "state": "published"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/products/apis",
+              "apiVersion": "2023-03-01-preview",
+              "name": "[format('{0}/{1}/{2}', parameters('apimName'), 'hcp-developer-portal', 'hcp-enrollment-api')]",
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('apimName'), 'hcp-developer-portal')]"
+              ]
+            }
+          ],
+          "outputs": {
+            "apimName": {
+              "type": "string",
+              "value": "[parameters('apimName')]"
+            },
+            "apimId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+            },
+            "apiId": {
+              "type": "string",
+              "value": "[if(parameters('importOpenApi'), resourceId('Microsoft.ApiManagement/service/apis', parameters('apimName'), 'hcp-enrollment-api'), resourceId('Microsoft.ApiManagement/service/apis', parameters('apimName'), 'hcp-enrollment-api'))]"
+            },
+            "productId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.ApiManagement/service/products', parameters('apimName'), 'hcp-developer-portal')]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "serviceBusNamespace": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', format('serviceBusDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.serviceBusNamespaceName.value]"
+    },
+    "containerAppId": {
+      "type": "string",
+      "value": "[if(parameters('deployContainerApp'), reference(resourceId('Microsoft.Resources/deployments', format('containerAppDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.containerAppId.value, '')]"
+    },
+    "apimName": {
+      "type": "string",
+      "value": "[if(parameters('deployApim'), reference(resourceId('Microsoft.Resources/deployments', format('apimDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.apimName.value, '')]"
+    },
+    "sqlServerFqdn": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', format('sqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sqlServerFqdn.value]"
+    },
+    "sqlDatabaseName": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', format('sqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sqlDatabaseName.value]"
+    },
+    "postgreSqlServerName": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.serverName.value, '')]"
+    },
+    "postgreSqlServerFqdn": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.fqdn.value, '')]"
+    },
+    "postgreSqlDatabaseName": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.databaseName.value, '')]"
+    },
+    "postgreSqlAdministratorLogin": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.administratorLogin.value, '')]"
+    },
+    "postgreSqlPublicNetworkAccess": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.publicNetworkAccess.value, '')]"
+    },
+    "horizonDbReadOnlyEndpoint": {
+      "type": "string",
+      "value": "[if(parameters('deployPostgreSql'), reference(resourceId('Microsoft.Resources/deployments', format('postgreSqlDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.readOnlyEndpoint.value, '')]"
+    },
+    "cosmosAccountName": {
+      "type": "string",
+      "value": "[if(parameters('deployCosmos'), reference(resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.accountName.value, '')]"
+    },
+    "cosmosEndpoint": {
+      "type": "string",
+      "value": "[if(parameters('deployCosmos'), reference(resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.endpoint.value, '')]"
+    },
+    "cosmosDatabaseName": {
+      "type": "string",
+      "value": "[if(parameters('deployCosmos'), reference(resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.databaseName.value, '')]"
+    },
+    "cosmosPublicNetworkAccess": {
+      "type": "string",
+      "value": "[if(parameters('deployCosmos'), reference(resourceId('Microsoft.Resources/deployments', format('cosmosDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.publicNetworkAccess.value, '')]"
+    },
+    "purviewAccountName": {
+      "type": "string",
+      "value": "[if(parameters('deployPurview'), reference(resourceId('Microsoft.Resources/deployments', format('purviewDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.purviewAccountName.value, '')]"
+    },
+    "purviewAccountId": {
+      "type": "string",
+      "value": "[if(parameters('deployPurview'), reference(resourceId('Microsoft.Resources/deployments', format('purviewDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.purviewAccountId.value, '')]"
+    },
+    "aksKubeletIdentityObjectId": {
+      "type": "string",
+      "value": "[if(parameters('deployAks'), reference(resourceId('Microsoft.Resources/deployments', format('aksDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.kubeletIdentityObjectId.value, '')]"
+    },
+    "aksKubeletIdentityClientId": {
+      "type": "string",
+      "value": "[if(parameters('deployAks'), reference(resourceId('Microsoft.Resources/deployments', format('aksDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.kubeletIdentityClientId.value, '')]"
+    },
+    "keyVaultName": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.keyVaultName.value, '')]"
+    },
+    "keyVaultUri": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.keyVaultUri.value, '')]"
+    },
+    "keyVaultSecretsOfficerClientId": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.secretsOfficerClientId.value, '')]"
+    },
+    "sqlSecretName": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sqlSecretName.value, '')]"
+    },
+    "postgreSqlSecretName": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.postgreSqlSecretName.value, '')]"
+    },
+    "cosmosSecretName": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.cosmosSecretName.value, '')]"
+    },
+    "redisSecretName": {
+      "type": "string",
+      "value": "[if(or(parameters('deployPostgreSql'), parameters('deployCosmos')), reference(resourceId('Microsoft.Resources/deployments', format('keyVaultDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.redisSecretName.value, '')]"
+    },
+    "redisHostName": {
+      "type": "string",
+      "value": "[if(parameters('deployRedis'), reference(resourceId('Microsoft.Resources/deployments', format('redisDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.redisHostName.value, '')]"
+    },
+    "sandboxGroupName": {
+      "type": "string",
+      "value": "[if(not(empty(parameters('sandboxGroupName'))), reference(resourceId('Microsoft.Resources/deployments', format('sandboxGroupDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.sandboxGroupName.value, '')]"
+    },
+    "sandboxGroupManagementEndpoint": {
+      "type": "string",
+      "value": "[if(not(empty(parameters('sandboxGroupName'))), reference(resourceId('Microsoft.Resources/deployments', format('sandboxGroupDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.managementEndpoint.value, '')]"
+    },
+    "aksClusterName": {
+      "type": "string",
+      "value": "[if(parameters('deployAks'), reference(resourceId('Microsoft.Resources/deployments', format('aksDeployment-{0}', parameters('deploymentSuffix'))), '2025-04-01').outputs.aksName.value, '')]"
+    }
+  }
+}

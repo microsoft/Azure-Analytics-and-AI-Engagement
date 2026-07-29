@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    Microsoft.Azure.Cosmos 3.x transitively requires Newtonsoft.Json >= 10.0.2 to be explicitly
+    referenced. We use the STJ-based CamelCaseCosmosSerializer instead, so this check is bypassed
+    solution-wide via this property rather than adding an unused Newtonsoft.Json dependency.
+  -->
+  <PropertyGroup>
+    <AzureCosmosDisableNewtonsoftJsonCheck>true</AzureCosmosDisableNewtonsoftJsonCheck>
+  </PropertyGroup>
+</Project>

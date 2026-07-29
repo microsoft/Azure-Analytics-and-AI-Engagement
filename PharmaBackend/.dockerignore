@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio artefacts
+**/*.user
+**/.vs/
+
+# Development-only config (not needed in container image)
+appsettings.Development.json
+Properties/launchSettings.json
+
+# Source control / CI
+.github/
+
+# Documentation
+*.md

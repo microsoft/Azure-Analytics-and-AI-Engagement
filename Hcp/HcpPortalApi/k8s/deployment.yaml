@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-portal-api
+  namespace: hcp-portal
+  labels:
+    app: hcp-portal-api
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: hcp-portal-api
+  template:
+    metadata:
+      labels:
+        app: hcp-portal-api
+    spec:
+      containers:
+        - name: hcp-portal-api
+          image: API_IMAGE_PLACEHOLDER
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: keyvault-secrets
+              mountPath: /mnt/secrets-store
+              readOnly: true
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: ConnectionStrings__HcpSql
+              valueFrom:
+                secretKeyRef:
+                  name: hcp-keyvault-secrets
+                  key: sql-connection-string
+            - name: HorizonDb__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: hcp-keyvault-secrets
+                  key: postgres-connection-string
+            - name: ServiceBus__FullyQualifiedNamespace
+              value: "SERVICEBUS_NAMESPACE_PLACEHOLDER"
+            - name: Redis__DefaultExpirySeconds
+              value: "300"
+            - name: ConnectionStrings__Redis
+              valueFrom:
+                secretKeyRef:
+                  name: hcp-keyvault-secrets
+                  key: redis-connection-string
+            - name: Cosmos__AccountEndpoint
+              value: "COSMOS_ENDPOINT_PLACEHOLDER"
+            - name: Cosmos__DatabaseName
+              value: "hcp-ai-memory"
+            - name: Foundry__Endpoint
+              value: "FOUNDRY_ENDPOINT_PLACEHOLDER"
+            - name: Foundry__EmbeddingModelDeployment
+              value: "FOUNDRY_MODEL_PLACEHOLDER"
+            - name: SandboxGroup__Name
+              value: "SANDBOX_GROUP_NAME_PLACEHOLDER"
+            - name: SandboxGroup__ManagementEndpoint
+              value: "SANDBOX_GROUP_ENDPOINT_PLACEHOLDER"
+            - name: SandboxRuntime__BaseUrlTemplate
+              value: "SANDBOX_RUNTIME_BASE_URL_TEMPLATE_PLACEHOLDER"
+            - name: SandboxRuntime__AssistantQueryPath
+              value: "/api/assistant/query"
+            - name: SandboxRuntime__Audience
+              value: "SANDBOX_RUNTIME_AUDIENCE_PLACEHOLDER"
+            - name: OpenTelemetry__Otlp__Endpoint
+              value: "OTLP_ENDPOINT_PLACEHOLDER"
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+      volumes:
+        - name: keyvault-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: hcp-keyvault-secrets-provider
