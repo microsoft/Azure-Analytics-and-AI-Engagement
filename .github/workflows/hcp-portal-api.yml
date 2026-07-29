@@ -1,0 +1,682 @@
+name: hcp-portal-api-ci-cd
+# Trigger marker: workflow path change to run full deploy when needed.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# SECURITY NOTES (pre-public-repo hardening)
+#   Fixed here:
+#     - No secret values are passed between jobs via job outputs. Secrets are
+#       read in the job that consumes them and registered with ::add-mask::
+#       before use.
+#     - Secret values are passed into `run:` scripts via `env:`, never via
+#       ${{ }} interpolation, so they cannot appear in the rendered "Run"
+#       header of a step log.
+#     - toJson(secrets) removed; only the two named secrets are referenced.
+#     - All actions pinned to commit SHAs.
+#
+#   Still open — needs a decision by the repo owner (see comments inline):
+#     1. azure/login still uses a long-lived service principal
+#        (secrets.AZURE_CREDENTIALS). Migrate to OIDC federated credentials.
+#     2. Bicep is fed ACR *admin* credentials. Prefer AcrPull via managed
+#        identity and drop the admin user.
+#     3. azure/container-scan is ARCHIVED upstream (last commit 2022-03-28).
+#     4. PostgreSQL / Cosmos default to public network access (see JOB 4).
+#     5. The pull_request trigger causes Azure login on non-draft PRs.
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "Hcp/HcpPortalApi/**"
+      - "Hcp/infra/**"
+      - ".github/workflows/hcp-portal-api.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "Hcp/HcpPortalApi/**"
+      - "Hcp/infra/**"
+      - ".github/workflows/hcp-portal-api.yml"
+
+# CodeQL requires security-events: write to upload SARIF to code scanning.
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOB 1 — Build, test, CodeQL scan
+# ─────────────────────────────────────────────────────────────────────────────
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Hcp/HcpPortalApi
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
+        with:
+          languages: csharp
+
+      - name: Restore
+        run: dotnet restore HcpPortalApi.slnx
+
+      - name: Build
+        run: dotnet build HcpPortalApi.slnx --configuration Release --no-restore
+
+      # upload: true so results actually reach code scanning — this is what the
+      # security-events: write permission above is for. continue-on-error keeps
+      # PRs non-blocking; remove it to make CodeQL a hard gate.
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
+        continue-on-error: ${{ github.event_name == 'pull_request' }}
+        with:
+          category: "/language:csharp"
+          upload: true
+
+      - name: Test
+        run: dotnet test HcpPortalApi.slnx --configuration Release --no-build --verbosity normal
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOB 2 — Resolve Azure deployment context from subscription after login
+# Discovers RG, ACR, AKS and derives deploy parameters automatically.
+#
+# NOTE: this job deliberately emits NON-SECRET values only. ACR credentials and
+# database passwords are resolved inside the job that consumes them (JOB 4).
+# Job outputs are a poor channel for secrets: GitHub redacts outputs that match
+# a registered mask (so they arrive empty downstream), and anything NOT masked
+# travels in cleartext into the consuming job's logs.
+# ─────────────────────────────────────────────────────────────────────────────
+  resolve-azure-context:
+    needs: build-and-test
+    # NOTE: this runs azure/login on non-draft PRs. Fork PRs receive no secrets
+    # and will fail here; same-repo PRs run with full credentials. On a public
+    # repo, enable "Require approval for all external contributors".
+    if: github.event_name == 'push' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    outputs:
+      resource_group: ${{ steps.discover.outputs.resource_group }}
+      acr_name: ${{ steps.discover.outputs.acr_name }}
+      acr_registry: ${{ steps.discover.outputs.acr_registry }}
+      aks_name: ${{ steps.discover.outputs.aks_name }}
+      apim_publisher_email: ${{ steps.discover.outputs.apim_publisher_email }}
+    steps:
+      # TODO(security): migrate to OIDC federated credentials —
+      #   permissions: id-token: write
+      #   with: { client-id, tenant-id, subscription-id }
+      # and delete the AZURE_CREDENTIALS secret.
+      - name: Azure login
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Discover Azure resource context
+        id: discover
+        shell: bash
+        env:
+          APIM_PUBLISHER_EMAIL: ${{ secrets.AZURE_APIM_PUBLISHER_EMAIL }}
+          AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+        run: |
+          set -euo pipefail
+
+          APIM_EMAIL="${APIM_PUBLISHER_EMAIL:-}"
+          if [ -z "$APIM_EMAIL" ]; then
+            APIM_EMAIL=$(az account show --query user.name -o tsv)
+          fi
+
+          RG_NAME="${AZURE_RESOURCE_GROUP:-}"
+          if [ -z "$RG_NAME" ]; then
+            RG_NAME=$(az group list --query "[?contains(tolower(name),'hcp') || contains(tolower(name),'caldova')][0].name" -o tsv)
+          fi
+          if [ -z "$RG_NAME" ]; then
+            echo "No resource group found automatically. Set AZURE_RESOURCE_GROUP secret." >&2
+            exit 1
+          fi
+
+          ACR_NAME=$(az acr list --resource-group "$RG_NAME" --query "[0].name" -o tsv)
+          if [ -z "$ACR_NAME" ]; then
+            echo "No ACR found in resource group '$RG_NAME'." >&2
+            exit 1
+          fi
+          ACR_REGISTRY=$(az acr show --name "$ACR_NAME" --resource-group "$RG_NAME" --query loginServer -o tsv)
+
+          AKS_NAME=$(az aks list --resource-group "$RG_NAME" --query "[0].name" -o tsv)
+          if [ -z "$AKS_NAME" ]; then
+            echo "No AKS cluster found in resource group '$RG_NAME'." >&2
+            exit 1
+          fi
+
+          echo "resource_group=$RG_NAME" >> "$GITHUB_OUTPUT"
+          echo "acr_name=$ACR_NAME" >> "$GITHUB_OUTPUT"
+          echo "acr_registry=$ACR_REGISTRY" >> "$GITHUB_OUTPUT"
+          echo "aks_name=$AKS_NAME" >> "$GITHUB_OUTPUT"
+          echo "apim_publisher_email=$APIM_EMAIL" >> "$GITHUB_OUTPUT"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOB 3 — Docker build + push to ACR + Defender container scan
+# Runs matrix: hcp-portal-api and hcp-enrollment-worker in parallel
+# ─────────────────────────────────────────────────────────────────────────────
+  build-and-push:
+    needs: [build-and-test, resolve-azure-context]
+    if: github.event_name == 'push' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service:
+          - name: hcp-portal-api
+            dockerfile: Hcp/HcpPortalApi/Dockerfile
+          - name: hcp-enrollment-worker
+            dockerfile: Hcp/HcpPortalApi/HcpPortalApi.Worker/Dockerfile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Azure login
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      # Short-lived AD token rather than the ACR admin password. Masked, and
+      # scoped to this job only.
+      - name: Get ACR access token
+        id: acr-token
+        shell: bash
+        env:
+          ACR_NAME: ${{ needs.resolve-azure-context.outputs.acr_name }}
+        run: |
+          set -euo pipefail
+          TOKEN=$(az acr login \
+            --name "$ACR_NAME" \
+            --expose-token \
+            --output tsv \
+            --query accessToken)
+          if [ -z "$TOKEN" ]; then
+            echo "Failed to obtain ACR access token." >&2
+            exit 1
+          fi
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to ACR
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ${{ needs.resolve-azure-context.outputs.acr_registry }}
+          username: 00000000-0000-0000-0000-000000000000
+          password: ${{ steps.acr-token.outputs.token }}
+
+      - name: Extract image tags
+        id: meta
+        run: |
+          echo "tag=${{ needs.resolve-azure-context.outputs.acr_registry }}/${{ matrix.service.name }}:${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "tag_latest=${{ needs.resolve-azure-context.outputs.acr_registry }}/${{ matrix.service.name }}:latest" >> $GITHUB_OUTPUT
+
+      - name: Build and push
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: Hcp/HcpPortalApi
+          file: ${{ matrix.service.dockerfile }}
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ steps.meta.outputs.tag }}
+            ${{ github.ref == 'refs/heads/main' && steps.meta.outputs.tag_latest || '' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # WARNING: azure/container-scan is ARCHIVED upstream (last commit
+      # 2022-03-28) and receives no updates. Pinned here to preserve current
+      # behaviour — replace with Defender for Cloud registry scanning or
+      # aquasecurity/trivy-action.
+      - name: Defender for Cloud — container scan
+        uses: azure/container-scan@f9af925b897d8af5f7e0026b8bca9346261abc93 # v0 (ARCHIVED)
+        if: github.ref == 'refs/heads/main'
+        with:
+          image-name: ${{ steps.meta.outputs.tag }}
+          severity-threshold: high
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOB 4 — Deploy Azure infrastructure via Bicep
+# Creates: SQL, Service Bus, APIM, ACA (idempotent — safe to re-run)
+#
+# NOTE: connection strings produced by the Bicep deployment are intentionally
+# NOT emitted as job outputs. JOB 5 re-reads them from the deployment directly.
+# ─────────────────────────────────────────────────────────────────────────────
+  deploy-infra:
+    needs: [build-and-push, resolve-azure-context]
+    if: github.ref == 'refs/heads/main' && contains(toJson(vars), '"ENABLE_INFRA_DEPLOYMENT":"true"')
+    runs-on: ubuntu-latest
+    outputs:
+      servicebus_namespace: ${{ steps.infra-out.outputs.servicebus_namespace }}
+      postgresql_server_fqdn: ${{ steps.infra-out.outputs.postgresql_server_fqdn }}
+      postgresql_database_name: ${{ steps.infra-out.outputs.postgresql_database_name }}
+      cosmos_account_name: ${{ steps.infra-out.outputs.cosmos_account_name }}
+      cosmos_endpoint: ${{ steps.infra-out.outputs.cosmos_endpoint }}
+      keyvault_name: ${{ steps.infra-out.outputs.keyvault_name }}
+      keyvault_uri: ${{ steps.infra-out.outputs.keyvault_uri }}
+      postgresql_secret_name: ${{ steps.infra-out.outputs.postgresql_secret_name }}
+      cosmos_secret_name: ${{ steps.infra-out.outputs.cosmos_secret_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Azure login
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Resolve deployment resource group
+        id: rg
+        shell: bash
+        env:
+          AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          FALLBACK_RG: ${{ needs.resolve-azure-context.outputs.resource_group }}
+        run: |
+          set -euo pipefail
+          RG="${AZURE_RESOURCE_GROUP:-}"
+          if [ -z "$RG" ]; then
+            RG="${FALLBACK_RG:-}"
+          fi
+          if [ -z "$RG" ]; then
+            echo "Resource group is empty. Set AZURE_RESOURCE_GROUP secret or ensure resolve-azure-context outputs it." >&2
+            exit 1
+          fi
+          echo "name=$RG" >> "$GITHUB_OUTPUT"
+
+      # TODO(security): the Bicep template takes ACR admin username/password.
+      # Prefer granting the consuming identity the AcrPull role and disabling
+      # the ACR admin user entirely. Read here (not in JOB 2) so the password
+      # never crosses a job boundary; the mask is registered in this job.
+      - name: Read ACR credentials
+        id: acr
+        shell: bash
+        env:
+          ACR_NAME: ${{ needs.resolve-azure-context.outputs.acr_name }}
+        run: |
+          set -euo pipefail
+          ACR_USERNAME=$(az acr credential show --name "$ACR_NAME" --query username -o tsv)
+          ACR_PASSWORD=$(az acr credential show --name "$ACR_NAME" --query "passwords[0].value" -o tsv)
+          if [ -z "$ACR_USERNAME" ] || [ -z "$ACR_PASSWORD" ]; then
+            echo "Unable to read ACR credentials. Ensure Admin user is enabled on ACR or update auth model." >&2
+            exit 1
+          fi
+          echo "::add-mask::$ACR_PASSWORD"
+          echo "username=$ACR_USERNAME" >> "$GITHUB_OUTPUT"
+          echo "password=$ACR_PASSWORD" >> "$GITHUB_OUTPUT"
+
+      - name: Enable Defender for Cloud plans (Containers + CSPM)
+        if: ${{ contains(toJson(vars), '"ENABLE_DEFENDER_DEPLOYMENT":"true"') }}
+        continue-on-error: true
+        run: |
+          az deployment sub create \
+            --location eastus \
+            --template-file Hcp/infra/bicep/defender.bicep \
+            --name "hcp-defender-${{ github.run_number }}"
+
+      - name: Resolve deploy parameters
+        id: deploy-params
+        shell: bash
+        env:
+          GH_VARS_JSON: ${{ toJson(vars) }}
+          # Named secrets only — toJson(secrets) would hand every org and repo
+          # secret to this step (CodeQL actions/excessive-secrets-exposure).
+          AZURE_SQL_ADMIN_PASSWORD: ${{ secrets.AZURE_SQL_ADMIN_PASSWORD }}
+          AZURE_POSTGRES_ADMIN_PASSWORD: ${{ secrets.AZURE_POSTGRES_ADMIN_PASSWORD }}
+          POSTGRES_ADMIN_PASSWORD: ${{ secrets.POSTGRES_ADMIN_PASSWORD }}
+          APIM_PUBLISHER_EMAIL: ${{ secrets.AZURE_APIM_PUBLISHER_EMAIL }}
+          FALLBACK_APIM_EMAIL: ${{ needs.resolve-azure-context.outputs.apim_publisher_email }}
+        run: |
+          set -euo pipefail
+
+          APIM_EMAIL="${APIM_PUBLISHER_EMAIL:-}"
+          if [ -z "$APIM_EMAIL" ]; then
+            APIM_EMAIL="${FALLBACK_APIM_EMAIL:-}"
+          fi
+          if [ -z "$APIM_EMAIL" ]; then
+            APIM_EMAIL=$(az account show --query user.name -o tsv)
+          fi
+          if [ -z "$APIM_EMAIL" ]; then
+            echo "APIM publisher email is empty. Set AZURE_APIM_PUBLISHER_EMAIL." >&2
+            exit 1
+          fi
+
+          SQL_PASSWORD="${AZURE_SQL_ADMIN_PASSWORD:-}"
+          if [ -z "$SQL_PASSWORD" ]; then
+            RAND=$(openssl rand -base64 24 | tr -dc 'A-Za-z0-9' | head -c 20)
+            SQL_PASSWORD="Hcp!${RAND}9a"
+          fi
+          if [ ${#SQL_PASSWORD} -lt 8 ]; then
+            echo "SQL admin password is too short. Provide at least 8 characters." >&2
+            exit 1
+          fi
+
+          POSTGRES_PASSWORD="${AZURE_POSTGRES_ADMIN_PASSWORD:-${POSTGRES_ADMIN_PASSWORD:-}}"
+          if [ -z "$POSTGRES_PASSWORD" ]; then
+            RAND=$(openssl rand -base64 24 | tr -dc 'A-Za-z0-9' | head -c 20)
+            POSTGRES_PASSWORD="HcpPg!${RAND}9a"
+          fi
+          if [ ${#POSTGRES_PASSWORD} -lt 8 ]; then
+            echo "PostgreSQL admin password is too short. Provide at least 8 characters." >&2
+            exit 1
+          fi
+
+          ENVIRONMENT_NAME=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_ENVIRONMENT_NAME // "dev"')
+          POSTGRES_LOCATION=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_LOCATION // "centralus"')
+          COSMOS_LOCATION=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_LOCATION // "centralus"')
+          POSTGRES_DATABASE_NAME=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_DATABASE_NAME // "hcpclinical"')
+          POSTGRES_SKU_NAME=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_SKU_NAME // "Standard_D2ds_v4"')
+          POSTGRES_STORAGE_SIZE_GB=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_STORAGE_SIZE_GB // "128"')
+          POSTGRES_BACKUP_RETENTION_DAYS=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_BACKUP_RETENTION_DAYS // "7"')
+          POSTGRES_ENABLE_GEO_REDUNDANT_BACKUP=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_ENABLE_GEO_REDUNDANT_BACKUP // "false"')
+          POSTGRES_HIGH_AVAILABILITY_MODE=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_HIGH_AVAILABILITY_MODE // "Disabled"')
+          # TODO(security): defaults below expose PostgreSQL and Cosmos to the
+          # public internet and leave Cosmos local (key) auth enabled. Set the
+          # HCP_* repository variables to lock these down for real environments.
+          POSTGRES_PUBLIC_NETWORK_ACCESS=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_PUBLIC_NETWORK_ACCESS // "Enabled"')
+          POSTGRES_ALLOW_AZURE_SERVICES_FIREWALL=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_ALLOW_AZURE_SERVICES_FIREWALL // "true"')
+          POSTGRES_ENTRA_AUTH_ENABLED=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_ENTRA_AUTH_ENABLED // "true"')
+          POSTGRES_PASSWORD_AUTH_ENABLED=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_PASSWORD_AUTH_ENABLED // "true"')
+          POSTGRES_ENTRA_ADMIN_PRINCIPAL_NAME=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_ENTRA_ADMIN_PRINCIPAL_NAME // ""')
+          POSTGRES_ENTRA_ADMIN_PRINCIPAL_TYPE=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_POSTGRES_ENTRA_ADMIN_PRINCIPAL_TYPE // "ServicePrincipal"')
+
+          COSMOS_DATABASE_NAME=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_DATABASE_NAME // "hcp-ai-memory"')
+          COSMOS_DATABASE_THROUGHPUT=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_DATABASE_THROUGHPUT // "400"')
+          COSMOS_PUBLIC_NETWORK_ACCESS=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_PUBLIC_NETWORK_ACCESS // "Enabled"')
+          COSMOS_NETWORK_ACL_BYPASS=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_NETWORK_ACL_BYPASS // "AzureServices"')
+          COSMOS_DISABLE_LOCAL_AUTH=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_DISABLE_LOCAL_AUTH // "false"')
+          COSMOS_ENABLE_AUTOMATIC_FAILOVER=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_ENABLE_AUTOMATIC_FAILOVER // "false"')
+          COSMOS_ENABLE_FREE_TIER=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_ENABLE_FREE_TIER // "false"')
+          COSMOS_CONSISTENCY_LEVEL=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_CONSISTENCY_LEVEL // "Session"')
+          COSMOS_BOUNDED_STALENESS_MAX_INTERVAL=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_BOUNDED_STALENESS_MAX_INTERVAL // "300"')
+          COSMOS_BOUNDED_STALENESS_MAX_PREFIX=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_BOUNDED_STALENESS_MAX_PREFIX // "100000"')
+          COSMOS_SQL_ROLE_PRINCIPAL_ID=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_SQL_ROLE_PRINCIPAL_ID // ""')
+
+          COSMOS_IP_RULES_RAW=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_IP_RULES_JSON // "[]"')
+          COSMOS_WRITE_REGIONS_RAW=$(printf '%s' "$GH_VARS_JSON" | jq -r '.HCP_COSMOS_ADDITIONAL_WRITE_REGIONS_JSON // "[]"')
+          COSMOS_IP_RULES=$(printf '%s' "$COSMOS_IP_RULES_RAW" | jq -c '.')
+          COSMOS_ADDITIONAL_WRITE_REGIONS=$(printf '%s' "$COSMOS_WRITE_REGIONS_RAW" | jq -c '.')
+
+          echo "::add-mask::$SQL_PASSWORD"
+          echo "::add-mask::$POSTGRES_PASSWORD"
+          echo "apim_email=$APIM_EMAIL" >> "$GITHUB_OUTPUT"
+          echo "sql_password=$SQL_PASSWORD" >> "$GITHUB_OUTPUT"
+          echo "postgres_password=$POSTGRES_PASSWORD" >> "$GITHUB_OUTPUT"
+          echo "environment_name=$ENVIRONMENT_NAME" >> "$GITHUB_OUTPUT"
+          echo "postgres_location=$POSTGRES_LOCATION" >> "$GITHUB_OUTPUT"
+          echo "cosmos_location=$COSMOS_LOCATION" >> "$GITHUB_OUTPUT"
+          echo "postgres_database_name=$POSTGRES_DATABASE_NAME" >> "$GITHUB_OUTPUT"
+          echo "postgres_sku_name=$POSTGRES_SKU_NAME" >> "$GITHUB_OUTPUT"
+          echo "postgres_storage_size_gb=$POSTGRES_STORAGE_SIZE_GB" >> "$GITHUB_OUTPUT"
+          echo "postgres_backup_retention_days=$POSTGRES_BACKUP_RETENTION_DAYS" >> "$GITHUB_OUTPUT"
+          echo "postgres_enable_geo_redundant_backup=$POSTGRES_ENABLE_GEO_REDUNDANT_BACKUP" >> "$GITHUB_OUTPUT"
+          echo "postgres_high_availability_mode=$POSTGRES_HIGH_AVAILABILITY_MODE" >> "$GITHUB_OUTPUT"
+          echo "postgres_public_network_access=$POSTGRES_PUBLIC_NETWORK_ACCESS" >> "$GITHUB_OUTPUT"
+          echo "postgres_allow_azure_services_firewall=$POSTGRES_ALLOW_AZURE_SERVICES_FIREWALL" >> "$GITHUB_OUTPUT"
+          echo "postgres_entra_auth_enabled=$POSTGRES_ENTRA_AUTH_ENABLED" >> "$GITHUB_OUTPUT"
+          echo "postgres_password_auth_enabled=$POSTGRES_PASSWORD_AUTH_ENABLED" >> "$GITHUB_OUTPUT"
+          echo "postgres_entra_admin_principal_name=$POSTGRES_ENTRA_ADMIN_PRINCIPAL_NAME" >> "$GITHUB_OUTPUT"
+          echo "postgres_entra_admin_principal_type=$POSTGRES_ENTRA_ADMIN_PRINCIPAL_TYPE" >> "$GITHUB_OUTPUT"
+          echo "cosmos_database_name=$COSMOS_DATABASE_NAME" >> "$GITHUB_OUTPUT"
+          echo "cosmos_database_throughput=$COSMOS_DATABASE_THROUGHPUT" >> "$GITHUB_OUTPUT"
+          echo "cosmos_public_network_access=$COSMOS_PUBLIC_NETWORK_ACCESS" >> "$GITHUB_OUTPUT"
+          echo "cosmos_network_acl_bypass=$COSMOS_NETWORK_ACL_BYPASS" >> "$GITHUB_OUTPUT"
+          echo "cosmos_disable_local_auth=$COSMOS_DISABLE_LOCAL_AUTH" >> "$GITHUB_OUTPUT"
+          echo "cosmos_enable_automatic_failover=$COSMOS_ENABLE_AUTOMATIC_FAILOVER" >> "$GITHUB_OUTPUT"
+          echo "cosmos_enable_free_tier=$COSMOS_ENABLE_FREE_TIER" >> "$GITHUB_OUTPUT"
+          echo "cosmos_consistency_level=$COSMOS_CONSISTENCY_LEVEL" >> "$GITHUB_OUTPUT"
+          echo "cosmos_bounded_staleness_max_interval=$COSMOS_BOUNDED_STALENESS_MAX_INTERVAL" >> "$GITHUB_OUTPUT"
+          echo "cosmos_bounded_staleness_max_prefix=$COSMOS_BOUNDED_STALENESS_MAX_PREFIX" >> "$GITHUB_OUTPUT"
+          echo "cosmos_sql_role_principal_id=$COSMOS_SQL_ROLE_PRINCIPAL_ID" >> "$GITHUB_OUTPUT"
+          echo "cosmos_ip_rules=$COSMOS_IP_RULES" >> "$GITHUB_OUTPUT"
+          echo "cosmos_additional_write_regions=$COSMOS_ADDITIONAL_WRITE_REGIONS" >> "$GITHUB_OUTPUT"
+
+      # Secret-valued parameters are passed via env, not ${{ }} interpolation,
+      # so they never appear in the rendered "Run" header of this step.
+      - name: Deploy Bicep infrastructure
+        shell: bash
+        env:
+          ACR_USERNAME: ${{ steps.acr.outputs.username }}
+          ACR_PASSWORD: ${{ steps.acr.outputs.password }}
+          SQL_ADMIN_PASSWORD: ${{ steps.deploy-params.outputs.sql_password }}
+          POSTGRES_ADMIN_PASSWORD: ${{ steps.deploy-params.outputs.postgres_password }}
+        run: |
+          set -euo pipefail
+          az deployment group create \
+            --resource-group "${{ steps.rg.outputs.name }}" \
+            --template-file Hcp/infra/bicep/main.bicep \
+            --parameters \
+              environmentName="${{ steps.deploy-params.outputs.environment_name }}" \
+              deployApim=true \
+              deployPostgreSql=true \
+              deployCosmos=true \
+              acrLoginServer="${{ needs.resolve-azure-context.outputs.acr_registry }}" \
+              acrUsername="$ACR_USERNAME" \
+              acrPassword="$ACR_PASSWORD" \
+              sqlAdminPassword="$SQL_ADMIN_PASSWORD" \
+              postgreSqlLocation="${{ steps.deploy-params.outputs.postgres_location }}" \
+              postgreSqlAdminPassword="$POSTGRES_ADMIN_PASSWORD" \
+              postgreSqlDatabaseName="${{ steps.deploy-params.outputs.postgres_database_name }}" \
+              postgreSqlSkuName="${{ steps.deploy-params.outputs.postgres_sku_name }}" \
+              postgreSqlStorageSizeGB=${{ steps.deploy-params.outputs.postgres_storage_size_gb }} \
+              postgreSqlBackupRetentionDays=${{ steps.deploy-params.outputs.postgres_backup_retention_days }} \
+              postgreSqlEnableGeoRedundantBackup=${{ steps.deploy-params.outputs.postgres_enable_geo_redundant_backup }} \
+              postgreSqlHighAvailabilityMode="${{ steps.deploy-params.outputs.postgres_high_availability_mode }}" \
+              postgreSqlPublicNetworkAccess="${{ steps.deploy-params.outputs.postgres_public_network_access }}" \
+              postgreSqlAllowAzureServicesFirewall=${{ steps.deploy-params.outputs.postgres_allow_azure_services_firewall }} \
+              postgreSqlEntraAuthenticationEnabled=${{ steps.deploy-params.outputs.postgres_entra_auth_enabled }} \
+              postgreSqlPasswordAuthenticationEnabled=${{ steps.deploy-params.outputs.postgres_password_auth_enabled }} \
+              postgreSqlEntraAdministratorPrincipalName="${{ steps.deploy-params.outputs.postgres_entra_admin_principal_name }}" \
+              postgreSqlEntraAdministratorPrincipalType="${{ steps.deploy-params.outputs.postgres_entra_admin_principal_type }}" \
+              cosmosLocation="${{ steps.deploy-params.outputs.cosmos_location }}" \
+              cosmosDatabaseName="${{ steps.deploy-params.outputs.cosmos_database_name }}" \
+              cosmosDatabaseThroughput=${{ steps.deploy-params.outputs.cosmos_database_throughput }} \
+              cosmosPublicNetworkAccess="${{ steps.deploy-params.outputs.cosmos_public_network_access }}" \
+              cosmosNetworkAclBypass="${{ steps.deploy-params.outputs.cosmos_network_acl_bypass }}" \
+              cosmosDisableLocalAuth=${{ steps.deploy-params.outputs.cosmos_disable_local_auth }} \
+              cosmosEnableAutomaticFailover=${{ steps.deploy-params.outputs.cosmos_enable_automatic_failover }} \
+              cosmosEnableFreeTier=${{ steps.deploy-params.outputs.cosmos_enable_free_tier }} \
+              cosmosConsistencyLevel="${{ steps.deploy-params.outputs.cosmos_consistency_level }}" \
+              cosmosBoundedStalenessMaxIntervalInSeconds=${{ steps.deploy-params.outputs.cosmos_bounded_staleness_max_interval }} \
+              cosmosBoundedStalenessMaxStalenessPrefix=${{ steps.deploy-params.outputs.cosmos_bounded_staleness_max_prefix }} \
+              cosmosIpRules='${{ steps.deploy-params.outputs.cosmos_ip_rules }}' \
+              cosmosAdditionalWriteRegions='${{ steps.deploy-params.outputs.cosmos_additional_write_regions }}' \
+              cosmosSqlRolePrincipalId="${{ steps.deploy-params.outputs.cosmos_sql_role_principal_id }}" \
+              apimPublisherEmail="${{ steps.deploy-params.outputs.apim_email }}" \
+              apimPublisherName="Caldova" \
+            --name "hcp-infra-${{ github.run_number }}"
+
+      # Non-secret outputs only. sqlConnectionString and
+      # serviceBusConnectionString are deliberately NOT emitted here — JOB 5
+      # reads them straight from the deployment and masks them locally.
+      - name: Capture deployment outputs
+        id: infra-out
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUTPUTS=$(az deployment group show \
+            --resource-group "${{ steps.rg.outputs.name }}" \
+            --name "hcp-infra-${{ github.run_number }}" \
+            --query "properties.outputs" -o json)
+
+          SB_NS=$(echo "$OUTPUTS"   | jq -r '.serviceBusNamespace.value')
+          POSTGRES_FQDN=$(echo "$OUTPUTS" | jq -r '.postgreSqlServerFqdn.value // empty')
+          POSTGRES_DB=$(echo "$OUTPUTS"   | jq -r '.postgreSqlDatabaseName.value // empty')
+          COSMOS_ACCOUNT=$(echo "$OUTPUTS" | jq -r '.cosmosAccountName.value // empty')
+          COSMOS_ENDPOINT=$(echo "$OUTPUTS" | jq -r '.cosmosEndpoint.value // empty')
+          KEYVAULT_NAME=$(echo "$OUTPUTS" | jq -r '.keyVaultName.value // empty')
+          KEYVAULT_URI=$(echo "$OUTPUTS" | jq -r '.keyVaultUri.value // empty')
+          POSTGRES_SECRET=$(echo "$OUTPUTS" | jq -r '.postgreSqlSecretName.value // empty')
+          COSMOS_SECRET=$(echo "$OUTPUTS" | jq -r '.cosmosSecretName.value // empty')
+
+          echo "servicebus_namespace=$SB_NS"               >> $GITHUB_OUTPUT
+          echo "postgresql_server_fqdn=$POSTGRES_FQDN"     >> $GITHUB_OUTPUT
+          echo "postgresql_database_name=$POSTGRES_DB"     >> $GITHUB_OUTPUT
+          echo "cosmos_account_name=$COSMOS_ACCOUNT"       >> $GITHUB_OUTPUT
+          echo "cosmos_endpoint=$COSMOS_ENDPOINT"          >> $GITHUB_OUTPUT
+          echo "keyvault_name=$KEYVAULT_NAME"              >> $GITHUB_OUTPUT
+          echo "keyvault_uri=$KEYVAULT_URI"                >> $GITHUB_OUTPUT
+          echo "postgresql_secret_name=$POSTGRES_SECRET"   >> $GITHUB_OUTPUT
+          echo "cosmos_secret_name=$COSMOS_SECRET"         >> $GITHUB_OUTPUT
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOB 5 — Deploy to AKS
+# Reads connection strings from the Bicep deployment, masks them, injects them
+# as Kubernetes secrets, deploys API + Worker, verifies rollout.
+# ─────────────────────────────────────────────────────────────────────────────
+  deploy-to-aks:
+    needs: [build-and-push, deploy-infra, resolve-azure-context]
+    if: github.ref == 'refs/heads/main' && contains(toJson(vars), '"ENABLE_INFRA_DEPLOYMENT":"true"')
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      API_IMAGE: ${{ needs.resolve-azure-context.outputs.acr_registry }}/hcp-portal-api:${{ github.sha }}
+      WORKER_IMAGE: ${{ needs.resolve-azure-context.outputs.acr_registry }}/hcp-enrollment-worker:${{ github.sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Azure login
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Resolve deployment resource group
+        id: rg
+        shell: bash
+        env:
+          AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          FALLBACK_RG: ${{ needs.resolve-azure-context.outputs.resource_group }}
+        run: |
+          set -euo pipefail
+          RG="${AZURE_RESOURCE_GROUP:-}"
+          if [ -z "$RG" ]; then
+            RG="${FALLBACK_RG:-}"
+          fi
+          if [ -z "$RG" ]; then
+            echo "Resource group is empty. Set AZURE_RESOURCE_GROUP secret or ensure resolve-azure-context outputs it." >&2
+            exit 1
+          fi
+          echo "name=$RG" >> "$GITHUB_OUTPUT"
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@776406bce94f63e41d621b960d78ee25c8b76ede # v4
+
+      - name: Configure AKS context
+        run: |
+          az aks get-credentials \
+            --resource-group "${{ steps.rg.outputs.name }}" \
+            --name "${{ needs.resolve-azure-context.outputs.aks_name }}" \
+            --overwrite-existing
+
+      - name: Check AKS API reachability
+        id: aks-check
+        continue-on-error: true
+        run: kubectl cluster-info --request-timeout=15s
+
+      # ── Namespaces ───────────────────────────────────────────────────────
+      - name: Create namespaces
+        if: steps.aks-check.outcome == 'success'
+        run: |
+          kubectl apply -f Hcp/HcpPortalApi/k8s/namespace.yaml
+          kubectl apply -f Hcp/HcpPortalApi/k8s/worker-namespace.yaml
+
+      # ── Secrets ──────────────────────────────────────────────────────────
+      # Connection strings are read here, masked immediately, and kept in shell
+      # variables. They are never placed in a ${{ }} expression, a job output,
+      # or a step output — so they cannot be rendered into the step log.
+      - name: Inject Kubernetes secrets from deployment outputs
+        if: steps.aks-check.outcome == 'success'
+        shell: bash
+        env:
+          RESOURCE_GROUP: ${{ steps.rg.outputs.name }}
+          DEPLOYMENT_NAME: hcp-infra-${{ github.run_number }}
+          SERVICEBUS_NAMESPACE: ${{ needs.deploy-infra.outputs.servicebus_namespace }}
+        run: |
+          set -euo pipefail
+
+          OUTPUTS=$(az deployment group show \
+            --resource-group "$RESOURCE_GROUP" \
+            --name "$DEPLOYMENT_NAME" \
+            --query "properties.outputs" -o json)
+
+          SQL_CONN=$(printf '%s' "$OUTPUTS" | jq -r '.sqlConnectionString.value')
+          SB_CONN=$(printf '%s' "$OUTPUTS"  | jq -r '.serviceBusConnectionString.value')
+
+          if [ -z "$SQL_CONN" ] || [ "$SQL_CONN" = "null" ]; then
+            echo "sqlConnectionString missing from deployment '$DEPLOYMENT_NAME'." >&2
+            exit 1
+          fi
+          if [ -z "$SB_CONN" ] || [ "$SB_CONN" = "null" ]; then
+            echo "serviceBusConnectionString missing from deployment '$DEPLOYMENT_NAME'." >&2
+            exit 1
+          fi
+
+          echo "::add-mask::$SQL_CONN"
+          echo "::add-mask::$SB_CONN"
+
+          kubectl create secret generic hcp-portal-secrets \
+            --namespace hcp-portal \
+            --from-literal=sql-connection-string="$SQL_CONN" \
+            --from-literal=servicebus-namespace="$SERVICEBUS_NAMESPACE" \
+            --from-literal=otlp-endpoint="" \
+            --save-config \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+          kubectl create secret generic service-bus-credentials \
+            --namespace hcp-portal-worker \
+            --from-literal=ServiceBus__ConnectionString="$SB_CONN" \
+            --save-config \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      # ── API ──────────────────────────────────────────────────────────────
+      - name: Deploy API manifests
+        if: steps.aks-check.outcome == 'success'
+        run: |
+          sed "s|API_IMAGE_PLACEHOLDER|${{ env.API_IMAGE }}|g" \
+            Hcp/HcpPortalApi/k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f Hcp/HcpPortalApi/k8s/service.yaml
+          kubectl apply -f Hcp/HcpPortalApi/k8s/hpa.yaml
+          kubectl apply -f Hcp/HcpPortalApi/k8s/ingress.yaml
+
+      # ── Worker ───────────────────────────────────────────────────────────
+      - name: Deploy Worker manifests
+        if: steps.aks-check.outcome == 'success'
+        run: |
+          kubectl apply -f Hcp/HcpPortalApi/k8s/worker-config.yaml
+          kubectl apply -f Hcp/HcpPortalApi/k8s/worker-rbac.yaml
+          sed "s|WORKER_IMAGE_PLACEHOLDER|${{ env.WORKER_IMAGE }}|g" \
+            Hcp/HcpPortalApi/k8s/worker-deployment.yaml | kubectl apply -f -
+          kubectl apply -f Hcp/HcpPortalApi/k8s/worker-hpa.yaml
+
+      # ── Rollout verification ──────────────────────────────────────────────
+      - name: Wait for API rollout
+        if: steps.aks-check.outcome == 'success'
+        run: kubectl rollout status deployment/hcp-portal-api -n hcp-portal --timeout=5m
+
+      - name: Wait for Worker rollout
+        if: steps.aks-check.outcome == 'success'
+        run: kubectl rollout status deployment/hcp-enrollment-worker -n hcp-portal-worker --timeout=5m
+
+      - name: Verify deployments
+        if: steps.aks-check.outcome == 'success'
+        run: |
+          echo "=== API pods ==="
+          kubectl get pods -n hcp-portal -l app=hcp-portal-api
+          echo ""
+          echo "=== Worker pods ==="
+          kubectl get pods -n hcp-portal-worker -l app=hcp-enrollment-worker
+
+      - name: Skip AKS deployment when API server is unreachable
+        if: steps.aks-check.outcome != 'success'
+        run: |
+          echo "AKS API endpoint is unreachable from this runner network."
+          echo "If AKS is private, use a self-hosted runner in the VNet or enable public API access."
