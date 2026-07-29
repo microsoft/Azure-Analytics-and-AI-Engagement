@@ -1,0 +1,24 @@
+# Legacy backend-specific (see root .gitignore for shared rules)
+
+# Build outputs
+bin/
+obj/
+
+# NuGet packages (restored automatically on build/publish)
+packages/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Publish artifacts
+_PublishedWebsites/
+Properties/PublishProfiles/*.pubxml.user
+
+# Secrets
+.env
+.env.*
+!.env.example

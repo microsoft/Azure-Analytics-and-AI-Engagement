@@ -1,0 +1,22 @@
+# Frontend-specific (see root .gitignore for shared rules)
+
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Vite
+.vite/
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.ntvs*
+*.njsproj
+*.sw?
+
+# Secrets
+.env
+.env.*
+!.env.example
