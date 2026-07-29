@@ -1,0 +1,65 @@
+using Microsoft.Extensions.Configuration;
+using PharmacyBackend.Models;
+
+namespace PharmacyBackend.Data
+{
+    public static class DbSeeder
+    {
+        // Per-medication image file paths (photo-id/filename segment).
+        // The base URL MUST be supplied via configuration (Seeding:ImageBaseUrl) —
+        // there is no fallback. Set it via Azure App Configuration, environment
+        // variables, or user-secrets. Swapping the CDN or pointing at Azure Blob
+        // Storage requires only a config change, no code change.
+        private static readonly string[] ImageFileNames =
+        [
+            "3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=500",  // Panadol Extra
+            "208518/pexels-photo-208518.jpeg?auto=compress&cs=tinysrgb&w=500",    // Amoxil
+            "3683053/pexels-photo-3683053.jpeg?auto=compress&cs=tinysrgb&w=500",  // Vitamin C Effervescent
+            "3786157/pexels-photo-3786157.jpeg?auto=compress&cs=tinysrgb&w=500",  // Brufen
+            "3993239/pexels-photo-3993239.jpeg?auto=compress&cs=tinysrgb&w=500",  // Actifed Syrup
+            "4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=500",  // Glucophage
+            "4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=500",  // Lipitor
+            "3683038/pexels-photo-3683038.jpeg?auto=compress&cs=tinysrgb&w=500",  // Zyrtec
+            "3683100/pexels-photo-3683100.jpeg?auto=compress&cs=tinysrgb&w=500",  // Aspirin Cardio
+            "3683073/pexels-photo-3683073.jpeg?auto=compress&cs=tinysrgb&w=500",  // Caltrate Plus
+            "4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=500",  // Betadine Antiseptic
+            "4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=500",  // Canesten Cream
+            "3683084/pexels-photo-3683084.jpeg?auto=compress&cs=tinysrgb&w=500",  // Nexium
+            "3683036/pexels-photo-3683036.jpeg?auto=compress&cs=tinysrgb&w=500",  // Omega-3 Fish Oil
+            "3683101/pexels-photo-3683101.jpeg?auto=compress&cs=tinysrgb&w=500",  // Lantus SoloStar
+        ];
+
+        public static void Seed(AppDbContext context, IConfiguration configuration)
+        {
+            var imageBaseUrl = configuration["Seeding:ImageBaseUrl"];
+            if (string.IsNullOrWhiteSpace(imageBaseUrl))
+                throw new InvalidOperationException(
+                    "Seeding:ImageBaseUrl is not configured. " +
+                    "Supply it via Azure App Configuration, environment variables, or user-secrets.");
+
+            string Img(int index) => $"{imageBaseUrl}/{ImageFileNames[index]}";
+
+            if (!context.Medications.Any())
+            {
+                context.Medications.AddRange(
+                    new Medication { Name = "Panadol Extra", GenericName = "Paracetamol 500mg + Caffeine 65mg", Category = "Pain Relief", Description = "Fast and effective relief from headaches, fever, and mild to moderate pain.", Manufacturer = "GSK", DosageForm = "Tablet", Strength = "500mg/65mg", Price = 4.99m, Stock = 200, RequiresPrescription = false, ImageUrl = Img(0) },
+                    new Medication { Name = "Amoxil", GenericName = "Amoxicillin", Category = "Antibiotics", Description = "Broad-spectrum antibiotic used to treat bacterial infections including chest, urinary tract, and ear infections.", Manufacturer = "Pfizer", DosageForm = "Capsule", Strength = "500mg", Price = 12.99m, Stock = 150, RequiresPrescription = true, ImageUrl = Img(1) },
+                    new Medication { Name = "Vitamin C Effervescent", GenericName = "Ascorbic Acid", Category = "Vitamins", Description = "Effervescent Vitamin C tablets that dissolve in water, supporting immune health and antioxidant protection.", Manufacturer = "Bayer", DosageForm = "Effervescent Tablet", Strength = "1000mg", Price = 7.49m, Stock = 300, RequiresPrescription = false, ImageUrl = Img(2) },
+                    new Medication { Name = "Brufen", GenericName = "Ibuprofen", Category = "Pain Relief", Description = "Non-steroidal anti-inflammatory drug for relief of pain, inflammation, and fever.", Manufacturer = "Abbott", DosageForm = "Tablet", Strength = "400mg", Price = 5.99m, Stock = 175, RequiresPrescription = false, ImageUrl = Img(3) },
+                    new Medication { Name = "Actifed Syrup", GenericName = "Triprolidine + Pseudoephedrine", Category = "Cold & Flu", Description = "Relieves symptoms of cold and flu including runny nose, nasal congestion, and sneezing.", Manufacturer = "Johnson & Johnson", DosageForm = "Syrup", Strength = "1.25mg/5ml + 30mg/5ml", Price = 8.99m, Stock = 120, RequiresPrescription = false, ImageUrl = Img(4) },
+                    new Medication { Name = "Glucophage", GenericName = "Metformin", Category = "Diabetes Care", Description = "First-line oral medication for type 2 diabetes that helps control blood sugar levels.", Manufacturer = "Merck", DosageForm = "Tablet", Strength = "500mg", Price = 9.99m, Stock = 100, RequiresPrescription = true, ImageUrl = Img(5) },
+                    new Medication { Name = "Lipitor", GenericName = "Atorvastatin", Category = "Heart Health", Description = "Statin medication used to lower cholesterol and reduce the risk of heart disease.", Manufacturer = "Pfizer", DosageForm = "Tablet", Strength = "20mg", Price = 24.99m, Stock = 90, RequiresPrescription = true, ImageUrl = Img(6) },
+                    new Medication { Name = "Zyrtec", GenericName = "Cetirizine", Category = "Cold & Flu", Description = "Non-drowsy antihistamine for 24-hour relief from seasonal allergies, hay fever, and hives.", Manufacturer = "UCB", DosageForm = "Tablet", Strength = "10mg", Price = 11.99m, Stock = 160, RequiresPrescription = false, ImageUrl = Img(7) },
+                    new Medication { Name = "Aspirin Cardio", GenericName = "Acetylsalicylic Acid", Category = "Heart Health", Description = "Low-dose aspirin for prevention of heart attacks and stroke in high-risk patients.", Manufacturer = "Bayer", DosageForm = "Tablet", Strength = "100mg", Price = 6.49m, Stock = 250, RequiresPrescription = false, ImageUrl = Img(8) },
+                    new Medication { Name = "Caltrate Plus", GenericName = "Calcium Carbonate + Vitamin D3", Category = "Vitamins", Description = "Calcium and Vitamin D supplement for bone health and prevention of osteoporosis.", Manufacturer = "Pfizer", DosageForm = "Tablet", Strength = "600mg + 400 IU", Price = 13.99m, Stock = 140, RequiresPrescription = false, ImageUrl = Img(9) },
+                    new Medication { Name = "Betadine Antiseptic", GenericName = "Povidone-Iodine", Category = "First Aid", Description = "Topical antiseptic solution for disinfecting wounds, cuts, and skin infections.", Manufacturer = "Mundipharma", DosageForm = "Solution", Strength = "10%", Price = 6.99m, Stock = 200, RequiresPrescription = false, ImageUrl = Img(10) },
+                    new Medication { Name = "Canesten Cream", GenericName = "Clotrimazole", Category = "Skin Care", Description = "Antifungal cream for treatment of fungal skin infections including athlete's foot and ringworm.", Manufacturer = "Bayer", DosageForm = "Cream", Strength = "1%", Price = 9.49m, Stock = 110, RequiresPrescription = false, ImageUrl = Img(11) },
+                    new Medication { Name = "Nexium", GenericName = "Esomeprazole", Category = "Digestive Health", Description = "Proton pump inhibitor for treatment of acid reflux, gastric ulcers, and heartburn.", Manufacturer = "AstraZeneca", DosageForm = "Capsule", Strength = "20mg", Price = 18.99m, Stock = 85, RequiresPrescription = true, ImageUrl = Img(12) },
+                    new Medication { Name = "Omega-3 Fish Oil", GenericName = "Omega-3 Fatty Acids (EPA/DHA)", Category = "Vitamins", Description = "High-potency omega-3 supplement supporting heart, brain, and joint health.", Manufacturer = "Nordic Naturals", DosageForm = "Soft Gel", Strength = "1000mg", Price = 19.99m, Stock = 180, RequiresPrescription = false, ImageUrl = Img(13) },
+                    new Medication { Name = "Lantus SoloStar", GenericName = "Insulin Glargine", Category = "Diabetes Care", Description = "Long-acting basal insulin for once-daily subcutaneous injection in type 1 and type 2 diabetes.", Manufacturer = "Sanofi", DosageForm = "Injection Pen", Strength = "100 IU/ml", Price = 89.99m, Stock = 40, RequiresPrescription = true, ImageUrl = Img(14) }
+                );
+                context.SaveChanges();
+            }
+        }
+    }
+}

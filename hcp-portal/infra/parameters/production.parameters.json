@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "replace-with-azure-region"
+    },
+    "environmentName": {
+      "value": "prod"
+    },
+    "sandboxContainerAppName": {
+      "value": "replace-with-existing-sandbox-app-name"
+    },
+    "productionAppName": {
+      "value": "hcp-portal-prod"
+    },
+    "acrName": {
+      "value": "replace-with-acr-name"
+    },
+    "keyVaultName": {
+      "value": "replace-with-keyvault-name"
+    },
+    "keyVaultUri": {
+      "value": "https://replace-with-keyvault-name.vault.azure.net/"
+    },
+    "appConfigEndpoint": {
+      "value": "https://replace-with-appconfig-name.azconfig.io"
+    },
+    "cpu": {
+      "value": "0.5"
+    },
+    "memory": {
+      "value": "1.0Gi"
+    },
+    "minReplicas": {
+      "value": 2
+    },
+    "maxReplicas": {
+      "value": 6
+    },
+    "apimName": {
+      "value": "replace-with-apim-name"
+    },
+    "apimPublisherEmail": {
+      "value": "replace-with-api-admin@yourdomain.com"
+    },
+    "apimPublisherName": {
+      "value": "replace-with-publisher-name"
+    },
+    "oauth2AuthorizationEndpoint": {
+      "value": "https://login.microsoftonline.com/replace-with-tenant-id/oauth2/v2.0/authorize"
+    },
+    "oauth2TokenEndpoint": {
+      "value": "https://login.microsoftonline.com/replace-with-tenant-id/oauth2/v2.0/token"
+    },
+    "openIdConfigUrl": {
+      "value": "https://login.microsoftonline.com/replace-with-tenant-id/v2.0/.well-known/openid-configuration"
+    },
+    "jwtAudience": {
+      "value": "api://replace-with-hcp-portal-audience"
+    },
+    "oauth2ClientId": {
+      "value": "replace-with-application-client-id"
+    }
+  }
+}

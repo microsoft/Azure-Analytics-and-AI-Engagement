@@ -1,0 +1,588 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.44.1.10279",
+      "templateHash": "15853346116914749863"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Azure region."
+      }
+    },
+    "environmentName": {
+      "type": "string",
+      "defaultValue": "prod",
+      "metadata": {
+        "description": "Production environment name suffix."
+      }
+    },
+    "sandboxContainerAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of existing sandbox Container App to promote from."
+      }
+    },
+    "productionAppName": {
+      "type": "string",
+      "defaultValue": "hcp-portal-prod",
+      "metadata": {
+        "description": "Production Container App name."
+      }
+    },
+    "acrName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of existing Azure Container Registry in this resource group."
+      }
+    },
+    "keyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of existing Azure Key Vault in this resource group."
+      }
+    },
+    "keyVaultUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Full Key Vault URI for app runtime."
+      }
+    },
+    "appConfigEndpoint": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Optional Azure App Configuration endpoint URI."
+      }
+    },
+    "cpu": {
+      "type": "string",
+      "defaultValue": "0.5",
+      "metadata": {
+        "description": "CPU cores for production app."
+      }
+    },
+    "memory": {
+      "type": "string",
+      "defaultValue": "1.0Gi",
+      "metadata": {
+        "description": "Memory for production app."
+      }
+    },
+    "minReplicas": {
+      "type": "int",
+      "defaultValue": 2,
+      "metadata": {
+        "description": "Minimum replica count for production app."
+      }
+    },
+    "maxReplicas": {
+      "type": "int",
+      "defaultValue": 6,
+      "metadata": {
+        "description": "Maximum replica count for production app."
+      }
+    },
+    "apimName": {
+      "type": "string",
+      "metadata": {
+        "description": "APIM service name."
+      }
+    },
+    "apimPublisherEmail": {
+      "type": "string",
+      "metadata": {
+        "description": "APIM publisher email."
+      }
+    },
+    "apimPublisherName": {
+      "type": "string",
+      "metadata": {
+        "description": "APIM publisher name."
+      }
+    },
+    "oauth2AuthorizationEndpoint": {
+      "type": "string",
+      "metadata": {
+        "description": "OAuth2 authorization endpoint URL."
+      }
+    },
+    "oauth2TokenEndpoint": {
+      "type": "string",
+      "metadata": {
+        "description": "OAuth2 token endpoint URL."
+      }
+    },
+    "openIdConfigUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "OpenID configuration URL for JWT validation."
+      }
+    },
+    "jwtAudience": {
+      "type": "string",
+      "metadata": {
+        "description": "Expected JWT audience value."
+      }
+    },
+    "oauth2ClientId": {
+      "type": "string",
+      "metadata": {
+        "description": "OAuth2 client ID for APIM authorization server metadata."
+      }
+    }
+  },
+  "variables": {
+    "logAnalyticsName": "[format('law-hcp-portal-{0}', parameters('environmentName'))]",
+    "containerEnvironmentName": "[format('acae-hcp-portal-{0}', parameters('environmentName'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2023-09-01",
+      "name": "[variables('logAnalyticsName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "PerGB2018"
+        },
+        "retentionInDays": 30
+      }
+    },
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2024-03-01",
+      "name": "[variables('containerEnvironmentName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "appLogsConfiguration": {
+          "destination": "log-analytics",
+          "logAnalyticsConfiguration": {
+            "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsName')), '2023-09-01').customerId]",
+            "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsName')), '2023-09-01').primarySharedKey]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.App/containerApps",
+      "apiVersion": "2024-03-01",
+      "name": "[parameters('productionAppName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', variables('containerEnvironmentName'))]",
+        "configuration": {
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "transport": "auto"
+          },
+          "registries": [
+            {
+              "server": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName')), '2023-07-01').loginServer]",
+              "identity": "system"
+            }
+          ],
+          "activeRevisionsMode": "Single"
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "hcp-portal",
+              "image": "[reference(resourceId('Microsoft.App/containerApps', parameters('sandboxContainerAppName')), '2024-03-01').template.containers[0].image]",
+              "resources": {
+                "cpu": "[json(parameters('cpu'))]",
+                "memory": "[parameters('memory')]"
+              },
+              "env": [
+                {
+                  "name": "ASPNETCORE_ENVIRONMENT",
+                  "value": "Production"
+                },
+                {
+                  "name": "AZURE_KEYVAULT_URI",
+                  "value": "[parameters('keyVaultUri')]"
+                },
+                {
+                  "name": "AZURE_APPCONFIG_ENDPOINT",
+                  "value": "[parameters('appConfigEndpoint')]"
+                }
+              ]
+            }
+          ],
+          "scale": {
+            "minReplicas": "[parameters('minReplicas')]",
+            "maxReplicas": "[parameters('maxReplicas')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', variables('containerEnvironmentName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]",
+      "name": "[guid(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName')), resourceId('Microsoft.App/containerApps', parameters('productionAppName')), 'acrpull')]",
+      "properties": {
+        "principalId": "[reference(resourceId('Microsoft.App/containerApps', parameters('productionAppName')), '2024-03-01', 'full').identity.principalId]",
+        "principalType": "ServicePrincipal",
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/containerApps', parameters('productionAppName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]",
+      "name": "[guid(resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName')), resourceId('Microsoft.App/containerApps', parameters('productionAppName')), 'kv-secrets-user')]",
+      "properties": {
+        "principalId": "[reference(resourceId('Microsoft.App/containerApps', parameters('productionAppName')), '2024-03-01', 'full').identity.principalId]",
+        "principalType": "ServicePrincipal",
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/containerApps', parameters('productionAppName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "apim-hcp-portal-prod",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "apimName": {
+            "value": "[parameters('apimName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "publisherEmail": {
+            "value": "[parameters('apimPublisherEmail')]"
+          },
+          "publisherName": {
+            "value": "[parameters('apimPublisherName')]"
+          },
+          "apiName": {
+            "value": "hcp-portal"
+          },
+          "apiDisplayName": {
+            "value": "HcpPortal API"
+          },
+          "apiPath": {
+            "value": "hcp-portal"
+          },
+          "apiVersion": {
+            "value": "v1"
+          },
+          "oauth2AuthorizationEndpoint": {
+            "value": "[parameters('oauth2AuthorizationEndpoint')]"
+          },
+          "oauth2TokenEndpoint": {
+            "value": "[parameters('oauth2TokenEndpoint')]"
+          },
+          "openIdConfigUrl": {
+            "value": "[parameters('openIdConfigUrl')]"
+          },
+          "jwtAudience": {
+            "value": "[parameters('jwtAudience')]"
+          },
+          "oauth2ClientId": {
+            "value": "[parameters('oauth2ClientId')]"
+          },
+          "backendUrl": {
+            "value": "[format('https://{0}', reference(resourceId('Microsoft.App/containerApps', parameters('productionAppName')), '2024-03-01').configuration.ingress.fqdn)]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.44.1.10279",
+              "templateHash": "3409525335494849250"
+            }
+          },
+          "parameters": {
+            "apimName": {
+              "type": "string",
+              "metadata": {
+                "description": "APIM service name (globally unique within Azure)."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Azure region."
+              }
+            },
+            "publisherEmail": {
+              "type": "string",
+              "metadata": {
+                "description": "Publisher email for APIM."
+              }
+            },
+            "publisherName": {
+              "type": "string",
+              "metadata": {
+                "description": "Publisher name for APIM."
+              }
+            },
+            "apiName": {
+              "type": "string",
+              "defaultValue": "hcp-portal",
+              "metadata": {
+                "description": "Logical API name in APIM."
+              }
+            },
+            "apiDisplayName": {
+              "type": "string",
+              "defaultValue": "HcpPortal API",
+              "metadata": {
+                "description": "Display name of the API in APIM."
+              }
+            },
+            "apiPath": {
+              "type": "string",
+              "defaultValue": "hcp-portal",
+              "metadata": {
+                "description": "Path segment exposed by APIM, for example hcp-portal."
+              }
+            },
+            "apiVersion": {
+              "type": "string",
+              "defaultValue": "v1",
+              "metadata": {
+                "description": "API semantic version."
+              }
+            },
+            "oauth2AuthorizationEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "OAuth2 authorization endpoint URL."
+              }
+            },
+            "oauth2TokenEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "OAuth2 token endpoint URL."
+              }
+            },
+            "openIdConfigUrl": {
+              "type": "string",
+              "metadata": {
+                "description": "OpenID configuration URL for JWT validation."
+              }
+            },
+            "jwtAudience": {
+              "type": "string",
+              "metadata": {
+                "description": "Expected JWT audience value."
+              }
+            },
+            "oauth2ClientId": {
+              "type": "string",
+              "metadata": {
+                "description": "OAuth2 client ID used by APIM authorization server metadata."
+              }
+            },
+            "backendUrl": {
+              "type": "string",
+              "metadata": {
+                "description": "Backend URL that APIM should forward traffic to (ACA app URL)."
+              }
+            }
+          },
+          "variables": {
+            "$fxv#0": "{\n  \"openapi\": \"3.0.4\",\n  \"info\": {\n    \"title\": \"HcpPortal API\",\n    \"version\": \"v1\"\n  },\n  \"paths\": {\n    \"/api/Prescribers/{prescriberId}/profile\": {\n      \"get\": {\n        \"tags\": [\n          \"Prescribers\"\n        ],\n        \"parameters\": [\n          {\n            \"name\": \"prescriberId\",\n            \"in\": \"path\",\n            \"required\": true,\n            \"schema\": {\n              \"type\": \"string\"\n            }\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"OK\",\n            \"content\": {\n              \"text/plain\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/PrescriberProfile\"\n                }\n              },\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/PrescriberProfile\"\n                }\n              },\n              \"text/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/PrescriberProfile\"\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/api/Prescribers/orders\": {\n      \"post\": {\n        \"tags\": [\n          \"Prescribers\"\n        ],\n        \"requestBody\": {\n          \"content\": {\n            \"application/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/MedicationOrderRequest\"\n              }\n            },\n            \"text/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/MedicationOrderRequest\"\n              }\n            },\n            \"application/*+json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/MedicationOrderRequest\"\n              }\n            }\n          }\n        },\n        \"responses\": {\n          \"200\": {\n            \"description\": \"OK\",\n            \"content\": {\n              \"text/plain\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/MedicationOrderResponse\"\n                }\n              },\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/MedicationOrderResponse\"\n                }\n              },\n              \"text/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/MedicationOrderResponse\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  },\n  \"components\": {\n    \"schemas\": {\n      \"MedicationOrderRequest\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"patientId\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"prescriberId\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"medicationCode\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"medicationName\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"strength\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"directions\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"quantity\": {\n            \"type\": \"integer\",\n            \"format\": \"int32\"\n          },\n          \"refills\": {\n            \"type\": \"integer\",\n            \"format\": \"int32\"\n          }\n        },\n        \"additionalProperties\": false\n      },\n      \"MedicationOrderResponse\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"orderId\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"status\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"clinicalReviewToken\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"submittedAtUtc\": {\n            \"type\": \"string\",\n            \"format\": \"date-time\"\n          }\n        },\n        \"additionalProperties\": false\n      },\n      \"PrescriberProfile\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"prescriberId\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"npi\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"fullName\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"specialty\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          },\n          \"clinicName\": {\n            \"type\": \"string\",\n            \"nullable\": true\n          }\n        },\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"tags\": [\n    {\n      \"name\": \"Prescribers\"\n    }\n  ]\n}"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ApiManagement/service",
+              "apiVersion": "2022-08-01",
+              "name": "[parameters('apimName')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Consumption",
+                "capacity": 0
+              },
+              "properties": {
+                "publisherEmail": "[parameters('publisherEmail')]",
+                "publisherName": "[parameters('publisherName')]"
+              }
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/apiVersionSets",
+              "apiVersion": "2022-08-01",
+              "name": "[format('{0}/{1}', parameters('apimName'), format('{0}-versionset', parameters('apiName')))]",
+              "properties": {
+                "displayName": "[parameters('apiDisplayName')]",
+                "versioningScheme": "Segment"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/authorizationServers",
+              "apiVersion": "2022-08-01",
+              "name": "[format('{0}/{1}', parameters('apimName'), format('{0}-oauth2', parameters('apiName')))]",
+              "properties": {
+                "displayName": "[format('{0} OAuth2', parameters('apiDisplayName'))]",
+                "description": "[format('OAuth2 configuration for {0}.', parameters('apiDisplayName'))]",
+                "authorizationEndpoint": "[parameters('oauth2AuthorizationEndpoint')]",
+                "tokenEndpoint": "[parameters('oauth2TokenEndpoint')]",
+                "clientRegistrationEndpoint": "[parameters('oauth2AuthorizationEndpoint')]",
+                "clientId": "[parameters('oauth2ClientId')]",
+                "grantTypes": [
+                  "authorizationCode",
+                  "clientCredentials"
+                ],
+                "authorizationMethods": [
+                  "GET",
+                  "POST"
+                ],
+                "bearerTokenSendingMethods": [
+                  "authorizationHeader"
+                ],
+                "clientAuthenticationMethod": [
+                  "Body"
+                ],
+                "supportState": true
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/backends",
+              "apiVersion": "2022-08-01",
+              "name": "[format('{0}/{1}', parameters('apimName'), format('{0}-aca-backend', parameters('apiName')))]",
+              "properties": {
+                "title": "[format('{0} ACA Backend', parameters('apiDisplayName'))]",
+                "protocol": "http",
+                "url": "[parameters('backendUrl')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/apis",
+              "apiVersion": "2022-08-01",
+              "name": "[format('{0}/{1}', parameters('apimName'), format('{0}-{1}', parameters('apiName'), parameters('apiVersion')))]",
+              "properties": {
+                "displayName": "[parameters('apiDisplayName')]",
+                "description": "HCP prescriber portal API imported from OpenAPI spec.",
+                "path": "[parameters('apiPath')]",
+                "protocols": [
+                  "https"
+                ],
+                "apiVersion": "[parameters('apiVersion')]",
+                "apiVersionSetId": "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('apimName'), format('{0}-versionset', parameters('apiName')))]",
+                "format": "openapi+json",
+                "value": "[variables('$fxv#0')]",
+                "serviceUrl": "[parameters('backendUrl')]",
+                "subscriptionRequired": true
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('apimName'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('apimName'), format('{0}-versionset', parameters('apiName')))]"
+              ]
+            },
+            {
+              "type": "Microsoft.ApiManagement/service/apis/policies",
+              "apiVersion": "2022-08-01",
+              "name": "[format('{0}/{1}/{2}', parameters('apimName'), format('{0}-{1}', parameters('apiName'), parameters('apiVersion')), 'policy')]",
+              "properties": {
+                "format": "rawxml",
+                "value": "[format('<policies>\n  <inbound>\n    <base />\n    <set-backend-service backend-id=\"{0}\" />\n    <validate-jwt header-name=\"Authorization\" failed-validation-httpcode=\"401\" failed-validation-error-message=\"Unauthorized\">\n      <openid-config url=\"{1}\" />\n      <audiences>\n        <audience>{2}</audience>\n      </audiences>\n    </validate-jwt>\n    <rate-limit-by-key calls=\"100\" renewal-period=\"60\" counter-key=\"@(context.Subscription?.Key ?? context.Request.IpAddress)\" />\n  </inbound>\n  <backend>\n    <base />\n  </backend>\n  <outbound>\n    <base />\n  </outbound>\n  <on-error>\n    <base />\n  </on-error>\n</policies>', format('{0}-aca-backend', parameters('apiName')), parameters('openIdConfigUrl'), parameters('jwtAudience'))]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimName'), format('{0}-{1}', parameters('apiName'), parameters('apiVersion')))]",
+                "[resourceId('Microsoft.ApiManagement/service/backends', parameters('apimName'), format('{0}-aca-backend', parameters('apiName')))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "apimGatewayUrl": {
+              "type": "string",
+              "metadata": {
+                "description": "APIM gateway URL."
+              },
+              "value": "[reference(resourceId('Microsoft.ApiManagement/service', parameters('apimName')), '2022-08-01').gatewayUrl]"
+            },
+            "apiResourceId": {
+              "type": "string",
+              "metadata": {
+                "description": "Imported API resource ID."
+              },
+              "value": "[resourceId('Microsoft.ApiManagement/service/apis', parameters('apimName'), format('{0}-{1}', parameters('apiName'), parameters('apiVersion')))]"
+            },
+            "oauth2ServerId": {
+              "type": "string",
+              "metadata": {
+                "description": "OAuth2 authorization server resource ID."
+              },
+              "value": "[resourceId('Microsoft.ApiManagement/service/authorizationServers', parameters('apimName'), format('{0}-oauth2', parameters('apiName')))]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/containerApps', parameters('productionAppName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "promotedImage": {
+      "type": "string",
+      "metadata": {
+        "description": "Promoted production image reference copied from sandbox app."
+      },
+      "value": "[reference(resourceId('Microsoft.App/containerApps', parameters('sandboxContainerAppName')), '2024-03-01').template.containers[0].image]"
+    },
+    "productionAppUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "Production Container App URL."
+      },
+      "value": "[format('https://{0}', reference(resourceId('Microsoft.App/containerApps', parameters('productionAppName')), '2024-03-01').configuration.ingress.fqdn)]"
+    },
+    "apimGatewayUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "Production APIM gateway URL."
+      },
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'apim-hcp-portal-prod'), '2025-04-01').outputs.apimGatewayUrl.value]"
+    },
+    "apimApiResourceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Production APIM API resource ID."
+      },
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'apim-hcp-portal-prod'), '2025-04-01').outputs.apiResourceId.value]"
+    }
+  }
+}

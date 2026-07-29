@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sandboxSuffix": {
+      "value": "replace-with-yyyymmddhhmmss"
+    },
+    "location": {
+      "value": "replace-with-azure-region"
+    },
+    "acrName": {
+      "value": "replace-with-acr-name"
+    },
+    "image": {
+      "value": "replace-with-acr-login-server/hcp-portal:replace-with-tag"
+    },
+    "keyVaultUri": {
+      "value": "https://replace-with-keyvault-name.vault.azure.net/"
+    },
+    "appConfigEndpoint": {
+      "value": "https://replace-with-appconfig-name.azconfig.io"
+    },
+    "cpu": {
+      "value": "0.5"
+    },
+    "memory": {
+      "value": "1.0Gi"
+    },
+    "minReplicas": {
+      "value": 0
+    },
+    "maxReplicas": {
+      "value": 2
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# HcpPortal-specific (see root .gitignore for shared rules)
+
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+secrets.json
+.env
+.env.*
+!.env.example

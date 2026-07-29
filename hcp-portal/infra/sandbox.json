@@ -1,0 +1,219 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.44.1.10279",
+      "templateHash": "2881069306797834058"
+    }
+  },
+  "parameters": {
+    "sandboxSuffix": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique suffix for ephemeral sandbox resources."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Azure region for the sandbox resources."
+      }
+    },
+    "acrName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of an existing Azure Container Registry in this resource group."
+      }
+    },
+    "image": {
+      "type": "string",
+      "metadata": {
+        "description": "Container image reference, for example myacr.azurecr.io/hcp-portal:sandbox-20260623093000."
+      }
+    },
+    "keyVaultUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure Key Vault URI injected into the container environment."
+      }
+    },
+    "appConfigEndpoint": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Azure App Configuration endpoint URI injected into the container environment."
+      }
+    },
+    "cpu": {
+      "type": "string",
+      "defaultValue": "0.5",
+      "metadata": {
+        "description": "CPU cores for the container app."
+      }
+    },
+    "memory": {
+      "type": "string",
+      "defaultValue": "1.0Gi",
+      "metadata": {
+        "description": "Memory for the container app."
+      }
+    },
+    "minReplicas": {
+      "type": "int",
+      "defaultValue": 0,
+      "metadata": {
+        "description": "Minimum replica count for the sandbox app."
+      }
+    },
+    "maxReplicas": {
+      "type": "int",
+      "defaultValue": 2,
+      "metadata": {
+        "description": "Maximum replica count for the sandbox app."
+      }
+    }
+  },
+  "variables": {
+    "appName": "[format('hcp-portal-sbx-{0}', parameters('sandboxSuffix'))]",
+    "environmentName": "[format('acae-hcp-sbx-{0}', parameters('sandboxSuffix'))]",
+    "workspaceName": "[format('law-hcp-sbx-{0}', parameters('sandboxSuffix'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2023-09-01",
+      "name": "[variables('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "PerGB2018"
+        },
+        "retentionInDays": 7
+      }
+    },
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2024-03-01",
+      "name": "[variables('environmentName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "appLogsConfiguration": {
+          "destination": "log-analytics",
+          "logAnalyticsConfiguration": {
+            "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName')), '2023-09-01').customerId]",
+            "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName')), '2023-09-01').primarySharedKey]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.App/containerApps",
+      "apiVersion": "2024-03-01",
+      "name": "[variables('appName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', variables('environmentName'))]",
+        "configuration": {
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "transport": "auto"
+          },
+          "registries": [
+            {
+              "server": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName')), '2023-07-01').loginServer]",
+              "identity": "system"
+            }
+          ],
+          "activeRevisionsMode": "Single"
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "hcp-portal",
+              "image": "[parameters('image')]",
+              "resources": {
+                "cpu": "[json(parameters('cpu'))]",
+                "memory": "[parameters('memory')]"
+              },
+              "env": [
+                {
+                  "name": "ASPNETCORE_ENVIRONMENT",
+                  "value": "Production"
+                },
+                {
+                  "name": "AZURE_KEYVAULT_URI",
+                  "value": "[parameters('keyVaultUri')]"
+                },
+                {
+                  "name": "AZURE_APPCONFIG_ENDPOINT",
+                  "value": "[parameters('appConfigEndpoint')]"
+                }
+              ]
+            }
+          ],
+          "scale": {
+            "minReplicas": "[parameters('minReplicas')]",
+            "maxReplicas": "[parameters('maxReplicas')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', variables('environmentName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]",
+      "name": "[guid(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName')), resourceId('Microsoft.App/containerApps', variables('appName')), 'acrpull')]",
+      "properties": {
+        "principalId": "[reference(resourceId('Microsoft.App/containerApps', variables('appName')), '2024-03-01', 'full').identity.principalId]",
+        "principalType": "ServicePrincipal",
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/containerApps', variables('appName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "appName": {
+      "type": "string",
+      "metadata": {
+        "description": "Ephemeral sandbox app name."
+      },
+      "value": "[variables('appName')]"
+    },
+    "managedEnvironmentName": {
+      "type": "string",
+      "metadata": {
+        "description": "Ephemeral managed environment name."
+      },
+      "value": "[variables('environmentName')]"
+    },
+    "appUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "Ephemeral sandbox URL."
+      },
+      "value": "[format('https://{0}', reference(resourceId('Microsoft.App/containerApps', variables('appName')), '2024-03-01').configuration.ingress.fqdn)]"
+    },
+    "appPrincipalId": {
+      "type": "string",
+      "metadata": {
+        "description": "Managed identity principal ID for role assignments."
+      },
+      "value": "[reference(resourceId('Microsoft.App/containerApps', variables('appName')), '2024-03-01', 'full').identity.principalId]"
+    }
+  }
+}
