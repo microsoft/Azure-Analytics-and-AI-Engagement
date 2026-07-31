@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "code-insight-config",
+  "chapter": {
+    "id": "chapter-1",
+    "title": "Assess Estate and Plan Modernization"
+  },
+  "module": {
+    "id": "module-1",
+    "title": "Assess Estate and Plan Modernization",
+    "durationMinutes": 4,
+    "owner": "Marcus",
+    "ownerRole": "Cloud Architect",
+    "status": "OPEN"
+  },
+  "programContext": {
+    "organization": "Caldova",
+    "businessDriver": "Accelerate launch readiness for injectable program before competitor November release",
+    "riskStatement": "Current estate is not ready to support AI-enabled supply-chain operations at required speed and compliance level",
+    "deadline": "2026-11-01"
+  },
+  "discovery": {
+    "mode": "offline-collector",
+    "securityPosture": {
+      "inboundNetworkExposure": "none",
+      "agentFootprint": "lightweight"
+    },
+    "estateSummary": {
+      "compute": [
+        "Linux virtual machines"
+      ],
+      "applicationRuntimesObserved": [
+        "Tomcat",
+        "Spring Boot",
+        "JBoss"
+      ],
+      "database": [
+        "On-prem PostgreSQL clusters"
+      ]
+    },
+    "repoValidatedWorkloads": [
+      {
+        "name": "pharma-legacy-api",
+        "language": "Java",
+        "framework": "Spring Boot 2.5.15",
+        "javaVersion": "11",
+        "packaging": "Monolith",
+        "hostRuntime": "Embedded Tomcat via Spring Boot starter web",
+        "sourcePath": "src/main/java/com/caldova/legacy",
+        "configPath": "src/main/resources/application.properties",
+        "dataSeedPath": "src/main/resources/data.sql"
+      }
+    ]
+  },
+  "businessIntent": {
+    "primaryIntent": "Maximize flexibility and operational control in a regulated environment",
+    "secondaryIntent": [
+      "Preserve compliance from day one",
+      "Enable future AI-driven planning workflows",
+      "Reduce migration risk using sequenced waves"
+    ],
+    "decisionBias": "Control and governance over pure speed"
+  },
+  "recommendedTargets": {
+    "infrastructure": {
+      "targetService": "Azure Virtual Machines",
+      "rationale": "Supports full resource control and phased modernization for regulated workloads"
+    },
+    "applications": {
+      "targetService": "Azure Kubernetes Service Automatic",
+      "rationale": "Autoscaling for manufacturing load, reduced cluster operations burden, and future microservice-ready architecture"
+    },
+    "database": {
+      "targetService": "Azure Database for PostgreSQL Flexible Server",
+      "rationale": "Managed PostgreSQL foundation that scales for data growth and AI integration",
+      "logicalDatabaseName": "manufacturing"
+    }
+  },
+  "businessCase": {
+    "analysisType": "TCO and ROI",
+    "tradeoffsEvaluated": [
+      "Rehost only vs modernization",
+      "Control vs operational simplicity",
+      "Wave speed vs compliance certainty"
+    ],
+    "expectedOutcomes": [
+      "Lower operational friction for scaling planning workloads",
+      "Improved compliance confidence through platform baselines",
+      "Faster readiness for AI-enabled planning features"
+    ]
+  },
+  "wavePlanning": {
+    "strategy": "Group Java workloads with dependent PostgreSQL clusters and migrate app wave plus data wave together",
+    "waves": [
+      {
+        "waveId": "wave-0",
+        "name": "Foundation",
+        "focus": "Landing zone and governance prerequisites",
+        "deliverables": [
+          "Network segmentation and private connectivity design",
+          "Identity and access model",
+          "Policy and compliance baseline",
+          "Logging, monitoring, and audit controls"
+        ]
+      },
+      {
+        "waveId": "wave-1",
+        "name": "Pilot Application + Data",
+        "focus": "Migrate first Java workload and dependent PostgreSQL schema",
+        "deliverables": [
+          "Containerized Java service on AKS Automatic",
+          "Pilot data migration to PostgreSQL Flexible Server",
+          "Functional and performance parity evidence",
+          "Rollback validation evidence"
+        ]
+      },
+      {
+        "waveId": "wave-2-plus",
+        "name": "Scale-Out",
+        "focus": "Migrate remaining app and data groups using validated pattern",
+        "deliverables": [
+          "Wave-by-wave cutover records",
+          "Stabilization and decommission checkpoints",
+          "Compliance evidence archive"
+        ]
+      }
+    ]
+  },
+  "landingZone": {
+    "generationMode": "agent-generated",
+    "alignment": "Cloud Adoption Framework",
+    "capabilities": [
+      "Networking baseline",
+      "Identity baseline",
+      "Governance baseline",
+      "Security baseline"
+    ],
+    "complianceObjective": "Secure and governed by default for regulated launch timelines"
+  },
+  "handoff": {
+    "packageGoal": "Transfer code insights, business intent, and target mapping to downstream engineering roles without loss of context",
+    "audiences": [
+      "Application modernization engineers",
+      "Database migration engineers",
+      "Platform and governance team",
+      "DevOps and release engineering"
+    ],
+    "includedArtifacts": [
+      "Estate observations and workload mapping",
+      "Business intent and decision rationale",
+      "Target service recommendations",
+      "Wave sequencing approach",
+      "Landing zone prerequisites"
+    ]
+  },
+  "executionReadiness": {
+    "overall": "ready-for-next-role",
+    "nextRole": "Developer",
+    "immediateActions": [
+      "Containerize the Java application",
+      "Prepare AKS deployment artifacts",
+      "Externalize configuration and secrets strategy",
+      "Plan PostgreSQL schema and data migration order for manufacturing database"
+    ]
+  }
+}

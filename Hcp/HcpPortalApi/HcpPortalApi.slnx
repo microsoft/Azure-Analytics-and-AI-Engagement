@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="HcpPortalApi.Api/HcpPortalApi.Api.csproj" />
-  <Project Path="HcpPortalApi.Application/HcpPortalApi.Application.csproj" />
-  <Project Path="HcpPortalApi.Domain/HcpPortalApi.Domain.csproj" />
-  <Project Path="HcpPortalApi.Infrastructure/HcpPortalApi.Infrastructure.csproj" />
-  <Project Path="HcpPortalApi.Worker/HcpPortalApi.Worker.csproj" />
-</Solution>

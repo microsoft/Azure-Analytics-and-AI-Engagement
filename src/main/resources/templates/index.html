@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Pharma Dashboard</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #f3f4f6;
+            color: #222;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #0f172a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        th, td {
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+
+        .button-row {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: 1px solid #9ca3af;
+            background: #e5e7eb;
+            color: #111827;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d1d5db;
+        }
+
+        .muted {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Legacy Product & Inventory Console</h1>
+<p class="muted">On-prem style dashboard (Spring Boot 2.5 + Java 11, local config, local files).</p>
+
+<div class="grid">
+    <div class="card">
+        <h2>Product List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>SKU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${products}">
+                <td th:text="${p.id}">1</td>
+                <td th:text="${p.name}">Panadol Extra</td>
+                <td th:text="${p.category}">Pain Relief</td>
+                <td th:text="${p.unitPrice}">4.99</td>
+                <td th:text="${p.sku}">MED-0001</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="button-row">
+            <button type="button" onclick="createLegacyOrder()">Create Order</button>
+            <button type="button" onclick="window.location.href='/products'">Open Products API</button>
+            <button type="button" onclick="window.location.href='/orders'">Open Orders API</button>
+        </div>
+        <p id="order-status" class="muted"></p>
+    </div>
+
+    <div class="card">
+        <h2>Inventory Dashboard</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>On Hand</th>
+                <th>Reorder</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="i : ${inventory}">
+                <td th:text="${i.product.name}">Panadol Extra</td>
+                <td th:text="${i.quantityOnHand}">200</td>
+                <td th:text="${i.reorderLevel}">40</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    async function createLegacyOrder() {
+        const response = await fetch('/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ productId: 1, quantity: 1, customerName: 'Legacy Walk-In Customer' })
+        });
+
+        const statusElement = document.getElementById('order-status');
+        if (response.ok) {
+            const data = await response.json();
+            statusElement.textContent = 'Order created with ID: ' + data.id + ' (legacy synchronous flow).';
+        } else {
+            statusElement.textContent = 'Order failed. Check inventory and API logs.';
+        }
+    }
+</script>
+</body>
+</html>
