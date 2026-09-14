@@ -1,0 +1,15 @@
+# Local config (should never exist in this repo - all config is App Settings)
+.env
+local.settings.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store

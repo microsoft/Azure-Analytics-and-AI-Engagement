@@ -1,0 +1,6 @@
+# FSI IQ Function App - runtime dependencies
+
+azure-functions
+azure-ai-projects==2.1.0      # Foundry workflow invocation (agent_reference form)
+azure-identity==1.23.0        # DefaultAzureCredential (managed identity in cloud)
+openai==2.8.1                 # returned by project_client.get_openai_client()

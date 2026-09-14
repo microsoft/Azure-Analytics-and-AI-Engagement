@@ -1,0 +1,593 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "storage_account_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "asp_fsi_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "app_fsi_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "asp_func_app_mortgage_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "func_app_mortgage_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('storage_account_name')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-05-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "isHnsEnabled": "true",
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "cors": {
+          "corsRules": [
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "GET"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "POST"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "DELETE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "MERGE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/webappassets')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/funcloanmortgage')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('asp_func_app_mortgage_name')]",
+      "location": "[parameters('location')]",
+      "kind": "linux",
+      "sku": {
+        "name": "B1",
+        "tier": "Basic",
+        "size": "B1",
+        "family": "B",
+        "capacity": 1
+      },
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('func_app_mortgage_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('asp_func_app_mortgage_name'))]"
+      ],
+      "kind": "functionapp,linux",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('func_app_mortgage_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('func_app_mortgage_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('asp_func_app_mortgage_name'))]",
+        "reserved": true,
+        "isXenon": false,
+        "hyperV": false,
+        "dnsConfiguration": {},
+        "outboundVnetRouting": {
+          "allTraffic": false,
+          "applicationTraffic": false,
+          "contentShareTraffic": false,
+          "imagePullTraffic": false,
+          "backupRestoreTraffic": false
+        },
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": true,
+          "http20Enabled": false,
+          "functionAppScaleLimit": 100,
+          "minimumElasticInstanceCount": 0
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": false,
+        "clientAffinityProxyEnabled": false,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "hostNamesDisabled": false,
+        "ipMode": "IPv4",
+        "containerSize": 1536,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": true,
+        "endToEndEncryptionEnabled": false,
+        "redundancyMode": "None",
+        "publicNetworkAccess": "Enabled",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('func_app_mortgage_name'), '/ftp')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('func_app_mortgage_name'))]"
+      ],
+      "properties": {
+        "allow": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('func_app_mortgage_name'), '/scm')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('func_app_mortgage_name'))]"
+      ],
+      "properties": {
+        "allow": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('func_app_mortgage_name'), '/web')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('func_app_mortgage_name'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php"
+        ],
+        "netFrameworkVersion": "v4.0",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "httpLoggingEnabled": false,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "REDACTED",
+        "scmType": "None",
+        "use32BitWorkerProcess": false,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "publicNetworkAccess": "Enabled",
+        "allowedOrigins": [
+          "[concat('https://', parameters('app_fsi_name'), '.azurewebsites.net')]"
+        ],
+        "supportCredentials": true,
+        "localMySqlEnabled": false,
+        "managedServiceIdentityId": 16110,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.2",
+        "ftpsState": "FtpsOnly",
+        "preWarmedInstanceCount": 0,
+        "functionAppScaleLimit": 100,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 0,
+        "azureStorageAccounts": {},
+        "http20ProxyFlag": 0
+      }
+    },
+    {
+      "name": "[parameters('asp_fsi_name')]",
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2024-11-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "B1",
+        "tier": "Basic",
+        "size": "B1",
+        "family": "B",
+        "capacity": 1
+      },
+      "kind": "app",
+      "properties": {
+        "perSiteScaling": false,
+        "elasticScaleEnabled": false,
+        "maximumElasticWorkerCount": 1,
+        "isSpot": false,
+        "reserved": false,
+        "isXenon": false,
+        "hyperV": false,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0,
+        "zoneRedundant": false,
+        "asyncScalingEnabled": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('app_fsi_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('asp_fsi_name'))]"
+      ],
+      "kind": "app",
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('app_fsi_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('app_fsi_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('asp_fsi_name'))]",
+        "reserved": true,
+        "isXenon": false,
+        "hyperV": false,
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": false,
+          "http20Enabled": false,
+          "functionAppScaleLimit": 0,
+          "minimumElasticInstanceCount": 0
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": true,
+        "clientCertMode": "Required",
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "ipMode": "IPv4",
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": false,
+        "redundancyMode": "None",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('app_fsi_name'), '/ftp')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('app_fsi_name'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('app_fsi_name'), '/scm')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('app_fsi_name'))]"
+      ],
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('app_fsi_name'), '/web')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('app_fsi_name'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php",
+          "hostingstart.html"
+        ],
+        "netFrameworkVersion": "v10.0",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "httpLoggingEnabled": false,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "[concat('$', parameters('app_fsi_name'))]",
+        "scmType": "None",
+        "use32BitWorkerProcess": true,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "localMySqlEnabled": false,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 1,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 1,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.2",
+        "ftpsState": "AllAllowed",
+        "preWarmedInstanceCount": 0,
+        "functionAppScaleLimit": 0,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 1,
+        "azureStorageAccounts": {}
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "apiVersion": "2024-11-01",
+      "name": "[concat(parameters('app_fsi_name'), '/', parameters('app_fsi_name'), '.azurewebsites.net')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('app_fsi_name'))]"
+      ],
+      "properties": {
+        "siteName": "[parameters('app_fsi_name')]",
+        "hostNameType": "Verified"
+      }
+    }
+  ]
+}

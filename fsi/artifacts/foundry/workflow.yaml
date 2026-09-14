@@ -1,0 +1,95 @@
+kind: workflow
+trigger:
+  kind: OnConversationStart
+  id: trigger_wf
+  actions:
+    # 1) Supervisor classifies the request and returns exactly ONE agent name.
+    #    autoSend:false  -> the routing label is captured silently and is NOT
+    #    surfaced to the caller (the old file had autoSend:true, which leaked
+    #    "Document-Intelligence-Agent" etc. into the response).
+    - kind: InvokeAzureAgent
+      id: action-1768237693978
+      agent:
+        name: Supervisor-Agent
+      input:
+        messages: =System.LastMessage
+      output:
+        autoSend: false
+        messages: Local.Var5755
+
+    # 2) Route to the matching specialist. Every specialist receives the ORIGINAL
+    #    user message (=System.LastMessage) and shares the conversation
+    #    (=System.ConversationId); its reply is the answer (autoSend:true).
+    #    Only the four agents the Supervisor can actually emit are present -
+    #    the Underwriting / KYC / Closing / Scheduling branches were dead
+    #    (the Supervisor never returns those labels) and have been removed.
+    - kind: ConditionGroup
+      id: action-1768237712578
+      conditions:
+        - id: if-action-1768237712578-0
+          condition: =Last(Local.Var5755).Text = "Application-Prioritization-Agent"
+          actions:
+            - kind: InvokeAzureAgent
+              id: action-1768237857121
+              agent:
+                name: Application-Prioritization-Agent
+              conversationId: =System.ConversationId
+              input:
+                messages: =System.LastMessage
+              output:
+                autoSend: true
+
+        - id: if-action-1768237712578-0p9xo7ga
+          condition: =Last(Local.Var5755).Text = "Document-Intelligence-Agent"
+          actions:
+            - kind: InvokeAzureAgent
+              id: action-1768237897049
+              agent:
+                name: Document-Intelligence-Agent
+              conversationId: =System.ConversationId
+              input:
+                messages: =System.LastMessage
+              output:
+                autoSend: true
+
+        - id: if-action-1768237712578-cpzxc0hn
+          condition: =Last(Local.Var5755).Text = "Financial-Resilience-Insight-Agent"
+          actions:
+            - kind: InvokeAzureAgent
+              id: node-1773834207862
+              agent:
+                name: Financial-Resilience-Insight-Agent
+              conversationId: =System.ConversationId
+              input:
+                messages: =System.LastMessage
+              output:
+                autoSend: true
+
+        - id: if-action-1768237712578-9vvx6hjd
+          condition: =Last(Local.Var5755).Text = "Task-Prioritization-Agent"
+          actions:
+            - kind: InvokeAzureAgent
+              id: node-1776060137192
+              agent:
+                name: Task-Prioritization-Agent
+              conversationId: =System.ConversationId
+              input:
+                messages: =System.LastMessage
+              output:
+                autoSend: true
+
+      elseActions:
+        - kind: SendActivity
+          id: action-1768238054760
+          activity: >-
+            I couldn't route that request. Try asking about which application to
+            prioritize, validating a customer's documents, a customer's financial
+            resilience, or your calendar / schedule.
+id: ""
+name: FSIIQ-Workflow
+description: >-
+  FSI IQ supervisor-routed workflow. Start -> Supervisor-Agent (classifies and
+  returns one agent name) -> one of four specialists: Application-Prioritization,
+  Document-Intelligence, Financial-Resilience-Insight, Task-Prioritization.
+  Mirrors the code-first orchestrator in main.py (kept as the Agent Framework
+  migration artifact; Foundry Workflows retire 2026-12-01).

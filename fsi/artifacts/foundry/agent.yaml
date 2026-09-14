@@ -1,0 +1,124 @@
+# =============================================================================
+# FSI IQ DPoC - deployment manifest
+# -----------------------------------------------------------------------------
+# This file is the single place that describes WHAT gets deployed. The Python
+# scripts read it and do the wiring. Adding/removing an agent, re-pointing a
+# route, renaming a knowledge source, or changing which documents get indexed
+# is a change HERE, not in code.
+#
+# ${VARS} are resolved from the environment / .env by settings.py at run time.
+# =============================================================================
+
+knowledge_base:
+  name: fsi-knowledge-base                 # KB kept intact (single KB, two sources)
+  mcp_connection: fsi-kb-mcp-connection
+  model: ${KB_MODEL}                       # gpt-5.4-mini (accepts reasoning_effort=minimal)
+  retrieval_reasoning_effort: low
+  output_mode: extractive_data             # KB returns passages; the agent writes the answer
+  # Retrieval instruction steers the KB planner to the correct source per query.
+  retrieval_instructions: >
+    Route document-verification, document-completeness, and applicant-detail
+    questions to the customer-data source (Joe's mortgage documents). Route
+    financial-evaluation questions - income stability, expenses, liabilities,
+    savings, debt-to-income, credit score, risk indicators, and financial
+    resilience - to the financial-data-agent source. Prefer the single most
+    relevant source; do not blend sources unless the question spans both.
+  answer_instructions: >
+    Answer concisely from the retrieved source and cite the source document or
+    title. If the required information is not in the retrieved data, say so
+    plainly rather than inventing details.
+
+  knowledge_sources:
+
+    # --- Source 1: Joe's documents, indexed in Azure AI Search ---------------
+    - name: fsi-customer-data
+      kind: search_index
+      index: ${INDEX_NAME}
+      description: >
+        Joe Williamson's mortgage application documents - employment verification
+        (Fannie Mae Form 1005), pay stub, bank statement, certificate of currency,
+        and driver's license. Use for document verification, completeness and
+        consistency checks, and extracting applicant details (name, employer,
+        income, dates, identifiers).
+      # All five PDFs live in datasets/joe/, but only these THREE are indexed, so
+      # the Document-Intelligence-Agent correctly reports Form 1005 and the
+      # Certificate of Currency as "not provided" (matches the Live Experience
+      # script). To index all five later, add the two filenames here.
+      index_documents:
+        - JoeDL.pdf
+        - JoePayStub.pdf
+        - JoeBankStatement.pdf
+      documents_on_file:        # present in the folder, intentionally NOT indexed
+        - JoeEMPVerification.pdf
+        - JoeCertificateofCurrency.pdf
+
+    # --- Source 2: live Fabric Data Agent ------------------------------------
+    - name: fsi-financial-data-agent
+      kind: fabric_data_agent
+      workspace_id: ${FABRIC_WORKSPACE_ID}
+      data_agent_id: ${FABRIC_DATA_AGENT_ID}
+      description: >
+        Live Fabric Data Agent over the FSI financial ontology (customers,
+        mortgage applications, credit assessments, transactions, competitor
+        offers). Use for financial evaluation - income stability, expenses,
+        liabilities, savings, debt-to-income, credit score, risk indicators,
+        and financial-resilience assessment for a specific customer.
+
+# -----------------------------------------------------------------------------
+# Agents. grounding = none | knowledge_base
+#   knowledge_base -> the agent gets the KB MCP tool; the KB's retrieval
+#   instructions route it to the correct source. No per-agent scoping needed.
+# -----------------------------------------------------------------------------
+agents:
+  - name: Supervisor-Agent
+    role: orchestrator                     # hosted by main.py (workflow substitute)
+    instructions_file: agents/supervisor.txt
+    model: ${CHAT_DEPLOYMENT}
+    grounding: none
+
+  - name: Application-Prioritization-Agent
+    instructions_file: agents/application_prioritization.txt
+    model: ${CHAT_DEPLOYMENT}
+    grounding: none
+
+  - name: Document-Intelligence-Agent
+    instructions_file: agents/document_intelligence.txt
+    model: ${CHAT_DEPLOYMENT}
+    grounding: knowledge_base              # -> customer-data source
+
+  - name: Financial-Resilience-Insight-Agent
+    instructions_file: agents/financial_resilience_insight.txt
+    model: ${CHAT_DEPLOYMENT}
+    grounding: knowledge_base              # -> financial-data-agent source (connected
+                                           #    manually in the portal; see README)
+
+  - name: Task-Prioritization-Agent
+    instructions_file: agents/task_prioritization.txt
+    model: ${CHAT_DEPLOYMENT}
+    grounding: none                        # hardcoded strategic answer; calendar via Work IQ (later)
+
+# -----------------------------------------------------------------------------
+# Workflow substitute (Foundry Workflows retire 2026-12-01). The Supervisor is
+# hosted as a code-first orchestrator (main.py) that classifies each request and
+# delegates to the specialist below. Routing keys mirror the Supervisor's rules.
+# -----------------------------------------------------------------------------
+workflow:
+  orchestrator: Supervisor-Agent
+  specialists:
+    - Application-Prioritization-Agent
+    - Document-Intelligence-Agent
+    - Financial-Resilience-Insight-Agent
+    - Task-Prioritization-Agent
+  # If the Supervisor returns an unknown label, fall back to this agent.
+  fallback: Application-Prioritization-Agent
+
+# Smoke-test prompts (from the Live Experience script) used by --smoke.
+smoke_tests:
+  - agent: Application-Prioritization-Agent
+    prompt: "I have a lot of loan applications to review today. Can you help me prioritize which one I should work on first?"
+  - agent: Document-Intelligence-Agent
+    prompt: "Yes, show me what's missing and any mismatches in the validated documents."
+  - agent: Financial-Resilience-Insight-Agent
+    prompt: "Evaluate the financial resilience of customer Joe."
+  - agent: Task-Prioritization-Agent
+    prompt: "What are additional topics with high strategic importance?"
