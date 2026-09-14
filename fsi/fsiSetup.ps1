@@ -991,7 +991,7 @@ if (-not $sourceNode) {
 $sourceId = $sourceNode.id
 Write-Host "Source ID: $sourceId"
 
-Start-Sleep -Seconds 30
+Start-Sleep -Seconds 60
 
 # 3. Retrieve connection properties from the topology endpoint
 $connectionUri = "https://api.fabric.microsoft.com/v1/workspaces/$wsId/eventstreams/$eventstreamId/sources/$sourceId/connection"
