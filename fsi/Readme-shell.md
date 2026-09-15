@@ -322,13 +322,34 @@ cd ./fsi/fsi
 28. **Close** the browser tab when you see the message box.
  
     ![box](media/cloud-shell-104.png)
+
+29. **Click** on the URL [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
  
-29. **Enter** the Region for deployment with the necessary resources available, preferably "eastus2".
+    ![Click the link.](media/cloud-shell-100.png)
+30. In the new browser tab, **paste** the code you copied and **click** on **Next**.
+ 
+  ![box](media/cloud-shell-101.png)
+ 
+**Note:** Be sure to provide the device code before it expires and let the script run until completion.
+ 
+31. Select the **user account** you used to log into the **Azure Portal** in [Task 1](#task-1-fabric-workspace-creation).
+ 
+    ![Select the same user.](media/PBIlogin3.png)
+ 
+32. Click on **Continue**.
+ 
+    ![box](media/pbilogin.png)
+ 
+33. **Close** the browser tab when you see the message box.
+ 
+    ![box](media/pbilogin2.png)
+ 
+34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus2".
 (Ex.: eastus2,eastus westus, westus2, etc.) 
 **Recommendation: *** Prefer East US 2 and ensure the Fabric capacity is deployed in a region that supports Fabric Operations agents.
     ![box](media/cloudshell-region.1.png)
  
-30. **Enter** the Workspace ID that you copied in [Task 1](#task-1-fabric-workspace-creation) consecutively.
+35. **Enter** the Workspace ID that you copied in [Task 1](#task-1-fabric-workspace-creation) consecutively.
  
     ![Enter Workspace ID.](media/cloud-shell-14.1.png)
  
@@ -346,7 +367,7 @@ Two examples are provided below: one showing a warning and another showing norma
  
 > **Note:** You may see errors in script execution, if you  do not have necessary permissions for Cloud Shell to manipulate your Power BI workspace. In that case, follow this document [Power BI Embedding](https://github.com/microsoft/Azure-Analytics-and-AI-Engagement/blob/fsi/fsidemo/Power%20BI%20Embedding.md) to get the necessary permissions assigned. You’ll have to manually upload the reports to your Power BI workspace by downloading them from this location [Reports](https://dev.azure.com/Cloud-AI-Demo-Delivery/Cloud%20and%20AI%20Demo%20Delivery/_git/Dpoc?path=/fsi/artifacts/reports&version=GBfsi_iq_dpoc).
  
-31. A screen similar to the screenshot below indicates the end of your script execution.
+36. A screen similar to the screenshot below indicates the end of your script execution.
  
   ![Enter Workspace ID.](media/cloudshell113.png)
  
