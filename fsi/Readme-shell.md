@@ -344,14 +344,16 @@ cd ./fsi/fsi
  
     ![box](media/pbilogin2.png)
  
-34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus2".
-(Ex.: eastus2,eastus westus, westus2, etc.) 
-**Recommendation: *** Prefer East US 2 and ensure the Fabric capacity is deployed in a region that supports Fabric Operations agents.
-    ![box](media/cloudshell-region.1.png)
+34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".
+(Ex.: eastus, eastus2, westus, westus2, etc.) 
+
+**Recommendation:** Prefer East US and ensure the Fabric capacity is deployed in a region that supports Fabric Operations agents.
+
+  ![box](media/cloudshell-region.1.png)
  
 35. **Enter** the Workspace ID that you copied in [Task 1](#task-1-fabric-workspace-creation) consecutively.
  
-    ![Enter Workspace ID.](media/cloud-shell-14.1.png)
+  ![Enter Workspace ID.](media/cloud-shell-14.1.png)
  
 > **Note:** During the execution of the script, you might see outputs and warnings displayed in red color in between while text outputs. 
 Do not treat every red message as an error. Focus on the outputs and only consider them as errors only if it explicilty indicates an error. 
@@ -530,3 +532,19 @@ description: >-
 Complete this once Task 2 has finished successfully.
  
 * Ensure that your Entra ID user has the **Storage Blob Data Owner** role assigned on the storage account whose name starts with **storage**.
+
+* When any user visits the Foundry project for the first time:
+
+  - The user would require to assign himself/herself the **Foundry User** role by clicking on this button.
+
+  ![](media/appendix1.png)
+
+  - Once confirmed, the user needs to wait for at least 5 minutes for the role to propagate and take effect.
+
+  ![](media/appendix2.png)
+
+  - After the role has propagated and taken effect, the Foundry fleet of agents will be visible to the user.
+  
+  ![](media/appendix3.png)
+
+
