@@ -154,6 +154,7 @@ else {
             exit
         }
     }
+    Login-PowerBIServiceAccount
 
     # 1. Variables Definition
     [string]$suffix = -join ((48..57) + (97..122) | Get-Random -Count 7 | % { [char]$_ })
