@@ -115,7 +115,7 @@ Before running the deployment script, a **Fabric Administrator** must enable the
 7. **Save** the GUID in a notepad for future reference.
  
     ![Give the name and description for the new workspace.](media/fabriclogin2.png)
- 
+
     > **Note:** This workspace ID will be used during PowerShell script execution.
  
 8. In the workspace, click on **Workspace settings**.
@@ -225,10 +225,8 @@ Command:
 git clone -b fsi-iq --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git fsi
 ```
  
- 
   ![Git Clone Command to Pull Down the demo Repository.](media/clone1.1.png)
  
-
 > **Note:** If you get **File already exists.** error, please execute the following command to delete existing clone and then re-clone:
 ```
 rm fsi -r -f 
@@ -245,14 +243,16 @@ cd ./fsi/fsi
 ```
    ![Commands to run the PowerShell Script.](media/cd1.png)
  
-9. **Press** **Y** and click on the **Enter** button.
+9. **Type Y** and click on the **Enter** key.
+
     ![Yes.](media/yes.png)
  
 10. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter the code in the next step.
  
 11. **Click** the link [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and a new browser window will launch.
  
-    ![Authentication link and Device Code.](media/cloud-shell-10.png)
+    ![Authentication link and Device Code.](media/cloud-shell-111.png)
+
 12. **Paste** the authentication code and click on the **Next** button.
  
     ![box](media/cloud-shell-7.png)
@@ -290,7 +290,7 @@ cd ./fsi/fsi
  
 20. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-fabric-workspace-creation).
  
-    ![Select Same User to Authenticate.](media/cloud-shell-12.png)
+    ![Select Same User to Authenticate.](media/cloud-shell-121.png)
  
 21. Click on **Continue**.
  
@@ -302,14 +302,12 @@ cd ./fsi/fsi
  
 23. Go back to the **Azure Cloud Shell** execution window.
  
-24. **Click** on the URL [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+24. **Copy** the code on the screen to authenticate and **click** on the URL [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
  
     ![Click the link.](media/cloud-shell-100.png)
 25. In the new browser tab, **paste** the code you copied and **click** on **Next**.
  
   ![box](media/cloud-shell-101.png)
- 
-**Note:** Be sure to provide the device code before it expires and let the script run until completion.
  
 26. Select the **user account** you used to log into the **Azure Portal** in [Task 1](#task-1-fabric-workspace-creation).
  
@@ -323,9 +321,10 @@ cd ./fsi/fsi
  
     ![box](media/cloud-shell-104.png)
 
-29. **Click** on the URL [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
+29. **Copy** the code on the screen to authenticate and **click** on the URL [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin).
  
-    ![Click the link.](media/cloud-shell-100.png)
+    ![Click the link.](media/cloud-shell-123.png)
+
 30. In the new browser tab, **paste** the code you copied and **click** on **Next**.
  
   ![box](media/cloud-shell-101.png)
@@ -338,20 +337,22 @@ cd ./fsi/fsi
  
 32. Click on **Continue**.
  
-  ![box](media/cloud-shell-103.png)
+  ![box](media/cloud-shell-133.png)
  
 33. **Close** the browser tab when you see the success message box and go back to your Azure portal cloudshell screen.
+
+  ![box](media/cloud-shell-134.png)
  
-34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".
+34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus" and **press** Enter key.
 (Ex.: eastus, eastus2, westus, westus2, etc.) 
 
-**Recommendation:** Prefer East US and ensure the Fabric capacity is deployed in a region that supports Fabric Operations agents.
+**Recommendation:** Prefer a specific region to ensure the Fabric capacity is deployed in a region that supports Fabric Operations agents.
 
-  ![box](media/cloudshell-region.1.png)
+  ![box](media/cloudshell-region1.png)
  
-35. **Enter** the Workspace ID that you copied in [Task 1](#task-1-fabric-workspace-creation) consecutively.
+35. **Enter** the Workspace ID that you copied in [Task 1](#task-1-fabric-workspace-creation) consecutively and **press** Enter key.
  
-  ![Enter Workspace ID.](media/cloud-shell-14.1.png)
+  ![Enter Workspace ID.](media/cloud-shell-141.png)
  
 > **Note:** During the execution of the script, you might see outputs and warnings displayed in red color in between while text outputs. 
 Do not treat every red message as an error. Focus on the outputs and only consider them as errors only if it explicilty indicates an error. 
