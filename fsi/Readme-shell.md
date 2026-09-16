@@ -334,15 +334,13 @@ cd ./fsi/fsi
  
 31. Select the **user account** you used to log into the **Azure Portal** in [Task 1](#task-1-fabric-workspace-creation).
  
-  ![Select the same user.](media/PBIlogin3.png)
+  ![Select the same user.](media/pbilogin3.png)
  
 32. Click on **Continue**.
  
-  ![box](media/pbilogin.png)
+  ![box](media/cloud-shell-103.png)
  
-33. **Close** the browser tab when you see the message box.
- 
-  ![box](media/pbilogin2.png)
+33. **Close** the browser tab when you see the success message box and go back to your Azure portal cloudshell screen.
  
 34. **Enter** the Region for deployment with the necessary resources available, preferably "eastus".
 (Ex.: eastus, eastus2, westus, westus2, etc.) 
