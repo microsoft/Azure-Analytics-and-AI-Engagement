@@ -1,4 +1,4 @@
-# Intelligent Insights from SAP and non-SAP data with Copilot, Fabric, and Microsoft IQ Deployable PoC Accelerator
+# Microsoft IQ FSI Lending Agents (Fabric, Foundry, Work) Deployable PoC Accelerator
  
 ## What is a DPoC?
 Deployable PoC Accelerators (DPoC) are packaged Demos using ARM templates and automation scripts (with a demo web application, Power BI reports, Fabric resources like Eventstream, Data Agents, Real Time Dashboards, PySpark notebooks etc.) that can be deployed in a customer’s environment.
