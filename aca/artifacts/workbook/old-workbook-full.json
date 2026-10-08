@@ -1,0 +1,28 @@
+{
+  "etag": "\"140528c1-0000-0100-0000-6ab3c36b0000\"",
+  "id": "WORKBOOK_ID",
+  "identity": {
+    "type": "None"
+  },
+  "kind": "shared",
+  "location": "eastus",
+  "name": "b69458cf-e537-459f-a1ec-7b513a501031",
+  "properties": {
+    "category": "workbook",
+    "displayName": "Audit Trace Workbook",
+    "revision": "d88c3ed3d29f46d4900a8d66b0a5fa48",
+    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"# Invoice Audit Trace Analysis\\r\\n\\r\\nRepresentative execution trace for the Invoice Audit workflow powered by ACA Express, T4 GPU Classification, and Agent Orchestration.\\r\\n\\r\\n---\\r\\n\\r\\n## Audit Summary\\r\\n\\r\\n**Trace ID:** AUDIT-2026-001\\r\\n\\r\\n**Execution Status:** ✅ Completed\\r\\n\\r\\n**End-to-End Duration:** 8.4 seconds\\r\\n\\r\\n**Estimated Compute Cost:** $0.18\\r\\n\\r\\n**Financial Exceptions Identified:** 2\\r\\n\\r\\n---\\r\\n\\r\\n## Distributed Trace\\r\\n\\r\\n```text\\r\\nExpress Request (8.4 sec)\\r\\n│\\r\\n├── Agent Orchestration (0.7 sec)\\r\\n│\\r\\n├── Sandbox Span (2.4 sec)\\r\\n│   ├── Sandbox Allocation (0.4 sec)\\r\\n│   ├── Notebook Execution (1.8 sec)\\r\\n│   └── Sandbox Cleanup (0.2 sec)\\r\\n│\\r\\n├── T4 GPU Inference (3.8 sec)\\r\\n│\\r\\n├── Business Validation (0.7 sec)\\r\\n│\\r\\n└── Response Assembly (0.4 sec)\\r\\n```\\r\\n\\r\\n---\\r\\n\\r\\n## Execution Breakdown\\r\\n\\r\\n| Component | Duration | Status |\\r\\n|------------|----------|---------|\\r\\n| Express Request | 0.4 sec | ✅ Success |\\r\\n| Agent Orchestration | 0.7 sec | ✅ Success |\\r\\n| Sandbox Span | 2.4 sec | ✅ Success |\\r\\n| T4 GPU Inference | 3.8 sec | ✅ Success |\\r\\n| Business Validation | 0.7 sec | ✅ Success |\\r\\n| Response Assembly | 0.4 sec | ✅ Success |\\r\\n| Total Audit Duration | **8.4 sec** | ✅ Completed |\\r\\n\\r\\n---\\r\\n\\r\\n## Audit Findings\\r\\n\\r\\n### Financial Exception #1\\r\\n\\r\\n**Contract discount exceeds the approved threshold.**\\r\\n\\r\\n**Evidence Path**\\r\\n- Contract Clause 4.2\\r\\n- Approved Pricing Schedule\\r\\n- Discount Calculation Workbook\\r\\n\\r\\n---\\r\\n\\r\\n### Financial Exception #2\\r\\n\\r\\n**Tax calculation mismatch detected.**\\r\\n\\r\\n**Evidence Path**\\r\\n- Invoice Line Validation\\r\\n- Tax Policy Reference\\r\\n- T4 Classification Output\\r\\n- Reconciliation Notebook Results\\r\\n\\r\\n---\\r\\n\\r\\n## Performance Analysis\\r\\n\\r\\n### Tool Execution\\r\\n\\r\\n| Activity | Duration |\\r\\n|-----------|----------|\\r\\n| Sandbox Allocation | 0.4 sec |\\r\\n| Notebook Execution | 1.8 sec |\\r\\n| Sandbox Cleanup | 0.2 sec |\\r\\n| **Total Sandbox Runtime** | **2.4 sec** |\\r\\n\\r\\n### Model Execution\\r\\n\\r\\n| Activity | Duration |\\r\\n|-----------|----------|\\r\\n| T4 GPU Inference | **3.8 sec** |\\r\\n\\r\\n---\\r\\n\\r\\n## Platform Insights\\r\\n\\r\\n**Tool Time:** 2.4 sec\\r\\n\\r\\n**Inference Time:** 3.8 sec\\r\\n\\r\\n**Total Time:** 8.4 sec\\r\\n\\r\\n\\r\\n---\\r\\n\\r\\n## Business Outcome\\r\\n\\r\\nThe audit identified **two confirmed financial exceptions** and preserved the complete evidence trail used to reach each conclusion.\\r\\n\\r\\nThis provides both:\\r\\n\\r\\n- The final audit decision.\\r\\n- The evidence path supporting the decision.\\r\\n\\r\\nThis level of traceability is required for regulated financial operations and compliance reviews.\\r\\n\\r\\n---\\r\\n\\r\\n### Observation\\r\\n\\r\\nThe largest execution segment was GPU inference.\\r\\n\\r\\nBecause sandbox execution and inference execution are separated into independent spans, platform teams can identify the exact bottleneck within the workflow.\\r\\n\\r\\n### Recommendation\\r\\n\\r\\nIf latency increases:\\r\\n\\r\\n✅ Scale the GPU inference layer.\\r\\n\\r\\n❌ Do not modify the frontend.\\r\\n\\r\\n❌ Do not modify agent orchestration.\\r\\n\\r\\n❌ Do not modify sandbox execution.\\r\\n\\r\\nThis enables independent scaling and optimization of each platform component.\\r\\n\\r\\n---\\r\\n\\r\\n## End-to-End Workflow\\r\\n\\r\\n```text\\r\\nUser Request\\r\\n      ↓\\r\\nInvoice Audit Agent\\r\\n      ↓\\r\\nExpress Request\\r\\n      ↓\\r\\nACA Express Sandbox\\r\\n      ↓\\r\\nNotebook Execution\\r\\n      ↓\\r\\nT4 GPU Inference\\r\\n      ↓\\r\\nBusiness Validation\\r\\n      ↓\\r\\nFinancial Exceptions Generated\\r\\n      ↓\\r\\nAudit Response Returned\\r\\n```\\r\\n\"},\"name\":\"text - 0\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"print Component=\\\"Express Request\\\", Duration=0.4\\r\\n| union (print Component=\\\"Agent Orchestration\\\", Duration=0.7)\\r\\n| union (print Component=\\\"Sandbox Span\\\", Duration=2.4)\\r\\n| union (print Component=\\\"T4 GPU Inference\\\", Duration=3.8)\\r\\n| union (print Component=\\\"Business Validation\\\", Duration=0.7)\\r\\n| union (print Component=\\\"Response Assembly\\\", Duration=0.4)\",\"size\":0,\"timeContext\":{\"durationMs\":86400000},\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/##AZURE_SUBSCRIPTION_ID##/resourceGroups/rg-modernize-with-confidence/providers/Microsoft.OperationalInsights/workspaces/hcp-log-analytics\"]},\"name\":\"query - 1\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"Azure Monitor\"]}",
+    "sourceId": "azure monitor",
+    "storageUri": null,
+    "tags": null,
+    "timeModified": "2026-09-23T12:17:47.0643055Z",
+    "userId": "14b1e8a3-29e7-4492-9d84-8188c1271a5c",
+    "version": "Notebook/1.0"
+  },
+  "tags": {
+    "Required ": "Yes",
+    "hidden-title": "Audit Trace Workbook",
+    "used for ": "Module 3"
+  },
+  "type": "microsoft.insights/workbooks"
+}

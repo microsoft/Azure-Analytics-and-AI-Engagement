@@ -1,0 +1,612 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "storage_account_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "userAssignedIdentities_aca_global_demo_identity_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "userAssignedIdentities_id_aks_automatic_aca_openai_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "containerapps_container_app_express_aca_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "containerapps_caldova_contract_classifier_name": {
+      "type": "String",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "managedEnvironments_caldova_global_aca_env_name": {
+      "type": "String"
+    },
+    "containerapps_invoice_agent_name": {
+      "type": "String"
+    },
+    "containerapps_agents_launchpad_aca_name": {
+      "type": "String"
+    },
+    "acr_aca_name": {
+      "type": "String"
+    },
+    "workbooks_aca_name": {
+      "type": "String"
+    },
+    "log_analytics_workspace_name": {
+      "type": "String"
+    },
+    "workbookGuidName": {
+      "type": "String",
+      "defaultValue": "[newGuid()]",
+      "metadata": {
+        "description": "Auto-generated GUID required for the Azure Workbook resource name."
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('storage_account_name')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-05-01",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "isHnsEnabled": "true",
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": true,
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "cors": {
+          "corsRules": [
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "GET"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "POST"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "DELETE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            },
+            {
+              "allowedOrigins": [
+                "*"
+              ],
+              "allowedMethods": [
+                "MERGE"
+              ],
+              "maxAgeInSeconds": 1000,
+              "exposedHeaders": [
+                "*"
+              ],
+              "allowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/agent-sandbox-state')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/generated-notebooks')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "name": "[concat(parameters('storage_account_name'), '/default/generated-yaml')]",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2022-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices',  parameters('storage_account_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts',  parameters('storage_account_name'))]"
+      ],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2025-05-31-preview",
+      "name": "[parameters('userAssignedIdentities_aca_global_demo_identity_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "isolationScope": "None",
+        "assignmentRestrictions": {
+          "providers": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2025-05-31-preview",
+      "name": "[parameters('userAssignedIdentities_id_aks_automatic_aca_openai_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "isolationScope": "None",
+        "assignmentRestrictions": {
+          "providers": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.App/containerapps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('containerapps_container_app_express_aca_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('userAssignedIdentities_aca_global_demo_identity_name'))]"
+      ],
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('userAssignedIdentities_aca_global_demo_identity_name'))]": {}
+        }
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "workloadProfileName": "Consumption",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "transport": "Http",
+            "allowInsecure": false
+          },
+          "identitySettings": []
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "express-app-container",
+              "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+              "resources": {
+                "cpu": 0.25,
+                "memory": "0.5Gi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.App/containerapps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('containerapps_caldova_contract_classifier_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('userAssignedIdentities_aca_global_demo_identity_name'))]"
+      ],
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('userAssignedIdentities_aca_global_demo_identity_name'))]": {}
+        }
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "workloadProfileName": "gpu-t4",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "exposedPort": 0,
+            "transport": "Auto",
+            "traffic": [
+              {
+                "revisionName": "[concat(parameters('containerapps_caldova_contract_classifier_name'), '--0000008')]",
+                "weight": 100
+              }
+            ],
+            "allowInsecure": false
+          },
+          "maxInactiveRevisions": 100,
+          "identitySettings": []
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "classifier-container",
+              "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+              "resources": {
+                "cpu": 0.25,
+                "memory": "0.5Gi"
+              }
+            }
+          ],
+          "scale": {
+            "minReplicas": 0,
+            "maxReplicas": 2,
+            "cooldownPeriod": 300,
+            "pollingInterval": 30,
+            "rules": [
+              {
+                "name": "gpu-http",
+                "http": {
+                  "metadata": {
+                    "concurrentRequests": "1"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('managedEnvironments_caldova_global_aca_env_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]"
+      ],
+      "properties": {
+        "workloadProfiles": [
+          {
+            "workloadProfileType": "Consumption",
+            "name": "Consumption"
+          },
+          {
+            "workloadProfileType": "Consumption-GPU-NC8as-T4",
+            "name": "gpu-t4"
+          }
+        ],
+        "zoneRedundant": false,
+        "kedaConfiguration": {},
+        "daprConfiguration": {},
+        "customDomainConfiguration": {},
+        "peerAuthentication": {
+          "mtls": {
+            "enabled": false
+          }
+        },
+        "peerTrafficConfiguration": {
+          "encryption": {
+            "enabled": false
+          }
+        },
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.App/containerapps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('containerapps_invoice_agent_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]"
+      ],
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "workloadProfileName": "Consumption",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "exposedPort": 0,
+            "transport": "Auto",
+            "traffic": [
+              {
+                "weight": 100,
+                "latestRevision": true
+              }
+            ],
+            "allowInsecure": false
+          },
+          "maxInactiveRevisions": 100,
+          "identitySettings": []
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "invoice-agent-container",
+              "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+              "resources": {
+                "cpu": 0.25,
+                "memory": "0.5Gi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.App/containerapps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('containerapps_agents_launchpad_aca_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]"
+      ],
+      "identity": {
+        "type": "None"
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('managedEnvironments_caldova_global_aca_env_name'))]",
+        "workloadProfileName": "Consumption",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "ingress": {
+            "external": true,
+            "targetPort": 8080,
+            "exposedPort": 0,
+            "transport": "Auto",
+            "traffic": [
+              {
+                "weight": 100,
+                "latestRevision": true
+              }
+            ],
+            "allowInsecure": false
+          },
+          "registries": [],
+          "maxInactiveRevisions": 100,
+          "identitySettings": []
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "launchpad-container",
+              "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+              "resources": {
+                "cpu": 0.25,
+                "memory": "0.5Gi"
+              }
+            }
+          ],
+          "scale": {
+            "maxReplicas": 10,
+            "cooldownPeriod": 300,
+            "pollingInterval": 30
+          },
+          "volumes": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2026-03-01-preview",
+      "name": "[parameters('acr_aca_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Basic",
+        "tier": "Basic"
+      },
+      "properties": {
+        "adminUserEnabled": true,
+        "policies": {
+          "quarantinePolicy": {
+            "status": "disabled"
+          },
+          "trustPolicy": {
+            "type": "Notary",
+            "status": "disabled"
+          },
+          "retentionPolicy": {
+            "days": 7,
+            "status": "disabled"
+          },
+          "exportPolicy": {
+            "status": "enabled"
+          },
+          "azureADAuthenticationAsArmPolicy": {
+            "status": "enabled"
+          },
+          "softDeletePolicy": {
+            "retentionDays": 7,
+            "status": "disabled"
+          }
+        },
+        "encryption": {
+          "status": "disabled"
+        },
+        "dataEndpointEnabled": false,
+        "regionalEndpoints": "Disabled",
+        "endpointProtocol": "IPv4",
+        "publicNetworkAccess": "Enabled",
+        "networkRuleBypassOptions": "AzureServices",
+        "networkRuleBypassAllowedForTasks": false,
+        "zoneRedundancy": "Disabled",
+        "anonymousPullEnabled": false,
+        "metadataSearch": "Disabled",
+        "roleAssignmentMode": "LegacyRegistryPermissions",
+        "autoGeneratedDomainNameLabelScope": "Unsecure",
+        "writableCacheRepos": "Disabled"
+      }
+    },
+    {
+      "type": "microsoft.insights/workbooks",
+      "apiVersion": "2023-06-01",
+      "name": "[parameters('workbookGuidName')]",
+      "location": "[parameters('location')]",
+      "kind": "shared",
+      "identity": {
+        "type": "None"
+      },
+      "properties": {
+        "displayName": "AuditTraceWorkbook",
+        "version": "Notebook/1.0",
+        "category": "workbook",
+        "sourceId": "azure monitor",
+        "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[]}"
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2022-10-01",
+      "name": "[parameters('log_analytics_workspace_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "PerGB2018"
+        },
+        "retentionInDays": 30,
+        "features": {
+          "legacy": 0,
+          "searchVersion": 1,
+          "enableLogAccessUsingOnlyResourcePermissions": true
+        },
+        "workspaceCapping": {
+          "dailyQuotaGb": -1
+        },
+        "publicNetworkAccessForIngestion": "Enabled",
+        "publicNetworkAccessForQuery": "Enabled"
+      }
+    }
+  ]
+}

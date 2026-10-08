@@ -1,0 +1,38 @@
+# =============================================================================
+# ACA DPoC - Invoice Audit Agent deployment manifest
+# -----------------------------------------------------------------------------
+# Describes WHAT is deployed into the Foundry project. Environment-specific
+# values (subscription, resource names, endpoints) come from .env via
+# config/settings.py. deploy_foundry_agent.py reads both and does the wiring.
+# =============================================================================
+
+agent:
+  name: invoice-audit-agent
+  instructions_file: agents/invoice_audit_agent.txt
+  reasoning_effort: low            # matches invoice-audit-agent-v1:15
+
+knowledge:
+  vector_store_name: vs-cmo-contracts
+  documents_dir: datasets/contracts   # all 13 executed CMO contracts (PDF)
+
+mcp_tool:
+  server_label: mcp-reconcile-tool
+  connection_name: mcp-reconcile-tool
+  # Tools callable without a Foundry approval prompt. The agent instructions
+  # still require the user's approval in the conversation before execution.
+  never_require_approval:
+    - run_code
+  function_mcp_path: /mcp              # FastMCP streamable-HTTP route on the Function App
+
+apim:                                   # used when MCP_GATEWAY_MODE=apim
+  api_name: mcp-reconcile-tool
+  api_path: mcp-reconcile-tool
+  named_value: mcp-reconcile-func-key
+  subscription_name: mcp-reconcile-tool-foundry
+  backend_timeout_seconds: 300
+
+smoke_test:
+  agent_prompt: >-
+    Which executed contract governs Lamna Healthcare Company? Reply with the
+    contract number and the effective date only.
+  expected_text: CMO-LAM-2027-014

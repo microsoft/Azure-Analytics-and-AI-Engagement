@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: invoice-agent-scaler
+  namespace: agent-platform
+spec:
+  scaleTargetRef:
+    name: invoice-agent
+  minReplicaCount: 4
+  maxReplicaCount: 5
+  triggers:
+  - type: cpu
+    metricType: Utilization
+    metadata:
+      value: "70"

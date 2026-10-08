@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: invoice-agent
+  namespace: agent-platform
+  annotations:
+    azure.workload.identity/client-id: "#clientID#"

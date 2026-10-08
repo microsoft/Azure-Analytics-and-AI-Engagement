@@ -1,0 +1,16 @@
+# Azure Functions Python worker runtime + ASGI support
+azure-functions>=1.21.3
+
+# Auth for DefaultAzureCredential (Managed Identity in Azure)
+azure-identity>=1.19.0
+
+# ACA Sandbox SDK — still in public preview, pin exactly so a new
+# preview build can't silently change behavior under you
+azure-containerapps-sandbox==0.1.0b3
+
+# Durable agent -> sandbox_id pointer storage
+azure-storage-blob>=12.24.0
+
+# MCP Python SDK — v2 is pre-release and has breaking changes
+# (e.g. McpError -> MCPError). Cap below 2 until you deliberately upgrade.
+mcp>=1.27,<2

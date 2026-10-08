@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoice-agent
+  namespace: agent-platform
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: invoice-agent
+
+  template:
+    metadata:
+      labels:
+        app: invoice-agent
+        azure.workload.identity/use: "true"
+
+    spec:
+      serviceAccountName: invoice-agent
+
+      tolerations:
+      - key: "CriticalAddonsOnly"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+
+      containers:
+      - name: invoice-agent
+        image: "#ACR_ACA_NAME#.azurecr.io/invoice-agent:#Tag#"
+        imagePullPolicy: Always
+
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
+
+        env:
+        - name: FOUNDRY_PROJECT_ENDPOINT
+          value: "#FOUNDRY_PROJECT_ENDPOINT#"
+
+        - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+          value: "gpt-5.5"
+
+        - name: AZURE_SUBSCRIPTION_ID
+          value: "#SUBSCRIPTION_ID#"
+
+        - name: AZURE_RESOURCE_GROUP
+          value: "#RESOURCE_GROUP#"
+
+        - name: AZURE_SANDBOX_GROUP
+          value: "#SANDBOX_GROUP#"
+
+        - name: AZURE_REGION
+          value: "#REGION#"
