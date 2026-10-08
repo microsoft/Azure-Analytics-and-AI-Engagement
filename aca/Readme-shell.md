@@ -156,7 +156,7 @@ Command:
 ```
 git clone -b aca --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git aca
 ``` 
-  ![Git Clone Command to Pull Down the demo Repository.](media/cloudshell3.png)
+  ![Git Clone Command to Pull Down the demo Repository.](media/powershellstep1.png)
   
 
 > **Note:** If you get **File already exists.** error, please execute the following command to delete existing clone and then re-clone:
@@ -173,7 +173,7 @@ cd ./aca/aca
 ```
 ./acaSetup.ps1
 ```
-   ![Commands to run the PowerShell Script.](media/cd.png)
+   ![Commands to run the PowerShell Script.](media/powershellstep2.png)
  
 13. **Press** **Y** and click on the **Enter** button.
 
