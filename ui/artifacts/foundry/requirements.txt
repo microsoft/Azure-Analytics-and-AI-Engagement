@@ -1,0 +1,6 @@
+azure-ai-projects>=2.3.0
+azure-search-documents
+azure-storage-blob
+azure-identity
+python-dotenv
+requests
