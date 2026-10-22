@@ -138,14 +138,10 @@ Before running the deployment script, confirm that your tenant allows the requir
    Command:
 
    ```
-   git clone -b ui_dpoc --depth 1 --single-branch https://Cloud-AI-Demo-Delivery@dev.azure.com/Cloud-AI-Demo-Delivery/Cloud%20and%20AI%20Demo%20Delivery/_git/Dpoc ui
+   git clone -b ui_dpoc --depth 1 --single-branch https://github.com/microsoft/Azure-Analytics-and-AI-Engagement.git ui
    ```
 
-   ![Git Clone Command to Pull Down the demo Repository.](media/dpoc1.png)
-
-8. Enter your **PAT token** for login and press **Enter** key.
-
-   ![Git Clone Command to Pull Down the demo Repository.](media/dpoc2.png)
+   ![Git Clone Command to Pull Down the demo Repository.](media/clone1.1.png)
 
    > **Note:** If you get **File already exists.** error, please execute the following command to delete existing clone and then re-clone:
    ```
@@ -154,7 +150,7 @@ Before running the deployment script, confirm that your tenant allows the requir
 
    > **Note:** When executing scripts, it is important to let them run to completion. Some tasks may take longer than others to run. When a script completes execution, you will be returned to a command prompt.
 
-9. **Execute** the PowerShell script with the following command:
+8. **Execute** the PowerShell script with the following command:
 
    ```
    cd ./ui/ui
@@ -164,37 +160,37 @@ Before running the deployment script, confirm that your tenant allows the requir
    ./uiSetup.ps1
    ```
 
-   ![Commands to run the PowerShell Script.](media/dpoc3.png)
+   ![Commands to run the PowerShell Script.](media/clone2.png)
 
-10. **Press** **Y** and click on the **Enter** button.
+9. **Press** **Y** and click on the **Enter** button.
 
     ![Yes.](media/Dpoc9.png)
 
-11. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter the code in the next step.
+10. From the Azure Cloud Shell, **copy** the authentication code. You will need to enter the code in the next step.
 
-12. **Click** on the link https://microsoft.com/devicelogin and a new browser window will launch.
+11. **Click** on the link https://microsoft.com/devicelogin and a new browser window will launch.
 
     ![Authentication link and Device Code.](media/Dpoc10.png)
 
-13. **Paste** the authentication code and click on the **Next** button.
+12. **Paste** the authentication code and click on the **Next** button.
 
     ![box](media/pw1.png)
 
-14. **Select** the user account you used for logging into the Azure Portal in [Task 1](#task-1-run-the-cloud-shell-to-provision-the-demo-resources).
+13. **Select** the user account you used for logging into the Azure Portal in [Task 1](#task-1-run-the-cloud-shell-to-provision-the-demo-resources).
 
     ![box](media/account1.png)
 
-15. **Click** on the **Continue** button.
+14. **Click** on the **Continue** button.
 
     ![box](media/continue1.png)
 
-16. **Close** the browser tab when you see the message box.
+15. **Close** the browser tab when you see the message box.
 
     ![box](media/done1.png)
 
-17. **Navigate back** to your **Azure Cloud Shell** execution window.
+16. **Navigate back** to your **Azure Cloud Shell** execution window.
 
-18. **Enter** the number on the left side of your subscription name from the screen and press **Enter** key.
+17. **Enter** the number on the left side of your subscription name from the screen and press **Enter** key.
 
     ![Close the browser tab.](media/select-sub1.png)
 
@@ -203,29 +199,29 @@ Before running the deployment script, confirm that your tenant allows the requir
     > - The subscription highlighted in Light blue will be selected by default, if you do not enter a desired subscription. Please select the subscription carefully as it may break the execution further.
     > - While you are waiting for the processes to complete in the Azure Cloud Shell window, you'll be asked to enter the code three times. This is necessary for performing the installation of various Azure Services and preloading the data.
 
-19. **Copy** the code on the screen to authenticate the **Azure PowerShell script** for creating the resources. **Click** the link https://microsoft.com/devicelogin.
+18. **Copy** the code on the screen to authenticate the **Azure PowerShell script** for creating the resources. **Click** the link https://microsoft.com/devicelogin.
 
     ![Authentication link and Device code.](media/login2.png)
 
-20. A new browser window will launch. **Paste** the **authentication code** you copied from the shell above and press **Enter**.
+19. A new browser window will launch. **Paste** the **authentication code** you copied from the shell above and press **Enter**.
 
     ![box](media/pw2.png)
 
-21. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-run-the-cloud-shell-to-provision-the-demo-resources).
+20. **Select** the user account that is used for logging into the Azure Portal in [Task 1](#task-1-run-the-cloud-shell-to-provision-the-demo-resources).
 
     ![Select Same User to Authenticate.](media/account2.png)
 
-22. Click on **Continue**.
+21. Click on **Continue**.
 
     ![box](media/continue2.png)
 
-23. **Close** the browser tab when you see the message box.
+22. **Close** the browser tab when you see the message box.
 
     ![box](media/done2.png)
 
-24. Go back to the **Azure Cloud Shell** execution window.
+23. Go back to the **Azure Cloud Shell** execution window.
 
-25. **Enter** the Region for deployment with the necessary resources available, preferably "northcentralus".
+24. **Enter** the Region for deployment with the necessary resources available, preferably "northcentralus".
     (Ex.: eastus2,eastus westus, westus2, etc.)
 
     ![box](media/dpoc4.png)
@@ -238,7 +234,7 @@ Before running the deployment script, confirm that your tenant allows the requir
 
     ![Enter Workspace ID.](media/dpoc5.png)
 
-26. A screen similar to the screenshot below indicates the end of your script execution.
+25. A screen similar to the screenshot below indicates the end of your script execution.
 
     ![Enter Workspace ID.](media/dpoc6.png)
 
