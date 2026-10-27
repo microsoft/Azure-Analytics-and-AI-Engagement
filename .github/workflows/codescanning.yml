@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
       - name: Run TruffleHog Secret Scanner
-        uses: "trufflesecurity/trufflehog@main"
+        uses: "trufflesecurity/trufflehog@b2b0a92070f206ab7b5a1105d82a7f2f48d92341" # v3.99.0
         with:
           path: "."
           fail: true
